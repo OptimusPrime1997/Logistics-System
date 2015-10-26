@@ -1,5 +1,6 @@
 package bl.goodsbl;
 
-public class GoodsArrivalState {
-
+public enum GoodsArrivalState {
+	//intact=safe and sound
+	intact,broken,lost
 }

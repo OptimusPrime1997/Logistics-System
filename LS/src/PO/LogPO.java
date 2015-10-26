@@ -16,20 +16,11 @@ public class LogPO implements Serializable {
 	public String getOperationName() {
 		return operationName;
 	}
-	public void setOperationName(String operationName) {
-		this.operationName = operationName;
-	}
 	public String getOperatorID() {
 		return operatorID;
 	}
-	public void setOperatorID(String operatorID) {
-		this.operatorID = operatorID;
-	}
 	public String getTime() {
 		return time;
-	}
-	public void setTime(String time) {
-		this.time = time;
 	}
 	
 }

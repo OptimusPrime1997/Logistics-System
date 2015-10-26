@@ -19,27 +19,14 @@ public class ProfitFormPO implements Serializable {
 	public String getTimeNow() {
 		return timeNow;
 	}
-	public void setTimeNow(String timeNow) {
-		this.timeNow = timeNow;
-	}
 	public double getTotalOut() {
 		return totalOut;
-	}
-	public void setTotalOut(double totalOut) {
-		this.totalOut = totalOut;
 	}
 	public double getTotalIn() {
 		return totalIn;
 	}
-	public void setTotalIn(double totalIn) {
-		this.totalIn = totalIn;
-	}
 	public double getTotalProfit() {
 		return totalProfit;
 	}
-	public void setTotalProfit(double totalProfit) {
-		this.totalProfit = totalProfit;
-	}
-	
 	
 }

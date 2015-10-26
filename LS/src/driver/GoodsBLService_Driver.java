@@ -10,6 +10,6 @@ public class GoodsBLService_Driver {
 	}
 
 	public void drive(GoodsBLService goodsBLService){
-		
+		System.out.println(" ‰»Î∞…");
 	}
 }

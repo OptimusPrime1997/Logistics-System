@@ -3,6 +3,7 @@ package VO;
 import java.io.Serializable;
 
 import bl.goodsbl.GoodsArrivalState;
+import bl.goodsbl.GoodsExpressType;
 import bl.goodsbl.GoodsLogisticState;
 
 public class GoodsVO  {
@@ -25,7 +26,7 @@ public class GoodsVO  {
 	public double weight;
 	public double volume;// Με»ύ
 	public String nameOfInside;
-	public String expressType;
+	public GoodsExpressType expressType;
 	public double moneyOfPackage;
 	public double moneyTotal;
 	public double moneyFare;
@@ -41,7 +42,7 @@ public class GoodsVO  {
 			String senderPhone, String receiverName, String receiverAddress,
 			String receiverCompany, String receiverPhone, int numOfGoods,
 			double weight, double volume, String nameOfInside,
-			String expressType, double moneyOfPackage, double moneyTotal,
+			GoodsExpressType expressType, double moneyOfPackage, double moneyTotal,
 			double moneyFare, GoodsArrivalState arrivalState,
 			GoodsLogisticState logisticState, String realReceiverName,
 			String realReceiverPhone) {

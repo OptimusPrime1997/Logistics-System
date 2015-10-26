@@ -3,6 +3,7 @@ package PO;
 import java.io.Serializable;
 
 import bl.goodsbl.GoodsArrivalState;
+import bl.goodsbl.GoodsExpressType;
 import bl.goodsbl.GoodsLogisticState;
 
 public class GoodsPO implements Serializable {
@@ -26,7 +27,7 @@ public class GoodsPO implements Serializable {
 	private double weight;
 	private double volume;// Με»ύ
 	private String nameOfInside;
-	private String expressType;
+	private GoodsExpressType expressType;
 	private double moneyOfPackage;
 	private double moneyTotal;
 	private double moneyFare;
@@ -42,7 +43,7 @@ public class GoodsPO implements Serializable {
 			String senderPhone, String receiverName, String receiverAddress,
 			String receiverCompany, String receiverPhone, int numOfGoods,
 			double weight, double volume, String nameOfInside,
-			String expressType, double moneyOfPackage, double moneyTotal,
+			GoodsExpressType expressType, double moneyOfPackage, double moneyTotal,
 			double moneyFare, GoodsArrivalState arrivalState,
 			GoodsLogisticState logisticState, String realReceiverName,
 			String realReceiverPhone) {
@@ -79,208 +80,104 @@ public class GoodsPO implements Serializable {
 		return listNum;
 	}
 
-	public void setListNum(String listNum) {
-		this.listNum = listNum;
-	}
-
 	public Boolean getIfExaminePassed() {
 		return ifExaminePassed;
-	}
-
-	public void setIfExaminePassed(Boolean ifExaminePassed) {
-		this.ifExaminePassed = ifExaminePassed;
 	}
 
 	public String getGetCourierAccount() {
 		return getCourierAccount;
 	}
 
-	public void setGetCourierAccount(String getCourierAccount) {
-		this.getCourierAccount = getCourierAccount;
-	}
-
 	public String getDeliverCourierAccount() {
 		return deliverCourierAccount;
-	}
-
-	public void setDeliverCourierAccount(String deliverCourierAccount) {
-		this.deliverCourierAccount = deliverCourierAccount;
 	}
 
 	public String getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
-	}
-
 	public String getOvertime() {
 		return overtime;
-	}
-
-	public void setOvertime(String overtime) {
-		this.overtime = overtime;
 	}
 
 	public String getDestinationCity() {
 		return destinationCity;
 	}
 
-	public void setDestinationCity(String destinationCity) {
-		this.destinationCity = destinationCity;
-	}
-
 	public String getSenderName() {
 		return senderName;
-	}
-
-	public void setSenderName(String senderName) {
-		this.senderName = senderName;
 	}
 
 	public String getSenderAddress() {
 		return senderAddress;
 	}
 
-	public void setSenderAddress(String senderAddress) {
-		this.senderAddress = senderAddress;
-	}
-
 	public String getSenderCompany() {
 		return senderCompany;
-	}
-
-	public void setSenderCompany(String senderCompany) {
-		this.senderCompany = senderCompany;
 	}
 
 	public String getSenderPhone() {
 		return senderPhone;
 	}
 
-	public void setSenderPhone(String senderPhone) {
-		this.senderPhone = senderPhone;
-	}
-
 	public String getReceiverName() {
 		return receiverName;
-	}
-
-	public void setReceiverName(String receiverName) {
-		this.receiverName = receiverName;
 	}
 
 	public String getReceiverAddress() {
 		return receiverAddress;
 	}
 
-	public void setReceiverAddress(String receiverAddress) {
-		this.receiverAddress = receiverAddress;
-	}
-
 	public String getReceiverCompany() {
 		return receiverCompany;
-	}
-
-	public void setReceiverCompany(String receiverCompany) {
-		this.receiverCompany = receiverCompany;
 	}
 
 	public String getReceiverPhone() {
 		return receiverPhone;
 	}
 
-	public void setReceiverPhone(String receiverPhone) {
-		this.receiverPhone = receiverPhone;
-	}
-
 	public int getNumOfGoods() {
 		return numOfGoods;
-	}
-
-	public void setNumOfGoods(int numOfGoods) {
-		this.numOfGoods = numOfGoods;
 	}
 
 	public double getWeight() {
 		return weight;
 	}
 
-	public void setWeight(double weight) {
-		this.weight = weight;
-	}
-
 	public double getVolume() {
 		return volume;
-	}
-
-	public void setVolume(double volume) {
-		this.volume = volume;
 	}
 
 	public String getNameOfInside() {
 		return nameOfInside;
 	}
 
-	public void setNameOfInside(String nameOfInside) {
-		this.nameOfInside = nameOfInside;
-	}
-
-	public String getExpressType() {
+	public GoodsExpressType getExpressType() {
 		return expressType;
-	}
-
-	public void setExpressType(String expressType) {
-		this.expressType = expressType;
 	}
 
 	public double getMoneyOfPackage() {
 		return moneyOfPackage;
 	}
 
-	public void setMoneyOfPackage(double moneyOfPackage) {
-		this.moneyOfPackage = moneyOfPackage;
-	}
-
 	public double getMoneyTotal() {
 		return moneyTotal;
-	}
-
-	public void setMoneyTotal(double moneyTotal) {
-		this.moneyTotal = moneyTotal;
 	}
 
 	public double getMoneyFare() {
 		return moneyFare;
 	}
 
-	public void setMoneyFare(double moneyFare) {
-		this.moneyFare = moneyFare;
-	}
-
 	public GoodsArrivalState getArrivalState() {
 		return arrivalState;
-	}
-
-	public void setArrivalState(GoodsArrivalState arrivalState) {
-		this.arrivalState = arrivalState;
 	}
 
 	public GoodsLogisticState getLogisticState() {
 		return logisticState;
 	}
 
-	public void setLogisticDate(GoodsLogisticState logisticState) {
-		this.logisticState = logisticState;
-	}
-
 	public String getRealReceiverName() {
 		return realReceiverName;
-	}
-
-	public void setRealReceiverName(String realReceiverName) {
-		this.realReceiverName = realReceiverName;
 	}
 
 	public String getRealReceiverPhone() {

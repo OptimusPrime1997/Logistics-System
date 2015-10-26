@@ -17,23 +17,17 @@ public class BusinessFormPO implements Serializable {
 		this.endTime = endTime;
 		this.financialRecord = financialRecord;
 	}
+
 	public String getStartTime() {
 		return startTime;
 	}
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
-	}
+
 	public String getEndTime() {
 		return endTime;
 	}
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
-	}
+
 	public ArrayList<PayRepVO> getFinancialRecord() {
 		return financialRecord;
-	}
-	public void setFinancialRecord(ArrayList<PayRepVO> financialRecord) {
-		this.financialRecord = financialRecord;
 	}
 	
 	
