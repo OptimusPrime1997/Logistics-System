@@ -7,6 +7,6 @@ package VO;
  * @author G
  *
  */
-public class PayRepVO {
-	
+public class OutStockRepVO {
+
 }
