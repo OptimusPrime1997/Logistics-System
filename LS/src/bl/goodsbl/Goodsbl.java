@@ -15,7 +15,7 @@ public class Goodsbl implements GoodsBLService{
 
 	@Override
 	public Boolean init(GoodsVO vo) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
