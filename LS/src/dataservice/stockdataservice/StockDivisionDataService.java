@@ -6,9 +6,9 @@ package dataservice.stockdataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import VO.InStockRepVO;
-import VO.OutStockRepVO;
 import VO.StockDivisionVO;
+import VO.ReceiptVO.InStockRepVO;
+import VO.ReceiptVO.OutStockRepVO;
 
 /**
  * @author G

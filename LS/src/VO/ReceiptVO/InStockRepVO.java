@@ -1,7 +1,7 @@
 /**
  * 
  */
-package VO;
+package VO.ReceiptVO;
 
 /**
  * @author G
