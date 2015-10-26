@@ -1,6 +1,9 @@
 package PO;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import VO.ReceiptVO.PayRepVO;
 
 public class BusinessFormPO implements Serializable {
 	private static final long serialVersionUID = 1L;

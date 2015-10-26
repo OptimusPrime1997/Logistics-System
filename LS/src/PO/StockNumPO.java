@@ -3,11 +3,13 @@
  */
 package PO;
 
+import java.io.Serializable;
+
 /**
  * @author G
  *
  */
-public class StockNumPO {
+public class StockNumPO implements Serializable{
 	String cityNum;
 	int initialNum;
 	
