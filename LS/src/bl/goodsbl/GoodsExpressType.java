@@ -1,5 +1,5 @@
 package bl.goodsbl;
 
 public enum GoodsExpressType {
-	ECONOMIC,STANTARD,EXPRESS
+	ECONOMIC,NORMAL,EXPRESS
 }

@@ -24,7 +24,7 @@ public class GoodsVO  {
 	public String receiverPhone;
 	public int numOfGoods;
 	public double weight;
-	public double volume;// Με»ύ
+	public double volume;// οΏ½οΏ½οΏ½
 	public String nameOfInside;
 	public GoodsExpressType expressType;
 	public double moneyOfPackage;
