@@ -18,5 +18,4 @@ public interface BankAccountDataService {
 
 	public BankAccountPO findByBankAccountNum(String bankAccountNum)
 			throws RemoteException;
-
 }
