@@ -17,9 +17,9 @@ public class GoodsBLService_Driver {
 	public void drive(GoodsBLService goodsBLService){
 		vo=new GoodsVO("0250000123", false, 
 				"02400100006014", "02500100006014", "20151026",
-				null, "025", "Àî»ª", "ÉÏº£ÊĞÆÖ¶«ĞÂÇøÕÅÑîÂ·500ºÅ", "ÉÏº£»ªÈóÊ±´ú¹ã³¡", 
-				"87511426", "Â½ºê", "ÄÏ¾©ÊĞÆÜÏ¼ÇøÏÉÁÖ´óµÀºÍÔ°12ºÅ", null, "15500001112", 
-				1, 5, 8, "Êé", GoodsExpressType.STANTARD ,5, 10, 5, 
+				null, "025", "æå", "ä¸Šæµ·å¸‚æµ¦ä¸œæ–°åŒºå¼ æ¨è·¯500å·", "ä¸Šæµ·åæ¶¦æ—¶ä»£å¹¿åœº", 
+				"87511426", "é™†å®", "å—äº¬å¸‚æ –éœåŒºä»™æ—å¤§é“å’Œå›­12å·", null, "15500001112", 
+				1, 5, 8, "ä¹¦", GoodsExpressType.STANTARD ,5, 10, 5, 
 				GoodsArrivalState.INTACT, GoodsLogisticState.SENDED, null, null);
 		goodsblservice.init(vo);
 		goodsblservice.check("0250000123");
