@@ -1,13 +1,30 @@
 package PO;
 
-public class AccountPO {
+import java.io.Serializable;
+
+public class AccountPO implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String accountNum;
-	private String accoutName;
+	private String accountName;
 	private String password;
 	private String sex;
 	private String authority;
 	private String phoneNum;
 	private String institution;
+
+	public AccountPO(String accountNum, String accountName, String password,
+			String sex, String authority, String phoneNum, String institution) {
+
+		// TODO Auto-generated constructor stub
+		this.accountNum = accountNum;
+		this.accountName = accountName;
+		this.password = password;
+		this.sex = sex;
+		this.authority = authority;
+		this.phoneNum = phoneNum;
+		this.institution = institution;
+
+	}
 
 	public String getAccountNum() {
 		return accountNum;
@@ -18,10 +35,11 @@ public class AccountPO {
 	}
 
 	public String getAccoutName() {
-		return accoutName;
+		return accountName;
 	}
-	public void setAccoutName(String accoutName) {
-		this.accoutName = accoutName;
+
+	public void setAccoutName(String accountName) {
+		this.accountName = accountName;
 	}
 
 	public String getPassword() {
