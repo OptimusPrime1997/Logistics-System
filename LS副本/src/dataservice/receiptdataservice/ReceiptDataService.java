@@ -1,0 +1,21 @@
+package dataservice.receiptdataservice;
+
+import java.util.ArrayList;
+import PO.ReceiptPO;
+import state.Rep;
+
+public interface ReceiptDataService {
+	
+	public ArrayList<ReceiptPO> getRep();
+	
+	public String addRep(ReceiptPO po);
+	
+	public String delete(Rep rep, int n);
+	
+	public String delete(Rep rep, String num);
+	
+	public ArrayList<ReceiptPO> show(Rep rep);
+	
+	public ReceiptPO find (Rep rep, String num);
+
+}
