@@ -35,7 +35,7 @@ public interface GoodsBLService {
 	 * @param CourierNum
 	 * @return
 	 */
-	public ArrayList<GoodsVO>getGoodsByCourier(String CourierNum);
+	public ArrayList<GoodsVO> getGoodsByCourier(String CourierNum);
 	/**
 	 * set the arrival state of goods whose listNumber is given
 	 * @param listNum
