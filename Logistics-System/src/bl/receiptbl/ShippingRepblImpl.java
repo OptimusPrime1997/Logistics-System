@@ -17,4 +17,10 @@ public class ShippingRepblImpl extends ReceiptRepblImpl implements ShippingRepbl
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ShippingRepVO getShippingRep(String num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

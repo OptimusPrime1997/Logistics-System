@@ -2,8 +2,8 @@
 package bl.receiptbl;
 
 import java.util.ArrayList;
-
 import VO.InStockRepVO;
+import bl.stockbl.StockDivisionbl;
 import blservice.receiptblservice.InStockRepblService;
 
 
@@ -23,6 +23,12 @@ public class InStockRepblImpl extends ReceiptRepblImpl implements InStockRepblSe
 	public InStockRepVO getByDate (String date) {
 		return null;
 		
+	}
+	
+	public int[] getTwoPosition(String destination){
+		StockDivisionbl stock = new StockDivisionbl();
+		stock.getBlock(destination);
+		return null;
 	}
 
 	@Override

@@ -30,10 +30,4 @@ public class ReceiptRepblImpl implements ReceiptblService{
 		return null;
 	}
 
-	@Override
-	public String CheckFormat(Rep rep, String text) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
