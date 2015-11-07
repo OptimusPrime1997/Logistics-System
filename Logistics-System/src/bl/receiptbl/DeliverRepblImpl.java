@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import VO.DeliverRepVO;
 import blservice.receiptblservice.DeliverRepblService;
 
-public class DeliverRepblImpl extends ReceiptRepblImpl implements DeliverRepblService{
+public class DeliverRepblImpl extends ReceiptblImpl implements DeliverRepblService{
 	public ArrayList<DeliverRepVO> forPay(){
 		return null;
 	}

@@ -4,7 +4,7 @@ import VO.ReceiptVO;
 import blservice.receiptblservice.ReceiptblService;
 import state.Rep;
 
-public class ReceiptRepblImpl implements ReceiptblService{
+public class ReceiptblImpl implements ReceiptblService{
 
 	@Override
 	public String delete(Rep rep, int n) {
@@ -14,7 +14,7 @@ public class ReceiptRepblImpl implements ReceiptblService{
 
 	@Override
 	public String delete(Rep rep, String num) {
-		// TODO Auto-generated method stub
+		// ODO Auto-generated method stub
 		return null;
 	}
 

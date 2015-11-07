@@ -6,7 +6,7 @@ import VO.ShipmentRepVO;
 import blservice.receiptblservice.ShipmentRepblServce;
 import state.place;
 
-public class ShipmentRepblImpl extends ReceiptRepblImpl implements ShipmentRepblServce{
+public class ShipmentRepblImpl extends ReceiptblImpl implements ShipmentRepblServce{
 	public ArrayList<ShipmentRepVO> forpay(){
 		return null;
 	}

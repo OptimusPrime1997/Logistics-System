@@ -7,7 +7,7 @@ import bl.stockbl.StockDivisionbl;
 import blservice.receiptblservice.InStockRepblService;
 
 
-public class InStockRepblImpl extends ReceiptRepblImpl implements InStockRepblService{
+public class InStockRepblImpl extends ReceiptblImpl implements InStockRepblService{
 	
 	@Override
 	public InStockRepVO update(String num, String listNum, int area, int loc) {

@@ -8,7 +8,7 @@ import blservice.receiptblservice.TransferRepblService;
 import state.ShipForm;
 import state.place;
 
-public class TransferRepblImpl extends ReceiptRepblImpl implements TransferRepblService{
+public class TransferRepblImpl extends ReceiptblImpl implements TransferRepblService{
 	public ArrayList<ReceptionRepVO> forPay(){
 		return null;
 	}

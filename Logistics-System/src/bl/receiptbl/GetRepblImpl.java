@@ -6,7 +6,7 @@ import blservice.receiptblservice.GetRepblService;
 import state.Rep;
 import state.goodsState;
 
-public class GetRepblImpl extends ReceiptRepblImpl implements GetRepblService{
+public class GetRepblImpl extends ReceiptblImpl implements GetRepblService{
 
 	@Override
 	public String updateShip(Rep rep, String num) {

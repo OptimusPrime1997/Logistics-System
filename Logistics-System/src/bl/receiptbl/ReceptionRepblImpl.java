@@ -8,10 +8,10 @@ import blservice.receiptblservice.ReceptionRepblService;
 import state.Rep;
 import state.*;
 
-public class ReceptionRepblImpl extends ReceiptRepblImpl implements ReceptionRepblService{
+public class ReceptionRepblImpl extends ReceiptblImpl implements ReceptionRepblService{
 
 	@Override
-	public String updateRep(Rep rep, String number) {
+	public String updateShip(Rep rep, String num) {
 		// TODO Auto-generated method stub
 		return null;
 	}

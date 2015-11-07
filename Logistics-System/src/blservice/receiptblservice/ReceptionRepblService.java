@@ -12,7 +12,7 @@ public interface ReceptionRepblService extends ReceiptblService{
 	 * @param number
 	 * @return
 	 */
-	public String updateRep (Rep rep, String number);
+	public String updateShip (Rep rep, String num);
 	
 	public String submit(String num, String date, state.place place, String shipNum, goodsState state,
 			ArrayList<String> goods);
