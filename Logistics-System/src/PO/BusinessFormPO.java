@@ -3,16 +3,14 @@ package PO;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import VO.ReceiptVO.PayRepVO;
-
 public class BusinessFormPO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String startTime;
 	private String endTime;
-	private ArrayList<PayRepVO> financialRecord;
+	private ArrayList<VO.PayRepVO> financialRecord;
 	
 	public BusinessFormPO(String startTime, String endTime,
-			ArrayList<PayRepVO> financialRecord) {
+			ArrayList<VO.PayRepVO> financialRecord) {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.financialRecord = financialRecord;
@@ -26,7 +24,7 @@ public class BusinessFormPO implements Serializable {
 		return endTime;
 	}
 
-	public ArrayList<PayRepVO> getFinancialRecord() {
+	public ArrayList<VO.PayRepVO> getFinancialRecord() {
 		return financialRecord;
 	}
 	

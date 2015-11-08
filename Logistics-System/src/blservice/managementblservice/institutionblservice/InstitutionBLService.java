@@ -1,4 +1,6 @@
-package bl.managementbl.institutionbl;
+package blservice.managementblservice.institutionblservice;
+
+
 
 public interface InstitutionBLService {
 
