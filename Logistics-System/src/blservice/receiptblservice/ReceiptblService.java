@@ -11,7 +11,5 @@ public interface ReceiptblService {
 	public ReceiptVO show (Rep rep);
 	
 	public ReceiptVO find (Rep rep, String num);
-	
-	public String CheckFormat (Rep rep, String text);
 
 }

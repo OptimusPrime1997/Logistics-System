@@ -7,22 +7,17 @@ import blservice.receiptblservice.OutStockRepblService;
 import state.ShipForm;
 import state.*;
 
-public class OutStackRepblImpl extends ReceiptRepblImpl implements OutStockRepblService{
-
-	@Override
-	public OutStockRepVO get(String date) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	public OutStockRepVO getByDate(String date) {
-		return null;
-		
-	}
+public class OutStackRepblImpl extends ReceiptblImpl implements OutStockRepblService{
 
 	@Override
 	public String submit(String num, String date, place place, ShipForm form, String carNum, String shipNum,
 			ArrayList<String> goods) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public OutStockRepVO getbyDate(String date) {
 		// TODO Auto-generated method stub
 		return null;
 	}

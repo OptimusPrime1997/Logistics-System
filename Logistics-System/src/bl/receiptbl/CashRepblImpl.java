@@ -6,7 +6,7 @@ import VO.CashRepVO;
 import VO.GoodsVO;
 import blservice.receiptblservice.CashRepblService;
 
-public class CashRepblImpl extends ReceiptRepblImpl implements CashRepblService{
+public class CashRepblImpl extends ReceiptblImpl implements CashRepblService{
 	public ArrayList<CashRepVO> get() {
 		return null;
 	}
