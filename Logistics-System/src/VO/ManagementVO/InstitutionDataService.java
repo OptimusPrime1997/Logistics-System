@@ -1,5 +1,4 @@
-package dataservice.managementdataservice.institutiondataservice;
-
+package VO.ManagementVO;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 

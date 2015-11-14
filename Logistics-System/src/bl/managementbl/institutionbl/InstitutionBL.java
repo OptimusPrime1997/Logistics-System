@@ -3,6 +3,7 @@ package bl.managementbl.institutionbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import blservice.managementblservice.institutionblservice.InstitutionBLService;
 import VO.ManagementVO.InstitutionVO;
 
 
@@ -35,5 +36,7 @@ public class InstitutionBL implements InstitutionBLService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 }
