@@ -14,7 +14,7 @@ public class StockNum implements StockNumBLService{
 	//初始化当前城市库存数量
 	@Override
 	public void initial(int initialNum) {
-		initialStockNum = initialNum;
+		
 	}
 	
 	//由当前城市，得到初始库存数量
