@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import VO.LogVO;
 import blservice.logblservice.LogBLService;
 
-public class Logbl {
-
+public class LogController implements LogBLService{
+	private Logbl logbl = new Logbl();
+	@Override
 	public void add(LogVO vo) {
-		// TODO Auto-generated method stub
-		
+		logbl.add(vo);
 	}
 
+	@Override
 	public ArrayList<LogVO> show(String startTime, String endTime, String type) {
-		// TODO Auto-generated method stub
-		return null;
+		return logbl.show(startTime, endTime, type);
 	}
 
 }
