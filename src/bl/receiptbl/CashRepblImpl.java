@@ -23,7 +23,7 @@ public class CashRepblImpl extends ReceiptblImpl implements CashRepblService{
 	public String submit(String num, String date, double money, String getCourierNum, ArrayList<GoodsVO> goods) {
 		// TODO Auto-generated method stub
 		CashRepPO po = new CashRepPO(num, date, money, getCourierNum, goods);
-		
+		System.out.println("Hey,朱德");
 		return null;
 	}
 

@@ -317,10 +317,10 @@ public class CashRep extends javax.swing.JPanel {
     private CashRepController control = new CashRepController();
     // End of variables declaration//GEN-END:variables
     
-//    public static void main (String[] args){
-//    	JFrame myFrame = new JFrame();
-//    	myFrame.setSize(500, 600);
-//    	myFrame.add(new CashRep());
-//    	myFrame.setVisible(true);
-//    }
+    public static void main (String[] args){
+    	JFrame myFrame = new JFrame();
+    	myFrame.setSize(500, 600);
+    	myFrame.add(new CashRep());
+    	myFrame.setVisible(true);
+    }
 }
