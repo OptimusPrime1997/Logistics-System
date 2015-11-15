@@ -1,5 +1,0 @@
-package dataservice.managementdataservice.constdataservice;
-
-public interface ConstDataService {
-
-}

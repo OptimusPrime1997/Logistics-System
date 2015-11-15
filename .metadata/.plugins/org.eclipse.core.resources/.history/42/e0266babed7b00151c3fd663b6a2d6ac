@@ -1,5 +1,0 @@
-package dataservice.managementdataservice.vehicleanddriverdataservice;
-
-public interface VehicleDataService {
-
-}

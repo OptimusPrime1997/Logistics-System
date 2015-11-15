@@ -1,5 +1,0 @@
-package dataservice.managementdataservice.accountdataservice;
-
-public interface AccountDataService {
-
-}

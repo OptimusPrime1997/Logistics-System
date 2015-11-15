@@ -1,5 +1,0 @@
-package blservice.managementblservice.accountblservice;
-
-public interface AccountBLService {
-
-}
