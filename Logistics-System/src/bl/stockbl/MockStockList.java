@@ -9,18 +9,15 @@ import java.util.ArrayList;
  * @author G
  *
  */
-public class StockList {
-	private ArrayList<StockListItem> stocklist; 
+public class MockStockList extends StockList{
+	ArrayList<StockListItem> stocklist = new ArrayList<StockListItem>();
 	
-	
-	//得到某日期的list
-	
-	
-	//得到当前所有货物的list
+	public void addStockListItem(StockListItem i) {
+		stocklist.add(i);
+	}
 	
 	public ArrayList<StockListItem> getPresentStockList() {
 		//TODO
-		
 		return stocklist;
 	}
 }

@@ -4,6 +4,7 @@
 package bl.stockbl;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import VO.StockVO;
 import blservice.stockblservice.StockBLService;
@@ -13,13 +14,7 @@ import blservice.stockblservice.StockBLService;
  *
  */
 public class Stock {
-	private String cityNum;
-	private String listNum;
-	private String inStockRepNum;
-	private String inStockDate;
-	private String destination;
-	private int block;
-	private int place;
+	
 	
 	public int checkInStock(String startDate, String endDate) {
 		// TODO Auto-generated method stub
@@ -41,7 +36,25 @@ public class Stock {
 	
 	public int checkPresentStockQuantity() {
 		// TODO Auto-generated method stub
-		return 0;
+		//现有库存数量=初始库存数量+遍历库存的数量
+//		MockStockNum stocknum = new MockStockNum();
+//		int initialStockNum = stocknum.getInitialStockNum();
+		
+		MockStockNum stocknum = new MockStockNum();
+		stocknum.initial(100);
+		MockStockList list = new MockStockList();
+		
+		StockListItem item1 = new StockListItem();
+		StockListItem item2 = new StockListItem();
+		
+		list.addStockListItem(item1);
+		list.addStockListItem(item2);
+		
+		int initialStockNum = stocknum.getInitialStockNum();
+		System.out.println(" initial "+initialStockNum);
+		int present = list.getPresentStockList().size();
+		
+		return initialStockNum+present;
 	}
 
 	
