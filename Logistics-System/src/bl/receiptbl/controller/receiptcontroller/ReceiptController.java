@@ -1,4 +1,4 @@
-package controller.receiptcontroller;
+package bl.receiptbl.controller.receiptcontroller;
 
 import VO.LogVO;
 import bl.logbl.Logbl;
