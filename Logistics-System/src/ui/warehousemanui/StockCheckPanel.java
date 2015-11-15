@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui;
+package ui.warehousemanui;
 
 /**
  *
  * @author G
  */
-public class StockCheck extends javax.swing.JPanel {
+public class StockCheckPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form StockCheck
      */
-    public StockCheck() {
+    public StockCheckPanel() {
         initComponents();
     }
 
