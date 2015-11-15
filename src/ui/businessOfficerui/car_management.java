@@ -288,7 +288,7 @@ public class car_management extends javax.swing.JPanel {
     }//GEN-LAST:event_exit_btnActionPerformed
 
     private void add_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_btnMouseClicked
-        new car_detail().setVisible(true);
+        new car_add().setVisible(true);
     }//GEN-LAST:event_add_btnMouseClicked
 
     private void cars_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cars_tableMouseClicked
