@@ -1,7 +1,7 @@
 /**
  * 
  */
-package ui.stockui;
+package ui.warehousemanui;
 
 /**
  * @author G
