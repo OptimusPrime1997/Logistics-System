@@ -20,9 +20,9 @@ public class businessOfficer_main extends javax.swing.JPanel {
     /**
      * Creates new form yytywyui
      */
-    public businessOfficer_main(JFrame frame) {
+    public businessOfficer_main() {
         initComponents();
-        this.frame=frame;
+       
     }
 
     /**
@@ -204,9 +204,9 @@ public class businessOfficer_main extends javax.swing.JPanel {
                         .addComponent(num_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(driverManagement_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -231,7 +231,7 @@ public class businessOfficer_main extends javax.swing.JPanel {
     }//GEN-LAST:event_driverManagement_btnActionPerformed
 
     private void carManagement_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carManagement_btnMouseClicked
-    	this.getFrame().remove(this);
+    	
     	System.out.println("车辆管理");
 //    	this.getFrame().setContentPane(new car_management());
         
@@ -258,12 +258,8 @@ public class businessOfficer_main extends javax.swing.JPanel {
     private javax.swing.JPanel num_panel;
     private javax.swing.JButton recordMoney_btn;
     private javax.swing.JButton send_btn;
-    private javax.swing.JFrame frame;
     // End of variables declaration//GEN-END:variables
-    
-    public javax.swing.JFrame getFrame() {
-		return frame;
-	}
+   
 
 	/**
      * for test~~
@@ -300,7 +296,7 @@ public class businessOfficer_main extends javax.swing.JPanel {
             	JFrame frame = new JFrame();
         		frame.setSize(830, 590);
         		frame.setVisible(true);
-        		frame.setContentPane(new businessOfficer_main(frame));
+        		frame.setContentPane(new businessOfficer_main());
         		frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);	
             }
         });
