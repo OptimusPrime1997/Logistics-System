@@ -17,7 +17,7 @@ public class ReceiptDataImpl implements ReceiptDataService{
 	}
 
 	@Override
-	public String addRep(ReceiptPO po) {
+	public String saveRep(ReceiptPO po) {
 		// TODO Auto-generated method stub
 		return null;
 	}

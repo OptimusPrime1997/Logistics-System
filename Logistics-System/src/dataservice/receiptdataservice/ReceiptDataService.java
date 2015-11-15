@@ -8,7 +8,7 @@ public interface ReceiptDataService {
 	
 	public ArrayList<ReceiptPO> getRep();
 	
-	public String addRep(ReceiptPO po);
+	public String saveRep(ReceiptPO po);
 	
 	public String delete(Rep rep, int n);
 	

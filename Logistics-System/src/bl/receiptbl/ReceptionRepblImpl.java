@@ -2,16 +2,28 @@ package bl.receiptbl;
 
 import java.util.ArrayList;
 
+import VO.ShipmentRepVO;
+import VO.TransferRepVO;
 import blservice.receiptblservice.ReceptionRepblService;
 import state.Rep;
 import state.*;
 
-public class ReceptionRepblImpl extends ReceiptRepblImpl implements ReceptionRepblService{
+public class ReceptionRepblImpl extends ReceiptblImpl implements ReceptionRepblService{
 
 	@Override
-	public String updateRep(Rep rep, String number) {
+	public String updateShip(Rep rep, String num) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public ShipmentRepVO getShipmentRep(String num){
+		ShipmentRepblImpl shipment = new ShipmentRepblImpl();
+		return shipment.getShipmentRep(num);
+	}
+	
+	public TransferRepVO getTransferRep(String num){
+		TransferRepblImpl transfer = new TransferRepblImpl();
+		return transfer.getTransferRep(num);
 	}
 
 	@Override
