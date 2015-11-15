@@ -1,0 +1,28 @@
+package test;
+
+public class Random {
+	public static void main(String[] args){
+		Random eco = new Random();
+		eco.go();
+	}
+	
+	private void go(){
+		ran();
+		NewJFrame frame = new NewJFrame();
+	}
+	
+	private void ran(){
+		int i = 0;
+		while(true){
+			i = (int) (Math.random()*95);
+			System.out.println(i);
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+	}
+}

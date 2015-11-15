@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+<<<<<<< HEAD
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
 		<item value="234" key="DIALOG_Y_ORIGIN"/>
 		<item value="452" key="DIALOG_X_ORIGIN"/>
@@ -7,11 +8,17 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
 		<item value="Institution" key="selection"/>
+=======
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="save.txt" key="selection"/>
+>>>>>>> origin/master
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+<<<<<<< HEAD
 			<item value="Const"/>
 			<item value="link"/>
 			<item value="return"/>
@@ -38,5 +45,25 @@
 		<item value="400" key="DIALOG_HEIGHT"/>
 		<item value="231" key="DIALOG_Y_ORIGIN"/>
 		<item value="748" key="DIALOG_X_ORIGIN"/>
+=======
+			<item value="save.txt"/>
+			<item value="save"/>
+			<item value="file"/>
+			<item value="add"/>
+			<item value="panel"/>
+			<item value="time"/>
+			<item value="check"/>
+			<item value="green"/>
+		</list>
+		<list key="replacehistory">
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="263" key="DIALOG_WIDTH"/>
+		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
+		<item value="399" key="DIALOG_HEIGHT"/>
+		<item value="948" key="DIALOG_X_ORIGIN"/>
+		<item value="224" key="DIALOG_Y_ORIGIN"/>
+>>>>>>> origin/master
 	</section>
 </section>

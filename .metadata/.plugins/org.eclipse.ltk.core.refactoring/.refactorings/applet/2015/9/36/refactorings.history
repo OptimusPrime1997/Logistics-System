@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;applet.firstapplet&apos; to &apos;firstApplet&apos;&#x0A;- Original project: &apos;applet&apos;&#x0A;- Original element: &apos;applet.firstapplet&apos;&#x0A;- Renamed element: &apos;applet.firstApplet&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;firstapplet&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;applet{firstapplet.java[firstapplet" matchStrategy="1" name="firstApplet" qualified="false" references="true" similarDeclarations="false" stamp="1441450838876" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,17 @@
+package test;
+
+public class tt1 {
+	private int i;
+	
+	public void Seti(int r){
+		this.i = r;
+	}
+	
+	public int Geti(){
+		return this.i;
+	}
+	
+	public tt1(int i){
+		this.i = i;
+	}
+}

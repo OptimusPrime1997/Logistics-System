@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <syncparticipants>
+<<<<<<< HEAD
 <participant displayName="Git (LS, LS)" id="org.eclipse.egit.ui.modelCompareParticipant" secondary_id="1445874000336">
 <data forceFetch="false" root="false">
 <org.eclipse.team.ui.MODEL_PARTICIPANT_SETTINGS org.eclipse.team.ui.MODEL_PARTICIPANT_DESCRIPTION="LS, LS" startupAction="none">
@@ -20,6 +21,18 @@
 <path path="G:/Study source/Èí¹¤Ð¡×é/Logistics-System/LS"/>
 </includedPaths>
 </gitSynchronizeData>
+=======
+<participant displayName="Git (LS/src/dataservice/stockdataservice)" id="org.eclipse.egit.ui.modelCompareParticipant" secondary_id="1445960192403">
+<data forceFetch="false" root="false">
+<org.eclipse.team.ui.MODEL_PARTICIPANT_SETTINGS org.eclipse.team.ui.MODEL_PARTICIPANT_DESCRIPTION="LS/src/dataservice/stockdataservice" startupAction="none">
+<org.eclipse.team.ui.MODEL_PARTICIPANT_REFRESH_SCHEDULE org.eclipse.team.ui.CTX_REFRESHSCHEDULE_ENABLED="false" org.eclipse.team.ui.CTX_REFRESHSCHEDULE_INTERVAL="3600" org.eclipse.team.ui.CTX_REFRESHSCHEDULE_RUNONCE="false"/>
+<org.eclipse.team.ui.MODEL_PARTICIPANT_MAPPINGS modelProviderId="org.eclipse.core.resources.modelProvider">
+<mappings>
+<resources resourcePath="/LS/src/dataservice/stockdataservice" resourceType="2"/>
+</mappings>
+</org.eclipse.team.ui.MODEL_PARTICIPANT_MAPPINGS>
+</org.eclipse.team.ui.MODEL_PARTICIPANT_SETTINGS>
+>>>>>>> origin/master
 </data>
 </participant>
 </syncparticipants>

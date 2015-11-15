@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;bl.receiptbl.ReceiptRepblImpl.java&apos; to &apos;ReceiptblImpl.java&apos;&#x0A;- Original project: &apos;LS&apos;&#x0A;- Original element: &apos;bl.receiptbl.ReceiptRepblImpl.java&apos;&#x0A;- Renamed element: &apos;bl.receiptbl.ReceiptblImpl.java&apos;" description="Rename compilation unit &apos;ReceiptRepblImpl.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;bl.receiptbl{ReceiptRepblImpl.java" name="ReceiptblImpl.java" references="false" stamp="1446880683537" version="1.0"/>
+</session>

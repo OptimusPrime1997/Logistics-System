@@ -2,12 +2,18 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+<<<<<<< HEAD
 			<item value="server"/>
+=======
+>>>>>>> origin/master
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+<<<<<<< HEAD
 			<item value="server"/>
+=======
+>>>>>>> origin/master
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -21,6 +27,7 @@
 			<item value="0.0.1-SNAPSHOT"/>
 		</list>
 	</section>
+<<<<<<< HEAD
 	<section name="org.eclipse.m2e.core.pom.dependencies">
 	</section>
 	<section name="org.eclipse.m2e.core.pom.overview">
@@ -43,6 +50,11 @@
 			<item value="C:\Users\1\workspace-java\CalcutorT"/>
 			<item value="C:\Users\1\Workspaces\Demo"/>
 			<item value="D:\Program Files (x86)\Jenkins\jobs\Demo\workspace\express-demo-master"/>
+=======
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="/Users/apple/Downloads/express-demo-master"/>
+>>>>>>> origin/master
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -54,6 +66,7 @@
 		</list>
 	</section>
 	<section name="MavenProjectWizardArchetypePage">
+<<<<<<< HEAD
 		<item value="internal" key="catalog"/>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -69,6 +82,9 @@
 			<item value="server"/>
 			<item value="client"/>
 		</list>
+=======
+		<item value="All Catalogs" key="catalog"/>
+>>>>>>> origin/master
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
 			<item value="[artifactId]-TRUNK"/>
@@ -80,8 +96,11 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+<<<<<<< HEAD
 			<item value="C:\Users\1\workspace\MyFirstRepository\AluSimulator"/>
 			<item value="C:\Users\1\workspace-java\DataStructureAndAlgorithm\src\test\Assemble.java"/>
+=======
+>>>>>>> origin/master
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -94,6 +113,7 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+<<<<<<< HEAD
 			<item value="org.server"/>
 			<item value="org.client"/>
 			<item value="edu.nju.expressManageSystem.express_all"/>
@@ -109,6 +129,15 @@
 			<item value="client"/>
 			<item value="express-all"/>
 			<item value="demo"/>
+=======
+			<item value="bismuth.cherb"/>
+		</list>
+		<list key="groupId">
+			<item value="bismuth"/>
+		</list>
+		<list key="artifactId">
+			<item value="cherb"/>
+>>>>>>> origin/master
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -119,7 +148,10 @@
 			<item value="[name]"/>
 		</list>
 		<list key="version">
+<<<<<<< HEAD
 			<item value="1.0-SNAPSHOT"/>
+=======
+>>>>>>> origin/master
 			<item value="0.0.1-SNAPSHOT"/>
 		</list>
 	</section>

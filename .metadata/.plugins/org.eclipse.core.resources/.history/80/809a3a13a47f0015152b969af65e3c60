@@ -1,0 +1,82 @@
+package test;
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class Test3 {
+	
+	private static class Node{  
+        int coef;
+        int exp;
+        Node next;  
+        public Node(int a, int b){  
+            this.coef = a; 
+            this.exp = b;
+            this.next = null;  
+        }  
+    }
+	
+	 public static Node mergeSortedList(Node head1,Node head2){
+		return null;  
+     	
+		 if(head1==null)return head2;  
+	        if(head2==null)return head1;  
+	        Node target=null;  
+	        if(head1.value>head2.value){  
+	            target=head2;  
+	            head2=head2.next;  
+	        }  
+	        else{  
+	            target=head1;  
+	            head1=head1.next;  
+	        }  
+	        target.next=null;  
+	        Node mergeHead=target;  
+	        while(head1!=null && head2!=null){  
+	            if(head1.value>head2.value){  
+	                target.next=head2;  
+	                head2=head2.next;  
+	            }  
+	            else{  
+	                target.next=head1;  
+	                head1=head1.next;  
+	            }  
+	            target=target.next;  
+	            target.next=null;  
+	        }  
+	        if(head1==null)target.next=head2;  
+	        else target.next=head1;  
+	        return mergeHead;
+     }
+
+	public static void main(String[] args){
+		LinkedList<int[]> l1 = new LinkedList<int[]>();
+		LinkedList<int[]> l2 = new LinkedList<int[]>();
+		Scanner in = new Scanner(System.in);
+		
+		System.out.println("请按顺序输入多项式l1，系数和幂用空格分隔"); 
+	    Node head1 = null;  
+	    if(in.hasNextInt()){  
+	       head1 = new Node(in.nextInt(),in.nextInt());  
+	    } 
+	    Node temp1 = head1;  
+	    while(in.hasNextInt()){  
+	        temp1.next = new Node(in.nextInt(),in.nextInt());  
+	        temp1 = temp1.next;  
+	    }   
+	        
+		System.out.println("请按顺序输入多项式l2，系数和幂用空格分隔");
+		Node head2 = null;  
+        if(in.hasNextInt()){  
+            head2 = new Node(in.nextInt(),in.nextInt());  
+        } 
+        Node temp2 = head2;  
+        while(in.hasNextInt()){  
+            temp2.next = new Node(in.nextInt(),in.nextInt());  
+            temp2 = temp2.next;  
+        }  
+        in.close();
+       
+        mergeSortedList(head1, head2);
+	}
+}

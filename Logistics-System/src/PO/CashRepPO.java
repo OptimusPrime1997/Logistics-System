@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import VO.*;
 
 public class CashRepPO extends ReceiptPO {
-	private int money;
+	private double money;
 	private String getCourierNum;
 	private ArrayList<GoodsVO> goods;
 	
-	public CashRepPO(String num, String date, int money, String getCourierNum, ArrayList<GoodsVO> goods) {
+	public CashRepPO(String num, String date, double money, String getCourierNum, ArrayList<GoodsVO> goods) {
 		super(num, date);
 		this.money = money;
 		this.getCourierNum = getCourierNum;
 		this.goods = goods;
 	}
 
-	public int getMoney() {
+	public double getMoney() {
 		return money;
 	}
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 1445859317729	Rename type 'DecisionPO'
 1445859650180	Rename compilation unit 'SalaryPolicy.java'
 1445864639401	Rename type 'Account'
@@ -17,3 +18,9 @@
 1445876195399	Rename type 'IstitutionDataService'
 1445877243675	Delete element
 1445877666114	Delete element
+=======
+1445937394139	Delete element
+1445960122016	Delete element
+1445960130978	Delete element
+1445960291892	Delete element
+>>>>>>> origin/master

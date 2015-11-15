@@ -1,11 +1,5 @@
 package blservice.receiptblservice;
 
-import java.util.ArrayList;
-
-import VO.GoodsVO;
-
 public interface CashRepblService extends ReceiptblService{
-	public String submit(String num, String date, int money, String getCourierNum);
-	
-	public String submit(String num, String date, int money, String getCourierNum, ArrayList<GoodsVO> goods);
+	public String submit(String num, String date, double money, String getCourierNum);
 }
