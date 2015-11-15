@@ -153,11 +153,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x53d6;&#x6d88;"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cancel_btnMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="ok_btn">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x786e;&#x5b9a;"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ok_btnMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
