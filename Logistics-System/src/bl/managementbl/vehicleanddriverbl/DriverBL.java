@@ -9,21 +9,21 @@ import blservice.managementblservice.vehicleanddriverblservice.DriverBLService;
 public class DriverBL implements DriverBLService {
 
 	@Override
-	public void insertDriver(DriverVO VO) throws RemoteException {
+	public String insertDriver(DriverVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
-	public void updateDriver(DriverVO VO) throws RemoteException {
+	public String updateDriver(DriverVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
-	public void deleteDriver(DriverVO VO) throws RemoteException {
+	public String deleteDriver(DriverVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
@@ -36,6 +36,4 @@ public class DriverBL implements DriverBLService {
 	public DriverVO findByDriverNum(String driverNum) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-}
+	}}

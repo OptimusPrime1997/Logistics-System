@@ -9,21 +9,21 @@ import blservice.managementblservice.salarypolicyblservice.SalaryPolicyBLService
 public class SalaryPolicyBL implements SalaryPolicyBLService {
 
 	@Override
-	public void insert(SalaryPolicyVO VO) throws RemoteException {
+	public String insert(SalaryPolicyVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
-	public void update(SalaryPolicyVO VO) throws RemoteException {
+	public String update(SalaryPolicyVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
-	public void delete(SalaryPolicyVO VO) throws RemoteException {
+	public String delete(SalaryPolicyVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
@@ -37,6 +37,4 @@ public class SalaryPolicyBL implements SalaryPolicyBLService {
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-}
+	}}

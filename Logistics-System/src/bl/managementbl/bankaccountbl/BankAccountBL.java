@@ -9,21 +9,21 @@ import blservice.managementblservice.bankaccountblservice.BankAccountBLService;
 public class BankAccountBL implements BankAccountBLService {
 
 	@Override
-	public void insert(BankAccountVO VO) throws RemoteException {
+	public String insert(BankAccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
-	public void update(BankAccountVO VO) throws RemoteException {
+	public String update(BankAccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
-	public void delete(BankAccountVO VO) throws RemoteException {
+	public String delete(BankAccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
@@ -45,4 +45,5 @@ public class BankAccountBL implements BankAccountBLService {
 		return null;
 	}
 
+	
 }

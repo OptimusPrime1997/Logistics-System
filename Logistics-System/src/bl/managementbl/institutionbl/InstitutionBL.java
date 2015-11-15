@@ -12,34 +12,34 @@ import VO.ManagementVO.InstitutionVO;
 
 public class InstitutionBL implements InstitutionBLService {
 
-	public void insert(InstitutionVO VO) throws RemoteException {
+	@Override
+	public String insert(InstitutionVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
-	public void update(InstitutionVO VO) throws RemoteException {
+	@Override
+	public String update(InstitutionVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
-
-	public void delete(InstitutionVO VO) throws RemoteException {
+	@Override
+	public String delete(InstitutionVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
-	
+	@Override
 	public ArrayList<InstitutionVO> show() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
+	@Override
 	public InstitutionVO findByName(String name) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	
-
 }

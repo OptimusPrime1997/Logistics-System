@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import VO.ManagementVO.*;
 
 public interface VehicleBLService {
-	public void insertVehicle(VehicleVO VO)throws RemoteException;
-	public void updateVehicle(VehicleVO VO)throws RemoteException;
-	public void deleteVehicle(VehicleVO VO)throws RemoteException;
+	public String insertVehicle(VehicleVO VO)throws RemoteException;
+	public String updateVehicle(VehicleVO VO)throws RemoteException;
+	public String deleteVehicle(VehicleVO VO)throws RemoteException;
 	public ArrayList<VehicleVO> showVehicle()throws RemoteException;
 	public VehicleVO findByVehicleNum(String VehicleNum)throws RemoteException;
 	

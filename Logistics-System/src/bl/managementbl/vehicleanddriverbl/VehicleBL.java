@@ -9,21 +9,21 @@ import blservice.managementblservice.vehicleanddriverblservice.VehicleBLService;
 public class VehicleBL implements VehicleBLService {
 
 	@Override
-	public void insertVehicle(VehicleVO VO) throws RemoteException {
+	public String insertVehicle(VehicleVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
-	public void updateVehicle(VehicleVO VO) throws RemoteException {
+	public String updateVehicle(VehicleVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
-	public void deleteVehicle(VehicleVO VO) throws RemoteException {
+	public String deleteVehicle(VehicleVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
@@ -36,6 +36,4 @@ public class VehicleBL implements VehicleBLService {
 	public VehicleVO findByVehicleNum(String VehicleNum) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-}
+	}}

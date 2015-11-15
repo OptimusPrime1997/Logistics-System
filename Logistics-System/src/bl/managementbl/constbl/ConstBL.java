@@ -9,21 +9,21 @@ import blservice.managementblservice.constblservice.ConstBLService;
 public class ConstBL implements ConstBLService {
 
 	@Override
-	public void insert(ConstVO VO) throws RemoteException {
+	public String insert(ConstVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
-	public void update(ConstVO VO) throws RemoteException {
+	public String update(ConstVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
-	public void delete(ConstVO VO) throws RemoteException {
+	public String delete(ConstVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
@@ -38,4 +38,5 @@ public class ConstBL implements ConstBLService {
 		return null;
 	}
 
+	
 }
