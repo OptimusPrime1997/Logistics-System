@@ -31,11 +31,19 @@ public interface GoodsBLService {
 	 */
 	public Boolean delete(GoodsVO vo);
 	/**
-	 * return all the goods started by a courier,whose accountNumber is given
+	 * return all the goods started or ended by a courier,whose accountNumber is given
 	 * @param CourierNum
 	 * @return
 	 */
 	public ArrayList<GoodsVO> getGoodsByCourier(String CourierNum);
+	
+	/**
+	 * return all the goods started by a courier,whose accountNumber is given
+	 * @param CourierNum
+	 * @return
+	 */
+	public ArrayList<GoodsVO> getGoodsByGetCourier(String CourierNum);
+	
 	/**
 	 * set the arrival state of goods whose listNumber is given
 	 * @param listNum

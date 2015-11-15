@@ -1,8 +1,10 @@
 package dataimpl.goodsdata;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import PO.GoodsPO;
+import VO.GoodsVO;
 import dataservice.goodsdataservice.GoodsDataService;
 
 public class GoodsData implements GoodsDataService{
@@ -26,27 +28,30 @@ public class GoodsData implements GoodsDataService{
 	}
 
 	@Override
-	public void show() throws RemoteException {
+	public ArrayList<GoodsVO> show() throws RemoteException {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void findbygoods(String ListNum) throws RemoteException {
+	public GoodsVO findbygoods(String ListNum)
+			throws RemoteException {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void findbyGetCourier(String CourierNum) throws RemoteException {
+	public ArrayList<GoodsVO> findbyGetCourier(String CourierNum)
+			throws RemoteException {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void findbyCourier(String CourierNum) throws RemoteException {
+	public ArrayList<GoodsVO> findbyCourier(String CourierNum)
+			throws RemoteException {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 }

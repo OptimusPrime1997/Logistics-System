@@ -13,7 +13,15 @@ public class Goodsbl {
 	ConstBL ConstBL = new ConstBL();
 	
 	public GoodsVO check(String listNum) {
-		return null;
+		GoodsVO vo=null;
+		try {
+			vo=goodsData.findbygoods(listNum);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return vo;
+		
 	}
 
 	
@@ -34,32 +42,77 @@ public class Goodsbl {
 
 	
 	public Boolean delete(GoodsVO vo) {
-		// TODO Auto-generated method stub
+		try {
+			goodsData.delete(vo.toPO(vo));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	
-	public ArrayList<GoodsVO> getGoodsByCourier(String CourierNum) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<GoodsVO> getGoodsByCourier(String courierNum) {
+		ArrayList<GoodsVO> vos=null;
+		try {
+			vos=goodsData.findbyCourier(courierNum);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return  vos;
 	}
-
+	public ArrayList<GoodsVO> getGoodsByGetCourier(String courierNum) {
+		ArrayList<GoodsVO> vos=null;
+		try {
+			vos=goodsData.findbyGetCourier(courierNum);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return  vos;
+	}
 	
 	public Boolean setArrivalState(String listNum, GoodsArrivalState state) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			GoodsVO vo=check(listNum);
+			vo.arrivalState=state;
+			goodsData.modify(vo.toPO(vo));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return true;
 	}
 
 	
 	public Boolean setLogisticState(String listNum, GoodsLogisticState state) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			GoodsVO vo=check(listNum);
+			vo.logisticState=state;
+			goodsData.modify(vo.toPO(vo));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return true;
 	}
 
 	
 	public void examine(String listNum, Boolean ifPassed) {
-		// TODO Auto-generated method stub
-		
+		try {
+			GoodsVO vo=check(listNum);
+			vo.ifExaminePassed=ifPassed;
+			goodsData.modify(vo.toPO(vo));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
+
+
+	
 
 }

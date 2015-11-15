@@ -9,24 +9,22 @@ import dataservice.formdataservice.ProfitFormDataService;
 import dataservice.goodsdataservice.GoodsDataService;
 import dataservice.logdataservice.LogDataService;
 
-public class dataFactory {
-	GoodsDataService goodsdata=new GoodsData();
-	BusinessFormDataService businessFormdata=new BusinessFormData();
-	ProfitFormDataService profitFormdata=new ProfitFormData();
-	LogDataService logdata=new LogData();
-	public GoodsDataService getGoodsdata() {
+public class DataFactory {
+	static GoodsDataService goodsdata=new GoodsData();
+	static BusinessFormDataService businessFormdata=new BusinessFormData();
+	static ProfitFormDataService profitFormdata=new ProfitFormData();
+	static LogDataService logdata=new LogData();
+	public static GoodsDataService getGoodsdata() {
 		return goodsdata;
 	}
-	public BusinessFormDataService getBusinessFormdata() {
+	public static BusinessFormDataService getBusinessFormdata() {
 		return businessFormdata;
 	}
-	public ProfitFormDataService getProfitFormdata() {
+	public static ProfitFormDataService getProfitFormdata() {
 		return profitFormdata;
 	}
-	public LogDataService getLogdata() {
+	public static LogDataService getLogdata() {
 		return logdata;
 	}
-	
-	
 
 }

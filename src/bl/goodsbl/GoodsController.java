@@ -43,4 +43,9 @@ public class GoodsController implements GoodsBLService{
 		
 	}
 
+	@Override
+	public ArrayList<GoodsVO> getGoodsByGetCourier(String CourierNum) {
+		return goodsbl.getGoodsByGetCourier(CourierNum);
+	}
+
 }
