@@ -1,5 +1,7 @@
 package VO;
 
+import PO.ProfitFormPO;
+
 public class ProfitFormVO {
 
 	public static final long serialVersionUID = 1L;
@@ -14,5 +16,9 @@ public class ProfitFormVO {
 		this.totalOut = totalOut;
 		this.totalIn = totalIn;
 		this.totalProfit = totalProfit;
+	}
+	public ProfitFormPO toPO(ProfitFormVO vo){
+		ProfitFormPO po=new ProfitFormPO(timeNow, totalOut, totalIn, totalProfit);
+		return po;
 	}
 }

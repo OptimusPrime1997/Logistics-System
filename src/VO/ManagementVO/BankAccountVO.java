@@ -1,9 +1,9 @@
 package VO.ManagementVO;
 
 public class BankAccountVO {
-	private String bankAccountNum;
-	private String bankAccountName;
-	private int balance;
+	public String bankAccountNum;
+	public String bankAccountName;
+	public int balance;
 
 	public BankAccountVO(String bankAccountNum, String bankAccountName,
 			int balance) {

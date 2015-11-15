@@ -1,5 +1,7 @@
 package VO;
 
+import PO.LogPO;
+
 public class LogVO {
 	public String operationName;
 	public String operatorID;
@@ -9,5 +11,9 @@ public class LogVO {
 		this.operationName = operationName;
 		this.operatorID = operatorID;
 		this.time = time;
+	}
+	public LogPO toPO(LogVO vo){
+		LogPO po=new LogPO(operationName, operatorID, time);
+		return po;
 	}
 }

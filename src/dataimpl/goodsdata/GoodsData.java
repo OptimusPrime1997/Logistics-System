@@ -31,4 +31,22 @@ public class GoodsData implements GoodsDataService{
 		
 	}
 
+	@Override
+	public void findbygoods(String ListNum) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void findbyGetCourier(String CourierNum) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void findbyCourier(String CourierNum) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

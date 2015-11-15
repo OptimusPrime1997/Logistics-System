@@ -1,23 +1,35 @@
 package bl.goodsbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import dataservice.goodsdataservice.GoodsDataService;
+import util.DataFactory;
 import VO.GoodsVO;
-import blservice.goodsblservice.GoodsBLService;
+import bl.managementbl.constbl.ConstBL;
+import dataservice.goodsdataservice.GoodsDataService;
 
 public class Goodsbl {
-	GoodsDataService goodsData;
+	GoodsDataService goodsData=DataFactory.getGoodsdata();
+	ConstBL ConstBL = new ConstBL();
 	
 	public GoodsVO check(String listNum) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	
 	public Boolean init(GoodsVO vo) {
-		
-		return null;
+		//TODO the parameter of the findByConstName function is to be modified
+		try {
+			//TODO 计算运费
+			int basicprice=ConstBL.findByConstName("").priceConst;
+			int distance=ConstBL.findByConstName("").distanceConst;
+			vo.moneyFare=basicprice*distance;//TODO公式先随便写一下
+			vo.moneyTotal=vo.moneyFare+vo.moneyOfPackage;
+		    goodsData.add(vo.toPO(vo));
+			
+		} catch (RemoteException e) {
+		}
+		return true;
 	}
 
 	

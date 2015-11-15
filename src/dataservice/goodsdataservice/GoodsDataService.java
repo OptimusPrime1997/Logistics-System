@@ -14,5 +14,8 @@ public interface GoodsDataService {
 	public void modify(GoodsPO po)throws RemoteException;
 	public void delete(GoodsPO po)throws RemoteException;
 	public void show()throws RemoteException;
+	public void findbygoods(String ListNum)throws RemoteException;
+	public void findbyGetCourier(String CourierNum)throws RemoteException;
+	public void findbyCourier(String CourierNum)throws RemoteException;
 
 }

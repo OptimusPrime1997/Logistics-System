@@ -2,6 +2,8 @@ package VO;
 
 import java.util.ArrayList;
 
+import PO.BusinessFormPO;
+
 
 public class BusinessFormVO {
 	public String startTime;
@@ -13,5 +15,9 @@ public class BusinessFormVO {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.financialRecord = financialRecord;
+	}
+	public BusinessFormPO toPO(BusinessFormVO vo){
+		BusinessFormPO po=new BusinessFormPO(startTime, endTime, financialRecord);
+		return po;
 	}
 }
