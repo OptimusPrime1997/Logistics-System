@@ -16,8 +16,7 @@ public class OutStackRepblImpl extends ReceiptblImpl implements OutStockRepblSer
 		return null;
 	}
 
-	@Override
-	public OutStockRepVO getbyDate(String date) {
+	public ArrayList<OutStockRepVO> getbyDate(String date) {
 		// TODO Auto-generated method stub
 		return null;
 	}

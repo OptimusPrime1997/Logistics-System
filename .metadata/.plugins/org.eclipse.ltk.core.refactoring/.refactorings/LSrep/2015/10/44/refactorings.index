@@ -1,0 +1,70 @@
+1445821354282	Delete element
+1445821692100	Delete element
+1445823717776	Rename package 'ResultMsg'
+1445823792761	Rename type 'Rep'
+1445825107639	Delete element
+1445828587271	Rename type 'Shipmentbiservice'
+1445828607296	Rename type 'Shipmentblservice'
+1445828900712	Delete element
+1445828907310	Delete element
+1445828910594	Delete element
+1445828954876	Rename type 'ShippingRepservice'
+1445829069443	Rename type 'transferRepblservice'
+1445829605041	Rename type 'RepVO'
+1445836178833	Delete element
+1445836202528	Delete element
+1445836221437	Delete element
+1445836240086	Delete element
+1445836247385	Delete element
+1445836336098	Rename type 'DocumentCheckblservice'
+1445836346338	Rename type 'GetRepblservice'
+1445836356085	Rename type 'InStockRepblservice'
+1445836364204	Rename type 'OutStockRepblservice'
+1445836378809	Rename type 'PayRepblservice'
+1445836387515	Rename type 'Receiptblservice'
+1445836396148	Rename type 'ReceptionRepblservice'
+1445846460310	Delete element
+1445849088284	Rename type 'CashRepImpl'
+1445849096757	Rename type 'DeliverRepImpl'
+1445849106088	Rename type 'GetRepImpl'
+1445849116215	Rename type 'InStockRepImpl'
+1445849124167	Rename type 'OutStackRepImpl'
+1445849131756	Rename type 'PayRepImpl'
+1445849142265	Rename type 'ReceiptImpl'
+1445849151333	Rename type 'ReceptionRepImpl'
+1445849167122	Rename type 'ShipmentRepImpl'
+1445849174444	Rename type 'ShippingRepImpl'
+1445849182580	Rename type 'TransferRepImpl'
+1445852674239	Rename type 'ShipFrom'
+1445864437130	Delete element
+1445870945346	Rename type 'InStockDataService'
+1445871519405	Rename type 'CashblImpl'
+1445871534461	Rename type 'DeliverblImpl'
+1445871542197	Rename type 'GetblImpl'
+1445871549884	Rename type 'InStockblImpl'
+1445871555287	Rename type 'OutStackblImpl'
+1445871560757	Rename type 'PayblImpl'
+1445871567834	Rename type 'ReceiptblImpl'
+1445871572865	Rename type 'ReceptionblImpl'
+1445871578432	Rename type 'ShipmentblImpl'
+1445871584069	Rename type 'ShippingblImpl'
+1445871588967	Rename type 'TransferblImpl'
+1445871604573	Rename type 'CashDataImpl'
+1445871609573	Rename type 'DeliverDataImpl'
+1445871614955	Rename type 'GetDataImpl'
+1445871620209	Rename type 'InStockDataImpl'
+1445871625461	Rename type 'OutStackDataImpl'
+1445871630214	Rename type 'PayDataImpl'
+1445871642469	Rename type 'ReceptionDataImpl'
+1445871649757	Rename type 'ShipmentDataImpl'
+1445871657227	Rename type 'ShippingDataImpl'
+1445871662212	Rename type 'TransferDataImpl'
+1445944376445	Rename package 'blimpl.receiptblimpl'
+1445944393784	Rename package 'bl.receiptblimpl'
+1445944436947	Copy package
+1445944472677	Copy package
+1445944485559	Copy package
+1445944494546	Copy package
+1445944526586	Copy package
+1445944537953	Copy package
+1445944556011	Copy package

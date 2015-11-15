@@ -15,12 +15,12 @@ public class InStockRepblImpl extends ReceiptblImpl implements InStockRepblServi
 		return null;
 	}
 	
-	public InStockRepVO getByList (String listNum){
+	public ArrayList<InStockRepVO> getByList (String listNum){
 		return null;
 		
 	}
 	
-	public InStockRepVO getByDate (String date) {
+	public ArrayList<InStockRepVO> getByDate (String date) {
 		return null;
 		
 	}

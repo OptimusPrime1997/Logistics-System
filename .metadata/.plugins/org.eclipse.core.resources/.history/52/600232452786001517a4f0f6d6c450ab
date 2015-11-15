@@ -1,0 +1,12 @@
+package test;
+
+public class Random {
+	public static void main(String[] args){
+		Random eco = new Random();
+		eco.go();
+	}
+	
+	private void go(){
+		
+	}
+}
