@@ -1,3 +1,4 @@
+
 package blservice.managementblservice.institutionblservice;
 
 import java.rmi.RemoteException;
@@ -13,3 +14,4 @@ public interface InstitutionBLService {
 	public InstitutionVO findByName(String name)throws RemoteException;
 	
 }
+

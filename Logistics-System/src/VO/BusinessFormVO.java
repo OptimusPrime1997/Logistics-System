@@ -2,8 +2,6 @@ package VO;
 
 import java.util.ArrayList;
 
-import VO.ReceiptVO.PayRepVO;
-
 
 public class BusinessFormVO {
 	public String startTime;
