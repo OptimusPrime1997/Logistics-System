@@ -270,7 +270,10 @@ public class courier_main extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     
     
-    
+    /**
+     * for test~~
+     * @param args
+     */
     public static void main(String[] args) {
     	/* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -305,12 +308,6 @@ public class courier_main extends javax.swing.JPanel {
         		frame.setContentPane(new courier_main());
         		frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);	
             }
-        });
-    	
-    	
-    	
-    	
-    	
-		
+        });	
 	}
 }
