@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+			<item value="server"/>
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+			<item value="server"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="G:\Study source\express-demo-1"/>
+			<item value="G:\Study source\Program"/>
+			<item value="G:\Study source\Program\Assignments1"/>
+			<item value="G:\Study source\express-demo-master"/>
+			<item value="C:\Users\1\Workspaces\express-demo"/>
+			<item value="C:\Users\1\workspace-java\CalcutorT"/>
+			<item value="C:\Users\1\Workspaces\Demo"/>
+			<item value="D:\Program Files (x86)\Jenkins\jobs\Demo\workspace\express-demo-master"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<item value="internal" key="catalog"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenModuleWizardParentPage">
+		<list key="moduleName">
+			<item value="server"/>
+			<item value="client"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="C:\Users\1\workspace\MyFirstRepository\AluSimulator"/>
+			<item value="C:\Users\1\workspace-java\DataStructureAndAlgorithm\src\test\Assemble.java"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+			<item value="org.server"/>
+			<item value="org.client"/>
+			<item value="edu.nju.expressManageSystem.express_all"/>
+			<item value="demo.demo"/>
+		</list>
+		<list key="groupId">
+			<item value="server"/>
+			<item value="edu.nju.expressManageSystem"/>
+			<item value="demo"/>
+		</list>
+		<list key="artifactId">
+			<item value="server"/>
+			<item value="client"/>
+			<item value="express-all"/>
+			<item value="demo"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="1.0-SNAPSHOT"/>
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+</section>

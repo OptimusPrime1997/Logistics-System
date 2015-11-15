@@ -1,0 +1,11 @@
+package dataservice.managementdataservice.bankaccountdataservice;
+
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
+import PO.BankAccountPO;
+
+public interface BankAccountDataService {
+	
+
+}

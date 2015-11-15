@@ -1,0 +1,22 @@
+package GUI;
+
+class Zz {
+	static String dd;
+	static {
+		dd = "静态变量值";
+		System.out.println("静态变量初始化");
+	}
+	String ddd;
+	{
+		ddd = "非静态变量值";
+		System.out.println("非静态变量初始化");
+	}
+
+	Zz() {
+		System.out.println("构造函数");
+	}
+
+	static void display() {
+		System.out.println("静态函数调用");
+	}
+}

@@ -1,0 +1,14 @@
+1436148249223	Rename method 'serviceetupHost'
+1436171719324	Rename field 'rate'
+1436171803734	Rename local variable 'littleWinRate'
+1436261204174	Rename local variable 'heigth'
+1436261222313	Rename local variable 'mineNumber'
+1436265590776	Rename compilation unit 'EasyGameModel.java'
+1436268868547	Rename local variable 'timer'
+1436269198540	Rename local variable 'timeThread'
+1436278339119	Delete element
+1436278367433	Delete element
+1436458935250	Rename local variable 'msgMark'
+1436461384203	Rename method 'firstStartThread'
+1436464976797	Rename method 'suspendTimer'
+1436465000267	Rename method 'startThread'

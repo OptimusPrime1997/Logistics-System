@@ -1,0 +1,141 @@
+/**
+ * 
+ */
+package _Stub;
+
+import java.util.ArrayList;
+
+import VO.GoodsVO;
+import bl.goodsbl.GoodsArrivalState;
+import bl.goodsbl.GoodsExpressType;
+import bl.goodsbl.GoodsLogisticState;
+import blservice.goodsblservice.GoodsBLService;
+
+/**
+ * @author G
+ *
+ */
+public  class GoodsBLService_Stub implements GoodsBLService{
+	
+	public String listNum;
+	public Boolean ifExaminePassed;
+	public String getCourierAccount;
+	public String deliverCourierAccount;
+	public String startTime;
+	public String overtime;
+	public String destinationCity;
+	public String senderName;
+	public String senderAddress;
+	public String senderCompany;
+	public String senderPhone;
+	public String receiverName;
+	public String receiverAddress;
+	public String receiverCompany;
+	public String receiverPhone;
+	public int numOfGoods;
+	public double weight;
+	public double volume;// ���
+	public String nameOfInside;
+	public String expressType;
+	public double moneyOfPackage;
+	public double moneyTotal;
+	public double moneyFare;
+	public GoodsArrivalState arrivalState;
+	public GoodsLogisticState logisticState;
+	public String realReceiverName;
+	public String realReceiverPhone;	
+
+	
+	
+	public GoodsBLService_Stub(String ln,String st,String sn,String sa,String sc,String sp,String rn,String ra,String rc,String rp
+			                  ,int numog,double w,double v,String nameoi,String et,double mop){
+		listNum=ln;
+		startTime=st;
+		senderName=sn;
+		senderAddress=sa;
+		senderCompany=sc;
+		senderPhone=sp;
+		receiverName=rn;
+		receiverAddress=ra;
+		receiverCompany=rc;
+		receiverPhone=rp;
+		numOfGoods=numog;
+		weight=w;
+		volume=v;
+		nameOfInside=nameoi;
+		expressType=et;
+		moneyOfPackage=mop;
+	}
+	
+	@Override
+	public GoodsVO check(String listNum) {
+		// TODO Auto-generated method stub
+		return new GoodsVO("0250000123",false,
+				"02400100006014", "02500100006014",
+				"20151026", null,  "025","李华",
+				"上海市浦东新区张杨路500号",   "上海华润时代广场",
+				"87511426", "陆宏", "南京市栖霞区仙林大道和园12号",
+				"无", "15500001112", 1,5, 8, "书",
+				 GoodsExpressType.STANTARD, 5, 10,
+				5, GoodsArrivalState.INTACT,GoodsLogisticState.SENDED, "刘钦",
+				"11011011024");
+	}
+
+	
+	@Override
+	public Boolean init(GoodsVO vo) {
+		// TODO Auto-generated method stub
+		System.out.println("Initial list success!~");
+		return true;
+	}
+
+	
+	@Override
+	public Boolean delete(GoodsVO vo) {
+		// TODO Auto-generated method stub
+		System.out.println("Delete list success!~");
+		return true;
+	}
+
+	
+	@Override
+	public ArrayList<GoodsVO> getGoodsByCourier(String CourierNum) {
+		// TODO Auto-generated method stub
+		ArrayList<GoodsVO> lists=new ArrayList<GoodsVO>();
+		GoodsVO list=new GoodsVO("0250000123",false,
+				"02400100006014", "02500100006014",
+				"20151026", null,  "025","李华",
+				"上海市浦东新区张杨路500号",   "上海华润时代广场",
+				"87511426", "陆宏", "南京市栖霞区仙林大道和园12号",
+				"无", "15500001112", 1,5, 8, "书",
+				 GoodsExpressType.STANTARD, 5, 10,
+				5, GoodsArrivalState.INTACT,GoodsLogisticState.SENDED, "刘钦",
+				"11011011024");
+		lists.add(list);
+		return lists;
+	}
+
+	
+	@Override
+	public Boolean setArrivalState(String listNum, GoodsArrivalState state) {
+		// TODO Auto-generated method stub
+		System.out.println("SetArrivalState success!~");
+		return true;
+	}
+
+	
+	@Override
+	public Boolean setLogisticState(String listNum, GoodsLogisticState state) {
+		// TODO Auto-generated method stub
+		System.out.println("SetLogisticState success!~");
+		return true;
+	}
+
+	
+	@Override
+	public void examine(String listNum, Boolean ifPassed) {
+		// TODO Auto-generated method stub
+		System.out.println("Examined!~");
+	}
+
+}

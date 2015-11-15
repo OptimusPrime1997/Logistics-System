@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;precison&apos; in &apos;getX.GetX.output(...)&apos; to &apos;precision&apos;&#x0D;&#x0A;- Original project: &apos;CheckTFunction&apos;&#x0D;&#x0A;- Original element: &apos;getX.GetX.output(double, double, double).precison&apos;&#x0D;&#x0A;- Renamed element: &apos;precison&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;precison&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;getX{GetX.java[GetX~output~D~D~D@precison!1437!1451!1444!1451!D!0!true" name="precision" references="true" stamp="1436843255530" version="1.0"/>
+</session>

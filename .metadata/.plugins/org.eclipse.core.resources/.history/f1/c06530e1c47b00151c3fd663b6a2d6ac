@@ -1,0 +1,11 @@
+package PO;
+
+public class AccountPO {
+private String accountNum;
+private String accoutName;
+private String password;
+private String sex;
+private String authority;
+private String phoneNum;
+private String institution;
+}

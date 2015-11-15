@@ -1,0 +1,62 @@
+package GUI;
+
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class TwoButtons {
+	JFrame frame;
+	JButton colorButton;
+	JButton changeButton;
+	JLabel label;
+	JPanel drawPanel;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		TwoButtons twoButtons=new TwoButtons();
+		twoButtons.go();
+	}
+	public void go(){
+		frame=new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(300,300);
+		frame.setVisible(true);
+		
+		colorButton=new JButton("change color");
+		colorButton.addActionListener(new ColorButtonActionListener());
+		
+		changeButton=new JButton("change change");
+		changeButton.addActionListener(new ChangeButtonActionListener());
+		
+		label =new JLabel("Test Area");
+		drawPanel=new JPanel();
+		
+		
+		frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
+		frame.getContentPane().add(BorderLayout.EAST,colorButton);
+		frame.getContentPane().add(BorderLayout.WEST,changeButton);
+		frame.getContentPane().add(BorderLayout.NORTH,label);
+	}
+	class ColorButtonActionListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			colorButton.setText("Changed!");
+		}
+		
+	}
+	class ChangeButtonActionListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			changeButton.setText("Action Taked!");
+		}
+		
+	}
+}

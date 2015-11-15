@@ -1,0 +1,20 @@
+package dataservice.managementdataservice.bankaccountdataservice;
+
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
+import PO.BankAccountPO;
+
+public class BankAccountDataService {
+	public void insert(BankAccountPO po)throws RemoteException;
+	public void update(BankAccountPO po)throws RemoteException;
+	public void delete(BankAccountPO po)throws RemoteException;
+	public ArrayList<BankAccountPO> show()throws RemoteException;
+	public BankAccountPO findByName(String name)throws RemoteException;
+	public BankAccountPO findByBankAccountNum(String BankAccountNum)throws RemoteException;
+	public void updateAuthority(BankAccountPO po)throws RemoteException;
+	public void updateMsg(BankAccountPO po)throws RemoteException;
+	public boolean loginCheck(BankAccountPO po)throws RemoteException;
+	public void logincheck(String name,String key)throws RemoteException;
+
+}

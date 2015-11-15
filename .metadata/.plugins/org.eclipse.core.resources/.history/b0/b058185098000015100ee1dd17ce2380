@@ -1,0 +1,163 @@
+import com.sun.jndi.toolkit.ctx.StringHeadTail;
+
+//ÂÞ½ðºê  Ñ§ºÅ£º141250085
+public class ALU {
+	public enum Operation {
+		ADDITION, SUBTRACTION, MULTIPLICATION, DIVISION
+	};
+
+	public enum Type {
+		INTEGER, FLOAT, DECIMAL
+	};
+
+	// 5
+	public static String integerTrueValue(String oprand) {
+		String result = "";
+		int dec = 0;
+		for (int i = 0; i < oprand.length(); i++) {
+			if (i == 0) {
+				if (oprand.charAt(i) == '1') {
+					dec += (-1);
+				}
+			} else {
+				dec = dec * 2 + (oprand.charAt(i) - '0');
+			}
+		}
+
+		return result + dec;
+	}
+
+	//
+	public static String Complement(String number, int length) {
+
+		return null;
+	}
+
+	//
+	public static String TrueValue(String operand) {
+		return null;
+	}
+
+	// 7
+	public static String Negation(String operand) {
+		String result = "";
+		for (int i = 0; i < operand.length(); i++) {
+			if (operand.charAt(i) == '0') {
+
+			}
+		}
+		return null;
+	}
+
+	// 8
+	public static String leftShift(String operand, int n) {
+		assert n <= operand.length() && n >= 0;
+		String result = "";
+		for (int i = 0; i < n; i++) {
+			result += "0";
+		}
+		result = operand.substring(n, operand.length()) + result;
+		return result;
+	}
+
+	// 9
+	public static String rightAriShift(String operand, int n) {
+		String result = "";
+		for (int i = 0; i < n; i++) {
+			if (operand.charAt(0) == '1') {
+				result += "1";
+			}
+			if (operand.charAt(0) == '0') {
+				result += "0";
+			}
+		}
+		result += operand.substring(0, operand.length() - n);
+		return result;
+	}
+
+	// 10
+	public static String rightLogShift(String operand, int n) {
+		String result = "";
+		for (int i = 0; i < n; i++) {
+			result += "0";
+		}
+		result += operand.substring(0, operand.length() - n);
+		return result;
+	}
+
+	// 11
+	public static String FullAdder(char x, char y, char c) {
+		assert (x == '0' || x == '1') && (y == '0' || y == '1')
+				&& (c == '0' || c == '1');
+		String result = "";
+		int temp = 0;
+		temp = (x - '0') + (y - '0') + (c - '0');
+		switch (temp) {
+		case 0:
+			result = "00";
+			break;
+		case 1:
+			result = "10";
+			break;
+		case 2:
+			result = "01";
+			break;
+		case 3:
+			result = "11";
+			break;
+		default:
+			break;
+
+		}
+		return result;
+	}
+
+	//
+	public static String CLAAdder(String operand1, String operand2, char c) {
+		assert (operand1.length()==8)&&(operand2.length()==8);
+		String result = "";
+		String[] temp=new String[operand1.length()];
+		for(int i=operand1.length()-1;i>=0;i--){
+			if(i==operand1.length()-1){
+				
+			}
+		}
+		
+		return null;
+	}
+
+	//
+	public static String Addition(String operand1, String operand2, char c,
+			int length) {
+		String result = "";
+		return null;
+	}
+
+	//
+	public static String Subtraction(String operand1, String operand2,
+			int length) {
+		String result = "";
+		return null;
+	}
+
+	//
+	public static String Multiplication(String operand1, String operand2,
+			int length) {
+		String result = "";
+		return null;
+	}
+
+	//
+	public static String Division(String operand1, String operand2, int length) {
+		String result = "";
+		return null;
+	}
+
+	//
+	public static String Calculation(String number1, String number2, Type type,
+			Operation operation, int length) {
+		String result = "";
+		return null;
+	}
+
+}
