@@ -9,12 +9,12 @@ package ui.administratorui;
  *
  * @author G
  */
-public class AccountSearch extends javax.swing.JPanel {
+public class AccountSearchPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form AccountSearch
      */
-    public AccountSearch() {
+    public AccountSearchPanel() {
         initComponents();
     }
 

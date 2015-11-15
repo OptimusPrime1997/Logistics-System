@@ -9,12 +9,12 @@ package ui.administratorui;
  *
  * @author G
  */
-public class UserAccountInfo extends javax.swing.JPanel {
+public class UserAccountInfoPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form UserAccountInfo
      */
-    public UserAccountInfo() {
+    public UserAccountInfoPanel() {
         initComponents();
     }
 

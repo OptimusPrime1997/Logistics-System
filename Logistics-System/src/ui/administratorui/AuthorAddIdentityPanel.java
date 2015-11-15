@@ -9,12 +9,12 @@ package ui.administratorui;
  *
  * @author G
  */
-public class AuthorAddIdentity extends javax.swing.JPanel {
+public class AuthorAddIdentityPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form AuthorAddIdentity
      */
-    public AuthorAddIdentity() {
+    public AuthorAddIdentityPanel() {
         initComponents();
     }
 
