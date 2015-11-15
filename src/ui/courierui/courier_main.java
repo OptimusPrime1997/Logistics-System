@@ -33,25 +33,25 @@ public class courier_main extends javax.swing.JPanel {
 
         newGoodsbtn2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        businessOffNum = new javax.swing.JLabel();
+        businessOfficeNum_label = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        account_btn = new javax.swing.JButton();
+        exit_btn = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jProgressBar15 = new javax.swing.JProgressBar();
-        jProgressBar16 = new javax.swing.JProgressBar();
-        jProgressBar17 = new javax.swing.JProgressBar();
-        jProgressBar18 = new javax.swing.JProgressBar();
-        jProgressBar19 = new javax.swing.JProgressBar();
-        jProgressBar20 = new javax.swing.JProgressBar();
-        jProgressBar21 = new javax.swing.JProgressBar();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        goodsNum6daysAgo_progressBar = new javax.swing.JProgressBar();
+        goodsNum5daysAgo_progressBar = new javax.swing.JProgressBar();
+        goodsNum4daysAgo_progressBar = new javax.swing.JProgressBar();
+        goodsNum3daysAgo_progressBar = new javax.swing.JProgressBar();
+        goodsNum2daysAgo_progressBar = new javax.swing.JProgressBar();
+        goodsNum1dayAgo_progressBar = new javax.swing.JProgressBar();
+        goodsNumToday_progressBar = new javax.swing.JProgressBar();
+        dateToday_label = new javax.swing.JLabel();
+        date1dayAgo_label = new javax.swing.JLabel();
+        date2daysAgo_label = new javax.swing.JLabel();
+        date3daysAgo_label = new javax.swing.JLabel();
+        date4daysAgo_label = new javax.swing.JLabel();
+        date5daysAgo_label = new javax.swing.JLabel();
+        date6daysAgo_label = new javax.swing.JLabel();
         signedGoodsbtn = new javax.swing.JButton();
 
         newGoodsbtn2.setText("新订单");
@@ -63,56 +63,61 @@ public class courier_main extends javax.swing.JPanel {
 
         jLabel3.setText("营业厅：");
 
-        businessOffNum.setText("南京 025001");
+        businessOfficeNum_label.setText("南京 025001");
 
         jLabel4.setText("账户：");
 
-        jButton1.setText("老王（包括更改密码、退出登录）");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        account_btn.setText("老王（包括更改密码、退出登录）");
+        account_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                account_btnActionPerformed(evt);
             }
         });
 
-        jButton2.setText("退出系统");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        exit_btn.setText("退出系统");
+        exit_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                exit_btnActionPerformed(evt);
             }
         });
 
         jLabel5.setText("最近7天业绩（收派件数）");
 
-        jProgressBar15.setForeground(new java.awt.Color(240, 40, 240));
-        jProgressBar15.setValue(50);
+        goodsNum6daysAgo_progressBar.setForeground(new java.awt.Color(240, 40, 240));
+        goodsNum6daysAgo_progressBar.setValue(50);
 
-        jProgressBar16.setValue(70);
+        goodsNum5daysAgo_progressBar.setValue(70);
 
-        jProgressBar17.setValue(15);
+        goodsNum4daysAgo_progressBar.setValue(15);
 
-        jProgressBar18.setValue(95);
+        goodsNum3daysAgo_progressBar.setValue(95);
 
-        jProgressBar19.setValue(65);
+        goodsNum2daysAgo_progressBar.setValue(65);
 
-        jProgressBar20.setValue(45);
+        goodsNum1dayAgo_progressBar.setValue(45);
 
-        jProgressBar21.setValue(50);
+        goodsNumToday_progressBar.setValue(50);
 
-        jLabel10.setText("10/30");
+        dateToday_label.setText("10/30");
 
-        jLabel9.setText("10/29");
+        date1dayAgo_label.setText("10/29");
 
-        jLabel8.setText("10/28");
+        date2daysAgo_label.setText("10/28");
 
-        jLabel7.setText("10/27");
+        date3daysAgo_label.setText("10/27");
 
-        jLabel6.setText("10/26");
+        date4daysAgo_label.setText("10/26");
 
-        jLabel11.setText("10/25");
+        date5daysAgo_label.setText("10/25");
 
-        jLabel12.setText("10/24");
+        date6daysAgo_label.setText("10/24");
 
         signedGoodsbtn.setText("已签收");
+        signedGoodsbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signedGoodsbtnMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -127,7 +132,7 @@ public class courier_main extends javax.swing.JPanel {
                         .addGap(124, 124, 124)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(businessOffNum)))
+                        .addComponent(businessOfficeNum_label)))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -135,32 +140,32 @@ public class courier_main extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(31, 31, 31)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel10))
+                                    .addComponent(date5daysAgo_label)
+                                    .addComponent(date4daysAgo_label)
+                                    .addComponent(date6daysAgo_label)
+                                    .addComponent(date3daysAgo_label)
+                                    .addComponent(date2daysAgo_label)
+                                    .addComponent(date1dayAgo_label)
+                                    .addComponent(dateToday_label))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jProgressBar18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jProgressBar17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(goodsNum3daysAgo_progressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(goodsNum4daysAgo_progressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jProgressBar21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jProgressBar20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jProgressBar19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jProgressBar16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jProgressBar15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(goodsNumToday_progressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(goodsNum1dayAgo_progressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(goodsNum2daysAgo_progressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(goodsNum5daysAgo_progressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(goodsNum6daysAgo_progressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jLabel5))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(account_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                        .addComponent(exit_btn)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -168,14 +173,12 @@ public class courier_main extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jLabel4)
-                            .addComponent(businessOffNum)
-                            .addComponent(jLabel3)))
-                    .addComponent(jButton2))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(account_btn)
+                        .addComponent(jLabel4)
+                        .addComponent(businessOfficeNum_label)
+                        .addComponent(jLabel3))
+                    .addComponent(exit_btn))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
@@ -183,43 +186,43 @@ public class courier_main extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jProgressBar15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(goodsNum6daysAgo_progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jProgressBar16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(date5daysAgo_label)
+                                    .addComponent(goodsNum5daysAgo_progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel6))
+                                .addComponent(date4daysAgo_label))
                             .addComponent(newGoodsbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel7))
+                        .addComponent(date3daysAgo_label))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGap(63, 63, 63)
-                            .addComponent(jProgressBar17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(goodsNum4daysAgo_progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jProgressBar18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(goodsNum3daysAgo_progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel12)
+                            .addComponent(date6daysAgo_label)
                             .addGap(95, 95, 95))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8)
-                    .addComponent(jProgressBar19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(date2daysAgo_label)
+                    .addComponent(goodsNum2daysAgo_progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jProgressBar20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(goodsNum1dayAgo_progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(signedGoodsbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jProgressBar21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(goodsNumToday_progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
+                                .addComponent(date1dayAgo_label)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel10)))))
+                                .addComponent(dateToday_label)))))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -228,36 +231,40 @@ public class courier_main extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_newGoodsbtn2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void account_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_account_btnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_account_btnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exit_btnActionPerformed
+
+    private void signedGoodsbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signedGoodsbtnMouseClicked
+        new courier_signed().setVisible(true);
+    }//GEN-LAST:event_signedGoodsbtnMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel businessOffNum;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
+    private javax.swing.JButton account_btn;
+    private javax.swing.JLabel businessOfficeNum_label;
+    private javax.swing.JLabel date1dayAgo_label;
+    private javax.swing.JLabel date2daysAgo_label;
+    private javax.swing.JLabel date3daysAgo_label;
+    private javax.swing.JLabel date4daysAgo_label;
+    private javax.swing.JLabel date5daysAgo_label;
+    private javax.swing.JLabel date6daysAgo_label;
+    private javax.swing.JLabel dateToday_label;
+    private javax.swing.JButton exit_btn;
+    private javax.swing.JProgressBar goodsNum1dayAgo_progressBar;
+    private javax.swing.JProgressBar goodsNum2daysAgo_progressBar;
+    private javax.swing.JProgressBar goodsNum3daysAgo_progressBar;
+    private javax.swing.JProgressBar goodsNum4daysAgo_progressBar;
+    private javax.swing.JProgressBar goodsNum5daysAgo_progressBar;
+    private javax.swing.JProgressBar goodsNum6daysAgo_progressBar;
+    private javax.swing.JProgressBar goodsNumToday_progressBar;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JProgressBar jProgressBar15;
-    private javax.swing.JProgressBar jProgressBar16;
-    private javax.swing.JProgressBar jProgressBar17;
-    private javax.swing.JProgressBar jProgressBar18;
-    private javax.swing.JProgressBar jProgressBar19;
-    private javax.swing.JProgressBar jProgressBar20;
-    private javax.swing.JProgressBar jProgressBar21;
     private javax.swing.JButton newGoodsbtn2;
     private javax.swing.JButton signedGoodsbtn;
     // End of variables declaration//GEN-END:variables
