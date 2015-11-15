@@ -1,8 +1,0 @@
-<<<<<<< HEAD
-commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<messages>\r\n<message>\u4FEE\u6539\u62A5\u9519\u7684\u5730\u65B9</message>\r\n<message>Another management PO</message>\r\n<message>some managementPO</message>\r\n<message>\u5927\u4F53\u5B8C\u6210\u7684\u7F51\u7EDC</message>\r\n<message>\u8054\u673A\u521D\u6B65</message>\r\n<message>\u672C\u5730\u5DF2\u5B8C\u6210\u7684\u626B\u96F7</message>\r\n<message>\u672A\u5199\u8BB0\u5F55\u7684\u626B\u96F7</message>\r\n<message>\u540C\u6B65</message>\r\n<message>\u534A\u5B8C\u6210\u65F6\u95F4\u7684\u4EE3\u7801</message>\r\n<message>\u672A\u5199\u65F6\u95F4\u548C\u8BB0\u5F55</message>\r\n</messages>
-eclipse.preferences.version=1
-=======
-commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\n<messages>\n<message>test</message>\n</messages>
-eclipse.preferences.version=1
-show_initial_config_dialog=false
->>>>>>> origin/master

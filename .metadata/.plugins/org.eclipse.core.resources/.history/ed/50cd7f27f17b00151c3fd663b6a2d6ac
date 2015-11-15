@@ -1,5 +1,0 @@
-package blservice.managementblservice.salarypolicyblservice;
-
-public interface SalaryPolicyBLService {
-
-}

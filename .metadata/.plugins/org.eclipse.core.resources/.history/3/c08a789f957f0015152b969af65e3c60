@@ -1,9 +1,0 @@
-package test;
-
-import java.util.LinkedList;
-
-public class Test3 {
-	public static void main(String[] args){
-		LinkedList<Integer[]> l1 = new LinkedList<Integer[]>();
-	}
-}

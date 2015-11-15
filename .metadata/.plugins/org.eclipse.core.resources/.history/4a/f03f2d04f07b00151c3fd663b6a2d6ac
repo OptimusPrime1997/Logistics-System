@@ -1,5 +1,0 @@
-package blservice.managementblservice.constblservice;
-
-public interface ConstBLService {
-
-}

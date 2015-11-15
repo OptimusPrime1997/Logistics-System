@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename field &apos;gameResultStae&apos; in &apos;edu.nju.model.impl.GameModelImpl&apos; to &apos;gameResultState&apos;&#x0D;&#x0A;- Original project: &apos;JMineSweeper&apos;&#x0D;&#x0A;- Original element: &apos;edu.nju.model.impl.GameModelImpl.gameResultStae&apos;&#x0D;&#x0A;- Renamed element: &apos;edu.nju.model.impl.GameModelImpl.gameResultState&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;gameResultStae&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;edu.nju.model.impl{GameModelImpl.java[GameModelImpl^gameResultStae" name="gameResultState" references="true" setter="false" stamp="1435688500848" textual="false" version="1.0"/>
-</session>
