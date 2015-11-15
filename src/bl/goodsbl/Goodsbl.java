@@ -2,11 +2,12 @@ package bl.goodsbl;
 
 import java.util.ArrayList;
 
+import dataservice.goodsdataservice.GoodsDataService;
 import VO.GoodsVO;
 import blservice.goodsblservice.GoodsBLService;
 
 public class Goodsbl {
-
+	GoodsDataService goodsData;
 	
 	public GoodsVO check(String listNum) {
 		// TODO Auto-generated method stub

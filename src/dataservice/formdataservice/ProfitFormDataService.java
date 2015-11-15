@@ -1,5 +1,8 @@
 package dataservice.formdataservice;
 
-public interface ProfitFormDataService {
+import java.rmi.RemoteException;
+import PO.ProfitFormPO;
 
+public interface ProfitFormDataService {
+	public void add(ProfitFormPO po)throws RemoteException;	
 }
