@@ -8,7 +8,7 @@ import VO.ManagementVO.DriverVO;
 import blservice.managementblservice.vehicleanddriverblservice.DriverBLService;
 
 public class DriverBLController implements DriverBLService {
-	VehicleLineItemBL driverBL=new VehicleLineItemBL();
+	VehicleBL driverBL=new VehicleBL();
 
 	@Override
 	public ResultMessage insertDriver(DriverVO VO) throws RemoteException {
