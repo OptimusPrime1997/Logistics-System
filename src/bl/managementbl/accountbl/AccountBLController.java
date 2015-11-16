@@ -54,6 +54,12 @@ public class AccountBLController implements AccountBLService {
 	}
 
 	@Override
+	public AccountVO findByNum(String num) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public AccountVO findByInstitutionName(String institutionName)
 			throws RemoteException {
 		// TODO Auto-generated method stub

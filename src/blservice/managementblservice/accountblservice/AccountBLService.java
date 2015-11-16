@@ -17,6 +17,8 @@ public interface  AccountBLService {
 		public ArrayList<AccountVO> show()throws RemoteException;
 		public ResultMessage  updateMsg(AccountVO vo)throws RemoteException;
 		public AccountVO findByName(String name)throws RemoteException;
+		public AccountVO findByNum(String num)throws RemoteException;
+
 		public AccountVO findByInstitutionName(String institutionName)throws RemoteException;
 		public ResultMessage addLog(LogVO logvo)throws RemoteException;
 	

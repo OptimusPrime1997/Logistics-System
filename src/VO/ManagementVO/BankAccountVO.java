@@ -3,7 +3,7 @@ package VO.ManagementVO;
 public class BankAccountVO {
 	public String bankAccountNum;
 	public String bankAccountName;
-	public int balance;
+	public double balance;
 
 	public BankAccountVO(String bankAccountNum, String bankAccountName,
 			int balance) {
