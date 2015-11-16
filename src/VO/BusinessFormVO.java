@@ -8,16 +8,18 @@ import PO.BusinessFormPO;
 public class BusinessFormVO {
 	public String startTime;
 	public String endTime;
-	public ArrayList<PayRepVO> financialRecord;
+	public ArrayList<PayRepVO> moneyOutRecord;
+	public ArrayList<CashRepVO> moneyInRecord;
 	
 	public BusinessFormVO(String startTime, String endTime,
-			ArrayList<PayRepVO> financialRecord) {
+			ArrayList<PayRepVO> MoneyOutRecord,ArrayList<CashRepVO> MoneyInRecord) {
 		this.startTime = startTime;
 		this.endTime = endTime;
-		this.financialRecord = financialRecord;
+		this.moneyInRecord=MoneyInRecord;
+		this.moneyOutRecord=MoneyOutRecord;
 	}
 	public BusinessFormPO toPO(BusinessFormVO vo){
-		BusinessFormPO po=new BusinessFormPO(startTime, endTime, financialRecord);
+		BusinessFormPO po=new BusinessFormPO(startTime, endTime, moneyOutRecord, moneyInRecord);
 		return po;
 	}
 }
