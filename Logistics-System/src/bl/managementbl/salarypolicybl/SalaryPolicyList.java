@@ -8,6 +8,9 @@ import VO.ManagementVO.SalaryPolicyVO;
 
 public class SalaryPolicyList {
 	ArrayList<SalaryPolicyVO> salaryPolicyList;
+	public SalaryPolicyList(){
+		salaryPolicyList=new ArrayList<SalaryPolicyVO>();
+	}
 	public ArrayList<SalaryPolicyVO> getSalaryPolicyList(){
 		return salaryPolicyList;
 	}

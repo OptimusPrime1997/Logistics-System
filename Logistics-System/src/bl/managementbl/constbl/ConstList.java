@@ -2,18 +2,23 @@ package bl.managementbl.constbl;
 
 import java.util.ArrayList;
 
-public class ConstList {
-	ArrayList<ConstLineItem> constList;
+import VO.ManagementVO.BankAccountVO;
+import VO.ManagementVO.ConstVO;
 
-	public ArrayList<ConstLineItem> getConstList() {
+public class ConstList {
+	ArrayList<ConstVO> constList;
+
+	public ArrayList<ConstVO> getConstList() {
 		return constList;
 	}
 
-	public String addConstLineItem(ConstLineItem constLineItem) {
-		constList.add(constLineItem);
+	public String addConstVO(ConstVO ConstVO) {
+		constList.add(ConstVO);
 		return null;
 	}
-
+	public ArrayList<ConstVO> getList(){
+		return constList;
+	}
 	public int getSize() {
 		return constList.size();
 	}
