@@ -15,7 +15,7 @@ public class InStockRepblImpl extends ReceiptblImpl implements InStockRepblServi
 		return null;
 	}
 	
-	public ArrayList<InStockRepVO> getByList (String listNum){
+	public InStockRepVO getByList (String listNum){
 		return null;
 		
 	}
