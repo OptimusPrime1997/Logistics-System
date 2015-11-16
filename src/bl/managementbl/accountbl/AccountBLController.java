@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
+import VO.LogVO;
 import VO.ManagementVO.AccountVO;
 import blservice.managementblservice.accountblservice.AccountBLService;
 
@@ -55,6 +56,12 @@ public class AccountBLController implements AccountBLService {
 	@Override
 	public AccountVO findByInstitutionName(String institutionName)
 			throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage addLog(LogVO logvo) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}}
