@@ -3,25 +3,27 @@ package bl.managementbl.salarypolicybl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.ResultMessage;
 import VO.ManagementVO.SalaryPolicyVO;
 import blservice.managementblservice.salarypolicyblservice.SalaryPolicyBLService;
 
 public class SalaryPolicyController implements SalaryPolicyBLService {
-SalaryPolicyBL salaryPolicyBL=new SalaryPolicyBL();
+	SalaryPolicyBL salaryPolicyBL=new SalaryPolicyBL();
+
 	@Override
-	public String insert(SalaryPolicyVO VO) throws RemoteException {
+	public ResultMessage insert(SalaryPolicyVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String update(SalaryPolicyVO VO) throws RemoteException {
+	public ResultMessage update(SalaryPolicyVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String delete(SalaryPolicyVO VO) throws RemoteException {
+	public ResultMessage delete(SalaryPolicyVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -37,6 +39,4 @@ SalaryPolicyBL salaryPolicyBL=new SalaryPolicyBL();
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-}
+	}}

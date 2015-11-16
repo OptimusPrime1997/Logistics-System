@@ -3,25 +3,27 @@ package bl.managementbl.bankaccountbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.ResultMessage;
 import VO.ManagementVO.BankAccountVO;
 import blservice.managementblservice.bankaccountblservice.BankAccountBLService;
 
 public class BankAccountBLController implements BankAccountBLService{
 	BankAccountBL  bankAccountBL=new BankAccountBL();
+
 	@Override
-	public String insert(BankAccountVO VO) throws RemoteException {
+	public ResultMessage insert(BankAccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String update(BankAccountVO VO) throws RemoteException {
+	public ResultMessage update(BankAccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String delete(BankAccountVO VO) throws RemoteException {
+	public ResultMessage delete(BankAccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -43,6 +45,4 @@ public class BankAccountBLController implements BankAccountBLService{
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-}
+	}}

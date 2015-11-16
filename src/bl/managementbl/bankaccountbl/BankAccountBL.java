@@ -3,9 +3,9 @@ package bl.managementbl.bankaccountbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.ResultMessage;
 import VO.ManagementVO.BankAccountVO;
 import blservice.managementblservice.bankaccountblservice.BankAccountBLService;
-import blservice.managementblservice.bankaccountblservice.ResultMessage;
 
 public class BankAccountBL implements BankAccountBLService {
 
@@ -34,13 +34,13 @@ public class BankAccountBL implements BankAccountBLService {
 	}
 
 	@Override
-	public BankAccountVO findByName(ResultMessage name) throws RemoteException {
+	public BankAccountVO findByName(String name) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public BankAccountVO findByBankAccountNum(ResultMessage bankAccountNum)
+	public BankAccountVO findByBankAccountNum(String bankAccountNum)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;

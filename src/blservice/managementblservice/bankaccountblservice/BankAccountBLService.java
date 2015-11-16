@@ -3,7 +3,7 @@ package blservice.managementblservice.bankaccountblservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import util.ResultMessage;
+import util.enumData.ResultMessage;
 import VO.ManagementVO.BankAccountVO;
 
 public interface BankAccountBLService {

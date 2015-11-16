@@ -3,6 +3,7 @@ package blservice.managementblservice.salarypolicyblservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.ResultMessage;
 import VO.ManagementVO.*;
 
 public interface SalaryPolicyBLService {

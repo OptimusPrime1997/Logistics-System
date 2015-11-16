@@ -3,7 +3,7 @@ package blservice.managementblservice.accountblservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import util.ResultMessage;
+import util.enumData.ResultMessage;
 import VO.ManagementVO.AccountVO;
 
 

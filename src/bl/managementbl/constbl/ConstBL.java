@@ -5,24 +5,26 @@ import java.util.ArrayList;
 
 import VO.ManagementVO.ConstVO;
 import blservice.managementblservice.constblservice.ConstBLService;
-import blservice.managementblservice.constblservice.ResultMessage;
 
 public class ConstBL implements ConstBLService {
 
 	@Override
-	public ResultMessage insert(ConstVO VO) throws RemoteException {
+	public util.enumData.ResultMessage insert(ConstVO VO)
+			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage update(ConstVO VO) throws RemoteException {
+	public util.enumData.ResultMessage update(ConstVO VO)
+			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage delete(ConstVO VO) throws RemoteException {
+	public util.enumData.ResultMessage delete(ConstVO VO)
+			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

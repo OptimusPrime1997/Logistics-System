@@ -3,9 +3,9 @@ package bl.managementbl.vehicleanddriverbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.ResultMessage;
 import VO.ManagementVO.DriverVO;
 import blservice.managementblservice.vehicleanddriverblservice.DriverBLService;
-import blservice.managementblservice.vehicleanddriverblservice.ResultMessage;
 
 public class DriverBL implements DriverBLService {
 

@@ -4,6 +4,7 @@ package blservice.managementblservice.institutionblservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.ResultMessage;
 import VO.ManagementVO.InstitutionVO;
 
 public interface InstitutionBLService {

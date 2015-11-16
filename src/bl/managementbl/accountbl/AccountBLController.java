@@ -3,31 +3,33 @@ package bl.managementbl.accountbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.ResultMessage;
 import VO.ManagementVO.AccountVO;
 import blservice.managementblservice.accountblservice.AccountBLService;
 
 public class AccountBLController implements AccountBLService {
-AccountBL accountBL=new AccountBL();
+	AccountBL accountBL=new AccountBL();
+
 	@Override
-	public String insert(AccountVO VO) throws RemoteException {
+	public ResultMessage insert(AccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String update(AccountVO VO) throws RemoteException {
+	public ResultMessage update(AccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String delete(AccountVO VO) throws RemoteException {
+	public ResultMessage delete(AccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String login(String name, String key) {
+	public ResultMessage login(String name, String key) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -39,7 +41,7 @@ AccountBL accountBL=new AccountBL();
 	}
 
 	@Override
-	public String updateMsg(AccountVO vo) throws RemoteException {
+	public ResultMessage updateMsg(AccountVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -55,6 +57,4 @@ AccountBL accountBL=new AccountBL();
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-}
+	}}

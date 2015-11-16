@@ -3,7 +3,7 @@ package dataservice.managementdataservice.vehicleanddriverdataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import util.ResultMessage;
+import util.enumData.ResultMessage;
 import PO.DriverPO;
 
 public interface DriverDataService {

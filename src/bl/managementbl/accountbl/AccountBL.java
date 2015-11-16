@@ -3,9 +3,9 @@ package bl.managementbl.accountbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.ResultMessage;
 import VO.ManagementVO.AccountVO;
 import blservice.managementblservice.accountblservice.AccountBLService;
-import blservice.managementblservice.accountblservice.ResultMessage;
 
 public class AccountBL implements AccountBLService{
 
