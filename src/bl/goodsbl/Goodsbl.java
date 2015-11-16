@@ -29,7 +29,7 @@ public class Goodsbl {
 		//TODO the parameter of the findByConstName function is to be modified
 		try {
 			//TODO 计算运费
-			int basicprice=ConstBL.findByConstName("").distanceConst;
+			int basicprice=ConstBL.findByConstName("").priceConst;
 			int distance=ConstBL.findByConstName("").distanceConst;
 			vo.moneyFare=basicprice*distance;//TODO公式先随便写一下
 			vo.moneyTotal=vo.moneyFare+vo.moneyOfPackage;

@@ -20,7 +20,7 @@ public class ProfitFormbl {
 		double totalIn=0,totalOut=0,totalProfit=0;
 		PayRepblImpl payRep=new PayRepblImpl();
 		CashRepblImpl cashRep=new CashRepblImpl();
-		ArrayList<PayRepVO> moneyOut=payRep.forPay();
+		ArrayList<PayRepVO> moneyOut=payRep.get();
 		ArrayList<CashRepVO> moneyIn=cashRep.get();
 		for(int i=0;i<moneyIn.size();i++){
 			totalIn+=moneyIn.get(i).money;

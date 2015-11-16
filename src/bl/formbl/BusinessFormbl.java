@@ -7,20 +7,18 @@ import util.DataFactory;
 import VO.BusinessFormVO;
 import VO.CashRepVO;
 import VO.PayRepVO;
-import bl.receiptbl.CashRepblImpl;
-import bl.receiptbl.PayRepblImpl;
 import dataservice.formdataservice.BusinessFormDataService;
 
 public class BusinessFormbl {
 	BusinessFormDataService busiFormdata = DataFactory.getBusinessFormdata();
 	
 	public BusinessFormVO show(String startTime, String endTime) {
-		PayRepblImpl payRep=new PayRepblImpl();
-		CashRepblImpl cashRep=new CashRepblImpl();
+		MockPayRep payRep=new MockPayRep();
+		MockCashRep cashRep=new MockCashRep();
 		//all reps about money
 		ArrayList<PayRepVO> moneyOut;
 		ArrayList<CashRepVO> moneyIn;
-		moneyOut=payRep.forPay();
+		moneyOut=payRep.get();
 		moneyIn=cashRep.get();
 		//TODO  choose the valid records(inside the time period ~~)
 		for(int i=0;i<moneyIn.size();i++){
