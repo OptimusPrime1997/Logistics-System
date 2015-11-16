@@ -23,8 +23,21 @@ public class ProfitFormbl {
 		for(int i=0;i<moneyIn.size();i++){
 			totalIn+=moneyIn.get(i).money;
 		}
-		//TODO   calculate totalOut with the moneyIn&moneyOut
-		
+		for(int i=0;i<moneyOut.size();i++){
+			for(int j=0;j<moneyOut.get(i).Salarys.size();j++){
+				totalOut+=moneyOut.get(i).Salarys.get(j).money;
+			}
+			for(int j=0;j<moneyOut.get(i).littleThings.size();j++){
+				totalOut+=moneyOut.get(i).littleThings.get(j).money;
+			}
+			for(int j=0;j<moneyOut.get(i).rents.size();j++){
+				totalOut+=moneyOut.get(i).rents.get(j).money;
+			}
+			for(int j=0;j<moneyOut.get(i).TransferPays.size();j++){
+				totalOut+=moneyOut.get(i).TransferPays.get(j).money;
+			}
+		}
+		totalProfit=totalIn-totalOut;
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 	    ProfitFormVO vo = new ProfitFormVO(df.format(new Date()), totalOut, totalIn, totalProfit);
 		return vo;
