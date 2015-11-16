@@ -18,14 +18,13 @@ public class Stock {
 	
 	
 	public int checkInStock(String startDate, String endDate) {
-//		// TODO Auto-generated method stub
-//		MockInStockRep rep = new MockInStockRep();
-//		ArrayList<InStockRepVO> reps = new ArrayList<InStockRepVO>();
-//		for(int i = 0;i < 10;++i) {
-//			reps.addAll(rep.getByDate(startDate));
-//		}
-//		return reps.size();
-		return 0;
+		// TODO Auto-generated method stub
+		MockInStockRep rep = new MockInStockRep();
+		ArrayList<InStockRepVO> reps = new ArrayList<InStockRepVO>();
+		for(int i = 0;i < 10;++i) {
+			reps.addAll(rep.getByDate(startDate));
+		}
+		return reps.size();
 	}
 
 	

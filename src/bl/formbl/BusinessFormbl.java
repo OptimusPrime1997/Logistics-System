@@ -18,10 +18,10 @@ public class BusinessFormbl {
 		PayRepblImpl payRep=new PayRepblImpl();
 		CashRepblImpl cashRep=new CashRepblImpl();
 		//all reps about money
-		ArrayList<PayRepVO> moneyIn;
-		ArrayList<CashRepVO> moneyOut;
-		moneyIn=payRep.forPay();
-		moneyOut=cashRep.get();
+		ArrayList<PayRepVO> moneyOut;
+		ArrayList<CashRepVO> moneyIn;
+		moneyOut=payRep.forPay();
+		moneyIn=cashRep.get();
 		//TODO  choose the valid records(inside the time period ~~)
 		for(int i=0;i<moneyIn.size();i++){
 //			if(moneyIn.get(i).time<startTime||moneyIn.get(i).time>endTime){
@@ -29,7 +29,7 @@ public class BusinessFormbl {
 //			    i--;
 //			}
 		}
-		BusinessFormVO vo =new BusinessFormVO(startTime, endTime, moneyIn,moneyOut);
+		BusinessFormVO vo =new BusinessFormVO(startTime, endTime, moneyOut, moneyIn);
 		return vo;
 		
 		
