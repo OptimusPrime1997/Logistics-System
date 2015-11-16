@@ -346,12 +346,12 @@ public class CashRep extends javax.swing.JPanel {
 
     private void courierButtonMouseClicked(java.awt.event.MouseEvent evt) {
     	courierName = control.getCourierName(courierNumText.getText());
-    	numText.setText(courierName);
-//        arrGoods = control.getGoods(courierNumText.getText());
-//        for(int i = 0;i<arrGoods.size();++i){
-//        	moneysum += arrGoods.get(i).moneyTotal;
-//        }
-//        jTable.
+//    	numText.setText(courierName);
+        arrGoods = control.getGoods(courierNumText.getText());
+        for(int i = 0;i<arrGoods.size();++i){
+        	moneysum += arrGoods.get(i).moneyTotal;
+        }
+        jTable.
     }
 
 

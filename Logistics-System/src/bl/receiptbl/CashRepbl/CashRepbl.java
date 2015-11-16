@@ -22,9 +22,9 @@ public class CashRepbl extends Receiptbl{
 		return null;
 	}
 	
+	//使用mock
 	public ArrayList<GoodsVO> getGoods(String courierNum){
-		ArrayList<GoodsVO> goods = goodsbl.getGoodsByCourier(courierNum);
-		return goods;
+		return (new MockGoodsArr()).getGoods(courierNum);
 	}
 	
 	//使用mock
