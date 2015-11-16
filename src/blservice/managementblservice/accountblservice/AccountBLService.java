@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
+import VO.LogVO;
 import VO.ManagementVO.AccountVO;
 
 
@@ -17,7 +18,7 @@ public interface  AccountBLService {
 		public ResultMessage  updateMsg(AccountVO vo)throws RemoteException;
 		public AccountVO findByName(String name)throws RemoteException;
 		public AccountVO findByInstitutionName(String institutionName)throws RemoteException;
-		
+		public ResultMessage addLog(LogVO logvo)throws RemoteException;
 	
 
 }

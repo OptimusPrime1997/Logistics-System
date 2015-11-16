@@ -19,7 +19,7 @@ public class MockLog extends Logbl{
 	
 	public ResultMessage add(){
 		System.out.println(this.content);
-		System.out.println("approve successfully!");
+		System.out.println("Add Log successfully!");
 		return ResultMessage.SUCCESS;
 	}
 	

@@ -4,11 +4,15 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
+import VO.LogVO;
 import VO.ManagementVO.AccountVO;
 import blservice.managementblservice.accountblservice.AccountBLService;
 
 public class AccountBL implements AccountBLService{
-
+	public ResultMessage createLog(String content){	
+		MockLog log = new MockLog(content);
+		return log.add();		
+	}
 	@Override
 	public ResultMessage insert(AccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -58,6 +62,10 @@ public class AccountBL implements AccountBLService{
 		return null;
 	}
 
-	
-
-}
+	@Override
+	public ResultMessage addLog(LogVO logvo) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+		return null;
+	}
+	}

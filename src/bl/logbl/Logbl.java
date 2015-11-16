@@ -8,6 +8,7 @@ import VO.LogVO;
 import dataservice.logdataservice.LogDataService;
 
 public class Logbl {
+
 	LogDataService logData=DataFactory.getLogdata();
 	public void add(LogVO vo) {
 		try {
