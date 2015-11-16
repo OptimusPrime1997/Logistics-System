@@ -8,4 +8,5 @@ public ConstLineItem(ConstVO constVO) {
 	// TODO Auto-generated constructor stub
 	this.constVO=constVO;
 }
+
 }

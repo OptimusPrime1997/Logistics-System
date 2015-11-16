@@ -6,7 +6,7 @@ public class BankAccountPO implements Serializable{
 	public final static long serialVersionUID=1L;
 	private String bankAccountNum;
 	private String bankAccountName;
-	private int balance;
+	private double balance;
 	public BankAccountPO(String bankAccountNum,String bankAccountName,int balance) {
 		// TODO Auto-generated constructor stub
 		this.bankAccountNum=bankAccountNum;
@@ -30,7 +30,7 @@ public class BankAccountPO implements Serializable{
 		this.bankAccountName = bankAccountName;
 	}
 
-	public int getBalance() {
+	public double getBalance() {
 		return balance;
 	}
 

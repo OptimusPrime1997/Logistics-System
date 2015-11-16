@@ -3,7 +3,7 @@
  * @author JaneLDQ
  * @date 2014/11/13
  */
-package bl.managementbl.accountbl;
+package bl.managementbl.constbl;
 
 import util.enumData.ResultMessage;
 import bl.logbl.Logbl;

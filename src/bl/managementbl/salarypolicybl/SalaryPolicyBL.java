@@ -3,41 +3,12 @@ package bl.managementbl.salarypolicybl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.ResultMessage;
 import VO.ManagementVO.SalaryPolicyVO;
+import bl.managementbl.accountbl.MockLog;
 import blservice.managementblservice.salarypolicyblservice.SalaryPolicyBLService;
 
-public class SalaryPolicyBL implements SalaryPolicyBLService {
-
-	@Override
-	public util.enumData.ResultMessage insert(SalaryPolicyVO VO)
-			throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public util.enumData.ResultMessage update(SalaryPolicyVO VO)
-			throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public util.enumData.ResultMessage delete(SalaryPolicyVO VO)
-			throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<SalaryPolicyVO> show() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public SalaryPolicyVO findBySalaryVOlicyName(String salaryPolicyName)
-			throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}}
+public class SalaryPolicyBL{public ResultMessage createLog(String content){	
+	MockLog log = new MockLog(content);
+	return log.add();		
+}}
