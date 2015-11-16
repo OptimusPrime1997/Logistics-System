@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class InstitutionPO implements Serializable{
 	public final static long serialVersionUID=1L;
+	private String instituionNum;
 	private String institutionName;
 	private String address;
 	private String contactInfo;
@@ -11,13 +12,24 @@ public class InstitutionPO implements Serializable{
 
 	
 
-	public InstitutionPO(String institutionName, String address,
-			String contactInfo, String manning) {
+	
+
+	public InstitutionPO(String instituionNum, String institutionName,
+			String address, String contactInfo, String manning) {
 		super();
+		this.instituionNum = instituionNum;
 		this.institutionName = institutionName;
 		this.address = address;
 		this.contactInfo = contactInfo;
 		this.manning = manning;
+	}
+
+	public String getInstituionNum() {
+		return instituionNum;
+	}
+
+	public void setInstituionNum(String instituionNum) {
+		this.instituionNum = instituionNum;
 	}
 
 	public String getInstitutionName() {
