@@ -1,7 +1,7 @@
 package VO;
 
 public class CashRepVO extends ReceiptVO {
-	int money;
-	String getCourierNum;
+	public int money;
+	public String getCourierNum;
 //	ArrayList<listNum> goods;
 }
