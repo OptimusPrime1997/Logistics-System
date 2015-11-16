@@ -23,7 +23,7 @@ public interface GoodsBLService {
 	 * @param vo
 	 * @return
 	 */
-	public Boolean init(GoodsVO vo);
+	public GoodsVO init(GoodsVO vo);
 	/**
 	 * delete a list 
 	 * @param vo

@@ -13,7 +13,7 @@ public class GoodsController implements GoodsBLService{
 	}
 
 	@Override
-	public Boolean init(GoodsVO vo) {
+	public GoodsVO init(GoodsVO vo) {
 		return goodsbl.init(vo);
 	}
 

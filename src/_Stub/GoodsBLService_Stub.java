@@ -56,7 +56,7 @@ public  class GoodsBLService_Stub implements GoodsBLService{
 
 	
 	@Override
-	public Boolean init(GoodsVO vo) {
+	public GoodsVO init(GoodsVO vo) {
 		this.listNum=vo.listNum;
 		this.startTime=vo.startTime;
 		this.senderName=vo.senderName;
@@ -75,7 +75,7 @@ public  class GoodsBLService_Stub implements GoodsBLService{
 		this.moneyOfPackage=vo.moneyOfPackage;
 		// TODO Auto-generated method stub
 		System.out.println("Initial list success!~");
-		return true;
+		return vo;
 	}
 
 	

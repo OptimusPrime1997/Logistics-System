@@ -24,12 +24,12 @@ public class Goodsbl {
 	}
 
 	
-	public Boolean init(GoodsVO vo) {
-		ConstBL ConstBL = new ConstBL();
+	public GoodsVO init(GoodsVO vo) {
+		MockConstBL ConstBL = new MockConstBL();
 		//TODO the parameter of the findByConstName function is to be modified
 		try {
 			//TODO 计算运费
-			int basicprice=ConstBL.findByConstName("").priceConst;
+			int basicprice=ConstBL.findByConstName("").distanceConst;
 			int distance=ConstBL.findByConstName("").distanceConst;
 			vo.moneyFare=basicprice*distance;//TODO公式先随便写一下
 			vo.moneyTotal=vo.moneyFare+vo.moneyOfPackage;
@@ -37,7 +37,7 @@ public class Goodsbl {
 			
 		} catch (RemoteException e) {
 		}
-		return true;
+		return vo;
 	}
 
 	
