@@ -3,7 +3,6 @@ package bl.receiptbl;
 import java.util.ArrayList;
 
 import VO.PayRepVO;
-import VO.ReceiptVO;
 import blservice.receiptblservice.PayRepblService;
 
 public class PayRepblImpl extends ReceiptblImpl implements PayRepblService{
@@ -14,7 +13,7 @@ public class PayRepblImpl extends ReceiptblImpl implements PayRepblService{
 	}
 
 	@Override
-	public ArrayList<ReceiptVO> forPay() {
+	public ArrayList<PayRepVO> forPay() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -120,4 +120,11 @@ public  class GoodsBLService_Stub implements GoodsBLService{
 		System.out.println("Examined!~");
 	}
 
+
+	@Override
+	public ArrayList<GoodsVO> getGoodsByGetCourier(String CourierNum) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

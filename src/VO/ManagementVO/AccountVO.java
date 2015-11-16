@@ -2,13 +2,13 @@ package VO.ManagementVO;
 import util.enumData.*;
 
 public class AccountVO {
-	private String accountNum;
-	private String accountName;
-	private String password;
-	private Sex sex;
-	private Authority authority;
-	private String phoneNum;
-	private String institution;
+	public String accountNum;
+	public String accountName;
+	public String password;
+	public Sex sex;
+	public Authority authority;
+	public String phoneNum;
+	public String institution;
 	
 	
 

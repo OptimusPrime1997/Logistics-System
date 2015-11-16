@@ -2,6 +2,7 @@ package blservice.logblservice;
 
 import java.util.ArrayList;
 
+import bl.logbl.LogType;
 import VO.LogVO;
 
 public interface LogBLService {
@@ -17,6 +18,6 @@ public interface LogBLService {
 	 * @param type
 	 * @return
 	 */
-	public ArrayList<LogVO> show(String startTime,String endTime,String type);
+	public ArrayList<LogVO> show(String startTime,String endTime,LogType type);
 
 }

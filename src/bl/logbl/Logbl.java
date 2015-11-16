@@ -1,22 +1,30 @@
 package bl.logbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.DataFactory;
 import VO.LogVO;
-import blservice.logblservice.LogBLService;
+import dataservice.logdataservice.LogDataService;
 
-public class Logbl implements LogBLService{
-
-	@Override
+public class Logbl {
+	LogDataService logData=DataFactory.getLogdata();
 	public void add(LogVO vo) {
-		// TODO Auto-generated method stub
+		try {
+			logData.add(vo.toPO(vo));
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
-	@Override
-	public ArrayList<LogVO> show(String startTime, String endTime, String type) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<LogVO> show(String startTime, String endTime, LogType type) {
+		ArrayList<LogVO> logs=null;
+		try {
+			logs=logData.show(type);
+		} catch (RemoteException e) {
+		}
+		return logs;
 	}
 
 }

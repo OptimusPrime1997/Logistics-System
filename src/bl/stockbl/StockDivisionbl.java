@@ -22,7 +22,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 		
 	}
 
-	
+	 
 	@Override
 	public ArrayList<StockDivisionVO> getBlock(String destination) {
 		// TODO Auto-generated method stub

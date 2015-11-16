@@ -1,12 +1,11 @@
 package VO;
 
-import java.io.Serializable;
-
+import PO.GoodsPO;
 import bl.goodsbl.GoodsArrivalState;
 import bl.goodsbl.GoodsExpressType;
 import bl.goodsbl.GoodsLogisticState;
 
-public class GoodsVO  {
+public class GoodsVO {
 	public String listNum;
 	public Boolean ifExaminePassed;
 	public String getCourierAccount;
@@ -33,7 +32,7 @@ public class GoodsVO  {
 	public GoodsArrivalState arrivalState;
 	public GoodsLogisticState logisticState;
 	public String realReceiverName;
-	public String realReceiverPhone;	
+	public String realReceiverPhone;
 
 	public GoodsVO(String listNum, Boolean ifExaminePassed,
 			String getCourierAccount, String deliverCourierAccount,
@@ -42,10 +41,10 @@ public class GoodsVO  {
 			String senderPhone, String receiverName, String receiverAddress,
 			String receiverCompany, String receiverPhone, int numOfGoods,
 			double weight, double volume, String nameOfInside,
-			GoodsExpressType expressType, double moneyOfPackage, double moneyTotal,
-			double moneyFare, GoodsArrivalState arrivalState,
-			GoodsLogisticState logisticState, String realReceiverName,
-			String realReceiverPhone) {
+			GoodsExpressType expressType, double moneyOfPackage,
+			double moneyTotal, double moneyFare,
+			GoodsArrivalState arrivalState, GoodsLogisticState logisticState,
+			String realReceiverName, String realReceiverPhone) {
 		this.listNum = listNum;
 		this.ifExaminePassed = ifExaminePassed;
 		this.getCourierAccount = getCourierAccount;
@@ -73,5 +72,16 @@ public class GoodsVO  {
 		this.logisticState = logisticState;
 		this.realReceiverName = realReceiverName;
 		this.realReceiverPhone = realReceiverPhone;
+	}
+
+	public GoodsPO toPO(GoodsVO vo) {
+		GoodsPO po = new GoodsPO(listNum, ifExaminePassed, getCourierAccount,
+				deliverCourierAccount, startTime, overtime, destinationCity,
+				senderName, senderAddress, senderCompany, senderPhone,
+				receiverName, receiverAddress, receiverCompany, receiverPhone,
+				numOfGoods, weight, volume, nameOfInside, expressType,
+				moneyOfPackage, moneyTotal, moneyFare, arrivalState,
+				logisticState, realReceiverName, realReceiverPhone);
+		return po;
 	}
 }
