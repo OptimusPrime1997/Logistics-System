@@ -1,5 +1,6 @@
 package bl.formbl;
 
+import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,8 +30,11 @@ public class ProfitFormbl {
 	}
 
 	public Boolean save(ProfitFormVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			profitFormData.add(vo.toPO(vo));
+		} catch (RemoteException e) {
+		}
+		return true;
 	}
 
 }
