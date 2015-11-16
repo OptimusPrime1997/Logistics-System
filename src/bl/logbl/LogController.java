@@ -11,9 +11,8 @@ public class LogController implements LogBLService{
 	public void add(LogVO vo) {
 		logbl.add(vo);
 	}
-
 	@Override
-	public ArrayList<LogVO> show(String startTime, String endTime, String type) {
+	public ArrayList<LogVO> show(String startTime, String endTime, LogType type) {
 		return logbl.show(startTime, endTime, type);
 	}
 
