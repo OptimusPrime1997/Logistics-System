@@ -4,11 +4,9 @@
 package bl.stockbl;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import VO.InStockRepVO;
+import VO.OutStockRepVO;
 import VO.StockVO;
-import blservice.stockblservice.StockBLService;
 
 /**
  * @author G
@@ -30,13 +28,32 @@ public class Stock {
 	
 	public int checkOutStock(String startDate, String endDate) {
 		// TODO Auto-generated method stub
-		return 0;
+		MockOutStockRep rep = new MockOutStockRep();
+		ArrayList<OutStockRepVO> reps = new ArrayList<OutStockRepVO>();
+		for(int i = 0;i < 10;++i) {
+			reps.addAll(rep.getbyDate(startDate));
+		}
+		return reps.size();
 	}
 
 	
 	public int checkStockQuantity(String startDate, String endDate) {
 		// TODO Auto-generated method stub
-		return 0;
+		MockInStockRep inrep = new MockInStockRep();
+		ArrayList<InStockRepVO> inreps = new ArrayList<InStockRepVO>();
+		for(int i = 0;i < 10;++i) {
+			inreps.addAll(inrep.getByDate(startDate));
+		}
+		MockOutStockRep outrep = new MockOutStockRep();
+		ArrayList<OutStockRepVO> outreps = new ArrayList<OutStockRepVO>();
+		for(int i = 0;i < 10;++i) {
+			outreps.addAll(outrep.getbyDate(startDate));
+		}
+		MockStockNum stocknum = new MockStockNum();
+		stocknum.initial(100);
+		int initialStockNum = stocknum.getInitialStockNum();
+		
+		return initialStockNum+inreps.size()-outreps.size();
 	}
 
 	

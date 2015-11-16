@@ -7,7 +7,7 @@ import blservice.receiptblservice.OutStockRepblService;
 import state.ShipForm;
 import state.*;
 
-public class OutStackRepblImpl extends ReceiptblImpl implements OutStockRepblService{
+public class OutStockRepblImpl extends ReceiptblImpl implements OutStockRepblService{
 
 	@Override
 	public String submit(String num, String date, place place, ShipForm form, String carNum, String shipNum,

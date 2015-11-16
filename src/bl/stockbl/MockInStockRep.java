@@ -5,14 +5,15 @@ package bl.stockbl;
 
 import java.util.ArrayList;
 
+import bl.receiptbl.InStockRepblImpl;
 import VO.InStockRepVO;
-import ui.receiptui.InStockRep;
+
 
 /**
  * @author G
  *
  */
-public class MockInStockRep  extends InStockRep {
+public class MockInStockRep  extends InStockRepblImpl {
 	
 	
 	public ArrayList<InStockRepVO> getByDate (String date) {
