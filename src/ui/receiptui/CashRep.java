@@ -46,6 +46,7 @@ public class CashRep extends javax.swing.JPanel {
     private CashRepblService control;
     private ArrayList<GoodsVO> arrGoods;
     private String courierName;
+    int moneysum = 0;
     // End of variables declaration//GEN-END:variables
 	
     public CashRep() {
@@ -344,8 +345,12 @@ public class CashRep extends javax.swing.JPanel {
     }
 
     private void courierButtonMouseClicked(java.awt.event.MouseEvent evt) {
-        arrGoods = control.getGoods(courierNumText.getText());
-        courierName = control.getCourierName(courierNumText.getText());
+    	courierName = control.getCourierName(courierNumText.getText());
+    	numText.setText(courierName);
+//        arrGoods = control.getGoods(courierNumText.getText());
+//        for(int i = 0;i<arrGoods.size();++i){
+//        	moneysum += arrGoods.get(i).moneyTotal;
+//        }
 //        jTable.
     }
 

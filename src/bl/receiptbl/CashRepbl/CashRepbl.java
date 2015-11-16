@@ -2,12 +2,16 @@ package bl.receiptbl.CashRepbl;
 
 import java.util.ArrayList;
 import PO.CashRepPO;
+import RMI.ReceiptClient;
 import bl.goodsbl.Goodsbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import VO.CashRepVO;
 import VO.GoodsVO;
 
 public class CashRepbl extends Receiptbl{
+	ReceiptClient client = new ReceiptClient();
+	Goodsbl goodsbl = new Goodsbl();
+	
 	//得到所有收款单，为其他类提供的
 	public ArrayList<CashRepVO> get() {
 		return null;
@@ -20,12 +24,12 @@ public class CashRepbl extends Receiptbl{
 	}
 	
 	public ArrayList<GoodsVO> getGoods(String courierNum){
-		ArrayList<GoodsVO> goods = (new Goodsbl()).getGoodsByCourier(courierNum);
+		ArrayList<GoodsVO> goods = goodsbl.getGoodsByCourier(courierNum);
 		return goods;
 	}
 	
 	public String getCourierName(String courierNum){
-		return "刘琴";
+		return client.go();
 	}
-
+	
 }

@@ -1,5 +1,4 @@
-/bl/
-/dataservice/
-/util/
+/RMI/
 /ui/
-/VO/
+/bl/
+/blservice/

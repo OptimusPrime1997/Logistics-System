@@ -10,4 +10,5 @@ public interface CashRepblService extends ReceiptblService{
 	public ArrayList<GoodsVO> getGoods(String text);
 
 	public String getCourierName(String text);
+
 }
