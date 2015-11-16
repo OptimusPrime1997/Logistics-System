@@ -4,15 +4,28 @@ import java.io.Serializable;
 
 public class InstitutionPO implements Serializable{
 	public final static long serialVersionUID=1L;
+	private String institutionName;
 	private String address;
 	private String contactInfo;
 	private String manning;
 
-	public InstitutionPO(String address, String contactInfo, String manning) {
-		// TODO Auto-generated constructor stub
+	
+
+	public InstitutionPO(String institutionName, String address,
+			String contactInfo, String manning) {
+		super();
+		this.institutionName = institutionName;
 		this.address = address;
 		this.contactInfo = contactInfo;
 		this.manning = manning;
+	}
+
+	public String getInstitutionName() {
+		return institutionName;
+	}
+
+	public void setInstitutionName(String institutionName) {
+		this.institutionName = institutionName;
 	}
 
 	public String getAddress() {

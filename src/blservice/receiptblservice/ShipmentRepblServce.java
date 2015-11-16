@@ -7,6 +7,8 @@ import VO.ShipmentRepVO;
 public interface ShipmentRepblServce {
 	public ShipmentRepVO getShipmentRep(String num);
 	
-	public String submit(String num, String date, state.place place, String plateNum, String driverNum,
+	public String submit(String num, String date, util.enumData.place place, String plateNum, String driverNum,
 			boolean arriveAlready, ArrayList<String> goods);
+
+	public ArrayList<ShipmentRepVO> forpay();
 }

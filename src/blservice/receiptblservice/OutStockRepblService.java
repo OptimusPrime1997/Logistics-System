@@ -3,10 +3,10 @@ package blservice.receiptblservice;
 import java.util.ArrayList;
 
 import VO.OutStockRepVO;
-import state.ShipForm;
+import util.enumData.ShipForm;
 
 public interface OutStockRepblService extends ReceiptblService{
 
-	public String submit(String num, String date, state.place place, ShipForm form, String carNum, String shipNum,
+	public String submit(String num, String date, util.enumData.place place, ShipForm form, String carNum, String shipNum,
 			ArrayList<String> goods);
 }

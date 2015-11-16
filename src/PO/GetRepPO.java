@@ -1,9 +1,7 @@
 package PO;
 
 import java.util.ArrayList;
-
-import state.goodsState;
-import state.place;
+import util.enumData.*;
 
 public class GetRepPO extends ReceiptPO {
 	private String ShipNum;
@@ -11,7 +9,7 @@ public class GetRepPO extends ReceiptPO {
 	private goodsState state;
 	private ArrayList<String> goods;
 	
-	public GetRepPO(String num, String date, String shipNum, state.place place, goodsState state,
+	public GetRepPO(String num, String date, String shipNum, place place, goodsState state,
 			ArrayList<String> goods) {
 		super(num, date);
 		ShipNum = shipNum;

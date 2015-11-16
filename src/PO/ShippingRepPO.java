@@ -2,7 +2,7 @@ package PO;
 
 import java.util.ArrayList;
 
-import state.place;
+import util.enumData.*;
 
 public class ShippingRepPO extends ReceiptPO {
 	private place place;
@@ -10,7 +10,7 @@ public class ShippingRepPO extends ReceiptPO {
 	private String driverNum;
 	private boolean arriveAlready;
 	private ArrayList<String> goods;
-	public ShippingRepPO(String num, String date, state.place place, String plateNum, String driverNum,
+	public ShippingRepPO(String num, String date, place place, String plateNum, String driverNum,
 			boolean arriveAlready, ArrayList<String> goods) {
 		super(num, date);
 		this.place = place;

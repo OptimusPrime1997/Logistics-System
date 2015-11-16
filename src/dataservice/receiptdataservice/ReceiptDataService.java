@@ -2,7 +2,7 @@ package dataservice.receiptdataservice;
 
 import java.util.ArrayList;
 import PO.ReceiptPO;
-import state.Rep;
+import util.enumData.*;;
 
 public interface ReceiptDataService {
 	

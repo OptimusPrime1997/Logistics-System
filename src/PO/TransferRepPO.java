@@ -2,8 +2,7 @@ package PO;
 
 import java.util.ArrayList;
 
-import state.ShipForm;
-import state.place;
+import util.enumData.*;
 
 public class TransferRepPO extends ReceiptPO {
 	private ShipForm form;
@@ -12,7 +11,7 @@ public class TransferRepPO extends ReceiptPO {
 	private int container;
 	private boolean arriveAlready;
 	private ArrayList<String> goods;
-	public TransferRepPO(String num, String date, ShipForm form, String carNum, state.place place, int container,
+	public TransferRepPO(String num, String date, ShipForm form, String carNum, place place, int container,
 			boolean arriveAlready, ArrayList<String> goods) {
 		super(num, date);
 		this.form = form;

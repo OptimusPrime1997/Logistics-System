@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import PO.ShipmentRepPO;
 import dataservice.receiptdataservice.ShipmentRepDataService;
-import state.place;
+import util.enumData.*;
 
 public class ShipmentRepDataImpl extends ReceiptDataImpl implements ShipmentRepDataService{
 

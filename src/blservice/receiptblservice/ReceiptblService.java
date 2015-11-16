@@ -1,7 +1,7 @@
 package blservice.receiptblservice;
 
 import VO.*;
-import state.Rep;
+import util.enumData.Rep;
 
 public interface ReceiptblService {
 	public String delete (Rep rep, int n);
@@ -11,5 +11,7 @@ public interface ReceiptblService {
 	public ReceiptVO show (Rep rep);
 	
 	public ReceiptVO find (Rep rep, String num);
+
+	void addLog(String operationName, String operatorID, String time);
 
 }

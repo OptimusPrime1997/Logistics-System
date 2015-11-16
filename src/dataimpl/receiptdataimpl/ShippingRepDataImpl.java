@@ -1,7 +1,7 @@
 package dataimpl.receiptdataimpl;
 
 import dataservice.receiptdataservice.ShippingRepDataService;
-import state.place;
+import util.enumData.*;
 
 import java.util.ArrayList;
 

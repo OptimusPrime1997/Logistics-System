@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import PO.ReceiptPO;
 import dataservice.receiptdataservice.ReceiptDataService;
-import state.Rep;
+import util.enumData.*;
 
 public class ReceiptDataImpl implements ReceiptDataService{
 	

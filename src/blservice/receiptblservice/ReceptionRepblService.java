@@ -2,8 +2,10 @@ package blservice.receiptblservice;
 
 import java.util.ArrayList;
 
-import state.Rep;
-import state.goodsState;
+import VO.ShipmentRepVO;
+import VO.TransferRepVO;
+import util.enumData.Rep;
+import util.enumData.goodsState;
 
 public interface ReceptionRepblService extends ReceiptblService{
 	/**
@@ -14,6 +16,10 @@ public interface ReceptionRepblService extends ReceiptblService{
 	 */
 	public String updateShip (Rep rep, String num);
 	
-	public String submit(String num, String date, state.place place, String shipNum, goodsState state,
+	public String submit(String num, String date, util.enumData.place place, String shipNum, goodsState state,
 			ArrayList<String> goods);
+
+	ShipmentRepVO getShipmentRep(String num);
+
+	TransferRepVO getTransferRep(String num);
 }

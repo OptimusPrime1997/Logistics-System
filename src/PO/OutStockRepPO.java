@@ -2,8 +2,7 @@ package PO;
 
 import java.util.ArrayList;
 
-import state.ShipForm;
-import state.place;
+import util.enumData.*;
 
 public class OutStockRepPO extends ReceiptPO{
 	private place place;
@@ -11,7 +10,7 @@ public class OutStockRepPO extends ReceiptPO{
 	private String carNum;
 	private String shipNum;
 	private ArrayList<String> goods;
-	public OutStockRepPO(String num, String date, state.place place, ShipForm form, String carNum, String shipNum,
+	public OutStockRepPO(String num, String date, place place, ShipForm form, String carNum, String shipNum,
 			ArrayList<String> goods) {
 		super(num, date);
 		this.place = place;
