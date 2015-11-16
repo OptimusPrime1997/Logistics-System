@@ -10,14 +10,13 @@ import dataservice.goodsdataservice.GoodsDataService;
 
 public class Goodsbl {
 	GoodsDataService goodsData=DataFactory.getGoodsdata();
-	ConstBL ConstBL = new ConstBL();
 	
 	public GoodsVO check(String listNum) {
 		GoodsVO vo=null;
 		try {
 			vo=goodsData.findbygoods(listNum);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return vo;
@@ -26,6 +25,7 @@ public class Goodsbl {
 
 	
 	public Boolean init(GoodsVO vo) {
+		ConstBL ConstBL = new ConstBL();
 		//TODO the parameter of the findByConstName function is to be modified
 		try {
 			//TODO 计算运费
@@ -45,7 +45,7 @@ public class Goodsbl {
 		try {
 			goodsData.delete(vo.toPO(vo));
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return null;
@@ -57,7 +57,7 @@ public class Goodsbl {
 		try {
 			vos=goodsData.findbyCourier(courierNum);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return  vos;
@@ -67,7 +67,7 @@ public class Goodsbl {
 		try {
 			vos=goodsData.findbyGetCourier(courierNum);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return  vos;
@@ -79,10 +79,7 @@ public class Goodsbl {
 			vo.arrivalState=state;
 			goodsData.modify(vo.toPO(vo));
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		
 		return true;
 	}
 
@@ -93,8 +90,7 @@ public class Goodsbl {
 			vo.logisticState=state;
 			goodsData.modify(vo.toPO(vo));
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		}
 		
 		return true;
@@ -107,8 +103,7 @@ public class Goodsbl {
 			vo.ifExaminePassed=ifPassed;
 			goodsData.modify(vo.toPO(vo));
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		}
 	}
 

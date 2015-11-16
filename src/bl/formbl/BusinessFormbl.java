@@ -13,12 +13,13 @@ import dataservice.formdataservice.BusinessFormDataService;
 
 public class BusinessFormbl {
 	BusinessFormDataService busiFormdata = DataFactory.getBusinessFormdata();
-	PayRepblImpl payRep=new PayRepblImpl();
-	CashRepblImpl cashRep=new CashRepblImpl();
-	//all reps about money
-	ArrayList<PayRepVO> moneyIn;
-	ArrayList<CashRepVO> moneyOut;
+	
 	public BusinessFormVO show(String startTime, String endTime) {
+		PayRepblImpl payRep=new PayRepblImpl();
+		CashRepblImpl cashRep=new CashRepblImpl();
+		//all reps about money
+		ArrayList<PayRepVO> moneyIn;
+		ArrayList<CashRepVO> moneyOut;
 		moneyIn=payRep.forPay();
 		moneyOut=cashRep.get();
 		//TODO  choose the valid records(inside the time period ~~)

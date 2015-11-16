@@ -18,9 +18,13 @@ public class Logbl {
 		
 	}
 
-	public ArrayList<LogVO> show(String startTime, String endTime, String type) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<LogVO> show(String startTime, String endTime, LogType type) {
+		ArrayList<LogVO> logs=null;
+		try {
+			logs=logData.show(type);
+		} catch (RemoteException e) {
+		}
+		return logs;
 	}
 
 }
