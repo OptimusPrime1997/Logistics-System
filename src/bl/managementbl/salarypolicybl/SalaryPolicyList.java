@@ -13,4 +13,8 @@ public class SalaryPolicyList {
 		salaryPolicyList.add(salaryPolicyLineItem);
 		return null;
 	}
+	public int getSize(){
+		return  salaryPolicyList.size();
+	}
+
 	}

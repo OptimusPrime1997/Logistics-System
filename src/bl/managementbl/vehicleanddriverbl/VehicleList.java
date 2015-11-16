@@ -12,4 +12,8 @@ public String addVehicleLineItem(VehicleLineItem vehicleLineItem){
 	vehicleList.add(vehicleLineItem);
 	return null;
 }
+public int getSize(){
+	return  vehicleList.size();
+}
+
 }

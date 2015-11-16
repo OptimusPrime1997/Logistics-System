@@ -5,23 +5,24 @@ import java.util.ArrayList;
 
 import VO.ManagementVO.DriverVO;
 import blservice.managementblservice.vehicleanddriverblservice.DriverBLService;
+import blservice.managementblservice.vehicleanddriverblservice.ResultMessage;
 
 public class DriverBL implements DriverBLService {
 
 	@Override
-	public String insertDriver(DriverVO VO) throws RemoteException {
+	public ResultMessage insertDriver(DriverVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String updateDriver(DriverVO VO) throws RemoteException {
+	public ResultMessage updateDriver(DriverVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String deleteDriver(DriverVO VO) throws RemoteException {
+	public ResultMessage deleteDriver(DriverVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

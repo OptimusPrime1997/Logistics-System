@@ -13,5 +13,8 @@ public String addBankAccountLineItem(BankAccountLineItem bankAccountLineItem){
 	bankAccountList.add(bankAccountLineItem);
 	return null;
 }
+public int getSize(){
+	return  bankAccountList.size();
+}
 
 }

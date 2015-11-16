@@ -14,4 +14,7 @@ public class InstitutionList {
 		institutionList.add(institutionLineItem);
 		return null;
 	}
+	public int getSize(){
+		return  institutionList.size();
 	}
+		}

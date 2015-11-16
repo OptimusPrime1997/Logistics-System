@@ -3,14 +3,15 @@ package dataservice.managementdataservice.bankaccountdataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.ResultMessage;
 import PO.BankAccountPO;
 
 public interface BankAccountDataService {
-	public void insert(BankAccountPO po) throws RemoteException;
+	public ResultMessage insert(BankAccountPO po) throws RemoteException;
 
-	public void update(BankAccountPO po) throws RemoteException;
+	public ResultMessage update(BankAccountPO po) throws RemoteException;
 
-	public void delete(BankAccountPO po) throws RemoteException;
+	public ResultMessage delete(BankAccountPO po) throws RemoteException;
 
 	public ArrayList<BankAccountPO> show() throws RemoteException;
 

@@ -7,25 +7,26 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import blservice.managementblservice.institutionblservice.InstitutionBLService;
+import blservice.managementblservice.institutionblservice.ResultMessage;
 import VO.ManagementVO.InstitutionVO;
 
 
 public class InstitutionBL implements InstitutionBLService {
 
 	@Override
-	public String insert(InstitutionVO VO) throws RemoteException {
+	public ResultMessage insert(InstitutionVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String update(InstitutionVO VO) throws RemoteException {
+	public ResultMessage update(InstitutionVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String delete(InstitutionVO VO) throws RemoteException {
+	public ResultMessage delete(InstitutionVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -40,6 +41,4 @@ public class InstitutionBL implements InstitutionBLService {
 	public InstitutionVO findByName(String name) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	
-}
+	}}

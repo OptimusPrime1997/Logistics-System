@@ -5,29 +5,30 @@ import java.util.ArrayList;
 
 import VO.ManagementVO.AccountVO;
 import blservice.managementblservice.accountblservice.AccountBLService;
+import blservice.managementblservice.accountblservice.ResultMessage;
 
 public class AccountBL implements AccountBLService{
 
 	@Override
-	public String insert(AccountVO VO) throws RemoteException {
+	public ResultMessage insert(AccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String update(AccountVO VO) throws RemoteException {
+	public ResultMessage update(AccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String delete(AccountVO VO) throws RemoteException {
+	public ResultMessage delete(AccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String login(String name, String key) {
+	public ResultMessage login(String name, String key) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -39,7 +40,7 @@ public class AccountBL implements AccountBLService{
 	}
 
 	@Override
-	public String updateMsg(AccountVO vo) throws RemoteException {
+	public ResultMessage updateMsg(AccountVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -56,5 +57,7 @@ public class AccountBL implements AccountBLService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 }

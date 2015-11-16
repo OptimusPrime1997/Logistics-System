@@ -11,6 +11,9 @@ public ArrayList<DriverLineItem> getDriverList(){
 public String addDriverLineItem(DriverLineItem driverLineItem){
 	driverList.add(driverLineItem);
 	return null;
+}public int getSize(){
+	return  driverList.size();
 }
+
 
 }

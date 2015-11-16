@@ -4,24 +4,25 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import VO.ManagementVO.VehicleVO;
+
 import blservice.managementblservice.vehicleanddriverblservice.VehicleBLService;
 
 public class VehicleBL implements VehicleBLService {
 
 	@Override
-	public String insertVehicle(VehicleVO VO) throws RemoteException {
+	public ResultMessage insertVehicle(VehicleVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String updateVehicle(VehicleVO VO) throws RemoteException {
+	public ResultMessage updateVehicle(VehicleVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String deleteVehicle(VehicleVO VO) throws RemoteException {
+	public ResultMessage deleteVehicle(VehicleVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

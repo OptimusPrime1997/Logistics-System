@@ -7,4 +7,12 @@ public class AccountList {
 	public ArrayList<AccountLineItem> getAccountList(){
 		return accountList;
 	}
+	public String addAccountLineItem(AccountLineItem accountLineItem){
+		accountList.add(accountLineItem);
+		return null;
+	}
+	public int getSize(){
+		return  accountList.size();
+	}
+
 }

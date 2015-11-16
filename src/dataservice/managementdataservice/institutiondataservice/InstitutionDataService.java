@@ -4,14 +4,15 @@ package dataservice.managementdataservice.institutiondataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.ResultMessage;
 import PO.InstitutionPO;
 
 public interface InstitutionDataService {
-	public void insert(InstitutionPO po) throws RemoteException;
+	public ResultMessage insert(InstitutionPO po) throws RemoteException;
 
-	public void update(InstitutionPO po) throws RemoteException;
+	public ResultMessage update(InstitutionPO po) throws RemoteException;
 
-	public void delete(InstitutionPO po) throws RemoteException;
+	public ResultMessage delete(InstitutionPO po) throws RemoteException;
 
 	public ArrayList<InstitutionPO> show() throws RemoteException;
 

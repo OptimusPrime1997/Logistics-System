@@ -5,23 +5,24 @@ import java.util.ArrayList;
 
 import VO.ManagementVO.BankAccountVO;
 import blservice.managementblservice.bankaccountblservice.BankAccountBLService;
+import blservice.managementblservice.bankaccountblservice.ResultMessage;
 
 public class BankAccountBL implements BankAccountBLService {
 
 	@Override
-	public String insert(BankAccountVO VO) throws RemoteException {
+	public ResultMessage insert(BankAccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String update(BankAccountVO VO) throws RemoteException {
+	public ResultMessage update(BankAccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String delete(BankAccountVO VO) throws RemoteException {
+	public ResultMessage delete(BankAccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -33,17 +34,14 @@ public class BankAccountBL implements BankAccountBLService {
 	}
 
 	@Override
-	public BankAccountVO findByName(String name) throws RemoteException {
+	public BankAccountVO findByName(ResultMessage name) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public BankAccountVO findByBankAccountNum(String bankAccountNum)
+	public BankAccountVO findByBankAccountNum(ResultMessage bankAccountNum)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	
-}
+	}}
