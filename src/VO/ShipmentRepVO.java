@@ -1,6 +1,6 @@
 package VO;
 
-import state.place;
+import util.enumData.*;
 
 public class ShipmentRepVO extends ReceiptVO {
 	place place;

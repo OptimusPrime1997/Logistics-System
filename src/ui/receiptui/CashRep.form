@@ -43,8 +43,12 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="courierNumText" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
                                   <Component id="numText" min="-2" pref="183" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="courierNumText" min="-2" pref="90" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="courierButton" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -97,6 +101,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="courierNumText" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="courierNumLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="courierButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="325" max="-2" attributes="0"/>
@@ -115,7 +120,7 @@
                   <Component id="cancel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ok" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -252,6 +257,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="accountText">
+    </Component>
+    <Component class="javax.swing.JButton" name="courierButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x786e;&#x5b9a;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="courierButtonMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

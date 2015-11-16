@@ -1,7 +1,6 @@
 package VO;
 
-import state.goodsState;
-import state.place;
+import util.enumData.*;
 
 public class GetRepVO extends ReceiptVO {
 	String ShipNum;

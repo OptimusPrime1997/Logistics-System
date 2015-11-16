@@ -1,7 +1,6 @@
 package VO;
 
-import state.ShipForm;
-import state.place;
+import util.enumData.*;
 
 public class OutStockRepVO extends ReceiptVO {
 	place place;

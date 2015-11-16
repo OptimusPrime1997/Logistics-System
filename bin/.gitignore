@@ -1,12 +1,5 @@
-/ui/
 /bl/
-/main/
-/dataimpl/
-/VO/
 /dataservice/
-/logdata/
 /util/
-/_Stub/
-/blservice/
-/PO/
-/driver/
+/ui/
+/VO/

@@ -6,9 +6,15 @@
 
 package ui.receiptui;
 
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 
-import bl.receiptbl.controller.receiptcontroller.CashRepController;
+import VO.CashRepVO;
+import VO.GoodsVO;
+import bl.receiptbl.CashRepbl.CashRepController;
+import blservice.receiptblservice.CashRepblService;
+import util.enumData.goodsState;
 
 /**
  *
@@ -19,6 +25,29 @@ public class CashRep extends javax.swing.JPanel {
     /**
      * Creates new form CashRep
      */
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel accountLabel;
+    private javax.swing.JTextField accountText;
+    private javax.swing.JButton cancel;
+    private javax.swing.JButton courierButton;
+    private javax.swing.JLabel courierNumLabel;
+    private javax.swing.JTextField courierNumText;
+    private javax.swing.JLabel dateLabel;
+    private javax.swing.JTextField dateText;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable;
+    private javax.swing.JLabel numLabel;
+    private javax.swing.JTextField numText;
+    private javax.swing.JLabel officeLabel;
+    private javax.swing.JTextField officeText;
+    private javax.swing.JButton ok;
+    private javax.swing.JLabel sumLabel;
+    private javax.swing.JTextField sumText;
+    private CashRepblService control;
+    private ArrayList<GoodsVO> arrGoods;
+    private String courierName;
+    // End of variables declaration//GEN-END:variables
+	
     public CashRep() {
         initComponents();
     }
@@ -32,6 +61,7 @@ public class CashRep extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+    	
         numLabel = new javax.swing.JLabel();
         numText = new javax.swing.JTextField();
         courierNumLabel = new javax.swing.JLabel();
@@ -45,13 +75,19 @@ public class CashRep extends javax.swing.JPanel {
         officeText = new javax.swing.JTextField();
         officeLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         accountLabel = new javax.swing.JLabel();
         accountText = new javax.swing.JTextField();
+        courierButton = new javax.swing.JButton();
+        control = new CashRepController();
+        arrGoods = new ArrayList<GoodsVO>();
+        
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         numLabel.setText("编号:");
+
+        numText.setEditable(false);
 
         courierNumLabel.setText("快递员编号:");
 
@@ -60,7 +96,7 @@ public class CashRep extends javax.swing.JPanel {
         sumLabel.setText("总和:");
 
         sumText.setText("0");
-        
+
         cancel.setText("取消");
         cancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -80,8 +116,8 @@ public class CashRep extends javax.swing.JPanel {
 
         officeLabel.setText("营业厅:");
 
-        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -196,16 +232,23 @@ public class CashRep extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(true);
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jTable1.setOpaque(false);
-        jTable1.setRowHeight(20);
-        jTable1.setSelectionForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setShowGrid(true);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTable.setColumnSelectionAllowed(true);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jTable.setOpaque(false);
+        jTable.setRowHeight(20);
+        jTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        jTable.setShowGrid(true);
+        jScrollPane1.setViewportView(jTable);
+        jTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         accountLabel.setText("收款账号:");
+
+        courierButton.setText("确定");
+        courierButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                courierButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -231,8 +274,11 @@ public class CashRep extends javax.swing.JPanel {
                                 .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(courierNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(courierNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(courierButton)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,7 +315,8 @@ public class CashRep extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(courierNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(courierNumLabel))
+                    .addComponent(courierNumLabel)
+                    .addComponent(courierButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -284,39 +331,25 @@ public class CashRep extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancel)
                     .addComponent(ok))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
+    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {
         // 跳转到上一个界面
-    }//GEN-LAST:event_cancelMouseClicked
+    }
 
-    private void okMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okMouseClicked
-    	control.submit(numText.getText(), dateText.getText(), Double.parseDouble(sumText.getText()), courierNumText.getText());
-    }//GEN-LAST:event_okMouseClicked
+    private void okMouseClicked(java.awt.event.MouseEvent evt) {
+    	control.submit(numText.getText(), dateText.getText(), Double.parseDouble(sumText.getText()), courierNumText.getText(), arrGoods);
+    }
+
+    private void courierButtonMouseClicked(java.awt.event.MouseEvent evt) {
+        arrGoods = control.getGoods(courierNumText.getText());
+        courierName = control.getCourierName(courierNumText.getText());
+//        jTable.
+    }
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel accountLabel;
-    private javax.swing.JTextField accountText;
-    private javax.swing.JButton cancel;
-    private javax.swing.JLabel courierNumLabel;
-    private javax.swing.JTextField courierNumText;
-    private javax.swing.JLabel dateLabel;
-    private javax.swing.JTextField dateText;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel numLabel;
-    private javax.swing.JTextField numText;
-    private javax.swing.JLabel officeLabel;
-    private javax.swing.JTextField officeText;
-    private javax.swing.JButton ok;
-    private javax.swing.JLabel sumLabel;
-    private javax.swing.JTextField sumText;
-    private CashRepController control = new CashRepController();
-    // End of variables declaration//GEN-END:variables
-    
     public static void main (String[] args){
     	JFrame myFrame = new JFrame();
     	myFrame.setSize(500, 600);

@@ -9,8 +9,8 @@ import util.DataFactory;
 import VO.CashRepVO;
 import VO.PayRepVO;
 import VO.ProfitFormVO;
-import bl.receiptbl.CashRepblImpl;
-import bl.receiptbl.PayRepblImpl;
+import bl.receiptbl.CashRepbl.CashRepbl;
+import bl.receiptbl.PayRepbl.PayRepbl;
 import dataservice.formdataservice.ProfitFormDataService;
 
 public class ProfitFormbl {
@@ -18,8 +18,8 @@ public class ProfitFormbl {
 	
 	public ProfitFormVO show() {
 		double totalIn=0,totalOut=0,totalProfit=0;
-		PayRepblImpl payRep=new PayRepblImpl();
-		CashRepblImpl cashRep=new CashRepblImpl();
+		PayRepbl payRep=new PayRepbl();
+		CashRepbl cashRep=new CashRepbl();
 		ArrayList<PayRepVO> moneyOut=payRep.get();
 		ArrayList<CashRepVO> moneyIn=cashRep.get();
 		for(int i=0;i<moneyIn.size();i++){
