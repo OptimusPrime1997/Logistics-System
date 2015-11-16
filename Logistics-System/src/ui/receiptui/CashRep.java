@@ -7,8 +7,10 @@
 package ui.receiptui;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 import VO.CashRepVO;
 import VO.GoodsVO;
@@ -118,7 +120,7 @@ public class CashRep extends javax.swing.JPanel {
         officeLabel.setText("营业厅:");
 
         jTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setModel(new javax.swing.table.DefaultTableModel(  //这里要读data
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -138,94 +140,17 @@ public class CashRep extends javax.swing.JPanel {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                
             },
             new String [] {
                 "快递员名字", "快递员编号", "金额", "备注"
             }
         ) {
-            Class[] types = new Class [] {
+            /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+			Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
             };
 
@@ -345,13 +270,19 @@ public class CashRep extends javax.swing.JPanel {
     }
 
     private void courierButtonMouseClicked(java.awt.event.MouseEvent evt) {
-    	courierName = control.getCourierName(courierNumText.getText());
-//    	numText.setText(courierName);
-        arrGoods = control.getGoods(courierNumText.getText());
-        for(int i = 0;i<arrGoods.size();++i){
-        	moneysum += arrGoods.get(i).moneyTotal;
-        }
-        jTable.
+//    	courierName = control.getCourierName(courierNumText.getText());
+///   	numText.setText(courierName);
+//        arrGoods = control.getGoods(courierNumText.getText());
+//        for(int i = 0;i<arrGoods.size();++i){
+//        	moneysum += arrGoods.get(i).moneyTotal;
+//        }
+//        Vector<Object> datas = new Vector<Object>();
+//        Vector<String> columnNames = new Vector<String>();
+    	courierName = "梁家诚";
+    	moneysum = 5;
+        DefaultTableModel model = new DefaultTableModel(); 
+        model.setDataVector(new Object[][]{{courierName,courierNumText.getText(),moneysum,null}},new Object[4]);
+        jTable.setModel(model);
     }
 
 
