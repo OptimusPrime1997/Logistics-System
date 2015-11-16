@@ -2,19 +2,24 @@ package bl.managementbl.salarypolicybl;
 
 import java.util.ArrayList;
 
+import VO.ManagementVO.SalaryPolicyVO;
+
 
 
 public class SalaryPolicyList {
-	ArrayList<SalaryPolicyLineItem> salaryPolicyList;
-	public ArrayList<SalaryPolicyLineItem> getSalaryPolicyList(){
+	ArrayList<SalaryPolicyVO> salaryPolicyList;
+	public ArrayList<SalaryPolicyVO> getSalaryPolicyList(){
 		return salaryPolicyList;
 	}
-	public String addSalaryPolicyLineItem(SalaryPolicyLineItem salaryPolicyLineItem){
-		salaryPolicyList.add(salaryPolicyLineItem);
+	public String addSalaryPolicyVO(SalaryPolicyVO SalaryPolicyVO){
+		salaryPolicyList.add(SalaryPolicyVO);
 		return null;
 	}
 	public int getSize(){
 		return  salaryPolicyList.size();
+	}
+	public ArrayList<SalaryPolicyVO> getList(){
+		return salaryPolicyList;
 	}
 
 	}

@@ -6,16 +6,14 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import VO.ManagementVO.BankAccountVO;
 import VO.ManagementVO.InstitutionVO;
-import bl.managementbl.bankaccountbl.BankAccountList;
 
 public class InstitutionListTest {
 
 	@Test
 	public void test() {
-		InstitutionVO bAccount1=new InstitutionVO("025000010","�Ͼ�����ת����","�Ͼ���",025-89685204",""), null, null, null)
-		InstitutionVO bAccount2=new InstitutionVO("6212264302120165315", "xx���f������˾",9100000);
+		InstitutionVO bAccount1=new InstitutionVO("025000010","南京市中转中心","南京市栖霞区仙林大道163号","025-89685204","张三/王五");
+		InstitutionVO bAccount2=new InstitutionVO("285000018","广州市中转中心","广州市栖霞区仙林大道163号","095-89685204","张三/王五");
 		InstitutionList institutionList=new InstitutionList();
 		 institutionList.addInstitutionVO(bAccount1);
 		 institutionList.addInstitutionVO(bAccount2);
@@ -24,7 +22,10 @@ public class InstitutionListTest {
 		ArrayList<InstitutionVO> accountArray= institutionList.getList();
 		for(int i=0;i< institutionList.getSize();i++){
 			InstitutionVO institution=accountArray.get(i);
-			System.out.println(institution.InstitutionNum+" "+institution.InstitutionName+" "+institution.balance);
+			System.out.println(institution.institutionNum+" "+institution.institutionName+
+					" "+institution.address+" "+institution.contactInfo+" "+institution.manning);
 	}
-}
+
+
+	}
 	}
