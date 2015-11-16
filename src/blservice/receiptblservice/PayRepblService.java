@@ -2,10 +2,10 @@ package blservice.receiptblservice;
 
 import java.util.ArrayList;
 
-import VO.ReceiptVO;
+import VO.PayRepVO;
 
 public interface PayRepblService extends ReceiptblService{
-	public ArrayList<ReceiptVO> forPay();
+	public ArrayList<PayRepVO> forPay();
 	
 //	public String getBankAccount (ArrayList<BankAccountVO>);
 	

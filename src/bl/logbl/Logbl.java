@@ -1,14 +1,20 @@
 package bl.logbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.DataFactory;
 import VO.LogVO;
-import blservice.logblservice.LogBLService;
+import dataservice.logdataservice.LogDataService;
 
 public class Logbl {
-
+	LogDataService logData=DataFactory.getLogdata();
 	public void add(LogVO vo) {
-		// TODO Auto-generated method stub
+		try {
+			logData.add(vo.toPO(vo));
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
