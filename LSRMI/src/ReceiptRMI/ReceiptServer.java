@@ -17,16 +17,7 @@ public class ReceiptServer extends UnicastRemoteObject implements ReceiptRemote{
 
 	@Override
 	public String getCourier() throws RemoteException {
-		String s = null;
-		try {
-			Scanner in = new Scanner(new File("src/save.txt"));
-			s = in.nextLine();
-			in.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return s;
+		return "xixi";
 	}
 
 	public static void main(String[] args){

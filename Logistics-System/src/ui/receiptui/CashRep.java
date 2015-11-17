@@ -281,7 +281,7 @@ public class CashRep extends javax.swing.JPanel {
     	arr.add(null);
     	dataVector.add(arr);
     	model.setDataVector(dataVector, columnIdentifiers);
-        
+    	
     	moneysum = 0;
     }
     
