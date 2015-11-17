@@ -44,10 +44,13 @@ public class CashRep extends javax.swing.JPanel {
     private javax.swing.JTextField sumText;
     private CashRepblService control;
     private ArrayList<GoodsVO> arrGoods;
+    private DefaultTableModel model;
+    private Vector<String> columnIdentifiers;
+    private Vector<Object> dataVector;
+    
+    private int moneysum = 0;
     private String courierName;
-    int moneysum = 0;
-    DefaultTableModel model; 
-    Object[][] tableShow;
+    private String courierNum;
     // End of variables declaration//GEN-END:variables
 	
     public CashRep() {
@@ -83,7 +86,8 @@ public class CashRep extends javax.swing.JPanel {
         control = new CashRepController();
         arrGoods = new ArrayList<GoodsVO>();
         model = new DefaultTableModel();
-        tableShow = new Object[50][4];
+        columnIdentifiers = new Vector<String>();
+        dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -119,38 +123,39 @@ public class CashRep extends javax.swing.JPanel {
         officeLabel.setText("营业厅:");
 
         jTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-//        Vector<String> columnIdentifiers = new Vector<String>();
-//        columnIdentifiers.add("快递员名字");
-//        columnIdentifiers.add("快递员编号");
-//        columnIdentifiers.add("金额");
-//        columnIdentifiers.add("备注");
-//		Vector<Object> dataVector = new Vector<Object>();
-//		ArrayList<Object> arr = new ArrayList<Object>();
-//		arr.add("a");
-//		arr.add("a");
-//		arr.add("a");
-//		arr.add("a");
-//		dataVector.add(arr);
-//		model.setDataVector(dataVector, columnIdentifiers);
         
-//        model.setDataVector(tableShow, new Object[]{"快递员名字", "快递员编号", "金额", "备注"});
-//        jTable.setModel(model);
+        columnIdentifiers.add("快递员名字");
+        columnIdentifiers.add("快递员编号");
+        columnIdentifiers.add("金额");
+        columnIdentifiers.add("备注");
+		
+        Vector<Object> arr = new Vector<Object>();
+		arr.add("罗总");
+		arr.add("02500106001");
+		arr.add("100");
+		arr.add(null);
+		
+		dataVector.add(arr);
+		
+		model.setDataVector(dataVector, columnIdentifiers);
+        jTable.setModel(model);
         
-        jTable.setModel(new javax.swing.table.DefaultTableModel(  //这里要读data
-            tableShow, new Object [] {"快递员名字", "快递员编号", "金额", "备注"}) 
-        {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-			Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+//        jTable.setModel(new javax.swing.table.DefaultTableModel(  //这里要读data
+//            tableShow, new Object [] {"快递员名字", "快递员编号", "金额", "备注"}) 
+//        {
+//			/**
+//			 * 
+//			 */
+//			private static final long serialVersionUID = 1L;
+//			Class[] types = new Class [] {
+//                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
+//            };
+//
+//            public Class getColumnClass(int columnIndex) {
+//                return types [columnIndex];
+//            }
+//        });
+        
         jTable.setColumnSelectionAllowed(true);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
         jTable.setOpaque(false);
@@ -263,19 +268,23 @@ public class CashRep extends javax.swing.JPanel {
     }
 
     private void courierButtonMouseClicked(java.awt.event.MouseEvent evt) {
-//    	courierName = control.getCourierName(courierNumText.getText());
-//		numText.setText(courierName);
-//      arrGoods = control.getGoods(courierNumText.getText());
-//      for(int i = 0;i<arrGoods.size();++i){
-//        	moneysum += arrGoods.get(i).moneyTotal;
-//      }
-//    	courierName = "梁家诚";
-//    	moneysum = 5;
-//      model.setDataVector(new Object[][]{{courierName,courierNumText.getText(),moneysum,null}},new Object[]{"快递员名字", "快递员编号", "金额", "备注"});
-//      jTable.setModel(model);
+    	courierNum = courierNumText.getText();
+    	courierName = control.getCourierName(courierNum);
+    	arrGoods = control.getGoods(courierNum);
+    	for(int i = 0;i<arrGoods.size();++i){
+        	moneysum += arrGoods.get(i).moneyTotal;
+    	}
+    	Vector<Object> arr = new Vector<Object>();
+    	arr.add(courierName);
+    	arr.add(courierNum);
+    	arr.add(moneysum);
+    	arr.add(null);
+    	dataVector.add(arr);
+    	model.setDataVector(dataVector, columnIdentifiers);
+        
+    	moneysum = 0;
     }
-
-
+    
     public static void main (String[] args){
     	JFrame myFrame = new JFrame();
     	myFrame.setSize(500, 600);

@@ -21,7 +21,8 @@ public class CashRepController extends ReceiptController implements CashRepblSer
 	
 	@Override
 	public String getCourierName(String courierNum){
-		return CashRep.getCourierName(courierNum);
+//		return CashRep.getCourierName(courierNum);
+		return "梁家诚";
 	}
 	
 	public CashRepbl getCashRepbl(){
