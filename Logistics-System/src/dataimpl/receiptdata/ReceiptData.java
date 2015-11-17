@@ -1,4 +1,4 @@
-package dataimpl.receiptdataimpl;
+package dataimpl.receiptdata;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,7 @@ import PO.ReceiptPO;
 import dataservice.receiptdataservice.ReceiptDataService;
 import util.enumData.*;
 
-public class ReceiptDataImpl implements ReceiptDataService{
+public class ReceiptData implements ReceiptDataService{
 	
 	ArrayList<ReceiptPO> repArray = new ArrayList<ReceiptPO>();
 	

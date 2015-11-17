@@ -1,4 +1,4 @@
-package dataimpl.receiptdataimpl;
+package dataimpl.receiptdata;
 
 import dataservice.receiptdataservice.ShippingRepDataService;
 import util.enumData.*;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import PO.*;
 
-public class ShippingRepDataImpl extends ReceiptDataImpl implements ShippingRepDataService{
+public class ShippingRepData extends ReceiptData implements ShippingRepDataService{
 
 	@Override
 	public String submit(String num, String date, place place, String plateNum, String driverNum,

@@ -1,10 +1,10 @@
-package dataimpl.receiptdataimpl;
+package dataimpl.receiptdata;
 
 import dataservice.receiptdataservice.InStockRepDataService;
 import java.util.ArrayList;
 import PO.InStockRepPO;
 
-public class InStockRepDataImpl extends ReceiptDataImpl implements InStockRepDataService{
+public class InStockRepData extends ReceiptData implements InStockRepDataService{
 
 	@Override
 	public String update(String num, String listNum, int area, int loc) {
