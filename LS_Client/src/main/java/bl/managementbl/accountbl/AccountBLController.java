@@ -66,4 +66,10 @@ public class AccountBLController implements AccountBLService {
 	public ResultMessage addLog(LogVO logvo) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public ResultMessage login(String accountNum, String key) {
+		// TODO Auto-generated method stub
+		return null;
 	}}
