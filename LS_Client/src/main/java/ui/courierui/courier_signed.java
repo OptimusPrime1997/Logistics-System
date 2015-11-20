@@ -67,7 +67,7 @@ public class courier_signed extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(51, 0, 204));
         jLabel9.setText("快件签收");
 
-        year_ComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2015", "2016", "2014", "2013，" }));
+        year_ComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2015", "2016", "2014", "2013" }));
         year_ComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 year_ComboBoxActionPerformed(evt);
@@ -124,7 +124,7 @@ public class courier_signed extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(27, 27, 27)
-                        .addComponent(year_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(year_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)

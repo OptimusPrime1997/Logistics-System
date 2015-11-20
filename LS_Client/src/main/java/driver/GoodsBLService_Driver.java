@@ -4,17 +4,17 @@ import VO.GoodsVO;
 import bl.goodsbl.GoodsArrivalState;
 import bl.goodsbl.GoodsExpressType;
 import bl.goodsbl.GoodsLogisticState;
-import blservice.goodsblservice.GoodsBLService;
+import blservice.goodsblservice.GoodsInitBLService;
 
 public class GoodsBLService_Driver {
 
-	GoodsBLService goodsblservice;
+	GoodsInitBLService goodsblservice;
 	GoodsVO vo;
-	public GoodsBLService_Driver(GoodsBLService goodsbl) {
+	public GoodsBLService_Driver(GoodsInitBLService goodsbl) {
 		this.goodsblservice = goodsbl;
 	}
 
-	public void drive(GoodsBLService goodsBLService){
+	public void drive(GoodsInitBLService goodsBLService){
 		vo = new GoodsVO("0250000123" ,false,  "02400100006014", 
 				"02500100006014", "20151026", "", "025", 
 				"李华", "上海市浦东新区张杨路500号", "上海华润时代广场", "87511426",

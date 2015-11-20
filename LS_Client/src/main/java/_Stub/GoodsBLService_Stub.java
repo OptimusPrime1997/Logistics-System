@@ -9,13 +9,13 @@ import VO.GoodsVO;
 import bl.goodsbl.GoodsArrivalState;
 import bl.goodsbl.GoodsExpressType;
 import bl.goodsbl.GoodsLogisticState;
-import blservice.goodsblservice.GoodsBLService;
+import blservice.goodsblservice.GoodsInitBLService;
 
 /**
  * @author G
  *
  */
-public  class GoodsBLService_Stub implements GoodsBLService{
+public  class GoodsBLService_Stub implements GoodsInitBLService{
 	
 	public String listNum;
 	public Boolean ifExaminePassed;

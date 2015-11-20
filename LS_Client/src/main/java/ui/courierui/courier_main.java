@@ -14,7 +14,6 @@ import ui.mainFrame.MainFrame;
  * @author Administrator
  */
 public class courier_main extends javax.swing.JPanel {
-
     /**
      * Creates new form courier__main
      */
