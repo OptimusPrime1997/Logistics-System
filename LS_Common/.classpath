@@ -19,5 +19,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/LS_Server"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/LS_Client"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
