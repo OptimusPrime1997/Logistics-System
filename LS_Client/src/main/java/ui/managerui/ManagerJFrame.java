@@ -14,6 +14,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
     /**
      * Creates new form ManagerJFrame
      */
+
     public ManagerJFrame() {
         initComponents();
     }
