@@ -9,6 +9,7 @@ public class LoginBLController implements LoginBLService{
 	@Override
 	public ResultMessage login(String accountNum, String key) {
 		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

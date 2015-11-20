@@ -29,11 +29,7 @@ public class AccountBLController implements AccountBLService {
 		return null;
 	}
 
-	@Override
-	public ResultMessage login(String name, String key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public ArrayList<AccountVO> show() throws RemoteException {

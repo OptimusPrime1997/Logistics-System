@@ -8,15 +8,16 @@ import VO.LogVO;
 import VO.ManagementVO.AccountVO;
 import blservice.managementblservice.accountblservice.AccountBLService;
 
-public class AccountBL implements AccountBLService{
+public class AccountBL {
 	public ResultMessage createLog(String content){	
 		MockLog log = new MockLog(content);
 		return log.add();		
 	}
 
 	
-	public ResultMessage insert(AccountVO VO) throws RemoteException {
+	public ResultMessage add(AccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
@@ -29,16 +30,12 @@ public class AccountBL implements AccountBLService{
 	
 	public ResultMessage delete(AccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	
-	public ResultMessage login(String name, String key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	
 	public ArrayList<AccountVO> show() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
