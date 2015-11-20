@@ -4,18 +4,18 @@
  * and open the template in the editor.
  */
 
-package ui.receiptui;
+package ui.courierui;
 
 /**
  *
  * @author apple
  */
-public class Order extends javax.swing.JPanel {
+public class courier_goods extends javax.swing.JPanel {
 
     /**
      * Creates new form Order
      */
-    public Order() {
+    public courier_goods() {
         initComponents();
     }
 
