@@ -1,7 +1,7 @@
 package bl.controllerfactorybl;
 
-import bl.formbl.BusinessFormController;
-import bl.formbl.ProfitFormController;
+import bl.formbl.controller.BusinessFormController;
+import bl.formbl.controller.ProfitFormController;
 import bl.goodsbl.controller.GoodsCheckController;
 import bl.goodsbl.controller.GoodsDeleteController;
 import bl.goodsbl.controller.GoodsExamineController;
