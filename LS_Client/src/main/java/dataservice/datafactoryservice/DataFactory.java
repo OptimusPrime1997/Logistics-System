@@ -1,5 +1,6 @@
 package dataservice.datafactoryservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import dataservice.logindataservice.LoginDataService;
@@ -11,7 +12,7 @@ import dataservice.managementdataservice.salarypolicydataservice.SalaryPolicyDat
 import dataservice.managementdataservice.vehicleanddriverdataservice.DriverDataService;
 import dataservice.managementdataservice.vehicleanddriverdataservice.VehicleDataService;
 
-public interface DataFactory {
+public interface DataFactory extends Remote{
 public AccountDataService getAccountData()throws RemoteException;
 public BankAccountDataService getBankAccountData()throws RemoteException;
 public ConstDataService getConstData()throws RemoteException;
