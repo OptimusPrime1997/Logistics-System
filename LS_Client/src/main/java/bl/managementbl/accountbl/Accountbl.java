@@ -3,9 +3,6 @@ package bl.managementbl.accountbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import PO.AccountPO;
-import dataservice.datafactoryservice.DataFactoryImpl;
-import dataservice.managementdataservice.accountdataservice.AccountDataService;
 import util.CurrentTime;
 import util.InputCheck;
 import util.enumData.ResultMessage;
@@ -16,11 +13,11 @@ import bl.loginbl.Loginbl;
 
 public class Accountbl {
 	public ResultMessage createLog(String operationName,String info){	
-		try{
-			AccountDataService accountDataService=DataFactoryImpl.getInstance().getAccountData();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+//		try{
+//			AccountDataService accountDataService=DataFactoryImpl.getInstance().getAccountData();
+//		}catch(Exception e){
+//			e.printStackTrace();
+//		}
 		Logbl logbl=new Logbl();
 		LogVO logVO=new LogVO(operationName, Loginbl.getCurrentOptorId(), CurrentTime.getTime());
 		logbl.add(logVO);
