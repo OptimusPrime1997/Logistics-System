@@ -2,34 +2,48 @@ package bl.managementbl.accountbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.zip.CheckedInputStream;
 
-import javax.print.attribute.standard.RequestingUserName;
-
+import PO.AccountPO;
+import dataservice.datafactoryservice.DataFactoryImpl;
+import dataservice.managementdataservice.accountdataservice.AccountDataService;
+import util.CurrentTime;
 import util.InputCheck;
 import util.enumData.ResultMessage;
 import VO.LogVO;
 import VO.ManagementVO.AccountVO;
-import blservice.managementblservice.accountblservice.AccountBLService;
+import bl.logbl.Logbl;
+import bl.loginbl.Loginbl;
 
 public class Accountbl {
-	public ResultMessage createLog(String content){	
-		MockLog log = new MockLog(content);
-		return log.add();		
+	public ResultMessage createLog(String operationName,String info){	
+		try{
+			AccountDataService accountDataService=DataFactoryImpl.getInstance().getAccountData();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		Logbl logbl=new Logbl();
+		LogVO logVO=new LogVO(operationName, Loginbl.getCurrentOptorId(), CurrentTime.getTime());
+		logbl.add(logVO);
+		return ResultMessage.SUCCESS;
 	}
-	
 
 	
-	public ResultMessage add(AccountVO VO) throws RemoteException {
-		// TODO Auto-generated method stub
+	public ResultMessage add(AccountVO vo) throws RemoteException {
 		
-		return null;
+		return ResultMessage.SUCCESS;
 	}
-
 	
-	public ResultMessage update(AccountVO VO) throws RemoteException {
+	public ResultMessage update(AccountVO vo) throws RemoteException {
+
 		// TODO Auto-generated method stub
-		return null;
+//		try {
+//		accountDataService.update(new PO.AccountPO(vo.accountNum,vo.accountName,
+//				vo.password,vo.sex,vo.authority,vo.phoneNum,vo.institution));
+//		} catch (RemoteException e) {
+//			// TODO 自动生成的 catch 块
+//			e.printStackTrace();
+//		}
+		return ResultMessage.SUCCESS;
 	}
 
 	

@@ -3,10 +3,12 @@ package bl.loginbl;
 
 import util.enumData.Authority;
 import util.enumData.ResultMessage;
+import bl.logbl.Logbl;
 import bl.managementbl.accountbl.Accountbl;
 
 public class Loginbl {
-
+	private static String currentOptorId;
+	
 	public ResultMessage login(String accountNum, String key) {
 		// TODO Auto-generated method stub
 		Accountbl accountbl = new Accountbl();
@@ -16,6 +18,7 @@ public class Loginbl {
 	public Authority loginChoose(String accountNum) {
 		// TODO Auto-generated method stub
 		int num = Integer.parseInt(accountNum.charAt(4) + "");
+		currentOptorId=accountNum;
 		switch (num) {
 		case 1:return Authority.BUSSINESSOFFICER;
 		case 2:return Authority.WAREHOUSEMAN;
@@ -29,4 +32,7 @@ public class Loginbl {
 		}
 	}
 
+	public static String getCurrentOptorId() {
+		return currentOptorId;
+	}
 }
