@@ -4,7 +4,7 @@ import util.enumData.Authority;
 import util.enumData.ResultMessage;
 import blservice.loginblservice.LoginBLService;
 
-public class LoginBLController implements LoginBLService{
+public class LoginblController implements LoginBLService{
 
 	public ResultMessage login(String accountNum, String key) {
 		// TODO Auto-generated method stub

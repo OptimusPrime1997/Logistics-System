@@ -7,7 +7,7 @@ import util.enumData.ResultMessage;
 import VO.ManagementVO.VehicleVO;
 import blservice.managementblservice.vehicleanddriverblservice.VehicleBLService;
 
-public class VehicleBLController implements VehicleBLService {
+public class VehicleblController implements VehicleBLService {
 	Vehiclebl vehicleBL=new Vehiclebl();
 
 	public ResultMessage insertVehicle(VehicleVO VO) throws RemoteException {

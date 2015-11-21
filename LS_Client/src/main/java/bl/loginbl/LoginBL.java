@@ -3,14 +3,16 @@ package bl.loginbl;
 import util.enumData.Authority;
 import util.enumData.ResultMessage;
 import PO.AccountPO;
+import bl.managementbl.accountbl.Accountbl;
 import blservice.loginblservice.LoginBLService;
 
-public class LoginBL{
+public class Loginbl{
 
 	
 	public ResultMessage login(String accountNum, String key) {
 		// TODO Auto-generated method stub
-		return null;
+		Accountbl accountbl=new Accountbl();
+		return accountbl.login(accountNum, key);
 	}
 
 	
