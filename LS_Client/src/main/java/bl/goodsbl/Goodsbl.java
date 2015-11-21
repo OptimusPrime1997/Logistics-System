@@ -23,7 +23,6 @@ public class Goodsbl {
 		
 	}
 
-	
 	public GoodsVO init(GoodsVO vo) {
 		MockConstBL ConstBL = new MockConstBL();
 		//TODO the parameter of the findByConstName function is to be modified

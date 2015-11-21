@@ -1,6 +1,7 @@
-package bl.formbl;
+package bl.formbl.controller;
 
 import VO.ProfitFormVO;
+import bl.formbl.ProfitFormbl;
 import blservice.formblservice.ProfitFormBLService;
 
 public class ProfitFormController implements ProfitFormBLService{

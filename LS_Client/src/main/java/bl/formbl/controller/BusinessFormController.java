@@ -1,6 +1,7 @@
-package bl.formbl;
+package bl.formbl.controller;
 
 import VO.BusinessFormVO;
+import bl.formbl.BusinessFormbl;
 import blservice.formblservice.BusinessFormBLService;
 
 public class BusinessFormController implements BusinessFormBLService{
