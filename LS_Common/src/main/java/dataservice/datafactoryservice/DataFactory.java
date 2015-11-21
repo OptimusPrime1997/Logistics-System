@@ -1,0 +1,29 @@
+package dataservice.datafactoryservice;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+import dataservice.logindataservice.LoginDataService;
+import dataservice.managementdataservice.accountdataservice.AccountDataService;
+import dataservice.managementdataservice.bankaccountdataservice.BankAccountDataService;
+import dataservice.managementdataservice.constdataservice.ConstDataService;
+import dataservice.managementdataservice.institutiondataservice.InstitutionDataService;
+import dataservice.managementdataservice.salarypolicydataservice.SalaryPolicyDataService;
+import dataservice.managementdataservice.vehicleanddriverdataservice.DriverDataService;
+import dataservice.managementdataservice.vehicleanddriverdataservice.VehicleDataService;
+
+public interface DataFactory extends Remote{
+public AccountDataService getAccountData()throws RemoteException;
+public BankAccountDataService getBankAccountData()throws RemoteException;
+public ConstDataService getConstData()throws RemoteException;
+public InstitutionDataService getInstitutionData()throws RemoteException;
+public SalaryPolicyDataService getSalaryPolicyData()throws RemoteException;
+public VehicleDataService getVehicleData()throws RemoteException;
+public DriverDataService getDriverData()throws RemoteException;
+
+
+
+
+
+
+}
