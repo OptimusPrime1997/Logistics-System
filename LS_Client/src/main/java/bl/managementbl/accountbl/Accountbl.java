@@ -4,6 +4,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.zip.CheckedInputStream;
 
+import javax.print.attribute.standard.RequestingUserName;
+
 import util.InputCheck;
 import util.enumData.ResultMessage;
 import VO.LogVO;
@@ -75,11 +77,16 @@ public class Accountbl {
 	}
 	public ResultMessage login(String accountNum,String key){
 		if(InputCheck.checkInputNum(accountNum, 10)==ResultMessage.WRONG){
-			return ResultMessage.WRONG_ACCOUNTNUM;
+			return ResultMessage.WRONG;
 		}else{
 			AccountVO accountVO=findByNum(accountNum);
-			
+			if(accountVO==null){
+				return ResultMessage.NOT_FOUND;
+			}else if(accountVO.password.equals(key)){
+				return ResultMessage.SUCCESS;
+			}else{
+				return ResultMessage.WRONG_PASSWORD;
+			}
 		}
-		return null;
 	}
 	}

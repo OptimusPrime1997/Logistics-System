@@ -1,0 +1,40 @@
+package blservice.controllerfactoryblservice;
+
+import blservice.formblservice.BusinessFormBLService;
+import blservice.formblservice.ProfitFormBLService;
+import blservice.goodsblservice.GoodsCheckBLService;
+import blservice.goodsblservice.GoodsDeleteBLService;
+import blservice.goodsblservice.GoodsExamineBLService;
+import blservice.goodsblservice.GoodsGetByCouriersBLService;
+import blservice.goodsblservice.GoodsInitBLService;
+import blservice.goodsblservice.GoodsSetStateBLService;
+import blservice.logblservice.LogBLService;
+import blservice.loginblservice.LoginBLService;
+import blservice.managementblservice.accountblservice.AccountBLService;
+import blservice.managementblservice.bankaccountblservice.BankAccountBLService;
+import blservice.managementblservice.constblservice.ConstBLService;
+import blservice.managementblservice.institutionblservice.InstitutionBLService;
+import blservice.managementblservice.salarypolicyblservice.SalaryPolicyBLService;
+import blservice.managementblservice.vehicleanddriverblservice.DriverBLService;
+import blservice.managementblservice.vehicleanddriverblservice.*;
+
+public interface ControllerFactoryBLService {
+	public BusinessFormBLService getBusinessFromController();
+	public ProfitFormBLService getProfitFormController();
+	public GoodsCheckBLService getGoodsCheckController();
+	public GoodsDeleteBLService getGoodsDeleteController();
+	public GoodsExamineBLService getGoodsExamineController();
+	public GoodsGetByCouriersBLService getGoodsGetByCourierController();
+	public GoodsInitBLService getGoodsInitController();
+	public GoodsSetStateBLService getGoodsSetStateController();
+	public LogBLService getLogController() ;
+	public AccountBLService getAccountController();
+	public BankAccountBLService getBankAccountController();
+	public ConstBLService getConstController();
+	public InstitutionBLService getInstitutionController();
+	public SalaryPolicyBLService getSalaryPolicyController();
+	public DriverBLService getDriverController();
+	public VehicleBLService getVehicleController();
+public LoginBLService getLoginController();
+	
+}

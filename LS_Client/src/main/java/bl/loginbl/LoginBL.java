@@ -1,24 +1,32 @@
 package bl.loginbl;
 
+
 import util.enumData.Authority;
 import util.enumData.ResultMessage;
-import PO.AccountPO;
 import bl.managementbl.accountbl.Accountbl;
-import blservice.loginblservice.LoginBLService;
 
-public class Loginbl{
+public class Loginbl {
 
-	
 	public ResultMessage login(String accountNum, String key) {
 		// TODO Auto-generated method stub
-		Accountbl accountbl=new Accountbl();
+		Accountbl accountbl = new Accountbl();
 		return accountbl.login(accountNum, key);
 	}
 
-	
 	public Authority loginChoose(String accountNum) {
 		// TODO Auto-generated method stub
-		return null;
+		int num = Integer.parseInt(accountNum.charAt(4) + "");
+		switch (num) {
+		case 1:return Authority.BUSSINESSOFFICER;
+		case 2:return Authority.WAREHOUSEMAN;
+		case 3:return Authority.ADMINISTRATOR;
+		case 4:return Authority.COURIER;
+		case 5:return Authority.TRANSFERCTROFFICER;
+		case 6:return Authority.FINANCIALSTAFF_C;
+		case 7:return Authority.MANAGER;
+		case 8:return Authority.FINANCIALSTAFF_V;
+		default:return null;
+		}
 	}
 
 }
