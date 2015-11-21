@@ -12,18 +12,15 @@ import util.enumData.place;
 public class TransferController extends ReceiptController implements TransferRepblService{
 	TransferRepbl TransferRep = new TransferRepbl();
 	
-	@Override
 	public ArrayList<ReceptionRepVO> forPay(){
 		return TransferRep.forPay();
 	}
 
-	@Override
 	public TransferRepVO getTransferRep(String num) {
 		// TODO Auto-generated method stub
 		return TransferRep.getTransferRep(num);
 	}
 
-	@Override
 	public String submit(String num, String date, ShipForm form, String carNum, place place, int container,
 			boolean arriveAlready, ArrayList<String> goods) {
 		// TODO Auto-generated method stub

@@ -9,6 +9,8 @@ import util.DataFactory;
 import VO.CashRepVO;
 import VO.PayRepVO;
 import VO.PayRepVO.Salary;
+import bl.receiptbl.CashRepbl.CashRepbl;
+import bl.receiptbl.PayRepbl.PayRepbl;
 import VO.ProfitFormVO;
 import dataservice.formdataservice.ProfitFormDataService;
 
@@ -17,11 +19,10 @@ public class ProfitFormbl {
 	
 	public ProfitFormVO show() {
 		double totalIn=0,totalOut=0,totalProfit=0;
-		MockPayRep payRep=new MockPayRep();
-		MockCashRep cashRep=new MockCashRep();
-		
-		ArrayList<PayRepVO> moneyOut=payRep.get();
-		ArrayList<CashRepVO> moneyIn=cashRep.get();
+		PayRepbl payRep=new PayRepbl();
+		CashRepbl cashRep=new CashRepbl();
+		ArrayList<PayRepVO> moneyOut = payRep.getAllPayRep();
+		ArrayList<CashRepVO> moneyIn = cashRep.getAllCashRep();
 		for(int i=0;i<moneyIn.size();i++){
 			totalIn+=moneyIn.get(i).money;
 		}

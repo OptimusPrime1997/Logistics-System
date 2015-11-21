@@ -18,8 +18,8 @@ public class MockInStockRep  extends InStockRepbl {
 	
 	public ArrayList<InStockRepVO> getByDate (String date) {
 		
-		InStockRepVO vo1 = new InStockRepVO();
-		InStockRepVO vo2 = new InStockRepVO();
+		InStockRepVO vo1 = new InStockRepVO(date, date, 0, 0, null);
+		InStockRepVO vo2 = new InStockRepVO(date, date, 0, 0, null);
 		
 		ArrayList<InStockRepVO> arr = new ArrayList<InStockRepVO>();
 		

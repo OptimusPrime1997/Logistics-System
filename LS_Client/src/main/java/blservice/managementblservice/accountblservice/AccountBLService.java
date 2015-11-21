@@ -10,17 +10,17 @@ import VO.ManagementVO.AccountVO;
 
 public interface  AccountBLService {
 	
-		public ResultMessage insert(AccountVO VO)throws RemoteException;
-		public ResultMessage update(AccountVO VO)throws RemoteException;
-		public ResultMessage delete(AccountVO VO)throws RemoteException;
+		public ResultMessage insert(AccountVO VO);
+		public ResultMessage update(AccountVO VO);
+		public ResultMessage delete(AccountVO VO);
 		public ResultMessage login(String accountNum,String key);
-		public ArrayList<AccountVO> show()throws RemoteException;
-		public ResultMessage  updateMsg(AccountVO vo)throws RemoteException;
-		public AccountVO findByName(String name)throws RemoteException;
-		public AccountVO findByNum(String num)throws RemoteException;
+		public ArrayList<AccountVO> show();
+		public ResultMessage  updateMsg(AccountVO vo);
+		public AccountVO findByName(String name);
+		public AccountVO findByNum(String num);
 
-		public AccountVO findByInstitutionName(String institutionName)throws RemoteException;
-		public ResultMessage addLog(LogVO logvo)throws RemoteException;
+		public AccountVO findByInstitutionName(String institutionName);
+		public ResultMessage addLog(LogVO logvo);
 	
 
 }

@@ -15,7 +15,6 @@ import blservice.stockblservice.StockDivisionBLService;
 public class StockDivisionbl implements StockDivisionBLService{
 
 	
-	@Override
 	public void modifyDivision(int oldBlock, int oldPlace, int newBlock,
 			int newPlace) {
 		// TODO Auto-generated method stub
@@ -23,7 +22,6 @@ public class StockDivisionbl implements StockDivisionBLService{
 	}
 
 	 
-	@Override
 	public ArrayList<StockDivisionVO> getBlock(String destination) {
 		// TODO Auto-generated method stub
 		return null;

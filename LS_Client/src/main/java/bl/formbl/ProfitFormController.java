@@ -5,14 +5,15 @@ import blservice.formblservice.ProfitFormBLService;
 
 public class ProfitFormController implements ProfitFormBLService{
 	private ProfitFormbl profitFormbl = new ProfitFormbl();
-	@Override
+
 	public ProfitFormVO show() {
-		return profitFormbl.show();
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	@Override
 	public Boolean save(ProfitFormVO vo) {
-		return profitFormbl.save(vo);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

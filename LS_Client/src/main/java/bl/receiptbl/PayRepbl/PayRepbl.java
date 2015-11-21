@@ -23,4 +23,8 @@ public class PayRepbl extends Receiptbl{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public ArrayList<PayRepVO> getAllPayRep(){
+		return null;
+	}
 }

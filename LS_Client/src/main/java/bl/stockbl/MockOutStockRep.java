@@ -15,9 +15,9 @@ import bl.receiptbl.OutStockRepbl.OutStackRepbl;
  */
 public class MockOutStockRep extends OutStackRepbl{
 	public ArrayList<OutStockRepVO> getbyDate(String date) {
-		OutStockRepVO vo1 = new OutStockRepVO();
-		OutStockRepVO vo2 = new OutStockRepVO();
-		OutStockRepVO vo3 = new OutStockRepVO();
+		OutStockRepVO vo1 = new OutStockRepVO(date, date, null, null, date, date, null);
+		OutStockRepVO vo2 = new OutStockRepVO(date, date, null, null, date, date, null);
+		OutStockRepVO vo3 = new OutStockRepVO(date, date, null, null, date, date, null);
 		
 		
 		ArrayList<OutStockRepVO> arr = new ArrayList<OutStockRepVO>();

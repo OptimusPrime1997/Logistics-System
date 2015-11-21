@@ -9,17 +9,16 @@ import blservice.receiptblservice.PayRepblService;
 public class PayRepController extends ReceiptController implements PayRepblService{
 	PayRepbl PayRep = new PayRepbl();
 
-	@Override
 	public ArrayList<ReceiptVO> forPay() {
 		// TODO Auto-generated method stub
 		return PayRep.forPay();
 	}
 
-	@Override
 	public String submit(String num, String date, String bankAccountNum, String payPersonNum, String[] payThings,
 			String[] salary, String[] transferPay, String[] rent) {
 		// TODO Auto-generated method stub
 		return PayRep.submit(num, date, bankAccountNum, payPersonNum, payThings, salary, transferPay, rent);
 	}
+
 
 }

@@ -13,7 +13,6 @@ import javax.swing.table.DefaultTableModel;
 import VO.GoodsVO;
 import bl.receiptbl.CashRepbl.CashRepController;
 import blservice.receiptblservice.CashRepblService;
-import util.enumData.goodsState;
 
 /**
  *
@@ -48,7 +47,7 @@ public class CashRep extends javax.swing.JPanel {
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
     
-    private int moneysum = 0;
+    private double moneysum = 0;
     private String courierName;
     private String courierNum;
     // End of variables declaration//GEN-END:variables
@@ -259,21 +258,31 @@ public class CashRep extends javax.swing.JPanel {
         );
     }
 
+    /**
+     * 跳转到上一个界面
+     * @param evt
+     */
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {
-        // 跳转到上一个界面
+      
     }
 
+    /**
+     * 提交收款单
+     * @param evt
+     */
     private void okMouseClicked(java.awt.event.MouseEvent evt) {
     	control.submit(numText.getText(), dateText.getText(), Double.parseDouble(sumText.getText()), courierNumText.getText(), arrGoods);
     }
 
+    /**
+     * 确定快递员,在表格中显示数据
+     * @param evt
+     */
     private void courierButtonMouseClicked(java.awt.event.MouseEvent evt) {
     	courierNum = courierNumText.getText();
     	courierName = control.getCourierName(courierNum);
     	arrGoods = control.getGoods(courierNum);
-    	for(int i = 0;i<arrGoods.size();++i){
-        	moneysum += arrGoods.get(i).moneyTotal;
-    	}
+    	moneysum = control.getMoneySum(arrGoods);
     	Vector<Object> arr = new Vector<Object>();
     	arr.add(courierName);
     	arr.add(courierNum);
@@ -281,8 +290,6 @@ public class CashRep extends javax.swing.JPanel {
     	arr.add(null);
     	dataVector.add(arr);
     	model.setDataVector(dataVector, columnIdentifiers);
-    	
-    	moneysum = 0;
     }
     
     public static void main (String[] args){

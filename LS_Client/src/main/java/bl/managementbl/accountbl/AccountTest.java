@@ -11,7 +11,7 @@ public class AccountTest {
 
 	@Test
 	public void testCreateLog() {
-		AccountBL account = new AccountBL();
+		Accountbl account = new Accountbl();
 //		assertEquals(ResultMessage.SUCCESS, account.createLog("2014/11/13 create an account!"));
 	}
 

@@ -6,46 +6,78 @@ public class PayRepVO extends ReceiptVO {
 	public String BankAccountNum;
 	public String PayPersonNum;
 	public ArrayList<LittleThing> littleThings;
-	public ArrayList<Salary> Salarys; // 收款人名字、编号；金额
+	public ArrayList<Salary> Salarys; 
 	public ArrayList<TransferPay> TransferPays;
 	public ArrayList<Rent> rents;
 
 	public class Salary {
-		public String getterName;// 收款人名字
-		public String getterNum;// 收款人编号
+		public String getterName;
+		public String getterNum;
 		public String date;
 		public double money;
+		
+		public Salary(String getterName, String getterNum, String date, double money) {
+			super();
+			this.getterName = getterName;
+			this.getterNum = getterNum;
+			this.date = date;
+			this.money = money;
+		}
+		
 	}
 
 	public class TransferPay {
-		public String transferRepNum;// 中转单编号
+		public String transferRepNum;
 		public String date;
 		public double money;
+		
+		public TransferPay(String transferRepNum, String date, double money) {
+			super();
+			this.transferRepNum = transferRepNum;
+			this.date = date;
+			this.money = money;
+		}
+		
 	}
 
 	public class Rent {
-		public String getterName;// 收租人姓名
+		public String getterName;
 		public String phoneNum;
 		public double money;
 		public String date;
+		
+		public Rent(String getterName, String phoneNum, double money, String date) {
+			super();
+			this.getterName = getterName;
+			this.phoneNum = phoneNum;
+			this.money = money;
+			this.date = date;
+		}
 	}
 
 	public class LittleThing {
 		public String date;
-		public String reason;// 付款原因
+		public String reason;
 		public double money;
+		
+		public LittleThing(String date, String reason, double money) {
+			super();
+			this.date = date;
+			this.reason = reason;
+			this.money = money;
+		}
 	}
 
-	public PayRepVO(String BankAccountNum, String PayPersonNum,
-			ArrayList<LittleThing> littleThings, ArrayList<Salary> Salarys,
-			ArrayList<TransferPay> TransferPays, ArrayList<Rent> rents) {
-		this.BankAccountNum=BankAccountNum;
-		this.PayPersonNum=PayPersonNum;
-		this.littleThings=littleThings;
-		this.rents=rents;
-		this.Salarys=Salarys;
-		this.TransferPays=TransferPays;
-		
+	public PayRepVO(String num, String date, String bankAccountNum, String payPersonNum,
+			ArrayList<LittleThing> littleThings, ArrayList<Salary> salarys, ArrayList<TransferPay> transferPays,
+			ArrayList<Rent> rents) {
+		super(num, date);
+		BankAccountNum = bankAccountNum;
+		PayPersonNum = payPersonNum;
+		this.littleThings = littleThings;
+		Salarys = salarys;
+		TransferPays = transferPays;
+		this.rents = rents;
 	}
 
 }

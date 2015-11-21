@@ -10,22 +10,21 @@ import util.enumData.place;
 public class ShipmentController extends ReceiptController implements ShipmentRepblServce{
 	ShipmentRepbl ShipmentRep = new ShipmentRepbl();
 
-	@Override
-	public ArrayList<ShipmentRepVO> forpay(){
-		return ShipmentRep.forpay();
-	}
-	
-	@Override
 	public ShipmentRepVO getShipmentRep(String num) {
 		// TODO Auto-generated method stub
 		return ShipmentRep.getShipmentRep(num);
 	}
 
-	@Override
 	public String submit(String num, String date, place place, String plateNum, String driverNum, boolean arriveAlready,
 			ArrayList<String> goods) {
 		// TODO Auto-generated method stub
 		return ShipmentRep.submit(num, date, place, plateNum, driverNum, arriveAlready, goods);
 	}
+
+	public ArrayList<ShipmentRepVO> forpay() {
+		// TODO Auto-generated method stub
+		return ShipmentRep.forpay();
+	}
+
 
 }

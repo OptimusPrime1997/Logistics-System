@@ -6,14 +6,15 @@ import blservice.formblservice.BusinessFormBLService;
 public class BusinessFormController implements BusinessFormBLService{
 
 	private BusinessFormbl businessFormbl = new BusinessFormbl();
-	@Override
+
 	public BusinessFormVO show(String startTime, String endTime) {
-		return businessFormbl.show(startTime, endTime);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	@Override
 	public Boolean save(BusinessFormVO vo) {
-		return businessFormbl.save(vo);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -10,7 +10,6 @@ import util.enumData.place;
 public class OutStockRepController extends ReceiptController implements OutStockRepblService{
 	OutStackRepbl OutStackRepbl = new OutStackRepbl();
 
-	@Override
 	public String submit(String num, String date, place place, ShipForm form, String carNum, String shipNum,
 			ArrayList<String> goods) {
 		// TODO Auto-generated method stub

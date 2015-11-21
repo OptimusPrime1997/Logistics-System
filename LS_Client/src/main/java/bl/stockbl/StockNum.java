@@ -12,7 +12,6 @@ import blservice.stockblservice.StockNumBLService;
 public class StockNum implements StockNumBLService{
 	private int initialStockNum;
 	//初始化当前城市库存数量
-	@Override
 	public void initial(int initialNum) {
 		
 	}

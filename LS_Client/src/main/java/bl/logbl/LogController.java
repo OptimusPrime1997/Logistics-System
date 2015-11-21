@@ -7,13 +7,15 @@ import blservice.logblservice.LogBLService;
 
 public class LogController implements LogBLService{
 	private Logbl logbl = new Logbl();
-	@Override
+
 	public void add(LogVO vo) {
-		logbl.add(vo);
+		// TODO Auto-generated method stub
+		
 	}
-	@Override
+
 	public ArrayList<LogVO> show(String startTime, String endTime, LogType type) {
-		return logbl.show(startTime, endTime, type);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

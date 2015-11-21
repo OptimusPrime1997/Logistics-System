@@ -9,13 +9,11 @@ import blservice.receiptblservice.InStockRepblService;
 public class InStockRepController extends ReceiptController implements InStockRepblService{
 	InStockRepbl InStockRep = new InStockRepbl();
 
-	@Override
 	public InStockRepVO update(String num, String listNum, int area, int loc) {
 		// TODO Auto-generated method stub
 		return InStockRep.update(num, listNum, area, loc);
 	}
 
-	@Override
 	public String submit(String num, String date, int area, int loc, ArrayList<String> goods) {
 		// TODO Auto-generated method stub
 		return InStockRep.submit(num, date, area, loc, goods);
