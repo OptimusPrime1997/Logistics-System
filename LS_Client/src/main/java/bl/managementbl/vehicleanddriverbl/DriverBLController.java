@@ -7,8 +7,8 @@ import util.enumData.ResultMessage;
 import VO.ManagementVO.DriverVO;
 import blservice.managementblservice.vehicleanddriverblservice.DriverBLService;
 
-public class DriverBLController implements DriverBLService {
-	VehicleBL driverBL=new VehicleBL();
+public class DriverblController implements DriverBLService {
+	Vehiclebl driverBL=new Vehiclebl();
 
 	public ResultMessage insertDriver(DriverVO VO) throws RemoteException {
 		// TODO Auto-generated method stub

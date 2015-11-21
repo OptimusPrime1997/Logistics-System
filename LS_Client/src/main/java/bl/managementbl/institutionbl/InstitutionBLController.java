@@ -7,8 +7,8 @@ import util.enumData.ResultMessage;
 import VO.ManagementVO.InstitutionVO;
 import blservice.managementblservice.institutionblservice.InstitutionBLService;
 
-public class InstitutionBLController implements InstitutionBLService {
-	InstitutionBL institutionBL=new InstitutionBL();
+public class InstitutionblController implements InstitutionBLService {
+	Institutionbl institutionBL=new Institutionbl();
 
 	public ResultMessage insert(InstitutionVO VO) throws RemoteException {
 		// TODO Auto-generated method stub

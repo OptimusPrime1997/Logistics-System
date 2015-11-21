@@ -7,8 +7,8 @@ import util.enumData.ResultMessage;
 import VO.ManagementVO.BankAccountVO;
 import blservice.managementblservice.bankaccountblservice.BankAccountBLService;
 
-public class BankAccountBLController implements BankAccountBLService{
-	BankAccountBL  bankAccountBL=new BankAccountBL();
+public class BankAccountblController implements BankAccountBLService{
+	BankAccountbl  bankAccountBL=new BankAccountbl();
 
 	public ResultMessage insert(BankAccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub

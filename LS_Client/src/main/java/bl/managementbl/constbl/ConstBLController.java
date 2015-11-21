@@ -7,8 +7,8 @@ import util.enumData.ResultMessage;
 import VO.ManagementVO.ConstVO;
 import blservice.managementblservice.constblservice.ConstBLService;
 
-public class ConstBLController implements ConstBLService {
-	ConstBL constBL=new ConstBL();
+public class ConstblController implements ConstBLService {
+	Constbl constBL=new Constbl();
 
 	public ResultMessage insert(ConstVO VO) throws RemoteException {
 		// TODO Auto-generated method stub

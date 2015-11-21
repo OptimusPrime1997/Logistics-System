@@ -12,7 +12,7 @@ import blservice.managementblservice.institutionblservice.InstitutionBLService;
 import VO.ManagementVO.InstitutionVO;
 
 
-public class InstitutionBL  {public ResultMessage createLog(String content){	
+public class Institutionbl  {public ResultMessage createLog(String content){	
 	MockLog log = new MockLog(content);
 	return log.add();		
 }}

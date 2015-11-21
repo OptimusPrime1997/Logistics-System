@@ -8,7 +8,7 @@ import VO.ManagementVO.ConstVO;
 import bl.managementbl.accountbl.MockLog;
 import blservice.managementblservice.constblservice.ConstBLService;
 
-public class ConstBL {
+public class Constbl {
 	public ResultMessage createLog(String content){	
 		MockLog log = new MockLog(content);
 		return log.add();		
