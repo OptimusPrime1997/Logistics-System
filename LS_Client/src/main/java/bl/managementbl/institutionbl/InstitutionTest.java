@@ -12,7 +12,7 @@ public class InstitutionTest {
 
 	@Test
 	public void testCreateLog() {
-		InstitutionBL institutionBL = new InstitutionBL();
+		Institutionbl institutionBL = new Institutionbl();
 		assertEquals(ResultMessage.SUCCESS, institutionBL.createLog("2015/11/14 总经理 机构管理"));
 	}
 

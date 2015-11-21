@@ -7,8 +7,8 @@ import util.enumData.ResultMessage;
 import VO.ManagementVO.SalaryPolicyVO;
 import blservice.managementblservice.salarypolicyblservice.SalaryPolicyBLService;
 
-public class SalaryPolicyController implements SalaryPolicyBLService {
-	SalaryPolicyBL salaryPolicyBL=new SalaryPolicyBL();
+public class SalaryPolicyblController implements SalaryPolicyBLService {
+	SalaryPolicybl salaryPolicyBL=new SalaryPolicybl();
 
 	public ResultMessage insert(SalaryPolicyVO VO) throws RemoteException {
 		// TODO Auto-generated method stub

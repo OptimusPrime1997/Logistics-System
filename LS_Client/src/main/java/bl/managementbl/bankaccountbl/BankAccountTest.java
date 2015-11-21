@@ -12,7 +12,7 @@ public class BankAccountTest {
 
 	@Test
 	public void testCreateLog() {
-		BankAccountBL bankAccount = new BankAccountBL();
+		BankAccountbl bankAccount = new BankAccountbl();
 		assertEquals(ResultMessage.SUCCESS, bankAccount.createLog("2015/11/14 普通财务人员  银行账户管理"));
 	}
 

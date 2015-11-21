@@ -12,7 +12,7 @@ public class SalaryPolicyTest {
 
 	@Test
 	public void testCreateLog() {
-		SalaryPolicyBL SalaryPolicy = new SalaryPolicyBL();
+		SalaryPolicybl SalaryPolicy = new SalaryPolicybl();
 		assertEquals(ResultMessage.SUCCESS, SalaryPolicy.createLog("2015/11/14 总经理 决策制定"));
 	}
 

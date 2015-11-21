@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import util.DataFactory;
 import VO.GoodsVO;
-import bl.managementbl.constbl.ConstBL;
+import bl.managementbl.constbl.Constbl;
 import dataservice.goodsdataservice.GoodsDataService;
 
 public class Goodsbl {

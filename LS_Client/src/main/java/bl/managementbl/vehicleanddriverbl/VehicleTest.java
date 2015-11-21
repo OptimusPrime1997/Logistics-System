@@ -12,7 +12,7 @@ public class VehicleTest {
 
 	@Test
 	public void testCreateLog() {
-		VehicleBL vehicleBL = new VehicleBL();
+		Vehiclebl vehicleBL = new Vehiclebl();
 		assertEquals(ResultMessage.SUCCESS, vehicleBL.createLog("2015/11/14 营业厅业务员  车辆管理"));
 	}
 	

@@ -8,7 +8,7 @@ import VO.ManagementVO.VehicleVO;
 import blservice.managementblservice.vehicleanddriverblservice.VehicleBLService;
 
 public class VehicleBLController implements VehicleBLService {
-	VehicleBL vehicleBL=new VehicleBL();
+	Vehiclebl vehicleBL=new Vehiclebl();
 
 	public ResultMessage insertVehicle(VehicleVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
