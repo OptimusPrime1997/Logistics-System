@@ -2,7 +2,9 @@ package bl.managementbl.accountbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.zip.CheckedInputStream;
 
+import util.InputCheck;
 import util.enumData.ResultMessage;
 import VO.LogVO;
 import VO.ManagementVO.AccountVO;
@@ -13,6 +15,7 @@ public class Accountbl {
 		MockLog log = new MockLog(content);
 		return log.add();		
 	}
+	
 
 	
 	public ResultMessage add(AccountVO VO) throws RemoteException {
@@ -68,6 +71,15 @@ public class Accountbl {
 	
 	public ResultMessage addLog(LogVO logvo) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+	public ResultMessage login(String accountNum,String key){
+		if(InputCheck.checkInputNum(accountNum, 10)==ResultMessage.WRONG){
+			return ResultMessage.WRONG_ACCOUNTNUM;
+		}else{
+			AccountVO accountVO=findByNum(accountNum);
+			
+		}
 		return null;
 	}
 	}

@@ -20,13 +20,14 @@ public enum ResultMessage {
 	
 	NOT_COMPLETED,	//未填写
 	
-	WRONG_ID,	//错误用户名
-	WRONG_PASSWORD,	//错误密码名
+	WRONG_ACCOUNTNUM,	//账号格式错误
+	NOT_FOUND_ACCOUNTNUM,//账号不存在
+	WRONG_PASSWORD,	//错误密码
 	
 	
 	
 //	public String toFriendlyString() {
-//		
+////		
 //		switch(this) {
 //		case LENGTH_OVER:
 //			return "过长";
@@ -34,14 +35,11 @@ public enum ResultMessage {
 //			return "过短";
 //		case UNVALID_CHAR:
 //			return "含有非法字符";
-//		case WRONG_ID:
-//			return "用户名错误";
 //		case WRONG_PASSWORD:
 //			return "密码错误";
 //		case NOT_COMPLETED:
 //			return "未填写";
-//		default:
-//			return null;
+		
 //		}
 //	}
 //	

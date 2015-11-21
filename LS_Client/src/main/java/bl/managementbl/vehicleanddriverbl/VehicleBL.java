@@ -12,4 +12,5 @@ public class Vehiclebl  {
 	public ResultMessage createLog(String content){	
 	MockLog log = new MockLog(content);
 	return log.add();		
-}}
+}
+	}
