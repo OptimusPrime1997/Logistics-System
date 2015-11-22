@@ -7,3 +7,4 @@
 # Directory #  
 # Generated files  
 bin/
+*.classpath
