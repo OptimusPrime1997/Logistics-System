@@ -8,7 +8,6 @@ import VO.LogVO;
 import dataservice.logdataservice.LogDataService;
 
 public class Logbl {
-
 	LogDataService logData=DataFactory.getLogdata();
 	public void add(LogVO vo) {
 		try {
@@ -16,7 +15,6 @@ public class Logbl {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 	public ArrayList<LogVO> show(String startTime, String endTime, LogType type) {

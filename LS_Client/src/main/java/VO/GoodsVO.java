@@ -74,6 +74,36 @@ public class GoodsVO {
 		this.realReceiverPhone = realReceiverPhone;
 	}
 
+	public GoodsVO(GoodsPO po){
+		this.listNum = po.getListNum();
+		this.ifExaminePassed = po.getIfExaminePassed();
+		this.getCourierAccount = po.getGetCourierAccount();
+		this.deliverCourierAccount = po.getDeliverCourierAccount();
+		this.startTime = po.getStartTime();
+		this.overtime = po.getOvertime();
+		this.destinationCity = po.getDestinationCity();
+		this.senderName = po.getSenderName();
+		this.senderAddress = po.getSenderAddress();
+		this.senderCompany = po.getSenderCompany();
+		this.senderPhone = po.getSenderPhone();
+		this.receiverName = po.getReceiverName();
+		this.receiverAddress = po.getReceiverAddress();
+		this.receiverCompany = po.getReceiverCompany();
+		this.receiverPhone = po.getReceiverPhone();
+		this.numOfGoods = po.getNumOfGoods();
+		this.weight = po.getWeight();
+		this.volume = po.getVolume();
+		this.nameOfInside = po.getNameOfInside();
+		this.expressType = po.getExpressType();
+		this.moneyOfPackage = po.getMoneyOfPackage();
+		this.moneyTotal = po.getMoneyTotal();
+		this.moneyFare = po.getMoneyFare();
+		this.arrivalState = po.getArrivalState();
+		this.logisticState = po.getLogisticState();
+		this.realReceiverName = po.getRealReceiverName();
+		this.realReceiverPhone = po.getRealReceiverPhone();
+		
+	}
 	public GoodsPO toPO(GoodsVO vo) {
 		GoodsPO po = new GoodsPO(listNum, ifExaminePassed, getCourierAccount,
 				deliverCourierAccount, startTime, overtime, destinationCity,

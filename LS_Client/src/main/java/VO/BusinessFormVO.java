@@ -18,6 +18,12 @@ public class BusinessFormVO {
 		this.moneyInRecord=MoneyInRecord;
 		this.moneyOutRecord=MoneyOutRecord;
 	}
+	public BusinessFormVO(BusinessFormPO po){
+		this.startTime=po.getStartTime();
+		this.endTime=po.getEndTime();
+		this.moneyInRecord=po.getMoneyInRecord();
+		this.moneyOutRecord=po.getMoneyOutRecord();
+	}
 	public BusinessFormPO toPO(BusinessFormVO vo){
 		BusinessFormPO po=new BusinessFormPO(startTime, endTime, moneyOutRecord, moneyInRecord);
 		return po;

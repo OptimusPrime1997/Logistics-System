@@ -2,18 +2,20 @@ package PO;
 
 import java.io.Serializable;
 
+import bl.logbl.LogType;
+
 public class LogPO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String operationName;
+	private LogType operationName;
 	private String operatorID;
 	private String time;
 	
-	public LogPO(String operationName, String operatorID, String time) {
+	public LogPO(LogType operationName, String operatorID, String time) {
 		this.operationName = operationName;
 		this.operatorID = operatorID;
 		this.time = time;
 	}
-	public String getOperationName() {
+	public LogType getOperationName() {
 		return operationName;
 	}
 	public String getOperatorID() {
