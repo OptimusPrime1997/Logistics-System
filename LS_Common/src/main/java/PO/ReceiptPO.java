@@ -1,6 +1,8 @@
 package PO;
 
-public class ReceiptPO {
+import java.io.Serializable;
+
+public class ReceiptPO implements Serializable{
 	protected String num;
 	protected String date;
 	

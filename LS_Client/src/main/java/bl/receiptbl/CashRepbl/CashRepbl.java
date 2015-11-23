@@ -1,42 +1,78 @@
 package bl.receiptbl.CashRepbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Vector;
 import PO.CashRepPO;
-import RMIClient.Receipt.CashRepRMI;
+import PO.ReceiptPO;
 import RMIClient.Receipt.ReceiptClient;
 import bl.goodsbl.Goodsbl;
 import bl.managementbl.accountbl.Accountbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
+import dataservice.receiptdataservice.CashRepDataService;
 import util.enumData.ResultMessage;
 import VO.CashRepVO;
 import VO.GoodsVO;
 
-public class CashRepbl extends Receiptbl{
+public class CashRepbl{
 	ReceiptClient client = new ReceiptClient();
-	CashRepRMI CashRepclient = new CashRepRMI();
 	Goodsbl goodsbl = new Goodsbl();
 	Accountbl accountbl = new Accountbl();
+	Receiptbl receiptbl = new Receiptbl();
 	
-	/**
-	 * 得到所有收款单CashRep
-	 * @return
-	 */
-	public ArrayList<CashRepVO> getAllCashRep() {
+	
+	public CashRepDataService getCashRepDataService(){
+		CashRepDataService cashRepDataService = null;
+		try {
+			cashRepDataService = client.getCashRepDataService();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return cashRepDataService;
+	}
+	
+	public ResultMessage submit(CashRepVO vo){
+		return getCashRepDataService().submit(CashRepVO.toPO(vo));
+	}
+	
+	public ResultMessage delete(int n) {
+		// TODO Auto-generated method stub
+		return getCashRepDataService().delete(n);
+	}
+
+	public ResultMessage delete(String num) {
+		// TODO Auto-generated method stub
+		return getCashRepDataService().delete(num);
+	} 
+	
+	public String createNum(){
+		return getCashRepDataService().createNum();
+	}
+	
+	public ArrayList<CashRepVO> getAllRep() {
 		ArrayList<CashRepVO> cashRepVOs = new ArrayList<CashRepVO>();
-		ArrayList<CashRepPO> cashRepPOs = CashRepclient.getCashRepPO();
-		for(int i = 0;i<cashRepPOs.size();i++){
-			CashRepPO po = cashRepPOs.get(i);
-			CashRepVO vo = new CashRepVO(po.getNum(), po.getDate(), po.getMoney(), po.getGetCourierNum(), po.getGoods());
-			cashRepVOs.add(vo);
+		ArrayList<ReceiptPO> receiptPOs = getCashRepDataService().getAllRep();
+		for(int i = 0;i<receiptPOs.size();i++){
+			cashRepVOs.add(CashRepVO.toVO((CashRepPO)receiptPOs.get(i)));
 		}
 		return cashRepVOs;
 	}
-
-	public ResultMessage submit(String num, String date, double money, String courierNum, ArrayList<GoodsVO> goods) {
-		CashRepPO po = new CashRepPO(num, date, money, courierNum, goods);
-		return client.submit(po);
+	
+	public ArrayList<CashRepVO> getRepByDate(String date){
+		ArrayList<CashRepVO> cashRepVOs = new ArrayList<CashRepVO>();
+		ArrayList<ReceiptPO> receiptPOs = getCashRepDataService().getRepByDate(date);
+		for(int i = 0;i<receiptPOs.size();i++){
+			cashRepVOs.add(CashRepVO.toVO((CashRepPO)receiptPOs.get(i)));
+		}
+		return cashRepVOs;
 	}
 	
+	public CashRepVO getRepByNum(String num){
+		ReceiptPO receiptPO = getCashRepDataService().getRepByNum(num);
+		return CashRepVO.toVO((CashRepPO)receiptPO);
+	}
+
 	public ArrayList<GoodsVO> getGoods(String courierNum){
 		return goodsbl.getGoodsByGetCourier(courierNum);
 	}
@@ -51,6 +87,32 @@ public class CashRepbl extends Receiptbl{
         	moneysum += arrGoods.get(i).moneyTotal;
     	}
 		return moneysum;
+	}
+	
+	public Vector<Object> initTable(String date){
+		 Vector<Object> arr = new Vector<Object>();
+		 Vector<Object> data = new Vector<Object>();
+		 ArrayList<CashRepVO> receiptVOs = getRepByDate(date);
+		 CashRepVO cashRep;
+		 if(receiptVOs.size()==0){
+			 arr.add(null);
+			 arr.add(null);
+			 arr.add(null);
+			 arr.add(null);
+			 data.add(arr);
+		 }
+		 else {
+			 for(int i = 0;i<receiptVOs.size();i++){
+				 cashRep = receiptVOs.get(i);
+				 arr.add(cashRep.courierNum);
+				 arr.add(cashRep.courierName);
+				 arr.add(cashRep.money);
+				 arr.add(null);
+				 data.add(arr);
+			 }
+			 
+		 }
+		 return data;
 	}
 	
 }

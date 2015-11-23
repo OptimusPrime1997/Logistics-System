@@ -3,7 +3,6 @@ package bl.formbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import util.DataFactory;
 import VO.BusinessFormVO;
 import VO.CashRepVO;
 import VO.PayRepVO;
@@ -14,7 +13,7 @@ import bl.receiptbl.PayRepbl.PayRepbl;
 import dataservice.formdataservice.BusinessFormDataService;
 
 public class BusinessFormbl {
-	BusinessFormDataService busiFormdata = DataFactory.getBusinessFormdata();
+	BusinessFormDataService busiFormdata;
 	
 	public BusinessFormVO show(String startTime, String endTime) {
 		PayRepbl payRep=new PayRepbl();

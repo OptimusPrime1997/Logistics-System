@@ -1,10 +1,7 @@
 package PO;
 
 import java.io.Serializable;
-
-import bl.goodsbl.GoodsArrivalState;
-import bl.goodsbl.GoodsExpressType;
-import bl.goodsbl.GoodsLogisticState;
+import util.enumData.*;
 
 public class GoodsPO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -25,7 +22,7 @@ public class GoodsPO implements Serializable {
 	private String receiverPhone;
 	private int numOfGoods;
 	private double weight;
-	private double volume;// Με»ύ
+	private double volume;
 	private String nameOfInside;
 	private GoodsExpressType expressType;
 	private double moneyOfPackage;

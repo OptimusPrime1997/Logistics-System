@@ -15,7 +15,7 @@ import VO.ProfitFormVO;
 import dataservice.formdataservice.ProfitFormDataService;
 
 public class ProfitFormbl {
-	ProfitFormDataService profitFormData=DataFactory.getProfitFormdata();
+	ProfitFormDataService profitFormData;
 	
 	public ProfitFormVO show() {
 		double totalIn=0,totalOut=0,totalProfit=0;

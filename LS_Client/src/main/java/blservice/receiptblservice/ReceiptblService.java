@@ -1,19 +1,11 @@
 package blservice.receiptblservice;
 
-import java.util.ArrayList;
-
-import VO.*;
-import util.enumData.Rep;
+import util.enumData.*;
 
 public interface ReceiptblService {
-	public String delete (Rep rep, int n);
 	
-	public String delete (Rep rep, String num);
+	public ResultMessage addLog(String operationName, String operatorID, String time);
 	
-	public ReceiptVO show (Rep rep);
+	public String getDate();
 	
-	public ReceiptVO find (Rep rep, String num);
-
-	void addLog(String operationName, String operatorID, String time);
-
 }

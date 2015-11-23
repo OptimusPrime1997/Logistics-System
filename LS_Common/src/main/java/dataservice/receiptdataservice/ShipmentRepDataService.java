@@ -1,9 +1,23 @@
 package dataservice.receiptdataservice;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import util.enumData.*;
 
-public interface ShipmentRepDataService {
-	public String submit(String num, String date, place place, String plateNum, String driverNum,
-			boolean arriveAlready, ArrayList<String> goods);
+import PO.ShipmentRepPO;
+import util.enumData.ResultMessage;
+
+public interface ShipmentRepDataService extends Serializable{
+	public ResultMessage submit(ShipmentRepPO po);
+	
+	public ResultMessage save(ShipmentRepPO po);
+	
+	public ArrayList<ShipmentRepPO> getAllRep();
+	
+	public ArrayList<ShipmentRepPO> getRepByDate(String date);
+	
+	public ShipmentRepPO getRepByNum(String num);
+	
+	public ResultMessage delete(int n);
+	
+	public ResultMessage delete(String num);
 }

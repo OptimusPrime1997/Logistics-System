@@ -1,33 +1,86 @@
 package bl.receiptbl.CashRepbl;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
+import VO.CashRepVO;
 import VO.GoodsVO;
 import bl.receiptbl.Receiptbl.ReceiptController;
 import blservice.receiptblservice.CashRepblService;
+import dataservice.receiptdataservice.CashRepDataService;
 import util.enumData.ResultMessage;
 
 public class CashRepController extends ReceiptController implements CashRepblService{
 	private CashRepbl CashRep = new CashRepbl();
 
-	public ResultMessage submit(String num, String date, double money, String getCourierNum, ArrayList<GoodsVO> goods) {
-		// TODO Auto-generated method stub
-		return CashRep.submit(num, date, money, getCourierNum, goods);
-	}
-
+	@Override
 	public ArrayList<GoodsVO> getGoods(String courierNum) {
 		// TODO Auto-generated method stub
 		return CashRep.getGoods(courierNum);
 	}
 
+	@Override
 	public String getCourierName(String courierNum) {
 		// TODO Auto-generated method stub
 		return CashRep.getCourierName(courierNum);
 	}
 
+	@Override
 	public double getMoneySum(ArrayList<GoodsVO> arrGoods) {
 		// TODO Auto-generated method stub
 		return CashRep.getMoneySum(arrGoods);
+	}
+
+	@Override
+	public Vector<Object> initTable(String date) {
+		// TODO Auto-generated method stub
+		return CashRep.initTable(date);
+	}
+	
+	public CashRepDataService getService(){
+		return CashRep.getCashRepDataService();
+	}
+
+	@Override
+	public ResultMessage submit(CashRepVO vo) {
+		// TODO Auto-generated method stub
+		return CashRep.submit(vo);
+	}
+
+	@Override
+	public ArrayList<CashRepVO> getAllCashRep() {
+		// TODO Auto-generated method stub
+		return CashRep.getAllRep();
+	}
+
+	@Override
+	public ArrayList<CashRepVO> getRepBydate(String date) {
+		// TODO Auto-generated method stub
+		return CashRep.getRepByDate(date);
+	}
+
+	@Override
+	public CashRepVO getRepByNum(String num) {
+		// TODO Auto-generated method stub
+		return CashRep.getRepByNum(num);
+	}
+
+	@Override
+	public ResultMessage delete(int n) {
+		// TODO Auto-generated method stub
+		return CashRep.delete(n);
+	}
+
+	@Override
+	public ResultMessage delete(String num) {
+		// TODO Auto-generated method stub
+		return CashRep.delete(num);
+	}
+
+	@Override
+	public String createNum() {
+		// TODO Auto-generated method stub
+		return CashRep.createNum();
 	}
 	
 }

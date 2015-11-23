@@ -1,9 +1,7 @@
 package VO;
 
 import PO.GoodsPO;
-import bl.goodsbl.GoodsArrivalState;
-import bl.goodsbl.GoodsExpressType;
-import bl.goodsbl.GoodsLogisticState;
+import util.enumData.*;
 
 public class GoodsVO {
 	public String listNum;
