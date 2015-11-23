@@ -4,11 +4,8 @@ import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
-import util.DataFactory;
 import VO.CashRepVO;
 import VO.PayRepVO;
-import VO.PayRepVO.Salary;
 import bl.receiptbl.CashRepbl.CashRepbl;
 import bl.receiptbl.PayRepbl.PayRepbl;
 import VO.ProfitFormVO;
@@ -22,7 +19,7 @@ public class ProfitFormbl {
 		PayRepbl payRep=new PayRepbl();
 		CashRepbl cashRep=new CashRepbl();
 		ArrayList<PayRepVO> moneyOut = payRep.getAllPayRep();
-		ArrayList<CashRepVO> moneyIn = cashRep.getAllCashRep();
+		ArrayList<CashRepVO> moneyIn = cashRep.getAllRep();
 		for(int i=0;i<moneyIn.size();i++){
 			totalIn+=moneyIn.get(i).money;
 		}

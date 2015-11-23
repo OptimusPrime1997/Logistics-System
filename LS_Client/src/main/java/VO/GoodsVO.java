@@ -1,5 +1,7 @@
 package VO;
 
+import java.util.ArrayList;
+
 import PO.GoodsPO;
 import util.enumData.*;
 
@@ -111,5 +113,19 @@ public class GoodsVO {
 				moneyOfPackage, moneyTotal, moneyFare, arrivalState,
 				logisticState, realReceiverName, realReceiverPhone);
 		return po;
+	}
+	public static ArrayList<GoodsPO> toPOArray(ArrayList<GoodsVO> vos){
+		ArrayList<GoodsPO> pos=new ArrayList<GoodsPO>();
+		for(GoodsVO vo:vos){
+			pos.add(vo.toPO(vo));
+		}
+		return pos;
+	}
+	public static ArrayList<GoodsVO> toVOArray(ArrayList<GoodsPO> pos){
+		ArrayList<GoodsVO> vos=new ArrayList<GoodsVO>();
+		for(GoodsPO po:pos){
+			vos.add(new GoodsVO(po));
+		}
+		return vos;
 	}
 }
