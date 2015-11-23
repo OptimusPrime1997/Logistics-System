@@ -19,7 +19,7 @@ public class BusinessFormbl {
 		PayRepbl payRep=new PayRepbl();
 		CashRepbl cashRep=new CashRepbl();
 		ArrayList<PayRepVO> moneyOut = payRep.getAllPayRep();
-		ArrayList<CashRepVO> moneyIn = cashRep.getAllCashRep();
+		ArrayList<CashRepVO> moneyIn = cashRep.getAllRep();
 		//TODO  choose the valid records(inside the time period ~~)
 		for(int i=0;i<moneyIn.size();i++){
 //			if(moneyIn.get(i).time<startTime||moneyIn.get(i).time>endTime){
