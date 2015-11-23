@@ -8,7 +8,7 @@ import bl.goodsbl.controller.GoodsExamineController;
 import bl.goodsbl.controller.GoodsGetByCourierController;
 import bl.goodsbl.controller.GoodsInitController;
 import bl.goodsbl.controller.GoodsSetStateController;
-import bl.loginbl.LoginblController;
+import bl.loginbl.LoginBLController;
 import bl.managementbl.accountbl.AccountblController;
 import bl.managementbl.bankaccountbl.BankAccountblController;
 import bl.managementbl.constbl.ConstblController;
@@ -144,7 +144,7 @@ private ControllerFactoryImpl() {}
 	@Override
 	public LoginBLService getLoginController() {
 		// TODO Auto-generated method stub
-		return new LoginblController();
+		return new LoginBLController();
 	}
 
 }
