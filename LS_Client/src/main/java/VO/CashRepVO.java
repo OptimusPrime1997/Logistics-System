@@ -30,10 +30,10 @@ public class CashRepVO extends ReceiptVO {
 	}
 
 	public static CashRepVO toVO(CashRepPO po){
-		return new CashRepVO(po.getNum(), po.getDate(), po.getMoney(), po.getCourierNum(), po.getCourierName(), new GoodsVO(po.getGoods()));
+		return new CashRepVO(po.getNum(), po.getDate(), po.getMoney(), po.getCourierNum(), po.getCourierName(), GoodsVO.toVOArray(po.getGoods()));
 	}
 	
 	public static CashRepPO toPO(CashRepVO vo){
-		return new CashRepPO(vo.num, vo.date, vo.money, vo.courierNum, vo.courierName, vo.goods);
+		return new CashRepPO(vo.num, vo.date, vo.money, vo.courierNum, vo.courierName, GoodsVO.toPOArray(vo.goods));
 	}
 }

@@ -2,7 +2,7 @@ package blservice.logblservice;
 
 import java.util.ArrayList;
 
-import bl.logbl.LogType;
+import util.enumData.LogType;
 import VO.LogVO;
 
 public interface LogBLService {

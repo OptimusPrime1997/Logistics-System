@@ -7,12 +7,12 @@ public class BusinessFormPO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String startTime;
 	private String endTime;
-	private ArrayList<VO.PayRepVO> moneyOutRecord;
-	private ArrayList<VO.CashRepVO> moneyInRecord;
+	private ArrayList<PO.PayRepPO> moneyOutRecord;
+	private ArrayList<PO.CashRepPO> moneyInRecord;
 	
 	public BusinessFormPO(String startTime, String endTime,
-			ArrayList<VO.PayRepVO> moneyOutRecord,
-			ArrayList<VO.CashRepVO> moneyInRecord) {
+			ArrayList<PO.PayRepPO> moneyOutRecord,
+			ArrayList<PO.CashRepPO> moneyInRecord) {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.moneyOutRecord = moneyOutRecord;
@@ -27,11 +27,11 @@ public class BusinessFormPO implements Serializable {
 		return endTime;
 	}
 
-	public ArrayList<VO.PayRepVO> getMoneyOutRecord() {
+	public ArrayList<PO.PayRepPO> getMoneyOutRecord() {
 		return moneyOutRecord;
 	}
 
-	public ArrayList<VO.CashRepVO> getMoneyInRecord() {
+	public ArrayList<PO.CashRepPO> getMoneyInRecord() {
 		return moneyInRecord;
 	}
 	
