@@ -1,16 +1,10 @@
-/Logistics-System/nbproject/private/
+#ºöÂÔgitignoreÎÄ¼ş  
+.gitignore  
+       
+# Java class files  
 *.class
-*.class
-LSClient/src/ui/courierui/courier_goods.form
-LSClient/src/ui/courierui/courier_goods.form
-LSClient/src/ui/courierui/courier_goods.java
-LSClient/src/ui/courierui/courier_goods.java
-/target/
-*.class
-*.class
-*.class
-*.class
-*.class
-*.class
-*.class
-*.class
+
+# Directory #  
+# Generated files  
+bin/
+*.classpath
