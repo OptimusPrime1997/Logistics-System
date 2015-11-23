@@ -4,6 +4,8 @@ import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import util.CurrentTime;
 import VO.CashRepVO;
 import VO.PayRepVO;
 import bl.receiptbl.CashRepbl.CashRepbl;
@@ -38,8 +40,7 @@ public class ProfitFormbl {
 			}
 		}
 		totalProfit=totalIn-totalOut;
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-	    ProfitFormVO vo = new ProfitFormVO(df.format(new Date()), totalOut, totalIn, totalProfit);
+	    ProfitFormVO vo = new ProfitFormVO(CurrentTime.getTime(), totalOut, totalIn, totalProfit);
 		return vo;
 	}
 
