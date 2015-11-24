@@ -1,7 +1,7 @@
 package VO;
 
 import PO.LogPO;
-import bl.logbl.LogType;
+import util.enumData.LogType;
 
 public class LogVO {
 	public LogType operationName;

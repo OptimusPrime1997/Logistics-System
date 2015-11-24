@@ -2,82 +2,82 @@ package VO;
 
 import java.util.ArrayList;
 
+import PO.PayRepPO;
+import PO.ReceiptPO;
+
 public class PayRepVO extends ReceiptVO {
 	public String BankAccountNum;
 	public String PayPersonNum;
-	public ArrayList<LittleThing> littleThings;
-	public ArrayList<Salary> Salarys; 
-	public ArrayList<TransferPay> TransferPays;
-	public ArrayList<Rent> rents;
+	public ArrayList<LittleThingVO> littleThing;
+	public ArrayList<SalaryVO> salary; 
+	public ArrayList<TransferPayVO> transferPay;
+	public ArrayList<RentVO> rent;
 
-	public class Salary {
-		public String getterName;
-		public String getterNum;
-		public String date;
-		public double money;
-		
-		public Salary(String getterName, String getterNum, String date, double money) {
-			super();
-			this.getterName = getterName;
-			this.getterNum = getterNum;
-			this.date = date;
-			this.money = money;
-		}
-		
-	}
-
-	public class TransferPay {
-		public String transferRepNum;
-		public String date;
-		public double money;
-		
-		public TransferPay(String transferRepNum, String date, double money) {
-			super();
-			this.transferRepNum = transferRepNum;
-			this.date = date;
-			this.money = money;
-		}
-		
-	}
-
-	public class Rent {
-		public String getterName;
-		public String phoneNum;
-		public double money;
-		public String date;
-		
-		public Rent(String getterName, String phoneNum, double money, String date) {
-			super();
-			this.getterName = getterName;
-			this.phoneNum = phoneNum;
-			this.money = money;
-			this.date = date;
-		}
-	}
-
-	public class LittleThing {
-		public String date;
-		public String reason;
-		public double money;
-		
-		public LittleThing(String date, String reason, double money) {
-			super();
-			this.date = date;
-			this.reason = reason;
-			this.money = money;
-		}
-	}
 
 	public PayRepVO(String num, String date, String bankAccountNum, String payPersonNum,
-			ArrayList<LittleThing> littleThings, ArrayList<Salary> salarys, ArrayList<TransferPay> transferPays,
-			ArrayList<Rent> rents) {
+			ArrayList<LittleThingVO> littleThing, ArrayList<SalaryVO> salary, ArrayList<TransferPayVO> transferPay,
+			ArrayList<RentVO> rent) {
 		super(num, date);
 		BankAccountNum = bankAccountNum;
 		PayPersonNum = payPersonNum;
-		this.littleThings = littleThings;
-		Salarys = salarys;
-		TransferPays = transferPays;
-		this.rents = rents;
+		this.littleThing = littleThing;
+		this.salary = salary;
+		this.transferPay = transferPay;
+		this.rent = rent;
 	}
 
+	public String getBankAccountNum() {
+		return BankAccountNum;
+	}
+
+	public String getPayPersonNum() {
+		return PayPersonNum;
+	}
+
+	public ArrayList<LittleThingVO> getLittleThing() {
+		return littleThing;
+	}
+
+	public ArrayList<SalaryVO> getSalary() {
+		return salary;
+	}
+
+	public ArrayList<TransferPayVO> getTransferPay() {
+		return transferPay;
+	}
+
+	public ArrayList<RentVO> getRent() {
+		return rent;
+	}
+
+	public PayRepVO(PayRepPO po){
+		this.BankAccountNum = po.getBankAccountNum();
+		this.PayPersonNum = po.getPayPersonNum();
+		this.littleThing = LittleThingVO.toArrayVO(po.getLittleThing());
+		this.salary = SalaryVO.toArrayVO(po.getSalary());
+		this.transferPay = TransferPayVO.toArrayVO(po.getTransferPay());
+		this.rent = RentVO.toArrayVO(po.getRent());
+	}
+	
+	public static PayRepPO toPO (PayRepVO vo){
+		return new PayRepPO(vo.num, vo.date, vo.BankAccountNum, vo.PayPersonNum, 
+				LittleThingVO.toArrayPO(vo.littleThing), SalaryVO.toArrayPO(vo.salary), 
+				TransferPayVO.toArrayPO(vo.transferPay), RentVO.toArrayPO(vo.rent));
+	}
+	
+	public static ArrayList<PayRepVO> toArrayVO(ArrayList<PayRepPO> payrepPOs){
+		ArrayList<PayRepVO> payRepVOs  = new ArrayList<PayRepVO>();
+		for(PayRepPO payRepPO : payrepPOs){
+			payRepVOs.add(new PayRepVO(payRepPO));
+		}
+		return payRepVOs;
+	}
+	
+	public static ArrayList<PayRepPO> toArrayPO(ArrayList<PayRepVO> payrepVOs){
+		ArrayList<PayRepPO> payRepPOs  = new ArrayList<PayRepPO>();
+		for(PayRepVO payRepVO : payrepVOs){
+			payRepPOs.add(PayRepVO.toPO(payRepVO));
+		}
+		return payRepPOs;
+	}
 }

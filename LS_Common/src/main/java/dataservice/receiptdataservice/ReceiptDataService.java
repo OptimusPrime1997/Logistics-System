@@ -22,5 +22,5 @@ public interface ReceiptDataService extends Serializable{
 	
 	public ResultMessage delete(String num);
 	
-	public String createNum();
+	public String createNum(String date);
 }

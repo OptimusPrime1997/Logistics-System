@@ -78,9 +78,9 @@ public class CashRepController extends ReceiptController implements CashRepblSer
 	}
 
 	@Override
-	public String createNum() {
+	public String createNum(String date) {
 		// TODO Auto-generated method stub
-		return CashRep.createNum();
+		return CashRep.createNum(date);
 	}
 	
 }

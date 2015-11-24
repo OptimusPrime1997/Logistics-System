@@ -1,4 +1,4 @@
-package bl.logbl;
+package util.enumData;
 
 //TODO to be completed
 public enum LogType {

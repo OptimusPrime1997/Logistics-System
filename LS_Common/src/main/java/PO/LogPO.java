@@ -2,7 +2,8 @@ package PO;
 
 import java.io.Serializable;
 
-import bl.logbl.LogType;
+import util.enumData.LogType;
+
 
 public class LogPO implements Serializable {
 	private static final long serialVersionUID = 1L;

@@ -60,9 +60,9 @@ public class CashRepData implements CashRepDataService{
 	}
 
 	@Override
-	public String createNum() {
+	public String createNum(String date) {
 		// TODO Auto-generated method stub
-		return receiptData.createNum(saveFile);
+		return receiptData.createNum(date, saveFile);
 	}
 
 }
