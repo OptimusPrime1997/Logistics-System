@@ -1,16 +1,9 @@
 package VO;
 
+import java.util.ArrayList;
+
 import util.enumData.LogType;
 import PO.LogPO;
-<<<<<<< HEAD
-import util.enumData.LogType;
-=======
-<<<<<<< HEAD
-import util.enumData.LogType;
-=======
->>>>>>> origin/master
->>>>>>> origin/master
-
 public class LogVO {
 	public LogType operationName;
 	public String operatorID;
@@ -26,10 +19,22 @@ public class LogVO {
 		this.operatorID=po.getOperatorID();
 		this.time=po.getTime();
 	}
-	public LogPO toPO(LogVO vo){
-		LogPO po=new LogPO(operationName, operatorID, time);
+	public static LogPO toPO(LogVO vo){
+		LogPO po=new LogPO(vo.operationName, vo.operatorID, vo.time);
 		return po;
 	}
+	public static ArrayList<LogVO> toVOArray (ArrayList<LogPO> pos){
+		ArrayList<LogVO> vos=new ArrayList<LogVO>();
+		for(LogPO po:pos) vos.add(new LogVO(po));
+		return vos;
+	}
+	
+	public static ArrayList<LogPO> toPOArray (ArrayList<LogVO> vos){
+		ArrayList<LogPO> pos=new ArrayList<LogPO>();
+		for(LogVO vo:vos) pos.add(toPO(vo));
+		return pos;
+	}
+	
 	
 	
 }

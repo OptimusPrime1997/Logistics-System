@@ -2,10 +2,9 @@ package bl.goodsbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
-import util.DataFactory;
+import util.enumData.GoodsArrivalState;
+import util.enumData.GoodsLogisticState;
 import VO.GoodsVO;
-import bl.managementbl.constbl.Constbl;
 import dataservice.goodsdataservice.GoodsDataService;
 
 public class Goodsbl {
@@ -14,7 +13,7 @@ public class Goodsbl {
 	public GoodsVO check(String listNum) {
 		GoodsVO vo=null;
 		try {
-			vo=goodsData.findbygoods(listNum);
+			vo=new GoodsVO(goodsData.findbygoods(listNum));
 		} catch (RemoteException e) {
 			
 			e.printStackTrace();
@@ -32,7 +31,7 @@ public class Goodsbl {
 			double distance=ConstBL.findByConstName("").distanceConst;
 			vo.moneyFare=basicprice*distance;//TODO公式先随便写一下
 			vo.moneyTotal=vo.moneyFare+vo.moneyOfPackage;
-		    goodsData.add(vo.toPO(vo));
+		    goodsData.add(GoodsVO.toPO(vo));
 			
 		} catch (RemoteException e) {
 		}
@@ -42,7 +41,7 @@ public class Goodsbl {
 	
 	public Boolean delete(GoodsVO vo) {
 		try {
-			goodsData.delete(vo.toPO(vo));
+			goodsData.delete(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
 			
 			e.printStackTrace();
@@ -54,7 +53,7 @@ public class Goodsbl {
 	public ArrayList<GoodsVO> getGoodsByCourier(String courierNum) {
 		ArrayList<GoodsVO> vos=null;
 		try {
-			vos=goodsData.findbyCourier(courierNum);
+			vos=GoodsVO.toVOArray(goodsData.findbyCourier(courierNum));
 		} catch (RemoteException e) {
 			
 			e.printStackTrace();
@@ -64,7 +63,7 @@ public class Goodsbl {
 	public ArrayList<GoodsVO> getGoodsByGetCourier(String courierNum) {
 		ArrayList<GoodsVO> vos=null;
 		try {
-			vos=goodsData.findbyGetCourier(courierNum);
+			vos=GoodsVO.toVOArray(goodsData.findbyGetCourier(courierNum));
 		} catch (RemoteException e) {
 			
 			e.printStackTrace();

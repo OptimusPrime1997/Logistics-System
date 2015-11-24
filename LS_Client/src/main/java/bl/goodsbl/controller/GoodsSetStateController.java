@@ -1,6 +1,7 @@
 package bl.goodsbl.controller;
 
-import util.enumData.*;
+import util.enumData.GoodsArrivalState;
+import util.enumData.GoodsLogisticState;
 import bl.goodsbl.Goodsbl;
 import blservice.goodsblservice.GoodsSetStateBLService;
 

@@ -27,7 +27,7 @@ public class Logbl {
 	public ArrayList<LogVO> show(String startTime, String endTime, LogType type) {
 		ArrayList<LogVO> logs=null;
 		try {
-			logs=logData.show(type);
+			logs=LogVO.toVOArray(logData.show(type));
 		} catch (RemoteException e) {
 		}
 		return logs;

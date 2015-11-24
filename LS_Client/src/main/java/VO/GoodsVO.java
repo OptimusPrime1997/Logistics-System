@@ -104,20 +104,20 @@ public class GoodsVO {
 		this.realReceiverPhone = po.getRealReceiverPhone();
 		
 	}
-	public GoodsPO toPO(GoodsVO vo) {
-		GoodsPO po = new GoodsPO(listNum, ifExaminePassed, getCourierAccount,
-				deliverCourierAccount, startTime, overtime, destinationCity,
-				senderName, senderAddress, senderCompany, senderPhone,
-				receiverName, receiverAddress, receiverCompany, receiverPhone,
-				numOfGoods, weight, volume, nameOfInside, expressType,
-				moneyOfPackage, moneyTotal, moneyFare, arrivalState,
-				logisticState, realReceiverName, realReceiverPhone);
+	public static GoodsPO toPO(GoodsVO vo) {
+		GoodsPO po = new GoodsPO(vo.listNum,vo.ifExaminePassed,vo.getCourierAccount,
+				vo.deliverCourierAccount,vo.startTime,vo.overtime,vo.destinationCity,
+				vo.senderName,vo.senderAddress,vo.senderCompany,vo.senderPhone,
+				vo.receiverName,vo.receiverAddress,vo.receiverCompany,vo.receiverPhone,
+				vo.numOfGoods,vo.weight,vo.volume,vo.nameOfInside,vo.expressType,
+				vo.moneyOfPackage,vo.moneyTotal,vo.moneyFare,vo.arrivalState,
+				vo.logisticState,vo.realReceiverName,vo.realReceiverPhone);
 		return po;
 	}
 	public static ArrayList<GoodsPO> toPOArray(ArrayList<GoodsVO> vos){
 		ArrayList<GoodsPO> pos=new ArrayList<GoodsPO>();
 		for(GoodsVO vo:vos){
-			pos.add(vo.toPO(vo));
+			pos.add(toPO(vo));
 		}
 		return pos;
 	}

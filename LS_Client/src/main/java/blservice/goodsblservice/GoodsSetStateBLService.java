@@ -1,7 +1,7 @@
 package blservice.goodsblservice;
 
-import bl.goodsbl.GoodsArrivalState;
-import bl.goodsbl.GoodsLogisticState;
+import util.enumData.GoodsArrivalState;
+import util.enumData.GoodsLogisticState;
 
 public interface GoodsSetStateBLService {
 	/**
