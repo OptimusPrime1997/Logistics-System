@@ -1,4 +1,4 @@
-.gitignore_global 
+#.gitignore_global 
 *.class
 *.com  
 *.class  
@@ -6,12 +6,21 @@
 *.exe  
 *.o  
 *.so  
+  
+# Packages #  
+############  
+# it's better to unpack these files and commit the raw source  
+# git has its own built in compression methods  
 
   
+# Logs and databases #  
+######################  
 *.log  
 *.sql  
 *.sqlite  
-   
+  
+# OS generated files #  
+######################  
 .DS_Store  
 .DS_Store?  
 ._*  
@@ -19,6 +28,10 @@
 .Trashes  
 
 
+#ºöÂÔgitignoreÎÄ¼þ  
+
+       
+# Java class files  
 *.class
 *.classpath
 *.DS_Store
@@ -46,8 +59,12 @@ target/**/*.class
 *.classpath
 *.class
 
-LS_Client/target/
-
-LS_Server/target/
-
-LS_Common/target/
+LS_Client/target/**/*.class
+*.classpath
+*.class
+LS_Server/target/**/*.class
+*.classpath
+*.class
+LS_Common/target/**/*.class
+*.classpath
+*.class
