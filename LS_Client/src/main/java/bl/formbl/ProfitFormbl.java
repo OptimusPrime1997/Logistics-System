@@ -1,16 +1,14 @@
 package bl.formbl;
 
 import java.rmi.RemoteException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import util.CurrentTime;
 import VO.CashRepVO;
 import VO.PayRepVO;
+import VO.ProfitFormVO;
 import bl.receiptbl.CashRepbl.CashRepbl;
 import bl.receiptbl.PayRepbl.PayRepbl;
-import VO.ProfitFormVO;
 import dataservice.formdataservice.ProfitFormDataService;
 
 public class ProfitFormbl {
@@ -26,17 +24,17 @@ public class ProfitFormbl {
 			totalIn+=moneyIn.get(i).money;
 		}
 		for(int i=0;i<moneyOut.size();i++){			
-			for(int j=0;j<moneyOut.get(i).Salarys.size();j++){
-				totalOut+=moneyOut.get(i).Salarys.get(j).money;
+			for(int j=0;j<moneyOut.get(i).salary.size();j++){
+				totalOut+=moneyOut.get(i).salary.get(j).money;
 			}
-			for(int j=0;j<moneyOut.get(i).littleThings.size();j++){
-				totalOut+=moneyOut.get(i).littleThings.get(j).money;
+			for(int j=0;j<moneyOut.get(i).littleThing.size();j++){
+				totalOut+=moneyOut.get(i).littleThing.get(j).money;
 			}
-			for(int j=0;j<moneyOut.get(i).rents.size();j++){
-				totalOut+=moneyOut.get(i).rents.get(j).money;
+			for(int j=0;j<moneyOut.get(i).rent.size();j++){
+				totalOut+=moneyOut.get(i).rent.get(j).money;
 			}
-			for(int j=0;j<moneyOut.get(i).TransferPays.size();j++){
-				totalOut+=moneyOut.get(i).TransferPays.get(j).money;
+			for(int j=0;j<moneyOut.get(i).transferPay.size();j++){
+				totalOut+=moneyOut.get(i).transferPay.get(j).money;
 			}
 		}
 		totalProfit=totalIn-totalOut;
