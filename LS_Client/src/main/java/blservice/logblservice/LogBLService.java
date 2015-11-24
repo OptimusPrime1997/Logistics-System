@@ -2,6 +2,13 @@ package blservice.logblservice;
 
 import java.util.ArrayList;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+import util.enumData.LogType;
+>>>>>>> origin/master
+>>>>>>> origin/master
 import VO.LogVO;
 import util.enumData.LogType;
 

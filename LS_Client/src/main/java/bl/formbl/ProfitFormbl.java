@@ -5,10 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import util.DataFactory;
+import util.CurrentTime;
 import VO.CashRepVO;
 import VO.PayRepVO;
-import VO.PayRepVO.Salary;
 import bl.receiptbl.CashRepbl.CashRepbl;
 import bl.receiptbl.PayRepbl.PayRepbl;
 import VO.ProfitFormVO;
@@ -22,7 +21,7 @@ public class ProfitFormbl {
 		PayRepbl payRep=new PayRepbl();
 		CashRepbl cashRep=new CashRepbl();
 		ArrayList<PayRepVO> moneyOut = payRep.getAllPayRep();
-		ArrayList<CashRepVO> moneyIn = cashRep.getAllCashRep();
+		ArrayList<CashRepVO> moneyIn = cashRep.getAllRep();
 		for(int i=0;i<moneyIn.size();i++){
 			totalIn+=moneyIn.get(i).money;
 		}
@@ -41,8 +40,7 @@ public class ProfitFormbl {
 			}
 		}
 		totalProfit=totalIn-totalOut;
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-	    ProfitFormVO vo = new ProfitFormVO(df.format(new Date()), totalOut, totalIn, totalProfit);
+	    ProfitFormVO vo = new ProfitFormVO(CurrentTime.getTime(), totalOut, totalIn, totalProfit);
 		return vo;
 	}
 

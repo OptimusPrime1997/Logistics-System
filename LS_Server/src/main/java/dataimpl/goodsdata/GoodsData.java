@@ -27,27 +27,27 @@ public class GoodsData implements GoodsDataService{
 	}
 
 	@Override
-	public ArrayList<GoodsVO> show() throws RemoteException {
+	public ArrayList<GoodsPO> show() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public GoodsVO findbygoods(String ListNum)
+	public GoodsPO findbygoods(String ListNum)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<GoodsVO> findbyGetCourier(String CourierNum)
+	public ArrayList<GoodsPO> findbyGetCourier(String CourierNum)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<GoodsVO> findbyCourier(String CourierNum)
+	public ArrayList<GoodsPO> findbyCourier(String CourierNum)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
