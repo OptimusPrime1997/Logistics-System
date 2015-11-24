@@ -9,7 +9,7 @@ import blservice.receiptblservice.TransferRepblService;
 import util.enumData.ShipForm;
 import util.enumData.place;
 
-public class TransferController extends ReceiptController implements TransferRepblService{
+public class TransferRepController extends ReceiptController implements TransferRepblService{
 	TransferRepbl TransferRep = new TransferRepbl();
 	
 	public ArrayList<ReceptionRepVO> forPay(){

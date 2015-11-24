@@ -3,14 +3,6 @@ package VO;
 import java.util.ArrayList;
 
 import PO.PayRepPO;
-<<<<<<< HEAD
-import PO.ReceiptPO;
-=======
-<<<<<<< HEAD
-import PO.ReceiptPO;
-=======
->>>>>>> origin/master
->>>>>>> origin/master
 
 public class PayRepVO extends ReceiptVO {
 	public String BankAccountNum;
@@ -19,14 +11,7 @@ public class PayRepVO extends ReceiptVO {
 	public ArrayList<SalaryVO> salary; 
 	public ArrayList<TransferPayVO> transferPay;
 	public ArrayList<RentVO> rent;
-<<<<<<< HEAD
 
-
-=======
-
-<<<<<<< HEAD
-
->>>>>>> origin/master
 	public PayRepVO(String num, String date, String bankAccountNum, String payPersonNum,
 			ArrayList<LittleThingVO> littleThing, ArrayList<SalaryVO> salary, ArrayList<TransferPayVO> transferPay,
 			ArrayList<RentVO> rent) {
@@ -37,18 +22,6 @@ public class PayRepVO extends ReceiptVO {
 		this.salary = salary;
 		this.transferPay = transferPay;
 		this.rent = rent;
-<<<<<<< HEAD
-=======
-=======
-	public static ArrayList<PayRepPO> toPOArray(ArrayList<PayRepVO> vos){
-		ArrayList<PayRepPO> pos=new ArrayList<PayRepPO>();
-		//TODO	
-		return pos;
-	}
-	public static ArrayList<PayRepVO> toVOArray(ArrayList<PayRepPO> pos){
-		ArrayList<PayRepVO> vos=new ArrayList<PayRepVO>();
-		//TODO	
-		return vos;
 	}
 	
 	public class Salary {
@@ -65,8 +38,6 @@ public class PayRepVO extends ReceiptVO {
 			this.money = money;
 		}
 		
->>>>>>> origin/master
->>>>>>> origin/master
 	}
 
 	public String getBankAccountNum() {
@@ -87,21 +58,12 @@ public class PayRepVO extends ReceiptVO {
 
 	public ArrayList<TransferPayVO> getTransferPay() {
 		return transferPay;
-<<<<<<< HEAD
 	}
 
 	public ArrayList<RentVO> getRent() {
 		return rent;
 	}
 
-=======
-	}
-
-	public ArrayList<RentVO> getRent() {
-		return rent;
-	}
-
->>>>>>> origin/master
 	public PayRepVO(PayRepPO po){
 		this.BankAccountNum = po.getBankAccountNum();
 		this.PayPersonNum = po.getPayPersonNum();

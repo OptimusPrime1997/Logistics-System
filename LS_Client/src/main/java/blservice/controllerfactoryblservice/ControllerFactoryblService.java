@@ -16,9 +16,19 @@ import blservice.managementblservice.constblservice.ConstBLService;
 import blservice.managementblservice.institutionblservice.InstitutionBLService;
 import blservice.managementblservice.salarypolicyblservice.SalaryPolicyBLService;
 import blservice.managementblservice.vehicleanddriverblservice.DriverBLService;
+import blservice.receiptblservice.CashRepblService;
+import blservice.receiptblservice.DeliverRepblService;
+import blservice.receiptblservice.GetRepblService;
+import blservice.receiptblservice.InStockRepblService;
+import blservice.receiptblservice.OutStockRepblService;
+import blservice.receiptblservice.PayRepblService;
+import blservice.receiptblservice.ReceptionRepblService;
+import blservice.receiptblservice.ShipmentRepblServce;
+import blservice.receiptblservice.ShippingRepblService;
+import blservice.receiptblservice.TransferRepblService;
 import blservice.managementblservice.vehicleanddriverblservice.*;
 
-public interface ControllerFactoryBLService {
+public interface ControllerFactoryblService {
 	public BusinessFormBLService getBusinessFromController();
 	public ProfitFormBLService getProfitFormController();
 	public GoodsCheckBLService getGoodsCheckController();
@@ -36,5 +46,25 @@ public interface ControllerFactoryBLService {
 	public DriverBLService getDriverController();
 	public VehicleBLService getVehicleController();
 	public LoginBLService getLoginController();
+	
+	public CashRepblService getCashRepblService();
+	
+	public DeliverRepblService getDeliverRepblService();
+	
+	public GetRepblService getGetRepblService();
+	
+	public InStockRepblService getInStockRepblService();
+	
+	public OutStockRepblService getOutStockRepblService();
+	
+	public PayRepblService getPayRepblService();
+	
+	public ReceptionRepblService getReceptionRepblService();
+	
+	public ShipmentRepblServce getShipmentRepblServce();
+	
+	public ShippingRepblService getShippingRepblService();
+	
+	public TransferRepblService getTransferRepblService();
 	
 }

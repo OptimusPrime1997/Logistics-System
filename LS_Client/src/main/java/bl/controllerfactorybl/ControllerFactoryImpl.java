@@ -16,7 +16,17 @@ import bl.managementbl.institutionbl.InstitutionblController;
 import bl.managementbl.salarypolicybl.SalaryPolicyblController;
 import bl.managementbl.vehicleanddriverbl.DriverblController;
 import bl.managementbl.vehicleanddriverbl.VehicleblController;
-import blservice.controllerfactoryblservice.ControllerFactoryBLService;
+import bl.receiptbl.CashRepbl.CashRepController;
+import bl.receiptbl.DeliverRepbl.DeliverController;
+import bl.receiptbl.GetRepbl.GetRepController;
+import bl.receiptbl.InStockRepbl.InStockRepController;
+import bl.receiptbl.OutStockRepbl.OutStockRepController;
+import bl.receiptbl.PayRepbl.PayRepController;
+import bl.receiptbl.ReceptionRepbl.ReceptionRepController;
+import bl.receiptbl.ShipmentRepbl.ShipmentController;
+import bl.receiptbl.ShippingRepbl.ShippingRepController;
+import bl.receiptbl.TransferRepbl.TransferRepController;
+import blservice.controllerfactoryblservice.ControllerFactoryblService;
 import blservice.formblservice.BusinessFormBLService;
 import blservice.formblservice.ProfitFormBLService;
 import blservice.goodsblservice.GoodsCheckBLService;
@@ -34,8 +44,18 @@ import blservice.managementblservice.institutionblservice.InstitutionBLService;
 import blservice.managementblservice.salarypolicyblservice.SalaryPolicyBLService;
 import blservice.managementblservice.vehicleanddriverblservice.DriverBLService;
 import blservice.managementblservice.vehicleanddriverblservice.VehicleBLService;
+import blservice.receiptblservice.CashRepblService;
+import blservice.receiptblservice.DeliverRepblService;
+import blservice.receiptblservice.GetRepblService;
+import blservice.receiptblservice.InStockRepblService;
+import blservice.receiptblservice.OutStockRepblService;
+import blservice.receiptblservice.PayRepblService;
+import blservice.receiptblservice.ReceptionRepblService;
+import blservice.receiptblservice.ShipmentRepblServce;
+import blservice.receiptblservice.ShippingRepblService;
+import blservice.receiptblservice.TransferRepblService;
 
-public class ControllerFactoryImpl implements ControllerFactoryBLService{
+public class ControllerFactoryImpl implements ControllerFactoryblService{
 private ControllerFactoryImpl() {}
 	
 	public static ControllerFactoryImpl getInstance() {
@@ -145,6 +165,66 @@ private ControllerFactoryImpl() {}
 	public LoginBLService getLoginController() {
 		// TODO Auto-generated method stub
 		return new LoginBLController();
+	}
+
+	@Override
+	public CashRepblService getCashRepblService() {
+		// TODO Auto-generated method stub
+		return new CashRepController();
+	}
+
+	@Override
+	public DeliverRepblService getDeliverRepblService() {
+		// TODO Auto-generated method stub
+		return new DeliverController();
+	}
+
+	@Override
+	public GetRepblService getGetRepblService() {
+		// TODO Auto-generated method stub
+		return new GetRepController();
+	}
+
+	@Override
+	public InStockRepblService getInStockRepblService() {
+		// TODO Auto-generated method stub
+		return new InStockRepController();
+	}
+
+	@Override
+	public OutStockRepblService getOutStockRepblService() {
+		// TODO Auto-generated method stub
+		return new OutStockRepController();
+	}
+
+	@Override
+	public PayRepblService getPayRepblService() {
+		// TODO Auto-generated method stub
+		return new PayRepController();
+	}
+
+	@Override
+	public ReceptionRepblService getReceptionRepblService() {
+		// TODO Auto-generated method stub
+		return new ReceptionRepController();
+	}
+
+	@Override
+	public ShipmentRepblServce getShipmentRepblServce() {
+		// TODO Auto-generated method stub
+		return new ShipmentController();
+	}
+
+	@Override
+	public ShippingRepblService getShippingRepblService() {
+		// TODO Auto-generated method stub
+		return new ShippingRepController();
+	}
+
+	@Override
+	public TransferRepblService getTransferRepblService() {
+		// TODO Auto-generated method stub
+		return new TransferRepController();
 	}
 
 }

@@ -28,7 +28,7 @@ public class CashRep extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accountLabel;
     private javax.swing.JTextField accountText;
-    private javax.swing.JButton cancel;
+    private javax.swing.JButton cancelButton;
     private javax.swing.JButton courierButton;
     private javax.swing.JLabel courierNumLabel;
     private javax.swing.JTextField courierNumText;
@@ -40,7 +40,7 @@ public class CashRep extends javax.swing.JPanel {
     private javax.swing.JTextField numText;
     private javax.swing.JLabel officeLabel;
     private javax.swing.JTextField officeText;
-    private javax.swing.JButton ok;
+    private javax.swing.JButton okButton;
     private javax.swing.JLabel sumLabel;
     private javax.swing.JTextField sumText;
     private CashRepblService control;
@@ -74,8 +74,8 @@ public class CashRep extends javax.swing.JPanel {
         dateText = new javax.swing.JTextField();
         sumLabel = new javax.swing.JLabel();
         sumText = new javax.swing.JTextField();
-        cancel = new javax.swing.JButton();
-        ok = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
+        okButton = new javax.swing.JButton();
         officeText = new javax.swing.JTextField();
         officeLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -103,15 +103,15 @@ public class CashRep extends javax.swing.JPanel {
 
         sumText.setText("0");
 
-        cancel.setText("取消");
-        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+        cancelButton.setText("取消");
+        cancelButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cancelMouseClicked(evt);
             }
         });
 
-        ok.setText("确认");
-        ok.addMouseListener(new java.awt.event.MouseAdapter() {
+        okButton.setText("确认");
+        okButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 okMouseClicked(evt);
             }
@@ -212,9 +212,9 @@ public class CashRep extends javax.swing.JPanel {
                                     .addComponent(accountText, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(16, 16, 16)
-                                        .addComponent(cancel)
+                                        .addComponent(cancelButton)
                                         .addGap(91, 91, 91)
-                                        .addComponent(ok)))))
+                                        .addComponent(okButton)))))
                         .addContainerGap(18, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -251,8 +251,8 @@ public class CashRep extends javax.swing.JPanel {
                     .addComponent(accountText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancel)
-                    .addComponent(ok))
+                    .addComponent(cancelButton)
+                    .addComponent(okButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         
