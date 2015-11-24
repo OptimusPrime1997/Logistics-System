@@ -1,9 +1,9 @@
 .gitignore_global 
-LS_Client/**/*.class
+/LS_Client/**/*.class
 *.classpath
 *.class
 
-LS_Client/target/**/*.class
+/LS_Client/target/**/*.class
 *.classpath
 *.class
 
@@ -51,24 +51,24 @@ bin/
 *.classpath
 *.class
 *.class
-src/**/*.class
+/src/**/*.class
 *.classpath
 *.class
 
-LS_Server/**/*.class
+/LS_Server/**/*.class
 *.classpath
 *.class
-LS_Common/**/*.class
+/LS_Common/**/*.class
 *.classpath
 *.class
-target/**/*.class
+/target/**/*.class
 *.classpath
 *.class
 
-LS_Server/target/**/*.class
+/LS_Server/target/**/*.class
 *.classpath
 *.class
-LS_Common/target/**/*.class
+/LS_Common/target/**/*.class
 *.classpath
 *.class
 *.class
