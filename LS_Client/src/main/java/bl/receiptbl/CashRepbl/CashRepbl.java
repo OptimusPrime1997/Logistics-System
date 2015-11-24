@@ -3,9 +3,10 @@ package bl.receiptbl.CashRepbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
+
 import PO.CashRepPO;
 import PO.ReceiptPO;
-import RMIClient.Receipt.ReceiptClient;
+import RMIClient.ReceiptClient;
 import bl.goodsbl.Goodsbl;
 import bl.managementbl.accountbl.Accountbl;
 import bl.receiptbl.Receiptbl.Receiptbl;

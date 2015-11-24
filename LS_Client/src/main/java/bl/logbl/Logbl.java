@@ -3,13 +3,6 @@ package bl.logbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-<<<<<<< HEAD
-import util.DataFactory;
-<<<<<<< HEAD
-=======
-=======
->>>>>>> origin/master
->>>>>>> origin/master
 import util.enumData.LogType;
 import VO.LogVO;
 import dataservice.logdataservice.LogDataService;
@@ -18,7 +11,7 @@ public class Logbl {
 	LogDataService logData=DataFactory.getLogdata();
 	public void add(LogVO vo) {
 		try {
-			logData.add(vo.toPO(vo));
+			logData.add(LogVO.toPO(vo));
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
