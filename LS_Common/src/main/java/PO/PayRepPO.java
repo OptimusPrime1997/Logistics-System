@@ -10,8 +10,13 @@ public class PayRepPO extends ReceiptPO {
 	private ArrayList<TransferPayPO> transferPay;
 	private ArrayList<RentPO> rent;
 	public PayRepPO(String num, String date, String bankAccountNum, String payPersonNum,
+<<<<<<< HEAD
 			ArrayList<LittleThingPO> littleThing, ArrayList<SalaryPO> salary, ArrayList<TransferPayPO> transferPay,
 			ArrayList<RentPO> rent) {
+=======
+			ArrayList<LittleThing> littleThings, ArrayList<Salary> salarys, 
+			ArrayList<TransferPay> transferPays,ArrayList<Rent> rents) {
+>>>>>>> origin/master
 		super(num, date);
 		BankAccountNum = bankAccountNum;
 		PayPersonNum = payPersonNum;

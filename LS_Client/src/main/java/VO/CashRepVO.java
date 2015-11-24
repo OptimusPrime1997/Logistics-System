@@ -28,6 +28,7 @@ public class CashRepVO extends ReceiptVO {
 		this.courierName = courierName;
 		this.goods = goods;
 	}
+<<<<<<< HEAD
 	
 	public static ArrayList<CashRepVO> toVOArray(ArrayList<CashRepPO> cashRepPOs){
 		ArrayList<CashRepVO> cashRepVOs = new ArrayList<CashRepVO>();
@@ -56,5 +57,24 @@ public class CashRepVO extends ReceiptVO {
 	public static CashRepPO toPO(CashRepVO vo){
 		return new CashRepPO(vo.num, vo.date, vo.money, vo.courierNum, vo.courierName, vo.goods);     
 		//转arraylist
+=======
+	public static ArrayList<CashRepPO> toPOArray(ArrayList<CashRepVO> vos){
+		ArrayList<CashRepPO> pos=new ArrayList<CashRepPO>();
+		//TODO
+		return pos;
+	}
+	public static ArrayList<CashRepVO> toVOArray(ArrayList<CashRepPO> pos){
+		ArrayList<CashRepVO> vos=new ArrayList<CashRepVO>();
+		//TODO
+		return vos;
+	}
+
+	public static CashRepVO toVO(CashRepPO po){
+		return new CashRepVO(po.getNum(), po.getDate(), po.getMoney(), po.getCourierNum(), po.getCourierName(), GoodsVO.toVOArray(po.getGoods()));
+	}
+	
+	public static CashRepPO toPO(CashRepVO vo){
+		return new CashRepPO(vo.num, vo.date, vo.money, vo.courierNum, vo.courierName, GoodsVO.toPOArray(vo.goods));
+>>>>>>> origin/master
 	}
 }

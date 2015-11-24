@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import util.CurrentTime;
 import util.InputCheck;
+import util.enumData.LogType;
 import util.enumData.ResultMessage;
 import VO.LogVO;
 import VO.ManagementVO.AccountVO;
@@ -12,7 +13,7 @@ import bl.logbl.Logbl;
 import bl.loginbl.Loginbl;
 
 public class Accountbl {
-	public ResultMessage createLog(String operationName,String info){	
+	public ResultMessage createLog(LogType operationName,String info){	
 //		try{
 //			AccountDataService accountDataService=DataFactoryImpl.getInstance().getAccountData();
 //		}catch(Exception e){

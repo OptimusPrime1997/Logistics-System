@@ -3,7 +3,10 @@ package bl.logbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+<<<<<<< HEAD
 import util.DataFactory;
+=======
+>>>>>>> origin/master
 import util.enumData.LogType;
 import VO.LogVO;
 import dataservice.logdataservice.LogDataService;
