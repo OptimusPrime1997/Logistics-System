@@ -21,11 +21,12 @@ public class BusinessFormVO {
 	public BusinessFormVO(BusinessFormPO po){
 		this.startTime=po.getStartTime();
 		this.endTime=po.getEndTime();
-		this.moneyInRecord=po.getMoneyInRecord();
-		this.moneyOutRecord=po.getMoneyOutRecord();
+		this.moneyInRecord=CashRepVO.toVOArray(po.getMoneyInRecord());
+		this.moneyOutRecord=PayRepVO.toVOArray(po.getMoneyOutRecord());
 	}
 	public BusinessFormPO toPO(BusinessFormVO vo){
-		BusinessFormPO po=new BusinessFormPO(startTime, endTime, moneyOutRecord, moneyInRecord);
+		BusinessFormPO po=new BusinessFormPO(startTime, endTime, PayRepVO.toPOArray(moneyOutRecord),CashRepVO.toPOArray(moneyInRecord));
 		return po;
 	}
+	
 }

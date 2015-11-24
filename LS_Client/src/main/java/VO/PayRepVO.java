@@ -2,6 +2,8 @@ package VO;
 
 import java.util.ArrayList;
 
+import PO.PayRepPO;
+
 public class PayRepVO extends ReceiptVO {
 	public String BankAccountNum;
 	public String PayPersonNum;
@@ -10,6 +12,17 @@ public class PayRepVO extends ReceiptVO {
 	public ArrayList<TransferPay> TransferPays;
 	public ArrayList<Rent> rents;
 
+	public static ArrayList<PayRepPO> toPOArray(ArrayList<PayRepVO> vos){
+		ArrayList<PayRepPO> pos=new ArrayList<PayRepPO>();
+		//TODO	
+		return pos;
+	}
+	public static ArrayList<PayRepVO> toVOArray(ArrayList<PayRepPO> pos){
+		ArrayList<PayRepVO> vos=new ArrayList<PayRepVO>();
+		//TODO	
+		return vos;
+	}
+	
 	public class Salary {
 		public String getterName;
 		public String getterNum;

@@ -127,8 +127,8 @@ public class PayRepPO extends ReceiptPO {
 	}
 
 	public PayRepPO(String num, String date, String bankAccountNum, String payPersonNum,
-			ArrayList<LittleThing> littleThings, ArrayList<Salary> salarys, ArrayList<TransferPay> transferPays,
-			ArrayList<Rent> rents) {
+			ArrayList<LittleThing> littleThings, ArrayList<Salary> salarys, 
+			ArrayList<TransferPay> transferPays,ArrayList<Rent> rents) {
 		super(num, date);
 		BankAccountNum = bankAccountNum;
 		PayPersonNum = payPersonNum;
