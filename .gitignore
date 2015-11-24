@@ -1,11 +1,53 @@
-#ºöÂÔgitignoreÎÄ¼þ  
-.gitignore  
-       
-# Java class files  
+.gitignore_global 
 *.class
+*.com  
+*.class  
+*.dll  
+*.exe  
+*.o  
+*.so  
+
+  
+*.log  
+*.sql  
+*.sqlite  
+   
+.DS_Store  
+.DS_Store?  
+._*  
+.Spotlight-V100  
+.Trashes  
+
+
+*.class
+*.classpath
+*.DS_Store
+*.project
 
 # Directory #  
 # Generated files  
 bin/
 *.classpath
 *.class
+*.class
+src/**/*.class
+*.classpath
+*.class
+LS_Client/**/*.class
+*.classpath
+*.class
+LS_Server/**/*.class
+*.classpath
+*.class
+LS_Common/**/*.class
+*.classpath
+*.class
+target/**/*.class
+*.classpath
+*.class
+
+LS_Client/target/
+
+LS_Server/target/
+
+LS_Common/target/
