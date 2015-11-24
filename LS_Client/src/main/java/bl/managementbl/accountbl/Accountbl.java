@@ -10,7 +10,7 @@ import util.enumData.ResultMessage;
 import VO.LogVO;
 import VO.ManagementVO.AccountVO;
 import bl.logbl.Logbl;
-import bl.loginbl.Loginbl;
+import bl.loginbl.LoginBL;
 
 public class Accountbl {
 	public ResultMessage createLog(LogType operationName,String info){	
@@ -20,7 +20,7 @@ public class Accountbl {
 //			e.printStackTrace();
 //		}
 		Logbl logbl=new Logbl();
-		LogVO logVO=new LogVO(operationName, Loginbl.getCurrentOptorId(), CurrentTime.getTime());
+		LogVO logVO=new LogVO(operationName, LoginBL.getCurrentOptorId(), CurrentTime.getTime());
 		logbl.add(logVO);
 		return ResultMessage.SUCCESS;
 	}
