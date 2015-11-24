@@ -3,7 +3,7 @@ package dataservice.logdataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import bl.logbl.LogType;
+import util.enumData.LogType;
 import PO.LogPO;
 /**
  * add or check the system log
