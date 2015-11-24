@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import VO.LogVO;
 import blservice.logblservice.LogBLService;
+import util.enumData.LogType;
 
 public class LogController implements LogBLService{
 	private Logbl logbl = new Logbl();

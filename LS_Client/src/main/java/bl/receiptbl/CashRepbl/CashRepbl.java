@@ -46,15 +46,15 @@ public class CashRepbl{
 		return getCashRepDataService().delete(num);
 	} 
 	
-	public String createNum(){
-		return getCashRepDataService().createNum();
+	public String createNum(String date){
+		return getCashRepDataService().createNum(date);
 	}
 	
 	public ArrayList<CashRepVO> getAllRep() {
 		ArrayList<CashRepVO> cashRepVOs = new ArrayList<CashRepVO>();
 		ArrayList<ReceiptPO> receiptPOs = getCashRepDataService().getAllRep();
 		for(int i = 0;i<receiptPOs.size();i++){
-			cashRepVOs.add(CashRepVO.toVO((CashRepPO)receiptPOs.get(i)));
+			cashRepVOs.add(new CashRepVO((CashRepPO)receiptPOs.get(i)));
 		}
 		return cashRepVOs;
 	}
@@ -63,14 +63,14 @@ public class CashRepbl{
 		ArrayList<CashRepVO> cashRepVOs = new ArrayList<CashRepVO>();
 		ArrayList<ReceiptPO> receiptPOs = getCashRepDataService().getRepByDate(date);
 		for(int i = 0;i<receiptPOs.size();i++){
-			cashRepVOs.add(CashRepVO.toVO((CashRepPO)receiptPOs.get(i)));
+			cashRepVOs.add(new CashRepVO((CashRepPO)receiptPOs.get(i)));
 		}
 		return cashRepVOs;
 	}
 	
 	public CashRepVO getRepByNum(String num){
 		ReceiptPO receiptPO = getCashRepDataService().getRepByNum(num);
-		return CashRepVO.toVO((CashRepPO)receiptPO);
+		return new CashRepVO((CashRepPO)receiptPO);
 	}
 
 	public ArrayList<GoodsVO> getGoods(String courierNum){

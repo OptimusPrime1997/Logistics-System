@@ -256,7 +256,7 @@ public class CashRep extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         
-        numText.setText(control.createNum());
+        numText.setText(control.createNum(dateText.getText()));
 
 		dateText.setText(control.getDate());
     }// </editor-fold>//GEN-END:initComponents

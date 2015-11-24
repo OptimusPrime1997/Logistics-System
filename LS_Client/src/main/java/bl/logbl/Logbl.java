@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.DataFactory;
+import util.enumData.LogType;
 import VO.LogVO;
 import dataservice.logdataservice.LogDataService;
 

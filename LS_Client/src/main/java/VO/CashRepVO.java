@@ -28,12 +28,33 @@ public class CashRepVO extends ReceiptVO {
 		this.courierName = courierName;
 		this.goods = goods;
 	}
+	
+	public static ArrayList<CashRepVO> toVOArray(ArrayList<CashRepPO> cashRepPOs){
+		ArrayList<CashRepVO> cashRepVOs = new ArrayList<CashRepVO>();
+		for(CashRepPO cashRepPO : cashRepPOs)
+			cashRepVOs.add(new CashRepVO(cashRepPO));
+		return cashRepVOs;
+	}
+	
+	public static ArrayList<CashRepPO> toArrayPO(ArrayList<CashRepVO> cashRepVOs){
+		ArrayList<CashRepPO> cashRepPOs = new ArrayList<CashRepPO>();
+		for(CashRepVO cashRepVO : cashRepVOs)
+			cashRepPOs.add(CashRepVO.toPO(cashRepVO));
+		return cashRepPOs;
+		
+	}
 
-	public static CashRepVO toVO(CashRepPO po){
-		return new CashRepVO(po.getNum(), po.getDate(), po.getMoney(), po.getCourierNum(), po.getCourierName(), new GoodsVO(po.getGoods()));
+	public CashRepVO(CashRepPO po){
+		this.num = po.getNum();
+		this.date = po.getDate();
+		this.money = po.getMoney();
+		this.courierNum = po.getCourierNum();
+		this.courierName = po.getCourierName();
+		this.goods = po.getGoods();  					//转arraylist
 	}
 	
 	public static CashRepPO toPO(CashRepVO vo){
-		return new CashRepPO(vo.num, vo.date, vo.money, vo.courierNum, vo.courierName, vo.goods);
+		return new CashRepPO(vo.num, vo.date, vo.money, vo.courierNum, vo.courierName, vo.goods);     
+		//转arraylist
 	}
 }

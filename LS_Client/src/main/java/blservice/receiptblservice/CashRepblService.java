@@ -21,7 +21,7 @@ public interface CashRepblService extends ReceiptblService{
 	
 	public ResultMessage delete(String num);
 	
-	public String createNum();
+	public String createNum(String date);
 
 	/**
 	 * 通过快递员编号得到快递员一天收到所有货物
