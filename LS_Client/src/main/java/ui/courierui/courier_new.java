@@ -6,16 +6,18 @@
 
 package ui.courierui;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author apple
  */
-public class Order extends javax.swing.JPanel {
+public class courier_new extends JFrame {
 
     /**
      * Creates new form Order
      */
-    public Order() {
+    public courier_new() {
         initComponents();
     }
 
