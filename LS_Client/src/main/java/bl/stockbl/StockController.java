@@ -5,6 +5,9 @@ package bl.stockbl;
 
 import java.util.ArrayList;
 
+import util.enumData.ResultMessage;
+import VO.InStockRepVO;
+import VO.OutStockRepVO;
 import VO.StockVO;
 import blservice.stockblservice.StockBLService;
 
@@ -39,6 +42,27 @@ public class StockController implements StockBLService{
 	public ArrayList<StockVO> show() {
 		// TODO Auto-generated method stub
 		return stock.show();
+	}
+
+	
+	@Override
+	public InStockRepVO toWriteInStockRep() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	@Override
+	public OutStockRepVO toWriteOutStockRep() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	@Override
+	public ResultMessage initialStockNum(int num) {
+		return stock.initialStockNum(num);
+		
 	}
 
 }

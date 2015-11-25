@@ -5,6 +5,12 @@
  */
 package ui.warehousemanui;
 
+import java.awt.event.ActionEvent;
+
+import ui.mainFrame.MainFrame;
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import bl.stockbl.StockController;
+
 /**
  *
  * @author G
@@ -48,8 +54,18 @@ public class InitialStockNumPanel extends javax.swing.JPanel {
         jTextField1.setText("jTextField1");
 
         jButton1.setText("确定");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("返回");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -94,9 +110,44 @@ public class InitialStockNumPanel extends javax.swing.JPanel {
                 .addGap(106, 106, 106))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    
+    StockController sc = (StockController) ControllerFactoryImpl.getInstance().getStockController();
+    /**
+	 * @param evt
+	 * 返回
+	 */
+	private void jButton2ActionPerformed(ActionEvent evt) {
+		// TODO 这个要转成frame么，不转的话怎么把它给消去呢
+		WarehousePanel w = new WarehousePanel();
+		w.setVisible(true);
+		this.setVisible(false);
+		
+	}
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+	/**
+	 * @param evt
+	 * 
+	 * 确定
+	 */
+	private void jButton1ActionPerformed(ActionEvent evt) {
+		// TODO 怎么从界面得到这个数字
+		int num = 0;
+		sc.initialStockNum(num);
+		
+		
+	}
+
+	/**
+	 * 
+	 * @param evt
+	 * 退出
+	 */
+	private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+		MainFrame mf = new MainFrame();
+    	mf.setVisible(true);
+    	this.setVisible(false);
+		
     }//GEN-LAST:event_jButton3ActionPerformed
 
 

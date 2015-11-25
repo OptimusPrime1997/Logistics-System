@@ -5,11 +5,17 @@
  */
 package ui.warehousemanui;
 
+import ui.mainFrame.MainFrame;
+import ui.receiptui.InStockRep;
+import ui.receiptui.OutStockRep;
+
 /**
  *
  * @author G
  */
 public class WarehousePanel extends javax.swing.JFrame {
+	
+	
 
     /**
      * Creates new form NewJFrame
@@ -112,6 +118,12 @@ public class WarehousePanel extends javax.swing.JFrame {
         jLabel9.setText("当前账户：大玉儿");
 
         jButton4.setText("调整分区");
+        
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("输入最初库存数量");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -258,29 +270,60 @@ public class WarehousePanel extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
 
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    	OutStockRep out = new OutStockRep();
+    	out.setVisible(true);
+    	this.dispose();
+    	
+    	
+    	
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+    	
+    	InStockRep in = new InStockRep();
+    	in.setVisible(true);
+    	this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+    	//TODO退出
+    	MainFrame mf = new MainFrame();
+    	mf.setVisible(true);
+    	this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+    	DivisionChangePanel dc = new DivisionChangePanel();
+    	dc.setVisible(true);
+    	this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+    
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+    	
+    	InitialStockNumPanel ini = new InitialStockNumPanel();
+    	ini.setVisible(true);
+    	this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+    	
+    	StockShowPanel ss = new StockShowPanel();
+    	ss.setVisible(true);
+    	this.dispose();
+    	
+    	
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+    	StockCheckPanel sc = new StockCheckPanel();
+    	sc.setVisible(true);
+    	this.dispose();
+    	
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**

@@ -4,6 +4,8 @@
 package bl.stockbl;
 
 import java.util.ArrayList;
+
+import util.enumData.ResultMessage;
 import VO.InStockRepVO;
 import VO.OutStockRepVO;
 import VO.StockVO;
@@ -14,6 +16,15 @@ import VO.StockVO;
  */
 public class Stock {
 	
+	
+	public InStockRepVO toWriteInStockRep() {
+		//TODO
+		return null;
+	}
+	
+	public void toWriteOutStockRep() {
+		//TODO
+	}
 	
 	public int checkInStock(String startDate, String endDate) {
 		// TODO Auto-generated method stub
@@ -82,6 +93,15 @@ public class Stock {
 
 	
 	public ArrayList<StockVO> show() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * @param num
+	 * @return
+	 */
+	public ResultMessage initialStockNum(int num) {
 		// TODO Auto-generated method stub
 		return null;
 	}

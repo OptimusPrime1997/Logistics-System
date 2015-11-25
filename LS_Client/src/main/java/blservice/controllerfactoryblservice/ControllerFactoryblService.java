@@ -26,6 +26,7 @@ import blservice.receiptblservice.ReceptionRepblService;
 import blservice.receiptblservice.ShipmentRepblServce;
 import blservice.receiptblservice.ShippingRepblService;
 import blservice.receiptblservice.TransferRepblService;
+import blservice.stockblservice.StockBLService;
 import blservice.managementblservice.vehicleanddriverblservice.*;
 
 public interface ControllerFactoryblService {
@@ -66,5 +67,7 @@ public interface ControllerFactoryblService {
 	public ShippingRepblService getShippingRepblService();
 	
 	public TransferRepblService getTransferRepblService();
+	
+	public StockBLService getStockController();
 	
 }
