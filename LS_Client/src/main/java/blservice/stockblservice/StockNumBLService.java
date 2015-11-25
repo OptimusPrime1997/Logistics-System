@@ -3,6 +3,8 @@
  */
 package blservice.stockblservice;
 
+import util.enumData.ResultMessage;
+
 /**
  * @author G
  *
@@ -12,5 +14,5 @@ public interface StockNumBLService {
 	 * 界面提供初始化库存数量，系统持久化该仓库库存初始数量
 	 * @param initialNum
 	 */
-	public void initial(int initialNum);
+	public ResultMessage initial(int initialNum);
 }

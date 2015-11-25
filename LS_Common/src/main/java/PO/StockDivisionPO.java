@@ -11,11 +11,11 @@ import java.io.Serializable;
  */
 public class StockDivisionPO implements Serializable{
 	
-	String cityNum;
-	String destination;
-	int block;
-	int place;
-	boolean available;
+	private String cityNum;
+	private String destination;
+	private int block;
+	private int place;
+	private boolean available;
 	
 	/**
 	 * 
@@ -49,9 +49,32 @@ public class StockDivisionPO implements Serializable{
 		return place;
 	}
 
-	public boolean isAvailable() {
+	public boolean getAvailable() {
 		return available;
 	}
+	
+
+	public void setCityNum(String cityNum) {
+		this.cityNum = cityNum;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+
+	public void setBlock(int block) {
+		this.block = block;
+	}
+
+	public void setPlace(int place) {
+		this.place = place;
+	}
+
+	public void setAvailable(boolean available) {
+		this.available = available;
+	}
+	
+	
 	
 	
 	

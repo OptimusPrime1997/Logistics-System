@@ -28,7 +28,7 @@ public interface StockDataService {
 	 * @param listnum
 	 * @throws RemoteException
 	 */
-	public ResultMessage delete(int listnum)throws RemoteException;
+	public ResultMessage delete(String listnum)throws RemoteException;
 	
 	/**
 	 * 

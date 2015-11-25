@@ -5,6 +5,7 @@ package bl.stockbl;
 
 import java.util.ArrayList;
 
+import util.enumData.ResultMessage;
 import VO.StockDivisionVO;
 import blservice.stockblservice.StockDivisionBLService;
 
@@ -15,10 +16,9 @@ import blservice.stockblservice.StockDivisionBLService;
 public class StockDivisionbl implements StockDivisionBLService{
 
 	
-	public void modifyDivision(int oldBlock, int oldPlace, int newBlock,
-			int newPlace) {
+	public ResultMessage modifyDivision(int oldBlock, int oldPlace, int newBlock, int newPlace) {
 		// TODO Auto-generated method stub
-		
+		return ResultMessage.SUCCESS;
 	}
 
 	 

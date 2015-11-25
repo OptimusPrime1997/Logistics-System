@@ -10,8 +10,8 @@ import java.io.Serializable;
  *
  */
 public class StockNumPO implements Serializable{
-	String cityNum;
-	int initialNum;
+	private String cityNum;
+	private int initialNum;
 	
 	/**
 	 * 
@@ -29,6 +29,14 @@ public class StockNumPO implements Serializable{
 
 	public int getInitialNum() {
 		return initialNum;
+	}
+
+	public void setCityNum(String cityNum) {
+		this.cityNum = cityNum;
+	}
+
+	public void setInitialNum(int initialNum) {
+		this.initialNum = initialNum;
 	}
 	
 	

@@ -3,6 +3,8 @@
  */
 package VO;
 
+import PO.StockDivisionPO;
+
 /**
  * @author G
  *
@@ -28,5 +30,29 @@ public class StockDivisionVO {
 		block=b;
 		place=p;
 		available=avai;
+	}
+	
+	public StockDivisionPO voToPo(StockDivisionVO vo) {
+		
+		StockDivisionPO po = new StockDivisionPO(null, null, 0, 0, true);
+		po.setAvailable(vo.available);
+		po.setBlock(vo.block);
+		po.setCityNum(vo.cityNum);
+		po.setDestination(vo.destination);
+		po.setPlace(vo.place);
+		
+		return po;
+	}
+	
+	public StockDivisionVO poToVo(StockDivisionPO po) {
+		
+		StockDivisionVO vo = new StockDivisionVO(null, null, 0, 0, true);
+		vo.available = po.getAvailable();
+		vo.block = po.getBlock();
+		vo.cityNum = po.getCityNum();
+		vo.destination = po.getDestination();
+		vo.place = po.getPlace();
+		
+		return vo;
 	}
 }

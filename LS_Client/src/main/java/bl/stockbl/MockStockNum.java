@@ -3,6 +3,8 @@
  */
 package bl.stockbl;
 
+import util.enumData.ResultMessage;
+
 /**
  * @author G
  *
@@ -10,9 +12,10 @@ package bl.stockbl;
 public class MockStockNum extends StockNum{
 	int initialStockNum;
 	
-	public void initial(int initialNum) {
+	public ResultMessage initial(int initialNum) {
 		initialStockNum = initialNum;
 		System.out.println("  i am ini  "+initialStockNum);
+		return ResultMessage.SUCCESS;
 	}
 	
 	//由当前城市，得到初始库存数量

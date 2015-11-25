@@ -3,6 +3,7 @@
  */
 package bl.stockbl;
 
+import util.enumData.ResultMessage;
 import blservice.stockblservice.StockNumBLService;
 
 /**
@@ -10,18 +11,24 @@ import blservice.stockblservice.StockNumBLService;
  *
  */
 public class StockNum implements StockNumBLService{
-	private int initialStockNum;
-	//初始化当前城市库存数量
-	public void initial(int initialNum) {
-		
+	
+	private int number;
+	/**
+	 * 初始化当前城市库存数量
+	 */
+	public ResultMessage initial(int initialNum) {
+		//TODO
+		return ResultMessage.SUCCESS;
 	}
 	
-	//由当前城市，得到初始库存数量
-	
+	/**
+	 * 由当前城市，得到初始库存数量
+	 * @return
+	 */
 	public int getInitialStockNum() {
 		//TODO
 	
-		return initialStockNum;
+		return number;
 	}
 	
 

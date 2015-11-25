@@ -43,10 +43,10 @@ public class StockVO {
 	 * @param vo
 	 * @return
 	 */
-	public StockPO voToPO(StockVO vo) {
+	public StockPO voToPo(StockVO vo) {
 		
 		
-		StockPO po = new StockPO("","","","","",0,0);
+		StockPO po = new StockPO(null,null,null,null,null,0,0);
 		po.setBlock(vo.block);
 		po.setCityNum(vo.cityNum);
 		po.setDestination(vo.destination);
@@ -61,7 +61,7 @@ public class StockVO {
 	
 	public StockVO poToVo(StockPO po) {
 		
-		StockVO vo = new StockVO("", "", "", "", "", 0, 0);
+		StockVO vo = new StockVO(null, null, null, null, null, 0, 0);
 		
 		vo.block = po.getBlock();
 		vo.cityNum = po.getCityNum();
@@ -73,4 +73,5 @@ public class StockVO {
 		
 		return vo;
 	}
+	
 }

@@ -5,6 +5,7 @@ package blservice.stockblservice;
 
 import java.util.ArrayList;
 
+import util.enumData.ResultMessage;
 import VO.StockDivisionVO;
 
 /**
@@ -20,7 +21,7 @@ public interface StockDivisionBLService {
 	 * @param newBlock
 	 * @param newPlace
 	 */
-	public void modifyDivision(int oldBlock,int oldPlace, int newBlock, int newPlace);
+	public ResultMessage modifyDivision(int oldBlock,int oldPlace, int newBlock, int newPlace);
 	
 	/**
 	 * 界面提供目的地，系统提供该仓库可用的区号和位号
