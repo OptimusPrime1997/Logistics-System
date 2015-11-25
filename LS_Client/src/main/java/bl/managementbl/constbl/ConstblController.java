@@ -8,8 +8,8 @@ import util.enumData.ResultMessage;
 import VO.ManagementVO.ConstVO;
 import blservice.managementblservice.constblservice.ConstBLService;
 
-public class ConstBLController implements ConstBLService {
-	ConstBL constBL=new ConstBL();
+public class ConstblController implements ConstBLService {
+	Constbl constBL=new Constbl();
 
 	public ResultMessage insert(ConstVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -31,6 +31,12 @@ public class ConstBLController implements ConstBLService {
 		return null;
 	}
 
+	public ConstVO findByConstName(String constName) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public ConstVO findByConstName(Const constName) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;

@@ -8,7 +8,7 @@ import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsLogisticState;
 import RMIClient.GoodsClient;
 import VO.GoodsVO;
-import bl.managementbl.constbl.ConstBL;
+import bl.managementbl.constbl.Constbl;
 import dataservice.goodsdataservice.GoodsDataService;
 
 public class Goodsbl {
@@ -37,7 +37,7 @@ public class Goodsbl {
 	}
 
 	public GoodsVO init(GoodsVO vo) {
-		ConstBL constBL = new ConstBL();
+		Constbl constBL = new Constbl();
 		//TODO the parameter of the findByConstName function is to be modified
 		try {
 			//TODO 计算运费

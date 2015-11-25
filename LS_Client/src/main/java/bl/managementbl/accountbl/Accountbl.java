@@ -13,14 +13,14 @@ import bl.logbl.Logbl;
 import bl.loginbl.Loginbl;
 
 public class Accountbl {
-	public ResultMessage createLog(LogType operationName,String info){	
+	public ResultMessage createLog(LogType operation,String info){	
 //		try{
 //			AccountDataService accountDataService=DataFactoryImpl.getInstance().getAccountData();
 //		}catch(Exception e){
 //			e.printStackTrace();
 //		}
 		Logbl logbl=new Logbl();
-		LogVO logVO=new LogVO(operationName, Loginbl.getCurrentOptorId(), CurrentTime.getTime());
+		LogVO logVO=new LogVO(operation, Loginbl.getCurrentOptorId(), CurrentTime.getTime());
 		logbl.add(logVO);
 		return ResultMessage.SUCCESS;
 	}

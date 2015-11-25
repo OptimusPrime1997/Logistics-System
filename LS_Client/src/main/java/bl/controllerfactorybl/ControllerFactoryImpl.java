@@ -8,10 +8,10 @@ import bl.goodsbl.controller.GoodsExamineController;
 import bl.goodsbl.controller.GoodsGetByCourierController;
 import bl.goodsbl.controller.GoodsInitController;
 import bl.goodsbl.controller.GoodsSetStateController;
-import bl.loginbl.LoginBLController;
+import bl.loginbl.LoginblController;
 import bl.managementbl.accountbl.AccountblController;
 import bl.managementbl.bankaccountbl.BankAccountblController;
-import bl.managementbl.constbl.ConstBLController;
+import bl.managementbl.constbl.ConstblController;
 import bl.managementbl.institutionbl.InstitutionblController;
 import bl.managementbl.salarypolicybl.SalaryPolicyblController;
 import bl.managementbl.vehicleanddriverbl.DriverblController;
@@ -134,7 +134,7 @@ private ControllerFactoryImpl() {}
 	@Override
 	public ConstBLService getConstController() {
 		// TODO Auto-generated method stub
-		return new ConstBLController();
+		return new ConstblController();
 	}
 
 	@Override
@@ -164,7 +164,7 @@ private ControllerFactoryImpl() {}
 	@Override
 	public LoginBLService getLoginController() {
 		// TODO Auto-generated method stub
-		return new LoginBLController();
+		return new LoginblController();
 	}
 
 	@Override
