@@ -3,11 +3,14 @@
  */
 package dataimpl.stockdata;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import PO.StockDivisionPO;
+import util.enumData.ResultMessage;
 import PO.StockPO;
 import dataservice.stockdataservice.StockDataService;
 
@@ -33,40 +36,48 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 
 
 	@Override
-	public void add(StockPO po) throws RemoteException {
+	public ResultMessage add(StockPO po) throws RemoteException {
+		try {
+			FileOutputStream fos = new FileOutputStream("Stock.txt");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(po);
+			oos.flush();
+			oos.close();
+						
+		} catch (IOException e) {
+			e.printStackTrace();
+			return ResultMessage.FAILED;
+		}
 		
+		return ResultMessage.SUCCESS;
 		
 	}
 
+
 	
 	@Override
-	public void initial(int initialNum) throws RemoteException {
-		// TODO Auto-generated method stub
+	public ResultMessage delete(int listnum) throws RemoteException {
+		//TODO
+		
+		return ResultMessage.SUCCESS;
 		
 	}
 
-	
-	@Override
-	public int getPresentQuantity() throws RemoteException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	
 	@Override
-	public ArrayList<StockPO> show() throws RemoteException {
+	public ArrayList<StockPO> getStock() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	
-	@Override
-	public String findInStockNumByDivision(StockDivisionPO po)
-			throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	
-
+	
+	
+	
+	
+	
+	
 }

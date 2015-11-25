@@ -6,6 +6,7 @@ package dataservice.stockdataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.ResultMessage;
 import PO.InStockRepPO;
 import PO.OutStockRepPO;
 import PO.StockDivisionPO;
@@ -16,18 +17,13 @@ import PO.StockDivisionPO;
  *
  */
 public interface StockDivisionDataService {
-	/**
-	 * 
-	 * @return
-	 * @throws RemoteException
-	 */
-	public int getInitialNum()throws RemoteException;
+	
 	
 	/**
 	 * 
 	 * @throws RemoteException
 	 */
-	public void initial() throws RemoteException;
+	public ResultMessage initial() throws RemoteException;
 	
 	/**
 	 * update stockData and stockDivisionData
@@ -45,12 +41,6 @@ public interface StockDivisionDataService {
 	 */
 	public ArrayList<StockDivisionPO> getStockDivision() throws RemoteException;
 	
-	/**
-	 * 
-	 * @return
-	 * @throws RemoteException
-	 */
-	public ArrayList<StockDivisionPO> show() throws RemoteException;
 	
 	
 	
