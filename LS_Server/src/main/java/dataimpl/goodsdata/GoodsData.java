@@ -3,25 +3,29 @@ package dataimpl.goodsdata;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.ResultMessage;
 import PO.GoodsPO;
 import dataservice.goodsdataservice.GoodsDataService;
 
 public class GoodsData implements GoodsDataService{
 
 	@Override
-	public void add(GoodsPO po) throws RemoteException {
+	public ResultMessage add(GoodsPO po) throws RemoteException {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void modify(GoodsPO po) throws RemoteException {
+	public ResultMessage modify(GoodsPO po) throws RemoteException {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void delete(GoodsPO po) throws RemoteException {
+	public ResultMessage delete(GoodsPO po) throws RemoteException {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}
