@@ -3,10 +3,12 @@ package bl.goodsbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.Const;
 import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsLogisticState;
 import RMIClient.GoodsClient;
 import VO.GoodsVO;
+import bl.managementbl.constbl.ConstBL;
 import dataservice.goodsdataservice.GoodsDataService;
 
 public class Goodsbl {
@@ -35,12 +37,12 @@ public class Goodsbl {
 	}
 
 	public GoodsVO init(GoodsVO vo) {
-		MockConstBL ConstBL = new MockConstBL();
+		ConstBL constBL = new ConstBL();
 		//TODO the parameter of the findByConstName function is to be modified
 		try {
 			//TODO 计算运费
-			double basicprice=ConstBL.findByConstName("").priceConst;
-			double distance=ConstBL.findByConstName("").distanceConst;
+			double basicprice=constBL.findByConstName(Const.FARE).priceConst;
+			double distance=constBL.findByConstName(Const.DISTANCE).distanceConst;
 			vo.moneyFare=basicprice*distance;//TODO公式先随便写一下
 			vo.moneyTotal=vo.moneyFare+vo.moneyOfPackage;
 			getGoodsDataService().add(GoodsVO.toPO(vo));
