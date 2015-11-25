@@ -1,5 +1,6 @@
 package bl.formbl.controller;
 
+import util.enumData.ResultMessage;
 import VO.ProfitFormVO;
 import bl.formbl.ProfitFormbl;
 import blservice.formblservice.ProfitFormBLService;
@@ -11,7 +12,7 @@ public class ProfitFormController implements ProfitFormBLService{
 		return profitFormbl.show();
 	}
 
-	public Boolean save(ProfitFormVO vo) {
+	public ResultMessage save(ProfitFormVO vo) {
 		return profitFormbl.save(vo);
 	}
 

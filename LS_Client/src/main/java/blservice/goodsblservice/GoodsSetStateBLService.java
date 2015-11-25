@@ -2,6 +2,7 @@ package blservice.goodsblservice;
 
 import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsLogisticState;
+import util.enumData.ResultMessage;
 
 public interface GoodsSetStateBLService {
 	/**
@@ -10,13 +11,13 @@ public interface GoodsSetStateBLService {
 	 * @param state
 	 * @return
 	 */
-	public Boolean setArrivalState(String listNum,GoodsArrivalState state);
+	public ResultMessage setArrivalState(String listNum,GoodsArrivalState state);
 	/**
 	 * set the logistic state of goods whose listNumber is given
 	 * @param listNum
 	 * @param state
 	 * @return
 	 */
-	public Boolean setLogisticState(String listNum,GoodsLogisticState state);
+	public ResultMessage setLogisticState(String listNum,GoodsLogisticState state);
 
 }

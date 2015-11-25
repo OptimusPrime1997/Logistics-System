@@ -8,6 +8,7 @@ package ui.courierui;
 import javax.swing.JFrame;
 
 import ui.mainFrame.MainFrame;
+import ui.receiptui.Order;
 
 /**
  *
@@ -30,7 +31,7 @@ public class courier_main extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        newGoodsbtn2 = new javax.swing.JButton();
+        newGoodsbtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         businessOfficeNum_label = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -53,8 +54,8 @@ public class courier_main extends javax.swing.JPanel {
         date6daysAgo_label = new javax.swing.JLabel();
         signedGoodsbtn = new javax.swing.JButton();
 
-        newGoodsbtn2.setText("新订单");
-        newGoodsbtn2.addActionListener(new java.awt.event.ActionListener() {
+        newGoodsbtn.setText("新订单");
+        newGoodsbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newGoodsbtn2ActionPerformed(evt);
             }
@@ -126,7 +127,7 @@ public class courier_main extends javax.swing.JPanel {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(signedGoodsbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newGoodsbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newGoodsbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(124, 124, 124)
                         .addComponent(jLabel3)
@@ -192,7 +193,7 @@ public class courier_main extends javax.swing.JPanel {
                                     .addComponent(goodsNum5daysAgo_progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addComponent(date4daysAgo_label))
-                            .addComponent(newGoodsbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(newGoodsbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(date3daysAgo_label))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -227,7 +228,7 @@ public class courier_main extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void newGoodsbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGoodsbtn2ActionPerformed
-        // TODO add your handling code here:
+       new Order().setVisible(true);
     }//GEN-LAST:event_newGoodsbtn2ActionPerformed
 
     private void account_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_account_btnActionPerformed
@@ -264,7 +265,7 @@ public class courier_main extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JButton newGoodsbtn2;
+    private javax.swing.JButton newGoodsbtn;
     private javax.swing.JButton signedGoodsbtn;
     // End of variables declaration//GEN-END:variables
     

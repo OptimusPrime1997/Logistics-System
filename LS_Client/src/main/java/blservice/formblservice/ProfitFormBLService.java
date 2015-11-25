@@ -1,5 +1,6 @@
 package blservice.formblservice;
 
+import util.enumData.ResultMessage;
 import VO.ProfitFormVO;
 
 public interface ProfitFormBLService {
@@ -13,7 +14,7 @@ public interface ProfitFormBLService {
 	 * @param vo
 	 * @return
 	 */
-	public Boolean save(ProfitFormVO vo);
+	public ResultMessage save(ProfitFormVO vo);
 	
 	
 }

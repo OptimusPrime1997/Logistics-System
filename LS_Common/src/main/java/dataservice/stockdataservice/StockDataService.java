@@ -6,8 +6,9 @@ package dataservice.stockdataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import PO.StockDivisionPO;
+import util.enumData.ResultMessage;
 import PO.StockPO;
+
 
 /**
  * @author G
@@ -20,39 +21,24 @@ public interface StockDataService {
 	 * @param po
 	 * @throws RemoteException
 	 */
-	public void add(StockPO po)throws RemoteException;
-	
-	
+	public ResultMessage add(StockPO po)throws RemoteException;
 	
 	/**
-	 * initial initialNum
-	 * @param initialNum
+	 * delete by listnum
+	 * @param listnum
 	 * @throws RemoteException
 	 */
-	public void initial(int initialNum)throws RemoteException;
+	public ResultMessage delete(int listnum)throws RemoteException;
 	
 	/**
 	 * 
 	 * @return
 	 * @throws RemoteException
 	 */
-	public int getPresentQuantity() throws RemoteException;
-	
-	/**
-	 * 
-	 * @return
-	 * @throws RemoteException
-	 */
-	public ArrayList<StockPO> show() throws RemoteException;
+	public ArrayList<StockPO> getStock() throws RemoteException;
 	
 	
-	/**
-	 * 
-	 * @param po
-	 * @return
-	 * @throws RemoteException
-	 */
-	public String findInStockNumByDivision (StockDivisionPO po) throws RemoteException;
+	
 	
 	
 }

@@ -1,5 +1,6 @@
 package blservice.goodsblservice;
 
+import util.enumData.ResultMessage;
 import VO.GoodsVO;
 
 /**
@@ -14,7 +15,7 @@ public interface GoodsInitBLService {
 	 * @param vo
 	 * @return
 	 */
-	public GoodsVO init(GoodsVO vo);
+	public ResultMessage init(GoodsVO vo);
 	
 
 	

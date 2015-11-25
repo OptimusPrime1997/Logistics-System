@@ -11,14 +11,15 @@ import java.io.Serializable;
  */
 public class StockPO implements Serializable{
 	
-	String cityNum;
-	String listNum;
-	String inStockRepNum;
-	String inStockDate;
-	String destination;
-	int block;
-	int place;
+	private String cityNum;
+	private String listNum;
+	private String inStockRepNum;
+	private String inStockDate;
+	private String destination;
+	private int block;
+	private int place;
 	
+
 	/**
 	 * 
 	 * @param cn    id of this warehouse
@@ -61,6 +62,42 @@ public class StockPO implements Serializable{
 	public int getPlace() {
 		return place;
 	}
+	
+
+	public void setCityNum(String cityNum) {
+		this.cityNum = cityNum;
+	}
+
+
+	public void setListNum(String listNum) {
+		this.listNum = listNum;
+	}
+
+
+	public void setInStockRepNum(String inStockRepNum) {
+		this.inStockRepNum = inStockRepNum;
+	}
+
+
+	public void setInStockDate(String inStockDate) {
+		this.inStockDate = inStockDate;
+	}
+
+
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+
+
+	public void setBlock(int block) {
+		this.block = block;
+	}
+
+
+	public void setPlace(int place) {
+		this.place = place;
+	}
+
 	
 	
 }

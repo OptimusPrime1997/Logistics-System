@@ -3,41 +3,42 @@ package bl.formbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.ResultMessage;
+import RMIClient.FormClient;
 import VO.BusinessFormVO;
 import VO.CashRepVO;
 import VO.PayRepVO;
-import bl.receiptbl.CashRepbl.CashRepController;
 import bl.receiptbl.CashRepbl.CashRepbl;
-import bl.receiptbl.PayRepbl.PayRepController;
 import bl.receiptbl.PayRepbl.PayRepbl;
 import dataservice.formdataservice.BusinessFormDataService;
 
 public class BusinessFormbl {
-	BusinessFormDataService busiFormdata;
-	
 	public BusinessFormVO show(String startTime, String endTime) {
 		PayRepbl payRep=new PayRepbl();
 		CashRepbl cashRep=new CashRepbl();
+		//TODO 改成  返回部分付款单，收款单的方法~
 		ArrayList<PayRepVO> moneyOut = payRep.getAllPayRep();
 		ArrayList<CashRepVO> moneyIn = cashRep.getAllRep();
-		//TODO  choose the valid records(inside the time period ~~)
-		for(int i=0;i<moneyIn.size();i++){
-//			if(moneyIn.get(i).time<startTime||moneyIn.get(i).time>endTime){
-//				moneyIn.remove(i);
-//			    i--;
-//			}
-		}
 		BusinessFormVO vo =new BusinessFormVO(startTime, endTime, moneyOut, moneyIn);
 		return vo;
-		
-		
 	}
-	public Boolean save(BusinessFormVO vo) {
+	
+	public ResultMessage save(BusinessFormVO vo) {
 		try {
-			busiFormdata.add(vo.toPO(vo));
+			return 	getBFormData().add(vo.toPO(vo));
 		} catch (RemoteException e) {
+			return ResultMessage.LINK_FAILURE;
 		}
-		return true;
+	}
+	private FormClient client=new FormClient();
+	private BusinessFormDataService getBFormData(){
+		BusinessFormDataService service=null;
+		try {
+			service=client.getBusinessFormDataService();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return service;
 	}
 
 }
