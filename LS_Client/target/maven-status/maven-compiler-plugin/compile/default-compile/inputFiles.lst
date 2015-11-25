@@ -1,206 +1,212 @@
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\IOTable.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\receiptblservice\TransferRepblService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\stockbl\getpresentstocknum.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\StockNumVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\PayRepVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\receiptblservice\ShipmentRepblServce.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\goodsblservice\GoodsInitBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\courierui\courier_main.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\stockblservice\StockNumBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\formbl\ProfitFormbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\BusinessFormVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\TransferRepbl\TransferController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\PayRepBonus.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\TransferRep.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\ReceptionRepbl\ReceptionRepController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\ShipmentRepbl\ShipmentController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\warehousemanui\StockShowPanel.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\ShipmentRep.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\formbl\BusinessFormbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\vehicleanddriverbl\VehicleblController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\StockVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\administratorui\AuthorityManagementPanel.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\institutionbl\MockLog.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\goodsbl\Goodsbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\bankaccountbl\BankAccountbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\InstitutionInfo.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\GetRepbl\GetRepbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\administratorui\UserAccountPanel.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\businessOfficerui\car_management.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\main\goods_check.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\constbl\ConstblController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\ManagementVO\InstitutionVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\constbl\ConstTest.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\managementblservice\salarypolicyblservice\SalaryPolicyBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\receiptblservice\OutStockRepblService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\goodsblservice\GoodsGetByCouriersBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\main\Main.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\institutionbl\InstitutionTest.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\goodsbl\controller\GoodsInitController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\accountbl\AccountTest.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\ShipmentRepVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\ManagementVO\AccountVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\businessOfficerui\car_add.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\ProfitFormVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\StockDivisionVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\goodsblservice\GoodsCheckBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\ManagementVO\BankAccountVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\accountbl\Accountbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\salarypolicybl\SalaryPolicybl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\businessOfficerui\car_detail.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\GoodsVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\RMIClient\Receipt\ReceiptClient.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\stockbl\MockInStockRep.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\GetRepVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\managementblservice\vehicleanddriverblservice\VehicleBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\administratorui\AdministratorPanel.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\DeliverRepbl\DeliverRepbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\salarypolicybl\MockLog.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\ShippingRepbl\ShippingRepController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\stockbl\checkinstocknum.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\ManagementVO\VehicleVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\financialstaffui\FinancialStaffJFrame.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\mainFrame\MainFrame.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\receiptblservice\ShippingRepblService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\PayRepRent.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\DeliverRepVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\managementblservice\accountblservice\AccountBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\institutionbl\InstitutionblController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\InStockRepbl\InStockRepController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\CashRepbl\CashRepbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\stockbl\StockList.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\InStockRep.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\loginbl\LoginBLController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\OutStockRepbl\OutStockRepController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\goodsbl\controller\GoodsGetByCourierController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\managementblservice\institutionblservice\InstitutionBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\OutStockRepVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\bankaccountbl\BankAccountblController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\DocumentCheckbl\DocumentCheckController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\ReceptionRep.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\logbl\Logbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\InStockRepbl\InStockRepbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\formblservice\BusinessFormBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\constbl\ConstListTest.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\formbl\controller\BusinessFormController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\bankaccountbl\BankAccountListTest.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\ManagementVO\ConstVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\receiptblservice\GetRepblService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\Receiptbl\Receiptbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\OutStockRep.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\stockbl\StockListItem.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\goodsbl\controller\GoodsSetStateController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\TruckInfo.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\managementblservice\bankaccountblservice\BankAccountBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\receiptblservice\PayRepblService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\goodsblservice\GoodsDeleteBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\PayRepbl\PayRepController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\goodsbl\controller\GoodsCheckController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\CashRepbl\CashRepController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\Order.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\goodsblservice\GoodsExamineBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\vehicleanddriverbl\VehicleList.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\receiptblservice\ReceptionRepblService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\PayRepFreight.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\ShipmentRepbl\ShipmentRepbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\loginblservice\LoginBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\GetRepbl\GetRepController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\goodsbl\controller\GoodsDeleteController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\formbl\controller\ProfitFormController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\receiptblservice\CashRepblService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\AddInstitution.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\businessOfficerui\driver_add.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\constbl\Constbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\DeliverRepbl\DeliverController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\loginbl\Loginbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\vehicleanddriverbl\VehicleTest.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\salarypolicybl\SalaryPolicyblController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\accountbl\AccountblController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\financialstaffui\FinancialStaffJFrameTest.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\goodsbl\controller\GoodsExamineController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\stockbl\MockStockNum.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\PayRep.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\PayRepDriver.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\TransferRepVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\ManagementVO\DriverVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\ShippingRepVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\Receiptbl\ReceiptController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\DeliverRep.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\institutionbl\InstitutionList.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\administratorui\AuthorAddIdentityPanel.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\vehicleanddriverbl\Vehiclebl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\DocumentCheckbl\DocumentCheckbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\salarypolicybl\SalaryPolicyList.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\controllerfactoryblservice\ControllerFactoryBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\businessOfficerui\driver_management.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\CashRepVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\LogVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\ShippingRepbl\ShippingRepbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\stockbl\checkstockquantity.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\TransferRepbl\TransferRepbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\stockbl\Stock.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\warehousemanui\StockCheckPanel.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\InStockRepVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\managementblservice\constblservice\ConstBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\accountbl\MockLog.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\accountbl\AccountList.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\PayRepbl\PayRepbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\stockbl\MockStockList.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\ReceptionRepbl\ReceptionRepbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\salarypolicybl\SalaryPolicyListTest.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\formui\BusinessFormPanel.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\receiptbl\OutStockRepbl\OutStackRepbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\goodsbl\MockConstBL.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\bankaccountbl\MockLog.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\formui\ProfitFormPanel.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\businessOfficerui\driver_detail.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\vehicleanddriverbl\DriverList.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\stockbl\StockNum.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\vehicleanddriverbl\DriverblController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\formblservice\ProfitFormBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\institutionbl\Institutionbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\warehousemanui\WarehousePanel.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\PayRepLittleThing.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\stockbl\StockDivisionbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\PayRepCourier.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\vehicleanddriverbl\Driverbl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\stockblservice\StockBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\warehousemanui\DivisionChangePanel.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\constbl\ConstList.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\ReceptionRepVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\controllerfactorybl\ControllerFactoryImpl.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\salarypolicybl\SalaryPolicyTest.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\businessOfficerui\businessOfficer_main.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\courierui\courier_signed.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\receiptblservice\DeliverRepblService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\warehousemanui\InitialStockNumPanel.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\constbl\MockLog.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\goodsblservice\GoodsSetStateBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\administratorui\UserAccountInfoPanel.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\bankaccountbl\BankAccountTest.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\administratorui\AccountSearchPanel.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\GetRep.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\logblservice\LogBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\CashRep.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\accountbl\AccountListTest.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\bankaccountbl\BankAccountList.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\institutionbl\InstitutionListTest.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\managementbl\vehicleanddriverbl\MockLog.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\ConditionTable.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\transferCtrOfficerui\transferCtrOfficer_main.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\stockbl\MockOutStockRep.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\managerui\ManagerJFrame.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\PayRepSalary.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\receiptblservice\ReceiptblService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\managementblservice\vehicleanddriverblservice\DriverBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\stockblservice\StockDivisionBLService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\receiptblservice\DocumentCheckblService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\ReceiptVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\stockbl\StockController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\stockbl\checkoutstocknum.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\ShippingRep.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\receiptui\AddTruck.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\bl\logbl\LogController.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\VO\ManagementVO\SalaryPolicyVO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\blservice\receiptblservice\InStockRepblService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Client\src\main\java\ui\courierui\Order.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/CashRepbl/CashRepController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/DeliverRepbl/DeliverRepbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/businessOfficerui/businessOfficer_main.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/ShipmentRepVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/vehicleanddriverbl/VehicleblController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/DeliverRepVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/DocumentCheckbl/DocumentCheckController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/salarypolicybl/SalaryPolicybl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/businessOfficerui/car_detail.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/bankaccountbl/BankAccountTest.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/salarypolicybl/SalaryPolicyTest.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/accountbl/AccountTest.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/GetRepbl/GetRepbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/stockbl/StockDivisionbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/CashRepVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/ProfitFormVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/OutStockRepVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/loginbl/LoginBLController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/managementblservice/salarypolicyblservice/SalaryPolicyBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/GetRep.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/PayRep.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/GetRepbl/GetRepController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/administratorui/AuthorityManagementPanel.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/formui/ProfitFormPanel.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/Order.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/administratorui/AdministratorPanel.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/managementblservice/vehicleanddriverblservice/DriverBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/AddTruck.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/ManagementVO/DriverVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/stockbl/StockController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/ReceiptVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/controllerfactorybl/ControllerFactoryImpl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/businessOfficerui/car_add.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/ReceptionRepbl/ReceptionRepController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/vehicleanddriverbl/Vehiclebl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/PayRepbl/PayRepController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/stockblservice/StockNumBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/GetRepVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/bankaccountbl/BankAccountbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/stockbl/MockOutStockRep.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/goodsbl/controller/GoodsGetByCourierController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/receiptblservice/ShippingRepblService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/receiptblservice/DocumentCheckblService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/goodsblservice/GoodsExamineBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/administratorui/UserAccountInfoPanel.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/bankaccountbl/BankAccountblController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/administratorui/AuthorAddIdentityPanel.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/Receiptbl/Receiptbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/ShipmentRep.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/stockbl/getpresentstocknum.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/formblservice/BusinessFormBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/constbl/ConstTest.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/vehicleanddriverbl/VehicleTest.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/stockbl/checkoutstocknum.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/formbl/controller/ProfitFormController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/vehicleanddriverbl/DriverList.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/vehicleanddriverbl/VehicleList.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/goodsbl/MockConstBL.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/constbl/ConstList.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/logbl/Logbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/logblservice/LogBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/receiptblservice/ReceiptblService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/receiptblservice/DeliverRepblService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/OutStockRep.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/managementblservice/institutionblservice/InstitutionBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/managementblservice/accountblservice/AccountBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/receiptblservice/TransferRepblService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/StockVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/warehousemanui/InitialStockNumPanel.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/bankaccountbl/BankAccountListTest.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/ShippingRepbl/ShippingRepController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/goodsblservice/GoodsDeleteBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/TransferRepVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/constbl/MockLog.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/salarypolicybl/SalaryPolicyblController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/CashRepbl/CashRepbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/stockblservice/StockDivisionBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/main/Main.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/DocumentCheckbl/DocumentCheckbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/businessOfficerui/driver_detail.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/goodsblservice/GoodsGetByCouriersBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/courierui/courier_main.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/receiptblservice/ReceptionRepblService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/goodsbl/controller/GoodsInitController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/RMIClient/ReceiptClient.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/ReceptionRep.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/InStockRepbl/InStockRepbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/formblservice/ProfitFormBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/accountbl/Accountbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/ManagementVO/AccountVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/receiptblservice/GetRepblService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/goodsbl/controller/GoodsExamineController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/constbl/Constbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/TruckInfo.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/administratorui/AccountSearchPanel.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/receiptblservice/PayRepblService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/vehicleanddriverbl/MockLog.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/ShipmentRepbl/ShipmentController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/RentVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/ConditionTable.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/PayRepFreight.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/AddInstitution.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/bankaccountbl/MockLog.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/constbl/ConstListTest.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/loginbl/LoginBL.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/businessOfficerui/driver_add.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/goodsbl/controller/GoodsCheckController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/PayRepRent.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/accountbl/AccountblController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/ShippingRepVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/goodsbl/controller/GoodsDeleteController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/goodsbl/controller/GoodsSetStateController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/stockbl/MockStockNum.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/bankaccountbl/BankAccountList.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/RMIClient/LogClient.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/ShipmentRepbl/ShipmentRepbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/salarypolicybl/MockLog.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/StockNumVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/goodsblservice/GoodsCheckBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/salarypolicybl/SalaryPolicyList.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/logbl/LogController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/DeliverRepbl/DeliverController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/salarypolicybl/SalaryPolicyListTest.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/transferCtrOfficerui/transferCtrOfficer_main.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/formbl/ProfitFormbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/Receiptbl/ReceiptController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/vehicleanddriverbl/Driverbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/PayRepCourier.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/institutionbl/Institutionbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/courierui/Order.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/administratorui/UserAccountPanel.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/stockbl/StockListItem.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/institutionbl/InstitutionListTest.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/accountbl/AccountList.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/businessOfficerui/driver_management.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/warehousemanui/StockCheckPanel.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/TransferPayVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/OutStockRepbl/OutStockRepController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/stockbl/MockInStockRep.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/institutionbl/InstitutionblController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/stockbl/checkstockquantity.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/TransferRepbl/TransferRepbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/vehicleanddriverbl/DriverblController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/managerui/ManagerJFrame.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/ManagementVO/SalaryPolicyVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/accountbl/AccountListTest.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/receiptblservice/InStockRepblService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/ShippingRepbl/ShippingRepbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/InstitutionInfo.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/institutionbl/MockLog.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/StockDivisionVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/managementblservice/vehicleanddriverblservice/VehicleBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/IOTable.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/formbl/BusinessFormbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/OutStockRepbl/OutStackRepbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/goodsbl/Goodsbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/stockbl/StockNum.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/receiptblservice/OutStockRepblService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/SalaryVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/goodsblservice/GoodsSetStateBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/receiptblservice/CashRepblService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/InStockRepVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/warehousemanui/StockShowPanel.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/PayRepBonus.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/ReceptionRepbl/ReceptionRepbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/PayRepVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/receiptblservice/ShipmentRepblServce.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/stockbl/MockStockList.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/LogVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/stockbl/checkinstocknum.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/warehousemanui/WarehousePanel.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/PayRepbl/PayRepbl.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/mainFrame/MainFrame.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/financialstaffui/FinancialStaffJFrameTest.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/accountbl/MockLog.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/PayRepLittleThing.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/ManagementVO/BankAccountVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/stockbl/StockList.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/ManagementVO/VehicleVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/managementblservice/constblservice/ConstBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/ShippingRep.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/financialstaffui/FinancialStaffJFrame.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/LittleThingVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/stockbl/Stock.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/main/goods_check.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/warehousemanui/DivisionChangePanel.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/TransferRepbl/TransferRepController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/CashRep.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/constbl/ConstblController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/ManagementVO/ConstVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/controllerfactoryblservice/ControllerFactoryblService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/loginblservice/LoginBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/goodsblservice/GoodsInitBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/PayRepSalary.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/formui/BusinessFormPanel.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/businessOfficerui/car_management.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/institutionbl/InstitutionList.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/stockblservice/StockBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/ManagementVO/InstitutionVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/BusinessFormVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/InStockRep.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/managementbl/institutionbl/InstitutionTest.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/GoodsVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/courierui/courier_signed.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/blservice/managementblservice/bankaccountblservice/BankAccountBLService.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/receiptbl/InStockRepbl/InStockRepController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/VO/ReceptionRepVO.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/DeliverRep.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/TransferRep.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/bl/formbl/controller/BusinessFormController.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/ui/receiptui/PayRepDriver.java
+/Users/G/GitHub/Logistics-System/LS_Client/src/main/java/RMIClient/GoodsClient.java

@@ -1,69 +1,73 @@
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\receiptdataservice\CashRepDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\receiptdataservice\TransferRepDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\TransferRepPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\managementdataservice\vehicleanddriverdataservice\VehicleDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\enumData\City.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\receiptdataservice\DeliverRepDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\enumData\place.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\ShippingRepPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\enumData\GoodsExpressType.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\ProfitFormPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\BusinessFormPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\LogPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\stockdataservice\StockDivisionDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\enumData\GoodsLogisticState.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\enumData\ShipForm.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\CashRepPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\InstitutionPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\enumData\SalaryPolicy.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\goodsdataservice\GoodsDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\GetRepPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\RMIservice\ReceiptDataRemote.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\logdataservice\LogDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\managementdataservice\bankaccountdataservice\BankAccountDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\ConstPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\enumData\GoodsArrivalState.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\StockPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\enumData\Rep.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\managementdataservice\accountdataservice\AccountDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\enumData\LogType.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\OutStockRepPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\receiptdataservice\InStockRepDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\receiptdataservice\ShipmentRepDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\enumData\ResultMessage.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\formdataservice\ProfitFormDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\formdataservice\BusinessFormDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\StockNumPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\receiptdataservice\ShippingRepDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\MyButton.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\enumData\goodsState.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\enumData\Sex.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\ReceptionRepPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\managementdataservice\constdataservice\ConstDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\MyTextField.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\receiptdataservice\ReceiptDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\receiptdataservice\ReceptionRepDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\InStockRepPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\DriverPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\VehiclePO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\InputCheck.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\AccountPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\stockdataservice\StockDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\managementdataservice\institutiondataservice\InstitutionDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\receiptdataservice\GetRepDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\receiptdataservice\OutStockRepDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\CurrentTime.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\managementdataservice\vehicleanddriverdataservice\DriverDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\StockDivisionPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\BankAccountPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\DeliverRepPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\PayRepPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\ReceiptPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\enumData\Authority.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\GoodsPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\enumData\Const.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\util\MyLabel.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\SalaryPolicyPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\PO\ShipmentRepPO.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\managementdataservice\salarypolicydataservice\SalaryPolicyDataService.java
-G:\Study source\软工小组\Repository\Logistics-System\Logistics-System\LS_Common\src\main\java\dataservice\receiptdataservice\PayRepDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/PayRepPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/GetRepPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/GoodsPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/TransferPayPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/MyButton.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/stockdataservice/StockDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/receiptdataservice/TransferRepDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/managementdataservice/constdataservice/ConstDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/goodsState.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/GoodsArrivalState.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/ShipForm.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/managementdataservice/institutiondataservice/InstitutionDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/LittleThingPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/GoodsLogisticState.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/Const.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/stockdataservice/StockDivisionDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/ReceptionRepPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/RentPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/BusinessFormPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/receiptdataservice/ReceiptDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/InstitutionPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/receiptdataservice/OutStockRepDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/SalaryPolicyPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/managementdataservice/accountdataservice/AccountDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/Authority.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/ConstPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/managementdataservice/vehicleanddriverdataservice/DriverDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/receiptdataservice/ShipmentRepDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/RMIservice/ReceiptDataRemote.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/managementdataservice/bankaccountdataservice/BankAccountDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/StockNumPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/CashRepPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/GoodsExpressType.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/receiptdataservice/ReceptionRepDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/InputCheck.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/goodsdataservice/GoodsDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/formdataservice/ProfitFormDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/TransferRepPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/Sex.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/receiptdataservice/GetRepDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/ShipmentRepPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/StockDivisionPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/StockPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/City.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/SalaryPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/logdataservice/LogDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/DeliverRepPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/ResultMessage.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/ProfitFormPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/AccountPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/LogType.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/DriverPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/place.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/formdataservice/BusinessFormDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/receiptdataservice/ShippingRepDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/receiptdataservice/CashRepDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/managementdataservice/vehicleanddriverdataservice/VehicleDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/receiptdataservice/PayRepDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/receiptdataservice/InStockRepDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/managementdataservice/salarypolicydataservice/SalaryPolicyDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/MyLabel.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/ReceiptPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/VehiclePO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/SalaryPolicy.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/InStockRepPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/BankAccountPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/MyTextField.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/OutStockRepPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/CurrentTime.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/Rep.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/receiptdataservice/DeliverRepDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/ShippingRepPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/LogPO.java
