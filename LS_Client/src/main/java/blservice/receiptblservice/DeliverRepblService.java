@@ -2,6 +2,8 @@ package blservice.receiptblservice;
 
 import java.util.ArrayList;
 
+import VO.DeliverRepVO;
+
 public interface DeliverRepblService extends ReceiptblService{
-	public String submit(String num, String date, String deliverCourierNum, ArrayList<String> goods);
+	public ArrayList<DeliverRepVO> forPay();
 }

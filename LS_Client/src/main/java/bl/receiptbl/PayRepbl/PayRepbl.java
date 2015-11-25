@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import VO.PayRepVO;
 import VO.ReceiptVO;
-import bl.receiptbl.Receiptbl.Receiptbl;
+import bl.receiptbl.Receiptbl.ReceiptblController;
 
-public class PayRepbl extends Receiptbl{
+public class PayRepbl extends ReceiptblController{
 
 	public ArrayList<PayRepVO> get() {
 		return null;

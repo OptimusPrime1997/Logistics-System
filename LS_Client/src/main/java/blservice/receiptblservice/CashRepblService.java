@@ -9,20 +9,7 @@ import util.enumData.ResultMessage;
 
 public interface CashRepblService extends ReceiptblService{
 	
-	public ResultMessage submit(CashRepVO vo);
 	
-	public ArrayList<CashRepVO> getAllCashRep();
-	
-	public ArrayList<CashRepVO> getRepBydate(String date);
-	
-	public CashRepVO getRepByNum(String num);
-	
-	public ResultMessage delete(int n);
-	
-	public ResultMessage delete(String num);
-	
-	public String createNum(String date);
-
 	/**
 	 * 通过快递员编号得到快递员一天收到所有货物
 	 * @param courierNum

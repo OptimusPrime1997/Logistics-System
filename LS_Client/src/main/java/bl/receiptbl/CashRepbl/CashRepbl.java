@@ -9,7 +9,6 @@ import PO.ReceiptPO;
 import RMIClient.ReceiptClient;
 import bl.goodsbl.Goodsbl;
 import bl.managementbl.accountbl.Accountbl;
-import bl.receiptbl.Receiptbl.Receiptbl;
 import dataservice.receiptdataservice.CashRepDataService;
 import util.enumData.ResultMessage;
 import VO.CashRepVO;
@@ -19,8 +18,6 @@ public class CashRepbl{
 	ReceiptClient client = new ReceiptClient();
 	Goodsbl goodsbl = new Goodsbl();
 	Accountbl accountbl = new Accountbl();
-	Receiptbl receiptbl = new Receiptbl();
-	
 	
 	public CashRepDataService getCashRepDataService(){
 		CashRepDataService cashRepDataService = null;

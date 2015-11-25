@@ -15,6 +15,7 @@ import VO.CashRepVO;
 import VO.GoodsVO;
 import bl.receiptbl.CashRepbl.CashRepController;
 import blservice.receiptblservice.CashRepblService;
+import blservice.receiptblservice.PreReceiptblService;
 
 /**
  *
@@ -43,7 +44,7 @@ public class CashRep extends javax.swing.JPanel {
     private javax.swing.JButton okButton;
     private javax.swing.JLabel sumLabel;
     private javax.swing.JTextField sumText;
-    private CashRepblService control;
+    private CashRepController control;
     private ArrayList<GoodsVO> arrGoods;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;

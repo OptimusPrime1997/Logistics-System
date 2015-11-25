@@ -5,12 +5,13 @@ import java.util.Vector;
 
 import VO.CashRepVO;
 import VO.GoodsVO;
-import bl.receiptbl.Receiptbl.ReceiptController;
+import VO.ReceiptVO;
+import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.CashRepblService;
 import dataservice.receiptdataservice.CashRepDataService;
 import util.enumData.ResultMessage;
 
-public class CashRepController extends ReceiptController implements CashRepblService{
+public class CashRepController extends ReceiptblController implements CashRepblService{
 	private CashRepbl CashRep = new CashRepbl();
 
 	@Override
@@ -60,27 +61,27 @@ public class CashRepController extends ReceiptController implements CashRepblSer
 	}
 
 	@Override
-	public CashRepVO getRepByNum(String num) {
+	public String createNum(String date) {
 		// TODO Auto-generated method stub
-		return CashRep.getRepByNum(num);
+		return null;
 	}
 
 	@Override
 	public ResultMessage delete(int n) {
 		// TODO Auto-generated method stub
-		return CashRep.delete(n);
+		return null;
 	}
 
 	@Override
 	public ResultMessage delete(String num) {
 		// TODO Auto-generated method stub
-		return CashRep.delete(num);
+		return null;
 	}
 
 	@Override
-	public String createNum(String date) {
+	public ReceiptVO getRepByNum(String num) {
 		// TODO Auto-generated method stub
-		return CashRep.createNum(date);
+		return null;
 	}
-	
+
 }

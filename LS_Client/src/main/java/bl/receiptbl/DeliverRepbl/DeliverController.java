@@ -2,16 +2,62 @@ package bl.receiptbl.DeliverRepbl;
 
 import java.util.ArrayList;
 
-import bl.receiptbl.Receiptbl.ReceiptController;
+import VO.CashRepVO;
+import VO.DeliverRepVO;
+import VO.ReceiptVO;
+import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.DeliverRepblService;
+import util.enumData.ResultMessage;
 
-public class DeliverController extends ReceiptController implements DeliverRepblService{
+public class DeliverController extends ReceiptblController implements DeliverRepblService{
 	DeliverRepbl DeliverRep = new DeliverRepbl();
 
-	public String submit(String num, String date, String deliverCourierNum, ArrayList<String> goods) {
+	@Override
+	public String createNum(String date) {
 		// TODO Auto-generated method stub
-		return DeliverRep.submit(num, date, deliverCourierNum, goods);
+		return null;
 	}
 
+	@Override
+	public ResultMessage delete(int n) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage delete(String num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ReceiptVO getRepByNum(String num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage submit(CashRepVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<CashRepVO> getAllCashRep() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<CashRepVO> getRepBydate(String date) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<DeliverRepVO> forPay() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

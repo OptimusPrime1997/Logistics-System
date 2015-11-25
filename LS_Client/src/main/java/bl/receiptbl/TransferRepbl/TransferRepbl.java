@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 import VO.ReceptionRepVO;
 import VO.TransferRepVO;
-import bl.receiptbl.Receiptbl.Receiptbl;
+import bl.receiptbl.Receiptbl.ReceiptblController;
 import util.enumData.ShipForm;
 import util.enumData.place;
 
-public class TransferRepbl extends Receiptbl{
+public class TransferRepbl extends ReceiptblController{
 	
 	public ArrayList<ReceptionRepVO> forPay(){
 		return null;
