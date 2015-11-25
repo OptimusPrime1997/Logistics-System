@@ -11,13 +11,16 @@ public enum ResultMessage {
 	SUCCESS, //成功
 	FAILED,	//失败
 	WRONG,	//错误
-	
+	LINK_FAILURE,//连接错误
 	EXIST,	//已存在
 	NOT_FOUND,	//没找到对应结果
 	LENGTH_OVER,	//过长
 	LENGTH_LACKING,	//过短
+	PHONE_LENGTH_WRONG,//手机号长度有误
 	UNVALID_CHAR,	//含非法字符
-	
+	UNREASONABLE_GOODS_NUM,//不合理的内件数
+	UNREASONABLE_WEIGHT_NUM,//不合理的重量数值
+	UNREASONABLE_VOLUME_NUM,//不合理的体积数值
 	NOT_COMPLETED,	//未填写
 	
 	WRONG_ACCOUNTNUM,	//账号格式错误
