@@ -7,10 +7,10 @@ import util.enumData.*;
 public class GetRepVO extends ReceiptVO {
 	public String ShipNum;
 	public place place;
-	public goodsState state;
+	public GoodsArrivalState state;
 	public ArrayList<String> goods;
 	
-	public GetRepVO(String num, String date, String shipNum, place place, goodsState state,
+	public GetRepVO(String num, String date, String shipNum, place place, GoodsArrivalState state,
 			ArrayList<String> goods) {
 		super(num, date);
 		ShipNum = shipNum;

@@ -42,7 +42,7 @@ public class CashRepVO extends ReceiptVO {
 		return new CashRepPO(vo.num, vo.date, vo.money, vo.courierNum, vo.courierName, GoodsVO.toPOArray(vo.goods));
 	}
 	
-	public static ArrayList<CashRepVO> toVOArray(ArrayList<CashRepPO> cashRepPOs){
+	public static ArrayList<CashRepVO> toArrayVO(ArrayList<CashRepPO> cashRepPOs){
 		ArrayList<CashRepVO> cashRepVOs = new ArrayList<CashRepVO>();
 		for(CashRepPO cashRepPO : cashRepPOs)
 			cashRepVOs.add(new CashRepVO(cashRepPO));

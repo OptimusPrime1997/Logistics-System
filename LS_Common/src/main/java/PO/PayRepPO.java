@@ -9,9 +9,13 @@ public class PayRepPO extends ReceiptPO {
 	private ArrayList<SalaryPO> salary; 
 	private ArrayList<TransferPayPO> transferPay;
 	private ArrayList<RentPO> rent;
+	private ArrayList<DriverSalaryPO> driverSalary;
+	private ArrayList<CourierSalaryPO> courierSalary;
+	private ArrayList<BonusPO> bouns;
 	public PayRepPO(String num, String date, String bankAccountNum, String payPersonNum,
 			ArrayList<LittleThingPO> littleThing, ArrayList<SalaryPO> salary, ArrayList<TransferPayPO> transferPay,
-			ArrayList<RentPO> rent) {
+			ArrayList<RentPO> rent, ArrayList<DriverSalaryPO> driverSalary, ArrayList<CourierSalaryPO> courierSalary,
+			ArrayList<BonusPO> bouns) {
 		super(num, date);
 		BankAccountNum = bankAccountNum;
 		PayPersonNum = payPersonNum;
@@ -19,6 +23,9 @@ public class PayRepPO extends ReceiptPO {
 		this.salary = salary;
 		this.transferPay = transferPay;
 		this.rent = rent;
+		this.driverSalary = driverSalary;
+		this.courierSalary = courierSalary;
+		this.bouns = bouns;
 	}
 	public String getBankAccountNum() {
 		return BankAccountNum;
@@ -38,5 +45,14 @@ public class PayRepPO extends ReceiptPO {
 	public ArrayList<RentPO> getRent() {
 		return rent;
 	}
-
+	public ArrayList<DriverSalaryPO> getDriverSalary() {
+		return driverSalary;
+	}
+	public ArrayList<CourierSalaryPO> getCourierSalary() {
+		return courierSalary;
+	}
+	public ArrayList<BonusPO> getBouns() {
+		return bouns;
+	}
+	
 }

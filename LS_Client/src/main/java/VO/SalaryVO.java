@@ -3,46 +3,29 @@ package VO;
 import java.util.ArrayList;
 
 import PO.SalaryPO;
+import util.enumData.Authority;
 
-public class SalaryVO {
-	public String getterName;
-	public String getterNum;
-	public String date;
-	public double money;
-	
-	public SalaryVO(String getterName, String getterNum, String date, double money) {
-		super();
-		this.getterName = getterName;
-		this.getterNum = getterNum;
-		this.date = date;
-		this.money = money;
+public class SalaryVO extends AllSalaryVO{
+	public Authority authority;
+
+	public SalaryVO(String getterName, String getterNum, double money, Authority authority) {
+		super(getterName, getterNum, money);
+		this.authority = authority;
 	}
 
-	public String getGetterName() {
-		return getterName;
-	}
-
-	public String getGetterNum() {
-		return getterNum;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public double getMoney() {
-		return money;
+	public Authority getAuthority() {
+		return authority;
 	}
 	
 	public SalaryVO(SalaryPO po){
 		this.getterName = po.getGetterName();
 		this.getterNum = po.getGetterNum();
-		this.date = po.getDate();
 		this.money = po.getMoney();
+		this.authority = po.getAuthority();
 	}
 	
 	public static SalaryPO toPO(SalaryVO vo){
-		return new SalaryPO(vo.getterName, vo.getterNum, vo.date, vo.money);
+		return new SalaryPO(vo.getterName, vo.getterNum, vo.money, vo.authority);
 	}
 	
 	public static ArrayList<SalaryVO> toArrayVO(ArrayList<SalaryPO> salaryPOs){

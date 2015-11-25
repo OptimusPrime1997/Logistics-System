@@ -11,10 +11,16 @@ public class PayRepVO extends ReceiptVO {
 	public ArrayList<SalaryVO> salary; 
 	public ArrayList<TransferPayVO> transferPay;
 	public ArrayList<RentVO> rent;
+	public ArrayList<DriverSalaryVO> driverSalary;
+	public ArrayList<CourierSalaryVO> courierSalary;
+	public ArrayList<BonusVO> bouns;
+
+	
 
 	public PayRepVO(String num, String date, String bankAccountNum, String payPersonNum,
 			ArrayList<LittleThingVO> littleThing, ArrayList<SalaryVO> salary, ArrayList<TransferPayVO> transferPay,
-			ArrayList<RentVO> rent) {
+			ArrayList<RentVO> rent, ArrayList<DriverSalaryVO> driverSalary, ArrayList<CourierSalaryVO> courierSalary,
+			ArrayList<BonusVO> bouns) {
 		super(num, date);
 		BankAccountNum = bankAccountNum;
 		PayPersonNum = payPersonNum;
@@ -22,23 +28,12 @@ public class PayRepVO extends ReceiptVO {
 		this.salary = salary;
 		this.transferPay = transferPay;
 		this.rent = rent;
+		this.driverSalary = driverSalary;
+		this.courierSalary = courierSalary;
+		this.bouns = bouns;
 	}
 	
-	public class Salary {
-		public String getterName;
-		public String getterNum;
-		public String date;
-		public double money;
-		
-		public Salary(String getterName, String getterNum, String date, double money) {
-			super();
-			this.getterName = getterName;
-			this.getterNum = getterNum;
-			this.date = date;
-			this.money = money;
-		}
-		
-	}
+	
 
 	public String getBankAccountNum() {
 		return BankAccountNum;
@@ -64,6 +59,18 @@ public class PayRepVO extends ReceiptVO {
 		return rent;
 	}
 
+	public ArrayList<DriverSalaryVO> getDriverSalary() {
+		return driverSalary;
+	}
+
+	public ArrayList<CourierSalaryVO> getCourierSalary() {
+		return courierSalary;
+	}
+
+	public ArrayList<BonusVO> getBouns() {
+		return bouns;
+	}
+
 	public PayRepVO(PayRepPO po){
 		this.BankAccountNum = po.getBankAccountNum();
 		this.PayPersonNum = po.getPayPersonNum();
@@ -71,14 +78,19 @@ public class PayRepVO extends ReceiptVO {
 		this.salary = SalaryVO.toArrayVO(po.getSalary());
 		this.transferPay = TransferPayVO.toArrayVO(po.getTransferPay());
 		this.rent = RentVO.toArrayVO(po.getRent());
+		this.driverSalary = DriverSalaryVO.toArrayVO(po.getDriverSalary());
+		this.courierSalary = CourierSalaryVO.toArrayVO(po.getCourierSalary());
+		this.bouns = BonusVO.toArrayVO(po.getBouns());
 	}
 	
 	public static PayRepPO toPO (PayRepVO vo){
 		return new PayRepPO(vo.num, vo.date, vo.BankAccountNum, vo.PayPersonNum, 
 				LittleThingVO.toArrayPO(vo.littleThing), SalaryVO.toArrayPO(vo.salary), 
-				TransferPayVO.toArrayPO(vo.transferPay), RentVO.toArrayPO(vo.rent));
+				TransferPayVO.toArrayPO(vo.transferPay), RentVO.toArrayPO(vo.rent),
+				DriverSalaryVO.toArrayPO(vo.driverSalary),CourierSalaryVO.toArrayPO(vo.courierSalary),
+				BonusVO.toArrayPO(vo.bouns));
 	}
-	
+		
 	public static ArrayList<PayRepVO> toArrayVO(ArrayList<PayRepPO> payrepPOs){
 		ArrayList<PayRepVO> payRepVOs  = new ArrayList<PayRepVO>();
 		for(PayRepPO payRepPO : payrepPOs){

@@ -7,9 +7,9 @@ import util.enumData.*;
 public class ReceptionRepPO extends ReceiptPO {
 	private place place;
 	private String shipNum;
-	private goodsState state;
+	private GoodsArrivalState state;
 	private ArrayList<String> goods;
-	public ReceptionRepPO(String num, String date, place place, String shipNum, goodsState state,
+	public ReceptionRepPO(String num, String date, place place, String shipNum, GoodsArrivalState state,
 			ArrayList<String> goods) {
 		super(num, date);
 		this.place = place;
@@ -23,7 +23,7 @@ public class ReceptionRepPO extends ReceiptPO {
 	public String getShipNum() {
 		return shipNum;
 	}
-	public goodsState getState() {
+	public GoodsArrivalState getState() {
 		return state;
 	}
 	public ArrayList<String> getGoods() {

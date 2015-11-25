@@ -6,10 +6,10 @@ import util.enumData.*;
 public class GetRepPO extends ReceiptPO {
 	private String ShipNum;
 	private place place;
-	private goodsState state;
+	private GoodsArrivalState state;
 	private ArrayList<String> goods;
 	
-	public GetRepPO(String num, String date, String shipNum, place place, goodsState state,
+	public GetRepPO(String num, String date, String shipNum, place place, GoodsArrivalState state,
 			ArrayList<String> goods) {
 		super(num, date);
 		ShipNum = shipNum;
@@ -23,7 +23,7 @@ public class GetRepPO extends ReceiptPO {
 	public place getPlace() {
 		return place;
 	}
-	public goodsState getState() {
+	public GoodsArrivalState getState() {
 		return state;
 	}
 	public ArrayList<String> getGoods() {
