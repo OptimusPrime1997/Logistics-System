@@ -75,3 +75,10 @@ bin/
 *.class
 *.class
 *.class
+*.class
+LS_Client/target/classes/bl/formbl/BusinessFormbl.class
+*.class
+LS_Client/target/classes/bl/managementbl/constbl/ConstBLController.class
+LS_Client/target/classes/blservice/managementblservice/constblservice/ConstBLService.class
+*.class
+LS_Client/target/classes/blservice/managementblservice/constblservice/ConstBLService.class
