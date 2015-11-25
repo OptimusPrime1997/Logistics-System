@@ -3,7 +3,6 @@ package bl.loginbl;
 
 import util.enumData.Authority;
 import util.enumData.ResultMessage;
-import bl.logbl.Logbl;
 import bl.managementbl.accountbl.Accountbl;
 
 public class Loginbl {
