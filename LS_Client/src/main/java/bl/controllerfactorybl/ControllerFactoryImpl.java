@@ -9,6 +9,7 @@ import bl.goodsbl.controller.GoodsGetByCourierController;
 import bl.goodsbl.controller.GoodsInitCompleteController;
 import bl.goodsbl.controller.GoodsInitController;
 import bl.goodsbl.controller.GoodsSetStateController;
+import bl.loginbl.LoginblController;
 import bl.managementbl.accountbl.AccountblController;
 import bl.managementbl.bankaccountbl.BankAccountblController;
 import bl.managementbl.constbl.ConstblController;

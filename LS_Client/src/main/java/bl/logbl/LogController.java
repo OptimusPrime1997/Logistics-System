@@ -3,15 +3,15 @@ package bl.logbl;
 import java.util.ArrayList;
 
 import util.enumData.LogType;
+import util.enumData.ResultMessage;
 import VO.LogVO;
 import blservice.logblservice.LogBLService;
-import util.enumData.LogType;
 
 public class LogController implements LogBLService{
 	private Logbl logbl = new Logbl();
 
-	public void add(LogVO vo) {
-		logbl.add(vo);
+	public ResultMessage add(LogVO vo) {
+		return logbl.add(vo);
 		
 	}
 

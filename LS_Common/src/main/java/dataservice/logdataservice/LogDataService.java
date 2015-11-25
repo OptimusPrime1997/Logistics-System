@@ -12,6 +12,6 @@ import PO.LogPO;
  *
  */
 public interface LogDataService {
-	public ArrayList<LogPO> show(LogType type)throws RemoteException;
+	public ArrayList<LogPO> show(LogType type,String startTime,String endTime)throws RemoteException;
 	public ResultMessage add(LogPO po)throws RemoteException;
 }
