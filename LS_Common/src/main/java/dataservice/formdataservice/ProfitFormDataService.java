@@ -2,8 +2,9 @@ package dataservice.formdataservice;
 
 import java.rmi.RemoteException;
 
+import util.enumData.ResultMessage;
 import PO.ProfitFormPO;
 
 public interface ProfitFormDataService {
-	public void add(ProfitFormPO po)throws RemoteException;	
+	public ResultMessage add(ProfitFormPO po)throws RemoteException;	
 }
