@@ -5,7 +5,7 @@ import util.enumData.ResultMessage;
 import blservice.loginblservice.LoginBLService;
 
 public class LoginBLController implements LoginBLService{
-	LoginBL loginbl=new LoginBL();
+	Loginbl loginbl=new Loginbl();
 	public ResultMessage login(String accountNum, String key) {
 		// TODO Auto-generated method stub
 		return loginbl.login(accountNum,key);

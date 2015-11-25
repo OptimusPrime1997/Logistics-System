@@ -6,7 +6,7 @@ import util.enumData.ResultMessage;
 import bl.logbl.Logbl;
 import bl.managementbl.accountbl.Accountbl;
 
-public class LoginBL {
+public class Loginbl {
 	private static String currentOptorId;
 	
 	public ResultMessage login(String accountNum, String key) {
