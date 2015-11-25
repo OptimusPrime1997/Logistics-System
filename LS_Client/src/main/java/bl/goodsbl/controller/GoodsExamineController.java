@@ -1,12 +1,13 @@
 package bl.goodsbl.controller;
 
+import util.enumData.ResultMessage;
 import bl.goodsbl.Goodsbl;
 import blservice.goodsblservice.GoodsExamineBLService;
 
 public class GoodsExamineController implements GoodsExamineBLService {
 	private Goodsbl goodsbl = new Goodsbl();
-	public void examine(String listNum, Boolean ifPassed) {
-		goodsbl.examine(listNum, ifPassed);
+	public ResultMessage examine(String listNum, Boolean ifPassed) {
+		return goodsbl.examine(listNum, ifPassed);
 
 	}
 }
