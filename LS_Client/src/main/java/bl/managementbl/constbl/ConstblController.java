@@ -3,12 +3,13 @@ package bl.managementbl.constbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.Const;
 import util.enumData.ResultMessage;
 import VO.ManagementVO.ConstVO;
 import blservice.managementblservice.constblservice.ConstBLService;
 
-public class ConstblController implements ConstBLService {
-	Constbl constBL=new Constbl();
+public class ConstBLController implements ConstBLService {
+	ConstBL constBL=new ConstBL();
 
 	public ResultMessage insert(ConstVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -30,7 +31,7 @@ public class ConstblController implements ConstBLService {
 		return null;
 	}
 
-	public ConstVO findByConstName(String constName) throws RemoteException {
+	public ConstVO findByConstName(Const constName) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -12,7 +12,7 @@ public class ConstTest {
 
 	@Test
 	public void testCreateLog() {
-		Constbl constBL = new Constbl();
+		ConstBL constBL = new ConstBL();
 		assertEquals(ResultMessage.SUCCESS, constBL.createLog("2015/11/14 总经理 决策制定"));
 	}
 

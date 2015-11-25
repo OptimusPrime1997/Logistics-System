@@ -13,11 +13,3 @@ public class GoodsInitController implements GoodsInitBLService{
 	}
 
 }
-//
-//	private Goodsbl goodsbl = new Goodsbl();
-//
-//
-//	public void examine(String listNum, Boolean ifPassed) {
-//		goodsbl.examine(listNum, ifPassed);
-//		
-//	}

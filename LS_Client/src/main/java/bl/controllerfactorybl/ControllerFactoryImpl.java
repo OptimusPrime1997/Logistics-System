@@ -11,7 +11,7 @@ import bl.goodsbl.controller.GoodsSetStateController;
 import bl.loginbl.LoginBLController;
 import bl.managementbl.accountbl.AccountblController;
 import bl.managementbl.bankaccountbl.BankAccountblController;
-import bl.managementbl.constbl.ConstblController;
+import bl.managementbl.constbl.ConstBLController;
 import bl.managementbl.institutionbl.InstitutionblController;
 import bl.managementbl.salarypolicybl.SalaryPolicyblController;
 import bl.managementbl.vehicleanddriverbl.DriverblController;
@@ -134,7 +134,7 @@ private ControllerFactoryImpl() {}
 	@Override
 	public ConstBLService getConstController() {
 		// TODO Auto-generated method stub
-		return new ConstblController();
+		return new ConstBLController();
 	}
 
 	@Override
