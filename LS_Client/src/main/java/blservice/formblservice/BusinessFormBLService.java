@@ -1,5 +1,6 @@
 package blservice.formblservice;
 
+import util.enumData.ResultMessage;
 import VO.BusinessFormVO;
 
 public interface BusinessFormBLService {
@@ -15,5 +16,5 @@ public interface BusinessFormBLService {
 	 * @param vo
 	 * @return
 	 */
-	public Boolean save(BusinessFormVO vo);
+	public ResultMessage save(BusinessFormVO vo);
 }

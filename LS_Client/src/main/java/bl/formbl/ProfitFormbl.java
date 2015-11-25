@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.CurrentTime;
+import util.enumData.ResultMessage;
 import VO.CashRepVO;
 import VO.PayRepVO;
 import VO.ProfitFormVO;
@@ -16,6 +17,7 @@ public class ProfitFormbl {
 	
 	public ProfitFormVO show() {
 		double totalIn=0,totalOut=0,totalProfit=0;
+		
 		PayRepbl payRep=new PayRepbl();
 		CashRepbl cashRep=new CashRepbl();
 		ArrayList<PayRepVO> moneyOut = payRep.getAllPayRep();
@@ -42,12 +44,13 @@ public class ProfitFormbl {
 		return vo;
 	}
 
-	public Boolean save(ProfitFormVO vo) {
+	public ResultMessage save(ProfitFormVO vo) {
 		try {
-			profitFormData.add(vo.toPO(vo));
+			return profitFormData.add(vo.toPO(vo));
 		} catch (RemoteException e) {
+			return ResultMessage.LINK_FAILURE;
 		}
-		return true;
+		
 	}
 
 }

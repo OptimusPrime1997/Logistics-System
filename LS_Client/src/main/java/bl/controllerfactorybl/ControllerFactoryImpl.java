@@ -6,9 +6,9 @@ import bl.goodsbl.controller.GoodsCheckController;
 import bl.goodsbl.controller.GoodsDeleteController;
 import bl.goodsbl.controller.GoodsExamineController;
 import bl.goodsbl.controller.GoodsGetByCourierController;
+import bl.goodsbl.controller.GoodsInitCompleteController;
 import bl.goodsbl.controller.GoodsInitController;
 import bl.goodsbl.controller.GoodsSetStateController;
-import bl.loginbl.LoginblController;
 import bl.managementbl.accountbl.AccountblController;
 import bl.managementbl.bankaccountbl.BankAccountblController;
 import bl.managementbl.constbl.ConstblController;
@@ -35,6 +35,7 @@ import blservice.goodsblservice.GoodsDeleteBLService;
 import blservice.goodsblservice.GoodsExamineBLService;
 import blservice.goodsblservice.GoodsGetByCouriersBLService;
 import blservice.goodsblservice.GoodsInitBLService;
+import blservice.goodsblservice.GoodsInitCompleteBLService;
 import blservice.goodsblservice.GoodsSetStateBLService;
 import blservice.logblservice.LogBLService;
 import blservice.loginblservice.LoginBLService;
@@ -235,6 +236,12 @@ private ControllerFactoryImpl() {}
 	@Override
 	public StockBLService getStockController() {
 		return new StockController();
+	}
+
+	@Override
+	public GoodsInitCompleteBLService getGoodsInitCompleteController() {
+		// TODO Auto-generated method stub
+		return new GoodsInitCompleteController();
 	}
 	
 	

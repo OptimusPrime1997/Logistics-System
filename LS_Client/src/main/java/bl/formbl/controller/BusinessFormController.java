@@ -1,5 +1,6 @@
 package bl.formbl.controller;
 
+import util.enumData.ResultMessage;
 import VO.BusinessFormVO;
 import bl.formbl.BusinessFormbl;
 import blservice.formblservice.BusinessFormBLService;
@@ -12,7 +13,7 @@ public class BusinessFormController implements BusinessFormBLService{
 		return businessFormbl.show(startTime, endTime);
 	}
 
-	public Boolean save(BusinessFormVO vo) {
+	public ResultMessage save(BusinessFormVO vo) {
 		return businessFormbl.save(vo);
 	}
 

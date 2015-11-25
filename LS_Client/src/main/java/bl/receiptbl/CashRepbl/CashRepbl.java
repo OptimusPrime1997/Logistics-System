@@ -4,16 +4,16 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import util.enumData.ResultMessage;
 import PO.CashRepPO;
 import PO.ReceiptPO;
 import RMIClient.ReceiptClient;
+import VO.CashRepVO;
+import VO.GoodsVO;
 import bl.goodsbl.Goodsbl;
 import bl.managementbl.accountbl.Accountbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import dataservice.receiptdataservice.CashRepDataService;
-import util.enumData.ResultMessage;
-import VO.CashRepVO;
-import VO.GoodsVO;
 
 public class CashRepbl{
 	ReceiptClient client = new ReceiptClient();

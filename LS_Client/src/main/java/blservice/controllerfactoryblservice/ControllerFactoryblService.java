@@ -7,6 +7,7 @@ import blservice.goodsblservice.GoodsDeleteBLService;
 import blservice.goodsblservice.GoodsExamineBLService;
 import blservice.goodsblservice.GoodsGetByCouriersBLService;
 import blservice.goodsblservice.GoodsInitBLService;
+import blservice.goodsblservice.GoodsInitCompleteBLService;
 import blservice.goodsblservice.GoodsSetStateBLService;
 import blservice.logblservice.LogBLService;
 import blservice.loginblservice.LoginBLService;
@@ -37,6 +38,7 @@ public interface ControllerFactoryblService {
 	public GoodsExamineBLService getGoodsExamineController();
 	public GoodsGetByCouriersBLService getGoodsGetByCourierController();
 	public GoodsInitBLService getGoodsInitController();
+	public GoodsInitCompleteBLService getGoodsInitCompleteController();
 	public GoodsSetStateBLService getGoodsSetStateController();
 	public LogBLService getLogController() ;
 	public AccountBLService getAccountController();
