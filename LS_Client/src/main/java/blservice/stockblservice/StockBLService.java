@@ -7,6 +7,9 @@ package blservice.stockblservice;
 
 import java.util.ArrayList;
 
+import util.enumData.ResultMessage;
+import VO.InStockRepVO;
+import VO.OutStockRepVO;
 import VO.StockVO;
 
 /**
@@ -14,6 +17,19 @@ import VO.StockVO;
  *
  */
 public interface StockBLService {
+	
+	//TODO
+//	
+	public InStockRepVO toWriteInStockRep();
+	public OutStockRepVO toWriteOutStockRep();
+	
+	/**
+	 * 界面提供初始的库存数量
+	 * @param num
+	 * @return
+	 */
+	public ResultMessage initialStockNum(int num);
+	
 	/**
 	 * 界面提供起始日期和终止日期，系统返回该仓库此段时间内的入库数量
 	 * @param startDate
@@ -49,6 +65,7 @@ public interface StockBLService {
 	 * @return
 	 */
 	public ArrayList<StockVO> show(); 
+	
 	
 	
 

@@ -26,6 +26,7 @@ import bl.receiptbl.ReceptionRepbl.ReceptionRepController;
 import bl.receiptbl.ShipmentRepbl.ShipmentController;
 import bl.receiptbl.ShippingRepbl.ShippingRepController;
 import bl.receiptbl.TransferRepbl.TransferRepController;
+import bl.stockbl.StockController;
 import blservice.controllerfactoryblservice.ControllerFactoryblService;
 import blservice.formblservice.BusinessFormBLService;
 import blservice.formblservice.ProfitFormBLService;
@@ -54,6 +55,7 @@ import blservice.receiptblservice.ReceptionRepblService;
 import blservice.receiptblservice.ShipmentRepblServce;
 import blservice.receiptblservice.ShippingRepblService;
 import blservice.receiptblservice.TransferRepblService;
+import blservice.stockblservice.StockBLService;
 
 public class ControllerFactoryImpl implements ControllerFactoryblService{
 private ControllerFactoryImpl() {}
@@ -227,4 +229,13 @@ private ControllerFactoryImpl() {}
 		return new TransferRepController();
 	}
 
+	/* (non-Javadoc)
+	 * @see blservice.controllerfactoryblservice.ControllerFactoryblService#getStockController()
+	 */
+	@Override
+	public StockBLService getStockController() {
+		return new StockController();
+	}
+	
+	
 }
