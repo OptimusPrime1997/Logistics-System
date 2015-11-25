@@ -1,5 +1,7 @@
 package blservice.goodsblservice;
 
+import util.enumData.ResultMessage;
+
 public interface GoodsExamineBLService {
 
 	/**
@@ -7,6 +9,6 @@ public interface GoodsExamineBLService {
 	 * @param listNum
 	 * @param ifPassed
 	 */
-	public void examine(String listNum,Boolean ifPassed);
+	public ResultMessage examine(String listNum,Boolean ifPassed);
 
 }

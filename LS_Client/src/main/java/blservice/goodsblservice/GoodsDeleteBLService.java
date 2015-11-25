@@ -1,5 +1,6 @@
 package blservice.goodsblservice;
 
+import util.enumData.ResultMessage;
 import VO.GoodsVO;
 
 public interface GoodsDeleteBLService {
@@ -8,5 +9,5 @@ public interface GoodsDeleteBLService {
 	 * @param vo
 	 * @return
 	 */
-	public Boolean delete(GoodsVO vo);
+	public ResultMessage delete(GoodsVO vo);
 }
