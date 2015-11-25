@@ -6,9 +6,10 @@ package dataservice.stockdataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import VO.InStockRepVO;
-import VO.OutStockRepVO;
-import VO.StockDivisionVO;
+import PO.InStockRepPO;
+import PO.OutStockRepPO;
+import PO.StockDivisionPO;
+
 
 /**
  * @author G
@@ -33,23 +34,23 @@ public interface StockDivisionDataService {
 	 * @param rep
 	 * @throws RemoteException
 	 */
-	public void update(InStockRepVO vo) throws RemoteException;
+	public void update(InStockRepPO po) throws RemoteException;
 	
-	public void update(OutStockRepVO vo) throws RemoteException;
-	
-	/**
-	 * 
-	 * @return
-	 * @throws RemoteException
-	 */
-	public ArrayList<StockDivisionVO> getStockDivision() throws RemoteException;
+	public void update(OutStockRepPO po) throws RemoteException;
 	
 	/**
 	 * 
 	 * @return
 	 * @throws RemoteException
 	 */
-	public ArrayList<StockDivisionVO> show() throws RemoteException;
+	public ArrayList<StockDivisionPO> getStockDivision() throws RemoteException;
+	
+	/**
+	 * 
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ArrayList<StockDivisionPO> show() throws RemoteException;
 	
 	
 	

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import PO.StockDivisionPO;
 import PO.StockPO;
-import VO.StockVO;
 
 /**
  * @author G
@@ -44,7 +43,7 @@ public interface StockDataService {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public ArrayList<StockVO> show() throws RemoteException;
+	public ArrayList<StockPO> show() throws RemoteException;
 	
 	
 	/**
