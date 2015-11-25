@@ -3,6 +3,8 @@
  */
 package VO;
 
+import PO.StockPO;
+
 /**
  * @author G
  *
@@ -34,5 +36,41 @@ public class StockVO {
 		destination=des;
 		block=b;
 		place=p;
+	}
+	
+	/**
+	 * 库存的vo转po
+	 * @param vo
+	 * @return
+	 */
+	public StockPO voToPO(StockVO vo) {
+		
+		
+		StockPO po = new StockPO("","","","","",0,0);
+		po.setBlock(vo.block);
+		po.setCityNum(vo.cityNum);
+		po.setDestination(vo.destination);
+		po.setInStockDate(vo.inStockDate);
+		po.setInStockRepNum(vo.inStockRepNum);
+		po.setListNum(vo.listNum);
+		po.setPlace(vo.place);
+		
+		return po;
+		
+	}
+	
+	public StockVO poToVo(StockPO po) {
+		
+		StockVO vo = new StockVO("", "", "", "", "", 0, 0);
+		
+		vo.block = po.getBlock();
+		vo.cityNum = po.getCityNum();
+		vo.destination = po.getDestination();
+		vo.inStockDate = po.getInStockDate();
+		vo.inStockRepNum = po.getInStockRepNum();
+		vo.listNum = po.getListNum();
+		vo.place = po.getPlace();
+		
+		return vo;
 	}
 }
