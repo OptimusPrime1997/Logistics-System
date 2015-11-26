@@ -9,56 +9,66 @@ import VO.ManagementVO.AccountVO;
 import blservice.managementblservice.accountblservice.AccountBLService;
 
 public class AccountblController implements AccountBLService {
-	Accountbl accountBL=new Accountbl();
 
-	public ResultMessage insert(AccountVO VO) {
+	Accountbl accountbl=new Accountbl();
+	@Override
+	public ResultMessage insert(AccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ResultMessage update(AccountVO VO) {
+	@Override
+	public ResultMessage update(AccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ResultMessage delete(AccountVO VO) {
+	@Override
+	public ResultMessage delete(AccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ResultMessage login(String accountNum, String key) {
+	@Override
+	public ResultMessage login(String accountNum, String key)
+			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ArrayList<AccountVO> show() {
+	@Override
+	public ArrayList<AccountVO> show() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ResultMessage updateMsg(AccountVO vo) {
+	@Override
+	public ResultMessage updateMsg(AccountVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public AccountVO findByName(String name) {
+	@Override
+	public AccountVO findByName(String name) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public AccountVO findByNum(String num) {
+	@Override
+	public AccountVO findByNum(String num) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public AccountVO findByInstitutionName(String institutionName) {
+	@Override
+	public AccountVO findByInstitutionName(String institutionName)
+			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ResultMessage addLog(LogVO logvo) {
+	@Override
+	public ResultMessage addLog(LogVO logvo) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-}
+	}}
