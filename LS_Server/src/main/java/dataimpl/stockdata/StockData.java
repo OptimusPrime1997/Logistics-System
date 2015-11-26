@@ -3,9 +3,10 @@
  */
 package dataimpl.stockdata;
 
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.rmi.RemoteException;
@@ -37,22 +38,37 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 	private static final long serialVersionUID = 1L;
 
 
+	/**
+	 * 以追加的方式增添序列化库存po
+	 */
 	@Override
 	public ResultMessage add(StockPO po) throws RemoteException {
-		try {
-			FileOutputStream fos = new FileOutputStream("Stock.txt");
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			oos.writeObject(po);
-			oos.flush();
-			oos.close();
-						
-		} catch (IOException e) {
+	
+		File file=new File("Stock.txt");
+		try{
+        if(file.exists()){ 
+               boolean isexist=true;
+               FileOutputStream fo=new FileOutputStream(file,true);
+               ObjectOutputStream oos = new ObjectOutputStream(fo);
+               long pos=0;
+              if(isexist){
+                        pos=fo.getChannel().position()-4;
+                        fo.getChannel().truncate(pos);
+                           }
+                oos.writeObject(po);
+                oos.close();
+          }else{//文件不存在
+                 file.createNewFile();
+             FileOutputStream fo=new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fo);
+             oos.writeObject(po);
+             oos.close();
+          }
+		}catch(Exception e) {
 			e.printStackTrace();
 			return ResultMessage.FAILED;
 		}
-		
 		return ResultMessage.SUCCESS;
-		
 	}
 
 

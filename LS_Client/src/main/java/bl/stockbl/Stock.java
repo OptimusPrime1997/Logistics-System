@@ -22,8 +22,9 @@ public class Stock {
 		return null;
 	}
 	
-	public void toWriteOutStockRep() {
+	public OutStockRepVO toWriteOutStockRep() {
 		//TODO
+		return null;
 	}
 	
 	public int checkInStock(String startDate, String endDate) {
