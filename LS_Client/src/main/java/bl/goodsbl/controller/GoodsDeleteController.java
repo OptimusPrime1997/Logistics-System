@@ -7,6 +7,7 @@ import blservice.goodsblservice.GoodsDeleteBLService;
 
 public class GoodsDeleteController implements GoodsDeleteBLService{
 	private Goodsbl goodsbl = new Goodsbl();
+	@Override
 	public ResultMessage delete(GoodsVO vo) {
 		return goodsbl.delete(vo);
 	}

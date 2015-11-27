@@ -8,9 +8,11 @@ import blservice.goodsblservice.GoodsGetByCouriersBLService;
 
 public class GoodsGetByCourierController implements GoodsGetByCouriersBLService{
 	private Goodsbl goodsbl = new Goodsbl();
+	@Override
 	public ArrayList<GoodsVO> getGoodsByCourier(String CourierNum) {
 		return goodsbl.getGoodsByCourier(CourierNum);
 	}
+	@Override
 	public ArrayList<GoodsVO> getGoodsByGetCourier(String CourierNum) {
 		return goodsbl.getGoodsByGetCourier(CourierNum);
 	}

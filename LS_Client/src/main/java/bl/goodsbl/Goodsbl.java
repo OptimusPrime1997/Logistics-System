@@ -124,6 +124,17 @@ public class Goodsbl {
 		}
 	}
 
+	public ResultMessage end(String listNum, String realReceiverName,String realReceiverPhone) {
+		try {
+			GoodsVO vo = check(listNum);
+			vo.realReceiverName = realReceiverName;
+			vo.realReceiverPhone = realReceiverPhone;
+			return getGoodsDataService().modify(GoodsVO.toPO(vo));
+		} catch (RemoteException e) {
+			return ResultMessage.LINK_FAILURE;
+		}
+	}
+
 	private double moneyCounter(GoodsExpressType expressType, double weight,
 			double distance, double basicPrice) {
 		double fare = 0;

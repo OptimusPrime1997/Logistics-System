@@ -7,6 +7,7 @@ import blservice.goodsblservice.GoodsInitBLService;
 
 public class GoodsInitController implements GoodsInitBLService{
 	private Goodsbl goodsbl = new Goodsbl();
+	@Override
 	public ResultMessage init(GoodsVO vo) {
 		return goodsbl.init(vo);
 	}
