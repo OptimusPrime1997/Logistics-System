@@ -4,6 +4,7 @@ import bl.formbl.controller.BusinessFormController;
 import bl.formbl.controller.ProfitFormController;
 import bl.goodsbl.controller.GoodsCheckController;
 import bl.goodsbl.controller.GoodsDeleteController;
+import bl.goodsbl.controller.GoodsEndController;
 import bl.goodsbl.controller.GoodsExamineController;
 import bl.goodsbl.controller.GoodsGetByCourierController;
 import bl.goodsbl.controller.GoodsInitCompleteController;
@@ -33,6 +34,7 @@ import blservice.formblservice.BusinessFormBLService;
 import blservice.formblservice.ProfitFormBLService;
 import blservice.goodsblservice.GoodsCheckBLService;
 import blservice.goodsblservice.GoodsDeleteBLService;
+import blservice.goodsblservice.GoodsEndBLService;
 import blservice.goodsblservice.GoodsExamineBLService;
 import blservice.goodsblservice.GoodsGetByCouriersBLService;
 import blservice.goodsblservice.GoodsInitBLService;
@@ -243,6 +245,12 @@ private ControllerFactoryImpl() {}
 	public GoodsInitCompleteBLService getGoodsInitCompleteController() {
 		// TODO Auto-generated method stub
 		return new GoodsInitCompleteController();
+	}
+
+	@Override
+	public GoodsEndBLService getGoodsEndController() {
+		// TODO Auto-generated method stub
+		return new GoodsEndController();
 	}
 	
 	
