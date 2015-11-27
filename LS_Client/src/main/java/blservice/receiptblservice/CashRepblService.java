@@ -1,13 +1,13 @@
 package blservice.receiptblservice;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import VO.CashRepVO;
 import VO.GoodsVO;
-import util.Excetion.NameNotFoundException;
-import util.enumData.ResultMessage;
+import Exception.NameNotFoundException;
 
 public interface CashRepblService extends ReceiptblService{
 	
@@ -17,7 +17,7 @@ public interface CashRepblService extends ReceiptblService{
 	 * @param courierNum
 	 * @return
 	 */
-	public ArrayList<GoodsVO> getGoods(String text);
+	public ArrayList<GoodsVO> getGoods(String courierNum, String date);
 
 	/**
 	 * 通过快递员编号得到名字
@@ -38,7 +38,9 @@ public interface CashRepblService extends ReceiptblService{
 	 * 初始化表格
 	 * @return
 	 * @throws RemoteException 
+	 * @throws NotBoundException 
+	 * @throws MalformedURLException 
 	 */
-	public Vector<Object> initTable(String date) throws RemoteException;
+	public Vector<Object> initTable(String date) throws RemoteException, MalformedURLException, NotBoundException;
 	
 }

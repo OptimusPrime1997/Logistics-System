@@ -6,6 +6,8 @@
 
 package ui.receiptui;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -15,9 +17,8 @@ import javax.swing.table.DefaultTableModel;
 import VO.CashRepVO;
 import VO.GoodsVO;
 import bl.receiptbl.CashRepbl.CashRepController;
-import blservice.receiptblservice.CashRepblService;
-import blservice.receiptblservice.PreReceiptblService;
-import util.Excetion.NameNotFoundException;
+import Exception.ExceptionPrint;
+import Exception.NameNotFoundException;
 
 /**
  *
@@ -133,16 +134,20 @@ public class CashRep extends javax.swing.JPanel {
         columnIdentifiers.add("快递员编号");
         columnIdentifiers.add("金额");
         columnIdentifiers.add("备注");
+        
+        numText.setText(control.createNum(dateText.getText()));
+
+		dateText.setText(control.getDate());
 
         Vector<Object> dataVector;
 		try {
 			dataVector = control.initTable(dateText.getText());
 			model.setDataVector(dataVector, columnIdentifiers);
 	        jTable.setModel(model);
-		} catch (RemoteException e) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			resultMsgText.setText("网络连接故障");
+			resultMsgText.setText(ExceptionPrint.print(e));
 		}
         
 //        jTable.setModel(new javax.swing.table.DefaultTableModel(  //这里要读data
@@ -265,9 +270,6 @@ public class CashRep extends javax.swing.JPanel {
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE))
         );
         
-        numText.setText(control.createNum(dateText.getText()));
-
-		dateText.setText(control.getDate());
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -290,10 +292,10 @@ public class CashRep extends javax.swing.JPanel {
 		CashRepVO vo = new CashRepVO(num, date, money, courierNum, courierName, arrGoods);
 		try {
 			control.submit(vo);
-		} catch (RemoteException e) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			resultMsgText.setText("网络连接故障");
+			resultMsgText.setText(ExceptionPrint.print(e));
 		}
 	}
 
@@ -305,17 +307,12 @@ public class CashRep extends javax.swing.JPanel {
     	courierNum = courierNumText.getText();
     	try {
 			courierName = control.getCourierName(courierNum);
-		} catch (NameNotFoundException e) {
+		} catch (NameNotFoundException | RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			resultMsgText.setText("名字未找到");
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			resultMsgText.setText("网络连接故障");
-			
-		}
-    	arrGoods = control.getGoods(courierNum);
+			resultMsgText.setText(ExceptionPrint.print(e));
+		} 
+    	arrGoods = control.getGoods(courierNum, dateText.getText());
     	moneysum = control.getMoneySum(arrGoods);
     	Vector<Object> arr = new Vector<Object>();
     	arr.add(courierName);
