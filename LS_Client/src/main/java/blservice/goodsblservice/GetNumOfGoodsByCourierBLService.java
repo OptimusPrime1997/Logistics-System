@@ -4,6 +4,6 @@ package blservice.goodsblservice;
  * @author Administrator
  *
  */
-public interface GetNumOfGoodsByCourier {
+public interface GetNumOfGoodsByCourierBLService {
 	public int[] getdaysNumOfGoods(int numOfDays);
 }
