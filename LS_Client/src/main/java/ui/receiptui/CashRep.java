@@ -6,6 +6,7 @@
 
 package ui.receiptui;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JFrame;
@@ -16,6 +17,7 @@ import VO.GoodsVO;
 import bl.receiptbl.CashRepbl.CashRepController;
 import blservice.receiptblservice.CashRepblService;
 import blservice.receiptblservice.PreReceiptblService;
+import util.Excetion.NameNotFoundException;
 
 /**
  *
@@ -44,6 +46,7 @@ public class CashRep extends javax.swing.JPanel {
     private javax.swing.JButton okButton;
     private javax.swing.JLabel sumLabel;
     private javax.swing.JTextField sumText;
+    private javax.swing.JTextField resultMsgText;
     private CashRepController control;
     private ArrayList<GoodsVO> arrGoods;
     private DefaultTableModel model;
@@ -84,6 +87,7 @@ public class CashRep extends javax.swing.JPanel {
         accountLabel = new javax.swing.JLabel();
         accountText = new javax.swing.JTextField();
         courierButton = new javax.swing.JButton();
+        resultMsgText = new javax.swing.JTextField();
         control = new CashRepController();
         arrGoods = new ArrayList<GoodsVO>();
         model = new DefaultTableModel();
@@ -130,10 +134,16 @@ public class CashRep extends javax.swing.JPanel {
         columnIdentifiers.add("金额");
         columnIdentifiers.add("备注");
 
-        Vector<Object> dataVector = control.initTable(dateText.getText());
-        
-		model.setDataVector(dataVector, columnIdentifiers);
-        jTable.setModel(model);
+        Vector<Object> dataVector;
+		try {
+			dataVector = control.initTable(dateText.getText());
+			model.setDataVector(dataVector, columnIdentifiers);
+	        jTable.setModel(model);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText("网络连接故障");
+		}
         
 //        jTable.setModel(new javax.swing.table.DefaultTableModel(  //这里要读data
 //            tableShow, new Object [] {"快递员名字", "快递员编号", "金额", "备注"}) 
@@ -187,19 +197,18 @@ public class CashRep extends javax.swing.JPanel {
                                 .addComponent(officeLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(dateLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12))
+                                .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(courierNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(courierNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(courierButton)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,30 +225,28 @@ public class CashRep extends javax.swing.JPanel {
                                         .addComponent(cancelButton)
                                         .addGap(91, 91, 91)
                                         .addComponent(okButton)))))
-                        .addContainerGap(18, Short.MAX_VALUE))))
+                        .addGap(0, 13, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addComponent(resultMsgText)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(officeLabel)
-                            .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dateLabel)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateLabel)
+                    .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(officeLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numLabel)
                     .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(courierNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(courierNumLabel)
-                    .addComponent(courierButton)
-                    .addComponent(courierNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(courierButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -254,7 +261,8 @@ public class CashRep extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton)
                     .addComponent(okButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE))
         );
         
         numText.setText(control.createNum(dateText.getText()));
@@ -267,7 +275,7 @@ public class CashRep extends javax.swing.JPanel {
      * @param evt
      */
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {
-      
+    	
     }
 
     /**
@@ -280,7 +288,13 @@ public class CashRep extends javax.swing.JPanel {
 		double money = Double.parseDouble(sumText.getText());
 		String courierNum = courierNumText.getText();
 		CashRepVO vo = new CashRepVO(num, date, money, courierNum, courierName, arrGoods);
-		control.submit(vo);
+		try {
+			control.submit(vo);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText("网络连接故障");
+		}
 	}
 
     /**
@@ -289,7 +303,18 @@ public class CashRep extends javax.swing.JPanel {
      */
     private void courierButtonMouseClicked(java.awt.event.MouseEvent evt) {
     	courierNum = courierNumText.getText();
-    	courierName = control.getCourierName(courierNum);
+    	try {
+			courierName = control.getCourierName(courierNum);
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText("名字未找到");
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText("网络连接故障");
+			
+		}
     	arrGoods = control.getGoods(courierNum);
     	moneysum = control.getMoneySum(arrGoods);
     	Vector<Object> arr = new Vector<Object>();

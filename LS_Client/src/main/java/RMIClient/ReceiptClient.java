@@ -7,11 +7,12 @@ import dataservice.receiptdataservice.*;
 
 public class ReceiptClient {
 	
-	ReceiptDataRemote service;
+	private static ReceiptDataRemote service = null;
 	
 	public void getInstance(){
 		try{
-			service = (ReceiptDataRemote)Naming.lookup("rmi://127.0.0.1:1099/cherb"); 
+			if(service==null)
+				service = (ReceiptDataRemote)Naming.lookup("rmi://127.0.0.1:1099/cherb"); 
 		}
 		catch(Exception ex){
 			ex.printStackTrace();

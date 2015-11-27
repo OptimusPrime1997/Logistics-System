@@ -16,7 +16,7 @@ import dataservice.formdataservice.ProfitFormDataService;
 
 public class ProfitFormbl {
 	
-	public ProfitFormVO show() {
+	public ProfitFormVO show() throws RemoteException {
 		double totalIn=0,totalOut=0,totalProfit=0;
 		
 		PayRepbl payRep=new PayRepbl();

@@ -1,5 +1,6 @@
 package bl.receiptbl.CashRepbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -9,6 +10,7 @@ import VO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.CashRepblService;
 import dataservice.receiptdataservice.CashRepDataService;
+import util.Excetion.NameNotFoundException;
 import util.enumData.ResultMessage;
 
 public class CashRepController extends ReceiptblController implements CashRepblService{
@@ -21,7 +23,7 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	}
 
 	@Override
-	public String getCourierName(String courierNum) {
+	public String getCourierName(String courierNum) throws NameNotFoundException, RemoteException{
 		// TODO Auto-generated method stub
 		return CashRep.getCourierName(courierNum);
 	}
@@ -33,29 +35,29 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	}
 
 	@Override
-	public Vector<Object> initTable(String date) {
+	public Vector<Object> initTable(String date) throws RemoteException{
 		// TODO Auto-generated method stub
 		return CashRep.initTable(date);
 	}
 	
-	public CashRepDataService getService(){
+	public CashRepDataService getService() throws RemoteException{
 		return CashRep.getCashRepDataService();
 	}
 
 	@Override
-	public ResultMessage submit(CashRepVO vo) {
+	public ResultMessage submit(CashRepVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
 		return CashRep.submit(vo);
 	}
 
 	@Override
-	public ArrayList<CashRepVO> getAllCashRep() {
+	public ArrayList<CashRepVO> getAllCashRep() throws RemoteException {
 		// TODO Auto-generated method stub
 		return CashRep.getAllRep();
 	}
 
 	@Override
-	public ArrayList<CashRepVO> getRepBydate(String date) {
+	public ArrayList<CashRepVO> getRepBydate(String date) throws RemoteException {
 		// TODO Auto-generated method stub
 		return CashRep.getRepByDate(date);
 	}

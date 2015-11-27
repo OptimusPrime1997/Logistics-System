@@ -3,7 +3,6 @@ package bl.receiptbl.CashRepbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
-
 import util.enumData.ResultMessage;
 import PO.CashRepPO;
 import PO.ReceiptPO;
@@ -13,70 +12,82 @@ import VO.GoodsVO;
 import bl.goodsbl.Goodsbl;
 import bl.managementbl.accountbl.Accountbl;
 import dataservice.receiptdataservice.CashRepDataService;
+import util.Excetion.*;
 
 public class CashRepbl{
 	ReceiptClient client = new ReceiptClient();
 	Goodsbl goodsbl = new Goodsbl();
 	Accountbl accountbl = new Accountbl();
 	
-	public CashRepDataService getCashRepDataService(){
+	public CashRepDataService getCashRepDataService() throws RemoteException{
 		CashRepDataService cashRepDataService = null;
-		try {
 			cashRepDataService = client.getCashRepDataService();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return cashRepDataService;
 	}
 	
-	public ResultMessage submit(CashRepVO vo){
-		return getCashRepDataService().submit(CashRepVO.toPO(vo));
+	public ResultMessage submit(CashRepVO vo) throws RemoteException{
+		ResultMessage message = checkCashRep(vo);
+		if(message==ResultMessage.SUCCESS)
+			return getCashRepDataService().submit(CashRepVO.toPO(vo));
+		else
+			return message;
 	}
 	
-	public ResultMessage delete(int n) {
+	public String getCourierName(String courierNum) throws NameNotFoundException, RemoteException{
+		ResultMessage message = checkCourierNum(courierNum);
+		if(message==ResultMessage.SUCCESS)
+			return accountbl.findByNum(courierNum).accountName;
+		else
+			throw new NameNotFoundException();
+	}
+	
+	private ResultMessage checkCourierNum(String courierNum){
+		if(courierNum.length()<11)
+			return ResultMessage.REPNUM_LENGTH_LACKING;
+		else if(courierNum.length()>11)
+			return ResultMessage.REPNUM_LENGTH_OVER;
+		else if(!courierNum.substring(6, 8).equals("06"))
+			return ResultMessage.REPNUM_NOT_RIGHT;
+		return ResultMessage.SUCCESS;
+	}
+	
+	private ResultMessage checkCashRep(CashRepVO vo){
+		if(vo.courierNum==null)
+			return ResultMessage.NOT_COMPLETED;
+		return ResultMessage.SUCCESS;
+	}
+	
+	public ResultMessage delete(int n) throws RemoteException {
 		// TODO Auto-generated method stub
 		return getCashRepDataService().delete(n);
 	}
 
-	public ResultMessage delete(String num) {
+	public ResultMessage delete(String num) throws RemoteException {
 		// TODO Auto-generated method stub
 		return getCashRepDataService().delete(num);
 	} 
 	
-	public String createNum(String date){
+	public String createNum(String date) throws RemoteException{
 		return getCashRepDataService().createNum(date);
 	}
 	
-	public ArrayList<CashRepVO> getAllRep() {
-		ArrayList<CashRepVO> cashRepVOs = new ArrayList<CashRepVO>();
+	public ArrayList<CashRepVO> getAllRep() throws RemoteException {
 		ArrayList<ReceiptPO> receiptPOs = getCashRepDataService().getAllRep();
-		for(int i = 0;i<receiptPOs.size();i++){
-			cashRepVOs.add(new CashRepVO((CashRepPO)receiptPOs.get(i)));
-		}
-		return cashRepVOs;
+		return toArrayVO(receiptPOs);
 	}
 	
-	public ArrayList<CashRepVO> getRepByDate(String date){
-		ArrayList<CashRepVO> cashRepVOs = new ArrayList<CashRepVO>();
+	public ArrayList<CashRepVO> getRepByDate(String date) throws RemoteException{
 		ArrayList<ReceiptPO> receiptPOs = getCashRepDataService().getRepByDate(date);
-		for(int i = 0;i<receiptPOs.size();i++){
-			cashRepVOs.add(new CashRepVO((CashRepPO)receiptPOs.get(i)));
-		}
-		return cashRepVOs;
+		return toArrayVO(receiptPOs);
 	}
 	
-	public CashRepVO getRepByNum(String num){
+	public CashRepVO getRepByNum(String num) throws RemoteException{
 		ReceiptPO receiptPO = getCashRepDataService().getRepByNum(num);
 		return new CashRepVO((CashRepPO)receiptPO);
 	}
 
 	public ArrayList<GoodsVO> getGoods(String courierNum){
 		return goodsbl.getGoodsByGetCourier(courierNum);
-	}
-	
-	public String getCourierName(String courierNum){
-		return accountbl.findByNum(courierNum).accountName;
 	}
 	
 	public double getMoneySum(ArrayList<GoodsVO> arrGoods){
@@ -87,7 +98,7 @@ public class CashRepbl{
 		return moneysum;
 	}
 	
-	public Vector<Object> initTable(String date){
+	public Vector<Object> initTable(String date) throws RemoteException{
 		 Vector<Object> arr = new Vector<Object>();
 		 Vector<Object> data = new Vector<Object>();
 		 ArrayList<CashRepVO> receiptVOs = getRepByDate(date);
@@ -111,6 +122,13 @@ public class CashRepbl{
 			 
 		 }
 		 return data;
+	}
+	
+	public static ArrayList<CashRepVO> toArrayVO(ArrayList<ReceiptPO> receiptPOs){
+		ArrayList<CashRepVO> cashRepVOs = new ArrayList<CashRepVO>();
+		for(ReceiptPO receiptPO : receiptPOs)
+			cashRepVOs.add(new CashRepVO((CashRepPO)receiptPO));
+		return cashRepVOs;
 	}
 	
 }

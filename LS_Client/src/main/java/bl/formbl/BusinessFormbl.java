@@ -13,7 +13,7 @@ import bl.receiptbl.PayRepbl.PayRepbl;
 import dataservice.formdataservice.BusinessFormDataService;
 
 public class BusinessFormbl {
-	public BusinessFormVO show(String startTime, String endTime) {
+	public BusinessFormVO show(String startTime, String endTime) throws RemoteException {
 		PayRepbl payRep=new PayRepbl();
 		CashRepbl cashRep=new CashRepbl();
 		//TODO 改成  返回部分付款单，收款单的方法~

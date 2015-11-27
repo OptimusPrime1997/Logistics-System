@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import PO.CashRepPO;
 import PO.GoodsPO;
+import PO.ReceiptPO;
 
 public class CashRepVO extends ReceiptVO {
 	public double money;
