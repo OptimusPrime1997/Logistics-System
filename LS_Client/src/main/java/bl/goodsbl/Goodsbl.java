@@ -19,6 +19,11 @@ public class Goodsbl {
 	 */
 	final double[] expressRates = { 18, 23, 25 };
 
+	/**
+	 * 查物流信息
+	 * @param listNum
+	 * @return
+	 */
 	public GoodsVO check(String listNum) {
 		GoodsVO vo = null;
 		try {
@@ -27,6 +32,11 @@ public class Goodsbl {
 		}
 		return vo;
 	}
+	/**
+	 * 填写新订单
+	 * @param vo
+	 * @return填写的信息是否符合规格
+	 */
 	public ResultMessage init(GoodsVO vo) {
 		if (vo.expressType == null || vo.nameOfInside == null
 				|| vo.receiverAddress == null || vo.receiverName == null
@@ -47,7 +57,11 @@ public class Goodsbl {
 
 		return ResultMessage.SUCCESS;
 	}
-
+	/**
+	 * 不对应用例，由init()调用
+	 * @param vo
+	 * @return返回计算过费用的GoodsVO
+	 */
 	public GoodsVO getCalculatedGoods(GoodsVO vo) {
 		Constbl constBL = new Constbl();
 		//TODO the parameter of the findByConstName function is to be modified
@@ -64,7 +78,6 @@ public class Goodsbl {
 		}
 		return vo;
 	}
-
 	public ResultMessage delete(GoodsVO vo) {
 		try {
 			return getGoodsDataService().delete(GoodsVO.toPO(vo));
@@ -72,7 +85,11 @@ public class Goodsbl {
 			return ResultMessage.LINK_FAILURE;
 		}
 	}
-
+	/**
+	 * 
+	 * @param courierNum
+	 * @return返回快递员经手的所有货物的VO（包括收件和派件）
+	 */
 	public ArrayList<GoodsVO> getGoodsByCourier(String courierNum) {
 		ArrayList<GoodsVO> vos = null;
 		try {
@@ -82,7 +99,11 @@ public class Goodsbl {
 		}
 		return vos;
 	}
-
+	/**
+	 * 
+	 * @param courierNum
+	 * @return返回快递员收件的货物的VO（辅助收款单的填写）
+	 */
 	public ArrayList<GoodsVO> getGoodsByGetCourier(String courierNum) {
 		ArrayList<GoodsVO> vos = null;
 		try {
@@ -92,7 +113,12 @@ public class Goodsbl {
 		}
 		return vos;
 	}
-
+	/**
+	 * 更改货物到达状态
+	 * @param listNum
+	 * @param state
+	 * @return
+	 */
 	public ResultMessage setArrivalState(String listNum, GoodsArrivalState state) {
 		try {
 			GoodsVO vo = check(listNum);
@@ -102,7 +128,12 @@ public class Goodsbl {
 			return ResultMessage.LINK_FAILURE;
 		}
 	}
-
+	/**
+	 * 更改物流状态
+	 * @param listNum
+	 * @param state
+	 * @return
+	 */
 	public ResultMessage setLogisticState(String listNum,
 			GoodsLogisticState state) {
 		try {
@@ -113,7 +144,12 @@ public class Goodsbl {
 			return ResultMessage.LINK_FAILURE;
 		}
 	}
-
+	/**
+	 * 单据审批，ifPassed=true即审批通过   否则为不通过
+	 * @param listNum
+	 * @param ifPassed
+	 * @return
+	 */
 	public ResultMessage examine(String listNum, Boolean ifPassed) {
 		try {
 			GoodsVO vo = check(listNum);
@@ -123,7 +159,13 @@ public class Goodsbl {
 			return ResultMessage.LINK_FAILURE;
 		}
 	}
-
+	/**
+	 * 收件信息录入 
+	 * @param listNum
+	 * @param realReceiverName
+	 * @param realReceiverPhone可不填写 即传入null
+	 * @return
+	 */
 	public ResultMessage end(String listNum, String realReceiverName,String realReceiverPhone) {
 		try {
 			GoodsVO vo = check(listNum);
@@ -134,7 +176,16 @@ public class Goodsbl {
 			return ResultMessage.LINK_FAILURE;
 		}
 	}
-
+	/**
+	 * 无需传参数，此方法自行从account获取当前登录人的账号，返回快递员近七天的业绩（即他经手的货物件数）
+	 * @return
+	 */
+	public int[] get7daysNumOfGoods(){
+		int[] nums=new int[7];
+		
+		
+		return nums;
+	}
 	private double moneyCounter(GoodsExpressType expressType, double weight,
 			double distance, double basicPrice) {
 		double fare = 0;
