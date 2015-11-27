@@ -28,6 +28,8 @@ public class DataUtility {
 		}
 	}
 	
+	
+	
 	public ResultMessage save(Object o, String add){
 		File saveFile = new File(add);
 		try {
@@ -80,5 +82,18 @@ public class DataUtility {
 			save(objects.get(i), add);
 		return ResultMessage.SUCCESS;
 	}
+	
+	/**
+	 * 传入某文件的所有待存对象和文件名，将它们存起来
+	 * @param list
+	 * @param add
+	 */
+	public void SaveAll(ArrayList<Object> list,String add){
+		clear(add);
+		for(Object o :list){
+			save(o, add);
+		}
+	}
+
 	
 }

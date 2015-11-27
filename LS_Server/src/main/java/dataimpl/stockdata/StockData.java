@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import util.enumData.ResultMessage;
 import PO.StockPO;
 import dataservice.stockdataservice.StockDataService;
+import datautil.DataUtility;
 
 /**
  * @author G
@@ -23,7 +24,8 @@ import dataservice.stockdataservice.StockDataService;
  */
 public class StockData extends UnicastRemoteObject implements StockDataService{
 
-	
+	String filename = "Stock.txt";
+	DataUtility du = new DataUtility();
 	/**
 	 * @throws RemoteException
 	 */
@@ -39,62 +41,41 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 
 
 	/**
-	 * 以追加的方式增添序列化库存po
+	 * 在文件末尾增添序列化库存po
 	 */
 	@Override
 	public ResultMessage add(StockPO po) throws RemoteException {
-	
-		File file=new File("Stock.txt");
-		try{
-        if(file.exists()){ 
-               boolean isexist=true;
-               FileOutputStream fo=new FileOutputStream(file,true);
-               ObjectOutputStream oos = new ObjectOutputStream(fo);
-               long pos=0;
-              if(isexist){
-                        pos=fo.getChannel().position()-4;
-                        fo.getChannel().truncate(pos);
-                           }
-                oos.writeObject(po);
-                oos.close();
-          }else{//文件不存在
-                 file.createNewFile();
-             FileOutputStream fo=new FileOutputStream(file);
-            ObjectOutputStream oos = new ObjectOutputStream(fo);
-             oos.writeObject(po);
-             oos.close();
-          }
-		}catch(Exception e) {
-			e.printStackTrace();
-			return ResultMessage.FAILED;
+		ArrayList<Object> list = du.getAll(filename);
+		for(Object o:list){
+			StockPO p = (StockPO)o;
+			if(p.getListNum().equals(po.getListNum())){
+				return ResultMessage.EXIST;
+			}
 		}
-		return ResultMessage.SUCCESS;
+		return du.save(po, filename);
 	}
 
 
 	@Override
 	public ResultMessage delete(String listnum) throws RemoteException {
-		//TODO读出来的是副本么？？需要再放回去么？
-
-		ArrayList<StockPO> list = new ArrayList<StockPO>();
-		try {
-			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Stock.txt"));
-			while(ois.readBoolean()){
-				StockPO po = (StockPO)ois.readObject();
-				list.add(po);
+		boolean isFound = false;
+		ArrayList<Object> list = du.getAll(filename);
+		
+		for(int i = 0;i < list.size();++i) {
+			StockPO po = (StockPO)list.get(i);
+			if(po.getListNum().equals(listnum)){
+				isFound = true;
+				list.remove(i);
 			}
-			for(StockPO po:list){
-				if(po.getListNum().equals(listnum)) {
-					list.remove(po);
-				}
-			}
-		} catch (Exception e) {			
-			e.printStackTrace();
-			return ResultMessage.FAILED;
 		}
 		
+		du.SaveAll(list, filename);
 		
-		return ResultMessage.SUCCESS;
+		if(!isFound){
+			return ResultMessage.NOT_FOUND;
+		}else{
+			return ResultMessage.SUCCESS;
+		}
 		
 	}
 
@@ -104,21 +85,32 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 	public ArrayList<StockPO> getStock() throws RemoteException {
 		
 		ArrayList<StockPO> list = new ArrayList<StockPO>();
-		try {
-			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Stock.txt"));
-			while(ois.readBoolean()){
-				StockPO po = (StockPO)ois.readObject();
-				list.add(po);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		ArrayList<Object> listo = du.getAll(filename);
+		for(Object o:listo) {
+			StockPO po = (StockPO) o;
+			list.add(po);
 		}
 		return list;
 	}
 
 	
 	
-	
+	public static void main(String[] args) {
+		StockData sd;
+		try {
+			sd = new StockData();
+			ResultMessage rm = sd.add(new StockPO("cn", "rn", "m", "d", "des", 3, 4));
+			sd.add( new StockPO("cn", "ln", "m", "d", "des", 3, 4));
+			
+			ArrayList<StockPO> list = sd.getStock();
+			System.out.println(list.size());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 	
 	
 	
