@@ -5,5 +5,5 @@ package blservice.goodsblservice;
  *
  */
 public interface GetNumOfGoodsByCourier {
-	public int[] get7daysNumOfGoods();
+	public int[] getdaysNumOfGoods(int numOfDays);
 }

@@ -3,6 +3,7 @@ package bl.goodsbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.CurrentTime;
 import util.enumData.Const;
 import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsExpressType;
@@ -10,6 +11,7 @@ import util.enumData.GoodsLogisticState;
 import util.enumData.ResultMessage;
 import RMIClient.GoodsClient;
 import VO.GoodsVO;
+import bl.loginbl.Loginbl;
 import bl.managementbl.constbl.Constbl;
 import dataservice.goodsdataservice.GoodsDataService;
 
@@ -90,7 +92,7 @@ public class Goodsbl {
 	 * @param courierNum
 	 * @return返回快递员经手的所有货物的VO（包括收件和派件）
 	 */
-	public ArrayList<GoodsVO> getGoodsByCourier(String courierNum) {
+	public ArrayList<GoodsVO> getGoodsByCourier(String courierNum,String date) {
 		ArrayList<GoodsVO> vos = null;
 		try {
 			vos = GoodsVO.toVOArray(getGoodsDataService().findbyCourier(
@@ -104,7 +106,7 @@ public class Goodsbl {
 	 * @param courierNum
 	 * @return返回快递员收件的货物的VO（辅助收款单的填写）
 	 */
-	public ArrayList<GoodsVO> getGoodsByGetCourier(String courierNum) {
+	public ArrayList<GoodsVO> getGoodsByGetCourier(String courierNum,String date) {
 		ArrayList<GoodsVO> vos = null;
 		try {
 			vos = GoodsVO.toVOArray(getGoodsDataService().findbyGetCourier(
@@ -177,11 +179,12 @@ public class Goodsbl {
 		}
 	}
 	/**
-	 * 无需传参数，此方法自行从account获取当前登录人的账号，返回快递员近七天的业绩（即他经手的货物件数）
+	 * 无需传参数，此方法自行从loginbl获取当前登录人的账号，返回快递员近七天的业绩（即他经手的货物件数）
 	 * @return
 	 */
-	public int[] get7daysNumOfGoods(){
-		int[] nums=new int[7];
+	public int[] get7daysNumOfGoods(int numOfDays){
+		int[] nums=new int[15];
+		ArrayList<GoodsVO> vos=getGoodsByCourier(Loginbl.getCurrentOptorId(),CurrentTime.getTime());
 		
 		
 		return nums;
