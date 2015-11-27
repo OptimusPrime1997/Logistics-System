@@ -8,10 +8,11 @@ import blservice.goodsblservice.GoodsSetStateBLService;
 
 public class GoodsSetStateController implements GoodsSetStateBLService{
 	private Goodsbl goodsbl = new Goodsbl();
+	@Override
 	public ResultMessage setArrivalState(String listNum, GoodsArrivalState state) {
 		return goodsbl.setArrivalState(listNum, state);
 	}
-
+	@Override
 	public ResultMessage setLogisticState(String listNum, GoodsLogisticState state) {
 		return goodsbl.setLogisticState(listNum, state);
 	}

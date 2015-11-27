@@ -10,14 +10,14 @@ public interface GoodsGetByCouriersBLService {
 	 * @param CourierNum
 	 * @return
 	 */
-	public ArrayList<GoodsVO> getGoodsByCourier(String CourierNum);
+	public ArrayList<GoodsVO> getGoodsByCourier(String CourierNum,String date);
 	
 	/**
 	 * return all the goods started by a courier,whose accountNumber is given
 	 * @param CourierNum
 	 * @return
 	 */
-	public ArrayList<GoodsVO> getGoodsByGetCourier(String CourierNum);
+	public ArrayList<GoodsVO> getGoodsByGetCourier(String CourierNum,String date);
 	
 
 }

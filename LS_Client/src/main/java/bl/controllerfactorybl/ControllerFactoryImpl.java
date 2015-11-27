@@ -2,8 +2,10 @@ package bl.controllerfactorybl;
 
 import bl.formbl.controller.BusinessFormController;
 import bl.formbl.controller.ProfitFormController;
+import bl.goodsbl.controller.Get_Courier_NumOfGoodsController;
 import bl.goodsbl.controller.GoodsCheckController;
 import bl.goodsbl.controller.GoodsDeleteController;
+import bl.goodsbl.controller.GoodsEndController;
 import bl.goodsbl.controller.GoodsExamineController;
 import bl.goodsbl.controller.GoodsGetByCourierController;
 import bl.goodsbl.controller.GoodsInitCompleteController;
@@ -31,8 +33,10 @@ import bl.stockbl.StockController;
 import blservice.controllerfactoryblservice.ControllerFactoryblService;
 import blservice.formblservice.BusinessFormBLService;
 import blservice.formblservice.ProfitFormBLService;
+import blservice.goodsblservice.GetNumOfGoodsByCourierBLService;
 import blservice.goodsblservice.GoodsCheckBLService;
 import blservice.goodsblservice.GoodsDeleteBLService;
+import blservice.goodsblservice.GoodsEndBLService;
 import blservice.goodsblservice.GoodsExamineBLService;
 import blservice.goodsblservice.GoodsGetByCouriersBLService;
 import blservice.goodsblservice.GoodsInitBLService;
@@ -71,163 +75,163 @@ private ControllerFactoryImpl() {}
 	}
 	@Override
 	public BusinessFormBLService getBusinessFromController() {
-		// TODO Auto-generated method stub
+		
 		return new BusinessFormController();
 	}
 
 	@Override
 	public ProfitFormBLService getProfitFormController() {
-		// TODO Auto-generated method stub
+		
 		return new ProfitFormController();
 	}
 
 	@Override
 	public GoodsCheckBLService getGoodsCheckController() {
-		// TODO Auto-generated method stub
+		
 		return new GoodsCheckController();
 	}
 
 	@Override
 	public GoodsDeleteBLService getGoodsDeleteController() {
-		// TODO Auto-generated method stub
+		
 		return new GoodsDeleteController();
 	}
 
 	@Override
 	public GoodsExamineBLService getGoodsExamineController() {
-		// TODO Auto-generated method stub
+		
 		return new GoodsExamineController();
 	}
 
 	@Override
 	public GoodsGetByCouriersBLService getGoodsGetByCourierController() {
-		// TODO Auto-generated method stub
+		
 		return new GoodsGetByCourierController();
 	}
 
 	@Override
 	public GoodsInitBLService getGoodsInitController() {
-		// TODO Auto-generated method stub
+		
 		return new GoodsInitController();
 	}
 
 	@Override
 	public GoodsSetStateBLService getGoodsSetStateController() {
-		// TODO Auto-generated method stub
+		
 		return new GoodsSetStateController();
 	}
 
 	@Override
 	public LogBLService getLogController() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public AccountBLService getAccountController() {
-		// TODO Auto-generated method stub
+		
 		return new AccountblController();
 	}
 
 	@Override
 	public BankAccountBLService getBankAccountController() {
-		// TODO Auto-generated method stub
+		
 		return  new BankAccountblController();
 	}
 
 	@Override
 	public ConstBLService getConstController() {
-		// TODO Auto-generated method stub
+		
 		return new ConstblController();
 	}
 
 	@Override
 	public InstitutionBLService getInstitutionController() {
-		// TODO Auto-generated method stub
+		
 		return new InstitutionblController();
 	}
 
 	@Override
 	public SalaryPolicyBLService getSalaryPolicyController() {
-		// TODO Auto-generated method stub
+		
 		return new SalaryPolicyblController();
 	}
 
 	@Override
 	public DriverBLService getDriverController() {
-		// TODO Auto-generated method stub
+		
 		return new DriverblController();
 	}
 
 	@Override
 	public VehicleBLService getVehicleController() {
-		// TODO Auto-generated method stub
+		
 		return new VehicleblController();
 	}
 
 	@Override
 	public LoginBLService getLoginController() {
-		// TODO Auto-generated method stub
+		
 		return new LoginblController();
 	}
 
 	@Override
 	public CashRepblService getCashRepblService() {
-		// TODO Auto-generated method stub
+		
 		return new CashRepController();
 	}
 
 	@Override
 	public DeliverRepblService getDeliverRepblService() {
-		// TODO Auto-generated method stub
+		
 		return new DeliverController();
 	}
 
 	@Override
 	public GetRepblService getGetRepblService() {
-		// TODO Auto-generated method stub
+		
 		return new GetRepController();
 	}
 
 	@Override
 	public InStockRepblService getInStockRepblService() {
-		// TODO Auto-generated method stub
+		
 		return new InStockRepController();
 	}
 
 	@Override
 	public OutStockRepblService getOutStockRepblService() {
-		// TODO Auto-generated method stub
+		
 		return new OutStockRepController();
 	}
 
 	@Override
 	public PayRepblService getPayRepblService() {
-		// TODO Auto-generated method stub
+		
 		return new PayRepController();
 	}
 
 	@Override
 	public ReceptionRepblService getReceptionRepblService() {
-		// TODO Auto-generated method stub
+		
 		return new ReceptionRepController();
 	}
 
 	@Override
 	public ShipmentRepblServce getShipmentRepblServce() {
-		// TODO Auto-generated method stub
+		
 		return new ShipmentController();
 	}
 
 	@Override
 	public ShippingRepblService getShippingRepblService() {
-		// TODO Auto-generated method stub
+		
 		return new ShippingRepController();
 	}
 
 	@Override
 	public TransferRepblService getTransferRepblService() {
-		// TODO Auto-generated method stub
+		
 		return new TransferRepController();
 	}
 
@@ -241,8 +245,20 @@ private ControllerFactoryImpl() {}
 
 	@Override
 	public GoodsInitCompleteBLService getGoodsInitCompleteController() {
-		// TODO Auto-generated method stub
+		
 		return new GoodsInitCompleteController();
+	}
+
+	@Override
+	public GoodsEndBLService getGoodsEndController() {
+		
+		return new GoodsEndController();
+	}
+
+	@Override
+	public GetNumOfGoodsByCourierBLService getGetNumOfGoodsByCourierController() {
+		
+		return new Get_Courier_NumOfGoodsController();
 	}
 	
 	
