@@ -12,10 +12,10 @@ public class AccountPO implements Serializable,Comparable<AccountPO> {
 	private Sex sex;
 	private Authority authority;
 	private String phoneNum;
-	private String institution;
+	private String institutionNum;
 
 	public AccountPO(String accountNum, String accountName, String password,
-			Sex sex, Authority authority, String phoneNum, String institution) {
+			Sex sex, Authority authority, String phoneNum, String institutionNum) {
 
 		// TODO Auto-generated constructor stub
 		this.accountNum = accountNum;
@@ -24,7 +24,7 @@ public class AccountPO implements Serializable,Comparable<AccountPO> {
 		this.sex = sex;
 		this.authority = authority;
 		this.phoneNum = phoneNum;
-		this.institution = institution;
+		this.institutionNum = institutionNum;
 
 	}
 
@@ -76,12 +76,12 @@ public class AccountPO implements Serializable,Comparable<AccountPO> {
 		this.phoneNum = phoneNum;
 	}
 
-	public String getInstitution() {
-		return institution;
+	public String getInstitutionNum() {
+		return institutionNum;
 	}
 
-	public void setInstitution(String institution) {
-		this.institution = institution;
+	public void setInstitutionNum(String institutionNum) {
+		this.institutionNum = institutionNum;
 	}
 
 	public int compareTo(AccountPO o) {

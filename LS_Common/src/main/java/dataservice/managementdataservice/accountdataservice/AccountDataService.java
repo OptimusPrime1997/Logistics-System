@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import javax.naming.NameNotFoundException;
 
 import util.enumData.ResultMessage;
-import util.exception.NumNotFoundException;
+import Exception.NumNotFoundException;
 import PO.AccountPO;
 
 public interface AccountDataService {

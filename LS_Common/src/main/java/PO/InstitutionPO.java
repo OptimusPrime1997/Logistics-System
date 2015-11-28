@@ -19,7 +19,7 @@ public class InstitutionPO implements Serializable,Comparable<InstitutionPO>{
 		this.manning = manning;
 	}
 
-	public String getInstituionNum() {
+	public String getInstitutionNum() {
 		return instituionNum;
 	}
 
@@ -62,6 +62,6 @@ public class InstitutionPO implements Serializable,Comparable<InstitutionPO>{
 	@Override
 	public int compareTo(InstitutionPO o) {
 		// TODO Auto-generated method stub
-		return instituionNum.compareTo(o.getInstituionNum());
+		return instituionNum.compareTo(o.getInstitutionNum());
 	}
 }

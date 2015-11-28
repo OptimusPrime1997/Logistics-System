@@ -4,19 +4,17 @@ import java.io.FileNotFoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 import javax.naming.NameNotFoundException;
 
 import util.enumData.ResultMessage;
-import util.exception.NumNotFoundException;
+import Exception.NumNotFoundException;
 import PO.AccountPO;
 import dataservice.managementdataservice.accountdataservice.AccountDataService;
 import datautil.DataUtility;
 
 public class AccountData extends UnicastRemoteObject implements AccountDataService{
-	private String path="data/currentdata/account/account";
+	private final String path="data/currentdata/account";
 	private DataUtility d;
 	/**
 	 * 
@@ -80,7 +78,7 @@ public class AccountData extends UnicastRemoteObject implements AccountDataServi
 			AccountPO p=null;
 			for(int i=0;i<objects.size();i++){
 				p=(AccountPO)objects.get(i);
-				if(p.getAccountNum().endsWith(po.getAccountNum())){
+				if(p.getAccountNum().equals(po.getAccountNum())){
 					findPO=true;
 					objects.remove((Object)p);
 				}
@@ -156,7 +154,6 @@ public class AccountData extends UnicastRemoteObject implements AccountDataServi
 			return exist;
 		}	
 	}
-
 
 	@Override
 	public ResultMessage logincheck(String accountNum, String key)

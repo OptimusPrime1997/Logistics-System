@@ -34,7 +34,7 @@ public enum ResultMessage {
 	NOT_FOUND_FILE,//文件未找到
 
 	INPUT_SHOULD_BE_POSITIVE_INTEGER, //输入应该为正整数
-	NUMBER_OVER;  //输入数值太大
+	NUMBER_OVER, ;  //输入数值太大
 	
 	public String toFriendlyString(ResultMessage resultMessage) {
 		

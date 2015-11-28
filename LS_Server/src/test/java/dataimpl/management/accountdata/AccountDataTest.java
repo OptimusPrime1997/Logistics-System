@@ -15,7 +15,7 @@ import org.junit.runners.MethodSorters;
 import util.enumData.Authority;
 import util.enumData.ResultMessage;
 import util.enumData.Sex;
-import util.exception.NumNotFoundException;
+import Exception.NumNotFoundException;
 import PO.AccountPO;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
