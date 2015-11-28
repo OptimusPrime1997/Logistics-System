@@ -25,4 +25,6 @@ public interface ReceiptDataRemote extends Remote{
 	public ShippingRepDataService getShippingRepDataService() throws RemoteException;
 	
 	public TransferRepDataService getTransferRepDataService() throws RemoteException;
+	
+	public ReceiptDataService getReceiptDataService() throws RemoteException;
 }

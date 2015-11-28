@@ -1,42 +1,31 @@
 package bl.receiptbl.CashRepbl;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
+
+import util.enumData.Rep;
 import util.enumData.ResultMessage;
 import PO.CashRepPO;
 import PO.ReceiptPO;
 import RMIClient.ReceiptClient;
 import VO.CashRepVO;
 import VO.GoodsVO;
+import VO.ReceiptVO;
 import bl.goodsbl.Goodsbl;
 import bl.managementbl.accountbl.Accountbl;
+import bl.receiptbl.Receiptbl.Receiptbl;
 import dataservice.receiptdataservice.CashRepDataService;
 import Exception.*;
 
 public class CashRepbl{
-	ReceiptClient client = new ReceiptClient();
 	Goodsbl goodsbl = new Goodsbl();
 	Accountbl accountbl = new Accountbl();
 	Test test = new Test();
-	private static CashRepDataService cashRepDataService = null;
-	
-	public CashRepDataService getCashRepDataService() throws RemoteException, MalformedURLException, NotBoundException{
-		if(cashRepDataService==null)
-			cashRepDataService = client.getCashRepDataService();
-		return cashRepDataService;
-	}
-	
-	public ResultMessage submit(CashRepVO vo) throws RemoteException, MalformedURLException, NotBoundException{
-		return getCashRepDataService().submit(CashRepVO.toPO(vo));
-	}
-	
-	public String getCourierName(String courierNum) throws NameNotFoundException, RemoteException{
-//		return accountbl.findByNum(courierNum).accountName;
-		return test.findByNum(courierNum).accountName;
-	}
+	Receiptbl receiptbl = new Receiptbl();
 	
 	public ResultMessage checkCourierNum(String courierNum){
 		if(courierNum.length()<11)
@@ -54,35 +43,11 @@ public class CashRepbl{
 		return ResultMessage.SUCCESS;
 	}
 	
-	public ResultMessage delete(int n) throws RemoteException, MalformedURLException, NotBoundException {
-		// TODO Auto-generated method stub
-		return getCashRepDataService().delete(n);
-	}
-
-	public ResultMessage delete(String num) throws RemoteException, MalformedURLException, NotBoundException {
-		// TODO Auto-generated method stub
-		return getCashRepDataService().delete(num);
-	} 
-	
-	public String createNum(String date) throws RemoteException, MalformedURLException, NotBoundException{
-		return getCashRepDataService().createNum(date);
+	public String getCourierName(String courierNum) throws NameNotFoundException, RemoteException{
+//		return accountbl.findByNum(courierNum).accountName;
+		return test.findByNum(courierNum).accountName;
 	}
 	
-	public ArrayList<CashRepVO> getAllRep() throws RemoteException, MalformedURLException, NotBoundException {
-		ArrayList<ReceiptPO> receiptPOs = getCashRepDataService().getAllRep();
-		return toArrayVO(receiptPOs);
-	}
-	
-	public ArrayList<CashRepVO> getRepByDate(String date) throws RemoteException, MalformedURLException, NotBoundException{
-		ArrayList<ReceiptPO> receiptPOs = getCashRepDataService().getRepByDate(date);
-		return toArrayVO(receiptPOs);
-	}
-	
-	public CashRepVO getRepByNum(String num) throws RemoteException, MalformedURLException, NotBoundException{
-		ReceiptPO receiptPO = getCashRepDataService().getRepByNum(num);
-		return new CashRepVO((CashRepPO)receiptPO);
-	}
-
 	public ArrayList<GoodsVO> getGoods(String courierNum, String date){
 		return goodsbl.getGoodsByGetCourier(courierNum,date);
 	}
@@ -95,7 +60,40 @@ public class CashRepbl{
 		return moneysum;
 	}
 	
-	public Vector<Object> initTable(String date) throws RemoteException, MalformedURLException, NotBoundException{
+	public ResultMessage submit(ReceiptVO vo) throws NotBoundException, IOException{
+		return receiptbl.submit(CashRepVO.toPO((CashRepVO)vo), Rep.CashRep);
+	}
+	
+	public ArrayList<CashRepVO> getAllRep() throws NotBoundException, ClassNotFoundException, IOException {
+		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.CashRep);
+		return toArrayVO(receiptPOs);
+	}
+	
+	public ArrayList<CashRepVO> getRepByDate(String date) throws NotBoundException, ClassNotFoundException, IOException{
+		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.CashRep);
+		return toArrayVO(receiptPOs);
+	}
+	
+	public CashRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException{
+		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.CashRep);
+		return new CashRepVO((CashRepPO)receiptPO);
+	}
+	
+	public ResultMessage delete(int n) throws NotBoundException, ClassNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		return receiptbl.delete(n, Rep.CashRep);
+	}
+
+	public ResultMessage delete(String num) throws NotBoundException, ClassNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		return receiptbl.delete(num, Rep.CashRep);
+	} 
+	
+	public String createNum(String date) throws NotBoundException, ClassNotFoundException, IOException{
+		return receiptbl.createNum(date, Rep.CashRep);
+	}
+	
+	public Vector<Object> initTable(String date) throws NotBoundException, ClassNotFoundException, IOException{
 		 Vector<Object> arr = new Vector<Object>();
 		 Vector<Object> data = new Vector<Object>();
 		 ArrayList<CashRepVO> receiptVOs = getRepByDate(date);

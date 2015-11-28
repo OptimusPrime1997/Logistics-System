@@ -2,6 +2,7 @@ package blservice.formblservice;
 
 import util.enumData.ResultMessage;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -15,8 +16,10 @@ public interface ProfitFormBLService {
 	 * @throws RemoteException 
 	 * @throws NotBoundException 
 	 * @throws MalformedURLException 
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public ProfitFormVO show() throws RemoteException, MalformedURLException, NotBoundException;
+	public ProfitFormVO show() throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException;
 	/**
 	 * save the profitForm the local
 	 * @param vo

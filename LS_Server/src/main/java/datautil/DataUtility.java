@@ -2,6 +2,7 @@ package datautil;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -11,8 +12,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import util.enumData.ResultMessage;
 
-public class DataUtility implements Serializable{
-	
+public class DataUtility implements Serializable {
+
 	class MyObjectOutputStream extends ObjectOutputStream {
 
 		public MyObjectOutputStream() throws IOException {
@@ -28,73 +29,60 @@ public class DataUtility implements Serializable{
 			return;
 		}
 	}
-	
-	
-	
-	public ResultMessage save(Object o, String add){
+
+	public ResultMessage save(Object o, String add) throws IOException {
 		File saveFile = new File(add);
-		try {
-			FileOutputStream fo = new FileOutputStream(saveFile, true);
-			ObjectOutputStream os;
-			if(saveFile.length()<1)
-				os = new ObjectOutputStream(fo);
-			else
-				os = new MyObjectOutputStream(fo);
-			os.writeObject(o);
-			os.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-			return ResultMessage.FAILED;
-		}
+		FileOutputStream fo = new FileOutputStream(saveFile, true);
+		ObjectOutputStream os;
+		if (saveFile.length() < 1)
+			os = new ObjectOutputStream(fo);
+		else
+			os = new MyObjectOutputStream(fo);
+		os.writeObject(o);
+		os.close();
 		return ResultMessage.SUCCESS;
 	}
-	
-	public ArrayList<Object> getAll(String add){
+
+	public ArrayList<Object> getAll(String add) throws IOException, ClassNotFoundException {
 		File saveFile = new File(add);
 		ArrayList<Object> objects = new ArrayList<Object>();
-		try {
-			FileInputStream fin = new FileInputStream(saveFile);
-			ObjectInputStream is = new ObjectInputStream(fin);
-			while (fin.available() > 0) {
-				Object o = is.readObject();
-				objects.add(o);
-			}
-			is.close();
-		} catch (IOException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}  
+		FileInputStream fin = new FileInputStream(saveFile);
+		ObjectInputStream is = new ObjectInputStream(fin);
+		while (fin.available() > 0) {
+			Object o = is.readObject();
+			objects.add(o);
+		}
+		is.close();
 		return objects;
 	}
-	
-	public void clear(String add){
+
+	public void clear(String add) throws IOException {
 		File file = new File(add);
-		file.delete();
-		try {
-			file.createNewFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		if (file.exists())
+			file.delete();
+		file.createNewFile();
 	}
-	
-	public ResultMessage delete(int n, String add) {
+
+	public ResultMessage delete(int n, String add) throws ClassNotFoundException, IOException {
 		ArrayList<Object> objects = getAll(add);
 		clear(add);
-		for(int i = n;i<objects.size();i++)
+		for (int i = n; i < objects.size(); i++)
 			save(objects.get(i), add);
 		return ResultMessage.SUCCESS;
 	}
-	
+
 	/**
 	 * 传入某文件的所有待存对象和文件名，将它们存起来
+	 * 
 	 * @param list
 	 * @param add
+	 * @throws IOException
 	 */
-	public void SaveAll(ArrayList<Object> list,String add){
+	public void SaveAll(ArrayList<Object> list, String add) throws IOException {
 		clear(add);
-		for(Object o :list){
+		for (Object o : list) {
 			save(o, add);
 		}
 	}
 
-	
 }

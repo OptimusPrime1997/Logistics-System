@@ -2,6 +2,7 @@ package blservice.formblservice;
 
 import util.enumData.ResultMessage;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -17,8 +18,10 @@ public interface BusinessFormBLService {
 	 * @throws RemoteException 
 	 * @throws NotBoundException 
 	 * @throws MalformedURLException 
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public BusinessFormVO show(String startTime,String endTime) throws RemoteException, MalformedURLException, NotBoundException;
+	public BusinessFormVO show(String startTime,String endTime) throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException;
 	/**
 	 * save the businessForm to local
 	 * @param vo

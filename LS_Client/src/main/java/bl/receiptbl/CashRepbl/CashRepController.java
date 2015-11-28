@@ -1,5 +1,6 @@
 package bl.receiptbl.CashRepbl;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -11,82 +12,77 @@ import VO.GoodsVO;
 import VO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.CashRepblService;
-import dataservice.receiptdataservice.CashRepDataService;
 import Exception.NameNotFoundException;
-import Exception.RepNumWrongException;
 import util.enumData.ResultMessage;
 
 public class CashRepController extends ReceiptblController implements CashRepblService{
-	private CashRepbl CashRep = new CashRepbl();
+	private CashRepbl cashRepbl = new CashRepbl();
 
 	@Override
 	public ArrayList<GoodsVO> getGoods(String courierNum, String date) {
 		// TODO Auto-generated method stub
-		return CashRep.getGoods(courierNum,date);
+		return cashRepbl.getGoods(courierNum,date);
 	}
 
 	@Override
 	public String getCourierName(String courierNum) throws NameNotFoundException, RemoteException{
 		// TODO Auto-generated method stub
-		return CashRep.getCourierName(courierNum);
+		return cashRepbl.getCourierName(courierNum);
 	}
 
 	@Override
 	public double getMoneySum(ArrayList<GoodsVO> arrGoods) {
 		// TODO Auto-generated method stub
-		return CashRep.getMoneySum(arrGoods);
+		return cashRepbl.getMoneySum(arrGoods);
 	}
 
 	@Override
-	public Vector<Object> initTable(String date) throws RemoteException, MalformedURLException, NotBoundException{
+	public Vector<Object> initTable(String date) throws NotBoundException, ClassNotFoundException, IOException{
 		// TODO Auto-generated method stub
-		return CashRep.initTable(date);
+		return cashRepbl.initTable(date);
 	}
 	
-	public CashRepDataService getService() throws RemoteException, MalformedURLException, NotBoundException{
-		return CashRep.getCashRepDataService();
+	@Override
+	public ResultMessage submit(ReceiptVO vo) throws NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		return cashRepbl.submit(vo);
 	}
 
 	@Override
-	public ResultMessage submit(CashRepVO vo) throws RemoteException, MalformedURLException, NotBoundException {
+	public ArrayList<CashRepVO> getAllRep() throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return CashRep.submit(vo);
+		return cashRepbl.getAllRep();
 	}
 
 	@Override
-	public ArrayList<CashRepVO> getAllCashRep() throws RemoteException, MalformedURLException, NotBoundException {
+	public ArrayList<CashRepVO> getRepBydate(String date) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return CashRep.getAllRep();
+		return cashRepbl.getRepByDate(date);
 	}
 
 	@Override
-	public ArrayList<CashRepVO> getRepBydate(String date) throws RemoteException, MalformedURLException, NotBoundException {
+	public String createNum(String date) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return CashRep.getRepByDate(date);
+		return cashRepbl.createNum(date);
 	}
 
 	@Override
-	public String createNum(String date) {
+	public ResultMessage delete(int n) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return cashRepbl.delete(n);
 	}
 
 	@Override
-	public ResultMessage delete(int n) {
+	public ResultMessage delete(String num) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return cashRepbl.delete(num);
 	}
 
 	@Override
-	public ResultMessage delete(String num) {
+	public ReceiptVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return cashRepbl.getRepByNum(num);
 	}
 
-	@Override
-	public ReceiptVO getRepByNum(String num) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

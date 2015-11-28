@@ -1,5 +1,6 @@
 package blservice.receiptblservice;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -40,7 +41,9 @@ public interface CashRepblService extends ReceiptblService{
 	 * @throws RemoteException 
 	 * @throws NotBoundException 
 	 * @throws MalformedURLException 
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Vector<Object> initTable(String date) throws RemoteException, MalformedURLException, NotBoundException;
+	public Vector<Object> initTable(String date) throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException;
 	
 }

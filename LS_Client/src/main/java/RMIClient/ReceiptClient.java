@@ -4,6 +4,9 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 import RMIservice.ReceiptDataRemote;
 import dataservice.receiptdataservice.*;
 
@@ -74,6 +77,12 @@ public class ReceiptClient {
 		getInstance();
 		TransferRepDataService transferRepDataService = service.getTransferRepDataService();
 		return transferRepDataService;
+	}
+	
+	public ReceiptDataService getReceiptDataService() throws RemoteException, MalformedURLException, NotBoundException{
+		getInstance();
+		ReceiptDataService receiptDataService = service.getReceiptDataService();
+		return receiptDataService;
 	}
 	
 }

@@ -1,5 +1,6 @@
 package bl.formbl;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -18,7 +19,7 @@ import dataservice.formdataservice.ProfitFormDataService;
 
 public class ProfitFormbl {
 	
-	public ProfitFormVO show() throws RemoteException, MalformedURLException, NotBoundException {
+	public ProfitFormVO show() throws NotBoundException, ClassNotFoundException, IOException {
 		double totalIn=0,totalOut=0,totalProfit=0;
 		
 		PayRepbl payRep=new PayRepbl();

@@ -93,4 +93,10 @@ public class ReceiptDataServer extends UnicastRemoteObject implements ReceiptDat
 		return new TransferRepData();
 	}
 
+	@Override
+	public ReceiptDataService getReceiptDataService() throws RemoteException {
+		// TODO Auto-generated method stub
+		return new ReceiptData();
+	}
+
 }

@@ -7,6 +7,7 @@ package dataimpl.stockdata;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.rmi.RemoteException;
@@ -42,9 +43,11 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 
 	/**
 	 * 在文件末尾增添序列化库存po
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
 	@Override
-	public ResultMessage add(StockPO po) throws RemoteException {
+	public ResultMessage add(StockPO po) throws ClassNotFoundException, IOException {
 		ArrayList<Object> list = du.getAll(filename);
 		for(Object o:list){
 			StockPO p = (StockPO)o;
@@ -57,7 +60,7 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 
 
 	@Override
-	public ResultMessage delete(String listnum) throws RemoteException {
+	public ResultMessage delete(String listnum) throws ClassNotFoundException, IOException {
 		boolean isFound = false;
 		ArrayList<Object> list = du.getAll(filename);
 		
@@ -82,7 +85,7 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 
 	
 	@Override
-	public ArrayList<StockPO> getStock() throws RemoteException {
+	public ArrayList<StockPO> getStock() throws ClassNotFoundException, IOException {
 		
 		ArrayList<StockPO> list = new ArrayList<StockPO>();
 		ArrayList<Object> listo = du.getAll(filename);

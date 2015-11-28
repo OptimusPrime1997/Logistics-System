@@ -1,5 +1,8 @@
 package bl.receiptbl.DeliverRepbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import VO.CashRepVO;
@@ -13,43 +16,43 @@ public class DeliverController extends ReceiptblController implements DeliverRep
 	DeliverRepbl DeliverRep = new DeliverRepbl();
 
 	@Override
-	public String createNum(String date) {
+	public String createNum(String date) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage delete(int n) {
+	public ResultMessage delete(int n) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage delete(String num) {
+	public ResultMessage delete(String num) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ReceiptVO getRepByNum(String num) {
+	public ReceiptVO getRepByNum(String num) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage submit(CashRepVO vo) {
+	public ResultMessage submit(ReceiptVO vo) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<CashRepVO> getAllCashRep() {
+	public ArrayList<CashRepVO> getAllRep() throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<CashRepVO> getRepBydate(String date) {
+	public ArrayList<CashRepVO> getRepBydate(String date) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -59,5 +62,6 @@ public class DeliverController extends ReceiptblController implements DeliverRep
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

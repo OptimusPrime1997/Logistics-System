@@ -1,5 +1,6 @@
 package bl.formbl;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -15,7 +16,7 @@ import bl.receiptbl.PayRepbl.PayRepbl;
 import dataservice.formdataservice.BusinessFormDataService;
 
 public class BusinessFormbl {
-	public BusinessFormVO show(String startTime, String endTime) throws RemoteException, MalformedURLException, NotBoundException {
+	public BusinessFormVO show(String startTime, String endTime) throws NotBoundException, ClassNotFoundException, IOException {
 		PayRepbl payRep=new PayRepbl();
 		CashRepbl cashRep=new CashRepbl();
 		//TODO 改成  返回部分付款单，收款单的方法~

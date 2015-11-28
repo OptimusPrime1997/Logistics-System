@@ -6,6 +6,7 @@
 
 package ui.receiptui;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -135,7 +136,13 @@ public class CashRep extends javax.swing.JPanel {
         columnIdentifiers.add("金额");
         columnIdentifiers.add("备注");
         
-        numText.setText(control.createNum(dateText.getText()));
+        try {
+			numText.setText(control.createNum(dateText.getText()));
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
 
 		dateText.setText(control.getDate());
 
@@ -144,7 +151,7 @@ public class CashRep extends javax.swing.JPanel {
 			dataVector = control.initTable(dateText.getText());
 			model.setDataVector(dataVector, columnIdentifiers);
 	        jTable.setModel(model);
-		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+		} catch (NotBoundException | ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
@@ -292,7 +299,7 @@ public class CashRep extends javax.swing.JPanel {
 		CashRepVO vo = new CashRepVO(num, date, money, courierNum, courierName, arrGoods);
 		try {
 			control.submit(vo);
-		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+		} catch (NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
