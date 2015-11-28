@@ -22,7 +22,7 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	@Override
 	public ArrayList<GoodsVO> getGoods(String courierNum, String date) {
 		// TODO Auto-generated method stub
-		return CashRep.getGoods(courierNum);
+		return CashRep.getGoods(courierNum,date);
 	}
 
 	@Override

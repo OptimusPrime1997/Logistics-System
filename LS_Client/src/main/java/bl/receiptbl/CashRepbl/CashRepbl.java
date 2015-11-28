@@ -83,8 +83,8 @@ public class CashRepbl{
 		return new CashRepVO((CashRepPO)receiptPO);
 	}
 
-	public ArrayList<GoodsVO> getGoods(String courierNum){
-		return goodsbl.getGoodsByGetCourier(courierNum);
+	public ArrayList<GoodsVO> getGoods(String courierNum, String date){
+		return goodsbl.getGoodsByGetCourier(courierNum,date);
 	}
 	
 	public double getMoneySum(ArrayList<GoodsVO> arrGoods){
