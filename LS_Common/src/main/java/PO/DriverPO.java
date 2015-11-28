@@ -2,16 +2,18 @@ package PO;
 
 import java.io.Serializable;
 
-public class DriverPO implements Serializable{
+import util.enumData.Sex;
+
+public class DriverPO implements Serializable,Comparable<DriverPO>{
 	private static final long serialVersionUID = 1L;
 	private String driverNum;
 	private String name;
 	private String birthDate;
 	private String id;
 	private String phoneNum;
-	private boolean sex;
+	private Sex sex;
 	private String licensedTime;
-	public DriverPO(String driverNum,String name,String birthDate,String id,String phoneNum, boolean sex,String licensedTime) {
+	public DriverPO(String driverNum,String name,String birthDate,String id,String phoneNum, Sex sex,String licensedTime) {
 		// TODO Auto-generated constructor stub
 		this.driverNum=driverNum;
 		this.name=name;
@@ -56,6 +58,11 @@ public class DriverPO implements Serializable{
 	}
 	public void setLicensedTime(String licensedTime) {
 		this.licensedTime = licensedTime;
+	}
+	@Override
+	public int compareTo(DriverPO o) {
+		// TODO Auto-generated method stub
+		return driverNum.compareTo(o.getDriverNum());
 	}
 
 }

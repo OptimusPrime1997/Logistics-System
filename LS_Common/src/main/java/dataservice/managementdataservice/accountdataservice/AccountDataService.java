@@ -1,10 +1,14 @@
 package dataservice.managementdataservice.accountdataservice;
 
 
+import java.io.FileNotFoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import javax.naming.NameNotFoundException;
+
 import util.enumData.ResultMessage;
+import util.exception.NumNotFoundException;
 import PO.AccountPO;
 
 public interface AccountDataService {
@@ -16,16 +20,11 @@ public interface AccountDataService {
 
 	public ArrayList<AccountPO> show() throws RemoteException;
 
-	public AccountPO findByName(String name) throws RemoteException;
+	public AccountPO findByName(String name) throws RemoteException, FileNotFoundException, NameNotFoundException;
 
-	public AccountPO findByAccountNum(String accountNum) throws RemoteException;
+	public AccountPO findByAccountNum(String accountNum) throws RemoteException, FileNotFoundException, NumNotFoundException;
 
-	public ResultMessage updateAuthority(AccountPO po) throws RemoteException;
 
-	public ResultMessage updateMsg(AccountPO po) throws RemoteException;
-
-	public boolean loginCheck(AccountPO po) throws RemoteException;
-
-	public ResultMessage logincheck(String name, String key) throws RemoteException;
+	public ResultMessage logincheck(String accountNum, String key) throws RemoteException, FileNotFoundException, NumNotFoundException;
 
 }

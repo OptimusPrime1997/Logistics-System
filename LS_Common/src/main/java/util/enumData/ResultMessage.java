@@ -26,6 +26,7 @@ public enum ResultMessage {
 	WRONG_ACCOUNTNUM,	//账号格式错误
 	NOT_FOUND_ACCOUNTNUM,//账号不存在
 	WRONG_PASSWORD,	//错误密码
+	NOT_FOUND_FILE,//文件未找到
 	
 	
 	

@@ -2,18 +2,13 @@ package PO;
 
 import java.io.Serializable;
 
-public class InstitutionPO implements Serializable{
+public class InstitutionPO implements Serializable,Comparable<InstitutionPO>{
 	public final static long serialVersionUID=1L;
 	private String instituionNum;
 	private String institutionName;
 	private String address;
 	private String contactInfo;
 	private String manning;
-
-	
-
-	
-
 	public InstitutionPO(String instituionNum, String institutionName,
 			String address, String contactInfo, String manning) {
 		super();
@@ -62,5 +57,11 @@ public class InstitutionPO implements Serializable{
 
 	public void setManning(String manning) {
 		this.manning = manning;
+	}
+
+	@Override
+	public int compareTo(InstitutionPO o) {
+		// TODO Auto-generated method stub
+		return instituionNum.compareTo(o.getInstituionNum());
 	}
 }

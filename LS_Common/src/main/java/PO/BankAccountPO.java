@@ -2,7 +2,7 @@ package PO;
 
 import java.io.Serializable;
 
-public class BankAccountPO implements Serializable{
+public class BankAccountPO implements Serializable,Comparable<BankAccountPO>{
 	public final static long serialVersionUID=1L;
 	private String bankAccountNum;
 	private String bankAccountName;
@@ -36,5 +36,11 @@ public class BankAccountPO implements Serializable{
 
 	public void setBalance(int balance) {
 		this.balance = balance;
+	}
+
+	@Override
+	public int compareTo(BankAccountPO o) {
+		// TODO Auto-generated method stub
+		return bankAccountNum.compareTo(o.getBankAccountNum());
 	}
 }

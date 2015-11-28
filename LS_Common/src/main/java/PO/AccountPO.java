@@ -1,9 +1,10 @@
 package PO;
 
 import java.io.Serializable;
+
 import util.enumData.*;
 
-public class AccountPO implements Serializable {
+public class AccountPO implements Serializable,Comparable<AccountPO> {
 	private static final long serialVersionUID = 1L;
 	private String accountNum;
 	private String accountName;
@@ -35,7 +36,7 @@ public class AccountPO implements Serializable {
 		this.accountNum = accountNum;
 	}
 
-	public String getAccoutName() {
+	public String getAccountName() {
 		return accountName;
 	}
 
@@ -82,4 +83,11 @@ public class AccountPO implements Serializable {
 	public void setInstitution(String institution) {
 		this.institution = institution;
 	}
+
+	public int compareTo(AccountPO o) {
+		// TODO Auto-generated method stub
+		return accountNum.compareTo(o.getAccountNum());
+	}
+
+	
 }

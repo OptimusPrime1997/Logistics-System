@@ -2,7 +2,7 @@ package PO;
 
 import java.io.Serializable;
 
-public class VehiclePO implements Serializable{
+public class VehiclePO implements Serializable,Comparable<VehiclePO>{
 	public final static long serialVersionUID=1L;
 	private String vehicleNum;
 	private String licenseNum;
@@ -31,5 +31,10 @@ public String getAttendTime() {
 }
 public void setAttendTime(String attendTime) {
 	this.attendTime = attendTime;
+}
+@Override
+public int compareTo(VehiclePO o) {
+	// TODO Auto-generated method stub
+	return vehicleNum.compareTo(o.getVehicleNum());
 }
 }
