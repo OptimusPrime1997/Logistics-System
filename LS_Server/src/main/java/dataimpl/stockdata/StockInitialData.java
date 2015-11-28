@@ -25,15 +25,9 @@ import dataservice.stockdataservice.StockInitialDataService;
  * @author G
  *
  */
-public class StockInitialData extends UnicastRemoteObject implements StockInitialDataService{
+public class StockInitialData implements StockInitialDataService{
 
 	
-	/**
-	 * @throws RemoteException
-	 */
-	protected StockInitialData() throws RemoteException {
-		super();
-	}
 
 	/**
 	 * 
