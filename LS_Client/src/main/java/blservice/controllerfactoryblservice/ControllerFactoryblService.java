@@ -2,9 +2,11 @@ package blservice.controllerfactoryblservice;
 
 import blservice.formblservice.BusinessFormBLService;
 import blservice.formblservice.ProfitFormBLService;
+import blservice.goodsblservice.GetNumOfGoodsByCourierBLService;
 //import blservice.goodsblservice.GetNumOfGoodsByCourierBLService;
 import blservice.goodsblservice.GoodsCheckBLService;
 import blservice.goodsblservice.GoodsDeleteBLService;
+import blservice.goodsblservice.GoodsEndBLService;
 //import blservice.goodsblservice.GoodsEndBLService;
 import blservice.goodsblservice.GoodsExamineBLService;
 import blservice.goodsblservice.GoodsGetByCouriersBLService;
@@ -19,6 +21,7 @@ import blservice.managementblservice.constblservice.ConstBLService;
 import blservice.managementblservice.institutionblservice.InstitutionBLService;
 import blservice.managementblservice.salarypolicyblservice.SalaryPolicyBLService;
 import blservice.managementblservice.vehicleanddriverblservice.DriverBLService;
+import blservice.managementblservice.vehicleanddriverblservice.VehicleBLService;
 import blservice.receiptblservice.CashRepblService;
 import blservice.receiptblservice.DeliverRepblService;
 import blservice.receiptblservice.GetRepblService;
@@ -30,7 +33,6 @@ import blservice.receiptblservice.ShipmentRepblServce;
 import blservice.receiptblservice.ShippingRepblService;
 import blservice.receiptblservice.TransferRepblService;
 import blservice.stockblservice.StockBLService;
-import blservice.managementblservice.vehicleanddriverblservice.*;
 
 public interface ControllerFactoryblService {
 	public BusinessFormBLService getBusinessFromController();
@@ -42,8 +44,8 @@ public interface ControllerFactoryblService {
 	public GoodsInitBLService getGoodsInitController();
 	public GoodsInitCompleteBLService getGoodsInitCompleteController();
 	public GoodsSetStateBLService getGoodsSetStateController();
-//	public GoodsEndBLService getGoodsEndController();
-//	public GetNumOfGoodsByCourierBLService getGetNumOfGoodsByCourierController();
+	public GoodsEndBLService getGoodsEndController();
+	public GetNumOfGoodsByCourierBLService getGetNumOfGoodsByCourierController();
 	public LogBLService getLogController() ;
 	public AccountBLService getAccountController();
 	public BankAccountBLService getBankAccountController();

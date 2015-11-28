@@ -2,10 +2,10 @@ package bl.controllerfactorybl;
 
 import bl.formbl.controller.BusinessFormController;
 import bl.formbl.controller.ProfitFormController;
-//import bl.goodsbl.controller.Get_Courier_NumOfGoodsController;
+import bl.goodsbl.controller.Get_Courier_NumOfGoodsController;
 import bl.goodsbl.controller.GoodsCheckController;
 import bl.goodsbl.controller.GoodsDeleteController;
-//import bl.goodsbl.controller.GoodsEndController;
+import bl.goodsbl.controller.GoodsEndController;
 import bl.goodsbl.controller.GoodsExamineController;
 import bl.goodsbl.controller.GoodsGetByCourierController;
 import bl.goodsbl.controller.GoodsInitCompleteController;
@@ -33,9 +33,11 @@ import bl.stockbl.StockController;
 import blservice.controllerfactoryblservice.ControllerFactoryblService;
 import blservice.formblservice.BusinessFormBLService;
 import blservice.formblservice.ProfitFormBLService;
+import blservice.goodsblservice.GetNumOfGoodsByCourierBLService;
 //import blservice.goodsblservice.GetNumOfGoodsByCourierBLService;
 import blservice.goodsblservice.GoodsCheckBLService;
 import blservice.goodsblservice.GoodsDeleteBLService;
+import blservice.goodsblservice.GoodsEndBLService;
 //import blservice.goodsblservice.GoodsEndBLService;
 import blservice.goodsblservice.GoodsExamineBLService;
 import blservice.goodsblservice.GoodsGetByCouriersBLService;
@@ -249,17 +251,17 @@ private ControllerFactoryImpl() {}
 		return new GoodsInitCompleteController();
 	}
 
-//	@Override
-//	public GoodsEndBLService getGoodsEndController() {
-//		
-//		return new GoodsEndController();
-//	}
-//
-//	@Override
-//	public GetNumOfGoodsByCourierBLService getGetNumOfGoodsByCourierController() {
-//		
-//		return new Get_Courier_NumOfGoodsController();
-//	}
+	@Override
+	public GoodsEndBLService getGoodsEndController() {
+		
+		return new GoodsEndController();
+	}
+
+	@Override
+	public GetNumOfGoodsByCourierBLService getGetNumOfGoodsByCourierController() {
+		
+		return new Get_Courier_NumOfGoodsController();
+	}
 	
 	
 }
