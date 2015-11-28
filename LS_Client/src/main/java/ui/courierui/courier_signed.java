@@ -5,11 +5,15 @@
  */
 package ui.courierui;
 
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import bl.goodsbl.controller.GoodsEndController;
+
 /**
  *
  * @author Administrator
  */
 public class courier_signed extends javax.swing.JFrame {
+	GoodsEndController endController=(GoodsEndController)ControllerFactoryImpl.getInstance().getGoodsEndController();
 
     /**
      * Creates new form courier__signed

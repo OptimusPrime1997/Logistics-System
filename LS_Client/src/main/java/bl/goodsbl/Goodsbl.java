@@ -184,7 +184,11 @@ public class Goodsbl {
 	 */
 	public int[] get7daysNumOfGoods(int numOfDays){
 		int[] nums=new int[15];
-		ArrayList<GoodsVO> vos=getGoodsByCourier(Loginbl.getCurrentOptorId(),CurrentTime.getTime());
+		ArrayList<GoodsVO> vos;
+		for(int i=0;i<numOfDays;i++){
+			vos=getGoodsByCourier(Loginbl.getCurrentOptorId(),CurrentTime.getTime());
+						
+		}
 		
 		
 		return nums;
