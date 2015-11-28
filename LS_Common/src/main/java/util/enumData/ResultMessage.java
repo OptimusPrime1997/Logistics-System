@@ -27,7 +27,10 @@ public enum ResultMessage {
 	NOT_COMPLETED,	//未填写
 	WRONG_ACCOUNTNUM,	//账号格式错误
 	NOT_FOUND_ACCOUNTNUM,//账号不存在
-	WRONG_PASSWORD;//错误密码
+	WRONG_PASSWORD,//错误密码
+	
+	INPUT_SHOULD_BE_POSITIVE_INTEGER, //输入应该为正整数
+	NUMBER_OVER;  //输入数值太大
 	
 	public String toFriendlyString(ResultMessage resultMessage) {
 		

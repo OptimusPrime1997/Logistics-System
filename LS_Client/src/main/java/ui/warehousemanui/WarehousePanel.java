@@ -5,6 +5,8 @@
  */
 package ui.warehousemanui;
 
+import java.awt.*;
+
 import ui.mainFrame.MainFrame;
 import ui.receiptui.InStockRep;
 import ui.receiptui.OutStockRep;
@@ -32,6 +34,21 @@ public class WarehousePanel extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+    	
+    	/**
+    	 * 设置窗体大小为不可变
+    	 */
+    	this.setResizable(false);
+    	/**
+    	 * 设置窗体在中部出现
+    	 */
+    	Toolkit tk = Toolkit.getDefaultToolkit();
+    	Dimension screensize = tk.getScreenSize();
+    	int screenh = screensize.height;
+    	int screenw = screensize.width;
+    	this.setSize(800, 700);
+    	this.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);
+    	
 
         jProgressBar2 = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
@@ -282,8 +299,7 @@ public class WarehousePanel extends javax.swing.JFrame {
     	
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    	
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed    	
     	InStockRep in = new InStockRep();
     	in.setVisible(true);
     	this.dispose();
