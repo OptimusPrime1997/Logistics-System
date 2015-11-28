@@ -95,25 +95,6 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 
 	
 	
-	public static void main(String[] args) {
-		StockData sd;
-		try {
-			sd = new StockData();
-			ResultMessage rm = sd.add(new StockPO("cn", "rn", "m", "d", "des", 3, 4));
-			sd.add( new StockPO("cn", "ln", "m", "d", "des", 3, 4));
-			
-			ArrayList<StockPO> list = sd.getStock();
-			System.out.println(list.size());
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-	}
-	
-	
-	
 	
 	
 	
