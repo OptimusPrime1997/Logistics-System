@@ -7,6 +7,8 @@ package ui.warehousemanui;
 
 import java.awt.*;
 
+import javax.swing.JButton;
+
 import ui.mainFrame.MainFrame;
 import ui.receiptui.InStockRep;
 import ui.receiptui.OutStockRep;
@@ -46,7 +48,7 @@ public class WarehousePanel extends javax.swing.JFrame {
     	Dimension screensize = tk.getScreenSize();
     	int screenh = screensize.height;
     	int screenw = screensize.width;
-    	this.setSize(800, 700);
+    	this.setSize(800, 500);
     	this.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);
     	
 
@@ -68,12 +70,13 @@ public class WarehousePanel extends javax.swing.JFrame {
         jProgressBar8 = new javax.swing.JProgressBar();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        back = new JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,8 +128,8 @@ public class WarehousePanel extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("退出");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        exit.setText("退出");
+        exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
@@ -171,7 +174,7 @@ public class WarehousePanel extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(33, 33, 33)
-                .addComponent(jButton3))
+                .addComponent(exit))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,7 +237,7 @@ public class WarehousePanel extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
+                    .addComponent(exit)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -387,11 +390,12 @@ public class WarehousePanel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton exit;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private JButton back;//返回
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -13,6 +13,7 @@ import ui.mainFrame.MainFrame;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.stockbl.StockController;
 
+
 /**
  *
  * @author G
@@ -20,6 +21,10 @@ import bl.stockbl.StockController;
 public class InitialStockNumPanel extends javax.swing.JFrame{
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * Creates new form InitialStockNumPanel
      */
     public InitialStockNumPanel() {
@@ -156,6 +161,9 @@ public class InitialStockNumPanel extends javax.swing.JFrame{
 		
 		String s = jTextField1.getText().trim();
 		sc.initial(s);
+		
+		
+		
 		
 		
 	}

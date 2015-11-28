@@ -4,6 +4,7 @@
 package dataservice.stockdataservice;
 
 import java.io.IOException;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ import PO.StockPO;
  * @author G
  *
  */
-public interface StockDataService {
+public interface StockDataService extends Remote{
 	
 	/**
 	 * add stockPO to stockData

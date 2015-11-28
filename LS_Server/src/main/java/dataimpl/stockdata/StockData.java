@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import util.enumData.ResultMessage;
 import PO.StockPO;
 import dataservice.stockdataservice.StockDataService;
+import dataservice.stockdataservice.StockInitialDataService;
 import datautil.DataUtility;
 
 /**
@@ -43,36 +44,51 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 
 	/**
 	 * 在文件末尾增添序列化库存po
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
 	@Override
-	public ResultMessage add(StockPO po) throws ClassNotFoundException, IOException {
-		ArrayList<Object> list = du.getAll(filename);
-		for(Object o:list){
-			StockPO p = (StockPO)o;
-			if(p.getListNum().equals(po.getListNum())){
-				return ResultMessage.EXIST;
+	public ResultMessage add(StockPO po) throws RemoteException {
+		ArrayList<Object> list;
+		ResultMessage rm;
+		try {
+			list = du.getAll(filename);
+			
+			for(Object o:list){
+				StockPO p = (StockPO)o;
+				if(p.getListNum().equals(po.getListNum())){
+					return ResultMessage.EXIST;
+				}
 			}
-		}
-		return du.save(po, filename);
+			
+			return rm = du.save(po, filename);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
+		return ResultMessage.FAILED;
 	}
 
 
 	@Override
-	public ResultMessage delete(String listnum) throws ClassNotFoundException, IOException {
+	public ResultMessage delete(String listnum) throws RemoteException {
 		boolean isFound = false;
-		ArrayList<Object> list = du.getAll(filename);
-		
-		for(int i = 0;i < list.size();++i) {
-			StockPO po = (StockPO)list.get(i);
-			if(po.getListNum().equals(listnum)){
-				isFound = true;
-				list.remove(i);
+		ArrayList<Object> list;
+		try {
+			list = du.getAll(filename);
+			
+			for(int i = 0;i < list.size();++i) {
+				StockPO po = (StockPO)list.get(i);
+				if(po.getListNum().equals(listnum)){
+					isFound = true;
+					list.remove(i);
+				}
 			}
-		}
+			
+			du.SaveAll(list, filename);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 		
-		du.SaveAll(list, filename);
+		
 		
 		if(!isFound){
 			return ResultMessage.NOT_FOUND;
@@ -85,14 +101,21 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 
 	
 	@Override
-	public ArrayList<StockPO> getStock() throws ClassNotFoundException, IOException {
+	public ArrayList<StockPO> getStock() throws IOException {
 		
 		ArrayList<StockPO> list = new ArrayList<StockPO>();
-		ArrayList<Object> listo = du.getAll(filename);
-		for(Object o:listo) {
-			StockPO po = (StockPO) o;
-			list.add(po);
+		ArrayList<Object> listo;
+		try {
+			listo = du.getAll(filename);
+			
+			for(Object o:listo) {
+				StockPO po = (StockPO) o;
+				list.add(po);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
+		
 		return list;
 	}
 

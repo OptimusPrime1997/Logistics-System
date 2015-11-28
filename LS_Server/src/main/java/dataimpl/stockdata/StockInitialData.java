@@ -20,14 +20,23 @@ import util.enumData.ResultMessage;
 import PO.StockNumPO;
 import PO.StockPO;
 import dataservice.stockdataservice.StockInitialDataService;
+import datautil.DataUtility;
 
 /**
  * @author G
  *
  */
-public class StockInitialData implements StockInitialDataService{
+public class StockInitialData extends UnicastRemoteObject implements StockInitialDataService{
 
 	
+	String filename = "StockIniNum.txt";
+	DataUtility du = new DataUtility();
+	/**
+	 * @throws RemoteException
+	 */
+	public StockInitialData() throws RemoteException {
+		super();
+	}
 
 	/**
 	 * 
@@ -39,13 +48,10 @@ public class StockInitialData implements StockInitialDataService{
 	 */
 	@Override
 	public ResultMessage initial(StockNumPO po) throws RemoteException {
+
 		try {
-			FileOutputStream fos = new FileOutputStream("StockNum.txt");
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			oos.writeObject(po);
-			oos.flush();
-			oos.close();
-						
+			du.save(po, filename);	
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 			return ResultMessage.FAILED;
@@ -59,18 +65,23 @@ public class StockInitialData implements StockInitialDataService{
 	 */
 	@Override
 	public StockNumPO getInitialNum(String citynum) throws RemoteException {
-	
+		
+		ArrayList<Object> list;
 		try {
-			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("StockNum.txt"));
-			while(ois.readBoolean()){
-				StockNumPO po = (StockNumPO)ois.readObject();
+			list = du.getAll(filename);
+			
+			for(int i = 0;i < list.size();++i) {
+				StockNumPO po = (StockNumPO)list.get(i);
 				if(po.getCityNum().equals(citynum)){
 					return po;
 				}
 			}
+			
+			du.SaveAll(list, filename);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		} 
+		
 		return null;
 	}
 
