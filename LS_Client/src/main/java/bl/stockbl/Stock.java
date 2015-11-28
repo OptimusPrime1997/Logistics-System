@@ -5,6 +5,7 @@ package bl.stockbl;
 
 import java.util.ArrayList;
 
+import ui.warehousemanui.CheckUtil;
 import util.enumData.ResultMessage;
 import VO.InStockRepVO;
 import VO.OutStockRepVO;
@@ -98,13 +99,5 @@ public class Stock {
 		return null;
 	}
 
-	/**
-	 * @param num
-	 * @return
-	 */
-	public ResultMessage initialStockNum(int num) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 }

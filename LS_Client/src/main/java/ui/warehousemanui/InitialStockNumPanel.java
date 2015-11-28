@@ -5,6 +5,8 @@
  */
 package ui.warehousemanui;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 
 import ui.mainFrame.MainFrame;
@@ -15,7 +17,7 @@ import bl.stockbl.StockController;
  *
  * @author G
  */
-public class InitialStockNumPanel extends javax.swing.JPanel {
+public class InitialStockNumPanel extends javax.swing.JFrame{
 
     /**
      * Creates new form InitialStockNumPanel
@@ -32,6 +34,24 @@ public class InitialStockNumPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+    	
+    	
+    	/**
+    	 * 设置窗体大小
+    	 */
+    	this.setSize(400, 330);
+    	/**
+    	 * 设置窗体大小为不可变
+    	 */
+    	this.setResizable(false);
+    	/**
+    	 * 设置窗体在中部出现
+    	 */
+    	Toolkit tk = Toolkit.getDefaultToolkit();
+    	Dimension screensize = tk.getScreenSize();
+    	int screenh = screensize.height;
+    	int screenw = screensize.width;
+    	this.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);
 
         jLabel9 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
@@ -40,6 +60,8 @@ public class InitialStockNumPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         jLabel9.setText("当前账户：大玉儿");
 
         jButton3.setText("退出");
@@ -67,8 +89,8 @@ public class InitialStockNumPanel extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -118,10 +140,9 @@ public class InitialStockNumPanel extends javax.swing.JPanel {
 	 * 返回
 	 */
 	private void jButton2ActionPerformed(ActionEvent evt) {
-		// TODO 这个要转成frame么，不转的话怎么把它给消去呢
 		WarehousePanel w = new WarehousePanel();
 		w.setVisible(true);
-		this.setVisible(false);
+		this.dispose();
 		
 	}
 
@@ -131,9 +152,10 @@ public class InitialStockNumPanel extends javax.swing.JPanel {
 	 * 确定
 	 */
 	private void jButton1ActionPerformed(ActionEvent evt) {
-		// TODO 怎么从界面得到这个数字
-		int num = 0;
-		sc.initialStockNum(num);
+		// TODO 
+		
+		String s = jTextField1.getText().trim();
+		sc.initial(s);
 		
 		
 	}
@@ -146,8 +168,7 @@ public class InitialStockNumPanel extends javax.swing.JPanel {
 	private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 		MainFrame mf = new MainFrame();
     	mf.setVisible(true);
-    	this.setVisible(false);
-		
+    	this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
 

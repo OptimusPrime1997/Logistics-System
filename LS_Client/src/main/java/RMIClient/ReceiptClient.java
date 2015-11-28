@@ -1,78 +1,76 @@
 package RMIClient;
 
+import java.net.MalformedURLException;
 import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import RMIservice.ReceiptDataRemote;
 import dataservice.receiptdataservice.*;
 
 public class ReceiptClient {
 	
-	ReceiptDataRemote service;
+	private static ReceiptDataRemote service = null;
 	
-	public void getInstance(){
-		try{
+	public void getInstance() throws MalformedURLException, RemoteException, NotBoundException{
+		if(service==null)
 			service = (ReceiptDataRemote)Naming.lookup("rmi://127.0.0.1:1099/cherb"); 
-		}
-		catch(Exception ex){
-			ex.printStackTrace();
-		}
 	}
 	
-	public CashRepDataService getCashRepDataService() throws RemoteException{
+	public CashRepDataService getCashRepDataService() throws RemoteException, MalformedURLException, NotBoundException{
 		getInstance();
 		CashRepDataService cashRepDataService =service.getCashRepDataService();
 		return cashRepDataService;
 	}
 	
-	public DeliverRepDataService getDeliverRepDataService() throws RemoteException{
+	public DeliverRepDataService getDeliverRepDataService() throws RemoteException, MalformedURLException, NotBoundException{
 		getInstance();
 		DeliverRepDataService deliverRepDataService = service.getDeliverRepDataService();
 		return deliverRepDataService;
 	}
 	
-	public GetRepDataService getGetRepDataService() throws RemoteException{
+	public GetRepDataService getGetRepDataService() throws RemoteException, MalformedURLException, NotBoundException{
 		getInstance();
 		GetRepDataService getRepDataService = service.getGetRepDataService();
 		return getRepDataService;
 	}
 	
-	public InStockRepDataService getInStockRepDataService() throws RemoteException{
+	public InStockRepDataService getInStockRepDataService() throws RemoteException, MalformedURLException, NotBoundException{
 		getInstance();
 		InStockRepDataService inStockRepDataService = service.getInStockRepDataService();
 		return inStockRepDataService;
 	}
 	
-	public OutStockRepDataService getOutStockRepDataService() throws RemoteException{
+	public OutStockRepDataService getOutStockRepDataService() throws RemoteException, MalformedURLException, NotBoundException{
 		getInstance();
 		OutStockRepDataService outStockRepDataService = service.getOutStockRepDataService();
 		return outStockRepDataService;
 	}
 	
-	public PayRepDataService getPayRepDataService() throws RemoteException{
+	public PayRepDataService getPayRepDataService() throws RemoteException, MalformedURLException, NotBoundException{
 		getInstance();
 		PayRepDataService payRepDataService = service.getPayRepDataService();
 		return payRepDataService;
 	}
 	
-	public ReceptionRepDataService getReceptionRepDataService() throws RemoteException{
+	public ReceptionRepDataService getReceptionRepDataService() throws RemoteException, MalformedURLException, NotBoundException{
 		getInstance();
 		ReceptionRepDataService receptionRepDataService = service.getReceptionRepDataService();
 		return receptionRepDataService;
 	}
 	
-	public ShipmentRepDataService getShipmentRepDataService() throws RemoteException{
+	public ShipmentRepDataService getShipmentRepDataService() throws RemoteException, MalformedURLException, NotBoundException{
 		getInstance();
 		ShipmentRepDataService shipmentRepDataService = service.getShipmentRepDataService();
 		return shipmentRepDataService;
 	}
 	
-	public ShippingRepDataService getShippingRepDataService() throws RemoteException{
+	public ShippingRepDataService getShippingRepDataService() throws RemoteException, MalformedURLException, NotBoundException{
 		getInstance();
 		ShippingRepDataService shippingRepDataService = service.getShippingRepDataService();
 		return shippingRepDataService;
 	}
 	
-	public TransferRepDataService getTransferRepDataService() throws RemoteException{
+	public TransferRepDataService getTransferRepDataService() throws RemoteException, MalformedURLException, NotBoundException{
 		getInstance();
 		TransferRepDataService transferRepDataService = service.getTransferRepDataService();
 		return transferRepDataService;

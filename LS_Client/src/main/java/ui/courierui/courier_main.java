@@ -55,9 +55,9 @@ public class courier_main extends javax.swing.JPanel {
         signedGoodsbtn = new javax.swing.JButton();
 
         newGoodsbtn.setText("新订单");
-        newGoodsbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newGoodsbtn2ActionPerformed(evt);
+        newGoodsbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                newGoodsbtnMouseClicked(evt);
             }
         });
 
@@ -227,10 +227,6 @@ public class courier_main extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void newGoodsbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGoodsbtn2ActionPerformed
-       new Order().setVisible(true);
-    }//GEN-LAST:event_newGoodsbtn2ActionPerformed
-
     private void account_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_account_btnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_account_btnActionPerformed
@@ -242,7 +238,11 @@ public class courier_main extends javax.swing.JPanel {
     private void signedGoodsbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signedGoodsbtnMouseClicked
         new courier_signed().setVisible(true);
     }//GEN-LAST:event_signedGoodsbtnMouseClicked
-
+    private void newGoodsbtnMouseClicked(java.awt.event.MouseEvent evt){
+    	JFrame frame=new JFrame(); frame.setSize(200, 100);
+    	frame.setContentPane(new Order());
+    	frame.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton account_btn;

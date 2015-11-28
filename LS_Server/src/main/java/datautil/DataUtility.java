@@ -7,10 +7,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import util.enumData.ResultMessage;
 
-public class DataUtility {
+public class DataUtility implements Serializable{
 	
 	class MyObjectOutputStream extends ObjectOutputStream {
 

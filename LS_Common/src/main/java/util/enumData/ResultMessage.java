@@ -14,8 +14,11 @@ public enum ResultMessage {
 	LINK_FAILURE,//连接错误
 	EXIST,	//已存在
 	NOT_FOUND,	//没找到对应结果
-	LENGTH_OVER,	//过长
-	LENGTH_LACKING,	//过短
+	
+	REPNUM_LENGTH_OVER,	//编号过长
+	REPNUM_LENGTH_LACKING,	//编号过短
+	REPNUM_NOT_RIGHT,	//编号不正确
+	
 	PHONE_LENGTH_WRONG,//手机号长度有误
 	UNVALID_CHAR,	//含非法字符
 	UNREASONABLE_GOODS_NUM,//不合理的内件数
@@ -25,27 +28,29 @@ public enum ResultMessage {
 	
 	WRONG_ACCOUNTNUM,	//账号格式错误
 	NOT_FOUND_ACCOUNTNUM,//账号不存在
-	WRONG_PASSWORD,	//错误密码
+	WRONG_PASSWORD,//错误密码
+
+
 	NOT_FOUND_FILE,//文件未找到
+
+	INPUT_SHOULD_BE_POSITIVE_INTEGER, //输入应该为正整数
+	NUMBER_OVER;  //输入数值太大
 	
-	
-	
-//	public String toFriendlyString() {
-////		
-//		switch(this) {
-//		case LENGTH_OVER:
-//			return "过长";
-//		case LENGTH_LACKING:
-//			return "过短";
-//		case UNVALID_CHAR:
-//			return "含有非法字符";
-//		case WRONG_PASSWORD:
-//			return "密码错误";
-//		case NOT_COMPLETED:
-//			return "未填写";
+	public String toFriendlyString(ResultMessage resultMessage) {
 		
-//		}
-//	}
-//	
+		switch(resultMessage) {
+		case REPNUM_LENGTH_OVER:
+			return "过长";
+		case REPNUM_LENGTH_LACKING:
+			return "过短";
+		case UNVALID_CHAR:
+			return "含有非法字符";
+		case WRONG_PASSWORD:
+			return "密码错误";
+		case NOT_COMPLETED:
+			return "有项目未填写，请完成后再提交";
+		}
+		return null;
+	}
 	
 }

@@ -6,13 +6,15 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import PO.ReceiptPO;
+import dataservice.receiptdataservice.ReceiptDataService;
 import datautil.DataUtility;
 import util.enumData.*;
 
-public class ReceiptData {
+public class ReceiptData implements Serializable{
 	
 	DataUtility util = new DataUtility();
 
