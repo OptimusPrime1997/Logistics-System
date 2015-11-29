@@ -35,6 +35,7 @@ public class courier_main extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+    	int[]daysNumOfGoods=numsController.getdaysNumOfGoods(7);//TODO
         newGoodsbtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         businessOfficeNum_label = new javax.swing.JLabel();
@@ -232,7 +233,7 @@ public class courier_main extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void account_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_account_btnActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_account_btnActionPerformed
 
     private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed

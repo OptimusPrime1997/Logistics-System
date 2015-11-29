@@ -90,16 +90,16 @@ public class Goodsbl {
 	/**
 	 * 
 	 * @param courierNum
-	 * @return返回快递员经手的所有货物的VO（包括收件和派件）
+	 * @return返回快递员经手的所有货物的件数（包括收件和派件）
 	 */
-	public ArrayList<GoodsVO> getGoodsByCourier(String courierNum,String date) {
+	public int getGoodsByCourier(String courierNum,String date) {
 		ArrayList<GoodsVO> vos = null;
 		try {
 			vos = GoodsVO.toVOArray(getGoodsDataService().findbyCourier(
 					courierNum));
 		} catch (RemoteException e) {
 		}
-		return vos;
+		return vos.size();
 	}
 	/**
 	 * 
@@ -179,15 +179,21 @@ public class Goodsbl {
 		}
 	}
 	/**
-	 * 无需传参数，此方法自行从loginbl获取当前登录人的账号，返回快递员近七天的业绩（即他经手的货物件数）
+	 * 无需传参数，此方法自行从loginbl获取当前登录人的账号，返回快递员近日的业绩（即他经手的货物件数）
+	 * 仅当月的业绩，若登录日期小于7号，则显示该月1号至当天的业绩，若大于7号，则显示近7天的业绩
 	 * @return
 	 */
 	public int[] get7daysNumOfGoods(int numOfDays){
 		int[] nums=new int[15];
-		ArrayList<GoodsVO> vos;
-		for(int i=0;i<numOfDays;i++){
-			vos=getGoodsByCourier(Loginbl.getCurrentOptorId(),CurrentTime.getTime());
-						
+		//initial
+		for(int i=0;i<nums.length;i++) nums[i]=-1;
+		String date = CurrentTime.getDate();
+		for (int i = 0; i < numOfDays; i++) {
+			nums[i] = getGoodsByCourier(Loginbl.getCurrentOptorId(), date);
+			if (!date.equals(CurrentTime.minusOneDay(date)))
+				date = CurrentTime.minusOneDay(date);
+			else break;
+
 		}
 		
 		
