@@ -2,7 +2,6 @@ package blservice.controllerfactoryblservice;
 
 import blservice.formblservice.BusinessFormBLService;
 import blservice.formblservice.ProfitFormBLService;
-import blservice.goodsblservice.GetNumOfGoodsByCourierBLService;
 //import blservice.goodsblservice.GetNumOfGoodsByCourierBLService;
 import blservice.goodsblservice.GoodsCheckBLService;
 import blservice.goodsblservice.GoodsDeleteBLService;
@@ -47,7 +46,6 @@ public interface ControllerFactoryblService {
 	public GoodsInitCompleteBLService getGoodsInitCompleteController();
 	public GoodsSetStateBLService getGoodsSetStateController();
 	public GoodsEndBLService getGoodsEndController();
-	public GetNumOfGoodsByCourierBLService getGetNumOfGoodsByCourierController();
 	public LogBLService getLogController() ;
 	public AccountBLService getAccountController();
 	public BankAccountBLService getBankAccountController();

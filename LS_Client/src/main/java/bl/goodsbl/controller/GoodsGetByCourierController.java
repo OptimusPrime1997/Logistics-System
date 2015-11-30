@@ -9,8 +9,8 @@ import blservice.goodsblservice.GoodsGetByCouriersBLService;
 public class GoodsGetByCourierController implements GoodsGetByCouriersBLService{
 	private Goodsbl goodsbl = new Goodsbl();
 	@Override
-	public ArrayList<GoodsVO> getGoodsByCourier(String CourierNum,String date) {
-		return goodsbl.getGoodsByCourier(CourierNum,date);
+	public int[] getdaysNumOfGoods(int numOfDays) {
+		return goodsbl.get7daysNumOfGoods(numOfDays);
 	}
 	@Override
 	public ArrayList<GoodsVO> getGoodsByGetCourier(String CourierNum,String date) {

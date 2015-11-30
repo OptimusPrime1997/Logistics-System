@@ -6,11 +6,11 @@ import VO.GoodsVO;
 
 public interface GoodsGetByCouriersBLService {
 	/**
-	 * return all the goods started or ended by a courier,whose accountNumber is given
-	 * @param CourierNum
+	 * return the number of goods the courier get,recent days
+	 * @param numOfDays
 	 * @return
 	 */
-	public ArrayList<GoodsVO> getGoodsByCourier(String CourierNum,String date);
+	public int[] getdaysNumOfGoods(int numOfDays);
 	
 	/**
 	 * return all the goods started by a courier,whose accountNumber is given
