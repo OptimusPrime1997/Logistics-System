@@ -15,17 +15,17 @@ import PO.AccountPO;
 public interface AccountDataService {
 	public ResultMessage insert(AccountPO po) throws IOException;
 
-	public ResultMessage update(AccountPO po) throws RemoteException;
+	public ResultMessage update(AccountPO po) throws RemoteException, ClassNotFoundException, IOException;
 
-	public ResultMessage delete(AccountPO po) throws RemoteException;
+	public ResultMessage delete(AccountPO po) throws RemoteException, ClassNotFoundException, IOException;
 
-	public ArrayList<AccountPO> show() throws RemoteException;
+	public ArrayList<AccountPO> show() throws RemoteException, ClassNotFoundException, IOException;
 
-	public AccountPO findByName(String name) throws RemoteException, FileNotFoundException, NameNotFoundException;
+	public AccountPO findByName(String name) throws RemoteException, FileNotFoundException, NameNotFoundException, ClassNotFoundException, IOException;
 
-	public AccountPO findByAccountNum(String accountNum) throws RemoteException, FileNotFoundException, NameNotFoundException;
+	public AccountPO findByAccountNum(String accountNum) throws RemoteException, FileNotFoundException, NameNotFoundException, NumNotFoundException, ClassNotFoundException, IOException;
 
 
-	public ResultMessage logincheck(String accountNum, String key) throws RemoteException, FileNotFoundException, NumNotFoundException;
+	public ResultMessage logincheck(String accountNum, String key) throws RemoteException, FileNotFoundException, NumNotFoundException, ClassNotFoundException, IOException;
 
 }

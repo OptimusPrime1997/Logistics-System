@@ -1,6 +1,7 @@
 package dataimpl.management.salarypolicydata;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class SalaryPolicyData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ResultMessage insert(SalaryPolicyPO po) throws RemoteException {
+	public ResultMessage insert(SalaryPolicyPO po) throws IOException {
 		// TODO Auto-generated method stub
 		print();
 		if (d.save(po, path) == ResultMessage.FAILED) {
@@ -42,7 +43,7 @@ public class SalaryPolicyData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ResultMessage update(SalaryPolicyPO po) throws RemoteException {
+	public ResultMessage update(SalaryPolicyPO po) throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO=false;
@@ -70,7 +71,7 @@ public class SalaryPolicyData extends UnicastRemoteObject implements
 		}
 
 	@Override
-	public ResultMessage delete(SalaryPolicyPO po) throws RemoteException {
+	public ResultMessage delete(SalaryPolicyPO po) throws IOException, ClassNotFoundException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO=false;
@@ -96,7 +97,7 @@ public class SalaryPolicyData extends UnicastRemoteObject implements
 		}	}
 
 	@Override
-	public ArrayList<SalaryPolicyPO> show() throws RemoteException {
+	public ArrayList<SalaryPolicyPO> show() throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		ArrayList<Object> objects=d.getAll(path);
@@ -109,7 +110,7 @@ public class SalaryPolicyData extends UnicastRemoteObject implements
 
 	@Override
 	public SalaryPolicyPO findByAuthority(Authority authority)
-			throws RemoteException, FileNotFoundException,SalaryPolicyNotFoundException {
+			throws SalaryPolicyNotFoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		SalaryPolicyPO exist=null;

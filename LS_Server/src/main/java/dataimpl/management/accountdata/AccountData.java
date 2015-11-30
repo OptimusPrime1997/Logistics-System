@@ -14,8 +14,9 @@ import PO.AccountPO;
 import dataservice.managementdataservice.accountdataservice.AccountDataService;
 import datautil.DataUtility;
 
-public class AccountData extends UnicastRemoteObject implements AccountDataService{
-	private final String path="data/currentdata/account";
+public class AccountData extends UnicastRemoteObject implements
+		AccountDataService {
+	private final String path = "data/currentdata/account";
 	private DataUtility d;
 	/**
 	 * 
@@ -25,152 +26,159 @@ public class AccountData extends UnicastRemoteObject implements AccountDataServi
 	public AccountData() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
-		 d=new DataUtility();
+		d = new DataUtility();
 	}
 
 	@Override
 	public ResultMessage insert(AccountPO po) throws IOException {
 		// TODO Auto-generated method stub
 		print();
-		if(d.save(po,path)==ResultMessage.FAILED){
+		if (d.save(po, path) == ResultMessage.FAILED) {
 			return ResultMessage.FAILED;
-		}else{
+		} else {
 			return ResultMessage.SUCCESS;
 		}
 	}
 
 	@Override
-	public ResultMessage update(AccountPO po) throws RemoteException {
+	public ResultMessage update(AccountPO po) throws ClassNotFoundException,
+			IOException {
 		// TODO Auto-generated method stub
 		print();
-		boolean findPO=false;
-		ArrayList<Object> objects=d.getAll(path);
-		if(objects==null){
+		boolean findPO = false;
+		ArrayList<Object> objects = d.getAll(path);
+		if (objects == null) {
 			return ResultMessage.NOT_FOUND_FILE;
-		}else{
-			AccountPO p=null;
-			for(int i=0;i<objects.size();i++){
-				p=(AccountPO)objects.get(i);
-				if(p.getAccountNum().equals(po.getAccountNum())){
-					objects.remove((Object)p);
-					objects.add((Object)po);
-					findPO=true;
+		} else {
+			AccountPO p = null;
+			for (int i = 0; i < objects.size(); i++) {
+				p = (AccountPO) objects.get(i);
+				if (p.getAccountNum().equals(po.getAccountNum())) {
+					objects.remove((Object) p);
+					objects.add((Object) po);
+					findPO = true;
 					d.SaveAll(objects, path);
 					break;
 				}
 			}
 		}
-		if(findPO==true){
+		if (findPO == true) {
 			return ResultMessage.SUCCESS;
-		}else{
+		} else {
 			return ResultMessage.NOT_FOUND;
 		}
 	}
 
 	@Override
-	public ResultMessage delete(AccountPO po) throws RemoteException {
+	public ResultMessage delete(AccountPO po) throws ClassNotFoundException,
+			IOException {
 		// TODO Auto-generated method stub
 		print();
-		boolean findPO=false;
-		ArrayList<Object> objects=d.getAll(path);
-		if(objects==null){
+		boolean findPO = false;
+		ArrayList<Object> objects = d.getAll(path);
+		if (objects == null) {
 			return ResultMessage.NOT_FOUND_FILE;
-		}else{
-			AccountPO p=null;
-			for(int i=0;i<objects.size();i++){
-				p=(AccountPO)objects.get(i);
-				if(p.getAccountNum().equals(po.getAccountNum())){
-					findPO=true;
-					objects.remove((Object)p);
+		} else {
+			AccountPO p = null;
+			for (int i = 0; i < objects.size(); i++) {
+				p = (AccountPO) objects.get(i);
+				if (p.getAccountNum().equals(po.getAccountNum())) {
+					findPO = true;
+					objects.remove((Object) p);
 				}
 				break;
 			}
 			d.SaveAll(objects, path);
 		}
-		if(findPO==true){
+		if (findPO == true) {
 			return ResultMessage.SUCCESS;
-		}else{
+		} else {
 			return ResultMessage.NOT_FOUND;
 		}
 	}
 
 	@Override
-	public ArrayList<AccountPO> show() throws RemoteException {
+	public ArrayList<AccountPO> show() throws ClassNotFoundException,
+			IOException {
 		// TODO Auto-generated method stub
 		print();
-		ArrayList<Object> objects=d.getAll(path);
-		ArrayList<AccountPO> accountPOs=new ArrayList<AccountPO>();
-		for(Object o:objects){
-			accountPOs.add((AccountPO)o);
+		ArrayList<Object> objects = d.getAll(path);
+		ArrayList<AccountPO> accountPOs = new ArrayList<AccountPO>();
+		for (Object o : objects) {
+			accountPOs.add((AccountPO) o);
 		}
 		return accountPOs;
 	}
 
 	@Override
-	public AccountPO findByName(String name) throws RemoteException, FileNotFoundException, NameNotFoundException {
+	public AccountPO findByName(String name) throws NameNotFoundException,
+			ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
-		AccountPO exist=null;
-		ArrayList<Object> objects=d.getAll(path);
-		if(objects==null){
+		AccountPO exist = null;
+		ArrayList<Object> objects = d.getAll(path);
+		if (objects == null) {
 			throw new FileNotFoundException();
-		}else{
-			AccountPO p=null;
-			for(int i=0;i<objects.size();i++){
-				p=(AccountPO)objects.get(i);
-				if(p.getAccountName().equals(name)){
-					exist=p;
+		} else {
+			AccountPO p = null;
+			for (int i = 0; i < objects.size(); i++) {
+				p = (AccountPO) objects.get(i);
+				if (p.getAccountName().equals(name)) {
+					exist = p;
 					break;
 				}
 			}
 		}
-		if(exist==null){
+		if (exist == null) {
 			throw new NameNotFoundException();
-		}else{
+		} else {
 			return exist;
 		}
 	}
 
 	@Override
-	public AccountPO findByAccountNum(String accountNum) throws RemoteException, FileNotFoundException, NumNotFoundException {
+	public AccountPO findByAccountNum(String accountNum)
+			throws NumNotFoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
-		AccountPO exist=null;
-		ArrayList<Object> objects=d.getAll(path);
-		if(objects==null){
+		AccountPO exist = null;
+		ArrayList<Object> objects = d.getAll(path);
+		if (objects == null) {
 			throw new FileNotFoundException();
-		}else{
-			AccountPO p=null;
-			for(int i=0;i<objects.size();i++){
-				p=(AccountPO)objects.get(i);
-				if(p.getAccountNum().equals(accountNum)){
-					exist=p;
+		} else {
+			AccountPO p = null;
+			for (int i = 0; i < objects.size(); i++) {
+				p = (AccountPO) objects.get(i);
+				if (p.getAccountNum().equals(accountNum)) {
+					exist = p;
 					break;
 				}
 			}
 		}
-		if(exist==null){
+		if (exist == null) {
 			throw new NumNotFoundException();
-		}else{
+		} else {
 			return exist;
-		}	
+		}
 	}
 
 	@Override
 	public ResultMessage logincheck(String accountNum, String key)
-			throws RemoteException, FileNotFoundException, NumNotFoundException {
+			throws NumNotFoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
-		AccountPO accountPO=findByAccountNum(accountNum);
-		if(accountPO.getPassword().equals(key)){
+		AccountPO accountPO = findByAccountNum(accountNum);
+		if (accountPO.getPassword().equals(key)) {
 			return ResultMessage.SUCCESS;
-		}else{
+		} else {
 			return ResultMessage.FAILED;
-		}			
+		}
 	}
 
 	private void print() {
-		System.out.println(Thread.currentThread().getStackTrace()[1].getClassName() + ": executing " + 
-				Thread.currentThread().getStackTrace()[2].getMethodName());
+		System.out.println(Thread.currentThread().getStackTrace()[1]
+				.getClassName()
+				+ ": executing "
+				+ Thread.currentThread().getStackTrace()[2].getMethodName());
 	}
 }

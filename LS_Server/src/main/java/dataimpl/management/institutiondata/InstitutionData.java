@@ -1,6 +1,7 @@
 package dataimpl.management.institutiondata;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class InstitutionData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ResultMessage insert(InstitutionPO po) throws RemoteException {
+	public ResultMessage insert(InstitutionPO po) throws IOException {
 		// TODO Auto-generated method stub
 		print();
 		if (d.save(po, path) == ResultMessage.FAILED) {
@@ -41,7 +42,7 @@ public class InstitutionData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ResultMessage update(InstitutionPO po) throws RemoteException {
+	public ResultMessage update(InstitutionPO po) throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO = false;
@@ -69,7 +70,7 @@ public class InstitutionData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ResultMessage delete(InstitutionPO po) throws RemoteException {
+	public ResultMessage delete(InstitutionPO po) throws IOException, ClassNotFoundException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO = false;
@@ -96,7 +97,7 @@ public class InstitutionData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ArrayList<InstitutionPO> show() throws RemoteException {
+	public ArrayList<InstitutionPO> show() throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		ArrayList<Object> objects = d.getAll(path);
@@ -108,8 +109,7 @@ public class InstitutionData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public InstitutionPO findByName(String name) throws RemoteException,
-			FileNotFoundException, NameNotFoundException {
+	public InstitutionPO findByName(String name) throws NameNotFoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		InstitutionPO exist = null;
