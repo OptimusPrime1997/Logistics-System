@@ -10,10 +10,6 @@ import javax.naming.NameNotFoundException;
 
 import Exception.NumNotFoundException;
 import util.enumData.ResultMessage;
-<<<<<<< HEAD
-=======
-import Exception.NumNotFoundException;
->>>>>>> origin/master
 import PO.AccountPO;
 
 public interface AccountDataService {

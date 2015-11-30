@@ -4,7 +4,6 @@ package bl.receiptbl.InStockRepbl;
 import java.util.ArrayList;
 import VO.InStockRepVO;
 import VO.ReceiptVO;
-import bl.receiptbl.Receiptbl.ReceiptblController;
 import bl.stockbl.StockDivisionbl;
 
 public class InStockRepbl{
@@ -20,7 +19,6 @@ public class InStockRepbl{
 		return null;
 	}
 
-<<<<<<< HEAD
 	public String createNum(String date) {
 		// TODO Auto-generated method stub
 		return null;
@@ -46,11 +44,8 @@ public class InStockRepbl{
 		
 	}
 
-=======
-	
 	public ArrayList<InStockRepVO> getRepBydate(String date){
 		//TODO
 		return null;
 	}
->>>>>>> origin/master
 }
