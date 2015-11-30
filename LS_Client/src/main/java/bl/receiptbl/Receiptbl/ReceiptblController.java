@@ -7,8 +7,8 @@ public class ReceiptblController implements PreReceiptblService{
 	
 	Receiptbl receiptbl = new Receiptbl();
 
-	public ResultMessage addLog(LogType operationName, String operatorID, String time){
-		return receiptbl.addLog(operationName, operatorID, time);
+	public void addLog(LogType operationName, String operatorID, String time){
+		receiptbl.addLog(operationName, operatorID, time);
 	}
 	
 	public String getDate(){

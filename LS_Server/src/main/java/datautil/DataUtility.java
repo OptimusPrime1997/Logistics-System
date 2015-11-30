@@ -2,7 +2,6 @@ package datautil;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -13,6 +12,11 @@ import java.util.ArrayList;
 import util.enumData.ResultMessage;
 
 public class DataUtility implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4917823440137859978L;
 
 	class MyObjectOutputStream extends ObjectOutputStream {
 

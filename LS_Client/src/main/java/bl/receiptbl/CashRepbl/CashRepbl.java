@@ -1,7 +1,6 @@
 package bl.receiptbl.CashRepbl;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -11,17 +10,28 @@ import util.enumData.Rep;
 import util.enumData.ResultMessage;
 import PO.CashRepPO;
 import PO.ReceiptPO;
-import RMIClient.ReceiptClient;
 import VO.CashRepVO;
 import VO.GoodsVO;
 import VO.ReceiptVO;
 import bl.goodsbl.Goodsbl;
 import bl.managementbl.accountbl.Accountbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
-import dataservice.receiptdataservice.CashRepDataService;
 import Exception.*;
 
 public class CashRepbl{
+	
+//	public static void main(String[] args){
+//		CashRepbl cashRepbl = new CashRepbl();
+//		ArrayList<GoodsVO> goodsVOs = new ArrayList<GoodsVO>();
+//		CashRepVO vo = new CashRepVO("413", "2015-11-28", 25, "141250068", "bismuth", goodsVOs);
+//		try {
+//			cashRepbl.submit(vo);
+//		} catch (NotBoundException | IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+	
 	Goodsbl goodsbl = new Goodsbl();
 	Accountbl accountbl = new Accountbl();
 	Test test = new Test();
@@ -60,8 +70,8 @@ public class CashRepbl{
 		return moneysum;
 	}
 	
-	public ResultMessage submit(ReceiptVO vo) throws NotBoundException, IOException{
-		return receiptbl.submit(CashRepVO.toPO((CashRepVO)vo), Rep.CashRep);
+	public void submit(ReceiptVO vo) throws NotBoundException, IOException{
+		receiptbl.submit(CashRepVO.toPO((CashRepVO)vo), Rep.CashRep);
 	}
 	
 	public ArrayList<CashRepVO> getAllRep() throws NotBoundException, ClassNotFoundException, IOException {
@@ -79,14 +89,14 @@ public class CashRepbl{
 		return new CashRepVO((CashRepPO)receiptPO);
 	}
 	
-	public ResultMessage delete(int n) throws NotBoundException, ClassNotFoundException, IOException {
+	public void delete(int n) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return receiptbl.delete(n, Rep.CashRep);
+		receiptbl.delete(n, Rep.CashRep);
 	}
 
-	public ResultMessage delete(String num) throws NotBoundException, ClassNotFoundException, IOException {
+	public void delete(String num) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return receiptbl.delete(num, Rep.CashRep);
+		receiptbl.delete(num, Rep.CashRep);
 	} 
 	
 	public String createNum(String date) throws NotBoundException, ClassNotFoundException, IOException{

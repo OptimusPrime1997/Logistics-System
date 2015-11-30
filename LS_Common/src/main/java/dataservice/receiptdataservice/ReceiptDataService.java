@@ -1,29 +1,29 @@
 package dataservice.receiptdataservice;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import PO.ReceiptPO;
 import util.enumData.Rep;
-import util.enumData.ResultMessage;
 
-public interface ReceiptDataService extends Serializable{
+public interface ReceiptDataService extends Remote,Serializable{
 	
-	public ResultMessage submit(ReceiptPO po, Rep rep) throws IOException;
+	public void submit(ReceiptPO po, Rep rep) throws IOException, RemoteException;
 	
-	public ResultMessage save(ReceiptPO po, Rep rep) throws IOException;
+	public void save(ReceiptPO po, Rep rep) throws IOException, RemoteException;
 	
-	public ArrayList<ReceiptPO> getAllRep(Rep rep) throws ClassNotFoundException, IOException;
+	public ArrayList<ReceiptPO> getAllRep(Rep rep) throws ClassNotFoundException, IOException, RemoteException;
 	
-	public ArrayList<ReceiptPO> getRepByDate(String date, Rep rep) throws ClassNotFoundException, IOException;
+	public ArrayList<ReceiptPO> getRepByDate(String date, Rep rep) throws ClassNotFoundException, IOException, RemoteException;
 	
-	public ReceiptPO getRepByNum(String num, Rep rep) throws FileNotFoundException, IOException, ClassNotFoundException;
+	public ReceiptPO getRepByNum(String num, Rep rep) throws IOException, ClassNotFoundException, RemoteException;
 	
-	public ResultMessage delete(int n, Rep rep) throws ClassNotFoundException, IOException;
+	public void delete(int n, Rep rep) throws ClassNotFoundException, IOException, RemoteException;
 	
-	public ResultMessage delete(String num, Rep rep) throws ClassNotFoundException, IOException;
+	public void delete(String num, Rep rep) throws ClassNotFoundException, IOException, RemoteException;
 	
-	public String createNum(String date, Rep rep) throws ClassNotFoundException, IOException;
+	public String createNum(String date, Rep rep) throws ClassNotFoundException, IOException, RemoteException;
 }

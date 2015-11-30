@@ -1,7 +1,6 @@
 package bl.receiptbl.CashRepbl;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -13,7 +12,6 @@ import VO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.CashRepblService;
 import Exception.NameNotFoundException;
-import util.enumData.ResultMessage;
 
 public class CashRepController extends ReceiptblController implements CashRepblService{
 	private CashRepbl cashRepbl = new CashRepbl();
@@ -43,9 +41,9 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	}
 	
 	@Override
-	public ResultMessage submit(ReceiptVO vo) throws NotBoundException, IOException {
+	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return cashRepbl.submit(vo);
+		cashRepbl.submit(vo);
 	}
 
 	@Override
@@ -67,19 +65,19 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	}
 
 	@Override
-	public ResultMessage delete(int n) throws NotBoundException, ClassNotFoundException, IOException {
+	public void delete(int n) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return cashRepbl.delete(n);
+		cashRepbl.delete(n);
 	}
 
 	@Override
-	public ResultMessage delete(String num) throws NotBoundException, ClassNotFoundException, IOException {
+	public void delete(String num) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return cashRepbl.delete(num);
+		cashRepbl.delete(num);
 	}
 
 	@Override
-	public ReceiptVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException {
+	public CashRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return cashRepbl.getRepByNum(num);
 	}

@@ -5,71 +5,62 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import VO.CashRepVO;
 import VO.ReceiptVO;
-import VO.ReceptionRepVO;
 import VO.TransferRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.TransferRepblService;
-import util.enumData.ResultMessage;
 
 public class TransferRepController extends ReceiptblController implements TransferRepblService{
-	TransferRepbl TransferRep = new TransferRepbl();
+	TransferRepbl transferRep = new TransferRepbl();
 
 	@Override
 	public String createNum(String date) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		return null;
+		return transferRep.createNum(date);
 	}
 
 	@Override
-	public ResultMessage delete(int n) throws RemoteException, MalformedURLException, NotBoundException {
+	public void delete(int n) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		return null;
+		transferRep.delete(n);
 	}
 
 	@Override
-	public ResultMessage delete(String num) throws RemoteException, MalformedURLException, NotBoundException {
+	public void delete(String num) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		return null;
+		transferRep.delete(num);
 	}
 
 	@Override
-	public ReceiptVO getRepByNum(String num) throws RemoteException, MalformedURLException, NotBoundException {
+	public TransferRepVO getRepByNum(String num) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		return null;
+		return transferRep.getRepByNum(num);
 	}
 
 	@Override
-	public ResultMessage submit(ReceiptVO vo) throws RemoteException, MalformedURLException, NotBoundException {
+	public void submit(ReceiptVO vo) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		return null;
+		transferRep.submit(vo);
 	}
 
 	@Override
-	public ArrayList<CashRepVO> getAllRep() throws RemoteException, MalformedURLException, NotBoundException {
+	public ArrayList<TransferRepVO> getAllRep() throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		return null;
+		return transferRep.getAllRep();
 	}
 
 	@Override
-	public ArrayList<CashRepVO> getRepBydate(String date)
+	public ArrayList<TransferRepVO> getRepBydate(String date)
 			throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		return null;
+		return transferRep.getRepByDate(date);
 	}
 
 	@Override
 	public TransferRepVO getTransferRep(String num) {
 		// TODO Auto-generated method stub
-		return null;
+		return transferRep.getTransferRep(num);
 	}
 
-	@Override
-	public ArrayList<ReceptionRepVO> forPay() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 
 }

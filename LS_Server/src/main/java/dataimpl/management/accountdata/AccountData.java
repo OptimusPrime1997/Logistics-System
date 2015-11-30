@@ -1,6 +1,7 @@
 package dataimpl.management.accountdata;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.Collections;
 import javax.naming.NameNotFoundException;
 
 import util.enumData.ResultMessage;
-import util.exception.NumNotFoundException;
+import Exception.NumNotFoundException;
 import PO.AccountPO;
 import dataservice.managementdataservice.accountdataservice.AccountDataService;
 import datautil.DataUtility;
@@ -30,7 +31,7 @@ public class AccountData extends UnicastRemoteObject implements AccountDataServi
 	}
 
 	@Override
-	public ResultMessage insert(AccountPO po) throws RemoteException {
+	public ResultMessage insert(AccountPO po) throws IOException {
 		// TODO Auto-generated method stub
 		print();
 		if(d.save(po,path)==ResultMessage.FAILED){

@@ -2,12 +2,12 @@ package dataimpl.receiptdata;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-import java.io.Serializable;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import PO.ReceiptPO;
@@ -15,11 +15,48 @@ import dataservice.receiptdataservice.ReceiptDataService;
 import datautil.DataUtility;
 import util.enumData.*;
 
-public class ReceiptData implements ReceiptDataService{
-	public String chooseAdd(Rep rep){
+public class ReceiptData extends UnicastRemoteObject implements ReceiptDataService{
+	public ReceiptData() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4116800219997834632L;
+
+	public String chooseSubmitAdd(Rep rep){
 		switch (rep) {
 		case CashRep:
+			return "/Users/apple/Desktop/Logistics-System/LS_Server/submit.txt";
+		case ShipmentRep:
 			return null;
+		case GetRep:
+			return null;
+		case DeliverRep:
+			return null;
+		case PayRep:
+			return null;
+		case InStockRep:
+			return null;
+		case OutStockRep:
+			return null;
+		case ShippingRep:
+			return null;
+		case ReceptionRep:
+			return null;
+		case TransferRep:
+			return null;
+		default:
+			return null;
+		}
+	}
+	
+	public String chooseSaveAdd(Rep rep){
+		switch (rep) {
+		case CashRep:
+			return "/Users/apple/Desktop/Logistics-System/LS_Server/save.txt";
 		case ShipmentRep:
 			return null;
 		case GetRep:
@@ -45,24 +82,24 @@ public class ReceiptData implements ReceiptDataService{
 	
 	DataUtility util = new DataUtility();
 	
-	public ResultMessage submit(ReceiptPO po, Rep rep) throws IOException {
-		return util.save(po, chooseAdd(rep));
+	public void submit(ReceiptPO po, Rep rep) throws IOException, RemoteException {
+		util.save(po, chooseSubmitAdd(rep));
 	}
 
-	public ResultMessage save(ReceiptPO po, Rep rep) throws IOException {
-		return util.save(po, chooseAdd(rep));
+	public void save(ReceiptPO po, Rep rep) throws IOException, RemoteException {
+		util.save(po, chooseSaveAdd(rep));
 	}
 
-	public ArrayList<ReceiptPO> getAllRep(Rep rep) throws ClassNotFoundException, IOException {
+	public ArrayList<ReceiptPO> getAllRep(Rep rep) throws ClassNotFoundException, IOException , RemoteException{
 		ArrayList<ReceiptPO> receiptPOs = new ArrayList<ReceiptPO>();
-		ArrayList<Object> objects = util.getAll(chooseAdd(rep));
+		ArrayList<Object> objects = util.getAll(chooseSaveAdd(rep));
  		for(Object object : objects){
  			receiptPOs.add((ReceiptPO)object);
  		}
  		return receiptPOs;
 	}
 
-	public ArrayList<ReceiptPO> getRepByDate(String date, Rep rep) throws ClassNotFoundException, IOException {
+	public ArrayList<ReceiptPO> getRepByDate(String date, Rep rep) throws ClassNotFoundException, IOException, RemoteException {
 		ArrayList<ReceiptPO> receiptPOs = getAllRep(rep);
 		ArrayList<ReceiptPO> dateReceiptPOs = new ArrayList<ReceiptPO>();
 		for(ReceiptPO receiptPO : receiptPOs){
@@ -72,8 +109,8 @@ public class ReceiptData implements ReceiptDataService{
 		return dateReceiptPOs;
 	}
 
-	public ReceiptPO getRepByNum(String num, Rep rep) throws IOException, ClassNotFoundException {
-		File saveFile = new File(chooseAdd(rep));
+	public ReceiptPO getRepByNum(String num, Rep rep) throws IOException, ClassNotFoundException, RemoteException {
+		File saveFile = new File(chooseSaveAdd(rep));
 		ReceiptPO po = null;
 			FileInputStream fin = new FileInputStream(saveFile);
 			ObjectInputStream is = new ObjectInputStream(fin);
@@ -85,23 +122,22 @@ public class ReceiptData implements ReceiptDataService{
 		return po;
 	}
 
-	public ResultMessage delete(int n, Rep rep) throws ClassNotFoundException, IOException {
-		return util.delete(n, chooseAdd(rep));
+	public void delete(int n, Rep rep) throws ClassNotFoundException, IOException, RemoteException {
+		util.delete(n, chooseSaveAdd(rep));
 	}
 
-	public ResultMessage delete(String num, Rep rep) throws ClassNotFoundException, IOException {
+	public void delete(String num, Rep rep) throws ClassNotFoundException, IOException, RemoteException {
 		ArrayList<ReceiptPO> receiptPOs = getAllRep(rep);
-		util.clear(chooseAdd(rep));
+		util.clear(chooseSaveAdd(rep));
 		ReceiptPO po;
 		for(int i = 0;i<receiptPOs.size();i++){
 			po = receiptPOs.get(i);
 			if(!po.getNum().equals(num))
 				save(po, rep);
 		}
-		return ResultMessage.SUCCESS;
 	}
 	
-	public String createNum(String date, Rep rep) throws ClassNotFoundException, IOException{
+	public String createNum(String date, Rep rep) throws ClassNotFoundException, IOException, RemoteException{
 		ArrayList<ReceiptPO> receiptPOs = getRepByDate(date, rep);
 		return receiptPOs.size()+1+"";
 	}
@@ -112,12 +148,12 @@ public class ReceiptData implements ReceiptDataService{
 			super();
 		}
 
-		public MyObjectOutputStream(OutputStream out) throws IOException {
+		public MyObjectOutputStream(OutputStream out) throws IOException, RemoteException {
 			super(out);
 		}
 
 		@Override
-		protected void writeStreamHeader() throws IOException {
+		protected void writeStreamHeader() throws IOException, RemoteException {
 			return;
 		}
 	}

@@ -7,7 +7,6 @@
 package ui.receiptui;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -18,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import VO.CashRepVO;
 import VO.GoodsVO;
 import bl.receiptbl.CashRepbl.CashRepController;
+import blservice.receiptblservice.CashRepblService;
 import Exception.ExceptionPrint;
 import Exception.NameNotFoundException;
 
@@ -28,6 +28,10 @@ import Exception.NameNotFoundException;
 public class CashRep extends javax.swing.JPanel {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * Creates new form CashRep
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -49,7 +53,7 @@ public class CashRep extends javax.swing.JPanel {
     private javax.swing.JLabel sumLabel;
     private javax.swing.JTextField sumText;
     private javax.swing.JTextField resultMsgText;
-    private CashRepController control;
+    private CashRepblService control;
     private ArrayList<GoodsVO> arrGoods;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;

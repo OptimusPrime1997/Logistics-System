@@ -1,12 +1,40 @@
 package bl.receiptbl.DeliverRepbl;
 
 import java.util.ArrayList;
-
 import VO.DeliverRepVO;
-import bl.receiptbl.Receiptbl.ReceiptblController;
+import VO.ReceiptVO;
 
 public class DeliverRepbl{
-	public ArrayList<DeliverRepVO> forPay(){
+	
+	public String createNum(String date) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void delete(String num) {
+		// TODO Auto-generated method stub
+	}
+
+	public DeliverRepVO getRepByNum(String num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void delete(int n) {
+		// TODO Auto-generated method stub
+	}
+
+	public void submit(ReceiptVO vo) {
+		// TODO Auto-generated method stub
+	}
+
+	public ArrayList<DeliverRepVO> getAllRep() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<DeliverRepVO> getRepByDate(String date) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	

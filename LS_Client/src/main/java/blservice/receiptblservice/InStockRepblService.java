@@ -1,7 +1,5 @@
 package blservice.receiptblservice;
 
-import java.util.ArrayList;
-
 import VO.*;
 
 public interface InStockRepblService extends ReceiptblService{

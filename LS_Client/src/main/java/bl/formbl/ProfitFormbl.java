@@ -24,7 +24,7 @@ public class ProfitFormbl {
 		
 		PayRepbl payRep=new PayRepbl();
 		CashRepbl cashRep=new CashRepbl();
-		ArrayList<PayRepVO> moneyOut = payRep.getAllPayRep();
+		ArrayList<PayRepVO> moneyOut = payRep.getAllRep();
 		ArrayList<CashRepVO> moneyIn = cashRep.getAllRep();
 		for(int i=0;i<moneyIn.size();i++){
 			totalIn+=moneyIn.get(i).money;

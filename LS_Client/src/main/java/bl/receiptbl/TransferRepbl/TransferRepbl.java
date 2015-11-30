@@ -2,6 +2,7 @@ package bl.receiptbl.TransferRepbl;
 
 import java.util.ArrayList;
 
+import VO.ReceiptVO;
 import VO.ReceptionRepVO;
 import VO.TransferRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
@@ -10,17 +11,42 @@ import util.enumData.place;
 
 public class TransferRepbl extends ReceiptblController{
 	
-	public ArrayList<ReceptionRepVO> forPay(){
-		return null;
-	}
-
-	public String submit(String num, String date, ShipForm form, String carNum, place place, int container,
-			boolean arriveAlready, ArrayList<String> goods) {
+	public TransferRepVO getTransferRep(String num) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public TransferRepVO getTransferRep(String num) {
+	public String createNum(String date) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void delete(int n) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void delete(String num) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public TransferRepVO getRepByNum(String num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void submit(ReceiptVO vo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public ArrayList<TransferRepVO> getAllRep() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<TransferRepVO> getRepByDate(String date) {
 		// TODO Auto-generated method stub
 		return null;
 	}

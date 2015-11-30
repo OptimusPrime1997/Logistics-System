@@ -1,62 +1,65 @@
 package bl.receiptbl.OutStockRepbl;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import VO.CashRepVO;
+import VO.OutStockRepVO;
 import VO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.OutStockRepblService;
-import util.enumData.ResultMessage;
-import util.enumData.ShipForm;
-import util.enumData.place;
 
 public class OutStockRepController extends ReceiptblController implements OutStockRepblService{
-	OutStackRepbl OutStackRepbl = new OutStackRepbl();
+	OutStackRepbl outStackRepbl = new OutStackRepbl();
 
 	@Override
-	public String createNum(String date) throws RemoteException, MalformedURLException, NotBoundException {
+	public String createNum(String date)
+			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return outStackRepbl.createNum(date);
 	}
 
 	@Override
-	public ResultMessage delete(int n) throws RemoteException, MalformedURLException, NotBoundException {
+	public void delete(int n)
+			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		outStackRepbl.delete(n);
 	}
 
 	@Override
-	public ResultMessage delete(String num) throws RemoteException, MalformedURLException, NotBoundException {
+	public void delete(String num)
+			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		outStackRepbl.delete(num);
 	}
 
 	@Override
-	public ReceiptVO getRepByNum(String num) throws RemoteException, MalformedURLException, NotBoundException {
+	public OutStockRepVO getRepByNum(String num)
+			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return outStackRepbl.getRepByNum(num);
 	}
 
 	@Override
-	public ResultMessage submit(ReceiptVO vo) throws RemoteException, MalformedURLException, NotBoundException {
+	public void submit(ReceiptVO vo) throws RemoteException, MalformedURLException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		outStackRepbl.submit(vo);
 	}
 
 	@Override
-	public ArrayList<CashRepVO> getAllRep() throws RemoteException, MalformedURLException, NotBoundException {
+	public ArrayList<OutStockRepVO> getAllRep()
+			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return outStackRepbl.getAllRep();
 	}
 
 	@Override
-	public ArrayList<CashRepVO> getRepBydate(String date)
-			throws RemoteException, MalformedURLException, NotBoundException {
+	public ArrayList<OutStockRepVO> getRepBydate(String date)
+			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return outStackRepbl.getRepByDate(date);
 	}
 
 

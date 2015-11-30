@@ -1,6 +1,5 @@
 package bl.receiptbl.Receiptbl;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
@@ -9,11 +8,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import PO.ReceiptPO;
 import RMIClient.ReceiptClient;
-import VO.CashRepVO;
 import VO.LogVO;
-import VO.ReceiptVO;
 import bl.logbl.Logbl;
-import dataservice.receiptdataservice.CashRepDataService;
 import dataservice.receiptdataservice.ReceiptDataService;
 import util.enumData.LogType;
 import util.enumData.Rep;
@@ -45,8 +41,8 @@ public class Receiptbl {
 		return y+"-"+m+"-"+d;
 	}
 	
-	public ResultMessage submit(ReceiptPO po, Rep rep) throws NotBoundException, IOException{
-		return getReceiptDataService().submit(po, rep);
+	public void submit(ReceiptPO po, Rep rep) throws NotBoundException, IOException{
+		getReceiptDataService().submit(po, rep);
 	}
 	
 	public ArrayList<ReceiptPO> getAllRep(Rep rep) throws NotBoundException, ClassNotFoundException, IOException{
@@ -61,12 +57,12 @@ public class Receiptbl {
 		return getReceiptDataService().getRepByNum(num, rep);
 	}
 	
-	public ResultMessage delete(int n, Rep rep) throws ClassNotFoundException, IOException, NotBoundException{
-		return getReceiptDataService().delete(n, rep);
+	public void delete(int n, Rep rep) throws ClassNotFoundException, IOException, NotBoundException{
+		 getReceiptDataService().delete(n, rep);
 	}
 	
-	public ResultMessage delete(String num, Rep rep) throws NotBoundException, ClassNotFoundException, IOException{
-		return getReceiptDataService().delete(num, rep);
+	public void delete(String num, Rep rep) throws NotBoundException, ClassNotFoundException, IOException{
+		 getReceiptDataService().delete(num, rep);
 	}
 	
 	public String createNum(String date, Rep rep) throws NotBoundException, ClassNotFoundException, IOException{

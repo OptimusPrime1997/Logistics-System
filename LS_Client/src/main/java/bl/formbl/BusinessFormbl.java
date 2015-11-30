@@ -20,7 +20,7 @@ public class BusinessFormbl {
 		PayRepbl payRep=new PayRepbl();
 		CashRepbl cashRep=new CashRepbl();
 		//TODO 改成  返回部分付款单，收款单的方法~
-		ArrayList<PayRepVO> moneyOut = payRep.getAllPayRep();
+		ArrayList<PayRepVO> moneyOut = payRep.getAllRep();
 		ArrayList<CashRepVO> moneyIn = cashRep.getAllRep();
 		BusinessFormVO vo =new BusinessFormVO(startTime, endTime, moneyOut, moneyIn);
 		return vo;
