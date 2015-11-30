@@ -20,6 +20,7 @@ import util.enumData.ResultMessage;
 import PO.StockNumPO;
 import PO.StockPO;
 import dataservice.stockdataservice.StockInitialDataService;
+import datautil.DataUtility;
 
 /**
  * @author G
@@ -28,10 +29,12 @@ import dataservice.stockdataservice.StockInitialDataService;
 public class StockInitialData extends UnicastRemoteObject implements StockInitialDataService{
 
 	
+	String filename = "StockIniNum.txt";
+	DataUtility du = new DataUtility();
 	/**
 	 * @throws RemoteException
 	 */
-	protected StockInitialData() throws RemoteException {
+	public StockInitialData() throws RemoteException {
 		super();
 	}
 
@@ -45,13 +48,25 @@ public class StockInitialData extends UnicastRemoteObject implements StockInitia
 	 */
 	@Override
 	public ResultMessage initial(StockNumPO po) throws RemoteException {
+
 		try {
-			FileOutputStream fos = new FileOutputStream("StockNum.txt");
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			oos.writeObject(po);
-			oos.flush();
-			oos.close();
-						
+			try {
+				ArrayList<Object> list = du.getAll(filename);
+				for(int i = 0;i < list.size();++i) {
+					StockNumPO stocknumpo = (StockNumPO) list.get(i);
+					if(stocknumpo.getCityNum().equals(po.getCityNum())){
+						list.remove(i);
+					}
+				}
+				System.out.println("wwwww"+list.size());
+				list.add(po);
+				du.SaveAll(list, filename);
+				
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 			return ResultMessage.FAILED;
@@ -65,19 +80,34 @@ public class StockInitialData extends UnicastRemoteObject implements StockInitia
 	 */
 	@Override
 	public StockNumPO getInitialNum(String citynum) throws RemoteException {
-	
+		
+		ArrayList<Object> list;
 		try {
-			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("StockNum.txt"));
-			while(ois.readBoolean()){
-				StockNumPO po = (StockNumPO)ois.readObject();
+			list = du.getAll(filename);
+			
+			for(int i = 0;i < list.size();++i) {
+				StockNumPO po = (StockNumPO)list.get(i);
 				if(po.getCityNum().equals(citynum)){
 					return po;
 				}
 			}
+			
+			du.SaveAll(list, filename);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		} 
+		
 		return null;
 	}
 
+	public static void main(String[] args) {
+		try {
+			StockInitialData d = new StockInitialData();
+			d.initial(new StockNumPO("Nanjing", 300));
+			System.out.println(d.getInitialNum("Nanjing").getInitialNum());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+	}
 }

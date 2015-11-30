@@ -3,6 +3,7 @@
  */
 package dataservice.stockdataservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ import PO.StockDivisionPO;
  * @author G
  *
  */
-public interface StockDivisionDataService {
+public interface StockDivisionDataService extends Remote{
 	
 	
 	/**

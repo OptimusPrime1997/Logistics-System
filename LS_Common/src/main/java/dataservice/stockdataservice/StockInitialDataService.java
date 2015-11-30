@@ -3,6 +3,7 @@
  */
 package dataservice.stockdataservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import PO.StockNumPO;
@@ -12,7 +13,7 @@ import util.enumData.ResultMessage;
  * @author G
  *
  */
-public interface StockInitialDataService {
+public interface StockInitialDataService extends Remote{
 	
 	/**
 	 * initial initialNum

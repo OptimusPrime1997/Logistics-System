@@ -12,7 +12,11 @@ import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.OutStockRepblService;
 
 public class OutStockRepController extends ReceiptblController implements OutStockRepblService{
+<<<<<<< HEAD
 	OutStackRepbl outStackRepbl = new OutStackRepbl();
+=======
+	OutStockRepbl OutStackRepbl = new OutStockRepbl();
+>>>>>>> origin/master
 
 	@Override
 	public String createNum(String date)

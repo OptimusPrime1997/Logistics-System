@@ -7,13 +7,13 @@ import java.util.ArrayList;
 
 
 import VO.OutStockRepVO;
-import bl.receiptbl.OutStockRepbl.OutStackRepbl;
+import bl.receiptbl.OutStockRepbl.OutStockRepbl;
 
 /**
  * @author G
  *
  */
-public class MockOutStockRep extends OutStackRepbl{
+public class MockOutStockRep extends OutStockRepbl{
 	public ArrayList<OutStockRepVO> getbyDate(String date) {
 		OutStockRepVO vo1 = new OutStockRepVO(date, date, null, null, date, date, null);
 		OutStockRepVO vo2 = new OutStockRepVO(date, date, null, null, date, date, null);

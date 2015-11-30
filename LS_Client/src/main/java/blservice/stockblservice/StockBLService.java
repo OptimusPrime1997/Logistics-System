@@ -26,28 +26,14 @@ public interface StockBLService {
 	
 	
 	/**
-	 * 界面提供起始日期和终止日期，系统返回该仓库此段时间内的入库数量
+	 * 界面提供起始日期和终止日期，系统返回该仓库此段时间内的入库数量，出库数量，库存数量
 	 * @param startDate
 	 * @param endDate
 	 * @return
 	 */
-	public int checkInStock(String startDate,String endDate);
+	public String checkStock(String startMonth, String startDay, String endMonth, String endDay);
 	
-	/**
-	 * 界面提供起始日期和终止日期，系统返回该仓库此段时间内的出库数量
-	 * @param startDate
-	 * @param endDate
-	 * @return
-	 */
-	public int checkOutStock(String startDate,String endDate);
 	
-	/**
-	 * 界面提供起始日期和终止日期，系统返回该仓库此段时间内库存的数量
-	 * @param startDate
-	 * @param endDate
-	 * @return
-	 */
-	public int checkStockQuantity(String startDate,String endDate);
 	
 	/**
 	 * 系统提供该仓库当前库存数量

@@ -12,6 +12,9 @@ import java.awt.event.ActionEvent;
 import ui.mainFrame.MainFrame;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.stockbl.StockController;
+import blservice.stockblservice.StockBLService;
+import blservice.stockblservice.StockNumBLService;
+
 
 /**
  *
@@ -20,6 +23,10 @@ import bl.stockbl.StockController;
 public class InitialStockNumPanel extends javax.swing.JFrame{
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * Creates new form InitialStockNumPanel
      */
     public InitialStockNumPanel() {
@@ -134,7 +141,7 @@ public class InitialStockNumPanel extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
     
     
-    StockController sc = (StockController) ControllerFactoryImpl.getInstance().getStockController();
+    StockNumBLService sc = ControllerFactoryImpl.getInstance().getStockNumController();
     /**
 	 * @param evt
 	 * 返回
@@ -156,6 +163,9 @@ public class InitialStockNumPanel extends javax.swing.JFrame{
 		
 		String s = jTextField1.getText().trim();
 		sc.initial(s);
+		
+		
+		
 		
 		
 	}
