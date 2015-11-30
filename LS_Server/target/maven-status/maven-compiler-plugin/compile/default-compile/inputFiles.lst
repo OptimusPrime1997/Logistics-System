@@ -18,8 +18,8 @@
 /Users/G/GitHub/Logistics-System/LS_Server/src/main/java/dataimpl/receiptdata/InStockRepData.java
 /Users/G/GitHub/Logistics-System/LS_Server/src/main/java/RMI/ReceiptDataServer.java
 /Users/G/GitHub/Logistics-System/LS_Server/src/main/java/dataimpl/management/salarypolicydata/SalaryPolicyData.java
-/Users/G/GitHub/Logistics-System/LS_Server/src/main/java/RMI/StockInitialDataServer.java
 /Users/G/GitHub/Logistics-System/LS_Server/src/main/java/dataimpl/management/bankaccountdata/BankAccountData.java
+/Users/G/GitHub/Logistics-System/LS_Server/src/main/java/RMI/StockIniMain.java
 /Users/G/GitHub/Logistics-System/LS_Server/src/main/java/dataimpl/management/vehicleanddriverdata/DriverData.java
 /Users/G/GitHub/Logistics-System/LS_Server/src/main/java/dataimpl/stockdata/StockInitialData.java
 /Users/G/GitHub/Logistics-System/LS_Server/src/main/java/dataimpl/formdata/ProfitFormData.java

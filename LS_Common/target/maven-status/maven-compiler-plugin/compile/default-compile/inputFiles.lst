@@ -3,6 +3,7 @@
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/PayRepPO.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/GetRepPO.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/GoodsPO.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/Exception/SalaryPolicyNotFoundException.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/TransferPayPO.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/RMIservice/GoodsDataRemote.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/MyButton.java
@@ -11,7 +12,6 @@
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/managementdataservice/constdataservice/ConstDataService.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/goodsState.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/GoodsArrivalState.java
-/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/RMIservice/StockDataRemote.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/ShipForm.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/exception/NumNotFoundException.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/managementdataservice/institutiondataservice/InstitutionDataService.java
@@ -19,7 +19,6 @@
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/RMIservice/FormDataRemote.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/GoodsLogisticState.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/Const.java
-/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/RMIservice/StockDivisionDataService.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/stockdataservice/StockDivisionDataService.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/ReceptionRepPO.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/RentPO.java
@@ -39,12 +38,12 @@
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/CashRepPO.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/GoodsExpressType.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/receiptdataservice/ReceptionRepDataService.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/Exception/ConstNotFoundException.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/InputCheck.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/goodsdataservice/GoodsDataService.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/formdataservice/ProfitFormDataService.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/AllSalaryPO.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/TransferRepPO.java
-/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/RMIservice/StockNumDataRemote.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/BonusPO.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/Sex.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/receiptdataservice/GetRepDataService.java
@@ -58,6 +57,7 @@
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/dataservice/logdataservice/LogDataService.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/DeliverRepPO.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/ResultMessage.java
+/Users/G/GitHub/Logistics-System/LS_Common/src/main/java/Exception/NumNotFoundException.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/ProfitFormPO.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/PO/AccountPO.java
 /Users/G/GitHub/Logistics-System/LS_Common/src/main/java/util/enumData/LogType.java
