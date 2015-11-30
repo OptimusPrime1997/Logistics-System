@@ -97,7 +97,7 @@ public class Goodsbl {
 		ArrayList<GoodsVO> vos = null;
 		try {
 			vos = GoodsVO.toVOArray(getGoodsDataService().findbyGetCourier(
-					courierNum));
+					courierNum,date));
 		} catch (RemoteException e) {
 		}
 		return vos;
@@ -217,7 +217,7 @@ public class Goodsbl {
 		ArrayList<GoodsVO> vos = null;
 		try {
 			vos = GoodsVO.toVOArray(getGoodsDataService().findbyCourier(
-					courierNum));
+					courierNum,date));
 		} catch (RemoteException e) {
 		}
 		return vos.size();

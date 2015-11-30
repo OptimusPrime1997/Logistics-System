@@ -2,7 +2,6 @@ package bl.controllerfactorybl;
 
 import bl.formbl.controller.BusinessFormController;
 import bl.formbl.controller.ProfitFormController;
-import bl.goodsbl.controller.Get_Courier_NumOfGoodsController;
 import bl.goodsbl.controller.GoodsCheckController;
 import bl.goodsbl.controller.GoodsDeleteController;
 import bl.goodsbl.controller.GoodsEndController;
@@ -33,7 +32,6 @@ import bl.stockbl.StockController;
 import blservice.controllerfactoryblservice.ControllerFactoryblService;
 import blservice.formblservice.BusinessFormBLService;
 import blservice.formblservice.ProfitFormBLService;
-import blservice.goodsblservice.GetNumOfGoodsByCourierBLService;
 //import blservice.goodsblservice.GetNumOfGoodsByCourierBLService;
 import blservice.goodsblservice.GoodsCheckBLService;
 import blservice.goodsblservice.GoodsDeleteBLService;
@@ -257,11 +255,6 @@ private ControllerFactoryImpl() {}
 		return new GoodsEndController();
 	}
 
-	@Override
-	public GetNumOfGoodsByCourierBLService getGetNumOfGoodsByCourierController() {
-		
-		return new Get_Courier_NumOfGoodsController();
-	}
 	
 	
 }

@@ -44,14 +44,14 @@ public class GoodsData implements GoodsDataService{
 	}
 
 	@Override
-	public ArrayList<GoodsPO> findbyGetCourier(String CourierNum)
+	public ArrayList<GoodsPO> findbyGetCourier(String CourierNum,String date)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<GoodsPO> findbyCourier(String CourierNum)
+	public ArrayList<GoodsPO> findbyCourier(String CourierNum,String date)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
