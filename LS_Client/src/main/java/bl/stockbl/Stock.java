@@ -3,6 +3,11 @@
  */
 package bl.stockbl;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -10,11 +15,13 @@ import java.util.Date;
 
 import javax.xml.bind.ValidationEvent;
 
+import dataservice.stockdataservice.StockDataService;
 import bl.receiptbl.InStockRepbl.InStockRepController;
 import bl.receiptbl.InStockRepbl.InStockRepbl;
 import bl.receiptbl.OutStockRepbl.OutStockRepbl;
 import ui.warehousemanui.CheckUtil;
 import util.enumData.ResultMessage;
+import PO.StockPO;
 import VO.InStockRepVO;
 import VO.OutStockRepVO;
 import VO.StockVO;
@@ -27,6 +34,7 @@ public class Stock {
 	
 	
 	StockNum sn = new StockNum();
+	private ArrayList<StockVO> result;
 	
 	public InStockRepVO toWriteInStockRep() {
 		//TODO
@@ -40,7 +48,7 @@ public class Stock {
 
 	
 	/**
-	 * 根据输入的起始月日和终止月日得到这段时间内的入库数量，出库数量，以及库存数量的总字符串，以空格隔开
+	 * 根据输入的起始月日和终止月日得到这段时间内的入库数量，出库数量的总字符串，以空格隔开
 	 * @param startMonth
 	 * @param startDay
 	 * @param endMonth
@@ -49,7 +57,6 @@ public class Stock {
 	 */
 	public String checkStock(String startMonth, String startDay,
 			String endMonth, String endDay) {
-		//TODO 库存数量计算有误
 		InStockRepbl instockrep = new InStockRepbl();
 		OutStockRepbl outstockrep = new OutStockRepbl();
 		
@@ -85,13 +92,13 @@ public class Stock {
             e.printStackTrace();
         }
         
-        int ininum = sn.getInitialStockNum();
+
          
         int instocknum = instockreps.size();
         int outstocknum = outstockreps.size();
-		int stockquantity = ininum+instocknum-outstocknum;
+
 		
-		return instocknum+" "+outstocknum+" "+stockquantity;
+		return instocknum+" "+outstocknum;
 	}
 
 	public static void main(String[] args) {
@@ -103,20 +110,48 @@ public class Stock {
 	
 	
 	
+	/**
+	 * 得到当前库存数量，现有库存数量=初始库存数量+遍历库存的数量
+	 * @return
+	 */
 	public int checkPresentStockQuantity() {
-		// TODO 遍历库存数量
-		//现有库存数量=初始库存数量+遍历库存的数量
+		
 		int result = 0;
 		int initialnum = sn.getInitialStockNum();
+		ArrayList<StockVO> list = show();
+		int presentnum = list.size();
+		result = initialnum+presentnum;
 		return result;
 		
 	
 	}
 
 	
+	/**
+	 * 得到当前所有有完整信息的库存
+	 * @return
+	 */
 	public ArrayList<StockVO> show() {
-		// TODO Auto-generated method stub
-		return null;
+		result = null;
+		ArrayList<StockPO> list = null;
+		try {
+			StockDataService sd = (StockDataService) Naming.lookup("stock");
+			list = sd.getStock();
+			for(StockPO po:list) {
+				result.add(new StockVO().poToVo(po));
+			}
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	

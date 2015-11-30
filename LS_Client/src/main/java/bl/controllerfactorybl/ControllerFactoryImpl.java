@@ -237,9 +237,7 @@ private ControllerFactoryImpl() {}
 		return new TransferRepController();
 	}
 
-	/* (non-Javadoc)
-	 * @see blservice.controllerfactoryblservice.ControllerFactoryblService#getStockController()
-	 */
+	
 	@Override
 	public StockBLService getStockController() {
 		return new StockController();
