@@ -87,20 +87,7 @@ public class Goodsbl {
 			return ResultMessage.LINK_FAILURE;
 		}
 	}
-	/**
-	 * 
-	 * @param courierNum
-	 * @return返回快递员经手的所有货物的件数（包括收件和派件）
-	 */
-	public int getGoodsByCourier(String courierNum,String date) {
-		ArrayList<GoodsVO> vos = null;
-		try {
-			vos = GoodsVO.toVOArray(getGoodsDataService().findbyCourier(
-					courierNum));
-		} catch (RemoteException e) {
-		}
-		return vos.size();
-	}
+	
 	/**
 	 * 
 	 * @param courierNum
@@ -195,8 +182,6 @@ public class Goodsbl {
 			else break;
 
 		}
-		
-		
 		return nums;
 	}
 	private double moneyCounter(GoodsExpressType expressType, double weight,
@@ -222,6 +207,20 @@ public class Goodsbl {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	/**
+	 * 
+	 * @param courierNum
+	 * @return返回快递员经手的所有货物的件数（包括收件和派件）
+	 */
+	private int getGoodsByCourier(String courierNum,String date) {
+		ArrayList<GoodsVO> vos = null;
+		try {
+			vos = GoodsVO.toVOArray(getGoodsDataService().findbyCourier(
+					courierNum));
+		} catch (RemoteException e) {
+		}
+		return vos.size();
 	}
 
 }

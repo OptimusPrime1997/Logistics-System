@@ -7,18 +7,17 @@ package ui.courierui;
 
 import javax.swing.JFrame;
 
-import bl.controllerfactorybl.ControllerFactoryImpl;
-import bl.goodsbl.controller.Get_Courier_NumOfGoodsController;
-import blservice.controllerfactoryblservice.ControllerFactoryblService;
 import ui.mainFrame.MainFrame;
 import ui.receiptui.Order;
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.goodsblservice.GoodsGetByCouriersBLService;
 
 /**
  *
  * @author Administrator
  */
 public class courier_main extends javax.swing.JPanel {
-	Get_Courier_NumOfGoodsController numsController=(Get_Courier_NumOfGoodsController)ControllerFactoryImpl.getInstance().getGetNumOfGoodsByCourierController();
+	GoodsGetByCouriersBLService numsController=ControllerFactoryImpl.getInstance().getGoodsGetByCourierController();
 	/**
      * Creates new form courier__main
      */
