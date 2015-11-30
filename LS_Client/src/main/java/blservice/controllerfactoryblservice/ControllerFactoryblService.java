@@ -33,6 +33,8 @@ import blservice.receiptblservice.ShipmentRepblServce;
 import blservice.receiptblservice.ShippingRepblService;
 import blservice.receiptblservice.TransferRepblService;
 import blservice.stockblservice.StockBLService;
+import blservice.stockblservice.StockDivisionBLService;
+import blservice.stockblservice.StockNumBLService;
 
 public interface ControllerFactoryblService {
 	public BusinessFormBLService getBusinessFromController();
@@ -77,5 +79,9 @@ public interface ControllerFactoryblService {
 	public TransferRepblService getTransferRepblService();
 	
 	public StockBLService getStockController();
+	
+	public StockNumBLService getStockNumController();
+	
+	public StockDivisionBLService getStockDivisionController();
 	
 }

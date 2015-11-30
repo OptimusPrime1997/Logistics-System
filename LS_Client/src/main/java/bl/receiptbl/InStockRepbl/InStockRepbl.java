@@ -19,4 +19,9 @@ public class InStockRepbl{
 		return null;
 	}
 
+	
+	public ArrayList<InStockRepVO> getRepBydate(String date){
+		//TODO
+		return null;
+	}
 }

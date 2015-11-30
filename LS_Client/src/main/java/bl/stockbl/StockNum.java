@@ -51,7 +51,7 @@ public class StockNum {
 	 * @return
 	 */
 	public ResultMessage initial(String initialNum) {
-		//TODO 本地城市
+		//TODO 本地城市，怎么会错位呢
 		if(CheckUtil.isSucceNumber(initialNum)){
 			if(initialNum.length()>=10){
 				
@@ -63,9 +63,15 @@ public class StockNum {
 				StockNumVO vo = new StockNumVO("Nanjing", n);
 				StockNumPO po = vo.voToPo(vo);
 				
+				
 				try {
 					StockInitialDataService si = (StockInitialDataService) Naming.lookup("stockini");
 					si.initial(po);
+					
+					
+					
+//					System.out.println(new StockNum().getInitialStockNum());
+					
 				} catch (Exception e) {					
 					e.printStackTrace();
 					return ResultMessage.FAILED;

@@ -50,7 +50,22 @@ public class StockInitialData extends UnicastRemoteObject implements StockInitia
 	public ResultMessage initial(StockNumPO po) throws RemoteException {
 
 		try {
-			du.save(po, filename);	
+			try {
+				ArrayList<Object> list = du.getAll(filename);
+				for(int i = 0;i < list.size();++i) {
+					StockNumPO stocknumpo = (StockNumPO) list.get(i);
+					if(stocknumpo.getCityNum().equals(po.getCityNum())){
+						list.remove(i);
+					}
+				}
+				System.out.println("wwwww"+list.size());
+				list.add(po);
+				du.SaveAll(list, filename);
+				
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -85,4 +100,14 @@ public class StockInitialData extends UnicastRemoteObject implements StockInitia
 		return null;
 	}
 
+	public static void main(String[] args) {
+		try {
+			StockInitialData d = new StockInitialData();
+			d.initial(new StockNumPO("Nanjing", 300));
+			System.out.println(d.getInitialNum("Nanjing").getInitialNum());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+	}
 }

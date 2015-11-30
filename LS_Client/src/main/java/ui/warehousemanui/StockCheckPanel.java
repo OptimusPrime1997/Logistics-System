@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import bl.stockbl.StockController;
+import blservice.stockblservice.StockBLService;
 import ui.mainFrame.MainFrame;
 /**
  *
@@ -211,15 +214,18 @@ public class StockCheckPanel extends javax.swing.JFrame {
         );
     }// </editor-fold>                        
 
+    StockBLService s = ControllerFactoryImpl.getInstance().getStockController();
+ 
     private void confirmActionPerformed(ActionEvent evt) {                                         
-        String startmonth = (String) jComboBox1.getSelectedItem();
-        String startmont = (String) jComboBox2.getSelectedItem();
-        String startmo = (String) jComboBox3.getSelectedItem();
-        String startm = (String) jComboBox7.getSelectedItem();
-        System.out.println(startmonth);
-        System.out.println(startmont);
-        System.out.println(startmo);
-        System.out.println(startm);
+        String startMonth = (String) jComboBox1.getSelectedItem();
+        String startDay = (String) jComboBox2.getSelectedItem();
+        String endMonth = (String) jComboBox3.getSelectedItem();
+        String endDay = (String) jComboBox7.getSelectedItem();
+        
+        String result = s.checkStock(startMonth, startDay, endMonth, endDay);
+        
+        //TODO  如何根据结果显示数量
+        
     }                                        
 
     private void exitActionPerformed(ActionEvent evt) {

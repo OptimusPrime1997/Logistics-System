@@ -23,30 +23,14 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 	private Stock stock = new Stock();
 	private StockNum ininum = new StockNum();
 	
-	@Override
-	public int checkInStock(String startDate, String endDate) {
-		
-		return stock.checkInStock(startDate, endDate);
-	}
-	@Override
-	public int checkOutStock(String startDate, String endDate) {
-		
-		return stock.checkOutStock(startDate, endDate);
-	}
-	@Override
-	public int checkStockQuantity(String startDate, String endDate) {
-		// TODO Auto-generated method stub
-		return stock.checkStockQuantity(startDate, endDate);
-	}
+	
 
 	@Override
 	public int checkPresentStockQuantity() {
-		// TODO Auto-generated method stub
 		return stock.checkPresentStockQuantity();
 	}
 	@Override
 	public ArrayList<StockVO> show() {
-		// TODO Auto-generated method stub
 		return stock.show();
 	}
 
@@ -83,6 +67,15 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	
+	@Override
+	public String checkStock(String startMonth, String startDay,
+			String endMonth, String endDay) {
+		return stock.checkStock(startMonth, startDay, endMonth, endDay);
+	}
+	
+	
+	
 	
 }

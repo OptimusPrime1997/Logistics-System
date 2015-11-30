@@ -14,7 +14,7 @@ import util.enumData.ShipForm;
 import util.enumData.place;
 
 public class OutStockRepController extends ReceiptblController implements OutStockRepblService{
-	OutStackRepbl OutStackRepbl = new OutStackRepbl();
+	OutStockRepbl OutStackRepbl = new OutStockRepbl();
 
 	@Override
 	public String createNum(String date) throws RemoteException, MalformedURLException, NotBoundException {

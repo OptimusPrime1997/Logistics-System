@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import ui.mainFrame.MainFrame;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.stockbl.StockController;
+import blservice.stockblservice.StockBLService;
+import blservice.stockblservice.StockNumBLService;
 
 
 /**
@@ -139,7 +141,7 @@ public class InitialStockNumPanel extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
     
     
-    StockController sc = (StockController) ControllerFactoryImpl.getInstance().getStockController();
+    StockNumBLService sc = ControllerFactoryImpl.getInstance().getStockNumController();
     /**
 	 * @param evt
 	 * 返回

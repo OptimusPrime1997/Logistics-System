@@ -64,6 +64,8 @@ import blservice.receiptblservice.ShipmentRepblServce;
 import blservice.receiptblservice.ShippingRepblService;
 import blservice.receiptblservice.TransferRepblService;
 import blservice.stockblservice.StockBLService;
+import blservice.stockblservice.StockDivisionBLService;
+import blservice.stockblservice.StockNumBLService;
 
 public class ControllerFactoryImpl implements ControllerFactoryblService{
 private ControllerFactoryImpl() {}
@@ -245,6 +247,7 @@ private ControllerFactoryImpl() {}
 		return new StockController();
 	}
 
+	
 	@Override
 	public GoodsInitCompleteBLService getGoodsInitCompleteController() {
 		
@@ -261,6 +264,18 @@ private ControllerFactoryImpl() {}
 	public GetNumOfGoodsByCourierBLService getGetNumOfGoodsByCourierController() {
 		
 		return new Get_Courier_NumOfGoodsController();
+	}
+
+	
+	@Override
+	public StockNumBLService getStockNumController() {
+		return new StockController();
+	}
+
+	
+	@Override
+	public StockDivisionBLService getStockDivisionController() {
+		return new StockController();
 	}
 	
 	

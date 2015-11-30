@@ -56,6 +56,8 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 				StockPO p = (StockPO)o;
 				if(p.getListNum().equals(po.getListNum())){
 					return ResultMessage.EXIST;
+				}else if(p.getBlock()==po.getBlock()&&p.getPlace()==po.getPlace()){
+					return ResultMessage.NOT_AVAILABLE;
 				}
 			}
 			
@@ -119,6 +121,7 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 		return list;
 	}
 
+	
 	
 	
 	
