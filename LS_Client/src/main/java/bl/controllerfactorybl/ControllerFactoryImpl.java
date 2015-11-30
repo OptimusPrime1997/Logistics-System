@@ -259,11 +259,7 @@ private ControllerFactoryImpl() {}
 	}
 
 
-	@Override
-	public GetNumOfGoodsByCourierBLService getGetNumOfGoodsByCourierController() {
-		
-		return new Get_Courier_NumOfGoodsController();
-	}
+	
 
 	
 	@Override
