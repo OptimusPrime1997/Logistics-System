@@ -51,10 +51,10 @@ public class GoodsData implements GoodsDataService{
 	}
 
 	@Override
-	public ArrayList<GoodsPO> findbyCourier(String CourierNum,String date)
+	public int findbyCourier(String CourierNum,String date)
 			throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 }

@@ -210,13 +210,12 @@ public class Goodsbl {
 	 * @return返回快递员经手的所有货物的件数（包括收件和派件）
 	 */
 	private int getGoodsByCourier(String courierNum,String date) {
-		ArrayList<GoodsVO> vos = null;
+		int x=0;
 		try {
-			vos = GoodsVO.toVOArray(getGoodsDataService().findbyCourier(
-					courierNum,date));
+			x=getGoodsDataService().findbyCourier(courierNum,date);
 		} catch (RemoteException e) {
 		}
-		return vos.size();
+		return x;
 	}
 
 }
