@@ -176,11 +176,7 @@ public class Goodsbl {
 		for(int i=0;i<nums.length;i++) nums[i]=-1;
 		String date = CurrentTime.getDate();
 		for (int i = 0; i < numOfDays; i++) {
-			nums[i] = getGoodsByCourier(Loginbl.getCurrentOptorId(), date);
-			if (!date.equals(CurrentTime.minusOneDay(date)))
-				date = CurrentTime.minusOneDay(date);
-			else break;
-
+			nums[i] = getGoodsByCourier(Loginbl.getCurrentOptorId(), CurrentTime.minus(date, i));
 		}
 		return nums;
 	}

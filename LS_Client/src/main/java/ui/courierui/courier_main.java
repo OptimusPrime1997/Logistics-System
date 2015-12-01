@@ -5,14 +5,20 @@
  */
 package ui.courierui;
 
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JProgressBar;
 
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.goodsblservice.GoodsGetByCouriersBLService;
 import ui.mainFrame.MainFrame;
 import ui.receiptui.Order;
+import util.CurrentTime;
 
 public class courier_main extends javax.swing.JPanel {
+	static int NUM_OF_DAYS=7;
 	GoodsGetByCouriersBLService goodsController = ControllerFactoryImpl
 			.getInstance().getGoodsGetByCourierController();
 
@@ -92,7 +98,7 @@ public class courier_main extends javax.swing.JPanel {
 																		124,
 																		124)
 																.addComponent(
-																		jLabel3)
+																		businessOffice_label)
 																.addPreferredGap(
 																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 																.addComponent(
@@ -115,19 +121,19 @@ public class courier_main extends javax.swing.JPanel {
 																										layout.createParallelGroup(
 																												javax.swing.GroupLayout.Alignment.TRAILING)
 																												.addComponent(
-																														date5daysAgo_label)
+																														labels.get(5))
 																												.addComponent(
-																														date4daysAgo_label)
+																														labels.get(4))
 																												.addComponent(
-																														date6daysAgo_label)
+																														labels.get(6))
 																												.addComponent(
-																														date3daysAgo_label)
+																														labels.get(3))
 																												.addComponent(
-																														date2daysAgo_label)
+																														labels.get(2))
 																												.addComponent(
-																														date1dayAgo_label)
+																														labels.get(1))
 																												.addComponent(
-																														dateToday_label))
+																														labels.get(0)))
 																								.addPreferredGap(
 																										javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 																								.addGroup(
@@ -138,13 +144,13 @@ public class courier_main extends javax.swing.JPanel {
 																																javax.swing.GroupLayout.Alignment.TRAILING,
 																																false)
 																																.addComponent(
-																																		goodsNum3daysAgo_progressBar,
+																																		bars.get(3),
 																																		javax.swing.GroupLayout.Alignment.LEADING,
 																																		javax.swing.GroupLayout.DEFAULT_SIZE,
 																																		javax.swing.GroupLayout.DEFAULT_SIZE,
 																																		Short.MAX_VALUE)
 																																.addComponent(
-																																		goodsNum4daysAgo_progressBar,
+																																		bars.get(4),
 																																		javax.swing.GroupLayout.Alignment.LEADING,
 																																		javax.swing.GroupLayout.PREFERRED_SIZE,
 																																		javax.swing.GroupLayout.DEFAULT_SIZE,
@@ -154,44 +160,44 @@ public class courier_main extends javax.swing.JPanel {
 																																javax.swing.GroupLayout.Alignment.TRAILING,
 																																false)
 																																.addComponent(
-																																		goodsNumToday_progressBar,
+																																		bars.get(0),
 																																		javax.swing.GroupLayout.Alignment.LEADING,
 																																		javax.swing.GroupLayout.DEFAULT_SIZE,
 																																		javax.swing.GroupLayout.DEFAULT_SIZE,
 																																		Short.MAX_VALUE)
 																																.addComponent(
-																																		goodsNum1dayAgo_progressBar,
+																																		bars.get(1),
 																																		javax.swing.GroupLayout.Alignment.LEADING,
 																																		javax.swing.GroupLayout.DEFAULT_SIZE,
 																																		javax.swing.GroupLayout.DEFAULT_SIZE,
 																																		Short.MAX_VALUE)
 																																.addComponent(
-																																		goodsNum2daysAgo_progressBar,
+																																		bars.get(2),
 																																		javax.swing.GroupLayout.Alignment.LEADING,
 																																		javax.swing.GroupLayout.PREFERRED_SIZE,
 																																		javax.swing.GroupLayout.DEFAULT_SIZE,
 																																		javax.swing.GroupLayout.PREFERRED_SIZE)
 																																.addComponent(
-																																		goodsNum5daysAgo_progressBar,
+																																		bars.get(5),
 																																		javax.swing.GroupLayout.Alignment.LEADING,
 																																		javax.swing.GroupLayout.DEFAULT_SIZE,
 																																		javax.swing.GroupLayout.DEFAULT_SIZE,
 																																		Short.MAX_VALUE)
 																																.addComponent(
-																																		goodsNum6daysAgo_progressBar,
+																																		bars.get(6),
 																																		javax.swing.GroupLayout.Alignment.LEADING,
 																																		javax.swing.GroupLayout.PREFERRED_SIZE,
 																																		javax.swing.GroupLayout.DEFAULT_SIZE,
 																																		javax.swing.GroupLayout.PREFERRED_SIZE))))
 																				.addComponent(
-																						jLabel5))
+																						recentDays_label))
 																.addGap(0,
 																		0,
 																		Short.MAX_VALUE))
 												.addGroup(
 														layout.createSequentialGroup()
 																.addComponent(
-																		jLabel4)
+																		account_label)
 																.addPreferredGap(
 																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 																.addComponent(
@@ -220,14 +226,14 @@ public class courier_main extends javax.swing.JPanel {
 																.addComponent(
 																		account_btn)
 																.addComponent(
-																		jLabel4)
+																		account_label)
 																.addComponent(
 																		businessOfficeNum_label)
 																.addComponent(
-																		jLabel3))
+																		businessOffice_label))
 												.addComponent(exit_btn))
 								.addGap(18, 18, 18)
-								.addComponent(jLabel5,
+								.addComponent(recentDays_label,
 										javax.swing.GroupLayout.PREFERRED_SIZE,
 										25,
 										javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,7 +249,7 @@ public class courier_main extends javax.swing.JPanel {
 																				.addGroup(
 																						layout.createSequentialGroup()
 																								.addComponent(
-																										goodsNum6daysAgo_progressBar,
+																										bars.get(6),
 																										javax.swing.GroupLayout.PREFERRED_SIZE,
 																										javax.swing.GroupLayout.DEFAULT_SIZE,
 																										javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,9 +260,9 @@ public class courier_main extends javax.swing.JPanel {
 																										layout.createParallelGroup(
 																												javax.swing.GroupLayout.Alignment.LEADING)
 																												.addComponent(
-																														date5daysAgo_label)
+																														labels.get(5))
 																												.addComponent(
-																														goodsNum5daysAgo_progressBar,
+																														bars.get(5),
 																														javax.swing.GroupLayout.PREFERRED_SIZE,
 																														javax.swing.GroupLayout.DEFAULT_SIZE,
 																														javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -264,7 +270,7 @@ public class courier_main extends javax.swing.JPanel {
 																										18,
 																										18)
 																								.addComponent(
-																										date4daysAgo_label))
+																										labels.get(4)))
 																				.addComponent(
 																						newGoodsbtn,
 																						javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -273,7 +279,7 @@ public class courier_main extends javax.swing.JPanel {
 																.addGap(18, 18,
 																		18)
 																.addComponent(
-																		date3daysAgo_label))
+																		labels.get(3)))
 												.addGroup(
 														layout.createParallelGroup(
 																javax.swing.GroupLayout.Alignment.TRAILING)
@@ -284,7 +290,7 @@ public class courier_main extends javax.swing.JPanel {
 																						63,
 																						63)
 																				.addComponent(
-																						goodsNum4daysAgo_progressBar,
+																						bars.get(4),
 																						javax.swing.GroupLayout.PREFERRED_SIZE,
 																						javax.swing.GroupLayout.DEFAULT_SIZE,
 																						javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -292,14 +298,14 @@ public class courier_main extends javax.swing.JPanel {
 																						18,
 																						18)
 																				.addComponent(
-																						goodsNum3daysAgo_progressBar,
+																						bars.get(3),
 																						javax.swing.GroupLayout.PREFERRED_SIZE,
 																						javax.swing.GroupLayout.DEFAULT_SIZE,
 																						javax.swing.GroupLayout.PREFERRED_SIZE))
 																.addGroup(
 																		layout.createSequentialGroup()
 																				.addComponent(
-																						date6daysAgo_label)
+																						labels.get(6))
 																				.addGap(95,
 																						95,
 																						95))))
@@ -308,9 +314,9 @@ public class courier_main extends javax.swing.JPanel {
 										layout.createParallelGroup(
 												javax.swing.GroupLayout.Alignment.TRAILING)
 												.addComponent(
-														date2daysAgo_label)
+														labels.get(2))
 												.addComponent(
-														goodsNum2daysAgo_progressBar,
+														bars.get(2),
 														javax.swing.GroupLayout.PREFERRED_SIZE,
 														javax.swing.GroupLayout.DEFAULT_SIZE,
 														javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -325,7 +331,7 @@ public class courier_main extends javax.swing.JPanel {
 																		layout.createParallelGroup(
 																				javax.swing.GroupLayout.Alignment.LEADING)
 																				.addComponent(
-																						goodsNum1dayAgo_progressBar,
+																						bars.get(1),
 																						javax.swing.GroupLayout.PREFERRED_SIZE,
 																						javax.swing.GroupLayout.DEFAULT_SIZE,
 																						javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -342,79 +348,56 @@ public class courier_main extends javax.swing.JPanel {
 																		layout.createParallelGroup(
 																				javax.swing.GroupLayout.Alignment.TRAILING)
 																				.addComponent(
-																						goodsNumToday_progressBar,
+																						bars.get(0),
 																						javax.swing.GroupLayout.PREFERRED_SIZE,
 																						javax.swing.GroupLayout.DEFAULT_SIZE,
 																						javax.swing.GroupLayout.PREFERRED_SIZE)
 																				.addGroup(
 																						layout.createSequentialGroup()
 																								.addComponent(
-																										date1dayAgo_label)
+																										labels.get(1))
 																								.addGap(18,
 																										18,
 																										18)
 																								.addComponent(
-																										dateToday_label)))))
+																										labels.get(0))))))
 								.addContainerGap(78, Short.MAX_VALUE)));
 	}// </editor-fold>//GEN-END:initComponents
-
-	private void initProBar() {// TODO bar
-
-
-		goodsNum6daysAgo_progressBar = new javax.swing.JProgressBar();
-		goodsNum5daysAgo_progressBar = new javax.swing.JProgressBar();
-		goodsNum4daysAgo_progressBar = new javax.swing.JProgressBar();
-		goodsNum3daysAgo_progressBar = new javax.swing.JProgressBar();
-		goodsNum2daysAgo_progressBar = new javax.swing.JProgressBar();
-		goodsNum1dayAgo_progressBar = new javax.swing.JProgressBar();
-		goodsNumToday_progressBar = new javax.swing.JProgressBar();
-
-		goodsNum6daysAgo_progressBar.setValue(50);
-		goodsNum5daysAgo_progressBar.setValue(70);
-		goodsNum4daysAgo_progressBar.setValue(15);
-		goodsNum3daysAgo_progressBar.setValue(95);
-		goodsNum2daysAgo_progressBar.setValue(65);
-
-		goodsNum1dayAgo_progressBar.setValue(45);
-
-		goodsNumToday_progressBar.setValue(50);
-
-		goodsNum6daysAgo_progressBar.setForeground(new java.awt.Color(240, 40,
-				240));
-
+	private void initProBar() {
+		 javax.swing.JProgressBar bar=new JProgressBar();;//bars[0]==today,bars[i]=i days ago
+		for(int i=0;i<NUM_OF_DAYS;i++)createJProgressBar(bar);
+		//赋值
+//		int[]values=goodsController.getdaysNumOfGoods(NUM_OF_DAYS);
+		int[]values=new int[]{10,20,30,40,10,50,45};//TODO 获取数据		
+		for(int i=0;i<bars.size();i++) bars.get(i).setValue(values[i]);
 	}
-
 	private void initLabel() {// TODO label
-
-		jLabel3 = new javax.swing.JLabel();
-		jLabel4 = new javax.swing.JLabel();
-		jLabel5 = new javax.swing.JLabel();
+		String Cdate=CurrentTime.getDate();
+		businessOffice_label = new javax.swing.JLabel();
+		account_label = new javax.swing.JLabel();
+		recentDays_label = new javax.swing.JLabel();
 		businessOfficeNum_label = new javax.swing.JLabel();
-		
-		dateToday_label = new javax.swing.JLabel();
-		date1dayAgo_label = new javax.swing.JLabel();
-		date2daysAgo_label = new javax.swing.JLabel();
-		date3daysAgo_label = new javax.swing.JLabel();
-		date4daysAgo_label = new javax.swing.JLabel();
-		date5daysAgo_label = new javax.swing.JLabel();
-		date6daysAgo_label = new javax.swing.JLabel();
-
-		jLabel5.setText("最近7天业绩（收派件数）");
-		jLabel3.setText("营业厅：");
+		recentDays_label.setText("最近7天业绩（收派件数）");
+		businessOffice_label.setText("营业厅：");
 		businessOfficeNum_label.setText("南京 025001");
-
-		jLabel4.setText("账户：");
-
-		dateToday_label.setText("10/30");
-		date1dayAgo_label.setText("10/29");
-		date2daysAgo_label.setText("10/28");
-		date3daysAgo_label.setText("10/27");
-		date4daysAgo_label.setText("10/26");
-		date5daysAgo_label.setText("10/25");
-		date6daysAgo_label.setText("10/24");
+		account_label.setText("账户：");
+		JLabel date=new JLabel();//TODO
+		for(int i=0;i<NUM_OF_DAYS;i++)creatLabels(date);
+		for(int i=0;i<NUM_OF_DAYS;i++) 
+			labels.get(i).setText(CurrentTime.minus(CurrentTime.getDate(), i).substring(5, 10));
 
 	}
-
+	private void creatLabels(JLabel date) {
+		date=new JLabel();
+		labels.add(date);
+	}
+	private void createJProgressBar(JProgressBar bar) {
+		bar=new JProgressBar();
+		bars.add(bar);
+	}
+	/*
+	 * 监听们～
+	 */
 	private void signedGoodsbtnMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_signedGoodsbtnMouseClicked
 		new courier_signed().setVisible(true);
 	}// GEN-LAST:event_signedGoodsbtnMouseClicked
@@ -438,24 +421,13 @@ public class courier_main extends javax.swing.JPanel {
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JButton account_btn;
 	private javax.swing.JLabel businessOfficeNum_label;
-	private javax.swing.JLabel date1dayAgo_label;
-	private javax.swing.JLabel date2daysAgo_label;
-	private javax.swing.JLabel date3daysAgo_label;
-	private javax.swing.JLabel date4daysAgo_label;
-	private javax.swing.JLabel date5daysAgo_label;
-	private javax.swing.JLabel date6daysAgo_label;
-	private javax.swing.JLabel dateToday_label;
 	private javax.swing.JButton exit_btn;
-	private javax.swing.JProgressBar goodsNum1dayAgo_progressBar;
-	private javax.swing.JProgressBar goodsNum2daysAgo_progressBar;
-	private javax.swing.JProgressBar goodsNum3daysAgo_progressBar;
-	private javax.swing.JProgressBar goodsNum4daysAgo_progressBar;
-	private javax.swing.JProgressBar goodsNum5daysAgo_progressBar;
-	private javax.swing.JProgressBar goodsNum6daysAgo_progressBar;
-	private javax.swing.JProgressBar goodsNumToday_progressBar;
-	private javax.swing.JLabel jLabel3;
-	private javax.swing.JLabel jLabel4;
-	private javax.swing.JLabel jLabel5;
+	private ArrayList<JLabel> labels=new ArrayList<JLabel>();//近日的日期
+	private ArrayList<JProgressBar> bars=new ArrayList<JProgressBar>();//近日业绩的进度条
+	
+	private javax.swing.JLabel businessOffice_label;
+	private javax.swing.JLabel account_label;
+	private javax.swing.JLabel recentDays_label;
 	private javax.swing.JButton newGoodsbtn;
 	private javax.swing.JButton signedGoodsbtn;
 
