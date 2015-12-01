@@ -89,6 +89,13 @@ public class StockCheckPanel extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("返回");
+        jButton1.addActionListener(new ActionListener(){
+        	public void actionPerformed(ActionEvent evt) {
+        		backActionPerformed(evt);
+        	}
+        });
+        
         jLabel10.setText("当前账户：大玉儿");
 
         jLabel1.setText("月");

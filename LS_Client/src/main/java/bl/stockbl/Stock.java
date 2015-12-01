@@ -12,15 +12,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
-import javax.xml.bind.ValidationEvent;
-
 import dataservice.stockdataservice.StockDataService;
-import bl.receiptbl.InStockRepbl.InStockRepController;
 import bl.receiptbl.InStockRepbl.InStockRepbl;
 import bl.receiptbl.OutStockRepbl.OutStockRepbl;
-import ui.warehousemanui.CheckUtil;
-import util.enumData.ResultMessage;
 import PO.StockPO;
 import VO.InStockRepVO;
 import VO.OutStockRepVO;
