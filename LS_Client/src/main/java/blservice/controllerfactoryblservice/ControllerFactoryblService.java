@@ -37,49 +37,67 @@ import blservice.stockblservice.StockNumBLService;
 
 public interface ControllerFactoryblService {
 	public BusinessFormBLService getBusinessFromController();
+
 	public ProfitFormBLService getProfitFormController();
+
 	public GoodsCheckBLService getGoodsCheckController();
+
 	public GoodsDeleteBLService getGoodsDeleteController();
+
 	public GoodsExamineBLService getGoodsExamineController();
+
 	public GoodsGetByCouriersBLService getGoodsGetByCourierController();
+
 	public GoodsInitBLService getGoodsInitController();
+
 	public GoodsInitCompleteBLService getGoodsInitCompleteController();
+
 	public GoodsSetStateBLService getGoodsSetStateController();
+
 	public GoodsEndBLService getGoodsEndController();
-	public LogBLService getLogController() ;
+
+	public LogBLService getLogController();
+
 	public AccountBLService getAccountController();
+
 	public BankAccountBLService getBankAccountController();
+
 	public ConstBLService getConstController();
+
 	public InstitutionBLService getInstitutionController();
+
 	public SalaryPolicyBLService getSalaryPolicyController();
+
 	public DriverBLService getDriverController();
+
 	public VehicleBLService getVehicleController();
+
 	public LoginBLService getLoginController();
-	
+
 	public CashRepblService getCashRepblService();
-	
+
 	public DeliverRepblService getDeliverRepblService();
-	
+
 	public GetRepblService getGetRepblService();
-	
+
 	public InStockRepblService getInStockRepblService();
-	
+
 	public OutStockRepblService getOutStockRepblService();
-	
+
 	public PayRepblService getPayRepblService();
-	
+
 	public ReceptionRepblService getReceptionRepblService();
-	
+
 	public ShipmentRepblServce getShipmentRepblServce();
-	
+
 	public ShippingRepblService getShippingRepblService();
-	
+
 	public TransferRepblService getTransferRepblService();
-	
+
 	public StockBLService getStockController();
-	
+
 	public StockNumBLService getStockNumController();
-	
+
 	public StockDivisionBLService getStockDivisionController();
-	
+
 }

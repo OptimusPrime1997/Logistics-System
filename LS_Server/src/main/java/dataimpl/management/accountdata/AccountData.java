@@ -175,6 +175,31 @@ public class AccountData extends UnicastRemoteObject implements
 		}
 	}
 
+
+	@Override
+	public ArrayList<AccountPO> findByInstitutionNum(String institutionNum)
+			throws ClassNotFoundException, IOException,FileNotFoundException,NumNotFoundException {
+		// TODO Auto-generated method stub
+		print();
+		ArrayList<AccountPO> pos = new ArrayList<AccountPO>();
+		ArrayList<Object> objects = d.getAll(path);
+		if (objects == null) {
+			throw new FileNotFoundException();
+		} else {
+			AccountPO p = null;
+			for (int i = 0; i < objects.size(); i++) {
+				p = (AccountPO) objects.get(i);
+				if (p.getInstitutionNum().equals(institutionNum)) {
+					pos.add(p);
+				}
+			}
+		}
+		if (pos.isEmpty()) {
+			throw new NumNotFoundException();
+		} else {
+			return pos;
+		}
+	}
 	private void print() {
 		System.out.println(Thread.currentThread().getStackTrace()[1]
 				.getClassName()

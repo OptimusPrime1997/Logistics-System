@@ -32,7 +32,7 @@ public enum ResultMessage {
 
 
 	NOT_FOUND_FILE,//文件未找到
-
+	IOFAILED,//文件读写失败
 	INPUT_SHOULD_BE_POSITIVE_INTEGER, //输入应该为正整数
 	NUMBER_OVER,   //输入数值太大
 	NOT_AVAILABLE; //该库存区位已被占用

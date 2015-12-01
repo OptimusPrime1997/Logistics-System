@@ -14,29 +14,33 @@ import dataservice.managementdataservice.salarypolicydataservice.SalaryPolicyDat
 import dataservice.managementdataservice.vehicleanddriverdataservice.DriverDataService;
 import dataservice.managementdataservice.vehicleanddriverdataservice.VehicleDataService;
 
-public class ManageData  extends UnicastRemoteObject implements ManageDataService {
-	
+public class ManageData extends UnicastRemoteObject implements
+		ManageDataService {
+
 	private static final long serialVersionUID = 1L;
 
-private static ManageData manageData;
-	
+	private static ManageData manageData;
+
 	public static String address = "127.0.0.1";
 
-	public static String port = "8888";
-	
+	public static int port = ManageDataService.port;
+
 	public ManageData() throws RemoteException {
 		super();
 	}
-	
+
 	public static ManageData getInstance() {
 		try {
-			manageData = (ManageData) Naming.lookup("rmi://" + address + ":" + port + "/DataFactory");
-		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			String name = ManageDataService.regname;
+			manageData = (ManageData) Naming.lookup("rmi://" + address + ":"
+					+ port + "/" + name);
+		} catch (MalformedURLException | RemoteException | NotBoundException
+				| ClassCastException e) {
 			e.printStackTrace();
+			System.out.println("远程连接错误");
 		}
 		return manageData;
 	}
-	
 
 	@Override
 	public AccountDataService getAccountData() throws RemoteException {

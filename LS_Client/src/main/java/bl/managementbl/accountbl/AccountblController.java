@@ -61,7 +61,7 @@ public class AccountblController implements AccountBLService {
 	}
 
 	@Override
-	public AccountVO findByInstitutionName(String institutionName)
+	public ArrayList<AccountVO> findByInstitutionNum(String institutionName)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
