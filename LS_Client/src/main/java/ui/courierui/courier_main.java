@@ -7,6 +7,7 @@ package ui.courierui;
 
 import java.util.ArrayList;
 
+import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
@@ -35,44 +36,20 @@ public class courier_main extends javax.swing.JPanel {
 	// <editor-fold defaultstate="collapsed"
 	// desc="Generated Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
-		initLabel();
-		initProBar();
-		signedGoodsbtn = new javax.swing.JButton();
-		newGoodsbtn = new javax.swing.JButton();
-		account_btn = new javax.swing.JButton();
-		exit_btn = new javax.swing.JButton();
-
-		signedGoodsbtn.setText("已签收");
-		signedGoodsbtn.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				signedGoodsbtnMouseClicked(evt);
-			}
-		});
-
-		newGoodsbtn.setText("新订单");
-		newGoodsbtn.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				newGoodsbtnActionPerformed(evt);
-			}
-		});
-
-		account_btn.setText("老王（包括更改密码、退出登录）");
-		account_btn.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				account_btnActionPerformed(evt);
-			}
-		});
-
-		exit_btn.setText("退出系统");
-		exit_btn.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				exit_btnActionPerformed(evt);
-			}
-		});
-		// TODO initComponents
-
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
 		this.setLayout(layout);
+		initLabel();
+		initProBar();
+		initbtn();
+		initLayOut(layout);
+		// TODO initComponents
+		
+	}// </editor-fold>//GEN-END:initComponents
+	/*
+	 * 初始化布局
+	 */
+	private void initLayOut(GroupLayout layout) {
+
 		layout.setHorizontalGroup(layout
 				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGroup(
@@ -362,7 +339,43 @@ public class courier_main extends javax.swing.JPanel {
 																								.addComponent(
 																										labels.get(0))))))
 								.addContainerGap(78, Short.MAX_VALUE)));
-	}// </editor-fold>//GEN-END:initComponents
+		
+	}
+
+	private void initbtn() {
+		signedGoodsbtn = new javax.swing.JButton();
+		newGoodsbtn = new javax.swing.JButton();
+		account_btn = new javax.swing.JButton();
+		exit_btn = new javax.swing.JButton();
+		signedGoodsbtn.setText("已签收");
+		signedGoodsbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				signedGoodsbtnMouseClicked(evt);
+			}
+		});
+
+		newGoodsbtn.setText("新订单");
+		newGoodsbtn.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				newGoodsbtnActionPerformed(evt);
+			}
+		});
+
+		account_btn.setText("老王（包括更改密码、退出登录）");
+		account_btn.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				account_btnActionPerformed(evt);
+			}
+		});
+		exit_btn.setText("退出系统");
+		exit_btn.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				exit_btnActionPerformed(evt);
+			}
+		});
+		
+	}
+
 	private void initProBar() {
 		 javax.swing.JProgressBar bar=new JProgressBar();;//bars[0]==today,bars[i]=i days ago
 		for(int i=0;i<NUM_OF_DAYS;i++)createJProgressBar(bar);
