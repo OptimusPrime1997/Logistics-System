@@ -5,6 +5,7 @@
  */
 package ui.courierui;
 
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
@@ -42,7 +43,6 @@ public class courier_main extends javax.swing.JPanel {
 		initProBar();
 		initbtn();
 		initLayOut(layout);
-		// TODO initComponents
 		
 	}// </editor-fold>//GEN-END:initComponents
 	/*
@@ -348,32 +348,33 @@ public class courier_main extends javax.swing.JPanel {
 		account_btn = new javax.swing.JButton();
 		exit_btn = new javax.swing.JButton();
 		signedGoodsbtn.setText("已签收");
+		newGoodsbtn.setText("新订单");
+		account_btn.setText("老王（包括更改密码、退出登录）");
+		exit_btn.setText("退出系统");
+		addListeners();
+	}
+
+	private void addListeners() {
 		signedGoodsbtn.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				signedGoodsbtnMouseClicked(evt);
 			}
 		});
-
-		newGoodsbtn.setText("新订单");
-		newGoodsbtn.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				newGoodsbtnActionPerformed(evt);
-			}
+		newGoodsbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				newGoodsbtnMouseClicked(evt);
+			}			
 		});
-
-		account_btn.setText("老王（包括更改密码、退出登录）");
 		account_btn.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				account_btnActionPerformed(evt);
 			}
 		});
-		exit_btn.setText("退出系统");
 		exit_btn.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				exit_btnActionPerformed(evt);
 			}
 		});
-		
 	}
 
 	private void initProBar() {
@@ -384,7 +385,7 @@ public class courier_main extends javax.swing.JPanel {
 		int[]values=new int[]{10,20,30,40,10,50,45};//TODO 获取数据		
 		for(int i=0;i<bars.size();i++) bars.get(i).setValue(values[i]);
 	}
-	private void initLabel() {// TODO label
+	private void initLabel() {
 		String Cdate=CurrentTime.getDate();
 		businessOffice_label = new javax.swing.JLabel();
 		account_label = new javax.swing.JLabel();
@@ -394,7 +395,7 @@ public class courier_main extends javax.swing.JPanel {
 		businessOffice_label.setText("营业厅：");
 		businessOfficeNum_label.setText("南京 025001");
 		account_label.setText("账户：");
-		JLabel date=new JLabel();//TODO
+		JLabel date=new JLabel();
 		for(int i=0;i<NUM_OF_DAYS;i++)creatLabels(date);
 		for(int i=0;i<NUM_OF_DAYS;i++) 
 			labels.get(i).setText(CurrentTime.minus(CurrentTime.getDate(), i).substring(5, 10));
@@ -414,14 +415,13 @@ public class courier_main extends javax.swing.JPanel {
 	private void signedGoodsbtnMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_signedGoodsbtnMouseClicked
 		new courier_signed().setVisible(true);
 	}// GEN-LAST:event_signedGoodsbtnMouseClicked
-
-	private void newGoodsbtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_newGoodsbtn2ActionPerformed
+	private void newGoodsbtnMouseClicked(MouseEvent evt) {
 		JFrame frame = new JFrame();
 		frame.setSize(500, 600);
 		frame.setContentPane(new Order());
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-	}// GEN-LAST:event_newGoodsbtn2ActionPerformed
+	}
 
 	private void account_btnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_account_btnActionPerformed
 

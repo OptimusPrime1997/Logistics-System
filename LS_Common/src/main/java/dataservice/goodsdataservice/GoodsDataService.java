@@ -1,5 +1,6 @@
 package dataservice.goodsdataservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ import PO.GoodsPO;
  * @author Administrator
  *
  */
-public interface GoodsDataService {
+public interface GoodsDataService extends Remote {
 	
 	public ResultMessage add(GoodsPO po)throws RemoteException;
 	public ResultMessage modify(GoodsPO po)throws RemoteException;
