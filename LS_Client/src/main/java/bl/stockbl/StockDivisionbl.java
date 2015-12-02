@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
 import VO.StockDivisionVO;
+import bl.receiptbl.InStockRepbl.InStockRepbl;
 import blservice.stockblservice.StockDivisionBLService;
 
 /**
@@ -24,7 +25,10 @@ public class StockDivisionbl implements StockDivisionBLService{
 	 
 	public ArrayList<StockDivisionVO> getBlock(String destination) {
 		// TODO Auto-generated method stub
+		
 		return null;
 	}
+	
+	
 
 }

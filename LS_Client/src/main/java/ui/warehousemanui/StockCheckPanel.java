@@ -3,6 +3,8 @@ package ui.warehousemanui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.*;
 
@@ -54,9 +56,9 @@ public class StockCheckPanel extends javax.swing.JFrame {
     	this.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);
 
     	
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
+        confirm = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
+        usernamelabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
@@ -68,35 +70,38 @@ public class StockCheckPanel extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jComboBox7 = new javax.swing.JComboBox();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        innum = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        outnum = new javax.swing.JLabel();
+ 
+        back = new javax.swing.JButton();
 
-        jButton5.setText("确认");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        confirm.setText("确认");
+        confirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmActionPerformed(evt);
             }
         });
 
-        jButton6.setText("退出");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        exit.setText("退出");
+        exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitActionPerformed(evt);
             }
         });
 
-        jButton1.setText("返回");
-        jButton1.addActionListener(new ActionListener(){
+        back.setText("返回");
+        back.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent evt) {
         		backActionPerformed(evt);
         	}
         });
         
-        jLabel10.setText("当前账户：大玉儿");
+     
+        usernamelabel.setText("当前账户："+username);
+        
+       
+
 
         jLabel1.setText("月");
 
@@ -104,7 +109,7 @@ public class StockCheckPanel extends javax.swing.JFrame {
 
         jLabel3.setText("日");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        jComboBox2.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
         jLabel7.setText("起始日期：");
 
@@ -112,25 +117,23 @@ public class StockCheckPanel extends javax.swing.JFrame {
 
         jLabel11.setText("月");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        jComboBox3.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
         jLabel14.setText("日");
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        jComboBox7.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
         jLabel15.setText("出库数量：");
 
-        jLabel16.setText("5000");
+        innum.setText("5000");
 
         jLabel17.setText("入库数量：");
 
-        jLabel18.setText("2000");
+        outnum.setText("2000");
 
-        jLabel19.setText("库存数量：");
+    
 
-        jLabel20.setText("8000");
-
-        jButton1.setText("返回");
+        back.setText("返回");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -165,30 +168,30 @@ public class StockCheckPanel extends javax.swing.JFrame {
                         .addGap(84, 84, 84)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel16))))
+                  
+                            .addComponent(outnum)
+                            .addComponent(innum))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel10)
+                        .addComponent(usernamelabel)
                         .addGap(26, 26, 26)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(back, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                        .addComponent(confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton6)
-                    .addComponent(jLabel10))
+                    .addComponent(exit)
+                    .addComponent(usernamelabel))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -198,7 +201,7 @@ public class StockCheckPanel extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
+                    .addComponent(confirm)
                     .addComponent(jLabel9)
                     .addComponent(jLabel11)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,21 +210,19 @@ public class StockCheckPanel extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16))
+                    .addComponent(innum))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18)
-                    .addComponent(jButton1))
+                    .addComponent(outnum)
+                    .addComponent(back))
                 .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20))
-                .addContainerGap())
+                )
         );
     }// </editor-fold>                        
 
-    StockBLService s = ControllerFactoryImpl.getInstance().getStockController();
+    
+	StockBLService s = ControllerFactoryImpl.getInstance().getStockController();
  
     private void confirmActionPerformed(ActionEvent evt) {                                         
         String startMonth = (String) jComboBox1.getSelectedItem();
@@ -231,10 +232,26 @@ public class StockCheckPanel extends javax.swing.JFrame {
         
         String result = s.checkStock(startMonth, startDay, endMonth, endDay);
         
-        //TODO  如何根据结果显示数量
+        showResult(result);
         
     }                                        
 
+    /**
+     * 从结果字符串中提取出入库出库数量并显示
+     * @param result
+     */
+    private static void showResult(String result) {
+    	StockCheckPanel s = new StockCheckPanel();
+    	Pattern p = Pattern.compile("\\d+(\\.\\d+)?");
+    	Matcher m = p.matcher(result);
+    	m.find();
+    	s.innum.setText(m.group());
+    	m.find();
+    	s.outnum.setText(m.group());
+    	 	
+    }
+    
+    
     private void exitActionPerformed(ActionEvent evt) {
     	MainFrame mf = new MainFrame();
     	mf.setVisible(true);
@@ -247,26 +264,34 @@ public class StockCheckPanel extends javax.swing.JFrame {
 		this.dispose();
 		
     }
+    
+    public void setUsername(String username) {
+		this.username = username;
+	}
+    
     // Variables declaration - do not modify                     
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton back;
+    private javax.swing.JButton confirm;
+    private javax.swing.JButton exit;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBox7;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel usernamelabel;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel innum;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel outnum;
+  
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    private String username = "大玉儿";
     // End of variables declaration                   
 }
+
+
+
