@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
-import RMIClient.LogClient;
 import VO.LogVO;
 import dataservice.logdataservice.LogDataService;
 

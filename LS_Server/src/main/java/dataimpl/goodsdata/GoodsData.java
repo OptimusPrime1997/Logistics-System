@@ -7,9 +7,11 @@ import java.util.ArrayList;
 import util.enumData.ResultMessage;
 import PO.GoodsPO;
 import dataservice.goodsdataservice.GoodsDataService;
+import datautil.DataUtility;
 
 public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
-
+	String filename = "goods.txt";
+	DataUtility du = new DataUtility();
 	public  GoodsData() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
@@ -48,8 +50,7 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	}
 
 	@Override
-	public GoodsPO findbygoods(String ListNum)
-			throws RemoteException {
+	public GoodsPO findbygoods(String ListNum)throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -64,7 +65,6 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	@Override
 	public int findbyCourier(String CourierNum,String date)
 			throws RemoteException {
-		System.out.println("Server.GoodsData");
 		return 0;
 	}
 

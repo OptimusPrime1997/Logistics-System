@@ -9,8 +9,8 @@ import dataservice.formdataservice.ProfitFormDataService;
 
 public class ProfitFormServer {
 public static void main(String[] args) {
-	ProfitFormDataService data=new ProfitFormData();
 	try {
+		ProfitFormDataService data=new ProfitFormData();
 		LocateRegistry.createRegistry(1099);
 		Naming.rebind("rmi://localhost:1099/profit",data);
 	} catch (Exception e) {

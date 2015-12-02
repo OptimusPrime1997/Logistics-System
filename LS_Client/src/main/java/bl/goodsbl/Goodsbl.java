@@ -12,12 +12,10 @@ import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsExpressType;
 import util.enumData.GoodsLogisticState;
 import util.enumData.ResultMessage;
-import RMIClient.GoodsClient;
 import VO.GoodsVO;
 import bl.loginbl.Loginbl;
 import bl.managementbl.constbl.Constbl;
 import dataservice.goodsdataservice.GoodsDataService;
-import dataservice.stockdataservice.StockInitialDataService;
 
 public class Goodsbl {
 	/*
