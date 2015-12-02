@@ -6,7 +6,7 @@ import PO.GoodsPO;
 import util.enumData.*;
 
 public class GoodsVO {
-	public String listNum;
+	static public String listNum;
 	public Boolean ifExaminePassed;
 	public String getCourierAccount;
 	public String deliverCourierAccount;

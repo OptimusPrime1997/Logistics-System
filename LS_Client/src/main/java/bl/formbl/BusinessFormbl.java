@@ -17,13 +17,16 @@ import dataservice.formdataservice.BusinessFormDataService;
 
 public class BusinessFormbl {
 	public BusinessFormVO show(String startTime, String endTime) throws NotBoundException, ClassNotFoundException, IOException {
+		String tempT=startTime;
 		PayRepbl payRep=new PayRepbl();
 		CashRepbl cashRep=new CashRepbl();
 		//TODO 改成  返回部分付款单，收款单的方法~
 		ArrayList<PayRepVO> moneyOut = payRep.getAllRep();
-		ArrayList<CashVO> moneyIn = cashRep.getAllRep();
-		BusinessFormVO vo =new BusinessFormVO(startTime, endTime, moneyOut, moneyIn);
-		return vo;
+//		while()
+//		
+//		ArrayList<CashVO> moneyIn = cashRep.getRepByDate("4");
+//		BusinessFormVO vo =new BusinessFormVO(startTime, endTime, moneyOut, moneyIn);
+		return null;
 	}
 	
 	public ResultMessage save(BusinessFormVO vo) {

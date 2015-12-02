@@ -89,6 +89,7 @@ public class Goodsbl {
 					basicprice);
 			vo.moneyTotal = vo.moneyFare + vo.moneyOfPackage;
 		   msg=getGoodsDataService().add(GoodsVO.toPO(vo));
+		   //已添加过该订单号
 		   if(msg.equals(ResultMessage.EXIST)) throw new ExistException();
 		} catch (RemoteException e) {
 		}
@@ -190,7 +191,7 @@ public class Goodsbl {
 		for(int i=0;i<nums.length;i++) nums[i]=-1;
 		String date = CurrentTime.getDate();
 		for (int i = 0; i < numOfDays; i++) {
-			nums[i] = getGoodsByCourier(Loginbl.getCurrentOptorId(), CurrentTime.minus(date, i));
+			nums[i] = getGoodsByCourier(Loginbl.getCurrentOptorId(), CurrentTime.minusDate(date, i));
 		}
 		return nums;
 	}
