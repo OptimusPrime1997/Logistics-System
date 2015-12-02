@@ -1,5 +1,6 @@
 package blservice.receiptblservice;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
@@ -9,6 +10,7 @@ import java.util.Vector;
 
 import VO.GoodsVO;
 import Exception.NameNotFoundException;
+import Exception.NumNotFoundException;
 
 public interface CashRepblService extends ReceiptblService{
 	
@@ -25,8 +27,13 @@ public interface CashRepblService extends ReceiptblService{
 	 * @param courierNum
 	 * @return
 	 * @throws RemoteException 
+	 * @throws javax.naming.NameNotFoundException 
+	 * @throws IOException 
+	 * @throws NumNotFoundException 
+	 * @throws ClassNotFoundException 
+	 * @throws FileNotFoundException 
 	 */
-	public String getCourierName (String text) throws NameNotFoundException, RemoteException;
+	public String getCourierName (String text) throws NameNotFoundException, RemoteException, FileNotFoundException, javax.naming.NameNotFoundException, ClassNotFoundException, NumNotFoundException, IOException;
 
 	/**
 	 * 得到一批货物的总钱数

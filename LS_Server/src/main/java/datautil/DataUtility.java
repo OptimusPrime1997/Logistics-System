@@ -71,9 +71,7 @@ public class DataUtility implements Serializable {
 			save(o, add);
 		}
 	}
-<<<<<<< HEAD
-	
-=======
+
 	class MyObjectOutputStream extends ObjectOutputStream {
 
 		public MyObjectOutputStream() throws IOException {
@@ -90,5 +88,4 @@ public class DataUtility implements Serializable {
 		}
 	}
 
->>>>>>> origin/master
 }

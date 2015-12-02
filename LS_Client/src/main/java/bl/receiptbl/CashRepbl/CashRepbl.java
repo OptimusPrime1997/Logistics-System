@@ -1,5 +1,6 @@
 package bl.receiptbl.CashRepbl;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -49,8 +50,8 @@ public class CashRepbl {
 		return ResultMessage.SUCCESS;
 	}
 
-	public String getCourierName(String courierNum) throws NameNotFoundException, RemoteException {
-		return accountbl.findByNum(courierNum).accountName;
+	public String getCourierName(String courierNum) throws NameNotFoundException, FileNotFoundException, javax.naming.NameNotFoundException, ClassNotFoundException, NumNotFoundException, IOException {
+		return accountbl.findByAccountNum(courierNum).accountName;
 	}
 
 	public ArrayList<GoodsVO> getGoods(String courierNum, String date) {
