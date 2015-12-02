@@ -1,6 +1,7 @@
 package dataservice.managementdataservice.salarypolicydataservice;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -10,10 +11,10 @@ import Exception.SalaryPolicyNotFoundException;
 import PO.SalaryPolicyPO;
 
 public interface SalaryPolicyDataService {
-	public ResultMessage insert(SalaryPolicyPO po)throws RemoteException;
-	public ResultMessage update(SalaryPolicyPO po)throws RemoteException;
-	public ResultMessage delete(SalaryPolicyPO po)throws RemoteException;
-	public ArrayList<SalaryPolicyPO> show()throws RemoteException;
-	public SalaryPolicyPO findByAuthority(Authority  authority)throws RemoteException, FileNotFoundException, SalaryPolicyNotFoundException;
+	public ResultMessage insert(SalaryPolicyPO po)throws RemoteException, IOException;
+	public ResultMessage update(SalaryPolicyPO po)throws RemoteException, ClassNotFoundException, IOException;
+	public ResultMessage delete(SalaryPolicyPO po)throws RemoteException, IOException, ClassNotFoundException;
+	public ArrayList<SalaryPolicyPO> show()throws RemoteException, ClassNotFoundException, IOException;
+	public SalaryPolicyPO findByAuthority(Authority  authority)throws RemoteException, FileNotFoundException, SalaryPolicyNotFoundException, ClassNotFoundException, IOException;
 	
 }

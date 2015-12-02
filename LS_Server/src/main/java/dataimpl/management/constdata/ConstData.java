@@ -1,9 +1,15 @@
 package dataimpl.management.constdata;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+
+
+
+
+
 
 
 import util.enumData.ResultMessage;
@@ -27,7 +33,7 @@ public class ConstData extends UnicastRemoteObject implements ConstDataService {
 	}
 
 	@Override
-	public ResultMessage insert(ConstPO po) throws RemoteException {
+	public ResultMessage insert(ConstPO po) throws IOException {
 		// TODO Auto-generated method stub
 		print();
 		if (d.save(po, path) == ResultMessage.FAILED) {
@@ -38,7 +44,7 @@ public class ConstData extends UnicastRemoteObject implements ConstDataService {
 	}
 
 	@Override
-	public ResultMessage update(ConstPO po) throws RemoteException {
+	public ResultMessage update(ConstPO po) throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO = false;
@@ -67,7 +73,7 @@ public class ConstData extends UnicastRemoteObject implements ConstDataService {
 	}
 
 	@Override
-	public ResultMessage delete(ConstPO po) throws RemoteException {
+	public ResultMessage delete(ConstPO po) throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO = false;
@@ -94,7 +100,7 @@ public class ConstData extends UnicastRemoteObject implements ConstDataService {
 	}
 
 	@Override
-	public ArrayList<ConstPO> show() throws RemoteException {
+	public ArrayList<ConstPO> show() throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		ArrayList<Object> objects = d.getAll(path);
@@ -107,8 +113,7 @@ public class ConstData extends UnicastRemoteObject implements ConstDataService {
 	}
 
 	@Override
-	public ConstPO findByCities(String cities) throws RemoteException,
-			FileNotFoundException, ConstNotFoundException{
+	public ConstPO findByCities(String cities) throws ConstNotFoundException, ClassNotFoundException, IOException{
 		// TODO Auto-generated method stub
 		print();
 		ConstPO exist = null;

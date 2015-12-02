@@ -3,6 +3,7 @@ package dataimpl.management.accountdata;
 import static org.junit.Assert.*;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -31,7 +32,7 @@ public class AccountDataTest {
 	}
 	
 	@Test
-	public void test1save()  {
+	public void test1save() throws IOException, ClassNotFoundException  {
 		AccountPO po=new AccountPO("20150003213", "张三", "12345678", Sex.Sex_MALE, Authority.COURIER,"18293043902", "南京市栖霞区");
 		try{
 		data.insert(po);
@@ -45,7 +46,7 @@ public class AccountDataTest {
 		
 	}
 	@Test
-	public void test2update(){
+	public void test2update() throws ClassNotFoundException, IOException{
 		AccountPO po1=new AccountPO("20150003213", "李斯", "12345678", Sex.Sex_MALE, Authority.COURIER,"18293043902", "南京市栖霞区");
 		try {
 			ResultMessage msg=data.update(po1);
@@ -65,7 +66,7 @@ public class AccountDataTest {
 		
 	}
 	@Test
-	public void test3findByAccountNum(){
+	public void test3findByAccountNum() throws ClassNotFoundException, IOException{
 		AccountPO p=null;
 		try {
 			p=data.findByAccountNum("20150003213");
@@ -76,7 +77,7 @@ public class AccountDataTest {
 		assertEquals("12345678", p.getPassword());
 	}
 	@Test
-	public void test4findByAccountName(){
+	public void test4findByAccountName() throws ClassNotFoundException, IOException{
 		AccountPO p=null;
 				try {
 					p=data.findByName("李斯");
@@ -87,7 +88,7 @@ public class AccountDataTest {
 				}
 		assertEquals("20150003213", p.getAccountNum());
 		}
-	public void test5delete(){
+	public void test5delete() throws ClassNotFoundException, IOException{
 		AccountPO po1=new AccountPO("20150003213", "李斯", "12345678", Sex.Sex_MALE, Authority.COURIER,"18293043902", "南京市栖霞区");
 		try {
 			data.delete(po1);

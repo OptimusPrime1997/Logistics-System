@@ -1,6 +1,7 @@
 package dataimpl.management.vehicleanddriverdata;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class VehicleData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ResultMessage insertVehicle(VehiclePO po) throws RemoteException {
+	public ResultMessage insertVehicle(VehiclePO po) throws IOException {
 		// TODO Auto-generated method stub
 		print();
 		if (d.save(po, path) == ResultMessage.FAILED) {
@@ -40,7 +41,7 @@ public class VehicleData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ResultMessage updateVehicle(VehiclePO po) throws RemoteException {
+	public ResultMessage updateVehicle(VehiclePO po) throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO = false;
@@ -68,7 +69,7 @@ public class VehicleData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ResultMessage deleteVehicle(VehiclePO po) throws RemoteException {
+	public ResultMessage deleteVehicle(VehiclePO po) throws IOException, ClassNotFoundException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO = false;
@@ -96,7 +97,7 @@ public class VehicleData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ArrayList<VehiclePO> showVehicle() throws RemoteException {
+	public ArrayList<VehiclePO> showVehicle() throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		ArrayList<Object> objects = d.getAll(path);
@@ -109,7 +110,7 @@ public class VehicleData extends UnicastRemoteObject implements
 
 	@Override
 	public VehiclePO findByVehicleNum(String vehicleNum)
-			throws RemoteException, FileNotFoundException, NumNotFoundException {
+			throws NumNotFoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		VehiclePO exist = null;

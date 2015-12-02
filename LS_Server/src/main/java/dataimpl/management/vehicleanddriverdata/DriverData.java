@@ -1,6 +1,7 @@
 package dataimpl.management.vehicleanddriverdata;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class DriverData extends UnicastRemoteObject implements DriverDataService
 	}
 
 	@Override
-	public ResultMessage insertDriver(DriverPO po) throws RemoteException {
+	public ResultMessage insertDriver(DriverPO po) throws IOException {
 		// TODO Auto-generated method stub
 		print();
 		if(d.save(po,path)==ResultMessage.FAILED){
@@ -37,7 +38,7 @@ public class DriverData extends UnicastRemoteObject implements DriverDataService
 	}
 
 	@Override
-	public ResultMessage updateDriver(DriverPO po) throws RemoteException {
+	public ResultMessage updateDriver(DriverPO po) throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO=false;
@@ -65,7 +66,7 @@ public class DriverData extends UnicastRemoteObject implements DriverDataService
 	}
 
 	@Override
-	public ResultMessage deleteDriver(DriverPO po) throws RemoteException {
+	public ResultMessage deleteDriver(DriverPO po) throws IOException, ClassNotFoundException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO=false;
@@ -91,7 +92,7 @@ public class DriverData extends UnicastRemoteObject implements DriverDataService
 		}	}
 
 	@Override
-	public ArrayList<DriverPO> showDriver() throws RemoteException {
+	public ArrayList<DriverPO> showDriver() throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		ArrayList<Object> objects=d.getAll(path);
@@ -103,7 +104,7 @@ public class DriverData extends UnicastRemoteObject implements DriverDataService
 	}
 
 	@Override
-	public DriverPO findByDriverNum(String driverNum) throws RemoteException, FileNotFoundException,NumNotFoundException{
+	public DriverPO findByDriverNum(String driverNum) throws NumNotFoundException, ClassNotFoundException, IOException{
 		// TODO Auto-generated method stub
 		print();
 		DriverPO exist=null;

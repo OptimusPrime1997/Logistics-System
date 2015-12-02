@@ -17,23 +17,6 @@ public class DataUtility implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 4917823440137859978L;
-
-	class MyObjectOutputStream extends ObjectOutputStream {
-
-		public MyObjectOutputStream() throws IOException {
-			super();
-		}
-
-		public MyObjectOutputStream(OutputStream out) throws IOException {
-			super(out);
-		}
-
-		@Override
-		protected void writeStreamHeader() throws IOException {
-			return;
-		}
-	}
-
 	public ResultMessage save(Object o, String add) throws IOException {
 		File saveFile = new File(add);
 		FileOutputStream fo = new FileOutputStream(saveFile, true);
@@ -88,5 +71,24 @@ public class DataUtility implements Serializable {
 			save(o, add);
 		}
 	}
+<<<<<<< HEAD
 	
+=======
+	class MyObjectOutputStream extends ObjectOutputStream {
+
+		public MyObjectOutputStream() throws IOException {
+			super();
+		}
+
+		public MyObjectOutputStream(OutputStream out) throws IOException {
+			super(out);
+		}
+
+		@Override
+		protected void writeStreamHeader() throws IOException {
+			return;
+		}
+	}
+
+>>>>>>> origin/master
 }

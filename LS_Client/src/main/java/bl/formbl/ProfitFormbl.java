@@ -2,19 +2,23 @@ package bl.formbl;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.CurrentTime;
 import util.enumData.ResultMessage;
+<<<<<<< HEAD
 import RMIClient.FormClient;
 import VO.CashVO;
+=======
+import VO.CashRepVO;
+>>>>>>> origin/master
 import VO.PayRepVO;
 import VO.ProfitFormVO;
 import bl.receiptbl.CashRepbl.CashRepbl;
 import bl.receiptbl.PayRepbl.PayRepbl;
-import dataservice.formdataservice.BusinessFormDataService;
 import dataservice.formdataservice.ProfitFormDataService;
 
 public class ProfitFormbl {
@@ -56,12 +60,16 @@ public class ProfitFormbl {
 		}
 		
 	}
-	private FormClient client=new FormClient();
 	private ProfitFormDataService getPFormData(){
 		ProfitFormDataService service=null;
 		try {
-			service=client.getProfitFormDataService();
+			service=(ProfitFormDataService)Naming.lookup("profit");
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
 		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
 		}
 		return service;
 	}

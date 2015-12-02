@@ -1,6 +1,7 @@
 package dataimpl.management.bankaccountdata;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class BankAccountData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ResultMessage insert(BankAccountPO po) throws RemoteException {
+	public ResultMessage insert(BankAccountPO po) throws IOException {
 		// TODO Auto-generated method stub
 		if (d.save(po, path) == ResultMessage.FAILED) {
 			return ResultMessage.FAILED;
@@ -40,7 +41,7 @@ public class BankAccountData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ResultMessage update(BankAccountPO po) throws RemoteException {
+	public ResultMessage update(BankAccountPO po) throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO = false;
@@ -69,7 +70,7 @@ public class BankAccountData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ResultMessage delete(BankAccountPO po) throws RemoteException {
+	public ResultMessage delete(BankAccountPO po) throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO = false;
@@ -97,7 +98,7 @@ public class BankAccountData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ArrayList<BankAccountPO> show() throws RemoteException {
+	public ArrayList<BankAccountPO> show() throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		ArrayList<Object> objects = d.getAll(path);
@@ -109,7 +110,7 @@ public class BankAccountData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public BankAccountPO findByName(String name) throws RemoteException, FileNotFoundException,NameNotFoundException {
+	public BankAccountPO findByName(String name) throws NameNotFoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		BankAccountPO exist=null;
@@ -136,7 +137,7 @@ public class BankAccountData extends UnicastRemoteObject implements
 
 	@Override
 	public BankAccountPO findByBankAccountNum(String bankAccountNum)
-			throws RemoteException, FileNotFoundException, NumNotFoundException {
+			throws NumNotFoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		BankAccountPO exist = null;

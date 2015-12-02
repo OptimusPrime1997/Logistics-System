@@ -1,6 +1,7 @@
 package dataservice.managementdataservice.bankaccountdataservice;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -11,16 +12,16 @@ import Exception.NumNotFoundException;
 import PO.BankAccountPO;
 
 public interface BankAccountDataService {
-	public ResultMessage insert(BankAccountPO po) throws RemoteException;
+	public ResultMessage insert(BankAccountPO po) throws RemoteException, IOException;
 
-	public ResultMessage update(BankAccountPO po) throws RemoteException;
+	public ResultMessage update(BankAccountPO po) throws RemoteException, ClassNotFoundException, IOException;
 
-	public ResultMessage delete(BankAccountPO po) throws RemoteException;
+	public ResultMessage delete(BankAccountPO po) throws RemoteException, ClassNotFoundException, IOException;
 
-	public ArrayList<BankAccountPO> show() throws RemoteException;
+	public ArrayList<BankAccountPO> show() throws RemoteException, ClassNotFoundException, IOException;
 
-	public BankAccountPO findByName(String name) throws RemoteException, FileNotFoundException, NameNotFoundException;
+	public BankAccountPO findByName(String name) throws RemoteException, FileNotFoundException, NameNotFoundException, ClassNotFoundException, IOException;
 
 	public BankAccountPO findByBankAccountNum(String bankAccountNum)
-			throws RemoteException, FileNotFoundException, NumNotFoundException;
+			throws RemoteException, FileNotFoundException, NumNotFoundException, ClassNotFoundException, IOException;
 }

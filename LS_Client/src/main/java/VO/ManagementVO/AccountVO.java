@@ -8,7 +8,7 @@ public class AccountVO {
 	public Sex sex;
 	public Authority authority;
 	public String phoneNum;
-	public String institution;
+	public String institutionNum;
 	
 	
 
@@ -21,6 +21,6 @@ public class AccountVO {
 		this.sex=sex;
 		this.authority=authority;
 		this.phoneNum=phoneNum;
-		this.institution=institution;
+		this.institutionNum=institution;
 	}
 }
