@@ -44,7 +44,7 @@ public interface ControllerFactoryblService {
 	public GoodsDeleteBLService getGoodsDeleteController();
 
 	public GoodsExamineBLService getGoodsExamineController();
-
+	
 	public GoodsFindBLService getGoodsFindController();
 
 	public GoodsInitBLService getGoodsInitController();

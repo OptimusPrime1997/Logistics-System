@@ -22,7 +22,7 @@ import util.CurrentTime;
 public class courier_main extends javax.swing.JPanel {
 	static int NUM_OF_DAYS=7;
 	GoodsFindBLService goodsController = ControllerFactoryImpl
-			.getInstance().getGoodsGetByCourierController();
+			.getInstance().getGoodsFindController();
 
 	public courier_main() {
 		initComponents();

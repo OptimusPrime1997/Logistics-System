@@ -86,42 +86,58 @@ private ControllerFactoryImpl() {}
 		return new ProfitFormController();
 	}
 
+	/**
+	 * 检查与货物有关的信息是否合法（订单号/收件人姓名、地址、手机号等）
+	 */
 	@Override
 	public GoodsCheckValidBLService getGoodsCheckController() {
 		
 		return new GoodsCheckValidController();
 	}
-
+	/**
+	 * 删除订单
+	 */
 	@Override
 	public GoodsDeleteBLService getGoodsDeleteController() {
 		
 		return new GoodsDeleteController();
 	}
 
+	/**
+	 * 审批订单（货物）
+	 */
 	@Override
 	public GoodsExamineBLService getGoodsExamineController() {
 		
 		return new GoodsExamineController();
 	}
 
+	/**
+	 * 查找货物（byListNum/byCourierNum）
+	 */
 	@Override
 	public GoodsFindBLService getGoodsFindController() {
 		
 		return new GoodsFindController();
 	}
 
+	/**
+	 * 新增货物
+	 */
 	@Override
 	public GoodsInitBLService getGoodsInitController() {
 		
 		return new GoodsInitController();
 	}
 
+	/**
+	 * 更改货物的状态（到达状态/物流状态）
+	 */
 	@Override
 	public GoodsSetStateBLService getGoodsSetStateController() {
 		
 		return new GoodsSetStateController();
 	}
-
 	@Override
 	public LogBLService getLogController() {
 		
@@ -241,7 +257,9 @@ private ControllerFactoryImpl() {}
 	public StockBLService getStockController() {
 		return new StockController();
 	}
-	
+	/**
+	 * 货物收件信息输入
+	 */
 	@Override
 	public GoodsEndBLService getGoodsEndController() {
 		
