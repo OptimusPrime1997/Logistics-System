@@ -14,9 +14,12 @@ public enum ResultMessage {
 	LINK_FAILURE,//连接错误
 	EXIST,	//已存在
 	NOT_FOUND,	//没找到对应结果
-	
+	VALID,//合法
 	REPNUM_LENGTH_OVER,	//编号过长
 	REPNUM_LENGTH_LACKING,	//编号过短
+	REPNUM_LENGTH_WRONG,	//编号长度有误
+	
+	REPNUM_NOT_ALL_NUM,	//编号出现非数字的字符
 	REPNUM_NOT_RIGHT,	//编号不正确
 	
 	PHONE_LENGTH_WRONG,//手机号长度有误

@@ -14,14 +14,14 @@ import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
 import bl.controllerfactorybl.ControllerFactoryImpl;
-import blservice.goodsblservice.GoodsGetByCouriersBLService;
+import blservice.goodsblservice.GoodsFindBLService;
 import ui.mainFrame.MainFrame;
 import ui.receiptui.Order;
 import util.CurrentTime;
 
 public class courier_main extends javax.swing.JPanel {
 	static int NUM_OF_DAYS=7;
-	GoodsGetByCouriersBLService goodsController = ControllerFactoryImpl
+	GoodsFindBLService goodsController = ControllerFactoryImpl
 			.getInstance().getGoodsGetByCourierController();
 
 	public courier_main() {

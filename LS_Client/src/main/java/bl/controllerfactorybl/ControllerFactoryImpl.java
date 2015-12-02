@@ -2,14 +2,14 @@ package bl.controllerfactorybl;
 
 import bl.formbl.controller.BusinessFormController;
 import bl.formbl.controller.ProfitFormController;
-import bl.goodsbl.controller.GoodsCheckController;
+import bl.goodsbl.controller.GoodsCheckValidController;
 import bl.goodsbl.controller.GoodsDeleteController;
 import bl.goodsbl.controller.GoodsEndController;
 import bl.goodsbl.controller.GoodsExamineController;
-import bl.goodsbl.controller.GoodsGetByCourierController;
-import bl.goodsbl.controller.GoodsInitCompleteController;
+import bl.goodsbl.controller.GoodsFindController;
 import bl.goodsbl.controller.GoodsInitController;
 import bl.goodsbl.controller.GoodsSetStateController;
+import bl.logbl.LogController;
 import bl.loginbl.LoginblController;
 import bl.managementbl.accountbl.AccountblController;
 import bl.managementbl.bankaccountbl.BankAccountblController;
@@ -33,14 +33,13 @@ import blservice.controllerfactoryblservice.ControllerFactoryblService;
 import blservice.formblservice.BusinessFormBLService;
 import blservice.formblservice.ProfitFormBLService;
 //import blservice.goodsblservice.GetNumOfGoodsByCourierBLService;
-import blservice.goodsblservice.GoodsCheckBLService;
+import blservice.goodsblservice.GoodsCheckValidBLService;
 import blservice.goodsblservice.GoodsDeleteBLService;
 import blservice.goodsblservice.GoodsEndBLService;
 //import blservice.goodsblservice.GoodsEndBLService;
 import blservice.goodsblservice.GoodsExamineBLService;
-import blservice.goodsblservice.GoodsGetByCouriersBLService;
+import blservice.goodsblservice.GoodsFindBLService;
 import blservice.goodsblservice.GoodsInitBLService;
-import blservice.goodsblservice.GoodsInitCompleteBLService;
 import blservice.goodsblservice.GoodsSetStateBLService;
 import blservice.logblservice.LogBLService;
 import blservice.loginblservice.LoginBLService;
@@ -88,9 +87,9 @@ private ControllerFactoryImpl() {}
 	}
 
 	@Override
-	public GoodsCheckBLService getGoodsCheckController() {
+	public GoodsCheckValidBLService getGoodsCheckController() {
 		
-		return new GoodsCheckController();
+		return new GoodsCheckValidController();
 	}
 
 	@Override
@@ -106,9 +105,9 @@ private ControllerFactoryImpl() {}
 	}
 
 	@Override
-	public GoodsGetByCouriersBLService getGoodsGetByCourierController() {
+	public GoodsFindBLService getGoodsFindController() {
 		
-		return new GoodsGetByCourierController();
+		return new GoodsFindController();
 	}
 
 	@Override
@@ -126,7 +125,7 @@ private ControllerFactoryImpl() {}
 	@Override
 	public LogBLService getLogController() {
 		
-		return null;
+		return new LogController();
 	}
 
 	@Override
@@ -242,24 +241,13 @@ private ControllerFactoryImpl() {}
 	public StockBLService getStockController() {
 		return new StockController();
 	}
-
 	
-	@Override
-	public GoodsInitCompleteBLService getGoodsInitCompleteController() {
-		
-		return new GoodsInitCompleteController();
-	}
-
 	@Override
 	public GoodsEndBLService getGoodsEndController() {
 		
 		return new GoodsEndController();
 	}
 
-
-	
-
-	
 	@Override
 	public StockNumBLService getStockNumController() {
 		return new StockController();

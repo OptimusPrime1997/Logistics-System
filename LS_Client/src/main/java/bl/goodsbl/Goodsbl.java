@@ -41,7 +41,7 @@ public class Goodsbl {
 	 * @param listNum
 	 * @return
 	 */
-	public GoodsVO check(String listNum) throws GoodsNotFound{
+	public GoodsVO findByListNum(String listNum) throws GoodsNotFound{
 		GoodsVO vo = null;
 		try {
 			vo = new GoodsVO(getGoodsDataService().findbygoods(listNum));
@@ -107,7 +107,6 @@ public class Goodsbl {
 	}
 	
 	/**
-	 * 
 	 * @param courierNum
 	 * @return返回快递员收件的货物的VO（辅助收款单的填写）
 	 */
@@ -128,7 +127,7 @@ public class Goodsbl {
 	 */
 	public ResultMessage setArrivalState(String listNum, GoodsArrivalState state) {
 		try {
-			GoodsVO vo = check(listNum);
+			GoodsVO vo = findByListNum(listNum);
 			vo.arrivalState = state;
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
@@ -146,7 +145,7 @@ public class Goodsbl {
 	public ResultMessage setLogisticState(String listNum,
 			GoodsLogisticState state) {
 		try {
-			GoodsVO vo = check(listNum);
+			GoodsVO vo = findByListNum(listNum);
 			vo.logisticState = state;
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
@@ -163,7 +162,7 @@ public class Goodsbl {
 	 */
 	public ResultMessage examine(String listNum, Boolean ifPassed) {
 		try {
-			GoodsVO vo = check(listNum);
+			GoodsVO vo = findByListNum(listNum);
 			vo.ifExaminePassed = ifPassed;
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
@@ -181,8 +180,7 @@ public class Goodsbl {
 	 */
 	public ResultMessage end(String listNum, String realReceiverName,String realReceiverPhone) {
 		try {
-			System.out.println("Goodsbl.end "+listNum);
-			GoodsVO vo = check(listNum);
+			GoodsVO vo = findByListNum(listNum);
 			vo.realReceiverName = realReceiverName;
 			vo.realReceiverPhone = realReceiverPhone;
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
@@ -206,6 +204,18 @@ public class Goodsbl {
 			nums[i] = getGoodsByCourier(Loginbl.getCurrentOptorId(), CurrentTime.minusDate(date, i));
 		}
 		return nums;
+	}
+	public ResultMessage ifListNumValid(String listNum){
+		if(listNum==null) return ResultMessage.NOT_COMPLETED;
+		else if(listNum.length()!=10) return ResultMessage.REPNUM_LENGTH_WRONG;
+		else {
+			for(int i=0;i<listNum.length();i++){
+				if(listNum.charAt(i)>9||listNum.charAt(i)<0){
+					//TODO
+				}
+			}
+		}
+		return ResultMessage.VALID;
 	}
 	private double moneyCounter(GoodsExpressType expressType, double weight,
 			double distance, double basicPrice) {

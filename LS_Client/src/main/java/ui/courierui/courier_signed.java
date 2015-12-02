@@ -5,22 +5,67 @@
  */
 package ui.courierui;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.GroupLayout;
 
+import util.enumData.GoodsArrivalState;
+import util.enumData.GoodsExpressType;
+import util.enumData.GoodsLogisticState;
 import util.enumData.ResultMessage;
+import Exception.ExistException;
+import VO.GoodsVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.goodsblservice.GoodsEndBLService;
+import blservice.goodsblservice.GoodsInitBLService;
 
 /**
  *
  * @author Administrator
  */
 public class courier_signed extends javax.swing.JFrame {
-	
+	/*
+	 * Listeners~~
+	 */
+    private void year_ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {
+    }
+    private void month_ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {
+    }
+   
+    private void day_ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_day_ComboBoxActionPerformed
+       
+    }
+    private void getterPhone_textMouseClicked(MouseEvent e) {
+		getterPhone_text.setText(null);
+	}
+    private void cancel_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_btnMouseClicked
+        this.setVisible(false);
+    }
+    private void ok_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ok_btnMouseClicked
+        this.setVisible(false);
+        ResultMessage msg;
+        listNum=goodsNum_text.getText();
+        getterName=getterName_text.getText();
+        getterPhone=getterPhone_text.getText();
+        GoodsInitBLService ctr=ControllerFactoryImpl.getInstance().getGoodsInitController();
+        GoodsVO vo = new GoodsVO("0250000123", false, "02400100006014",
+				"02500100006014", "20151026", "", "025", "李华",
+				"上海市浦东新区张杨路500号", "上海华润时代广场", "87511426", "陆宏",
+				"南京市栖霞区仙林大道和园12号", null, "15500001112", 1, 5, 8, "书",
+				GoodsExpressType.NORMAL, 5, 0, 0, GoodsArrivalState.INTACT,
+				GoodsLogisticState.SENDED, null, null);
+        try {
+			ctr.initCompleteGoods(vo);
+		} catch (ExistException e) {
+//			 TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+                msg=controller.end(listNum, getterName, getterPhone);
+        if(msg==ResultMessage.NOT_FOUND){//TODO
+        	System.out.println("订单不存在");
+        }
+    }
 	/**
      * Creates new form courier_signed
      */
@@ -239,35 +284,7 @@ public class courier_signed extends javax.swing.JFrame {
 //         jLabel9.setForeground(new java.awt.Color(51, 0, 204));
          
 }
-	/*
-	 * Listeners~~
-	 */
 	
-    private void year_ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {
-    }
-    private void month_ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {
-    }
-   
-    private void day_ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_day_ComboBoxActionPerformed
-       
-    }
-    private void getterPhone_textMouseClicked(MouseEvent e) {
-		getterPhone_text.setText(null);
-	}
-    private void cancel_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_btnMouseClicked
-        this.setVisible(false);
-    }
-    private void ok_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ok_btnMouseClicked
-        this.setVisible(false);
-        ResultMessage msg;
-        listNum=goodsNum_text.getText();
-        getterName=getterName_text.getText();
-        getterPhone=getterPhone_text.getText();
-        msg=controller.end(listNum, getterName, getterPhone);
-        if(msg==ResultMessage.NOT_FOUND){//TODO
-        	System.out.println("订单不存在");
-        }
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GoodsEndBLService controller;
     private javax.swing.JButton cancel_btn;
