@@ -1,17 +1,20 @@
 package bl.receiptbl.CashRepbl;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import VO.CashVO;
 import VO.CashRepVO;
 import VO.GoodsVO;
 import VO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.CashRepblService;
 import Exception.NameNotFoundException;
+import Exception.NumNotFoundException;
 
 public class CashRepController extends ReceiptblController implements CashRepblService{
 	private CashRepbl cashRepbl = new CashRepbl();
@@ -23,7 +26,7 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	}
 
 	@Override
-	public String getCourierName(String courierNum) throws NameNotFoundException, RemoteException{
+	public String getCourierName(String courierNum) throws NameNotFoundException, FileNotFoundException, javax.naming.NameNotFoundException, ClassNotFoundException, NumNotFoundException, IOException{
 		// TODO Auto-generated method stub
 		return cashRepbl.getCourierName(courierNum);
 	}
@@ -41,7 +44,7 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	}
 	
 	@Override
-	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
+	public void submit(ReceiptVO vo) throws NotBoundException, IOException{
 		// TODO Auto-generated method stub
 		cashRepbl.submit(vo);
 	}

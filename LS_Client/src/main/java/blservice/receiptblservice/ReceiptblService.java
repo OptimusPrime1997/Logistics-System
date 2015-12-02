@@ -23,4 +23,5 @@ public interface ReceiptblService extends PreReceiptblService{
 	public <T extends ReceiptVO> ArrayList<T> getAllRep() throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException;
 	
 	public <T extends ReceiptVO> ArrayList<T> getRepBydate(String date) throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException;
+	
 }

@@ -9,10 +9,10 @@ public class BusinessFormVO {
 	public String startTime;
 	public String endTime;
 	public ArrayList<PayRepVO> moneyOutRecord;
-	public ArrayList<CashRepVO> moneyInRecord;
+	public ArrayList<CashVO> moneyInRecord;
 	
 	public BusinessFormVO(String startTime, String endTime,
-			ArrayList<PayRepVO> MoneyOutRecord,ArrayList<CashRepVO> MoneyInRecord) {
+			ArrayList<PayRepVO> MoneyOutRecord,ArrayList<CashVO> MoneyInRecord) {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.moneyInRecord=MoneyInRecord;
@@ -21,11 +21,11 @@ public class BusinessFormVO {
 	public BusinessFormVO(BusinessFormPO po){
 		this.startTime=po.getStartTime();
 		this.endTime=po.getEndTime();
-		this.moneyInRecord=CashRepVO.toArrayVO(po.getMoneyInRecord());
+		this.moneyInRecord=CashVO.toArrayVO(po.getMoneyInRecord());
 		this.moneyOutRecord=PayRepVO.toArrayVO(po.getMoneyOutRecord());
 	}
 	public BusinessFormPO toPO(BusinessFormVO vo){
-		BusinessFormPO po=new BusinessFormPO(startTime, endTime, PayRepVO.toArrayPO(moneyOutRecord),CashRepVO.toArrayPO(moneyInRecord));
+		BusinessFormPO po=new BusinessFormPO(startTime, endTime, PayRepVO.toArrayPO(moneyOutRecord),CashVO.toArrayPO(moneyInRecord));
 		return po;
 	}
 	

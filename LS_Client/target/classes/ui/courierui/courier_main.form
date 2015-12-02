@@ -152,6 +152,64 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JProgressBar" name="goodsNum4daysAgo_progressBar">
+      <Properties>
+        <Property name="value" type="int" value="15"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="date6daysAgo_label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="10/24"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JProgressBar" name="goodsNum3daysAgo_progressBar">
+      <Properties>
+        <Property name="value" type="int" value="95"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="signedGoodsbtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x5df2;&#x7b7e;&#x6536;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="signedGoodsbtnMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JProgressBar" name="goodsNum2daysAgo_progressBar">
+      <Properties>
+        <Property name="value" type="int" value="65"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JProgressBar" name="goodsNum1dayAgo_progressBar">
+      <Properties>
+        <Property name="value" type="int" value="45"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JProgressBar" name="goodsNumToday_progressBar">
+      <Properties>
+        <Property name="value" type="int" value="50"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="dateToday_label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="10/30"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="date1dayAgo_label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="10/29"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="date2daysAgo_label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="10/28"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="date3daysAgo_label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="10/27"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JButton" name="newGoodsbtn2">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x65b0;&#x8ba2;&#x5355;"/>
@@ -204,78 +262,20 @@
         <Property name="value" type="int" value="50"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JProgressBar" name="goodsNum5daysAgo_progressBar">
-      <Properties>
-        <Property name="value" type="int" value="70"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JProgressBar" name="goodsNum4daysAgo_progressBar">
-      <Properties>
-        <Property name="value" type="int" value="15"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JProgressBar" name="goodsNum3daysAgo_progressBar">
-      <Properties>
-        <Property name="value" type="int" value="95"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JProgressBar" name="goodsNum2daysAgo_progressBar">
-      <Properties>
-        <Property name="value" type="int" value="65"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JProgressBar" name="goodsNum1dayAgo_progressBar">
-      <Properties>
-        <Property name="value" type="int" value="45"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JProgressBar" name="goodsNumToday_progressBar">
-      <Properties>
-        <Property name="value" type="int" value="50"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="dateToday_label">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="10/30"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="date1dayAgo_label">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="10/29"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="date2daysAgo_label">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="10/28"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="date3daysAgo_label">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="10/27"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="date4daysAgo_label">
       <Properties>
         <Property name="text" type="java.lang.String" value="10/26"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JProgressBar" name="goodsNum5daysAgo_progressBar">
+      <Properties>
+        <Property name="value" type="int" value="70"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="date5daysAgo_label">
       <Properties>
         <Property name="text" type="java.lang.String" value="10/25"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="date6daysAgo_label">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="10/24"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="signedGoodsbtn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x5df2;&#x7b7e;&#x6536;"/>
-      </Properties>
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="signedGoodsbtnMouseClicked"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

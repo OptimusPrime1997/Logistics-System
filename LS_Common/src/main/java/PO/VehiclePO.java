@@ -6,12 +6,12 @@ public class VehiclePO implements Serializable,Comparable<VehiclePO>{
 	public final static long serialVersionUID=1L;
 	private String vehicleNum;
 	private String licenseNum;
-	private String attendTime;
-	public VehiclePO(String vehicleNum,String licenseNum,String attendTime) {
+	private String startTime;
+	public VehiclePO(String vehicleNum,String licenseNum,String starTime) {
 		// TODO Auto-generated constructor stub
 		this.vehicleNum=vehicleNum;
 		this.licenseNum=licenseNum;
-		this.attendTime=attendTime;
+		this.startTime=(starTime);
 		
 	}
 	public String getVehicleNum() {
@@ -26,15 +26,16 @@ public String getLicenseNum() {
 public void setLicenseNum(String licenseNum) {
 	this.licenseNum = licenseNum;
 }
-public String getAttendTime() {
-	return attendTime;
-}
-public void setAttendTime(String attendTime) {
-	this.attendTime = attendTime;
-}
+
 @Override
 public int compareTo(VehiclePO o) {
 	// TODO Auto-generated method stub
 	return vehicleNum.compareTo(o.getVehicleNum());
+}
+public String getStartTime() {
+	return startTime;
+}
+public void setStartTime(String startTime) {
+	this.startTime = startTime;
 }
 }

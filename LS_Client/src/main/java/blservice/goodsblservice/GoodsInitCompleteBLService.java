@@ -1,5 +1,6 @@
 package blservice.goodsblservice;
 
+import Exception.ExistException;
 import VO.GoodsVO;
 
 public interface GoodsInitCompleteBLService {
@@ -8,6 +9,6 @@ public interface GoodsInitCompleteBLService {
 	 * @param vo
 	 * @return
 	 */
-	public GoodsVO getInitCompleteGoods(GoodsVO vo);
+	public GoodsVO getInitCompleteGoods(GoodsVO vo)throws ExistException;
 
 }

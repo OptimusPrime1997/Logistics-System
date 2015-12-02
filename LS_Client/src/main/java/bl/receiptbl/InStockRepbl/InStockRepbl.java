@@ -8,11 +8,6 @@ import bl.stockbl.StockDivisionbl;
 
 public class InStockRepbl{
 	
-	public InStockRepVO update(String num, String listNum, int area, int loc) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	public int[] getTwoPosition(String destination){
 		StockDivisionbl stock = new StockDivisionbl();
 		stock.getBlock(destination);

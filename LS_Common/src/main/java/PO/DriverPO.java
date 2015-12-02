@@ -20,7 +20,7 @@ public class DriverPO implements Serializable,Comparable<DriverPO>{
 		this.birthDate=birthDate;
 		this.id=id;
 		this.phoneNum=phoneNum;
-		this.sex=sex;
+		this.setSex(sex);
 		this.licensedTime=licensedTime;
 	}
 	public String getDriverNum() {
@@ -53,6 +53,12 @@ public class DriverPO implements Serializable,Comparable<DriverPO>{
 	public void setId(String id) {
 		this.id = id;
 	}
+	public Sex getSex() {
+		return sex;
+	}
+	public void setSex(Sex sex) {
+		this.sex = sex;
+	}
 	public String getLicensedTime() {
 		return licensedTime;
 	}
@@ -64,5 +70,6 @@ public class DriverPO implements Serializable,Comparable<DriverPO>{
 		// TODO Auto-generated method stub
 		return driverNum.compareTo(o.getDriverNum());
 	}
+	
 
 }

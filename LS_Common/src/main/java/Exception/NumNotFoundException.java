@@ -1,6 +1,8 @@
 package Exception;
 
-public class NumNotFoundException extends Exception{
+import java.io.Serializable;
+
+public class NumNotFoundException extends Exception implements Serializable{
 
 	/**
 	 * 

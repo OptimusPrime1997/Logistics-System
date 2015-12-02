@@ -56,7 +56,7 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	public String chooseSaveAdd(Rep rep){
 		switch (rep) {
 		case CashRep:
-			return "/Users/apple/Desktop/Logistics-System/LS_Server/save.txt";
+			return "/Users/apple/Desktop/Logistics-System/LS_Server/submit.txt";
 		case ShipmentRep:
 			return null;
 		case GetRep:
@@ -140,6 +140,14 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	public String createNum(String date, Rep rep) throws ClassNotFoundException, IOException, RemoteException{
 		ArrayList<ReceiptPO> receiptPOs = getRepByDate(date, rep);
 		return receiptPOs.size()+1+"";
+	}
+	
+	public void clearSubmit(Rep rep) throws IOException{
+		util.clear(chooseSubmitAdd(rep));
+	}
+	
+	public void clearSave(Rep rep) throws IOException{
+		util.clear(chooseSaveAdd(rep));
 	}
 	
 	class MyObjectOutputStream extends ObjectOutputStream {

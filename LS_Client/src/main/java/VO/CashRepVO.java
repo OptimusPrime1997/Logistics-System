@@ -2,59 +2,50 @@ package VO;
 
 import java.util.ArrayList;
 
+import PO.CashPO;
 import PO.CashRepPO;
-import PO.GoodsPO;
 import PO.ReceiptPO;
 
 public class CashRepVO extends ReceiptVO {
-	public double money;
-	public String courierNum;
-	public String courierName;
-	public ArrayList<GoodsVO> goods;
-	
-	/**
-	 * 
-	 * @param num
-	 * @param date
-	 * @param money
-	 * @param courierNum
-	 * @param courierName
-	 * @param goods
-	 */
-	public CashRepVO(String num, String date, double money, String courierNum, String courierName,
-			ArrayList<GoodsVO> goods) {
+	public double sum;
+	public ArrayList<CashVO> cashVOs;
+
+	public CashRepVO(String num, String date, ArrayList<CashVO> cashVOs, double sum) {
 		super(num, date);
-		this.money = money;
-		this.courierNum = courierNum;
-		this.courierName = courierName;
-		this.goods = goods;
+		this.cashVOs = cashVOs;
+		this.sum = sum;
+	}
+
+	public ArrayList<CashVO> getCashRepVOs() {
+		return cashVOs;
+	}
+	public double getSum(){
+		return sum;
+	}
+	
+	
+	public static CashRepPO toPO(CashRepVO vo){
+		return new CashRepPO(vo.num, vo.date, CashVO.toArrayPO(vo.cashVOs), vo.sum);
 	}
 	
 	public CashRepVO(CashRepPO po){
 		this.num = po.getNum();
 		this.date = po.getDate();
-		this.money = po.getMoney();
-		this.courierNum = po.getCourierNum();
-		this.courierName = po.getCourierName();
-		this.goods = GoodsVO.toVOArray(po.getGoods());  					
+		this.cashVOs = CashVO.toArrayVO(po.getCashPOs());
+		this.sum = po.getSum();
 	}
 	
-	public static CashRepPO toPO(CashRepVO vo){
-		return new CashRepPO(vo.num, vo.date, vo.money, vo.courierNum, vo.courierName, GoodsVO.toPOArray(vo.goods));
-	}
-	
-	public static ArrayList<CashRepVO> toArrayVO(ArrayList<CashRepPO> cashRepPOs){
+	public static ArrayList<CashRepVO> toArrayVO(ArrayList<ReceiptPO> receiptPOs) {
 		ArrayList<CashRepVO> cashRepVOs = new ArrayList<CashRepVO>();
-		for(CashRepPO cashRepPO : cashRepPOs)
-			cashRepVOs.add(new CashRepVO(cashRepPO));
+		for (ReceiptPO receiptPO : receiptPOs)
+			cashRepVOs.add(new CashRepVO((CashRepPO) receiptPO));
 		return cashRepVOs;
 	}
 	
-	public static ArrayList<CashRepPO> toArrayPO(ArrayList<CashRepVO> cashRepVOs){
+	public static ArrayList<CashRepPO> toArrayPO(ArrayList<CashRepVO> cashRepVOs) {
 		ArrayList<CashRepPO> cashRepPOs = new ArrayList<CashRepPO>();
-		for(CashRepVO cashRepVO : cashRepVOs)
+		for (CashRepVO cashRepVO : cashRepVOs)
 			cashRepPOs.add(CashRepVO.toPO(cashRepVO));
 		return cashRepPOs;
-		
 	}
 }

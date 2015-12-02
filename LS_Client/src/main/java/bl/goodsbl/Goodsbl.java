@@ -1,5 +1,8 @@
 package bl.goodsbl;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -9,7 +12,7 @@ import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsExpressType;
 import util.enumData.GoodsLogisticState;
 import util.enumData.ResultMessage;
-import RMIClient.GoodsClient;
+import Exception.ExistException;
 import VO.GoodsVO;
 import bl.loginbl.Loginbl;
 import bl.managementbl.constbl.Constbl;
@@ -20,7 +23,16 @@ public class Goodsbl {
 	 * ECONOMIC NORMAL EXPRESS 18: 23: 25
 	 */
 	final double[] expressRates = { 18, 23, 25 };
-
+	public static void main(String[] args) {
+		Goodsbl bl=new Goodsbl();
+		GoodsVO vo=new GoodsVO(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 0,0,0,null,GoodsExpressType.ECONOMIC,0,0,0,GoodsArrivalState.BROKEN,GoodsLogisticState.BROKEN_OR_LOST
+				,null,null);
+		try {
+			bl.initComplete(vo);
+		} catch (ExistException e) {
+		System.out.println("已存在");
+		}
+	}
 	/**
 	 * 查物流信息
 	 * @param listNum
@@ -64,18 +76,20 @@ public class Goodsbl {
 	 * @param vo
 	 * @return返回计算过费用的GoodsVO
 	 */
-	public GoodsVO getCalculatedGoods(GoodsVO vo) {
+	public GoodsVO initComplete(GoodsVO vo) throws ExistException{//TODO可能初始化失败！没有反馈给界面
 		Constbl constBL = new Constbl();
+		ResultMessage msg;
 		//TODO the parameter of the findByConstName function is to be modified
 		try {
 			// TODO 计算运费
-			double basicprice = constBL.findByConstName(Const.FARE).priceConst;
-			double distance = constBL.findByConstName(Const.DISTANCE).distanceConst;
+			double basicprice = 0;//constBL.findByConstName(Const.FARE).priceConst;
+			double distance = 0;//constBL.findByConstName(Const.DISTANCE).distanceConst;
 
 			vo.moneyFare = moneyCounter(vo.expressType, vo.weight, distance,
 					basicprice);
 			vo.moneyTotal = vo.moneyFare + vo.moneyOfPackage;
-			getGoodsDataService().add(GoodsVO.toPO(vo));
+		   msg=getGoodsDataService().add(GoodsVO.toPO(vo));
+		   if(msg.equals(ResultMessage.EXIST)) throw new ExistException();
 		} catch (RemoteException e) {
 		}
 		return vo;
@@ -176,11 +190,7 @@ public class Goodsbl {
 		for(int i=0;i<nums.length;i++) nums[i]=-1;
 		String date = CurrentTime.getDate();
 		for (int i = 0; i < numOfDays; i++) {
-			nums[i] = getGoodsByCourier(Loginbl.getCurrentOptorId(), date);
-			if (!date.equals(CurrentTime.minusOneDay(date)))
-				date = CurrentTime.minusOneDay(date);
-			else break;
-
+			nums[i] = getGoodsByCourier(Loginbl.getCurrentOptorId(), CurrentTime.minus(date, i));
 		}
 		return nums;
 	}
@@ -197,16 +207,21 @@ public class Goodsbl {
 		return fare;
 	}
 
-	private GoodsClient client = new GoodsClient();
-
+	/**
+	 * 获得远程数据对象
+	 * @return
+	 */
 	private GoodsDataService getGoodsDataService() {
+		GoodsDataService data=null;
 		try {
-			return client.getGoodsDataService();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+			data = (GoodsDataService)Naming.lookup("goodsServer");
+		} catch (MalformedURLException e) {
 			e.printStackTrace();
-		}
-		return null;
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}return data;
 	}
 	/**
 	 * 
@@ -214,13 +229,12 @@ public class Goodsbl {
 	 * @return返回快递员经手的所有货物的件数（包括收件和派件）
 	 */
 	private int getGoodsByCourier(String courierNum,String date) {
-		ArrayList<GoodsVO> vos = null;
+		int x=0;
 		try {
-			vos = GoodsVO.toVOArray(getGoodsDataService().findbyCourier(
-					courierNum,date));
+			x=getGoodsDataService().findbyCourier(courierNum,date);
 		} catch (RemoteException e) {
 		}
-		return vos.size();
+		return x;
 	}
 
 }

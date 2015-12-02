@@ -36,7 +36,7 @@ public class Receiptbl {
 		int y,m,d;
 		Calendar cal=Calendar.getInstance();   
 		y=cal.get(Calendar.YEAR);   
-		m=cal.get(Calendar.MONTH);   
+		m=cal.get(Calendar.MONTH)+1;   
 		d=cal.get(Calendar.DATE);  
 		return y+"-"+m+"-"+d;
 	}
@@ -67,5 +67,13 @@ public class Receiptbl {
 	
 	public String createNum(String date, Rep rep) throws NotBoundException, ClassNotFoundException, IOException{
 		return getReceiptDataService().createNum(date, rep);
+	}
+	
+	public void clearSubmit(Rep rep) throws RemoteException, MalformedURLException, IOException, NotBoundException{
+		getReceiptDataService().clearSubmit(rep);
+	}
+	
+	public void clearSave(Rep rep) throws RemoteException, MalformedURLException, IOException, NotBoundException{
+		getReceiptDataService().clearSave(rep);
 	}
 }

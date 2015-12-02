@@ -8,11 +8,11 @@ public class BusinessFormPO implements Serializable {
 	private String startTime;
 	private String endTime;
 	private ArrayList<PO.PayRepPO> moneyOutRecord;
-	private ArrayList<PO.CashRepPO> moneyInRecord;
+	private ArrayList<PO.CashPO> moneyInRecord;
 	
 	public BusinessFormPO(String startTime, String endTime,
 			ArrayList<PO.PayRepPO> moneyOutRecord,
-			ArrayList<PO.CashRepPO> moneyInRecord) {
+			ArrayList<PO.CashPO> moneyInRecord) {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.moneyOutRecord = moneyOutRecord;
@@ -31,7 +31,7 @@ public class BusinessFormPO implements Serializable {
 		return moneyOutRecord;
 	}
 
-	public ArrayList<PO.CashRepPO> getMoneyInRecord() {
+	public ArrayList<PO.CashPO> getMoneyInRecord() {
 		return moneyInRecord;
 	}
 	
