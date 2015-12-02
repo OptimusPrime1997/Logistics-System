@@ -5,11 +5,15 @@
  */
 package ui.mainFrame;
 
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.goodsblservice.GoodsCheckBLService;
+
 /**
  *
  * @author Administrator
  */
 public class MainFrame extends javax.swing.JFrame {
+	GoodsCheckBLService controller = ControllerFactoryImpl.getInstance().getGoodsCheckController();
 
     /**
      * Creates new form MainFrame

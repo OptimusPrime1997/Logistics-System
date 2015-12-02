@@ -12,6 +12,7 @@ import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsExpressType;
 import util.enumData.GoodsLogisticState;
 import util.enumData.ResultMessage;
+import Exception.ExistException;
 import VO.GoodsVO;
 import bl.loginbl.Loginbl;
 import bl.managementbl.constbl.Constbl;
@@ -22,6 +23,16 @@ public class Goodsbl {
 	 * ECONOMIC NORMAL EXPRESS 18: 23: 25
 	 */
 	final double[] expressRates = { 18, 23, 25 };
+	public static void main(String[] args) {
+		Goodsbl bl=new Goodsbl();
+		GoodsVO vo=new GoodsVO(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 0,0,0,null,GoodsExpressType.ECONOMIC,0,0,0,GoodsArrivalState.BROKEN,GoodsLogisticState.BROKEN_OR_LOST
+				,null,null);
+		try {
+			bl.initComplete(vo);
+		} catch (ExistException e) {
+		System.out.println("已存在");
+		}
+	}
 	/**
 	 * 查物流信息
 	 * @param listNum
@@ -65,18 +76,20 @@ public class Goodsbl {
 	 * @param vo
 	 * @return返回计算过费用的GoodsVO
 	 */
-	public GoodsVO getCalculatedGoods(GoodsVO vo) {
+	public GoodsVO initComplete(GoodsVO vo) throws ExistException{//TODO可能初始化失败！没有反馈给界面
 		Constbl constBL = new Constbl();
+		ResultMessage msg;
 		//TODO the parameter of the findByConstName function is to be modified
 		try {
 			// TODO 计算运费
-			double basicprice = constBL.findByConstName(Const.FARE).priceConst;
-			double distance = constBL.findByConstName(Const.DISTANCE).distanceConst;
+			double basicprice = 0;//constBL.findByConstName(Const.FARE).priceConst;
+			double distance = 0;//constBL.findByConstName(Const.DISTANCE).distanceConst;
 
 			vo.moneyFare = moneyCounter(vo.expressType, vo.weight, distance,
 					basicprice);
 			vo.moneyTotal = vo.moneyFare + vo.moneyOfPackage;
-			getGoodsDataService().add(GoodsVO.toPO(vo));
+		   msg=getGoodsDataService().add(GoodsVO.toPO(vo));
+		   if(msg.equals(ResultMessage.EXIST)) throw new ExistException();
 		} catch (RemoteException e) {
 		}
 		return vo;
