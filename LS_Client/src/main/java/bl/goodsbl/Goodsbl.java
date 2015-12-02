@@ -6,6 +6,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import org.omg.CosNaming.NamingContextPackage.NotFound;
+
 import util.CurrentTime;
 import util.enumData.Const;
 import util.enumData.GoodsArrivalState;
@@ -13,6 +15,7 @@ import util.enumData.GoodsExpressType;
 import util.enumData.GoodsLogisticState;
 import util.enumData.ResultMessage;
 import Exception.ExistException;
+import Exception.GoodsNotFound;
 import VO.GoodsVO;
 import bl.loginbl.Loginbl;
 import bl.managementbl.constbl.Constbl;
@@ -38,7 +41,7 @@ public class Goodsbl {
 	 * @param listNum
 	 * @return
 	 */
-	public GoodsVO check(String listNum) {
+	public GoodsVO check(String listNum) throws GoodsNotFound{
 		GoodsVO vo = null;
 		try {
 			vo = new GoodsVO(getGoodsDataService().findbygoods(listNum));
@@ -130,6 +133,8 @@ public class Goodsbl {
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;
+		}catch(GoodsNotFound e1){
+			return ResultMessage.NOT_FOUND;
 		}
 	}
 	/**
@@ -146,6 +151,8 @@ public class Goodsbl {
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;
+		}catch(GoodsNotFound e1){
+			return ResultMessage.NOT_FOUND;
 		}
 	}
 	/**
@@ -161,6 +168,8 @@ public class Goodsbl {
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;
+		}catch(GoodsNotFound e1){
+			return ResultMessage.NOT_FOUND;
 		}
 	}
 	/**
@@ -172,12 +181,15 @@ public class Goodsbl {
 	 */
 	public ResultMessage end(String listNum, String realReceiverName,String realReceiverPhone) {
 		try {
+			System.out.println("Goodsbl.end "+listNum);
 			GoodsVO vo = check(listNum);
 			vo.realReceiverName = realReceiverName;
 			vo.realReceiverPhone = realReceiverPhone;
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;
+		}catch(GoodsNotFound e1){
+			return ResultMessage.NOT_FOUND;
 		}
 	}
 	/**

@@ -15,51 +15,81 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	DataUtility helper = new DataUtility();	
 	@Override
 	public ResultMessage add(GoodsPO po) throws RemoteException {
-
-		System.out.println("goodsdata.add");
 		ArrayList<Object> all;
-		System.out.println("试图添加");
-		
 			GoodsPO temp;
 		    try {
 				all=helper.getAll(filename);
-				System.out.println(all.size());
 			    for(Object o:all){
 			    	temp=(GoodsPO)o;
 			    	//该订单号已存在  则添加失败
 			    	if(temp.getListNum().equals(po.getListNum())){
 			    		return ResultMessage.EXIST;
 			    	}
-			    	System.out.println("inloop");
 			    }
 			    System.out.println("已添加");
 			    return helper.save(po, filename);
 			} catch (ClassNotFoundException | IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		    
-		
 		return ResultMessage.FAILED;
 	}
 	@Override
 	public ResultMessage modify(GoodsPO po) throws RemoteException {
-		return null;
-		// TODO Auto-generated method stub
-		
+		ArrayList<Object> all;
+		GoodsPO temp;
+	    try {
+			all=helper.getAll(filename);
+		    for(int i=0;i<all.size();i++){
+		    	temp=(GoodsPO)all.get(i);
+		    	if(temp.getListNum().equals(po.getListNum())){
+		    		all.remove(i);
+		    		break;
+		    	}
+		    }
+		    all.add(po);
+		    helper.SaveAll(all, filename);
+		    return ResultMessage.SUCCESS;
+	    }catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAILED;
 	}
-
 	@Override
 	public ResultMessage delete(GoodsPO po) throws RemoteException {
-		return null;
-		// TODO Auto-generated method stub
-		
+		ArrayList<Object> all;
+		GoodsPO temp;
+	    try {
+			all=helper.getAll(filename);
+		    for(int i=0;i<all.size();i++){
+		    	temp=(GoodsPO)all.get(i);
+		    	if(temp.getListNum().equals(po.getListNum())){
+		    		all.remove(i);
+		    		break;
+		    	}
+		    }
+		    helper.SaveAll(all, filename);
+		    return ResultMessage.SUCCESS;
+	    }catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAILED;
 	}
 
 	@Override
 	public ArrayList<GoodsPO> show() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Object> all;
+		ArrayList<GoodsPO> pos=new ArrayList<GoodsPO>();
+		GoodsPO temp;
+			try {
+				all=helper.getAll(filename);
+				for(Object o:all){
+					temp=(GoodsPO)o;
+					pos.add(temp);
+				}
+			} catch (ClassNotFoundException | IOException e) {
+				e.printStackTrace();
+			}
+		return pos;
 	}
 
 	@Override
@@ -77,6 +107,7 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 			}
 		} catch (ClassNotFoundException | IOException e) {
 		}
+		System.out.println("我在找~~");
 		return po;
 	}
 
@@ -94,7 +125,7 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	//TODO
 	}
 	public  GoodsData() throws RemoteException {
-		super();
+		super();//TODO
 	}
 	private static final long serialVersionUID = 1L;
 

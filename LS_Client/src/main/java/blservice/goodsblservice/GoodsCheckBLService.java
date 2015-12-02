@@ -1,5 +1,6 @@
 package blservice.goodsblservice;
 
+import Exception.GoodsNotFound;
 import VO.GoodsVO;
 
 public interface GoodsCheckBLService {
@@ -8,5 +9,5 @@ public interface GoodsCheckBLService {
 	 * @param listNum
 	 * @return
 	 */
-	public GoodsVO check(String listNum);
+	public GoodsVO check(String listNum)throws GoodsNotFound;
 }
