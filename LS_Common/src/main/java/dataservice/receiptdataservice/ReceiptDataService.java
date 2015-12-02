@@ -26,4 +26,8 @@ public interface ReceiptDataService extends Remote,Serializable{
 	public void delete(String num, Rep rep) throws ClassNotFoundException, IOException, RemoteException;
 	
 	public String createNum(String date, Rep rep) throws ClassNotFoundException, IOException, RemoteException;
+	
+	public void clearSubmit(Rep rep) throws IOException;
+	
+	public void clearSave(Rep rep) throws IOException;
 }

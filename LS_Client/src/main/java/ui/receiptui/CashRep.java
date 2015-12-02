@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 import VO.CashRepVO;
+import VO.CashVO;
 import VO.GoodsVO;
 import bl.receiptbl.CashRepbl.CashRepController;
 import blservice.receiptblservice.CashRepblService;
@@ -54,13 +55,9 @@ public class CashRep extends javax.swing.JPanel {
     private javax.swing.JTextField sumText;
     private javax.swing.JTextField resultMsgText;
     private CashRepblService control;
-    private ArrayList<GoodsVO> arrGoods;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
-    private double moneysum = 0;
-    private String courierName;
-    private String courierNum;
  // End of variables declaration//GEN-END:variables
     
     public CashRep() {
@@ -95,7 +92,6 @@ public class CashRep extends javax.swing.JPanel {
         courierButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
         control = new CashRepController();
-        arrGoods = new ArrayList<GoodsVO>();
         model = new DefaultTableModel();
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
@@ -140,26 +136,34 @@ public class CashRep extends javax.swing.JPanel {
         columnIdentifiers.add("金额");
         columnIdentifiers.add("备注");
         
-        try {
-			numText.setText(control.createNum(dateText.getText()));
-		} catch (ClassNotFoundException | NotBoundException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			resultMsgText.setText(ExceptionPrint.print(e));
-		}
-
-		dateText.setText(control.getDate());
-
-        Vector<Object> dataVector;
+//        try {
+//			numText.setText(control.createNum(dateText.getText()));
+//		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+//			e.printStackTrace();
+//			resultMsgText.setText(ExceptionPrint.print(e));
+//		}
+        
+        dateText.setText(control.getDate());
+        
+        numText.setText(officeText.getText()+dateText.getText()+"00000");
+        
 		try {
 			dataVector = control.initTable(dateText.getText());
 			model.setDataVector(dataVector, columnIdentifiers);
 	        jTable.setModel(model);
 		} catch (NotBoundException | ClassNotFoundException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
+        
+//        Vector<Object> arr = new Vector<Object>();
+//        arr.add("bismuth");
+//        arr.add("141250068");
+//        arr.add(15);
+//        arr.add(null);
+//        dataVector.add(arr);
+//        model.setDataVector(dataVector, columnIdentifiers);
+//        jTable.setModel(model);
         
 //        jTable.setModel(new javax.swing.table.DefaultTableModel(  //这里要读data
 //            tableShow, new Object [] {"快递员名字", "快递员编号", "金额", "备注"}) 
@@ -216,7 +220,7 @@ public class CashRep extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(dateLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,12 +252,16 @@ public class CashRep extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateLabel)
-                    .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(officeLabel))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dateLabel)
+                            .addComponent(officeLabel)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numLabel)
@@ -280,7 +288,6 @@ public class CashRep extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE))
         );
-        
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -288,7 +295,7 @@ public class CashRep extends javax.swing.JPanel {
      * @param evt
      */
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {
-    	
+
     }
 
     /**
@@ -298,13 +305,16 @@ public class CashRep extends javax.swing.JPanel {
     private void okMouseClicked(java.awt.event.MouseEvent evt) {
 		String num = numText.getText();
 		String date = dateText.getText();
-		double money = Double.parseDouble(sumText.getText());
-		String courierNum = courierNumText.getText();
-		CashRepVO vo = new CashRepVO(num, date, money, courierNum, courierName, arrGoods);
+		double sum = Double.parseDouble(sumText.getText());
+		ArrayList<CashVO> cashVOs = new ArrayList<CashVO>();
+		for(int i = 0;i<dataVector.size();i++){
+			CashVO vo = new CashVO((double)jTable.getValueAt(i, 2), (String)jTable.getValueAt(i, 1), (String)jTable.getValueAt(i, 0), (String)jTable.getValueAt(i, 3));
+			cashVOs.add(vo);
+		}
+		CashRepVO cashRepVO = new CashRepVO(num, date, cashVOs, sum);
 		try {
-			control.submit(vo);
+			control.submit(cashRepVO);
 		} catch (NotBoundException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
@@ -315,28 +325,41 @@ public class CashRep extends javax.swing.JPanel {
      * @param evt
      */
     private void courierButtonMouseClicked(java.awt.event.MouseEvent evt) {
-    	courierNum = courierNumText.getText();
-    	try {
-			courierName = control.getCourierName(courierNum);
-		} catch (NameNotFoundException | RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			resultMsgText.setText(ExceptionPrint.print(e));
-		} 
-    	arrGoods = control.getGoods(courierNum, dateText.getText());
-    	moneysum = control.getMoneySum(arrGoods);
+//    	String courierNum = courierNumText.getText();
+//    	String courierName = null;
+//    	double money;
+//    	try {
+//			courierName = control.getCourierName(courierNum);
+//		} catch (NameNotFoundException | RemoteException e) {
+//			e.printStackTrace();
+//			resultMsgText.setText(ExceptionPrint.print(e));
+//		} 
+//    	ArrayList<GoodsVO> arrGoods = control.getGoods(courierNum, dateText.getText());
+//    	money = control.getMoneySum(arrGoods);
+//    	Vector<Object> arr = new Vector<Object>();
+//    	arr.add(courierName);
+//    	arr.add(courierNum);
+//    	arr.add(money);
+//    	arr.add(null);
+//    	dataVector.add(arr);
+//    	model.setDataVector(dataVector, columnIdentifiers);
+    	
+    	String courierNum = courierNumText.getText();
+    	String courierName = "bismuth";
+    	double money = 3;
     	Vector<Object> arr = new Vector<Object>();
     	arr.add(courierName);
     	arr.add(courierNum);
-    	arr.add(moneysum);
+    	arr.add(money);
     	arr.add(null);
     	dataVector.add(arr);
     	model.setDataVector(dataVector, columnIdentifiers);
+    	
     }
     
     public static void main (String[] args){
     	JFrame myFrame = new JFrame();
-    	myFrame.setSize(467,600);
+    	myFrame.setSize(467,635);
     	myFrame.add(new CashRep());
     	myFrame.setVisible(true);
     }

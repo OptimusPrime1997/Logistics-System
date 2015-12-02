@@ -6,6 +6,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import VO.CashVO;
 import VO.CashRepVO;
 import VO.GoodsVO;
 import VO.ReceiptVO;
@@ -41,7 +42,7 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	}
 	
 	@Override
-	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
+	public void submit(ReceiptVO vo) throws NotBoundException, IOException{
 		// TODO Auto-generated method stub
 		cashRepbl.submit(vo);
 	}

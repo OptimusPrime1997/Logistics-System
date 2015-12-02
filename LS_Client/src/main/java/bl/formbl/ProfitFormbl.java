@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import util.CurrentTime;
 import util.enumData.ResultMessage;
 import RMIClient.FormClient;
-import VO.CashRepVO;
+import VO.CashVO;
 import VO.PayRepVO;
 import VO.ProfitFormVO;
 import bl.receiptbl.CashRepbl.CashRepbl;
@@ -25,7 +25,7 @@ public class ProfitFormbl {
 		PayRepbl payRep=new PayRepbl();
 		CashRepbl cashRep=new CashRepbl();
 		ArrayList<PayRepVO> moneyOut = payRep.getAllRep();
-		ArrayList<CashRepVO> moneyIn = cashRep.getAllRep();
+		ArrayList<CashVO> moneyIn = cashRep.getAllRep();
 		for(int i=0;i<moneyIn.size();i++){
 			totalIn+=moneyIn.get(i).money;
 		}

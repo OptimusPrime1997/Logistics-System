@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import util.enumData.ResultMessage;
 import RMIClient.FormClient;
 import VO.BusinessFormVO;
-import VO.CashRepVO;
+import VO.CashVO;
 import VO.PayRepVO;
 import bl.receiptbl.CashRepbl.CashRepbl;
 import bl.receiptbl.PayRepbl.PayRepbl;
@@ -21,7 +21,7 @@ public class BusinessFormbl {
 		CashRepbl cashRep=new CashRepbl();
 		//TODO 改成  返回部分付款单，收款单的方法~
 		ArrayList<PayRepVO> moneyOut = payRep.getAllRep();
-		ArrayList<CashRepVO> moneyIn = cashRep.getAllRep();
+		ArrayList<CashVO> moneyIn = cashRep.getAllRep();
 		BusinessFormVO vo =new BusinessFormVO(startTime, endTime, moneyOut, moneyIn);
 		return vo;
 	}

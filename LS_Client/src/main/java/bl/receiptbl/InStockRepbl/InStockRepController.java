@@ -5,7 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import VO.CashRepVO;
+import VO.CashVO;
 import VO.InStockRepVO;
 import VO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
