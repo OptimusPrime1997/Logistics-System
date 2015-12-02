@@ -59,12 +59,6 @@ public class InStockRepController extends ReceiptblController implements InStock
 	}
 
 	@Override
-	public InStockRepVO update(String num, String listNum, int area, int loc) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public int[] getTwoPosition(String destination) {
 		// TODO Auto-generated method stub
 		return null;
