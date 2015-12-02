@@ -7,7 +7,7 @@ package ui.warehousemanui;
 
 import java.awt.*;
 
-import javax.swing.JButton;
+import javax.swing.*;
 
 import ui.mainFrame.MainFrame;
 import ui.receiptui.InStockRep;
@@ -75,8 +75,9 @@ public class WarehousePanel extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        jButton7 = new JButton();
         back = new JButton();
+  
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -407,11 +408,13 @@ public class WarehousePanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JProgressBar jProgressBar2;
-    private javax.swing.JProgressBar jProgressBar3;
-    private javax.swing.JProgressBar jProgressBar4;
-    private javax.swing.JProgressBar jProgressBar5;
-    private javax.swing.JProgressBar jProgressBar6;
-    private javax.swing.JProgressBar jProgressBar7;
-    private javax.swing.JProgressBar jProgressBar8;
+    private JProgressBar jProgressBar3;
+    private JProgressBar jProgressBar4;
+    private JProgressBar jProgressBar5;
+    private JProgressBar jProgressBar6;
+    private JProgressBar jProgressBar7;
+    private JProgressBar jProgressBar8;
+ 
+
     // End of variables declaration//GEN-END:variables
 }

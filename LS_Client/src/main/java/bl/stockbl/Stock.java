@@ -12,8 +12,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
 import dataservice.stockdataservice.StockDataService;
+import bl.receiptbl.InStockRepbl.InStockRepController;
 import bl.receiptbl.InStockRepbl.InStockRepbl;
+import bl.receiptbl.OutStockRepbl.OutStockRepController;
 import bl.receiptbl.OutStockRepbl.OutStockRepbl;
 import PO.StockPO;
 import VO.InStockRepVO;
@@ -30,15 +33,6 @@ public class Stock {
 	StockNum sn = new StockNum();
 	private ArrayList<StockVO> result;
 	
-	public InStockRepVO toWriteInStockRep() {
-		//TODO
-		return null;
-	}
-	
-	public OutStockRepVO toWriteOutStockRep() {
-		//TODO
-		return null;
-	}
 
 	
 	/**
@@ -51,8 +45,10 @@ public class Stock {
 	 */
 	public String checkStock(String startMonth, String startDay,
 			String endMonth, String endDay) {
-		InStockRepbl instockrep = new InStockRepbl();
-		OutStockRepbl outstockrep = new OutStockRepbl();
+		
+		InStockRepController in = new InStockRepController();
+		OutStockRepController out = new OutStockRepController();
+	
 		
 		ArrayList<InStockRepVO> instockreps = new ArrayList<InStockRepVO>();
 		ArrayList<OutStockRepVO> outstockreps = new ArrayList<OutStockRepVO>();
@@ -66,8 +62,7 @@ public class Stock {
             Date dateTwo = dateFormat.parse(endMonth+"-"+endDay);
              
             Calendar calendar = Calendar.getInstance();
-             
-            System.out.println(checkDateValid(dateOne,dateTwo));
+   
             if(!checkDateValid(dateOne,dateTwo)){
     			return null;
     		}
@@ -76,8 +71,8 @@ public class Stock {
              
             while(calendar.getTime().compareTo(dateTwo)<=0){               
             	
-                instockreps.addAll(instockrep.getRepBydate(dateFormat.format(calendar.getTime())));
-                outstockreps.addAll(outstockrep.getRepBydate(dateFormat.format(calendar.getTime())));
+                instockreps.addAll(in.getRepBydate(dateFormat.format(calendar.getTime())));
+                outstockreps.addAll(out.getRepBydate(dateFormat.format(calendar.getTime())));
                 
                 calendar.add(Calendar.DAY_OF_MONTH, 1);               
             }
@@ -95,12 +90,7 @@ public class Stock {
 		return instocknum+" "+outstocknum;
 	}
 
-	public static void main(String[] args) {
-		Stock s =new Stock();
-		s.checkStock(2+"", 20+"", 2+"", 20+"");
-	}
-	
-	
+
 	
 	
 	
