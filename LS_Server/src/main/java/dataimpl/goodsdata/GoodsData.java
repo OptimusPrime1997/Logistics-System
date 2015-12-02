@@ -1,13 +1,24 @@
 package dataimpl.goodsdata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
 import PO.GoodsPO;
 import dataservice.goodsdataservice.GoodsDataService;
 
-public class GoodsData implements GoodsDataService{
+public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
+
+	public  GoodsData() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	public ResultMessage add(GoodsPO po) throws RemoteException {
@@ -53,7 +64,7 @@ public class GoodsData implements GoodsDataService{
 	@Override
 	public int findbyCourier(String CourierNum,String date)
 			throws RemoteException {
-		// TODO Auto-generated method stub
+		System.out.println("Server.GoodsData");
 		return 0;
 	}
 

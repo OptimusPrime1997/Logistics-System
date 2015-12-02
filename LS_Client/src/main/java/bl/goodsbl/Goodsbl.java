@@ -1,5 +1,8 @@
 package bl.goodsbl;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -14,13 +17,13 @@ import VO.GoodsVO;
 import bl.loginbl.Loginbl;
 import bl.managementbl.constbl.Constbl;
 import dataservice.goodsdataservice.GoodsDataService;
+import dataservice.stockdataservice.StockInitialDataService;
 
 public class Goodsbl {
 	/*
 	 * ECONOMIC NORMAL EXPRESS 18: 23: 25
 	 */
 	final double[] expressRates = { 18, 23, 25 };
-
 	/**
 	 * 查物流信息
 	 * @param listNum
@@ -193,16 +196,21 @@ public class Goodsbl {
 		return fare;
 	}
 
-	private GoodsClient client = new GoodsClient();
-
+	/**
+	 * 获得远程数据对象
+	 * @return
+	 */
 	private GoodsDataService getGoodsDataService() {
+		GoodsDataService data=null;
 		try {
-			return client.getGoodsDataService();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+			data = (GoodsDataService)Naming.lookup("goodsServer");
+		} catch (MalformedURLException e) {
 			e.printStackTrace();
-		}
-		return null;
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}return data;
 	}
 	/**
 	 * 
