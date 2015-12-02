@@ -80,7 +80,7 @@ public class InitialStockNumPanel extends javax.swing.JFrame{
 
         jLabel1.setText("本仓库初始的库存数量：");
 
-        jTextField1.setText("jTextField1");
+        jTextField1.setText("初始库存数量");
 
         jButton1.setText("确定");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
