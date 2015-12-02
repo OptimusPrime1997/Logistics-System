@@ -54,14 +54,18 @@ public class courier_signed extends javax.swing.JFrame {
         listNum=goodsNum_text.getText();
         getterName=getterName_text.getText();
         getterPhone=getterPhone_text.getText();
+        System.out.println(listNum+"  "+getterName+"  "+getterPhone);
+        
         msg_check=controller_check.checkListNum(listNum);
+        System.out.println(msg_check);
         if(msg_check==ResultMessage.VALID){
         	msg=controller_end.end(listNum, getterName, getterPhone);
             if(msg==ResultMessage.NOT_FOUND){
             	System.out.println("订单不存在");
             	createDialog(msg);            	
             }	
-        }else{
+        }else if(getterName==null) createDialog(ResultMessage.NOT_COMPLETED);
+        else{
         	createDialog(msg_check);
         }
         

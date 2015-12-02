@@ -183,6 +183,7 @@ public class Goodsbl {
 			GoodsVO vo = findByListNum(listNum);
 			vo.realReceiverName = realReceiverName;
 			vo.realReceiverPhone = realReceiverPhone;
+			System.out.println("Goodsbl.end");
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;
@@ -210,8 +211,8 @@ public class Goodsbl {
 		else if(listNum.length()!=10) return ResultMessage.REPNUM_LENGTH_WRONG;
 		else {
 			for(int i=0;i<listNum.length();i++){
-				if(listNum.charAt(i)>9||listNum.charAt(i)<0){
-					//TODO
+				if(listNum.charAt(i)>'9'||listNum.charAt(i)<'0'){
+					return ResultMessage.UNVALID_CHAR;//即订单号中出现非数字
 				}
 			}
 		}
