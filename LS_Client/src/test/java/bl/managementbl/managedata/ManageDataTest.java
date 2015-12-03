@@ -8,7 +8,7 @@ public class ManageDataTest {
 
 	@Test
 	public void testAccountbl() {
-		
+		assertEquals(0, 0);
 	}
 
 }

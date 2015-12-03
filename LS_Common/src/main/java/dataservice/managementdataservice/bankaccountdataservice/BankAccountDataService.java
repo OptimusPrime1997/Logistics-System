@@ -2,6 +2,7 @@ package dataservice.managementdataservice.bankaccountdataservice;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ import util.enumData.ResultMessage;
 import Exception.NumNotFoundException;
 import PO.BankAccountPO;
 
-public interface BankAccountDataService {
+public interface BankAccountDataService extends Remote{
 	public ResultMessage insert(BankAccountPO po) throws RemoteException, IOException;
 
 	public ResultMessage update(BankAccountPO po) throws RemoteException, ClassNotFoundException, IOException;

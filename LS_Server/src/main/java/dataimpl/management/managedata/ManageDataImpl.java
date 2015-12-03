@@ -19,12 +19,12 @@ import dataservice.managementdataservice.salarypolicydataservice.SalaryPolicyDat
 import dataservice.managementdataservice.vehicleanddriverdataservice.DriverDataService;
 import dataservice.managementdataservice.vehicleanddriverdataservice.VehicleDataService;
 
-public class ManageData extends UnicastRemoteObject implements
+public class ManageDataImpl extends UnicastRemoteObject implements
 		ManageDataService {
 
 	private static final long serialVersionUID = 1L;
 
-	private static ManageData manageData;
+	private static ManageDataImpl manageData;
 	private static AccountData accountData;
 	private static BankAccountData bankAccountData;
 	private static ConstData constData;
@@ -33,16 +33,17 @@ public class ManageData extends UnicastRemoteObject implements
 	private static VehicleData vehicleData;
 	private static DriverData driverData;
 
-	public ManageData() throws RemoteException {
+	public ManageDataImpl() throws RemoteException {
 		super();
 	}
 
-	public static ManageData getInstance() {
+	public static ManageDataImpl getInstance() {
 		if (manageData == null) {
 			try {
-				manageData = new ManageData();
+				manageData = new ManageDataImpl();
 			} catch (RemoteException e) {
 				e.printStackTrace();
+				System.out.println("Server ManageData实例化错误");
 			}
 		}
 		return manageData;
@@ -50,10 +51,9 @@ public class ManageData extends UnicastRemoteObject implements
 
 	@Override
 	public AccountDataService getAccountData() throws RemoteException {
-		// TODO Auto-generated method stub
 		if (accountData == null)
 			accountData = new AccountData();
-		return accountData;
+		return new AccountData();
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class ManageData extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		if (bankAccountData == null)
 			bankAccountData = new BankAccountData();
-		return bankAccountData;
+		return new BankAccountData();
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class ManageData extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		if (constData == null)
 			constData = new ConstData();
-		return constData;
+		return new ConstData();
 	}
 
 	@Override
@@ -77,7 +77,7 @@ public class ManageData extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		if (institutionData == null)
 			institutionData = new InstitutionData();
-		return institutionData;
+		return new InstitutionData();
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class ManageData extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		if (salaryPolicyData == null)
 			salaryPolicyData = new SalaryPolicyData();
-		return salaryPolicyData;
+		return new SalaryPolicyData();
 	}
 
 	@Override
@@ -93,7 +93,7 @@ public class ManageData extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		if (vehicleData == null)
 			vehicleData = new VehicleData();
-		return vehicleData;
+		return new VehicleData();
 	}
 
 	@Override
@@ -101,6 +101,7 @@ public class ManageData extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		if (driverData == null)
 			driverData = new DriverData();
-		return driverData;
+		return new DriverData();
 	}
+
 }
