@@ -5,17 +5,23 @@ import java.util.ArrayList;
 import util.enumData.*;
 
 public class OutStockRepPO extends ReceiptPO{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5689053868789772870L;
+	
 	private place place;
 	private ShipForm form;
-	private String carNum;
+	private Rep rep;
 	private String shipNum;
 	private ArrayList<String> goods;
-	public OutStockRepPO(String num, String date, place place, ShipForm form, String carNum, String shipNum,
+	public OutStockRepPO(String num, String date, util.enumData.place place, ShipForm form, Rep rep, String shipNum,
 			ArrayList<String> goods) {
 		super(num, date);
 		this.place = place;
 		this.form = form;
-		this.carNum = carNum;
+		this.rep = rep;
 		this.shipNum = shipNum;
 		this.goods = goods;
 	}
@@ -25,8 +31,8 @@ public class OutStockRepPO extends ReceiptPO{
 	public ShipForm getForm() {
 		return form;
 	}
-	public String getCarNum() {
-		return carNum;
+	public Rep getRep() {
+		return rep;
 	}
 	public String getShipNum() {
 		return shipNum;
@@ -34,6 +40,5 @@ public class OutStockRepPO extends ReceiptPO{
 	public ArrayList<String> getGoods() {
 		return goods;
 	}
-	
 	
 }
