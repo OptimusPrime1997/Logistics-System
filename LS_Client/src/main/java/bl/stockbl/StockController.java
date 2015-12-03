@@ -3,9 +3,13 @@
  */
 package bl.stockbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
+import PO.ReceiptPO.InStockRepPO;
 import VO.StockDivisionVO;
 import VO.StockVO;
 import VO.ReceiptVO.InStockRepVO;
@@ -27,7 +31,40 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 	
 
 	
-	public boolean isPlaceAvailable(int block, int place) {
+	public boolean isExist(int block, int place) throws MalformedURLException, RemoteException, NotBoundException{
+		return division.isExist(block, place);
+		
+	}
+	
+	public ArrayList<Integer> getOverBlock(InStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException{
+		return division.getOverBlock(vo);
+	}
+	
+	public ResultMessage update(InStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException{
+		ResultMessage instock = stock.update(vo);
+		ResultMessage indivision = division.update(vo);
+		
+		if(indivision.equals(ResultMessage.SUCCESS)&&instock.equals(ResultMessage.SUCCESS)) {
+			return ResultMessage.SUCCESS;
+		}else {
+			return ResultMessage.LINK_FAILURE;
+		}
+	}
+	
+	
+	public ResultMessage update(OutStockRepVO vo){
+		ResultMessage outstock = stock.update(vo);
+		ResultMessage outdivision = division.update(vo);
+		
+		if(outdivision.equals(ResultMessage.SUCCESS)&&outstock.equals(ResultMessage.SUCCESS)) {
+			return ResultMessage.SUCCESS;
+		}else {
+			return ResultMessage.LINK_FAILURE;
+		}
+	}
+	
+	
+	public boolean isPlaceAvailable(int block, int place) throws MalformedURLException, RemoteException, NotBoundException {
 		return division.isPlaceAvailable(block, place);
 	}
 	

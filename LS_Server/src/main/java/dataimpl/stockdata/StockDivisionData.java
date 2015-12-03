@@ -7,6 +7,8 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import javax.naming.spi.DirStateFactory.Result;
+
 import util.enumData.ResultMessage;
 import PO.StockDivisionPO;
 import PO.ReceiptPO.InStockRepPO;
@@ -42,14 +44,14 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 
 	
 	@Override
-	public void update(InStockRepPO po) throws RemoteException {
+	public ResultMessage update(InStockRepPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	
 	@Override
-	public void update(OutStockRepPO po) throws RemoteException {
+	public ResultMessage update(OutStockRepPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 	}

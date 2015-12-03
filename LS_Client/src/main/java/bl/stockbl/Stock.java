@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import util.enumData.ResultMessage;
 import dataservice.stockdataservice.StockDataService;
 import bl.receiptbl.InStockRepbl.InStockRepController;
 import bl.receiptbl.InStockRepbl.InStockRepbl;
@@ -156,5 +157,17 @@ public class Stock {
         }
         
         return false;
+	}
+	
+	
+	public ResultMessage update(InStockRepVO vo){
+		//TODO 将入库货物放入文件
+		return ResultMessage.SUCCESS;
+	}
+	
+	
+	public ResultMessage update(OutStockRepVO vo){
+		//TODO 将出库货物从文件删除
+		return ResultMessage.SUCCESS;
 	}
 }

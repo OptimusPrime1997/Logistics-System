@@ -31,9 +31,9 @@ public interface StockDivisionDataService extends Remote{
 	 * @param rep
 	 * @throws RemoteException
 	 */
-	public void update(InStockRepPO po) throws RemoteException;
+	public ResultMessage update(InStockRepPO po) throws RemoteException;
 	
-	public void update(OutStockRepPO po) throws RemoteException;
+	public ResultMessage update(OutStockRepPO po) throws RemoteException;
 	
 	/**
 	 * 
