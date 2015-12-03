@@ -6,16 +6,14 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import org.omg.CosNaming.NamingContextPackage.NotFound;
-
 import util.CurrentTime;
-import util.enumData.Const;
 import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsExpressType;
 import util.enumData.GoodsLogisticState;
 import util.enumData.ResultMessage;
 import Exception.ExistException;
 import Exception.GoodsNotFound;
+import PO.GoodsPO;
 import VO.GoodsVO;
 import bl.loginbl.Loginbl;
 import bl.managementbl.constbl.Constbl;
@@ -26,16 +24,7 @@ public class Goodsbl {
 	 * ECONOMIC NORMAL EXPRESS 18: 23: 25
 	 */
 	final double[] expressRates = { 18, 23, 25 };
-	public static void main(String[] args) {
-		Goodsbl bl=new Goodsbl();
-		GoodsVO vo=new GoodsVO(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 0,0,0,null,GoodsExpressType.ECONOMIC,0,0,0,GoodsArrivalState.BROKEN,GoodsLogisticState.BROKEN_OR_LOST
-				,null,null);
-		try {
-			bl.initComplete(vo);
-		} catch (ExistException e) {
-		System.out.println("已存在");
-		}
-	}
+	
 	/**
 	 * 查物流信息
 	 * @param listNum
@@ -44,7 +33,9 @@ public class Goodsbl {
 	public GoodsVO findByListNum(String listNum) throws GoodsNotFound{
 		GoodsVO vo = null;
 		try {
-			vo = new GoodsVO(getGoodsDataService().findbygoods(listNum));
+			GoodsPO po=getGoodsDataService().findbygoods(listNum);
+			if(po==null) throw new GoodsNotFound();
+			vo = new GoodsVO(po);
 		} catch (RemoteException e) {
 		}
 		return vo;
@@ -98,7 +89,7 @@ public class Goodsbl {
 		}
 		return vo;
 	}
-	public ResultMessage delete(GoodsVO vo) {
+	public ResultMessage delete(GoodsVO vo) throws GoodsNotFound{
 		try {
 			return getGoodsDataService().delete(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
@@ -179,6 +170,8 @@ public class Goodsbl {
 	 * @return
 	 */
 	public ResultMessage end(String listNum, String realReceiverName,String realReceiverPhone) {
+		System.out.println("到这里了 Goodsbl.end");
+		System.out.println("listnum "+listNum);
 		try {
 			GoodsVO vo = findByListNum(listNum);
 			vo.realReceiverName = realReceiverName;
@@ -259,6 +252,15 @@ public class Goodsbl {
 		} catch (RemoteException e) {
 		}
 		return x;
+	}
+	/**
+	 * 检查是否填写
+	 * @param str
+	 * @return
+	 */
+	public ResultMessage ifWritten(String str) {
+		if(str.length()==0) return ResultMessage.NOT_COMPLETED;
+		else return ResultMessage.VALID;
 	}
 
 }

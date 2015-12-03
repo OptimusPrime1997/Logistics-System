@@ -6,6 +6,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
+import Exception.GoodsNotFound;
 import PO.GoodsPO;
 import dataservice.goodsdataservice.GoodsDataService;
 import datautil.DataUtility;
@@ -13,22 +14,23 @@ import datautil.DataUtility;
 public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	String filename = "goods.txt";
 	DataUtility helper = new DataUtility();	
-	@Override
+	//Done!
+	@Override	
 	public ResultMessage add(GoodsPO po) throws RemoteException {
 		ArrayList<Object> all;
 			GoodsPO temp;
 		    try {
-//				all=helper.getAll(filename);
-//			    for(Object o:all){
-//			    	temp=(GoodsPO)o;
-//			    	//该订单号已存在  则添加失败
-//			    	if(temp.getListNum().equals(po.getListNum())){
-//			    		return ResultMessage.EXIST;
-//			    	}
-//			    }
+				all=helper.getAll(filename);
+			    for(Object o:all){
+			    	temp=(GoodsPO)o;
+			    	//该订单号已存在  则添加失败
+			    	if(temp.getListNum().equals(po.getListNum())){
+			    		return ResultMessage.EXIST;
+			    	}
+			    }
 			    System.out.println("已添加");
 			    return helper.save(po, filename);
-			} catch ( IOException e) {
+			} catch ( IOException | ClassNotFoundException e) {
 				e.printStackTrace();
 			}
 		return ResultMessage.FAILED;
@@ -54,19 +56,24 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 		}
 		return ResultMessage.FAILED;
 	}
+	//Done!
 	@Override
-	public ResultMessage delete(GoodsPO po) throws RemoteException {
+	public ResultMessage delete(GoodsPO po) throws RemoteException,GoodsNotFound {
 		ArrayList<Object> all;
+		Boolean ifFound=false;
 		GoodsPO temp;
 	    try {
 			all=helper.getAll(filename);
-		    for(int i=0;i<all.size();i++){
+			System.out.println(all.size());
+			for(int i=0;i<all.size();i++){
 		    	temp=(GoodsPO)all.get(i);
 		    	if(temp.getListNum().equals(po.getListNum())){
+		    		ifFound=true;
 		    		all.remove(i);
 		    		break;
 		    	}
 		    }
+			if(!ifFound) throw new GoodsNotFound();
 		    helper.SaveAll(all, filename);
 		    return ResultMessage.SUCCESS;
 	    }catch (ClassNotFoundException | IOException e) {
@@ -93,7 +100,8 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	}
 
 	@Override
-	public GoodsPO findbygoods(String ListNum)throws RemoteException {
+	public GoodsPO findbygoods(String ListNum)throws RemoteException,GoodsNotFound {
+		System.out.println("GoodsData");
 		ArrayList<Object> all=null;
 		GoodsPO po=null,temp;
 		try {
@@ -109,6 +117,7 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 		} catch (ClassNotFoundException | IOException e) {
 		}
 		System.out.println("我在找~~");
+		if(po==null) throw new GoodsNotFound();
 		return po;
 	}
 

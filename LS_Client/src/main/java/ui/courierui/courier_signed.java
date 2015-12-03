@@ -7,6 +7,7 @@ package ui.courierui;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
 
@@ -44,31 +45,44 @@ public class courier_signed extends javax.swing.JFrame {
     private void cancel_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_btnMouseClicked
         this.setVisible(false);
     }
+    //DONE!
     private void ok_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ok_btnMouseClicked
         this.setVisible(false);
         /*
-         * msg_check:检查用户输入的数据是否合法的结果
+         * msg_check_listNum:检查用户输入的数据是否合法的结果
+         * msg_check_name:检查用户输入的收件人名字是否合法  
          * msg:收件信息输入的返回结果
          */
-        ResultMessage msg,msg_check;
+        /*
+         * 获取用户的输入
+         */
+        ArrayList<ResultMessage> messages=new ArrayList<ResultMessage>();
+        ResultMessage msg=null,msg_check_listNum,msg_check_name;
         listNum=goodsNum_text.getText();
         getterName=getterName_text.getText();
         getterPhone=getterPhone_text.getText();
-        System.out.println(listNum+"  "+getterName+"  "+getterPhone);
-        
-        msg_check=controller_check.checkListNum(listNum);
-        System.out.println(msg_check);
-        if(msg_check==ResultMessage.VALID){
+        /*
+         * 检查是否合法
+         */
+        msg_check_listNum=controller_check.checkListNum(listNum);
+        msg_check_name=controller_check.checkifWritten(getterName);
+        /*
+         * 若非法则创建dialog窗口向用户反馈
+         */
+        if(msg_check_listNum==ResultMessage.VALID&&msg_check_name==ResultMessage.VALID){
         	msg=controller_end.end(listNum, getterName, getterPhone);
             if(msg==ResultMessage.NOT_FOUND){
-            	System.out.println("订单不存在");
-            	createDialog(msg);            	
+            	messages.add(msg);            	
             }	
-        }else if(getterName==null) createDialog(ResultMessage.NOT_COMPLETED);
+        }else if(msg_check_name!=ResultMessage.VALID) messages.add(msg_check_name);
         else{
-        	createDialog(msg_check);
+        	messages.add(msg_check_listNum);
         }
-        
+        //若不成功  将反馈信息传给dialog
+		if (!(msg == ResultMessage.SUCCESS
+				&& msg_check_listNum == ResultMessage.VALID && msg_check_name == ResultMessage.VALID)) {
+			createDialog(messages);
+        }
     }
    
 	/**
@@ -283,7 +297,11 @@ public class courier_signed extends javax.swing.JFrame {
      * 弹出对话框提示输入信息有误或订单不存在
      * @param msg
      */
-	private void createDialog(ResultMessage msg) {
+	private void createDialog(ArrayList<ResultMessage> messages) {
+		System.out.println("我是弹窗！~   ");
+		for(ResultMessage msg:messages)
+		System.out.println(msg);
+		System.out.println();
 		// TODO 
 		
 	}

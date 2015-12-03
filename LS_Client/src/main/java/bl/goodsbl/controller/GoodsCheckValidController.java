@@ -12,4 +12,8 @@ public class GoodsCheckValidController implements GoodsCheckValidBLService{
 	public ResultMessage checkListNum(String listNum) {
 		return goodsbl.ifListNumValid(listNum);
 	}
+	@Override
+	public ResultMessage checkifWritten(String str){
+		return goodsbl.ifWritten(str);
+	}
 }
