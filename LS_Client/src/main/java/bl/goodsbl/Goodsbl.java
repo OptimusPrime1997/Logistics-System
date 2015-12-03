@@ -19,6 +19,14 @@ import bl.loginbl.Loginbl;
 import bl.managementbl.constbl.Constbl;
 import dataservice.goodsdataservice.GoodsDataService;
 
+/*
+ *  GoodsVO vo = new GoodsVO("0250000123", false, "02400100006014",
+				"", "20151026", "", "025", "李华",
+				"上海市浦东新区张杨路500号", "上海华润时代广场", "87511426", "陆宏",
+				"南京市栖霞区仙林大道和园12号", null, "15500001112", 1, 5, 8, "书",
+				GoodsExpressType.NORMAL, 5, 0, 0, GoodsArrivalState.INTACT,
+				GoodsLogisticState.SENDED, null, null);
+ */
 public class Goodsbl {
 	/*
 	 * ECONOMIC NORMAL EXPRESS 18: 23: 25
@@ -174,7 +182,8 @@ public class Goodsbl {
 		System.out.println("listnum "+listNum);
 		try {
 			GoodsVO vo = findByListNum(listNum);
-			System.out.println("货物信息 "+vo.listNum+"  "+vo.realReceiverName+"  "+vo.realReceiverPhone+"  "+vo.logisticState);
+			System.out.println("改之前的货物信息 "+vo.listNum+"  "+vo.realReceiverName+"  "+vo.realReceiverPhone+"  "+vo.logisticState);
+			vo.deliverCourierAccount=Loginbl.getCurrentOptorId();
 			vo.realReceiverName = realReceiverName;
 			vo.realReceiverPhone = realReceiverPhone;
 			vo.logisticState=GoodsLogisticState.SIGNED;
