@@ -2,8 +2,9 @@
 package bl.receiptbl.InStockRepbl;
 
 import java.util.ArrayList;
-import VO.InStockRepVO;
-import VO.ReceiptVO;
+
+import VO.ReceiptVO.InStockRepVO;
+import VO.ReceiptVO.ReceiptVO;
 import bl.stockbl.StockDivisionbl;
 
 public class InStockRepbl{

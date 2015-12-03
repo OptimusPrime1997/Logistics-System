@@ -11,12 +11,10 @@ import util.CurrentTime;
 import util.enumData.ResultMessage;
 <<<<<<< HEAD
 import RMIClient.FormClient;
-import VO.CashVO;
-=======
-import VO.CashRepVO;
->>>>>>> origin/master
-import VO.PayRepVO;
 import VO.ProfitFormVO;
+import VO.ReceiptVO.CashVO;
+import VO.ReceiptVO.PayRepVO;
+import VO.ReceiptVO.ReceiptVO.CashRepVO;
 import bl.receiptbl.CashRepbl.CashRepbl;
 import bl.receiptbl.PayRepbl.PayRepbl;
 import dataservice.formdataservice.ProfitFormDataService;

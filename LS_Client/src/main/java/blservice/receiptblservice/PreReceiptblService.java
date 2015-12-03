@@ -8,4 +8,5 @@ public interface PreReceiptblService {
 	
 	public String getDate();
 
+	public String getDateInNum(String string);
 }

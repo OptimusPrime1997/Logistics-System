@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import VO.GoodsVO;
+import util.enumData.ResultMessage;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 
@@ -52,5 +53,12 @@ public interface CashRepblService extends ReceiptblService{
 	 * @throws ClassNotFoundException 
 	 */
 	public Vector<Object> initTable(String date) throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException;
+	
+	/**
+	 * 检查快递员编号填写是否正确
+	 * @param courierNum
+	 * @return
+	 */
+	public ResultMessage checkCourierNum(String courierNum);
 	
 }

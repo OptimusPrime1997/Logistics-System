@@ -10,7 +10,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import PO.ReceiptPO;
+import PO.ReceiptPO.ReceiptPO;
 import dataservice.receiptdataservice.ReceiptDataService;
 import datautil.DataUtility;
 import util.enumData.*;

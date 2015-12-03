@@ -4,8 +4,9 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import VO.DeliverRepVO;
-import VO.ReceiptVO;
+
+import VO.ReceiptVO.DeliverRepVO;
+import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.DeliverRepblService;
 

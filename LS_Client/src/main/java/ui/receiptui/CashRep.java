@@ -6,19 +6,28 @@
 
 package ui.receiptui;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.TableColumnModelEvent;
+import javax.swing.event.TableColumnModelListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
-import VO.CashRepVO;
-import VO.CashVO;
 import VO.GoodsVO;
+import VO.ReceiptVO.CashRepVO;
+import VO.ReceiptVO.CashVO;
 import bl.receiptbl.CashRepbl.CashRepController;
 import blservice.receiptblservice.CashRepblService;
+import util.enumData.ResultMessage;
 import Exception.ExceptionPrint;
 import Exception.NameNotFoundException;
 
@@ -135,6 +144,7 @@ public class CashRep extends javax.swing.JPanel {
         columnIdentifiers.add("快递员编号");
         columnIdentifiers.add("金额");
         columnIdentifiers.add("备注");
+        columnIdentifiers.add("删除");
         
 //        try {
 //			numText.setText(control.createNum(dateText.getText()));
@@ -145,7 +155,7 @@ public class CashRep extends javax.swing.JPanel {
         
         dateText.setText(control.getDate());
         
-        numText.setText(officeText.getText()+dateText.getText()+"00000");
+        numText.setText(officeText.getText()+control.getDateInNum(dateText.getText())+"10000");
         
 		try {
 			dataVector = control.initTable(dateText.getText());
@@ -156,39 +166,25 @@ public class CashRep extends javax.swing.JPanel {
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
         
-//        Vector<Object> arr = new Vector<Object>();
-//        arr.add("bismuth");
-//        arr.add("141250068");
-//        arr.add(15);
-//        arr.add(null);
-//        dataVector.add(arr);
-//        model.setDataVector(dataVector, columnIdentifiers);
-//        jTable.setModel(model);
-        
-//        jTable.setModel(new javax.swing.table.DefaultTableModel(  //这里要读data
-//            tableShow, new Object [] {"快递员名字", "快递员编号", "金额", "备注"}) 
-//        {
-//			/**
-//			 * 
-//			 */
-//			private static final long serialVersionUID = 1L;
-//			Class[] types = new Class [] {
-//                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
-//            };
-//
-//            public Class getColumnClass(int columnIndex) {
-//                return types [columnIndex];
-//            }
-//        });
-        
         jTable.setColumnSelectionAllowed(true);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
         jTable.setOpaque(false);
         jTable.setRowHeight(20);
-        jTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        jTable.setSelectionForeground(new java.awt.Color(0, 0, 20));
         jTable.setShowGrid(true);
         jScrollPane1.setViewportView(jTable);
         jTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        
+        TableColumn column1 = jTable.getColumnModel().getColumn(0);
+        column1.setPreferredWidth(60);
+        TableColumn column2 = jTable.getColumnModel().getColumn(1);
+        column2.setPreferredWidth(80);
+        TableColumn column3 = jTable.getColumnModel().getColumn(2);
+        column3.setPreferredWidth(30);
+        TableColumn column4 = jTable.getColumnModel().getColumn(3);
+        column4.setPreferredWidth(60);
+        TableColumn column5 = jTable.getColumnModel().getColumn(4);
+        column5.setPreferredWidth(10);
 
         accountLabel.setText("收款账号:");
 
@@ -288,42 +284,47 @@ public class CashRep extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE))
         );
+        
+        jTable.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int row = jTable.getSelectedRow();
+				int col = jTable.getSelectedColumn();
+				if(col==4){
+					model.removeRow(row);
+					jTable.setModel(model);
+				}
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+        		
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * 跳转到上一个界面
-     * @param evt
-     */
-    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {
-
-    }
-
-    /**
-     * 提交收款单
-     * @param evt
-     */
-    private void okMouseClicked(java.awt.event.MouseEvent evt) {
-		String num = numText.getText();
-		String date = dateText.getText();
-		double sum = Double.parseDouble(sumText.getText());
-		ArrayList<CashVO> cashVOs = new ArrayList<CashVO>();
-		for(int i = 0;i<dataVector.size();i++){
-			CashVO vo = new CashVO((double)jTable.getValueAt(i, 2), (String)jTable.getValueAt(i, 1), (String)jTable.getValueAt(i, 0), (String)jTable.getValueAt(i, 3));
-			cashVOs.add(vo);
-		}
-		CashRepVO cashRepVO = new CashRepVO(num, date, cashVOs, sum);
-		try {
-			control.submit(cashRepVO);
-		} catch (NotBoundException | IOException e) {
-			e.printStackTrace();
-			resultMsgText.setText(ExceptionPrint.print(e));
-		}
-	}
-
-    /**
-     * 确定快递员,在表格中显示数据
-     * @param evt
-     */
     private void courierButtonMouseClicked(java.awt.event.MouseEvent evt) {
 //    	String courierNum = courierNumText.getText();
 //    	String courierName = null;
@@ -345,16 +346,42 @@ public class CashRep extends javax.swing.JPanel {
 //    	model.setDataVector(dataVector, columnIdentifiers);
     	
     	String courierNum = courierNumText.getText();
-    	String courierName = "bismuth";
-    	double money = 3;
-    	Vector<Object> arr = new Vector<Object>();
-    	arr.add(courierName);
-    	arr.add(courierNum);
-    	arr.add(money);
-    	arr.add(null);
-    	dataVector.add(arr);
-    	model.setDataVector(dataVector, columnIdentifiers);
+    	ResultMessage resultMessage = control.checkCourierNum(courierNum);
+    	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
+    	resultMsgText.setText(resultMsg);
+    	if(resultMessage==ResultMessage.SUCCESS){
+    		String courierName = "bismuth";
+        	double money = 5.0;
+        	Vector<Object> arr = new Vector<Object>();
+        	arr.add(courierName);
+        	arr.add(courierNum);
+        	arr.add(money);
+        	dataVector.add(arr);
+        	model.setDataVector(dataVector, columnIdentifiers);
+    	}
     	
+    }
+    
+    private void okMouseClicked(java.awt.event.MouseEvent evt) {
+		String num = numText.getText();
+		String date = dateText.getText();
+		double sum = Double.parseDouble(sumText.getText());
+		ArrayList<CashVO> cashVOs = new ArrayList<CashVO>();
+		for(int i = 0;i<dataVector.size();i++){
+			CashVO vo = new CashVO((double)jTable.getValueAt(i, 2), (String)jTable.getValueAt(i, 1), (String)jTable.getValueAt(i, 0), (String)jTable.getValueAt(i, 3));
+			cashVOs.add(vo);
+		}
+		CashRepVO cashRepVO = new CashRepVO(num, date, cashVOs, sum);
+		try {
+			control.submit(cashRepVO);
+		} catch (NotBoundException | IOException e) {
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+	}
+    
+    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {
+
     }
     
     public static void main (String[] args){

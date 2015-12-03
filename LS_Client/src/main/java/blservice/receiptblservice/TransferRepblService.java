@@ -1,6 +1,6 @@
 package blservice.receiptblservice;
 
-import VO.TransferRepVO;
+import VO.ReceiptVO.TransferRepVO;
 
 public interface TransferRepblService extends ReceiptblService{
 	

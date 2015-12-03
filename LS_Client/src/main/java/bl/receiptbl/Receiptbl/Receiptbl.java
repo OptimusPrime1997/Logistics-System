@@ -6,7 +6,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import PO.ReceiptPO;
+
+import PO.ReceiptPO.ReceiptPO;
 import RMIClient.ReceiptClient;
 import VO.LogVO;
 import bl.logbl.Logbl;
@@ -39,6 +40,15 @@ public class Receiptbl {
 		m=cal.get(Calendar.MONTH)+1;   
 		d=cal.get(Calendar.DATE);  
 		return y+"-"+m+"-"+d;
+	}
+	
+	public String getDateInNum(String string){
+		String[] strings = string.split("-");
+		if(strings[1].length()==1)
+			strings[1] = "0"+strings[1];
+		if(strings[2].length()==1)
+			strings[2] = "0"+strings[2];
+		return strings[0]+strings[1]+strings[2];
 	}
 	
 	public void submit(ReceiptPO po, Rep rep) throws NotBoundException, IOException{

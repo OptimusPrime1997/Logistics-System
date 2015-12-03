@@ -8,9 +8,9 @@ package blservice.stockblservice;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
-import VO.InStockRepVO;
-import VO.OutStockRepVO;
 import VO.StockVO;
+import VO.ReceiptVO.InStockRepVO;
+import VO.ReceiptVO.OutStockRepVO;
 
 /**
  * @author G

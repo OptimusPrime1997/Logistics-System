@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
 import VO.BusinessFormVO;
-import VO.CashVO;
-import VO.PayRepVO;
+import VO.ReceiptVO.CashVO;
+import VO.ReceiptVO.PayRepVO;
 import bl.receiptbl.CashRepbl.CashRepbl;
 import bl.receiptbl.PayRepbl.PayRepbl;
 import dataservice.formdataservice.BusinessFormDataService;

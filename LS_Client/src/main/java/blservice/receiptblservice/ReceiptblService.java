@@ -6,7 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import VO.ReceiptVO;
+import VO.ReceiptVO.ReceiptVO;
 
 public interface ReceiptblService extends PreReceiptblService{
 	

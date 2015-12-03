@@ -6,10 +6,10 @@ package bl.stockbl;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
-import VO.InStockRepVO;
-import VO.OutStockRepVO;
 import VO.StockDivisionVO;
 import VO.StockVO;
+import VO.ReceiptVO.InStockRepVO;
+import VO.ReceiptVO.OutStockRepVO;
 import blservice.stockblservice.StockBLService;
 import blservice.stockblservice.StockDivisionBLService;
 import blservice.stockblservice.StockNumBLService;

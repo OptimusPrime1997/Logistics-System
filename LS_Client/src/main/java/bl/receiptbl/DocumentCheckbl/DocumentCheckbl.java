@@ -1,7 +1,8 @@
 package bl.receiptbl.DocumentCheckbl;
 
 import java.util.ArrayList;
-import VO.ReceiptVO;
+
+import VO.ReceiptVO.ReceiptVO;
 
 public class DocumentCheckbl{
 

@@ -2,10 +2,10 @@ package bl.receiptbl.ReceptionRepbl;
 
 import java.util.ArrayList;
 
-import VO.ReceiptVO;
-import VO.ReceptionRepVO;
-import VO.ShipmentRepVO;
-import VO.TransferRepVO;
+import VO.ReceiptVO.ReceiptVO;
+import VO.ReceiptVO.ReceptionRepVO;
+import VO.ReceiptVO.ShipmentRepVO;
+import VO.ReceiptVO.TransferRepVO;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepbl;
 import bl.receiptbl.TransferRepbl.TransferRepbl;
 import util.enumData.Rep;

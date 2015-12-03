@@ -2,8 +2,8 @@ package bl.receiptbl.ShippingRepbl;
 
 import java.util.ArrayList;
 
-import VO.ReceiptVO;
-import VO.ShippingRepVO;
+import VO.ReceiptVO.ReceiptVO;
+import VO.ReceiptVO.ShippingRepVO;
 
 public class ShippingRepbl{
 	

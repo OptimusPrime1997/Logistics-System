@@ -17,7 +17,6 @@ public enum ResultMessage {
 	
 	REPNUM_LENGTH_OVER,	//编号过长
 	REPNUM_LENGTH_LACKING,	//编号过短
-	REPNUM_NOT_RIGHT,	//编号不正确
 	
 	PHONE_LENGTH_WRONG,//手机号长度有误
 	UNVALID_CHAR,	//含非法字符
@@ -37,7 +36,7 @@ public enum ResultMessage {
 	NUMBER_OVER,   //输入数值太大
 	NOT_AVAILABLE; //该库存区位已被占用
 	
-	public String toFriendlyString(ResultMessage resultMessage) {
+	public static String toFriendlyString(ResultMessage resultMessage) {
 		
 		switch(resultMessage) {
 		case REPNUM_LENGTH_OVER:

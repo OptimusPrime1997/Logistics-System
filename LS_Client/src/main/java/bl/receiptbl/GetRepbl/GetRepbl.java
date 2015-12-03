@@ -3,6 +3,10 @@ package bl.receiptbl.GetRepbl;
 import java.util.ArrayList;
 
 import VO.*;
+import VO.ReceiptVO.GetRepVO;
+import VO.ReceiptVO.ReceiptVO;
+import VO.ReceiptVO.ShipmentRepVO;
+import VO.ReceiptVO.ShippingRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepbl;
 import bl.receiptbl.ShippingRepbl.ShippingRepbl;

@@ -15,4 +15,10 @@ public class ReceiptblController implements PreReceiptblService{
 		return receiptbl.getDate();
 	}
 
+	@Override
+	public String getDateInNum(String string) {
+		// TODO Auto-generated method stub
+		return receiptbl.getDateInNum(string);
+	}
+
 }

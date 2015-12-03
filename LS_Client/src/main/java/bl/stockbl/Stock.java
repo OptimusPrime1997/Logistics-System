@@ -16,9 +16,9 @@ import dataservice.stockdataservice.StockDataService;
 import bl.receiptbl.InStockRepbl.InStockRepbl;
 import bl.receiptbl.OutStockRepbl.OutStockRepbl;
 import PO.StockPO;
-import VO.InStockRepVO;
-import VO.OutStockRepVO;
 import VO.StockVO;
+import VO.ReceiptVO.InStockRepVO;
+import VO.ReceiptVO.OutStockRepVO;
 
 /**
  * @author G

@@ -1,7 +1,7 @@
 package blservice.receiptblservice;
 
-import VO.ShipmentRepVO;
-import VO.TransferRepVO;
+import VO.ReceiptVO.ShipmentRepVO;
+import VO.ReceiptVO.TransferRepVO;
 import util.enumData.Rep;
 
 public interface ReceptionRepblService extends ReceiptblService{
