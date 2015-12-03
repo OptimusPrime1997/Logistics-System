@@ -40,27 +40,21 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see dataservice.stockdataservice.StockDivisionDataService#update(PO.InStockRepPO)
-	 */
+	
 	@Override
 	public void update(InStockRepPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see dataservice.stockdataservice.StockDivisionDataService#update(PO.OutStockRepPO)
-	 */
+	
 	@Override
 	public void update(OutStockRepPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see dataservice.stockdataservice.StockDivisionDataService#getStockDivision()
-	 */
+	
 	@Override
 	public ArrayList<StockDivisionPO> getStockDivision() throws RemoteException {
 		// TODO Auto-generated method stub

@@ -22,9 +22,15 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 
 	private Stock stock = new Stock();
 	private StockNum ininum = new StockNum();
+	private StockDivisionbl division =  new StockDivisionbl();
 	
 	
 
+	
+	public boolean isPlaceAvailable(int block, int place) {
+		return division.isPlaceAvailable(block, place);
+	}
+	
 	@Override
 	public int checkPresentStockQuantity() {
 		return stock.checkPresentStockQuantity();

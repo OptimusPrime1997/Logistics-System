@@ -32,6 +32,8 @@ public class StockDivisionVO {
 		available=avai;
 	}
 	
+	public StockDivisionVO() {};
+	
 	public StockDivisionPO voToPo(StockDivisionVO vo) {
 		
 		StockDivisionPO po = new StockDivisionPO(null, null, 0, 0, true);
