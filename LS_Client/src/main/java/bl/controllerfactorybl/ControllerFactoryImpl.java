@@ -2,14 +2,14 @@ package bl.controllerfactorybl;
 
 import bl.formbl.controller.BusinessFormController;
 import bl.formbl.controller.ProfitFormController;
-import bl.goodsbl.controller.GoodsCheckController;
+import bl.goodsbl.controller.GoodsCheckValidController;
 import bl.goodsbl.controller.GoodsDeleteController;
 import bl.goodsbl.controller.GoodsEndController;
 import bl.goodsbl.controller.GoodsExamineController;
-import bl.goodsbl.controller.GoodsGetByCourierController;
-import bl.goodsbl.controller.GoodsInitCompleteController;
+import bl.goodsbl.controller.GoodsFindController;
 import bl.goodsbl.controller.GoodsInitController;
 import bl.goodsbl.controller.GoodsSetStateController;
+import bl.logbl.LogController;
 import bl.loginbl.LoginblController;
 import bl.managementbl.accountbl.AccountblController;
 import bl.managementbl.bankaccountbl.BankAccountblController;
@@ -33,14 +33,13 @@ import blservice.controllerfactoryblservice.ControllerFactoryblService;
 import blservice.formblservice.BusinessFormBLService;
 import blservice.formblservice.ProfitFormBLService;
 //import blservice.goodsblservice.GetNumOfGoodsByCourierBLService;
-import blservice.goodsblservice.GoodsCheckBLService;
+import blservice.goodsblservice.GoodsCheckValidBLService;
 import blservice.goodsblservice.GoodsDeleteBLService;
 import blservice.goodsblservice.GoodsEndBLService;
 //import blservice.goodsblservice.GoodsEndBLService;
 import blservice.goodsblservice.GoodsExamineBLService;
-import blservice.goodsblservice.GoodsGetByCouriersBLService;
+import blservice.goodsblservice.GoodsFindBLService;
 import blservice.goodsblservice.GoodsInitBLService;
-import blservice.goodsblservice.GoodsInitCompleteBLService;
 import blservice.goodsblservice.GoodsSetStateBLService;
 import blservice.logblservice.LogBLService;
 import blservice.loginblservice.LoginBLService;
@@ -87,46 +86,62 @@ private ControllerFactoryImpl() {}
 		return new ProfitFormController();
 	}
 
+	/**
+	 * 检查与货物有关的信息是否合法（订单号/收件人姓名、地址、手机号等）
+	 */
 	@Override
-	public GoodsCheckBLService getGoodsCheckController() {
+	public GoodsCheckValidBLService getGoodsCheckController() {
 		
-		return new GoodsCheckController();
+		return new GoodsCheckValidController();
 	}
-
+	/**
+	 * 删除订单
+	 */
 	@Override
 	public GoodsDeleteBLService getGoodsDeleteController() {
 		
 		return new GoodsDeleteController();
 	}
 
+	/**
+	 * 审批订单（货物）
+	 */
 	@Override
 	public GoodsExamineBLService getGoodsExamineController() {
 		
 		return new GoodsExamineController();
 	}
 
+	/**
+	 * 查找货物（byListNum/byCourierNum）
+	 */
 	@Override
-	public GoodsGetByCouriersBLService getGoodsGetByCourierController() {
+	public GoodsFindBLService getGoodsFindController() {
 		
-		return new GoodsGetByCourierController();
+		return new GoodsFindController();
 	}
 
+	/**
+	 * 新增货物
+	 */
 	@Override
 	public GoodsInitBLService getGoodsInitController() {
 		
 		return new GoodsInitController();
 	}
 
+	/**
+	 * 更改货物的状态（到达状态/物流状态）
+	 */
 	@Override
 	public GoodsSetStateBLService getGoodsSetStateController() {
 		
 		return new GoodsSetStateController();
 	}
-
 	@Override
 	public LogBLService getLogController() {
 		
-		return null;
+		return new LogController();
 	}
 
 	@Override
@@ -242,24 +257,15 @@ private ControllerFactoryImpl() {}
 	public StockBLService getStockController() {
 		return new StockController();
 	}
-
-	
-	@Override
-	public GoodsInitCompleteBLService getGoodsInitCompleteController() {
-		
-		return new GoodsInitCompleteController();
-	}
-
+	/**
+	 * 货物收件信息输入
+	 */
 	@Override
 	public GoodsEndBLService getGoodsEndController() {
 		
 		return new GoodsEndController();
 	}
 
-
-	
-
-	
 	@Override
 	public StockNumBLService getStockNumController() {
 		return new StockController();

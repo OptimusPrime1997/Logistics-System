@@ -13,6 +13,8 @@ public class ExceptionPrint {
 				return "网络故障";
 			case("ExistException"):
 				return "已存在";
+			case("GoodsNotFound"):
+				return "不存在该订单";
 			default:
 				return null;
 		}
