@@ -5,11 +5,11 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import VO.CashVO;
-import VO.GetRepVO;
-import VO.ReceiptVO;
-import VO.ShipmentRepVO;
-import VO.ShippingRepVO;
+import VO.ReceiptVO.CashVO;
+import VO.ReceiptVO.GetRepVO;
+import VO.ReceiptVO.ReceiptVO;
+import VO.ReceiptVO.ShipmentRepVO;
+import VO.ReceiptVO.ShippingRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.GetRepblService;
 import util.enumData.Rep;

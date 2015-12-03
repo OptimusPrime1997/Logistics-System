@@ -9,17 +9,15 @@ import java.util.Vector;
 
 import util.enumData.Rep;
 import util.enumData.ResultMessage;
-import PO.CashPO;
-import PO.CashRepPO;
-import PO.ReceiptPO;
-import VO.CashRepVO;
-import VO.CashVO;
 import VO.GoodsVO;
-import VO.ReceiptVO;
+import VO.ReceiptVO.CashRepVO;
+import VO.ReceiptVO.CashVO;
+import VO.ReceiptVO.ReceiptVO;
 import bl.goodsbl.Goodsbl;
-import bl.managementbl.accountbl.Accountbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import Exception.*;
+import PO.ReceiptPO.CashRepPO;
+import PO.ReceiptPO.ReceiptPO;
 
 public class CashRepbl {
 
@@ -31,13 +29,12 @@ public class CashRepbl {
 		try {
 			cashRepbl.submit(new CashRepVO("1234567890", "2015-12-2", cashVOs, 3));
 		} catch (NotBoundException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	Goodsbl goodsbl = new Goodsbl();
-	Accountbl accountbl = new Accountbl();
+//	Accountbl accountbl = new Accountbl();
 	Receiptbl receiptbl = new Receiptbl();
 
 	public ResultMessage checkCourierNum(String courierNum) {
@@ -45,17 +42,17 @@ public class CashRepbl {
 			return ResultMessage.REPNUM_LENGTH_LACKING;
 		else if (courierNum.length() > 11)
 			return ResultMessage.REPNUM_LENGTH_OVER;
-		else if (!courierNum.substring(6, 8).equals("06"))
-			return ResultMessage.REPNUM_NOT_RIGHT;
 		return ResultMessage.SUCCESS;
 	}
 
 	public String getCourierName(String courierNum) throws NameNotFoundException, FileNotFoundException, javax.naming.NameNotFoundException, ClassNotFoundException, NumNotFoundException, IOException {
-		return accountbl.findByAccountNum(courierNum).accountName;
+//		return accountbl.findByAccountNum(courierNum).accountName;
+		return null;
 	}
 
 	public ArrayList<GoodsVO> getGoods(String courierNum, String date) {
-		return goodsbl.getGoodsByGetCourier(courierNum, date);
+//		return goodsbl.getGoodsByGetCourier(courierNum, date);
+		return null;
 	}
 
 	public double getMoneySum(ArrayList<GoodsVO> arrGoods) {
@@ -88,12 +85,10 @@ public class CashRepbl {
 	}
 
 	public void delete(int n) throws NotBoundException, ClassNotFoundException, IOException {
-		// TODO Auto-generated method stub
 		receiptbl.delete(n, Rep.CashRep);
 	}
 
 	public void delete(String num) throws NotBoundException, ClassNotFoundException, IOException {
-		// TODO Auto-generated method stub
 		receiptbl.delete(num, Rep.CashRep);
 	}
 
@@ -115,9 +110,6 @@ public class CashRepbl {
 			arr.add(cash.money);
 			arr.add(cash.remark);
 			data.add(arr);
-		}
-		for (int i = 15; i > cashs.size(); i++) {
-			
 		}
 
 		return data;

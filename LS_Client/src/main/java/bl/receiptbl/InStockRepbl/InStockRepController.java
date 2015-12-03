@@ -5,9 +5,9 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import VO.CashVO;
-import VO.InStockRepVO;
-import VO.ReceiptVO;
+import VO.ReceiptVO.CashVO;
+import VO.ReceiptVO.InStockRepVO;
+import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.InStockRepblService;
 import util.enumData.ResultMessage;

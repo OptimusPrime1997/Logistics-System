@@ -2,7 +2,7 @@ package bl.receiptbl.DocumentCheckbl;
 
 import java.util.ArrayList;
 
-import VO.ReceiptVO;
+import VO.ReceiptVO.ReceiptVO;
 import blservice.receiptblservice.DocumentCheckblService;
 
 public class DocumentCheckController implements DocumentCheckblService{

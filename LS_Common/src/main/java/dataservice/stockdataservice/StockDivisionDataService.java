@@ -8,9 +8,9 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
-import PO.InStockRepPO;
-import PO.OutStockRepPO;
 import PO.StockDivisionPO;
+import PO.ReceiptPO.InStockRepPO;
+import PO.ReceiptPO.OutStockRepPO;
 
 
 /**

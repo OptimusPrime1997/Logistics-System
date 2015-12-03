@@ -1,8 +1,9 @@
 package bl.receiptbl.DeliverRepbl;
 
 import java.util.ArrayList;
-import VO.DeliverRepVO;
-import VO.ReceiptVO;
+
+import VO.ReceiptVO.DeliverRepVO;
+import VO.ReceiptVO.ReceiptVO;
 
 public class DeliverRepbl{
 	

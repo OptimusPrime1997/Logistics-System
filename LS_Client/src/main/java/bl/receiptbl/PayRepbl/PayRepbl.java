@@ -2,8 +2,8 @@ package bl.receiptbl.PayRepbl;
 
 import java.util.ArrayList;
 
-import VO.PayRepVO;
-import VO.ReceiptVO;
+import VO.ReceiptVO.PayRepVO;
+import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 
 public class PayRepbl extends ReceiptblController{

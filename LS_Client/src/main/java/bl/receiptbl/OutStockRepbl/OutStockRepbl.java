@@ -2,9 +2,9 @@ package bl.receiptbl.OutStockRepbl;
 
 import java.util.ArrayList;
 
-import VO.InStockRepVO;
-import VO.OutStockRepVO;
-import VO.ReceiptVO;
+import VO.ReceiptVO.InStockRepVO;
+import VO.ReceiptVO.OutStockRepVO;
+import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import util.enumData.ShipForm;
 import util.enumData.place;

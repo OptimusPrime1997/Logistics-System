@@ -104,7 +104,7 @@ public enum ResultMessage {
 	 */
 	NOT_AVAILABLE; 
 	
-	public String toFriendlyString(ResultMessage resultMessage) {
+	public static String toFriendlyString(ResultMessage resultMessage) {
 		
 		switch(resultMessage) {
 		case REPNUM_LENGTH_OVER:

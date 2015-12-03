@@ -5,8 +5,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import VO.ReceiptVO;
-import VO.TransferRepVO;
+import VO.ReceiptVO.ReceiptVO;
+import VO.ReceiptVO.TransferRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.TransferRepblService;
 

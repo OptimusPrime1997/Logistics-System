@@ -7,12 +7,13 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import VO.CashVO;
-import VO.CashRepVO;
 import VO.GoodsVO;
-import VO.ReceiptVO;
+import VO.ReceiptVO.CashRepVO;
+import VO.ReceiptVO.CashVO;
+import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.CashRepblService;
+import util.enumData.ResultMessage;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 
@@ -83,6 +84,12 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	public CashRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return cashRepbl.getRepByNum(num);
+	}
+
+	@Override
+	public ResultMessage checkCourierNum(String courierNum) {
+		// TODO Auto-generated method stub
+		return cashRepbl.checkCourierNum(courierNum);
 	}
 
 

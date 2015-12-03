@@ -5,8 +5,8 @@ package bl.stockbl;
 
 import java.util.ArrayList;
 
+import VO.ReceiptVO.InStockRepVO;
 import bl.receiptbl.InStockRepbl.InStockRepbl;
-import VO.InStockRepVO;
 
 
 /**
