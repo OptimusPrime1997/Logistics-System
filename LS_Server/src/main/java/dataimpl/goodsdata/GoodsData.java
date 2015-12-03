@@ -101,7 +101,7 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 
 	@Override
 	public GoodsPO findbygoods(String ListNum)throws RemoteException,GoodsNotFound {
-		System.out.println("GoodsData");
+		System.out.println("GoodsData.findbygoods");
 		ArrayList<Object> all=null;
 		GoodsPO po=null,temp;
 		try {
@@ -127,11 +127,28 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	/**
+	 * 返回某一天  快递员接件/派件 数量
+	 */
 	@Override
+	//TODO 
 	public int findbyCourier(String CourierNum,String date)
 			throws RemoteException {
-		return 0;
+		ArrayList<Object> all=null;
+		GoodsPO po=null,temp;
+		try {
+			all=helper.getAll(filename);
+			for(Object o:all){
+				temp=(GoodsPO)o;
+				//找到了货物~
+				if(temp.getGetCourierAccount().equals(CourierNum)){
+					po=temp;
+					break;
+				}
+			}
+		} catch (ClassNotFoundException | IOException e) {
+		}
+		return 5;
 	//TODO
 	}
 	public  GoodsData() throws RemoteException {
