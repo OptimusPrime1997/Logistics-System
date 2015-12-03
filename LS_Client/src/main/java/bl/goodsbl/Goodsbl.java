@@ -174,9 +174,10 @@ public class Goodsbl {
 		System.out.println("listnum "+listNum);
 		try {
 			GoodsVO vo = findByListNum(listNum);
+			System.out.println("货物信息 "+vo.listNum+"  "+vo.realReceiverName+"  "+vo.realReceiverPhone+"  "+vo.logisticState);
 			vo.realReceiverName = realReceiverName;
 			vo.realReceiverPhone = realReceiverPhone;
-			System.out.println("Goodsbl.end");
+			vo.logisticState=GoodsLogisticState.SIGNED;
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;
