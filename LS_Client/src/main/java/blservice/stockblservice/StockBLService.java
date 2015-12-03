@@ -26,7 +26,7 @@ public interface StockBLService {
 	
 	
 	/**
-	 * 界面提供起始日期和终止日期，系统返回该仓库此段时间内的入库数量，出库数量，库存数量
+	 * 界面提供起始日期和终止日期，系统返回该仓库此段时间内的入库数量，出库数量
 	 * @param startDate
 	 * @param endDate
 	 * @return

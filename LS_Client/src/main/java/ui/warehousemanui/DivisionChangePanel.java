@@ -4,12 +4,17 @@
  * and open the template in the editor.
  */
 package ui.warehousemanui;
+import javax.swing.*;
+
+import ui.mainFrame.MainFrame;
+
+import java.awt.*;
 
 /**
  *
  * @author G
  */
-public class DivisionChangePanel extends javax.swing.JPanel {
+public class DivisionChangePanel extends JFrame {
 
     /**
      * Creates new form DivisionChange
@@ -26,9 +31,30 @@ public class DivisionChangePanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+    	
+    	/**
+    	 * 设置窗体大小
+    	 */
+    	this.setSize(500, 430);
+    	/**
+    	 * 设置窗体大小为不可变
+    	 */
+    	this.setResizable(false);
+    	/**
+    	 * 设置窗体在中部出现
+    	 */
+    	Toolkit tk = Toolkit.getDefaultToolkit();
+    	Dimension screensize = tk.getScreenSize();
+    	int screenh = screensize.height;
+    	int screenw = screensize.width;
+    	this.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);
+    	/**
+    	 * 关闭窗口
+    	 */
+    	setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        jLabel9 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        username = new javax.swing.JLabel();
+        exit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
@@ -40,16 +66,16 @@ public class DivisionChangePanel extends javax.swing.JPanel {
         jComboBox3 = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
         jComboBox4 = new javax.swing.JComboBox();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        confirm = new javax.swing.JButton();
+        back = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
 
-        jLabel9.setText("当前账户：大玉儿");
+        username.setText("当前账户：大玉儿");
 
-        jButton3.setText("退出");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        exit.setText("退出");
+        exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                exitActionPerformed(evt);
             }
         });
 
@@ -57,7 +83,8 @@ public class DivisionChangePanel extends javax.swing.JPanel {
 
         jLabel2.setText("区号：");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        
+        jComboBox1.setModel(new DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -66,7 +93,7 @@ public class DivisionChangePanel extends javax.swing.JPanel {
 
         jLabel3.setText("位号：");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -79,7 +106,7 @@ public class DivisionChangePanel extends javax.swing.JPanel {
 
         jLabel6.setText("区号：");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox3.setModel(new DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox3ActionPerformed(evt);
@@ -88,42 +115,42 @@ public class DivisionChangePanel extends javax.swing.JPanel {
 
         jLabel7.setText("位号：");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox4.setModel(new DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox4ActionPerformed(evt);
             }
         });
 
-        jButton4.setText("确定");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        confirm.setText("确定");
+        confirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                confirmActionPerformed(evt);
             }
         });
 
-        jButton5.setText("返回");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        back.setText("返回");
+        back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                backActionPerformed(evt);
             }
         });
 
         jLabel10.setText("所在地：南京 01");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        GroupLayout layout = new GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9)
+                        .addComponent(username)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3))
+                        .addComponent(exit))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -152,9 +179,9 @@ public class DivisionChangePanel extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton5)
+                                        .addComponent(back)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton4)))))
+                                        .addComponent(confirm)))))
                         .addGap(0, 13, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -162,8 +189,8 @@ public class DivisionChangePanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jButton3)
+                    .addComponent(username)
+                    .addComponent(exit)
                     .addComponent(jLabel10))
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1)
@@ -185,14 +212,20 @@ public class DivisionChangePanel extends javax.swing.JPanel {
                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton4))
+                    .addComponent(back)
+                    .addComponent(confirm))
                 .addGap(41, 41, 41))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+    /**
+     * 退出
+     * @param evt
+     */
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    	MainFrame mf = new MainFrame();
+    	mf.setVisible(true);
+    	this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -211,19 +244,21 @@ public class DivisionChangePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox4ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    	WarehousePanel w = new WarehousePanel();
+		w.setVisible(true);
+		this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton exit;
+    private javax.swing.JButton confirm;
+    private javax.swing.JButton back;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
@@ -236,6 +271,6 @@ public class DivisionChangePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel username;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,15 +14,15 @@ import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
 import bl.controllerfactorybl.ControllerFactoryImpl;
-import blservice.goodsblservice.GoodsGetByCouriersBLService;
+import blservice.goodsblservice.GoodsFindBLService;
 import ui.mainFrame.MainFrame;
 import ui.receiptui.Order;
 import util.CurrentTime;
 
 public class courier_main extends javax.swing.JPanel {
 	static int NUM_OF_DAYS=7;
-	GoodsGetByCouriersBLService goodsController = ControllerFactoryImpl
-			.getInstance().getGoodsGetByCourierController();
+	GoodsFindBLService goodsController = ControllerFactoryImpl
+			.getInstance().getGoodsFindController();
 
 	public courier_main() {
 		initComponents();
@@ -389,7 +389,7 @@ public class courier_main extends javax.swing.JPanel {
 		JLabel date=new JLabel();
 		for(int i=0;i<NUM_OF_DAYS;i++)creatLabels(date);
 		for(int i=0;i<NUM_OF_DAYS;i++) 
-			labels.get(i).setText(CurrentTime.minus(Cdate, i).substring(5, 10));
+			labels.get(i).setText(CurrentTime.minusDate(Cdate, i).substring(5, 10));
 	}
 	private void creatLabels(JLabel date) {
 		date=new JLabel();

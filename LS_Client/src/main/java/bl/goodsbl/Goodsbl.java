@@ -7,12 +7,13 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.CurrentTime;
-import util.enumData.Const;
 import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsExpressType;
 import util.enumData.GoodsLogisticState;
 import util.enumData.ResultMessage;
 import Exception.ExistException;
+import Exception.GoodsNotFound;
+import PO.GoodsPO;
 import VO.GoodsVO;
 import bl.loginbl.Loginbl;
 import bl.managementbl.constbl.Constbl;
@@ -23,25 +24,18 @@ public class Goodsbl {
 	 * ECONOMIC NORMAL EXPRESS 18: 23: 25
 	 */
 	final double[] expressRates = { 18, 23, 25 };
-	public static void main(String[] args) {
-		Goodsbl bl=new Goodsbl();
-		GoodsVO vo=new GoodsVO(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 0,0,0,null,GoodsExpressType.ECONOMIC,0,0,0,GoodsArrivalState.BROKEN,GoodsLogisticState.BROKEN_OR_LOST
-				,null,null);
-		try {
-			bl.initComplete(vo);
-		} catch (ExistException e) {
-		System.out.println("已存在");
-		}
-	}
+	
 	/**
 	 * 查物流信息
 	 * @param listNum
 	 * @return
 	 */
-	public GoodsVO check(String listNum) {
+	public GoodsVO findByListNum(String listNum) throws GoodsNotFound{
 		GoodsVO vo = null;
 		try {
-			vo = new GoodsVO(getGoodsDataService().findbygoods(listNum));
+			GoodsPO po=getGoodsDataService().findbygoods(listNum);
+			if(po==null) throw new GoodsNotFound();
+			vo = new GoodsVO(po);
 		} catch (RemoteException e) {
 		}
 		return vo;
@@ -89,12 +83,13 @@ public class Goodsbl {
 					basicprice);
 			vo.moneyTotal = vo.moneyFare + vo.moneyOfPackage;
 		   msg=getGoodsDataService().add(GoodsVO.toPO(vo));
+		   //已添加过该订单号
 		   if(msg.equals(ResultMessage.EXIST)) throw new ExistException();
 		} catch (RemoteException e) {
 		}
 		return vo;
 	}
-	public ResultMessage delete(GoodsVO vo) {
+	public ResultMessage delete(GoodsVO vo) throws GoodsNotFound{
 		try {
 			return getGoodsDataService().delete(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
@@ -103,7 +98,6 @@ public class Goodsbl {
 	}
 	
 	/**
-	 * 
 	 * @param courierNum
 	 * @return返回快递员收件的货物的VO（辅助收款单的填写）
 	 */
@@ -124,11 +118,13 @@ public class Goodsbl {
 	 */
 	public ResultMessage setArrivalState(String listNum, GoodsArrivalState state) {
 		try {
-			GoodsVO vo = check(listNum);
+			GoodsVO vo = findByListNum(listNum);
 			vo.arrivalState = state;
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;
+		}catch(GoodsNotFound e1){
+			return ResultMessage.NOT_FOUND;
 		}
 	}
 	/**
@@ -140,11 +136,13 @@ public class Goodsbl {
 	public ResultMessage setLogisticState(String listNum,
 			GoodsLogisticState state) {
 		try {
-			GoodsVO vo = check(listNum);
+			GoodsVO vo = findByListNum(listNum);
 			vo.logisticState = state;
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;
+		}catch(GoodsNotFound e1){
+			return ResultMessage.NOT_FOUND;
 		}
 	}
 	/**
@@ -155,11 +153,13 @@ public class Goodsbl {
 	 */
 	public ResultMessage examine(String listNum, Boolean ifPassed) {
 		try {
-			GoodsVO vo = check(listNum);
+			GoodsVO vo = findByListNum(listNum);
 			vo.ifExaminePassed = ifPassed;
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;
+		}catch(GoodsNotFound e1){
+			return ResultMessage.NOT_FOUND;
 		}
 	}
 	/**
@@ -170,13 +170,18 @@ public class Goodsbl {
 	 * @return
 	 */
 	public ResultMessage end(String listNum, String realReceiverName,String realReceiverPhone) {
+		System.out.println("到这里了 Goodsbl.end");
+		System.out.println("listnum "+listNum);
 		try {
-			GoodsVO vo = check(listNum);
+			GoodsVO vo = findByListNum(listNum);
 			vo.realReceiverName = realReceiverName;
 			vo.realReceiverPhone = realReceiverPhone;
+			System.out.println("Goodsbl.end");
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;
+		}catch(GoodsNotFound e1){
+			return ResultMessage.NOT_FOUND;
 		}
 	}
 	/**
@@ -190,9 +195,21 @@ public class Goodsbl {
 		for(int i=0;i<nums.length;i++) nums[i]=-1;
 		String date = CurrentTime.getDate();
 		for (int i = 0; i < numOfDays; i++) {
-			nums[i] = getGoodsByCourier(Loginbl.getCurrentOptorId(), CurrentTime.minus(date, i));
+			nums[i] = getGoodsByCourier(Loginbl.getCurrentOptorId(), CurrentTime.minusDate(date, i));
 		}
 		return nums;
+	}
+	public ResultMessage ifListNumValid(String listNum){
+		if(listNum==null) return ResultMessage.NOT_COMPLETED;
+		else if(listNum.length()!=10) return ResultMessage.REPNUM_LENGTH_WRONG;
+		else {
+			for(int i=0;i<listNum.length();i++){
+				if(listNum.charAt(i)>'9'||listNum.charAt(i)<'0'){
+					return ResultMessage.UNVALID_CHAR;//即订单号中出现非数字
+				}
+			}
+		}
+		return ResultMessage.VALID;
 	}
 	private double moneyCounter(GoodsExpressType expressType, double weight,
 			double distance, double basicPrice) {
@@ -235,6 +252,15 @@ public class Goodsbl {
 		} catch (RemoteException e) {
 		}
 		return x;
+	}
+	/**
+	 * 检查是否填写
+	 * @param str
+	 * @return
+	 */
+	public ResultMessage ifWritten(String str) {
+		if(str.length()==0) return ResultMessage.NOT_COMPLETED;
+		else return ResultMessage.VALID;
 	}
 
 }

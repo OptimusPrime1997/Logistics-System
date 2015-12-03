@@ -8,11 +8,15 @@ package ui.warehousemanui;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+
+import javax.swing.GroupLayout;
+import javax.swing.JFrame;
 
 import ui.mainFrame.MainFrame;
+import util.enumData.ResultMessage;
 import bl.controllerfactorybl.ControllerFactoryImpl;
-import bl.stockbl.StockController;
-import blservice.stockblservice.StockBLService;
 import blservice.stockblservice.StockNumBLService;
 
 
@@ -20,7 +24,7 @@ import blservice.stockblservice.StockNumBLService;
  *
  * @author G
  */
-public class InitialStockNumPanel extends javax.swing.JFrame{
+public class InitialStockNumPanel extends JFrame{
 
     /**
 	 * 
@@ -59,6 +63,10 @@ public class InitialStockNumPanel extends javax.swing.JFrame{
     	int screenh = screensize.height;
     	int screenw = screensize.width;
     	this.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);
+    	/**
+    	 * 关闭窗口
+    	 */
+    	setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         jLabel9 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
@@ -68,7 +76,7 @@ public class InitialStockNumPanel extends javax.swing.JFrame{
         jButton2 = new javax.swing.JButton();
 
         
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+       
         jLabel9.setText("当前账户：大玉儿");
 
         jButton3.setText("退出");
@@ -80,8 +88,17 @@ public class InitialStockNumPanel extends javax.swing.JFrame{
 
         jLabel1.setText("本仓库初始的库存数量：");
 
-        jTextField1.setText("jTextField1");
+        jTextField1.setText("初始库存数量");
 
+        jTextField1.addFocusListener(new FocusAdapter() {
+        	
+        	public void focusGained(FocusEvent e) {
+        		jTextField1.setText("");
+        	}
+        
+        	
+		});
+        
         jButton1.setText("确定");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,7 +113,7 @@ public class InitialStockNumPanel extends javax.swing.JFrame{
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,11 +176,10 @@ public class InitialStockNumPanel extends javax.swing.JFrame{
 	 * 确定
 	 */
 	private void jButton1ActionPerformed(ActionEvent evt) {
-		// TODO 
 		
 		String s = jTextField1.getText().trim();
-		sc.initial(s);
-		
+		ResultMessage r = sc.initial(s);
+		//TODO 为了不同的界面都可以用一个状态栏类，那么可以将状态栏做成一个小frame显示在最底下，然后关联一个状态栏对象，然后调用其中的set方法
 		
 		
 		

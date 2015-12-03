@@ -6,6 +6,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
+import Exception.GoodsNotFound;
 import PO.GoodsPO;
 import dataservice.goodsdataservice.GoodsDataService;
 import datautil.DataUtility;
@@ -13,63 +14,101 @@ import datautil.DataUtility;
 public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	String filename = "goods.txt";
 	DataUtility helper = new DataUtility();	
-	@Override
+	//Done!
+	@Override	
 	public ResultMessage add(GoodsPO po) throws RemoteException {
-
-		System.out.println("goodsdata.add");
 		ArrayList<Object> all;
-		System.out.println("试图添加");
-		
 			GoodsPO temp;
 		    try {
 				all=helper.getAll(filename);
-				System.out.println(all.size());
 			    for(Object o:all){
 			    	temp=(GoodsPO)o;
 			    	//该订单号已存在  则添加失败
 			    	if(temp.getListNum().equals(po.getListNum())){
 			    		return ResultMessage.EXIST;
 			    	}
-			    	System.out.println("inloop");
 			    }
 			    System.out.println("已添加");
 			    return helper.save(po, filename);
-			} catch (ClassNotFoundException | IOException e) {
-				// TODO Auto-generated catch block
+			} catch ( IOException | ClassNotFoundException e) {
 				e.printStackTrace();
 			}
-		    
-		
 		return ResultMessage.FAILED;
 	}
 	@Override
 	public ResultMessage modify(GoodsPO po) throws RemoteException {
-		return null;
-		// TODO Auto-generated method stub
-		
+		ArrayList<Object> all;
+		GoodsPO temp;
+	    try {
+			all=helper.getAll(filename);
+		    for(int i=0;i<all.size();i++){
+		    	temp=(GoodsPO)all.get(i);
+		    	if(temp.getListNum().equals(po.getListNum())){
+		    		all.remove(i);
+		    		break;
+		    	}
+		    }
+		    all.add(po);
+		    helper.SaveAll(all, filename);
+		    return ResultMessage.SUCCESS;
+	    }catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAILED;
 	}
-
+	//Done!
 	@Override
-	public ResultMessage delete(GoodsPO po) throws RemoteException {
-		return null;
-		// TODO Auto-generated method stub
-		
+	public ResultMessage delete(GoodsPO po) throws RemoteException,GoodsNotFound {
+		ArrayList<Object> all;
+		Boolean ifFound=false;
+		GoodsPO temp;
+	    try {
+			all=helper.getAll(filename);
+			System.out.println(all.size());
+			for(int i=0;i<all.size();i++){
+		    	temp=(GoodsPO)all.get(i);
+		    	if(temp.getListNum().equals(po.getListNum())){
+		    		ifFound=true;
+		    		all.remove(i);
+		    		break;
+		    	}
+		    }
+			if(!ifFound) throw new GoodsNotFound();
+		    helper.SaveAll(all, filename);
+		    return ResultMessage.SUCCESS;
+	    }catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAILED;
 	}
 
 	@Override
 	public ArrayList<GoodsPO> show() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Object> all;
+		ArrayList<GoodsPO> pos=new ArrayList<GoodsPO>();
+		GoodsPO temp;
+			try {
+				all=helper.getAll(filename);
+				for(Object o:all){
+					temp=(GoodsPO)o;
+					pos.add(temp);
+				}
+			} catch (ClassNotFoundException | IOException e) {
+				e.printStackTrace();
+			}
+		return pos;
 	}
 
 	@Override
-	public GoodsPO findbygoods(String ListNum)throws RemoteException {
+	public GoodsPO findbygoods(String ListNum)throws RemoteException,GoodsNotFound {
+		System.out.println("GoodsData");
 		ArrayList<Object> all=null;
 		GoodsPO po=null,temp;
 		try {
 			all=helper.getAll(filename);
 			for(Object o:all){
-				temp=(GoodsPO)o;//找到了货物~
+				temp=(GoodsPO)o;
+				//找到了货物~
 				if(temp.getListNum().equals(ListNum)){
 					po=temp;
 					break;
@@ -77,6 +116,8 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 			}
 		} catch (ClassNotFoundException | IOException e) {
 		}
+		System.out.println("我在找~~");
+		if(po==null) throw new GoodsNotFound();
 		return po;
 	}
 
@@ -94,7 +135,7 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	//TODO
 	}
 	public  GoodsData() throws RemoteException {
-		super();
+		super();//TODO
 	}
 	private static final long serialVersionUID = 1L;
 

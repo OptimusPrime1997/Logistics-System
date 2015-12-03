@@ -12,17 +12,20 @@ import PO.StockDivisionPO;
 import PO.ReceiptPO.InStockRepPO;
 import PO.ReceiptPO.OutStockRepPO;
 import dataservice.stockdataservice.StockDivisionDataService;
+import datautil.DataUtility;
 
 /**
  * @author G
  *
  */
-public class StcokDivisionData extends UnicastRemoteObject implements StockDivisionDataService {
+public class StockDivisionData extends UnicastRemoteObject implements StockDivisionDataService {
 
+	String filename = "StockDivison.txt";
+	DataUtility du = new DataUtility();
 	/**
 	 * @throws RemoteException
 	 */
-	protected StcokDivisionData() throws RemoteException {
+	public StockDivisionData() throws RemoteException {
 		super();
 	}
 
