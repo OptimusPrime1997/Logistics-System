@@ -45,6 +45,7 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 	
 	@Override
 	public ResultMessage update(InStockRepPO po) throws RemoteException {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}
@@ -52,6 +53,7 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 	
 	@Override
 	public ResultMessage update(OutStockRepPO po) throws RemoteException {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}
