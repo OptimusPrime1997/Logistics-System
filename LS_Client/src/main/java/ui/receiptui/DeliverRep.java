@@ -6,6 +6,12 @@
 
 package ui.receiptui;
 
+import java.util.Vector;
+
+import javax.swing.table.DefaultTableModel;
+
+import blservice.receiptblservice.DeliverRepblService;
+
 /**
  *
  * @author apple
@@ -28,6 +34,10 @@ public class DeliverRep extends javax.swing.JPanel {
     private javax.swing.JButton orderButton;
     private javax.swing.JLabel orderNumLabel;
     private javax.swing.JTextField orderNumText;
+    private DeliverRepblService control;
+    private DefaultTableModel model;
+    private Vector<String> columnIdentifiers;
+    private Vector<Object> dataVector;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -64,13 +74,9 @@ public class DeliverRep extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        dateText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dateTextActionPerformed(evt);
-            }
-        });
-
         dateLabel.setText("日期:");
+        
+        dateText.setText(control.getDate());
 
         officeText.setEditable(false);
         officeText.setText("025001");
@@ -80,6 +86,12 @@ public class DeliverRep extends javax.swing.JPanel {
         numLabel.setText("编号:");
 
         numText.setEditable(false);
+      try {
+			numText.setText(control.createNum(dateText.getText()));
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
 
         courierLabel.setText("派件员编号:");
 

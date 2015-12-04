@@ -145,7 +145,7 @@ public class PayRepCourier extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "名字", "编号", "收件总数", "派件总数", "金额"
+                "名字", "编号", "收件总金额", "派件总数", "金额"
             }
         ) {
             Class[] types = new Class [] {

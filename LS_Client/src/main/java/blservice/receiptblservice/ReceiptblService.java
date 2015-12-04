@@ -10,18 +10,18 @@ import VO.ReceiptVO.ReceiptVO;
 
 public interface ReceiptblService extends PreReceiptblService{
 	
-	public String createNum(String date) throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException;
+	public String createNum(String date) throws NotBoundException, ClassNotFoundException, IOException;
 	
-	public void delete(int n) throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException;
+	public void delete(int n) throws NotBoundException, ClassNotFoundException, IOException;
 	
-	public void delete(String num) throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException;
+	public void delete(String num) throws NotBoundException, ClassNotFoundException, IOException;
 	
-	public <T extends ReceiptVO> T getRepByNum(String num) throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException;
+	public <T extends ReceiptVO> T getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException;
 	
-	public void submit(ReceiptVO vo) throws RemoteException, MalformedURLException, NotBoundException, IOException;
+	public void submit(ReceiptVO vo) throws NotBoundException, IOException;
 	
-	public <T extends ReceiptVO> ArrayList<T> getAllRep() throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException;
+	public <T extends ReceiptVO> ArrayList<T> getAllRep() throws NotBoundException, ClassNotFoundException, IOException;
 	
-	public <T extends ReceiptVO> ArrayList<T> getRepBydate(String date) throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException;
+	public <T extends ReceiptVO> ArrayList<T> getRepBydate(String date) throws NotBoundException, ClassNotFoundException, IOException;
 	
 }

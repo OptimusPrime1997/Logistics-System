@@ -3,7 +3,6 @@ package bl.receiptbl.CashRepbl;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -14,6 +13,7 @@ import VO.ReceiptVO.CashRepVO;
 import VO.ReceiptVO.CashVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.goodsbl.Goodsbl;
+import bl.managementbl.accountbl.Accountbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import Exception.*;
 import PO.ReceiptPO.CashRepPO;
@@ -21,20 +21,8 @@ import PO.ReceiptPO.ReceiptPO;
 
 public class CashRepbl {
 
-	public static void main(String[] args) {
-		ArrayList<CashVO> cashVOs = new ArrayList<CashVO>();
-		cashVOs.add(new CashVO(1, "141250001", "a", "aaa"));
-		cashVOs.add(new CashVO(2, "141250002", "b", "bbb"));
-		CashRepbl cashRepbl = new CashRepbl();
-		try {
-			cashRepbl.submit(new CashRepVO("1234567890", "2015-12-2", cashVOs, 3));
-		} catch (NotBoundException | IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 	Goodsbl goodsbl = new Goodsbl();
-//	Accountbl accountbl = new Accountbl();
+	Accountbl accountbl = new Accountbl();
 	Receiptbl receiptbl = new Receiptbl();
 
 	public ResultMessage checkCourierNum(String courierNum) {

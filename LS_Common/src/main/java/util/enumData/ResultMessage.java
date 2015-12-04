@@ -8,6 +8,9 @@ package util.enumData;
  *
  */
 public enum ResultMessage {
+	SUCCESS,
+	FAILED,
+	WRONG,
 	/**
 	 * 表格添加成功
 	 */

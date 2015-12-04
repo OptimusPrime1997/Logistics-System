@@ -110,10 +110,13 @@ public class CashRep extends javax.swing.JPanel {
         numLabel.setText("编号:");
 
         numText.setEditable(false);
+        numText.setText(officeText.getText()+control.getDateInNum(dateText.getText())+"10000");
 
         courierNumLabel.setText("快递员编号:");
 
         dateLabel.setText("日期:");
+        
+        dateText.setText(control.getDate());
 
         sumLabel.setText("总和:");
 
@@ -145,17 +148,6 @@ public class CashRep extends javax.swing.JPanel {
         columnIdentifiers.add("金额");
         columnIdentifiers.add("备注");
         columnIdentifiers.add("删除");
-        
-//        try {
-//			numText.setText(control.createNum(dateText.getText()));
-//		} catch (ClassNotFoundException | NotBoundException | IOException e) {
-//			e.printStackTrace();
-//			resultMsgText.setText(ExceptionPrint.print(e));
-//		}
-        
-        dateText.setText(control.getDate());
-        
-        numText.setText(officeText.getText()+control.getDateInNum(dateText.getText())+"10000");
         
 		try {
 			dataVector = control.initTable(dateText.getText());
