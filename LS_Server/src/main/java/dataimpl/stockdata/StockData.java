@@ -16,6 +16,8 @@ import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
 import PO.StockPO;
+import PO.ReceiptPO.InStockRepPO;
+import PO.ReceiptPO.OutStockRepPO;
 import dataservice.stockdataservice.StockDataService;
 import dataservice.stockdataservice.StockInitialDataService;
 import datautil.DataUtility;
@@ -119,6 +121,26 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 		}
 		
 		return list;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see dataservice.stockdataservice.StockDataService#update(PO.ReceiptPO.InStockRepPO)
+	 */
+	@Override
+	public ResultMessage update(InStockRepPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see dataservice.stockdataservice.StockDataService#update(PO.ReceiptPO.OutStockRepPO)
+	 */
+	@Override
+	public ResultMessage update(OutStockRepPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
