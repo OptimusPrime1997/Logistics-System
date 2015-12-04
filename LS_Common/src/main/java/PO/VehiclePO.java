@@ -27,15 +27,15 @@ public void setLicenseNum(String licenseNum) {
 	this.licenseNum = licenseNum;
 }
 
-@Override
-public int compareTo(VehiclePO o) {
-	// TODO Auto-generated method stub
-	return vehicleNum.compareTo(o.getVehicleNum());
-}
 public String getStartTime() {
 	return startTime;
 }
 public void setStartTime(String startTime) {
 	this.startTime = startTime;
+}
+@Override
+public int compareTo(VehiclePO o) {
+	// TODO Auto-generated method stub
+	return vehicleNum.compareTo(o.getVehicleNum());
 }
 }

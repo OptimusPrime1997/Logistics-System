@@ -47,7 +47,7 @@ public class courier_signed extends javax.swing.JFrame {
     }
     //DONE!
     private void ok_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ok_btnMouseClicked
-        this.setVisible(false);
+        
         /*
          * msg_check_listNum:检查用户输入的数据是否合法的结果
          * msg_check_name:检查用户输入的收件人名字是否合法  
@@ -74,14 +74,17 @@ public class courier_signed extends javax.swing.JFrame {
             if(msg==ResultMessage.NOT_FOUND){
             	messages.add(msg);            	
             }	
-        }else if(msg_check_name!=ResultMessage.VALID) messages.add(msg_check_name);
-        else{
+        }
+        if(msg_check_name!=ResultMessage.VALID) messages.add(msg_check_name);
+        if(msg_check_listNum!=ResultMessage.VALID){
         	messages.add(msg_check_listNum);
         }
         //若不成功  将反馈信息传给dialog
 		if (!(msg == ResultMessage.SUCCESS
 				&& msg_check_listNum == ResultMessage.VALID && msg_check_name == ResultMessage.VALID)) {
 			createDialog(messages);
+        }else{//成功窗体才消失
+        	this.setVisible(false);
         }
     }
    

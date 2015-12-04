@@ -52,7 +52,7 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 	}
 	
 	
-	public ResultMessage update(OutStockRepVO vo){
+	public ResultMessage update(OutStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException{
 		ResultMessage outstock = stock.update(vo);
 		ResultMessage outdivision = division.update(vo);
 		

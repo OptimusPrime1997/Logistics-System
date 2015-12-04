@@ -1,9 +1,14 @@
 package bl.managementbl.accountbl;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import javax.naming.NameNotFoundException;
+
 import util.enumData.ResultMessage;
+import Exception.NumNotFoundException;
 import VO.LogVO;
 import VO.ManagementVO.AccountVO;
 import blservice.managementblservice.accountblservice.AccountBLService;
@@ -14,32 +19,32 @@ public class AccountblController implements AccountBLService {
 	@Override
 	public ResultMessage insert(AccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return accountbl.add(VO);
 	}
 
 	@Override
 	public ResultMessage update(AccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return accountbl.update(VO);
 	}
 
 	@Override
 	public ResultMessage delete(AccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return accountbl.delete(VO);
 	}
 
 	@Override
 	public ResultMessage login(String accountNum, String key)
 			throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return accountbl.login(accountNum, key);
 	}
 
 	@Override
-	public ArrayList<AccountVO> show() throws RemoteException {
+	public ArrayList<AccountVO> show() throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return accountbl.show();
 	}
 
 	@Override
@@ -49,26 +54,22 @@ public class AccountblController implements AccountBLService {
 	}
 
 	@Override
-	public AccountVO findByName(String name) throws RemoteException {
+	public AccountVO findByName(String name) throws FileNotFoundException, NameNotFoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return accountbl.findByName(name);
 	}
 
 	@Override
-	public AccountVO findByNum(String num) throws RemoteException {
+	public AccountVO findByNum(String num) throws FileNotFoundException, NameNotFoundException, ClassNotFoundException, NumNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return accountbl.findByAccountNum(num);
 	}
 
 	@Override
-	public ArrayList<AccountVO> findByInstitutionNum(String institutionName)
-			throws RemoteException {
+	public ArrayList<AccountVO> findByInstitutionNum(String institutionNum)
+			throws NumberFormatException, ClassNotFoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
-		return null;
+		return accountbl.findByInstitutionNum(institutionNum);
 	}
 
-	@Override
-	public ResultMessage addLog(LogVO logvo) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}}
+}

@@ -1,6 +1,6 @@
 package VO.ManagementVO;
 
-public class InstitutionVO {
+public class InstitutionVO implements Comparable<InstitutionVO>{
 	public String institutionNum;
 	public String institutionName;
 	public String address;
@@ -14,6 +14,10 @@ public class InstitutionVO {
 		this.address = address;
 		this.contactInfo = contactInfo;
 		this.manning = manning;
+	}
+	public int compareTo(InstitutionVO v) {
+		// TODO Auto-generated method stub
+		return institutionNum.compareTo(v.institutionNum);
 	}
 	
 	

@@ -1,14 +1,20 @@
 package VO.ManagementVO;
 
-public class ConstVO {
+public class ConstVO implements Comparable<ConstVO> {
 	public String twoCities;
 	public double priceConst;
 	public double distanceConst;
+
 	public ConstVO(String twoCities, double priceConst, double distanceConst) {
 		super();
 		this.twoCities = twoCities;
 		this.priceConst = priceConst;
 		this.distanceConst = distanceConst;
+	}
+
+	public int compareTo(ConstVO v) {
+		// TODO Auto-generated method stub
+		return Double.compare(distanceConst, v.distanceConst);
 	}
 
 }

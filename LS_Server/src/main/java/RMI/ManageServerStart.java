@@ -5,7 +5,7 @@ import java.net.UnknownHostException;
 import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
 
-import dataimpl.management.managedata.ManageData;
+import dataimpl.management.managedata.ManageDataImpl;
 import dataservice.managementdataservice.managedataservice.ManageDataService;
 
 /**
@@ -30,7 +30,7 @@ public class ManageServerStart {
 		try {
 			// 启动默认端口8888
 			LocateRegistry.createRegistry(port);
-			ManageDataService manageData = new ManageData();
+			ManageDataImpl manageData = new ManageDataImpl();
 
 			ip = "127.0.0.1";
 

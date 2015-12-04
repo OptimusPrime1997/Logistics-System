@@ -8,15 +8,16 @@ import java.util.ArrayList;
 import javax.naming.NameNotFoundException;
 
 import dataservice.managementdataservice.accountdataservice.AccountDataService;
+import dataservice.managementdataservice.managedataservice.ManageDataService;
 import util.CurrentTime;
 import util.InputCheck;
+import util.enumData.Authority;
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
 import Exception.NumNotFoundException;
 import PO.AccountPO;
 import VO.LogVO;
 import VO.ManagementVO.AccountVO;
-import bl.logbl.Logbl;
 import bl.loginbl.Loginbl;
 import bl.managementbl.managedata.ManageData;
 import bl.managementbl.managedata.ManageVOPO;
@@ -24,38 +25,51 @@ import bl.managementbl.managedata.ManageVOPO;
 public class Accountbl {
 	private AccountDataService accountDataService;
 	ManageVOPO manageVOPO;
-	Logbl logbl;
+
+	// Logbl logbl;
+
 	public Accountbl() {
 		// TODO Auto-generated constructor stub
 		super();
 		try {
-			accountDataService = ManageData.getInstance().getAccountData();
+			ManageDataService manageDataService = ManageData.getInstance();
+			// System.out.println(manageDataService.getClass().toString());
+			// System.out.println(manageDataService.getAccountData().getClass()
+			// .toString());
+
+			accountDataService = (AccountDataService) manageDataService
+					.getAccountData();
 		} catch (RemoteException e) {
 			System.out.println("远程获取accountDataService失败!");
 			e.printStackTrace();
 		}
-		logbl=  new Logbl();
+		// logbl = new Logbl();
 		manageVOPO = new ManageVOPO();
 	}
 
-	public ResultMessage createLog(LogType operation, String info) {
-		Logbl logbl = new Logbl();
-		LogVO logVO = new LogVO(operation, Loginbl.getCurrentOptorId(),
-				CurrentTime.getTime());
-		logbl.add(logVO);
-		return ResultMessage.SUCCESS;
-	}
-
 	public ResultMessage add(AccountVO vo) throws RemoteException {
+		addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {
 			try {
+//				ArrayList<AccountPO> pos = accountDataService.show();
+//				int num = 0;
+//				for (AccountPO p : pos) {
+//					if (p.getAuthority() == vo.authority)
+//						num++;
+//				}
+//				vo.accountNum = vo.institutionNum
+//						+ Authority.value(vo.authority) + (num + 1);
 				accountDataService.insert(manageVOPO.voToPO(vo));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("存储文件出错");
 				return ResultMessage.IOFAILED;
-			}
+			} 
+//			catch (ClassNotFoundException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			return ResultMessage.SUCCESS;
 		} else
 			return ResultMessage.FAILED;
@@ -63,6 +77,7 @@ public class Accountbl {
 
 	public ResultMessage update(AccountVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
+		addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {
 			AccountPO po = manageVOPO.voToPO(vo);
 			try {
@@ -85,6 +100,7 @@ public class Accountbl {
 
 	public ResultMessage delete(AccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
+		addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {
 			AccountPO po = manageVOPO.voToPO(VO);
 			try {
@@ -108,6 +124,7 @@ public class Accountbl {
 	public ArrayList<AccountVO> show() throws RemoteException,
 			ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
+		addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {
 			ArrayList<AccountPO> pos = accountDataService.show();
 			ArrayList<AccountVO> vos = new ArrayList<AccountVO>();
@@ -125,6 +142,7 @@ public class Accountbl {
 			FileNotFoundException, NameNotFoundException,
 			ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
+		addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {
 			AccountPO findPO = accountDataService.findByName(name);
 			AccountVO findVO = manageVOPO.poToVO(findPO);
@@ -151,6 +169,7 @@ public class Accountbl {
 			throws RemoteException, ClassNotFoundException,
 			NumberFormatException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
+		addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {
 			ArrayList<AccountPO> pos = accountDataService
 					.findByInstitutionNum(institutionNum);
@@ -170,7 +189,13 @@ public class Accountbl {
 		}
 	}
 
-
+	/**
+	 * check login info
+	 * 
+	 * @param accountNum
+	 * @param key
+	 * @return
+	 */
 	public ResultMessage login(String accountNum, String key) {
 		AccountVO accountVO = null;
 		if (InputCheck.checkInputNum(accountNum, 10) == ResultMessage.WRONG) {
@@ -206,11 +231,17 @@ public class Accountbl {
 			}
 		}
 	}
-	
+
+	/**
+	 * add log
+	 * 
+	 * @param operation
+	 * @return ResultMessage
+	 */
 	public ResultMessage addLog(LogType operation) {
 		LogVO logVO = new LogVO(operation, Loginbl.getCurrentOptorId(),
 				CurrentTime.getTime());
-		logbl.add(logVO);
+		// logbl.add(logVO);
 		return ResultMessage.SUCCESS;
 	}
 }

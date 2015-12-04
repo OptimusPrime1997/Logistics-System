@@ -42,8 +42,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 		return sd.update(po);
 		
 	}
-	public ResultMessage update(OutStockRepVO vo){
-		//TODO 将出库区号从文件删除
+	public ResultMessage update(OutStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException{
 		OutStockRepPO po = vo.toPO(vo);
 		StockDivisionDataService sd = getStockDivisionDataService();
 		return sd.update(po);

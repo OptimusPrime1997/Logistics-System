@@ -22,17 +22,29 @@ public class AccountblTest {
 		Accountbl accountbl = new Accountbl();
 		AccountVO vo = null;
 		try {
-			accountbl.add(new AccountVO("025123456", "accountName", "password",
-					Sex.Sex_FAMALE, Authority.COURIER, "123456789810",
-					"0259320"));
+			accountbl
+					.add(new AccountVO("025070001", "王五", "12345678",
+							Sex.Sex_MALE, Authority.COURIER, "123456789810",
+							"02509320"));
+			accountbl
+					.add(new AccountVO("025070002", "张三", "12345679",
+							Sex.Sex_MALE, Authority.COURIER, "123456789811",
+							"02509320"));
+			accountbl
+					.add(new AccountVO("025070003", "王明", "12345670",
+							Sex.Sex_MALE, Authority.COURIER, "123456789812",
+							"02509320"));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("远程连接错误");
 		}
 		try {
-			vo = accountbl.findByAccountNum("025123456");
+			vo = accountbl.findByAccountNum("025070001");
 			System.out.println(vo.accountName);
+			assertEquals("王五", vo.accountName);
+//			accountbl.delete(vo);
+			AccountVO vo1 = accountbl.findByAccountNum("025070001");
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

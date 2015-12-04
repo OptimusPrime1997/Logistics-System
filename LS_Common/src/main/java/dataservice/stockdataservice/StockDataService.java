@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
 import PO.StockPO;
+import PO.ReceiptPO.InStockRepPO;
+import PO.ReceiptPO.OutStockRepPO;
 
 
 /**
@@ -17,6 +19,11 @@ import PO.StockPO;
  *
  */
 public interface StockDataService extends Remote{
+	
+	
+	public ResultMessage update(InStockRepPO po) throws RemoteException;
+	
+	public ResultMessage update(OutStockRepPO po) throws RemoteException;
 	
 	/**
 	 * add stockPO to stockData

@@ -1,7 +1,7 @@
 package bl.goodsbl.controller;
 
+import util.InputCheck;
 import util.enumData.ResultMessage;
-import util.enumData.goodsState;
 import bl.goodsbl.Goodsbl;
 import blservice.goodsblservice.GoodsCheckValidBLService;
 
@@ -10,10 +10,10 @@ public class GoodsCheckValidController implements GoodsCheckValidBLService{
 
 	@Override
 	public ResultMessage checkListNum(String listNum) {
-		return goodsbl.ifListNumValid(listNum);
+		return InputCheck.checkInputNum(listNum, 10);
 	}
 	@Override
 	public ResultMessage checkifWritten(String str){
-		return goodsbl.ifWritten(str);
+		return InputCheck.ifWritten(str);
 	}
 }
