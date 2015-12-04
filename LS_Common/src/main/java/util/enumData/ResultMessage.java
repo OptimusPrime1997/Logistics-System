@@ -43,7 +43,7 @@ public enum ResultMessage {
 	 * 编号出现非数字的字符
 	 */
 	REPNUM_NOT_ALL_NUM,	
-	/*
+	/**
 	 * 编号不正确
 	 */
 	REPNUM_NOT_RIGHT,	
@@ -51,6 +51,10 @@ public enum ResultMessage {
 	 * 手机号长度有误
 	 */
 	PHONE_LENGTH_WRONG,
+	/**
+	 * 长度有误
+	 */
+	LENGTH_WRONG,
 	/**
 	 * 含非法字符
 	 */

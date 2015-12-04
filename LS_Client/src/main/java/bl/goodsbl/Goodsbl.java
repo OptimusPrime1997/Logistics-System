@@ -209,18 +209,7 @@ public class Goodsbl {
 		}
 		return nums;
 	}
-	public ResultMessage ifListNumValid(String listNum){
-		if(listNum==null) return ResultMessage.NOT_COMPLETED;
-		else if(listNum.length()!=10) return ResultMessage.REPNUM_LENGTH_WRONG;
-		else {
-			for(int i=0;i<listNum.length();i++){
-				if(listNum.charAt(i)>'9'||listNum.charAt(i)<'0'){
-					return ResultMessage.UNVALID_CHAR;//即订单号中出现非数字
-				}
-			}
-		}
-		return ResultMessage.VALID;
-	}
+	
 	private double moneyCounter(GoodsExpressType expressType, double weight,
 			double distance, double basicPrice) {
 		double fare = 0;
@@ -263,14 +252,6 @@ public class Goodsbl {
 		}
 		return x;
 	}
-	/**
-	 * 检查是否填写
-	 * @param str
-	 * @return
-	 */
-	public ResultMessage ifWritten(String str) {
-		if(str.length()==0) return ResultMessage.NOT_COMPLETED;
-		else return ResultMessage.VALID;
-	}
+	
 
 }
