@@ -34,32 +34,22 @@ public class businessOfficer_main extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        exit_btn = new javax.swing.JButton();
-        account_btn = new javax.swing.JButton();
+    	initbtn();
+    	//TODO
+       
         jLabel5 = new javax.swing.JLabel();
         businessOfficeNum_label = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        arrival_btn = new javax.swing.JButton();
-        deliver_btn = new javax.swing.JButton();
-        carManagement_btn = new javax.swing.JButton();
-        recordMoney_btn = new javax.swing.JButton();
-        send_btn = new javax.swing.JButton();
+       
         jLabel1 = new javax.swing.JLabel();
         num_panel = new javax.swing.JPanel();
         num_label = new javax.swing.JLabel();
-        driverManagement_btn = new javax.swing.JButton();
+      
         jTextField1 = new javax.swing.JTextField();
 
         setForeground(new java.awt.Color(240, 40, 240));
 
-        exit_btn.setText("退出系统");
-        exit_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exit_btnActionPerformed(evt);
-            }
-        });
-
-        account_btn.setText("老李（包括更改密码、退出登录）");
+       
 
         jLabel5.setText("账户：");
 
@@ -67,41 +57,7 @@ public class businessOfficer_main extends javax.swing.JPanel {
 
         jLabel6.setText("营业厅：");
 
-        arrival_btn.setText("快件到达");
-
-        deliver_btn.setText("派件");
-        deliver_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deliver_btnActionPerformed(evt);
-            }
-        });
-
-        carManagement_btn.setText("车辆管理");
-        carManagement_btn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                carManagement_btnMouseClicked(evt);
-            }
-        });
-        carManagement_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                carManagement_btnActionPerformed(evt);
-            }
-        });
-
-        recordMoney_btn.setText("记账");
-        recordMoney_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                recordMoney_btnActionPerformed(evt);
-            }
-        });
-
-        send_btn.setText("发往中转中心/营业厅");
-        send_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                send_btnActionPerformed(evt);
-            }
-        });
-
+        
         jLabel1.setText("今日流水（派出的车辆数）");
 
         num_panel.setBackground(new java.awt.Color(240, 40, 240));
@@ -129,12 +85,7 @@ public class businessOfficer_main extends javax.swing.JPanel {
                 .addContainerGap(64, Short.MAX_VALUE))
         );
 
-        driverManagement_btn.setText("司机管理");
-        driverManagement_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                driverManagement_btnActionPerformed(evt);
-            }
-        });
+       
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -210,7 +161,68 @@ public class businessOfficer_main extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void deliver_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliver_btnActionPerformed
+    private void initbtn() {
+		// TODO 
+    	 exit_btn = new javax.swing.JButton();
+         account_btn = new javax.swing.JButton();
+         arrival_btn = new javax.swing.JButton();
+         deliver_btn = new javax.swing.JButton();
+         carManagement_btn = new javax.swing.JButton();
+         recordMoney_btn = new javax.swing.JButton();
+         driverManagement_btn = new javax.swing.JButton();
+         send_btn = new javax.swing.JButton();
+         exit_btn.setText("退出系统");
+         exit_btn.addActionListener(new java.awt.event.ActionListener() {
+             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 exit_btnActionPerformed(evt);
+             }
+         });
+
+         account_btn.setText("老李（包括更改密码、退出登录）");
+         arrival_btn.setText("快件到达");
+
+         deliver_btn.setText("派件");
+         deliver_btn.addActionListener(new java.awt.event.ActionListener() {
+             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 deliver_btnActionPerformed(evt);
+             }
+         });
+
+         carManagement_btn.setText("车辆管理");
+         carManagement_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                 carManagement_btnMouseClicked(evt);
+             }
+         });
+         carManagement_btn.addActionListener(new java.awt.event.ActionListener() {
+             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 carManagement_btnActionPerformed(evt);
+             }
+         });
+
+         recordMoney_btn.setText("记账");
+         recordMoney_btn.addActionListener(new java.awt.event.ActionListener() {
+             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 recordMoney_btnActionPerformed(evt);
+             }
+         });
+
+         send_btn.setText("发往中转中心/营业厅");
+         send_btn.addActionListener(new java.awt.event.ActionListener() {
+             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 send_btnActionPerformed(evt);
+             }
+         });
+         driverManagement_btn.setText("司机管理");
+         driverManagement_btn.addActionListener(new java.awt.event.ActionListener() {
+             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 driverManagement_btnActionPerformed(evt);
+             }
+         });
+
+    }
+
+	private void deliver_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliver_btnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_deliver_btnActionPerformed
 
