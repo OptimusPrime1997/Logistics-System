@@ -48,6 +48,7 @@ public class OutStockRep extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         destinationText = new javax.swing.JTextField();
+        resultMsgText = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -261,6 +262,7 @@ public class OutStockRep extends javax.swing.JPanel {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jButton2))))))
                 .addContainerGap(20, Short.MAX_VALUE))
+            .addComponent(resultMsgText)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +304,8 @@ public class OutStockRep extends javax.swing.JPanel {
                             .addComponent(jButton2)
                             .addComponent(jButton3))
                         .addGap(37, 37, 37)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -336,5 +339,6 @@ public class OutStockRep extends javax.swing.JPanel {
     private javax.swing.JComboBox repTypeBox;
     private javax.swing.JLabel repTypeLabel;
     private javax.swing.JTextField repTypeText;
+    private javax.swing.JTextField resultMsgText;
     // End of variables declaration//GEN-END:variables
 }
