@@ -37,12 +37,12 @@ public class BankAccountbl {
 			e.printStackTrace();
 		}
 		// logbl = new Logbl();
-		manageVOPO = new ManageVOPO();
+		manageVOPO = ManageVOPO.getInstance();
 	}
 
 	public ResultMessage add(BankAccountVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		addLog(LogType.BANKACCOUNT_MANAGEMENT);
+		manageVOPO.addLog(LogType.BANKACCOUNT_MANAGEMENT);
 		if (bankAccountDataService != null) {
 			try {
 				bankAccountDataService.insert(manageVOPO.voToPO(vo));
@@ -63,7 +63,7 @@ public class BankAccountbl {
 
 	public ResultMessage update(BankAccountVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		addLog(LogType.BANKACCOUNT_MANAGEMENT);
+		manageVOPO.addLog(LogType.BANKACCOUNT_MANAGEMENT);
 		if (bankAccountDataService != null) {
 			BankAccountPO po = manageVOPO.voToPO(vo);
 			try {
@@ -87,7 +87,7 @@ public class BankAccountbl {
 
 	public ResultMessage delete(BankAccountVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		addLog(LogType.USER_ACCOUNT_MANAGEMENT);
+		manageVOPO.addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (bankAccountDataService != null) {
 			BankAccountPO po = manageVOPO.voToPO(vo);
 			try {
@@ -111,7 +111,7 @@ public class BankAccountbl {
 	public ArrayList<BankAccountVO> show() throws ClassNotFoundException,
 			IOException {
 		// TODO Auto-generated method stub
-		addLog(LogType.USER_ACCOUNT_MANAGEMENT);
+		manageVOPO.addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (bankAccountDataService != null) {
 			ArrayList<BankAccountPO> pos = bankAccountDataService.show();
 			ArrayList<BankAccountVO> vos = new ArrayList<BankAccountVO>();
@@ -129,7 +129,7 @@ public class BankAccountbl {
 	public BankAccountVO findByName(String name) throws FileNotFoundException,
 			NameNotFoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		addLog(LogType.BANKACCOUNT_MANAGEMENT);
+		manageVOPO.addLog(LogType.BANKACCOUNT_MANAGEMENT);
 		if (bankAccountDataService != null) {
 			BankAccountPO findPO = bankAccountDataService.findByName(name);
 			BankAccountVO findVO = manageVOPO.poToVO(findPO);
@@ -153,16 +153,4 @@ public class BankAccountbl {
 		}
 	}
 
-	/**
-	 * add log
-	 * 
-	 * @param operation
-	 * @return ResultMessage
-	 */
-	public ResultMessage addLog(LogType operation) {
-		LogVO logVO = new LogVO(operation, Loginbl.getCurrentOptorId(),
-				CurrentTime.getTime());
-		// logbl.add(logVO);
-		return ResultMessage.SUCCESS;
-	}
 }
