@@ -35,8 +35,10 @@ public class courier_main extends javax.swing.JPanel {
 		initProBar();
 		initbtn();
 		initLayOut(layout);
+		initText();
 		
 	}
+	
 	/*
 	 * 初始化布局
 	 */
@@ -334,6 +336,10 @@ public class courier_main extends javax.swing.JPanel {
 		
 	}
 
+	private void initText() {
+		// TODO 显示  新订单创建成功~~的反馈信息！
+		
+	}
 	private void initbtn() {
 		signedGoodsbtn = new javax.swing.JButton();
 		newGoodsbtn = new javax.swing.JButton();
@@ -373,8 +379,8 @@ public class courier_main extends javax.swing.JPanel {
 		 javax.swing.JProgressBar bar=new JProgressBar();;//bars[0]==today,bars[i]=i days ago
 		for(int i=0;i<NUM_OF_DAYS;i++)createJProgressBar(bar);
 		//赋值
-		int[]values=goodsController.getdaysNumOfGoods(NUM_OF_DAYS);
-//		int[]values=new int[]{10,20,30,40,10,50,45};//TODO 获取数据		
+//		int[]values=goodsController.getdaysNumOfGoods(NUM_OF_DAYS);
+		int[]values=new int[]{10,20,30,40,10,50,45};//TODO 获取数据		
 		for(int i=0;i<bars.size();i++) bars.get(i).setValue(values[i]);
 	}
 	private void initLabel() {
