@@ -2,7 +2,6 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.GetRepPO;
 import PO.ReceiptPO.OutStockRepPO;
 import PO.ReceiptPO.ReceiptPO;
 import util.enumData.*;

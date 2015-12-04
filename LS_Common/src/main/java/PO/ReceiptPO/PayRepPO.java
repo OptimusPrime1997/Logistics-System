@@ -3,56 +3,61 @@ package PO.ReceiptPO;
 import java.util.ArrayList;
 
 public class PayRepPO extends ReceiptPO {
-	private String BankAccountNum;
-	private String PayPersonNum;
-	private ArrayList<LittleThingPO> littleThing;
-	private ArrayList<SalaryPO> salary; 
-	private ArrayList<TransferPayPO> transferPay;
-	private ArrayList<RentPO> rent;
-	private ArrayList<DriverSalaryPO> driverSalary;
-	private ArrayList<CourierSalaryPO> courierSalary;
-	private ArrayList<BonusPO> bouns;
-	public PayRepPO(String num, String date, String bankAccountNum, String payPersonNum,
-			ArrayList<LittleThingPO> littleThing, ArrayList<SalaryPO> salary, ArrayList<TransferPayPO> transferPay,
-			ArrayList<RentPO> rent, ArrayList<DriverSalaryPO> driverSalary, ArrayList<CourierSalaryPO> courierSalary,
-			ArrayList<BonusPO> bouns) {
+	private double sum;
+	private ArrayList<PayPO> payPOs;
+	private String payPersonNum;
+	private ArrayList<LittleThingRepPO> littleThing;
+	private AllSalaryRepPO salary; 
+	private TransferPayRepPO transferPay;
+	private RentRepPO rent;
+	private AllSalaryRepPO driverSalary;
+	private AllSalaryRepPO courierSalary;
+	private AllSalaryRepPO bonus;
+	public PayRepPO(String num, String date, double sum, ArrayList<PayPO> payPOs, String payPersonNum,
+			ArrayList<LittleThingRepPO> littleThing, AllSalaryRepPO salary, TransferPayRepPO transferPay, RentRepPO rent,
+			AllSalaryRepPO driverSalary, AllSalaryRepPO courierSalary, AllSalaryRepPO bonus) {
 		super(num, date);
-		BankAccountNum = bankAccountNum;
-		PayPersonNum = payPersonNum;
+		this.sum = sum;
+		this.payPOs = payPOs;
+		this.payPersonNum = payPersonNum;
 		this.littleThing = littleThing;
 		this.salary = salary;
 		this.transferPay = transferPay;
 		this.rent = rent;
 		this.driverSalary = driverSalary;
 		this.courierSalary = courierSalary;
-		this.bouns = bouns;
+		this.bonus = bonus;
 	}
-	public String getBankAccountNum() {
-		return BankAccountNum;
+	public double getSum() {
+		return sum;
+	}
+	public ArrayList<PayPO> getPayPOs() {
+		return payPOs;
 	}
 	public String getPayPersonNum() {
-		return PayPersonNum;
+		return payPersonNum;
 	}
-	public ArrayList<LittleThingPO> getLittleThing() {
+	public ArrayList<LittleThingRepPO> getLittleThing() {
 		return littleThing;
 	}
-	public ArrayList<SalaryPO> getSalary() {
+	public AllSalaryRepPO getSalary() {
 		return salary;
 	}
-	public ArrayList<TransferPayPO> getTransferPay() {
+	public TransferPayRepPO getTransferPay() {
 		return transferPay;
 	}
-	public ArrayList<RentPO> getRent() {
+	public RentRepPO getRent() {
 		return rent;
 	}
-	public ArrayList<DriverSalaryPO> getDriverSalary() {
+	public AllSalaryRepPO getDriverSalary() {
 		return driverSalary;
 	}
-	public ArrayList<CourierSalaryPO> getCourierSalary() {
+	public AllSalaryRepPO getCourierSalary() {
 		return courierSalary;
 	}
-	public ArrayList<BonusPO> getBouns() {
-		return bouns;
+	public AllSalaryRepPO getBonus() {
+		return bonus;
 	}
+
 	
 }

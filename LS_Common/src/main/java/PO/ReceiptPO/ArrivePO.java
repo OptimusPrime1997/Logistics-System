@@ -2,10 +2,10 @@ package PO.ReceiptPO;
 
 import util.enumData.GoodsArrivalState;
 
-public class GetPO {
+public class ArrivePO {
 	private String order;
 	private GoodsArrivalState goodsArrivalState;
-	public GetPO(String order, GoodsArrivalState goodsArrivalState) {
+	public ArrivePO(String order, GoodsArrivalState goodsArrivalState) {
 		super();
 		this.order = order;
 		this.goodsArrivalState = goodsArrivalState;
@@ -16,5 +16,4 @@ public class GetPO {
 	public GoodsArrivalState getGoodsArrivalState() {
 		return goodsArrivalState;
 	}
-	
 }

@@ -2,20 +2,19 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
+import PO.ReceiptPO.AllSalaryPO;
+import PO.ReceiptPO.BonusPO;
 import PO.ReceiptPO.DriverSalaryPO;
 
 public class DriverSalaryVO extends AllSalaryVO{
+	
+	public int time;
+	
 	public DriverSalaryVO(String getterName, String getterNum, double money, int time) {
 		super(getterName, getterNum, money);
 		this.time = time;
 	}
 
-	public int time;
-
-	public int getTime() {
-		return time;
-	}
-	
 	public DriverSalaryVO(DriverSalaryPO po){
 		this.getterName = po.getGetterName();
 		this.getterNum = po.getGetterNum();
@@ -27,17 +26,17 @@ public class DriverSalaryVO extends AllSalaryVO{
 		return new DriverSalaryPO(vo.getterName, vo.getterNum, vo.money, vo.time);
 	}
 	
-	public static ArrayList<DriverSalaryVO> toArrayVO(ArrayList<DriverSalaryPO> driverSalaryPOs){
-		ArrayList<DriverSalaryVO> driverSalaryVOs = new ArrayList<DriverSalaryVO>();
-		for(DriverSalaryPO driverSalaryPO : driverSalaryPOs)
-			driverSalaryVOs.add(new DriverSalaryVO(driverSalaryPO));
-		return driverSalaryVOs;
+	public static ArrayList<DriverSalaryVO> toArrayVO(ArrayList<AllSalaryPO> allSalaryPOs){
+		ArrayList<DriverSalaryVO> DriverSalaryVOs = new ArrayList<DriverSalaryVO>();
+		for(AllSalaryPO allSalaryPO : allSalaryPOs)
+			DriverSalaryVOs.add(new DriverSalaryVO((DriverSalaryPO)allSalaryPO));
+		return DriverSalaryVOs;
 	}
 	
-	public static ArrayList<DriverSalaryPO> toArrayPO(ArrayList<DriverSalaryVO> driverSalaryVOs){
-		ArrayList<DriverSalaryPO> driverSalaryPOs = new ArrayList<DriverSalaryPO>();
-		for(DriverSalaryVO driverSalaryVO : driverSalaryVOs)
-			driverSalaryPOs.add(DriverSalaryVO.toPO(driverSalaryVO));
-		return driverSalaryPOs;
+	public static ArrayList<AllSalaryPO> toArrayPO(ArrayList<DriverSalaryVO> DriverSalaryVOs){
+		ArrayList<AllSalaryPO> DriverSalaryPOs = new ArrayList<AllSalaryPO>();
+		for(DriverSalaryVO DriverSalaryVO : DriverSalaryVOs)
+			DriverSalaryPOs.add(DriverSalaryVO.toPO(DriverSalaryVO));
+		return DriverSalaryPOs;
 	}
 }

@@ -2,6 +2,8 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
+import PO.ReceiptPO.AllSalaryPO;
+import PO.ReceiptPO.BonusPO;
 import PO.ReceiptPO.SalaryPO;
 import util.enumData.Authority;
 
@@ -28,17 +30,17 @@ public class SalaryVO extends AllSalaryVO{
 		return new SalaryPO(vo.getterName, vo.getterNum, vo.money, vo.authority);
 	}
 	
-	public static ArrayList<SalaryVO> toArrayVO(ArrayList<SalaryPO> salaryPOs){
-		ArrayList<SalaryVO> salaryVOs = new ArrayList<SalaryVO>();
-		for(SalaryPO salaryPO : salaryPOs)
-			salaryVOs.add(new SalaryVO(salaryPO));
-		return salaryVOs;
+	public static ArrayList<SalaryVO> toArrayVO(ArrayList<AllSalaryPO> allSalaryPOs){
+		ArrayList<SalaryVO> SalaryVOs = new ArrayList<SalaryVO>();
+		for(AllSalaryPO allSalaryPO : allSalaryPOs)
+			SalaryVOs.add(new SalaryVO((SalaryPO)allSalaryPO));
+		return SalaryVOs;
 	}
 	
-	public static ArrayList<SalaryPO> toArrayPO(ArrayList<SalaryVO> salaryVOs){
-		ArrayList<SalaryPO> salaryPOs = new ArrayList<SalaryPO>();
-		for(SalaryVO salaryVO : salaryVOs)
-			salaryPOs.add(SalaryVO.toPO(salaryVO));
-		return salaryPOs;
+	public static ArrayList<AllSalaryPO> toArrayPO(ArrayList<SalaryVO> SalaryVOs){
+		ArrayList<AllSalaryPO> SalaryPOs = new ArrayList<AllSalaryPO>();
+		for(SalaryVO SalaryVO : SalaryVOs)
+			SalaryPOs.add(SalaryVO.toPO(SalaryVO));
+		return SalaryPOs;
 	}
 }

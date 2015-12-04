@@ -2,8 +2,8 @@ package bl.receiptbl.ReceptionRepbl;
 
 import java.util.ArrayList;
 
+import VO.ReceiptVO.ArriveRepVO;
 import VO.ReceiptVO.ReceiptVO;
-import VO.ReceiptVO.ReceptionRepVO;
 import VO.ReceiptVO.ShipmentRepVO;
 import VO.ReceiptVO.TransferRepVO;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepbl;
@@ -42,7 +42,7 @@ public class ReceptionRepbl{
 		
 	}
 
-	public ReceptionRepVO getRepByNum(String num) {
+	public ArriveRepVO getRepByNum(String num) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -52,12 +52,12 @@ public class ReceptionRepbl{
 		
 	}
 
-	public ArrayList<ReceptionRepVO> getAllRep() {
+	public ArrayList<ArriveRepVO> getAllRep() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ArrayList<ReceptionRepVO> getRepByDate(String date) {
+	public ArrayList<ArriveRepVO> getRepByDate(String date) {
 		// TODO Auto-generated method stub
 		return null;
 	}
