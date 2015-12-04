@@ -11,6 +11,7 @@ import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsExpressType;
 import util.enumData.GoodsLogisticState;
 import util.enumData.ResultMessage;
+import Exception.CourierNotFoundException;
 import Exception.ExistException;
 import Exception.GoodsNotFound;
 import PO.GoodsPO;
@@ -81,7 +82,7 @@ public class Goodsbl {
 	public GoodsVO initComplete(GoodsVO vo) throws ExistException{//TODO可能初始化失败！没有反馈给界面
 		Constbl constBL = new Constbl();
 		ResultMessage msg;
-		//TODO the parameter of the findByConstName function is to be modified
+		
 		try {
 			// TODO 计算运费
 			double basicprice = 0;//constBL.findByConstName(Const.FARE).priceConst;
@@ -209,7 +210,14 @@ public class Goodsbl {
 		}
 		return nums;
 	}
-	
+	/**
+	 * 计算邮费
+	 * @param expressType
+	 * @param weight
+	 * @param distance
+	 * @param basicPrice
+	 * @return
+	 */
 	private double moneyCounter(GoodsExpressType expressType, double weight,
 			double distance, double basicPrice) {
 		double fare = 0;
