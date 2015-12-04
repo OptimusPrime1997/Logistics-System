@@ -78,3 +78,4 @@ bin/
 *.class
 LS_Client/target/classes/bl/logbl/LogController.class
 *.class
+*.class
