@@ -5,19 +5,13 @@ import java.util.ArrayList;
 import PO.ReceiptPO.LittleThingPO;
 
 public class LittleThingVO {
-	public String date;
 	public String reason;
 	public double money;
 	
-	public LittleThingVO(String date, String reason, double money) {
+	public LittleThingVO(String reason, double money) {
 		super();
-		this.date = date;
 		this.reason = reason;
 		this.money = money;
-	}
-
-	public String getDate() {
-		return date;
 	}
 
 	public String getReason() {
@@ -27,15 +21,14 @@ public class LittleThingVO {
 	public double getMoney() {
 		return money;
 	}
-	
+
 	public LittleThingVO(LittleThingPO po){
-		this.date = po.getDate();
 		this.reason = po.getReason();
 		this.money = po.getMoney();
 	}
 	
 	public static LittleThingPO toPO(LittleThingVO vo){
-		return new LittleThingPO(vo.date, vo.date, vo.money);
+		return new LittleThingPO(vo.reason, vo.money);
 	}
 	
 	public static ArrayList<LittleThingVO> toArrayVO(ArrayList<LittleThingPO> littleThingPOs){

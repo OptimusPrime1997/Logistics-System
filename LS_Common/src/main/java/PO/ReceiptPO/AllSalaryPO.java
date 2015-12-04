@@ -3,6 +3,11 @@ package PO.ReceiptPO;
 import java.io.Serializable;
 
 public class AllSalaryPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5682689079084801325L;
+	
 	private String getterName;
 	private String getterNum;
 	private double money;

@@ -93,6 +93,8 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	public ArrayList<ReceiptPO> getAllRep(Rep rep) throws ClassNotFoundException, IOException , RemoteException{
 		ArrayList<ReceiptPO> receiptPOs = new ArrayList<ReceiptPO>();
 		ArrayList<Object> objects = util.getAll(chooseSaveAdd(rep));
+		if(objects==null)
+			return null;
  		for(Object object : objects){
  			receiptPOs.add((ReceiptPO)object);
  		}
@@ -100,8 +102,10 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	}
 
 	public ArrayList<ReceiptPO> getRepByDate(String date, Rep rep) throws ClassNotFoundException, IOException, RemoteException {
-		ArrayList<ReceiptPO> receiptPOs = getAllRep(rep);
 		ArrayList<ReceiptPO> dateReceiptPOs = new ArrayList<ReceiptPO>();
+		ArrayList<ReceiptPO> receiptPOs = getAllRep(rep);
+		if(receiptPOs==null)
+			return null;
 		for(ReceiptPO receiptPO : receiptPOs){
 			if(receiptPO.getDate().equals(date))
 				dateReceiptPOs.add(receiptPO);

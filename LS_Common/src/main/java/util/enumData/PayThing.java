@@ -1,0 +1,5 @@
+package util.enumData;
+
+public enum PayThing {
+	LITTLETHING, SALARY, TRANSFERPAY, RENT, DRIVERSALARY, COURIERSALARY, BOUNS;
+}

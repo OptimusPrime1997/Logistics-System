@@ -5,15 +5,13 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import VO.ReceiptVO.CashVO;
+import VO.ReceiptVO.ArriveRepVO;
 import VO.ReceiptVO.ReceiptVO;
-import VO.ReceiptVO.ReceptionRepVO;
 import VO.ReceiptVO.ShipmentRepVO;
 import VO.ReceiptVO.TransferRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.ReceptionRepblService;
 import util.enumData.Rep;
-import util.enumData.ResultMessage;
 
 public class ReceptionRepController extends ReceiptblController implements ReceptionRepblService{
 	ReceptionRepbl receptionRep = new ReceptionRepbl();
@@ -37,7 +35,7 @@ public class ReceptionRepController extends ReceiptblController implements Recep
 	}
 
 	@Override
-	public ReceptionRepVO getRepByNum(String num) throws RemoteException, MalformedURLException, NotBoundException {
+	public ArriveRepVO getRepByNum(String num) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
 		return receptionRep.getRepByNum(num);
 	}
@@ -49,13 +47,13 @@ public class ReceptionRepController extends ReceiptblController implements Recep
 	}
 
 	@Override
-	public ArrayList<ReceptionRepVO> getAllRep() throws RemoteException, MalformedURLException, NotBoundException {
+	public ArrayList<ArriveRepVO> getAllRep() throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
 		return receptionRep.getAllRep();
 	}
 
 	@Override
-	public ArrayList<ReceptionRepVO> getRepBydate(String date)
+	public ArrayList<ArriveRepVO> getRepBydate(String date)
 			throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
 		return receptionRep.getRepByDate(date);

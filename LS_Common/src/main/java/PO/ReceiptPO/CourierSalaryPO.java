@@ -1,19 +1,16 @@
 package PO.ReceiptPO;
 
 public class CourierSalaryPO extends AllSalaryPO{
-	private int getMoney;
+	private int getMoneySum;
 	private int deliverItemNum;
-	
-	public CourierSalaryPO(String getterName, String getterNum, double money, int getMoney, int deliverItemNum){
-		super(getterName, getterNum, getMoney);
-		this.getMoney = getMoney;
+	public CourierSalaryPO(String getterName, String getterNum, double money, int getMoneySum, int deliverItemNum) {
+		super(getterName, getterNum, money);
+		this.getMoneySum = getMoneySum;
 		this.deliverItemNum = deliverItemNum;
 	}
-
-	public int getGetMoney() {
-		return getMoney;
+	public int getGetMoneySum() {
+		return getMoneySum;
 	}
-
 	public int getDeliverItemNum() {
 		return deliverItemNum;
 	}

@@ -6,6 +6,18 @@
 
 package ui.receiptui;
 
+import java.io.IOException;
+import java.rmi.NotBoundException;
+import java.util.Vector;
+
+import javax.swing.table.DefaultTableModel;
+
+import Exception.ExceptionPrint;
+import bl.receiptbl.CashRepbl.CashRepController;
+import bl.receiptbl.DeliverRepbl.DeliverController;
+import blservice.receiptblservice.CashRepblService;
+import blservice.receiptblservice.DeliverRepblService;
+
 /**
  *
  * @author apple
@@ -19,7 +31,7 @@ public class DeliverRep extends javax.swing.JPanel {
     private javax.swing.JLabel dateLabel;
     private javax.swing.JTextField dateText;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     private javax.swing.JLabel numLabel;
     private javax.swing.JTextField numText;
     private javax.swing.JLabel officeLabel;
@@ -28,6 +40,11 @@ public class DeliverRep extends javax.swing.JPanel {
     private javax.swing.JButton orderButton;
     private javax.swing.JLabel orderNumLabel;
     private javax.swing.JTextField orderNumText;
+    private javax.swing.JTextField resultMsgText;
+    private DeliverRepblService control;
+    private DefaultTableModel model;
+    private Vector<String> columnIdentifiers;
+    private Vector<Object> dataVector;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -55,22 +72,23 @@ public class DeliverRep extends javax.swing.JPanel {
         courierLabel = new javax.swing.JLabel();
         courierText = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         orderNumLabel = new javax.swing.JLabel();
         orderNumText = new javax.swing.JTextField();
         orderButton = new javax.swing.JButton();
         okButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        resultMsgText = new javax.swing.JTextField();
+        control = new DeliverController();
+        model = new DefaultTableModel();
+        columnIdentifiers = new Vector<String>();
+        dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        dateText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dateTextActionPerformed(evt);
-            }
-        });
-
         dateLabel.setText("日期:");
+        
+        dateText.setText(control.getDate());
 
         officeText.setEditable(false);
         officeText.setText("025001");
@@ -80,48 +98,26 @@ public class DeliverRep extends javax.swing.JPanel {
         numLabel.setText("编号:");
 
         numText.setEditable(false);
+		try {
+			numText.setText(control.createNum(dateText.getText()));
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
 
         courierLabel.setText("派件员编号:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "订单号", "收件人名字", "手机", "地点"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jTable1.setOpaque(false);
-        jTable1.setShowGrid(true);
-        jScrollPane1.setViewportView(jTable1);
+        columnIdentifiers.add("订单号");
+        columnIdentifiers.add("收件人名字");
+        columnIdentifiers.add("手机");
+        columnIdentifiers.add("地点");
+        model.setDataVector(dataVector, columnIdentifiers);
+        jTable.setModel(model);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jTable.setOpaque(false);
+        jTable.setShowGrid(true);
+        jScrollPane1.setViewportView(jTable);
 
         orderNumLabel.setText("订单号:");
 
@@ -169,8 +165,10 @@ public class DeliverRep extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(orderNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
-                                .addComponent(orderButton)))))
+                                .addComponent(orderButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addComponent(resultMsgText)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,11 +179,11 @@ public class DeliverRep extends javax.swing.JPanel {
                     .addComponent(dateLabel)
                     .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(officeLabel))
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numLabel)
                     .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(courierLabel)
                     .addComponent(courierText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -196,11 +194,12 @@ public class DeliverRep extends javax.swing.JPanel {
                     .addComponent(orderNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(orderNumLabel)
                     .addComponent(orderButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton)
                     .addComponent(okButton))
-                .addGap(16, 16, 16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

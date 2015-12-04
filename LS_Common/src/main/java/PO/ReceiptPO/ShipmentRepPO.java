@@ -2,37 +2,17 @@ package PO.ReceiptPO;
 
 import java.util.ArrayList;
 
-import util.enumData.*;
+public class ShipmentRepPO extends ShipRepPO{
 
-public class ShipmentRepPO extends ReceiptPO{
-	private place place;
-	private String plateNum;
-	private String driverNum;
-	private boolean arriveAlready;
-	private ArrayList<String> goods;
-	public ShipmentRepPO(String num, String date, place place, String plateNum, String driverNum,
-			boolean arriveAlready, ArrayList<String> goods) {
-		super(num, date);
-		this.place = place;
-		this.plateNum = plateNum;
-		this.driverNum = driverNum;
-		this.arriveAlready = arriveAlready;
-		this.goods = goods;
-	}
-	public place getPlace() {
-		return place;
-	}
-	public String getPlateNum() {
-		return plateNum;
-	}
-	public String getDriverNum() {
-		return driverNum;
-	}
-	public boolean isArriveAlready() {
-		return arriveAlready;
-	}
-	public ArrayList<String> getGoods() {
-		return goods;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4832680727647835569L;
+
+	public ShipmentRepPO(String num, String date, String plateNum, String driverNum, boolean arriveAlready,
+			ArrayList<String> goods) {
+		super(num, date, plateNum, driverNum, arriveAlready, goods);
+		// TODO Auto-generated constructor stub
 	}
 	
 }

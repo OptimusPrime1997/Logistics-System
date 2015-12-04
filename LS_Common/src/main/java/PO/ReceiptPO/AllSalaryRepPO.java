@@ -4,17 +4,22 @@ import java.util.ArrayList;
 
 public class AllSalaryRepPO {
 	private ArrayList<AllSalaryPO> allSalaryPOs;
-	private String BankAccountNum;
-	public AllSalaryRepPO(ArrayList<AllSalaryPO> allSalaryPOs, String bankAccountNum) {
+	private String bankAccountNum;
+	private double sum;
+	public AllSalaryRepPO(ArrayList<AllSalaryPO> allSalaryPOs, String bankAccountNum, double sum) {
 		super();
 		this.allSalaryPOs = allSalaryPOs;
-		BankAccountNum = bankAccountNum;
+		this.bankAccountNum = bankAccountNum;
+		this.sum = sum;
 	}
 	public ArrayList<AllSalaryPO> getAllSalaryPOs() {
 		return allSalaryPOs;
 	}
 	public String getBankAccountNum() {
-		return BankAccountNum;
+		return bankAccountNum;
+	}
+	public double getSum() {
+		return sum;
 	}
 	
 }

@@ -3,11 +3,8 @@ package bl.receiptbl.TransferRepbl;
 import java.util.ArrayList;
 
 import VO.ReceiptVO.ReceiptVO;
-import VO.ReceiptVO.ReceptionRepVO;
 import VO.ReceiptVO.TransferRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
-import util.enumData.ShipForm;
-import util.enumData.place;
 
 public class TransferRepbl extends ReceiptblController{
 	

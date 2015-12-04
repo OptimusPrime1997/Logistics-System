@@ -6,36 +6,24 @@ import PO.ReceiptPO.TransferPayPO;
 
 public class TransferPayVO {
 	public String transferRepNum;
-	public String date;
+	public String remark;
 	public double money;
 	
-	public TransferPayVO(String transferRepNum, String date, double money) {
+	public TransferPayVO(String transferRepNum, String remark, double money) {
 		super();
 		this.transferRepNum = transferRepNum;
-		this.date = date;
+		this.remark = remark;
 		this.money = money;
 	}
 
-	public String getTransferRepNum() {
-		return transferRepNum;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public double getMoney() {
-		return money;
-	}
-	
 	public TransferPayVO(TransferPayPO po){
 		this.transferRepNum = po.getTransferRepNum();
-		this.date = po.getDate();
+		this.remark = po.getRemark();
 		this.money = po.getMoney();
 	}
 	
 	public static TransferPayPO toPO(TransferPayVO vo){
-		return new TransferPayPO(vo.transferRepNum, vo.date, vo.money);
+		return new TransferPayPO(vo.transferRepNum, vo.money, vo.remark);
 	}
 	
 	public static ArrayList<TransferPayVO> toArrayVO(ArrayList<TransferPayPO> transferPayPOs){

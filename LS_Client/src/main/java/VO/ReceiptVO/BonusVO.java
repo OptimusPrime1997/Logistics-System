@@ -2,47 +2,43 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
+import PO.ReceiptPO.AllSalaryPO;
 import PO.ReceiptPO.BonusPO;
 import PO.ReceiptPO.SalaryPO;
+import util.enumData.Authority;
 
-public class BonusVO {
-	public String getterName;
-	public String getterNum;
-	public double money;
-	public BonusVO(String getterName, String getterNum, double money) {
-		super();
-		this.getterName = getterName;
-		this.getterNum = getterNum;
-		this.money = money;
+public class BonusVO extends AllSalaryVO{
+	public String remark;
+	
+	public BonusVO(String getterName, String getterNum, double money, String remark) {
+		super(getterName, getterNum, money);
+		this.remark = remark;
 	}
-	public String getGetterName() {
-		return getterName;
+
+	public String getRemark() {
+		return remark;
 	}
-	public String getGetterNum() {
-		return getterNum;
-	}
-	public double getMoney() {
-		return money;
-	}
+
 	public BonusVO(BonusPO po){
 		this.getterName = po.getGetterName();
 		this.getterNum = po.getGetterNum();
 		this.money = po.getMoney();
+		this.remark = po.getRemark();
 	}
 	
 	public static BonusPO toPO(BonusVO vo){
-		return new BonusPO(vo.getterName, vo.getterNum, vo.money);
+		return new BonusPO(vo.getterName, vo.getterNum, vo.money, vo.remark);
 	}
-	
-	public static ArrayList<BonusVO> toArrayVO(ArrayList<BonusPO> bonusPOs){
+
+	public static ArrayList<BonusVO> toArrayVO(ArrayList<AllSalaryPO> allSalaryPOs){
 		ArrayList<BonusVO> bonusVOs = new ArrayList<BonusVO>();
-		for(BonusPO bonusPO : bonusPOs)
-			bonusVOs.add(new BonusVO(bonusPO));
+		for(AllSalaryPO allSalaryPO : allSalaryPOs)
+			bonusVOs.add(new BonusVO((BonusPO)allSalaryPO));
 		return bonusVOs;
 	}
 	
-	public static ArrayList<BonusPO> toArrayPO(ArrayList<BonusVO> bonusVOs){
-		ArrayList<BonusPO> bonusPOs = new ArrayList<BonusPO>();
+	public static ArrayList<AllSalaryPO> toArrayPO(ArrayList<BonusVO> bonusVOs){
+		ArrayList<AllSalaryPO> bonusPOs = new ArrayList<AllSalaryPO>();
 		for(BonusVO bonusVO : bonusVOs)
 			bonusPOs.add(BonusVO.toPO(bonusVO));
 		return bonusPOs;
