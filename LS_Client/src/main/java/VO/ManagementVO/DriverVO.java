@@ -2,7 +2,7 @@ package VO.ManagementVO;
 
 import util.enumData.Sex;
 
-public class DriverVO {
+public class DriverVO implements Comparable<DriverVO> {
 	public String driverNum;
 	public String name;
 	public String birthDate;
@@ -24,5 +24,10 @@ public class DriverVO {
 		this.phoneNum = phoneNum;
 		this.sex = sex;
 		this.licensedTime = licensedTime;
+	}
+
+	public int compareTo(DriverVO v) {
+		// TODO Auto-generated method stub
+		return driverNum.compareTo(driverNum);
 	}
 }

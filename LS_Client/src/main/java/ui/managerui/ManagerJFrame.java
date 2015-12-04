@@ -7,11 +7,16 @@ package ui.managerui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import javax.naming.ldap.ExtendedRequest;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import util.enumData.Authority;
 import util.enumData.Sex;
@@ -26,7 +31,7 @@ import VO.ManagementVO.AccountVO;
  * @author 1
  */
 public class ManagerJFrame extends javax.swing.JFrame {
-	private ControllerFactoryblService controllerFactoryblService = null;
+
 	/**
 	 * 
 	 */
@@ -37,7 +42,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	 */
 
 	public ManagerJFrame() {
-		controllerFactoryblService = ControllerFactoryImpl.getInstance();
 		initComponents();
 	}
 
@@ -91,7 +95,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		accountjPanel = new javax.swing.JPanel();
 		jLabel17 = new javax.swing.JLabel();
 		accountViewjScrollPane = new javax.swing.JScrollPane();
-		jScrollPane6 = new javax.swing.JScrollPane();
+		accountjtablejScrollPane = new javax.swing.JScrollPane();
 		accountViewjTable = new javax.swing.JTable();
 		jLabel19 = new javax.swing.JLabel();
 		accountNamejTextField = new javax.swing.JTextField();
@@ -746,65 +750,27 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		jLabel17.setText("jLabel3");
 
-		AccountBLService accountblController = controllerFactoryblService
-				.getAccountController();
-		ArrayList<AccountVO> vos = null;
-		try {
-			vos = accountblController.show();
-			System.out.println(vos.size());
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("远程连接失败！");
-			statejLabel.setText("远程连接失败！");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("程序错误");
-			statejLabel.setText("程序错误");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("读取文件失败");
-			statejLabel.setText("读取文件失败");
-		}
-		Object[][] objects = null;
-		if (vos != null) {
-			objects = new Object[vos.size()][6];
-			int i = 0;
-			for (java.util.Iterator<AccountVO> t = vos.iterator(); t.hasNext();) {
-				AccountVO vo = t.next();
-				objects[i][0] = vo.accountNum;
-				objects[i][1] = vo.accountName;
-				objects[i][2] = Sex.toString(vo.sex);
-				objects[i][3] = Authority.toString(vo.authority);
-				objects[i][4] = vo.institutionNum;
-				objects[i][5] = vo.phoneNum;
-				i++;
-			}
-		}
-		accountViewjTable.setModel(new javax.swing.table.DefaultTableModel(
-				objects,
-				new String[] { "用户账号", "姓名", "性别", "职位", "机构编号", "电话" }) {
-			Class[] types = new Class[] { java.lang.String.class,
-					java.lang.String.class, java.lang.String.class,
-					java.lang.String.class, java.lang.String.class,
-					java.lang.String.class };
-
-			public Class getColumnClass(int columnIndex) {
-				return types[columnIndex];
-			}
-		});
 		accountViewjTable.setGridColor(new java.awt.Color(0, 0, 0));
 		accountViewjTable.setName("123"); // NOI18N
 		accountViewjTable.getTableHeader().setReorderingAllowed(false);
-		jScrollPane6.setViewportView(accountViewjTable);
+		 accountjtablejScrollPane.setViewportView(accountViewjTable);
 
-		accountViewjScrollPane.setViewportView(jScrollPane6);
+		accountViewjScrollPane.setViewportView( accountjtablejScrollPane);
+		
 
 		jLabel19.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
 		jLabel19.setText("人员信息");
 
+		// 初始化用户账户界面
+		initialAccountJTable();
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 这句和上句作用一样
+		accountViewjTable.setDefaultRenderer(Object.class, tcr);
+
+		((DefaultTableCellRenderer) accountViewjTable.getTableHeader()
+				.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
+		accountViewjTable.setRowSelectionInterval(0, 0);//设置哪几行被选中
+		
 		accountNamejTextField.setText("请输入人员姓名");
 		accountNamejTextField.addActionListener(new ActionListener() {
 
@@ -812,21 +778,18 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				accountNamejTextFieldActionPerformed(e);
-
 			}
-
 		});
 
 		findAccountNamejButton.setText("姓名查找");
 		findAccountNamejButton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				findAccountNamejButtonPerformed(e);
 			}
 
-		
 		});
 		jLabel9.setText("账号：");
 
@@ -1771,24 +1734,37 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		pack();
 	}
+
 	private void findAccountNamejButtonPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		accountViewjTable.setRowSelectionInterval(0, 0);//设置哪几行被选中
+//		repaint(100);
 	}
 
 	private void accountNamejTextFieldActionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	private void accountNumjTextFieldActionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
+	/**
+	 * findAccountNumJButton的监听方法
+	 * 查找输入的accountnum
+	 * @param evt
+	 */
 	private void findAccountNumjButtonActionPerformed(
 			java.awt.event.ActionEvent evt) {// GEN-FIRST:event_findAccountNumjButtonActionPerformed
 		// TODO add your handling code here:
+		if(evt.getSource()==findAccountNamejButton&&evt.equals(MouseEvent.BUTTON1)){
+			String findAccountNum=accountNumjTextField.getText();
+					accountViewjTable.setRowSelectionInterval(0, 0);//设置哪几行被选中
+			
+		}
+//		repaint(100);
 	}// GEN-LAST:event_findAccountNumjButtonActionPerformed
 
 	private void findLogjButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_findLogjButtonActionPerformed
@@ -1892,7 +1868,74 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		});
 	}
 
+	/**
+	 * 初始化AccountJTable
+	 */
+	private void initialAccountJTable() {
+		ArrayList<AccountVO> vos = null;
+		try {
+			vos = accountblController.show();
+			vos.sort(null);
+			System.out.println(vos.size());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("远程连接失败");
+			statejLabel.setText("远程连接失败");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("程序错误");
+			statejLabel.setText("程序错误");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("读取文件失败");
+			statejLabel.setText("读取文件失败");
+		}
+		Object[][] objects = null;
+		if (vos != null) {
+			objects = new Object[vos.size()][6];
+			int i = 0;
+			vos.sort(null);
+			for (java.util.Iterator<AccountVO> t = vos.iterator(); t.hasNext();) {
+				AccountVO vo = t.next();
+				objects[i][0] = vo.accountNum;
+				objects[i][1] = vo.accountName;
+				objects[i][2] = Sex.toString(vo.sex);
+				objects[i][3] = Authority.toString(vo.authority);
+				objects[i][4] = vo.institutionNum;
+				objects[i][5] = vo.phoneNum;
+				i++;
+			}
+		}
+		accountViewjTable.setModel(new javax.swing.table.DefaultTableModel(
+				objects,
+				new String[] { "用户账号", "姓名", "性别", "职位", "机构编号", "电话" }) {
+			Class[] types = new Class[] { java.lang.String.class,
+					java.lang.String.class, java.lang.String.class,
+					java.lang.String.class, java.lang.String.class,
+					java.lang.String.class };
+			boolean[] canEdit = new boolean[] { false, true, true, true, true,
+					true };
+
+			public Class getColumnClass(int columnIndex) {
+				return types[columnIndex];
+			}
+
+			public boolean isCellEditable(int rowIndex, int columnIndex) {
+				return canEdit[columnIndex];
+			}
+		});
+
+	}
+
 	// Variables declaration - do not modify//GEN-BEGIN:variables
+	private ControllerFactoryblService controllerFactoryblService = ControllerFactoryImpl
+			.getInstance();
+	private AccountBLService accountblController = controllerFactoryblService
+			.getAccountController();
+
 	private javax.swing.JTextField accountNamejTextField;
 	private javax.swing.JTextField accountNumjTextField;
 	private javax.swing.JScrollPane accountViewjScrollPane;
@@ -1958,7 +2001,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private javax.swing.JScrollPane jScrollPane11;
 	private javax.swing.JScrollPane jScrollPane2;
 	private javax.swing.JScrollPane jScrollPane5;
-	private javax.swing.JScrollPane jScrollPane6;
+	private javax.swing.JScrollPane accountjtablejScrollPane;
 	private javax.swing.JScrollPane jScrollPane8;
 	private javax.swing.JSeparator jSeparator2;
 	private javax.swing.JSeparator jSeparator5;
