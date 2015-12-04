@@ -53,7 +53,7 @@ public class ManageDataImpl extends UnicastRemoteObject implements
 	public AccountDataService getAccountData() throws RemoteException {
 		if (accountData == null)
 			accountData = new AccountData();
-		return new AccountData();
+		return accountData;
 	}
 
 	@Override

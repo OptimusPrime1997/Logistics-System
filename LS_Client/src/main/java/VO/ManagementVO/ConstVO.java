@@ -14,7 +14,7 @@ public class ConstVO implements Comparable<ConstVO> {
 
 	public int compareTo(ConstVO v) {
 		// TODO Auto-generated method stub
-		return Double.compare(distanceConst, v.distanceConst);
+		return twoCities.compareTo(v.twoCities);
 	}
 
 }

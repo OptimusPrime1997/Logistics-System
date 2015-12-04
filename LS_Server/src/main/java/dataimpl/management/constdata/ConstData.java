@@ -18,12 +18,14 @@ import PO.ConstPO;
 import dataservice.managementdataservice.constdataservice.ConstDataService;
 import datautil.DataUtility;
 
+/**
+ * @author 1
+ *存取constpo的server端实现
+ */
 public class ConstData extends UnicastRemoteObject implements ConstDataService {
 	private DataUtility d;
 	private final String path = "data/currentdata/const";
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	public ConstData() throws RemoteException {

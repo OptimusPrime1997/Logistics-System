@@ -9,37 +9,34 @@ import VO.ManagementVO.ConstVO;
 import blservice.managementblservice.constblservice.ConstBLService;
 
 public class ConstblController implements ConstBLService {
-	Constbl constBL=new Constbl();
+	Constbl constbl=new Constbl();
 
+	@Override
 	public ResultMessage insert(ConstVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public ResultMessage update(ConstVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public ResultMessage delete(ConstVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public ArrayList<ConstVO> show() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ConstVO findByConstName(String constName) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
-	public ConstVO findByConstName(Const constName) throws RemoteException {
+	public ConstVO findByCities(String twoCities) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-}
+	}}

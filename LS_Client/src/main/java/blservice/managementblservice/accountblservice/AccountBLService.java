@@ -14,7 +14,7 @@ import VO.ManagementVO.AccountVO;
 
 public interface AccountBLService {
 
-	public ResultMessage insert(AccountVO VO) throws RemoteException;
+	public ResultMessage insert(AccountVO VO) throws RemoteException, ClassNotFoundException;
 
 	public ResultMessage update(AccountVO VO) throws RemoteException;
 

@@ -24,7 +24,7 @@ import bl.managementbl.managedata.ManageVOPO;
 
 public class Accountbl {
 	private AccountDataService accountDataService;
-	ManageVOPO manageVOPO;
+	private ManageVOPO manageVOPO;
 
 	// Logbl logbl;
 
@@ -33,10 +33,6 @@ public class Accountbl {
 		super();
 		try {
 			ManageDataService manageDataService = ManageData.getInstance();
-			// System.out.println(manageDataService.getClass().toString());
-			// System.out.println(manageDataService.getAccountData().getClass()
-			// .toString());
-
 			accountDataService = (AccountDataService) manageDataService
 					.getAccountData();
 		} catch (RemoteException e) {
@@ -44,79 +40,96 @@ public class Accountbl {
 			e.printStackTrace();
 		}
 		// logbl = new Logbl();
-		manageVOPO = new ManageVOPO();
+		manageVOPO = ManageVOPO.getInstance();
 	}
 
-	public ResultMessage add(AccountVO vo) throws RemoteException {
-		addLog(LogType.USER_ACCOUNT_MANAGEMENT);
+	public ResultMessage add(AccountVO vo) throws RemoteException,
+			ClassNotFoundException {
+		manageVOPO.addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {
-			try {
-//				ArrayList<AccountPO> pos = accountDataService.show();
-//				int num = 0;
-//				for (AccountPO p : pos) {
-//					if (p.getAuthority() == vo.authority)
-//						num++;
-//				}
-//				vo.accountNum = vo.institutionNum
-//						+ Authority.value(vo.authority) + (num + 1);
-				accountDataService.insert(manageVOPO.voToPO(vo));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("存储文件出错");
-				return ResultMessage.IOFAILED;
-			} 
-//			catch (ClassNotFoundException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-			return ResultMessage.SUCCESS;
-		} else
+			if (check(vo) == ResultMessage.VALID) {
+				try {
+					ArrayList<AccountPO> pos = accountDataService.show();
+					int num = 0;
+					for (AccountPO p : pos) {
+						if (p.getAuthority() == vo.authority)
+							num++;
+					}
+					vo.accountNum = vo.institutionNum
+							+ Authority.value(vo.authority) + "00" + (num + 1);
+					accountDataService.insert(manageVOPO.voToPO(vo));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("存储文件出错");
+					return ResultMessage.IOFAILED;
+				}
+				return ResultMessage.SUCCESS;
+			} else {
+				System.out.println("帐户"
+						+ ResultMessage.toFriendlyString(check(vo)));
+				return ResultMessage.WRONG_DATA;
+			}
+		} else {
 			return ResultMessage.FAILED;
+		}
 	}
 
 	public ResultMessage update(AccountVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		addLog(LogType.USER_ACCOUNT_MANAGEMENT);
+		manageVOPO.addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {
-			AccountPO po = manageVOPO.voToPO(vo);
-			try {
-				accountDataService.update(po);
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("class文件未找到");
-				return ResultMessage.FAILED;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("读写文件出错");
-				return ResultMessage.IOFAILED;
+			if (check(vo) == ResultMessage.VALID) {
+				AccountPO po = manageVOPO.voToPO(vo);
+				try {
+					accountDataService.update(po);
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("class文件未找到");
+					return ResultMessage.FAILED;
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("读写文件出错");
+					return ResultMessage.IOFAILED;
+				}
+				return ResultMessage.SUCCESS;
+			} else {
+				System.out.println("帐户"
+						+ ResultMessage.toFriendlyString(check(vo)));
+				return ResultMessage.WRONG_DATA;
 			}
-			return ResultMessage.SUCCESS;
-		} else
+		} else {
 			return ResultMessage.FAILED;
+		}
 	}
 
-	public ResultMessage delete(AccountVO VO) throws RemoteException {
+	public ResultMessage delete(AccountVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		addLog(LogType.USER_ACCOUNT_MANAGEMENT);
+		manageVOPO.addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {
-			AccountPO po = manageVOPO.voToPO(VO);
-			try {
-				accountDataService.delete(po);
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("class文件未找到");
-				return ResultMessage.FAILED;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("读写文件出错");
-				return ResultMessage.IOFAILED;
+			if (InputCheck.checkInputNum(vo.accountNum, 11) == ResultMessage.VALID) {
+				AccountPO po = manageVOPO.voToPO(vo);
+				try {
+					accountDataService.delete(po);
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("class文件未找到");
+					return ResultMessage.FAILED;
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("读写文件出错");
+					return ResultMessage.IOFAILED;
+				}
+				return ResultMessage.SUCCESS;
+			} else {
+				System.out.println("帐户"
+						+ InputCheck.checkInputNum(vo.accountNum, 11));
+				return ResultMessage.WRONG_ACCOUNTNUM;
 			}
-			return ResultMessage.SUCCESS;
 		} else
 			return ResultMessage.FAILED;
 	}
@@ -124,7 +137,7 @@ public class Accountbl {
 	public ArrayList<AccountVO> show() throws RemoteException,
 			ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		addLog(LogType.USER_ACCOUNT_MANAGEMENT);
+		manageVOPO.addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {
 			ArrayList<AccountPO> pos = accountDataService.show();
 			ArrayList<AccountVO> vos = new ArrayList<AccountVO>();
@@ -142,7 +155,7 @@ public class Accountbl {
 			FileNotFoundException, NameNotFoundException,
 			ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		addLog(LogType.USER_ACCOUNT_MANAGEMENT);
+		manageVOPO.addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {
 			AccountPO findPO = accountDataService.findByName(name);
 			AccountVO findVO = manageVOPO.poToVO(findPO);
@@ -156,6 +169,7 @@ public class Accountbl {
 			FileNotFoundException, NameNotFoundException,
 			ClassNotFoundException, NumNotFoundException, IOException {
 		// TODO Auto-generated method stub
+		manageVOPO.addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {
 			AccountPO findPO = accountDataService.findByAccountNum(num);
 			AccountVO findVO = manageVOPO.poToVO(findPO);
@@ -169,7 +183,7 @@ public class Accountbl {
 			throws RemoteException, ClassNotFoundException,
 			NumberFormatException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
-		addLog(LogType.USER_ACCOUNT_MANAGEMENT);
+		manageVOPO.addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {
 			ArrayList<AccountPO> pos = accountDataService
 					.findByInstitutionNum(institutionNum);
@@ -232,16 +246,21 @@ public class Accountbl {
 		}
 	}
 
-	/**
-	 * add log
-	 * 
-	 * @param operation
-	 * @return ResultMessage
-	 */
-	public ResultMessage addLog(LogType operation) {
-		LogVO logVO = new LogVO(operation, Loginbl.getCurrentOptorId(),
-				CurrentTime.getTime());
-		// logbl.add(logVO);
-		return ResultMessage.SUCCESS;
+	public ResultMessage check(AccountVO vo) {
+		if (InputCheck.checkInputName(vo.accountName) == ResultMessage.VALID) {
+			if (InputCheck.checkInputNum(vo.institutionNum, 6) == ResultMessage.VALID) {
+				if (InputCheck.checkInputPhoneNum(vo.phoneNum) == ResultMessage.VALID) {
+					return ResultMessage.VALID;
+				} else {
+					return InputCheck.checkInputPhoneNum(vo.phoneNum);
+				}
+			} else {
+				return InputCheck.checkInputNum(vo.institutionNum, 6);
+			}
+		} else {
+			return InputCheck.checkInputName(vo.accountName);
+		}
+
 	}
+
 }
