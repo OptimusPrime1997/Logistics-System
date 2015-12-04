@@ -17,6 +17,7 @@ public class DataUtility implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 4917823440137859978L;
+
 	public ResultMessage save(Object o, String add) throws IOException {
 		File saveFile = new File(add);
 		FileOutputStream fo = new FileOutputStream(saveFile, true);
@@ -32,6 +33,8 @@ public class DataUtility implements Serializable {
 
 	public ArrayList<Object> getAll(String add) throws IOException, ClassNotFoundException {
 		File saveFile = new File(add);
+		if (saveFile.length() < 1)
+			return null;
 		ArrayList<Object> objects = new ArrayList<Object>();
 		FileInputStream fin = new FileInputStream(saveFile);
 		ObjectInputStream is = new ObjectInputStream(fin);
@@ -41,6 +44,7 @@ public class DataUtility implements Serializable {
 		}
 		is.close();
 		return objects;
+
 	}
 
 	public void clear(String add) throws IOException {

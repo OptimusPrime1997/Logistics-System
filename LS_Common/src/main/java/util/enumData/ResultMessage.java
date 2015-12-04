@@ -8,9 +8,14 @@ package util.enumData;
  *
  */
 public enum ResultMessage {
-	SUCCESS, //成功
-	FAILED,	//失败
-	WRONG,	//错误
+	/**
+	 * 表格添加成功
+	 */
+	ADD_SUCCESS,
+	/**
+	 * 单据提交成功
+	 */
+	SUBMIT_SUCCESS,
 	/**
 	 * 连接错误
 	 */
@@ -121,6 +126,10 @@ public enum ResultMessage {
 			return "密码错误";
 		case NOT_COMPLETED:
 			return "有项目未填写，请完成后再提交";
+		case ADD_SUCCESS:
+			return "添加成功";
+		case SUBMIT_SUCCESS:
+			return "提交成功";
 		}
 		return null;
 	}

@@ -42,7 +42,7 @@ public class CashRepbl {
 			return ResultMessage.REPNUM_LENGTH_LACKING;
 		else if (courierNum.length() > 11)
 			return ResultMessage.REPNUM_LENGTH_OVER;
-		return ResultMessage.SUCCESS;
+		return ResultMessage.ADD_SUCCESS;
 	}
 
 	public String getCourierName(String courierNum) throws NameNotFoundException, FileNotFoundException, javax.naming.NameNotFoundException, ClassNotFoundException, NumNotFoundException, IOException {
@@ -76,6 +76,8 @@ public class CashRepbl {
 	public ArrayList<CashRepVO> getRepByDate(String date)
 			throws NotBoundException, ClassNotFoundException, IOException {
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.CashRep);
+		if(receiptPOs==null)
+			return null;
 		return CashRepVO.toArrayVO(receiptPOs);
 	}
 
@@ -99,7 +101,11 @@ public class CashRepbl {
 	public Vector<Object> initTable(String date) throws NotBoundException, ClassNotFoundException, IOException {
 		
 		Vector<Object> data = new Vector<Object>();
-		CashRepVO cashRepVO = getRepByDate(date).get(0);
+		ArrayList<CashRepVO> cashRepVOs = getRepByDate(date);
+		if(cashRepVOs==null){
+			return data;
+		}
+		CashRepVO cashRepVO = cashRepVOs.get(0);
 		ArrayList<CashVO> cashs = cashRepVO.cashVOs;
 		CashVO cash;
 		for (int i = 0; i < cashs.size(); i++) {
