@@ -1,6 +1,6 @@
 package ui.formui;
 
-import javax.swing.JPanel;
+import .JPanel;
 
 public class BusinessFormPanel extends JPanel{
 	

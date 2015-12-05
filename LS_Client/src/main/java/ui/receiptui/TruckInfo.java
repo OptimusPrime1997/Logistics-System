@@ -10,7 +10,7 @@ package ui.receiptui;
  *
  * @author apple
  */
-public class TruckInfo extends javax.swing.JPanel {
+public class TruckInfo extends .JPanel {
 
     /**
      * Creates new form 车辆信息
@@ -28,16 +28,16 @@ public class TruckInfo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        jButton1 = new .JButton();
+        jScrollPane1 = new .JScrollPane();
+        jTable1 = new .JTable();
+        jButton2 = new .JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         jButton1.setText("增加车辆");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new .table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -157,30 +157,30 @@ public class TruckInfo extends javax.swing.JPanel {
 
         jButton2.setText("完成");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        .GroupLayout layout = new .GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, .GroupLayout.PREFERRED_SIZE, 412, .GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(189, 189, 189)
                         .addComponent(jButton2)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, .GroupLayout.PREFERRED_SIZE, 282, .GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
@@ -188,9 +188,9 @@ public class TruckInfo extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private .JButton jButton1;
+    private .JButton jButton2;
+    private .JScrollPane jScrollPane1;
+    private .JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

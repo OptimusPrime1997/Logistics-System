@@ -9,7 +9,7 @@ package ui.financialstaffui;
  *
  * @author 1
  */
-public class FinancialStaffJFrame extends javax.swing.JFrame {
+public class FinancialStaffJFrame extends .JFrame {
 
     /**
      * Creates new form FinancialStaffJFrame
@@ -27,71 +27,71 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        financialjPanel = new javax.swing.JPanel();
-        currentAccountNamejLabel = new javax.swing.JLabel();
-        accountNumjLabel = new javax.swing.JLabel();
-        currentAuthorityjLabel = new javax.swing.JLabel();
-        exitjLabel = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        finacialjTabbedPane = new javax.swing.JTabbedPane();
-        financialManagejPanel = new javax.swing.JPanel();
-        payFormjButton = new javax.swing.JButton();
-        bankAcocuntjPanel = new javax.swing.JPanel();
-        addBankAccountjButton = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JSeparator();
-        bankAcountjScrollPane = new javax.swing.JScrollPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        bankAcocuntjTable = new javax.swing.JTable();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        bankAccountNumjTextField = new javax.swing.JTextField();
-        findBankAccountNumjButton = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
-        bankAccountNamejTextField = new javax.swing.JTextField();
-        findBankAccountNamejButton = new javax.swing.JButton();
-        formjPanel = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        formEYearjComboBox = new javax.swing.JComboBox();
-        formEDatejComboBox = new javax.swing.JComboBox();
-        formEMonthjComboBox = new javax.swing.JComboBox();
-        jLabel19 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
-        logjPanel = new javax.swing.JPanel();
-        findLogjButton = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        logTypejComboBox = new javax.swing.JComboBox();
-        logSYearjComboBox = new javax.swing.JComboBox();
-        logSDatejComboBox = new javax.swing.JComboBox();
-        logSMonthjComboBox = new javax.swing.JComboBox();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        logEYearjComboBox = new javax.swing.JComboBox();
-        logEDatejComboBox = new javax.swing.JComboBox();
-        logEMonthjComboBox = new javax.swing.JComboBox();
-        jLabel27 = new javax.swing.JLabel();
-        jSeparator5 = new javax.swing.JSeparator();
-        jLabel30 = new javax.swing.JLabel();
-        logjScrollPane = new javax.swing.JScrollPane();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        logjTable = new javax.swing.JTable();
-        jPanel6 = new javax.swing.JPanel();
-        initialFinancejButton = new javax.swing.JButton();
-        newFinancejButton = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        financialjPanel = new .JPanel();
+        currentAccountNamejLabel = new .JLabel();
+        accountNumjLabel = new .JLabel();
+        currentAuthorityjLabel = new .JLabel();
+        exitjLabel = new .JLabel();
+        jLabel32 = new .JLabel();
+        jLabel31 = new .JLabel();
+        finacialjTabbedPane = new .JTabbedPane();
+        financialManagejPanel = new .JPanel();
+        payFormjButton = new .JButton();
+        bankAcocuntjPanel = new .JPanel();
+        addBankAccountjButton = new .JButton();
+        jSeparator2 = new .JSeparator();
+        bankAcountjScrollPane = new .JScrollPane();
+        jScrollPane1 = new .JScrollPane();
+        bankAcocuntjTable = new .JTable();
+        jLabel12 = new .JLabel();
+        jLabel16 = new .JLabel();
+        bankAccountNumjTextField = new .JTextField();
+        findBankAccountNumjButton = new .JButton();
+        jLabel17 = new .JLabel();
+        bankAccountNamejTextField = new .JTextField();
+        findBankAccountNamejButton = new .JButton();
+        formjPanel = new .JPanel();
+        jButton2 = new .JButton();
+        jButton3 = new .JButton();
+        jLabel10 = new .JLabel();
+        jLabel11 = new .JLabel();
+        jLabel18 = new .JLabel();
+        formEYearjComboBox = new .JComboBox();
+        formEDatejComboBox = new .JComboBox();
+        formEMonthjComboBox = new .JComboBox();
+        jLabel19 = new .JLabel();
+        jSeparator3 = new .JSeparator();
+        jSeparator1 = new .JSeparator();
+        jSeparator4 = new .JSeparator();
+        logjPanel = new .JPanel();
+        findLogjButton = new .JButton();
+        jLabel8 = new .JLabel();
+        jLabel9 = new .JLabel();
+        jLabel21 = new .JLabel();
+        jLabel22 = new .JLabel();
+        jLabel23 = new .JLabel();
+        logTypejComboBox = new .JComboBox();
+        logSYearjComboBox = new .JComboBox();
+        logSDatejComboBox = new .JComboBox();
+        logSMonthjComboBox = new .JComboBox();
+        jLabel24 = new .JLabel();
+        jLabel25 = new .JLabel();
+        jLabel26 = new .JLabel();
+        logEYearjComboBox = new .JComboBox();
+        logEDatejComboBox = new .JComboBox();
+        logEMonthjComboBox = new .JComboBox();
+        jLabel27 = new .JLabel();
+        jSeparator5 = new .JSeparator();
+        jLabel30 = new .JLabel();
+        logjScrollPane = new .JScrollPane();
+        jScrollPane4 = new .JScrollPane();
+        logjTable = new .JTable();
+        jPanel6 = new .JPanel();
+        initialFinancejButton = new .JButton();
+        newFinancejButton = new .JButton();
+        jLabel6 = new .JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(.WindowConstants.EXIT_ON_CLOSE);
 
         financialjPanel.setPreferredSize(new java.awt.Dimension(830, 590));
 
@@ -118,18 +118,18 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout financialManagejPanelLayout = new javax.swing.GroupLayout(financialManagejPanel);
+        .GroupLayout financialManagejPanelLayout = new .GroupLayout(financialManagejPanel);
         financialManagejPanel.setLayout(financialManagejPanelLayout);
         financialManagejPanelLayout.setHorizontalGroup(
-            financialManagejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            financialManagejPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(financialManagejPanelLayout.createSequentialGroup()
                 .addGap(341, 341, 341)
                 .addComponent(payFormjButton)
                 .addContainerGap(371, Short.MAX_VALUE))
         );
         financialManagejPanelLayout.setVerticalGroup(
-            financialManagejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, financialManagejPanelLayout.createSequentialGroup()
+            financialManagejPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            .addGroup(.GroupLayout.Alignment.TRAILING, financialManagejPanelLayout.createSequentialGroup()
                 .addContainerGap(406, Short.MAX_VALUE)
                 .addComponent(payFormjButton)
                 .addGap(32, 32, 32))
@@ -141,7 +141,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
         addBankAccountjButton.setText("增加银行账户");
 
-        bankAcocuntjTable.setModel(new javax.swing.table.DefaultTableModel(
+        bankAcocuntjTable.setModel(new .table.DefaultTableModel(
             new Object [][] {
                 {"6212264301001965153", "xx快递物流公司",  new Long(1000000)},
                 {null, null, null},
@@ -198,70 +198,70 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
         findBankAccountNamejButton.setText("查找");
 
-        javax.swing.GroupLayout bankAcocuntjPanelLayout = new javax.swing.GroupLayout(bankAcocuntjPanel);
+        .GroupLayout bankAcocuntjPanelLayout = new .GroupLayout(bankAcocuntjPanel);
         bankAcocuntjPanel.setLayout(bankAcocuntjPanelLayout);
         bankAcocuntjPanelLayout.setHorizontalGroup(
-            bankAcocuntjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            bankAcocuntjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(bankAcocuntjPanelLayout.createSequentialGroup()
                 .addGap(91, 91, 91)
-                .addGroup(bankAcocuntjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(bankAcocuntjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                     .addGroup(bankAcocuntjPanelLayout.createSequentialGroup()
-                        .addGroup(bankAcocuntjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(bankAcocuntjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                             .addGroup(bankAcocuntjPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel16)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bankAccountNumjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bankAccountNumjTextField, .GroupLayout.PREFERRED_SIZE, 321, .GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(findBankAccountNumjButton))
                             .addGroup(bankAcocuntjPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel17)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bankAccountNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bankAccountNamejTextField, .GroupLayout.PREFERRED_SIZE, 321, .GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(findBankAccountNamejButton)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(bankAcocuntjPanelLayout.createSequentialGroup()
-                        .addComponent(bankAcountjScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                        .addComponent(addBankAccountjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bankAcountjScrollPane, .GroupLayout.PREFERRED_SIZE, 512, .GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                        .addComponent(addBankAccountjButton, .GroupLayout.PREFERRED_SIZE, 117, .GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30))))
             .addGroup(bankAcocuntjPanelLayout.createSequentialGroup()
                 .addGap(292, 292, 292)
                 .addComponent(jLabel12)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(bankAcocuntjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bankAcocuntjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                 .addGroup(bankAcocuntjPanelLayout.createSequentialGroup()
                     .addContainerGap(632, Short.MAX_VALUE)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator2, .GroupLayout.PREFERRED_SIZE, 160, .GroupLayout.PREFERRED_SIZE)
                     .addGap(13, 13, 13)))
         );
         bankAcocuntjPanelLayout.setVerticalGroup(
-            bankAcocuntjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bankAcocuntjPanelLayout.createSequentialGroup()
+            bankAcocuntjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            .addGroup(.GroupLayout.Alignment.TRAILING, bankAcocuntjPanelLayout.createSequentialGroup()
                 .addContainerGap(21, Short.MAX_VALUE)
-                .addGroup(bankAcocuntjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(bankAcocuntjPanelLayout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(bankAccountNumjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bankAccountNumjTextField, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
                     .addComponent(findBankAccountNumjButton))
                 .addGap(28, 28, 28)
-                .addGroup(bankAcocuntjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(bankAcocuntjPanelLayout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(bankAccountNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bankAccountNamejTextField, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
                     .addComponent(findBankAccountNamejButton))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bankAcocuntjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(bankAcocuntjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                     .addGroup(bankAcocuntjPanelLayout.createSequentialGroup()
-                        .addComponent(bankAcountjScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bankAcountjScrollPane, .GroupLayout.PREFERRED_SIZE, 311, .GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bankAcocuntjPanelLayout.createSequentialGroup()
+                    .addGroup(.GroupLayout.Alignment.TRAILING, bankAcocuntjPanelLayout.createSequentialGroup()
                         .addComponent(addBankAccountjButton)
                         .addGap(182, 182, 182))))
-            .addGroup(bankAcocuntjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bankAcocuntjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                 .addGroup(bankAcocuntjPanelLayout.createSequentialGroup()
                     .addContainerGap(254, Short.MAX_VALUE)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator2, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
                     .addGap(205, 205, 205)))
         );
 
@@ -285,16 +285,16 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
         jLabel18.setText("日");
 
-        formEYearjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015" }));
+        formEYearjComboBox.setModel(new .DefaultComboBoxModel(new String[] { "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015" }));
 
-        formEDatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "9", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        formEDatejComboBox.setModel(new .DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "9", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         formEDatejComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 formEDatejComboBoxActionPerformed(evt);
             }
         });
 
-        formEMonthjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        formEMonthjComboBox.setModel(new .DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         formEMonthjComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 formEMonthjComboBoxActionPerformed(evt);
@@ -303,24 +303,24 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
         jLabel19.setText("截止日期：");
 
-        javax.swing.GroupLayout formjPanelLayout = new javax.swing.GroupLayout(formjPanel);
+        .GroupLayout formjPanelLayout = new .GroupLayout(formjPanel);
         formjPanel.setLayout(formjPanelLayout);
         formjPanelLayout.setHorizontalGroup(
-            formjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formjPanelLayout.createSequentialGroup()
+            formjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            .addGroup(.GroupLayout.Alignment.TRAILING, formjPanelLayout.createSequentialGroup()
                 .addGap(0, 143, Short.MAX_VALUE)
                 .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(formEYearjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(formEYearjComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(formEMonthjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(formEMonthjComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(formEDatejComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(formEDatejComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel18)
                 .addGap(416, 416, 416))
             .addGroup(formjPanelLayout.createSequentialGroup()
@@ -328,43 +328,43 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addGap(186, 186, 186)
                 .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(formjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(formjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                 .addGroup(formjPanelLayout.createSequentialGroup()
                     .addGap(0, 640, Short.MAX_VALUE)
-                    .addGroup(formjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formjPanelLayout.createSequentialGroup()
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(formjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                        .addGroup(.GroupLayout.Alignment.TRAILING, formjPanelLayout.createSequentialGroup()
+                            .addComponent(jSeparator3, .GroupLayout.PREFERRED_SIZE, 50, .GroupLayout.PREFERRED_SIZE)
                             .addGap(56, 56, 56)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator1, .GroupLayout.PREFERRED_SIZE, 50, .GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSeparator4, .GroupLayout.Alignment.TRAILING, .GroupLayout.PREFERRED_SIZE, 160, .GroupLayout.PREFERRED_SIZE))
                     .addGap(5, 5, 5)))
         );
         formjPanelLayout.setVerticalGroup(
-            formjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            formjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(formjPanelLayout.createSequentialGroup()
                 .addContainerGap(69, Short.MAX_VALUE)
-                .addGroup(formjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(formjPanelLayout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(formEYearjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(formEMonthjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(formEDatejComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(formEYearjComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                    .addComponent(formEMonthjComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                    .addComponent(formEDatejComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
                     .addComponent(jLabel10)
                     .addComponent(jLabel18))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
-                .addGroup(formjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
+                .addGroup(formjPanelLayout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addGap(97, 97, 97))
-            .addGroup(formjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(formjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                 .addGroup(formjPanelLayout.createSequentialGroup()
                     .addGap(31, 31, 31)
-                    .addGroup(formjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
-                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(formjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                        .addComponent(jSeparator3, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparator1, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
+                    .addComponent(jSeparator4, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
                     .addGap(205, 205, 205)))
         );
 
@@ -389,18 +389,18 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
         jLabel23.setText("操作类型：");
 
-        logTypejComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "所有操作", "决策制定", "审批单据", "用户账户管理", "银行账户管理", "人员机构管理" }));
+        logTypejComboBox.setModel(new .DefaultComboBoxModel(new String[] { "所有操作", "决策制定", "审批单据", "用户账户管理", "银行账户管理", "人员机构管理" }));
         logTypejComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logTypejComboBoxActionPerformed(evt);
             }
         });
 
-        logSYearjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015" }));
+        logSYearjComboBox.setModel(new .DefaultComboBoxModel(new String[] { "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015" }));
 
-        logSDatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "9", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        logSDatejComboBox.setModel(new .DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "9", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
-        logSMonthjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        logSMonthjComboBox.setModel(new .DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         logSMonthjComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logSMonthjComboBoxActionPerformed(evt);
@@ -413,11 +413,11 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
         jLabel26.setText("日");
 
-        logEYearjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015" }));
+        logEYearjComboBox.setModel(new .DefaultComboBoxModel(new String[] { "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015" }));
 
-        logEDatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        logEDatejComboBox.setModel(new .DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
-        logEMonthjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        logEMonthjComboBox.setModel(new .DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         logEMonthjComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logEMonthjComboBoxActionPerformed(evt);
@@ -429,7 +429,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
         jLabel30.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
         jLabel30.setText("系统日志");
 
-        logjTable.setModel(new javax.swing.table.DefaultTableModel(
+        logjTable.setModel(new .table.DefaultTableModel(
             new Object [][] {
                 {"20151109", "用户账户管理", "管理员", "00065434232"},
                 {null, null, null, null},
@@ -465,94 +465,94 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
         logjScrollPane.setViewportView(jScrollPane4);
 
-        javax.swing.GroupLayout logjPanelLayout = new javax.swing.GroupLayout(logjPanel);
+        .GroupLayout logjPanelLayout = new .GroupLayout(logjPanel);
         logjPanel.setLayout(logjPanelLayout);
         logjPanelLayout.setHorizontalGroup(
-            logjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            logjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(logjPanelLayout.createSequentialGroup()
-                .addGroup(logjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(logjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                     .addGroup(logjPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(logSYearjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(logSYearjComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(logSMonthjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(logSMonthjComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel21)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(logSDatejComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(logSDatejComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
                     .addGroup(logjPanelLayout.createSequentialGroup()
                         .addContainerGap(216, Short.MAX_VALUE)
                         .addComponent(jLabel22)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                         .addComponent(jLabel27)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(logEYearjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(logEYearjComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel24)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(logEMonthjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(logEMonthjComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel25)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(logEDatejComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(logEDatejComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel26)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(logTypejComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(logTypejComboBox, .GroupLayout.PREFERRED_SIZE, 78, .GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(findLogjButton)))
                 .addContainerGap(32, Short.MAX_VALUE))
             .addGroup(logjPanelLayout.createSequentialGroup()
                 .addGap(117, 117, 117)
-                .addGroup(logjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(logjScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logjPanelLayout.createSequentialGroup()
+                .addGroup(logjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                    .addComponent(logjScrollPane, .GroupLayout.PREFERRED_SIZE, 577, .GroupLayout.PREFERRED_SIZE)
+                    .addGroup(.GroupLayout.Alignment.TRAILING, logjPanelLayout.createSequentialGroup()
                         .addGap(258, 258, 258)
                         .addComponent(jLabel30)
                         .addGap(267, 267, 267)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(logjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(logjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                 .addGroup(logjPanelLayout.createSequentialGroup()
                     .addGap(0, 586, Short.MAX_VALUE)
-                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator5, .GroupLayout.PREFERRED_SIZE, 160, .GroupLayout.PREFERRED_SIZE)
                     .addGap(59, 59, 59)))
         );
         logjPanelLayout.setVerticalGroup(
-            logjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            logjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(logjPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(logjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(logjPanelLayout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel9)
                     .addComponent(jLabel21)
                     .addComponent(jLabel22)
-                    .addComponent(logSYearjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logSMonthjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logSDatejComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logSYearjComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logSMonthjComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logSDatejComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27)
                     .addComponent(jLabel24)
                     .addComponent(jLabel25)
                     .addComponent(jLabel26)
-                    .addComponent(logEYearjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logEMonthjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logEDatejComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logEYearjComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logEMonthjComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logEDatejComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23)
-                    .addComponent(logTypejComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logTypejComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
                     .addComponent(findLogjButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel30)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(logjScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(logjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(logjScrollPane, .GroupLayout.PREFERRED_SIZE, 356, .GroupLayout.PREFERRED_SIZE))
+            .addGroup(logjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                 .addGroup(logjPanelLayout.createSequentialGroup()
                     .addContainerGap(254, Short.MAX_VALUE)
-                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator5, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
                     .addGap(205, 205, 205)))
         );
 
@@ -574,10 +574,10 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        .GroupLayout jPanel6Layout = new .GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            jPanel6Layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(192, 192, 192)
                 .addComponent(initialFinancejButton)
@@ -586,10 +586,10 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
                 .addContainerGap(218, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            jPanel6Layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap(304, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel6Layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
                     .addComponent(initialFinancejButton)
                     .addComponent(newFinancejButton))
                 .addGap(134, 134, 134))
@@ -599,60 +599,60 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
         jLabel6.setText("财务人员");
 
-        javax.swing.GroupLayout financialjPanelLayout = new javax.swing.GroupLayout(financialjPanel);
+        .GroupLayout financialjPanelLayout = new .GroupLayout(financialjPanel);
         financialjPanel.setLayout(financialjPanelLayout);
         financialjPanelLayout.setHorizontalGroup(
-            financialjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            financialjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(financialjPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(financialjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(financialjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                     .addGroup(financialjPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(currentAccountNamejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(currentAccountNamejLabel, .GroupLayout.PREFERRED_SIZE, 32, .GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(accountNumjLabel)
                         .addGap(26, 26, 26)
                         .addComponent(currentAuthorityjLabel)
                         .addGap(29, 29, 29)
                         .addComponent(exitjLabel))
-                    .addComponent(finacialjTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(finacialjTabbedPane, .GroupLayout.Alignment.TRAILING, .GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, financialjPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(.GroupLayout.Alignment.TRAILING, financialjPanelLayout.createSequentialGroup()
+                .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addGap(382, 382, 382))
             .addGroup(financialjPanelLayout.createSequentialGroup()
                 .addComponent(jLabel31)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE))
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel32, .GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE))
         );
         financialjPanelLayout.setVerticalGroup(
-            financialjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, financialjPanelLayout.createSequentialGroup()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addGroup(financialjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(accountNumjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+            financialjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            .addGroup(.GroupLayout.Alignment.TRAILING, financialjPanelLayout.createSequentialGroup()
+                .addComponent(jLabel6, .GroupLayout.PREFERRED_SIZE, 15, .GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addGroup(financialjPanelLayout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                    .addComponent(accountNumjLabel, .GroupLayout.PREFERRED_SIZE, 24, .GroupLayout.PREFERRED_SIZE)
                     .addComponent(currentAuthorityjLabel)
                     .addComponent(currentAccountNamejLabel)
                     .addComponent(exitjLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(finacialjTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(financialjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(finacialjTabbedPane, .GroupLayout.PREFERRED_SIZE, 490, .GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(financialjPanelLayout.createParallelGroup(.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel31, .GroupLayout.DEFAULT_SIZE, .GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel32, .GroupLayout.PREFERRED_SIZE, 21, .GroupLayout.PREFERRED_SIZE)))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        .GroupLayout layout = new .GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(financialjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            .addComponent(financialjPanel, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(financialjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            .addComponent(financialjPanel, .GroupLayout.PREFERRED_SIZE, 600, .GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -708,9 +708,9 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (.UIManager.LookAndFeelInfo info : .UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    .UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -720,7 +720,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FinancialStaffJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(FinancialStaffJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FinancialStaffJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -735,68 +735,68 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel accountNumjLabel;
-    private javax.swing.JButton addBankAccountjButton;
-    private javax.swing.JTextField bankAccountNamejTextField;
-    private javax.swing.JTextField bankAccountNumjTextField;
-    private javax.swing.JPanel bankAcocuntjPanel;
-    private javax.swing.JTable bankAcocuntjTable;
-    private javax.swing.JScrollPane bankAcountjScrollPane;
-    private javax.swing.JLabel currentAccountNamejLabel;
-    private javax.swing.JLabel currentAuthorityjLabel;
-    private javax.swing.JLabel exitjLabel;
-    private javax.swing.JTabbedPane finacialjTabbedPane;
-    private javax.swing.JPanel financialManagejPanel;
-    private javax.swing.JPanel financialjPanel;
-    private javax.swing.JButton findBankAccountNamejButton;
-    private javax.swing.JButton findBankAccountNumjButton;
-    private javax.swing.JButton findLogjButton;
-    private javax.swing.JComboBox formEDatejComboBox;
-    private javax.swing.JComboBox formEMonthjComboBox;
-    private javax.swing.JComboBox formEYearjComboBox;
-    private javax.swing.JPanel formjPanel;
-    private javax.swing.JButton initialFinancejButton;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JComboBox logEDatejComboBox;
-    private javax.swing.JComboBox logEMonthjComboBox;
-    private javax.swing.JComboBox logEYearjComboBox;
-    private javax.swing.JComboBox logSDatejComboBox;
-    private javax.swing.JComboBox logSMonthjComboBox;
-    private javax.swing.JComboBox logSYearjComboBox;
-    private javax.swing.JComboBox logTypejComboBox;
-    private javax.swing.JPanel logjPanel;
-    private javax.swing.JScrollPane logjScrollPane;
-    private javax.swing.JTable logjTable;
-    private javax.swing.JButton newFinancejButton;
-    private javax.swing.JButton payFormjButton;
+    private .JLabel accountNumjLabel;
+    private .JButton addBankAccountjButton;
+    private .JTextField bankAccountNamejTextField;
+    private .JTextField bankAccountNumjTextField;
+    private .JPanel bankAcocuntjPanel;
+    private .JTable bankAcocuntjTable;
+    private .JScrollPane bankAcountjScrollPane;
+    private .JLabel currentAccountNamejLabel;
+    private .JLabel currentAuthorityjLabel;
+    private .JLabel exitjLabel;
+    private .JTabbedPane finacialjTabbedPane;
+    private .JPanel financialManagejPanel;
+    private .JPanel financialjPanel;
+    private .JButton findBankAccountNamejButton;
+    private .JButton findBankAccountNumjButton;
+    private .JButton findLogjButton;
+    private .JComboBox formEDatejComboBox;
+    private .JComboBox formEMonthjComboBox;
+    private .JComboBox formEYearjComboBox;
+    private .JPanel formjPanel;
+    private .JButton initialFinancejButton;
+    private .JButton jButton2;
+    private .JButton jButton3;
+    private .JLabel jLabel10;
+    private .JLabel jLabel11;
+    private .JLabel jLabel12;
+    private .JLabel jLabel16;
+    private .JLabel jLabel17;
+    private .JLabel jLabel18;
+    private .JLabel jLabel19;
+    private .JLabel jLabel21;
+    private .JLabel jLabel22;
+    private .JLabel jLabel23;
+    private .JLabel jLabel24;
+    private .JLabel jLabel25;
+    private .JLabel jLabel26;
+    private .JLabel jLabel27;
+    private .JLabel jLabel30;
+    private .JLabel jLabel31;
+    private .JLabel jLabel32;
+    private .JLabel jLabel6;
+    private .JLabel jLabel8;
+    private .JLabel jLabel9;
+    private .JPanel jPanel6;
+    private .JScrollPane jScrollPane1;
+    private .JScrollPane jScrollPane4;
+    private .JSeparator jSeparator1;
+    private .JSeparator jSeparator2;
+    private .JSeparator jSeparator3;
+    private .JSeparator jSeparator4;
+    private .JSeparator jSeparator5;
+    private .JComboBox logEDatejComboBox;
+    private .JComboBox logEMonthjComboBox;
+    private .JComboBox logEYearjComboBox;
+    private .JComboBox logSDatejComboBox;
+    private .JComboBox logSMonthjComboBox;
+    private .JComboBox logSYearjComboBox;
+    private .JComboBox logTypejComboBox;
+    private .JPanel logjPanel;
+    private .JScrollPane logjScrollPane;
+    private .JTable logjTable;
+    private .JButton newFinancejButton;
+    private .JButton payFormjButton;
     // End of variables declaration//GEN-END:variables
 }

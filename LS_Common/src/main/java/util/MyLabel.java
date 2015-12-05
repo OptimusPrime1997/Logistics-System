@@ -1,6 +1,6 @@
 package util;
 
-import javax.swing.JLabel;
+import .JLabel;
 
 public class MyLabel extends JLabel{
 	public MyLabel(String text,int x,int y,int w,int h) {

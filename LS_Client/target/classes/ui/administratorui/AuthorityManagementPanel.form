@@ -45,12 +45,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel9">
+    <Component class=".JLabel" name="jLabel9">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5f53;&#x524d;&#x8d26;&#x6237;&#xff1a;&#x5927;&#x7389;&#x513f;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class=".JButton" name="jButton3">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x9000;&#x51fa;"/>
       </Properties>
@@ -58,7 +58,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
       </Events>
     </Component>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class=".JPanel" name="jPanel1">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -189,7 +189,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox104">
+        <Component class=".JCheckBox" name="jCheckBox104">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x8f93;&#x5165;&#x8ba2;&#x5355;"/>
           </Properties>
@@ -197,17 +197,17 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox104ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox105">
+        <Component class=".JCheckBox" name="jCheckBox105">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x8f93;&#x5165;&#x6536;&#x4ef6;&#x4fe1;&#x606f;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox106">
+        <Component class=".JCheckBox" name="jCheckBox106">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x8f66;&#x8f86;&#x88c5;&#x8f66;&#x7ba1;&#x7406;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox107">
+        <Component class=".JCheckBox" name="jCheckBox107">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x63a5;&#x6536;"/>
           </Properties>
@@ -215,7 +215,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox107ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox108">
+        <Component class=".JCheckBox" name="jCheckBox108">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x6d3e;&#x4ef6;"/>
           </Properties>
@@ -223,7 +223,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox108ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox109">
+        <Component class=".JCheckBox" name="jCheckBox109">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x5efa;&#x7acb;&#x6536;&#x6b3e;&#x5355;"/>
           </Properties>
@@ -231,7 +231,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox109ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox110">
+        <Component class=".JCheckBox" name="jCheckBox110">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x8f66;&#x8f86;/&#x53f8;&#x673a;&#x4fe1;&#x606f;&#x7ba1;&#x7406;"/>
           </Properties>
@@ -239,7 +239,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox110ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox111">
+        <Component class=".JCheckBox" name="jCheckBox111">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x88c5;&#x8fd0;&#x7ba1;&#x7406;"/>
           </Properties>
@@ -247,7 +247,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox111ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox112">
+        <Component class=".JCheckBox" name="jCheckBox112">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x4e2d;&#x8f6c;&#x63a5;&#x6536;"/>
           </Properties>
@@ -255,7 +255,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox112ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox113">
+        <Component class=".JCheckBox" name="jCheckBox113">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x5165;&#x5e93;&#x7ba1;&#x7406;"/>
           </Properties>
@@ -263,7 +263,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox113ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox114">
+        <Component class=".JCheckBox" name="jCheckBox114">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x5e93;&#x5b58;&#x7ba1;&#x7406;"/>
           </Properties>
@@ -271,7 +271,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox114ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox115">
+        <Component class=".JCheckBox" name="jCheckBox115">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x65e5;&#x5fd7;&#x67e5;&#x770b;"/>
           </Properties>
@@ -279,7 +279,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox115ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox116">
+        <Component class=".JCheckBox" name="jCheckBox116">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x51fa;&#x5e93;&#x7ba1;&#x7406;"/>
           </Properties>
@@ -287,7 +287,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox116ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox119">
+        <Component class=".JCheckBox" name="jCheckBox119">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x94f6;&#x884c;&#x8d26;&#x6237;&#x67e5;&#x770b;"/>
           </Properties>
@@ -295,7 +295,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox119ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox120">
+        <Component class=".JCheckBox" name="jCheckBox120">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x5ba1;&#x6279;&#x5355;&#x636e;"/>
           </Properties>
@@ -303,7 +303,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox120ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox121">
+        <Component class=".JCheckBox" name="jCheckBox121">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x51b3;&#x7b56;&#x5236;&#x5b9a;"/>
           </Properties>
@@ -311,7 +311,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox121ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox122">
+        <Component class=".JCheckBox" name="jCheckBox122">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x94f6;&#x884c;&#x8d26;&#x6237;&#x7ba1;&#x7406;"/>
           </Properties>
@@ -319,7 +319,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox122ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox124">
+        <Component class=".JCheckBox" name="jCheckBox124">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x6743;&#x9650;&#x7ba1;&#x7406;"/>
           </Properties>
@@ -327,7 +327,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox124ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox125">
+        <Component class=".JCheckBox" name="jCheckBox125">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x8d26;&#x6237;&#x7ba1;&#x7406;"/>
           </Properties>
@@ -335,7 +335,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox125ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox139">
+        <Component class=".JCheckBox" name="jCheckBox139">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x62a5;&#x8868;&#x67e5;&#x770b;"/>
           </Properties>
@@ -343,7 +343,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox139ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox141">
+        <Component class=".JCheckBox" name="jCheckBox141">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x4eba;&#x5458;/&#x673a;&#x6784;&#x7ba1;&#x7406;"/>
           </Properties>
@@ -351,7 +351,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox141ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox144">
+        <Component class=".JCheckBox" name="jCheckBox144">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x6536;&#x652f;&#x7ba1;&#x7406;"/>
           </Properties>
@@ -359,19 +359,19 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox144ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class=".JButton" name="jButton2">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x8fd4;&#x56de;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton4">
+        <Component class=".JButton" name="jButton4">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x6dfb;&#x52a0;&#x4e00;&#x79cd;&#x8eab;&#x4efd;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class=".JComboBox" name="jComboBox1">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+            <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="7">
                 <StringItem index="0" value="&#x5feb;&#x9012;&#x5458;"/>
                 <StringItem index="1" value="&#x8425;&#x4e1a;&#x5385;&#x8425;&#x4e1a;&#x5458;"/>

@@ -13,14 +13,14 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
-import javax.swing.JFrame;
-import javax.swing.JTable;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.TableColumnModelEvent;
-import javax.swing.event.TableColumnModelListener;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
+import .JFrame;
+import .JTable;
+import .event.ChangeEvent;
+import .event.ListSelectionEvent;
+import .event.TableColumnModelEvent;
+import .event.TableColumnModelListener;
+import .table.DefaultTableModel;
+import .table.TableColumn;
 
 import VO.GoodsVO;
 import VO.ReceiptVO.CashRepVO;
@@ -35,7 +35,7 @@ import Exception.NameNotFoundException;
  *
  * @author apple
  */
-public class CashRep extends javax.swing.JPanel {
+public class CashRep extends .JPanel {
 
     /**
 	 * 
@@ -45,24 +45,24 @@ public class CashRep extends javax.swing.JPanel {
      * Creates new form CashRep
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel accountLabel;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JButton cancelButton;
-    private javax.swing.JButton courierButton;
-    private javax.swing.JLabel courierNumLabel;
-    private javax.swing.JTextField courierNumText;
-    private javax.swing.JLabel dateLabel;
-    private javax.swing.JTextField dateText;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable;
-    private javax.swing.JLabel numLabel;
-    private javax.swing.JTextField numText;
-    private javax.swing.JLabel officeLabel;
-    private javax.swing.JTextField officeText;
-    private javax.swing.JButton okButton;
-    private javax.swing.JLabel sumLabel;
-    private javax.swing.JTextField sumText;
-    private javax.swing.JTextField resultMsgText;
+    private .JLabel accountLabel;
+    private .JComboBox jComboBox1;
+    private .JButton cancelButton;
+    private .JButton courierButton;
+    private .JLabel courierNumLabel;
+    private .JTextField courierNumText;
+    private .JLabel dateLabel;
+    private .JTextField dateText;
+    private .JScrollPane jScrollPane1;
+    private .JTable jTable;
+    private .JLabel numLabel;
+    private .JTextField numText;
+    private .JLabel officeLabel;
+    private .JTextField officeText;
+    private .JButton okButton;
+    private .JLabel sumLabel;
+    private .JTextField sumText;
+    private .JTextField resultMsgText;
     private CashRepblService control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
@@ -82,24 +82,24 @@ public class CashRep extends javax.swing.JPanel {
     private void initComponents() {
 
     	
-        numLabel = new javax.swing.JLabel();
-        numText = new javax.swing.JTextField();
-        courierNumLabel = new javax.swing.JLabel();
-        courierNumText = new javax.swing.JTextField();
-        dateLabel = new javax.swing.JLabel();
-        dateText = new javax.swing.JTextField();
-        sumLabel = new javax.swing.JLabel();
-        sumText = new javax.swing.JTextField();
-        cancelButton = new javax.swing.JButton();
-        okButton = new javax.swing.JButton();
-        officeText = new javax.swing.JTextField();
-        officeLabel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
-        accountLabel = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        courierButton = new javax.swing.JButton();
-        resultMsgText = new javax.swing.JTextField();
+        numLabel = new .JLabel();
+        numText = new .JTextField();
+        courierNumLabel = new .JLabel();
+        courierNumText = new .JTextField();
+        dateLabel = new .JLabel();
+        dateText = new .JTextField();
+        sumLabel = new .JLabel();
+        sumText = new .JTextField();
+        cancelButton = new .JButton();
+        okButton = new .JButton();
+        officeText = new .JTextField();
+        officeLabel = new .JLabel();
+        jScrollPane1 = new .JScrollPane();
+        jTable = new .JTable();
+        accountLabel = new .JLabel();
+        jComboBox1 = new .JComboBox();
+        courierButton = new .JButton();
+        resultMsgText = new .JTextField();
         control = new CashRepController();
         model = new DefaultTableModel();
         columnIdentifiers = new Vector<String>();
@@ -141,7 +141,7 @@ public class CashRep extends javax.swing.JPanel {
 
         officeLabel.setText("营业厅:");
 
-        jTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTable.setBorder(.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         
         columnIdentifiers.add("快递员名字");
         columnIdentifiers.add("快递员编号");
@@ -165,7 +165,7 @@ public class CashRep extends javax.swing.JPanel {
         jTable.setSelectionForeground(new java.awt.Color(0, 0, 20));
         jTable.setShowGrid(true);
         jScrollPane1.setViewportView(jTable);
-        jTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTable.getColumnModel().getSelectionModel().setSelectionMode(.ListSelectionModel.SINGLE_SELECTION);
         
         accountLabel.setText("收款账号:");
 
@@ -178,95 +178,95 @@ public class CashRep extends javax.swing.JPanel {
         
         setColumn();
         
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new .DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        .GroupLayout layout = new .GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.TRAILING)
                             .addComponent(courierNumLabel)
                             .addComponent(numLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(officeLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(officeText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(dateLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dateText, .GroupLayout.PREFERRED_SIZE, 101, .GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                                    .addComponent(numText, .GroupLayout.PREFERRED_SIZE, 183, .GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(courierNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(courierNumText, .GroupLayout.PREFERRED_SIZE, 111, .GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(courierButton)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, .GroupLayout.PREFERRED_SIZE, 430, .GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.TRAILING)
                                     .addComponent(accountLabel)
                                     .addComponent(sumLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                                    .addComponent(sumText, .GroupLayout.PREFERRED_SIZE, 61, .GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(16, 16, 16)
                                         .addComponent(cancelButton)
                                         .addGap(91, 91, 91)
                                         .addComponent(okButton))
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jComboBox1, .GroupLayout.PREFERRED_SIZE, 295, .GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 13, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(resultMsgText)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                            .addComponent(officeText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
                             .addComponent(dateLabel)
                             .addComponent(officeLabel)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(dateText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
                     .addComponent(numLabel)
-                    .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(courierNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                    .addComponent(courierNumText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
                     .addComponent(courierNumLabel)
                     .addComponent(courierButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, .GroupLayout.PREFERRED_SIZE, 325, .GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sumText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
                     .addComponent(sumLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
                     .addComponent(accountLabel)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton)
                     .addComponent(okButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(resultMsgText)));
             
             jTable.addMouseListener(new MouseListener() {

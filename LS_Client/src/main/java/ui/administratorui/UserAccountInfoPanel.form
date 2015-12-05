@@ -127,92 +127,92 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel9">
+    <Component class=".JLabel" name="jLabel9">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5f53;&#x524d;&#x8d26;&#x6237;&#xff1a;&#x5927;&#x7389;&#x513f;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class=".JButton" name="jButton5">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x9000;&#x51fa;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class=".JButton" name="jButton6">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x786e;&#x8ba4;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton7">
+    <Component class=".JButton" name="jButton7">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x8fd4;&#x56de;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class=".JLabel" name="jLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x8d26;&#x53f7;&#xff1a;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class=".JTextField" name="jTextField1">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class=".JLabel" name="jLabel2">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5bc6;&#x7801;&#xff1a;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class=".JLabel" name="jLabel3">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x59d3;&#x540d;&#xff1a;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class=".JTextField" name="jTextField2">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
+    <Component class=".JTextField" name="jTextField3">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class=".JLabel" name="jLabel4">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x6027;&#x522b;&#xff1a;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class=".JLabel" name="jLabel5">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x8eab;&#x4efd;&#xff1a;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class=".JLabel" name="jLabel6">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x624b;&#x673a;&#x53f7;&#x7801;&#xff1a;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class=".JLabel" name="jLabel7">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x6240;&#x5c5e;&#x90e8;&#x95e8;&#xff1a;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField4">
+    <Component class=".JTextField" name="jTextField4">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField5">
+    <Component class=".JTextField" name="jTextField5">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField6">
+    <Component class=".JTextField" name="jTextField6">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField7">
+    <Component class=".JTextField" name="jTextField7">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>

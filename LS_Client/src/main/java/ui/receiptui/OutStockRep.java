@@ -10,7 +10,7 @@ package ui.receiptui;
  *
  * @author apple
  */
-public class OutStockRep extends javax.swing.JPanel {
+public class OutStockRep extends .JPanel {
 
     /**
      * Creates new form OutStockRep
@@ -28,27 +28,27 @@ public class OutStockRep extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        dateText = new javax.swing.JTextField();
-        dateLabel = new javax.swing.JLabel();
-        officeText = new javax.swing.JTextField();
-        officeLabel = new javax.swing.JLabel();
-        numLabel = new javax.swing.JLabel();
-        numText = new javax.swing.JTextField();
-        repTypeLabel = new javax.swing.JLabel();
-        repTypeText = new javax.swing.JTextField();
-        destinationLabel = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
-        repTypeBox = new javax.swing.JComboBox();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        destinationText = new javax.swing.JTextField();
-        resultMsgText = new javax.swing.JTextField();
+        dateText = new .JTextField();
+        dateLabel = new .JLabel();
+        officeText = new .JTextField();
+        officeLabel = new .JLabel();
+        numLabel = new .JLabel();
+        numText = new .JTextField();
+        repTypeLabel = new .JLabel();
+        repTypeText = new .JTextField();
+        destinationLabel = new .JLabel();
+        jLabel8 = new .JLabel();
+        jComboBox2 = new .JComboBox();
+        repTypeBox = new .JComboBox();
+        jScrollPane1 = new .JScrollPane();
+        jTable1 = new .JTable();
+        jLabel9 = new .JLabel();
+        jTextField5 = new .JTextField();
+        jButton1 = new .JButton();
+        jButton2 = new .JButton();
+        jButton3 = new .JButton();
+        destinationText = new .JTextField();
+        resultMsgText = new .JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -80,11 +80,11 @@ public class OutStockRep extends javax.swing.JPanel {
 
         jLabel8.setText("装运形式:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "航运", "火车", "汽运" }));
+        jComboBox2.setModel(new .DefaultComboBoxModel(new String[] { "航运", "火车", "汽运" }));
 
-        repTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "中转单", "中转中心装车单" }));
+        repTypeBox.setModel(new .DefaultComboBoxModel(new String[] { "中转单", "中转中心装车单" }));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new .table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -211,101 +211,101 @@ public class OutStockRep extends javax.swing.JPanel {
 
         jButton3.setText("取消");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        .GroupLayout layout = new .GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(officeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(officeText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(dateLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dateText, .GroupLayout.PREFERRED_SIZE, 116, .GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.TRAILING)
                                 .addComponent(numLabel)
                                 .addComponent(repTypeLabel)
                                 .addComponent(destinationLabel))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                                .addComponent(numText, .GroupLayout.PREFERRED_SIZE, 179, .GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(repTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(destinationText, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                                        .addComponent(repTypeBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(destinationText, .GroupLayout.PREFERRED_SIZE, 86, .GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(repTypeText))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                             .addGap(25, 25, 25)
                                             .addComponent(jLabel8)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jComboBox2, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))))))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, .GroupLayout.PREFERRED_SIZE, 204, .GroupLayout.PREFERRED_SIZE)
                             .addGap(29, 29, 29)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jButton1)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel9)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jTextField5, .GroupLayout.PREFERRED_SIZE, 92, .GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jButton3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jButton2))))))
                 .addContainerGap(20, Short.MAX_VALUE))
             .addComponent(resultMsgText)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dateText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
                     .addComponent(dateLabel)
-                    .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(officeText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
                     .addComponent(officeLabel))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                            .addComponent(numText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
                             .addComponent(numLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
                             .addComponent(repTypeLabel)
-                            .addComponent(repTypeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(repTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(repTypeText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                            .addComponent(repTypeBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
                             .addComponent(destinationLabel)
                             .addComponent(jLabel8)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(destinationText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jComboBox2, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                            .addComponent(destinationText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, .GroupLayout.PREFERRED_SIZE, 197, .GroupLayout.PREFERRED_SIZE))
+                    .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(147, 147, 147)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTextField5, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1)
                         .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2)
                             .addComponent(jButton3))
                         .addGap(37, 37, 37)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(resultMsgText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -319,26 +319,26 @@ public class OutStockRep extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel dateLabel;
-    private javax.swing.JTextField dateText;
-    private javax.swing.JLabel destinationLabel;
-    private javax.swing.JTextField destinationText;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JLabel numLabel;
-    private javax.swing.JTextField numText;
-    private javax.swing.JLabel officeLabel;
-    private javax.swing.JTextField officeText;
-    private javax.swing.JComboBox repTypeBox;
-    private javax.swing.JLabel repTypeLabel;
-    private javax.swing.JTextField repTypeText;
-    private javax.swing.JTextField resultMsgText;
+    private .JLabel dateLabel;
+    private .JTextField dateText;
+    private .JLabel destinationLabel;
+    private .JTextField destinationText;
+    private .JButton jButton1;
+    private .JButton jButton2;
+    private .JButton jButton3;
+    private .JComboBox jComboBox2;
+    private .JLabel jLabel8;
+    private .JLabel jLabel9;
+    private .JScrollPane jScrollPane1;
+    private .JTable jTable1;
+    private .JTextField jTextField5;
+    private .JLabel numLabel;
+    private .JTextField numText;
+    private .JLabel officeLabel;
+    private .JTextField officeText;
+    private .JComboBox repTypeBox;
+    private .JLabel repTypeLabel;
+    private .JTextField repTypeText;
+    private .JTextField resultMsgText;
     // End of variables declaration//GEN-END:variables
 }

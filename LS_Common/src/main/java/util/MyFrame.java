@@ -1,8 +1,8 @@
 package util;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
+import .JFrame;
+import .JPanel;
+import .WindowConstants;
 
 public class MyFrame extends JFrame{
 	public MyFrame(int width,int height,JPanel panel){

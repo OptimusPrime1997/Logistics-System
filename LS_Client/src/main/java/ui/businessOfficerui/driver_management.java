@@ -5,7 +5,7 @@
  */
 package ui.businessOfficerui;
 
-import javax.swing.JFrame;
+import .JFrame;
 
 import ui.mainFrame.MainFrame;
 
@@ -13,7 +13,7 @@ import ui.mainFrame.MainFrame;
  *
  * @author Administrator
  */
-public class driver_management extends javax.swing.JPanel {
+public class driver_management extends .JPanel {
 
     /**
      * Creates new form yytywyCar_DriverManagement
@@ -31,19 +31,19 @@ public class driver_management extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel6 = new javax.swing.JLabel();
-        BusinessOfficeNum_label = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        account_btn = new javax.swing.JButton();
-        exit_btn = new javax.swing.JButton();
-        back_btn = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        drivers_table = new javax.swing.JTable();
-        add_btn = new javax.swing.JButton();
-        search_text = new javax.swing.JTextField();
-        search_btn = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        stateText = new javax.swing.JTextField();
+        jLabel6 = new .JLabel();
+        BusinessOfficeNum_label = new .JLabel();
+        jLabel5 = new .JLabel();
+        account_btn = new .JButton();
+        exit_btn = new .JButton();
+        back_btn = new .JButton();
+        jScrollPane2 = new .JScrollPane();
+        drivers_table = new .JTable();
+        add_btn = new .JButton();
+        search_text = new .JTextField();
+        search_btn = new .JButton();
+        jLabel4 = new .JLabel();
+        stateText = new .JTextField();
 
         jLabel6.setText("营业厅：");
 
@@ -62,7 +62,7 @@ public class driver_management extends javax.swing.JPanel {
 
         back_btn.setText("返回");
 
-        drivers_table.setModel(new javax.swing.table.DefaultTableModel(
+        drivers_table.setModel(new .table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -184,40 +184,40 @@ public class driver_management extends javax.swing.JPanel {
 
         stateText.setEditable(false);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        .GroupLayout layout = new .GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                    .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(add_btn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                                 .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(BusinessOfficeNum_label)
                                 .addGap(26, 26, 26)
                                 .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(account_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(account_btn, .GroupLayout.PREFERRED_SIZE, 82, .GroupLayout.PREFERRED_SIZE)
                                 .addGap(58, 58, 58)
                                 .addComponent(exit_btn))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(search_text, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane2, .GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                                    .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(search_text, .GroupLayout.PREFERRED_SIZE, 120, .GroupLayout.PREFERRED_SIZE)
                                         .addGap(31, 31, 31)
-                                        .addComponent(search_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(search_btn, .GroupLayout.PREFERRED_SIZE, 65, .GroupLayout.PREFERRED_SIZE)
                                         .addGap(43, 43, 43))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(back_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(back_btn, .GroupLayout.PREFERRED_SIZE, 90, .GroupLayout.PREFERRED_SIZE)
                                         .addGap(58, 58, 58))))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -225,32 +225,32 @@ public class driver_management extends javax.swing.JPanel {
                 .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(add_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(add_btn, .GroupLayout.PREFERRED_SIZE, 31, .GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
                             .addComponent(BusinessOfficeNum_label)
                             .addComponent(jLabel5)
                             .addComponent(account_btn)))
                     .addComponent(exit_btn))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(search_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(search_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 252, Short.MAX_VALUE)
-                        .addComponent(back_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                            .addComponent(search_text, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                            .addComponent(search_btn, .GroupLayout.PREFERRED_SIZE, 35, .GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, 252, Short.MAX_VALUE)
+                        .addComponent(back_btn, .GroupLayout.PREFERRED_SIZE, 39, .GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane2, .GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addGap(43, 43, 43)
-                .addComponent(stateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(stateText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -278,9 +278,9 @@ public class driver_management extends javax.swing.JPanel {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (.UIManager.LookAndFeelInfo info : .UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    .UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -290,7 +290,7 @@ public class driver_management extends javax.swing.JPanel {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -303,24 +303,24 @@ public class driver_management extends javax.swing.JPanel {
         		frame.setSize(830, 590);
         		frame.setVisible(true);
         		frame.setContentPane(new driver_management());
-        		frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);	
+        		frame.setDefaultCloseOperation(.WindowConstants.EXIT_ON_CLOSE);	
             }
         });
 
 	}
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel BusinessOfficeNum_label;
-    private javax.swing.JButton account_btn;
-    private javax.swing.JButton add_btn;
-    private javax.swing.JButton back_btn;
-    private javax.swing.JTable drivers_table;
-    private javax.swing.JButton exit_btn;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JButton search_btn;
-    private javax.swing.JTextField search_text;
-    private javax.swing.JTextField stateText;
+    private .JLabel BusinessOfficeNum_label;
+    private .JButton account_btn;
+    private .JButton add_btn;
+    private .JButton back_btn;
+    private .JTable drivers_table;
+    private .JButton exit_btn;
+    private .JLabel jLabel4;
+    private .JLabel jLabel5;
+    private .JLabel jLabel6;
+    private .JScrollPane jScrollPane2;
+    private .JButton search_btn;
+    private .JTextField search_text;
+    private .JTextField stateText;
     // End of variables declaration//GEN-END:variables
 }

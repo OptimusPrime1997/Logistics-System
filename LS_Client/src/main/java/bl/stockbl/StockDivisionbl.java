@@ -3,6 +3,7 @@
  */
 package bl.stockbl;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -65,11 +66,10 @@ public class StockDivisionbl implements StockDivisionBLService{
 	 * @param block
 	 * @param place
 	 * @return
-	 * @throws MalformedURLException
-	 * @throws RemoteException
 	 * @throws NotBoundException
+	 * @throws IOException 
 	 */
-	public boolean isPlaceAvailable(int block, int place) throws MalformedURLException, RemoteException, NotBoundException {
+	public boolean isPlaceAvailable(int block, int place) throws NotBoundException, IOException {
 		
 		boolean available = true;
 		StockDivisionDataService sd = getStockDivisionDataService();
@@ -96,7 +96,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 	 */
 	public boolean isExist(int block, int place) throws MalformedURLException, RemoteException, NotBoundException {
 		boolean result = false;
-		if(block<=8&&block>=1&&place>=0&&place<=10000) {
+		if(block<=8&&block>=1&&place>0&&place<=1000) {
 			result = true;
 		}
 		
@@ -109,10 +109,9 @@ public class StockDivisionbl implements StockDivisionBLService{
 	 * @param vo
 	 * @return
 	 * @throws NotBoundException 
-	 * @throws RemoteException 
-	 * @throws MalformedURLException 
+	 * @throws IOException 
 	 */
-	public ArrayList<Integer> getOverBlock(InStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException{
+	public ArrayList<Integer> getOverBlock(InStockRepVO vo) throws NotBoundException, IOException{
 		ArrayList<Integer> result = null;
 		/**
 		 *数组中存放每个区中货物的个数
@@ -126,7 +125,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 		
 		//找出库存报警的区号，并加入结果数组
 		for(int i = 0; i < block.length; ++i) {
-			if(block[i]>8000) {
+			if(block[i]>800) {
 				result.add(i);
 			}
 		}

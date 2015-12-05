@@ -10,7 +10,7 @@ package ui.receiptui;
  *
  * @author apple
  */
-public class ConditionTable extends javax.swing.JPanel {
+public class ConditionTable extends .JPanel {
 
     /**
      * Creates new form 经营情况表
@@ -28,19 +28,19 @@ public class ConditionTable extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        startTimeLabel = new javax.swing.JLabel();
-        startTimeText = new javax.swing.JTextField();
-        endTimeLabel = new javax.swing.JLabel();
-        endTimeText = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        cashRepTable = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        payRepTable = new javax.swing.JTable();
-        resetButton = new javax.swing.JButton();
-        okButton = new javax.swing.JButton();
-        showText = new javax.swing.JTextField();
+        startTimeLabel = new .JLabel();
+        startTimeText = new .JTextField();
+        endTimeLabel = new .JLabel();
+        endTimeText = new .JTextField();
+        jScrollPane1 = new .JScrollPane();
+        cashRepTable = new .JTable();
+        jLabel5 = new .JLabel();
+        jLabel6 = new .JLabel();
+        jScrollPane2 = new .JScrollPane();
+        payRepTable = new .JTable();
+        resetButton = new .JButton();
+        okButton = new .JButton();
+        showText = new .JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -48,7 +48,7 @@ public class ConditionTable extends javax.swing.JPanel {
 
         endTimeLabel.setText("结束日期:");
 
-        cashRepTable.setModel(new javax.swing.table.DefaultTableModel(
+        cashRepTable.setModel(new .table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -170,7 +170,7 @@ public class ConditionTable extends javax.swing.JPanel {
 
         jLabel6.setText("付款单");
 
-        payRepTable.setModel(new javax.swing.table.DefaultTableModel(
+        payRepTable.setModel(new .table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -295,12 +295,12 @@ public class ConditionTable extends javax.swing.JPanel {
         showText.setEditable(false);
         showText.setText("示例:20151102");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        .GroupLayout layout = new .GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(183, 183, 183)
                         .addComponent(jLabel5))
@@ -314,45 +314,45 @@ public class ConditionTable extends javax.swing.JPanel {
                         .addComponent(okButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(endTimeLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(endTimeText, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(endTimeText, .GroupLayout.PREFERRED_SIZE, 94, .GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jScrollPane1, .GroupLayout.Alignment.LEADING, .GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(startTimeLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(startTimeText, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(startTimeText, .GroupLayout.PREFERRED_SIZE, 94, .GroupLayout.PREFERRED_SIZE)
                                     .addGap(33, 33, 33)
-                                    .addComponent(showText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(showText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
                                     .addGap(87, 87, 87))
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))))
+                                .addComponent(jScrollPane2, .GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
                     .addComponent(startTimeLabel)
-                    .addComponent(startTimeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(showText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(startTimeText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                    .addComponent(showText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
                     .addComponent(endTimeLabel)
-                    .addComponent(endTimeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                    .addComponent(endTimeText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, .GroupLayout.PREFERRED_SIZE, 155, .GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, .GroupLayout.PREFERRED_SIZE, 144, .GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
                     .addComponent(resetButton)
                     .addComponent(okButton))
                 .addGap(17, 17, 17))
@@ -361,18 +361,18 @@ public class ConditionTable extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable cashRepTable;
-    private javax.swing.JLabel endTimeLabel;
-    private javax.swing.JTextField endTimeText;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JButton okButton;
-    private javax.swing.JTable payRepTable;
-    private javax.swing.JButton resetButton;
-    private javax.swing.JTextField showText;
-    private javax.swing.JLabel startTimeLabel;
-    private javax.swing.JTextField startTimeText;
+    private .JTable cashRepTable;
+    private .JLabel endTimeLabel;
+    private .JTextField endTimeText;
+    private .JLabel jLabel5;
+    private .JLabel jLabel6;
+    private .JScrollPane jScrollPane1;
+    private .JScrollPane jScrollPane2;
+    private .JButton okButton;
+    private .JTable payRepTable;
+    private .JButton resetButton;
+    private .JTextField showText;
+    private .JLabel startTimeLabel;
+    private .JTextField startTimeText;
     // End of variables declaration//GEN-END:variables
 }

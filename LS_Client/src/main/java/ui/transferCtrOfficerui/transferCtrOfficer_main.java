@@ -1,6 +1,6 @@
 package ui.transferCtrOfficerui;
 
-import javax.swing.JFrame;
+import .JFrame;
 
 import ui.businessOfficerui.businessOfficer_main;
 import ui.mainFrame.MainFrame;
@@ -15,7 +15,7 @@ import ui.mainFrame.MainFrame;
  *
  * @author Administrator
  */
-public class transferCtrOfficer_main extends javax.swing.JPanel {
+public class transferCtrOfficer_main extends .JPanel {
 
     /**
      * Creates new form zzzxJPanel
@@ -33,25 +33,25 @@ public class transferCtrOfficer_main extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        exit_btn = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        transferOfficeNum_label = new javax.swing.JLabel();
-        account_btn = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        arrival_btn = new javax.swing.JButton();
-        toBusinessOffice_btn = new javax.swing.JButton();
-        toTransferCTR_btn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        outByTrain_progressBar = new javax.swing.JProgressBar();
-        jLabel4 = new javax.swing.JLabel();
-        outByCar_progressBar = new javax.swing.JProgressBar();
-        jLabel5 = new javax.swing.JLabel();
-        outByPlane_progressBar = new javax.swing.JProgressBar();
-        jLabel6 = new javax.swing.JLabel();
-        outByTrain_label = new javax.swing.JLabel();
-        outByCar_label = new javax.swing.JLabel();
-        outByPlane_label = new javax.swing.JLabel();
-        stateText = new javax.swing.JTextField();
+        exit_btn = new .JButton();
+        jLabel2 = new .JLabel();
+        transferOfficeNum_label = new .JLabel();
+        account_btn = new .JButton();
+        jLabel3 = new .JLabel();
+        arrival_btn = new .JButton();
+        toBusinessOffice_btn = new .JButton();
+        toTransferCTR_btn = new .JButton();
+        jLabel1 = new .JLabel();
+        outByTrain_progressBar = new .JProgressBar();
+        jLabel4 = new .JLabel();
+        outByCar_progressBar = new .JProgressBar();
+        jLabel5 = new .JLabel();
+        outByPlane_progressBar = new .JProgressBar();
+        jLabel6 = new .JLabel();
+        outByTrain_label = new .JLabel();
+        outByCar_label = new .JLabel();
+        outByPlane_label = new .JLabel();
+        stateText = new .JTextField();
 
         exit_btn.setText("退出系统");
         exit_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -112,106 +112,106 @@ public class transferCtrOfficer_main extends javax.swing.JPanel {
 
         stateText.setEditable(false);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        .GroupLayout layout = new .GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(stateText)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(transferOfficeNum_label)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(account_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(account_btn, .GroupLayout.PREFERRED_SIZE, 85, .GroupLayout.PREFERRED_SIZE)
                         .addGap(62, 62, 62))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(toTransferCTR_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                            .addComponent(toBusinessOffice_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(arrival_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(toTransferCTR_btn, .GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(toBusinessOffice_btn, .GroupLayout.DEFAULT_SIZE, .GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(arrival_btn, .GroupLayout.DEFAULT_SIZE, .GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(outByTrain_progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(outByTrain_progressBar, .GroupLayout.PREFERRED_SIZE, 221, .GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(jLabel5, .GroupLayout.Alignment.TRAILING))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(outByCar_progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(outByPlane_progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                                    .addComponent(outByCar_progressBar, .GroupLayout.PREFERRED_SIZE, 221, .GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(outByPlane_progressBar, .GroupLayout.PREFERRED_SIZE, 221, .GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(outByTrain_label)
                             .addGap(84, 84, 84))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(exit_btn)
                             .addGap(26, 26, 26)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(outByCar_label, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                            .addComponent(outByCar_label, .GroupLayout.PREFERRED_SIZE, 53, .GroupLayout.PREFERRED_SIZE)
                             .addComponent(outByPlane_label))
                         .addGap(57, 57, 57))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel1, .GroupLayout.PREFERRED_SIZE, 327, .GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                     .addComponent(exit_btn)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(account_btn)
                             .addComponent(jLabel3)
                             .addComponent(transferOfficeNum_label))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1, .GroupLayout.PREFERRED_SIZE, 25, .GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(outByTrain_progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.TRAILING)
+                            .addComponent(outByTrain_progressBar, .GroupLayout.PREFERRED_SIZE, 30, .GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
                             .addComponent(outByTrain_label)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(toTransferCTR_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(toTransferCTR_btn, .GroupLayout.PREFERRED_SIZE, 75, .GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(toBusinessOffice_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.TRAILING)
+                    .addComponent(toBusinessOffice_btn, .GroupLayout.PREFERRED_SIZE, 75, .GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(outByCar_progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                                .addComponent(outByCar_progressBar, .GroupLayout.PREFERRED_SIZE, 30, .GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel5))
                             .addComponent(outByCar_label))
                         .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(outByPlane_progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                            .addComponent(outByPlane_progressBar, .GroupLayout.PREFERRED_SIZE, 30, .GroupLayout.PREFERRED_SIZE)
                             .addComponent(outByPlane_label)
                             .addComponent(jLabel6))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                .addComponent(arrival_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addComponent(arrival_btn, .GroupLayout.PREFERRED_SIZE, 69, .GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
-                .addComponent(stateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(stateText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -230,25 +230,25 @@ public class transferCtrOfficer_main extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton account_btn;
-    private javax.swing.JButton arrival_btn;
-    private javax.swing.JButton exit_btn;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel outByCar_label;
-    private javax.swing.JProgressBar outByCar_progressBar;
-    private javax.swing.JLabel outByPlane_label;
-    private javax.swing.JProgressBar outByPlane_progressBar;
-    private javax.swing.JLabel outByTrain_label;
-    private javax.swing.JProgressBar outByTrain_progressBar;
-    private javax.swing.JTextField stateText;
-    private javax.swing.JButton toBusinessOffice_btn;
-    private javax.swing.JButton toTransferCTR_btn;
-    private javax.swing.JLabel transferOfficeNum_label;
+    private .JButton account_btn;
+    private .JButton arrival_btn;
+    private .JButton exit_btn;
+    private .JLabel jLabel1;
+    private .JLabel jLabel2;
+    private .JLabel jLabel3;
+    private .JLabel jLabel4;
+    private .JLabel jLabel5;
+    private .JLabel jLabel6;
+    private .JLabel outByCar_label;
+    private .JProgressBar outByCar_progressBar;
+    private .JLabel outByPlane_label;
+    private .JProgressBar outByPlane_progressBar;
+    private .JLabel outByTrain_label;
+    private .JProgressBar outByTrain_progressBar;
+    private .JTextField stateText;
+    private .JButton toBusinessOffice_btn;
+    private .JButton toTransferCTR_btn;
+    private .JLabel transferOfficeNum_label;
     // End of variables declaration//GEN-END:variables
     
     
@@ -263,9 +263,9 @@ public class transferCtrOfficer_main extends javax.swing.JPanel {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (.UIManager.LookAndFeelInfo info : .UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    .UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -275,7 +275,7 @@ public class transferCtrOfficer_main extends javax.swing.JPanel {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -288,7 +288,7 @@ public class transferCtrOfficer_main extends javax.swing.JPanel {
         		frame.setSize(830, 590);
         		frame.setVisible(true);
         		frame.setContentPane(new transferCtrOfficer_main());
-        		frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);	
+        		frame.setDefaultCloseOperation(.WindowConstants.EXIT_ON_CLOSE);	
             }
         });
 

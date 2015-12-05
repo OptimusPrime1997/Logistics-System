@@ -33,7 +33,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class=".JPanel" name="jPanel1">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -145,22 +145,22 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class=".JLabel" name="jLabel2">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x8425;&#x4e1a;&#x5385;&#xff1a;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="businessOfficeNum">
+        <Component class=".JLabel" name="businessOfficeNum">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x5357;&#x4eac; 025001"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class=".JLabel" name="jLabel3">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x8d26;&#x6237;&#xff1a;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="account_btn">
+        <Component class=".JButton" name="account_btn">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x8001;&#x738b;&#xff08;&#x5305;&#x62ec;&#x66f4;&#x6539;&#x5bc6;&#x7801;&#x3001;&#x9000;&#x51fa;&#x767b;&#x5f55;&#xff09;"/>
           </Properties>
@@ -168,7 +168,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="account_btnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="exit_btn">
+        <Component class=".JButton" name="exit_btn">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x9000;&#x51fa;&#x7cfb;&#x7edf;"/>
           </Properties>
@@ -176,32 +176,32 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exit_btnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="goodsNum_text">
+        <Component class=".JTextField" name="goodsNum_text">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="goodsNum_textActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class=".JLabel" name="jLabel1">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x8ba2;&#x5355;&#x53f7;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class=".JLabel" name="jLabel4">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x6536;&#x4ef6;&#x4eba;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="getterName_text">
+        <Component class=".JTextField" name="getterName_text">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getterName_textActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
+        <Component class=".JLabel" name="jLabel5">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x6536;&#x4ef6;&#x65e5;&#x671f;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel9">
+        <Component class=".JLabel" name="jLabel9">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="&#x5b8b;&#x4f53;" size="14" style="1"/>
@@ -212,9 +212,9 @@
             <Property name="text" type="java.lang.String" value="&#x5feb;&#x4ef6;&#x7b7e;&#x6536;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="year_ComboBox">
+        <Component class=".JComboBox" name="year_ComboBox">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+            <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
                 <StringItem index="0" value="2015"/>
                 <StringItem index="1" value="2016"/>
@@ -227,9 +227,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="year_ComboBoxActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="month_ComboBox">
+        <Component class=".JComboBox" name="month_ComboBox">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+            <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="12">
                 <StringItem index="0" value="1"/>
                 <StringItem index="1" value="2"/>
@@ -250,19 +250,19 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="month_ComboBoxActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
+        <Component class=".JLabel" name="jLabel6">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x5e74;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel7">
+        <Component class=".JLabel" name="jLabel7">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x6708;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="day_ComboBox">
+        <Component class=".JComboBox" name="day_ComboBox">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+            <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="31">
                 <StringItem index="0" value="1"/>
                 <StringItem index="1" value="2"/>
@@ -302,12 +302,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="day_ComboBoxActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel8">
+        <Component class=".JLabel" name="jLabel8">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x65e5;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="cancel_btn">
+        <Component class=".JButton" name="cancel_btn">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x53d6;&#x6d88;"/>
           </Properties>
@@ -315,7 +315,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancel_btnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="ok_btn">
+        <Component class=".JButton" name="ok_btn">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x786e;&#x8ba4;"/>
           </Properties>

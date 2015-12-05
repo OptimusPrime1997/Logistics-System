@@ -10,7 +10,7 @@ package ui.receiptui;
  *
  * @author apple
  */
-public class InstitutionInfo extends javax.swing.JPanel {
+public class InstitutionInfo extends .JPanel {
 
     /**
      * Creates new form 机构信息
@@ -28,11 +28,11 @@ public class InstitutionInfo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
-        addButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        okButton = new javax.swing.JButton();
+        jButton2 = new .JButton();
+        addButton = new .JButton();
+        jScrollPane1 = new .JScrollPane();
+        jTable1 = new .JTable();
+        okButton = new .JButton();
 
         jButton2.setText("jButton2");
 
@@ -40,7 +40,7 @@ public class InstitutionInfo extends javax.swing.JPanel {
 
         addButton.setText("增加机构");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new .table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -80,29 +80,29 @@ public class InstitutionInfo extends javax.swing.JPanel {
 
         okButton.setText("完成");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        .GroupLayout layout = new .GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
                             .addComponent(addButton)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, .GroupLayout.PREFERRED_SIZE, 497, .GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(219, 219, 219)
                         .addComponent(okButton)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(addButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, .GroupLayout.PREFERRED_SIZE, 280, .GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(okButton)
                 .addContainerGap(12, Short.MAX_VALUE))
@@ -111,10 +111,10 @@ public class InstitutionInfo extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addButton;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JButton okButton;
+    private .JButton addButton;
+    private .JButton jButton2;
+    private .JScrollPane jScrollPane1;
+    private .JTable jTable1;
+    private .JButton okButton;
     // End of variables declaration//GEN-END:variables
 }

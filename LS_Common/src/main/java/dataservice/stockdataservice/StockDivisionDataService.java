@@ -21,11 +21,6 @@ import PO.ReceiptPO.OutStockRepPO;
 public interface StockDivisionDataService extends Remote{
 	
 	
-	/**
-	 * 
-	 * @throws RemoteException
-	 */
-	public ResultMessage initial() throws RemoteException;
 	
 	/**
 	 * update stockData and stockDivisionData

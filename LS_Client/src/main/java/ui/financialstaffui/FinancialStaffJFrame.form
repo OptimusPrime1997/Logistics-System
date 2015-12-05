@@ -33,7 +33,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="financialjPanel">
+    <Container class=".JPanel" name="financialjPanel">
       <Properties>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[830, 590]"/>
@@ -95,37 +95,37 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="currentAccountNamejLabel">
+        <Component class=".JLabel" name="currentAccountNamejLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x59d3;&#x540d;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="accountNumjLabel">
+        <Component class=".JLabel" name="accountNumjLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x8d26;&#x53f7;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="currentAuthorityjLabel">
+        <Component class=".JLabel" name="currentAuthorityjLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x8eab;&#x4efd;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="exitjLabel">
+        <Component class=".JLabel" name="exitjLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x9000;&#x51fa;&#x7cfb;&#x7edf;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel32">
+        <Component class=".JLabel" name="jLabel32">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x6b63;&#x5728;&#x52a0;&#x8f7d;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel31">
+        <Component class=".JLabel" name="jLabel31">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x72b6;&#x6001;&#xff1a;"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JTabbedPane" name="finacialjTabbedPane">
+        <Container class=".JTabbedPane" name="finacialjTabbedPane">
           <Properties>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[830, 465]"/>
@@ -134,7 +134,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="financialManagejPanel">
+            <Container class=".JPanel" name="financialManagejPanel">
               <Properties>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[830, 460]"/>
@@ -169,7 +169,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="payFormjButton">
+                <Component class=".JButton" name="payFormjButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x751f;&#x6210;&#x4ed8;&#x6b3e;&#x5355;"/>
                   </Properties>
@@ -179,7 +179,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="bankAcocuntjPanel">
+            <Container class=".JPanel" name="bankAcocuntjPanel">
               <Properties>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[830, 460]"/>
@@ -280,27 +280,27 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="addBankAccountjButton">
+                <Component class=".JButton" name="addBankAccountjButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x589e;&#x52a0;&#x94f6;&#x884c;&#x8d26;&#x6237;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JSeparator" name="jSeparator2">
+                <Component class=".JSeparator" name="jSeparator2">
                 </Component>
-                <Container class="javax.swing.JScrollPane" name="bankAcountjScrollPane">
+                <Container class=".JScrollPane" name="bankAcountjScrollPane">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+                    <Container class=".JScrollPane" name="jScrollPane1">
                       <AuxValues>
                         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                       </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="bankAcocuntjTable">
+                        <Component class=".JTable" name="bankAcocuntjTable">
                           <Properties>
-                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                            <Property name="model" type=".table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="3" rowCount="15">
                                 <Column editable="true" title="&#x94f6;&#x884c;&#x8d26;&#x53f7;" type="java.lang.String">
                                   <Data value="6212264301001965153"/>
@@ -365,44 +365,44 @@
                     </Container>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel12">
+                <Component class=".JLabel" name="jLabel12">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x94f6;&#x884c;&#x8d26;&#x6237;&#x4fe1;&#x606f;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel16">
+                <Component class=".JLabel" name="jLabel16">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x94f6;&#x884c;&#x8d26;&#x53f7;&#xff1a;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="bankAccountNumjTextField">
+                <Component class=".JTextField" name="bankAccountNumjTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="findBankAccountNumjButton">
+                <Component class=".JButton" name="findBankAccountNumjButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x67e5;&#x627e;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel17">
+                <Component class=".JLabel" name="jLabel17">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x8d26;&#x6237;&#x540d;&#x79f0;&#xff1a;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="bankAccountNamejTextField">
+                <Component class=".JTextField" name="bankAccountNamejTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="findBankAccountNamejButton">
+                <Component class=".JButton" name="findBankAccountNamejButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x67e5;&#x627e;"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="formjPanel">
+            <Container class=".JPanel" name="formjPanel">
               <Properties>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[830, 460]"/>
@@ -495,7 +495,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="jButton2">
+                <Component class=".JButton" name="jButton2">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x67e5;&#x770b;&#x6210;&#x672c;&#x6536;&#x76ca;&#x8868;"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -504,29 +504,29 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton3">
+                <Component class=".JButton" name="jButton3">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x67e5;&#x770b;&#x7ecf;&#x8425;&#x60c5;&#x51b5;&#x8868;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel10">
+                <Component class=".JLabel" name="jLabel10">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x5e74;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel11">
+                <Component class=".JLabel" name="jLabel11">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x6708;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel18">
+                <Component class=".JLabel" name="jLabel18">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x65e5;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="formEYearjComboBox">
+                <Component class=".JComboBox" name="formEYearjComboBox">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="16">
                         <StringItem index="0" value="2000"/>
                         <StringItem index="1" value="2001"/>
@@ -548,9 +548,9 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="formEDatejComboBox">
+                <Component class=".JComboBox" name="formEDatejComboBox">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="31">
                         <StringItem index="0" value="1"/>
                         <StringItem index="1" value="2"/>
@@ -590,9 +590,9 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="formEDatejComboBoxActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="formEMonthjComboBox">
+                <Component class=".JComboBox" name="formEMonthjComboBox">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="12">
                         <StringItem index="0" value="1"/>
                         <StringItem index="1" value="2"/>
@@ -613,20 +613,20 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="formEMonthjComboBoxActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel19">
+                <Component class=".JLabel" name="jLabel19">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x622a;&#x6b62;&#x65e5;&#x671f;&#xff1a;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JSeparator" name="jSeparator3">
+                <Component class=".JSeparator" name="jSeparator3">
                 </Component>
-                <Component class="javax.swing.JSeparator" name="jSeparator1">
+                <Component class=".JSeparator" name="jSeparator1">
                 </Component>
-                <Component class="javax.swing.JSeparator" name="jSeparator4">
+                <Component class=".JSeparator" name="jSeparator4">
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="logjPanel">
+            <Container class=".JPanel" name="logjPanel">
               <Properties>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[830, 460]"/>
@@ -746,7 +746,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="findLogjButton">
+                <Component class=".JButton" name="findLogjButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x67e5;&#x627e;"/>
                   </Properties>
@@ -754,34 +754,34 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="findLogjButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel8">
+                <Component class=".JLabel" name="jLabel8">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x5f00;&#x59cb;&#x65e5;&#x671f;&#xff1a;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel9">
+                <Component class=".JLabel" name="jLabel9">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x5e74;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel21">
+                <Component class=".JLabel" name="jLabel21">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x6708;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel22">
+                <Component class=".JLabel" name="jLabel22">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x65e5;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel23">
+                <Component class=".JLabel" name="jLabel23">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x64cd;&#x4f5c;&#x7c7b;&#x578b;&#xff1a;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="logTypejComboBox">
+                <Component class=".JComboBox" name="logTypejComboBox">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="6">
                         <StringItem index="0" value="&#x6240;&#x6709;&#x64cd;&#x4f5c;"/>
                         <StringItem index="1" value="&#x51b3;&#x7b56;&#x5236;&#x5b9a;"/>
@@ -796,9 +796,9 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logTypejComboBoxActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="logSYearjComboBox">
+                <Component class=".JComboBox" name="logSYearjComboBox">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="16">
                         <StringItem index="0" value="2000"/>
                         <StringItem index="1" value="2001"/>
@@ -820,9 +820,9 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="logSDatejComboBox">
+                <Component class=".JComboBox" name="logSDatejComboBox">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="31">
                         <StringItem index="0" value="1"/>
                         <StringItem index="1" value="2"/>
@@ -859,9 +859,9 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="logSMonthjComboBox">
+                <Component class=".JComboBox" name="logSMonthjComboBox">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="12">
                         <StringItem index="0" value="1"/>
                         <StringItem index="1" value="2"/>
@@ -882,24 +882,24 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logSMonthjComboBoxActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel24">
+                <Component class=".JLabel" name="jLabel24">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x5e74;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel25">
+                <Component class=".JLabel" name="jLabel25">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x6708;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel26">
+                <Component class=".JLabel" name="jLabel26">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x65e5;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="logEYearjComboBox">
+                <Component class=".JComboBox" name="logEYearjComboBox">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="16">
                         <StringItem index="0" value="2000"/>
                         <StringItem index="1" value="2001"/>
@@ -921,9 +921,9 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="logEDatejComboBox">
+                <Component class=".JComboBox" name="logEDatejComboBox">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="31">
                         <StringItem index="0" value="1"/>
                         <StringItem index="1" value="2"/>
@@ -960,9 +960,9 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="logEMonthjComboBox">
+                <Component class=".JComboBox" name="logEMonthjComboBox">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="12">
                         <StringItem index="0" value="1"/>
                         <StringItem index="1" value="2"/>
@@ -983,14 +983,14 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logEMonthjComboBoxActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel27">
+                <Component class=".JLabel" name="jLabel27">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x622a;&#x6b62;&#x65e5;&#x671f;&#xff1a;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JSeparator" name="jSeparator5">
+                <Component class=".JSeparator" name="jSeparator5">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel30">
+                <Component class=".JLabel" name="jLabel30">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="&#x5b8b;&#x4f53;" size="12" style="1"/>
@@ -998,20 +998,20 @@
                     <Property name="text" type="java.lang.String" value="&#x7cfb;&#x7edf;&#x65e5;&#x5fd7;"/>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JScrollPane" name="logjScrollPane">
+                <Container class=".JScrollPane" name="logjScrollPane">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+                    <Container class=".JScrollPane" name="jScrollPane4">
                       <AuxValues>
                         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                       </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="logjTable">
+                        <Component class=".JTable" name="logjTable">
                           <Properties>
-                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                            <Property name="model" type=".table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="15">
                                 <Column editable="true" title="&#x65e5;&#x671f;" type="java.lang.String">
                                   <Data value="20151109"/>
@@ -1095,7 +1095,7 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanel6">
+            <Container class=".JPanel" name="jPanel6">
               <Properties>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[830, 460]"/>
@@ -1135,7 +1135,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="initialFinancejButton">
+                <Component class=".JButton" name="initialFinancejButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x8d26;&#x76ee;&#x521d;&#x59cb;&#x5316;"/>
                   </Properties>
@@ -1143,7 +1143,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="initialFinancejButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="newFinancejButton">
+                <Component class=".JButton" name="newFinancejButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x65b0;&#x5efa;&#x8d26;&#x76ee;"/>
                   </Properties>
@@ -1155,7 +1155,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel6">
+        <Component class=".JLabel" name="jLabel6">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x8d22;&#x52a1;&#x4eba;&#x5458;"/>
           </Properties>

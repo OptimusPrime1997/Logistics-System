@@ -1,6 +1,6 @@
 package util;
 
-import javax.swing.JButton;
+import .JButton;
 
 public class MyButton extends JButton{
 	public MyButton(String text,int x,int y,int w,int h){
