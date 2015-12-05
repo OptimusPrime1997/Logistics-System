@@ -5,24 +5,35 @@
  */
 package ui.managerui;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.DefaultCellEditor;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import javax.swing.event.MouseInputListener;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import util.InputCheck;
 import util.enumData.Authority;
+import util.enumData.ModifyState;
 import util.enumData.ResultMessage;
 import util.enumData.Sex;
 import bl.controllerfactorybl.ControllerFactoryImpl;
@@ -31,7 +42,7 @@ import blservice.managementblservice.accountblservice.AccountBLService;
 import blservice.managementblservice.constblservice.ConstBLService;
 import VO.ManagementVO.AccountVO;
 import VO.ManagementVO.ConstVO;
-import VO.ManagementVO.ConstVO;
+import VO.ManagementVO.ConstVOPlus;
 
 /**
  * 总经理的界面
@@ -68,7 +79,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private void initComponents() {
 		setAccountVOs();
 		setConstVOs();
-		
+
 		initialViables();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -106,7 +117,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		jLabel48.setText("状态：");
 
-		statejLabel.setText("空闲");
+		setState("空闲", 5);
 
 		exitjButton.setText("退出系统");
 		exitjButton.addActionListener(new java.awt.event.ActionListener() {
@@ -260,12 +271,18 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		pack();
 	}
 
-	
-
 	private void setConstVOs() {
 		// TODO Auto-generated method stub
-		constVOs=getConstVOs();
-		constVOs.sort(null);
+
+		constVOPlus = new ArrayList<ConstVOPlus>();
+		ConstVO vo = null;
+		ConstVOPlus voplus = null;
+		for (Iterator<ConstVO> t = getConstVOs().iterator(); t.hasNext();) {
+			vo = t.next();
+			voplus = new ConstVOPlus(vo, ModifyState.SYNC);
+			constVOPlus.add(voplus);
+		}
+		constVOPlus.sort(null);
 	}
 
 	private void setAccountVOs() {
@@ -281,13 +298,13 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		// TODO Auto-generated method stub
 		managerjPanel = new javax.swing.JPanel();
 		managerjTabbedPane = new javax.swing.JTabbedPane();
-		constjPanel1 = new javax.swing.JPanel();
+		constjPanel = new javax.swing.JPanel();
 		constjScrollPane1 = new javax.swing.JScrollPane();
 		jScrollPane2 = new javax.swing.JScrollPane();
 		constjTable = new javax.swing.JTable();
 		jButton3 = new javax.swing.JButton();
 		jButton5 = new javax.swing.JButton();
-		addConstjButton1 = new javax.swing.JButton();
+		addConstjButton = new javax.swing.JButton();
 		salaryPolicyjPane1 = new javax.swing.JPanel();
 		jSeparator8 = new javax.swing.JSeparator();
 		jSeparator9 = new javax.swing.JSeparator();
@@ -295,7 +312,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jScrollPane5 = new javax.swing.JScrollPane();
 		salaryPolicyjTable1 = new javax.swing.JTable();
 		jButton6 = new javax.swing.JButton();
-		addSalaryPolicyjButton1 = new javax.swing.JButton();
+		addSalaryPolicyjButton = new javax.swing.JButton();
 		documentCheckjPane = new javax.swing.JPanel();
 		jLabel16 = new javax.swing.JLabel();
 		jLabel22 = new javax.swing.JLabel();
@@ -372,8 +389,8 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jLabel48 = new javax.swing.JLabel();
 		statejLabel = new javax.swing.JLabel();
 		exitjButton = new javax.swing.JButton();
-		
-		sexjComboBox=new JComboBox<String>();
+
+		sexjComboBox = new JComboBox<String>();
 		sexjComboBox.addItem("男");
 		sexjComboBox.addItem("女");
 	}
@@ -1615,9 +1632,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	 */
 	private void initialConstjPanel() {
 		// TODO Auto-generated method stub
-		constjTable.setGridColor(new java.awt.Color(0, 0, 0));
-		constjTable.getTableHeader().setReorderingAllowed(false);
-		jScrollPane2.setViewportView(constjTable);
 
 		constjScrollPane1.setViewportView(jScrollPane2);
 
@@ -1625,20 +1639,32 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		jButton5.setText("jButton4");
 
-		addConstjButton1.setText("添加距离常量");
-		addConstjButton1.addActionListener(new ActionListener() {
-			
+		addConstjButton.setText("添加距离常量");
+		addConstjButton.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				addConstjButton1ActionPerformed(e);
 			}
 		});
-		initialConstJTable(constVOs);// 初始化常量表
 		
+		submitConstjButton.setText("提交");
+		submitConstjButton.setEnabled(false);
+		submitConstjButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				submitConstjButtonActionPerformed(e);
+			}
+
+			
+		});;
+		initialConstJTable(constVOPlus);// 初始化常量表
+
 		javax.swing.GroupLayout constjPanel1Layout = new javax.swing.GroupLayout(
-				constjPanel1);
-		constjPanel1.setLayout(constjPanel1Layout);
+				constjPanel);
+		constjPanel.setLayout(constjPanel1Layout);
 		constjPanel1Layout
 				.setHorizontalGroup(constjPanel1Layout
 						.createParallelGroup(
@@ -1668,10 +1694,19 @@ public class ManagerJFrame extends javax.swing.JFrame {
 																constjPanel1Layout
 																		.createSequentialGroup()
 																		.addComponent(
-																				addConstjButton1)
+																				addConstjButton)
 																		.addGap(424,
 																				424,
-																				424)))));
+																				424))
+																				.addGroup(
+																						javax.swing.GroupLayout.Alignment.TRAILING,
+																						constjPanel1Layout
+																								.createSequentialGroup()
+																								.addComponent(
+																										submitConstjButton)
+																								.addGap(400,
+																										400,
+																										400)))));
 		constjPanel1Layout
 				.setVerticalGroup(constjPanel1Layout
 						.createParallelGroup(
@@ -1688,15 +1723,26 @@ public class ManagerJFrame extends javax.swing.JFrame {
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
 												18, Short.MAX_VALUE)
-										.addComponent(addConstjButton1)
-										.addGap(35, 35, 35)));
+										.addComponent(addConstjButton)
+										.addGap(35, 35, 35)
+										.addComponent(submitConstjButton)
+										.addGap(30, 30, 30)
+										));
 
-		managerjTabbedPane.addTab("距离常量", constjPanel1);
+		managerjTabbedPane.addTab("距离常量", constjPanel);
 	}
+
 	private void addConstjButton1ActionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource()==addConstjButton1){
-			constVOs.add(new ConstVO("-",0, 0));
+		if (e.getSource() == addConstjButton) {
+			constVOPlus.add(new ConstVOPlus("-", 0, 0, ModifyState.NEW));
+			initialConstJTable(constVOPlus);
+		}
+	}
+	private void submitConstjButtonActionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource()==submitConstjButton){
+			
 		}
 	}
 
@@ -1740,7 +1786,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		jButton6.setText("jButton1");
 
-		addSalaryPolicyjButton1.setText("添加薪水策略");
+		addSalaryPolicyjButton.setText("添加薪水策略");
 
 		javax.swing.GroupLayout salaryPolicyjPane1Layout = new javax.swing.GroupLayout(
 				salaryPolicyjPane1);
@@ -1767,7 +1813,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 						javax.swing.GroupLayout.Alignment.TRAILING,
 						salaryPolicyjPane1Layout.createSequentialGroup()
 								.addGap(0, 0, Short.MAX_VALUE)
-								.addComponent(addSalaryPolicyjButton1)
+								.addComponent(addSalaryPolicyjButton)
 								.addGap(426, 426, 426))
 				.addGroup(
 						javax.swing.GroupLayout.Alignment.TRAILING,
@@ -1810,7 +1856,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 												409,
 												javax.swing.GroupLayout.PREFERRED_SIZE)
 										.addGap(18, 18, 18)
-										.addComponent(addSalaryPolicyjButton1)
+										.addComponent(addSalaryPolicyjButton)
 										.addContainerGap()));
 
 		managerjTabbedPane.addTab("薪水策略", salaryPolicyjPane1);
@@ -1835,13 +1881,13 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				}
 				if (i < accountVOs.size()) {
 					accountViewjTable.setRowSelectionInterval(i, i);// 设置哪几行被选中
-					statejLabel.setText("该账户在第" + (i + 1) + "行");
+					setState("该账户在第" + (i + 1) + "行", 5);
 				} else {
-					statejLabel.setText("系统中无该账户");
+					setState("系统中无该账户", 5);
 				}
 			} else {
 				String msg = ResultMessage.toFriendlyString(rmsg);
-				statejLabel.setText("账户名称" + msg);
+				setState("账户名称" + msg, 5);
 			}
 		}
 	}
@@ -1878,13 +1924,13 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				}
 				if (i < accountVOs.size()) {
 					accountViewjTable.setRowSelectionInterval(i, i);// 设置哪几行被选中
-					statejLabel.setText("该账户在第" + (i + 1) + "行");
+					setState("该账户在第" + (i + 1) + "行", 5);
 				} else {
-					statejLabel.setText("系统中无该账户");
+					setState("系统中无该账户", 5);
 				}
 			} else {
 				String msg = ResultMessage.toFriendlyString(rmsg);
-				statejLabel.setText("账号" + msg);
+				setState("账号" + msg, 5);
 			}
 
 		}
@@ -2018,22 +2064,23 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("远程连接失败");
-			statejLabel.setText("远程连接失败");
+			setState("远程连接失败", 5);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("程序错误");
-			statejLabel.setText("程序错误");
+			setState("程序错误", 5);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("读取文件失败");
-			statejLabel.setText("读取文件失败");
+			setState("读取文件失败", 5);
 		}
 
 		assert (vos != null) : ("远程获取账户信息失败");
 		return vos;
 	}
+
 	private ArrayList<ConstVO> getConstVOs() {
 		// TODO Auto-generated method stub
 		ArrayList<ConstVO> vos = null;
@@ -2045,21 +2092,22 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("远程连接失败");
-			statejLabel.setText("远程连接失败");
+			setState("远程连接失败", 5);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("程序错误");
-			statejLabel.setText("程序错误");
+			setState("程序错误", 5);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("读取文件失败");
-			statejLabel.setText("读取文件失败");
+			setState("读取文件失败", 5);
 		}
 		assert (vos != null) : ("远程获取常量信息失败");
 		return vos;
 	}
+
 	/**
 	 * 初始化AccountJTable
 	 */
@@ -2082,7 +2130,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				accountObjects, new String[] { "用户账号", "姓名", "性别", "职位",
 						"机构编号", "电话" }) {
 			Class[] types = new Class[] { java.lang.String.class,
-					java.lang.String.class,JComboBox.class,
+					java.lang.String.class, JComboBox.class,
 					java.lang.String.class, java.lang.String.class,
 					java.lang.String.class };
 			boolean[] canEdit = new boolean[] { false, false, false, false,
@@ -2096,9 +2144,10 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				return canEdit[columnIndex];
 			}
 		});
-		accountViewjTable.getColumnModel().getColumn(2).setCellEditor(new DefaultCellEditor(sexjComboBox));
-		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
-		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 这句和上句作用一样
+		accountViewjTable.getColumnModel().getColumn(2)
+				.setCellEditor(new DefaultCellEditor(sexjComboBox));
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容-11
+		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 设置table内容居中-2
 		accountViewjTable.setDefaultRenderer(Object.class, tcr);
 
 		((DefaultTableCellRenderer) accountViewjTable.getTableHeader()
@@ -2112,19 +2161,29 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	 * 
 	 * @param vos
 	 */
-	private void initialConstJTable(ArrayList<ConstVO> vos) {
+	private void initialConstJTable(ArrayList<ConstVOPlus> vos) {
+		constjTable.setGridColor(new java.awt.Color(0, 0, 0));
+		constjTable.getTableHeader().setReorderingAllowed(false);
+		jScrollPane2.setViewportView(constjTable);
+
 		assert (vos != null) : ("表格获得的账户信息为空");
 		Object[][] constObjects = null;
 		constObjects = new Object[vos.size()][4];
 		int i = 0;
 		String[] str = new String[2];
-		for (java.util.Iterator<ConstVO> t = vos.iterator(); t.hasNext(); i++) {
+		for (java.util.Iterator<ConstVOPlus> t = vos.iterator(); t.hasNext(); i++) {
 			ConstVO vo = t.next();
-			str = vo.twoCities.split("-");
-			constObjects[i][0] = str[0];
-			constObjects[i][1] = str[1];
+			if (vo.twoCities.length() <= 1) {
+				constObjects[i][0] = "";
+				constObjects[i][1] = "";
+			} else {
+				str = vo.twoCities.split("-");
+				constObjects[i][0] = str[0];
+				constObjects[i][1] = str[1];
+			}
 			constObjects[i][2] = vo.distanceConst;
 			constObjects[i][3] = vo.priceConst;
+
 		}
 		constjTable.setModel(new javax.swing.table.DefaultTableModel(
 				constObjects, new String[] { "城市一", "城市二", "距离(千米)",
@@ -2149,21 +2208,152 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		((DefaultTableCellRenderer) constjTable.getTableHeader()
 				.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
 		constjTable.setRowSelectionInterval(0, 0);// 设置哪几行被选中
+		final JPopupMenu constjPop = new JPopupMenu();
+		final JMenuItem constDeljItem = new JMenuItem("删除");
+		constDeljItem.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				if (e.getButton() == MouseEvent.BUTTON1) {
+					int n = constjTable.getSelectedRow();
+					ConstVOPlus voPlus = constVOPlus.get(n);
+					ModifyState state = voPlus.isModify;
+					if (state == ModifyState.NEW) {
+						constVOPlus.remove(n);
+						initialConstJTable(constVOPlus);
+					} else {
+						Object[] options = { "取消", "删除" };
+						int result = JOptionPane.showOptionDialog(null,
+								"您确定要删除系统该常量？", "是否删除",
+								JOptionPane.DEFAULT_OPTION,
+								JOptionPane.QUESTION_MESSAGE, null, options,
+								options[0]);
+						if (result == JOptionPane.NO_OPTION) {
+							try {
+								constblController.delete(voPlus.getConstVO());
+								setState("删除成功:)", 5);
+								setConstVOs();
+								initialConstJTable(constVOPlus);
+							} catch (RemoteException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+								setState("删除失败:(", 5);
+							}
+						}
+					}
+				}
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
+		;
+		constjPop.add(constDeljItem);
+		MouseInputListener mil = new MouseInputListener() {
+
+			public void mouseClicked(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mousePressed(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				processEvent(e);
+				if ((e.getModifiers() & MouseEvent.BUTTON3_MASK) != 0
+						&& !e.isControlDown() && !e.isShiftDown()) {
+					constjPop.show(constjTable, e.getX(), e.getY());
+				}
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseDragged(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseMoved(MouseEvent e) {
+				processEvent(e);
+			}
+
+			private void processEvent(MouseEvent e) {
+				if ((e.getModifiers() & MouseEvent.BUTTON3_MASK) != 0) {
+					int modifiers = e.getModifiers();
+					modifiers -= MouseEvent.BUTTON3_MASK;
+					modifiers |= MouseEvent.BUTTON1_MASK;
+					MouseEvent ne = new MouseEvent(e.getComponent(), e.getID(),
+							e.getWhen(), modifiers, e.getX(), e.getY(),
+							e.getClickCount(), false);
+					constjTable.dispatchEvent(ne);
+				}
+			}
+		};
+		constjTable.addMouseListener(mil);
+
 	}
 
-	
+	/**
+	 * 改变statejlabel的提示信息，并在五秒后改回"空闲"
+	 * 
+	 * @param str
+	 */
+	public void setState(String str, long time) {
+		statejLabel.setText(str);
+		final Runnable setSateTextFieldText = new Runnable() {
+			public void run() {
+				statejLabel.setText("空闲");
+			}
+		};
+		final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(
+				setSateTextFieldText, time, time, TimeUnit.SECONDS);
+		scheduler.schedule(new Runnable() {
+			public void run() {
+				beeperHandle.cancel(true);
+			}
+		}, time, TimeUnit.SECONDS);
+	}
 
 	// 变量声明
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	// bl相关变量声明
 	private ArrayList<AccountVO> accountVOs = null;
-	private ArrayList<ConstVO> constVOs = null;
+	private ArrayList<ConstVOPlus> constVOPlus = null;
 	private ControllerFactoryblService controllerFactoryblService = ControllerFactoryImpl
 			.getInstance();
 	private AccountBLService accountblController = controllerFactoryblService
 			.getAccountController();
 	private ConstBLService constblController = controllerFactoryblService
 			.getConstController();
+
+	private final ScheduledExecutorService scheduler = Executors
+			.newScheduledThreadPool(1);
 
 	// 界面变量声明
 	private JComboBox<String> sexjComboBox;
@@ -2172,11 +2362,12 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private javax.swing.JScrollPane accountViewjScrollPane;
 	private javax.swing.JTable accountViewjTable;
 	private javax.swing.JPanel accountjPanel;
-	private javax.swing.JButton addConstjButton1;
-	private javax.swing.JButton addSalaryPolicyjButton1;
+	private javax.swing.JButton addConstjButton;
+	private JButton submitConstjButton;
+	private javax.swing.JButton addSalaryPolicyjButton;
 	private javax.swing.JPanel documentCheckjPane;
 	private javax.swing.JScrollPane checkjScrollPane;
-	private javax.swing.JPanel constjPanel1;
+	private javax.swing.JPanel constjPanel;
 	private javax.swing.JScrollPane constjScrollPane1;
 	private javax.swing.JTable constjTable;
 	private javax.swing.JLabel currentAccountNamejLabel;

@@ -30,7 +30,11 @@
 	</properties>
 
 
-	<modules></modules>
+	<modules>
+		<module>LS_Client</module>
+		<module>LS_Common</module>
+		<module>LS_Server</module>
+	</modules>
 
 
 

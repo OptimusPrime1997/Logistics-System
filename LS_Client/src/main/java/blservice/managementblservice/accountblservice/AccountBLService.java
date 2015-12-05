@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import javax.naming.NameNotFoundException;
+
 
 import util.enumData.ResultMessage;
+import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
-import VO.LogVO;
 import VO.ManagementVO.AccountVO;
 
 public interface AccountBLService {
@@ -27,7 +27,7 @@ public interface AccountBLService {
 
 	public ResultMessage updateMsg(AccountVO vo) throws RemoteException;
 
-	public AccountVO findByName(String name) throws RemoteException, FileNotFoundException, NameNotFoundException, ClassNotFoundException, IOException;
+	public AccountVO findByName(String name) throws RemoteException, FileNotFoundException, NameNotFoundException, ClassNotFoundException, IOException, NameNotFoundException;
 
 	public AccountVO findByNum(String num) throws RemoteException, FileNotFoundException, NameNotFoundException, ClassNotFoundException, NumNotFoundException, IOException;
 
