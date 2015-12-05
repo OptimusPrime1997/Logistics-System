@@ -23,7 +23,7 @@ import util.MyFrame;
  *
  * @author Administrator
  */
-public class businessOfficer_main extends JPanel {
+public class BusinessOfficer_main extends JPanel {
 	/**
 	 * 监听们~~
 	 * @param e
@@ -73,7 +73,7 @@ public class businessOfficer_main extends JPanel {
     /**
      * 初始化界面
      */
-    public businessOfficer_main() {
+    public BusinessOfficer_main() {
         initComponents();       
     }
     public void setFrame(JFrame frame){
