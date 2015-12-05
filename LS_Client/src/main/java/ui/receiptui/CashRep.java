@@ -10,26 +10,18 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JFrame;
-import javax.swing.JTable;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.TableColumnModelEvent;
-import javax.swing.event.TableColumnModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-import VO.GoodsVO;
 import VO.ReceiptVO.CashRepVO;
 import VO.ReceiptVO.CashVO;
 import bl.receiptbl.CashRepbl.CashRepController;
 import blservice.receiptblservice.CashRepblService;
 import util.enumData.ResultMessage;
 import Exception.ExceptionPrint;
-import Exception.NameNotFoundException;
 
 /**
  *
@@ -106,6 +98,10 @@ public class CashRep extends javax.swing.JPanel {
         dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        
+        dateLabel.setText("日期:");
+        
+        dateText.setText(control.getDate());
 
         numLabel.setText("编号:");
 
@@ -113,10 +109,6 @@ public class CashRep extends javax.swing.JPanel {
         numText.setText(officeText.getText()+control.getDateInNum(dateText.getText())+"10000");
 
         courierNumLabel.setText("快递员编号:");
-
-        dateLabel.setText("日期:");
-        
-        dateText.setText(control.getDate());
 
         sumLabel.setText("总和:");
 
@@ -179,6 +171,44 @@ public class CashRep extends javax.swing.JPanel {
         setColumn();
         
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        
+        jTable.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int row = jTable.getSelectedRow();
+				int col = jTable.getSelectedColumn();
+				if(col==4){
+					model.removeRow(row);
+					jTable.setModel(model);
+				}
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -267,46 +297,9 @@ public class CashRep extends javax.swing.JPanel {
                     .addComponent(cancelButton)
                     .addComponent(okButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(resultMsgText)));
+                .addComponent(resultMsgText))
+            );
             
-            jTable.addMouseListener(new MouseListener() {
-    			
-    			@Override
-    			public void mouseReleased(MouseEvent e) {
-    				// TODO Auto-generated method stub
-    				
-    			}
-    			
-    			@Override
-    			public void mousePressed(MouseEvent e) {
-    				// TODO Auto-generated method stub
-    				int row = jTable.getSelectedRow();
-    				int col = jTable.getSelectedColumn();
-    				if(col==4){
-    					model.removeRow(row);
-    					jTable.setModel(model);
-    				}
-    			}
-    			
-    			@Override
-    			public void mouseExited(MouseEvent e) {
-    				// TODO Auto-generated method stub
-    				
-    			}
-    			
-    			@Override
-    			public void mouseEntered(MouseEvent e) {
-    				// TODO Auto-generated method stub
-    				
-    			}
-    			
-    			@Override
-    			public void mouseClicked(MouseEvent e) {
-    				// TODO Auto-generated method stub
-    				
-    			}
-            }
-        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void setColumn(){
@@ -343,7 +336,7 @@ public class CashRep extends javax.swing.JPanel {
 //    	model.setDataVector(dataVector, columnIdentifiers);
     	
     	String courierNum = courierNumText.getText();
-    	ResultMessage resultMessage = control.checkCourierNum(courierNum);
+    	ResultMessage resultMessage = control.checkNum(courierNum, 11);
     	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
     	resultMsgText.setText(resultMsg);
     	if(resultMessage==ResultMessage.ADD_SUCCESS){
@@ -357,7 +350,6 @@ public class CashRep extends javax.swing.JPanel {
         	model.setDataVector(dataVector, columnIdentifiers);
         	setColumn();
     	}
-    	
     }
     
     private void okMouseClicked(java.awt.event.MouseEvent evt) {

@@ -22,16 +22,8 @@ import PO.ReceiptPO.ReceiptPO;
 public class CashRepbl {
 
 	Goodsbl goodsbl = new Goodsbl();
-	Accountbl accountbl = new Accountbl();
+//	Accountbl accountbl = new Accountbl();
 	Receiptbl receiptbl = new Receiptbl();
-
-	public ResultMessage checkCourierNum(String courierNum) {
-		if (courierNum.length() < 11)
-			return ResultMessage.REPNUM_LENGTH_LACKING;
-		else if (courierNum.length() > 11)
-			return ResultMessage.REPNUM_LENGTH_OVER;
-		return ResultMessage.ADD_SUCCESS;
-	}
 
 	public String getCourierName(String courierNum) throws NameNotFoundException, FileNotFoundException, javax.naming.NameNotFoundException, ClassNotFoundException, NumNotFoundException, IOException {
 //		return accountbl.findByAccountNum(courierNum).accountName;
@@ -107,6 +99,11 @@ public class CashRepbl {
 		}
 
 		return data;
+	}
+	
+	public void addMoneyInBankAccount() throws AddMoneyInBankException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

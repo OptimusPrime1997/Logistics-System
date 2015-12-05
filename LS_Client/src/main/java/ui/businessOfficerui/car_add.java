@@ -9,12 +9,12 @@ package ui.businessOfficerui;
  *
  * @author Administrator
  */
-public class car_add extends javax.swing.JFrame {
+public class Car_add extends javax.swing.JFrame {
 
     /**
      * Creates new form car_add
      */
-    public car_add() {
+    public Car_add() {
         initComponents();
     }
 

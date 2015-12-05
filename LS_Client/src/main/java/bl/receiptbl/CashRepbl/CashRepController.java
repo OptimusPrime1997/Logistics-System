@@ -14,6 +14,7 @@ import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.CashRepblService;
 import util.enumData.ResultMessage;
+import Exception.AddMoneyInBankException;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 
@@ -87,10 +88,9 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	}
 
 	@Override
-	public ResultMessage checkCourierNum(String courierNum) {
+	public void addMoneyInBankAccount() throws AddMoneyInBankException {
 		// TODO Auto-generated method stub
-		return cashRepbl.checkCourierNum(courierNum);
+		cashRepbl.addMoneyInBankAccount();
 	}
-
 
 }

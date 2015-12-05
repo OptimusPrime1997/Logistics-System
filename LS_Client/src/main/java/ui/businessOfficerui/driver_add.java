@@ -11,12 +11,12 @@ package ui.businessOfficerui;
  *
  * @author Administrator
  */
-public class driver_add extends javax.swing.JFrame {
+public class Driver_add extends javax.swing.JFrame {
 
     /**
      * Creates new form driver__add
      */
-    public driver_add() {
+    public Driver_add() {
         initComponents();
     }
 

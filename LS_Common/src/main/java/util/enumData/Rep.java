@@ -1,5 +1,7 @@
 package util.enumData;
 
 public enum Rep {
-	ShipmentRep,GetRep,DeliverRep,PayRep,InStockRep,OutStockRep,ShippingRep,ReceptionRep,TransferRep,CashRep
+	ShipmentRep,GetRep,DeliverRep,InStockRep,OutStockRep,ShippingRep,ReceptionRep,TransferRep,CashRep,
+	PayRep,PayRepBonus,PayRepCourierSalary,PayRepDriverSalary,PayRepFreight,PayRepRefund,PayRepRent,
+	PayRepStaffSalary
 }

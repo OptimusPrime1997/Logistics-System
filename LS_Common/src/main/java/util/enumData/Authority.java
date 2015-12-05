@@ -1,5 +1,6 @@
 package util.enumData;
-
+//case OVERRIDE_DATA:
+//	return "覆盖数据";
 public enum Authority {
 	MANAGER, FINANCIALSTAFF_V, FINANCIALSTAFF_C, COURIER, ADMINISTRATOR, WAREHOUSEMAN, BUSSINESSOFFICER, TRANSFERCTROFFICER, DRIVER;
 	public static String value(Authority authority) {

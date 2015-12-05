@@ -27,7 +27,7 @@ import blservice.goodsblservice.GoodsInitBLService;
  *
  * @author Administrator
  */
-public class courier_signed extends javax.swing.JFrame {
+public class Courier_signed extends javax.swing.JFrame {
 	/*
 	 * Listeners~~
 	 */
@@ -91,7 +91,7 @@ public class courier_signed extends javax.swing.JFrame {
 	/**
      * Creates new form courier_signed
      */
-	public courier_signed() {
+	public Courier_signed() {
     	controller_end=ControllerFactoryImpl.getInstance().getGoodsEndController();
     	controller_check=ControllerFactoryImpl.getInstance().getGoodsCheckController();
     	initComponents();
