@@ -49,7 +49,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 		return sd.update(po);
 	}
 	
-	public ResultMessage modifyDivision(int oldBlock, int oldPlace, int newBlock, int newPlace) {
+	public ResultMessage modifyDivision(int oldDivision, int oldBlock, int oldPlace,int newDivision, int newBlock, int newPlace) {
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
@@ -112,7 +112,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 	 * @throws IOException 
 	 */
 	public ArrayList<Integer> getOverBlock(InStockRepVO vo) throws NotBoundException, IOException{
-		ArrayList<Integer> result = null;
+		ArrayList<Integer> result = new ArrayList<Integer>();
 		/**
 		 *数组中存放每个区中货物的个数
 		 */

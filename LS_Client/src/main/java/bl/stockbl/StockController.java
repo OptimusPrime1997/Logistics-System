@@ -3,7 +3,7 @@
  */
 package bl.stockbl;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -28,8 +28,9 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 	private StockNum ininum = new StockNum();
 	private StockDivisionbl division =  new StockDivisionbl();
 	
-	
+	 
 
+//	public ArrayList<StockDivisionVO> getDivisions() 
 	
 	public boolean isExist(int block, int place) throws MalformedURLException, RemoteException, NotBoundException{
 		return division.isExist(block, place);
@@ -117,6 +118,16 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 	public String checkStock(String startMonth, String startDay,
 			String endMonth, String endDay) {
 		return stock.checkStock(startMonth, startDay, endMonth, endDay);
+	}
+
+	/* (non-Javadoc)
+	 * @see blservice.stockblservice.StockDivisionBLService#modifyDivision(int, int, int, int, int, int)
+	 */
+	@Override
+	public ResultMessage modifyDivision(int oldDivision, int oldBlock,
+			int oldPlace, int newDivision, int newBlock, int newPlace) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

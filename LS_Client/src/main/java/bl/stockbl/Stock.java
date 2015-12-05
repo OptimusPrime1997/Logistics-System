@@ -1,4 +1,4 @@
-/**
+ /**
  * 
  */
 package bl.stockbl;
@@ -128,7 +128,7 @@ public class Stock {
 	 */
 	public ArrayList<StockVO> show() throws NotBoundException, ClassNotFoundException, IOException {
 		result = null;
-		ArrayList<StockPO> list = null;
+		ArrayList<StockPO> list = new ArrayList<StockPO>();
 		
 		StockDataService s = getStockDataService();
 		list = s.getStock();

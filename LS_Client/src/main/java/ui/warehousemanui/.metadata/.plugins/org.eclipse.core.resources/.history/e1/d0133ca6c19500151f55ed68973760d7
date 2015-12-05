@@ -1,0 +1,15 @@
+/**
+ * 
+ */
+package RMI;
+
+/**
+ * @author G
+ *
+ */
+public class StockIniMain {
+
+	public static void main(String[] args) {
+		
+	}
+}

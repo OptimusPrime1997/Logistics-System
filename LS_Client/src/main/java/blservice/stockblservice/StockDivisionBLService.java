@@ -21,7 +21,7 @@ public interface StockDivisionBLService {
 	 * @param newBlock
 	 * @param newPlace
 	 */
-	public ResultMessage modifyDivision(int oldBlock,int oldPlace, int newBlock, int newPlace);
+	public ResultMessage modifyDivision(int oldDivision, int oldBlock, int oldPlace,int newDivision, int newBlock, int newPlace);
 	
 	/**
 	 * 界面提供目的地，系统提供该仓库可用的区号和位号

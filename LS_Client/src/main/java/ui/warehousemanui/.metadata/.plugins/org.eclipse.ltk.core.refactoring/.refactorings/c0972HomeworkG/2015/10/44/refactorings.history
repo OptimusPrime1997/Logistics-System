@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;former&apos; in &apos;homework01.Exercise00.swap(...)&apos; to &apos;before&apos;&#x0A;- Original project: &apos;c0972HomeworkG&apos;&#x0A;- Original element: &apos;homework01.Exercise00.swap(LinkedList, int).former&apos;&#x0A;- Renamed element: &apos;former&apos;&#x0A;- Update references to refactored element" description="Rename local variable &apos;former&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;homework01{Exercise00.java[Exercise00~swap~QLinkedList;~I@former!664!686!673!678!QListNode;!0!false" name="before" references="true" stamp="1446204394056" version="1.0"/>
+</session>
