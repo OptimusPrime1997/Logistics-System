@@ -60,14 +60,21 @@ public class StockDivisionbl implements StockDivisionBLService{
 
 	 
 	public ArrayList<StockDivisionVO> getBlock(City destination) throws NotBoundException, IOException {
-		// TODO Auto-generated method stub
 		StockDivisionDataService sd = getStockDivisionDataService();
 		//TODO 得到当前城市
 		City city = City.BEIJING;
+		ArrayList<StockDivisionVO> resultList = new ArrayList<StockDivisionVO>();
 		ArrayList<StockDivisionPO> list = sd.getStockDivision(city);
-		
-		return null;
+		for (StockDivisionPO po : list) {
+			//得到当前城市的当前区的所有block
+			if (po.getDestination().equals(destination)) {
+				resultList.add(new StockDivisionVO().poToVo(po));
+			}
+		}
+		return resultList;
 	}
+	
+	
 	
 	/**
 	 * 判断此区位号是否已存在货物

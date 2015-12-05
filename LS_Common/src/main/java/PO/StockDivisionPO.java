@@ -17,8 +17,8 @@ public class StockDivisionPO implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 2717252400399634569L;
-	private City listNum;
-	private String cityNum;
+	private City cityNum;
+	private String listNum;
 	private City destination;
 	private int block;
 	private int place;
@@ -30,11 +30,11 @@ public class StockDivisionPO implements Serializable{
 	 * @param des   destination of this place
 	 * @param b	    block to which this place belongs
 	 * @param p	    number of this place
-	 * @param avai  state of this place
+	 * @param listnum 本地城市
 	 */
-	public StockDivisionPO(City listnum, String cn, City des,int b,int p){
-		this.listNum = listnum;
-		cityNum=cn;
+	public StockDivisionPO(City cityNum, String listNum, City des,int b,int p){
+		this.cityNum = cityNum;
+		this.listNum = listNum;
 		destination=des;
 		block=b;
 		place=p;
@@ -42,21 +42,21 @@ public class StockDivisionPO implements Serializable{
 	}
 
 	
-	public City getListnum() {
-		return listNum;
+	public City getCityNum() {
+		return cityNum;
 	}
 
 
-	public void setListnum(City listnum) {
-		this.listNum = listnum;
+	public void setCityNum(City cityNum) {
+		this.cityNum = cityNum;
 	}
 
 
 	public StockDivisionPO(){
 		
 	}
-	public String getCityNum() {
-		return cityNum;
+	public String getListNum() {
+		return listNum;
 	}
 
 	public City getDestination() {
@@ -73,8 +73,8 @@ public class StockDivisionPO implements Serializable{
 
 	
 
-	public void setCityNum(String cityNum) {
-		this.cityNum = cityNum;
+	public void setListNum(String listNum) {
+		this.listNum = listNum;
 	}
 
 	public void setDestination(City destination) {
