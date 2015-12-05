@@ -12,6 +12,14 @@ public enum ResultMessage {
 	FAILED, // 失败
 	WRONG, // 错误
 	/**
+	 * 添加成功
+	 */
+	ADD_SUCCESS,
+	/**
+	 * 提交成功
+	 */
+	SUBMIT_SUCCESS,
+	/**
 	 * 连接错误
 	 */
 	LINK_FAILURE,
