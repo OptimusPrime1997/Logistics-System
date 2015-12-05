@@ -51,7 +51,8 @@ public class Constbl {
 				e.printStackTrace();
 				System.out.println("存储文件出错");
 				return ResultMessage.IOFAILED;
-			} catch (ClassNotFoundException e) {
+			} 
+			catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("系统程序错误");
@@ -122,13 +123,17 @@ public class Constbl {
 		manageVOPO.addLog(LogType.DECISION_MAKE);
 		if (constDataService != null) {
 			ArrayList<ConstPO> pos = constDataService.show();
-			ArrayList<ConstVO> vos = new ArrayList<ConstVO>();
-			ConstVO vo;
-			for (ConstPO po : pos) {
-				vo = manageVOPO.poToVO(po);
-				vos.add(vo);
+			if(pos!=null){
+				ArrayList<ConstVO> vos = new ArrayList<ConstVO>();
+				ConstVO vo;
+				for (ConstPO po : pos) {
+					vo = manageVOPO.poToVO(po);
+					vos.add(vo);
+				}
+				return vos;
+			}else{
+				return null;
 			}
-			return vos;
 		} else
 			throw new RemoteException();
 	}

@@ -8,6 +8,8 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import util.FromIntToCity;
+import util.enumData.City;
 import util.enumData.ResultMessage;
 import PO.StockDivisionPO;
 import PO.StockPO;
@@ -44,15 +46,15 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 	public ResultMessage update(InStockRepPO po) throws RemoteException {
 		ResultMessage rm = ResultMessage.SUCCESS;
 		//TODO 得到本地城市
-		String citynum = "Nanjing";
+		City cityNum = City.BEIJING;
 		ArrayList<InStockPO> list = po.getInStockPOs();
-		System.out.println("----   "+list.size());
+		
 		for(InStockPO inpo : list) {
 			int block = Integer.parseInt(inpo.getArea());
 			int place = Integer.parseInt(inpo.getLoc());
-			//TODO 由区号得到城市号，暂时只用了区号代替城市
-			rm = add(new StockDivisionPO(inpo.getOrder(),citynum, block+"", block, place));
-			System.out.println("re   :" +rm);
+			City desCity = FromIntToCity.toCity(block);
+			rm = add(new StockDivisionPO(cityNum, inpo.getOrder(), desCity, block, place));
+			
 		}
 		return rm;
 		
@@ -113,7 +115,7 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 			if (list != null) {
 				for(int i = 0;i < list.size();++i) {
 					StockDivisionPO po = (StockDivisionPO)list.get(i);
-					String s=po.getListnum();
+					String s=po.getListNum();
 					System.out.println(s);
 					if(s.equals(goods)){
 						isFound = true;
@@ -142,7 +144,7 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 	 * 得到本城市仓库所有的货物
 	 */
 	@Override
-	public ArrayList<StockDivisionPO> getStockDivision(String cityNum) throws IOException {
+	public ArrayList<StockDivisionPO> getStockDivision(City cityNum) throws IOException {
 	 
 		ArrayList<StockDivisionPO> list = new ArrayList<StockDivisionPO>();
 		ArrayList<Object> listo;

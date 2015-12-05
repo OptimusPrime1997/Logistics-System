@@ -105,9 +105,8 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 	
 
 	@Override
-	public ArrayList<StockDivisionVO> getBlock(City destination) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<StockDivisionVO> getBlock(City destination) throws NotBoundException, IOException {
+		return division.getBlock(destination);
 	}
 	
 	

@@ -5,9 +5,10 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import javax.naming.NameNotFoundException;
+
 
 import util.enumData.ResultMessage;
+import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import VO.ManagementVO.BankAccountVO;
 import blservice.managementblservice.bankaccountblservice.BankAccountBLService;

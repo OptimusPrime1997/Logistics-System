@@ -6,8 +6,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import javax.naming.NameNotFoundException;
-
+import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import util.enumData.ResultMessage;
 import PO.AccountPO;

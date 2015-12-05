@@ -7,9 +7,8 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import javax.naming.NameNotFoundException;
-
 import util.enumData.ResultMessage;
+import Exception.NameNotFoundException;
 import PO.InstitutionPO;
 
 public interface InstitutionDataService extends Remote{

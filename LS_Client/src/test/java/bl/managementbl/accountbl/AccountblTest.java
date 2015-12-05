@@ -6,12 +6,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.RemoteException;
 
-import javax.naming.NameNotFoundException;
+
 
 import org.junit.Test;
 
 import util.enumData.Authority;
 import util.enumData.Sex;
+import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import VO.ManagementVO.AccountVO;
 

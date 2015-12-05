@@ -6,6 +6,7 @@
 package ui.warehousemanui;
 import javax.swing.*;
 
+import VO.StockDivisionVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.stockblservice.StockBLService;
 import blservice.stockblservice.StockDivisionBLService;
@@ -19,6 +20,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /**
  *
@@ -307,12 +309,35 @@ public class DivisionChangePanel extends JFrame {
     StockDivisionBLService s = ControllerFactoryImpl.getInstance().getStockDivisionController();
     
     private void oldDivisionsActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
-        // TODO 在这里实现选中旧的区后显示有货物的该区的块的编号
     	
-    	int division = oldDivisions.getSelectedIndex()+1;
-    	
+    	int division = oldDivisions.getSelectedIndex()+1;	
     	City desCity = FromIntToCity.toCity(division);
-    	s.getBlock(desCity);
+    	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
+    	//得到中间参数小块号
+    	boolean[] smallBlocks = new boolean[10];
+    	
+    	for (StockDivisionVO vo : list) {
+    		int i = vo.place/100 ;
+    		smallBlocks[i] = true;
+    		boolean full = true;
+    		for(int m = 0; m < 10; m++) {
+    			if (smallBlocks[m] == false) {
+					full = false;
+					break;
+				}
+    		}
+    		if (full) {
+				break;
+			}
+    	}
+    	ArrayList<Integer> smallnums = new ArrayList<Integer>();
+    	for (int i = 0; i < smallBlocks.length; i++) {
+			if (smallBlocks[i] == true) {
+				smallnums.add(i+1);
+			}
+		}
+    	
+    	//TODO   要显示出这些小块
     	
     }                                          
 
