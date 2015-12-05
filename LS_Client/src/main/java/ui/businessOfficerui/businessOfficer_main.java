@@ -1,8 +1,16 @@
 package ui.businessOfficerui;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.*;
 
 import ui.mainFrame.MainFrame;
+import ui.receiptui.CashRep;
+import ui.receiptui.DeliverRep;
+import ui.receiptui.GetRep;
+import ui.receiptui.ReceptionRep;
+import ui.receiptui.ShipmentRep;
 import util.MyFrame;
 
 /*
@@ -15,10 +23,61 @@ import util.MyFrame;
  *
  * @author Administrator
  */
-public class businessOfficer_main extends JPanel {
-
-    public businessOfficer_main() {
+public class BusinessOfficer_main extends JPanel {
+	/**
+	 * 监听们~~
+	 * @param e
+	 */
+	private void arrival_btnMouseClicked(MouseEvent e) {
+		System.out.println("到达单");
+		new MyFrame(800, 600, new GetRep());
+		//TODO 哪个是到达单。。。
+//		new MyFrame(800, 600, new ReceptionRep());
+	}	
+    private void carManagement_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carManagement_btnMouseClicked
+    	//TODO 跳转还不会。。
+    	System.out.println("车辆管理");
+//    	new Car_management().setFrame(frame);
+//    	frame.remove(frame.getb);
+//    	Car_management carPanel=new Car_management();
+//    	frame.setContentPane(carPanel);
+//    	frame.setContentPane(new Car_management());
+//    	this.getFrame().setContentPane(new car_management());
+    }
+    private void driverManagement_btnMouseClicked(java.awt.event.MouseEvent evt) {
+    	System.out.println("司机管理");
+//    	this.getFrame().setContentPane(new car_management());
+        
+    }
+    private void deliver_btnMouseClicked(java.awt.event.MouseEvent evt) {
+    	System.out.println("派件单");
+    	new MyFrame(800, 600, new DeliverRep());
+//    	this.getFrame().setContentPane(new car_management());
+        
+    }
+    private void send_btnMouseClicked(java.awt.event.MouseEvent evt) {
+    	System.out.println("装车单");
+    	new MyFrame(800, 600, new ShipmentRep());
+//    	this.getFrame().setContentPane(new car_management());        
+    }
+    private void recordMoney_btnMouseClicked(java.awt.event.MouseEvent evt) {
+    	System.out.println("收款单");
+    	new MyFrame(800, 600, new CashRep());
+//    	this.getFrame().setContentPane(new car_management());
+        
+    }
+    
+    private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
+        System.exit(0);
+    }
+    /**
+     * 初始化界面
+     */
+    public BusinessOfficer_main() {
         initComponents();       
+    }
+    public void setFrame(JFrame frame){
+    	this.frame=frame;
     }
     private void initComponents() {
         GroupLayout layout = new GroupLayout(this);
@@ -41,13 +100,14 @@ public class businessOfficer_main extends JPanel {
     	num_label = new JLabel();
     	num_label.setFont(new java.awt.Font("宋体", 1, 48));
     	num_label.setForeground(new java.awt.Color(240, 240, 240));
-    	num_label.setText("50");
+    	num_label.setText("50");//TODO 数字
          
          initNumLayout(num_panelLayout);
 	}
 
 	private void initTxt() {
 		feedBack_text = new JTextField();
+		feedBack_text.setEditable(false);
 	}
 
 	private void initLayout(GroupLayout layout) {
@@ -176,14 +236,20 @@ public class businessOfficer_main extends JPanel {
          recordMoney_btn.setText("记账");
          send_btn.setText("发往中转中心/营业厅");
          driverManagement_btn.setText("司机管理");
+         arrival_btn.addMouseListener(new MouseAdapter() {
+        	 @Override
+        	public void mouseClicked(MouseEvent e) {
+        		arrival_btnMouseClicked(e);
+        	}
+		});
          exit_btn.addActionListener(new java.awt.event.ActionListener() {
              public void actionPerformed(java.awt.event.ActionEvent evt) {
                  exit_btnActionPerformed(evt);
              }
          });
-         deliver_btn.addActionListener(new java.awt.event.ActionListener() {
-             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                 deliver_btnActionPerformed(evt);
+         deliver_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                 deliver_btnMouseClicked(evt);
              }
          });
          carManagement_btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -191,63 +257,28 @@ public class businessOfficer_main extends JPanel {
                  carManagement_btnMouseClicked(evt);
              }
          });
-         carManagement_btn.addActionListener(new java.awt.event.ActionListener() {
-             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                 carManagement_btnActionPerformed(evt);
+         driverManagement_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                 driverManagement_btnMouseClicked(evt);
              }
          });
-         recordMoney_btn.addActionListener(new java.awt.event.ActionListener() {
-             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                 recordMoney_btnActionPerformed(evt);
+         recordMoney_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                recordMoney_btnMouseClicked(evt);
              }
          });
-         send_btn.addActionListener(new java.awt.event.ActionListener() {
-             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                 send_btnActionPerformed(evt);
+         send_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                 send_btnMouseClicked(evt);
              }
          });
-        
-         driverManagement_btn.addActionListener(new java.awt.event.ActionListener() {
-             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                 driverManagement_btnActionPerformed(evt);
-             }
-         });
-
     }
-
-	private void deliver_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliver_btnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deliver_btnActionPerformed
-
-    private void carManagement_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carManagement_btnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_carManagement_btnActionPerformed
-
-    private void recordMoney_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordMoney_btnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recordMoney_btnActionPerformed
-
-    private void send_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_send_btnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_send_btnActionPerformed
-
-    private void driverManagement_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_driverManagement_btnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_driverManagement_btnActionPerformed
-
-    private void carManagement_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carManagement_btnMouseClicked
-    	
-    	System.out.println("车辆管理");
-//    	this.getFrame().setContentPane(new car_management());
-        
-    }//GEN-LAST:event_carManagement_btnMouseClicked
-
-    private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exit_btnActionPerformed
-
+	
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+//	private 
+	
+    private JFrame frame;
     private JButton account_btn;
     private JButton arrival_btn;
     private JLabel businessOfficeNum_label;
@@ -295,7 +326,9 @@ public class businessOfficer_main extends JPanel {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-            	MyFrame frame = new MyFrame(830,590,new businessOfficer_main());
+            	BusinessOfficer_main panel=new BusinessOfficer_main();
+            	MyFrame frame = new MyFrame(830,590,panel);
+            	panel.setFrame(frame);
         		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);	
             }
         });
