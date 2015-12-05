@@ -20,7 +20,7 @@ public class StockDivisionServer {
 			StockDivisionDataService sd = new StockDivisionData();
 
 			LocateRegistry.createRegistry(4099);
-			Naming.rebind("rmi://localhost:4099/stock", sd);
+			Naming.rebind("rmi://localhost:4099/stockDivision", sd);
 
 		} catch (Exception e) {
 			e.printStackTrace();

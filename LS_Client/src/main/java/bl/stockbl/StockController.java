@@ -3,13 +3,14 @@
  */
 package bl.stockbl;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
-import PO.ReceiptPO.InStockRepPO;
+
 import VO.StockDivisionVO;
 import VO.StockVO;
 import VO.ReceiptVO.InStockRepVO;
@@ -36,7 +37,7 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 		
 	}
 	
-	public ArrayList<Integer> getOverBlock(InStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException{
+	public ArrayList<Integer> getOverBlock(InStockRepVO vo) throws NotBoundException, IOException{
 		return division.getOverBlock(vo);
 	}
 	
@@ -64,7 +65,7 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 	}
 	
 	
-	public boolean isPlaceAvailable(int block, int place) throws MalformedURLException, RemoteException, NotBoundException {
+	public boolean isPlaceAvailable(int block, int place) throws NotBoundException, IOException {
 		return division.isPlaceAvailable(block, place);
 	}
 	

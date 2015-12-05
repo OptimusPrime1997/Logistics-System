@@ -15,11 +15,12 @@ import java.util.Date;
 
 import util.enumData.ResultMessage;
 import dataservice.stockdataservice.StockDataService;
+import dataservice.stockdataservice.StockDivisionDataService;
 import bl.receiptbl.InStockRepbl.InStockRepController;
-import bl.receiptbl.InStockRepbl.InStockRepbl;
 import bl.receiptbl.OutStockRepbl.OutStockRepController;
-import bl.receiptbl.OutStockRepbl.OutStockRepbl;
 import PO.StockPO;
+import PO.ReceiptPO.InStockRepPO;
+import PO.ReceiptPO.OutStockRepPO;
 import VO.StockVO;
 import VO.ReceiptVO.InStockRepVO;
 import VO.ReceiptVO.OutStockRepVO;
@@ -35,7 +36,10 @@ public class Stock {
 	private ArrayList<StockVO> result;
 	
 
-	
+	private StockDataService getStockDataService() throws MalformedURLException, RemoteException, NotBoundException {
+		StockDataService s = (StockDataService) Naming.lookup("stock");
+		return s;
+	}
 	/**
 	 * 根据输入的起始月日和终止月日得到这段时间内的入库数量，出库数量的总字符串，以空格隔开
 	 * @param startMonth
@@ -87,7 +91,7 @@ public class Stock {
         int instocknum = instockreps.size();
         int outstocknum = outstockreps.size();
 
-		
+		 
 		return instocknum+" "+outstocknum;
 	}
 
@@ -98,8 +102,11 @@ public class Stock {
 	/**
 	 * 得到当前库存数量，现有库存数量=初始库存数量+遍历库存的数量
 	 * @return
+	 * @throws IOException 
+	 * @throws NotBoundException 
+	 * @throws ClassNotFoundException 
 	 */
-	public int checkPresentStockQuantity() {
+	public int checkPresentStockQuantity() throws ClassNotFoundException, NotBoundException, IOException {
 		
 		int result = 0;
 		int initialnum = sn.getInitialStockNum();
@@ -115,26 +122,18 @@ public class Stock {
 	/**
 	 * 得到当前所有有完整信息的库存
 	 * @return
+	 * @throws NotBoundException 
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public ArrayList<StockVO> show() {
+	public ArrayList<StockVO> show() throws NotBoundException, ClassNotFoundException, IOException {
 		result = null;
 		ArrayList<StockPO> list = null;
-		try {
-			StockDataService sd = (StockDataService) Naming.lookup("stock");
-			list = sd.getStock();
-			for(StockPO po:list) {
-				result.add(new StockVO().poToVo(po));
-			}
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+		
+		StockDataService s = getStockDataService();
+		list = s.getStock();
+		for(StockPO po:list) {
+			result.add(new StockVO().poToVo(po));
 		}
 		return result;
 	}
@@ -160,14 +159,16 @@ public class Stock {
 	}
 	
 	
-	public ResultMessage update(InStockRepVO vo){
-		//TODO 将入库货物放入文件
-		return ResultMessage.SUCCESS;
+	public ResultMessage update(InStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException{
+		InStockRepPO po = vo.toPO(vo);
+		StockDataService sd = getStockDataService();
+		return sd.update(po);
 	}
 	
 	
-	public ResultMessage update(OutStockRepVO vo){
-		//TODO 将出库货物从文件删除
-		return ResultMessage.SUCCESS;
+	public ResultMessage update(OutStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException{
+		OutStockRepPO po = vo.toPO(vo);
+		StockDataService sd = getStockDataService();
+		return sd.update(po);
 	}
 }
