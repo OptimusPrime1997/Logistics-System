@@ -55,16 +55,4 @@ public class DeliverController extends ReceiptblController implements DeliverRep
 		return deliverRep.getRepByDate(date);
 	}
 
-	@Override
-	public ResultMessage checkOrderNum(String order) {
-		// TODO Auto-generated method stub
-		return deliverRep.checkOrderNum(order);
-	}
-
-	@Override
-	public ResultMessage checkCourierNum(String courierNum) {
-		// TODO Auto-generated method stub
-		return deliverRep.checkOrderNum(courierNum);
-	}
-
 }

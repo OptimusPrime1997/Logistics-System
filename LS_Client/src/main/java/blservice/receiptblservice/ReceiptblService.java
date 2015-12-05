@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import VO.ReceiptVO.ReceiptVO;
+import util.enumData.ResultMessage;
 
 public interface ReceiptblService extends PreReceiptblService{
 	

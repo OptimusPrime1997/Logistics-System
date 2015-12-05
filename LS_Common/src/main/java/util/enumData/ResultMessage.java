@@ -149,6 +149,10 @@ public enum ResultMessage {
 			return "数据错误";
 		case WRONG_ACCOUNTNUM:
 			return "账号错误";
+		case ADD_SUCCESS:
+			return "添加成功";
+		case SUBMIT_SUCCESS:
+			return "提交成功";
 		}
 		return null;
 	}

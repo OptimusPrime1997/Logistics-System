@@ -50,7 +50,7 @@ public class DeliverRepbl{
 			return null;
 		return DeliverRepVO.toArrayVO(receiptPOs);
 	}
-	
+		
 		public ResultMessage checkOrderNum(String order){
 			if(order.length()<10)
 				return ResultMessage.REPNUM_LENGTH_LACKING;

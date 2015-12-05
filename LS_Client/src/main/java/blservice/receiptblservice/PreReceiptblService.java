@@ -1,6 +1,7 @@
 package blservice.receiptblservice;
 
 import util.enumData.LogType;
+import util.enumData.ResultMessage;
 
 public interface PreReceiptblService {
 	
@@ -9,4 +10,6 @@ public interface PreReceiptblService {
 	public String getDate();
 
 	public String getDateInNum(String string);
+	
+	public ResultMessage checkNum(String string, int n);
 }

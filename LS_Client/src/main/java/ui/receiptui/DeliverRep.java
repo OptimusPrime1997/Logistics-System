@@ -290,7 +290,7 @@ public class DeliverRep extends javax.swing.JPanel {
 
     private void orderMouseClicked(java.awt.event.MouseEvent evt) {
     	String order = orderNumText.getText();
-    	ResultMessage resultMessage = control.checkOrderNum(order);
+    	ResultMessage resultMessage = control.checkNum(order, 10);
     	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
     	resultMsgText.setText(resultMsg);
     	if(resultMessage==ResultMessage.ADD_SUCCESS){
@@ -310,7 +310,7 @@ public class DeliverRep extends javax.swing.JPanel {
     
     private void okMouseClicked(java.awt.event.MouseEvent evt) {
     	String courierNum = courierText.getText();
-    	ResultMessage resultMessage = control.checkCourierNum(courierNum);
+    	ResultMessage resultMessage = control.checkNum(courierNum, 11);
     	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
     	resultMsgText.setText(resultMsg);
     	if(resultMessage==ResultMessage.ADD_SUCCESS){
