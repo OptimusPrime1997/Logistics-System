@@ -28,7 +28,7 @@ public class CashRepbl {
 	public ResultMessage checkCourierNum(String courierNum) {
 		if (courierNum.length() < 11)
 			return ResultMessage.REPNUM_LENGTH_LACKING;
-		else if (courierNum.length() > 11)
+		if (courierNum.length() > 11)
 			return ResultMessage.REPNUM_LENGTH_OVER;
 		return ResultMessage.ADD_SUCCESS;
 	}

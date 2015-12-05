@@ -179,6 +179,44 @@ public class CashRep extends javax.swing.JPanel {
         setColumn();
         
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        
+        jTable.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int row = jTable.getSelectedRow();
+				int col = jTable.getSelectedColumn();
+				if(col==4){
+					model.removeRow(row);
+					jTable.setModel(model);
+				}
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -267,46 +305,9 @@ public class CashRep extends javax.swing.JPanel {
                     .addComponent(cancelButton)
                     .addComponent(okButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(resultMsgText)));
+                .addComponent(resultMsgText))
+            );
             
-            jTable.addMouseListener(new MouseListener() {
-    			
-    			@Override
-    			public void mouseReleased(MouseEvent e) {
-    				// TODO Auto-generated method stub
-    				
-    			}
-    			
-    			@Override
-    			public void mousePressed(MouseEvent e) {
-    				// TODO Auto-generated method stub
-    				int row = jTable.getSelectedRow();
-    				int col = jTable.getSelectedColumn();
-    				if(col==4){
-    					model.removeRow(row);
-    					jTable.setModel(model);
-    				}
-    			}
-    			
-    			@Override
-    			public void mouseExited(MouseEvent e) {
-    				// TODO Auto-generated method stub
-    				
-    			}
-    			
-    			@Override
-    			public void mouseEntered(MouseEvent e) {
-    				// TODO Auto-generated method stub
-    				
-    			}
-    			
-    			@Override
-    			public void mouseClicked(MouseEvent e) {
-    				// TODO Auto-generated method stub
-    				
-    			}
-            }
-        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void setColumn(){
@@ -357,7 +358,6 @@ public class CashRep extends javax.swing.JPanel {
         	model.setDataVector(dataVector, columnIdentifiers);
         	setColumn();
     	}
-    	
     }
     
     private void okMouseClicked(java.awt.event.MouseEvent evt) {
