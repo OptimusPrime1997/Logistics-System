@@ -2,7 +2,7 @@ package ui.transferCtrOfficerui;
 
 import javax.swing.JFrame;
 
-import ui.businessOfficerui.businessOfficer_main;
+import ui.businessOfficerui.BusinessOfficer_main;
 import ui.mainFrame.MainFrame;
 
 /*

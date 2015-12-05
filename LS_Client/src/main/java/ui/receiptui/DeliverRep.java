@@ -10,8 +10,13 @@ import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.Vector;
 
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 
+import ui.mainFrame.MainFrame;
+import util.MyFrame;
 import Exception.ExceptionPrint;
 import bl.receiptbl.CashRepbl.CashRepController;
 import bl.receiptbl.DeliverRepbl.DeliverController;
@@ -23,7 +28,6 @@ import blservice.receiptblservice.DeliverRepblService;
  * @author apple
  */
 public class DeliverRep extends javax.swing.JPanel {
-	
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel courierLabel;
@@ -50,7 +54,7 @@ public class DeliverRep extends javax.swing.JPanel {
     /**
      * Creates new form DeliverRep
      */
-    public DeliverRep() {
+    public DeliverRep() {	
         initComponents();
     }
 
