@@ -7,10 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import javax.naming.NameNotFoundException;
-
 import util.enumData.Rep;
-import util.enumData.ResultMessage;
 import VO.GoodsVO;
 import VO.ManagementVO.BankAccountVO;
 import VO.ReceiptVO.CashRepVO;
@@ -31,7 +28,8 @@ public class CashRepbl {
 	BankAccountbl bankAccountbl = new BankAccountbl();
 	Receiptbl receiptbl = new Receiptbl();
 
-	public String getCourierName(String courierNum){
+	public String getCourierName(String courierNum) throws RemoteException, FileNotFoundException, 
+	ClassNotFoundException, NameNotFoundException, NumNotFoundException, IOException{
 		return accountbl.findByAccountNum(courierNum).accountName;
 	}
 
