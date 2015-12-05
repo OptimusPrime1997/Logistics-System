@@ -27,6 +27,6 @@ public interface GoodsFindBLService {
 	 * @param listNum
 	 * @return
 	 */
-	public GoodsVO check(String listNum)throws GoodsNotFound;
+	public GoodsVO findByGoods(String listNum)throws GoodsNotFound;
 
 }

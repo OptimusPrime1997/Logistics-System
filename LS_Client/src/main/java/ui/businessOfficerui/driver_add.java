@@ -17,6 +17,7 @@ public class Driver_add extends javax.swing.JFrame {
      * Creates new form driver__add
      */
     public Driver_add() {
+    	this.setVisible(true);
         initComponents();
     }
 

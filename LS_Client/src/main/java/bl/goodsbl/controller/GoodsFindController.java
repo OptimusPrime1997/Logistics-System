@@ -19,7 +19,7 @@ public class GoodsFindController implements GoodsFindBLService{
 		return goodsbl.getGoodsByGetCourier(CourierNum,date);
 	}
 	@Override
-	public GoodsVO check(String listNum) throws GoodsNotFound {
+	public GoodsVO findByGoods(String listNum) throws GoodsNotFound {
 		return goodsbl.findByListNum(listNum);
 	}
 

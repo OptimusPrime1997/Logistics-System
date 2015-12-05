@@ -15,6 +15,7 @@ public class Car_detail extends javax.swing.JFrame {
      * Creates new form car_detail
      */
     public Car_detail() {
+    	this.setVisible(true);
         initComponents();
     }
 

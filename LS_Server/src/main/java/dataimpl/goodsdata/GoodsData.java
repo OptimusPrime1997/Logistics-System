@@ -168,8 +168,9 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 			for(Object o:all){
 				po=(GoodsPO)o;
 				//找到了货物~
-				if(po.getGetCourierAccount().equals(CourierNum)
-						||po.getDeliverCourierAccount().equals(CourierNum)){
+				if(po.getGetCourierAccount().equals(CourierNum)//TODO
+						//||po.getDeliverCourierAccount().equals(CourierNum)
+						){
 					sum++;
 				}
 			}
