@@ -8,8 +8,6 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import javax.naming.spi.DirStateFactory.Result;
-
 import util.enumData.ResultMessage;
 import PO.StockDivisionPO;
 import PO.StockPO;
@@ -39,11 +37,7 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Override
-	public ResultMessage initial() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	
 	@Override
@@ -52,14 +46,13 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 		//TODO 得到本地城市
 		String citynum = "Nanjing";
 		ArrayList<InStockPO> list = po.getInStockPOs();
+		System.out.println("----   "+list.size());
 		for(InStockPO inpo : list) {
 			int block = Integer.parseInt(inpo.getArea());
 			int place = Integer.parseInt(inpo.getLoc());
 			//TODO 由区号得到城市号，暂时只用了区号代替城市
-			rm = add(new StockDivisionPO(citynum, block+"", block, place));
-			if(!rm.equals(ResultMessage.SUCCESS)) {
-				return ResultMessage.FAILED;
-			}
+			rm = add(new StockDivisionPO(inpo.getOrder(),citynum, block+"", block, place));
+			System.out.println("re   :" +rm);
 		}
 		return rm;
 		
@@ -70,22 +63,22 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 	 * @param stockDivisionPO
 	 * @return
 	 */
-	private ResultMessage add(StockDivisionPO po) {
-		// TODO 返回值还没完成
-		
+	private ResultMessage add(StockDivisionPO po) {		
 
-		ArrayList<Object> list;
+		ArrayList<Object> list ;
 		try {
 			list = du.getAll(filename);
-			
-			for(Object o:list){
-				StockDivisionPO p = (StockDivisionPO)o;
+		
+			if(list != null) {
 				
-				if(p.getBlock()==po.getBlock()&&p.getPlace()==po.getPlace()){
-					return ResultMessage.EXIST;
+				for(Object o:list){
+					StockDivisionPO p = (StockDivisionPO)o;
+					
+					if(p.getBlock()==po.getBlock()&&p.getPlace()==po.getPlace()){
+						return ResultMessage.EXIST;
+					}
 				}
 			}
-			
 			return du.save(po, filename);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -97,12 +90,54 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 
 	@Override
 	public ResultMessage update(OutStockRepPO po) throws RemoteException {
-		return null;
-		// TODO Auto-generated method stub
+		ResultMessage rm = ResultMessage.SUCCESS;
+		ArrayList<String> list = po.getGoods();
+		for(String goods : list) {
+			 rm = delete(goods);
+			
+		}
+		return rm;
 		
 	}
 
 	
+	/**
+	 * @param goods
+	 * @return
+	 */
+	private ResultMessage delete(String goods) {
+		boolean isFound = false;
+		ArrayList<Object> list ;
+		try {
+			list = du.getAll(filename);
+			if (list != null) {
+				for(int i = 0;i < list.size();++i) {
+					StockDivisionPO po = (StockDivisionPO)list.get(i);
+					String s=po.getListnum();
+					System.out.println(s);
+					if(s.equals(goods)){
+						isFound = true;
+						list.remove(i);
+					}
+				}
+			} else {
+				return ResultMessage.NOT_FOUND;
+			}
+			du.SaveAll(list, filename);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
+		
+		
+		if(!isFound){
+			return ResultMessage.NOT_FOUND;
+		}else{
+			return ResultMessage.SUCCESS;
+		}
+	}
+
+
 	@Override
 	public ArrayList<StockDivisionPO> getStockDivision() throws IOException {
 	 
@@ -122,5 +157,13 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 		return list;
 		
 	}
+
+
+	
+	
+	
+	
+
+
 
 }

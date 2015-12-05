@@ -12,14 +12,6 @@ public enum ResultMessage {
 	FAILED, // 失败
 	WRONG, // 错误
 	/**
-	 * 添加成功
-	 */
-	ADD_SUCCESS,
-	/**
-	 * 提交成功
-	 */
-	SUBMIT_SUCCESS,
-	/**
 	 * 连接错误
 	 */
 	LINK_FAILURE,
@@ -134,7 +126,19 @@ public enum ResultMessage {
 	/**
 	 * 该库存区位已被占用
 	 */
-	NOT_AVAILABLE;
+	NOT_AVAILABLE,
+	/**
+	 * 覆盖数据
+	 */
+	OVERRIDE_DATA, 
+	/**
+	 * 添加成功
+	 */
+	ADD_SUCCESS,
+	/**
+	 * 提交成功
+	 */
+	SUBMIT_SUCCESS;
 
 	public static String toFriendlyString(ResultMessage resultMessage) {
 
@@ -167,6 +171,8 @@ public enum ResultMessage {
 			return "派件员编号过短";
 		case DELIVER_COURIER_NUM_OVER:
 			return "派件员编号过长";
+		case OVERRIDE_DATA:
+			return "覆盖数据";
 		}
 		return null;
 	}

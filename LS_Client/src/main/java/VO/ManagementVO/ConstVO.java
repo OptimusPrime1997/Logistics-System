@@ -5,7 +5,7 @@ public class ConstVO implements Comparable<ConstVO> {
 	public double priceConst;
 	public double distanceConst;
 
-	public ConstVO(String twoCities, double priceConst, double distanceConst) {
+	public ConstVO(String twoCities,  double distanceConst,double priceConst) {
 		super();
 		this.twoCities = twoCities;
 		this.priceConst = priceConst;

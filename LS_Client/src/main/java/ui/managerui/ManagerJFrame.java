@@ -13,6 +13,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -64,7 +66,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed"
 	// desc="Generated Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
-		setAccounVOs();
+		setAccountVOs();
+		setConstVOs();
+		
 		initialViables();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -256,6 +260,20 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		pack();
 	}
 
+	
+
+	private void setConstVOs() {
+		// TODO Auto-generated method stub
+		constVOs=getConstVOs();
+		constVOs.sort(null);
+	}
+
+	private void setAccountVOs() {
+		// TODO Auto-generated method stub
+		accountVOs = getAccountVOs();
+		accountVOs.sort(null);
+	}
+
 	/**
 	 * initial all Viables
 	 */
@@ -354,6 +372,10 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jLabel48 = new javax.swing.JLabel();
 		statejLabel = new javax.swing.JLabel();
 		exitjButton = new javax.swing.JButton();
+		
+		sexjComboBox=new JComboBox<String>();
+		sexjComboBox.addItem("男");
+		sexjComboBox.addItem("女");
 	}
 
 	/**
@@ -1000,13 +1022,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		// 初始化用户账户界面
 		initialAccountJTable(accountVOs);
-		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
-		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 这句和上句作用一样
-		accountViewjTable.setDefaultRenderer(Object.class, tcr);
-
-		((DefaultTableCellRenderer) accountViewjTable.getTableHeader()
-				.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
-		accountViewjTable.setRowSelectionInterval(0, 0);// 设置哪几行被选中
 
 		accountNamejTextField.setText("请输入人员姓名");
 		accountNamejTextField.addActionListener(new ActionListener() {
@@ -1611,8 +1626,16 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jButton5.setText("jButton4");
 
 		addConstjButton1.setText("添加距离常量");
-
+		addConstjButton1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				addConstjButton1ActionPerformed(e);
+			}
+		});
 		initialConstJTable(constVOs);// 初始化常量表
+		
 		javax.swing.GroupLayout constjPanel1Layout = new javax.swing.GroupLayout(
 				constjPanel1);
 		constjPanel1.setLayout(constjPanel1Layout);
@@ -1669,7 +1692,12 @@ public class ManagerJFrame extends javax.swing.JFrame {
 										.addGap(35, 35, 35)));
 
 		managerjTabbedPane.addTab("距离常量", constjPanel1);
-
+	}
+	private void addConstjButton1ActionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource()==addConstjButton1){
+			constVOs.add(new ConstVO("-",0, 0));
+		}
 	}
 
 	/**
@@ -2006,7 +2034,32 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		assert (vos != null) : ("远程获取账户信息失败");
 		return vos;
 	}
-
+	private ArrayList<ConstVO> getConstVOs() {
+		// TODO Auto-generated method stub
+		ArrayList<ConstVO> vos = null;
+		try {
+			vos = constblController.show();
+			vos.sort(null);
+			System.out.println(vos.size());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("远程连接失败");
+			statejLabel.setText("远程连接失败");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("程序错误");
+			statejLabel.setText("程序错误");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("读取文件失败");
+			statejLabel.setText("读取文件失败");
+		}
+		assert (vos != null) : ("远程获取常量信息失败");
+		return vos;
+	}
 	/**
 	 * 初始化AccountJTable
 	 */
@@ -2015,12 +2068,11 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		Object[][] accountObjects = null;
 		accountObjects = new Object[vos.size()][6];
 		int i = 0;
-		vos.sort(null);
 		for (java.util.Iterator<AccountVO> t = vos.iterator(); t.hasNext();) {
 			AccountVO vo = t.next();
 			accountObjects[i][0] = vo.accountNum;
 			accountObjects[i][1] = vo.accountName;
-			accountObjects[i][2] = Sex.toString(vo.sex);
+			accountObjects[i][2] = sexjComboBox.getItemAt(Sex.toNum(vo.sex));
 			accountObjects[i][3] = Authority.toString(vo.authority);
 			accountObjects[i][4] = vo.institutionNum;
 			accountObjects[i][5] = vo.phoneNum;
@@ -2030,7 +2082,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				accountObjects, new String[] { "用户账号", "姓名", "性别", "职位",
 						"机构编号", "电话" }) {
 			Class[] types = new Class[] { java.lang.String.class,
-					java.lang.String.class, java.lang.String.class,
+					java.lang.String.class,JComboBox.class,
 					java.lang.String.class, java.lang.String.class,
 					java.lang.String.class };
 			boolean[] canEdit = new boolean[] { false, false, false, false,
@@ -2044,6 +2096,14 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				return canEdit[columnIndex];
 			}
 		});
+		accountViewjTable.getColumnModel().getColumn(2).setCellEditor(new DefaultCellEditor(sexjComboBox));
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 这句和上句作用一样
+		accountViewjTable.setDefaultRenderer(Object.class, tcr);
+
+		((DefaultTableCellRenderer) accountViewjTable.getTableHeader()
+				.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
+		accountViewjTable.setRowSelectionInterval(0, 0);// 设置哪几行被选中
 
 	}
 
@@ -2058,14 +2118,13 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		constObjects = new Object[vos.size()][4];
 		int i = 0;
 		String[] str = new String[2];
-		vos.sort(null);
 		for (java.util.Iterator<ConstVO> t = vos.iterator(); t.hasNext(); i++) {
 			ConstVO vo = t.next();
 			str = vo.twoCities.split("-");
 			constObjects[i][0] = str[0];
 			constObjects[i][1] = str[1];
 			constObjects[i][2] = vo.distanceConst;
-			constObjects[i][2] = vo.priceConst;
+			constObjects[i][3] = vo.priceConst;
 		}
 		constjTable.setModel(new javax.swing.table.DefaultTableModel(
 				constObjects, new String[] { "城市一", "城市二", "距离(千米)",
@@ -2081,15 +2140,18 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 			public boolean isCellEditable(int rowIndex, int columnIndex) {
 				return canEdit[columnIndex];
-
 			}
 		});
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 这句和上句作用一样
+		constjTable.setDefaultRenderer(Object.class, tcr);
 
+		((DefaultTableCellRenderer) constjTable.getTableHeader()
+				.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
+		constjTable.setRowSelectionInterval(0, 0);// 设置哪几行被选中
 	}
 
-	private void setAccounVOs() {
-		accountVOs = getAccountVOs();
-	}
+	
 
 	// 变量声明
 	// Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2104,6 +2166,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			.getConstController();
 
 	// 界面变量声明
+	private JComboBox<String> sexjComboBox;
 	private javax.swing.JTextField accountNamejTextField;
 	private javax.swing.JTextField accountNumjTextField;
 	private javax.swing.JScrollPane accountViewjScrollPane;
