@@ -48,6 +48,14 @@ public enum ResultMessage {
 	 */
 	REPNUM_NOT_RIGHT,
 	/**
+	 * 派件员编号过短
+	 */
+	DELIVER_COURIER_NUM_LACKING,
+	/**
+	 * 派件员编号过长
+	 */
+	DELIVER_COURIER_NUM_OVER,
+	/**
 	 * 手机号长度有误
 	 */
 	PHONE_LENGTH_WRONG,
@@ -122,7 +130,15 @@ public enum ResultMessage {
 	/**
 	 * 覆盖数据
 	 */
-	OVERRIDE_DATA;
+	OVERRIDE_DATA, 
+	/**
+	 * 添加成功
+	 */
+	ADD_SUCCESS,
+	/**
+	 * 提交成功
+	 */
+	SUBMIT_SUCCESS;
 
 	public static String toFriendlyString(ResultMessage resultMessage) {
 
@@ -145,6 +161,16 @@ public enum ResultMessage {
 			return "数据错误";
 		case WRONG_ACCOUNTNUM:
 			return "账号错误";
+		case ADD_SUCCESS:
+			return "添加成功";
+		case SUBMIT_SUCCESS:
+			return "提交成功";
+		case REPNUM_NOT_ALL_NUM:
+			return "编号中存在非数字字符";
+		case DELIVER_COURIER_NUM_LACKING:
+			return "派件员编号过短";
+		case DELIVER_COURIER_NUM_OVER:
+			return "派件员编号过长";
 		case OVERRIDE_DATA:
 			return "覆盖数据";
 		}

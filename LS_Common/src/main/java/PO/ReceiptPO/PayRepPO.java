@@ -3,6 +3,11 @@ package PO.ReceiptPO;
 import java.util.ArrayList;
 
 public class PayRepPO extends ReceiptPO {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -996965091924001792L;
+	
 	private double sum;
 	private ArrayList<PayPO> payPOs;
 	private String payPersonNum;

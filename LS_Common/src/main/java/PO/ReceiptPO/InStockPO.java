@@ -1,6 +1,13 @@
 package PO.ReceiptPO;
 
-public class InStockPO {
+import java.io.Serializable;
+
+public class InStockPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5804104217611361052L;
+	
 	private String order;
 	private String area;
 	private String loc;

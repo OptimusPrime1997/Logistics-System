@@ -1,8 +1,14 @@
 package PO.ReceiptPO;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PayRepRentRepPO {
+public class PayRepRentRepPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4186423149724347074L;
+	
 	private ArrayList<PayRentPO> rentPOs;
 	private String bankAccountNum;
 	private double sum;

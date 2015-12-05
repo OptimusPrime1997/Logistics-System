@@ -66,5 +66,8 @@ public class InputCheck {
 			return checkInputNum(phoneNum, 11);
 		}
 	}
+	public static ResultMessage checkListNum(String listNum){
+		return checkInputNum(listNum, 10);
+	}
 	
 }

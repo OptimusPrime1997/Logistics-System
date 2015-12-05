@@ -1,8 +1,10 @@
 package PO.ReceiptPO;
 
+import java.io.Serializable;
+
 import util.enumData.GoodsArrivalState;
 
-public class ArrivePO {
+public class ArrivePO implements Serializable{
 	private String order;
 	private GoodsArrivalState goodsArrivalState;
 	public ArrivePO(String order, GoodsArrivalState goodsArrivalState) {

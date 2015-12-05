@@ -5,6 +5,9 @@
  */
 package ui.businessOfficerui;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
@@ -22,15 +25,16 @@ public class Car_management extends javax.swing.JPanel {
 	 * @param evt
 	 */
 	private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
-       
-    }
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-    }
+    
+	}
+	private void search_textMouseClicked(MouseEvent e) {
+		search_textMouseClicked(e);
+	}	
     private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
         System.exit(0);
     }
     private void add_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_btnMouseClicked
-        new Car_add().setVisible(true);
+        new Car_add();
     }
     private void cars_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cars_tableMouseClicked
         if(evt.getClickCount()==2){
@@ -132,13 +136,16 @@ public class Car_management extends javax.swing.JPanel {
 		search_text = new javax.swing.JTextField();
 		feedback_text = new javax.swing.JTextField();
 		search_text.setText("输入车牌号或编号");
+		search_text.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			search_textMouseClicked(e);//TODO
+		}
 
-		feedback_text.setEditable(false);
-		feedback_text.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				jTextField2ActionPerformed(evt);
-			}
+		
 		});
+		feedback_text.setEditable(false);
+		
 	}
 
 	private void initbtn() {
@@ -308,19 +315,11 @@ public class Car_management extends javax.swing.JPanel {
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
     private JFrame frame;
-    private javax.swing.JButton account_btn;
-    private javax.swing.JButton add_btn;
-    private javax.swing.JButton back_btn;
-    private javax.swing.JLabel businessOffNum2_label;
+    private javax.swing.JButton account_btn,add_btn,back_btn,exit_btn,search_btn;
+    private javax.swing.JLabel businessOffNum2_label,jLabel4,jLabel5,jLabel6;
     private javax.swing.JTable cars_table;
-    private javax.swing.JButton exit_btn;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField feedback_text;
-    private javax.swing.JButton search_btn;
-    private javax.swing.JTextField search_text;
+    private javax.swing.JTextField feedback_text,search_text;
     
     private static final long serialVersionUID = 1L;//TODO  这是干啥的呀
     // End of variables declaration//GEN-END:variables

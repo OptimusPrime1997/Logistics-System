@@ -116,7 +116,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class=".JButton" name="jButton5">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x786e;&#x8ba4;"/>
       </Properties>
@@ -124,7 +124,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class=".JButton" name="jButton6">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x9000;&#x51fa;"/>
       </Properties>
@@ -132,19 +132,19 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel10">
+    <Component class=".JLabel" name="jLabel10">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5f53;&#x524d;&#x8d26;&#x6237;&#xff1a;&#x5927;&#x7389;&#x513f;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class=".JLabel" name="jLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x6708;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class=".JComboBox" name="jComboBox1">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+        <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="12">
             <StringItem index="0" value="1"/>
             <StringItem index="1" value="2"/>
@@ -162,14 +162,14 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class=".JLabel" name="jLabel3">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x65e5;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox2">
+    <Component class=".JComboBox" name="jComboBox2">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+        <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="31">
             <StringItem index="0" value="1"/>
             <StringItem index="1" value="2"/>
@@ -206,24 +206,24 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class=".JLabel" name="jLabel7">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x8d77;&#x59cb;&#x65e5;&#x671f;&#xff1a;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel9">
+    <Component class=".JLabel" name="jLabel9">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x7ed3;&#x675f;&#x65e5;&#x671f;&#xff1a;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel11">
+    <Component class=".JLabel" name="jLabel11">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x6708;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox3">
+    <Component class=".JComboBox" name="jComboBox3">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+        <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="12">
             <StringItem index="0" value="1"/>
             <StringItem index="1" value="2"/>
@@ -241,14 +241,14 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel14">
+    <Component class=".JLabel" name="jLabel14">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x65e5;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox7">
+    <Component class=".JComboBox" name="jComboBox7">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+        <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="31">
             <StringItem index="0" value="1"/>
             <StringItem index="1" value="2"/>
@@ -285,32 +285,32 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel15">
+    <Component class=".JLabel" name="jLabel15">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x51fa;&#x5e93;&#x6570;&#x91cf;&#xff1a;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel16">
+    <Component class=".JLabel" name="jLabel16">
       <Properties>
         <Property name="text" type="java.lang.String" value="5000"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel17">
+    <Component class=".JLabel" name="jLabel17">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5165;&#x5e93;&#x6570;&#x91cf;&#xff1a;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel18">
+    <Component class=".JLabel" name="jLabel18">
       <Properties>
         <Property name="text" type="java.lang.String" value="2000"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel19">
+    <Component class=".JLabel" name="jLabel19">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5e93;&#x5b58;&#x6570;&#x91cf;&#xff1a;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel20">
+    <Component class=".JLabel" name="jLabel20">
       <Properties>
         <Property name="text" type="java.lang.String" value="8000"/>
       </Properties>

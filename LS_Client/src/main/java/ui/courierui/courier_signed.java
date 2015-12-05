@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
 
+import util.CreateDialog;
 import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsExpressType;
 import util.enumData.GoodsLogisticState;
@@ -302,8 +303,12 @@ public class Courier_signed extends javax.swing.JFrame {
      */
 	private void createDialog(ArrayList<ResultMessage> messages) {
 		System.out.println("我是弹窗！~   ");
-		for(ResultMessage msg:messages)
-		System.out.println(msg);
+		String feedback="";		
+		for(ResultMessage msg:messages){
+			feedback=feedback+msg.toString()+"\n";
+		}
+		System.out.println(feedback);
+		CreateDialog.creatDialog(messages, 200, 200);
 		System.out.println();
 		// TODO 
 		

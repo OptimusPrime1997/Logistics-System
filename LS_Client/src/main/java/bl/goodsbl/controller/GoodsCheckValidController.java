@@ -10,7 +10,7 @@ public class GoodsCheckValidController implements GoodsCheckValidBLService{
 
 	@Override
 	public ResultMessage checkListNum(String listNum) {
-		return InputCheck.checkInputNum(listNum, 10);
+		return InputCheck.checkListNum(listNum);
 	}
 	@Override
 	public ResultMessage checkifWritten(String str){

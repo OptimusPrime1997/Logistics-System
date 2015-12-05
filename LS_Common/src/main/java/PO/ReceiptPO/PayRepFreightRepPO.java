@@ -1,8 +1,14 @@
 package PO.ReceiptPO;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PayRepFreightRepPO {
+public class PayRepFreightRepPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6480927576134025429L;
+	
 	private double sum;
 	private String bankAccountNum;
 	private ArrayList<PayFreightPO> transferPayPOs;

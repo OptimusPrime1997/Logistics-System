@@ -15,6 +15,7 @@ public class Driver_detail extends javax.swing.JFrame {
      * Creates new form driver_detail
      */
     public Driver_detail() {
+    	this.setVisible(true);
         initComponents();
     }
 

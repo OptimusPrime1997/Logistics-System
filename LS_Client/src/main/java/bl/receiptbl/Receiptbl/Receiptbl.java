@@ -92,7 +92,7 @@ public class Receiptbl {
 			return ResultMessage.REPNUM_LENGTH_LACKING;
 		if (string.length() > n)
 			return ResultMessage.REPNUM_LENGTH_OVER;
-		for(int i = 0;i<11;i++){
+		for(int i = 0;i<n;i++){
 			if(string.charAt(i)<'0'||string.charAt(i)>'9')
 				return ResultMessage.REPNUM_NOT_ALL_NUM;
 		}

@@ -1,6 +1,13 @@
 package PO.ReceiptPO;
 
-public class PayRefundPO {
+import java.io.Serializable;
+
+public class PayRefundPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6538456252152098312L;
+	
 	private String reason;
 	private double money;
 	

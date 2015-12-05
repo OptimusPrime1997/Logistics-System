@@ -1,8 +1,14 @@
 package PO.ReceiptPO;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PayRepRefundRepPO {
+public class PayRepRefundRepPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2631001432702803073L;
+	
 	private double sum;
 	private String date;
 	private ArrayList<PayRefundPO> littleThingPOs;

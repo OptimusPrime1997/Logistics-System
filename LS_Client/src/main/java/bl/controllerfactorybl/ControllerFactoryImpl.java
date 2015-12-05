@@ -13,7 +13,6 @@ import bl.logbl.LogController;
 import bl.loginbl.LoginblController;
 import bl.managementbl.accountbl.AccountblController;
 import bl.managementbl.bankaccountbl.BankAccountblController;
-import bl.managementbl.constbl.ConstblController;
 import bl.managementbl.institutionbl.InstitutionblController;
 import bl.managementbl.salarypolicybl.SalaryPolicyblController;
 import bl.managementbl.vehicleanddriverbl.DriverblController;
@@ -158,8 +157,8 @@ private ControllerFactoryImpl() {}
 
 	@Override
 	public ConstBLService getConstController() {
-		
-		return new ConstblController();
+//		return  new ConstblController();
+		return null;
 	}
 
 	@Override

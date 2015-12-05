@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import util.enumData.*;
 
 public class TransferRepPO extends ReceiptPO {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6072208742788886609L;
+	
 	private ShipForm form;
 	private String carNum;
 	private place place;
