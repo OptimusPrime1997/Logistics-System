@@ -1,5 +1,7 @@
 package blservice.receiptblservice;
 
-public interface DeliverRepblService extends ReceiptblService{
+import util.enumData.ResultMessage;
 
+public interface DeliverRepblService extends ReceiptblService{
+	public ResultMessage checkCourierNum(String string);
 }

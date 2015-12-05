@@ -171,6 +171,8 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	
 	public String createNum(String date, Rep rep) throws ClassNotFoundException, IOException, RemoteException{
 		ArrayList<ReceiptPO> receiptPOs = getRepByDate(date, rep);
+		if(receiptPOs==null)
+			return 1+"";
 		return receiptPOs.size()+1+"";
 	}
 	

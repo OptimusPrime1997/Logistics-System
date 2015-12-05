@@ -56,6 +56,14 @@ public enum ResultMessage {
 	 */
 	REPNUM_NOT_RIGHT,
 	/**
+	 * 派件员编号过短
+	 */
+	DELIVER_COURIER_NUM_LACKING,
+	/**
+	 * 派件员编号过长
+	 */
+	DELIVER_COURIER_NUM_OVER,
+	/**
 	 * 手机号长度有误
 	 */
 	PHONE_LENGTH_WRONG,
@@ -153,6 +161,12 @@ public enum ResultMessage {
 			return "添加成功";
 		case SUBMIT_SUCCESS:
 			return "提交成功";
+		case REPNUM_NOT_ALL_NUM:
+			return "编号中存在非数字字符";
+		case DELIVER_COURIER_NUM_LACKING:
+			return "派件员编号过短";
+		case DELIVER_COURIER_NUM_OVER:
+			return "派件员编号过长";
 		}
 		return null;
 	}

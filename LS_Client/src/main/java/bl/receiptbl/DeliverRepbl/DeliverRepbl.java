@@ -51,19 +51,15 @@ public class DeliverRepbl{
 		return DeliverRepVO.toArrayVO(receiptPOs);
 	}
 		
-		public ResultMessage checkOrderNum(String order){
-			if(order.length()<10)
-				return ResultMessage.REPNUM_LENGTH_LACKING;
-			if(order.length()>10)
-				return ResultMessage.REPNUM_LENGTH_OVER;
-			return ResultMessage.ADD_SUCCESS;
-		}
-		
-		public ResultMessage checkCourierNum(String courierNum){
-			if(courierNum.length()<11)
-				return ResultMessage.REPNUM_LENGTH_LACKING;
-			if(courierNum.length()>11)
-				return ResultMessage.REPNUM_LENGTH_OVER;
+		public ResultMessage checkCourierNum(String string){
+			if(string.length()<11)
+				return ResultMessage.DELIVER_COURIER_NUM_LACKING;
+			if(string.length()>11)
+				return ResultMessage.DELIVER_COURIER_NUM_OVER;
+			for(int i = 0;i<11;i++){
+				if(string.charAt(i)<'0'||string.charAt(i)>'9')
+					return ResultMessage.REPNUM_NOT_ALL_NUM;
+			}
 			return ResultMessage.ADD_SUCCESS;
 		}
 	

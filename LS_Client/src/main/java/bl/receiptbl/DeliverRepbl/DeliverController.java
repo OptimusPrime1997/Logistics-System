@@ -55,4 +55,10 @@ public class DeliverController extends ReceiptblController implements DeliverRep
 		return deliverRep.getRepByDate(date);
 	}
 
+	@Override
+	public ResultMessage checkCourierNum(String string) {
+		// TODO Auto-generated method stub
+		return deliverRep.checkCourierNum(string);
+	}
+
 }
