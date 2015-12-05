@@ -203,20 +203,12 @@
         <Property name="text" type="java.lang.String" value="&#x8c03;&#x6574;&#x81f3;-------------------------------------&gt;"/>
       </Properties>
     </Component>
-<<<<<<< HEAD
-    <Component class="javax.swing.JLabel" name="jLabel6">
-=======
     <Component class="javax.swing.JLabel" name="jLabel7">
->>>>>>> origin/master
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x4f4d;&#x53f7;&#xff1a;"/>
       </Properties>
     </Component>
-<<<<<<< HEAD
-    <Component class="javax.swing.JComboBox" name="jComboBox3">
-=======
     <Component class="javax.swing.JComboBox" name="jComboBox4">
->>>>>>> origin/master
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -231,11 +223,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox4ActionPerformed"/>
       </Events>
     </Component>
-<<<<<<< HEAD
-    <Component class="javax.swing.JLabel" name="jLabel7">
-=======
     <Component class="javax.swing.JButton" name="jButton4">
->>>>>>> origin/master
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x786e;&#x5b9a;"/>
       </Properties>
@@ -261,11 +249,7 @@
         <Property name="text" type="java.lang.String" value="&#x5757;&#x53f7;&#xff1a;"/>
       </Properties>
     </Component>
-<<<<<<< HEAD
-    <Component class="javax.swing.JComboBox" name="jComboBox4">
-=======
     <Component class="javax.swing.JComboBox" name="jComboBox5">
->>>>>>> origin/master
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -280,20 +264,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox5ActionPerformed"/>
       </Events>
     </Component>
-<<<<<<< HEAD
-    <Component class="javax.swing.JButton" name="jButton4">
-=======
     <Component class="javax.swing.JLabel" name="jLabel11">
->>>>>>> origin/master
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x533a;&#x53f7;&#xff1a;"/>
       </Properties>
     </Component>
-<<<<<<< HEAD
-    <Component class="javax.swing.JButton" name="jButton5">
-=======
     <Component class="javax.swing.JComboBox" name="jComboBox6">
->>>>>>> origin/master
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -308,11 +284,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox6ActionPerformed"/>
       </Events>
     </Component>
-<<<<<<< HEAD
-    <Component class="javax.swing.JLabel" name="jLabel10">
-=======
     <Component class="javax.swing.JLabel" name="jLabel12">
->>>>>>> origin/master
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5757;&#x53f7;&#xff1a;"/>
       </Properties>
