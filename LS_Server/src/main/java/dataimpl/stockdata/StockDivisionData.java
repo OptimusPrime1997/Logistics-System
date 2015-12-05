@@ -48,7 +48,7 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 		//TODO 得到本地城市
 		City cityNum = City.BEIJING;
 		ArrayList<InStockPO> list = po.getInStockPOs();
-		System.out.println("----   "+list.size());
+		
 		for(InStockPO inpo : list) {
 			int block = Integer.parseInt(inpo.getArea());
 			int place = Integer.parseInt(inpo.getLoc());
