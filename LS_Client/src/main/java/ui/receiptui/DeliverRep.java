@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
+import Exception.GoodsNotFound;
 import VO.ReceiptVO.DeliverRepVO;
 import VO.ReceiptVO.DeliverVO;
 import bl.receiptbl.DeliverRepbl.DeliverController;
@@ -105,7 +106,11 @@ public class DeliverRep extends javax.swing.JPanel {
 
         numText.setEditable(false);
 		try {
-			numText.setText(control.createNum(dateText.getText()));
+			String num = officeText.getText();
+			num += control.getDateInNum(dateText.getText());
+			num += "2";
+			num += control.createNum(dateText.getText());
+			numText.setText(num);
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -294,9 +299,20 @@ public class DeliverRep extends javax.swing.JPanel {
     	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
     	resultMsgText.setText(resultMsg);
     	if(resultMessage==ResultMessage.ADD_SUCCESS){
-    		String name = "bismuth";
-    		String phoneNum = "13934517986";
-    		String address = "南京大学";
+//    		String name = "bismuth";
+//    		String phoneNum = "13934517986";
+//    		String address = "南京大学";
+    		String name = null;
+    		String phoneNum = null;
+    		String address = null;
+			try {
+				name = control.getNameByOrder(order);
+				phoneNum = control.getPhoneByOrder(order);
+	    		address = control.getAddressByOrder(order);
+			} catch (GoodsNotFound e) {
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			}
     		Vector<Object> arr = new Vector<Object>();
     		arr.add(order);
     		arr.add(name);

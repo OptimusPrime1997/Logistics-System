@@ -55,6 +55,22 @@ public interface CashRepblService extends ReceiptblService{
 	 */
 	public Vector<Object> initTable(String date) throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException;
 	
-	public void addMoneyInBankAccount() throws AddMoneyInBankException;
+	/**
+	 * 显示所有银行账户
+	 * @return
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public Vector<String> showBankAccount() throws ClassNotFoundException, IOException;
+	
+	/**
+	 * 向银行账户中增加钱
+	 * @throws AddMoneyInBankException
+	 * @throws IOException 
+	 * @throws NumNotFoundException 
+	 * @throws ClassNotFoundException 
+	 * @throws FileNotFoundException 
+	 */
+	public void addMoneyInBankAccount(String bankAccount, double money) throws AddMoneyInBankException, FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException;
 	
 }

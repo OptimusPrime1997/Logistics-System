@@ -6,19 +6,26 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import Exception.GoodsNotFound;
 import PO.ReceiptPO.DeliverRepPO;
 import PO.ReceiptPO.ReceiptPO;
 import VO.ReceiptVO.DeliverRepVO;
 import VO.ReceiptVO.ReceiptVO;
+import bl.goodsbl.Goodsbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import util.enumData.Rep;
 import util.enumData.ResultMessage;
 
-public class DeliverRepbl{
+public class DeliverRepbl {
 	Receiptbl receiptbl = new Receiptbl();
-	
+	Goodsbl goodsbl = new Goodsbl();
+
 	public String createNum(String date) throws ClassNotFoundException, NotBoundException, IOException {
-		return receiptbl.createNum(date, Rep.DeliverRep);
+		String num = receiptbl.createNum(date, Rep.DeliverRep);
+		int k = num.length();
+		for (int i = 4; i > k; i--)
+			num = "0" + num;
+		return num;
 	}
 
 	public void delete(String num) throws ClassNotFoundException, NotBoundException, IOException {
@@ -27,7 +34,7 @@ public class DeliverRepbl{
 
 	public DeliverRepVO getRepByNum(String num) throws ClassNotFoundException, NotBoundException, IOException {
 		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.DeliverRep);
-		return new DeliverRepVO((DeliverRepPO)receiptPO);
+		return new DeliverRepVO((DeliverRepPO) receiptPO);
 	}
 
 	public void delete(int n) throws ClassNotFoundException, IOException, NotBoundException {
@@ -44,23 +51,39 @@ public class DeliverRepbl{
 		return DeliverRepVO.toArrayVO(receiptPOs);
 	}
 
-		public ArrayList<DeliverRepVO> getRepByDate(String date) throws ClassNotFoundException, NotBoundException, IOException {
+	public ArrayList<DeliverRepVO> getRepByDate(String date)
+			throws ClassNotFoundException, NotBoundException, IOException {
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.DeliverRep);
-		if(receiptPOs==null)
+		if (receiptPOs == null)
 			return null;
 		return DeliverRepVO.toArrayVO(receiptPOs);
 	}
-		
-		public ResultMessage checkCourierNum(String string){
-			if(string.length()<11)
-				return ResultMessage.DELIVER_COURIER_NUM_LACKING;
-			if(string.length()>11)
-				return ResultMessage.DELIVER_COURIER_NUM_OVER;
-			for(int i = 0;i<11;i++){
-				if(string.charAt(i)<'0'||string.charAt(i)>'9')
-					return ResultMessage.REPNUM_NOT_ALL_NUM;
-			}
-			return ResultMessage.ADD_SUCCESS;
+
+	public ResultMessage checkCourierNum(String string) {
+		if (string.length() < 11)
+			return ResultMessage.DELIVER_COURIER_NUM_LACKING;
+		if (string.length() > 11)
+			return ResultMessage.DELIVER_COURIER_NUM_OVER;
+		for (int i = 0; i < 11; i++) {
+			if (string.charAt(i) < '0' || string.charAt(i) > '9')
+				return ResultMessage.REPNUM_NOT_ALL_NUM;
 		}
-	
+		return ResultMessage.ADD_SUCCESS;
+	}
+
+	public String getNameByOrder(String order) throws GoodsNotFound {
+		// TODO Auto-generated method stub
+		return goodsbl.findByListNum(order).receiverName;
+	}
+
+	public String getPhoneByOrder(String order) throws GoodsNotFound {
+		// TODO Auto-generated method stub
+		return goodsbl.findByListNum(order).receiverPhone;
+	}
+
+	public String getAddressByOrder(String order) throws GoodsNotFound {
+		// TODO Auto-generated method stub
+		return goodsbl.findByListNum(order).receiverAddress;
+	}
+
 }

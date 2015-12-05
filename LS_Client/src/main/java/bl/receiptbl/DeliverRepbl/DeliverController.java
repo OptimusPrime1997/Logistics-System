@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
 
+import Exception.GoodsNotFound;
 import VO.ReceiptVO.DeliverRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
@@ -59,6 +60,24 @@ public class DeliverController extends ReceiptblController implements DeliverRep
 	public ResultMessage checkCourierNum(String string) {
 		// TODO Auto-generated method stub
 		return deliverRep.checkCourierNum(string);
+	}
+
+	@Override
+	public String getNameByOrder(String order) throws GoodsNotFound {
+		// TODO Auto-generated method stub
+		return deliverRep.getNameByOrder(order);
+	}
+
+	@Override
+	public String getPhoneByOrder(String order) throws GoodsNotFound {
+		// TODO Auto-generated method stub
+		return deliverRep.getPhoneByOrder(order);
+	}
+
+	@Override
+	public String getAddressByOrder(String order) throws GoodsNotFound {
+		// TODO Auto-generated method stub
+		return deliverRep.getAddressByOrder(order);
 	}
 
 }

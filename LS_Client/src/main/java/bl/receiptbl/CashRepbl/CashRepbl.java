@@ -3,17 +3,22 @@ package bl.receiptbl.CashRepbl;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
+
+import javax.naming.NameNotFoundException;
 
 import util.enumData.Rep;
 import util.enumData.ResultMessage;
 import VO.GoodsVO;
+import VO.ManagementVO.BankAccountVO;
 import VO.ReceiptVO.CashRepVO;
 import VO.ReceiptVO.CashVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.goodsbl.Goodsbl;
 import bl.managementbl.accountbl.Accountbl;
+import bl.managementbl.bankaccountbl.BankAccountbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import Exception.*;
 import PO.ReceiptPO.CashRepPO;
@@ -22,17 +27,16 @@ import PO.ReceiptPO.ReceiptPO;
 public class CashRepbl {
 
 	Goodsbl goodsbl = new Goodsbl();
-//	Accountbl accountbl = new Accountbl();
+	Accountbl accountbl = new Accountbl();
+	BankAccountbl bankAccountbl = new BankAccountbl();
 	Receiptbl receiptbl = new Receiptbl();
 
-	public String getCourierName(String courierNum) throws NameNotFoundException, FileNotFoundException, javax.naming.NameNotFoundException, ClassNotFoundException, NumNotFoundException, IOException {
-//		return accountbl.findByAccountNum(courierNum).accountName;
-		return null;
+	public String getCourierName(String courierNum){
+		return accountbl.findByAccountNum(courierNum).accountName;
 	}
 
 	public ArrayList<GoodsVO> getGoods(String courierNum, String date) {
-//		return goodsbl.getGoodsByGetCourier(courierNum, date);
-		return null;
+		return goodsbl.getGoodsByGetCourier(courierNum, date);
 	}
 
 	public double getMoneySum(ArrayList<GoodsVO> arrGoods) {
@@ -79,7 +83,6 @@ public class CashRepbl {
 	}
 
 	public Vector<Object> initTable(String date) throws NotBoundException, ClassNotFoundException, IOException {
-		
 		Vector<Object> data = new Vector<Object>();
 		ArrayList<CashRepVO> cashRepVOs = getRepByDate(date);
 		if(cashRepVOs==null){
@@ -97,13 +100,25 @@ public class CashRepbl {
 			arr.add(cash.remark);
 			data.add(arr);
 		}
-
 		return data;
 	}
 	
-	public void addMoneyInBankAccount() throws AddMoneyInBankException {
-		// TODO Auto-generated method stub
-		
+	public void addMoneyInBankAccount(String bankAccount, double money) throws AddMoneyInBankException, FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException {
+		BankAccountVO bankAccountVO = bankAccountbl.findByBankAccountNum(bankAccount);
+		double preBalance = bankAccountVO.balance;
+		bankAccountVO.balance += money;
+		if(preBalance+money!=bankAccountVO.balance)
+			throw new AddMoneyInBankException();
+	}
+
+	public Vector<String> showBankAccount() throws ClassNotFoundException, IOException {
+		ArrayList<BankAccountVO> bankAccountVOs = bankAccountbl.show();
+		Vector<String> bankAccounts = new Vector<String>();
+		for(int i = 0;i<bankAccountVOs.size();i++){
+			BankAccountVO bankAccountVO = bankAccountVOs.get(i);
+			bankAccounts.add(bankAccountVO.bankAccountNum);
+		}
+		return bankAccounts;
 	}
 
 }

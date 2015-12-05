@@ -12,16 +12,23 @@ import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
+import Exception.NameNotFoundException;
+
+import javax.swing.ComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import VO.GoodsVO;
 import VO.ReceiptVO.CashRepVO;
 import VO.ReceiptVO.CashVO;
 import bl.receiptbl.CashRepbl.CashRepController;
 import blservice.receiptblservice.CashRepblService;
 import util.enumData.ResultMessage;
+import Exception.AddMoneyInBankException;
 import Exception.ExceptionPrint;
+import Exception.NumNotFoundException;
 
 /**
  *
@@ -38,7 +45,7 @@ public class CashRep extends javax.swing.JPanel {
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accountLabel;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton courierButton;
     private javax.swing.JLabel courierNumLabel;
@@ -55,6 +62,7 @@ public class CashRep extends javax.swing.JPanel {
     private javax.swing.JLabel sumLabel;
     private javax.swing.JTextField sumText;
     private javax.swing.JTextField resultMsgText;
+    private javax.swing.JButton checkAllRepsButton;
     private CashRepblService control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
@@ -89,9 +97,10 @@ public class CashRep extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         accountLabel = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        jComboBox = new javax.swing.JComboBox<String>();
         courierButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
+        checkAllRepsButton = new javax.swing.JButton();
         control = new CashRepController();
         model = new DefaultTableModel();
         columnIdentifiers = new Vector<String>();
@@ -102,6 +111,11 @@ public class CashRep extends javax.swing.JPanel {
         dateLabel.setText("日期:");
         
         dateText.setText(control.getDate());
+        
+        officeText.setEditable(false);
+        officeText.setText("025001");
+
+        officeLabel.setText("营业厅:");
 
         numLabel.setText("编号:");
 
@@ -127,11 +141,6 @@ public class CashRep extends javax.swing.JPanel {
                 okMouseClicked(evt);
             }
         });
-
-        officeText.setEditable(false);
-        officeText.setText("025001");
-
-        officeLabel.setText("营业厅:");
 
         jTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         
@@ -170,7 +179,22 @@ public class CashRep extends javax.swing.JPanel {
         
         setColumn();
         
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        
+        checkAllRepsButton.setText("查看所有单据");
+        checkAllRepsButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            	checkAllRepsButtonMouseClicked(evt);
+            }
+        });
+        
+        try {
+			jComboBox = new JComboBox(control.showBankAccount());
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
         
         jTable.addMouseListener(new MouseListener() {
 			
@@ -215,48 +239,49 @@ public class CashRep extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(courierNumLabel)
-                            .addComponent(numLabel))
+                        .addComponent(checkAllRepsButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(officeLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dateLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(officeLabel)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(courierNumLabel)
+                                    .addComponent(numLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dateLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(courierNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(courierButton)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(courierButton))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(accountLabel)
-                                    .addComponent(sumLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(15, 15, 15)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(16, 16, 16)
-                                        .addComponent(cancelButton)
-                                        .addGap(91, 91, 91)
-                                        .addComponent(okButton))
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 13, Short.MAX_VALUE)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(accountLabel)
+                                            .addComponent(sumLabel))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(16, 16, 16)
+                                                .addComponent(cancelButton)
+                                                .addGap(91, 91, 91)
+                                                .addComponent(okButton))
+                                            .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(0, 12, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(resultMsgText)
         );
@@ -269,11 +294,12 @@ public class CashRep extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dateLabel)
-                            .addComponent(officeLabel)))
+                            .addComponent(officeLabel)
+                            .addComponent(checkAllRepsButton)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numLabel)
                     .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -291,15 +317,14 @@ public class CashRep extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(accountLabel)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton)
                     .addComponent(okButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(resultMsgText))
-            );
-            
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void setColumn(){
@@ -316,46 +341,52 @@ public class CashRep extends javax.swing.JPanel {
     }
     
     private void courierButtonMouseClicked(java.awt.event.MouseEvent evt) {
-//    	String courierNum = courierNumText.getText();
-//    	String courierName = null;
-//    	double money;
-//    	try {
-//			courierName = control.getCourierName(courierNum);
-//		} catch (NameNotFoundException | RemoteException e) {
-//			e.printStackTrace();
-//			resultMsgText.setText(ExceptionPrint.print(e));
-//		} 
-//    	ArrayList<GoodsVO> arrGoods = control.getGoods(courierNum, dateText.getText());
-//    	money = control.getMoneySum(arrGoods);
-//    	Vector<Object> arr = new Vector<Object>();
-//    	arr.add(courierName);
-//    	arr.add(courierNum);
-//    	arr.add(money);
-//    	arr.add(null);
-//    	dataVector.add(arr);
-//    	model.setDataVector(dataVector, columnIdentifiers);
-    	
     	String courierNum = courierNumText.getText();
-    	ResultMessage resultMessage = control.checkNum(courierNum, 11);
-    	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
-    	resultMsgText.setText(resultMsg);
-    	if(resultMessage==ResultMessage.ADD_SUCCESS){
-    		String courierName = "bismuth";
-        	double money = 5.0;
-        	Vector<Object> arr = new Vector<Object>();
-        	arr.add(courierName);
-        	arr.add(courierNum);
-        	arr.add(money);
-        	dataVector.add(arr);
-        	model.setDataVector(dataVector, columnIdentifiers);
-        	setColumn();
-    	}
+    	String courierName = null;
+    	double money;
+		courierName = control.getCourierName(courierNum);
+    	ArrayList<GoodsVO> arrGoods = control.getGoods(courierNum, dateText.getText());
+    	money = control.getMoneySum(arrGoods);
+    	Vector<Object> arr = new Vector<Object>();
+    	arr.add(courierName);
+    	arr.add(courierNum);
+    	arr.add(money);
+    	arr.add(null);
+    	dataVector.add(arr);
+    	model.setDataVector(dataVector, columnIdentifiers);
+    	
+//    	String courierNum = courierNumText.getText();
+//    	ResultMessage resultMessage = control.checkNum(courierNum, 11);
+//    	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
+//    	resultMsgText.setText(resultMsg);
+//    	if(resultMessage==ResultMessage.ADD_SUCCESS){
+//    		String courierName = "bismuth";
+//        	double money = 5.0;
+//        	Vector<Object> arr = new Vector<Object>();
+//        	arr.add(courierName);
+//        	arr.add(courierNum);
+//        	arr.add(money);
+//        	dataVector.add(arr);
+//        	model.setDataVector(dataVector, columnIdentifiers);
+//        	setColumn();
+//    	}
     }
     
     private void okMouseClicked(java.awt.event.MouseEvent evt) {
+    	
 		String num = numText.getText();
 		String date = dateText.getText();
 		double sum = Double.parseDouble(sumText.getText());
+		
+		String bankAccount = (String)jComboBox.getSelectedItem();
+    	try {
+			control.addMoneyInBankAccount(bankAccount, sum);
+		} catch (ClassNotFoundException | AddMoneyInBankException | NumNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+    	
 		ArrayList<CashVO> cashVOs = new ArrayList<CashVO>();
 		for(int i = 0;i<dataVector.size();i++){
 			CashVO vo = new CashVO((double)jTable.getValueAt(i, 2), (String)jTable.getValueAt(i, 1), (String)jTable.getValueAt(i, 0), (String)jTable.getValueAt(i, 3));
@@ -372,6 +403,10 @@ public class CashRep extends javax.swing.JPanel {
 	}
     
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {
+
+    }
+    
+    private void checkAllRepsButtonMouseClicked(java.awt.event.MouseEvent evt) {
 
     }
     
