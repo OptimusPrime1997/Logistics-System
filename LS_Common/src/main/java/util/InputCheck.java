@@ -20,7 +20,6 @@ public class InputCheck {
 				}
 			}
 			return ResultMessage.VALID;
-			
 		}else{
 			return ResultMessage.LENGTH_WRONG;
 		}
@@ -33,6 +32,39 @@ public class InputCheck {
 	public static ResultMessage ifWritten(String str) {
 		if(str.length()==0) return ResultMessage.NOT_COMPLETED;
 		else return ResultMessage.VALID;
+	}
+	/**
+	 * 检查输入的名称是否规范
+	 * @param str
+	 * @return
+	 */
+	public static ResultMessage checkInputName(String name){
+		if(name.length()==0){
+			return ResultMessage.NOT_COMPLETED;
+		}
+		if(name.length()<=20){
+			char c='\0';
+			for(int i=0;i<name.length();i++){
+				c=name.toCharArray()[i];
+				if((c>='0'&&c<='9')){
+					return ResultMessage.UNVALID_CHAR;
+				}
+			}
+			return ResultMessage.VALID;
+		}else{
+			return ResultMessage.LENGTH_OVER;
+		}
+	}
+	public static ResultMessage checkInputPhoneNum(String phoneNum){
+		if(checkInputNum(phoneNum, 11)==ResultMessage.VALID){
+			if(phoneNum.charAt(0)=='1'){
+				return ResultMessage.VALID;
+			}else{
+				return ResultMessage.WRONG_FORMAT;
+			}
+		}else{
+			return checkInputNum(phoneNum, 11);
+		}
 	}
 	
 }

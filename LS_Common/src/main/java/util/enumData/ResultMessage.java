@@ -8,17 +8,9 @@ package util.enumData;
  *
  */
 public enum ResultMessage {
-	SUCCESS,
-	FAILED,
-	WRONG,
-	/**
-	 * 表格添加成功
-	 */
-	ADD_SUCCESS,
-	/**
-	 * 单据提交成功
-	 */
-	SUBMIT_SUCCESS,
+	SUCCESS, // 成功
+	FAILED, // 失败
+	WRONG, // 错误
 	/**
 	 * 连接错误
 	 */
@@ -26,11 +18,11 @@ public enum ResultMessage {
 	/**
 	 * 已存在
 	 */
-	EXIST,	
+	EXIST,
 	/**
 	 * 没找到对应结果
 	 */
-	NOT_FOUND,	
+	NOT_FOUND,
 	/**
 	 * 合法
 	 */
@@ -50,11 +42,11 @@ public enum ResultMessage {
 	/**
 	 * 编号出现非数字的字符
 	 */
-	REPNUM_NOT_ALL_NUM,	
+	REPNUM_NOT_ALL_NUM,
 	/**
 	 * 编号不正确
 	 */
-	REPNUM_NOT_RIGHT,	
+	REPNUM_NOT_RIGHT,
 	/**
 	 * 手机号长度有误
 	 */
@@ -64,9 +56,13 @@ public enum ResultMessage {
 	 */
 	LENGTH_WRONG,
 	/**
+	 * 字符超出长度
+	 */
+	LENGTH_OVER,
+	/**
 	 * 含非法字符
 	 */
-	UNVALID_CHAR,	
+	UNVALID_CHAR,
 	/**
 	 * 不合理的内件数
 	 */
@@ -82,19 +78,27 @@ public enum ResultMessage {
 	/**
 	 * 未填写
 	 */
-	NOT_COMPLETED,	
+	NOT_COMPLETED,
 	/**
 	 * 账号格式错误
 	 */
-	WRONG_ACCOUNTNUM,	
+	WRONG_ACCOUNTNUM,
 	/**
 	 * 账号不存在
 	 */
 	NOT_FOUND_ACCOUNTNUM,
 	/**
+	 * 数据格式错误
+	 */
+	WRONG_FORMAT,
+	/**
 	 * 错误密码
 	 */
 	WRONG_PASSWORD,
+	/**
+	 * 数据错误
+	 */
+	WRONG_DATA,
 	/**
 	 * 文件未找到
 	 */
@@ -106,19 +110,19 @@ public enum ResultMessage {
 	/**
 	 * 输入应该为正整数
 	 */
-	INPUT_SHOULD_BE_POSITIVE_INTEGER, 
+	INPUT_SHOULD_BE_POSITIVE_INTEGER,
 	/**
 	 * 输入数值太大
 	 */
-	NUMBER_OVER,   
+	NUMBER_OVER,
 	/**
 	 * 该库存区位已被占用
 	 */
-	NOT_AVAILABLE; 
-	
+	NOT_AVAILABLE;
+
 	public static String toFriendlyString(ResultMessage resultMessage) {
-		
-		switch(resultMessage) {
+
+		switch (resultMessage) {
 		case REPNUM_LENGTH_OVER:
 			return "过长";
 		case REPNUM_LENGTH_LACKING:
@@ -129,12 +133,16 @@ public enum ResultMessage {
 			return "密码错误";
 		case NOT_COMPLETED:
 			return "有项目未填写，请完成后再提交";
-		case ADD_SUCCESS:
-			return "添加成功";
-		case SUBMIT_SUCCESS:
-			return "提交成功";
+		case LENGTH_WRONG:
+			return "长度有误";
+		case WRONG_FORMAT:
+			return "格式错误";
+		case WRONG_DATA:
+			return "数据错误";
+		case WRONG_ACCOUNTNUM:
+			return "账号错误";
 		}
 		return null;
 	}
-	
+
 }

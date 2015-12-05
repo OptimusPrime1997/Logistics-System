@@ -2,8 +2,12 @@ package PO;
 
 import java.io.Serializable;
 
-public class ConstPO implements Serializable {
+public class ConstPO implements Serializable,Comparable<ConstPO> {
 	public final static long serialVersionUID = 1L;
+	/**
+	 * 存储两个城市名称并按拼音排序，如：南京-上海
+	 * 中间横线为中文字符
+	 */
 	private String twoCities;
 	private double priceConst;
 	private double distanceConst;
@@ -39,8 +43,11 @@ public class ConstPO implements Serializable {
 		this.distanceConst = distanceConst;
 	}
 
-	public int compareTO(ConstPO p) {
-		return Double.compare(distanceConst , p.getDistanceConst());
+
+	@Override
+	public int compareTo(ConstPO p) {
+		return twoCities.compareTo(p.getTwoCities());
 	}
+	
 
 }

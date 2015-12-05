@@ -17,7 +17,7 @@ public class AccountblController implements AccountBLService {
 
 	Accountbl accountbl=new Accountbl();
 	@Override
-	public ResultMessage insert(AccountVO VO) throws RemoteException {
+	public ResultMessage insert(AccountVO VO) throws RemoteException, ClassNotFoundException {
 		// TODO Auto-generated method stub
 		return accountbl.add(VO);
 	}

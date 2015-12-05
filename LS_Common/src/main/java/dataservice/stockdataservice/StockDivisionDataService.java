@@ -3,6 +3,7 @@
  */
 package dataservice.stockdataservice;
 
+import java.io.IOException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -39,8 +40,9 @@ public interface StockDivisionDataService extends Remote{
 	 * 
 	 * @return
 	 * @throws RemoteException
+	 * @throws IOException 
 	 */
-	public ArrayList<StockDivisionPO> getStockDivision() throws RemoteException;
+	public ArrayList<StockDivisionPO> getStockDivision() throws RemoteException, IOException;
 	
 	
 	

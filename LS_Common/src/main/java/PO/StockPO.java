@@ -30,6 +30,7 @@ public class StockPO implements Serializable{
 	 * @param b     block where this list is
 	 * @param p     place where this list is 
 	 */
+	
 	public StockPO(String cn,String ln,String rn,String d,String des,int b,int p){
 		cityNum=cn;
 		listNum=ln;
