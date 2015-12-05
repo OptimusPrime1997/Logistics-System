@@ -1,6 +1,13 @@
 package PO.ReceiptPO;
 
-public class PayFreightPO {
+import java.io.Serializable;
+
+public class PayFreightPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3373380111655088258L;
+	
 	private String transferRepNum;
 	private double money;
 	private String remark;

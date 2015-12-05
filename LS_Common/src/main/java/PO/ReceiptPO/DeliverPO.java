@@ -1,6 +1,13 @@
 package PO.ReceiptPO;
 
-public class DeliverPO {
+import java.io.Serializable;
+
+public class DeliverPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3569743276767471346L;
+	
 	private String order;
 	private String receiverName;
 	private String receiverPhone;

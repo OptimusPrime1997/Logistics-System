@@ -18,5 +18,4 @@ public class DocumentCheckController implements DocumentCheckblService{
 		return DocumentCheck.saveRep(vo);
 	}
 
-
 }

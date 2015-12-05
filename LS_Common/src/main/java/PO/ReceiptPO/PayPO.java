@@ -1,8 +1,15 @@
 package PO.ReceiptPO;
 
+import java.io.Serializable;
+
 import util.enumData.PayThing;
 
-public class PayPO {
+public class PayPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4041142535900947143L;
+	
 	private PayThing payThing;
 	private double money;
 	private String bankAccountNum;

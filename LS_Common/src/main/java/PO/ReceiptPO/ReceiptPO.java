@@ -3,6 +3,11 @@ package PO.ReceiptPO;
 import java.io.Serializable;
 
 public class ReceiptPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1211872896956768305L;
+	
 	protected String num;
 	protected String date;
 	

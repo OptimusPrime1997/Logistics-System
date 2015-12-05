@@ -1,6 +1,13 @@
 package PO.ReceiptPO;
 
-public class PayRentPO {
+import java.io.Serializable;
+
+public class PayRentPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7981311473165057354L;
+	
 	private String getterName;
 	private String phoneNum;
 	private double money;
