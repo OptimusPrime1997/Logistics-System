@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -23,10 +23,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="910" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="975" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="financailStaffjPanel" min="-2" max="-2" attributes="0"/>
+                  <Component id="managerjPanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -34,42 +34,51 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="592" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="597" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Component id="financailStaffjPanel" alignment="1" max="32767" attributes="0"/>
+              <Component id="managerjPanel" alignment="1" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="financailStaffjPanel">
+    <Container class="javax.swing.JPanel" name="managerjPanel">
       <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder/>
+          </Border>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value="&#x603b;&#x7ecf;&#x7406;"/>
         <Property name="name" type="java.lang.String" value="financialstaffpanel2" noResource="true"/>
       </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="currentAccountNamejLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="currentAuthorityjLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="currentAccoutNamejLabel" min="-2" pref="32" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="exitjLabel" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <Component id="financialjTabbedPane" alignment="0" pref="910" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="statejLabel" max="32767" attributes="0"/>
+              </Group>
+              <Component id="managerjTabbedPane" alignment="0" pref="971" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="464" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="currentAccountNamejLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="currentAuthorityjLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="currentAccoutNamejLabel" min="-2" pref="32" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -77,16 +86,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jLabel6" min="-2" pref="15" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="currentAuthorityjLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="currentAccountNamejLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="currentAccoutNamejLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="exitjLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="financialjTabbedPane" min="-2" pref="514" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="managerjTabbedPane" min="-2" pref="514" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel48" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                       <Component id="statejLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -96,7 +105,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JTabbedPane" name="financialjTabbedPane">
+        <Container class="javax.swing.JTabbedPane" name="managerjTabbedPane">
           <Properties>
             <Property name="name" type="java.lang.String" value="financialstaffpanel2" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -106,17 +115,11 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="decisionjPanel">
-              <Properties>
-                <Property name="name" type="java.lang.String" value="decisionMaker" noResource="true"/>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[830, 460]"/>
-                </Property>
-              </Properties>
+            <Container class="javax.swing.JPanel" name="constjPanel1">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="&#x51b3;&#x7b56;&#x5236;&#x5b9a;">
-                    <Property name="tabTitle" type="java.lang.String" value="&#x51b3;&#x7b56;&#x5236;&#x5b9a;"/>
+                  <JTabbedPaneConstraints tabName="&#x8ddd;&#x79bb;&#x5e38;&#x91cf;">
+                    <Property name="tabTitle" type="java.lang.String" value="&#x8ddd;&#x79bb;&#x5e38;&#x91cf;"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -124,512 +127,51 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                          <Component id="decisionjTabbedPane" min="-2" pref="700" max="-2" attributes="0"/>
-                          <EmptySpace pref="124" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
-                          <Component id="decisionjTabbedPane" min="-2" pref="476" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Container class="javax.swing.JTabbedPane" name="decisionjTabbedPane">
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
-                  <SubComponents>
-                    <Container class="javax.swing.JPanel" name="constjPanel">
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="&#x8ddd;&#x79bb;&#x5e38;&#x91cf;">
-                            <Property name="tabTitle" type="java.lang.String" value="&#x8ddd;&#x79bb;&#x5e38;&#x91cf;"/>
-                          </JTabbedPaneConstraints>
-                        </Constraint>
-                      </Constraints>
-
-                      <Layout>
-                        <DimensionLayout dim="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                                          <Component id="constjScrollPane" min="-2" pref="558" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="284" max="-2" attributes="0"/>
-                                          <Component id="addConstjButton" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace pref="70" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace pref="539" max="32767" attributes="0"/>
-                                      <Component id="jSeparator3" min="-2" pref="50" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                        </DimensionLayout>
-                        <DimensionLayout dim="1">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                                  <Component id="constjScrollPane" min="-2" pref="296" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="addConstjButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="58" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                      <Component id="jSeparator3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="423" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                        </DimensionLayout>
-                      </Layout>
-                      <SubComponents>
-                        <Component class="javax.swing.JSeparator" name="jSeparator3">
-                        </Component>
-                        <Container class="javax.swing.JScrollPane" name="constjScrollPane">
-
-                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                          <SubComponents>
-                            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-                              <AuxValues>
-                                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                              </AuxValues>
-
-                              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                              <SubComponents>
-                                <Component class="javax.swing.JTable" name="constjTable">
-                                  <Properties>
-                                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="5" rowCount="15">
-                                        <Column editable="true" title="&#x540d;&#x79f0;" type="java.lang.String">
-                                          <Data value="&#x8ddd;&#x79bb;&#x5e38;&#x91cf;1"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                        </Column>
-                                        <Column editable="true" title="&#x57ce;&#x5e02;&#x4e00;" type="java.lang.String">
-                                          <Data value="&#x5357;&#x4eac;"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                        </Column>
-                                        <Column editable="true" title="&#x57ce;&#x5e02;&#x4e8c;" type="java.lang.String">
-                                          <Data value="&#x4e0a;&#x6d77;"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                        </Column>
-                                        <Column editable="true" title="&#x8ddd;&#x79bb;(&#x5343;&#x7c73;)" type="java.lang.Integer">
-                                          <Data value="1000"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                        </Column>
-                                        <Column editable="true" title="&#x5355;&#x4ef7;(&#x5143;/&#x767e;&#x5343;&#x7c73;&#xff09;" type="java.lang.Double">
-                                          <Data value="0.1"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                        </Column>
-                                      </Table>
-                                    </Property>
-                                    <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="0" green="0" red="0" type="rgb"/>
-                                    </Property>
-                                  </Properties>
-                                </Component>
-                              </SubComponents>
-                            </Container>
-                          </SubComponents>
-                        </Container>
-                        <Component class="javax.swing.JButton" name="jButton2">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="jButton2"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JButton" name="jButton4">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="jButton4"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JButton" name="addConstjButton">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="&#x6dfb;&#x52a0;&#x8ddd;&#x79bb;&#x5e38;&#x91cf;"/>
-                          </Properties>
-                        </Component>
-                      </SubComponents>
-                    </Container>
-                    <Container class="javax.swing.JPanel" name="salaryPolicyjPane">
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="&#x85aa;&#x6c34;&#x7b56;&#x7565;">
-                            <Property name="tabTitle" type="java.lang.String" value="&#x85aa;&#x6c34;&#x7b56;&#x7565;"/>
-                          </JTabbedPaneConstraints>
-                        </Constraint>
-                      </Constraints>
-
-                      <Layout>
-                        <DimensionLayout dim="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="686" max="-2" attributes="0"/>
-                                          <Component id="jSeparator4" min="-2" pref="50" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                          <Component id="jSeparator1" min="-2" pref="50" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-                                          <Component id="salaryPolicyjScrollPane" min="-2" pref="488" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="307" max="-2" attributes="0"/>
-                                          <Component id="addSalaryPolicyjButton" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                        </DimensionLayout>
-                        <DimensionLayout dim="1">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace pref="34" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jSeparator4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jSeparator1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                  <Component id="salaryPolicyjScrollPane" min="-2" pref="336" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="addSalaryPolicyjButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                        </DimensionLayout>
-                      </Layout>
-                      <SubComponents>
-                        <Component class="javax.swing.JSeparator" name="jSeparator1">
-                        </Component>
-                        <Component class="javax.swing.JSeparator" name="jSeparator4">
-                        </Component>
-                        <Container class="javax.swing.JScrollPane" name="salaryPolicyjScrollPane">
-
-                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                          <SubComponents>
-                            <Container class="javax.swing.JScrollPane" name="jScrollPane4">
-                              <AuxValues>
-                                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                              </AuxValues>
-
-                              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                              <SubComponents>
-                                <Component class="javax.swing.JTable" name="salaryPolicyjTable">
-                                  <Properties>
-                                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="4" rowCount="15">
-                                        <Column editable="true" title="&#x540d;&#x79f0;" type="java.lang.String">
-                                          <Data value="&#x5feb;&#x9012;&#x5458;&#x85aa;&#x6c34;&#x7b56;&#x7565;"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                        </Column>
-                                        <Column editable="true" title="&#x804c;&#x4f4d;" type="java.lang.String">
-                                          <Data value="&#x5feb;&#x9012;&#x5458;"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                        </Column>
-                                        <Column editable="true" title="&#x85aa;&#x6c34;&#x7b56;&#x7565;" type="java.lang.String">
-                                          <Data value="&#x5e95;&#x85aa;&#x52a0;&#x8ba1;&#x4ef6;"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                        </Column>
-                                        <Column editable="true" title="&#x5e95;&#x85aa;" type="java.lang.Integer">
-                                          <Data value="3000"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                          <Data value="null"/>
-                                        </Column>
-                                      </Table>
-                                    </Property>
-                                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                                      <TableColumnModel selectionModel="0">
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                          <Title/>
-                                          <Editor/>
-                                          <Renderer/>
-                                        </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                          <Title/>
-                                          <Editor/>
-                                          <Renderer/>
-                                        </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                          <Title/>
-                                          <Editor/>
-                                          <Renderer/>
-                                        </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                          <Title/>
-                                          <Editor/>
-                                          <Renderer/>
-                                        </Column>
-                                      </TableColumnModel>
-                                    </Property>
-                                    <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="0" green="0" red="0" type="rgb"/>
-                                    </Property>
-                                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-                                    </Property>
-                                  </Properties>
-                                </Component>
-                              </SubComponents>
-                            </Container>
-                          </SubComponents>
-                        </Container>
-                        <Component class="javax.swing.JButton" name="jButton1">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="jButton1"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JButton" name="addSalaryPolicyjButton">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="&#x6dfb;&#x52a0;&#x85aa;&#x6c34;&#x7b56;&#x7565;"/>
-                          </Properties>
-                        </Component>
-                      </SubComponents>
-                    </Container>
-                  </SubComponents>
-                </Container>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JPanel" name="accountjPanel">
-              <Properties>
-                <Property name="name" type="java.lang.String" value="personnelView" noResource="true"/>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[930, 460]"/>
-                </Property>
-              </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="&#x4eba;&#x5458;&#x4fe1;&#x606f;&#x67e5;&#x770b;">
-                    <Property name="tabTitle" type="java.lang.String" value="&#x4eba;&#x5458;&#x4fe1;&#x606f;&#x67e5;&#x770b;"/>
-                  </JTabbedPaneConstraints>
-                </Constraint>
-              </Constraints>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="134" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace pref="141" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="constjScrollPane1" min="-2" pref="737" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="285" max="-2" attributes="0"/>
-                                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="335" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="accountViewjScrollPane" alignment="1" min="-2" pref="668" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
+                                  <Component id="addConstjButton1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="424" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="accountNamejTextField" min="-2" pref="321" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="findAccountNamejButton" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="accountNumjTextField" min="-2" pref="321" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="findAccountNumjButton" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="accountNamejTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="findAccountNamejButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="accountNumjTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="findAccountNumjButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="accountViewjScrollPane" min="-2" pref="311" max="-2" attributes="0"/>
-                          <EmptySpace pref="40" max="32767" attributes="0"/>
-                          <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          <EmptySpace pref="19" max="32767" attributes="0"/>
+                          <Component id="constjScrollPane1" min="-2" pref="390" max="-2" attributes="0"/>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                          <Component id="addConstjButton1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel17">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jLabel3"/>
-                  </Properties>
-                </Component>
-                <Container class="javax.swing.JScrollPane" name="accountViewjScrollPane">
+                <Container class="javax.swing.JScrollPane" name="constjScrollPane1">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane6">
+                    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
                       <AuxValues>
                         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                       </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="accountViewjTable">
+                        <Component class="javax.swing.JTable" name="constjTable1">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="7" rowCount="15">
-                                <Column editable="true" title="&#x7528;&#x6237;&#x8d26;&#x53f7;" type="java.lang.String">
-                                  <Data value="025000000001"/>
+                              <Table columnCount="4" rowCount="15">
+                                <Column editable="true" title="&#x57ce;&#x5e02;&#x4e00;" type="java.lang.String">
+                                  <Data value="&#x5357;&#x4eac;"/>
                                   <Data value="null"/>
                                   <Data value="null"/>
                                   <Data value="null"/>
@@ -645,8 +187,8 @@
                                   <Data value="null"/>
                                   <Data value="null"/>
                                 </Column>
-                                <Column editable="true" title="&#x59d3;&#x540d;" type="java.lang.String">
-                                  <Data value="&#x5f20;&#x4e09;"/>
+                                <Column editable="true" title="&#x57ce;&#x5e02;&#x4e8c;" type="java.lang.String">
+                                  <Data value="&#x4e0a;&#x6d77;"/>
                                   <Data value="null"/>
                                   <Data value="null"/>
                                   <Data value="null"/>
@@ -662,8 +204,8 @@
                                   <Data value="null"/>
                                   <Data value="null"/>
                                 </Column>
-                                <Column editable="true" title="&#x51fa;&#x751f;&#x65e5;&#x671f;" type="java.lang.String">
-                                  <Data value="19900930"/>
+                                <Column editable="true" title="&#x8ddd;&#x79bb;(&#x5343;&#x7c73;)" type="java.lang.Integer">
+                                  <Data value="1000"/>
                                   <Data value="null"/>
                                   <Data value="null"/>
                                   <Data value="null"/>
@@ -679,8 +221,148 @@
                                   <Data value="null"/>
                                   <Data value="null"/>
                                 </Column>
-                                <Column editable="true" title="&#x6027;&#x522b;" type="java.lang.String">
-                                  <Data value="&#x7537;"/>
+                                <Column editable="true" title="&#x5355;&#x4ef7;(&#x5143;/(&#x5343;&#x5343;&#x7c73;*&#x516c;&#x65a4;&#xff09;&#xff09;" type="java.lang.Double">
+                                  <Data value="0.1"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                </Column>
+                              </Table>
+                            </Property>
+                            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                              <TableColumnModel selectionModel="0">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                              </TableColumnModel>
+                            </Property>
+                            <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="0" green="0" red="0" type="rgb"/>
+                            </Property>
+                            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                              <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                            </Property>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JButton" name="jButton3">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jButton2"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton5">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jButton4"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="addConstjButton1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#x6dfb;&#x52a0;&#x8ddd;&#x79bb;&#x5e38;&#x91cf;"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="salaryPolicyjPane1">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="&#x85aa;&#x6c34;&#x7b56;&#x7565;">
+                    <Property name="tabTitle" type="java.lang.String" value="&#x85aa;&#x6c34;&#x7b56;&#x7565;"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="686" max="-2" attributes="0"/>
+                          <Component id="jSeparator9" min="-2" pref="50" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                          <Component id="jSeparator8" min="-2" pref="50" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="addSalaryPolicyjButton1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="426" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="106" max="32767" attributes="0"/>
+                          <Component id="salaryPolicyjScrollPane1" min="-2" pref="762" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jSeparator9" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jSeparator8" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="salaryPolicyjScrollPane1" min="-2" pref="409" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="addSalaryPolicyjButton1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JSeparator" name="jSeparator8">
+                </Component>
+                <Component class="javax.swing.JSeparator" name="jSeparator9">
+                </Component>
+                <Container class="javax.swing.JScrollPane" name="salaryPolicyjScrollPane1">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Container class="javax.swing.JScrollPane" name="jScrollPane5">
+                      <AuxValues>
+                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                      </AuxValues>
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                      <SubComponents>
+                        <Component class="javax.swing.JTable" name="salaryPolicyjTable1">
+                          <Properties>
+                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                              <Table columnCount="4" rowCount="15">
+                                <Column editable="true" title="&#x540d;&#x79f0;" type="java.lang.String">
+                                  <Data value="&#x5feb;&#x9012;&#x5458;&#x85aa;&#x6c34;&#x7b56;&#x7565;"/>
                                   <Data value="null"/>
                                   <Data value="null"/>
                                   <Data value="null"/>
@@ -713,8 +395,8 @@
                                   <Data value="null"/>
                                   <Data value="null"/>
                                 </Column>
-                                <Column editable="true" title="&#x6240;&#x5c5e;&#x90e8;&#x95e8;" type="java.lang.String">
-                                  <Data value="&#x6c5f;&#x82cf;&#x7701;&#x5357;&#x4eac;&#x5e02;&#x6816;&#x971e;&#x533a;&#x8425;&#x4e1a;&#x5385;"/>
+                                <Column editable="true" title="&#x85aa;&#x6c34;&#x7b56;&#x7565;" type="java.lang.String">
+                                  <Data value="&#x5e95;&#x85aa;&#x52a0;&#x8ba1;&#x4ef6;"/>
                                   <Data value="null"/>
                                   <Data value="null"/>
                                   <Data value="null"/>
@@ -730,8 +412,8 @@
                                   <Data value="null"/>
                                   <Data value="null"/>
                                 </Column>
-                                <Column editable="true" title="&#x7535;&#x8bdd;" type="java.lang.String">
-                                  <Data value="18260008934"/>
+                                <Column editable="true" title="&#x5e95;&#x85aa;" type="java.lang.Integer">
+                                  <Data value="3000"/>
                                   <Data value="null"/>
                                   <Data value="null"/>
                                   <Data value="null"/>
@@ -749,52 +431,232 @@
                                 </Column>
                               </Table>
                             </Property>
+                            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                              <TableColumnModel selectionModel="0">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                              </TableColumnModel>
+                            </Property>
                             <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="0" green="0" red="0" type="rgb"/>
                             </Property>
-                            <Property name="name" type="java.lang.String" value="123" noResource="true"/>
+                            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                              <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                            </Property>
                           </Properties>
                         </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel19">
+                <Component class="javax.swing.JButton" name="jButton6">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="&#x4eba;&#x5458;&#x4fe1;&#x606f;"/>
+                    <Property name="text" type="java.lang.String" value="jButton1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="accountNamejTextField">
+                <Component class="javax.swing.JButton" name="addSalaryPolicyjButton1">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField1"/>
+                    <Property name="text" type="java.lang.String" value="&#x6dfb;&#x52a0;&#x85aa;&#x6c34;&#x7b56;&#x7565;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="findAccountNamejButton">
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="checkjPane">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="documentCheck" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[830, 460]"/>
+                </Property>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="&#x5ba1;&#x6279;&#x5355;&#x636e;">
+                    <Property name="tabTitle" type="java.lang.String" value="&#x5ba1;&#x6279;&#x5355;&#x636e;"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
+                                  <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="259" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="435" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="checkjScrollPane" min="-2" pref="470" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="920" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="checkjScrollPane" min="-2" pref="395" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="495" max="-2" attributes="0"/>
+                          <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace pref="932" max="32767" attributes="0"/>
+                              <Component id="jLabel16" min="-2" pref="21" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jLabel16">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="&#x59d3;&#x540d;&#x67e5;&#x627e;"/>
+                    <Property name="text" type="java.lang.String" value="&#x72b6;&#x6001;&#xff1a;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel9">
+                <Component class="javax.swing.JLabel" name="jLabel22">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="&#x8d26;&#x53f7;&#xff1a;"/>
+                    <Property name="text" type="java.lang.String" value="jLabel13"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="accountNumjTextField">
+                <Component class="javax.swing.JLabel" name="jLabel23">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField1"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="findAccountNumjButton">
+                <Container class="javax.swing.JScrollPane" name="checkjScrollPane">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Container class="javax.swing.JPanel" name="jPanel8">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="261" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jScrollPane1" min="-2" pref="377" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="227" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+                          <AuxValues>
+                            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                          </AuxValues>
+
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                          <SubComponents>
+                            <Component class="javax.swing.JTable" name="documentCheckjTable">
+                              <Properties>
+                                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                                  <Table columnCount="4" rowCount="11">
+                                    <Column editable="true" title="&#x5168;&#x9009;" type="java.lang.Object"/>
+                                    <Column editable="true" title="&#x65e5;&#x671f;" type="java.lang.String"/>
+                                    <Column editable="true" title="&#x64cd;&#x4f5c;&#x7c7b;&#x578b;" type="java.lang.String"/>
+                                    <Column editable="true" title="&#x64cd;&#x4f5c;&#x4eba;&#x5458;&#x7f16;&#x53f7;" type="java.lang.String"/>
+                                  </Table>
+                                </Property>
+                                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                                  <TableColumnModel selectionModel="1">
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                  </TableColumnModel>
+                                </Property>
+                                <Property name="columnSelectionAllowed" type="boolean" value="true"/>
+                                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                                  <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="documentCheckjTableMouseClicked"/>
+                              </Events>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JLabel" name="jLabel29">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="&#x8d26;&#x53f7;&#x67e5;&#x627e;"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="findAccountNumjButtonActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel11">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="&#x59d3;&#x540d;&#xff1a;"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="&#x5b8b;&#x4f53;" size="12" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="&#x5355;&#x636e;&#x4fe1;&#x606f;&#x5217;&#x8868;"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -817,10 +679,10 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
                                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="institutionNamejTextField" min="-2" pref="321" max="-2" attributes="0"/>
@@ -828,25 +690,27 @@
                                   <Component id="findInstitutioNamejButton" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
                                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jTextField4" min="-2" pref="321" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="findInstitutionNumjButton" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="institutionjScrollPane" alignment="0" min="-2" pref="512" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
-                                          <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="230" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="118" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="454" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="institutionjScrollPane" min="-2" pref="750" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="261" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -868,8 +732,8 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="institutionjScrollPane" min="-2" pref="313" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="68" max="32767" attributes="0"/>
+                          <Component id="institutionjScrollPane" min="-2" pref="341" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="40" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -877,17 +741,17 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jLabel12">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="&#x673a;&#x6784;&#x540d;&#x79f0;&#xff1a;"/>
+                    <Property name="text" type="java.lang.String" value="&#x673a;&#x6784;&#x7f16;&#x53f7;&#xff1a;"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="institutionNamejTextField">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField1"/>
+                    <Property name="text" type="java.lang.String" value="&#x8bf7;&#x8f93;&#x5165;&#x673a;&#x6784;&#x7f16;&#x53f7;&#xff08;6&#x4f4d;&#x6570;&#x5b57;&#xff09;"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="findInstitutioNamejButton">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="&#x67e5;&#x627e;"/>
+                    <Property name="text" type="java.lang.String" value="&#x7f16;&#x53f7;&#x67e5;&#x627e;"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="findInstitutioNamejButtonActionPerformed"/>
@@ -895,21 +759,25 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel13">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="&#x673a;&#x6784;&#x7f16;&#x53f7;&#xff1a;"/>
+                    <Property name="text" type="java.lang.String" value="&#x673a;&#x6784;&#x540d;&#x79f0;&#xff1a;"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField4">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField1"/>
+                    <Property name="text" type="java.lang.String" value="&#x8bf7;&#x8f93;&#x5165;&#x673a;&#x6784;&#x7684;&#x5b8c;&#x6574;&#x540d;&#x79f0;"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="findInstitutionNumjButton">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="&#x67e5;&#x627e;"/>
+                    <Property name="text" type="java.lang.String" value="&#x540d;&#x79f0;&#x67e5;&#x627e;"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel15">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="&#x5b8b;&#x4f53;" size="12" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="&#x673a;&#x6784;&#x4fe1;&#x606f;"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
@@ -1016,16 +884,350 @@
                                 </Column>
                               </Table>
                             </Property>
+                            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                              <TableColumnModel selectionModel="0">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                              </TableColumnModel>
+                            </Property>
                             <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="0" green="0" red="0" type="rgb"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="123" noResource="true"/>
+                            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                              <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                            </Property>
                           </Properties>
                         </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>
                 </Container>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="accountjPanel">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="personnelView" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[930, 460]"/>
+                </Property>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="&#x4eba;&#x5458;&#x4fe1;&#x606f;&#x67e5;&#x770b;">
+                    <Property name="tabTitle" type="java.lang.String" value="&#x4eba;&#x5458;&#x4fe1;&#x606f;&#x67e5;&#x770b;"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="accountNamejTextField" min="-2" pref="321" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="findAccountNamejButton" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="accountNumjTextField" min="-2" pref="321" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="findAccountNumjButton" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="450" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="135" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="accountViewjScrollPane" min="-2" pref="726" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="accountNumjTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="findAccountNumjButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="accountNamejTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="findAccountNamejButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="accountViewjScrollPane" min="-2" pref="343" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jLabel17">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jLabel3"/>
+                  </Properties>
+                </Component>
+                <Container class="javax.swing.JScrollPane" name="accountViewjScrollPane">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Container class="javax.swing.JScrollPane" name="jScrollPane6">
+                      <AuxValues>
+                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                      </AuxValues>
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                      <SubComponents>
+                        <Component class="javax.swing.JTable" name="accountViewjTable">
+                          <Properties>
+                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                              <Table columnCount="6" rowCount="15">
+                                <Column editable="false" title="&#x7528;&#x6237;&#x8d26;&#x53f7;" type="java.lang.String">
+                                  <Data value="025000000001"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                </Column>
+                                <Column editable="true" title="&#x59d3;&#x540d;" type="java.lang.String">
+                                  <Data value="&#x5f20;&#x4e09;"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                </Column>
+                                <Column editable="true" title="&#x6027;&#x522b;" type="java.lang.String">
+                                  <Data value="&#x7537;"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                </Column>
+                                <Column editable="true" title="&#x804c;&#x4f4d;" type="java.lang.String">
+                                  <Data value="&#x5feb;&#x9012;&#x5458;"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                </Column>
+                                <Column editable="true" title="&#x90e8;&#x95e8;&#x7f16;&#x53f7;" type="java.lang.String">
+                                  <Data value="02509001"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                </Column>
+                                <Column editable="true" title="&#x7535;&#x8bdd;" type="java.lang.String">
+                                  <Data value="18260008934"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                  <Data value="null"/>
+                                </Column>
+                              </Table>
+                            </Property>
+                            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                              <TableColumnModel selectionModel="0">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                              </TableColumnModel>
+                            </Property>
+                            <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="0" green="0" red="0" type="rgb"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="123" noResource="true"/>
+                            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                              <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                            </Property>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JLabel" name="jLabel19">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="&#x5b8b;&#x4f53;" size="12" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="&#x4eba;&#x5458;&#x4fe1;&#x606f;"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="accountNamejTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#x8bf7;&#x8f93;&#x5165;&#x4eba;&#x5458;&#x59d3;&#x540d;"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="findAccountNamejButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#x59d3;&#x540d;&#x67e5;&#x627e;"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel9">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#x8d26;&#x53f7;&#xff1a;"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="accountNumjTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#x8bf7;&#x8f93;&#x5165;&#x4eba;&#x5458;&#x7f16;&#x53f7;"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="findAccountNumjButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#x8d26;&#x53f7;&#x67e5;&#x627e;"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="findAccountNumjButtonActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel11">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#x59d3;&#x540d;&#xff1a;"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="formjPanel">
@@ -1046,10 +1248,10 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="formEYearjComboBox" min="-2" max="-2" attributes="0"/>
@@ -1062,22 +1264,29 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="formEDatejComboBox" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
+                                  <Component id="profitFormjButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="294" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="439" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="258" max="-2" attributes="0"/>
                                   <Component id="outputFormjButton" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="profitFormjButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="277" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
                                   <Component id="manageStateFormjButton1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="0" pref="740" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="801" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jSeparator5" min="-2" pref="50" max="-2" attributes="0"/>
@@ -1270,282 +1479,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="checkjPane">
-              <Properties>
-                <Property name="name" type="java.lang.String" value="documentCheck" noResource="true"/>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[830, 460]"/>
-                </Property>
-              </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="&#x5ba1;&#x6279;&#x5355;&#x636e;">
-                    <Property name="tabTitle" type="java.lang.String" value="&#x5ba1;&#x6279;&#x5355;&#x636e;"/>
-                  </JTabbedPaneConstraints>
-                </Constraint>
-              </Constraints>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
-                                  <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="286" max="32767" attributes="0"/>
-                          <Component id="checkjScrollPane" min="-2" pref="337" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="282" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="859" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                          <Component id="checkjScrollPane" min="-2" pref="345" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                          <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="514" max="32767" attributes="0"/>
-                              <Component id="jLabel16" min="-2" pref="21" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel16">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="&#x72b6;&#x6001;&#xff1a;"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel22">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jLabel13"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel23">
-                  <Properties>
-                    <Property name="toolTipText" type="java.lang.String" value=""/>
-                  </Properties>
-                </Component>
-                <Container class="javax.swing.JScrollPane" name="checkjScrollPane">
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Container class="javax.swing.JPanel" name="jPanel8">
-
-                      <Layout>
-                        <DimensionLayout dim="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jCheckBox8" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
-                                              <Component id="jCheckBox7" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
-                                              <Component id="jCheckBox6" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
-                                              <Component id="jCheckBox5" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
-                                              <Component id="jCheckBox4" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
-                                              <Component id="jCheckBox9" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
-                                              <Component id="jCheckBox10" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Component id="jLabel29" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                                          <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                                  <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <EmptySpace pref="43" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jCheckBox2" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
-                                              <Component id="jCheckBox3" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
-                        </DimensionLayout>
-                        <DimensionLayout dim="1">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox10" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox9" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox6" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox7" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox8" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="347" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                        </DimensionLayout>
-                      </Layout>
-                      <SubComponents>
-                        <Component class="javax.swing.JCheckBox" name="jCheckBox2">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="20151001   &#x51b3;&#x7b56;&#x5236;&#x5b9a;   &#x603b;&#x7ecf;&#x7406;   00000001"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox2ActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JCheckBox" name="jCheckBox3">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="20151001   &#x51b3;&#x7b56;&#x5236;&#x5b9a;   &#x603b;&#x7ecf;&#x7406;   00000001"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox3ActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JCheckBox" name="jCheckBox4">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="20151001   &#x51b3;&#x7b56;&#x5236;&#x5b9a;   &#x603b;&#x7ecf;&#x7406;   00000001"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox4ActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JCheckBox" name="jCheckBox5">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="20151001   &#x51b3;&#x7b56;&#x5236;&#x5b9a;   &#x603b;&#x7ecf;&#x7406;   00000001"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox5ActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JCheckBox" name="jCheckBox6">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="20151001   &#x51b3;&#x7b56;&#x5236;&#x5b9a;   &#x603b;&#x7ecf;&#x7406;   00000001"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox6ActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JCheckBox" name="jCheckBox7">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="20151001   &#x51b3;&#x7b56;&#x5236;&#x5b9a;   &#x603b;&#x7ecf;&#x7406;   00000001"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox7ActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JCheckBox" name="jCheckBox8">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="20151001   &#x51b3;&#x7b56;&#x5236;&#x5b9a;   &#x603b;&#x7ecf;&#x7406;   00000001"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox8ActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JCheckBox" name="jCheckBox9">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="20151001   &#x51b3;&#x7b56;&#x5236;&#x5b9a;   &#x603b;&#x7ecf;&#x7406;   00000001"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox9ActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JCheckBox" name="jCheckBox10">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="20151001   &#x51b3;&#x7b56;&#x5236;&#x5b9a;   &#x603b;&#x7ecf;&#x7406;   00000001"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox10ActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel24">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="&#x64cd;&#x4f5c;&#x7c7b;&#x578b;"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel25">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="&#x804c;&#x4f4d;"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel26">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="&#x8d26;&#x53f7;"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel27">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="&#x65e5;&#x671f;"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel28">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="&#x5168;&#x9009;"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel29">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="&#x5355;&#x636e;&#x4fe1;&#x606f;&#x5217;&#x8868;"/>
-                          </Properties>
-                        </Component>
-                      </SubComponents>
-                    </Container>
-                  </SubComponents>
-                </Container>
-              </SubComponents>
-            </Container>
             <Container class="javax.swing.JPanel" name="logjPanel">
               <Properties>
                 <Property name="name" type="java.lang.String" value="logView" noResource="true"/>
@@ -1564,65 +1497,59 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="logSYearjComboBox" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="logSMonthjComboBox" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="logSDatejComboBox" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="logEYearjComboBox" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="logSYearjComboBox" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="logSMonthjComboBox" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="logSDatejComboBox" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace pref="174" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                          <Component id="logjScrollPane" alignment="0" min="-2" pref="577" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace min="-2" pref="258" max="-2" attributes="0"/>
-                                              <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="267" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                                          <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="logEYearjComboBox" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="logEYearjComboBox1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="logEDatejComboBox" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="logTypejComboBox" min="-2" pref="78" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="logEYearjComboBox1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="logEDatejComboBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                  <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="logTypejComboBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="findLogjButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="79" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="98" max="32767" attributes="0"/>
+                          <Component id="logjScrollPane" min="-2" pref="774" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="0" pref="686" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="747" max="32767" attributes="0"/>
                               <Component id="jSeparator7" min="-2" pref="160" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                           </Group>
@@ -1652,11 +1579,11 @@
                               <Component id="logTypejComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="findLogjButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="44" max="32767" attributes="0"/>
+                          <EmptySpace pref="32" max="32767" attributes="0"/>
                           <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="logjScrollPane" min="-2" pref="319" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="logjScrollPane" min="-2" pref="321" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -2006,10 +1933,37 @@
                                 </Column>
                               </Table>
                             </Property>
+                            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                              <TableColumnModel selectionModel="0">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                              </TableColumnModel>
+                            </Property>
                             <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="0" green="0" red="0" type="rgb"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="123" noResource="true"/>
+                            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                              <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                            </Property>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -2041,11 +1995,6 @@
             <Property name="text" type="java.lang.String" value="&#x5f20;&#x4e09;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="exitjLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="&#x9000;&#x51fa;&#x7cfb;&#x7edf;"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel48">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x72b6;&#x6001;&#xff1a;"/>
@@ -2053,8 +2002,16 @@
         </Component>
         <Component class="javax.swing.JLabel" name="statejLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x6b63;&#x5728;&#x52a0;&#x8f7d;"/>
+            <Property name="text" type="java.lang.String" value="&#x7a7a;&#x95f2;"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x9000;&#x51fa;&#x7cfb;&#x7edf;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

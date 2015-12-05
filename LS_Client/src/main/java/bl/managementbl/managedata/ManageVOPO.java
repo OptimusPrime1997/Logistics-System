@@ -1,6 +1,10 @@
 package bl.managementbl.managedata;
 
-import util.enumData.SalaryPolicy;
+import util.CurrentTime;
+import util.enumData.LogType;
+import util.enumData.ResultMessage;
+import bl.logbl.Logbl;
+import bl.loginbl.Loginbl;
 import PO.AccountPO;
 import PO.BankAccountPO;
 import PO.ConstPO;
@@ -8,7 +12,7 @@ import PO.DriverPO;
 import PO.InstitutionPO;
 import PO.SalaryPolicyPO;
 import PO.VehiclePO;
-import PO.ReceiptPO.SalaryPO;
+import VO.LogVO;
 import VO.ManagementVO.AccountVO;
 import VO.ManagementVO.BankAccountVO;
 import VO.ManagementVO.ConstVO;
@@ -18,6 +22,32 @@ import VO.ManagementVO.SalaryPolicyVO;
 import VO.ManagementVO.VehicleVO;
 
 public class ManageVOPO {
+	private static ManageVOPO manageVOPO;
+	private static Logbl logbl;
+	private ManageVOPO(){
+		logbl=new Logbl();
+	}
+	public static ManageVOPO getInstance(){
+		if(manageVOPO==null){
+			manageVOPO=new ManageVOPO();
+		}
+		return manageVOPO;
+	}
+	
+	/**
+	 * add log
+	 * 
+	 * @param operation
+	 * @return ResultMessage
+	 */
+	public ResultMessage addLog(LogType operation){
+		LogVO logVO = new LogVO(operation, Loginbl.getCurrentOptorId(),
+				CurrentTime.getTime());
+		assert(logbl!=null):("Logbl is null!");
+		 logbl.add(logVO);
+		return ResultMessage.SUCCESS;
+	}
+	
 	public AccountPO voToPO(AccountVO vo) {
 		return new AccountPO(vo.accountNum, vo.accountName, vo.password,
 				vo.sex, vo.authority, vo.phoneNum, vo.institutionNum);

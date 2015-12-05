@@ -46,7 +46,7 @@ public class CashRep extends javax.swing.JPanel {
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accountLabel;
-    private javax.swing.JTextField accountText;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton courierButton;
     private javax.swing.JLabel courierNumLabel;
@@ -97,7 +97,7 @@ public class CashRep extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         accountLabel = new javax.swing.JLabel();
-        accountText = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox();
         courierButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
         control = new CashRepController();
@@ -110,10 +110,13 @@ public class CashRep extends javax.swing.JPanel {
         numLabel.setText("编号:");
 
         numText.setEditable(false);
+        numText.setText(officeText.getText()+control.getDateInNum(dateText.getText())+"10000");
 
         courierNumLabel.setText("快递员编号:");
 
         dateLabel.setText("日期:");
+        
+        dateText.setText(control.getDate());
 
         sumLabel.setText("总和:");
 
@@ -146,17 +149,6 @@ public class CashRep extends javax.swing.JPanel {
         columnIdentifiers.add("备注");
         columnIdentifiers.add("删除");
         
-//        try {
-//			numText.setText(control.createNum(dateText.getText()));
-//		} catch (ClassNotFoundException | NotBoundException | IOException e) {
-//			e.printStackTrace();
-//			resultMsgText.setText(ExceptionPrint.print(e));
-//		}
-        
-        dateText.setText(control.getDate());
-        
-        numText.setText(officeText.getText()+control.getDateInNum(dateText.getText())+"10000");
-        
 		try {
 			dataVector = control.initTable(dateText.getText());
 			model.setDataVector(dataVector, columnIdentifiers);
@@ -175,17 +167,6 @@ public class CashRep extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable);
         jTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         
-        TableColumn column1 = jTable.getColumnModel().getColumn(0);
-        column1.setPreferredWidth(60);
-        TableColumn column2 = jTable.getColumnModel().getColumn(1);
-        column2.setPreferredWidth(80);
-        TableColumn column3 = jTable.getColumnModel().getColumn(2);
-        column3.setPreferredWidth(30);
-        TableColumn column4 = jTable.getColumnModel().getColumn(3);
-        column4.setPreferredWidth(60);
-        TableColumn column5 = jTable.getColumnModel().getColumn(4);
-        column5.setPreferredWidth(10);
-
         accountLabel.setText("收款账号:");
 
         courierButton.setText("确定");
@@ -194,6 +175,10 @@ public class CashRep extends javax.swing.JPanel {
                 courierButtonMouseClicked(evt);
             }
         });
+        
+        setColumn();
+        
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -221,7 +206,7 @@ public class CashRep extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(courierNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(courierNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(courierButton)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
@@ -235,12 +220,12 @@ public class CashRep extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(accountText, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(16, 16, 16)
                                         .addComponent(cancelButton)
                                         .addGap(91, 91, 91)
-                                        .addComponent(okButton)))))
+                                        .addComponent(okButton))
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 13, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(resultMsgText)
@@ -276,55 +261,67 @@ public class CashRep extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(accountLabel)
-                    .addComponent(accountText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton)
                     .addComponent(okButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE))
+                .addComponent(resultMsgText)));
+            
+            jTable.addMouseListener(new MouseListener() {
+    			
+    			@Override
+    			public void mouseReleased(MouseEvent e) {
+    				// TODO Auto-generated method stub
+    				
+    			}
+    			
+    			@Override
+    			public void mousePressed(MouseEvent e) {
+    				// TODO Auto-generated method stub
+    				int row = jTable.getSelectedRow();
+    				int col = jTable.getSelectedColumn();
+    				if(col==4){
+    					model.removeRow(row);
+    					jTable.setModel(model);
+    				}
+    			}
+    			
+    			@Override
+    			public void mouseExited(MouseEvent e) {
+    				// TODO Auto-generated method stub
+    				
+    			}
+    			
+    			@Override
+    			public void mouseEntered(MouseEvent e) {
+    				// TODO Auto-generated method stub
+    				
+    			}
+    			
+    			@Override
+    			public void mouseClicked(MouseEvent e) {
+    				// TODO Auto-generated method stub
+    				
+    			}
+            }
         );
-        
-        jTable.addMouseListener(new MouseListener() {
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				int row = jTable.getSelectedRow();
-				int col = jTable.getSelectedColumn();
-				if(col==4){
-					model.removeRow(row);
-					jTable.setModel(model);
-				}
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-        		
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setColumn(){
+    	TableColumn column1 = jTable.getColumnModel().getColumn(0);
+        column1.setPreferredWidth(60);
+        TableColumn column2 = jTable.getColumnModel().getColumn(1);
+        column2.setPreferredWidth(80);
+        TableColumn column3 = jTable.getColumnModel().getColumn(2);
+        column3.setPreferredWidth(30);
+        TableColumn column4 = jTable.getColumnModel().getColumn(3);
+        column4.setPreferredWidth(60);
+        TableColumn column5 = jTable.getColumnModel().getColumn(4);
+        column5.setPreferredWidth(10);
+    }
+    
     private void courierButtonMouseClicked(java.awt.event.MouseEvent evt) {
 //    	String courierNum = courierNumText.getText();
 //    	String courierName = null;
@@ -349,7 +346,7 @@ public class CashRep extends javax.swing.JPanel {
     	ResultMessage resultMessage = control.checkCourierNum(courierNum);
     	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
     	resultMsgText.setText(resultMsg);
-    	if(resultMessage==ResultMessage.SUCCESS){
+    	if(resultMessage==ResultMessage.ADD_SUCCESS){
     		String courierName = "bismuth";
         	double money = 5.0;
         	Vector<Object> arr = new Vector<Object>();
@@ -358,6 +355,7 @@ public class CashRep extends javax.swing.JPanel {
         	arr.add(money);
         	dataVector.add(arr);
         	model.setDataVector(dataVector, columnIdentifiers);
+        	setColumn();
     	}
     	
     }
@@ -378,6 +376,7 @@ public class CashRep extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
+		resultMsgText.setText(ResultMessage.toFriendlyString(ResultMessage.SUBMIT_SUCCESS));
 	}
     
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {

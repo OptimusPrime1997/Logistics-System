@@ -2,8 +2,7 @@ package bl.receiptbl.GetRepbl;
 
 import java.util.ArrayList;
 
-import VO.*;
-import VO.ReceiptVO.GetRepVO;
+import VO.ReceiptVO.ArriveRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import VO.ReceiptVO.ShipmentRepVO;
 import VO.ReceiptVO.ShippingRepVO;
@@ -11,7 +10,6 @@ import bl.receiptbl.Receiptbl.ReceiptblController;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepbl;
 import bl.receiptbl.ShippingRepbl.ShippingRepbl;
 import util.enumData.Rep;
-import util.enumData.ResultMessage;
 
 public class GetRepbl extends ReceiptblController{
 
@@ -43,7 +41,7 @@ public class GetRepbl extends ReceiptblController{
 		// TODO Auto-generated method stub
 	}
 
-	public GetRepVO getRepByNum(String num) {
+	public ArriveRepVO getRepByNum(String num) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -52,12 +50,12 @@ public class GetRepbl extends ReceiptblController{
 		// TODO Auto-generated method stub
 	}
 
-	public ArrayList<GetRepVO> getAllRep() {
+	public ArrayList<ArriveRepVO> getAllRep() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ArrayList<GetRepVO> getRepByDate(String date) {
+	public ArrayList<ArriveRepVO> getRepByDate(String date) {
 		// TODO Auto-generated method stub
 		return null;
 	}

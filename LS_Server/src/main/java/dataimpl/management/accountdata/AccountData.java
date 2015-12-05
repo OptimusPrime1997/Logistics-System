@@ -2,6 +2,7 @@ package dataimpl.management.accountdata;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import dataservice.managementdataservice.accountdataservice.AccountDataService;
 import datautil.DataUtility;
 
 public class AccountData extends UnicastRemoteObject implements
-		AccountDataService {
+		AccountDataService,Serializable {
 	private final String path = "data/currentdata/account";
 	private DataUtility d;
 	/**

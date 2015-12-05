@@ -18,6 +18,7 @@ import blservice.goodsblservice.GoodsFindBLService;
 import ui.mainFrame.MainFrame;
 import ui.receiptui.Order;
 import util.CurrentTime;
+import util.MyFrame;
 
 public class courier_main extends javax.swing.JPanel {
 	static int NUM_OF_DAYS=7;
@@ -34,8 +35,10 @@ public class courier_main extends javax.swing.JPanel {
 		initProBar();
 		initbtn();
 		initLayOut(layout);
+		initText();
 		
 	}
+	
 	/*
 	 * 初始化布局
 	 */
@@ -333,6 +336,10 @@ public class courier_main extends javax.swing.JPanel {
 		
 	}
 
+	private void initText() {
+		// TODO 显示  新订单创建成功~~的反馈信息！
+		
+	}
 	private void initbtn() {
 		signedGoodsbtn = new javax.swing.JButton();
 		newGoodsbtn = new javax.swing.JButton();
@@ -372,8 +379,8 @@ public class courier_main extends javax.swing.JPanel {
 		 javax.swing.JProgressBar bar=new JProgressBar();;//bars[0]==today,bars[i]=i days ago
 		for(int i=0;i<NUM_OF_DAYS;i++)createJProgressBar(bar);
 		//赋值
-		int[]values=goodsController.getdaysNumOfGoods(NUM_OF_DAYS);
-//		int[]values=new int[]{10,20,30,40,10,50,45};//TODO 获取数据		
+//		int[]values=goodsController.getdaysNumOfGoods(NUM_OF_DAYS);
+		int[]values=new int[]{10,20,30,40,10,50,45};//TODO 获取数据		
 		for(int i=0;i<bars.size();i++) bars.get(i).setValue(values[i]);
 	}
 	private void initLabel() {
@@ -406,11 +413,7 @@ public class courier_main extends javax.swing.JPanel {
 		new courier_signed().setVisible(true);
 	}
 	private void newGoodsbtnMouseClicked(MouseEvent evt) {
-		JFrame frame = new JFrame();
-		frame.setSize(500, 600);
-		frame.setContentPane(new Order());
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+		MyFrame frame=new MyFrame(500, 600, new Order());
 	}
 	private void account_btnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_account_btnActionPerformed
 
@@ -470,10 +473,7 @@ public class courier_main extends javax.swing.JPanel {
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				JFrame frame = new JFrame();
-				frame.setSize(830, 590);
-				frame.setVisible(true);
-				frame.setContentPane(new courier_main());
+				MyFrame frame=new MyFrame(830, 590, new courier_main());
 				frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 			}
 		});

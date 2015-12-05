@@ -2,47 +2,43 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
+import PO.ReceiptPO.AllSalaryPO;
+import PO.ReceiptPO.BonusPO;
 import PO.ReceiptPO.CourierSalaryPO;
-import PO.ReceiptPO.SalaryPO;
 
 public class CourierSalaryVO extends AllSalaryVO{
-	public int getMoney;
+	public int getMoneySum;
 	public int deliverItemNum;
-	public CourierSalaryVO(String getterName, String getterNum, double money, int getMoney, int deliverItemNum) {
+	
+	public CourierSalaryVO(String getterName, String getterNum, double money, int getMoneySum, int deliverItemNum) {
 		super(getterName, getterNum, money);
-		this.getMoney = getMoney;
+		this.getMoneySum = getMoneySum;
 		this.deliverItemNum = deliverItemNum;
 	}
-	public int getGetMoney() {
-		return getMoney;
-	}
-	public int getDeliverItemNum() {
-		return deliverItemNum;
-	}
-	
+
 	public CourierSalaryVO(CourierSalaryPO po){
 		this.getterName = po.getGetterName();
 		this.getterNum = po.getGetterNum();
 		this.money = po.getMoney();
-		this.getMoney = po.getGetMoney();
+		this.getMoneySum= po.getGetMoneySum();
 		this.deliverItemNum = po.getDeliverItemNum();
 	}
 	
 	public static CourierSalaryPO toPO(CourierSalaryVO vo){
-		return new CourierSalaryPO(vo.getterName, vo.getterNum, vo.money, vo.getMoney, vo.deliverItemNum);
+		return new CourierSalaryPO(vo.getterName, vo.getterNum, vo.money, vo.getMoneySum, vo.deliverItemNum);
 	}
 	
-	public static ArrayList<CourierSalaryVO> toArrayVO(ArrayList<CourierSalaryPO> courierSalaryPOs){
-		ArrayList<CourierSalaryVO> courierSalaryVOs = new ArrayList<CourierSalaryVO>();
-		for(CourierSalaryPO courierSalaryPO : courierSalaryPOs)
-			courierSalaryVOs.add(new CourierSalaryVO(courierSalaryPO));
-		return courierSalaryVOs;
+	public static ArrayList<CourierSalaryVO> toArrayVO(ArrayList<AllSalaryPO> allSalaryPOs){
+		ArrayList<CourierSalaryVO> CourierSalaryVOs = new ArrayList<CourierSalaryVO>();
+		for(AllSalaryPO allSalaryPO : allSalaryPOs)
+			CourierSalaryVOs.add(new CourierSalaryVO((CourierSalaryPO)allSalaryPO));
+		return CourierSalaryVOs;
 	}
 	
-	public static ArrayList<CourierSalaryPO> toArrayPO(ArrayList<CourierSalaryVO> courierSalaryVOs){
-		ArrayList<CourierSalaryPO> courierSalaryPOs = new ArrayList<CourierSalaryPO>();
-		for(CourierSalaryVO courierSalaryVO : courierSalaryVOs)
-			courierSalaryPOs.add(CourierSalaryVO.toPO(courierSalaryVO));
-		return courierSalaryPOs;
+	public static ArrayList<AllSalaryPO> toArrayPO(ArrayList<CourierSalaryVO> CourierSalaryVOs){
+		ArrayList<AllSalaryPO> CourierSalaryPOs = new ArrayList<AllSalaryPO>();
+		for(CourierSalaryVO CourierSalaryVO : CourierSalaryVOs)
+			CourierSalaryPOs.add(CourierSalaryVO.toPO(CourierSalaryVO));
+		return CourierSalaryPOs;
 	}
 }

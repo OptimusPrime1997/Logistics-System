@@ -8,16 +8,16 @@ public class RentVO {
 	public String getterName;
 	public String phoneNum;
 	public double money;
-	public String date;
+	public String remark;
 	
-	public RentVO(String getterName, String phoneNum, double money, String date) {
+	public RentVO(String getterName, String phoneNum, double money, String remark) {
 		super();
 		this.getterName = getterName;
 		this.phoneNum = phoneNum;
 		this.money = money;
-		this.date = date;
+		this.remark = remark;
 	}
-
+	
 	public String getGetterName() {
 		return getterName;
 	}
@@ -30,19 +30,19 @@ public class RentVO {
 		return money;
 	}
 
-	public String getDate() {
-		return date;
+	public String getRemark() {
+		return remark;
 	}
-	
+
 	public RentVO(RentPO po){
 		this.getterName = po.getGetterName();
 		this.phoneNum = po.getPhoneNum();
 		this.money = po.getMoney();
-		this.date = po.getDate();
+		this.remark = po.getRemark();
 	}
 	
 	public static RentPO toPO(RentVO vo){
-		return new RentPO(vo.getterName, vo.phoneNum, vo.money, vo.date);
+		return new RentPO(vo.getterName, vo.phoneNum, vo.money, vo.remark);
 	}
 	
 	public static ArrayList<RentVO> toArrayVO(ArrayList<RentPO> rentPOs){

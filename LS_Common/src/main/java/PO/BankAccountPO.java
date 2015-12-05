@@ -7,7 +7,7 @@ public class BankAccountPO implements Serializable,Comparable<BankAccountPO>{
 	private String bankAccountNum;
 	private String bankAccountName;
 	private double balance;
-	public BankAccountPO(String bankAccountNum,String bankAccountName,int balance) {
+	public BankAccountPO(String bankAccountNum,String bankAccountName,double balance) {
 		// TODO Auto-generated constructor stub
 		this.bankAccountNum=bankAccountNum;
 		this.bankAccountName=bankAccountName;

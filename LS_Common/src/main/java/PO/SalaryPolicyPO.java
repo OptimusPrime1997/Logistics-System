@@ -52,7 +52,7 @@ public class SalaryPolicyPO implements Serializable, Comparable<SalaryPolicyPO> 
 	@Override
 	public int compareTo(SalaryPolicyPO o) {
 		// TODO Auto-generated method stub
-		return salaryPolicy.compareTo(o.getSalaryPolicy());
+		return Double.compare(salaryAmount, o.getSalaryAmount());
 	}
 
 }

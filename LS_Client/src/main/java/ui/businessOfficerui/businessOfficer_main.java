@@ -1,9 +1,9 @@
 package ui.businessOfficerui;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
-import ui.courierui.courier_main;
 import ui.mainFrame.MainFrame;
+import util.MyFrame;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,202 +15,207 @@ import ui.mainFrame.MainFrame;
  *
  * @author Administrator
  */
-public class businessOfficer_main extends javax.swing.JPanel {
+public class businessOfficer_main extends JPanel {
 
-    /**
-     * Creates new form yytywyui
-     */
     public businessOfficer_main() {
-        initComponents();
-       
+        initComponents();       
+    }
+    private void initComponents() {
+        GroupLayout layout = new GroupLayout(this);
+        initNumPanel();
+    	initbtn();
+    	initLabel();
+    	initTxt();
+    	initLayout(layout);
+      
+    }
+    private void initNumPanel() {
+    	num_panel = new JPanel();
+    	GroupLayout num_panelLayout = new GroupLayout(num_panel);
+    	num_panel.setBackground(new java.awt.Color(240, 40, 240));
+    	num_panel.setForeground(new java.awt.Color(240, 240, 240));
+        // num_panel.setToolTipText("");
+        /*
+         *  initNumlabel
+         */
+    	num_label = new JLabel();
+    	num_label.setFont(new java.awt.Font("宋体", 1, 48));
+    	num_label.setForeground(new java.awt.Color(240, 240, 240));
+    	num_label.setText("50");
+         
+         initNumLayout(num_panelLayout);
+	}
+
+	private void initTxt() {
+		feedBack_text = new JTextField();
+	}
+
+	private void initLayout(GroupLayout layout) {
+    	  this.setLayout(layout);
+          layout.setHorizontalGroup(
+              layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+              .addGroup(layout.createSequentialGroup()
+                  .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                      .addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                          .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                              .addComponent(arrival_btn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                              .addComponent(deliver_btn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                              .addComponent(recordMoney_btn, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                              .addComponent(carManagement_btn, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                              .addComponent(send_btn, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                              .addComponent(driverManagement_btn, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                          .addGap(160, 160, 160)
+                          .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                              .addComponent(num_panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                              .addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                      .addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                          .addGap(220, 220, 220)
+                          .addComponent(jLabel6)
+                          .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                          .addComponent(businessOfficeNum_label)
+                          .addGap(26, 26, 26)
+                          .addComponent(jLabel5)
+                          .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                          .addComponent(account_btn, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)))
+                  .addGap(65, 65, 65)
+                  .addComponent(exit_btn))
+              .addGroup(layout.createSequentialGroup()
+                  .addContainerGap()
+                  .addComponent(feedBack_text)
+                  .addContainerGap())
+          );
+          layout.setVerticalGroup(
+              layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+              .addGroup(layout.createSequentialGroup()
+                  .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                      .addGroup(layout.createSequentialGroup()
+                          .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                              .addGroup(layout.createSequentialGroup()
+                                  .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                      .addComponent(exit_btn)
+                                      .addGroup(layout.createSequentialGroup()
+                                          .addGap(16, 16, 16)
+                                          .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                              .addComponent(jLabel6)
+                                              .addComponent(businessOfficeNum_label)
+                                              .addComponent(jLabel5)
+                                              .addComponent(account_btn))))
+                                  .addGap(4, 4, 4)
+                                  .addComponent(arrival_btn, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+                                  .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                  .addComponent(deliver_btn, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE))
+                              .addGroup(layout.createSequentialGroup()
+                                  .addGap(75, 75, 75)
+                                  .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
+                          .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                          .addComponent(recordMoney_btn, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+                          .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                          .addComponent(send_btn, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
+                          .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                          .addComponent(carManagement_btn, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+                      .addGroup(layout.createSequentialGroup()
+                          .addGap(131, 131, 131)
+                          .addComponent(num_panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                  .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                  .addComponent(driverManagement_btn, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                  .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                  .addComponent(feedBack_text, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                  .addContainerGap())
+          );
+	}
+
+	/**
+     * 初始化数字panel的布局
+     * @param num_panelLayout
+     */
+	private void initNumLayout(GroupLayout num_panelLayout) {
+		 num_panel.setLayout(num_panelLayout);
+	        num_panelLayout.setHorizontalGroup(
+	            num_panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+	            .addGroup(GroupLayout.Alignment.TRAILING, num_panelLayout.createSequentialGroup()
+	                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                .addComponent(num_label)
+	                .addGap(63, 63, 63))
+	        );
+	        num_panelLayout.setVerticalGroup(
+	            num_panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+	            .addGroup(num_panelLayout.createSequentialGroup()
+	                .addGap(50, 50, 50)
+	                .addComponent(num_label)
+	                .addContainerGap(64, Short.MAX_VALUE))
+	        );
+		
+	}
+
+	private void initLabel() {
+		jLabel1 = new JLabel();
+    	jLabel5 = new JLabel();
+        jLabel6 = new JLabel();
+        businessOfficeNum_label = new JLabel();
+        jLabel1.setText("今日流水（派出的车辆数）");
+        jLabel5.setText("账户：");
+        jLabel6.setText("营业厅：");
+        businessOfficeNum_label.setText("南京 025001");        
+	}
+
+	private void initbtn() {
+		// TODO 
+    	 exit_btn = new JButton();
+         account_btn = new JButton();
+         arrival_btn = new JButton();
+         deliver_btn = new JButton();
+         carManagement_btn = new JButton();
+         recordMoney_btn = new JButton();
+         driverManagement_btn = new JButton();
+         send_btn = new JButton();
+         exit_btn.setText("退出系统");
+         account_btn.setText("老李（包括更改密码、退出登录）");
+         arrival_btn.setText("快件到达");
+         deliver_btn.setText("派件");
+         carManagement_btn.setText("车辆管理");
+         recordMoney_btn.setText("记账");
+         send_btn.setText("发往中转中心/营业厅");
+         driverManagement_btn.setText("司机管理");
+         exit_btn.addActionListener(new java.awt.event.ActionListener() {
+             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 exit_btnActionPerformed(evt);
+             }
+         });
+         deliver_btn.addActionListener(new java.awt.event.ActionListener() {
+             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 deliver_btnActionPerformed(evt);
+             }
+         });
+         carManagement_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                 carManagement_btnMouseClicked(evt);
+             }
+         });
+         carManagement_btn.addActionListener(new java.awt.event.ActionListener() {
+             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 carManagement_btnActionPerformed(evt);
+             }
+         });
+         recordMoney_btn.addActionListener(new java.awt.event.ActionListener() {
+             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 recordMoney_btnActionPerformed(evt);
+             }
+         });
+         send_btn.addActionListener(new java.awt.event.ActionListener() {
+             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 send_btnActionPerformed(evt);
+             }
+         });
+        
+         driverManagement_btn.addActionListener(new java.awt.event.ActionListener() {
+             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 driverManagement_btnActionPerformed(evt);
+             }
+         });
+
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        exit_btn = new javax.swing.JButton();
-        account_btn = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        businessOfficeNum_label = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        arrival_btn = new javax.swing.JButton();
-        deliver_btn = new javax.swing.JButton();
-        carManagement_btn = new javax.swing.JButton();
-        recordMoney_btn = new javax.swing.JButton();
-        send_btn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        num_panel = new javax.swing.JPanel();
-        num_label = new javax.swing.JLabel();
-        driverManagement_btn = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-
-        setForeground(new java.awt.Color(240, 40, 240));
-
-        exit_btn.setText("退出系统");
-        exit_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exit_btnActionPerformed(evt);
-            }
-        });
-
-        account_btn.setText("老李（包括更改密码、退出登录）");
-
-        jLabel5.setText("账户：");
-
-        businessOfficeNum_label.setText("南京 025001");
-
-        jLabel6.setText("营业厅：");
-
-        arrival_btn.setText("快件到达");
-
-        deliver_btn.setText("派件");
-        deliver_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deliver_btnActionPerformed(evt);
-            }
-        });
-
-        carManagement_btn.setText("车辆管理");
-        carManagement_btn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                carManagement_btnMouseClicked(evt);
-            }
-        });
-        carManagement_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                carManagement_btnActionPerformed(evt);
-            }
-        });
-
-        recordMoney_btn.setText("记账");
-        recordMoney_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                recordMoney_btnActionPerformed(evt);
-            }
-        });
-
-        send_btn.setText("发往中转中心/营业厅");
-        send_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                send_btnActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("今日流水（派出的车辆数）");
-
-        num_panel.setBackground(new java.awt.Color(240, 40, 240));
-        num_panel.setForeground(new java.awt.Color(240, 240, 240));
-        num_panel.setToolTipText("");
-
-        num_label.setFont(new java.awt.Font("宋体", 1, 48)); // NOI18N
-        num_label.setForeground(new java.awt.Color(240, 240, 240));
-        num_label.setText("50");
-
-        javax.swing.GroupLayout num_panelLayout = new javax.swing.GroupLayout(num_panel);
-        num_panel.setLayout(num_panelLayout);
-        num_panelLayout.setHorizontalGroup(
-            num_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, num_panelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(num_label)
-                .addGap(63, 63, 63))
-        );
-        num_panelLayout.setVerticalGroup(
-            num_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(num_panelLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(num_label)
-                .addContainerGap(64, Short.MAX_VALUE))
-        );
-
-        driverManagement_btn.setText("司机管理");
-        driverManagement_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                driverManagement_btnActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(arrival_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(deliver_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(recordMoney_btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(carManagement_btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(send_btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(driverManagement_btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(160, 160, 160)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(num_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(220, 220, 220)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(businessOfficeNum_label)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(account_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(65, 65, 65)
-                .addComponent(exit_btn))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField1)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(exit_btn)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(16, 16, 16)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel6)
-                                            .addComponent(businessOfficeNum_label)
-                                            .addComponent(jLabel5)
-                                            .addComponent(account_btn))))
-                                .addGap(4, 4, 4)
-                                .addComponent(arrival_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(deliver_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(75, 75, 75)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(recordMoney_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(send_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(carManagement_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(num_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(driverManagement_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-    }// </editor-fold>//GEN-END:initComponents
-
-    private void deliver_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliver_btnActionPerformed
+	private void deliver_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliver_btnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_deliver_btnActionPerformed
 
@@ -243,21 +248,21 @@ public class businessOfficer_main extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton account_btn;
-    private javax.swing.JButton arrival_btn;
-    private javax.swing.JLabel businessOfficeNum_label;
-    private javax.swing.JButton carManagement_btn;
-    private javax.swing.JButton deliver_btn;
-    private javax.swing.JButton driverManagement_btn;
-    private javax.swing.JButton exit_btn;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel num_label;
-    private javax.swing.JPanel num_panel;
-    private javax.swing.JButton recordMoney_btn;
-    private javax.swing.JButton send_btn;
+    private JButton account_btn;
+    private JButton arrival_btn;
+    private JLabel businessOfficeNum_label;
+    private JButton carManagement_btn;
+    private JButton deliver_btn;
+    private JButton driverManagement_btn;
+    private JButton exit_btn;
+    private JLabel jLabel1;
+    private JLabel jLabel5;
+    private JLabel jLabel6;
+    private JTextField feedBack_text;//给用户反馈信息的信息栏
+    private JLabel num_label;
+    private JPanel num_panel;
+    private JButton recordMoney_btn;
+    private JButton send_btn;
     // End of variables declaration//GEN-END:variables
    
 
@@ -272,9 +277,9 @@ public class businessOfficer_main extends javax.swing.JPanel {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -284,20 +289,14 @@ public class businessOfficer_main extends javax.swing.JPanel {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-            	JFrame frame = new JFrame();
-        		frame.setSize(830, 590);
-        		frame.setVisible(true);
-        		frame.setContentPane(new businessOfficer_main());
-        		frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);	
+            	MyFrame frame = new MyFrame(830,590,new businessOfficer_main());
+        		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);	
             }
         });
 

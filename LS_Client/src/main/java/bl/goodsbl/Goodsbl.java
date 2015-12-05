@@ -11,6 +11,7 @@ import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsExpressType;
 import util.enumData.GoodsLogisticState;
 import util.enumData.ResultMessage;
+import Exception.CourierNotFoundException;
 import Exception.ExistException;
 import Exception.GoodsNotFound;
 import PO.GoodsPO;
@@ -19,6 +20,14 @@ import bl.loginbl.Loginbl;
 import bl.managementbl.constbl.Constbl;
 import dataservice.goodsdataservice.GoodsDataService;
 
+/*
+ *  GoodsVO vo = new GoodsVO("0250000123", false, "02400100006014",
+				"", "20151026", "", "025", "李华",
+				"上海市浦东新区张杨路500号", "上海华润时代广场", "87511426", "陆宏",
+				"南京市栖霞区仙林大道和园12号", null, "15500001112", 1, 5, 8, "书",
+				GoodsExpressType.NORMAL, 5, 0, 0, GoodsArrivalState.INTACT,
+				GoodsLogisticState.SENDED, null, null);
+ */
 public class Goodsbl {
 	/*
 	 * ECONOMIC NORMAL EXPRESS 18: 23: 25
@@ -73,7 +82,7 @@ public class Goodsbl {
 	public GoodsVO initComplete(GoodsVO vo) throws ExistException{//TODO可能初始化失败！没有反馈给界面
 		Constbl constBL = new Constbl();
 		ResultMessage msg;
-		//TODO the parameter of the findByConstName function is to be modified
+		
 		try {
 			// TODO 计算运费
 			double basicprice = 0;//constBL.findByConstName(Const.FARE).priceConst;
@@ -174,9 +183,11 @@ public class Goodsbl {
 		System.out.println("listnum "+listNum);
 		try {
 			GoodsVO vo = findByListNum(listNum);
+			System.out.println("改之前的货物信息 "+vo.listNum+"  "+vo.realReceiverName+"  "+vo.realReceiverPhone+"  "+vo.logisticState);
+			vo.deliverCourierAccount=Loginbl.getCurrentOptorId();
 			vo.realReceiverName = realReceiverName;
 			vo.realReceiverPhone = realReceiverPhone;
-			System.out.println("Goodsbl.end");
+			vo.logisticState=GoodsLogisticState.SIGNED;
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;
@@ -199,18 +210,14 @@ public class Goodsbl {
 		}
 		return nums;
 	}
-	public ResultMessage ifListNumValid(String listNum){
-		if(listNum==null) return ResultMessage.NOT_COMPLETED;
-		else if(listNum.length()!=10) return ResultMessage.REPNUM_LENGTH_WRONG;
-		else {
-			for(int i=0;i<listNum.length();i++){
-				if(listNum.charAt(i)>'9'||listNum.charAt(i)<'0'){
-					return ResultMessage.UNVALID_CHAR;//即订单号中出现非数字
-				}
-			}
-		}
-		return ResultMessage.VALID;
-	}
+	/**
+	 * 计算邮费
+	 * @param expressType
+	 * @param weight
+	 * @param distance
+	 * @param basicPrice
+	 * @return
+	 */
 	private double moneyCounter(GoodsExpressType expressType, double weight,
 			double distance, double basicPrice) {
 		double fare = 0;
@@ -253,14 +260,6 @@ public class Goodsbl {
 		}
 		return x;
 	}
-	/**
-	 * 检查是否填写
-	 * @param str
-	 * @return
-	 */
-	public ResultMessage ifWritten(String str) {
-		if(str.length()==0) return ResultMessage.NOT_COMPLETED;
-		else return ResultMessage.VALID;
-	}
+	
 
 }

@@ -6,6 +6,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
+import Exception.CourierNotFoundException;
 import Exception.GoodsNotFound;
 import PO.GoodsPO;
 import dataservice.goodsdataservice.GoodsDataService;
@@ -35,7 +36,11 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 			}
 		return ResultMessage.FAILED;
 	}
-	@Override
+	/**
+	 * 不需要抛不存在的异常，，，因为bl在把PO传过来之前已经确认过PO存在了~
+	 */
+	//Done!
+	@Override	
 	public ResultMessage modify(GoodsPO po) throws RemoteException {
 		ArrayList<Object> all;
 		GoodsPO temp;
@@ -82,6 +87,7 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 		return ResultMessage.FAILED;
 	}
 
+	//Done!
 	@Override
 	public ArrayList<GoodsPO> show() throws RemoteException {
 		ArrayList<Object> all;
@@ -99,9 +105,10 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 		return pos;
 	}
 
-	@Override
+	//Done!
+	@Override	
 	public GoodsPO findbygoods(String ListNum)throws RemoteException,GoodsNotFound {
-		System.out.println("GoodsData");
+		System.out.println("GoodsData.findbygoods");
 		ArrayList<Object> all=null;
 		GoodsPO po=null,temp;
 		try {
@@ -121,21 +128,58 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 		return po;
 	}
 
+	/**
+	 * 返回某一天  快递员接件的  货物  的PO
+	 */
+	//Done!
 	@Override
 	public ArrayList<GoodsPO> findbyGetCourier(String CourierNum,String date)
-			throws RemoteException {
-		// TODO Auto-generated method stub
+			throws RemoteException{
+		ArrayList<Object> all=null;
+		ArrayList<GoodsPO> ans=new ArrayList<GoodsPO>();
+		GoodsPO po;
+		try {
+			all=helper.getAll(filename);
+			for(Object o:all){
+				po=(GoodsPO)o;
+				//找到了接件的货物~
+				if(po.getGetCourierAccount().equals(CourierNum)){
+					ans.add(po);
+				}
+			}
+			return ans;
+		} catch (ClassNotFoundException | IOException e) {
+		}
 		return null;
 	}
-
+	/**
+	 * 返回某一天  快递员接件/派件 数量
+	 */
+	//Done!
 	@Override
 	public int findbyCourier(String CourierNum,String date)
-			throws RemoteException {
-		return 0;
-	//TODO
+			throws RemoteException{
+		ArrayList<Object> all=null;
+		//待返回的总数
+		int sum=0;
+		GoodsPO po=null;
+		try {
+			all=helper.getAll(filename);
+			for(Object o:all){
+				po=(GoodsPO)o;
+				//找到了货物~
+				if(po.getGetCourierAccount().equals(CourierNum)
+						||po.getDeliverCourierAccount().equals(CourierNum)){
+					sum++;
+				}
+			}
+		} catch (ClassNotFoundException | IOException e) {
+		}
+		return sum;
+	
 	}
 	public  GoodsData() throws RemoteException {
-		super();//TODO
+		super();
 	}
 	private static final long serialVersionUID = 1L;
 

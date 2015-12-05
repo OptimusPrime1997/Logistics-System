@@ -1,23 +1,20 @@
 package PO.ReceiptPO;
 
-public class BonusPO {
-	private String getterName;
-	private String getterNum;
-	private double money;
-	public BonusPO(String getterName, String getterNum, double money) {
-		super();
-		this.getterName = getterName;
-		this.getterNum = getterNum;
-		this.money = money;
+public class BonusPO extends AllSalaryPO{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -882537465571433504L;
+	
+	private String remark;
+
+	public BonusPO(String getterName, String getterNum, double money, String remark) {
+		super(getterName, getterNum, money);
+		this.remark = remark;
 	}
-	public String getGetterName() {
-		return getterName;
-	}
-	public String getGetterNum() {
-		return getterNum;
-	}
-	public double getMoney() {
-		return money;
+
+	public String getRemark() {
+		return remark;
 	}
 	
 }
