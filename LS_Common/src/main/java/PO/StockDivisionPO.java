@@ -15,7 +15,7 @@ public class StockDivisionPO implements Serializable{
 	private String destination;
 	private int block;
 	private int place;
-	private boolean available;
+	
 	
 	/**
 	 * 
@@ -25,12 +25,12 @@ public class StockDivisionPO implements Serializable{
 	 * @param p	    number of this place
 	 * @param avai  state of this place
 	 */
-	public StockDivisionPO(String cn,String des,int b,int p,boolean avai){
+	public StockDivisionPO(String cn,String des,int b,int p){
 		cityNum=cn;
 		destination=des;
 		block=b;
 		place=p;
-		available=avai;
+		
 	}
 
 	public String getCityNum() {
@@ -49,9 +49,6 @@ public class StockDivisionPO implements Serializable{
 		return place;
 	}
 
-	public boolean getAvailable() {
-		return available;
-	}
 	
 
 	public void setCityNum(String cityNum) {
@@ -70,10 +67,7 @@ public class StockDivisionPO implements Serializable{
 		this.place = place;
 	}
 
-	public void setAvailable(boolean available) {
-		this.available = available;
-	}
-	
+
 	
 	
 	

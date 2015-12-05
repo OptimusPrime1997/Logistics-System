@@ -8,6 +8,7 @@ import VO.ReceiptVO.DeliverRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.DeliverRepblService;
+import util.enumData.ResultMessage;
 
 public class DeliverController extends ReceiptblController implements DeliverRepblService{
 	DeliverRepbl deliverRep = new DeliverRepbl();
@@ -52,6 +53,18 @@ public class DeliverController extends ReceiptblController implements DeliverRep
 	public ArrayList<DeliverRepVO> getRepBydate(String date) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return deliverRep.getRepByDate(date);
+	}
+
+	@Override
+	public ResultMessage checkOrderNum(String order) {
+		// TODO Auto-generated method stub
+		return deliverRep.checkOrderNum(order);
+	}
+
+	@Override
+	public ResultMessage checkCourierNum(String courierNum) {
+		// TODO Auto-generated method stub
+		return deliverRep.checkOrderNum(courierNum);
 	}
 
 }
