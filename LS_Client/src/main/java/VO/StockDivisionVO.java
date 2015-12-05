@@ -3,6 +3,7 @@
  */
 package VO;
 
+import util.enumData.City;
 import PO.StockDivisionPO;
 
 /**
@@ -10,9 +11,9 @@ import PO.StockDivisionPO;
  *
  */
 public class StockDivisionVO {
-	public String listNum;
+	public City listNum;
 	public String cityNum;
-	public String destination;
+	public City destination;
 	public int block;
 	public int place;
 	
@@ -25,7 +26,7 @@ public class StockDivisionVO {
 	 * @param p	    number of this place
 	 * @param avai  state of this place
 	 */
-	public StockDivisionVO(String listNum,String cn,String des,int b,int p){
+	public StockDivisionVO(City listNum,String cn,City des,int b,int p){
 		this.listNum = listNum;
 		cityNum=cn;
 		destination=des;

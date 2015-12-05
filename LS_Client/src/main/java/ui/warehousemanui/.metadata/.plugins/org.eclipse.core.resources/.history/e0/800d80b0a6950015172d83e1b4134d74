@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package RMIservice;
+
+/**
+ * @author G
+ *
+ */
+public interface StockNumDataRemote {
+
+}

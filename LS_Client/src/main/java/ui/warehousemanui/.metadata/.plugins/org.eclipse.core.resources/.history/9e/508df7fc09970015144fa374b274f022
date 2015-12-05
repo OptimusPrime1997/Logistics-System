@@ -1,0 +1,143 @@
+/**
+ * 
+ */
+package bl.stockbl;
+
+import java.util.ArrayList;
+
+import javax.xml.bind.ValidationEvent;
+
+import bl.receiptbl.InStockRepbl.InStockRepbl;
+import ui.warehousemanui.CheckUtil;
+import util.enumData.ResultMessage;
+import VO.InStockRepVO;
+import VO.OutStockRepVO;
+import VO.StockVO;
+
+/**
+ * @author G
+ *
+ */
+public class Stock {
+	
+	
+	public InStockRepVO toWriteInStockRep() {
+		//TODO
+		return null;
+	}
+	
+	public OutStockRepVO toWriteOutStockRep() {
+		//TODO
+		return null;
+	}
+	
+	public int checkInStock(String startMonth, String startDay,
+			String endMonth, String endDay) {
+		
+		InStockRepbl rep = new InStockRepbl();
+		ArrayList<InStockRepVO> reps = new ArrayList<InStockRepVO>();
+		
+		if(!checkDateValid(startMonth, startDay, endMonth, endDay)){
+			return 0;
+		}
+		
+		for(int i = 0;i < 10;++i) {
+			reps.addAll(rep.getByDate(startMonth+startDay));
+		}
+		return reps.size();
+	}
+
+	
+	public int checkOutStock(String startMonth, String startDay,
+			String endMonth, String endDay) {
+		// TODO Auto-generated method stub
+		MockOutStockRep rep = new MockOutStockRep();
+		ArrayList<OutStockRepVO> reps = new ArrayList<OutStockRepVO>();
+		for(int i = 0;i < 10;++i) {
+			reps.addAll(rep.getbyDate(startMonth+startDay));
+		}
+		return reps.size();
+	}
+
+	
+	public int checkStockQuantity(String startMonth, String startDay,
+			String endMonth, String endDay) {
+		// TODO Auto-generated method stub
+		MockInStockRep inrep = new MockInStockRep();
+		ArrayList<InStockRepVO> inreps = new ArrayList<InStockRepVO>();
+		for(int i = 0;i < 10;++i) {
+			inreps.addAll(inrep.getByDate(startMonth+startDay));
+		}
+		MockOutStockRep outrep = new MockOutStockRep();
+		ArrayList<OutStockRepVO> outreps = new ArrayList<OutStockRepVO>();
+		for(int i = 0;i < 10;++i) {
+			outreps.addAll(outrep.getbyDate(startDate));
+		}
+		MockStockNum stocknum = new MockStockNum();
+		stocknum.initial(100);
+		int initialStockNum = stocknum.getInitialStockNum();
+		
+		return initialStockNum+inreps.size()-outreps.size();
+	}
+
+	
+	public int checkPresentStockQuantity() {
+		// TODO Auto-generated method stub
+		//现有库存数量=初始库存数量+遍历库存的数量
+//		MockStockNum stocknum = new MockStockNum();
+//		int initialStockNum = stocknum.getInitialStockNum();
+		
+		MockStockNum stocknum = new MockStockNum();
+		stocknum.initial(100);
+		MockStockList list = new MockStockList();
+		
+		StockListItem item1 = new StockListItem();
+		StockListItem item2 = new StockListItem();
+		
+		list.addStockListItem(item1);
+		list.addStockListItem(item2);
+		
+		int initialStockNum = stocknum.getInitialStockNum();
+		System.out.println(" initial "+initialStockNum);
+		int present = list.getPresentStockList().size();
+		
+		return initialStockNum+present;
+	}
+
+	
+	public ArrayList<StockVO> show() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * 检查起始日期是否在结束日期之前
+	 * @param startMonth
+	 * @param startDay
+	 * @param endMonth
+	 * @param endDay
+	 * @return
+	 */
+	private boolean checkDateValid(String startMonth, String startDay,
+			String endMonth, String endDay){
+		boolean valid = false;
+		int sm = Integer.parseInt(startMonth);
+		int sd = Integer.parseInt(startDay);
+		int em = Integer.parseInt(endMonth);
+		int ed = Integer.parseInt(endDay);
+		
+		if(sm<em||(sm==em&&sd<=ed)){
+			valid = true;
+		}
+		return valid;
+		
+	}
+	
+	private int calcuDays(String startMonth, String startDay,
+			String endMonth, String endDay){
+		int result = 0;
+		
+		return result;
+	}
+	
+}

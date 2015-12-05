@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1445008871939_1" label="express-all" name="express-all">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/client" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/model" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1448134294872_2" label="Logistics_System" name="Logistics_System"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1425990727176_0" label="Window Working Set" name="Aggregate for window 1425990727176"/>
+</workingSetManager>

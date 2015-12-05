@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;listnum&apos; in &apos;PO.StockDivisionPO&apos; to &apos;listNum&apos;&#x0A;- Original project: &apos;LS_Common&apos;&#x0A;- Original element: &apos;PO.StockDivisionPO.listnum&apos;&#x0A;- Renamed element: &apos;PO.StockDivisionPO.listNum&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;listnum&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src\/main\/java&lt;PO{StockDivisionPO.java[StockDivisionPO^listnum" name="listNum" references="true" setter="false" stamp="1449299494663" textual="false" version="1.0"/>
+</session>

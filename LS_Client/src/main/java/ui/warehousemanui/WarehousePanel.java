@@ -6,9 +6,15 @@
 package ui.warehousemanui;
 
 import java.awt.*;
+import java.io.IOException;
+import java.rmi.NotBoundException;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
+import VO.StockVO;
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.stockblservice.StockBLService;
 import ui.mainFrame.MainFrame;
 import ui.receiptui.InStockRep;
 import ui.receiptui.OutStockRep;
@@ -50,7 +56,11 @@ public class WarehousePanel extends javax.swing.JFrame {
     	int screenw = screensize.width;
     	this.setSize(800, 500);
     	this.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);
-    	
+    	/**
+    	 * 关闭窗口
+    	 */
+    	setDefaultCloseOperation(EXIT_ON_CLOSE);
+
 
         jProgressBar2 = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
@@ -156,7 +166,15 @@ public class WarehousePanel extends javax.swing.JFrame {
         jButton6.setText("盘点仓库所有货物");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                try {
+					jButton6ActionPerformed(evt);
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				} catch (NotBoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
             }
         });
 
@@ -330,12 +348,16 @@ public class WarehousePanel extends javax.swing.JFrame {
     	this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    StockBLService s = ControllerFactoryImpl.getInstance().getStockController();
+    
+    
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) throws ClassNotFoundException, NotBoundException, IOException {//GEN-FIRST:event_jButton6ActionPerformed
     	
     	StockShowPanel ss = new StockShowPanel();
     	ss.setVisible(true);
     	this.dispose();
-    	
+    	//TODO  把返回的list里的内容显示在界面
+    	ArrayList<StockVO> list = s.show();
     	
     }//GEN-LAST:event_jButton6ActionPerformed
 

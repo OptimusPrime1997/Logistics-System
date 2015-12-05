@@ -1,0 +1,8 @@
+1426841119808	Convert local variable 'str' to field
+1426841217758	Inline local variable 'str1'
+1426845912623	Convert local variable 'todayDate' to field
+1426855478068	Convert local variable 'todayList' to field
+1426855637424	Convert local variable 'todayList' to field
+1426855649473	Convert local variable 'pastList' to field
+1426855667038	Extract local variable 'j'
+1426855675092	Extract local variable 'j2'

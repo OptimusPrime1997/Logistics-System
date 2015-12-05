@@ -3,8 +3,13 @@
  */
 package blservice.stockblservice;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.City;
 import util.enumData.ResultMessage;
 import VO.StockDivisionVO;
 
@@ -21,12 +26,17 @@ public interface StockDivisionBLService {
 	 * @param newBlock
 	 * @param newPlace
 	 */
-	public ResultMessage modifyDivision(int oldBlock,int oldPlace, int newBlock, int newPlace);
+	
+	public ResultMessage modifyDivision(int oldBlock, int oldPlace, int newBlock, int newPlace);
 	
 	/**
 	 * 界面提供目的地，系统提供该仓库可用的区号和位号
 	 * @param destination
 	 * @return
+	 * @throws NotBoundException 
+	 * @throws RemoteException 
+	 * @throws MalformedURLException 
+	 * @throws IOException 
 	 */
-	public ArrayList<StockDivisionVO> getBlock(String destination);
+	public ArrayList<StockDivisionVO> getBlock(City destination) throws MalformedURLException, RemoteException, NotBoundException, IOException;
 }

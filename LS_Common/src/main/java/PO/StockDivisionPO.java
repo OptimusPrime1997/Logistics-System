@@ -5,6 +5,8 @@ package PO;
 
 import java.io.Serializable;
 
+import util.enumData.City;
+
 /**
  * @author G
  *
@@ -15,9 +17,9 @@ public class StockDivisionPO implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 2717252400399634569L;
-	private String listNum;
+	private City listNum;
 	private String cityNum;
-	private String destination;
+	private City destination;
 	private int block;
 	private int place;
 	
@@ -30,7 +32,7 @@ public class StockDivisionPO implements Serializable{
 	 * @param p	    number of this place
 	 * @param avai  state of this place
 	 */
-	public StockDivisionPO(String listnum, String cn,String des,int b,int p){
+	public StockDivisionPO(City listnum, String cn, City des,int b,int p){
 		this.listNum = listnum;
 		cityNum=cn;
 		destination=des;
@@ -40,12 +42,12 @@ public class StockDivisionPO implements Serializable{
 	}
 
 	
-	public String getListnum() {
+	public City getListnum() {
 		return listNum;
 	}
 
 
-	public void setListnum(String listnum) {
+	public void setListnum(City listnum) {
 		this.listNum = listnum;
 	}
 
@@ -57,7 +59,7 @@ public class StockDivisionPO implements Serializable{
 		return cityNum;
 	}
 
-	public String getDestination() {
+	public City getDestination() {
 		return destination;
 	}
 
@@ -75,7 +77,7 @@ public class StockDivisionPO implements Serializable{
 		this.cityNum = cityNum;
 	}
 
-	public void setDestination(String destination) {
+	public void setDestination(City destination) {
 		this.destination = destination;
 	}
 

@@ -138,8 +138,11 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 	}
 
 
+	/**
+	 * 得到本城市仓库所有的货物
+	 */
 	@Override
-	public ArrayList<StockDivisionPO> getStockDivision() throws IOException {
+	public ArrayList<StockDivisionPO> getStockDivision(String cityNum) throws IOException {
 	 
 		ArrayList<StockDivisionPO> list = new ArrayList<StockDivisionPO>();
 		ArrayList<Object> listo;
@@ -148,7 +151,10 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 			
 			for(Object o:listo) {
 				StockDivisionPO po = (StockDivisionPO) o;
-				list.add(po);
+				//筛选出本城市仓库
+				if(po.getCityNum().equals(cityNum)){
+					list.add(po);
+				}
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

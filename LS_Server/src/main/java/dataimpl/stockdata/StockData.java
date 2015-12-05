@@ -6,18 +6,18 @@ package dataimpl.stockdata;
 
 
 import java.io.IOException;
-
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import util.FromIntToCity;
+import util.enumData.City;
 import util.enumData.ResultMessage;
 import PO.StockPO;
 import PO.ReceiptPO.InStockPO;
 import PO.ReceiptPO.InStockRepPO;
 import PO.ReceiptPO.OutStockRepPO;
 import dataservice.stockdataservice.StockDataService;
-
 import datautil.DataUtility;
 
 /**
@@ -105,7 +105,7 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 
 	
 	@Override
-	public ArrayList<StockPO> getStock() throws IOException {
+	public ArrayList<StockPO> getStock(City cityNum) throws IOException {
 		
 		ArrayList<StockPO> list = new ArrayList<StockPO>();
 		ArrayList<Object> listo;
@@ -116,7 +116,9 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 			if (listo != null) {
 				for(Object o:listo) {
 					StockPO po = (StockPO) o;
-					list.add(po);
+					if (po.getCityNum().equals(cityNum)){
+						list.add(po);
+					}
 				}
 			}
 		} catch (ClassNotFoundException e) {
@@ -136,14 +138,15 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 		String inrepnum = po.getNum();
 		String date = po.getDate();
 		//TODO 得到本地城市
-		String citynum = "Nanjing";
+		City citynum = City.BEIJING;
+	
+				
 		ArrayList<InStockPO> list = po.getInStockPOs();
 		for(InStockPO inpo : list) {
 			int block = Integer.parseInt(inpo.getArea());
 			int place = Integer.parseInt(inpo.getLoc());
-			// TODO 由区号得到城市
-			
-			rm = add(new StockPO(citynum, inpo.getOrder(), inrepnum, date, inpo.getArea(), block, place));
+			City desCity = FromIntToCity.toCity(block);
+			rm = add(new StockPO(citynum, inpo.getOrder(), inrepnum, date, desCity, block, place));
 
 		}
 		return rm;

@@ -5,17 +5,19 @@ package PO;
 
 import java.io.Serializable;
 
+import util.enumData.City;
+
 /**
  * @author G
  *
  */
 public class StockPO implements Serializable{
 	
-	private String cityNum;
+	private City localCity;
 	private String listNum;
 	private String inStockRepNum;
 	private String inStockDate;
-	private String destination;
+	private City destination;
 	private int block;
 	private int place;
 	
@@ -31,8 +33,8 @@ public class StockPO implements Serializable{
 	 * @param p     place where this list is 
 	 */
 	
-	public StockPO(String cn,String ln,String rn,String d,String des,int b,int p){
-		cityNum=cn;
+	public StockPO(City cn,String ln,String rn,String d,City des,int b,int p){
+		localCity=cn;
 		listNum=ln;
 		inStockRepNum=rn;
 		inStockDate=d;
@@ -42,8 +44,8 @@ public class StockPO implements Serializable{
 	}
 	
 	
-	public String getCityNum() {
-		return cityNum;
+	public City getCityNum() {
+		return localCity;
 	}
 	public String getListNum() {
 		return listNum;
@@ -54,7 +56,7 @@ public class StockPO implements Serializable{
 	public String getInStockDate() {
 		return inStockDate;
 	}
-	public String getDestination() {
+	public City getDestination() {
 		return destination;
 	}
 	public int getBlock() {
@@ -65,8 +67,8 @@ public class StockPO implements Serializable{
 	}
 	
 
-	public void setCityNum(String cityNum) {
-		this.cityNum = cityNum;
+	public void setCityNum(City localCity) {
+		this.localCity = localCity;
 	}
 
 
@@ -85,7 +87,7 @@ public class StockPO implements Serializable{
 	}
 
 
-	public void setDestination(String destination) {
+	public void setDestination(City destination) {
 		this.destination = destination;
 	}
 

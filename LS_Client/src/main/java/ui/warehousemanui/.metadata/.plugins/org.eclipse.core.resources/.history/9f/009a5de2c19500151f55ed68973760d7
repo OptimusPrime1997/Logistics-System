@@ -1,0 +1,28 @@
+/**
+ * 
+ */
+package RMI;
+
+import java.rmi.Naming;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+
+import dataimpl.stockdata.StockInitialData;
+import dataservice.stockdataservice.StockInitialDataService;
+
+/**
+ * @author G
+ *
+ */
+public class StockIniMain {
+
+	public static void main(String[] args) {
+		try {
+			StockInitialDataService sn = new StockInitialData();
+			LocateRegistry.createRegistry(333);
+			Naming.rebind("rmi://127.0.0.1/stockini", sn);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

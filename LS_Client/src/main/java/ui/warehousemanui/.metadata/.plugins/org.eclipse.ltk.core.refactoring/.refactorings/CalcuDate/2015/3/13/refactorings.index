@@ -1,0 +1,8 @@
+1427215446927	Rename type 'CacuDate'
+1427215459396	Rename compilation unit 'CacuDateTest.java'
+1427215480044	Rename type 'EasyCacu'
+1427243509871	Delete element
+1427243576163	Move compilation unit
+1427243587658	Move compilation unit
+1427244113649	Convert local variable 'pastDate' to field
+1427244123610	Convert local variable 'todayDate' to field

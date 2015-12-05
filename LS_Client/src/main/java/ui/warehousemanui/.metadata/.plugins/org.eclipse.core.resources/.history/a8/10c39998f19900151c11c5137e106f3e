@@ -1,0 +1,40 @@
+/**
+ * 
+ */
+package bl.stockbl;
+
+import java.util.ArrayList;
+
+import util.enumData.ResultMessage;
+import VO.StockDivisionVO;
+import bl.receiptbl.InStockRepbl.InStockRepbl;
+import blservice.stockblservice.StockDivisionBLService;
+
+/**
+ * @author G
+ *
+ */
+public class StockDivisionbl implements StockDivisionBLService{
+
+	
+	public ResultMessage modifyDivision(int oldBlock, int oldPlace, int newBlock, int newPlace) {
+		// TODO Auto-generated method stub
+		return ResultMessage.SUCCESS;
+	}
+
+	 
+	public ArrayList<StockDivisionVO> getBlock(String destination) {
+		// TODO Auto-generated method stub
+		
+		return null;
+	}
+	
+	public boolean isPlaceAvailable(int block, int place) {
+		boolean available = true;
+		
+		
+		
+		return available;
+	}
+
+}

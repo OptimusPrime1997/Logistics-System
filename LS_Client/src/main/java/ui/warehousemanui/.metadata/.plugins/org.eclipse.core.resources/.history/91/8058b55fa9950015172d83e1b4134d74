@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package RMI;
+
+/**
+ * @author G
+ *
+ */
+public class StockInitialDataServer {
+
+}

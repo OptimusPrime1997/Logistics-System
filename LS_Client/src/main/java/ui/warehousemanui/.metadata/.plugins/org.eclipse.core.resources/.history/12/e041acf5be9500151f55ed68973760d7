@@ -1,0 +1,32 @@
+/**
+ * 
+ */
+package dataservice.stockdataservice;
+
+import java.rmi.RemoteException;
+
+import PO.StockNumPO;
+import util.enumData.ResultMessage;
+
+/**
+ * @author G
+ *
+ */
+public interface StockInitialDataService {
+	
+	/**
+	 * initial initialNum
+	 * @param initialNum
+	 * @throws RemoteException
+	 */
+	public ResultMessage initial(StockNumPO po)throws RemoteException;
+	
+	/**
+	 * 
+	 * @return
+	 * @throws RemoteException
+	 */
+	public StockNumPO getInitialNum(String citynum)throws RemoteException;
+	
+
+}
