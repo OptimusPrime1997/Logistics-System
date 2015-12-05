@@ -9,7 +9,7 @@ package main;
  *
  * @author Administrator
  */
-public class goods_check extends .JFrame {
+public class goods_check extends javax.swing.JFrame {
 
     /**
      * Creates new form goods_check
@@ -27,14 +27,14 @@ public class goods_check extends .JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new .JLabel();
-        jLabel2 = new .JLabel();
-        jLabel3 = new .JLabel();
-        jScrollPane1 = new .JScrollPane();
-        jTable1 = new .JTable();
-        ok_btm = new .JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        ok_btm = new javax.swing.JButton();
 
-        setDefaultCloseOperation(.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("订单号");
 
@@ -43,7 +43,7 @@ public class goods_check extends .JFrame {
         jLabel3.setFont(new java.awt.Font("宋体", 1, 14)); // NOI18N
         jLabel3.setText("物流信息");
 
-        jTable1.setModel(new .table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -69,38 +69,38 @@ public class goods_check extends .JFrame {
 
         ok_btm.setText("确定");
 
-        .GroupLayout layout = new .GroupLayout(getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, .GroupLayout.PREFERRED_SIZE, 286, .GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(80, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, .GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)
-                        .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2)
                         .addGap(113, 113, 113))))
-            .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ok_btm)
                 .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addGap(50, 50, 50)
-                .addComponent(jScrollPane1, .GroupLayout.PREFERRED_SIZE, 171, .GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ok_btm)
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -119,9 +119,9 @@ public class goods_check extends .JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (.UIManager.LookAndFeelInfo info : .UIManager.getInstalledLookAndFeels()) {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    .UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -131,7 +131,7 @@ public class goods_check extends .JFrame {
             java.util.logging.Logger.getLogger(goods_check.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(goods_check.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(goods_check.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -146,11 +146,11 @@ public class goods_check extends .JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private .JLabel jLabel1;
-    private .JLabel jLabel2;
-    private .JLabel jLabel3;
-    private .JScrollPane jScrollPane1;
-    private .JTable jTable1;
-    private .JButton ok_btm;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JButton ok_btm;
     // End of variables declaration//GEN-END:variables
 }

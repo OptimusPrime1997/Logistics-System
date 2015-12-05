@@ -8,10 +8,10 @@ package ui.courierui;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import .GroupLayout;
-import .JFrame;
-import .JLabel;
-import .JProgressBar;
+import javax.swing.GroupLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JProgressBar;
 
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.goodsblservice.GoodsFindBLService;
@@ -20,7 +20,7 @@ import ui.receiptui.Order;
 import util.CurrentTime;
 import util.MyFrame;
 
-public class courier_main extends .JPanel {
+public class courier_main extends javax.swing.JPanel {
 	static int NUM_OF_DAYS=7;
 	GoodsFindBLService goodsController = ControllerFactoryImpl
 			.getInstance().getGoodsFindController();
@@ -29,7 +29,7 @@ public class courier_main extends .JPanel {
 		initComponents();
 	}
 	private void initComponents() {
-		.GroupLayout layout = new .GroupLayout(this);
+		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
 		this.setLayout(layout);
 		initLabel();
 		initProBar();
@@ -45,24 +45,24 @@ public class courier_main extends .JPanel {
 	private void initLayOut(GroupLayout layout) {
 
 		layout.setHorizontalGroup(layout
-				.createParallelGroup(.GroupLayout.Alignment.LEADING)
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGroup(
-						.GroupLayout.Alignment.TRAILING,
+						javax.swing.GroupLayout.Alignment.TRAILING,
 						layout.createSequentialGroup()
 								.addGap(44, 44, 44)
 								.addGroup(
 										layout.createParallelGroup(
-												.GroupLayout.Alignment.LEADING)
+												javax.swing.GroupLayout.Alignment.LEADING)
 												.addComponent(
 														signedGoodsbtn,
-														.GroupLayout.PREFERRED_SIZE,
+														javax.swing.GroupLayout.PREFERRED_SIZE,
 														101,
-														.GroupLayout.PREFERRED_SIZE)
+														javax.swing.GroupLayout.PREFERRED_SIZE)
 												.addComponent(
 														newGoodsbtn,
-														.GroupLayout.PREFERRED_SIZE,
+														javax.swing.GroupLayout.PREFERRED_SIZE,
 														99,
-														.GroupLayout.PREFERRED_SIZE)
+														javax.swing.GroupLayout.PREFERRED_SIZE)
 												.addGroup(
 														layout.createSequentialGroup()
 																.addGap(124,
@@ -71,18 +71,18 @@ public class courier_main extends .JPanel {
 																.addComponent(
 																		businessOffice_label)
 																.addPreferredGap(
-																		.LayoutStyle.ComponentPlacement.RELATED)
+																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 																.addComponent(
 																		businessOfficeNum_label)))
 								.addGap(28, 28, 28)
 								.addGroup(
 										layout.createParallelGroup(
-												.GroupLayout.Alignment.LEADING)
+												javax.swing.GroupLayout.Alignment.LEADING)
 												.addGroup(
 														layout.createSequentialGroup()
 																.addGroup(
 																		layout.createParallelGroup(
-																				.GroupLayout.Alignment.LEADING)
+																				javax.swing.GroupLayout.Alignment.LEADING)
 																				.addGroup(
 																						layout.createSequentialGroup()
 																								.addGap(31,
@@ -90,7 +90,7 @@ public class courier_main extends .JPanel {
 																										31)
 																								.addGroup(
 																										layout.createParallelGroup(
-																												.GroupLayout.Alignment.TRAILING)
+																												javax.swing.GroupLayout.Alignment.TRAILING)
 																												.addComponent(
 																														labels.get(5))
 																												.addComponent(
@@ -106,60 +106,60 @@ public class courier_main extends .JPanel {
 																												.addComponent(
 																														labels.get(0)))
 																								.addPreferredGap(
-																										.LayoutStyle.ComponentPlacement.UNRELATED)
+																										javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 																								.addGroup(
 																										layout.createParallelGroup(
-																												.GroupLayout.Alignment.LEADING)
+																												javax.swing.GroupLayout.Alignment.LEADING)
 																												.addGroup(
 																														layout.createParallelGroup(
-																																.GroupLayout.Alignment.TRAILING,
+																																javax.swing.GroupLayout.Alignment.TRAILING,
 																																false)
 																																.addComponent(
 																																		bars.get(3),
-																																		.GroupLayout.Alignment.LEADING,
-																																		.GroupLayout.DEFAULT_SIZE,
-																																		.GroupLayout.DEFAULT_SIZE,
+																																		javax.swing.GroupLayout.Alignment.LEADING,
+																																		javax.swing.GroupLayout.DEFAULT_SIZE,
+																																		javax.swing.GroupLayout.DEFAULT_SIZE,
 																																		Short.MAX_VALUE)
 																																.addComponent(
 																																		bars.get(4),
-																																		.GroupLayout.Alignment.LEADING,
-																																		.GroupLayout.PREFERRED_SIZE,
-																																		.GroupLayout.DEFAULT_SIZE,
-																																		.GroupLayout.PREFERRED_SIZE))
+																																		javax.swing.GroupLayout.Alignment.LEADING,
+																																		javax.swing.GroupLayout.PREFERRED_SIZE,
+																																		javax.swing.GroupLayout.DEFAULT_SIZE,
+																																		javax.swing.GroupLayout.PREFERRED_SIZE))
 																												.addGroup(
 																														layout.createParallelGroup(
-																																.GroupLayout.Alignment.TRAILING,
+																																javax.swing.GroupLayout.Alignment.TRAILING,
 																																false)
 																																.addComponent(
 																																		bars.get(0),
-																																		.GroupLayout.Alignment.LEADING,
-																																		.GroupLayout.DEFAULT_SIZE,
-																																		.GroupLayout.DEFAULT_SIZE,
+																																		javax.swing.GroupLayout.Alignment.LEADING,
+																																		javax.swing.GroupLayout.DEFAULT_SIZE,
+																																		javax.swing.GroupLayout.DEFAULT_SIZE,
 																																		Short.MAX_VALUE)
 																																.addComponent(
 																																		bars.get(1),
-																																		.GroupLayout.Alignment.LEADING,
-																																		.GroupLayout.DEFAULT_SIZE,
-																																		.GroupLayout.DEFAULT_SIZE,
+																																		javax.swing.GroupLayout.Alignment.LEADING,
+																																		javax.swing.GroupLayout.DEFAULT_SIZE,
+																																		javax.swing.GroupLayout.DEFAULT_SIZE,
 																																		Short.MAX_VALUE)
 																																.addComponent(
 																																		bars.get(2),
-																																		.GroupLayout.Alignment.LEADING,
-																																		.GroupLayout.PREFERRED_SIZE,
-																																		.GroupLayout.DEFAULT_SIZE,
-																																		.GroupLayout.PREFERRED_SIZE)
+																																		javax.swing.GroupLayout.Alignment.LEADING,
+																																		javax.swing.GroupLayout.PREFERRED_SIZE,
+																																		javax.swing.GroupLayout.DEFAULT_SIZE,
+																																		javax.swing.GroupLayout.PREFERRED_SIZE)
 																																.addComponent(
 																																		bars.get(5),
-																																		.GroupLayout.Alignment.LEADING,
-																																		.GroupLayout.DEFAULT_SIZE,
-																																		.GroupLayout.DEFAULT_SIZE,
+																																		javax.swing.GroupLayout.Alignment.LEADING,
+																																		javax.swing.GroupLayout.DEFAULT_SIZE,
+																																		javax.swing.GroupLayout.DEFAULT_SIZE,
 																																		Short.MAX_VALUE)
 																																.addComponent(
 																																		bars.get(6),
-																																		.GroupLayout.Alignment.LEADING,
-																																		.GroupLayout.PREFERRED_SIZE,
-																																		.GroupLayout.DEFAULT_SIZE,
-																																		.GroupLayout.PREFERRED_SIZE))))
+																																		javax.swing.GroupLayout.Alignment.LEADING,
+																																		javax.swing.GroupLayout.PREFERRED_SIZE,
+																																		javax.swing.GroupLayout.DEFAULT_SIZE,
+																																		javax.swing.GroupLayout.PREFERRED_SIZE))))
 																				.addComponent(
 																						recentDays_label))
 																.addGap(0,
@@ -170,30 +170,30 @@ public class courier_main extends .JPanel {
 																.addComponent(
 																		account_label)
 																.addPreferredGap(
-																		.LayoutStyle.ComponentPlacement.RELATED)
+																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 																.addComponent(
 																		account_btn,
-																		.GroupLayout.PREFERRED_SIZE,
+																		javax.swing.GroupLayout.PREFERRED_SIZE,
 																		85,
-																		.GroupLayout.PREFERRED_SIZE)
+																		javax.swing.GroupLayout.PREFERRED_SIZE)
 																.addPreferredGap(
-																		.LayoutStyle.ComponentPlacement.RELATED,
+																		javax.swing.LayoutStyle.ComponentPlacement.RELATED,
 																		114,
 																		Short.MAX_VALUE)
 																.addComponent(
 																		exit_btn)))
 								.addContainerGap()));
 		layout.setVerticalGroup(layout
-				.createParallelGroup(.GroupLayout.Alignment.LEADING)
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGroup(
 						layout.createSequentialGroup()
 								.addContainerGap()
 								.addGroup(
 										layout.createParallelGroup(
-												.GroupLayout.Alignment.LEADING)
+												javax.swing.GroupLayout.Alignment.LEADING)
 												.addGroup(
 														layout.createParallelGroup(
-																.GroupLayout.Alignment.BASELINE)
+																javax.swing.GroupLayout.Alignment.BASELINE)
 																.addComponent(
 																		account_btn)
 																.addComponent(
@@ -205,38 +205,38 @@ public class courier_main extends .JPanel {
 												.addComponent(exit_btn))
 								.addGap(18, 18, 18)
 								.addComponent(recentDays_label,
-										.GroupLayout.PREFERRED_SIZE,
+										javax.swing.GroupLayout.PREFERRED_SIZE,
 										25,
-										.GroupLayout.PREFERRED_SIZE)
+										javax.swing.GroupLayout.PREFERRED_SIZE)
 								.addGap(11, 11, 11)
 								.addGroup(
 										layout.createParallelGroup(
-												.GroupLayout.Alignment.LEADING)
+												javax.swing.GroupLayout.Alignment.LEADING)
 												.addGroup(
 														layout.createSequentialGroup()
 																.addGroup(
 																		layout.createParallelGroup(
-																				.GroupLayout.Alignment.TRAILING)
+																				javax.swing.GroupLayout.Alignment.TRAILING)
 																				.addGroup(
 																						layout.createSequentialGroup()
 																								.addComponent(
 																										bars.get(6),
-																										.GroupLayout.PREFERRED_SIZE,
-																										.GroupLayout.DEFAULT_SIZE,
-																										.GroupLayout.PREFERRED_SIZE)
+																										javax.swing.GroupLayout.PREFERRED_SIZE,
+																										javax.swing.GroupLayout.DEFAULT_SIZE,
+																										javax.swing.GroupLayout.PREFERRED_SIZE)
 																								.addGap(18,
 																										18,
 																										18)
 																								.addGroup(
 																										layout.createParallelGroup(
-																												.GroupLayout.Alignment.LEADING)
+																												javax.swing.GroupLayout.Alignment.LEADING)
 																												.addComponent(
 																														labels.get(5))
 																												.addComponent(
 																														bars.get(5),
-																														.GroupLayout.PREFERRED_SIZE,
-																														.GroupLayout.DEFAULT_SIZE,
-																														.GroupLayout.PREFERRED_SIZE))
+																														javax.swing.GroupLayout.PREFERRED_SIZE,
+																														javax.swing.GroupLayout.DEFAULT_SIZE,
+																														javax.swing.GroupLayout.PREFERRED_SIZE))
 																								.addGap(18,
 																										18,
 																										18)
@@ -244,35 +244,35 @@ public class courier_main extends .JPanel {
 																										labels.get(4)))
 																				.addComponent(
 																						newGoodsbtn,
-																						.GroupLayout.PREFERRED_SIZE,
+																						javax.swing.GroupLayout.PREFERRED_SIZE,
 																						56,
-																						.GroupLayout.PREFERRED_SIZE))
+																						javax.swing.GroupLayout.PREFERRED_SIZE))
 																.addGap(18, 18,
 																		18)
 																.addComponent(
 																		labels.get(3)))
 												.addGroup(
 														layout.createParallelGroup(
-																.GroupLayout.Alignment.TRAILING)
+																javax.swing.GroupLayout.Alignment.TRAILING)
 																.addGroup(
-																		.GroupLayout.Alignment.LEADING,
+																		javax.swing.GroupLayout.Alignment.LEADING,
 																		layout.createSequentialGroup()
 																				.addGap(63,
 																						63,
 																						63)
 																				.addComponent(
 																						bars.get(4),
-																						.GroupLayout.PREFERRED_SIZE,
-																						.GroupLayout.DEFAULT_SIZE,
-																						.GroupLayout.PREFERRED_SIZE)
+																						javax.swing.GroupLayout.PREFERRED_SIZE,
+																						javax.swing.GroupLayout.DEFAULT_SIZE,
+																						javax.swing.GroupLayout.PREFERRED_SIZE)
 																				.addGap(18,
 																						18,
 																						18)
 																				.addComponent(
 																						bars.get(3),
-																						.GroupLayout.PREFERRED_SIZE,
-																						.GroupLayout.DEFAULT_SIZE,
-																						.GroupLayout.PREFERRED_SIZE))
+																						javax.swing.GroupLayout.PREFERRED_SIZE,
+																						javax.swing.GroupLayout.DEFAULT_SIZE,
+																						javax.swing.GroupLayout.PREFERRED_SIZE))
 																.addGroup(
 																		layout.createSequentialGroup()
 																				.addComponent(
@@ -283,46 +283,46 @@ public class courier_main extends .JPanel {
 								.addGap(18, 18, 18)
 								.addGroup(
 										layout.createParallelGroup(
-												.GroupLayout.Alignment.TRAILING)
+												javax.swing.GroupLayout.Alignment.TRAILING)
 												.addComponent(
 														labels.get(2))
 												.addComponent(
 														bars.get(2),
-														.GroupLayout.PREFERRED_SIZE,
-														.GroupLayout.DEFAULT_SIZE,
-														.GroupLayout.PREFERRED_SIZE))
+														javax.swing.GroupLayout.PREFERRED_SIZE,
+														javax.swing.GroupLayout.DEFAULT_SIZE,
+														javax.swing.GroupLayout.PREFERRED_SIZE))
 								.addGroup(
 										layout.createParallelGroup(
-												.GroupLayout.Alignment.LEADING)
+												javax.swing.GroupLayout.Alignment.LEADING)
 												.addGroup(
 														layout.createSequentialGroup()
 																.addGap(15, 15,
 																		15)
 																.addGroup(
 																		layout.createParallelGroup(
-																				.GroupLayout.Alignment.LEADING)
+																				javax.swing.GroupLayout.Alignment.LEADING)
 																				.addComponent(
 																						bars.get(1),
-																						.GroupLayout.PREFERRED_SIZE,
-																						.GroupLayout.DEFAULT_SIZE,
-																						.GroupLayout.PREFERRED_SIZE)
+																						javax.swing.GroupLayout.PREFERRED_SIZE,
+																						javax.swing.GroupLayout.DEFAULT_SIZE,
+																						javax.swing.GroupLayout.PREFERRED_SIZE)
 																				.addComponent(
 																						signedGoodsbtn,
-																						.GroupLayout.PREFERRED_SIZE,
+																						javax.swing.GroupLayout.PREFERRED_SIZE,
 																						59,
-																						.GroupLayout.PREFERRED_SIZE)))
+																						javax.swing.GroupLayout.PREFERRED_SIZE)))
 												.addGroup(
 														layout.createSequentialGroup()
 																.addGap(18, 18,
 																		18)
 																.addGroup(
 																		layout.createParallelGroup(
-																				.GroupLayout.Alignment.TRAILING)
+																				javax.swing.GroupLayout.Alignment.TRAILING)
 																				.addComponent(
 																						bars.get(0),
-																						.GroupLayout.PREFERRED_SIZE,
-																						.GroupLayout.DEFAULT_SIZE,
-																						.GroupLayout.PREFERRED_SIZE)
+																						javax.swing.GroupLayout.PREFERRED_SIZE,
+																						javax.swing.GroupLayout.DEFAULT_SIZE,
+																						javax.swing.GroupLayout.PREFERRED_SIZE)
 																				.addGroup(
 																						layout.createSequentialGroup()
 																								.addComponent(
@@ -341,10 +341,10 @@ public class courier_main extends .JPanel {
 		
 	}
 	private void initbtn() {
-		signedGoodsbtn = new .JButton();
-		newGoodsbtn = new .JButton();
-		account_btn = new .JButton();
-		exit_btn = new .JButton();
+		signedGoodsbtn = new javax.swing.JButton();
+		newGoodsbtn = new javax.swing.JButton();
+		account_btn = new javax.swing.JButton();
+		exit_btn = new javax.swing.JButton();
 		signedGoodsbtn.setText("已签收");
 		newGoodsbtn.setText("新订单");
 		account_btn.setText("老王（包括更改密码、退出登录）");
@@ -376,7 +376,7 @@ public class courier_main extends .JPanel {
 	}
 
 	private void initProBar() {
-		 .JProgressBar bar=new JProgressBar();;//bars[0]==today,bars[i]=i days ago
+		 javax.swing.JProgressBar bar=new JProgressBar();;//bars[0]==today,bars[i]=i days ago
 		for(int i=0;i<NUM_OF_DAYS;i++)createJProgressBar(bar);
 		//赋值
 //		int[]values=goodsController.getdaysNumOfGoods(NUM_OF_DAYS);
@@ -385,10 +385,10 @@ public class courier_main extends .JPanel {
 	}
 	private void initLabel() {
 		String Cdate=CurrentTime.getDate();
-		businessOffice_label = new .JLabel();
-		account_label = new .JLabel();
-		recentDays_label = new .JLabel();
-		businessOfficeNum_label = new .JLabel();
+		businessOffice_label = new javax.swing.JLabel();
+		account_label = new javax.swing.JLabel();
+		recentDays_label = new javax.swing.JLabel();
+		businessOfficeNum_label = new javax.swing.JLabel();
 		recentDays_label.setText("最近7天业绩（收派件数）");
 		businessOffice_label.setText("营业厅：");
 		businessOfficeNum_label.setText("南京 025001");
@@ -422,17 +422,17 @@ public class courier_main extends .JPanel {
 		System.exit(0);
 	}
 	// Variables declaration
-	private .JButton account_btn;
-	private .JLabel businessOfficeNum_label;
-	private .JButton exit_btn;
+	private javax.swing.JButton account_btn;
+	private javax.swing.JLabel businessOfficeNum_label;
+	private javax.swing.JButton exit_btn;
 	private ArrayList<JLabel> labels=new ArrayList<JLabel>();//近日的日期
 	private ArrayList<JProgressBar> bars=new ArrayList<JProgressBar>();//近日业绩的进度条
 	
-	private .JLabel businessOffice_label;
-	private .JLabel account_label;
-	private .JLabel recentDays_label;
-	private .JButton newGoodsbtn;
-	private .JButton signedGoodsbtn;
+	private javax.swing.JLabel businessOffice_label;
+	private javax.swing.JLabel account_label;
+	private javax.swing.JLabel recentDays_label;
+	private javax.swing.JButton newGoodsbtn;
+	private javax.swing.JButton signedGoodsbtn;
 
 	// End of variables declaration
 	/**
@@ -449,10 +449,10 @@ public class courier_main extends .JPanel {
 		 * /tutorial/uiswing/lookandfeel/plaf.html
 		 */
 		try {
-			for (.UIManager.LookAndFeelInfo info : .UIManager
+			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
 					.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
-					.UIManager.setLookAndFeel(info.getClassName());
+					javax.swing.UIManager.setLookAndFeel(info.getClassName());
 					break;
 				}
 			}
@@ -465,7 +465,7 @@ public class courier_main extends .JPanel {
 		} catch (IllegalAccessException ex) {
 			java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(
 					java.util.logging.Level.SEVERE, null, ex);
-		} catch (.UnsupportedLookAndFeelException ex) {
+		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
 			java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(
 					java.util.logging.Level.SEVERE, null, ex);
 		}
@@ -474,7 +474,7 @@ public class courier_main extends .JPanel {
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				MyFrame frame=new MyFrame(830, 590, new courier_main());
-				frame.setDefaultCloseOperation(.WindowConstants.EXIT_ON_CLOSE);
+				frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 			}
 		});
 	}

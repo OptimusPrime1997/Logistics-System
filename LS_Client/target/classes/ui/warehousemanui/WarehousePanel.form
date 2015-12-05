@@ -183,89 +183,89 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class=".JProgressBar" name="jProgressBar2">
+    <Component class="javax.swing.JProgressBar" name="jProgressBar2">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="value" type="int" value="20"/>
       </Properties>
     </Component>
-    <Component class=".JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5317;&#x4eac;01"/>
       </Properties>
     </Component>
-    <Component class=".JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5317;&#x4eac;02"/>
       </Properties>
     </Component>
-    <Component class=".JProgressBar" name="jProgressBar1">
+    <Component class="javax.swing.JProgressBar" name="jProgressBar1">
       <Properties>
         <Property name="value" type="int" value="30"/>
       </Properties>
     </Component>
-    <Component class=".JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x4e0a;&#x6d77;03"/>
       </Properties>
     </Component>
-    <Component class=".JProgressBar" name="jProgressBar3">
+    <Component class="javax.swing.JProgressBar" name="jProgressBar3">
       <Properties>
         <Property name="value" type="int" value="35"/>
       </Properties>
     </Component>
-    <Component class=".JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x4e0a;&#x6d77;04"/>
       </Properties>
     </Component>
-    <Component class=".JProgressBar" name="jProgressBar4">
+    <Component class="javax.swing.JProgressBar" name="jProgressBar4">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="value" type="int" value="50"/>
       </Properties>
     </Component>
-    <Component class=".JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5357;&#x4eac;05"/>
       </Properties>
     </Component>
-    <Component class=".JProgressBar" name="jProgressBar5">
+    <Component class="javax.swing.JProgressBar" name="jProgressBar5">
       <Properties>
         <Property name="value" type="int" value="60"/>
       </Properties>
     </Component>
-    <Component class=".JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5357;&#x4eac;06"/>
       </Properties>
     </Component>
-    <Component class=".JProgressBar" name="jProgressBar6">
+    <Component class="javax.swing.JProgressBar" name="jProgressBar6">
       <Properties>
         <Property name="value" type="int" value="40"/>
       </Properties>
     </Component>
-    <Component class=".JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5e7f;&#x5dde;07"/>
       </Properties>
     </Component>
-    <Component class=".JProgressBar" name="jProgressBar7">
+    <Component class="javax.swing.JProgressBar" name="jProgressBar7">
       <Properties>
         <Property name="value" type="int" value="15"/>
       </Properties>
     </Component>
-    <Component class=".JLabel" name="jLabel8">
+    <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5e7f;&#x5dde;08"/>
       </Properties>
     </Component>
-    <Component class=".JProgressBar" name="jProgressBar8">
+    <Component class="javax.swing.JProgressBar" name="jProgressBar8">
       <Properties>
         <Property name="value" type="int" value="20"/>
       </Properties>
     </Component>
-    <Component class=".JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x51fa;&#x5e93;&#x5355;&#x586b;&#x5199;"/>
       </Properties>
@@ -273,7 +273,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class=".JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5165;&#x5e93;&#x5355;&#x586b;&#x5199;"/>
       </Properties>
@@ -281,7 +281,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
       </Events>
     </Component>
-    <Component class=".JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x9000;&#x51fa;"/>
       </Properties>
@@ -289,17 +289,17 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
       </Events>
     </Component>
-    <Component class=".JLabel" name="jLabel9">
+    <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5f53;&#x524d;&#x8d26;&#x6237;&#xff1a;&#x5927;&#x7389;&#x513f;"/>
       </Properties>
     </Component>
-    <Component class=".JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="jButton4">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x8c03;&#x6574;&#x5206;&#x533a;"/>
       </Properties>
     </Component>
-    <Component class=".JButton" name="jButton5">
+    <Component class="javax.swing.JButton" name="jButton5">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x8f93;&#x5165;&#x6700;&#x521d;&#x5e93;&#x5b58;&#x6570;&#x91cf;"/>
       </Properties>
@@ -307,7 +307,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
       </Events>
     </Component>
-    <Component class=".JButton" name="jButton6">
+    <Component class="javax.swing.JButton" name="jButton6">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x76d8;&#x70b9;&#x4ed3;&#x5e93;&#x6240;&#x6709;&#x8d27;&#x7269;"/>
       </Properties>
@@ -315,7 +315,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
       </Events>
     </Component>
-    <Component class=".JButton" name="jButton7">
+    <Component class="javax.swing.JButton" name="jButton7">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5e93;&#x5b58;&#x67e5;&#x770b;"/>
       </Properties>

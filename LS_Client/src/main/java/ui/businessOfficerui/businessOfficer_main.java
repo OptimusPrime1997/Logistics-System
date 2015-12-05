@@ -1,6 +1,6 @@
 package ui.businessOfficerui;
 
-import .*;
+import javax.swing.*;
 
 import ui.mainFrame.MainFrame;
 import util.MyFrame;

@@ -9,7 +9,7 @@ package ui.administratorui;
  *
  * @author G
  */
-public class AdministratorPanel extends .JPanel {
+public class AdministratorPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form Management
@@ -27,10 +27,10 @@ public class AdministratorPanel extends .JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel9 = new .JLabel();
-        jButton3 = new .JButton();
-        jButton5 = new .JButton();
-        jButton6 = new .JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         jLabel9.setText("当前账户：大玉儿");
 
@@ -55,35 +55,35 @@ public class AdministratorPanel extends .JPanel {
             }
         });
 
-        .GroupLayout layout = new .GroupLayout(this);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
-                    .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel9)
-                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3))
-                    .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton5, .GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton6, .GroupLayout.PREFERRED_SIZE, 179, .GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22))))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jButton3))
                 .addGap(74, 74, 74)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5, .GroupLayout.PREFERRED_SIZE, 67, .GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, .GroupLayout.PREFERRED_SIZE, 67, .GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(124, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -102,9 +102,9 @@ public class AdministratorPanel extends .JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private .JButton jButton3;
-    private .JButton jButton5;
-    private .JButton jButton6;
-    private .JLabel jLabel9;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }

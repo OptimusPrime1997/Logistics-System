@@ -9,7 +9,7 @@ package ui.businessOfficerui;
  *
  * @author Administrator
  */
-public class car_detail extends .JFrame {
+public class car_detail extends javax.swing.JFrame {
 
     /**
      * Creates new form car_detail
@@ -27,19 +27,19 @@ public class car_detail extends .JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new .JLabel();
-        jLabel1 = new .JLabel();
-        carCodeNum_text = new .JTextField();
-        jLabel2 = new .JLabel();
-        jLabel3 = new .JLabel();
-        carLicenseNum_text = new .JTextField();
-        timeText = new .JTextField();
-        jComboBox6 = new .JComboBox();
-        delete_btn = new .JButton();
-        back_btn = new .JButton();
-        ok_btn = new .JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        carCodeNum_text = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        carLicenseNum_text = new javax.swing.JTextField();
+        timeText = new javax.swing.JTextField();
+        jComboBox6 = new javax.swing.JComboBox();
+        delete_btn = new javax.swing.JButton();
+        back_btn = new javax.swing.JButton();
+        ok_btn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel4.setFont(new java.awt.Font("宋体", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 102, 255));
@@ -68,7 +68,7 @@ public class car_detail extends .JFrame {
             }
         });
 
-        jComboBox6.setModel(new .DefaultComboBoxModel(new String[] { "年", "月", "天" }));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "年", "月", "天" }));
 
         delete_btn.setBackground(new java.awt.Color(255, 0, 0));
         delete_btn.setForeground(new java.awt.Color(255, 0, 0));
@@ -88,30 +88,30 @@ public class car_detail extends .JFrame {
             }
         });
 
-        .GroupLayout layout = new .GroupLayout(getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
-            .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
-                            .addComponent(carCodeNum_text, .GroupLayout.PREFERRED_SIZE, 112, .GroupLayout.PREFERRED_SIZE)
-                            .addComponent(carLicenseNum_text, .GroupLayout.PREFERRED_SIZE, 112, .GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(carCodeNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(carLicenseNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(delete_btn)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(15, 15, 15)
-                                .addComponent(timeText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                                .addComponent(timeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(46, 46, 46)
                                         .addComponent(back_btn)
@@ -119,7 +119,7 @@ public class car_detail extends .JFrame {
                                         .addComponent(ok_btn))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(jComboBox6, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 43, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -127,29 +127,29 @@ public class car_detail extends .JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel4)
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(carCodeNum_text, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
-                    .addComponent(delete_btn, .GroupLayout.PREFERRED_SIZE, 60, .GroupLayout.PREFERRED_SIZE))
+                    .addComponent(carCodeNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(delete_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(carLicenseNum_text, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
+                    .addComponent(carLicenseNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(timeText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox6, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
+                    .addComponent(timeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(back_btn)
                     .addComponent(ok_btn))
-                .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -174,16 +174,16 @@ public class car_detail extends .JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private .JButton back_btn;
-    private .JTextField carCodeNum_text;
-    private .JTextField carLicenseNum_text;
-    private .JButton delete_btn;
-    private .JComboBox jComboBox6;
-    private .JLabel jLabel1;
-    private .JLabel jLabel2;
-    private .JLabel jLabel3;
-    private .JLabel jLabel4;
-    private .JButton ok_btn;
-    private .JTextField timeText;
+    private javax.swing.JButton back_btn;
+    private javax.swing.JTextField carCodeNum_text;
+    private javax.swing.JTextField carLicenseNum_text;
+    private javax.swing.JButton delete_btn;
+    private javax.swing.JComboBox jComboBox6;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton ok_btn;
+    private javax.swing.JTextField timeText;
     // End of variables declaration//GEN-END:variables
 }

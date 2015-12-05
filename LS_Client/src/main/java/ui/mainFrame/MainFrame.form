@@ -90,7 +90,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class=".JTextField" name="goodsNum_text">
+    <Component class="javax.swing.JTextField" name="goodsNum_text">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x8f93;&#x5165;&#x8ba2;&#x5355;&#x53f7;10&#x4f4d;"/>
       </Properties>
@@ -99,12 +99,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="goodsNum_textActionPerformed"/>
       </Events>
     </Component>
-    <Component class=".JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x67e5;&#x8be2;"/>
       </Properties>
     </Component>
-    <Component class=".JTextField" name="account_text">
+    <Component class="javax.swing.JTextField" name="account_text">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x8d26;&#x53f7;"/>
       </Properties>
@@ -113,7 +113,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="account_textActionPerformed"/>
       </Events>
     </Component>
-    <Component class=".JTextField" name="password_text">
+    <Component class="javax.swing.JTextField" name="password_text">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5bc6;&#x7801;"/>
       </Properties>
@@ -122,22 +122,22 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="password_textActionPerformed"/>
       </Events>
     </Component>
-    <Component class=".JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x767b;&#x5f55;"/>
       </Properties>
     </Component>
-    <Component class=".JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x8d26;&#x53f7;"/>
       </Properties>
     </Component>
-    <Component class=".JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5bc6;&#x7801;"/>
       </Properties>
     </Component>
-    <Component class=".JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="&#x534e;&#x6587;&#x884c;&#x6977;" size="24" style="1"/>

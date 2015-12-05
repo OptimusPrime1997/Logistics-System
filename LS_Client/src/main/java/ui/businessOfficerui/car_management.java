@@ -5,7 +5,7 @@
  */
 package ui.businessOfficerui;
 
-import .JFrame;
+import javax.swing.JFrame;
 
 import ui.mainFrame.MainFrame;
 import ui.transferCtrOfficerui.transferCtrOfficer_main;
@@ -14,7 +14,7 @@ import ui.transferCtrOfficerui.transferCtrOfficer_main;
  *
  * @author Administrator
  */
-public class car_management extends .JPanel {
+public class car_management extends javax.swing.JPanel {
 
     /**
      * Creates new form carManagement
@@ -32,21 +32,21 @@ public class car_management extends .JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new .JScrollPane();
-        cars_table = new .JTable();
-        add_btn = new .JButton();
-        search_text = new .JTextField();
-        search_btn = new .JButton();
-        jLabel4 = new .JLabel();
-        back_btn = new .JButton();
-        jLabel6 = new .JLabel();
-        businessOffNum2_label = new .JLabel();
-        jLabel5 = new .JLabel();
-        account_btn = new .JButton();
-        exit_btn = new .JButton();
-        jTextField2 = new .JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        cars_table = new javax.swing.JTable();
+        add_btn = new javax.swing.JButton();
+        search_text = new javax.swing.JTextField();
+        search_btn = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        back_btn = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        businessOffNum2_label = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        account_btn = new javax.swing.JButton();
+        exit_btn = new javax.swing.JButton();
+        jTextField2 = new javax.swing.JTextField();
 
-        cars_table.setModel(new .table.DefaultTableModel(
+        cars_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -203,38 +203,38 @@ public class car_management extends .JPanel {
             }
         });
 
-        .GroupLayout layout = new .GroupLayout(this);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, .GroupLayout.PREFERRED_SIZE, 93, .GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(add_btn)
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, .GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(businessOffNum2_label)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel5)
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(account_btn, .GroupLayout.PREFERRED_SIZE, 82, .GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(account_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
                 .addComponent(exit_btn))
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, .GroupLayout.PREFERRED_SIZE, 411, .GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
-                        .addComponent(back_btn, .GroupLayout.PREFERRED_SIZE, 77, .GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(back_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(search_text, .GroupLayout.PREFERRED_SIZE, 137, .GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addComponent(search_text, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(search_btn, .GroupLayout.PREFERRED_SIZE, 75, .GroupLayout.PREFERRED_SIZE)
+                        .addComponent(search_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -242,35 +242,35 @@ public class car_management extends .JPanel {
                 .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(exit_btn)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel6)
                                 .addComponent(businessOffNum2_label)
                                 .addComponent(jLabel5)
                                 .addComponent(account_btn))
-                            .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel4)
-                                .addComponent(add_btn, .GroupLayout.PREFERRED_SIZE, 31, .GroupLayout.PREFERRED_SIZE)))))
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                                .addComponent(add_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, .GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addGap(21, 21, 21))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
-                            .addComponent(search_text, .GroupLayout.PREFERRED_SIZE, 34, .GroupLayout.PREFERRED_SIZE)
-                            .addComponent(search_btn, .GroupLayout.PREFERRED_SIZE, 34, .GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
-                        .addComponent(back_btn, .GroupLayout.PREFERRED_SIZE, 43, .GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(search_text, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(search_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
+                        .addComponent(back_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(58, 58, 58)))
-                .addComponent(jTextField2, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -300,19 +300,19 @@ public class car_management extends .JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private .JButton account_btn;
-    private .JButton add_btn;
-    private .JButton back_btn;
-    private .JLabel businessOffNum2_label;
-    private .JTable cars_table;
-    private .JButton exit_btn;
-    private .JLabel jLabel4;
-    private .JLabel jLabel5;
-    private .JLabel jLabel6;
-    private .JScrollPane jScrollPane1;
-    private .JTextField jTextField2;
-    private .JButton search_btn;
-    private .JTextField search_text;
+    private javax.swing.JButton account_btn;
+    private javax.swing.JButton add_btn;
+    private javax.swing.JButton back_btn;
+    private javax.swing.JLabel businessOffNum2_label;
+    private javax.swing.JTable cars_table;
+    private javax.swing.JButton exit_btn;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton search_btn;
+    private javax.swing.JTextField search_text;
     // End of variables declaration//GEN-END:variables
     
     
@@ -327,9 +327,9 @@ public class car_management extends .JPanel {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (.UIManager.LookAndFeelInfo info : .UIManager.getInstalledLookAndFeels()) {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    .UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -339,7 +339,7 @@ public class car_management extends .JPanel {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -352,7 +352,7 @@ public class car_management extends .JPanel {
         		frame.setSize(830, 590);
         		frame.setVisible(true);
         		frame.setContentPane(new car_management());
-        		frame.setDefaultCloseOperation(.WindowConstants.EXIT_ON_CLOSE);	
+        		frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);	
             }
         });
 

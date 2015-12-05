@@ -10,7 +10,7 @@ package ui.receiptui;
  *
  * @author apple
  */
-public class IOTable extends .JPanel {
+public class IOTable extends javax.swing.JPanel {
 
     /**
      * Creates new form 成本收益表
@@ -28,18 +28,18 @@ public class IOTable extends .JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        startDateLabel = new .JLabel();
-        startDateText = new .JTextField();
-        endDateLabel = new .JLabel();
-        endDateText = new .JTextField();
-        costLabel = new .JLabel();
-        costText = new .JTextField();
-        incomeLabel = new .JLabel();
-        incomeText = new .JTextField();
-        realIncomeLabel = new .JLabel();
-        realIncomeText = new .JTextField();
-        okButton = new .JButton();
-        resetButton = new .JButton();
+        startDateLabel = new javax.swing.JLabel();
+        startDateText = new javax.swing.JTextField();
+        endDateLabel = new javax.swing.JLabel();
+        endDateText = new javax.swing.JTextField();
+        costLabel = new javax.swing.JLabel();
+        costText = new javax.swing.JTextField();
+        incomeLabel = new javax.swing.JLabel();
+        incomeText = new javax.swing.JTextField();
+        realIncomeLabel = new javax.swing.JLabel();
+        realIncomeText = new javax.swing.JTextField();
+        okButton = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -63,61 +63,61 @@ public class IOTable extends .JPanel {
 
         resetButton.setText("重置");
 
-        .GroupLayout layout = new .GroupLayout(this);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(realIncomeLabel)
                     .addComponent(costLabel)
                     .addComponent(startDateLabel)
                     .addComponent(incomeLabel))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(resetButton)
                                 .addGap(28, 28, 28))
-                            .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
-                                .addComponent(startDateText, .GroupLayout.PREFERRED_SIZE, 112, .GroupLayout.PREFERRED_SIZE)
-                                .addComponent(costText, .GroupLayout.PREFERRED_SIZE, 59, .GroupLayout.PREFERRED_SIZE)
-                                .addComponent(incomeText, .GroupLayout.PREFERRED_SIZE, 59, .GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(startDateText, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(costText, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(incomeText, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(19, 19, 19)
                         .addComponent(okButton))
-                    .addComponent(realIncomeText, .GroupLayout.PREFERRED_SIZE, 59, .GroupLayout.PREFERRED_SIZE)
+                    .addComponent(realIncomeText, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(125, 125, 125)
                         .addComponent(endDateLabel)
-                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(endDateText, .GroupLayout.PREFERRED_SIZE, 108, .GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(endDateText, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(startDateLabel)
-                    .addComponent(startDateText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                    .addComponent(startDateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(endDateLabel)
-                    .addComponent(endDateText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
+                    .addComponent(endDateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(costLabel)
-                    .addComponent(costText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
-                    .addComponent(incomeText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                    .addComponent(costText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(incomeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(incomeLabel))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(realIncomeLabel)
-                    .addComponent(realIncomeText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                    .addComponent(realIncomeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(okButton)
                     .addComponent(resetButton))
                 .addGap(17, 17, 17))
@@ -126,17 +126,17 @@ public class IOTable extends .JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private .JLabel costLabel;
-    private .JTextField costText;
-    private .JLabel endDateLabel;
-    private .JTextField endDateText;
-    private .JLabel incomeLabel;
-    private .JTextField incomeText;
-    private .JButton okButton;
-    private .JLabel realIncomeLabel;
-    private .JTextField realIncomeText;
-    private .JButton resetButton;
-    private .JLabel startDateLabel;
-    private .JTextField startDateText;
+    private javax.swing.JLabel costLabel;
+    private javax.swing.JTextField costText;
+    private javax.swing.JLabel endDateLabel;
+    private javax.swing.JTextField endDateText;
+    private javax.swing.JLabel incomeLabel;
+    private javax.swing.JTextField incomeText;
+    private javax.swing.JButton okButton;
+    private javax.swing.JLabel realIncomeLabel;
+    private javax.swing.JTextField realIncomeText;
+    private javax.swing.JButton resetButton;
+    private javax.swing.JLabel startDateLabel;
+    private javax.swing.JTextField startDateText;
     // End of variables declaration//GEN-END:variables
 }

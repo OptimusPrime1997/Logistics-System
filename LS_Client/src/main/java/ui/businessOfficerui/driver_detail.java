@@ -9,7 +9,7 @@ package ui.businessOfficerui;
  *
  * @author Administrator
  */
-public class driver_detail extends .JFrame {
+public class driver_detail extends javax.swing.JFrame {
 
     /**
      * Creates new form driver_detail
@@ -27,34 +27,34 @@ public class driver_detail extends .JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        sex_comboBox = new .JComboBox();
-        jLabel7 = new .JLabel();
-        IDnum_text = new .JTextField();
-        jLabel8 = new .JLabel();
-        jLabel9 = new .JLabel();
-        phoneNum_text = new .JTextField();
-        validTime_text = new .JTextField();
-        jLabel10 = new .JLabel();
-        year_comboBox = new .JComboBox();
-        jLabel11 = new .JLabel();
-        month_comboBox = new .JComboBox();
-        jLabel12 = new .JLabel();
-        day_comboBox = new .JComboBox();
-        jLabel13 = new .JLabel();
-        jComboBox6 = new .JComboBox();
-        cancel_btn = new .JButton();
-        ok_btn = new .JButton();
-        jLabel1 = new .JLabel();
-        delete_btn = new .JButton();
-        driverNum_text = new .JTextField();
-        name_text = new .JTextField();
-        jLabel2 = new .JLabel();
-        jLabel3 = new .JLabel();
-        jLabel4 = new .JLabel();
+        sex_comboBox = new javax.swing.JComboBox();
+        jLabel7 = new javax.swing.JLabel();
+        IDnum_text = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        phoneNum_text = new javax.swing.JTextField();
+        validTime_text = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        year_comboBox = new javax.swing.JComboBox();
+        jLabel11 = new javax.swing.JLabel();
+        month_comboBox = new javax.swing.JComboBox();
+        jLabel12 = new javax.swing.JLabel();
+        day_comboBox = new javax.swing.JComboBox();
+        jLabel13 = new javax.swing.JLabel();
+        jComboBox6 = new javax.swing.JComboBox();
+        cancel_btn = new javax.swing.JButton();
+        ok_btn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        delete_btn = new javax.swing.JButton();
+        driverNum_text = new javax.swing.JTextField();
+        name_text = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        sex_comboBox.setModel(new .DefaultComboBoxModel(new String[] { "男", "女" }));
+        sex_comboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "男", "女" }));
 
         jLabel7.setText("身份证号");
 
@@ -80,15 +80,15 @@ public class driver_detail extends .JFrame {
 
         jLabel10.setText("行驶证期限");
 
-        year_comboBox.setModel(new .DefaultComboBoxModel(new String[] { "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000" }));
+        year_comboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000" }));
 
         jLabel11.setText("年");
 
-        month_comboBox.setModel(new .DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        month_comboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
         jLabel12.setText("月");
 
-        day_comboBox.setModel(new .DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        day_comboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         day_comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 day_comboBoxActionPerformed(evt);
@@ -97,7 +97,7 @@ public class driver_detail extends .JFrame {
 
         jLabel13.setText("日");
 
-        jComboBox6.setModel(new .DefaultComboBoxModel(new String[] { "年", "月", "天" }));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "年", "月", "天" }));
 
         cancel_btn.setText("取消");
 
@@ -132,15 +132,15 @@ public class driver_detail extends .JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 102, 255));
         jLabel4.setText("司机详细信息");
 
-        .GroupLayout layout = new .GroupLayout(getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
@@ -149,40 +149,40 @@ public class driver_detail extends .JFrame {
                             .addComponent(jLabel9)
                             .addComponent(jLabel10))
                         .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sex_comboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(name_text, .GroupLayout.PREFERRED_SIZE, 112, .GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(sex_comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(name_text, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
-                                    .addComponent(phoneNum_text, .GroupLayout.PREFERRED_SIZE, 100, .GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(driverNum_text, .GroupLayout.PREFERRED_SIZE, 112, .GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(phoneNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(driverNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(validTime_text, .GroupLayout.PREFERRED_SIZE, 33, .GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox6, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(validTime_text, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(year_comboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(year_comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel11)
                                         .addGap(18, 18, 18)
-                                        .addComponent(month_comboBox, .GroupLayout.PREFERRED_SIZE, 38, .GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(month_comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel12)
-                                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(day_comboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(day_comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel13))
-                                    .addComponent(IDnum_text, .GroupLayout.PREFERRED_SIZE, 170, .GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(IDnum_text, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(50, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(191, 191, 191)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(delete_btn)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cancel_btn)
@@ -191,52 +191,52 @@ public class driver_detail extends .JFrame {
                 .addGap(0, 15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
-                    .addComponent(driverNum_text, .GroupLayout.Alignment.TRAILING, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, .GroupLayout.Alignment.TRAILING))
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(driverNum_text, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(name_text, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                            .addComponent(name_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(sex_comboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(sex_comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(delete_btn, .GroupLayout.PREFERRED_SIZE, 60, .GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(delete_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(IDnum_text, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
+                    .addComponent(IDnum_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(year_comboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                    .addComponent(year_comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
-                    .addComponent(month_comboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                    .addComponent(month_comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
-                    .addComponent(day_comboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                    .addComponent(day_comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
                 .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
-                    .addComponent(phoneNum_text, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(phoneNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
-                    .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
-                        .addComponent(validTime_text, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox6, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, .GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(validTime_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancel_btn)
                     .addComponent(ok_btn))
                 .addGap(5, 5, 5))
@@ -275,9 +275,9 @@ public class driver_detail extends .JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (.UIManager.LookAndFeelInfo info : .UIManager.getInstalledLookAndFeels()) {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    .UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -287,7 +287,7 @@ public class driver_detail extends .JFrame {
             java.util.logging.Logger.getLogger(driver_detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(driver_detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(driver_detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -302,29 +302,29 @@ public class driver_detail extends .JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private .JTextField IDnum_text;
-    private .JButton cancel_btn;
-    private .JComboBox day_comboBox;
-    private .JButton delete_btn;
-    private .JTextField driverNum_text;
-    private .JComboBox jComboBox6;
-    private .JLabel jLabel1;
-    private .JLabel jLabel10;
-    private .JLabel jLabel11;
-    private .JLabel jLabel12;
-    private .JLabel jLabel13;
-    private .JLabel jLabel2;
-    private .JLabel jLabel3;
-    private .JLabel jLabel4;
-    private .JLabel jLabel7;
-    private .JLabel jLabel8;
-    private .JLabel jLabel9;
-    private .JComboBox month_comboBox;
-    private .JTextField name_text;
-    private .JButton ok_btn;
-    private .JTextField phoneNum_text;
-    private .JComboBox sex_comboBox;
-    private .JTextField validTime_text;
-    private .JComboBox year_comboBox;
+    private javax.swing.JTextField IDnum_text;
+    private javax.swing.JButton cancel_btn;
+    private javax.swing.JComboBox day_comboBox;
+    private javax.swing.JButton delete_btn;
+    private javax.swing.JTextField driverNum_text;
+    private javax.swing.JComboBox jComboBox6;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JComboBox month_comboBox;
+    private javax.swing.JTextField name_text;
+    private javax.swing.JButton ok_btn;
+    private javax.swing.JTextField phoneNum_text;
+    private javax.swing.JComboBox sex_comboBox;
+    private javax.swing.JTextField validTime_text;
+    private javax.swing.JComboBox year_comboBox;
     // End of variables declaration//GEN-END:variables
 }

@@ -42,9 +42,9 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class=".JPanel" name="managerjPanel">
+    <Container class="javax.swing.JPanel" name="managerjPanel">
       <Properties>
-        <Property name="border" type=".border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder/>
           </Border>
@@ -105,7 +105,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class=".JTabbedPane" name="managerjTabbedPane">
+        <Container class="javax.swing.JTabbedPane" name="managerjTabbedPane">
           <Properties>
             <Property name="name" type="java.lang.String" value="financialstaffpanel2" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -115,7 +115,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
-            <Container class=".JPanel" name="constjPanel1">
+            <Container class="javax.swing.JPanel" name="constjPanel1">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                   <JTabbedPaneConstraints tabName="&#x8ddd;&#x79bb;&#x5e38;&#x91cf;">
@@ -155,20 +155,20 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class=".JScrollPane" name="constjScrollPane1">
+                <Container class="javax.swing.JScrollPane" name="constjScrollPane1">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Container class=".JScrollPane" name="jScrollPane2">
+                    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
                       <AuxValues>
                         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                       </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class=".JTable" name="constjTable1">
+                        <Component class="javax.swing.JTable" name="constjTable1">
                           <Properties>
-                            <Property name="model" type=".table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="15">
                                 <Column editable="true" title="&#x57ce;&#x5e02;&#x4e00;" type="java.lang.String">
                                   <Data value="&#x5357;&#x4eac;"/>
@@ -240,7 +240,7 @@
                                 </Column>
                               </Table>
                             </Property>
-                            <Property name="columnModel" type=".table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
@@ -267,7 +267,7 @@
                             <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="0" green="0" red="0" type="rgb"/>
                             </Property>
-                            <Property name="tableHeader" type=".table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                               <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                             </Property>
                           </Properties>
@@ -276,24 +276,24 @@
                     </Container>
                   </SubComponents>
                 </Container>
-                <Component class=".JButton" name="jButton3">
+                <Component class="javax.swing.JButton" name="jButton3">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jButton2"/>
                   </Properties>
                 </Component>
-                <Component class=".JButton" name="jButton5">
+                <Component class="javax.swing.JButton" name="jButton5">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jButton4"/>
                   </Properties>
                 </Component>
-                <Component class=".JButton" name="addConstjButton1">
+                <Component class="javax.swing.JButton" name="addConstjButton1">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x6dfb;&#x52a0;&#x8ddd;&#x79bb;&#x5e38;&#x91cf;"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Container class=".JPanel" name="salaryPolicyjPane1">
+            <Container class="javax.swing.JPanel" name="salaryPolicyjPane1">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                   <JTabbedPaneConstraints tabName="&#x85aa;&#x6c34;&#x7b56;&#x7565;">
@@ -342,24 +342,24 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class=".JSeparator" name="jSeparator8">
+                <Component class="javax.swing.JSeparator" name="jSeparator8">
                 </Component>
-                <Component class=".JSeparator" name="jSeparator9">
+                <Component class="javax.swing.JSeparator" name="jSeparator9">
                 </Component>
-                <Container class=".JScrollPane" name="salaryPolicyjScrollPane1">
+                <Container class="javax.swing.JScrollPane" name="salaryPolicyjScrollPane1">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Container class=".JScrollPane" name="jScrollPane5">
+                    <Container class="javax.swing.JScrollPane" name="jScrollPane5">
                       <AuxValues>
                         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                       </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class=".JTable" name="salaryPolicyjTable1">
+                        <Component class="javax.swing.JTable" name="salaryPolicyjTable1">
                           <Properties>
-                            <Property name="model" type=".table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="15">
                                 <Column editable="true" title="&#x540d;&#x79f0;" type="java.lang.String">
                                   <Data value="&#x5feb;&#x9012;&#x5458;&#x85aa;&#x6c34;&#x7b56;&#x7565;"/>
@@ -431,7 +431,7 @@
                                 </Column>
                               </Table>
                             </Property>
-                            <Property name="columnModel" type=".table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
@@ -458,7 +458,7 @@
                             <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="0" green="0" red="0" type="rgb"/>
                             </Property>
-                            <Property name="tableHeader" type=".table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                               <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                             </Property>
                           </Properties>
@@ -467,19 +467,19 @@
                     </Container>
                   </SubComponents>
                 </Container>
-                <Component class=".JButton" name="jButton6">
+                <Component class="javax.swing.JButton" name="jButton6">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jButton1"/>
                   </Properties>
                 </Component>
-                <Component class=".JButton" name="addSalaryPolicyjButton1">
+                <Component class="javax.swing.JButton" name="addSalaryPolicyjButton1">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x6dfb;&#x52a0;&#x85aa;&#x6c34;&#x7b56;&#x7565;"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Container class=".JPanel" name="checkjPane">
+            <Container class="javax.swing.JPanel" name="checkjPane">
               <Properties>
                 <Property name="name" type="java.lang.String" value="documentCheck" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -555,26 +555,26 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class=".JLabel" name="jLabel16">
+                <Component class="javax.swing.JLabel" name="jLabel16">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x72b6;&#x6001;&#xff1a;"/>
                   </Properties>
                 </Component>
-                <Component class=".JLabel" name="jLabel22">
+                <Component class="javax.swing.JLabel" name="jLabel22">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jLabel13"/>
                   </Properties>
                 </Component>
-                <Component class=".JLabel" name="jLabel23">
+                <Component class="javax.swing.JLabel" name="jLabel23">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                 </Component>
-                <Container class=".JScrollPane" name="checkjScrollPane">
+                <Container class="javax.swing.JScrollPane" name="checkjScrollPane">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Container class=".JPanel" name="jPanel8">
+                    <Container class="javax.swing.JPanel" name="jPanel8">
 
                       <Layout>
                         <DimensionLayout dim="0">
@@ -595,16 +595,16 @@
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Container class=".JScrollPane" name="jScrollPane1">
+                        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
                           <AuxValues>
                             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                           </AuxValues>
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class=".JTable" name="documentCheckjTable">
+                            <Component class="javax.swing.JTable" name="documentCheckjTable">
                               <Properties>
-                                <Property name="model" type=".table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="4" rowCount="11">
                                     <Column editable="true" title="&#x5168;&#x9009;" type="java.lang.Object"/>
                                     <Column editable="true" title="&#x65e5;&#x671f;" type="java.lang.String"/>
@@ -612,7 +612,7 @@
                                     <Column editable="true" title="&#x64cd;&#x4f5c;&#x4eba;&#x5458;&#x7f16;&#x53f7;" type="java.lang.String"/>
                                   </Table>
                                 </Property>
-                                <Property name="columnModel" type=".table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                                   <TableColumnModel selectionModel="1">
                                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                       <Title/>
@@ -637,7 +637,7 @@
                                   </TableColumnModel>
                                 </Property>
                                 <Property name="columnSelectionAllowed" type="boolean" value="true"/>
-                                <Property name="tableHeader" type=".table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                                   <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                                 </Property>
                               </Properties>
@@ -651,7 +651,7 @@
                     </Container>
                   </SubComponents>
                 </Container>
-                <Component class=".JLabel" name="jLabel29">
+                <Component class="javax.swing.JLabel" name="jLabel29">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="&#x5b8b;&#x4f53;" size="12" style="1"/>
@@ -661,7 +661,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class=".JPanel" name="institutionjPanel">
+            <Container class="javax.swing.JPanel" name="institutionjPanel">
               <Properties>
                 <Property name="name" type="java.lang.String" value="institutionManagement" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -739,17 +739,17 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class=".JLabel" name="jLabel12">
+                <Component class="javax.swing.JLabel" name="jLabel12">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x673a;&#x6784;&#x7f16;&#x53f7;&#xff1a;"/>
                   </Properties>
                 </Component>
-                <Component class=".JTextField" name="institutionNamejTextField">
+                <Component class="javax.swing.JTextField" name="institutionNamejTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x8bf7;&#x8f93;&#x5165;&#x673a;&#x6784;&#x7f16;&#x53f7;&#xff08;6&#x4f4d;&#x6570;&#x5b57;&#xff09;"/>
                   </Properties>
                 </Component>
-                <Component class=".JButton" name="findInstitutioNamejButton">
+                <Component class="javax.swing.JButton" name="findInstitutioNamejButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x7f16;&#x53f7;&#x67e5;&#x627e;"/>
                   </Properties>
@@ -757,23 +757,23 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="findInstitutioNamejButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class=".JLabel" name="jLabel13">
+                <Component class="javax.swing.JLabel" name="jLabel13">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x673a;&#x6784;&#x540d;&#x79f0;&#xff1a;"/>
                   </Properties>
                 </Component>
-                <Component class=".JTextField" name="jTextField4">
+                <Component class="javax.swing.JTextField" name="jTextField4">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x8bf7;&#x8f93;&#x5165;&#x673a;&#x6784;&#x7684;&#x5b8c;&#x6574;&#x540d;&#x79f0;"/>
                   </Properties>
                 </Component>
-                <Component class=".JButton" name="findInstitutionNumjButton">
+                <Component class="javax.swing.JButton" name="findInstitutionNumjButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x540d;&#x79f0;&#x67e5;&#x627e;"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                 </Component>
-                <Component class=".JLabel" name="jLabel15">
+                <Component class="javax.swing.JLabel" name="jLabel15">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="&#x5b8b;&#x4f53;" size="12" style="1"/>
@@ -782,20 +782,20 @@
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                 </Component>
-                <Container class=".JScrollPane" name="institutionjScrollPane">
+                <Container class="javax.swing.JScrollPane" name="institutionjScrollPane">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Container class=".JScrollPane" name="jScrollPane8">
+                    <Container class="javax.swing.JScrollPane" name="jScrollPane8">
                       <AuxValues>
                         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                       </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class=".JTable" name="institutionjTable">
+                        <Component class="javax.swing.JTable" name="institutionjTable">
                           <Properties>
-                            <Property name="model" type=".table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="5" rowCount="15">
                                 <Column editable="true" title="&#x673a;&#x6784;&#x540d;&#x79f0;" type="java.lang.String">
                                   <Data value="&#x5357;&#x4eac;&#x5e02;&#x4e2d;&#x8f6c;&#x4e2d;&#x5fc3;"/>
@@ -884,7 +884,7 @@
                                 </Column>
                               </Table>
                             </Property>
-                            <Property name="columnModel" type=".table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
@@ -917,7 +917,7 @@
                               <Color blue="0" green="0" red="0" type="rgb"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="123" noResource="true"/>
-                            <Property name="tableHeader" type=".table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                               <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                             </Property>
                           </Properties>
@@ -928,7 +928,7 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Container class=".JPanel" name="accountjPanel">
+            <Container class="javax.swing.JPanel" name="accountjPanel">
               <Properties>
                 <Property name="name" type="java.lang.String" value="personnelView" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -1016,25 +1016,25 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class=".JLabel" name="jLabel17">
+                <Component class="javax.swing.JLabel" name="jLabel17">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jLabel3"/>
                   </Properties>
                 </Component>
-                <Container class=".JScrollPane" name="accountViewjScrollPane">
+                <Container class="javax.swing.JScrollPane" name="accountViewjScrollPane">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Container class=".JScrollPane" name="jScrollPane6">
+                    <Container class="javax.swing.JScrollPane" name="jScrollPane6">
                       <AuxValues>
                         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                       </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class=".JTable" name="accountViewjTable">
+                        <Component class="javax.swing.JTable" name="accountViewjTable">
                           <Properties>
-                            <Property name="model" type=".table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="6" rowCount="15">
                                 <Column editable="false" title="&#x7528;&#x6237;&#x8d26;&#x53f7;" type="java.lang.String">
                                   <Data value="025000000001"/>
@@ -1140,7 +1140,7 @@
                                 </Column>
                               </Table>
                             </Property>
-                            <Property name="columnModel" type=".table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
@@ -1178,7 +1178,7 @@
                               <Color blue="0" green="0" red="0" type="rgb"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="123" noResource="true"/>
-                            <Property name="tableHeader" type=".table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                               <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                             </Property>
                           </Properties>
@@ -1187,7 +1187,7 @@
                     </Container>
                   </SubComponents>
                 </Container>
-                <Component class=".JLabel" name="jLabel19">
+                <Component class="javax.swing.JLabel" name="jLabel19">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="&#x5b8b;&#x4f53;" size="12" style="1"/>
@@ -1195,27 +1195,27 @@
                     <Property name="text" type="java.lang.String" value="&#x4eba;&#x5458;&#x4fe1;&#x606f;"/>
                   </Properties>
                 </Component>
-                <Component class=".JTextField" name="accountNamejTextField">
+                <Component class="javax.swing.JTextField" name="accountNamejTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x8bf7;&#x8f93;&#x5165;&#x4eba;&#x5458;&#x59d3;&#x540d;"/>
                   </Properties>
                 </Component>
-                <Component class=".JButton" name="findAccountNamejButton">
+                <Component class="javax.swing.JButton" name="findAccountNamejButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x59d3;&#x540d;&#x67e5;&#x627e;"/>
                   </Properties>
                 </Component>
-                <Component class=".JLabel" name="jLabel9">
+                <Component class="javax.swing.JLabel" name="jLabel9">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x8d26;&#x53f7;&#xff1a;"/>
                   </Properties>
                 </Component>
-                <Component class=".JTextField" name="accountNumjTextField">
+                <Component class="javax.swing.JTextField" name="accountNumjTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x8bf7;&#x8f93;&#x5165;&#x4eba;&#x5458;&#x7f16;&#x53f7;"/>
                   </Properties>
                 </Component>
-                <Component class=".JButton" name="findAccountNumjButton">
+                <Component class="javax.swing.JButton" name="findAccountNumjButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x8d26;&#x53f7;&#x67e5;&#x627e;"/>
                   </Properties>
@@ -1223,14 +1223,14 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="findAccountNumjButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class=".JLabel" name="jLabel11">
+                <Component class="javax.swing.JLabel" name="jLabel11">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x59d3;&#x540d;&#xff1a;"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Container class=".JPanel" name="formjPanel">
+            <Container class="javax.swing.JPanel" name="formjPanel">
               <Properties>
                 <Property name="name" type="java.lang.String" value="formView" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -1337,7 +1337,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class=".JButton" name="profitFormjButton">
+                <Component class="javax.swing.JButton" name="profitFormjButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x6210;&#x672c;&#x6536;&#x76ca;&#x8868;"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -1347,30 +1347,30 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="profitFormjButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class=".JButton" name="manageStateFormjButton1">
+                <Component class="javax.swing.JButton" name="manageStateFormjButton1">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x7ecf;&#x8425;&#x60c5;&#x51b5;&#x8868;"/>
                     <Property name="name" type="java.lang.String" value="businessFrom" noResource="true"/>
                   </Properties>
                 </Component>
-                <Component class=".JLabel" name="jLabel30">
+                <Component class="javax.swing.JLabel" name="jLabel30">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x5e74;"/>
                   </Properties>
                 </Component>
-                <Component class=".JLabel" name="jLabel31">
+                <Component class="javax.swing.JLabel" name="jLabel31">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x6708;"/>
                   </Properties>
                 </Component>
-                <Component class=".JLabel" name="jLabel32">
+                <Component class="javax.swing.JLabel" name="jLabel32">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x65e5;"/>
                   </Properties>
                 </Component>
-                <Component class=".JComboBox" name="formEYearjComboBox">
+                <Component class="javax.swing.JComboBox" name="formEYearjComboBox">
                   <Properties>
-                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="16">
                         <StringItem index="0" value="2000"/>
                         <StringItem index="1" value="2001"/>
@@ -1393,9 +1393,9 @@
                     <Property name="name" type="java.lang.String" value="yearComBox" noResource="true"/>
                   </Properties>
                 </Component>
-                <Component class=".JComboBox" name="formEDatejComboBox">
+                <Component class="javax.swing.JComboBox" name="formEDatejComboBox">
                   <Properties>
-                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="31">
                         <StringItem index="0" value="1"/>
                         <StringItem index="1" value="2"/>
@@ -1436,9 +1436,9 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="formEDatejComboBoxActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class=".JComboBox" name="formEMonthjComboBox">
+                <Component class="javax.swing.JComboBox" name="formEMonthjComboBox">
                   <Properties>
-                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="12">
                         <StringItem index="0" value="1"/>
                         <StringItem index="1" value="2"/>
@@ -1460,26 +1460,26 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="formEMonthjComboBoxActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class=".JLabel" name="jLabel33">
+                <Component class="javax.swing.JLabel" name="jLabel33">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x622a;&#x6b62;&#x65e5;&#x671f;&#xff1a;"/>
                   </Properties>
                 </Component>
-                <Component class=".JButton" name="outputFormjButton">
+                <Component class="javax.swing.JButton" name="outputFormjButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x5bfc;&#x51fa;&#x62a5;&#x8868;"/>
                     <Property name="name" type="java.lang.String" value="outFormButton" noResource="true"/>
                   </Properties>
                 </Component>
-                <Component class=".JSeparator" name="jSeparator5">
+                <Component class="javax.swing.JSeparator" name="jSeparator5">
                 </Component>
-                <Component class=".JSeparator" name="jSeparator2">
+                <Component class="javax.swing.JSeparator" name="jSeparator2">
                 </Component>
-                <Component class=".JSeparator" name="jSeparator6">
+                <Component class="javax.swing.JSeparator" name="jSeparator6">
                 </Component>
               </SubComponents>
             </Container>
-            <Container class=".JPanel" name="logjPanel">
+            <Container class="javax.swing.JPanel" name="logjPanel">
               <Properties>
                 <Property name="name" type="java.lang.String" value="logView" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -1596,7 +1596,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class=".JButton" name="findLogjButton">
+                <Component class="javax.swing.JButton" name="findLogjButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x67e5;&#x627e;"/>
                   </Properties>
@@ -1604,34 +1604,34 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="findLogjButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class=".JLabel" name="jLabel36">
+                <Component class="javax.swing.JLabel" name="jLabel36">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x5f00;&#x59cb;&#x65e5;&#x671f;&#xff1a;"/>
                   </Properties>
                 </Component>
-                <Component class=".JLabel" name="jLabel37">
+                <Component class="javax.swing.JLabel" name="jLabel37">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x5e74;"/>
                   </Properties>
                 </Component>
-                <Component class=".JLabel" name="jLabel38">
+                <Component class="javax.swing.JLabel" name="jLabel38">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x6708;"/>
                   </Properties>
                 </Component>
-                <Component class=".JLabel" name="jLabel39">
+                <Component class="javax.swing.JLabel" name="jLabel39">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x65e5;"/>
                   </Properties>
                 </Component>
-                <Component class=".JLabel" name="jLabel40">
+                <Component class="javax.swing.JLabel" name="jLabel40">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x64cd;&#x4f5c;&#x7c7b;&#x578b;&#xff1a;"/>
                   </Properties>
                 </Component>
-                <Component class=".JComboBox" name="logTypejComboBox">
+                <Component class="javax.swing.JComboBox" name="logTypejComboBox">
                   <Properties>
-                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="6">
                         <StringItem index="0" value="&#x6240;&#x6709;&#x64cd;&#x4f5c;"/>
                         <StringItem index="1" value="&#x51b3;&#x7b56;&#x5236;&#x5b9a;"/>
@@ -1646,9 +1646,9 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logTypejComboBoxActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class=".JComboBox" name="logSYearjComboBox">
+                <Component class="javax.swing.JComboBox" name="logSYearjComboBox">
                   <Properties>
-                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="16">
                         <StringItem index="0" value="2000"/>
                         <StringItem index="1" value="2001"/>
@@ -1670,9 +1670,9 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class=".JComboBox" name="logSDatejComboBox">
+                <Component class="javax.swing.JComboBox" name="logSDatejComboBox">
                   <Properties>
-                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="31">
                         <StringItem index="0" value="1"/>
                         <StringItem index="1" value="2"/>
@@ -1709,9 +1709,9 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class=".JComboBox" name="logSMonthjComboBox">
+                <Component class="javax.swing.JComboBox" name="logSMonthjComboBox">
                   <Properties>
-                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="12">
                         <StringItem index="0" value="1"/>
                         <StringItem index="1" value="2"/>
@@ -1732,24 +1732,24 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logSMonthjComboBoxActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class=".JLabel" name="jLabel41">
+                <Component class="javax.swing.JLabel" name="jLabel41">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x5e74;"/>
                   </Properties>
                 </Component>
-                <Component class=".JLabel" name="jLabel42">
+                <Component class="javax.swing.JLabel" name="jLabel42">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x6708;"/>
                   </Properties>
                 </Component>
-                <Component class=".JLabel" name="jLabel43">
+                <Component class="javax.swing.JLabel" name="jLabel43">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x65e5;"/>
                   </Properties>
                 </Component>
-                <Component class=".JComboBox" name="logEYearjComboBox">
+                <Component class="javax.swing.JComboBox" name="logEYearjComboBox">
                   <Properties>
-                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="16">
                         <StringItem index="0" value="2000"/>
                         <StringItem index="1" value="2001"/>
@@ -1771,9 +1771,9 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class=".JComboBox" name="logEDatejComboBox">
+                <Component class="javax.swing.JComboBox" name="logEDatejComboBox">
                   <Properties>
-                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="31">
                         <StringItem index="0" value="1"/>
                         <StringItem index="1" value="2"/>
@@ -1810,9 +1810,9 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class=".JComboBox" name="logEYearjComboBox1">
+                <Component class="javax.swing.JComboBox" name="logEYearjComboBox1">
                   <Properties>
-                    <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="12">
                         <StringItem index="0" value="1"/>
                         <StringItem index="1" value="2"/>
@@ -1833,14 +1833,14 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logEYearjComboBox1ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class=".JLabel" name="jLabel44">
+                <Component class="javax.swing.JLabel" name="jLabel44">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x622a;&#x6b62;&#x65e5;&#x671f;&#xff1a;"/>
                   </Properties>
                 </Component>
-                <Component class=".JSeparator" name="jSeparator7">
+                <Component class="javax.swing.JSeparator" name="jSeparator7">
                 </Component>
-                <Component class=".JLabel" name="jLabel47">
+                <Component class="javax.swing.JLabel" name="jLabel47">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="&#x5b8b;&#x4f53;" size="12" style="1"/>
@@ -1848,20 +1848,20 @@
                     <Property name="text" type="java.lang.String" value="&#x7cfb;&#x7edf;&#x65e5;&#x5fd7;"/>
                   </Properties>
                 </Component>
-                <Container class=".JScrollPane" name="logjScrollPane">
+                <Container class="javax.swing.JScrollPane" name="logjScrollPane">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Container class=".JScrollPane" name="jScrollPane11">
+                    <Container class="javax.swing.JScrollPane" name="jScrollPane11">
                       <AuxValues>
                         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                       </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class=".JTable" name="logjTable">
+                        <Component class="javax.swing.JTable" name="logjTable">
                           <Properties>
-                            <Property name="model" type=".table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="15">
                                 <Column editable="true" title="&#x65e5;&#x671f;" type="java.lang.String">
                                   <Data value="20151109"/>
@@ -1933,7 +1933,7 @@
                                 </Column>
                               </Table>
                             </Property>
-                            <Property name="columnModel" type=".table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
@@ -1961,7 +1961,7 @@
                               <Color blue="0" green="0" red="0" type="rgb"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="123" noResource="true"/>
-                            <Property name="tableHeader" type=".table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                               <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                             </Property>
                           </Properties>
@@ -1974,38 +1974,38 @@
             </Container>
           </SubComponents>
         </Container>
-        <Component class=".JLabel" name="jLabel6">
+        <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x603b;&#x7ecf;&#x7406;"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
-        <Component class=".JLabel" name="currentAccountNamejLabel">
+        <Component class="javax.swing.JLabel" name="currentAccountNamejLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="0250000001"/>
           </Properties>
         </Component>
-        <Component class=".JLabel" name="currentAuthorityjLabel">
+        <Component class="javax.swing.JLabel" name="currentAuthorityjLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x603b;&#x7ecf;&#x7406;"/>
           </Properties>
         </Component>
-        <Component class=".JLabel" name="currentAccoutNamejLabel">
+        <Component class="javax.swing.JLabel" name="currentAccoutNamejLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x5f20;&#x4e09;"/>
           </Properties>
         </Component>
-        <Component class=".JLabel" name="jLabel48">
+        <Component class="javax.swing.JLabel" name="jLabel48">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x72b6;&#x6001;&#xff1a;"/>
           </Properties>
         </Component>
-        <Component class=".JLabel" name="statejLabel">
+        <Component class="javax.swing.JLabel" name="statejLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x7a7a;&#x95f2;"/>
           </Properties>
         </Component>
-        <Component class=".JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x9000;&#x51fa;&#x7cfb;&#x7edf;"/>
           </Properties>

@@ -103,27 +103,27 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class=".JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x8425;&#x4e1a;&#x5385;&#xff1a;"/>
       </Properties>
     </Component>
-    <Component class=".JLabel" name="BusinessOfficeNum_label">
+    <Component class="javax.swing.JLabel" name="BusinessOfficeNum_label">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5357;&#x4eac; 025001"/>
       </Properties>
     </Component>
-    <Component class=".JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x8d26;&#x6237;&#xff1a;"/>
       </Properties>
     </Component>
-    <Component class=".JButton" name="account_btn">
+    <Component class="javax.swing.JButton" name="account_btn">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x8001;&#x674e;&#xff08;&#x5305;&#x62ec;&#x66f4;&#x6539;&#x5bc6;&#x7801;&#x3001;&#x9000;&#x51fa;&#x767b;&#x5f55;&#xff09;"/>
       </Properties>
     </Component>
-    <Component class=".JButton" name="exit_btn">
+    <Component class="javax.swing.JButton" name="exit_btn">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x9000;&#x51fa;&#x7cfb;&#x7edf;"/>
       </Properties>
@@ -131,21 +131,21 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exit_btnActionPerformed"/>
       </Events>
     </Component>
-    <Component class=".JButton" name="back_btn">
+    <Component class="javax.swing.JButton" name="back_btn">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x8fd4;&#x56de;"/>
       </Properties>
     </Component>
-    <Container class=".JScrollPane" name="jScrollPane2">
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class=".JTable" name="drivers_table">
+        <Component class="javax.swing.JTable" name="drivers_table">
           <Properties>
-            <Property name="model" type=".table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="80">
                 <Column editable="false" title="&#x7f16;&#x53f7;" type="java.lang.Object"/>
                 <Column editable="false" title="&#x59d3;&#x540d;" type="java.lang.Object"/>
@@ -153,7 +153,7 @@
                 <Column editable="false" title="&#x5220;&#x9664;" type="java.lang.Object"/>
               </Table>
             </Property>
-            <Property name="columnModel" type=".table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
@@ -177,14 +177,14 @@
                 </Column>
               </TableColumnModel>
             </Property>
-            <Property name="tableHeader" type=".table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Component class=".JButton" name="add_btn">
+    <Component class="javax.swing.JButton" name="add_btn">
       <Properties>
         <Property name="text" type="java.lang.String" value="+"/>
       </Properties>
@@ -193,17 +193,17 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="add_btnActionPerformed"/>
       </Events>
     </Component>
-    <Component class=".JTextField" name="search_text">
+    <Component class="javax.swing.JTextField" name="search_text">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x8f93;&#x5165;&#x59d3;&#x540d;&#x6216;&#x7f16;&#x53f7;"/>
       </Properties>
     </Component>
-    <Component class=".JButton" name="search_btn">
+    <Component class="javax.swing.JButton" name="search_btn">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x641c;&#x7d22;"/>
       </Properties>
     </Component>
-    <Component class=".JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="&#x5b8b;&#x4f53;" size="18" style="1"/>
@@ -214,7 +214,7 @@
         <Property name="text" type="java.lang.String" value="&#x53f8;&#x673a;&#x7ba1;&#x7406;"/>
       </Properties>
     </Component>
-    <Component class=".JTextField" name="stateText">
+    <Component class="javax.swing.JTextField" name="stateText">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>

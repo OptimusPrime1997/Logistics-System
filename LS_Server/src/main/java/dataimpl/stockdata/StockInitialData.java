@@ -3,14 +3,22 @@
  */
 package dataimpl.stockdata;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
 import PO.StockNumPO;
+import PO.StockPO;
 import dataservice.stockdataservice.StockInitialDataService;
 import datautil.DataUtility;
 
@@ -44,17 +52,13 @@ public class StockInitialData extends UnicastRemoteObject implements StockInitia
 		try {
 			try {
 				ArrayList<Object> list = du.getAll(filename);
-				
-				if (list != null){
-					for(int i = 0;i < list.size();++i) {
-						StockNumPO stocknumpo = (StockNumPO) list.get(i);
-						if(stocknumpo.getCityNum().equals(po.getCityNum())){
-							list.remove(i);
-						}
+				for(int i = 0;i < list.size();++i) {
+					StockNumPO stocknumpo = (StockNumPO) list.get(i);
+					if(stocknumpo.getCityNum().equals(po.getCityNum())){
+						list.remove(i);
 					}
-				} else{
-					list = new ArrayList<Object>();
 				}
+				System.out.println("wwwww"+list.size());
 				list.add(po);
 				du.SaveAll(list, filename);
 				
@@ -96,5 +100,14 @@ public class StockInitialData extends UnicastRemoteObject implements StockInitia
 		return null;
 	}
 
-	
+	public static void main(String[] args) {
+		try {
+			StockInitialData d = new StockInitialData();
+			d.initial(new StockNumPO("Nanjing", 300));
+			System.out.println(d.getInitialNum("Nanjing").getInitialNum());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+	}
 }

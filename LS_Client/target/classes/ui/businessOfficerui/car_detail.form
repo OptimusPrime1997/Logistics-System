@@ -103,7 +103,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class=".JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="&#x5b8b;&#x4f53;" size="18" style="1"/>
@@ -114,12 +114,12 @@
         <Property name="text" type="java.lang.String" value="&#x8f66;&#x8f86;&#x8be6;&#x7ec6;&#x4fe1;&#x606f;"/>
       </Properties>
     </Component>
-    <Component class=".JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x8f66;&#x8f86;&#x4ee3;&#x53f7;"/>
       </Properties>
     </Component>
-    <Component class=".JTextField" name="carCodeNum_text">
+    <Component class="javax.swing.JTextField" name="carCodeNum_text">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="text" type="java.lang.String" value="025001001"/>
@@ -128,22 +128,22 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="carCodeNum_textActionPerformed"/>
       </Events>
     </Component>
-    <Component class=".JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x8f66;&#x724c;&#x53f7;"/>
       </Properties>
     </Component>
-    <Component class=".JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x670d;&#x5f79;&#x65f6;&#x95f4;"/>
       </Properties>
     </Component>
-    <Component class=".JTextField" name="carLicenseNum_text">
+    <Component class="javax.swing.JTextField" name="carLicenseNum_text">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x6709;&#x521d;&#x59cb;&#x503c;"/>
       </Properties>
     </Component>
-    <Component class=".JTextField" name="timeText">
+    <Component class="javax.swing.JTextField" name="timeText">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x6709;&#x521d;&#x59cb;&#x503c;"/>
       </Properties>
@@ -151,9 +151,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="timeTextActionPerformed"/>
       </Events>
     </Component>
-    <Component class=".JComboBox" name="jComboBox6">
+    <Component class="javax.swing.JComboBox" name="jComboBox6">
       <Properties>
-        <Property name="model" type=".ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
             <StringItem index="0" value="&#x5e74;"/>
             <StringItem index="1" value="&#x6708;"/>
@@ -162,7 +162,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class=".JButton" name="delete_btn">
+    <Component class="javax.swing.JButton" name="delete_btn">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -173,7 +173,7 @@
         <Property name="text" type="java.lang.String" value="X&#x5220;&#x9664;"/>
       </Properties>
     </Component>
-    <Component class=".JButton" name="back_btn">
+    <Component class="javax.swing.JButton" name="back_btn">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x8fd4;&#x56de;"/>
       </Properties>
@@ -181,7 +181,7 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="back_btnMouseClicked"/>
       </Events>
     </Component>
-    <Component class=".JButton" name="ok_btn">
+    <Component class="javax.swing.JButton" name="ok_btn">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x4fdd;&#x5b58;"/>
       </Properties>

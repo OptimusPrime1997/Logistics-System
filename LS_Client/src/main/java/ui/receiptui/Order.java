@@ -10,7 +10,7 @@ package ui.receiptui;
  *
  * @author apple
  */
-public class Order extends .JPanel {
+public class Order extends javax.swing.JPanel {
 
     /**
      * Creates new form Order
@@ -28,82 +28,82 @@ public class Order extends .JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        numLabel = new .JLabel();
-        officeText = new .JTextField();
-        itemNumLabel = new .JLabel();
-        itemNumText = new .JTextField();
-        weightLabel = new .JLabel();
-        weightText = new .JTextField();
-        measureLabel = new .JLabel();
-        measureText = new .JTextField();
-        itemNameLabel = new .JLabel();
-        itemNameText = new .JTextField();
-        pkgLabel = new .JLabel();
-        pkgBox = new .JComboBox();
-        typeLabel = new .JLabel();
-        typeBox = new .JComboBox();
-        sumButton = new .JButton();
-        sumLabel = new .JLabel();
-        sumText = new .JTextField();
-        senderLabel = new .JLabel();
-        senderText = new .JTextField();
-        senderAddLabel = new .JLabel();
-        receiverAddText = new .JTextField();
-        senderPhoneNumLabel = new .JLabel();
-        senderPhoneNumText = new .JTextField();
-        receiverLabel = new .JLabel();
-        receiverText = new .JTextField();
-        receiverPhoneNumLabel = new .JLabel();
-        receiverPhoneNumText = new .JTextField();
-        receiverAddLabel = new .JLabel();
-        senderAddText = new .JTextField();
-        dateLabel = new .JLabel();
-        dateText = new .JTextField();
-        cancelButton = new .JButton();
-        okButton = new .JButton();
-        officeLabel = new .JLabel();
-        numText = new .JTextField();
+        numLabel = new javax.swing.JLabel();
+        officeText = new javax.swing.JTextField();
+        itemNumLabel = new javax.swing.JLabel();
+        itemNumText = new javax.swing.JTextField();
+        weightLabel = new javax.swing.JLabel();
+        weightText = new javax.swing.JTextField();
+        measureLabel = new javax.swing.JLabel();
+        measureText = new javax.swing.JTextField();
+        itemNameLabel = new javax.swing.JLabel();
+        itemNameText = new javax.swing.JTextField();
+        pkgLabel = new javax.swing.JLabel();
+        pkgBox = new javax.swing.JComboBox();
+        typeLabel = new javax.swing.JLabel();
+        typeBox = new javax.swing.JComboBox();
+        sumButton = new javax.swing.JButton();
+        sumLabel = new javax.swing.JLabel();
+        sumText = new javax.swing.JTextField();
+        senderLabel = new javax.swing.JLabel();
+        senderText = new javax.swing.JTextField();
+        senderAddLabel = new javax.swing.JLabel();
+        receiverAddText = new javax.swing.JTextField();
+        senderPhoneNumLabel = new javax.swing.JLabel();
+        senderPhoneNumText = new javax.swing.JTextField();
+        receiverLabel = new javax.swing.JLabel();
+        receiverText = new javax.swing.JTextField();
+        receiverPhoneNumLabel = new javax.swing.JLabel();
+        receiverPhoneNumText = new javax.swing.JTextField();
+        receiverAddLabel = new javax.swing.JLabel();
+        senderAddText = new javax.swing.JTextField();
+        dateLabel = new javax.swing.JLabel();
+        dateText = new javax.swing.JTextField();
+        cancelButton = new javax.swing.JButton();
+        okButton = new javax.swing.JButton();
+        officeLabel = new javax.swing.JLabel();
+        numText = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        numLabel.setHorizontalAlignment(.SwingConstants.RIGHT);
+        numLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         numLabel.setText("订单号:");
 
         officeText.setEditable(false);
         officeText.setText("025001");
 
-        itemNumLabel.setHorizontalAlignment(.SwingConstants.RIGHT);
+        itemNumLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         itemNumLabel.setText("原件数:");
 
         itemNumText.setText("0");
 
-        weightLabel.setHorizontalAlignment(.SwingConstants.RIGHT);
+        weightLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         weightLabel.setText("重量:");
 
         weightText.setText("0");
 
-        measureLabel.setHorizontalAlignment(.SwingConstants.RIGHT);
+        measureLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         measureLabel.setText("尺寸:");
 
         measureText.setText("0");
 
-        itemNameLabel.setHorizontalAlignment(.SwingConstants.RIGHT);
+        itemNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         itemNameLabel.setText("内件品名:");
 
-        pkgLabel.setHorizontalAlignment(.SwingConstants.RIGHT);
+        pkgLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         pkgLabel.setText("包装形式:");
 
-        pkgBox.setModel(new .DefaultComboBoxModel(new String[] { "快递袋", "纸箱", "木箱" }));
+        pkgBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "快递袋", "纸箱", "木箱" }));
         pkgBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pkgBoxActionPerformed(evt);
             }
         });
 
-        typeLabel.setHorizontalAlignment(.SwingConstants.RIGHT);
+        typeLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         typeLabel.setText("快递类型:");
 
-        typeBox.setModel(new .DefaultComboBoxModel(new String[] { "标准", "经济", "特快" }));
+        typeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "标准", "经济", "特快" }));
         typeBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 typeBoxActionPerformed(evt);
@@ -117,7 +117,7 @@ public class Order extends .JPanel {
             }
         });
 
-        sumLabel.setHorizontalAlignment(.SwingConstants.RIGHT);
+        sumLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         sumLabel.setText("总计:");
 
         sumText.setEditable(false);
@@ -128,22 +128,22 @@ public class Order extends .JPanel {
             }
         });
 
-        senderLabel.setHorizontalAlignment(.SwingConstants.RIGHT);
+        senderLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         senderLabel.setText("寄件人:");
 
-        senderAddLabel.setHorizontalAlignment(.SwingConstants.RIGHT);
+        senderAddLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         senderAddLabel.setText("住址:");
 
-        senderPhoneNumLabel.setHorizontalAlignment(.SwingConstants.RIGHT);
+        senderPhoneNumLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         senderPhoneNumLabel.setText("手机:");
 
-        receiverLabel.setHorizontalAlignment(.SwingConstants.RIGHT);
+        receiverLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         receiverLabel.setText("收件人:");
 
-        receiverPhoneNumLabel.setHorizontalAlignment(.SwingConstants.RIGHT);
+        receiverPhoneNumLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         receiverPhoneNumLabel.setText("手机:");
 
-        receiverAddLabel.setHorizontalAlignment(.SwingConstants.RIGHT);
+        receiverAddLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         receiverAddLabel.setText("住址:");
 
         dateLabel.setText("日期:");
@@ -168,26 +168,26 @@ public class Order extends .JPanel {
 
         numText.setEditable(false);
 
-        .GroupLayout layout = new .GroupLayout(this);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
-            .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(officeLabel)
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(officeText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dateLabel)
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dateText, .GroupLayout.PREFERRED_SIZE, 100, .GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(receiverLabel)
                             .addComponent(sumLabel)
                             .addComponent(pkgLabel)
@@ -199,112 +199,112 @@ public class Order extends .JPanel {
                             .addComponent(senderLabel)
                             .addComponent(senderAddLabel)
                             .addComponent(receiverAddLabel))
-                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
-                            .addComponent(measureText, .GroupLayout.PREFERRED_SIZE, 43, .GroupLayout.PREFERRED_SIZE)
-                            .addComponent(weightText, .GroupLayout.PREFERRED_SIZE, 43, .GroupLayout.PREFERRED_SIZE)
-                            .addComponent(itemNumText, .GroupLayout.PREFERRED_SIZE, 43, .GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(measureText, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(weightText, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(itemNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(29, 29, 29)
                                 .addComponent(cancelButton)
                                 .addGap(64, 64, 64)
                                 .addComponent(okButton))
-                            .addComponent(receiverAddText, .GroupLayout.PREFERRED_SIZE, 325, .GroupLayout.PREFERRED_SIZE)
-                            .addComponent(itemNameText, .GroupLayout.PREFERRED_SIZE, 87, .GroupLayout.PREFERRED_SIZE)
+                            .addComponent(receiverAddText, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(itemNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(receiverText, .GroupLayout.PREFERRED_SIZE, 60, .GroupLayout.PREFERRED_SIZE)
+                                .addComponent(receiverText, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(receiverPhoneNumLabel)
-                                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(receiverPhoneNumText, .GroupLayout.PREFERRED_SIZE, 104, .GroupLayout.PREFERRED_SIZE))
-                            .addComponent(senderAddText, .GroupLayout.PREFERRED_SIZE, 325, .GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(receiverPhoneNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(senderAddText, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
-                                    .addComponent(typeBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pkgBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(typeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pkgBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(30, 30, 30)
                                 .addComponent(sumButton))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(sumText, .GroupLayout.Alignment.LEADING)
-                                    .addComponent(senderText, .GroupLayout.Alignment.LEADING, .GroupLayout.PREFERRED_SIZE, 60, .GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(sumText, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(senderText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addComponent(senderPhoneNumLabel)
-                                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(senderPhoneNumText, .GroupLayout.PREFERRED_SIZE, 105, .GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(senderPhoneNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(numLabel, .GroupLayout.PREFERRED_SIZE, 61, .GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numText, .GroupLayout.PREFERRED_SIZE, 99, .GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(numLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dateLabel)
-                    .addComponent(dateText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
-                    .addComponent(officeText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(officeLabel))
                 .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
-                    .addComponent(numLabel, .GroupLayout.PREFERRED_SIZE, 26, .GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
-                    .addComponent(itemNumLabel, .GroupLayout.PREFERRED_SIZE, 26, .GroupLayout.PREFERRED_SIZE)
-                    .addComponent(itemNumText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(numLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(itemNumLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(itemNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(weightLabel)
-                    .addComponent(weightText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                    .addComponent(weightText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(measureLabel)
-                    .addComponent(measureText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                    .addComponent(measureText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(itemNameLabel)
-                    .addComponent(itemNameText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pkgBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                    .addComponent(itemNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pkgBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pkgLabel))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(typeLabel)
-                    .addComponent(typeBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                    .addComponent(typeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sumButton))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sumLabel)
-                    .addComponent(sumText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(senderLabel)
-                    .addComponent(senderText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                    .addComponent(senderText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(senderPhoneNumLabel)
-                    .addComponent(senderPhoneNumText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                    .addComponent(senderPhoneNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(senderAddLabel)
-                    .addComponent(senderAddText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                    .addComponent(senderAddText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(receiverLabel)
-                            .addComponent(receiverText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                            .addComponent(receiverText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(receiverPhoneNumLabel)
-                            .addComponent(receiverPhoneNumText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(receiverPhoneNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
-                            .addComponent(receiverAddText, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(receiverAddText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(receiverAddLabel))))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(okButton)
                     .addComponent(cancelButton))
                 .addContainerGap(24, Short.MAX_VALUE))
@@ -337,40 +337,40 @@ public class Order extends .JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private .JButton cancelButton;
-    private .JLabel dateLabel;
-    private .JTextField dateText;
-    private .JLabel itemNameLabel;
-    private .JTextField itemNameText;
-    private .JLabel itemNumLabel;
-    private .JTextField itemNumText;
-    private .JLabel measureLabel;
-    private .JTextField measureText;
-    private .JLabel numLabel;
-    private .JTextField numText;
-    private .JLabel officeLabel;
-    private .JTextField officeText;
-    private .JButton okButton;
-    private .JComboBox pkgBox;
-    private .JLabel pkgLabel;
-    private .JLabel receiverAddLabel;
-    private .JTextField receiverAddText;
-    private .JLabel receiverLabel;
-    private .JLabel receiverPhoneNumLabel;
-    private .JTextField receiverPhoneNumText;
-    private .JTextField receiverText;
-    private .JLabel senderAddLabel;
-    private .JTextField senderAddText;
-    private .JLabel senderLabel;
-    private .JLabel senderPhoneNumLabel;
-    private .JTextField senderPhoneNumText;
-    private .JTextField senderText;
-    private .JButton sumButton;
-    private .JLabel sumLabel;
-    private .JTextField sumText;
-    private .JComboBox typeBox;
-    private .JLabel typeLabel;
-    private .JLabel weightLabel;
-    private .JTextField weightText;
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JLabel dateLabel;
+    private javax.swing.JTextField dateText;
+    private javax.swing.JLabel itemNameLabel;
+    private javax.swing.JTextField itemNameText;
+    private javax.swing.JLabel itemNumLabel;
+    private javax.swing.JTextField itemNumText;
+    private javax.swing.JLabel measureLabel;
+    private javax.swing.JTextField measureText;
+    private javax.swing.JLabel numLabel;
+    private javax.swing.JTextField numText;
+    private javax.swing.JLabel officeLabel;
+    private javax.swing.JTextField officeText;
+    private javax.swing.JButton okButton;
+    private javax.swing.JComboBox pkgBox;
+    private javax.swing.JLabel pkgLabel;
+    private javax.swing.JLabel receiverAddLabel;
+    private javax.swing.JTextField receiverAddText;
+    private javax.swing.JLabel receiverLabel;
+    private javax.swing.JLabel receiverPhoneNumLabel;
+    private javax.swing.JTextField receiverPhoneNumText;
+    private javax.swing.JTextField receiverText;
+    private javax.swing.JLabel senderAddLabel;
+    private javax.swing.JTextField senderAddText;
+    private javax.swing.JLabel senderLabel;
+    private javax.swing.JLabel senderPhoneNumLabel;
+    private javax.swing.JTextField senderPhoneNumText;
+    private javax.swing.JTextField senderText;
+    private javax.swing.JButton sumButton;
+    private javax.swing.JLabel sumLabel;
+    private javax.swing.JTextField sumText;
+    private javax.swing.JComboBox typeBox;
+    private javax.swing.JLabel typeLabel;
+    private javax.swing.JLabel weightLabel;
+    private javax.swing.JTextField weightText;
     // End of variables declaration//GEN-END:variables
 }

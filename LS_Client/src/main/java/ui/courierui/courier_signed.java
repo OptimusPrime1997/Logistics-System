@@ -9,7 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import .GroupLayout;
+import javax.swing.GroupLayout;
 
 import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsExpressType;
@@ -27,7 +27,7 @@ import blservice.goodsblservice.GoodsInitBLService;
  *
  * @author Administrator
  */
-public class courier_signed extends .JFrame {
+public class courier_signed extends javax.swing.JFrame {
 	/*
 	 * Listeners~~
 	 */
@@ -95,15 +95,15 @@ public class courier_signed extends .JFrame {
     	controller_end=ControllerFactoryImpl.getInstance().getGoodsEndController();
     	controller_check=ControllerFactoryImpl.getInstance().getGoodsCheckController();
     	initComponents();
-        setDefaultCloseOperation(.WindowConstants.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   
     private void initComponents() {
-        panel = new .JPanel();
-        .GroupLayout layout0 = new .GroupLayout(panel);
+        panel = new javax.swing.JPanel();
+        javax.swing.GroupLayout layout0 = new javax.swing.GroupLayout(panel);
         panel.setLayout(layout0);
         initLabel();
         initText();
@@ -113,8 +113,8 @@ public class courier_signed extends .JFrame {
 
     }
     private void initbtn() {
-        cancel_btn = new .JButton();
-        ok_btn = new .JButton();
+        cancel_btn = new javax.swing.JButton();
+        ok_btn = new javax.swing.JButton();
         cancel_btn.setText("取消");
         ok_btn.setText("确认");
         /**
@@ -133,15 +133,15 @@ public class courier_signed extends .JFrame {
         });
 	}
 	private void initComboBox() {
-    	 year_ComboBox = new .JComboBox<String>();
-         month_ComboBox = new .JComboBox<String>();
-         day_ComboBox = new .JComboBox<String>();
-		year_ComboBox.setModel(new .DefaultComboBoxModel<String>(
+    	 year_ComboBox = new javax.swing.JComboBox<String>();
+         month_ComboBox = new javax.swing.JComboBox<String>();
+         day_ComboBox = new javax.swing.JComboBox<String>();
+		year_ComboBox.setModel(new javax.swing.DefaultComboBoxModel<String>(
 				new String[] { "2015", "2016", "2014", "2013" }));
-		month_ComboBox.setModel(new .DefaultComboBoxModel<String>(
+		month_ComboBox.setModel(new javax.swing.DefaultComboBoxModel<String>(
 				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
 						"10", "11", "12" }));
-		day_ComboBox.setModel(new .DefaultComboBoxModel<String>(
+		day_ComboBox.setModel(new javax.swing.DefaultComboBoxModel<String>(
 				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
 						"10", "11", "12", "13", "14", "15", "16", "17", "18",
 						"19", "20", "21", "22", "23", "24", "25", "26", "27",
@@ -168,100 +168,100 @@ public class courier_signed extends .JFrame {
 	private void initLayout(GroupLayout layout0) {
 
 		layout0.setHorizontalGroup(
-	            layout0.createParallelGroup(.GroupLayout.Alignment.LEADING)
-	            .addGroup(.GroupLayout.Alignment.TRAILING, layout0.createSequentialGroup()
-	                .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-	                .addComponent(cancel_btn, .GroupLayout.PREFERRED_SIZE, 85, .GroupLayout.PREFERRED_SIZE)
+	            layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout0.createSequentialGroup()
+	                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                .addComponent(cancel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
 	                .addGap(55, 55, 55)
-	                .addComponent(ok_btn, .GroupLayout.PREFERRED_SIZE, 85, .GroupLayout.PREFERRED_SIZE)
+	                .addComponent(ok_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
 	                .addGap(54, 54, 54))
-	            .addGroup(.GroupLayout.Alignment.TRAILING, layout0.createSequentialGroup()
+	            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout0.createSequentialGroup()
 	                .addGap(44, 44, 44)
 	                .addComponent(jLabel9)
-	                .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+	                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 	            .addGroup(layout0.createSequentialGroup()
 	                .addGap(66, 66, 66)
-	                .addGroup(layout0.createParallelGroup(.GroupLayout.Alignment.LEADING)
+	                .addGroup(layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 	                    .addGroup(layout0.createSequentialGroup()
 	                        .addComponent(jLabel10)
 	                        .addGap(21, 21, 21)
-	                        .addGroup(layout0.createParallelGroup(.GroupLayout.Alignment.LEADING)
-	                            .addComponent(getterPhone_text, .GroupLayout.PREFERRED_SIZE, 97, .GroupLayout.PREFERRED_SIZE)
-	                            .addComponent(getterName_text, .GroupLayout.PREFERRED_SIZE, 97, .GroupLayout.PREFERRED_SIZE)
-	                            .addComponent(goodsNum_text, .GroupLayout.PREFERRED_SIZE, 244, .GroupLayout.PREFERRED_SIZE)))
-	                    .addGroup(layout0.createParallelGroup(.GroupLayout.Alignment.TRAILING)
+	                        .addGroup(layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                            .addComponent(getterPhone_text, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                            .addComponent(getterName_text, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                            .addComponent(goodsNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
+	                    .addGroup(layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
 	                        .addComponent(jLabel4)
 	                        .addComponent(jLabel1))
 	                    .addGroup(layout0.createSequentialGroup()
 	                        .addComponent(jLabel5)
 	                        .addGap(27, 27, 27)
-	                        .addComponent(year_ComboBox, .GroupLayout.PREFERRED_SIZE, 70, .GroupLayout.PREFERRED_SIZE)
-	                        .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+	                        .addComponent(year_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 	                        .addComponent(jLabel6)
 	                        .addGap(18, 18, 18)
-	                        .addComponent(month_ComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
-	                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+	                        .addComponent(month_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 	                        .addComponent(jLabel7)
 	                        .addGap(13, 13, 13)
-	                        .addComponent(day_ComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
-	                        .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+	                        .addComponent(day_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 	                        .addComponent(jLabel8)))
 	                .addContainerGap(202, Short.MAX_VALUE))
 	        );
 	        layout0.setVerticalGroup(
-	            layout0.createParallelGroup(.GroupLayout.Alignment.LEADING)
+	            layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 	            .addGroup(layout0.createSequentialGroup()
 	                .addGap(30, 30, 30)
 	                .addComponent(jLabel9)
 	                .addGap(37, 37, 37)
-	                .addGroup(layout0.createParallelGroup(.GroupLayout.Alignment.BASELINE)
-	                    .addComponent(goodsNum_text, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+	                .addGroup(layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                    .addComponent(goodsNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
 	                    .addComponent(jLabel1))
 	                .addGap(14, 14, 14)
-	                .addGroup(layout0.createParallelGroup(.GroupLayout.Alignment.BASELINE)
-	                    .addComponent(getterName_text, .GroupLayout.PREFERRED_SIZE, 25, .GroupLayout.PREFERRED_SIZE)
+	                .addGroup(layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                    .addComponent(getterName_text, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
 	                    .addComponent(jLabel4))
 	                .addGap(14, 14, 14)
-	                .addGroup(layout0.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+	                .addGroup(layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
 	                    .addComponent(jLabel10)
-	                    .addComponent(getterPhone_text, .GroupLayout.PREFERRED_SIZE, 25, .GroupLayout.PREFERRED_SIZE))
+	                    .addComponent(getterPhone_text, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
 	                .addGap(18, 18, 18)
-	                .addGroup(layout0.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+	                .addGroup(layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
 	                    .addComponent(jLabel5)
-	                    .addComponent(year_ComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
-	                    .addComponent(month_ComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
-	                    .addComponent(day_ComboBox, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+	                    .addComponent(year_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                    .addComponent(month_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                    .addComponent(day_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
 	                    .addComponent(jLabel6)
-	                    .addComponent(jLabel7, .GroupLayout.PREFERRED_SIZE, 23, .GroupLayout.PREFERRED_SIZE)
-	                    .addComponent(jLabel8, .GroupLayout.PREFERRED_SIZE, 26, .GroupLayout.PREFERRED_SIZE))
-	                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-	                .addGroup(layout0.createParallelGroup(.GroupLayout.Alignment.BASELINE)
-	                    .addComponent(cancel_btn, .GroupLayout.PREFERRED_SIZE, 39, .GroupLayout.PREFERRED_SIZE)
-	                    .addComponent(ok_btn, .GroupLayout.PREFERRED_SIZE, 39, .GroupLayout.PREFERRED_SIZE))
+	                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+	                .addGroup(layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                    .addComponent(cancel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                    .addComponent(ok_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
 	                .addGap(51, 51, 51))
 	        );
 
-	        .GroupLayout layout = new .GroupLayout(getContentPane());
+	        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 	        getContentPane().setLayout(layout);
 	        layout.setHorizontalGroup(
-	            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 	            .addGroup(layout.createSequentialGroup()
-	                .addComponent(panel, .GroupLayout.DEFAULT_SIZE, .GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 	                .addContainerGap())
 	        );
 	        layout.setVerticalGroup(
-	            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 	            .addGroup(layout.createSequentialGroup()
-	                .addComponent(panel, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+	                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
 	                .addGap(0, 0, Short.MAX_VALUE))
 	        );
 
 	        pack();
 	}
 	private void initText() {
-    	 goodsNum_text = new .JTextField();
-         getterName_text = new .JTextField();
-         getterPhone_text = new .JTextField();
+    	 goodsNum_text = new javax.swing.JTextField();
+         getterName_text = new javax.swing.JTextField();
+         getterPhone_text = new javax.swing.JTextField();
          getterPhone_text.setText("选填");
          /*
   		 * add listener
@@ -275,14 +275,14 @@ public class courier_signed extends .JFrame {
          
 	}
 	private void initLabel() {
-    	 jLabel1 = new .JLabel();
-         jLabel4 = new .JLabel();
-         jLabel5 = new .JLabel();
-         jLabel6 = new .JLabel();
-         jLabel7 = new .JLabel();
-         jLabel8 = new .JLabel();
-         jLabel9 = new .JLabel();
-         jLabel10 = new .JLabel();
+    	 jLabel1 = new javax.swing.JLabel();
+         jLabel4 = new javax.swing.JLabel();
+         jLabel5 = new javax.swing.JLabel();
+         jLabel6 = new javax.swing.JLabel();
+         jLabel7 = new javax.swing.JLabel();
+         jLabel8 = new javax.swing.JLabel();
+         jLabel9 = new javax.swing.JLabel();
+         jLabel10 = new javax.swing.JLabel();
          jLabel1.setText("订单号");
          jLabel4.setText("收件人");
          jLabel5.setText("收件日期");
@@ -311,23 +311,23 @@ public class courier_signed extends .JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GoodsEndBLService controller_end;
     private GoodsCheckValidBLService controller_check;
-    private .JButton cancel_btn;
-    private .JButton ok_btn;
-    private .JComboBox<String> day_ComboBox;
-    private .JComboBox<String> month_ComboBox;
-    private .JComboBox<String> year_ComboBox;
-    private .JTextField getterName_text;
-    private .JTextField goodsNum_text;
-    private .JTextField getterPhone_text;
-    private .JLabel jLabel1;
-    private .JLabel jLabel4;
-    private .JLabel jLabel5;
-    private .JLabel jLabel6;
-    private .JLabel jLabel7;
-    private .JLabel jLabel8;
-    private .JLabel jLabel9;
-    private .JLabel jLabel10;
-    private .JPanel panel;  
+    private javax.swing.JButton cancel_btn;
+    private javax.swing.JButton ok_btn;
+    private javax.swing.JComboBox<String> day_ComboBox;
+    private javax.swing.JComboBox<String> month_ComboBox;
+    private javax.swing.JComboBox<String> year_ComboBox;
+    private javax.swing.JTextField getterName_text;
+    private javax.swing.JTextField goodsNum_text;
+    private javax.swing.JTextField getterPhone_text;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JPanel panel;  
     private String listNum,getterName,getterPhone;
     
     private static final long serialVersionUID = 1L;    

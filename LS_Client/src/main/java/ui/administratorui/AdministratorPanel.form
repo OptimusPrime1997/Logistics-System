@@ -54,12 +54,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class=".JLabel" name="jLabel9">
+    <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5f53;&#x524d;&#x8d26;&#x6237;&#xff1a;&#x5927;&#x7389;&#x513f;"/>
       </Properties>
     </Component>
-    <Component class=".JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x9000;&#x51fa;"/>
       </Properties>
@@ -67,7 +67,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
       </Events>
     </Component>
-    <Component class=".JButton" name="jButton5">
+    <Component class="javax.swing.JButton" name="jButton5">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x6743;&#x9650;"/>
       </Properties>
@@ -75,7 +75,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
       </Events>
     </Component>
-    <Component class=".JButton" name="jButton6">
+    <Component class="javax.swing.JButton" name="jButton6">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x7528;&#x6237;&#x8d26;&#x6237;"/>
       </Properties>

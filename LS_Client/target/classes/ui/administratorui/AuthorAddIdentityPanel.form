@@ -64,12 +64,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class=".JLabel" name="jLabel9">
+    <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5f53;&#x524d;&#x8d26;&#x6237;&#xff1a;&#x5927;&#x7389;&#x513f;"/>
       </Properties>
     </Component>
-    <Component class=".JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x9000;&#x51fa;"/>
       </Properties>
@@ -77,22 +77,22 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
       </Events>
     </Component>
-    <Component class=".JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x9700;&#x8981;&#x6dfb;&#x52a0;&#x7684;&#x65b0;&#x8eab;&#x4efd;&#xff1a;"/>
       </Properties>
     </Component>
-    <Component class=".JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="jTextField1">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
     </Component>
-    <Component class=".JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x786e;&#x5b9a;"/>
       </Properties>
     </Component>
-    <Component class=".JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x8fd4;&#x56de;"/>
       </Properties>

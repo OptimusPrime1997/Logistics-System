@@ -9,7 +9,7 @@ package ui.administratorui;
  *
  * @author G
  */
-public class AuthorityManagementPanel extends .JPanel {
+public class AuthorityManagementPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form AuthorityManagementPanel
@@ -27,34 +27,34 @@ public class AuthorityManagementPanel extends .JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel9 = new .JLabel();
-        jButton3 = new .JButton();
-        jPanel1 = new .JPanel();
-        jCheckBox104 = new .JCheckBox();
-        jCheckBox105 = new .JCheckBox();
-        jCheckBox106 = new .JCheckBox();
-        jCheckBox107 = new .JCheckBox();
-        jCheckBox108 = new .JCheckBox();
-        jCheckBox109 = new .JCheckBox();
-        jCheckBox110 = new .JCheckBox();
-        jCheckBox111 = new .JCheckBox();
-        jCheckBox112 = new .JCheckBox();
-        jCheckBox113 = new .JCheckBox();
-        jCheckBox114 = new .JCheckBox();
-        jCheckBox115 = new .JCheckBox();
-        jCheckBox116 = new .JCheckBox();
-        jCheckBox119 = new .JCheckBox();
-        jCheckBox120 = new .JCheckBox();
-        jCheckBox121 = new .JCheckBox();
-        jCheckBox122 = new .JCheckBox();
-        jCheckBox124 = new .JCheckBox();
-        jCheckBox125 = new .JCheckBox();
-        jCheckBox139 = new .JCheckBox();
-        jCheckBox141 = new .JCheckBox();
-        jCheckBox144 = new .JCheckBox();
-        jButton2 = new .JButton();
-        jButton4 = new .JButton();
-        jComboBox1 = new .JComboBox();
+        jLabel9 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jCheckBox104 = new javax.swing.JCheckBox();
+        jCheckBox105 = new javax.swing.JCheckBox();
+        jCheckBox106 = new javax.swing.JCheckBox();
+        jCheckBox107 = new javax.swing.JCheckBox();
+        jCheckBox108 = new javax.swing.JCheckBox();
+        jCheckBox109 = new javax.swing.JCheckBox();
+        jCheckBox110 = new javax.swing.JCheckBox();
+        jCheckBox111 = new javax.swing.JCheckBox();
+        jCheckBox112 = new javax.swing.JCheckBox();
+        jCheckBox113 = new javax.swing.JCheckBox();
+        jCheckBox114 = new javax.swing.JCheckBox();
+        jCheckBox115 = new javax.swing.JCheckBox();
+        jCheckBox116 = new javax.swing.JCheckBox();
+        jCheckBox119 = new javax.swing.JCheckBox();
+        jCheckBox120 = new javax.swing.JCheckBox();
+        jCheckBox121 = new javax.swing.JCheckBox();
+        jCheckBox122 = new javax.swing.JCheckBox();
+        jCheckBox124 = new javax.swing.JCheckBox();
+        jCheckBox125 = new javax.swing.JCheckBox();
+        jCheckBox139 = new javax.swing.JCheckBox();
+        jCheckBox141 = new javax.swing.JCheckBox();
+        jCheckBox144 = new javax.swing.JCheckBox();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox();
 
         jLabel9.setText("当前账户：大玉儿");
 
@@ -213,139 +213,139 @@ public class AuthorityManagementPanel extends .JPanel {
 
         jButton4.setText("添加一种身份");
 
-        jComboBox1.setModel(new .DefaultComboBoxModel(new String[] { "快递员", "营业厅营业员", "中转中心业务员", "中转中心仓库员", "财务人员", "高级财务人员", "总经理" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "快递员", "营业厅营业员", "中转中心业务员", "中转中心仓库员", "财务人员", "高级财务人员", "总经理" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
 
-        .GroupLayout jPanel1Layout = new .GroupLayout(jPanel1);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBox109)
                             .addComponent(jCheckBox116)
                             .addComponent(jCheckBox104))
                         .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBox105)
                             .addComponent(jCheckBox114)
                             .addComponent(jCheckBox110)))
-                    .addGroup(jPanel1Layout.createParallelGroup(.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jCheckBox124)
-                            .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, .GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jCheckBox125))
-                        .addGroup(.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jCheckBox141)
-                            .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jCheckBox120))))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jCheckBox106)
                     .addComponent(jCheckBox111)
                     .addComponent(jCheckBox115)
                     .addComponent(jCheckBox121))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBox112)
                             .addComponent(jCheckBox107))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBox113)
                             .addComponent(jCheckBox108)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox139, .GroupLayout.Alignment.TRAILING)
-                            .addComponent(jCheckBox144, .GroupLayout.Alignment.TRAILING))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox139, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jCheckBox144, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBox119)
                             .addComponent(jCheckBox122))))
-                .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4)
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton4))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBox104)
                     .addComponent(jCheckBox105)
                     .addComponent(jCheckBox106)
                     .addComponent(jCheckBox107)
                     .addComponent(jCheckBox108))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBox109)
                     .addComponent(jCheckBox110)
                     .addComponent(jCheckBox111)
                     .addComponent(jCheckBox112)
                     .addComponent(jCheckBox113)
-                    .addComponent(jComboBox1, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBox114)
                     .addComponent(jCheckBox115)
                     .addComponent(jCheckBox116)
                     .addComponent(jCheckBox119)
                     .addComponent(jCheckBox139))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBox120)
                     .addComponent(jCheckBox122)
                     .addComponent(jCheckBox121)
                     .addComponent(jCheckBox141)
                     .addComponent(jCheckBox144))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBox124)
                     .addComponent(jCheckBox125))
                 .addContainerGap(102, Short.MAX_VALUE))
         );
 
-        .GroupLayout layout = new .GroupLayout(this);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
-                    .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel9)
-                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3))
-                    .addComponent(jPanel1, .GroupLayout.Alignment.TRAILING, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jButton3))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -439,33 +439,33 @@ public class AuthorityManagementPanel extends .JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private .JButton jButton2;
-    private .JButton jButton3;
-    private .JButton jButton4;
-    private .JCheckBox jCheckBox104;
-    private .JCheckBox jCheckBox105;
-    private .JCheckBox jCheckBox106;
-    private .JCheckBox jCheckBox107;
-    private .JCheckBox jCheckBox108;
-    private .JCheckBox jCheckBox109;
-    private .JCheckBox jCheckBox110;
-    private .JCheckBox jCheckBox111;
-    private .JCheckBox jCheckBox112;
-    private .JCheckBox jCheckBox113;
-    private .JCheckBox jCheckBox114;
-    private .JCheckBox jCheckBox115;
-    private .JCheckBox jCheckBox116;
-    private .JCheckBox jCheckBox119;
-    private .JCheckBox jCheckBox120;
-    private .JCheckBox jCheckBox121;
-    private .JCheckBox jCheckBox122;
-    private .JCheckBox jCheckBox124;
-    private .JCheckBox jCheckBox125;
-    private .JCheckBox jCheckBox139;
-    private .JCheckBox jCheckBox141;
-    private .JCheckBox jCheckBox144;
-    private .JComboBox jComboBox1;
-    private .JLabel jLabel9;
-    private .JPanel jPanel1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JCheckBox jCheckBox104;
+    private javax.swing.JCheckBox jCheckBox105;
+    private javax.swing.JCheckBox jCheckBox106;
+    private javax.swing.JCheckBox jCheckBox107;
+    private javax.swing.JCheckBox jCheckBox108;
+    private javax.swing.JCheckBox jCheckBox109;
+    private javax.swing.JCheckBox jCheckBox110;
+    private javax.swing.JCheckBox jCheckBox111;
+    private javax.swing.JCheckBox jCheckBox112;
+    private javax.swing.JCheckBox jCheckBox113;
+    private javax.swing.JCheckBox jCheckBox114;
+    private javax.swing.JCheckBox jCheckBox115;
+    private javax.swing.JCheckBox jCheckBox116;
+    private javax.swing.JCheckBox jCheckBox119;
+    private javax.swing.JCheckBox jCheckBox120;
+    private javax.swing.JCheckBox jCheckBox121;
+    private javax.swing.JCheckBox jCheckBox122;
+    private javax.swing.JCheckBox jCheckBox124;
+    private javax.swing.JCheckBox jCheckBox125;
+    private javax.swing.JCheckBox jCheckBox139;
+    private javax.swing.JCheckBox jCheckBox141;
+    private javax.swing.JCheckBox jCheckBox144;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

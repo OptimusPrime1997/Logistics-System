@@ -12,7 +12,7 @@ import blservice.goodsblservice.GoodsCheckValidBLService;
  *
  * @author Administrator
  */
-public class MainFrame extends .JFrame {
+public class MainFrame extends javax.swing.JFrame {
 	GoodsCheckValidBLService controller = ControllerFactoryImpl.getInstance().getGoodsCheckController();
 
     /**
@@ -31,16 +31,16 @@ public class MainFrame extends .JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        goodsNum_text = new .JTextField();
-        jButton1 = new .JButton();
-        account_text = new .JTextField();
-        password_text = new .JTextField();
-        jButton2 = new .JButton();
-        jLabel2 = new .JLabel();
-        jLabel3 = new .JLabel();
-        jLabel1 = new .JLabel();
+        goodsNum_text = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        account_text = new javax.swing.JTextField();
+        password_text = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         goodsNum_text.setText("输入订单号10位");
         goodsNum_text.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -89,54 +89,54 @@ public class MainFrame extends .JFrame {
         jLabel1.setFont(new java.awt.Font("华文行楷", 1, 24)); // NOI18N
         jLabel1.setText("LS  快递物流系统");
 
-        .GroupLayout layout = new .GroupLayout(getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(196, 196, 196)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(35, 35, 35)
-                            .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel1, .GroupLayout.PREFERRED_SIZE, 251, .GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel2))
-                            .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(account_text, .GroupLayout.PREFERRED_SIZE, 97, .GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(account_text, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(goodsNum_text, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                            .addComponent(goodsNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jButton1)
-                            .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED, .GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3)
-                            .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(password_text, .GroupLayout.PREFERRED_SIZE, 97, .GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(password_text, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(232, 232, 232)
                         .addComponent(jButton2)
                         .addGap(98, 98, 98)))
                 .addContainerGap(247, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(177, 177, 177)
-                .addComponent(jLabel1, .GroupLayout.PREFERRED_SIZE, 74, .GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
-                            .addComponent(goodsNum_text, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(goodsNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1)))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
-                            .addComponent(account_text, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(account_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
-                            .addComponent(password_text, .GroupLayout.PREFERRED_SIZE, .GroupLayout.DEFAULT_SIZE, .GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(password_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))))
                 .addGap(32, 32, 32)
                 .addComponent(jButton2)
@@ -186,9 +186,9 @@ public class MainFrame extends .JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (.UIManager.LookAndFeelInfo info : .UIManager.getInstalledLookAndFeels()) {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    .UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -198,7 +198,7 @@ public class MainFrame extends .JFrame {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -213,13 +213,13 @@ public class MainFrame extends .JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private .JTextField account_text;
-    private .JTextField goodsNum_text;
-    private .JButton jButton1;
-    private .JButton jButton2;
-    private .JLabel jLabel1;
-    private .JLabel jLabel2;
-    private .JLabel jLabel3;
-    private .JTextField password_text;
+    private javax.swing.JTextField account_text;
+    private javax.swing.JTextField goodsNum_text;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField password_text;
     // End of variables declaration//GEN-END:variables
 }
