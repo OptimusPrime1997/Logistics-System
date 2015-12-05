@@ -85,8 +85,7 @@ public class BusinessOfficer_main extends JPanel {
     	initbtn();
     	initLabel();
     	initTxt();
-    	initLayout(layout);
-      
+    	initLayout(layout);      
     }
     private void initNumPanel() {
     	num_panel = new JPanel();
@@ -101,7 +100,6 @@ public class BusinessOfficer_main extends JPanel {
     	num_label.setFont(new java.awt.Font("宋体", 1, 48));
     	num_label.setForeground(new java.awt.Color(240, 240, 240));
     	num_label.setText("50");//TODO 数字
-         
          initNumLayout(num_panelLayout);
 	}
 
