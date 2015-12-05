@@ -120,7 +120,7 @@ public class Stock {
 
 	
 	/**
-	 * 得到当前所有有完整信息的库存
+	 * 得到本仓库当前所有有完整信息的库存
 	 * @return
 	 * @throws NotBoundException 
 	 * @throws IOException 
@@ -131,7 +131,10 @@ public class Stock {
 		ArrayList<StockPO> list = new ArrayList<StockPO>();
 		
 		StockDataService s = getStockDataService();
-		list = s.getStock();
+		//TODO  得到当前城市编号
+		String cityNum = "";
+		
+		list = s.getStock(cityNum);
 		for(StockPO po:list) {
 			result.add(new StockVO().poToVo(po));
 		}

@@ -9,6 +9,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.City;
 import util.enumData.ResultMessage;
 import VO.StockDivisionVO;
 import VO.StockVO;
@@ -30,7 +31,7 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 	
 	 
 
-//	public ArrayList<StockDivisionVO> getDivisions() 
+ 
 	
 	public boolean isExist(int block, int place) throws MalformedURLException, RemoteException, NotBoundException{
 		return division.isExist(block, place);
@@ -100,23 +101,18 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 		
 	}
 	
-	public ResultMessage modifyDivision(int oldBlock, int oldPlace,
-			int newBlock, int newPlace) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 
 	@Override
-	public ArrayList<StockDivisionVO> getBlock(String destination) {
+	public ArrayList<StockDivisionVO> getBlock(City destination) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	
 	@Override
-	public String checkStock(String startMonth, String startDay,
-			String endMonth, String endDay) {
+	public String checkStock(String startMonth, String startDay, String endMonth, String endDay) {
 		return stock.checkStock(startMonth, startDay, endMonth, endDay);
 	}
 
@@ -124,8 +120,7 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 	 * @see blservice.stockblservice.StockDivisionBLService#modifyDivision(int, int, int, int, int, int)
 	 */
 	@Override
-	public ResultMessage modifyDivision(int oldDivision, int oldBlock,
-			int oldPlace, int newDivision, int newBlock, int newPlace) {
+	public ResultMessage modifyDivision (int oldBlock, int oldPlace, int newBlock, int newPlace) {
 		// TODO Auto-generated method stub
 		return null;
 	}

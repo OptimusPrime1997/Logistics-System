@@ -8,10 +8,17 @@ import javax.swing.*;
 
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.stockblservice.StockBLService;
+import blservice.stockblservice.StockDivisionBLService;
 import ui.mainFrame.MainFrame;
+import util.FromIntToCity;
+import util.enumData.City;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 
 /**
  *
@@ -141,7 +148,11 @@ public class DivisionChangePanel extends JFrame {
         oldDivisions.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08" }));
         oldDivisions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                oldDivisionsActionPerformed(evt);
+                try {
+					oldDivisionsActionPerformed(evt);
+				} catch (NotBoundException | IOException e) {
+					e.printStackTrace();
+				}
             }
         });
 
@@ -293,11 +304,15 @@ public class DivisionChangePanel extends JFrame {
 		this.dispose();
     }                                        
 
-    StockBLService s = ControllerFactoryImpl.getInstance().getStockController();
+    StockDivisionBLService s = ControllerFactoryImpl.getInstance().getStockDivisionController();
     
-    private void oldDivisionsActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void oldDivisionsActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
         // TODO 在这里实现选中旧的区后显示有货物的该区的块的编号
-    	s.
+    	
+    	int division = oldDivisions.getSelectedIndex()+1;
+    	
+    	City desCity = FromIntToCity.toCity(division);
+    	s.getBlock(desCity);
     	
     }                                          
 

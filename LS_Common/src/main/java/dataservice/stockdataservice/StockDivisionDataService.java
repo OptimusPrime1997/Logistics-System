@@ -8,6 +8,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.City;
 import util.enumData.ResultMessage;
 import PO.StockDivisionPO;
 import PO.ReceiptPO.InStockRepPO;
@@ -37,7 +38,7 @@ public interface StockDivisionDataService extends Remote{
 	 * @throws RemoteException
 	 * @throws IOException 
 	 */
-	public ArrayList<StockDivisionPO> getStockDivision() throws RemoteException, IOException;
+	public ArrayList<StockDivisionPO> getStockDivision(City cityNum) throws RemoteException, IOException;
 	
 	
 	

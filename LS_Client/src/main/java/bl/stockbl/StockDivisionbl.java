@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import dataservice.stockdataservice.StockDataService;
 import dataservice.stockdataservice.StockDivisionDataService;
+import util.enumData.City;
 import util.enumData.ResultMessage;
 import PO.StockDivisionPO;
 import PO.ReceiptPO.InStockRepPO;
@@ -49,14 +50,21 @@ public class StockDivisionbl implements StockDivisionBLService{
 		return sd.update(po);
 	}
 	
-	public ResultMessage modifyDivision(int oldDivision, int oldBlock, int oldPlace,int newDivision, int newBlock, int newPlace) {
+	public ResultMessage modifyDivision(int oldBlock, int oldPlace,int newBlock, int newPlace) {
 		// TODO Auto-generated method stub
+			
+		
+		
 		return ResultMessage.SUCCESS;
 	}
 
 	 
-	public ArrayList<StockDivisionVO> getBlock(String destination) {
+	public ArrayList<StockDivisionVO> getBlock(City destination) throws NotBoundException, IOException {
 		// TODO Auto-generated method stub
+		StockDivisionDataService sd = getStockDivisionDataService();
+		//TODO 得到当前城市
+		City city = City.BEIJING;
+		ArrayList<StockDivisionPO> list = sd.getStockDivision(city);
 		
 		return null;
 	}
@@ -73,7 +81,9 @@ public class StockDivisionbl implements StockDivisionBLService{
 		
 		boolean available = true;
 		StockDivisionDataService sd = getStockDivisionDataService();
-		ArrayList<StockDivisionPO> list = sd.getStockDivision();
+		//TODO 得到当前城市
+		City cityNum = City.BEIJING;
+		ArrayList<StockDivisionPO> list = sd.getStockDivision(cityNum);
 
 		
 		for(StockDivisionPO po:list) {
@@ -118,7 +128,9 @@ public class StockDivisionbl implements StockDivisionBLService{
 		 */
 		int [] block = new int[8];
 		StockDivisionDataService sd = getStockDivisionDataService();
-		ArrayList<StockDivisionPO> list = sd.getStockDivision();
+		//TODO 得到当前城市
+		City cityNum = City.BEIJING;
+		ArrayList<StockDivisionPO> list = sd.getStockDivision(cityNum);
 		for(StockDivisionPO po:list) {
 			block[po.getBlock()-1]++;
 		}
@@ -126,7 +138,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 		//找出库存报警的区号，并加入结果数组
 		for(int i = 0; i < block.length; ++i) {
 			if(block[i]>800) {
-				result.add(i);
+				result.add(i+1);
 			}
 		}
 		

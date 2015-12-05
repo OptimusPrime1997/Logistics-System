@@ -3,6 +3,7 @@
  */
 package VO;
 
+import util.enumData.City;
 import PO.StockPO;
 
 /**
@@ -10,11 +11,11 @@ import PO.StockPO;
  *
  */
 public class StockVO {
-	public String cityNum;
+	public City cityNum;
 	public String listNum;
 	public String inStockRepNum;
 	public String inStockDate;
-	public String destination;
+	public City destination;
 	public int block;
 	public int place;
 	
@@ -32,7 +33,7 @@ public class StockVO {
 	public StockVO(){
 		
 	}
-	public StockVO(String cn,String ln,String rn,String d,String des,int b,int p){
+	public StockVO(City cn,String ln,String rn,String d,City des,int b,int p){
 		cityNum=cn;
 		listNum=ln;
 		inStockRepNum=rn;
