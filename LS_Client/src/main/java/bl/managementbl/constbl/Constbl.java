@@ -4,17 +4,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import bl.managementbl.managedata.ManageData;
 import bl.managementbl.managedata.ManageVOPO;
 import dataservice.managementdataservice.constdataservice.ConstDataService;
 import dataservice.managementdataservice.managedataservice.ManageDataService;
-import util.InputCheck;
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
 import Exception.ConstNotFoundException;
 import PO.ConstPO;
-import VO.ManagementVO.AccountVO;
 import VO.ManagementVO.ConstVO;
 
 public class Constbl {
@@ -32,21 +31,30 @@ public class Constbl {
 			System.out.println("远程获取constDataService失败!");
 			e.printStackTrace();
 		}
-		// logbl = new Logbl();
 		manageVOPO = ManageVOPO.getInstance();
 	}
 
-	public ResultMessage insert(ConstVO vo) throws RemoteException {
+	public ResultMessage add(ConstVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DECISION_MAKE);
 		if (constDataService != null) {
 			try {
+				ArrayList<ConstPO> pos = constDataService.show();
+				for (Iterator<ConstPO> t = pos.iterator(); t.hasNext();) {
+					if (t.next().getTwoCities().equals(vo.twoCities)) {
+						return ResultMessage.OVERRIDE_DATA;
+					}
+				}
 				constDataService.insert(manageVOPO.voToPO(vo));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("存储文件出错");
 				return ResultMessage.IOFAILED;
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("系统程序错误");
 			}
 			return ResultMessage.SUCCESS;
 		} else
@@ -57,21 +65,25 @@ public class Constbl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DECISION_MAKE);
 		if (constDataService != null) {
-			ConstPO po = manageVOPO.voToPO(vo);
-			try {
-				constDataService.update(po);
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("class文件未找到");
-				return ResultMessage.FAILED;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("读写文件出错");
-				return ResultMessage.IOFAILED;
+			if (check(vo) == ResultMessage.VALID) {
+				ConstPO po = manageVOPO.voToPO(vo);
+				try {
+					constDataService.update(po);
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("class文件未找到");
+					return ResultMessage.FAILED;
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("读写文件出错");
+					return ResultMessage.IOFAILED;
+				}
+				return ResultMessage.SUCCESS;
+			} else {
+				return check(vo);
 			}
-			return ResultMessage.SUCCESS;
 		} else {
 			return ResultMessage.FAILED;
 		}
@@ -81,23 +93,28 @@ public class Constbl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DECISION_MAKE);
 		if (constDataService != null) {
-			ConstPO po = manageVOPO.voToPO(VO);
-			try {
-				constDataService.delete(po);
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("class文件未找到");
-				return ResultMessage.FAILED;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("读写文件出错");
-				return ResultMessage.IOFAILED;
+			if (VO.twoCities.contains("-") && VO.twoCities.length() < 20) {
+				ConstPO po = manageVOPO.voToPO(VO);
+				try {
+					constDataService.delete(po);
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("class文件未找到");
+					return ResultMessage.FAILED;
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("读写文件出错");
+					return ResultMessage.IOFAILED;
+				}
+				return ResultMessage.SUCCESS;
+			} else {
+				return ResultMessage.WRONG_FORMAT;
 			}
-			return ResultMessage.SUCCESS;
-		} else
+		} else {
 			return ResultMessage.FAILED;
+		}
 	}
 
 	public ArrayList<ConstVO> show() throws ClassNotFoundException, IOException {
@@ -128,5 +145,27 @@ public class Constbl {
 			throw new RemoteException();
 		}
 	}
-	
+
+	/**
+	 * check the constVO is valid or not
+	 * 
+	 * @param vo
+	 * @return
+	 */
+	public static ResultMessage check(ConstVO vo) {
+		if (vo.twoCities.contains("-") && vo.twoCities.length() < 20) {
+			if (vo.distanceConst >= 30) {
+				if (vo.priceConst > 0) {
+					return ResultMessage.VALID;
+				} else {
+					return ResultMessage.WRONG_DATA;
+				}
+			} else {
+				return ResultMessage.WRONG_DATA;
+			}
+		} else {
+			return ResultMessage.WRONG_FORMAT;
+		}
+	}
+
 }

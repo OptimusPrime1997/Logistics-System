@@ -118,7 +118,11 @@ public enum ResultMessage {
 	/**
 	 * 该库存区位已被占用
 	 */
-	NOT_AVAILABLE;
+	NOT_AVAILABLE,
+	/**
+	 * 覆盖数据
+	 */
+	OVERRIDE_DATA;
 
 	public static String toFriendlyString(ResultMessage resultMessage) {
 
@@ -141,6 +145,8 @@ public enum ResultMessage {
 			return "数据错误";
 		case WRONG_ACCOUNTNUM:
 			return "账号错误";
+		case OVERRIDE_DATA:
+			return "覆盖数据";
 		}
 		return null;
 	}

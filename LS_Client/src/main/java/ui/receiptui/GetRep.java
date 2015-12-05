@@ -6,11 +6,21 @@
 
 package ui.receiptui;
 
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.WindowConstants;
+
+import ui.businessOfficerui.BusinessOfficer_main;
+import ui.mainFrame.MainFrame;
+import util.MyFrame;
+
 /**
  *
  * @author apple
  */
 public class GetRep extends javax.swing.JPanel {
+
+	
 
     /**
      * Creates new form GetRep

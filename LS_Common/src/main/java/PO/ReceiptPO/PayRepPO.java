@@ -6,16 +6,16 @@ public class PayRepPO extends ReceiptPO {
 	private double sum;
 	private ArrayList<PayPO> payPOs;
 	private String payPersonNum;
-	private ArrayList<LittleThingRepPO> littleThing;
-	private AllSalaryRepPO salary; 
-	private TransferPayRepPO transferPay;
-	private RentRepPO rent;
-	private AllSalaryRepPO driverSalary;
-	private AllSalaryRepPO courierSalary;
-	private AllSalaryRepPO bonus;
+	private ArrayList<PayRepRefundRepPO> littleThing;
+	private PayRepSalaryRepPO salary; 
+	private PayRepFreightRepPO transferPay;
+	private PayRepRentRepPO rent;
+	private PayRepSalaryRepPO driverSalary;
+	private PayRepSalaryRepPO courierSalary;
+	private PayRepSalaryRepPO bonus;
 	public PayRepPO(String num, String date, double sum, ArrayList<PayPO> payPOs, String payPersonNum,
-			ArrayList<LittleThingRepPO> littleThing, AllSalaryRepPO salary, TransferPayRepPO transferPay, RentRepPO rent,
-			AllSalaryRepPO driverSalary, AllSalaryRepPO courierSalary, AllSalaryRepPO bonus) {
+			ArrayList<PayRepRefundRepPO> littleThing, PayRepSalaryRepPO salary, PayRepFreightRepPO transferPay, PayRepRentRepPO rent,
+			PayRepSalaryRepPO driverSalary, PayRepSalaryRepPO courierSalary, PayRepSalaryRepPO bonus) {
 		super(num, date);
 		this.sum = sum;
 		this.payPOs = payPOs;
@@ -37,25 +37,25 @@ public class PayRepPO extends ReceiptPO {
 	public String getPayPersonNum() {
 		return payPersonNum;
 	}
-	public ArrayList<LittleThingRepPO> getLittleThing() {
+	public ArrayList<PayRepRefundRepPO> getLittleThing() {
 		return littleThing;
 	}
-	public AllSalaryRepPO getSalary() {
+	public PayRepSalaryRepPO getSalary() {
 		return salary;
 	}
-	public TransferPayRepPO getTransferPay() {
+	public PayRepFreightRepPO getTransferPay() {
 		return transferPay;
 	}
-	public RentRepPO getRent() {
+	public PayRepRentRepPO getRent() {
 		return rent;
 	}
-	public AllSalaryRepPO getDriverSalary() {
+	public PayRepSalaryRepPO getDriverSalary() {
 		return driverSalary;
 	}
-	public AllSalaryRepPO getCourierSalary() {
+	public PayRepSalaryRepPO getCourierSalary() {
 		return courierSalary;
 	}
-	public AllSalaryRepPO getBonus() {
+	public PayRepSalaryRepPO getBonus() {
 		return bonus;
 	}
 

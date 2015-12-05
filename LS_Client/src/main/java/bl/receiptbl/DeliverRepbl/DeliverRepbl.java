@@ -12,6 +12,7 @@ import VO.ReceiptVO.DeliverRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import util.enumData.Rep;
+import util.enumData.ResultMessage;
 
 public class DeliverRepbl{
 	Receiptbl receiptbl = new Receiptbl();
@@ -43,11 +44,27 @@ public class DeliverRepbl{
 		return DeliverRepVO.toArrayVO(receiptPOs);
 	}
 
-	public ArrayList<DeliverRepVO> getRepByDate(String date) throws ClassNotFoundException, NotBoundException, IOException {
+		public ArrayList<DeliverRepVO> getRepByDate(String date) throws ClassNotFoundException, NotBoundException, IOException {
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.DeliverRep);
 		if(receiptPOs==null)
 			return null;
 		return DeliverRepVO.toArrayVO(receiptPOs);
 	}
+		
+		public ResultMessage checkOrderNum(String order){
+			if(order.length()<10)
+				return ResultMessage.REPNUM_LENGTH_LACKING;
+			if(order.length()>10)
+				return ResultMessage.REPNUM_LENGTH_OVER;
+			return ResultMessage.ADD_SUCCESS;
+		}
+		
+		public ResultMessage checkCourierNum(String courierNum){
+			if(courierNum.length()<11)
+				return ResultMessage.REPNUM_LENGTH_LACKING;
+			if(courierNum.length()>11)
+				return ResultMessage.REPNUM_LENGTH_OVER;
+			return ResultMessage.ADD_SUCCESS;
+		}
 	
 }

@@ -29,25 +29,39 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	public String chooseSubmitAdd(Rep rep){
 		switch (rep) {
 		case CashRep:
-			return "/Users/apple/Desktop/Logistics-System/LS_Server/submit.txt";
+			return "data/ReceiptSubmitData/CashRepSubmit.txt";
 		case ShipmentRep:
-			return null;
+			return "data/ReceiptSubmitData/ShipmentRepSubmit.txt";
 		case GetRep:
-			return null;
+			return "data/ReceiptSubmitData/GetRepSubmit.txt";
 		case DeliverRep:
-			return null;
+			return "data/ReceiptSubmitData/DeliverRepSubmit.txt";
 		case PayRep:
-			return null;
+			return "data/ReceiptSubmitData/PayRepSubmit.txt";
 		case InStockRep:
-			return null;
+			return "data/ReceiptSubmitData/InStockRepSubmit.txt";
 		case OutStockRep:
-			return null;
+			return "data/ReceiptSubmitData/OutStockRepSubmit.txt";
 		case ShippingRep:
-			return null;
+			return "data/ReceiptSubmitData/ShippingRepSubmit.txt";
 		case ReceptionRep:
-			return null;
+			return "data/ReceiptSubmitData/ReceptionRepSubmit.txt";
 		case TransferRep:
-			return null;
+			return "data/ReceiptSubmitData/TransferRepSubmit.txt";
+		case PayRepBonus:
+			return "data/ReceiptSubmitData/PayRepBonusSubmit.txt";
+		case PayRepCourierSalary:
+			return "data/ReceiptSubmitData/PayRepCourierSalarySubmit.txt";
+		case PayRepDriverSalary:
+			return "data/ReceiptSubmitData/PayRepDriverSalarySubmit.txt";
+		case PayRepFreight:
+			return "data/ReceiptSubmitData/PayRepFreightSubmit.txt";
+		case PayRepRefund:
+			return "data/ReceiptSubmitData/PayRepRefundSubmit.txt";
+		case PayRepRent:
+			return "data/ReceiptSubmitData/PayRepRentSubmit.txt";
+		case PayRepStaffSalary:
+			return "data/ReceiptSubmitData/PayRepStaffSalarySubmit.txt";
 		default:
 			return null;
 		}
@@ -56,25 +70,39 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	public String chooseSaveAdd(Rep rep){
 		switch (rep) {
 		case CashRep:
-			return "/Users/apple/Desktop/Logistics-System/LS_Server/submit.txt";
+			return "data/ReceiptSaveData/CashRepSave.txt";
 		case ShipmentRep:
-			return null;
+			return "data/ReceiptSaveData/ShipmentRepSave.txt";
 		case GetRep:
-			return null;
+			return "data/ReceiptSaveData/GetRepSave.txt";
 		case DeliverRep:
-			return null;
+			return "data/ReceiptSaveData/DeliverRepSave.txt";
 		case PayRep:
-			return null;
+			return "data/ReceiptSaveData/PayRepSave.txt";
 		case InStockRep:
-			return null;
+			return "data/ReceiptSaveData/InStockRepSave.txt";
 		case OutStockRep:
-			return null;
+			return "data/ReceiptSaveData/OutStockRepSave.txt";
 		case ShippingRep:
-			return null;
+			return "data/ReceiptSaveData/ShippingRepSave.txt";
 		case ReceptionRep:
-			return null;
+			return "data/ReceiptSaveData/ReceptionRepSave.txt";
 		case TransferRep:
-			return null;
+			return "data/ReceiptSaveData/TransferRepSave.txt";
+		case PayRepBonus:
+			return "data/ReceiptSaveData/PayRepBonusSave.txt";
+		case PayRepCourierSalary:
+			return "data/ReceiptSaveData/PayRepCourierSalarySave.txt";
+		case PayRepDriverSalary:
+			return "data/ReceiptSaveData/PayRepDriverSalarySave.txt";
+		case PayRepFreight:
+			return "data/ReceiptSaveData/PayRepFreightSave.txt";
+		case PayRepRefund:
+			return "data/ReceiptSaveData/PayRepRefundSave.txt";
+		case PayRepRent:
+			return "data/ReceiptSaveData/PayRepRentSave.txt";
+		case PayRepStaffSalary:
+			return "data/ReceiptSaveData/PayRepStaffSalarySave.txt";
 		default:
 			return null;
 		}

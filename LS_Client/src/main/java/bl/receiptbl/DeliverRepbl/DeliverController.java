@@ -8,6 +8,7 @@ import VO.ReceiptVO.DeliverRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.DeliverRepblService;
+import util.enumData.ResultMessage;
 
 public class DeliverController extends ReceiptblController implements DeliverRepblService{
 	DeliverRepbl deliverRep = new DeliverRepbl();
