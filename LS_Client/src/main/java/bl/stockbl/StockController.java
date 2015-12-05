@@ -10,7 +10,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
-
 import VO.StockDivisionVO;
 import VO.StockVO;
 import VO.ReceiptVO.InStockRepVO;
@@ -70,11 +69,12 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 	}
 	
 	@Override
-	public int checkPresentStockQuantity() {
+	public int checkPresentStockQuantity() throws ClassNotFoundException, NotBoundException, IOException {
 		return stock.checkPresentStockQuantity();
 	}
+	
 	@Override
-	public ArrayList<StockVO> show() {
+	public ArrayList<StockVO> show() throws ClassNotFoundException, NotBoundException, IOException {
 		return stock.show();
 	}
 

@@ -5,6 +5,8 @@
  */
 package blservice.stockblservice;
 
+import java.io.IOException;
+import java.rmi.NotBoundException;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
@@ -38,14 +40,20 @@ public interface StockBLService {
 	/**
 	 * 系统提供该仓库当前库存数量
 	 * @return
+	 * @throws IOException 
+	 * @throws NotBoundException 
+	 * @throws ClassNotFoundException 
 	 */
-	public int checkPresentStockQuantity();
+	public int checkPresentStockQuantity() throws ClassNotFoundException, NotBoundException, IOException;
 	
 	/**
 	 * 系统提供该仓库当前库存的所有已存储的Stock信息
 	 * @return
+	 * @throws IOException 
+	 * @throws NotBoundException 
+	 * @throws ClassNotFoundException 
 	 */
-	public ArrayList<StockVO> show(); 
+	public ArrayList<StockVO> show() throws ClassNotFoundException, NotBoundException, IOException; 
 	
 	
 	

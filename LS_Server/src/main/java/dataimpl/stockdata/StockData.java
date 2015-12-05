@@ -166,38 +166,6 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 	
 	
 	
-	public static void main(String[] args) {
-
-		try {
-
-		StockData s = new StockData();
-
-		ArrayList<InStockPO> list = new ArrayList<InStockPO>();
-
-		list.add(new InStockPO("11", "6", "33"));
-
-		list.add(new InStockPO("121", "6", "36"));
-
-		ResultMessage r = s.update(new InStockRepPO("123", "11-01", list));
-
-		s.update(new InStockRepPO("13", "11-01", new ArrayList<InStockPO>()));
-	
-		s.delete("111");
-		System.out.println(s.getStock().size());
-
-		System.out.println(r);
-		
-		System.out.println(s.getStock().get(3).getPlace());
-
-		} catch (Exception e) {
-
-		e.printStackTrace();
-
-		}
-
-		System.out.println();
-
-		}
 	
 	
 	

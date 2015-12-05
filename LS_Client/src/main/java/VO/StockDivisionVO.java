@@ -10,11 +10,12 @@ import PO.StockDivisionPO;
  *
  */
 public class StockDivisionVO {
+	public String listNum;
 	public String cityNum;
 	public String destination;
 	public int block;
 	public int place;
-	public boolean available;
+	
 	
 	/**
 	 * 
@@ -24,20 +25,21 @@ public class StockDivisionVO {
 	 * @param p	    number of this place
 	 * @param avai  state of this place
 	 */
-	public StockDivisionVO(String cn,String des,int b,int p,boolean avai){
+	public StockDivisionVO(String listNum,String cn,String des,int b,int p){
+		this.listNum = listNum;
 		cityNum=cn;
 		destination=des;
 		block=b;
 		place=p;
-		available=avai;
+		
 	}
 	
 	public StockDivisionVO() {};
 	
 	public StockDivisionPO voToPo(StockDivisionVO vo) {
 		
-		StockDivisionPO po = new StockDivisionPO(null, null, 0, 0, true);
-		po.setAvailable(vo.available);
+		StockDivisionPO po = new StockDivisionPO();
+		po.setListnum(vo.listNum);
 		po.setBlock(vo.block);
 		po.setCityNum(vo.cityNum);
 		po.setDestination(vo.destination);
@@ -48,8 +50,8 @@ public class StockDivisionVO {
 	
 	public StockDivisionVO poToVo(StockDivisionPO po) {
 		
-		StockDivisionVO vo = new StockDivisionVO(null, null, 0, 0, true);
-		vo.available = po.getAvailable();
+		StockDivisionVO vo = new StockDivisionVO();
+		vo.listNum = po.getListnum();
 		vo.block = po.getBlock();
 		vo.cityNum = po.getCityNum();
 		vo.destination = po.getDestination();

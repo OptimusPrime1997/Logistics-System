@@ -113,7 +113,7 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 			if (list != null) {
 				for(int i = 0;i < list.size();++i) {
 					StockDivisionPO po = (StockDivisionPO)list.get(i);
-					String s=po.getListNum();
+					String s=po.getListnum();
 					System.out.println(s);
 					if(s.equals(goods)){
 						isFound = true;
@@ -157,6 +157,9 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 		return list;
 		
 	}
+
+
+	
 	
 	
 	

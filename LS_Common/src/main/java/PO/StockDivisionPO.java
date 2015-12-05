@@ -11,6 +11,11 @@ import java.io.Serializable;
  */
 public class StockDivisionPO implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2717252400399634569L;
+	private String listNum;
 	private String cityNum;
 	private String destination;
 	private int block;
@@ -25,7 +30,8 @@ public class StockDivisionPO implements Serializable{
 	 * @param p	    number of this place
 	 * @param avai  state of this place
 	 */
-	public StockDivisionPO(String cn,String des,int b,int p){
+	public StockDivisionPO(String listnum, String cn,String des,int b,int p){
+		this.listNum = listnum;
 		cityNum=cn;
 		destination=des;
 		block=b;
@@ -33,6 +39,20 @@ public class StockDivisionPO implements Serializable{
 		
 	}
 
+	
+	public String getListnum() {
+		return listNum;
+	}
+
+
+	public void setListnum(String listnum) {
+		this.listNum = listnum;
+	}
+
+
+	public StockDivisionPO(){
+		
+	}
 	public String getCityNum() {
 		return cityNum;
 	}
