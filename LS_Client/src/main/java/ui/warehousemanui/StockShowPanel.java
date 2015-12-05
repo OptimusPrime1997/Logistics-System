@@ -4,14 +4,12 @@
  * and open the template in the editor.
  */
 package ui.warehousemanui;
-import java.awt.*;
-import .*;
 
 /**
  *
  * @author G
  */
-public class StockShowPanel extends .JPanel {
+public class StockShowPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form StockShow
@@ -29,13 +27,13 @@ public class StockShowPanel extends .JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new .JScrollPane();
-        jTable1 = new .JTable();
-        jLabel9 = new .JLabel();
-        jButton3 = new .JButton();
-        jButton4 = new .JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
-        jTable1.setModel(new .table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null}
@@ -70,36 +68,36 @@ public class StockShowPanel extends .JPanel {
             }
         });
 
-        .GroupLayout layout = new .GroupLayout(this);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, .GroupLayout.PREFERRED_SIZE, 318, .GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(54, Short.MAX_VALUE))
-            .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
-                    .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel9)
-                        .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3)
                         .addGap(3, 3, 3))
-                    .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton4)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(.GroupLayout.Alignment.LEADING)
-            .addGroup(.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jButton3))
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, .GroupLayout.PREFERRED_SIZE, 164, .GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton4)
                 .addContainerGap(54, Short.MAX_VALUE))
         );
@@ -115,10 +113,10 @@ public class StockShowPanel extends .JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private .JButton jButton3;
-    private .JButton jButton4;
-    private .JLabel jLabel9;
-    private .JScrollPane jScrollPane1;
-    private .JTable jTable1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
