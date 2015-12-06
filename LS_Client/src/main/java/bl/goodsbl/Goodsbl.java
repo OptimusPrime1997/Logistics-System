@@ -186,7 +186,12 @@ public class Goodsbl {
 			System.out.println("改之前的货物信息 "+vo.listNum+"  "+vo.realReceiverName+"  "+vo.realReceiverPhone+"  "+vo.logisticState);
 			vo.deliverCourierAccount=Loginbl.getCurrentOptorId();
 			vo.realReceiverName = realReceiverName;
-			vo.realReceiverPhone = realReceiverPhone;
+			//默认是本人签收
+			vo.realReceiverPhone=vo.receiverPhone;
+			//是代收的~
+			if(realReceiverPhone.length()>0){
+				vo.realReceiverPhone = realReceiverPhone;
+			}			
 			vo.logisticState=GoodsLogisticState.SIGNED;
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {

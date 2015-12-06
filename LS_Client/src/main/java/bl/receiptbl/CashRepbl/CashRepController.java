@@ -3,6 +3,7 @@ package bl.receiptbl.CashRepbl;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -12,6 +13,7 @@ import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.CashRepblService;
 import Exception.AddMoneyInBankException;
+import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 
 public class CashRepController extends ReceiptblController implements CashRepblService{
@@ -24,7 +26,8 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	}
 
 	@Override
-	public String getCourierName(String courierNum){
+	public String getCourierName(String courierNum) throws RemoteException, FileNotFoundException, 
+	ClassNotFoundException, NameNotFoundException, NumNotFoundException, IOException{
 		// TODO Auto-generated method stub
 		return cashRepbl.getCourierName(courierNum);
 	}

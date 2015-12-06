@@ -5,6 +5,9 @@
  */
 package ui.businessOfficerui;
 
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -13,16 +16,40 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
+
+import VO.ManagementVO.VehicleVO;
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.managementblservice.vehicleanddriverblservice.VehicleBLService;
+import ui.mainFrame.MainFrame;
+import ui.util.MyFrame;
+import util.InputCheck;
+import util.enumData.ResultMessage;
 
 /**
  *
  * @author Administrator
  */
-public class Car_detail extends JFrame {
-	public static void main(String[] args) {
-		new Car_detail();
-	}
+public class car_detail extends JFrame {
+    /**
+     * @param code 车辆代号
+     * @param licenseNum 车牌号
+     * @param time 车的  服役年限
+     * @param type 服役年限的时间单位  仅限“年”，“月”，“天”
+     */
+	 public car_detail(car_management panel,String code,String licenseNum,String time,String type) {
+	    controller=ControllerFactoryImpl.getInstance().getVehicleController();
+		this.setVisible(true);
+		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+		this.parentPanel = panel;
+		this.carCode = code;
+		this.carLicence = licenseNum;
+		this.carTime = time;
+		this.carTimeType = type;
+		initComponents();
+	    }
 	private void carCodeNum_textActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_carCodeNum_textActionPerformed
 	}
 
@@ -32,21 +59,65 @@ public class Car_detail extends JFrame {
 	private void back_btnMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_back_btnMouseClicked
 		this.setVisible(false);
 	}
-
-	private void ok_btnMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_ok_btnMouseClicked
+	//TODO 
+	private void delete_btnMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_back_btnMouseClicked
+		
 		this.setVisible(false);
 	}
-	
-    /**
-     * Creates new form car_detail
-     */
-    public Car_detail() {
-    	this.setVisible(true);
-        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-        initComponents();
-    }
-    
-    private void initComponents() {
+
+	private void ok_btnMouseClicked(java.awt.event.MouseEvent evt) {
+		/*
+		 * msgNum-->检查车牌号的结果
+		 * msgT-->检查服役时间的结果
+		 */
+		ArrayList<ResultMessage> messages=new ArrayList<ResultMessage>();
+		ResultMessage msgNum,msgT,msgData=null;
+		VehicleVO vo=null;
+		/*
+		 * carNum-->车牌号 
+		 * carT-->服役时间
+		 */
+		String carNum,carT;
+		//获取用户输入
+		carNum=carLicenseNum_text.getText();
+		carT=timeText.getText();
+		//检查是否合法
+		msgNum=InputCheck.ifWritten(carNum);
+		msgT=InputCheck.checkIfAllNum(carT);
+		if(msgNum!=ResultMessage.VALID) messages.add(msgNum);
+		if(msgT!=ResultMessage.VALID) messages.add(msgT);
+		
+		//都合法
+		if(msgT==ResultMessage.VALID&&msgNum==ResultMessage.VALID){
+			try {//TODO 
+				//找到对应的VO
+				vo=controller.findByVehicleNum(carNum);
+				msgData=controller.updateVehicle(vo);
+			} catch (RemoteException e) {
+			}
+			//数据层修改成功
+			if(msgData==ResultMessage.SUCCESS){
+				parentPanel.setFeedBack(ResultMessage.MODIFY_SUCCESS);
+				this.setVisible(false);
+			}else{//数据层修改失败
+				showFeedBack(msgData);
+			}
+		}else{//输入不合法
+			showFeedBack(messages);
+		}		
+	}
+    private void showFeedBack(ResultMessage msgData) {
+    	String feedback=ResultMessage.toFriendlyString(msgData)+";";
+    	feedback_text.setText(feedback);
+	}
+	private void showFeedBack(ArrayList<ResultMessage> messages) {
+    	String feedback="";		
+		for(ResultMessage msg:messages){
+			feedback=feedback+ResultMessage.toFriendlyString(msg)+";   ";
+		}
+		feedback_text.setText(feedback);
+	}
+	private void initComponents() {
 		GroupLayout layout = new GroupLayout(getContentPane());
 		initLabel();
 		initTxt();
@@ -55,9 +126,19 @@ public class Car_detail extends JFrame {
         initLayout(layout);
     }
     private void initComboBox() {
-    	 jComboBox6 = new JComboBox<String>();
-         jComboBox6.setModel(new DefaultComboBoxModel<String>(
-        		 new String[] { "年", "月", "天" }));
+    	int i=0;//给类型编号
+    	switch (carTimeType) {
+		case "月":i=1;
+			break;
+		case "天":i=2;
+		    break;
+		default:
+			break;
+		}
+    	 combobox = new JComboBox<String>();
+         combobox.setModel(new DefaultComboBoxModel<String>(
+        		 new String[] { "年", "月", "天" }));         
+         combobox.setSelectedIndex(i);
 	}
 	private void initbtn() {
     	 delete_btn = new JButton();
@@ -77,7 +158,12 @@ public class Car_detail extends JFrame {
              public void mouseClicked(java.awt.event.MouseEvent evt) {
                  ok_btnMouseClicked(evt);
              }
-         });        
+         }); 
+         delete_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                 delete_btnMouseClicked(evt);
+             }
+         }); 
 	}
 	private void initLayout(GroupLayout layout) {
     	getContentPane().setLayout(layout);
@@ -110,12 +196,16 @@ public class Car_detail extends JFrame {
                                         .addComponent(ok_btn))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(jComboBox6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(combobox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 43, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                 .addContainerGap()
+                 .addComponent(feedback_text)
+                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -135,11 +225,12 @@ public class Car_detail extends JFrame {
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(timeText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combobox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(back_btn)
                     .addComponent(ok_btn))
+                    .addComponent(feedback_text, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pack();
@@ -148,9 +239,13 @@ public class Car_detail extends JFrame {
     	  carCodeNum_text = new JTextField();          
           carLicenseNum_text = new JTextField();
           timeText = new JTextField();
-          carCodeNum_text.setText("025001001");//TODO
-          carLicenseNum_text.setText("有初始值");
-          timeText.setText("有初始值");
+          feedback_text=new JTextField();
+          
+          carCodeNum_text.setText(carCode);
+          carLicenseNum_text.setText(carLicence);
+          timeText.setText(carTime);
+          
+          feedback_text.setEditable(false);          
           carCodeNum_text.setEditable(false);
          
           carCodeNum_text.addActionListener(new java.awt.event.ActionListener() {
@@ -177,17 +272,60 @@ public class Car_detail extends JFrame {
          jLabel2.setText("车牌号");
          jLabel3.setText("服役时间");
 	}
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JButton back_btn;
-    private JTextField carCodeNum_text;
-    private JTextField carLicenseNum_text;
-    private JButton delete_btn;
-    private JComboBox<String> jComboBox6;
-    private JLabel jLabel1;
-    private JLabel jLabel2;
-    private JLabel jLabel3;
-    private JLabel jLabel4;
-    private JButton ok_btn;
-    private JTextField timeText;
+	
+	public void setCarLicenseNum_text(String carLicenseNum) {
+		this.carLicenseNum_text.setText(carLicenseNum);
+		this.carLicence=carLicenseNum;
+	}
+	public void setTimeText(String time) {
+		this.timeText.setText(time);
+		this.carTime=time;
+	}
+	// Variables declaration - do not modify//GEN-BEGIN:variables
+	private VehicleBLService controller;
+    private JButton back_btn,ok_btn,delete_btn;
+    private JTextField carCodeNum_text,carLicenseNum_text,timeText;
+    private String carCode,carLicence,carTime,carTimeType;//车辆代号，车牌号，服役时间,服役时间单位
+    private JTextField feedback_text;//给用户反馈信息的信息栏
+    private JComboBox<String> combobox;
+    private JLabel jLabel1,jLabel2,jLabel3,jLabel4;
+    private car_management parentPanel;
+    
+    
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * for test~~
+     * @param args
+     */
+    public static void main(String[] args) {
+    	/* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+            	new car_detail(new car_management(),"025001001","江A 8888M","5","年").setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            	
+            }
+        });
+	}
 }

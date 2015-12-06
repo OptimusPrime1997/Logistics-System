@@ -11,7 +11,8 @@ import ui.receiptui.DeliverRep;
 import ui.receiptui.GetRep;
 import ui.receiptui.ReceptionRep;
 import ui.receiptui.ShipmentRep;
-import util.MyFrame;
+import ui.util.MyFrame;
+import util.enumData.ResultMessage;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,16 +24,28 @@ import util.MyFrame;
  *
  * @author Administrator
  */
-public class BusinessOfficer_main extends JPanel {
+public class businessOfficer_main extends JPanel {
+	 /**
+     * 初始化界面
+     */
+    public businessOfficer_main() {
+        initComponents();       
+    }
+    /**
+     * 给子界面提供的   向用户反馈信息的方法
+     * @param msg
+     */
+    public void setFeedBack(ResultMessage msg){
+    	feedback_text.setText(ResultMessage.toFriendlyString(msg));
+    }
 	/**
 	 * 监听们~~
 	 * @param e
 	 */
 	private void arrival_btnMouseClicked(MouseEvent e) {
 		System.out.println("到达单");
-		new MyFrame(800, 600, new GetRep());
 		//TODO 哪个是到达单。。。
-//		new MyFrame(800, 600, new ReceptionRep());
+		new MyFrame(800, 600, new GetRep());
 	}	
     private void carManagement_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carManagement_btnMouseClicked
     	//TODO 跳转还不会。。
@@ -70,12 +83,7 @@ public class BusinessOfficer_main extends JPanel {
     private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
         System.exit(0);
     }
-    /**
-     * 初始化界面
-     */
-    public BusinessOfficer_main() {
-        initComponents();       
-    }
+   
     public void setFrame(JFrame frame){
     	this.frame=frame;
     }
@@ -104,8 +112,8 @@ public class BusinessOfficer_main extends JPanel {
 	}
 
 	private void initTxt() {
-		feedBack_text = new JTextField();
-		feedBack_text.setEditable(false);
+		feedback_text = new JTextField();
+		feedback_text.setEditable(false);
 	}
 
 	private void initLayout(GroupLayout layout) {
@@ -139,7 +147,7 @@ public class BusinessOfficer_main extends JPanel {
                   .addComponent(exit_btn))
               .addGroup(layout.createSequentialGroup()
                   .addContainerGap()
-                  .addComponent(feedBack_text)
+                  .addComponent(feedback_text)
                   .addContainerGap())
           );
           layout.setVerticalGroup(
@@ -177,7 +185,7 @@ public class BusinessOfficer_main extends JPanel {
                   .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                   .addComponent(driverManagement_btn, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
                   .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                  .addComponent(feedBack_text, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                  .addComponent(feedback_text, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                   .addContainerGap())
           );
 	}
@@ -287,7 +295,7 @@ public class BusinessOfficer_main extends JPanel {
     private JLabel jLabel1;
     private JLabel jLabel5;
     private JLabel jLabel6;
-    private JTextField feedBack_text;//给用户反馈信息的信息栏
+    private JTextField feedback_text;//给用户反馈信息的信息栏
     private JLabel num_label;
     private JPanel num_panel;
     private JButton recordMoney_btn;
@@ -324,7 +332,7 @@ public class BusinessOfficer_main extends JPanel {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-            	BusinessOfficer_main panel=new BusinessOfficer_main();
+            	businessOfficer_main panel=new businessOfficer_main();
             	MyFrame frame = new MyFrame(830,590,panel);
             	panel.setFrame(frame);
         		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);	
