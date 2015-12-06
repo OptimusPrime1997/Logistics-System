@@ -21,8 +21,8 @@ import javax.swing.WindowConstants;
 
 import ui.mainFrame.MainFrame;
 import ui.receiptui.Order;
+import ui.util.MyFrame;
 import util.CurrentTime;
-import util.MyFrame;
 import util.enumData.ResultMessage;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.goodsblservice.GoodsFindBLService;

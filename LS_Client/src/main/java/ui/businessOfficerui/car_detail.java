@@ -174,7 +174,14 @@ public class car_detail extends JFrame {
          jLabel2.setText("车牌号");
          jLabel3.setText("服役时间");
 	}
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+	
+	public void setCarLicenseNum_text(JTextField carLicenseNum_text) {
+		this.carLicenseNum_text = carLicenseNum_text;
+	}
+	public void setTimeText(JTextField timeText) {
+		this.timeText = timeText;
+	}
+	// Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton back_btn;
     private JTextField carCodeNum_text;
     private JTextField carLicenseNum_text;
@@ -187,4 +194,5 @@ public class car_detail extends JFrame {
     private JButton ok_btn;
     private JTextField timeText;
     // End of variables declaration//GEN-END:variables
+	
 }

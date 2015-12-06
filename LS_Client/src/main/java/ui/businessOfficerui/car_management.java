@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 import ui.mainFrame.MainFrame;
-import util.MyFrame;
+import ui.util.MyFrame;
 
 /**
  *

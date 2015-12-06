@@ -13,7 +13,7 @@ public class GoodsServer {
 			GoodsDataService goods = new GoodsData();
 			LocateRegistry.createRegistry(1099);
 			Naming.rebind("rmi://localhost:1099/goodsServer", goods);
-			System.out.println("server's ready");
+			System.out.println("Goods's server's ready");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

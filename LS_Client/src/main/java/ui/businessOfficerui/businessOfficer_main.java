@@ -11,7 +11,8 @@ import ui.receiptui.DeliverRep;
 import ui.receiptui.GetRep;
 import ui.receiptui.ReceptionRep;
 import ui.receiptui.ShipmentRep;
-import util.MyFrame;
+import ui.util.MyFrame;
+import util.enumData.ResultMessage;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,15 +25,27 @@ import util.MyFrame;
  * @author Administrator
  */
 public class businessOfficer_main extends JPanel {
+	 /**
+     * 初始化界面
+     */
+    public businessOfficer_main() {
+        initComponents();       
+    }
+    /**
+     * 给子界面提供的   向用户反馈信息的方法
+     * @param msg
+     */
+    public void setFeedBack(ResultMessage msg){
+    	feedBack_text.setText(ResultMessage.toFriendlyString(msg));
+    }
 	/**
 	 * 监听们~~
 	 * @param e
 	 */
 	private void arrival_btnMouseClicked(MouseEvent e) {
 		System.out.println("到达单");
-		new MyFrame(800, 600, new GetRep());
 		//TODO 哪个是到达单。。。
-//		new MyFrame(800, 600, new ReceptionRep());
+		new MyFrame(800, 600, new GetRep());
 	}	
     private void carManagement_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carManagement_btnMouseClicked
     	//TODO 跳转还不会。。
@@ -70,12 +83,7 @@ public class businessOfficer_main extends JPanel {
     private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
         System.exit(0);
     }
-    /**
-     * 初始化界面
-     */
-    public businessOfficer_main() {
-        initComponents();       
-    }
+   
     public void setFrame(JFrame frame){
     	this.frame=frame;
     }
