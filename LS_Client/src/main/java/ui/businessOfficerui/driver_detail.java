@@ -21,7 +21,7 @@ import javax.swing.WindowConstants;
  *
  * @author Administrator
  */
-public class Driver_detail extends JFrame {
+public class driver_detail extends JFrame {
 	/**
 	 * 监听
 	 * @param evt
@@ -41,7 +41,7 @@ public class Driver_detail extends JFrame {
     /**
      * Creates new form driver_detail
      */
-    public Driver_detail() {
+    public driver_detail() {
     	this.setVisible(true);
     	 setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         initComponents();
@@ -289,13 +289,13 @@ public class Driver_detail extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Driver_detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(driver_detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Driver_detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(driver_detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Driver_detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(driver_detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Driver_detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(driver_detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -303,7 +303,7 @@ public class Driver_detail extends JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Driver_detail().setVisible(true);
+                new driver_detail().setVisible(true);
             }
         });
     }

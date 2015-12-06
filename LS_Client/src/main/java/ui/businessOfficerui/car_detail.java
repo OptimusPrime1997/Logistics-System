@@ -19,9 +19,9 @@ import javax.swing.WindowConstants;
  *
  * @author Administrator
  */
-public class Car_detail extends JFrame {
+public class car_detail extends JFrame {
 	public static void main(String[] args) {
-		new Car_detail();
+		new car_detail();
 	}
 	private void carCodeNum_textActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_carCodeNum_textActionPerformed
 	}
@@ -37,10 +37,7 @@ public class Car_detail extends JFrame {
 		this.setVisible(false);
 	}
 	
-    /**
-     * Creates new form car_detail
-     */
-    public Car_detail() {
+    public car_detail() {
     	this.setVisible(true);
         setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         initComponents();

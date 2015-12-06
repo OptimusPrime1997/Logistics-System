@@ -24,7 +24,7 @@ import ui.mainFrame.MainFrame;
  *
  * @author Administrator
  */
-public class Driver_management extends JPanel {
+public class driver_management extends JPanel {
 	/**
 	 * 监听们~
 	 * 
@@ -39,12 +39,12 @@ public class Driver_management extends JPanel {
     }//GEN-LAST:event_exit_btnActionPerformed
 
     private void add_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_btnMouseClicked
-        new Driver_add().setVisible(true);
+        new driver_add().setVisible(true);
     }//GEN-LAST:event_add_btnMouseClicked
     /**
      * Creates new form yytywyCar_DriverManagement
      */
-    public Driver_management() {
+    public driver_management() {
         initComponents();
     }
 
@@ -328,7 +328,7 @@ public class Driver_management extends JPanel {
             	JFrame frame = new JFrame();
         		frame.setSize(830, 590);
         		frame.setVisible(true);
-        		frame.setContentPane(new Driver_management());
+        		frame.setContentPane(new driver_management());
         		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);	
             }
         });

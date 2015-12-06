@@ -18,9 +18,9 @@ import javax.swing.WindowConstants;
  *
  * @author Administrator
  */
-public class Car_add extends JFrame {
+public class car_add extends JFrame {
 	public static void main(String[] args) {
-		new Car_add();
+		new car_add();
 	}
 	/**
 	 * 监听们~
@@ -44,7 +44,7 @@ public class Car_add extends JFrame {
     /**
      * Creates new form car_add
      */
-    public Car_add() {
+    public car_add() {
     	this.setVisible(true);
     	setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         initComponents();

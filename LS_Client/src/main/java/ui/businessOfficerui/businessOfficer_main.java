@@ -23,7 +23,7 @@ import util.MyFrame;
  *
  * @author Administrator
  */
-public class BusinessOfficer_main extends JPanel {
+public class businessOfficer_main extends JPanel {
 	/**
 	 * 监听们~~
 	 * @param e
@@ -73,7 +73,7 @@ public class BusinessOfficer_main extends JPanel {
     /**
      * 初始化界面
      */
-    public BusinessOfficer_main() {
+    public businessOfficer_main() {
         initComponents();       
     }
     public void setFrame(JFrame frame){
@@ -324,7 +324,7 @@ public class BusinessOfficer_main extends JPanel {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-            	BusinessOfficer_main panel=new BusinessOfficer_main();
+            	businessOfficer_main panel=new businessOfficer_main();
             	MyFrame frame = new MyFrame(830,590,panel);
             	panel.setFrame(frame);
         		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);	
