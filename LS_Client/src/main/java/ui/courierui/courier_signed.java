@@ -106,10 +106,10 @@ public class courier_signed extends JFrame {
         //若不成功  将反馈信息传给dialog
 		if (!(msg == ResultMessage.SUCCESS
 				&& msg_check_listNum == ResultMessage.VALID && msg_check_name == ResultMessage.VALID)) {
-			feedBack(messages);
+			showFeedBack(messages);
         }else{//成功窗体才消失
         	this.setVisible(false);
-        	parentPanel.feedBack(ResultMessage.SIGNED_SUCCESS);
+        	parentPanel.setFeedBack(ResultMessage.SIGNED_SUCCESS);
         }
     }
    
@@ -238,7 +238,7 @@ public class courier_signed extends JFrame {
 	                .addContainerGap(202, Short.MAX_VALUE))
 	                .addGroup(layout0.createSequentialGroup()
                          .addContainerGap()
-                         .addComponent(feedBack_text)
+                         .addComponent(feedback_text)
                          .addContainerGap())
 	        );
 	        layout0.setVerticalGroup(
@@ -271,7 +271,7 @@ public class courier_signed extends JFrame {
 	                .addGroup(layout0.createParallelGroup(GroupLayout.Alignment.BASELINE)
 	                    .addComponent(cancel_btn, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
 	                    .addComponent(ok_btn, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
-	                     .addComponent(feedBack_text, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	                     .addComponent(feedback_text, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 	               
 	                .addGap(15, 15, 15))
 	                
@@ -298,10 +298,10 @@ public class courier_signed extends JFrame {
     	 goodsNum_text = new JTextField();
          getterName_text = new JTextField();
          getterPhone_text = new JTextField();
-         feedBack_text=new JTextField();
+         feedback_text=new JTextField();
          
-         feedBack_text.setEditable(false);
-         feedBack_text.setForeground(Color.RED);
+         feedback_text.setEditable(false);
+         feedback_text.setForeground(Color.RED);
          getterPhone_text.setText("选填");
          /*
   		 * add listener
@@ -339,13 +339,12 @@ public class courier_signed extends JFrame {
      * 弹出对话框提示输入信息有误或订单不存在
      * @param msg
      */
-	private void feedBack(ArrayList<ResultMessage> messages) {
+	private void showFeedBack(ArrayList<ResultMessage> messages) {
 		String feedback="";		
 		for(ResultMessage msg:messages){
 			feedback=feedback+ResultMessage.toFriendlyString(msg)+";   ";
 		}
-		feedBack_text.setText(feedback);
-		// TODO 
+		feedback_text.setText(feedback);
 		
 	}
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -357,7 +356,7 @@ public class courier_signed extends JFrame {
     private JComboBox<String> month_ComboBox;
     private JComboBox<String> year_ComboBox;
     private JTextField getterName_text, goodsNum_text,
-    getterPhone_text,feedBack_text;
+    getterPhone_text,feedback_text;
     private courier_main parentPanel;
     private JLabel jLabel1;
     private JLabel jLabel4;

@@ -14,6 +14,10 @@ public enum ResultMessage {
 	FAILED, // 失败
 	WRONG, // 错误
 	/**
+	 * 修改成功
+	 */
+	MODIFY_SUCCESS,
+	/**
 	 * 签收成功
 	 */
 	SIGNED_SUCCESS,
@@ -183,6 +187,8 @@ public enum ResultMessage {
 			return "对不起，该订单不存在";
 		case SIGNED_SUCCESS:
 			return "签收成功~";
+		case MODIFY_SUCCESS:
+			return "修改成功";
 		}
 		
 		return null;

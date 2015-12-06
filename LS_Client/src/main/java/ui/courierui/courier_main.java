@@ -39,7 +39,7 @@ public class courier_main extends JPanel {
 	 * 给main的子界面调用~反馈给用户操作成功的message
 	 * @param msg
 	 */
-	public void feedBack(ResultMessage msg){
+	public void setFeedBack(ResultMessage msg){
 		feedBack_text.setText(ResultMessage.toFriendlyString(msg));
 	}
 	private void initComponents() {

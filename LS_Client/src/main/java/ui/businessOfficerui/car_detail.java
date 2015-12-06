@@ -5,6 +5,9 @@
  */
 package ui.businessOfficerui;
 
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -17,8 +20,13 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
+import VO.ManagementVO.VehicleVO;
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.managementblservice.vehicleanddriverblservice.VehicleBLService;
 import ui.mainFrame.MainFrame;
 import ui.util.MyFrame;
+import util.InputCheck;
+import util.enumData.ResultMessage;
 
 /**
  *
@@ -31,14 +39,16 @@ public class car_detail extends JFrame {
      * @param time 车的  服役年限
      * @param type 服役年限的时间单位  仅限“年”，“月”，“天”
      */
-	 public car_detail(String code,String licenseNum,String time,String type) {
-	    	this.setVisible(true);
-	        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-	        this.carCode=code;
-	        this.carLicence=licenseNum;
-	        this.carTime=time;
-	        this.carTimeType=type;
-	        initComponents();
+	 public car_detail(car_management panel,String code,String licenseNum,String time,String type) {
+	    controller=ControllerFactoryImpl.getInstance().getVehicleController();
+		this.setVisible(true);
+		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+		this.parentPanel = panel;
+		this.carCode = code;
+		this.carLicence = licenseNum;
+		this.carTime = time;
+		this.carTimeType = type;
+		initComponents();
 	    }
 	private void carCodeNum_textActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_carCodeNum_textActionPerformed
 	}
@@ -49,11 +59,65 @@ public class car_detail extends JFrame {
 	private void back_btnMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_back_btnMouseClicked
 		this.setVisible(false);
 	}
-
-	private void ok_btnMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_ok_btnMouseClicked
+	//TODO 
+	private void delete_btnMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_back_btnMouseClicked
+		
 		this.setVisible(false);
 	}
-    private void initComponents() {
+
+	private void ok_btnMouseClicked(java.awt.event.MouseEvent evt) {
+		/*
+		 * msgNum-->检查车牌号的结果
+		 * msgT-->检查服役时间的结果
+		 */
+		ArrayList<ResultMessage> messages=new ArrayList<ResultMessage>();
+		ResultMessage msgNum,msgT,msgData=null;
+		VehicleVO vo=null;
+		/*
+		 * carNum-->车牌号 
+		 * carT-->服役时间
+		 */
+		String carNum,carT;
+		//获取用户输入
+		carNum=carLicenseNum_text.getText();
+		carT=timeText.getText();
+		//检查是否合法
+		msgNum=InputCheck.ifWritten(carNum);
+		msgT=InputCheck.checkIfAllNum(carT);
+		if(msgNum!=ResultMessage.VALID) messages.add(msgNum);
+		if(msgT!=ResultMessage.VALID) messages.add(msgT);
+		
+		//都合法
+		if(msgT==ResultMessage.VALID&&msgNum==ResultMessage.VALID){
+			try {//TODO 
+				//找到对应的VO
+				vo=controller.findByVehicleNum(carNum);
+				msgData=controller.updateVehicle(vo);
+			} catch (RemoteException e) {
+			}
+			//数据层修改成功
+			if(msgData==ResultMessage.SUCCESS){
+				parentPanel.setFeedBack(ResultMessage.MODIFY_SUCCESS);
+				this.setVisible(false);
+			}else{//数据层修改失败
+				showFeedBack(msgData);
+			}
+		}else{//输入不合法
+			showFeedBack(messages);
+		}		
+	}
+    private void showFeedBack(ResultMessage msgData) {
+    	String feedback=ResultMessage.toFriendlyString(msgData)+";";
+    	feedback_text.setText(feedback);
+	}
+	private void showFeedBack(ArrayList<ResultMessage> messages) {
+    	String feedback="";		
+		for(ResultMessage msg:messages){
+			feedback=feedback+ResultMessage.toFriendlyString(msg)+";   ";
+		}
+		feedback_text.setText(feedback);
+	}
+	private void initComponents() {
 		GroupLayout layout = new GroupLayout(getContentPane());
 		initLabel();
 		initTxt();
@@ -94,7 +158,12 @@ public class car_detail extends JFrame {
              public void mouseClicked(java.awt.event.MouseEvent evt) {
                  ok_btnMouseClicked(evt);
              }
-         });        
+         }); 
+         delete_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                 delete_btnMouseClicked(evt);
+             }
+         }); 
 	}
 	private void initLayout(GroupLayout layout) {
     	getContentPane().setLayout(layout);
@@ -172,7 +241,7 @@ public class car_detail extends JFrame {
           timeText = new JTextField();
           feedback_text=new JTextField();
           
-          carCodeNum_text.setText(carCode);//TODO
+          carCodeNum_text.setText(carCode);
           carLicenseNum_text.setText(carLicence);
           timeText.setText(carTime);
           
@@ -213,12 +282,16 @@ public class car_detail extends JFrame {
 		this.carTime=time;
 	}
 	// Variables declaration - do not modify//GEN-BEGIN:variables
+	private VehicleBLService controller;
     private JButton back_btn,ok_btn,delete_btn;
     private JTextField carCodeNum_text,carLicenseNum_text,timeText;
     private String carCode,carLicence,carTime,carTimeType;//车辆代号，车牌号，服役时间,服役时间单位
     private JTextField feedback_text;//给用户反馈信息的信息栏
     private JComboBox<String> combobox;
     private JLabel jLabel1,jLabel2,jLabel3,jLabel4;
+    private car_management parentPanel;
+    
+    
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -250,7 +323,7 @@ public class car_detail extends JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-            	new car_detail("025001001","江A 8888M","5","年").setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            	new car_detail(new car_management(),"025001001","江A 8888M","5","年").setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             	
             }
         });

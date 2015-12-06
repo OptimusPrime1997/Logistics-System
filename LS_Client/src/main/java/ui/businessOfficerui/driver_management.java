@@ -19,12 +19,21 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
 import ui.mainFrame.MainFrame;
+import util.enumData.ResultMessage;
 
 /**
  *
  * @author Administrator
  */
 public class driver_management extends JPanel {
+	
+	 /**
+     * 给子界面提供的   向用户反馈信息的方法
+     * @param msg
+     */
+    public void setFeedBack(ResultMessage msg){
+    	feedback_text.setText(ResultMessage.toFriendlyString(msg));
+    }
 	/**
 	 * 监听们~
 	 * 
@@ -95,7 +104,7 @@ public class driver_management extends JPanel {
                                         .addGap(58, 58, 58))))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(stateText)))
+                        .addComponent(feedback_text)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -124,16 +133,16 @@ public class driver_management extends JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addGap(43, 43, 43)
-                .addComponent(stateText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addComponent(feedback_text, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
 	}
 
 	private void initTxt() {
-    	  stateText = new JTextField();
+    	  feedback_text = new JTextField();
           search_text = new JTextField();
           search_text.setText("输入姓名或编号");
-          stateText.setEditable(false);
+          feedback_text.setEditable(false);
 
 	}
 
@@ -339,6 +348,6 @@ public class driver_management extends JPanel {
     private JTable drivers_table;
     private JButton account_btn,add_btn,back_btn,exit_btn,search_btn;
     private JScrollPane jScrollPane2;
-    private JTextField search_text,stateText;
+    private JTextField search_text,feedback_text;
     // End of variables declaration//GEN-END:variables
 }

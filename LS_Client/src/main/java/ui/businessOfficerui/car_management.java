@@ -14,12 +14,20 @@ import javax.swing.WindowConstants;
 
 import ui.mainFrame.MainFrame;
 import ui.util.MyFrame;
+import util.enumData.ResultMessage;
 
 /**
  *
  * @author Administrator
  */
 public class car_management extends javax.swing.JPanel {
+	 /**
+     * 给子界面提供的   向用户反馈信息的方法
+     * @param msg
+     */
+    public void setFeedBack(ResultMessage msg){
+    	feedback_text.setText(ResultMessage.toFriendlyString(msg));
+    }
 	/**
 	 * 监听们
 	 * @param evt
