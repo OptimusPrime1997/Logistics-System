@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import javax.naming.NameNotFoundException;
+
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -16,6 +16,7 @@ import org.junit.runners.MethodSorters;
 import util.enumData.Authority;
 import util.enumData.ResultMessage;
 import util.enumData.Sex;
+import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import PO.AccountPO;
 

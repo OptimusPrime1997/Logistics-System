@@ -21,6 +21,16 @@
 					<source>1.7</source>
 					<target>1.7</target>
 				</configuration>
+
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<configLocation>config/google_checks.xml</configLocation>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

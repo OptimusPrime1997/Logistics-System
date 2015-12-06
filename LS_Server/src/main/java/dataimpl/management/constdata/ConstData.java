@@ -6,12 +6,6 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-
-
-
-
-
-
 import util.enumData.ResultMessage;
 import Exception.ConstNotFoundException;
 import PO.ConstPO;
@@ -19,13 +13,12 @@ import dataservice.managementdataservice.constdataservice.ConstDataService;
 import datautil.DataUtility;
 
 /**
- * @author 1
- *存取constpo的server端实现
+ * @author 1 存取constpo的server端实现
  */
 public class ConstData extends UnicastRemoteObject implements ConstDataService {
 	private DataUtility d;
 	private final String path = "data/currentdata/const";
-	
+
 	private static final long serialVersionUID = 1L;
 
 	public ConstData() throws RemoteException {
@@ -46,7 +39,8 @@ public class ConstData extends UnicastRemoteObject implements ConstDataService {
 	}
 
 	@Override
-	public ResultMessage update(ConstPO po) throws ClassNotFoundException, IOException {
+	public ResultMessage update(ConstPO po) throws ClassNotFoundException,
+			IOException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO = false;
@@ -75,7 +69,8 @@ public class ConstData extends UnicastRemoteObject implements ConstDataService {
 	}
 
 	@Override
-	public ResultMessage delete(ConstPO po) throws ClassNotFoundException, IOException {
+	public ResultMessage delete(ConstPO po) throws ClassNotFoundException,
+			IOException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO = false;
@@ -105,17 +100,23 @@ public class ConstData extends UnicastRemoteObject implements ConstDataService {
 	public ArrayList<ConstPO> show() throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
-		ArrayList<Object> objects = d.getAll(path);
-		ArrayList<ConstPO> ConstPOs = new ArrayList<ConstPO>();
-		for (Object o : objects) {
-			ConstPOs.add((ConstPO) o);
+		ArrayList<Object> objects=null;
+		objects= d.getAll(path);
+		ArrayList<ConstPO> constPOs = new ArrayList<ConstPO>();
+		if (objects == null) {
+			return null;
+		}else{
+			for (Object o : objects) {
+				constPOs.add((ConstPO) o);
+			}
+			return constPOs;
 		}
-		return ConstPOs;
 
 	}
 
 	@Override
-	public ConstPO findByCities(String cities) throws ConstNotFoundException, ClassNotFoundException, IOException{
+	public ConstPO findByCities(String cities) throws ConstNotFoundException,
+			ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		ConstPO exist = null;

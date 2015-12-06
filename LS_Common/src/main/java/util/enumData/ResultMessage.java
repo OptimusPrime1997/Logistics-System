@@ -8,9 +8,18 @@ package util.enumData;
  *
  */
 public enum ResultMessage {
-	SUCCESS, // 成功
-	FAILED, // 失败
-	WRONG, // 错误
+	/**
+	 * 成功
+	 */
+	SUCCESS,
+	/**
+	 * 失败
+	 */
+	FAILED,
+	/**
+	 * 错误
+	 */
+	WRONG,
 	/**
 	 * 连接错误
 	 */
@@ -130,7 +139,7 @@ public enum ResultMessage {
 	/**
 	 * 覆盖数据
 	 */
-	OVERRIDE_DATA, 
+	OVERRIDE_DATA,
 	/**
 	 * 添加成功
 	 */
@@ -173,6 +182,14 @@ public enum ResultMessage {
 			return "派件员编号过长";
 		case OVERRIDE_DATA:
 			return "覆盖数据";
+		case IOFAILED:
+			return "读写文件失败";
+		case FAILED:
+			return "系统程序错误";
+		case SUCCESS:
+			return "成功";
+		case WRONG:
+			return "错误";
 		}
 		return null;
 	}

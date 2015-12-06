@@ -1,38 +1,46 @@
 package bl.managementbl.institutionbl;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
+import Exception.InstitutionNotFoundException;
+import Exception.NumNotFoundException;
 import VO.ManagementVO.InstitutionVO;
 import blservice.managementblservice.institutionblservice.InstitutionBLService;
 
 public class InstitutionblController implements InstitutionBLService {
-	Institutionbl institutionBL=new Institutionbl();
+	Institutionbl institutionbl = new Institutionbl();
 
-	public ResultMessage insert(InstitutionVO VO) throws RemoteException {
+	public ResultMessage insert(InstitutionVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return institutionbl.insert(vo);
 	}
 
-	public ResultMessage update(InstitutionVO VO) throws RemoteException {
+	public ResultMessage update(InstitutionVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return institutionbl.update(vo);
 	}
 
-	public ResultMessage delete(InstitutionVO VO) throws RemoteException {
+	public ResultMessage delete(InstitutionVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return institutionbl.delete(vo);
 	}
 
-	public ArrayList<InstitutionVO> show() throws RemoteException {
+	public ArrayList<InstitutionVO> show() throws ClassNotFoundException,
+			IOException,RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return institutionbl.show();
 	}
 
-	public InstitutionVO findByName(String name) throws RemoteException {
+	@Override
+	public InstitutionVO findByInstitutionNum(String institutionNum)
+			throws FileNotFoundException, ClassNotFoundException,
+			InstitutionNotFoundException, IOException,RemoteException, NumNotFoundException {
 		// TODO Auto-generated method stub
-		return null;
+		return institutionbl.findByInstitutionNum(institutionNum);
 	}
 
 }

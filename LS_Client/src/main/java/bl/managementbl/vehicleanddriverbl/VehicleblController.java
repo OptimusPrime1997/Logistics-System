@@ -1,38 +1,44 @@
 package bl.managementbl.vehicleanddriverbl;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
+import Exception.NumNotFoundException;
 import VO.ManagementVO.VehicleVO;
 import blservice.managementblservice.vehicleanddriverblservice.VehicleBLService;
 
 public class VehicleblController implements VehicleBLService {
-	Vehiclebl vehicleBL=new Vehiclebl();
+	Vehiclebl vehiclebl = new Vehiclebl();
 
 	public ResultMessage insertVehicle(VehicleVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return vehiclebl.insertVehicle(VO);
 	}
 
 	public ResultMessage updateVehicle(VehicleVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return vehiclebl.updateVehicle(VO);
 	}
 
 	public ResultMessage deleteVehicle(VehicleVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return vehiclebl.deleteVehicle(VO);
 	}
 
-	public ArrayList<VehicleVO> showVehicle() throws RemoteException {
+	public ArrayList<VehicleVO> showVehicle() throws ClassNotFoundException,
+			IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return vehiclebl.showVehicle();
 	}
 
-	public VehicleVO findByVehicleNum(String VehicleNum) throws RemoteException {
+	public VehicleVO findByVehicleNum(String VehicleNum)
+			throws FileNotFoundException, ClassNotFoundException,
+			NumNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return vehiclebl.findByVehicleNum(VehicleNum);
 	}
 
 }
