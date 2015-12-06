@@ -3,6 +3,8 @@
  */
 package util.enumData;
 
+import org.omg.CosNaming.NamingContextPackage.NotFound;
+
 /**
  * @author G
  *
@@ -11,6 +13,10 @@ public enum ResultMessage {
 	SUCCESS, // 成功
 	FAILED, // 失败
 	WRONG, // 错误
+	/**
+	 * 签收成功
+	 */
+	SIGNED_SUCCESS,
 	/**
 	 * 连接错误
 	 */
@@ -148,13 +154,13 @@ public enum ResultMessage {
 		case REPNUM_LENGTH_LACKING:
 			return "过短";
 		case UNVALID_CHAR:
-			return "含有非法字符";
+			return "含有非法字符，注意编号中只能有数字哦";
 		case WRONG_PASSWORD:
 			return "密码错误";
 		case NOT_COMPLETED:
 			return "有项目未填写，请完成后再提交";
 		case LENGTH_WRONG:
-			return "长度有误";
+			return "长度有误,订单号是11位哦~";
 		case WRONG_FORMAT:
 			return "格式错误";
 		case WRONG_DATA:
@@ -173,7 +179,12 @@ public enum ResultMessage {
 			return "派件员编号过长";
 		case OVERRIDE_DATA:
 			return "覆盖数据";
+		case NOT_FOUND:
+			return "对不起，该订单不存在";
+		case SIGNED_SUCCESS:
+			return "签收成功~";
 		}
+		
 		return null;
 	}
 

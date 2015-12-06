@@ -23,6 +23,7 @@ import ui.mainFrame.MainFrame;
 import ui.receiptui.Order;
 import util.CurrentTime;
 import util.MyFrame;
+import util.enumData.ResultMessage;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.goodsblservice.GoodsFindBLService;
 
@@ -33,6 +34,13 @@ public class courier_main extends JPanel {
 
 	public courier_main() {
 		initComponents();
+	}
+	/**
+	 * 给main的子界面调用~反馈给用户操作成功的message
+	 * @param msg
+	 */
+	public void feedBack(ResultMessage msg){
+		feedBack_text.setText(ResultMessage.toFriendlyString(msg));
 	}
 	private void initComponents() {
 		GroupLayout layout = new GroupLayout(this);
@@ -407,7 +415,7 @@ public class courier_main extends JPanel {
 	 * 监听们～
 	 */
 	private void signedGoodsbtnMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_signedGoodsbtnMouseClicked
-		new courier_signed().setVisible(true);
+		new courier_signed(this).setVisible(true);
 	}
 	private void newGoodsbtnMouseClicked(MouseEvent evt) {
 		MyFrame frame=new MyFrame(500, 600, new Order());
