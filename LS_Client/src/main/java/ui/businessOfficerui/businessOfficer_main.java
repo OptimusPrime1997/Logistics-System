@@ -29,6 +29,7 @@ public class businessOfficer_main extends JPanel {
      * 初始化界面
      */
     public businessOfficer_main() {
+    	this.frame=new MyFrame(this);
         initComponents();       
     }
     /**
@@ -84,9 +85,6 @@ public class businessOfficer_main extends JPanel {
         System.exit(0);
     }
    
-    public void setFrame(JFrame frame){
-    	this.frame=frame;
-    }
     private void initComponents() {
         GroupLayout layout = new GroupLayout(this);
         initNumPanel();
@@ -284,7 +282,7 @@ public class businessOfficer_main extends JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
 //	private 
 	
-    private JFrame frame;
+    private MyFrame frame;
     private JButton account_btn;
     private JButton arrival_btn;
     private JLabel businessOfficeNum_label;
@@ -333,8 +331,9 @@ public class businessOfficer_main extends JPanel {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
             	businessOfficer_main panel=new businessOfficer_main();
+            	car_management panelCar=new car_management();
+            	
             	MyFrame frame = new MyFrame(830,590,panel);
-            	panel.setFrame(frame);
         		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);	
             }
         });
