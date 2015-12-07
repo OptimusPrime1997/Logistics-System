@@ -4,9 +4,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import dataservice.managementdataservice.managedataservice.ManageDataService;
 import dataservice.managementdataservice.salarypolicydataservice.SalaryPolicyDataService;
+import util.InputCheck;
 import util.enumData.Authority;
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
@@ -45,29 +47,32 @@ public class SalaryPolicybl {
 		manageVOPO.addLog(LogType.DECISION_SALARYPOLICY);
 		if (salaryPolicyDataService != null) {
 			try {
-//				ArrayList<SalaryPolicyPO> pos = salaryPolicyDataService.show();
-//				if (pos != null) {
-//					for (Iterator<SalaryPolicyPO> t = pos.iterator(); t
-//							.hasNext();) {
-//						if (t.next().getAuthority() == (vo.authority)) {
-//							return ResultMessage.EXIST;
-//						}
-//					}
-//				}
+				ArrayList<SalaryPolicyPO> pos = salaryPolicyDataService.show();
+				if (pos != null) {
+					for (Iterator<SalaryPolicyPO> t = pos.iterator(); t
+							.hasNext();) {
+						if (t.next().getAuthority() == (vo.authority)) {
+							return ResultMessage.EXIST;
+						}
+					}
+				}
+				if(check(vo)==ResultMessage.VALID){
 				ResultMessage rmsg = salaryPolicyDataService.insert(manageVOPO
 						.voToPO(vo));
 				ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
+				}else{
+					System.out.println(check(vo).toString());
+				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("存储文件出错");
 				return ResultMessage.IOFAILED;
-			} 
-//			catch (ClassNotFoundException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//				System.out.println("系统程序错误");
-//			}
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("系统程序错误");
+			}
 			return ResultMessage.SUCCESS;
 		} else
 			return ResultMessage.FAILED;
@@ -165,14 +170,23 @@ public class SalaryPolicybl {
 	}
 
 	/**
-	 * check the salaryPolicyVO is valid or not
+	 * check the salaryPolicyVO is valid or not authority and salarypolicy is
+	 * null or not
 	 * 
 	 * @param vo
 	 * @return
 	 */
 	public static ResultMessage check(SalaryPolicyVO vo) {
 		if (vo.value >= 0.0) {
-			return ResultMessage.VALID;
+			if (vo.salaryPolicy != null) {
+				if (vo.authority != null) {
+					return ResultMessage.VALID;
+				} else {
+					return ResultMessage.NULL_AUTHORITY;
+				}
+			} else {
+				return ResultMessage.NULL_SALARYPOLICY;
+			}
 		} else {
 			return ResultMessage.INPUTNUM_MUST_BE_POSITIVE;
 		}

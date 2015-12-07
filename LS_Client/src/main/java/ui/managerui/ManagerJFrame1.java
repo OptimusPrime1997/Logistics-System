@@ -29,19 +29,10 @@ import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
-import javax.swing.event.CellEditorListener;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.event.MouseInputListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
 
-import bl.controllerfactorybl.ControllerFactoryImpl;
-import blservice.controllerfactoryblservice.ControllerFactoryblService;
-import blservice.managementblservice.accountblservice.AccountBLService;
-import blservice.managementblservice.constblservice.ConstBLService;
-import blservice.managementblservice.salarypolicyblservice.SalaryPolicyBLService;
 import util.InputCheck;
 import util.enumData.Authority;
 import util.enumData.ModifyState;
@@ -51,8 +42,16 @@ import util.enumData.Sex;
 import VO.ManagementVO.AccountVO;
 import VO.ManagementVO.ConstVO;
 import VO.ManagementVO.ConstVOPlus;
+import VO.ManagementVO.InstitutionVO;
+import VO.ManagementVO.InstitutionVOPlus;
 import VO.ManagementVO.SalaryPolicyVO;
 import VO.ManagementVO.SalaryPolicyVOPlus;
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.controllerfactoryblservice.ControllerFactoryblService;
+import blservice.managementblservice.accountblservice.AccountBLService;
+import blservice.managementblservice.constblservice.ConstBLService;
+import blservice.managementblservice.institutionblservice.InstitutionBLService;
+import blservice.managementblservice.salarypolicyblservice.SalaryPolicyBLService;
 
 /**
  *
@@ -66,6 +65,20 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 
 	public ManagerJFrame1() {
 		initComponents();
+	}
+
+	private void setInstitutionVOs() {
+		// TODO Auto-generated method stub
+		institutionVOPlus = new ArrayList<InstitutionVOPlus>();
+		InstitutionVO vo = null;
+		InstitutionVOPlus voplus = null;
+		ArrayList<InstitutionVO> vos = getInstitutionVOs();
+		for (Iterator<InstitutionVO> t = vos.iterator(); t.hasNext();) {
+			vo = t.next();
+			voplus = new InstitutionVOPlus(vo, ModifyState.SYNC);
+			institutionVOPlus.add(voplus);
+		}
+		institutionVOPlus.sort(null);
 	}
 
 	private void setSalaryPolicyVOs() {
@@ -113,6 +126,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		setAccountVOs();
 		setConstVOs();
 		setSalaryPolicyVOs();
+		setInstitutionVOs();
 		initialVariables();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -311,8 +325,9 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	 * 初始化日志面板
 	 */
 	private void initialLogjPaenl() {
-		// TODO Auto-generated method stub
+
 		logjPanel.setName("logView"); // NOI18N
+
 		logjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
 
 		findLogjButton.setText("查找");
@@ -444,7 +459,6 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 			public Class getColumnClass(int columnIndex) {
 				return types[columnIndex];
 			}
-
 		});
 		logjTable.setGridColor(new java.awt.Color(0, 0, 0));
 		logjTable.setName("123"); // NOI18N
@@ -680,7 +694,6 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 														.addGap(205, 205, 205))));
 
 		managerjTabbedPane.addTab("日志查看", logjPanel);
-
 	}
 
 	/**
@@ -1163,44 +1176,6 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	}
 
 	/**
-	 * 初始化AccountJTable
-	 */
-	/**
-	 * private void intialAccountViewjTable(ArrayList<AccountVO> vos) { assert
-	 * (vos != null) : ("表格获得的账户信息为空"); Object[][] accountObjects = null;
-	 * accountObjects = new Object[vos.size()][6]; int i = 0; for
-	 * (java.util.Iterator<AccountVO> t = vos.iterator(); t.hasNext();) {
-	 * AccountVO vo = t.next(); accountObjects[i][0] = vo.accountNum;
-	 * accountObjects[i][1] = vo.accountName; accountObjects[i][2] =
-	 * sexjComboBox.getItemAt(Sex.toNum(vo.sex)); accountObjects[i][3] =
-	 * Authority.toString(vo.authority); accountObjects[i][4] =
-	 * vo.institutionNum; accountObjects[i][5] = vo.phoneNum; i++; }
-	 * accountViewjTable.setModel(new javax.swing.table.DefaultTableModel(
-	 * accountObjects, new String[] { "用户账号", "姓名", "性别", "职位", "机构编号", "电话" })
-	 * { Class[] types = new Class[] { java.lang.String.class,
-	 * java.lang.String.class, JComboBox.class, java.lang.String.class,
-	 * java.lang.String.class, java.lang.String.class }; boolean[] canEdit = new
-	 * boolean[] { false, false, false, false, false, false };
-	 * 
-	 * public Class getColumnClass(int columnIndex) { return types[columnIndex];
-	 * }
-	 * 
-	 * public boolean isCellEditable(int rowIndex, int columnIndex) { return
-	 * canEdit[columnIndex]; } });
-	 * accountViewjTable.getColumnModel().getColumn(2) .setCellEditor(new
-	 * DefaultCellEditor(sexjComboBox)); DefaultTableCellRenderer tcr = new
-	 * DefaultTableCellRenderer();// 设置table内容-11
-	 * tcr.setHorizontalAlignment(SwingConstants.CENTER);// 设置table内容居中-2
-	 * accountViewjTable.setDefaultRenderer(Object.class, tcr);
-	 * 
-	 * ((DefaultTableCellRenderer) accountViewjTable.getTableHeader()
-	 * .getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
-	 * accountViewjTable.setRowSelectionInterval(0, 0);// 设置哪几行被选中
-	 * 
-	 * }
-	 */
-
-	/**
 	 * 初始化机构管理面板
 	 */
 	private void initialInstitutionjPanel() {
@@ -1210,22 +1185,22 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 
 		jLabel12.setText("机构编号：");
 
-		institutionNamejTextField.setText("请输入机构编号（6位数字）");
-		institutionNamejTextField
+		institutionNumjTextField.setText("请输入机构编号（6位数字）");
+		institutionNumjTextField
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseClicked(java.awt.event.MouseEvent evt) {
 						institutionNamejTextFieldMouseClicked(evt);
 					}
 				});
 
-		findInstitutioNamejButton.setText("编号查找");
-		findInstitutioNamejButton
+		findInstitutioNumjButton.setText("编号查找");
+		findInstitutioNumjButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
 						findInstitutioNamejButtonMouseReleased(evt);
 					}
 				});
-		findInstitutioNamejButton
+		findInstitutioNumjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
 						findInstitutioNamejButtonActionPerformed(evt);
@@ -1234,12 +1209,13 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 
 		jLabel13.setText("机构名称：");
 
-		jTextField4.setText("请输入机构的完整名称");
-		jTextField4.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jTextField4MouseClicked(evt);
-			}
-		});
+		findInstitutionNamejTextField.setText("请输入机构的完整名称");
+		findInstitutionNamejTextField
+				.addMouseListener(new java.awt.event.MouseAdapter() {
+					public void mouseClicked(java.awt.event.MouseEvent evt) {
+						findInstitutionNamejTextFieldMouseClicked(evt);
+					}
+				});
 
 		findInstitutionNumjButton.setText("名称查找");
 		findInstitutionNumjButton.setToolTipText("");
@@ -1254,59 +1230,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		jLabel15.setText("机构信息");
 		jLabel15.setToolTipText("");
 
-		institutionjTable.setModel(new javax.swing.table.DefaultTableModel(
-				new Object[][] {
-						{ "南京市中转中心", "025001", new Integer(20), "025-89682345",
-								"江苏省南京市栖霞区仙林道163号" },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-						{ null, null, null, null, null } }, new String[] {
-						"机构名称", "机构编号", "机构总人数", "机构联系方式", "机构地址" }) {
-			Class[] types = new Class[] { java.lang.String.class,
-					java.lang.String.class, java.lang.Integer.class,
-					java.lang.String.class, java.lang.String.class };
-			boolean[] canEdit = new boolean[] { true, true, false, true, true };
-
-			public Class getColumnClass(int columnIndex) {
-				return types[columnIndex];
-			}
-
-			public boolean isCellEditable(int rowIndex, int columnIndex) {
-				return canEdit[columnIndex];
-			}
-		});
-		institutionjTable.setGridColor(new java.awt.Color(0, 0, 0));
-		institutionjTable.setName("123"); // NOI18N
-		institutionjTable.getTableHeader().setReorderingAllowed(false);
-		jScrollPane8.setViewportView(institutionjTable);
-
+		initialInstitutionJTable(institutionVOPlus, 0);
 		addInstitutionjButton.setText("添加新机构");
 		addInstitutionjButton.setToolTipText("");
 		addInstitutionjButton
@@ -1349,7 +1273,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 																		.addPreferredGap(
 																				javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 																		.addComponent(
-																				institutionNamejTextField,
+																				institutionNumjTextField,
 																				javax.swing.GroupLayout.PREFERRED_SIZE,
 																				321,
 																				javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1357,7 +1281,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 																				18,
 																				18)
 																		.addComponent(
-																				findInstitutioNamejButton))
+																				findInstitutioNumjButton))
 														.addGroup(
 																institutionjPanelLayout
 																		.createSequentialGroup()
@@ -1366,7 +1290,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 																		.addPreferredGap(
 																				javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 																		.addComponent(
-																				jTextField4,
+																				findInstitutionNamejTextField,
 																				javax.swing.GroupLayout.PREFERRED_SIZE,
 																				321,
 																				javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1429,12 +1353,12 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 																javax.swing.GroupLayout.Alignment.BASELINE)
 														.addComponent(jLabel12)
 														.addComponent(
-																institutionNamejTextField,
+																institutionNumjTextField,
 																javax.swing.GroupLayout.PREFERRED_SIZE,
 																javax.swing.GroupLayout.DEFAULT_SIZE,
 																javax.swing.GroupLayout.PREFERRED_SIZE)
 														.addComponent(
-																findInstitutioNamejButton))
+																findInstitutioNumjButton))
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 										.addGroup(
@@ -1443,7 +1367,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 																javax.swing.GroupLayout.Alignment.BASELINE)
 														.addComponent(jLabel13)
 														.addComponent(
-																jTextField4,
+																findInstitutionNamejTextField,
 																javax.swing.GroupLayout.PREFERRED_SIZE,
 																javax.swing.GroupLayout.DEFAULT_SIZE,
 																javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1988,10 +1912,10 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		documentCheckjTable = new javax.swing.JTable();
 		institutionjPanel = new javax.swing.JPanel();
 		jLabel12 = new javax.swing.JLabel();
-		institutionNamejTextField = new javax.swing.JTextField();
-		findInstitutioNamejButton = new javax.swing.JButton();
+		institutionNumjTextField = new javax.swing.JTextField();
+		findInstitutioNumjButton = new javax.swing.JButton();
 		jLabel13 = new javax.swing.JLabel();
-		jTextField4 = new javax.swing.JTextField();
+		findInstitutionNamejTextField = new javax.swing.JTextField();
 		findInstitutionNumjButton = new javax.swing.JButton();
 		jLabel15 = new javax.swing.JLabel();
 		jScrollPane8 = new javax.swing.JScrollPane();
@@ -2138,25 +2062,27 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	 * @param evt
 	 */
 	private void findAccountNumjButtonMouseReleased(
-			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_findAccountNumjButtonMouseReleased
+			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_findInstitutionNumjButtonMouseReleased
 		// TODO add your handling code here:
-		if (evt.getSource() == findAccountNumjButton) {
-			String findAccountNum = accountNumjTextField.getText();
-			ResultMessage rmsg = InputCheck.checkInputNum(findAccountNum, 11);
+		if (evt.getSource() == findInstitutionNumjButton) {
+			String findInstitutionNum = institutionNumjTextField.getText();
+			ResultMessage rmsg = InputCheck.checkInputNum(findInstitutionNum,
+					11);
 			if (rmsg == ResultMessage.VALID) {
 				int i = 0;
-				AccountVO tempVO = null;
-				for (Iterator<AccountVO> t = accountVOs.iterator(); t.hasNext(); i++) {
+				InstitutionVO tempVO = null;
+				for (Iterator<InstitutionVOPlus> t = institutionVOPlus
+						.iterator(); t.hasNext(); i++) {
 					tempVO = t.next();
-					if (tempVO.accountNum.equals(findAccountNum)) {
+					if (tempVO.institutionNum.equals(findInstitutionNum)) {
 						break;
 					}
 				}
-				if (i < accountVOs.size()) {
-					accountViewjTable.setRowSelectionInterval(i, i);// 设置哪几行被选中
-					setState("该账户在第" + (i + 1) + "行", 5);
+				if (i < institutionVOPlus.size()) {
+					institutionjTable.setRowSelectionInterval(i, i);// 设置哪几行被选中
+					setState("该账户在第" + (i + 1) + "行", DISPLAY_TIME);
 				} else {
-					setState("系统中无该账户", 5);
+					setState("系统中无该机构", DISPLAY_TIME);
 				}
 			} else {
 				String msg = ResultMessage.toFriendlyString(rmsg);
@@ -2165,7 +2091,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 
 		}
 
-	}// GEN-LAST:event_findAccountNumjButtonMouseReleased
+	}// GEN-LAST:event_findInstitutionNumjButtonMouseReleased
 
 	/**
 	 * findAccountnum
@@ -2191,11 +2117,11 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 					accountViewjTable.setRowSelectionInterval(i, i);// 设置哪几行被选中
 					setState("该账户在第" + (i + 1) + "行", 5);
 				} else {
-					setState("系统中无该账户", 5);
+					setState("系统中无该账户", DISPLAY_TIME);
 				}
 			} else {
 				String msg = ResultMessage.toFriendlyString(rmsg);
-				setState("账户名称" + msg, 5);
+				setState("账户名称" + msg, DISPLAY_TIME);
 			}
 		}
 
@@ -2259,10 +2185,36 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	private void findInstitutionNumjButtonMouseReleased(
 			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_findInstitutionNumjButtonMouseReleased
 		// TODO add your handling code here:
+		if (evt.getSource() == findAccountNumjButton) {
+			String findAccountNum = accountNumjTextField.getText();
+			ResultMessage rmsg = InputCheck.checkInputNum(findAccountNum, 11);
+			if (rmsg == ResultMessage.VALID) {
+				int i = 0;
+				AccountVO tempVO = null;
+				for (Iterator<AccountVO> t = accountVOs.iterator(); t.hasNext(); i++) {
+					tempVO = t.next();
+					if (tempVO.accountNum.equals(findAccountNum)) {
+						break;
+					}
+				}
+				if (i < accountVOs.size()) {
+					accountViewjTable.setRowSelectionInterval(i, i);// 设置哪几行被选中
+					setState("该账户在第" + (i + 1) + "行", 5);
+				} else {
+					setState("系统中无该账户", 5);
+				}
+			} else {
+				String msg = ResultMessage.toFriendlyString(rmsg);
+				setState("账号" + msg, 5);
+			}
+		}
+
 	}// GEN-LAST:event_findInstitutionNumjButtonMouseReleased
 
-	private void jTextField4MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jTextField4MouseClicked
+	private void findInstitutionNamejTextFieldMouseClicked(
+			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jTextField4MouseClicked
 		// TODO add your handling code here:
+		findInstitutionNamejTextField.setText("");
 	}// GEN-LAST:event_jTextField4MouseClicked
 
 	private void findInstitutioNamejButtonActionPerformed(
@@ -2278,6 +2230,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	private void institutionNamejTextFieldMouseClicked(
 			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_institutionNamejTextFieldMouseClicked
 		// TODO add your handling code here:
+		institutionNumjTextField.setText("");
 	}// GEN-LAST:event_institutionNamejTextFieldMouseClicked
 
 	private void submitConstjButtonActionPerformed(
@@ -2338,8 +2291,8 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 			java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addSalaryPolicyjButton2ActionPerformed
 		// TODO add your handling code here:
 		if (evt.getSource() == addSalaryPolicyjButton) {
-			salaryPolicyVOPlus.add(new SalaryPolicyVOPlus(null, null, 0,
-					ModifyState.NEW));
+			salaryPolicyVOPlus.add(new SalaryPolicyVOPlus(Authority.MANAGER,
+					SalaryPolicy.BASE_SALARY, 0, ModifyState.NEW));
 			initialSalaryPolicyJTable(salaryPolicyVOPlus,
 					salaryPolicyVOPlus.size() - 1);
 		}
@@ -2359,6 +2312,11 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	}// GEN-LAST:event_addConstjButton1MouseReleased
 
 	// 其他方法
+	/**
+	 * 从服务器获得Account数据
+	 * 
+	 * @return
+	 */
 	private ArrayList<AccountVO> getAccountVOs() {
 		ArrayList<AccountVO> vos = null;
 		try {
@@ -2386,6 +2344,11 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		return vos;
 	}
 
+	/**
+	 * 从服务器获得salarypolicy数据
+	 * 
+	 * @return
+	 */
 	private ArrayList<SalaryPolicyVO> getSalaryPolicyVOs() {
 		// TODO Auto-generated method stub
 		ArrayList<SalaryPolicyVO> vos = null;
@@ -2414,6 +2377,47 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		return vos;
 	}
 
+	/**
+	 * 从服务器获得Institution数据
+	 * 
+	 * @return
+	 */
+	private ArrayList<InstitutionVO> getInstitutionVOs() {
+		// TODO Auto-generated method stub
+
+		// TODO Auto-generated method stub
+		ArrayList<InstitutionVO> vos = null;
+		try {
+			vos = institutionblController.show();
+			if (vos != null) {
+				vos.sort(null);
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("远程连接失败");
+			setState("远程连接失败", DISPLAY_TIME);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("程序错误");
+			setState("程序错误", DISPLAY_TIME);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("读取文件失败");
+			setState("读取文件失败", DISPLAY_TIME);
+		}
+		assert (vos != null) : ("远程获取常量信息失败");
+		return vos;
+
+	}
+
+	/**
+	 * 从服务器获得const数据
+	 * 
+	 * @return
+	 */
 	private ArrayList<ConstVO> getConstVOs() {
 		// TODO Auto-generated method stub
 		ArrayList<ConstVO> vos = null;
@@ -2498,14 +2502,6 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	 * @param n
 	 *            初始化后被选中的行
 	 */
-	/**
-	 * @param vos
-	 * @param n
-	 */
-	/**
-	 * @param vos
-	 * @param n
-	 */
 	private void initialSalaryPolicyJTable(ArrayList<SalaryPolicyVOPlus> vos,
 			int n) {
 		// TODO Auto-generated method stub
@@ -2515,13 +2511,17 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		int i = 0;
 		for (java.util.Iterator<SalaryPolicyVOPlus> t = vos.iterator(); t
 				.hasNext(); i++) {
-			SalaryPolicyVO vo = t.next();
-			if (vo != null&&vo.salaryPolicy!=null&&authorityjComboBox!=null) {
+			SalaryPolicyVOPlus voplus = t.next();
+			SalaryPolicyVO vo = voplus.getSalaryPolicyVO();
+			if (vo != null && vo.salaryPolicy != null
+					&& authorityjComboBox != null) {
 				salaryPolicyObjects[i][0] = authorityjComboBox
-						.getItemAt(vo.salaryPolicy.ordinal());
+						.getItemAt(vo.salaryPolicy.getIndex());
 				salaryPolicyObjects[i][1] = salaryPolicyjComboBox
-						.getItemAt(vo.salaryPolicy.ordinal());
+						.getItemAt(vo.salaryPolicy.getIndex());
 				salaryPolicyObjects[i][2] = vo.value;
+			} else {
+				System.out.println("2519错误！");
 			}
 		}
 
@@ -2590,24 +2590,34 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 					if (state == ModifyState.NEW) {
 						try {
 							rmsg = salaryPolicyblController.insert(v);
-							setState(ResultMessage.toFriendlyString(rmsg),
+							setState(
+									"提交" + ResultMessage.toFriendlyString(rmsg),
 									DISPLAY_TIME);
+							if (rmsg == ResultMessage.SUCCESS) {
+								salaryPolicyVOPlus.remove(n);
+								salaryPolicyVOPlus.add(n,
+										new SalaryPolicyVOPlus(v,
+												ModifyState.SYNC));
+							}
 						} catch (RemoteException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 							setState(REMOTEFAILD, DISPLAY_TIME);
 						}
-						salaryPolicyVOPlus.remove(n);
-						salaryPolicyVOPlus.add(n, new SalaryPolicyVOPlus(v,
-								ModifyState.SYNC));
 					} else {
 						if (v.equals(voPlus.getSalaryPolicyVO())) {
-							setState("您未进行修改！", DISPLAY_TIME);
+							setState("您未对该行进行修改！", DISPLAY_TIME);
 						} else {
 							try {
 								rmsg = salaryPolicyblController.update(v);
 								setState(ResultMessage.toFriendlyString(rmsg),
 										DISPLAY_TIME);
+								if (rmsg == ResultMessage.SUCCESS) {
+									salaryPolicyVOPlus.remove(n);
+									salaryPolicyVOPlus.add(n,
+											new SalaryPolicyVOPlus(v,
+													ModifyState.SYNC));
+								}
 							} catch (RemoteException e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -2667,7 +2677,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 										.getSalaryPolicyVO());
 								if (rmsg == ResultMessage.SUCCESS) {
 									setState("删除成功:)", DISPLAY_TIME);
-									setSalaryPolicyVOs();
+									salaryPolicyVOPlus.remove(n);
 									tempN = 0;
 									if (n == 0) {
 										tempN = 0;
@@ -2823,7 +2833,6 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 
 		((DefaultTableCellRenderer) constjTable.getTableHeader()
 				.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
-		constjTable.setRowSelectionInterval(0, 0);// 设置哪几行被选中
 		final JPopupMenu constjPop = new JPopupMenu();
 		final JMenuItem constSubmitjItem = new JMenuItem("提交");
 		final JMenuItem constDeljItem = new JMenuItem("删除");
@@ -2915,10 +2924,17 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 								options[0]);
 						if (result == JOptionPane.NO_OPTION) {
 							try {
-								constblController.delete(voPlus.getConstVO());
-								setState("删除成功:)", DISPLAY_TIME);
-								setConstVOs();
-								initialConstJTable(constVOPlus);
+								ResultMessage rmsg = constblController
+										.delete(voPlus.getConstVO());
+								if (rmsg == ResultMessage.SUCCESS) {
+									setState("删除成功:)", DISPLAY_TIME);
+									constVOPlus.remove(n);
+									initialConstJTable(constVOPlus);
+								} else {
+									setState(ResultMessage
+											.toFriendlyString(rmsg),
+											DISPLAY_TIME);
+								}
 							} catch (RemoteException e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -3006,6 +3022,278 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	}
 
 	/**
+	 * 初始化机构管理列表
+	 * 
+	 * @param n
+	 * 
+	 * @param ivs
+	 */
+	private void initialInstitutionJTable(ArrayList<InstitutionVOPlus> vos,
+			int n) {
+		// TODoO Auto-generated method stub
+		assert (vos != null) : ("表格获得的常量信息为空");
+		Object[][] institutionObjects = null;
+		institutionObjects = new Object[vos.size()][5];
+		int i = 0;
+		for (java.util.Iterator<InstitutionVOPlus> t = vos.iterator(); t
+				.hasNext(); i++) {
+			InstitutionVO vo = t.next();
+			institutionObjects[i][0] = vo.institutionNum;
+			institutionObjects[i][1] = vo.institutionName;
+			institutionObjects[i][2] = vo.contactInfo;
+			institutionObjects[i][3] = vo.address;
+			institutionObjects[i][4] = vo.manning;
+		}
+
+		institutionjTable.setModel(new javax.swing.table.DefaultTableModel(
+				institutionObjects, new String[] { "机构编号", "机构名称", "机构联系方式",
+						"机构地址", "人员组成" }) {
+			Class[] types = new Class[] { java.lang.String.class,
+					java.lang.String.class, java.lang.String.class,
+					java.lang.String.class, java.lang.String.class };
+			boolean[] canEdit = new boolean[] { true, true, true, true, false };
+
+			public Class getColumnClass(int columnIndex) {
+				return types[columnIndex];
+			}
+
+			public boolean isCellEditable(int rowIndex, int columnIndex) {
+				return canEdit[columnIndex];
+			}
+		});
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 这句和上句作用一样
+		institutionjTable.setDefaultRenderer(Object.class, tcr);
+
+		((DefaultTableCellRenderer) institutionjTable.getTableHeader()
+				.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
+		salaryPolicyjTable.setRowSelectionInterval(n, n);// 设置哪几行被选中
+		final JPopupMenu institutionjPop = new JPopupMenu();
+		final JMenuItem institutionSubmitjItem = new JMenuItem("提交");
+		final JMenuItem institutionDeljItem = new JMenuItem("删除");
+		institutionSubmitjItem.addMouseListener(/**
+		 * @author 1
+		 *         监听institution的弹出菜单中的“提交”
+		 */
+		new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				if (e.getButton() == MouseEvent.BUTTON1) {
+					ResultMessage rmsg = null;
+					int n = institutionjTable.getSelectedRow();
+					InstitutionVOPlus voPlus = institutionVOPlus.get(n);
+					ModifyState state = voPlus.isModify;
+					InstitutionVO v = getViewInstitutionVO(n);
+					if (state == ModifyState.NEW) {
+						try {
+							rmsg = institutionblController.insert(v);
+							setState(
+									"提交" + ResultMessage.toFriendlyString(rmsg),
+									DISPLAY_TIME);
+							if (rmsg == ResultMessage.SUCCESS) {
+								institutionVOPlus.remove(n);
+								institutionVOPlus.add(n, new InstitutionVOPlus(
+										v, ModifyState.SYNC));
+							}
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+							setState(REMOTEFAILD, DISPLAY_TIME);
+						}
+					} else {
+						if (v.equals(voPlus.getInstitutionVO())) {
+							setState("您未对该行进行修改！", DISPLAY_TIME);
+						} else {
+							try {
+								rmsg = institutionblController.update(v);
+								setState(ResultMessage.toFriendlyString(rmsg),
+										DISPLAY_TIME);
+								if (rmsg == ResultMessage.SUCCESS) {
+									institutionVOPlus.remove(n);
+									institutionVOPlus.add(n,
+											new InstitutionVOPlus(v,
+													ModifyState.SYNC));
+								}
+							} catch (RemoteException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+								setState(REMOTEFAILD, DISPLAY_TIME);
+							}
+						}
+					}
+				}
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+		});
+		institutionDeljItem.addMouseListener(/**
+		 * @author 1
+		 *         监听institutionjTable上弹出菜单的“删除”
+		 */
+		new MouseListener() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				if (e.getButton() == MouseEvent.BUTTON1) {
+					int tempN = 0;
+					ResultMessage rmsg = null;
+					int n = institutionjTable.getSelectedRow();
+					InstitutionVOPlus voPlus = institutionVOPlus.get(n);
+					ModifyState state = voPlus.isModify;
+					if (state == ModifyState.NEW) {
+						institutionVOPlus.remove(n);
+						if (n == 0) {
+							tempN = 0;
+						} else {
+							tempN = n - 1;
+						}
+						initialInstitutionJTable(institutionVOPlus, tempN);
+					} else {
+						Object[] options = { "取消", "删除" };
+						int result = JOptionPane.showOptionDialog(null,
+								"您确定要删除系统该薪水策略？", "是否删除",
+								JOptionPane.DEFAULT_OPTION,
+								JOptionPane.QUESTION_MESSAGE, null, options,
+								options[0]);
+						if (result == JOptionPane.NO_OPTION) {
+							try {
+								rmsg = institutionblController.delete(voPlus
+										.getInstitutionVO());
+								if (rmsg == ResultMessage.SUCCESS) {
+									setState("删除成功:)", DISPLAY_TIME);
+									institutionVOPlus.remove(n);
+									tempN = 0;
+									if (n == 0) {
+										tempN = 0;
+									} else {
+										tempN = n - 1;
+									}
+									initialInstitutionJTable(institutionVOPlus,
+											tempN);
+								} else {
+									setState(ResultMessage
+											.toFriendlyString(rmsg),
+											DISPLAY_TIME);
+								}
+							} catch (RemoteException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+								setState(REMOTEFAILD, DISPLAY_TIME);
+							}
+						}
+					}
+				}
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
+		;
+		institutionjPop.add(institutionSubmitjItem);
+		institutionjPop.add(institutionDeljItem);
+		MouseInputListener mil = new MouseInputListener() {
+
+			public void mouseClicked(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mousePressed(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				processEvent(e);
+				if ((e.getModifiers() & MouseEvent.BUTTON3_MASK) != 0
+						&& !e.isControlDown() && !e.isShiftDown()) {
+					institutionjPop.show(institutionjTable, e.getX(), e.getY());
+				}
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseDragged(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseMoved(MouseEvent e) {
+				processEvent(e);
+			}
+
+			private void processEvent(MouseEvent e) {
+				if ((e.getModifiers() & MouseEvent.BUTTON3_MASK) != 0) {
+					int modifiers = e.getModifiers();
+					modifiers -= MouseEvent.BUTTON3_MASK;
+					modifiers |= MouseEvent.BUTTON1_MASK;
+					MouseEvent ne = new MouseEvent(e.getComponent(), e.getID(),
+							e.getWhen(), modifiers, e.getX(), e.getY(),
+							e.getClickCount(), false);
+					institutionjTable.dispatchEvent(ne);
+				}
+			}
+		};
+		institutionjTable.addMouseListener(mil);
+		institutionjTable.putClientProperty("terminateEditOnFocusLost",
+				Boolean.TRUE);
+
+		institutionjTable.setGridColor(new java.awt.Color(0, 0, 0));
+		institutionjTable.setName("123"); // NOI18N
+		institutionjTable.getTableHeader().setReorderingAllowed(false);
+		jScrollPane8.setViewportView(institutionjTable);
+	}
+
+	/**
 	 * 得到当前表格第n行的SalaryPolicyVO
 	 * 
 	 * @param n
@@ -3017,16 +3305,46 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		SalaryPolicy salaryPolicy = null;
 		double value = 0;
 		try {
-			authority = Authority.toAuthority((String) constjTable.getValueAt(
-					n, 0));
-			salaryPolicy = SalaryPolicy.toSalaryPolicy((String) constjTable
-					.getValueAt(n, 1));
-			value = (double) constjTable.getValueAt(n, 2);
+			authority = (Authority) salaryPolicyjTable.getValueAt(n, 0);
+			salaryPolicy = (SalaryPolicy) salaryPolicyjTable.getValueAt(n, 1);
+			value = (double) salaryPolicyjTable.getValueAt(n, 2);
 		} catch (ClassCastException e) {
 			e.printStackTrace();
 			setState("您输入的值类型不正确：(", DISPLAY_TIME);
 		}
 		return new SalaryPolicyVO(authority, salaryPolicy, value);
+	}
+
+	/**
+	 * 得到当前表格第n行的InstitutionVO
+	 * 
+	 * @param n
+	 * @return
+	 */
+	protected InstitutionVO getViewInstitutionVO(int n) {
+		// TODO Auto-generated method stub
+		String institutionNum = null;
+		String institutionName = null;
+		String contactInfo = null;
+		String address = null;
+		String manning = null;
+		try {
+			institutionNum = (String) institutionjTable.getValueAt(n, 0);
+			institutionName = (String) institutionjTable.getValueAt(n, 1);
+			contactInfo = (String) institutionjTable.getValueAt(n, 2);
+			address = (String) institutionjTable.getValueAt(n, 3);
+			manning = (String) institutionjTable.getValueAt(n, 4);
+			assert (institutionName != null && institutionNum != null
+					&& contactInfo != null && address != null && manning != null) : ("您输入的机构信息不完整！");
+		} catch (ClassCastException e) {
+			e.printStackTrace();
+			setState("您输入的值类型不正确：(", DISPLAY_TIME);
+		} catch (AssertionError e) {
+			setState("您输入的机构信息不完整！", DISPLAY_TIME);
+			System.out.println(e.getMessage());
+		}
+		return new InstitutionVO(institutionNum, institutionName, contactInfo,
+				address, manning);
 	}
 
 	/**
@@ -3139,6 +3457,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	private ArrayList<AccountVO> accountVOs = null;
 	private ArrayList<ConstVOPlus> constVOPlus = null;
 	private ArrayList<SalaryPolicyVOPlus> salaryPolicyVOPlus = null;
+	private ArrayList<InstitutionVOPlus> institutionVOPlus = null;
 	private ControllerFactoryblService controllerFactoryblService = ControllerFactoryImpl
 			.getInstance();
 	private final static long DISPLAY_TIME = 5;
@@ -3148,6 +3467,8 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 			.getConstController();
 	private SalaryPolicyBLService salaryPolicyblController = controllerFactoryblService
 			.getSalaryPolicyController();
+	private InstitutionBLService institutionblController = controllerFactoryblService
+			.getInstitutionController();
 	private final ScheduledExecutorService scheduler = Executors
 			.newScheduledThreadPool(1);
 
@@ -3177,14 +3498,14 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	private javax.swing.JTable documentCheckjTable;
 	private javax.swing.JButton findAccountNamejButton;
 	private javax.swing.JButton findAccountNumjButton;
-	private javax.swing.JButton findInstitutioNamejButton;
+	private javax.swing.JButton findInstitutioNumjButton;
 	private javax.swing.JButton findInstitutionNumjButton;
 	private javax.swing.JButton findLogjButton;
 	private javax.swing.JComboBox formEDatejComboBox;
 	private javax.swing.JComboBox formEMonthjComboBox;
 	private javax.swing.JComboBox formEYearjComboBox;
 	private javax.swing.JPanel formjPanel;
-	private javax.swing.JTextField institutionNamejTextField;
+	private javax.swing.JTextField institutionNumjTextField;
 	private javax.swing.JPanel institutionjPanel;
 	private javax.swing.JTable institutionjTable;
 	private javax.swing.JButton exitjButton;
@@ -3229,7 +3550,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	private javax.swing.JSeparator jSeparator7;
 	private javax.swing.JSeparator jSeparator8;
 	private javax.swing.JSeparator jSeparator9;
-	private javax.swing.JTextField jTextField4;
+	private javax.swing.JTextField findInstitutionNamejTextField;
 	private javax.swing.JComboBox logEDatejComboBox;
 	private javax.swing.JComboBox logEYearjComboBox;
 	private javax.swing.JComboBox logEYearjComboBox1;

@@ -168,7 +168,15 @@ public enum ResultMessage {
 	/**
 	 * 输入必须为正数
 	 */
-	INPUTNUM_MUST_BE_POSITIVE;
+	INPUTNUM_MUST_BE_POSITIVE,
+	/**
+	 * 职位为空
+	 */
+	NULL_AUTHORITY,
+	/**
+	 * 薪水策略
+	 */
+	NULL_SALARYPOLICY;
 
 	public static String toFriendlyString(ResultMessage resultMessage) {
 
@@ -223,6 +231,10 @@ public enum ResultMessage {
 			return "输入必须为正数";
 		case EXIST:
 			return "数据已存在";
+		case NULL_SALARYPOLICY:
+			return "薪水策略为空";
+		case NULL_AUTHORITY:
+			return "空职位";
 		}
 
 		return null;

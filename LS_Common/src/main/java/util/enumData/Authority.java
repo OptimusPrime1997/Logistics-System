@@ -21,8 +21,18 @@ public enum Authority {
 	}
 
 	public String getValue() {
+		
+		/*
+		 * new MyFrame(panel2);
+		 * panel2.setFrame(this.frame);
+		 */
 		return value;
 	}
+	
+	
+	
+	
+	
 
 	/* (non-Javadoc)
 	 * @see java.lang.Enum#toString()
