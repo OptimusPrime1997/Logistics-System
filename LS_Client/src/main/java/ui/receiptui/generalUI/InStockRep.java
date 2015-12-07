@@ -49,6 +49,13 @@ public class InStockRep extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+    	
+    	/**
+    	 * 设置窗体大小
+    	 */
+    	this.setSize(800, 430);
+    	
+    	this.setVisible(true);
 
         dateText = new javax.swing.JTextField();
         dateLabel = new javax.swing.JLabel();

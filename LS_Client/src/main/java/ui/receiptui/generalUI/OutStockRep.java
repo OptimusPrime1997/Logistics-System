@@ -52,6 +52,14 @@ public class OutStockRep extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+    	/**
+    	 * 设置窗体大小
+    	 */
+    	this.setSize(800, 430);
+    	
+    	this.setVisible(true);
+    	
+    	
         dateText = new javax.swing.JTextField();
         dateLabel = new javax.swing.JLabel();
         officeText = new javax.swing.JTextField();
