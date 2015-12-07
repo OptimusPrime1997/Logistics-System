@@ -1,21 +1,24 @@
 package bl.receiptbl.DocumentCheckbl;
 
-import java.util.ArrayList;
+import java.util.Vector;
 
 import VO.ReceiptVO.ReceiptVO;
 import blservice.receiptblservice.DocumentCheckblService;
+import util.enumData.Rep;
 
 public class DocumentCheckController implements DocumentCheckblService{
-	DocumentCheckbl DocumentCheck = new DocumentCheckbl();
+	DocumentCheckbl documentCheckbl = new DocumentCheckbl();
 
-	public ArrayList<ReceiptVO> getRep() {
+	@Override
+	public String saveRep(ReceiptVO vo, Rep rep) {
 		// TODO Auto-generated method stub
-		return DocumentCheck.getRep();
+		return documentCheckbl.saveRep(vo, rep);
 	}
 
-	public String saveRep(ReceiptVO vo) {
+	@Override
+	public Vector<Object> checkAllRep() {
 		// TODO Auto-generated method stub
-		return DocumentCheck.saveRep(vo);
+		return documentCheckbl.checkAllRep();
 	}
 
 }

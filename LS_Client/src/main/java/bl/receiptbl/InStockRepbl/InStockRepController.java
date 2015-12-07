@@ -1,9 +1,11 @@
 package bl.receiptbl.InStockRepbl;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import VO.ReceiptVO.CashVO;
 import VO.ReceiptVO.InStockRepVO;
@@ -60,6 +62,12 @@ public class InStockRepController extends ReceiptblController implements InStock
 
 	@Override
 	public int[] getTwoPosition(String destination) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Vector<Object> checkAll() throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		return null;
 	}

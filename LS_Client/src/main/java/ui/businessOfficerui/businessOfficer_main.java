@@ -6,11 +6,11 @@ import java.awt.event.MouseEvent;
 import javax.swing.*;
 
 import ui.mainFrame.MainFrame;
-import ui.receiptui.CashRep;
-import ui.receiptui.DeliverRep;
-import ui.receiptui.GetRep;
-import ui.receiptui.ReceptionRep;
-import ui.receiptui.ShipmentRep;
+import ui.receiptui.generalUI.CashRep;
+import ui.receiptui.generalUI.DeliverRep;
+import ui.receiptui.generalUI.GetRep;
+import ui.receiptui.generalUI.ReceptionRep;
+import ui.receiptui.generalUI.ShipmentRep;
 import util.MyFrame;
 
 /*

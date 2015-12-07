@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package ui.receiptui;
+package ui.receiptui.generalUI;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -159,14 +159,8 @@ public class CashRep extends javax.swing.JPanel {
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
         
-        jTable.setColumnSelectionAllowed(true);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
-        jTable.setOpaque(false);
-        jTable.setRowHeight(20);
-        jTable.setSelectionForeground(new java.awt.Color(0, 0, 20));
-        jTable.setShowGrid(true);
         jScrollPane1.setViewportView(jTable);
-        jTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         
         accountLabel.setText("收款账号:");
 
@@ -176,8 +170,6 @@ public class CashRep extends javax.swing.JPanel {
                 courierButtonMouseClicked(evt);
             }
         });
-        
-        setColumn();
         
         jComboBox.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         
@@ -195,6 +187,8 @@ public class CashRep extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
+        
+        setColumn();
         
         jTable.addMouseListener(new MouseListener() {
 			
@@ -362,21 +356,6 @@ public class CashRep extends javax.swing.JPanel {
     	dataVector.add(arr);
     	model.setDataVector(dataVector, columnIdentifiers);
     	
-//    	String courierNum = courierNumText.getText();
-//    	ResultMessage resultMessage = control.checkNum(courierNum, 11);
-//    	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
-//    	resultMsgText.setText(resultMsg);
-//    	if(resultMessage==ResultMessage.ADD_SUCCESS){
-//    		String courierName = "bismuth";
-//        	double money = 5.0;
-//        	Vector<Object> arr = new Vector<Object>();
-//        	arr.add(courierName);
-//        	arr.add(courierNum);
-//        	arr.add(money);
-//        	dataVector.add(arr);
-//        	model.setDataVector(dataVector, columnIdentifiers);
-//        	setColumn();
-//    	}
     }
     
     private void okMouseClicked(java.awt.event.MouseEvent evt) {

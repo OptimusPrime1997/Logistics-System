@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package ui.receiptui;
+package ui.receiptui.generalUI;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

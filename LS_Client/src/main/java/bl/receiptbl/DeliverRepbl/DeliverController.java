@@ -3,6 +3,7 @@ package bl.receiptbl.DeliverRepbl;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import Exception.GoodsNotFound;
 import VO.ReceiptVO.DeliverRepVO;
@@ -23,19 +24,17 @@ public class DeliverController extends ReceiptblController implements DeliverRep
 	@Override
 	public void delete(int n) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		deliverRep.delete(n);
 	}
 
 	@Override
 	public void delete(String num) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		 deliverRep.delete(num);
 	}
 
 	@Override
 	public DeliverRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		 return deliverRep.getRepByNum(num);
+		 return null;
 	}
 
 	@Override
@@ -47,7 +46,7 @@ public class DeliverController extends ReceiptblController implements DeliverRep
 	@Override
 	public ArrayList<DeliverRepVO> getAllRep() throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return deliverRep.getAllRep();
+		return null;
 	}
 
 	@Override
@@ -78,6 +77,12 @@ public class DeliverController extends ReceiptblController implements DeliverRep
 	public String getAddressByOrder(String order) throws GoodsNotFound {
 		// TODO Auto-generated method stub
 		return deliverRep.getAddressByOrder(order);
+	}
+
+	@Override
+	public Vector<Object> checkAll() throws ClassNotFoundException, NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

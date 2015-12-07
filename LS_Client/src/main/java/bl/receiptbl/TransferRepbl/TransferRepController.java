@@ -1,9 +1,11 @@
 package bl.receiptbl.TransferRepbl;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import VO.ReceiptVO.ReceiptVO;
 import VO.ReceiptVO.TransferRepVO;
@@ -60,6 +62,12 @@ public class TransferRepController extends ReceiptblController implements Transf
 	public TransferRepVO getTransferRep(String num) {
 		// TODO Auto-generated method stub
 		return transferRep.getTransferRep(num);
+	}
+
+	@Override
+	public Vector<Object> checkAll() throws ClassNotFoundException, NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

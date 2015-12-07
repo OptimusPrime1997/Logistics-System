@@ -28,27 +28,9 @@ public class DeliverRepbl {
 		return num;
 	}
 
-	public void delete(String num) throws ClassNotFoundException, NotBoundException, IOException {
-		receiptbl.delete(num, Rep.DeliverRep);
-	}
-
-	public DeliverRepVO getRepByNum(String num) throws ClassNotFoundException, NotBoundException, IOException {
-		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.DeliverRep);
-		return new DeliverRepVO((DeliverRepPO) receiptPO);
-	}
-
-	public void delete(int n) throws ClassNotFoundException, IOException, NotBoundException {
-		receiptbl.delete(n, Rep.DeliverRep);
-	}
-
 	public void submit(ReceiptVO vo) throws RemoteException, MalformedURLException, IOException, NotBoundException {
 		receiptbl.clearSubmit(Rep.DeliverRep);
 		receiptbl.submit(DeliverRepVO.toPO((DeliverRepVO) vo), Rep.DeliverRep);
-	}
-
-	public ArrayList<DeliverRepVO> getAllRep() throws ClassNotFoundException, NotBoundException, IOException {
-		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.DeliverRep);
-		return DeliverRepVO.toArrayVO(receiptPOs);
 	}
 
 	public ArrayList<DeliverRepVO> getRepByDate(String date)

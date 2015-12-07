@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import VO.ReceiptVO.OutStockRepVO;
 import VO.ReceiptVO.ReceiptVO;
@@ -60,6 +61,12 @@ public class OutStockRepController extends ReceiptblController implements OutSto
 			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return outStackRepbl.getRepByDate(date);
+	}
+
+	@Override
+	public Vector<Object> checkAll() throws ClassNotFoundException, NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

@@ -10,8 +10,6 @@ import bl.stockbl.StockDivisionbl;
 public class InStockRepbl{
 	
 	public int[] getTwoPosition(String destination){
-		StockDivisionbl stock = new StockDivisionbl();
-		stock.getBlock(destination);
 		return null;
 	}
 

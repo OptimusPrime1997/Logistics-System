@@ -1,9 +1,11 @@
 package bl.receiptbl.PayRepbl;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import VO.ReceiptVO.CashVO;
 import VO.ReceiptVO.PayRepVO;
@@ -62,6 +64,12 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 	public ArrayList<ReceiptVO> forPay() {
 		// TODO Auto-generated method stub
 		return payRep.forPay();
+	}
+
+	@Override
+	public Vector<Object> checkAll() throws ClassNotFoundException, NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

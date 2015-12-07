@@ -16,8 +16,8 @@ import VO.StockVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.stockblservice.StockBLService;
 import ui.mainFrame.MainFrame;
-import ui.receiptui.InStockRep;
-import ui.receiptui.OutStockRep;
+import ui.receiptui.generalUI.InStockRep;
+import ui.receiptui.generalUI.OutStockRep;
 
 /**
  *

@@ -1,13 +1,14 @@
 package blservice.receiptblservice;
 
-import java.util.ArrayList;
+import java.util.Vector;
 
 import VO.ReceiptVO.ReceiptVO;
+import util.enumData.Rep;
 
 public interface DocumentCheckblService {
 	
-	public ArrayList<ReceiptVO> getRep ();
+	public String saveRep (ReceiptVO vo, Rep rep);
 	
-	public String saveRep (ReceiptVO vo);
+	public Vector<Object> checkAllRep();
 
 }

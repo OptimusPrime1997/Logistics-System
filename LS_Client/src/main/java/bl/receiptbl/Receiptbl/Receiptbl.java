@@ -55,6 +55,10 @@ public class Receiptbl {
 		getReceiptDataService().submit(po, rep);
 	}
 	
+	public void save(ReceiptPO po, Rep rep) throws RemoteException, MalformedURLException, IOException, NotBoundException{
+		getReceiptDataService().save(po, rep);
+	}
+	
 	public ArrayList<ReceiptPO> getAllRep(Rep rep) throws NotBoundException, ClassNotFoundException, IOException{
 		return getReceiptDataService().getAllRep(rep);
 	}
