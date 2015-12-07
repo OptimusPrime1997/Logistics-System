@@ -11,8 +11,8 @@ import PO.StockDivisionPO;
  *
  */
 public class StockDivisionVO {
-	public City listNum;
-	public String cityNum;
+	public City cityNum;
+	public String listNum;
 	public City destination;
 	public int block;
 	public int place;
@@ -26,9 +26,9 @@ public class StockDivisionVO {
 	 * @param p	    number of this place
 	 * @param avai  state of this place
 	 */
-	public StockDivisionVO(City listNum,String cn,City des,int b,int p){
+	public StockDivisionVO(City cityNum,String listNum,City des,int b,int p){
+		this.cityNum = cityNum;
 		this.listNum = listNum;
-		cityNum=cn;
 		destination=des;
 		block=b;
 		place=p;
@@ -40,7 +40,7 @@ public class StockDivisionVO {
 	public StockDivisionPO voToPo(StockDivisionVO vo) {
 		
 		StockDivisionPO po = new StockDivisionPO();
-		po.setListnum(vo.listNum);
+		po.setListNum(vo.listNum);
 		po.setBlock(vo.block);
 		po.setCityNum(vo.cityNum);
 		po.setDestination(vo.destination);
@@ -52,7 +52,7 @@ public class StockDivisionVO {
 	public StockDivisionVO poToVo(StockDivisionPO po) {
 		
 		StockDivisionVO vo = new StockDivisionVO();
-		vo.listNum = po.getListnum();
+		vo.listNum = po.getListNum();
 		vo.block = po.getBlock();
 		vo.cityNum = po.getCityNum();
 		vo.destination = po.getDestination();
