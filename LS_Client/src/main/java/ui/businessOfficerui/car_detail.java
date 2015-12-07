@@ -41,15 +41,13 @@ public class car_detail extends JFrame {
      * @param time 车的  服役年限
      * @param type 服役年限的时间单位  仅限“年”，“月”，“天”
      */
-	 public car_detail(car_management panel,String code,String licenseNum,String time,String type) {
-	    controller=ControllerFactoryImpl.getInstance().getVehicleController();
+	 public car_detail(car_management panel,String code,String licenseNum) {
+//	    controller=ControllerFactoryImpl.getInstance().getVehicleController();
 		this.setVisible(true);
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		this.parentPanel = panel;
 		this.carCode = code;
 		this.carLicence = licenseNum;
-		this.carTime = time;
-		this.carTimeType = type;
 		initComponents();
 	    }
 	private void carCodeNum_textActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_carCodeNum_textActionPerformed
@@ -128,6 +126,7 @@ public class car_detail extends JFrame {
         initLayout(layout);
     }
     private void initComboBox() {
+    	//TODO timetype要通过数据层获取
     	int i=0;//给类型编号
     	switch (carTimeType) {
 		case "月":i=1;
@@ -238,6 +237,8 @@ public class car_detail extends JFrame {
         pack();
 	}
 	private void initTxt() {
+		//TODO carTime timeType要通过数据层获取
+		carTime="5";//先硬编码一下
     	  carCodeNum_text = new JTextField();          
           carLicenseNum_text = new JTextField();
           timeText = new JTextField();

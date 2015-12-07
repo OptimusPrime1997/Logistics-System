@@ -5,16 +5,14 @@
  */
 package ui.businessOfficerui;
 
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.GroupLayout;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.WindowConstants;
+import javax.swing.JTable;
 
-import ui.mainFrame.MainFrame;
-import ui.util.MyFrame;
 import util.enumData.ResultMessage;
 
 /**
@@ -205,6 +203,29 @@ public class car_management extends javax.swing.JPanel {
         	System.out.println("双击哦~");
         }
     }
+    /**
+     * 对表格的监听
+     * @param e
+     */
+	public void tableMouseClicked(MouseEvent e) {
+		Point p = e.getPoint();
+		int row = cars_table.rowAtPoint(p);
+	    int	column = cars_table.columnAtPoint(p);
+	    //代号、车牌号
+	    String carCode,carLicence;
+	    //点了删除
+		if(e.getClickCount()==1&&column==3){
+			System.out.println("删除第"+row+"行");
+		}
+		if (e.getClickCount() == 2) {
+			carCode=cars_table.getValueAt(row, 0).toString();
+			carLicence=cars_table.getValueAt(row, 1).toString();
+			new car_detail(this, carCode, carLicence);
+			System.out.println(carCode+" "+carLicence);
+		}
+		System.out.print("坐标 "+row+"  "+column+"   ");
+		System.out.println(cars_table.getValueAt(row, column));
+	}
 
 	private void initTable() {
     	cars_table = new javax.swing.JTable();
@@ -212,11 +233,11 @@ public class car_management extends javax.swing.JPanel {
         jScrollPane1.setViewportView(cars_table);
         cars_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
+                {"aaa", "江A306", null,"    X"},
+                {"bbb", "浙A8888", null, "    X"},
+                {null, null, null, "    X"},
+                {null, null, null, "    X"},
+                {null, null, null, "    X"},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -302,7 +323,7 @@ public class car_management extends javax.swing.JPanel {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, false, false
+                false,false, false, false
             };
 
             @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -314,11 +335,19 @@ public class car_management extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        cars_table.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cars_tableMouseClicked(evt);
-            }
-        });
+        
+        
+        cars_table.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		tableMouseClicked(e);
+        	}
+		});
+        
+        
+        
+        
+        
         if (cars_table.getColumnModel().getColumnCount() > 0) {
             cars_table.getColumnModel().getColumn(3).setResizable(false);
             cars_table.getColumnModel().getColumn(3).setPreferredWidth(5);
