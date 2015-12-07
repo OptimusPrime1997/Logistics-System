@@ -102,7 +102,7 @@ public class DivisionChangePanel extends JFrame {
 
         jLabel2.setText("区号：");
 
-        oldBlocks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "oldblock", "Item 2", "Item 3", "Item 4" }));
+        oldBlocks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "   "}));
         oldBlocks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
@@ -144,7 +144,11 @@ public class DivisionChangePanel extends JFrame {
         confirm.setText("确定");
         confirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmActionPerformed(evt);
+                try {
+					confirmActionPerformed(evt);
+				} catch (NotBoundException | IOException e) {
+					e.printStackTrace();
+				}
             }
         });
 
@@ -159,7 +163,8 @@ public class DivisionChangePanel extends JFrame {
 
         jLabel8.setText("块号：");
 
-        oldDivisions.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08" }));
+        
+        oldDivisions.setModel(new javax.swing.DefaultComboBoxModel(new Integer[] { 01,2, 3, 4, 5, 6, 7, 8}));
         oldDivisions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
@@ -172,7 +177,7 @@ public class DivisionChangePanel extends JFrame {
 
         jLabel11.setText("区号：");
 
-        newDivisions.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08" }));
+        newDivisions.setModel(new javax.swing.DefaultComboBoxModel(new Integer[] { 01,2, 3, 4, 5, 6, 7, 8}));
         newDivisions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
@@ -294,6 +299,8 @@ public class DivisionChangePanel extends JFrame {
         );
     }// </editor-fold>                        
 
+    StockDivisionBLService s = ControllerFactoryImpl.getInstance().getStockDivisionController();
+    
     /**
      * 退出
      * @param evt
@@ -328,15 +335,34 @@ public class DivisionChangePanel extends JFrame {
     }                                          
 
     private void oldPlacesActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO 似乎没什么要写的
     }                                          
 
     private void newPlacesActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO 似乎没什么要写的
     }                                          
 
-    private void confirmActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO 得到所有的复选框中的值，然后判断
+    
+    /**
+     * 得到所有的复选框中的值，然后判断
+     * @param evt
+     * @throws MalformedURLException
+     * @throws RemoteException
+     * @throws NotBoundException
+     * @throws IOException
+     */
+    private void confirmActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                         
+    	
+    	if (oldBlocks.getSelectedItem()!=null && newBlocks.getSelectedItem() != null &&
+    		oldDivisions.getSelectedItem() != null && newDivisions.getSelectedItem() !=null &&
+    		oldPlaces.getSelectedItem() != null && newPlaces.getSelectedItem() != null) {
+    		int newblock = (int)newDivisions.getSelectedItem();
+    		City desCity = FromIntToCity.toCity(newblock);
+        	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
+        	if (list.size()>800) {
+				//TODO 提醒不能换区
+			} else{
+				s.modifyDivision((int)oldDivisions.getSelectedItem(), (int)oldPlaces.getSelectedItem(), (int)newDivisions.getSelectedItem(), (int)newPlaces.getSelectedItem());
+			}
+		}
     	
     }                                        
 
@@ -346,7 +372,7 @@ public class DivisionChangePanel extends JFrame {
 		this.dispose();
     }                                        
 
-    StockDivisionBLService s = ControllerFactoryImpl.getInstance().getStockDivisionController();
+  
     
     private void oldDivisionsActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
     	//得到本仓库选中的区的所有VO
@@ -373,7 +399,28 @@ public class DivisionChangePanel extends JFrame {
     	}
     	
     	
-    	//TODO   要在oldblocks下拉框中显示出这些小块
+    	//要在oldblocks下拉框中显示出这些小块
+    	int placeSize = 0;    	
+    	
+    	
+    	smallBlocks[0] = true;
+    	smallBlocks[9] = true;
+    	
+    	
+    	ArrayList<Integer> result = new ArrayList<Integer>();
+    	for (int i = 0; i < smallBlocks.length; i++) {
+			if (smallBlocks[i] == true) {
+				placeSize++;
+				result.add(i+1);
+			}
+		}	
+    	
+    	oldblocksList = new Integer[placeSize];
+    	for (int i = 0; i < oldblocksList.length; i++) {
+			oldblocksList[i] = result.get(i);
+		}
+    	
+    	oldBlocks.setModel(new DefaultComboBoxModel<Integer>(oldblocksList));
     	
     }                                          
 
@@ -398,9 +445,10 @@ public class DivisionChangePanel extends JFrame {
 		}
     	
     	
-    	//TODO   要在newblocks下拉框中显示出这些小块
-    	int placeSize = 0;
-      	
+
+    	//在newblocks下拉框中显示出这些小块
+    	int placeSize = 0;    	
+    	
     	ArrayList<Integer> result = new ArrayList<Integer>();
     	for (int i = 0; i < smallBlocks.length; i++) {
 			if (smallBlocks[i] == true) {
