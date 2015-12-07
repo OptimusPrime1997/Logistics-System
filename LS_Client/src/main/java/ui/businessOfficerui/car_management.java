@@ -21,43 +21,16 @@ import util.enumData.ResultMessage;
  * @author Administrator
  */
 public class car_management extends javax.swing.JPanel {
-	 /**
+	 
+    public car_management() {
+        initComponents();
+    }
+    /**
      * 给子界面提供的   向用户反馈信息的方法
      * @param msg
      */
     public void setFeedBack(ResultMessage msg){
     	feedback_text.setText(ResultMessage.toFriendlyString(msg));
-    }
-	/**
-	 * 监听们
-	 * @param evt
-	 */
-	private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
-    
-	}
-	private void search_textMouseClicked(MouseEvent e) {
-		search_textMouseClicked(e);
-	}	
-    private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
-        System.exit(0);
-    }
-    private void add_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_btnMouseClicked
-        new car_add();
-    }
-    private void cars_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cars_tableMouseClicked
-        if(evt.getClickCount()==2){
-        	//TODO 怎么实现只监听一行
-        	System.out.println("双击哦~");
-        }
-    }
-    public car_management() {
-        initComponents();
-    }
-    
-    public void setFrame(JFrame frame){
-    	this.frame=frame;
-    	System.out.println("Car_Manegement_setFrame");
-//    	frame.setVisible(false);
     }
     private void initComponents() {
 		GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -184,6 +157,29 @@ public class car_management extends javax.swing.JPanel {
               }
           });
 	}
+
+	/**
+	 * 监听们
+	 * @param evt
+	 */
+	private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
+    
+	}
+	private void search_textMouseClicked(MouseEvent e) {
+		search_textMouseClicked(e);
+	}	
+    private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
+        System.exit(0);
+    }
+    private void add_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_btnMouseClicked
+        new car_add();
+    }
+    private void cars_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cars_tableMouseClicked
+        if(evt.getClickCount()==2){
+        	//TODO 怎么实现只监听一行
+        	System.out.println("双击哦~");
+        }
+    }
 
 	private void initTable() {
     	cars_table = new javax.swing.JTable();
@@ -367,7 +363,6 @@ public class car_management extends javax.swing.JPanel {
             public void run() {
             	car_management panel=new car_management();
             	MyFrame frame = new MyFrame(830,590,panel);
-            	panel.setFrame(frame);
         		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);	
             }
         });

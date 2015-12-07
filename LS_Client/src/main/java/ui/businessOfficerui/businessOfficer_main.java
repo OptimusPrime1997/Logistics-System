@@ -30,6 +30,7 @@ public class businessOfficer_main extends JPanel {
      */
     public businessOfficer_main() {
     	this.frame=new MyFrame(this);
+    	panel_car=new car_management();    	
         initComponents();       
     }
     /**
@@ -39,59 +40,15 @@ public class businessOfficer_main extends JPanel {
     public void setFeedBack(ResultMessage msg){
     	feedback_text.setText(ResultMessage.toFriendlyString(msg));
     }
-	/**
-	 * 监听们~~
-	 * @param e
-	 */
-	private void arrival_btnMouseClicked(MouseEvent e) {
-		System.out.println("到达单");
-		//TODO 哪个是到达单。。。
-		new MyFrame(800, 600, new GetRep());
-	}	
-    private void carManagement_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carManagement_btnMouseClicked
-    	//TODO 跳转还不会。。
-    	System.out.println("车辆管理");
-//    	new Car_management().setFrame(frame);
-//    	frame.remove(frame.getb);
-//    	Car_management carPanel=new Car_management();
-//    	frame.setContentPane(carPanel);
-//    	frame.setContentPane(new Car_management());
-//    	this.getFrame().setContentPane(new car_management());
-    }
-    private void driverManagement_btnMouseClicked(java.awt.event.MouseEvent evt) {
-    	System.out.println("司机管理");
-//    	this.getFrame().setContentPane(new car_management());
-        
-    }
-    private void deliver_btnMouseClicked(java.awt.event.MouseEvent evt) {
-    	System.out.println("派件单");
-    	new MyFrame(800, 600, new DeliverRep());
-//    	this.getFrame().setContentPane(new car_management());
-        
-    }
-    private void send_btnMouseClicked(java.awt.event.MouseEvent evt) {
-    	System.out.println("装车单");
-    	new MyFrame(800, 600, new ShipmentRep());
-//    	this.getFrame().setContentPane(new car_management());        
-    }
-    private void recordMoney_btnMouseClicked(java.awt.event.MouseEvent evt) {
-    	System.out.println("收款单");
-    	new MyFrame(800, 600, new CashRep());
-//    	this.getFrame().setContentPane(new car_management());
-        
-    }
-    
-    private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
-        System.exit(0);
-    }
+	
    
     private void initComponents() {
-        GroupLayout layout = new GroupLayout(this);
+        
         initNumPanel();
     	initbtn();
     	initLabel();
     	initTxt();
-    	initLayout(layout);      
+    	initLayout();      
     }
     private void initNumPanel() {
     	num_panel = new JPanel();
@@ -114,7 +71,8 @@ public class businessOfficer_main extends JPanel {
 		feedback_text.setEditable(false);
 	}
 
-	private void initLayout(GroupLayout layout) {
+	private void initLayout(){
+		GroupLayout layout = new GroupLayout(this);
     	  this.setLayout(layout);
           layout.setHorizontalGroup(
               layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -277,66 +235,56 @@ public class businessOfficer_main extends JPanel {
              }
          });
     }
-	
+	/**
+	 * 监听们~~
+	 * @param e
+	 */
+	private void arrival_btnMouseClicked(MouseEvent e) {
+		System.out.println("到达单");
+		//TODO 哪个是到达单。。。
+		new MyFrame(800, 600, new GetRep());
+	}	
+    private void carManagement_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carManagement_btnMouseClicked
+    	//TODO 跳转还不会。。
+    	System.out.println("车辆管理");
+    }
+    private void driverManagement_btnMouseClicked(java.awt.event.MouseEvent evt) {
+    	System.out.println("司机管理");
+//    	this.getFrame().setContentPane(new car_management());
+        
+    }
+    private void deliver_btnMouseClicked(java.awt.event.MouseEvent evt) {
+    	System.out.println("派件单");
+    	new MyFrame(800, 600, new DeliverRep());
+        
+    }
+    private void send_btnMouseClicked(java.awt.event.MouseEvent evt) {
+    	System.out.println("装车单");
+    	new MyFrame(800, 600, new ShipmentRep());
+//    	this.getFrame().setContentPane(new car_management());        
+    }
+    private void recordMoney_btnMouseClicked(java.awt.event.MouseEvent evt) {
+    	System.out.println("收款单");
+    	new MyFrame(800, 600, new CashRep());
+//    	this.getFrame().setContentPane(new car_management());
+        
+    }
+    
+    private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
+        System.exit(0);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
 //	private 
 	
     private MyFrame frame;
-    private JButton account_btn;
-    private JButton arrival_btn;
-    private JLabel businessOfficeNum_label;
-    private JButton carManagement_btn;
-    private JButton deliver_btn;
-    private JButton driverManagement_btn;
-    private JButton exit_btn;
-    private JLabel jLabel1;
-    private JLabel jLabel5;
-    private JLabel jLabel6;
+    private car_management panel_car;
+    private driver_management panel_driver;
+    private JButton account_btn,arrival_btn, deliver_btn,exit_btn,
+    carManagement_btn,driverManagement_btn,recordMoney_btn,send_btn;
+    private JLabel jLabel1,jLabel5,jLabel6,num_label,businessOfficeNum_label;
     private JTextField feedback_text;//给用户反馈信息的信息栏
-    private JLabel num_label;
-    private JPanel num_panel;
-    private JButton recordMoney_btn;
-    private JButton send_btn;
+    private JPanel num_panel,panel1;
     // End of variables declaration//GEN-END:variables
    
-
-	/**
-     * for test~~
-     * @param args
-     */
-    public static void main(String[] args) {
-    	/* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-            	businessOfficer_main panel=new businessOfficer_main();
-            	car_management panelCar=new car_management();
-            	
-            	MyFrame frame = new MyFrame(830,590,panel);
-        		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);	
-            }
-        });
-
-	}
 }

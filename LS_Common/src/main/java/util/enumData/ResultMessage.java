@@ -26,10 +26,7 @@ public enum ResultMessage {
 	 * 修改成功
 	 */
 	MODIFY_SUCCESS,
-	/**
-	 * 签收成功
-	 */
-	SIGNED_SUCCESS,
+	
 	/**
 	 * 连接错误
 	 */
@@ -157,7 +154,11 @@ public enum ResultMessage {
 	/**
 	 * 提交成功
 	 */
-	SUBMIT_SUCCESS;
+	SUBMIT_SUCCESS, 
+	/**
+	 * 签收成功
+	 */
+	SIGNED_SUCCESS;
 
 	public static String toFriendlyString(ResultMessage resultMessage) {
 
