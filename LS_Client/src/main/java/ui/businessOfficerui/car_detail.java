@@ -5,6 +5,7 @@
  */
 package ui.businessOfficerui;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
+import Exception.NumNotFoundException;
 import VO.ManagementVO.VehicleVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.managementblservice.vehicleanddriverblservice.VehicleBLService;
@@ -93,7 +95,7 @@ public class car_detail extends JFrame {
 				//找到对应的VO
 				vo=controller.findByVehicleNum(carNum);
 				msgData=controller.updateVehicle(vo);
-			} catch (RemoteException e) {
+			} catch ( ClassNotFoundException | NumNotFoundException | IOException e) {
 			}
 			//数据层修改成功
 			if(msgData==ResultMessage.SUCCESS){
