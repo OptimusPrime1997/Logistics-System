@@ -37,11 +37,9 @@ public class MainFrame extends JFrame {
     	ctr_find=ControllerFactoryImpl.getInstance().getGoodsFindController();
     	this.setVisible(true);
     	setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    	this.setResizable(false);
         initComponents();
     }
-    
-  
-
 	private void initComponents() {
 		contentPane=new JPanel();
 		initTxt();
@@ -49,7 +47,6 @@ public class MainFrame extends JFrame {
 		initLabel();
 		initLayout();
 	}
-
 	private void initLabel() {
  		jLabel2 = new javax.swing.JLabel();
  		jLabel3 = new javax.swing.JLabel();
@@ -146,7 +143,7 @@ public class MainFrame extends JFrame {
          password=password_text.getText();
          account=account_text.getText();         
          this.setVisible(false);
-         new businessOfficer_main();       
+         new courier_main();       
          //TODO 先不判断   账号 密码的正确性
          
          

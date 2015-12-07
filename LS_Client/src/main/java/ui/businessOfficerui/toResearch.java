@@ -5,6 +5,8 @@
  */
 package ui.businessOfficerui;
 
+import ui.util.MyFrame;
+
 /**
  *
  * @author Administrator
@@ -15,6 +17,7 @@ public class toResearch extends javax.swing.JPanel {
      * Creates new form toResearch
      */
     public toResearch() {
+    	new MyFrame(this);
         initComponents();
     }
 
@@ -70,36 +73,36 @@ public class toResearch extends javax.swing.JPanel {
                 .addGap(36, 36, 36))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(panel1);
-        panel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout layout1 = new javax.swing.GroupLayout(panel1);
+        panel1.setLayout(layout1);
+        layout1.setHorizontalGroup(
+            layout1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout1.createSequentialGroup()
                 .addGap(92, 92, 92)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(carLicenseNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout1.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(num_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addComponent(cancel_btn)
                 .addGap(69, 69, 69))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        layout1.setVerticalGroup(
+            layout1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout1.createSequentialGroup()
                 .addGap(99, 99, 99)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout1.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(carLicenseNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(layout1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout1.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addComponent(cancel_btn)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout1.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                         .addComponent(num_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37))))
@@ -131,7 +134,10 @@ public class toResearch extends javax.swing.JPanel {
     private javax.swing.JTextField carLicenseNum_text;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel panel1;
-    private javax.swing.JPanel num_panel;
+    private javax.swing.JPanel panel1, num_panel;
     // End of variables declaration//GEN-END:variables
+    
+    public static void main(String[] args) {
+		new toResearch();
+	}
 }

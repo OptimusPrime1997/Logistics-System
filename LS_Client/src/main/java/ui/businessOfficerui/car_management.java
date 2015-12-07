@@ -22,7 +22,8 @@ import util.enumData.ResultMessage;
  */
 public class car_management extends javax.swing.JPanel {
 	 
-    public car_management() {
+    public car_management(businessOfficer_main panel_parent) {
+    	this.panel_parent=panel_parent;
         initComponents();
     }
     /**
@@ -38,7 +39,7 @@ public class car_management extends javax.swing.JPanel {
 		initTable();
 		initbtn();
 		initTxt();
-		initlayout(layout);
+		initlayout(layout);		
     }
     private void initlayout(GroupLayout layout) {
     	 this.setLayout(layout);
@@ -156,6 +157,12 @@ public class car_management extends javax.swing.JPanel {
                   exit_btnActionPerformed(evt);
               }
           });
+          back_btn.addMouseListener(new MouseAdapter() {
+        	  @Override
+        	public void mouseClicked(MouseEvent e) {
+        		back_btnMouseClicked();
+        	}
+		});
 	}
 
 	/**
@@ -174,6 +181,15 @@ public class car_management extends javax.swing.JPanel {
     private void add_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_btnMouseClicked
         new car_add();
     }
+    
+    private void back_btnMouseClicked() {
+		panel_parent.remove(this);
+		panel_parent.add(panel_parent.getPanel1());
+		panel_parent.revalidate();
+		panel_parent.repaint();
+		
+		
+	}
     private void cars_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cars_tableMouseClicked
         if(evt.getClickCount()==2){
         	//TODO 怎么实现只监听一行
@@ -319,6 +335,7 @@ public class car_management extends javax.swing.JPanel {
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
     private JFrame frame;
+    private businessOfficer_main panel_parent;
     private javax.swing.JButton account_btn,add_btn,back_btn,exit_btn,search_btn;
     private javax.swing.JLabel businessOffNum2_label,jLabel4,jLabel5,jLabel6;
     private javax.swing.JTable cars_table;
@@ -328,44 +345,5 @@ public class car_management extends javax.swing.JPanel {
     private static final long serialVersionUID = 1L;//TODO  这是干啥的呀
     // End of variables declaration//GEN-END:variables
     
-    
-    /**
-     * for test~~
-     * @param args
-     */
-    public static void main(String[] args) {
-    	/* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-            	car_management panel=new car_management();
-            	MyFrame frame = new MyFrame(830,590,panel);
-        		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);	
-            }
-        });
-
-	}
+//    
 }

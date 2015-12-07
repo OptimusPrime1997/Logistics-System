@@ -5,6 +5,9 @@
  */
 package ui.businessOfficerui;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,6 +30,13 @@ import util.enumData.ResultMessage;
  */
 public class driver_management extends JPanel {
 	
+	/**
+     * Creates new form yytywyCar_DriverManagement
+     */
+    public driver_management(businessOfficer_main panel) {
+    	this.panel_parent=panel;
+        initComponents();
+    }
 	 /**
      * 给子界面提供的   向用户反馈信息的方法
      * @param msg
@@ -34,29 +44,6 @@ public class driver_management extends JPanel {
     public void setFeedBack(ResultMessage msg){
     	feedback_text.setText(ResultMessage.toFriendlyString(msg));
     }
-	/**
-	 * 监听们~
-	 * 
-	 * @param evt
-	 */
-	private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_add_btnActionPerformed
-
-    private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exit_btnActionPerformed
-
-    private void add_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_btnMouseClicked
-        new driver_add().setVisible(true);
-    }//GEN-LAST:event_add_btnMouseClicked
-    /**
-     * Creates new form yytywyCar_DriverManagement
-     */
-    public driver_management() {
-        initComponents();
-    }
-
     private void initComponents() {
 		GroupLayout layout = new GroupLayout(this);
 		initLabel();
@@ -276,14 +263,13 @@ public class driver_management extends JPanel {
                 add_btnMouseClicked(evt);
             }
         });
-        add_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_btnActionPerformed(evt);
-            }
-        });
- 
+        back_btn.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		back_btnMouseClicked();
+        	}
+		});
 	}
-
 	private void initLabel() {
         jLabel1 = new JLabel();
         jLabel2 = new JLabel();
@@ -296,55 +282,29 @@ public class driver_management extends JPanel {
         jLabel2.setText("账户：");
         jLabel3.setText("营业厅：");
         BusinessOfficeNum_label.setText("南京 025001");
-
-        
 	}
+	/**
+	 * 监听们~
+	 * @param evt
+	 */
+	private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
+    }
+    private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
+        System.exit(0);
+    }
+    private void add_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_btnMouseClicked
+        new driver_add().setVisible(true);
+    }
 
-	
-
-    /**
-     * for test~~
-     * @param args
-     */
-    public static void main(String[] args) {
-    	/* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-            	JFrame frame = new JFrame();
-        		frame.setSize(830, 590);
-        		frame.setVisible(true);
-        		frame.setContentPane(new driver_management());
-        		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);	
-            }
-        });
-
+	private void back_btnMouseClicked() {
+		panel_parent.remove(this);
+		panel_parent.add(panel_parent.getPanel1());
+		panel_parent.revalidate();
+		panel_parent.repaint();
 	}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JLabel BusinessOfficeNum_label, jLabel1,jLabel2,jLabel3;
+    private businessOfficer_main panel_parent;
     private JTable drivers_table;
     private JButton account_btn,add_btn,back_btn,exit_btn,search_btn;
     private JScrollPane jScrollPane2;
