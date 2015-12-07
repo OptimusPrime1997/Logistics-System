@@ -51,7 +51,9 @@ public class Vehiclebl {
 							}
 						}
 					}
-					vehicleDataService.insertVehicle(manageVOPO.voToPO(vo));
+					ResultMessage rmsg = vehicleDataService
+							.insertVehicle(manageVOPO.voToPO(vo));
+					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -81,7 +83,8 @@ public class Vehiclebl {
 			if (check(vo) == ResultMessage.VALID) {
 				VehiclePO po = manageVOPO.voToPO(vo);
 				try {
-					vehicleDataService.updateVehicle(po);
+					ResultMessage rmsg = vehicleDataService.updateVehicle(po);
+					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -111,7 +114,8 @@ public class Vehiclebl {
 			if (InputCheck.checkInputNum(vo.vehicleNum, 11) == ResultMessage.VALID) {
 				VehiclePO po = manageVOPO.voToPO(vo);
 				try {
-					vehicleDataService.deleteVehicle(po);
+					ResultMessage rmsg = vehicleDataService.deleteVehicle(po);
+					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

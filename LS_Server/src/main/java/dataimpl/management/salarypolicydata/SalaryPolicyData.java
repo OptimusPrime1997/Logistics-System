@@ -18,7 +18,7 @@ import datautil.DataUtility;
 
 public class SalaryPolicyData extends UnicastRemoteObject implements
 		SalaryPolicyDataService {
-	private final String path = "data/currentdata/account";
+	private final String path = "data/currentdata/salaryPolicy";
 	private DataUtility d;
 	/**
 	 * 

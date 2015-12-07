@@ -50,7 +50,9 @@ public class Driverbl {
 							}
 						}
 					}
-					driverDataService.insertDriver(manageVOPO.voToPO(vo));
+					ResultMessage rmsg = driverDataService
+							.insertDriver(manageVOPO.voToPO(vo));
+					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -81,7 +83,8 @@ public class Driverbl {
 			if (check(vo) == ResultMessage.VALID) {
 				DriverPO po = manageVOPO.voToPO(vo);
 				try {
-					driverDataService.updateDriver(po);
+					ResultMessage rmsg = driverDataService.updateDriver(po);
+					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -111,7 +114,8 @@ public class Driverbl {
 			if (InputCheck.checkInputNum(vo.driverNum, 11) == ResultMessage.VALID) {
 				DriverPO po = manageVOPO.voToPO(vo);
 				try {
-					driverDataService.deleteDriver(po);
+					ResultMessage rmsg = driverDataService.deleteDriver(po);
+					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

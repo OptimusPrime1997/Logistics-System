@@ -45,15 +45,17 @@ public class Accountbl {
 		if (accountDataService != null) {
 			if (check(vo) == ResultMessage.VALID) {
 				try {
-					ArrayList<AccountPO> pos = accountDataService.show();
-					int num = 0;
-					for (AccountPO p : pos) {
-						if (p.getAuthority() == vo.authority)
-							num++;
-					}
-					vo.accountNum = vo.institutionNum
-							+ Authority.value(vo.authority) + "00" + (num + 1);
-					accountDataService.insert(manageVOPO.voToPO(vo));
+//					ArrayList<AccountPO> pos = accountDataService.show();
+//					int num = 0;
+//					for (AccountPO p : pos) {
+//						if (p.getAuthority() == vo.authority)
+//							num++;
+//					}
+//					vo.accountNum = vo.institutionNum
+//							+ Authority.value(vo.authority) + "00" + (num + 1);
+					ResultMessage rmsg = accountDataService.insert(manageVOPO
+							.voToPO(vo));
+					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -78,7 +80,8 @@ public class Accountbl {
 			if (check(vo) == ResultMessage.VALID) {
 				AccountPO po = manageVOPO.voToPO(vo);
 				try {
-					accountDataService.update(po);
+					ResultMessage rmsg = accountDataService.update(po);
+					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -108,7 +111,8 @@ public class Accountbl {
 			if (InputCheck.checkInputNum(vo.accountNum, 11) == ResultMessage.VALID) {
 				AccountPO po = manageVOPO.voToPO(vo);
 				try {
-					accountDataService.delete(po);
+					ResultMessage rmsg = accountDataService.delete(po);
+					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

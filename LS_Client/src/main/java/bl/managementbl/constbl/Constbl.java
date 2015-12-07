@@ -37,8 +37,7 @@ public class Constbl {
 	/**
 	 * @param vo
 	 * @return OVER_DATA IOFAILED SUCCESS FAILED
-	 * @thr
-	 * ows RemoteException
+	 * @thr ows RemoteException
 	 */
 	public ResultMessage add(ConstVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -53,7 +52,9 @@ public class Constbl {
 						}
 					}
 				}
-				constDataService.insert(manageVOPO.voToPO(vo));
+				ResultMessage rmsg = constDataService.insert(manageVOPO
+						.voToPO(vo));
+				ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -76,7 +77,8 @@ public class Constbl {
 			if (check(vo) == ResultMessage.VALID) {
 				ConstPO po = manageVOPO.voToPO(vo);
 				try {
-					constDataService.update(po);
+					ResultMessage rmsg = constDataService.update(po);
+					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -104,7 +106,8 @@ public class Constbl {
 			if (VO.twoCities.contains("-") && VO.twoCities.length() < 20) {
 				ConstPO po = manageVOPO.voToPO(VO);
 				try {
-					constDataService.delete(po);
+					ResultMessage rmsg = constDataService.delete(po);
+					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

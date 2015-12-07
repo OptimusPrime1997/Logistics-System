@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import dataservice.managementdataservice.bankaccountdataservice.BankAccountDataService;
 import dataservice.managementdataservice.managedataservice.ManageDataService;
@@ -12,6 +13,7 @@ import util.enumData.ResultMessage;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import PO.BankAccountPO;
+import PO.ConstPO;
 import VO.ManagementVO.BankAccountVO;
 import bl.managementbl.managedata.ManageData;
 import bl.managementbl.managedata.ManageVOPO;
@@ -42,17 +44,24 @@ public class BankAccountbl {
 		manageVOPO.addLog(LogType.BANKACCOUNT_MANAGEMENT);
 		if (bankAccountDataService != null) {
 			try {
+				ArrayList<BankAccountPO> pos = bankAccountDataService.show();
+				if (pos != null) {
+					for (Iterator<BankAccountPO> t = pos.iterator(); t.hasNext();) {
+						if (t.next().getBankAccountNum().equals(vo.bankAccountNum)) {
+							return ResultMessage.EXIST;
+						}
+					}
+				}
 				bankAccountDataService.insert(manageVOPO.voToPO(vo));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("存储文件出错");
 				return ResultMessage.IOFAILED;
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			// catch (ClassNotFoundException e) {
-			// // TODO Auto-generated catch block
-			// e.printStackTrace();
-			// }
 			return ResultMessage.SUCCESS;
 		} else
 			return ResultMessage.FAILED;
