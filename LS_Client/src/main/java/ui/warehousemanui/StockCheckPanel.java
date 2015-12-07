@@ -54,10 +54,7 @@ public class StockCheckPanel extends javax.swing.JFrame {
     	int screenh = screensize.height;
     	int screenw = screensize.width;
     	this.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);
-    	/**
-    	 * 关闭窗口
-    	 */
-    	setDefaultCloseOperation(EXIT_ON_CLOSE);
+    
 
     	
         confirm = new javax.swing.JButton();

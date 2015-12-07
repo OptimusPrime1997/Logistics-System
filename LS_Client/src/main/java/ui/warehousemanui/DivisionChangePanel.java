@@ -13,6 +13,7 @@ import blservice.stockblservice.StockDivisionBLService;
 import ui.mainFrame.MainFrame;
 import util.FromIntToCity;
 import util.enumData.City;
+import util.enumData.ResultMessage;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -66,6 +67,8 @@ public class DivisionChangePanel extends JFrame {
     	 */
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+    	
+    	
         jLabel9 = new javax.swing.JLabel();
         exit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -100,16 +103,26 @@ public class DivisionChangePanel extends JFrame {
 
         jLabel2.setText("区号：");
 
-        oldBlocks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "oldblock", "Item 2", "Item 3", "Item 4" }));
+        oldBlocks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "   "}));
         oldBlocks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                oldBlocksActionPerformed(evt);
+                try {
+					oldBlocksActionPerformed(evt);
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				} catch (RemoteException e) {
+					e.printStackTrace();
+				} catch (NotBoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
             }
         });
 
         jLabel3.setText("位号：");
 
-        oldPlaces.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "oldplace", "Item 2", "Item 3", "Item 4" }));
+        oldPlaces.setModel(new DefaultComboBoxModel(new String[] { "   "}));
         oldPlaces.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 oldPlacesActionPerformed(evt);
@@ -122,7 +135,7 @@ public class DivisionChangePanel extends JFrame {
 
         jLabel7.setText("位号：");
 
-        newPlaces.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "newplace", "Item 2", "Item 3", "Item 4" }));
+        newPlaces.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "   "}));
         newPlaces.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newPlacesActionPerformed(evt);
@@ -132,7 +145,13 @@ public class DivisionChangePanel extends JFrame {
         confirm.setText("确定");
         confirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmActionPerformed(evt);
+                try {
+					confirmActionPerformed(evt);
+				} catch (NotBoundException | IOException e) {
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
             }
         });
 
@@ -147,7 +166,8 @@ public class DivisionChangePanel extends JFrame {
 
         jLabel8.setText("块号：");
 
-        oldDivisions.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08" }));
+        
+        oldDivisions.setModel(new javax.swing.DefaultComboBoxModel(new Integer[] { 01,2, 3, 4, 5, 6, 7, 8}));
         oldDivisions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
@@ -160,19 +180,27 @@ public class DivisionChangePanel extends JFrame {
 
         jLabel11.setText("区号：");
 
-        newDivisions.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08" }));
+        newDivisions.setModel(new javax.swing.DefaultComboBoxModel(new Integer[] { 01,2, 3, 4, 5, 6, 7, 8}));
         newDivisions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newDivisionsActionPerformed(evt);
+                try {
+					newDivisionsActionPerformed(evt);
+				} catch (NotBoundException | IOException e) {
+					e.printStackTrace();
+				}
             }
         });
 
         jLabel12.setText("块号：");
 
-        newBlocks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "newblock", "Item 2", "Item 3", "Item 4" }));
+        newBlocks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "  "}));
         newBlocks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newBlocksActionPerformed(evt);
+                try {
+					newBlocksActionPerformed(evt);
+				} catch (NotBoundException | IOException e) {
+					e.printStackTrace();
+				}
             }
         });
 
@@ -274,6 +302,8 @@ public class DivisionChangePanel extends JFrame {
         );
     }// </editor-fold>                        
 
+    StockDivisionBLService s = ControllerFactoryImpl.getInstance().getStockDivisionController();
+    
     /**
      * 退出
      * @param evt
@@ -284,20 +314,61 @@ public class DivisionChangePanel extends JFrame {
     	this.dispose();
     }                                        
 
-    private void oldBlocksActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
+    private void oldBlocksActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
+    	//得到本仓库选中的区的所有VO
+    	int division = oldDivisions.getSelectedIndex()+1;	
+    	City desCity = FromIntToCity.toCity(division);
+    	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
+    	//得到本区所选小块的存在的所有位号
+    	int block = oldBlocks.getSelectedIndex()+1;    	
+    	ArrayList<Integer> result = new ArrayList<Integer>();
+    	for (StockDivisionVO vo : list) {
+    		if (vo.place<=(100*block)&&vo.place>=((block-1)*100+1)) {
+				result.add(vo.place);
+			}
+    		
+       	}
+    	
+    	//在oldplaces中显示这些位号
+    	oldplacesList = new Integer[result.size()];
+    	for (int i = 0; i < result.size(); i++) {
+			oldplacesList[i] = result.get(i);
+		}
+    	oldPlaces.setModel(new DefaultComboBoxModel<Integer>(oldplacesList));
     }                                          
 
     private void oldPlacesActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
     }                                          
 
     private void newPlacesActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
     }                                          
 
-    private void confirmActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO 得到所有的复选框中的值，然后判断
+    
+    /**
+     * 得到所有的复选框中的值，然后判断
+     * @param evt
+     * @throws MalformedURLException
+     * @throws RemoteException
+     * @throws NotBoundException
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
+    private void confirmActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException, ClassNotFoundException {                                         
+    	
+    	if (oldBlocks.getSelectedItem()!=null && newBlocks.getSelectedItem() != null &&
+    		oldDivisions.getSelectedItem() != null && newDivisions.getSelectedItem() !=null &&
+    		oldPlaces.getSelectedItem() != null && newPlaces.getSelectedItem() != null) {
+    		int newblock = (int)newDivisions.getSelectedItem();
+    		City desCity = FromIntToCity.toCity(newblock);
+        	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
+        	if (list.size()>800) {
+				//TODO 提醒换别的区
+			} else{
+				ResultMessage rm = s.modifyDivision((int)oldDivisions.getSelectedItem(), (int)oldPlaces.getSelectedItem(), (int)newDivisions.getSelectedItem(), (int)newPlaces.getSelectedItem());
+				//TODO 给出别的反馈信息
+			}
+		}
+    	
     }                                        
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -306,19 +377,20 @@ public class DivisionChangePanel extends JFrame {
 		this.dispose();
     }                                        
 
-    StockDivisionBLService s = ControllerFactoryImpl.getInstance().getStockDivisionController();
+  
     
     private void oldDivisionsActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
-    	
+    	//得到本仓库选中的区的所有VO
     	int division = oldDivisions.getSelectedIndex()+1;	
     	City desCity = FromIntToCity.toCity(division);
     	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
-    	//得到中间参数小块号
+    	//得到中间参数小块号，布尔值为true的需要显示
     	boolean[] smallBlocks = new boolean[10];
     	
     	for (StockDivisionVO vo : list) {
     		int i = vo.place/100 ;
     		smallBlocks[i] = true;
+    		//判断是不是所有的小块都满了，如果全满，则停止遍历
     		boolean full = true;
     		for(int m = 0; m < 10; m++) {
     			if (smallBlocks[m] == false) {
@@ -330,27 +402,121 @@ public class DivisionChangePanel extends JFrame {
 				break;
 			}
     	}
-    	ArrayList<Integer> smallnums = new ArrayList<Integer>();
+    	
+    	
+    	//要在oldblocks下拉框中显示出这些小块
+    	int placeSize = 0;    	
+    	
+    	
+    	smallBlocks[0] = true;
+    	smallBlocks[9] = true;
+    	
+    	
+    	ArrayList<Integer> result = new ArrayList<Integer>();
     	for (int i = 0; i < smallBlocks.length; i++) {
 			if (smallBlocks[i] == true) {
-				smallnums.add(i+1);
+				placeSize++;
+				result.add(i+1);
+			}
+		}	
+    	
+    	oldblocksList = new Integer[placeSize];
+    	for (int i = 0; i < oldblocksList.length; i++) {
+			oldblocksList[i] = result.get(i);
+		}
+    	
+    	oldBlocks.setModel(new DefaultComboBoxModel<Integer>(oldblocksList));
+    	
+    }                                          
+
+    private void newDivisionsActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
+    	//得到本仓库选中的区的所有VO
+    	int division = newDivisions.getSelectedIndex()+1;	
+    	City desCity = FromIntToCity.toCity(division);
+    	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
+    	//得到空闲的中间参数小块号
+    	boolean[] smallBlocks = new boolean[10];
+    	//得到每个块中的库存数量
+    	int[] blocks = new int[10];
+    	for (StockDivisionVO vo : list) {
+    		int i = vo.place/100 ;
+    		blocks[i]+=blocks[i];
+    	
+    	}
+    	for (int i = 0; i < blocks.length; i++) {
+			if (blocks[i] < 1000) {
+				smallBlocks[i] = true;
 			}
 		}
     	
-    	//TODO   要显示出这些小块
     	
+
+    	//在newblocks下拉框中显示出这些小块
+    	int placeSize = 0;    	
+    	
+    	ArrayList<Integer> result = new ArrayList<Integer>();
+    	for (int i = 0; i < smallBlocks.length; i++) {
+			if (smallBlocks[i] == true) {
+				placeSize++;
+				result.add(i+1);
+			}
+		}	
+    	
+    	newblocksList = new Integer[placeSize];
+    	for (int i = 0; i < newblocksList.length; i++) {
+			newblocksList[i] = result.get(i);
+		}
+    	
+    	newBlocks.setModel(new DefaultComboBoxModel<Integer>(newblocksList));
     }                                          
 
-    private void newDivisionsActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
+    private void newBlocksActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
+    	//得到本仓库选中的区的所有VO
+    	int division = oldDivisions.getSelectedIndex()+1;	
+    	City desCity = FromIntToCity.toCity(division);
+    	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
+    	/**
+    	 *    初始places均为0，然后使得选中的小块中的位号全为1，然后再
+    	 *  把vo list中所有的位号全置为0，这样得到最后的所有位号为1的即为需要显示的位号
+    	 *  注意，其中places的下标与真实显示的位号相差1
+    	 */
+    	int[] places = new int[1000];
+    	int block = oldBlocks.getSelectedIndex()+1;    	
+    	
+    	for (int i = (block-1)*100; i < block*100; i++) {
+			places[i] = 1;
+		}
+    	for (StockDivisionVO vo : list) {
+			places[vo.place-1] = 0;
+		}
+    	
+    	//在newplaces里面显示位号
+	
+    	
+    	int placeSize = 0;
+  	
+    	ArrayList<Integer> result = new ArrayList<Integer>();
+    	for (int i = 0; i < places.length; i++) {
+			if (places[i] == 1) {
+				placeSize++;
+				result.add(i+1);
+			}
+		}	
+    	
+    	newplacesList = new Integer[placeSize];
+    	for (int i = 0; i < newplacesList.length; i++) {
+			newplacesList[i] = result.get(i);
+		}
+    	
+    	newPlaces.setModel(new DefaultComboBoxModel<Integer>(newplacesList));
     }                                          
 
-    private void newBlocksActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
-    }                                          
 
-
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify  
+    private Integer[] oldblocksList;
+    private Integer[] newblocksList;
+    private Integer[] oldplacesList;
+    private Integer[] newplacesList;
     private javax.swing.JButton exit;
     private javax.swing.JButton confirm;
     private javax.swing.JButton back;

@@ -12,12 +12,14 @@ import VO.ReceiptVO.CashRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.CashRepblService;
+import ui.businessOfficerui.car_add;
 import Exception.AddMoneyInBankException;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 
 public class CashRepController extends ReceiptblController implements CashRepblService{
 	private CashRepbl cashRepbl = new CashRepbl();
+	private CashRepCheckbl cashRepCheckbl = new CashRepCheckbl();
 
 	@Override
 	public ArrayList<GoodsVO> getGoods(String courierNum, String date) {
@@ -53,7 +55,7 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	@Override
 	public ArrayList<CashRepVO> getAllRep() throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return cashRepbl.getAllRep();
+		return null;
 	}
 
 	@Override
@@ -71,19 +73,17 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	@Override
 	public void delete(int n) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		cashRepbl.delete(n);
 	}
 
 	@Override
 	public void delete(String num) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		cashRepbl.delete(num);
 	}
 
 	@Override
 	public CashRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return cashRepbl.getRepByNum(num);
+		return null;
 	}
 
 	@Override
@@ -96,6 +96,12 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	public Vector<String> showBankAccount() throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return cashRepbl.showBankAccount();
+	}
+
+	@Override
+	public Vector<Object> checkAll() throws ClassNotFoundException, NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		return cashRepCheckbl.checkAll();
 	}
 
 }

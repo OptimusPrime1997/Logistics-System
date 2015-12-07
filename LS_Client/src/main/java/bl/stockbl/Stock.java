@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import util.enumData.City;
 import util.enumData.ResultMessage;
 import dataservice.stockdataservice.StockDataService;
-
 import bl.receiptbl.InStockRepbl.InStockRepController;
 import bl.receiptbl.OutStockRepbl.OutStockRepController;
 import PO.StockPO;
@@ -132,7 +132,7 @@ public class Stock {
 		
 		StockDataService s = getStockDataService();
 		//TODO  得到当前城市编号
-		String cityNum = "";
+		City cityNum = City.BEIJING;
 		
 		list = s.getStock(cityNum);
 		for(StockPO po:list) {

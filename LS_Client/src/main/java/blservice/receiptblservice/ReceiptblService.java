@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import VO.ReceiptVO.ReceiptVO;
 import util.enumData.ResultMessage;
@@ -24,5 +25,7 @@ public interface ReceiptblService extends PreReceiptblService{
 	public <T extends ReceiptVO> ArrayList<T> getAllRep() throws NotBoundException, ClassNotFoundException, IOException;
 	
 	public <T extends ReceiptVO> ArrayList<T> getRepBydate(String date) throws NotBoundException, ClassNotFoundException, IOException;
+	
+	public Vector<Object> checkAll() throws ClassNotFoundException, NotBoundException, IOException;
 	
 }

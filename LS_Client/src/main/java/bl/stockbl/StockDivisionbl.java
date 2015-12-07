@@ -50,12 +50,24 @@ public class StockDivisionbl implements StockDivisionBLService{
 		return sd.update(po);
 	}
 	
-	public ResultMessage modifyDivision(int oldBlock, int oldPlace,int newBlock, int newPlace) {
-		// TODO Auto-generated method stub
-			
+	public ResultMessage modifyDivision(int oldBlock, int oldPlace,int newBlock, int newPlace) throws NotBoundException, ClassNotFoundException, IOException {
+
+		StockDivisionDataService sd = getStockDivisionDataService();
+		StockDivisionPO po = sd.find(oldBlock, oldPlace);
+		City city = po.getCityNum();
+		String listNum = po.getListNum();
+		City des = po.getDestination();
+		
+		ResultMessage rm1 = sd.delete(listNum);
+		ResultMessage rm2 = sd.add(new StockDivisionPO(city, listNum, des, newBlock, newPlace));
+		
+		if (rm1.equals(ResultMessage.SUCCESS)&&rm2.equals(ResultMessage.SUCCESS)) {
+			return ResultMessage.SUCCESS;
+		} else {
+			return ResultMessage.FAILED;
+		}
 		
 		
-		return ResultMessage.SUCCESS;
 	}
 
 	 
@@ -139,7 +151,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 		City cityNum = City.BEIJING;
 		ArrayList<StockDivisionPO> list = sd.getStockDivision(cityNum);
 		for(StockDivisionPO po:list) {
-			block[po.getBlock()-1]++;
+			block[po.getBlock()-1]+=block[po.getBlock()-1];
 		}
 		
 		//找出库存报警的区号，并加入结果数组

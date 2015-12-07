@@ -63,6 +63,7 @@ public class Order extends javax.swing.JPanel {
         okButton = new javax.swing.JButton();
         officeLabel = new javax.swing.JLabel();
         numText = new javax.swing.JTextField();
+        resultMsgText = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -75,17 +76,11 @@ public class Order extends javax.swing.JPanel {
         itemNumLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         itemNumLabel.setText("原件数:");
 
-        itemNumText.setText("0");
-
         weightLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         weightLabel.setText("重量:");
 
-        weightText.setText("0");
-
         measureLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         measureLabel.setText("尺寸:");
-
-        measureText.setText("0");
 
         itemNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         itemNameLabel.setText("内件品名:");
@@ -121,7 +116,6 @@ public class Order extends javax.swing.JPanel {
         sumLabel.setText("总计:");
 
         sumText.setEditable(false);
-        sumText.setText("0");
         sumText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sumTextActionPerformed(evt);
@@ -168,6 +162,8 @@ public class Order extends javax.swing.JPanel {
 
         numText.setEditable(false);
 
+        resultMsgText.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -201,9 +197,6 @@ public class Order extends javax.swing.JPanel {
                             .addComponent(receiverAddLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(measureText, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(weightText, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(itemNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(29, 29, 29)
                                 .addComponent(cancelButton)
@@ -231,12 +224,17 @@ public class Order extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(senderPhoneNumLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(senderPhoneNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(senderPhoneNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(measureText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                                .addComponent(weightText, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(itemNumText, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(numLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
+            .addComponent(resultMsgText)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,7 +305,8 @@ public class Order extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(okButton)
                     .addComponent(cancelButton))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -359,6 +358,7 @@ public class Order extends javax.swing.JPanel {
     private javax.swing.JLabel receiverPhoneNumLabel;
     private javax.swing.JTextField receiverPhoneNumText;
     private javax.swing.JTextField receiverText;
+    private javax.swing.JTextField resultMsgText;
     private javax.swing.JLabel senderAddLabel;
     private javax.swing.JTextField senderAddText;
     private javax.swing.JLabel senderLabel;

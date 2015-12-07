@@ -16,8 +16,8 @@ import VO.StockVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.stockblservice.StockBLService;
 import ui.mainFrame.MainFrame;
-import ui.receiptui.InStockRep;
-import ui.receiptui.OutStockRep;
+import ui.receiptui.generalUI.InStockRep;
+import ui.receiptui.generalUI.OutStockRep;
 
 /**
  *
@@ -313,22 +313,26 @@ public class WarehousePanel extends javax.swing.JFrame {
 
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    	//TODO 
     	OutStockRep out = new OutStockRep();
-    	out.setVisible(true);
-    	this.dispose();
-    	
-    	
-    	
+    	this.getContentPane().removeAll();
+    	this.getContentPane().add(out);
+    	this.getContentPane().validate();
+    	this.getContentPane().repaint();
+  	
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed    	
+    	//TODO 
     	InStockRep in = new InStockRep();
-    	in.setVisible(true);
-    	this.dispose();
+    	this.getContentPane().removeAll();
+    	this.getContentPane().add(in);
+    	this.getContentPane().validate();
+    	this.getContentPane().repaint();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    	//TODO退出
+    	//TODO 退出
     	MainFrame mf = new MainFrame();
     	mf.setVisible(true);
     	this.dispose();

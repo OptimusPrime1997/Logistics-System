@@ -23,10 +23,10 @@ import PO.ReceiptPO.ReceiptPO;
 
 public class CashRepbl {
 
-	Goodsbl goodsbl = new Goodsbl();
-	Accountbl accountbl = new Accountbl();
-	BankAccountbl bankAccountbl = new BankAccountbl();
-	Receiptbl receiptbl = new Receiptbl();
+	private Goodsbl goodsbl = new Goodsbl();
+	private Accountbl accountbl = new Accountbl();
+	private BankAccountbl bankAccountbl = new BankAccountbl();
+	private Receiptbl receiptbl = new Receiptbl();
 
 	public String getCourierName(String courierNum) throws RemoteException, FileNotFoundException, 
 	ClassNotFoundException, NameNotFoundException, NumNotFoundException, IOException{
@@ -50,30 +50,12 @@ public class CashRepbl {
 		receiptbl.submit(CashRepVO.toPO((CashRepVO) vo), Rep.CashRep);
 	}
 
-	public ArrayList<CashRepVO> getAllRep() throws NotBoundException, ClassNotFoundException, IOException {
-		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.CashRep);
-		return CashRepVO.toArrayVO(receiptPOs);
-	}
-
 	public ArrayList<CashRepVO> getRepByDate(String date)
 			throws NotBoundException, ClassNotFoundException, IOException {
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.CashRep);
 		if(receiptPOs==null)
 			return null;
 		return CashRepVO.toArrayVO(receiptPOs);
-	}
-
-	public CashRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException {
-		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.CashRep);
-		return new CashRepVO((CashRepPO) receiptPO);
-	}
-
-	public void delete(int n) throws NotBoundException, ClassNotFoundException, IOException {
-		receiptbl.delete(n, Rep.CashRep);
-	}
-
-	public void delete(String num) throws NotBoundException, ClassNotFoundException, IOException {
-		receiptbl.delete(num, Rep.CashRep);
 	}
 
 	public String createNum(String date) throws NotBoundException, ClassNotFoundException, IOException {

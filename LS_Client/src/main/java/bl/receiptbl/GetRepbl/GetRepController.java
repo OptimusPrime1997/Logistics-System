@@ -1,9 +1,11 @@
 package bl.receiptbl.GetRepbl;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import VO.ReceiptVO.ArriveRepVO;
 import VO.ReceiptVO.ReceiptVO;
@@ -75,6 +77,12 @@ public class GetRepController extends ReceiptblController implements GetRepblSer
 	public ShippingRepVO getShippingRep(String num) {
 		// TODO Auto-generated method stub
 		return getRep.getShippingRep(num);
+	}
+
+	@Override
+	public Vector<Object> checkAll() throws ClassNotFoundException, NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

@@ -26,10 +26,7 @@ public enum ResultMessage {
 	 * 修改成功
 	 */
 	MODIFY_SUCCESS,
-	/**
-	 * 签收成功
-	 */
-	SIGNED_SUCCESS,
+
 	/**
 	 * 连接错误
 	 */
@@ -153,18 +150,16 @@ public enum ResultMessage {
 	/**
 	 * 添加成功
 	 */
-	/**
-	 * 
-	 */
 	ADD_SUCCESS,
 	/**
 	 * 提交成功
 	 */
 	SUBMIT_SUCCESS,
 	/**
-	 * 远程连接失败
+	 * 签收成功
 	 */
-	REMOTE_FAILED,
+
+	SIGNED_SUCCESS,
 	/**
 	 * 输入必须为正数
 	 */
@@ -176,8 +171,11 @@ public enum ResultMessage {
 	/**
 	 * 薪水策略
 	 */
-	NULL_SALARYPOLICY;
-
+	NULL_SALARYPOLICY,
+	/**
+	 * 远程连接失败
+	 */
+	REMOTE_FAILED;
 	public static String toFriendlyString(ResultMessage resultMessage) {
 
 		switch (resultMessage) {
@@ -238,16 +236,6 @@ public enum ResultMessage {
 		}
 
 		return null;
-	}
-
-	/**
-	 * 返回ResultMessage方法的后置assert检查 若错误，输出ResultMessage的提示信息
-	 * 
-	 * @param expected
-	 * @param rmsg
-	 */
-	public static void postCheck(ResultMessage expected, ResultMessage rmsg) {
-		assert (rmsg == expected) : (ResultMessage.toFriendlyString(rmsg));
 	}
 
 }

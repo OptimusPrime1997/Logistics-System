@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
@@ -34,6 +35,8 @@ public class courier_main extends JPanel {
 
 	public courier_main() {
 		initComponents();
+		frame=new MyFrame(this);
+		
 	}
 	/**
 	 * 给main的子界面调用~反馈给用户操作成功的message
@@ -43,20 +46,18 @@ public class courier_main extends JPanel {
 		feedBack_text.setText(ResultMessage.toFriendlyString(msg));
 	}
 	private void initComponents() {
-		GroupLayout layout = new GroupLayout(this);
-		this.setLayout(layout);
 		initLabel();
 		initProBar();
 		initbtn();
 		initText();
-		initLayOut(layout);
+		initLayOut();
 	}
-	
 	/*
 	 * 初始化布局
 	 */
-	private void initLayOut(GroupLayout layout) {
-
+	private void initLayOut() {
+		GroupLayout layout = new GroupLayout(this);
+		this.setLayout(layout);
 		layout.setHorizontalGroup(layout
 				.createParallelGroup(GroupLayout.Alignment.LEADING)
 				.addGroup(
@@ -424,7 +425,15 @@ public class courier_main extends JPanel {
 
 	}
 	private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_exit_btnActionPerformed
-		System.exit(0);
+		if (evt.getSource() == exit_btn) {
+			Object[] options = { "取消", "确定" };
+			int result = JOptionPane.showOptionDialog(null, "您确定要退出系统？",
+					"是否退出", JOptionPane.DEFAULT_OPTION,
+					JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+			if (result == JOptionPane.NO_OPTION) {
+				System.exit(0);
+			}
+		}
 	}
 	// Variables declaration
 	private JButton account_btn;
@@ -433,6 +442,7 @@ public class courier_main extends JPanel {
 	private ArrayList<JLabel> labels=new ArrayList<JLabel>();//近日的日期
 	private ArrayList<JProgressBar> bars=new ArrayList<JProgressBar>();//近日业绩的进度条
 	
+	private MyFrame frame;
 	private JTextField feedBack_text;
 	private JLabel businessOffice_label;
 	private JLabel account_label;
@@ -441,47 +451,47 @@ public class courier_main extends JPanel {
 	private JButton signedGoodsbtn;
 
 	// End of variables declaration
-	/**
-	 * for test~~
-	 */
-	public static void main(String[] args) {
-		/* Set the Nimbus look and feel */
-		// <editor-fold defaultstate="collapsed"
-		// desc=" Look and feel setting code (optional) ">
-		/*
-		 * If Nimbus (introduced in Java SE 6) is not available, stay with the
-		 * default look and feel. For details see
-		 * http://download.oracle.com/javase
-		 * /tutorial/uiswing/lookandfeel/plaf.html
-		 */
-		try {
-			for (UIManager.LookAndFeelInfo info : UIManager
-					.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(
-					java.util.logging.Level.SEVERE, null, ex);
-		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(
-					java.util.logging.Level.SEVERE, null, ex);
-		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(
-					java.util.logging.Level.SEVERE, null, ex);
-		} catch (UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(
-					java.util.logging.Level.SEVERE, null, ex);
-		}
-		
-		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				MyFrame frame=new MyFrame(830, 590, new courier_main());
-				frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-			}
-		});
-	}
+//	/**
+//	 * for test~~
+//	 */
+//	public static void main(String[] args) {
+//		/* Set the Nimbus look and feel */
+//		// <editor-fold defaultstate="collapsed"
+//		// desc=" Look and feel setting code (optional) ">
+//		/*
+//		 * If Nimbus (introduced in Java SE 6) is not available, stay with the
+//		 * default look and feel. For details see
+//		 * http://download.oracle.com/javase
+//		 * /tutorial/uiswing/lookandfeel/plaf.html
+//		 */
+//		try {
+//			for (UIManager.LookAndFeelInfo info : UIManager
+//					.getInstalledLookAndFeels()) {
+//				if ("Nimbus".equals(info.getName())) {
+//					UIManager.setLookAndFeel(info.getClassName());
+//					break;
+//				}
+//			}
+//		} catch (ClassNotFoundException ex) {
+//			java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(
+//					java.util.logging.Level.SEVERE, null, ex);
+//		} catch (InstantiationException ex) {
+//			java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(
+//					java.util.logging.Level.SEVERE, null, ex);
+//		} catch (IllegalAccessException ex) {
+//			java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(
+//					java.util.logging.Level.SEVERE, null, ex);
+//		} catch (UnsupportedLookAndFeelException ex) {
+//			java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(
+//					java.util.logging.Level.SEVERE, null, ex);
+//		}
+//		
+//		/* Create and display the form */
+//		java.awt.EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				MyFrame frame=new MyFrame(830, 590, new courier_main());
+//				frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//			}
+//		});
+//	}
 }

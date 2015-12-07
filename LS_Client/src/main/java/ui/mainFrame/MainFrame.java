@@ -14,6 +14,8 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
+import ui.businessOfficerui.businessOfficer_main;
+import ui.courierui.courier_main;
 import util.enumData.ResultMessage;
 import Exception.GoodsNotFound;
 import VO.GoodsVO;
@@ -35,66 +37,9 @@ public class MainFrame extends JFrame {
     	ctr_find=ControllerFactoryImpl.getInstance().getGoodsFindController();
     	this.setVisible(true);
     	setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    	this.setResizable(false);
         initComponents();
     }
-    
-    /**
-     * 监听们
-     */
-    /**
-	 * 对用户输入的订单号进行检查和寻找
-	 */
-	private void search_btnMouseClicked() {
-		goodsNum=goodsNum_text.getText();
-		ResultMessage msg=null;
-		msg=ctr_checkValid.checkifWritten(goodsNum);
-		//没填 反馈用户请填写
-		if(msg==ResultMessage.NOT_COMPLETED){
-			createDialog(msg);
-		}else{
-			/*
-			 * 填写了 
-			 */
-			//检查是否合法
-			msg=ctr_checkValid.checkListNum(goodsNum);
-			//合法  则寻找
-			if(msg==ResultMessage.VALID){
-				try {
-					vo=ctr_find.findByGoods(goodsNum);
-				} catch (GoodsNotFound e1) {
-					createDialog(ResultMessage.NOT_FOUND);
-				}
-			}else{//不合法  反馈用户哪里不合法
-				createDialog(msg);
-			}
-			
-		}
-	}
-	private void login_btnMouseClicked() {
-         password=password_text.getText();
-         account=account_text.getText();
-         //TODO 先不判断   账号 密码的正确性
-         
-         
-	}
-	private void goodsNum_textMouseClicked(java.awt.event.MouseEvent evt) {
-		this.feedback_text.setText(null);//TODO  还有鼠标拖拽 选中一堆字符~也要清空
-		//TODO 还要实现 回车就可以查询
-    	if(goodsNum_text.getText().equals(standard_goodsNum)){
-    		goodsNum_text.setText(null);
-    	}
-    }
-    private void account_textMouseClicked(java.awt.event.MouseEvent evt) {
-    	if(account_text.getText().equals(standard_account)){
-    		account_text.setText(null);
-    	}    	
-    }
-    private void password_textMouseClicked(java.awt.event.MouseEvent evt) {
-    	if(password_text.getText().equals(standard_password)){
-    		password_text.setText(null);
-    	}    	
-    }    
-
 	private void initComponents() {
 		contentPane=new JPanel();
 		initTxt();
@@ -102,7 +47,6 @@ public class MainFrame extends JFrame {
 		initLabel();
 		initLayout();
 	}
-
 	private void initLabel() {
  		jLabel2 = new javax.swing.JLabel();
  		jLabel3 = new javax.swing.JLabel();
@@ -123,9 +67,7 @@ public class MainFrame extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("登录");
 				login_btnMouseClicked();
-
 			}
-
 		});
 		search_btn.addMouseListener(new MouseAdapter() {
 			@Override
@@ -161,6 +103,66 @@ public class MainFrame extends JFrame {
 			}
 		});
 	}
+	
+    /**
+     * 监听们
+     */
+    /**
+	 * 对用户输入的订单号进行检查和寻找
+	 */
+	private void search_btnMouseClicked() {
+		goodsNum=goodsNum_text.getText();
+		ResultMessage msg=null;
+		msg=ctr_checkValid.checkifWritten(goodsNum);
+		//没填 反馈用户请填写
+		if(msg==ResultMessage.NOT_COMPLETED){
+			createDialog(msg);
+		}else{
+			/*
+			 * 填写了 
+			 */
+			//检查是否合法
+			msg=ctr_checkValid.checkListNum(goodsNum);
+			//合法  则寻找
+			if(msg==ResultMessage.VALID){
+				try {
+					vo=ctr_find.findByGoods(goodsNum);
+				} catch (GoodsNotFound e1) {
+					createDialog(ResultMessage.NOT_FOUND);
+				}
+			}else{//不合法  反馈用户哪里不合法
+				createDialog(msg);
+			}
+			
+		}
+	}
+	private void login_btnMouseClicked() {
+         password=password_text.getText();
+         account=account_text.getText();         
+         this.setVisible(false);
+         new businessOfficer_main();       
+         //TODO 先不判断   账号 密码的正确性
+         
+         
+	}
+	private void goodsNum_textMouseClicked(java.awt.event.MouseEvent evt) {
+		this.feedback_text.setText(null);//TODO  还有鼠标拖拽 选中一堆字符~也要清空
+		//TODO 还要实现 回车就可以查询
+    	if(goodsNum_text.getText().equals(standard_goodsNum)){
+    		goodsNum_text.setText(null);
+    	}
+    }
+    private void account_textMouseClicked(java.awt.event.MouseEvent evt) {
+    	if(account_text.getText().equals(standard_account)){
+    		account_text.setText(null);
+    	}    	
+    }
+    private void password_textMouseClicked(java.awt.event.MouseEvent evt) {
+    	if(password_text.getText().equals(standard_password)){
+    		password_text.setText(null);
+    	}    	
+    }  
+	
     private void initLayout() {
     	 javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(contentPane);
          contentPane.setLayout(jPanel1Layout);
@@ -234,7 +236,6 @@ public class MainFrame extends JFrame {
 	
     private void createDialog(ResultMessage msg) {
     	this.feedback_text.setText(ResultMessage.toFriendlyString(msg));
-		System.out.println(msg);
 	}
     /**
      * @param args the command line arguments
@@ -261,8 +262,6 @@ public class MainFrame extends JFrame {
         } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -270,7 +269,6 @@ public class MainFrame extends JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JTextField account_text,password_text,feedback_text,goodsNum_text;
     private final String standard_password="密码",standard_goodsNum="输入订单号10位",standard_account="账号";

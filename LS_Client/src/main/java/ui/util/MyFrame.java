@@ -9,12 +9,14 @@ public class MyFrame extends JFrame{
 		this.setSize(width, height);
 		this.setVisible(true);
 		this.setContentPane(panel);
+		this.setResizable(false);
 		this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 	}
 	public MyFrame(JPanel panel){
 		this.setSize(830,590);
 		this.setVisible(true);
 		this.setContentPane(panel);
+		this.setResizable(false);
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 }
