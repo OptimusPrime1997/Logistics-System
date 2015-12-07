@@ -17,9 +17,9 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
 import ui.mainFrame.MainFrame;
-import ui.receiptui.GetRep;
-import ui.receiptui.ShippingRep;
-import ui.receiptui.TransferRep;
+import ui.receiptui.generalUI.GetRep;
+import ui.receiptui.generalUI.ShippingRep;
+import ui.receiptui.generalUI.TransferRep;
 import ui.util.MyFrame;
 import util.enumData.ResultMessage;
 
