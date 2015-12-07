@@ -21,18 +21,26 @@ import javax.swing.WindowConstants;
 
 import ui.mainFrame.MainFrame;
 import ui.receiptui.Order;
+import ui.util.MyFrame;
 import util.CurrentTime;
-import util.MyFrame;
+import util.enumData.ResultMessage;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.goodsblservice.GoodsFindBLService;
 
-public class Courier_main extends JPanel {
+public class courier_main extends JPanel {
 	static int NUM_OF_DAYS=7;
 	GoodsFindBLService goodsController = ControllerFactoryImpl
 			.getInstance().getGoodsFindController();
 
-	public Courier_main() {
+	public courier_main() {
 		initComponents();
+	}
+	/**
+	 * 给main的子界面调用~反馈给用户操作成功的message
+	 * @param msg
+	 */
+	public void setFeedBack(ResultMessage msg){
+		feedBack_text.setText(ResultMessage.toFriendlyString(msg));
 	}
 	private void initComponents() {
 		GroupLayout layout = new GroupLayout(this);
@@ -407,7 +415,7 @@ public class Courier_main extends JPanel {
 	 * 监听们～
 	 */
 	private void signedGoodsbtnMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_signedGoodsbtnMouseClicked
-		new Courier_signed().setVisible(true);
+		new courier_signed(this).setVisible(true);
 	}
 	private void newGoodsbtnMouseClicked(MouseEvent evt) {
 		MyFrame frame=new MyFrame(500, 600, new Order());
@@ -471,7 +479,7 @@ public class Courier_main extends JPanel {
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				MyFrame frame=new MyFrame(830, 590, new Courier_main());
+				MyFrame frame=new MyFrame(830, 590, new courier_main());
 				frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 			}
 		});

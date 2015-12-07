@@ -35,7 +35,9 @@ public interface CashRepblService extends ReceiptblService{
 	 * @throws ClassNotFoundException 
 	 * @throws FileNotFoundException 
 	 */
-	public String getCourierName (String text) throws NameNotFoundException, RemoteException, FileNotFoundException, javax.naming.NameNotFoundException, ClassNotFoundException, NumNotFoundException, IOException;
+	public String getCourierName (String text) throws NameNotFoundException, RemoteException,
+	FileNotFoundException, javax.naming.NameNotFoundException, ClassNotFoundException, 
+	NumNotFoundException, IOException;
 
 	/**
 	 * 得到一批货物的总钱数

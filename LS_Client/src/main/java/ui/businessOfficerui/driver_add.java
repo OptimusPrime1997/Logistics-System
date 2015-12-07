@@ -10,9 +10,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 import javax.swing.WindowConstants;
-public class Driver_add extends JFrame {
+public class driver_add extends JFrame {
 	 public static void main(String[] args) {
-			new Driver_add();
+			new driver_add();
 		}
 	private void day_comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_day_comboBoxActionPerformed
 	       
@@ -26,7 +26,7 @@ public class Driver_add extends JFrame {
     /**
      * Creates new form driver__add
      */
-    public Driver_add() {
+    public driver_add() {
     	this.setVisible(true);
         initComponents();
         setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);

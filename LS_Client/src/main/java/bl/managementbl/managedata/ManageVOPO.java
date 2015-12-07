@@ -24,30 +24,32 @@ import VO.ManagementVO.VehicleVO;
 public class ManageVOPO {
 	private static ManageVOPO manageVOPO;
 	private static Logbl logbl;
-	private ManageVOPO(){
-//		logbl=new Logbl();
+
+	private ManageVOPO() {
+		// logbl=new Logbl();
 	}
-	public static ManageVOPO getInstance(){
-		if(manageVOPO==null){
-			manageVOPO=new ManageVOPO();
+
+	public static ManageVOPO getInstance() {
+		if (manageVOPO == null) {
+			manageVOPO = new ManageVOPO();
 		}
 		return manageVOPO;
 	}
-	
+
 	/**
 	 * add log
 	 * 
 	 * @param operation
 	 * @return ResultMessage
 	 */
-	public ResultMessage addLog(LogType operation){
+	public ResultMessage addLog(LogType operation) {
 		LogVO logVO = new LogVO(operation, Loginbl.getCurrentOptorId(),
 				CurrentTime.getTime());
-		assert(logbl!=null):("Logbl is null!");
-//		 logbl.add(logVO);
+		assert (logbl != null) : ("Logbl is null!");
+		// logbl.add(logVO);
 		return ResultMessage.SUCCESS;
 	}
-	
+
 	public AccountPO voToPO(AccountVO vo) {
 		return new AccountPO(vo.accountNum, vo.accountName, vo.password,
 				vo.sex, vo.authority, vo.phoneNum, vo.institutionNum);
@@ -64,7 +66,7 @@ public class ManageVOPO {
 
 	public InstitutionPO voToPO(InstitutionVO vo) {
 		return new InstitutionPO(vo.institutionNum, vo.institutionName,
-				vo.address, vo.contactInfo, vo.manning);
+				vo.contactInfo,vo.address,  vo.manning);
 	}
 
 	public SalaryPolicyPO voToPO(SalaryPolicyVO vo) {
@@ -73,8 +75,8 @@ public class ManageVOPO {
 	}
 
 	public DriverPO voToPO(DriverVO vo) {
-		return new DriverPO(vo.driverNum, vo.name, vo.birthDate, vo.id,
-				vo.phoneNum, vo.sex, vo.licensedTime);
+		return new DriverPO(vo.driverNum, vo.name, vo.sex, vo.id, vo.phoneNum,
+				vo.licensedTime);
 	}
 
 	public VehiclePO voToPO(VehicleVO vo) {
@@ -99,7 +101,7 @@ public class ManageVOPO {
 
 	public InstitutionVO poToVO(InstitutionPO po) {
 		return new InstitutionVO(po.getInstitutionNum(),
-				po.getInstitutionName(), po.getAddress(), po.getContactInfo(),
+				po.getInstitutionName(), po.getContactInfo(), po.getAddress(),
 				po.getManning());
 	}
 
@@ -109,8 +111,8 @@ public class ManageVOPO {
 	}
 
 	public DriverVO poToVO(DriverPO po) {
-		return new DriverVO(po.getDriverNum(), po.getName(), po.getBirthDate(),
-				po.getId(), po.getPhoneNum(), po.getSex(), po.getLicensedTime());
+		return new DriverVO(po.getDriverNum(), po.getName(), po.getSex(),
+				po.getId(), po.getPhoneNum(), po.getLicensedTime());
 	}
 
 	public VehicleVO poToVO(VehiclePO po) {

@@ -10,7 +10,7 @@ public class InstitutionPO implements Serializable,Comparable<InstitutionPO>{
 	private String contactInfo;
 	private String manning;
 	public InstitutionPO(String instituionNum, String institutionName,
-			String address, String contactInfo, String manning) {
+			String contactInfo,String address,  String manning) {
 		super();
 		this.instituionNum = instituionNum;
 		this.institutionName = institutionName;

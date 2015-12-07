@@ -13,13 +13,21 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 import ui.mainFrame.MainFrame;
-import util.MyFrame;
+import ui.util.MyFrame;
+import util.enumData.ResultMessage;
 
 /**
  *
  * @author Administrator
  */
-public class Car_management extends javax.swing.JPanel {
+public class car_management extends javax.swing.JPanel {
+	 /**
+     * 给子界面提供的   向用户反馈信息的方法
+     * @param msg
+     */
+    public void setFeedBack(ResultMessage msg){
+    	feedback_text.setText(ResultMessage.toFriendlyString(msg));
+    }
 	/**
 	 * 监听们
 	 * @param evt
@@ -34,7 +42,7 @@ public class Car_management extends javax.swing.JPanel {
         System.exit(0);
     }
     private void add_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_btnMouseClicked
-        new Car_add();
+        new car_add();
     }
     private void cars_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cars_tableMouseClicked
         if(evt.getClickCount()==2){
@@ -42,7 +50,7 @@ public class Car_management extends javax.swing.JPanel {
         	System.out.println("双击哦~");
         }
     }
-    public Car_management() {
+    public car_management() {
         initComponents();
     }
     
@@ -357,7 +365,7 @@ public class Car_management extends javax.swing.JPanel {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-            	Car_management panel=new Car_management();
+            	car_management panel=new car_management();
             	MyFrame frame = new MyFrame(830,590,panel);
             	panel.setFrame(frame);
         		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);	

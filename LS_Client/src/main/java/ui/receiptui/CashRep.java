@@ -344,7 +344,14 @@ public class CashRep extends javax.swing.JPanel {
     	String courierNum = courierNumText.getText();
     	String courierName = null;
     	double money;
-		courierName = control.getCourierName(courierNum);
+		try {
+			courierName = control.getCourierName(courierNum);
+		} catch (javax.naming.NameNotFoundException | ClassNotFoundException | NameNotFoundException
+				| NumNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
     	ArrayList<GoodsVO> arrGoods = control.getGoods(courierNum, dateText.getText());
     	money = control.getMoneySum(arrGoods);
     	Vector<Object> arr = new Vector<Object>();

@@ -34,15 +34,23 @@ public class Constbl {
 		manageVOPO = ManageVOPO.getInstance();
 	}
 
+	/**
+	 * @param vo
+	 * @return OVER_DATA IOFAILED SUCCESS FAILED
+	 * @thr
+	 * ows RemoteException
+	 */
 	public ResultMessage add(ConstVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		manageVOPO.addLog(LogType.DECISION_MAKE);
+		manageVOPO.addLog(LogType.DECISION_CONST);
 		if (constDataService != null) {
 			try {
 				ArrayList<ConstPO> pos = constDataService.show();
-				for (Iterator<ConstPO> t = pos.iterator(); t.hasNext();) {
-					if (t.next().getTwoCities().equals(vo.twoCities)) {
-						return ResultMessage.OVERRIDE_DATA;
+				if (pos != null) {
+					for (Iterator<ConstPO> t = pos.iterator(); t.hasNext();) {
+						if (t.next().getTwoCities().equals(vo.twoCities)) {
+							return ResultMessage.OVERRIDE_DATA;
+						}
 					}
 				}
 				constDataService.insert(manageVOPO.voToPO(vo));
@@ -63,7 +71,7 @@ public class Constbl {
 
 	public ResultMessage update(ConstVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		manageVOPO.addLog(LogType.DECISION_MAKE);
+		manageVOPO.addLog(LogType.DECISION_CONST);
 		if (constDataService != null) {
 			if (check(vo) == ResultMessage.VALID) {
 				ConstPO po = manageVOPO.voToPO(vo);
@@ -91,7 +99,7 @@ public class Constbl {
 
 	public ResultMessage delete(ConstVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-		manageVOPO.addLog(LogType.DECISION_MAKE);
+		manageVOPO.addLog(LogType.DECISION_CONST);
 		if (constDataService != null) {
 			if (VO.twoCities.contains("-") && VO.twoCities.length() < 20) {
 				ConstPO po = manageVOPO.voToPO(VO);
@@ -119,16 +127,20 @@ public class Constbl {
 
 	public ArrayList<ConstVO> show() throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		manageVOPO.addLog(LogType.DECISION_MAKE);
+		manageVOPO.addLog(LogType.DECISION_CONST);
 		if (constDataService != null) {
 			ArrayList<ConstPO> pos = constDataService.show();
-			ArrayList<ConstVO> vos = new ArrayList<ConstVO>();
-			ConstVO vo;
-			for (ConstPO po : pos) {
-				vo = manageVOPO.poToVO(po);
-				vos.add(vo);
+			if (pos != null) {
+				ArrayList<ConstVO> vos = new ArrayList<ConstVO>();
+				ConstVO vo;
+				for (ConstPO po : pos) {
+					vo = manageVOPO.poToVO(po);
+					vos.add(vo);
+				}
+				return vos;
+			} else {
+				return null;
 			}
-			return vos;
 		} else
 			throw new RemoteException();
 	}
@@ -136,7 +148,7 @@ public class Constbl {
 	public ConstVO findByCities(String twoCities) throws FileNotFoundException,
 			ClassNotFoundException, ConstNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		manageVOPO.addLog(LogType.DECISION_MAKE);
+		manageVOPO.addLog(LogType.DECISION_CONST);
 		if (constDataService != null) {
 			ConstPO findPO = constDataService.findByCities(twoCities);
 			ConstVO findVO = manageVOPO.poToVO(findPO);
