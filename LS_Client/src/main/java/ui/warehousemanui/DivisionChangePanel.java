@@ -13,6 +13,7 @@ import blservice.stockblservice.StockDivisionBLService;
 import ui.mainFrame.MainFrame;
 import util.FromIntToCity;
 import util.enumData.City;
+import util.enumData.ResultMessage;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -147,6 +148,8 @@ public class DivisionChangePanel extends JFrame {
                 try {
 					confirmActionPerformed(evt);
 				} catch (NotBoundException | IOException e) {
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
 				}
             }
@@ -348,8 +351,9 @@ public class DivisionChangePanel extends JFrame {
      * @throws RemoteException
      * @throws NotBoundException
      * @throws IOException
+     * @throws ClassNotFoundException 
      */
-    private void confirmActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                         
+    private void confirmActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException, ClassNotFoundException {                                         
     	
     	if (oldBlocks.getSelectedItem()!=null && newBlocks.getSelectedItem() != null &&
     		oldDivisions.getSelectedItem() != null && newDivisions.getSelectedItem() !=null &&
@@ -358,9 +362,10 @@ public class DivisionChangePanel extends JFrame {
     		City desCity = FromIntToCity.toCity(newblock);
         	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
         	if (list.size()>800) {
-				//TODO 提醒不能换区
+				//TODO 提醒换别的区
 			} else{
-				s.modifyDivision((int)oldDivisions.getSelectedItem(), (int)oldPlaces.getSelectedItem(), (int)newDivisions.getSelectedItem(), (int)newPlaces.getSelectedItem());
+				ResultMessage rm = s.modifyDivision((int)oldDivisions.getSelectedItem(), (int)oldPlaces.getSelectedItem(), (int)newDivisions.getSelectedItem(), (int)newPlaces.getSelectedItem());
+				//TODO 给出别的反馈信息
 			}
 		}
     	

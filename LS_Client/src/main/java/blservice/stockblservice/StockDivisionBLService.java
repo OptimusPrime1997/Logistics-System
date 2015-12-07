@@ -25,9 +25,14 @@ public interface StockDivisionBLService {
 	 * @param oldPlace
 	 * @param newBlock
 	 * @param newPlace
+	 * @throws NotBoundException 
+	 * @throws RemoteException 
+	 * @throws MalformedURLException 
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
 	
-	public ResultMessage modifyDivision(int oldBlock, int oldPlace, int newBlock, int newPlace);
+	public ResultMessage modifyDivision(int oldBlock, int oldPlace, int newBlock, int newPlace) throws MalformedURLException, RemoteException, NotBoundException, ClassNotFoundException, IOException;
 	
 	/**
 	 * 界面提供目的地，系统提供该仓库可用的区号和位号
