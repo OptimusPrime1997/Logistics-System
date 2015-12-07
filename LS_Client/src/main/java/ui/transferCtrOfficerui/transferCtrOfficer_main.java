@@ -35,6 +35,7 @@ import util.enumData.ResultMessage;
  */
 public class transferCtrOfficer_main extends JPanel {
 
+	
     public transferCtrOfficer_main() {
         initComponents();
     }
