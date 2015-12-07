@@ -5,30 +5,46 @@
  */
 package ui.courierui;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle;
+import javax.swing.WindowConstants;
 
-import util.CreateDialog;
-import util.enumData.GoodsArrivalState;
-import util.enumData.GoodsExpressType;
-import util.enumData.GoodsLogisticState;
+import util.CurrentTime;
 import util.enumData.ResultMessage;
-import Exception.ExistException;
-import VO.GoodsVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.goodsblservice.GoodsCheckValidBLService;
 import blservice.goodsblservice.GoodsEndBLService;
-import blservice.goodsblservice.GoodsFindBLService;
-import blservice.goodsblservice.GoodsInitBLService;
 
 /**
  *
  * @author Administrator
  */
-public class courier_signed extends javax.swing.JFrame {
+public class courier_signed extends JFrame {
+	public courier_signed() {
+    	controller_end=ControllerFactoryImpl.getInstance().getGoodsEndController();
+    	controller_check=ControllerFactoryImpl.getInstance().getGoodsCheckController();
+    	initComponents();
+        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+    }
+	public courier_signed(courier_main panel) {
+		this.parentPanel=panel;
+    	controller_end=ControllerFactoryImpl.getInstance().getGoodsEndController();
+    	controller_check=ControllerFactoryImpl.getInstance().getGoodsCheckController();
+    	initComponents();
+        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+    }
 	/*
 	 * Listeners~~
 	 */
@@ -41,14 +57,14 @@ public class courier_signed extends javax.swing.JFrame {
        
     }
     private void getterPhone_textMouseClicked(MouseEvent e) {
-		getterPhone_text.setText(null);
+    	if(getterPhone_text.getText().equals(phone_)){
+    		getterPhone_text.setText(null);
+    	}		
 	}
     private void cancel_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_btnMouseClicked
         this.setVisible(false);
     }
-    //DONE!
-    private void ok_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ok_btnMouseClicked
-        
+    private void ok_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ok_btnMouseClicked      
         /*
          * msg_check_listNum:检查用户输入的数据是否合法的结果
          * msg_check_name:检查用户输入的收件人名字是否合法  
@@ -61,7 +77,11 @@ public class courier_signed extends javax.swing.JFrame {
         ResultMessage msg=null,msg_check_listNum,msg_check_name;
         listNum=goodsNum_text.getText();
         getterName=getterName_text.getText();
-        getterPhone=getterPhone_text.getText();
+        if(!getterPhone_text.getText().equals(phone_)){
+        	getterPhone=getterPhone_text.getText();
+        }else {
+        	getterPhone="";
+        }
         /*
          * 检查是否合法
          */
@@ -76,35 +96,31 @@ public class courier_signed extends javax.swing.JFrame {
             	messages.add(msg);            	
             }	
         }
-        if(msg_check_name!=ResultMessage.VALID) messages.add(msg_check_name);
         if(msg_check_listNum!=ResultMessage.VALID){
         	messages.add(msg_check_listNum);
         }
+        if(msg_check_name!=ResultMessage.VALID) {
+        	messages.add(msg_check_name);
+        }
+        
         //若不成功  将反馈信息传给dialog
 		if (!(msg == ResultMessage.SUCCESS
 				&& msg_check_listNum == ResultMessage.VALID && msg_check_name == ResultMessage.VALID)) {
-			createDialog(messages);
+			showFeedBack(messages);
         }else{//成功窗体才消失
         	this.setVisible(false);
+        	parentPanel.setFeedBack(ResultMessage.SIGNED_SUCCESS);
         }
     }
    
 	/**
      * Creates new form courier_signed
      */
-	public courier_signed() {
-    	controller_end=ControllerFactoryImpl.getInstance().getGoodsEndController();
-    	controller_check=ControllerFactoryImpl.getInstance().getGoodsCheckController();
-    	initComponents();
-        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-    }
+	
 
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-  
     private void initComponents() {
-        panel = new javax.swing.JPanel();
-        javax.swing.GroupLayout layout0 = new javax.swing.GroupLayout(panel);
+        panel = new JPanel();
+        GroupLayout layout0 = new GroupLayout(panel);
         panel.setLayout(layout0);
         initLabel();
         initText();
@@ -114,8 +130,8 @@ public class courier_signed extends javax.swing.JFrame {
 
     }
     private void initbtn() {
-        cancel_btn = new javax.swing.JButton();
-        ok_btn = new javax.swing.JButton();
+        cancel_btn = new JButton();
+        ok_btn = new JButton();
         cancel_btn.setText("取消");
         ok_btn.setText("确认");
         /**
@@ -134,19 +150,22 @@ public class courier_signed extends javax.swing.JFrame {
         });
 	}
 	private void initComboBox() {
-    	 year_ComboBox = new javax.swing.JComboBox<String>();
-         month_ComboBox = new javax.swing.JComboBox<String>();
-         day_ComboBox = new javax.swing.JComboBox<String>();
-		year_ComboBox.setModel(new javax.swing.DefaultComboBoxModel<String>(
-				new String[] { "2015", "2016", "2014", "2013" }));
-		month_ComboBox.setModel(new javax.swing.DefaultComboBoxModel<String>(
+    	 year_ComboBox = new JComboBox<String>();
+         month_ComboBox = new JComboBox<String>();
+         day_ComboBox = new JComboBox<String>();
+		year_ComboBox.setModel(new DefaultComboBoxModel<String>(
+				new String[] { "2015", "2016", "2017", "2018" ,"2019","2020"}));
+		month_ComboBox.setModel(new DefaultComboBoxModel<String>(
 				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
 						"10", "11", "12" }));
-		day_ComboBox.setModel(new javax.swing.DefaultComboBoxModel<String>(
+		day_ComboBox.setModel(new DefaultComboBoxModel<String>(
 				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
 						"10", "11", "12", "13", "14", "15", "16", "17", "18",
 						"19", "20", "21", "22", "23", "24", "25", "26", "27",
 						"28", "29", "30", "31" }));
+		setTodayDate();
+		
+		
 		/*
 		 * add listener
 		 */
@@ -166,108 +185,127 @@ public class courier_signed extends javax.swing.JFrame {
              }
          }); 
 	}
+	private void setTodayDate() {
+		String date=CurrentTime.getDate();		
+		int year=Integer.parseInt(date.substring(0, 4));
+		int month=Integer.parseInt(date.substring(5, 7));
+		int day=Integer.parseInt(date.substring(8, 10));
+		year_ComboBox.setSelectedIndex(year-2015);
+		month_ComboBox.setSelectedIndex(month-1);
+		day_ComboBox.setSelectedIndex(day-1);
+	}
 	private void initLayout(GroupLayout layout0) {
 
 		layout0.setHorizontalGroup(
-	            layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout0.createSequentialGroup()
-	                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-	                .addComponent(cancel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+	            layout0.createParallelGroup(GroupLayout.Alignment.LEADING)
+	            .addGroup(GroupLayout.Alignment.TRAILING, layout0.createSequentialGroup()
+	                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                .addComponent(cancel_btn, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
 	                .addGap(55, 55, 55)
-	                .addComponent(ok_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                .addComponent(ok_btn, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
 	                .addGap(54, 54, 54))
-	            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout0.createSequentialGroup()
+	            .addGroup(GroupLayout.Alignment.TRAILING, layout0.createSequentialGroup()
 	                .addGap(44, 44, 44)
 	                .addComponent(jLabel9)
-	                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+	                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 	            .addGroup(layout0.createSequentialGroup()
 	                .addGap(66, 66, 66)
-	                .addGroup(layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                .addGroup(layout0.createParallelGroup(GroupLayout.Alignment.LEADING)
 	                    .addGroup(layout0.createSequentialGroup()
 	                        .addComponent(jLabel10)
 	                        .addGap(21, 21, 21)
-	                        .addGroup(layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	                            .addComponent(getterPhone_text, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                            .addComponent(getterName_text, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                            .addComponent(goodsNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
-	                    .addGroup(layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+	                        .addGroup(layout0.createParallelGroup(GroupLayout.Alignment.LEADING)
+	                            .addComponent(getterPhone_text, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
+	                            .addComponent(getterName_text, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
+	                            .addComponent(goodsNum_text, GroupLayout.PREFERRED_SIZE, 244, GroupLayout.PREFERRED_SIZE)))
+	                    .addGroup(layout0.createParallelGroup(GroupLayout.Alignment.TRAILING)
 	                        .addComponent(jLabel4)
 	                        .addComponent(jLabel1))
 	                    .addGroup(layout0.createSequentialGroup()
 	                        .addComponent(jLabel5)
 	                        .addGap(27, 27, 27)
-	                        .addComponent(year_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+	                        .addComponent(year_ComboBox, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+	                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
 	                        .addComponent(jLabel6)
 	                        .addGap(18, 18, 18)
-	                        .addComponent(month_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+	                        .addComponent(month_ComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 	                        .addComponent(jLabel7)
 	                        .addGap(13, 13, 13)
-	                        .addComponent(day_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+	                        .addComponent(day_ComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
 	                        .addComponent(jLabel8)))
 	                .addContainerGap(202, Short.MAX_VALUE))
+	                .addGroup(layout0.createSequentialGroup()
+                         .addContainerGap()
+                         .addComponent(feedback_text)
+                         .addContainerGap())
 	        );
 	        layout0.setVerticalGroup(
-	            layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	            layout0.createParallelGroup(GroupLayout.Alignment.LEADING)
 	            .addGroup(layout0.createSequentialGroup()
 	                .addGap(30, 30, 30)
 	                .addComponent(jLabel9)
 	                .addGap(37, 37, 37)
-	                .addGroup(layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-	                    .addComponent(goodsNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                .addGroup(layout0.createParallelGroup(GroupLayout.Alignment.BASELINE)
+	                    .addComponent(goodsNum_text, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 	                    .addComponent(jLabel1))
 	                .addGap(14, 14, 14)
-	                .addGroup(layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-	                    .addComponent(getterName_text, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                .addGroup(layout0.createParallelGroup(GroupLayout.Alignment.BASELINE)
+	                    .addComponent(getterName_text, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
 	                    .addComponent(jLabel4))
 	                .addGap(14, 14, 14)
-	                .addGroup(layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                .addGroup(layout0.createParallelGroup(GroupLayout.Alignment.BASELINE)
 	                    .addComponent(jLabel10)
-	                    .addComponent(getterPhone_text, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+	                    .addComponent(getterPhone_text, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
 	                .addGap(18, 18, 18)
-	                .addGroup(layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                .addGroup(layout0.createParallelGroup(GroupLayout.Alignment.BASELINE)
 	                    .addComponent(jLabel5)
-	                    .addComponent(year_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                    .addComponent(month_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                    .addComponent(day_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                    .addComponent(year_ComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	                    .addComponent(month_ComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	                    .addComponent(day_ComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 	                    .addComponent(jLabel6)
-	                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-	                .addGroup(layout0.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-	                    .addComponent(cancel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                    .addComponent(ok_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-	                .addGap(51, 51, 51))
+	                    .addComponent(jLabel7, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+	                    .addComponent(jLabel8, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+	                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+	                .addGroup(layout0.createParallelGroup(GroupLayout.Alignment.BASELINE)
+	                    .addComponent(cancel_btn, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+	                    .addComponent(ok_btn, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
+	                     .addComponent(feedback_text, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	               
+	                .addGap(15, 15, 15))
+	                
 	        );
 
-	        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+	        GroupLayout layout = new GroupLayout(getContentPane());
 	        getContentPane().setLayout(layout);
 	        layout.setHorizontalGroup(
-	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 	            .addGroup(layout.createSequentialGroup()
-	                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                .addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 	                .addContainerGap())
 	        );
 	        layout.setVerticalGroup(
-	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 	            .addGroup(layout.createSequentialGroup()
-	                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                .addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 	                .addGap(0, 0, Short.MAX_VALUE))
 	        );
 
 	        pack();
 	}
 	private void initText() {
-    	 goodsNum_text = new javax.swing.JTextField();
-         getterName_text = new javax.swing.JTextField();
-         getterPhone_text = new javax.swing.JTextField();
+    	 goodsNum_text = new JTextField();
+         getterName_text = new JTextField();
+         getterPhone_text = new JTextField();
+         feedback_text=new JTextField();
+         
+         feedback_text.setEditable(false);
+         feedback_text.setForeground(Color.RED);
          getterPhone_text.setText("选填");
          /*
   		 * add listener
-  		 */
-         
+  		 */         
          getterPhone_text.addMouseListener(new MouseAdapter() {
         	public void mouseClicked(MouseEvent e) {
         		getterPhone_textMouseClicked(e);
@@ -276,14 +314,14 @@ public class courier_signed extends javax.swing.JFrame {
          
 	}
 	private void initLabel() {
-    	 jLabel1 = new javax.swing.JLabel();
-         jLabel4 = new javax.swing.JLabel();
-         jLabel5 = new javax.swing.JLabel();
-         jLabel6 = new javax.swing.JLabel();
-         jLabel7 = new javax.swing.JLabel();
-         jLabel8 = new javax.swing.JLabel();
-         jLabel9 = new javax.swing.JLabel();
-         jLabel10 = new javax.swing.JLabel();
+    	 jLabel1 = new JLabel();
+         jLabel4 = new JLabel();
+         jLabel5 = new JLabel();
+         jLabel6 = new JLabel();
+         jLabel7 = new JLabel();
+         jLabel8 = new JLabel();
+         jLabel9 = new JLabel();
+         jLabel10 = new JLabel();
          jLabel1.setText("订单号");
          jLabel4.setText("收件人");
          jLabel5.setText("收件日期");
@@ -301,40 +339,36 @@ public class courier_signed extends javax.swing.JFrame {
      * 弹出对话框提示输入信息有误或订单不存在
      * @param msg
      */
-	private void createDialog(ArrayList<ResultMessage> messages) {
-		System.out.println("我是弹窗！~   ");
+	private void showFeedBack(ArrayList<ResultMessage> messages) {
 		String feedback="";		
 		for(ResultMessage msg:messages){
-			feedback=feedback+msg.toString()+"\n";
+			feedback=feedback+ResultMessage.toFriendlyString(msg)+";   ";
 		}
-		System.out.println(feedback);
-		CreateDialog.creatDialog(messages, 200, 200);
-		System.out.println();
-		// TODO 
+		feedback_text.setText(feedback);
 		
 	}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GoodsEndBLService controller_end;
     private GoodsCheckValidBLService controller_check;
-    private javax.swing.JButton cancel_btn;
-    private javax.swing.JButton ok_btn;
-    private javax.swing.JComboBox<String> day_ComboBox;
-    private javax.swing.JComboBox<String> month_ComboBox;
-    private javax.swing.JComboBox<String> year_ComboBox;
-    private javax.swing.JTextField getterName_text;
-    private javax.swing.JTextField goodsNum_text;
-    private javax.swing.JTextField getterPhone_text;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JPanel panel;  
+    private JButton cancel_btn;
+    private JButton ok_btn;
+    private JComboBox<String> day_ComboBox;
+    private JComboBox<String> month_ComboBox;
+    private JComboBox<String> year_ComboBox;
+    private JTextField getterName_text, goodsNum_text,
+    getterPhone_text,feedback_text;
+    private courier_main parentPanel;
+    private JLabel jLabel1;
+    private JLabel jLabel4;
+    private JLabel jLabel5;
+    private JLabel jLabel6;
+    private JLabel jLabel7;
+    private JLabel jLabel8;
+    private JLabel jLabel9;
+    private JLabel jLabel10;
+    private JPanel panel;  
     private String listNum,getterName,getterPhone;
-    
+    private static final String phone_="选填";
     private static final long serialVersionUID = 1L;    
     // End of variables declaration//GEN-END:variables
 }

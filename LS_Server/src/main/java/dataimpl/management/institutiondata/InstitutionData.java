@@ -6,11 +6,8 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-
-
 import util.enumData.ResultMessage;
-import Exception.NameNotFoundException;
-import PO.AccountPO;
+import Exception.NumNotFoundException;
 import PO.InstitutionPO;
 import dataservice.managementdataservice.institutiondataservice.InstitutionDataService;
 import datautil.DataUtility;
@@ -43,7 +40,8 @@ public class InstitutionData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ResultMessage update(InstitutionPO po) throws ClassNotFoundException, IOException {
+	public ResultMessage update(InstitutionPO po)
+			throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO = false;
@@ -71,7 +69,8 @@ public class InstitutionData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ResultMessage delete(InstitutionPO po) throws IOException, ClassNotFoundException {
+	public ResultMessage delete(InstitutionPO po) throws IOException,
+			ClassNotFoundException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO = false;
@@ -98,7 +97,8 @@ public class InstitutionData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ArrayList<InstitutionPO> show() throws ClassNotFoundException, IOException {
+	public ArrayList<InstitutionPO> show() throws ClassNotFoundException,
+			IOException {
 		// TODO Auto-generated method stub
 		print();
 		ArrayList<Object> objects = d.getAll(path);
@@ -109,8 +109,17 @@ public class InstitutionData extends UnicastRemoteObject implements
 		return InstitutionPOs;
 	}
 
+	private void print() {
+		System.out.println(Thread.currentThread().getStackTrace()[1]
+				.getClassName()
+				+ ": executing "
+				+ Thread.currentThread().getStackTrace()[2].getMethodName());
+	}
+
 	@Override
-	public InstitutionPO findByName(String name) throws NameNotFoundException, ClassNotFoundException, IOException {
+	public InstitutionPO findByInstitutionNum(String institutionNum)
+			throws RemoteException, ClassNotFoundException, IOException,
+			NumNotFoundException {
 		// TODO Auto-generated method stub
 		print();
 		InstitutionPO exist = null;
@@ -121,23 +130,16 @@ public class InstitutionData extends UnicastRemoteObject implements
 			InstitutionPO p = null;
 			for (int i = 0; i < objects.size(); i++) {
 				p = (InstitutionPO) objects.get(i);
-				if (p.getInstitutionName().equals(name)) {
+				if (p.getInstitutionNum().equals(institutionNum)) {
 					exist = p;
 					break;
 				}
 			}
 		}
 		if (exist == null) {
-			throw new NameNotFoundException();
+			throw new NumNotFoundException();
 		} else {
 			return exist;
 		}
-	}
-
-	private void print() {
-		System.out.println(Thread.currentThread().getStackTrace()[1]
-				.getClassName()
-				+ ": executing "
-				+ Thread.currentThread().getStackTrace()[2].getMethodName());
 	}
 }

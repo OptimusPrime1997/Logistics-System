@@ -1,6 +1,5 @@
 package VO.ManagementVO;
 
-import javax.naming.directory.ModificationItem;
 
 import util.enumData.ModifyState;
 

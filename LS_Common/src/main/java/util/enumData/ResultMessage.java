@@ -3,14 +3,30 @@
  */
 package util.enumData;
 
+import org.omg.CosNaming.NamingContextPackage.NotFound;
+
 /**
  * @author G
  *
  */
 public enum ResultMessage {
-	SUCCESS, // 成功
-	FAILED, // 失败
-	WRONG, // 错误
+	/**
+	 * 成功
+	 */
+	SUCCESS,
+	/**
+	 * 失败
+	 */
+	FAILED,
+	/**
+	 * 错误
+	 */
+	WRONG,
+	/**
+	 * 修改成功
+	 */
+	MODIFY_SUCCESS,
+	
 	/**
 	 * 连接错误
 	 */
@@ -130,7 +146,7 @@ public enum ResultMessage {
 	/**
 	 * 覆盖数据
 	 */
-	OVERRIDE_DATA, 
+	OVERRIDE_DATA,
 	/**
 	 * 添加成功
 	 */
@@ -138,7 +154,11 @@ public enum ResultMessage {
 	/**
 	 * 提交成功
 	 */
-	SUBMIT_SUCCESS;
+	SUBMIT_SUCCESS, 
+	/**
+	 * 签收成功
+	 */
+	SIGNED_SUCCESS;
 
 	public static String toFriendlyString(ResultMessage resultMessage) {
 
@@ -148,13 +168,13 @@ public enum ResultMessage {
 		case REPNUM_LENGTH_LACKING:
 			return "过短";
 		case UNVALID_CHAR:
-			return "含有非法字符";
+			return "含有非法字符，注意编号中只能有数字哦";
 		case WRONG_PASSWORD:
 			return "密码错误";
 		case NOT_COMPLETED:
 			return "有项目未填写，请完成后再提交";
 		case LENGTH_WRONG:
-			return "长度有误";
+			return "长度有误,订单号是11位哦~";
 		case WRONG_FORMAT:
 			return "格式错误";
 		case WRONG_DATA:
@@ -173,7 +193,22 @@ public enum ResultMessage {
 			return "派件员编号过长";
 		case OVERRIDE_DATA:
 			return "覆盖数据";
+		case NOT_FOUND:
+			return "对不起，该订单不存在";
+		case SIGNED_SUCCESS:
+			return "签收成功~";
+		case MODIFY_SUCCESS:
+			return "修改成功";
+		case IOFAILED:
+			return "读写文件失败";
+		case FAILED:
+			return "系统程序错误";
+		case SUCCESS:
+			return "成功";
+		case WRONG:
+			return "错误";
 		}
+		
 		return null;
 	}
 

@@ -5,51 +5,32 @@
  */
 package ui.businessOfficerui;
 
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.GroupLayout;
-import javax.swing.JFrame;
-import javax.swing.WindowConstants;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
-import ui.mainFrame.MainFrame;
-import util.MyFrame;
+import util.enumData.ResultMessage;
 
 /**
  *
  * @author Administrator
  */
 public class car_management extends javax.swing.JPanel {
-	/**
-	 * 监听们
-	 * @param evt
-	 */
-	private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
-    
-	}
-	private void search_textMouseClicked(MouseEvent e) {
-		search_textMouseClicked(e);
-	}	
-    private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
-        System.exit(0);
-    }
-    private void add_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_btnMouseClicked
-        new car_add();
-    }
-    private void cars_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cars_tableMouseClicked
-        if(evt.getClickCount()==2){
-        	//TODO 怎么实现只监听一行
-        	System.out.println("双击哦~");
-        }
-    }
-    public car_management() {
+	 
+    public car_management(businessOfficer_main panel_parent) {
+    	this.panel_parent=panel_parent;
         initComponents();
     }
-    
-    public void setFrame(JFrame frame){
-    	this.frame=frame;
-    	System.out.println("Car_Manegement_setFrame");
-//    	frame.setVisible(false);
+    /**
+     * 给子界面提供的   向用户反馈信息的方法
+     * @param msg
+     */
+    public void setFeedBack(ResultMessage msg){
+    	feedback_text.setText(ResultMessage.toFriendlyString(msg));
     }
     private void initComponents() {
 		GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -57,7 +38,7 @@ public class car_management extends javax.swing.JPanel {
 		initTable();
 		initbtn();
 		initTxt();
-		initlayout(layout);
+		initlayout(layout);		
     }
     private void initlayout(GroupLayout layout) {
     	 this.setLayout(layout);
@@ -175,6 +156,75 @@ public class car_management extends javax.swing.JPanel {
                   exit_btnActionPerformed(evt);
               }
           });
+          back_btn.addMouseListener(new MouseAdapter() {
+        	  @Override
+        	public void mouseClicked(MouseEvent e) {
+        		back_btnMouseClicked();
+        	}
+		});
+	}
+
+	/**
+	 * 监听们
+	 * @param evt
+	 */
+	private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
+    
+	}
+	private void search_textMouseClicked(MouseEvent e) {
+		search_textMouseClicked(e);
+	}	
+    private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
+    	if (evt.getSource() == exit_btn) {
+			Object[] options = { "取消", "确定" };
+			int result = JOptionPane.showOptionDialog(null, "您确定要退出系统？",
+					"是否退出", JOptionPane.DEFAULT_OPTION,
+					JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+			if (result == JOptionPane.NO_OPTION) {
+				System.exit(0);
+			}
+		}
+    }
+    private void add_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_btnMouseClicked
+        new car_add();
+    }
+    
+    private void back_btnMouseClicked() {
+		panel_parent.remove(this);
+		panel_parent.add(panel_parent.getPanel1());
+		panel_parent.revalidate();
+		panel_parent.repaint();
+		
+		
+	}
+    private void cars_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cars_tableMouseClicked
+        if(evt.getClickCount()==2){
+        	//TODO 怎么实现只监听一行
+        	System.out.println("双击哦~");
+        }
+    }
+    /**
+     * 对表格的监听
+     * @param e
+     */
+	public void tableMouseClicked(MouseEvent e) {
+		Point p = e.getPoint();
+		int row = cars_table.rowAtPoint(p);
+	    int	column = cars_table.columnAtPoint(p);
+	    //代号、车牌号
+	    String carCode,carLicence;
+	    //点了删除
+		if(e.getClickCount()==1&&column==3){
+			System.out.println("删除第"+row+"行");
+		}
+		if (e.getClickCount() == 2) {
+			carCode=cars_table.getValueAt(row, 0).toString();
+			carLicence=cars_table.getValueAt(row, 1).toString();
+			new car_detail(this, carCode, carLicence);
+			System.out.println(carCode+" "+carLicence);
+		}
+		System.out.print("坐标 "+row+"  "+column+"   ");
+		System.out.println(cars_table.getValueAt(row, column));
 	}
 
 	private void initTable() {
@@ -183,11 +233,11 @@ public class car_management extends javax.swing.JPanel {
         jScrollPane1.setViewportView(cars_table);
         cars_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
+                {"aaa", "江A306", null,"    X"},
+                {"bbb", "浙A8888", null, "    X"},
+                {null, null, null, "    X"},
+                {null, null, null, "    X"},
+                {null, null, null, "    X"},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -273,7 +323,7 @@ public class car_management extends javax.swing.JPanel {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, false, false
+                false,false, false, false
             };
 
             @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -285,11 +335,19 @@ public class car_management extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        cars_table.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cars_tableMouseClicked(evt);
-            }
-        });
+        
+        
+        cars_table.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		tableMouseClicked(e);
+        	}
+		});
+        
+        
+        
+        
+        
         if (cars_table.getColumnModel().getColumnCount() > 0) {
             cars_table.getColumnModel().getColumn(3).setResizable(false);
             cars_table.getColumnModel().getColumn(3).setPreferredWidth(5);
@@ -314,7 +372,7 @@ public class car_management extends javax.swing.JPanel {
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
-    private JFrame frame;
+    private businessOfficer_main panel_parent;
     private javax.swing.JButton account_btn,add_btn,back_btn,exit_btn,search_btn;
     private javax.swing.JLabel businessOffNum2_label,jLabel4,jLabel5,jLabel6;
     private javax.swing.JTable cars_table;
@@ -324,45 +382,5 @@ public class car_management extends javax.swing.JPanel {
     private static final long serialVersionUID = 1L;//TODO  这是干啥的呀
     // End of variables declaration//GEN-END:variables
     
-    
-    /**
-     * for test~~
-     * @param args
-     */
-    public static void main(String[] args) {
-    	/* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-            	car_management panel=new car_management();
-            	MyFrame frame = new MyFrame(830,590,panel);
-            	panel.setFrame(frame);
-        		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);	
-            }
-        });
-
-	}
+//    
 }

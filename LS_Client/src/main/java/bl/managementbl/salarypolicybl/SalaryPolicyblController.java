@@ -1,37 +1,50 @@
 package bl.managementbl.salarypolicybl;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.Authority;
 import util.enumData.ResultMessage;
+import Exception.NumNotFoundException;
+import Exception.SalaryPolicyNotFoundException;
 import VO.ManagementVO.SalaryPolicyVO;
 import blservice.managementblservice.salarypolicyblservice.SalaryPolicyBLService;
 
 public class SalaryPolicyblController implements SalaryPolicyBLService {
-	SalaryPolicybl salaryPolicyBL=new SalaryPolicybl();
+	SalaryPolicybl salaryPolicybl = new SalaryPolicybl();
 
-	public ResultMessage insert(SalaryPolicyVO VO) throws RemoteException {
+	@Override
+	public ResultMessage insert(SalaryPolicyVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return salaryPolicybl.insert(vo);
 	}
 
-	public ResultMessage update(SalaryPolicyVO VO) throws RemoteException {
+	@Override
+	public ResultMessage update(SalaryPolicyVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return salaryPolicybl.update(vo);
 	}
 
-	public ResultMessage delete(SalaryPolicyVO VO) throws RemoteException {
+	@Override
+	public ResultMessage delete(SalaryPolicyVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return salaryPolicybl.delete(vo);
 	}
 
-	public ArrayList<SalaryPolicyVO> show() throws RemoteException {
+	@Override
+	public ArrayList<SalaryPolicyVO> show() throws ClassNotFoundException,
+			IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return salaryPolicybl.show();
 	}
 
-	public SalaryPolicyVO findBySalaryVOlicyName(String salaryPolicyName) throws RemoteException {
+	@Override
+	public SalaryPolicyVO findByAuthority(Authority authority)
+			throws FileNotFoundException, ClassNotFoundException,
+			SalaryPolicyNotFoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
-		return null;
+		return salaryPolicybl.findByAuthority(authority);
 	}
 }

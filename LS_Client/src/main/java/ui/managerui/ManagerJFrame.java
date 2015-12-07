@@ -267,7 +267,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 										javax.swing.GroupLayout.DEFAULT_SIZE,
 										javax.swing.GroupLayout.DEFAULT_SIZE,
 										Short.MAX_VALUE)));
-
 		pack();
 	}
 
@@ -305,6 +304,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jButton3 = new javax.swing.JButton();
 		jButton5 = new javax.swing.JButton();
 		addConstjButton = new javax.swing.JButton();
+		submitConstjButton=new JButton();
 		salaryPolicyjPane1 = new javax.swing.JPanel();
 		jSeparator8 = new javax.swing.JSeparator();
 		jSeparator9 = new javax.swing.JSeparator();
@@ -1704,9 +1704,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 																								.createSequentialGroup()
 																								.addComponent(
 																										submitConstjButton)
-																								.addGap(400,
-																										400,
-																										400)))));
+																								.addGap(424,
+																										424,
+																										424)))));
 		constjPanel1Layout
 				.setVerticalGroup(constjPanel1Layout
 						.createParallelGroup(
@@ -1726,7 +1726,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 										.addComponent(addConstjButton)
 										.addGap(35, 35, 35)
 										.addComponent(submitConstjButton)
-										.addGap(30, 30, 30)
+										.addGap(35, 35, 35)
 										));
 
 		managerjTabbedPane.addTab("距离常量", constjPanel);
@@ -2025,25 +2025,24 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				}
 			}
 		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(ManagerJFrame.class.getName())
+			java.util.logging.Logger.getLogger(ManagerJFrame1.class.getName())
 					.log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(ManagerJFrame.class.getName())
+			java.util.logging.Logger.getLogger(ManagerJFrame1.class.getName())
 					.log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(ManagerJFrame.class.getName())
+			java.util.logging.Logger.getLogger(ManagerJFrame1.class.getName())
 					.log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(ManagerJFrame.class.getName())
+			java.util.logging.Logger.getLogger(ManagerJFrame1.class.getName())
 					.log(java.util.logging.Level.SEVERE, null, ex);
 		}
-		// </editor-fold>
 		// </editor-fold>
 
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				ManagerJFrame managerFrame = new ManagerJFrame();
+				ManagerJFrame1 managerFrame = new ManagerJFrame1();
 				managerFrame.setLocationRelativeTo(null);
 				managerFrame.setResizable(false);
 				// managerFrame.setUndecorated(false);
@@ -2085,7 +2084,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		// TODO Auto-generated method stub
 		ArrayList<ConstVO> vos = null;
 		try {
-			vos = constblController.show();
+			System.out.println(constblController.getClass().getName());
+			vos =
+					constblController.show();
 			vos.sort(null);
 			System.out.println(vos.size());
 		} catch (RemoteException e) {
@@ -2351,7 +2352,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			.getAccountController();
 	private ConstBLService constblController = controllerFactoryblService
 			.getConstController();
-
 	private final ScheduledExecutorService scheduler = Executors
 			.newScheduledThreadPool(1);
 

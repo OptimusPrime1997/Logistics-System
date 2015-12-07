@@ -1,15 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ui.mainFrame;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.WindowConstants;
 
+import ui.businessOfficerui.businessOfficer_main;
+import ui.courierui.courier_main;
 import util.enumData.ResultMessage;
 import Exception.GoodsNotFound;
 import VO.GoodsVO;
@@ -21,51 +27,8 @@ import blservice.goodsblservice.GoodsFindBLService;
  *
  * @author Administrator
  */
-public class MainFrame extends javax.swing.JFrame {
-	/**
-	 * 对用户输入的订单号进行检查和寻找
-	 */
-	private void search_btnMouseClicked() {
-		ResultMessage msg=null;
-		msg=ctr_checkValid.checkifWritten(goodsNum_text.getText());
-		//没填 反馈用户请填写
-		if(msg==ResultMessage.NOT_COMPLETED){
-			creatDialog(msg);
-		}else{
-			/*
-			 * 填写了 
-			 */
-			//检查是否合法
-			msg=ctr_checkValid.checkListNum(goodsNum_text.getText());
-			//合法  则寻找
-			if(msg==ResultMessage.VALID){
-				try {
-					vo=ctr_find.findByGoods(goodsNum_text.getText());
-				} catch (GoodsNotFound e1) {
-					creatDialog(ResultMessage.NOT_FOUND);
-				}
-			}else{//不合法  反馈用户哪里不合法
-				creatDialog(msg);
-			}
-			
-		}
-	}
-	
-	private void goodsNum_textMouseClicked(java.awt.event.MouseEvent evt) {
-    	if(goodsNum_text.getText().equals(goodsNum)){
-    		goodsNum_text.setText(null);
-    	}
-    }
-    private void account_textMouseClicked(java.awt.event.MouseEvent evt) {
-    	if(account_text.getText().equals(account)){
-    		account_text.setText(null);
-    	}    	
-    }
-    private void password_textMouseClicked(java.awt.event.MouseEvent evt) {
-    	if(password_text.getText().equals(password)){
-    		password_text.setText(null);
-    	}    	
-    }    
+public class MainFrame extends JFrame {
+
     /**
      * Creates new form MainFrame
      */
@@ -73,101 +36,57 @@ public class MainFrame extends javax.swing.JFrame {
     	ctr_checkValid = ControllerFactoryImpl.getInstance().getGoodsCheckController();
     	ctr_find=ControllerFactoryImpl.getInstance().getGoodsFindController();
     	this.setVisible(true);
-    	setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    	setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    	this.setResizable(false);
         initComponents();
     }
-     private void initComponents() {
-	 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());	
-	 initTxt();
-	 initbtn();
-	 initLabel();
-	 initLayout(layout);        
-    }
-
+	private void initComponents() {
+		contentPane=new JPanel();
+		initTxt();
+		initbtn();
+		initLabel();
+		initLayout();
+	}
 	private void initLabel() {
-		jLabel2 = new javax.swing.JLabel();
-		jLabel3 = new javax.swing.JLabel();
-		jLabel1 = new javax.swing.JLabel();
-		jLabel2.setText("账号");
-		jLabel3.setText("密码");
-		jLabel1.setFont(new java.awt.Font("华文行楷", 1, 24));
+ 		jLabel2 = new javax.swing.JLabel();
+ 		jLabel3 = new javax.swing.JLabel();
+ 		jLabel1 = new javax.swing.JLabel();
+ 		jLabel2.setText("账号");
+ 		jLabel3.setText("密码");
+ 		jLabel1.setFont(new java.awt.Font("华文行楷", 1, 24));
 		jLabel1.setText("LS  快递物流系统");
 	}
 	private void initbtn() {
-		 search_btn = new javax.swing.JButton();
-	     login_btn = new javax.swing.JButton();
-		 search_btn.setText("查询");
-		 login_btn.setText("登录");
-		 search_btn.addMouseListener(new MouseAdapter() {
-			 @Override
+		search_btn = new javax.swing.JButton();
+		login_btn = new javax.swing.JButton();
+		search_btn.setText("查询");
+		login_btn.setText("登录");
+
+		login_btn.addMouseListener(new MouseAdapter() {
+			@Override
 			public void mouseClicked(MouseEvent e) {
-				 search_btnMouseClicked();
+				System.out.println("登录");
+				login_btnMouseClicked();
 			}
 		});
-}
-	private void initLayout(GroupLayout layout) {
-		getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(196, 196, 196)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(35, 35, 35)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(account_text, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(goodsNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(search_btn)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(password_text, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(232, 232, 232)
-                        .addComponent(login_btn)
-                        .addGap(98, 98, 98)))
-                .addContainerGap(247, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(177, 177, 177)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(goodsNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(search_btn)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(account_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(password_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))))
-                .addGap(32, 32, 32)
-                .addComponent(login_btn)
-                .addContainerGap(204, Short.MAX_VALUE))
-        );
-        pack();
-	
-}
+		search_btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				search_btnMouseClicked();
+			}
+		});
+	}
 	private void initTxt() {
 		goodsNum_text = new javax.swing.JTextField();
 		account_text = new javax.swing.JTextField();
 		password_text = new javax.swing.JTextField();
-		goodsNum_text.setText(goodsNum);
-		password_text.setText(password);
-		account_text.setText(account);
+	    feedback_text = new JTextField();
+		
+	    feedback_text.setEditable(false);
+	    feedback_text.setForeground(Color.red);
+		goodsNum_text.setText(standard_goodsNum);
+		password_text.setText(standard_password);
+		account_text.setText(standard_account);
 		goodsNum_text.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				goodsNum_textMouseClicked(evt);
@@ -184,19 +103,153 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 		});
 	}
-	private void creatDialog(ResultMessage msg) {
-		System.out.println(msg);
+	
+    /**
+     * 监听们
+     */
+    /**
+	 * 对用户输入的订单号进行检查和寻找
+	 */
+	private void search_btnMouseClicked() {
+		goodsNum=goodsNum_text.getText();
+		ResultMessage msg=null;
+		msg=ctr_checkValid.checkifWritten(goodsNum);
+		//没填 反馈用户请填写
+		if(msg==ResultMessage.NOT_COMPLETED){
+			createDialog(msg);
+		}else{
+			/*
+			 * 填写了 
+			 */
+			//检查是否合法
+			msg=ctr_checkValid.checkListNum(goodsNum);
+			//合法  则寻找
+			if(msg==ResultMessage.VALID){
+				try {
+					vo=ctr_find.findByGoods(goodsNum);
+				} catch (GoodsNotFound e1) {
+					createDialog(ResultMessage.NOT_FOUND);
+				}
+			}else{//不合法  反馈用户哪里不合法
+				createDialog(msg);
+			}
+			
+		}
 	}
-	public static void main(String args[]) {
+	private void login_btnMouseClicked() {
+         password=password_text.getText();
+         account=account_text.getText();         
+         this.setVisible(false);
+         new businessOfficer_main();       
+         //TODO 先不判断   账号 密码的正确性
+         
+         
+	}
+	private void goodsNum_textMouseClicked(java.awt.event.MouseEvent evt) {
+		this.feedback_text.setText(null);//TODO  还有鼠标拖拽 选中一堆字符~也要清空
+		//TODO 还要实现 回车就可以查询
+    	if(goodsNum_text.getText().equals(standard_goodsNum)){
+    		goodsNum_text.setText(null);
+    	}
+    }
+    private void account_textMouseClicked(java.awt.event.MouseEvent evt) {
+    	if(account_text.getText().equals(standard_account)){
+    		account_text.setText(null);
+    	}    	
+    }
+    private void password_textMouseClicked(java.awt.event.MouseEvent evt) {
+    	if(password_text.getText().equals(standard_password)){
+    		password_text.setText(null);
+    	}    	
+    }  
+	
+    private void initLayout() {
+    	 javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(contentPane);
+         contentPane.setLayout(jPanel1Layout);
+         jPanel1Layout.setHorizontalGroup(
+             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+             .addGroup(jPanel1Layout.createSequentialGroup()
+                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                     .addGroup(jPanel1Layout.createSequentialGroup()
+                         .addGap(32, 32, 32)
+                         .addComponent(goodsNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                         .addGap(18, 18, 18)
+                         .addComponent(search_btn)
+                         .addGap(66, 66, 66)
+                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                             .addComponent(login_btn)
+                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                 .addGroup(jPanel1Layout.createSequentialGroup()
+                                     .addComponent(jLabel2)
+                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                     .addComponent(account_text, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                 .addGroup(jPanel1Layout.createSequentialGroup()
+                                     .addComponent(jLabel3)
+                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                     .addComponent(password_text, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                     .addGroup(jPanel1Layout.createSequentialGroup()
+                         .addGap(68, 68, 68)
+                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                     .addGroup(jPanel1Layout.createSequentialGroup()
+                         .addContainerGap()
+                         .addComponent(feedback_text, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                 .addContainerGap(50, Short.MAX_VALUE))
+         );
+         jPanel1Layout.setVerticalGroup(
+             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+             .addGroup(jPanel1Layout.createSequentialGroup()
+                 .addGap(20, 20, 20)
+                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                 .addGap(28, 28, 28)
+                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                     .addComponent(account_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                     .addComponent(jLabel2))
+                 .addGap(15, 15, 15)
+                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                     .addComponent(password_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                     .addComponent(jLabel3)
+                     .addComponent(goodsNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                     .addComponent(search_btn))
+                 .addGap(18, 18, 18)
+                 .addComponent(login_btn)
+                 .addGap(55, 55, 55)
+                 .addComponent(feedback_text, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+         );
+
+         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+         getContentPane().setLayout(layout);
+         layout.setHorizontalGroup(
+             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+             .addGroup(layout.createSequentialGroup()
+                 .addComponent(contentPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                 .addGap(0, 0, Short.MAX_VALUE))
+         );
+         layout.setVerticalGroup(
+             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+             .addComponent(contentPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+         );
+
+         pack();
+	}
+
+	
+    private void createDialog(ResultMessage msg) {
+    	this.feedback_text.setText(ResultMessage.toFriendlyString(msg));
+	}
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -206,10 +259,9 @@ public class MainFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-       
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -217,14 +269,17 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField account_text,goodsNum_text,password_text;
-    private javax.swing.JButton search_btn,login_btn;
-    private javax.swing.JLabel jLabel1,jLabel2,jLabel3;
-    private final String password="密码",goodsNum="输入订单号10位",account="账号";
+    private JTextField account_text,password_text,feedback_text,goodsNum_text;
+    private final String standard_password="密码",standard_goodsNum="输入订单号10位",standard_account="账号";
+    private String	password,goodsNum,account;
+    private JButton search_btn,login_btn;
+    private JLabel jLabel1;
+    private JLabel jLabel2;
+    private JLabel jLabel3;
+    private JPanel contentPane;
+    private GoodsVO vo;
     private GoodsCheckValidBLService ctr_checkValid;
     private GoodsFindBLService ctr_find;
-    private GoodsVO vo;
     // End of variables declaration//GEN-END:variables
 }

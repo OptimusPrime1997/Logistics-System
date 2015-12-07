@@ -26,22 +26,48 @@ public class VehicleData extends UnicastRemoteObject implements
 	public VehicleData() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
+		d = new DataUtility();
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public ResultMessage insertVehicle(VehiclePO po) throws IOException {
 		// TODO Auto-generated method stub
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		assert (d != null) : ("DataUtility d 未实例化");
+
 		print();
-		if (d.save(po, path) == ResultMessage.FAILED) {
-			return ResultMessage.FAILED;
+		if (d != null) {
+			if (d.save(po, path) == ResultMessage.FAILED) {
+				return ResultMessage.FAILED;
+			} else {
+				return ResultMessage.SUCCESS;
+			}
 		} else {
-			return ResultMessage.SUCCESS;
+			return ResultMessage.FAILED;
 		}
 
 	}
 
 	@Override
-	public ResultMessage updateVehicle(VehiclePO po) throws ClassNotFoundException, IOException {
+	public ResultMessage updateVehicle(VehiclePO po)
+			throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO = false;
@@ -69,7 +95,8 @@ public class VehicleData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ResultMessage deleteVehicle(VehiclePO po) throws IOException, ClassNotFoundException {
+	public ResultMessage deleteVehicle(VehiclePO po) throws IOException,
+			ClassNotFoundException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO = false;
@@ -97,7 +124,8 @@ public class VehicleData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ArrayList<VehiclePO> showVehicle() throws ClassNotFoundException, IOException {
+	public ArrayList<VehiclePO> showVehicle() throws ClassNotFoundException,
+			IOException {
 		// TODO Auto-generated method stub
 		print();
 		ArrayList<Object> objects = d.getAll(path);
