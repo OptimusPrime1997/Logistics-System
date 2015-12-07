@@ -103,7 +103,17 @@ public class DivisionChangePanel extends JFrame {
         oldBlocks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "oldblock", "Item 2", "Item 3", "Item 4" }));
         oldBlocks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                oldBlocksActionPerformed(evt);
+                try {
+					oldBlocksActionPerformed(evt);
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				} catch (RemoteException e) {
+					e.printStackTrace();
+				} catch (NotBoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
             }
         });
 
@@ -163,7 +173,11 @@ public class DivisionChangePanel extends JFrame {
         newDivisions.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08" }));
         newDivisions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newDivisionsActionPerformed(evt);
+                try {
+					newDivisionsActionPerformed(evt);
+				} catch (NotBoundException | IOException e) {
+					e.printStackTrace();
+				}
             }
         });
 
@@ -172,7 +186,11 @@ public class DivisionChangePanel extends JFrame {
         newBlocks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "newblock", "Item 2", "Item 3", "Item 4" }));
         newBlocks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newBlocksActionPerformed(evt);
+                try {
+					newBlocksActionPerformed(evt);
+				} catch (NotBoundException | IOException e) {
+					e.printStackTrace();
+				}
             }
         });
 
@@ -284,16 +302,29 @@ public class DivisionChangePanel extends JFrame {
     	this.dispose();
     }                                        
 
-    private void oldBlocksActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
+    private void oldBlocksActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
+    	//得到本仓库选中的区的所有VO
+    	int division = oldDivisions.getSelectedIndex()+1;	
+    	City desCity = FromIntToCity.toCity(division);
+    	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
+    	//得到本区所选小块的存在的所有位号
+    	int block = oldBlocks.getSelectedIndex()+1;    	
+    	ArrayList<Integer> result = new ArrayList<Integer>();
+    	for (StockDivisionVO vo : list) {
+    		if (vo.place<=(100*block)&&vo.place>=((block-1)*100+1)) {
+				result.add(vo.place);
+			}
+    		
+       	}
+    	//TODO 要在oldplaces中显示这些位号
     }                                          
 
     private void oldPlacesActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
+        // TODO 似乎没什么要写的
     }                                          
 
     private void newPlacesActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
+        // TODO 似乎没什么要写的
     }                                          
 
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -309,16 +340,17 @@ public class DivisionChangePanel extends JFrame {
     StockDivisionBLService s = ControllerFactoryImpl.getInstance().getStockDivisionController();
     
     private void oldDivisionsActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
-    	
+    	//得到本仓库选中的区的所有VO
     	int division = oldDivisions.getSelectedIndex()+1;	
     	City desCity = FromIntToCity.toCity(division);
     	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
-    	//得到中间参数小块号
+    	//得到中间参数小块号，布尔值为true的需要显示
     	boolean[] smallBlocks = new boolean[10];
     	
     	for (StockDivisionVO vo : list) {
     		int i = vo.place/100 ;
     		smallBlocks[i] = true;
+    		//判断是不是所有的小块都满了，如果全满，则停止遍历
     		boolean full = true;
     		for(int m = 0; m < 10; m++) {
     			if (smallBlocks[m] == false) {
@@ -330,23 +362,57 @@ public class DivisionChangePanel extends JFrame {
 				break;
 			}
     	}
-    	ArrayList<Integer> smallnums = new ArrayList<Integer>();
-    	for (int i = 0; i < smallBlocks.length; i++) {
-			if (smallBlocks[i] == true) {
-				smallnums.add(i+1);
+    	
+    	
+    	//TODO   要在oldblocks下拉框中显示出这些小块
+    	
+    }                                          
+
+    private void newDivisionsActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
+    	//得到本仓库选中的区的所有VO
+    	int division = newDivisions.getSelectedIndex()+1;	
+    	City desCity = FromIntToCity.toCity(division);
+    	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
+    	//得到空闲的中间参数小块号
+    	boolean[] smallBlocks = new boolean[10];
+    	//得到每个块中的库存数量
+    	int[] blocks = new int[10];
+    	for (StockDivisionVO vo : list) {
+    		int i = vo.place/100 ;
+    		blocks[i]+=blocks[i];
+    	
+    	}
+    	for (int i = 0; i < blocks.length; i++) {
+			if (blocks[i] < 1000) {
+				smallBlocks[i] = true;
 			}
 		}
     	
-    	//TODO   要显示出这些小块
     	
+    	//TODO   要在newblocks下拉框中显示出这些小块
     }                                          
 
-    private void newDivisionsActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
-    }                                          
-
-    private void newBlocksActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
+    private void newBlocksActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
+    	//得到本仓库选中的区的所有VO
+    	int division = oldDivisions.getSelectedIndex()+1;	
+    	City desCity = FromIntToCity.toCity(division);
+    	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
+    	//初始places均为0，然后使得选中的小块中的位号全为1，然后再
+    	//把vo list中所有的位号全置为0，这样得到最后的所有位号为1的即为需要显示的位号
+    	//TODO 注意，其中places的下标与真实显示的位号相差1
+    	
+    	int[] places = new int[1000];
+    	int block = oldBlocks.getSelectedIndex()+1;    	
+    	
+    	for (int i = (block-1)*100; i < block*100; i++) {
+			places[i] = 1;
+		}
+    	for (StockDivisionVO vo : list) {
+			places[vo.place-1] = 0;
+		}
+    	
+    	//TODO 在newplaces里面显示位号
+    	
     }                                          
 
 

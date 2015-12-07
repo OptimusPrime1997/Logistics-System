@@ -9,7 +9,7 @@ package ui.financialstaffui;
  *
  * @author 1
  */
-public class FinancialStaffJFrame extends javax.swing.JFrame {
+public class FinancialStaffJFrame1 extends javax.swing.JFrame {
 
     /**
 	 * 
@@ -18,7 +18,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	/**
      * Creates new form FinancialStaffJFrame
      */
-    public FinancialStaffJFrame() {
+    public FinancialStaffJFrame1() {
         initComponents();
     }
 

@@ -46,27 +46,29 @@ public class Institutionbl {
 		manageVOPO.addLog(LogType.INSTITUTION_MANAGEMENT);
 		if (institutionDataService != null) {
 			try {
-				// ArrayList<InstitutionPO> pos = institutionDataService.show();
-				// if (pos != null) {
-				// for (Iterator<InstitutionPO> t = pos.iterator();
-				// t.hasNext();) {
-				// if (t.next().getInstitutionNum().equals(vo.institutionNum)) {
-				// return ResultMessage.OVERRIDE_DATA;
-				// }
-				// }
-				// }
-				institutionDataService.insert(manageVOPO.voToPO(vo));
+				ArrayList<InstitutionPO> pos = institutionDataService.show();
+				if (pos != null) {
+					for (Iterator<InstitutionPO> t = pos.iterator(); t
+							.hasNext();) {
+						if (t.next().getInstitutionNum()
+								.equals(vo.institutionNum)) {
+							return ResultMessage.EXIST;
+						}
+					}
+				}
+				ResultMessage rmsg = institutionDataService.insert(manageVOPO
+						.voToPO(vo));
+				ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("存储文件出错");
 				return ResultMessage.IOFAILED;
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("系统程序错误");
 			}
-			// catch (ClassNotFoundException e) {
-			// // TODO Auto-generated catch block
-			// e.printStackTrace();
-			// System.out.println("系统程序错误");
-			// }
 			return ResultMessage.SUCCESS;
 		} else
 			return ResultMessage.FAILED;
@@ -79,7 +81,8 @@ public class Institutionbl {
 			if (check(vo) == ResultMessage.VALID) {
 				InstitutionPO po = manageVOPO.voToPO(vo);
 				try {
-					institutionDataService.update(po);
+					ResultMessage rmsg = institutionDataService.update(po);
+					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -106,7 +109,8 @@ public class Institutionbl {
 		if (institutionDataService != null) {
 			InstitutionPO po = manageVOPO.voToPO(VO);
 			try {
-				institutionDataService.delete(po);
+				ResultMessage rmsg = institutionDataService.delete(po);
+				ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

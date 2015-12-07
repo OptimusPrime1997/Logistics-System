@@ -41,14 +41,18 @@ import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.controllerfactoryblservice.ControllerFactoryblService;
 import blservice.managementblservice.accountblservice.AccountBLService;
 import blservice.managementblservice.constblservice.ConstBLService;
+import blservice.managementblservice.salarypolicyblservice.SalaryPolicyBLService;
 import util.InputCheck;
 import util.enumData.Authority;
 import util.enumData.ModifyState;
 import util.enumData.ResultMessage;
+import util.enumData.SalaryPolicy;
 import util.enumData.Sex;
 import VO.ManagementVO.AccountVO;
 import VO.ManagementVO.ConstVO;
 import VO.ManagementVO.ConstVOPlus;
+import VO.ManagementVO.SalaryPolicyVO;
+import VO.ManagementVO.SalaryPolicyVOPlus;
 
 /**
  *
@@ -63,7 +67,19 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	public ManagerJFrame1() {
 		initComponents();
 	}
+	private void setSalaryPolicyVOs() {
+		// TODO Auto-generated method stub
 
+		salaryPolicyVOPlus = new ArrayList<SalaryPolicyVOPlus>();
+		SalaryPolicyVO vo = null;
+		SalaryPolicyVOPlus voplus = null;
+		for (Iterator<SalaryPolicyVO> t = getSalaryPolicyVOs().iterator(); t.hasNext();) {
+			vo = t.next();
+			voplus = new SalaryPolicyVOPlus(vo, ModifyState.SYNC);
+			salaryPolicyVOPlus.add(voplus);
+		}
+		salaryPolicyVOPlus.sort(null);
+	}
 	private void setConstVOs() {
 		// TODO Auto-generated method stub
 
@@ -2277,49 +2293,50 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	private void submitConstjButtonActionPerformed(
 			java.awt.event.ActionEvent evt) {// GEN-FIRST:event_submitConstjButtonActionPerformed
 		// TODO add your handling code here:
-//		if (evt.getSource() == submitConstjButton) {
-//			ConstVOPlus voplus = null;
-//			boolean needSubmit = false;
-//			ResultMessage rmsg = null;
-//			for (Iterator<ConstVOPlus> t = constVOPlus.iterator(); t.hasNext();) {
-//				voplus = t.next();
-//				rmsg = null;
-//				if (voplus.isModify == ModifyState.CHANGED) {
-//					needSubmit = true;
-//					try {
-//						rmsg = constblController.update(voplus.getConstVO());
-//					} catch (RemoteException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//						setState("远程连接错误", DISPLAY_TIME);
-//					}
-//				} else if (voplus.isModify == ModifyState.NEW) {
-//					needSubmit = true;
-//					try {
-//						rmsg = constblController.insert(voplus.getConstVO());
-//						if (rmsg == ResultMessage.OVERRIDE_DATA) {
-//							Object[] options = { "取消", "覆盖" };
-//							int result = JOptionPane.showOptionDialog(null,
-//									"您确定要覆盖" + voplus.twoCities + "的数据？",
-//									"是否覆数据", JOptionPane.DEFAULT_OPTION,
-//									JOptionPane.QUESTION_MESSAGE, null,
-//									options, options[0]);
-//							if (result == JOptionPane.NO_OPTION) {
-//								rmsg = constblController.update(voplus
-//										.getConstVO());
-//							}
-//						}
-//					} catch (RemoteException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//				}
-//				setState(ResultMessage.toFriendlyString(rmsg), DISPLAY_TIME);
-//			}
-//			if (needSubmit == false) {
-//				setState("您未修改或新增，不需要提交", DISPLAY_TIME);
-//			}
-//		}
+		// if (evt.getSource() == submitConstjButton) {
+		// ConstVOPlus voplus = null;
+		// boolean needSubmit = false;
+		// ResultMessage rmsg = null;
+		// for (Iterator<ConstVOPlus> t = constVOPlus.iterator(); t.hasNext();)
+		// {
+		// voplus = t.next();
+		// rmsg = null;
+		// if (voplus.isModify == ModifyState.CHANGED) {
+		// needSubmit = true;
+		// try {
+		// rmsg = constblController.update(voplus.getConstVO());
+		// } catch (RemoteException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// setState("远程连接错误", DISPLAY_TIME);
+		// }
+		// } else if (voplus.isModify == ModifyState.NEW) {
+		// needSubmit = true;
+		// try {
+		// rmsg = constblController.insert(voplus.getConstVO());
+		// if (rmsg == ResultMessage.OVERRIDE_DATA) {
+		// Object[] options = { "取消", "覆盖" };
+		// int result = JOptionPane.showOptionDialog(null,
+		// "您确定要覆盖" + voplus.twoCities + "的数据？",
+		// "是否覆数据", JOptionPane.DEFAULT_OPTION,
+		// JOptionPane.QUESTION_MESSAGE, null,
+		// options, options[0]);
+		// if (result == JOptionPane.NO_OPTION) {
+		// rmsg = constblController.update(voplus
+		// .getConstVO());
+		// }
+		// }
+		// } catch (RemoteException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// }
+		// setState(ResultMessage.toFriendlyString(rmsg), DISPLAY_TIME);
+		// }
+		// if (needSubmit == false) {
+		// setState("您未修改或新增，不需要提交", DISPLAY_TIME);
+		// }
+		// }
 	}// GEN-LAST:event_submitConstjButtonActionPerformed
 
 	/**
@@ -2362,7 +2379,34 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		assert (vos != null) : ("远程获取账户信息失败");
 		return vos;
 	}
-
+	private ArrayList<SalaryPolicyVO> getSalaryPolicyVOs() {
+		// TODO Auto-generated method stub
+		ArrayList<SalaryPolicyVO> vos = null;
+		try {
+			System.out.println(salaryPolicyblController.getClass().getName());
+			vos = salaryPolicyblController.show();
+			if (vos != null) {
+				vos.sort(null);
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("远程连接失败");
+			setState("远程连接失败", DISPLAY_TIME);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("程序错误");
+			setState("程序错误", DISPLAY_TIME);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("读取文件失败");
+			setState("读取文件失败", DISPLAY_TIME);
+		}
+		assert (vos != null) : ("远程获取常量信息失败");
+		return vos;
+	}
 	private ArrayList<ConstVO> getConstVOs() {
 		// TODO Auto-generated method stub
 		ArrayList<ConstVO> vos = null;
@@ -2778,6 +2822,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	// bl相关变量声明
 	private ArrayList<AccountVO> accountVOs = null;
 	private ArrayList<ConstVOPlus> constVOPlus = null;
+	private ArrayList<SalaryPolicyVOPlus> salaryPolicyVOPlus = null;
 	private ControllerFactoryblService controllerFactoryblService = ControllerFactoryImpl
 			.getInstance();
 	private final static long DISPLAY_TIME = 5;
@@ -2785,6 +2830,8 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 			.getAccountController();
 	private ConstBLService constblController = controllerFactoryblService
 			.getConstController();
+	private SalaryPolicyBLService salaryPolicyblController = controllerFactoryblService
+			.getSalaryPolicyController();
 	private final ScheduledExecutorService scheduler = Executors
 			.newScheduledThreadPool(1);
 

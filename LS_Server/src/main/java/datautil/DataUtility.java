@@ -44,7 +44,6 @@ public class DataUtility implements Serializable {
 		}
 		is.close();
 		return objects;
-
 	}
 
 	public void clear(String add) throws IOException {
