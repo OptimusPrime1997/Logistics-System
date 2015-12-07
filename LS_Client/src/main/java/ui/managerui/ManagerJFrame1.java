@@ -67,22 +67,23 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	public ManagerJFrame1() {
 		initComponents();
 	}
+
 	private void setSalaryPolicyVOs() {
 		// TODO Auto-generated method stub
-
 		salaryPolicyVOPlus = new ArrayList<SalaryPolicyVOPlus>();
 		SalaryPolicyVO vo = null;
 		SalaryPolicyVOPlus voplus = null;
-		for (Iterator<SalaryPolicyVO> t = getSalaryPolicyVOs().iterator(); t.hasNext();) {
+		ArrayList<SalaryPolicyVO> vos = getSalaryPolicyVOs();
+		for (Iterator<SalaryPolicyVO> t = vos.iterator(); t.hasNext();) {
 			vo = t.next();
 			voplus = new SalaryPolicyVOPlus(vo, ModifyState.SYNC);
 			salaryPolicyVOPlus.add(voplus);
 		}
 		salaryPolicyVOPlus.sort(null);
 	}
+
 	private void setConstVOs() {
 		// TODO Auto-generated method stub
-
 		constVOPlus = new ArrayList<ConstVOPlus>();
 		ConstVO vo = null;
 		ConstVOPlus voplus = null;
@@ -111,6 +112,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	private void initComponents() {
 		setAccountVOs();
 		setConstVOs();
+		setSalaryPolicyVOs();
 		initialVariables();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -438,9 +440,10 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 			Class[] types = new Class[] { java.lang.String.class,
 					java.lang.String.class, java.lang.String.class,
 					java.lang.String.class };
-			// public Class getColumnClass(int columnIndex) {
-			// return types[columnIndex];
-			// }
+
+			public Class getColumnClass(int columnIndex) {
+				return types[columnIndex];
+			}
 
 		});
 		logjTable.setGridColor(new java.awt.Color(0, 0, 0));
@@ -1654,49 +1657,21 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	 */
 	private void initialSalayPolicyjPanel() {
 		// TODO Auto-generated method stub
-		addSalaryPolicyjButton1.setText("提交");
-		addSalaryPolicyjButton1
+		submitSalaryPolicyjButton.setText("提交");
+		submitSalaryPolicyjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						addSalaryPolicyjButton1ActionPerformed(evt);
+						submitSalaryPolicyjButtonActionPerformed(evt);
 					}
 				});
 
-		salaryPolicyjTable1.setModel(new javax.swing.table.DefaultTableModel(
-				new Object[][] { { "快递员", "底薪加计件", new Integer(3000) },
-						{ null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null },
-						{ null, null, null } }, new String[] { "职位", "薪水策略",
-						"底薪" }) {
-			Class[] types = new Class[] { java.lang.String.class,
-					java.lang.String.class, java.lang.Integer.class };
+		initialSalaryPolicyJTable(salaryPolicyVOPlus, 0);
 
-			// public Class getColumnClass(int columnIndex) {
-			// return types[columnIndex];
-			// }
-		});
-		salaryPolicyjTable1.setGridColor(new java.awt.Color(0, 0, 0));
-		salaryPolicyjTable1.setPreferredSize(new java.awt.Dimension(300, 630));
-		salaryPolicyjTable1.getTableHeader().setReorderingAllowed(false);
-		jScrollPane5.setViewportView(salaryPolicyjTable1);
-
-		addSalaryPolicyjButton2.setText("添加薪水策略");
-		addSalaryPolicyjButton2
+		addSalaryPolicyjButton.setText("添加薪水策略");
+		addSalaryPolicyjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						addSalaryPolicyjButton2ActionPerformed(evt);
+						addSalaryPolicyjButtonActionPerformed(evt);
 					}
 				});
 
@@ -1744,12 +1719,12 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 																salaryPolicyjPane1Layout
 																		.createSequentialGroup()
 																		.addComponent(
-																				addSalaryPolicyjButton2)
+																				addSalaryPolicyjButton)
 																		.addGap(46,
 																				46,
 																				46)
 																		.addComponent(
-																				addSalaryPolicyjButton1)
+																				submitSalaryPolicyjButton)
 																		.addGap(393,
 																				393,
 																				393))
@@ -1821,9 +1796,9 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 														.createParallelGroup(
 																javax.swing.GroupLayout.Alignment.BASELINE)
 														.addComponent(
-																addSalaryPolicyjButton1)
+																submitSalaryPolicyjButton)
 														.addComponent(
-																addSalaryPolicyjButton2))
+																addSalaryPolicyjButton))
 										.addGap(19, 19, 19)));
 
 		managerjTabbedPane.addTab("薪水策略", salaryPolicyjPane1);
@@ -1952,9 +1927,29 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	private void initialVariables() {
 		// TODO Auto-generated method stub
 		// 增加变量
-		sexjComboBox = new JComboBox<String>();
-		sexjComboBox.addItem("男");
-		sexjComboBox.addItem("女");
+		sexjComboBox = new JComboBox<Sex>();
+		sexjComboBox.addItem(Sex.Sex_MALE);
+		sexjComboBox.addItem(Sex.Sex_FAMALE);
+
+		authorityjComboBox = new JComboBox<Authority>();
+		Authority authority = null;
+		for (int i = 1; i <= Authority.PERSON_NUM; i++) {
+			authority = null;
+			authority = Authority.getAuthority(i);
+			if (authority != null) {
+				authorityjComboBox.addItem(authority);
+			}
+		}
+
+		salaryPolicyjComboBox = new JComboBox<SalaryPolicy>();
+		SalaryPolicy salaryPolicy = null;
+		for (int i = 0; i < SalaryPolicy.SALARYPOLICY_NUM; i++) {
+			salaryPolicy = null;
+			salaryPolicy = SalaryPolicy.getSalaryPolicy(i);
+			if (salaryPolicy != null) {
+				salaryPolicyjComboBox.addItem(salaryPolicy);
+			}
+		}
 
 		managerjPanel = new javax.swing.JPanel();
 		managerjTabbedPane = new javax.swing.JTabbedPane();
@@ -1979,10 +1974,10 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		jSeparator8 = new javax.swing.JSeparator();
 		jSeparator9 = new javax.swing.JSeparator();
 		jButton6 = new javax.swing.JButton();
-		addSalaryPolicyjButton1 = new javax.swing.JButton();
+		submitSalaryPolicyjButton = new javax.swing.JButton();
 		jScrollPane5 = new javax.swing.JScrollPane();
-		salaryPolicyjTable1 = new javax.swing.JTable();
-		addSalaryPolicyjButton2 = new javax.swing.JButton();
+		salaryPolicyjTable = new javax.swing.JTable();
+		addSalaryPolicyjButton = new javax.swing.JButton();
 		salaryPolicyTitlejLabel = new javax.swing.JLabel();
 		checkjPane = new javax.swing.JPanel();
 		jLabel16 = new javax.swing.JLabel();
@@ -2132,15 +2127,10 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		// TODO add your handling code here:
 	}// GEN-LAST:event_formEMonthjComboBoxActionPerformed
 
-	private void addSalaryPolicyjButton1ActionPerformed(
+	private void submitSalaryPolicyjButtonActionPerformed(
 			java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addSalaryPolicyjButton1ActionPerformed
 		// TODO add your handling code here:
 	}// GEN-LAST:event_addSalaryPolicyjButton1ActionPerformed
-
-	private void addSalaryPolicyjButton2ActionPerformed(
-			java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addSalaryPolicyjButton2ActionPerformed
-		// TODO add your handling code here:
-	}// GEN-LAST:event_addSalaryPolicyjButton2ActionPerformed
 
 	/**
 	 * findAccountNumJButton的监听方法 查找输入的accountnum
@@ -2340,6 +2330,22 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	}// GEN-LAST:event_submitConstjButtonActionPerformed
 
 	/**
+	 * 监听添加薪水策略按钮
+	 * 
+	 * @param evt
+	 */
+	private void addSalaryPolicyjButtonActionPerformed(
+			java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addSalaryPolicyjButton2ActionPerformed
+		// TODO add your handling code here:
+		if (evt.getSource() == addSalaryPolicyjButton) {
+			salaryPolicyVOPlus.add(new SalaryPolicyVOPlus(null, null, 0,
+					ModifyState.NEW));
+			initialSalaryPolicyJTable(salaryPolicyVOPlus,
+					salaryPolicyVOPlus.size() - 1);
+		}
+	}// GEN-LAST:event_addSalaryPolicyjButton2ActionPerformed
+
+	/**
 	 * 监听“添加常量按钮”
 	 * 
 	 * @param evt
@@ -2379,11 +2385,11 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		assert (vos != null) : ("远程获取账户信息失败");
 		return vos;
 	}
+
 	private ArrayList<SalaryPolicyVO> getSalaryPolicyVOs() {
 		// TODO Auto-generated method stub
 		ArrayList<SalaryPolicyVO> vos = null;
 		try {
-			System.out.println(salaryPolicyblController.getClass().getName());
 			vos = salaryPolicyblController.show();
 			if (vos != null) {
 				vos.sort(null);
@@ -2407,6 +2413,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		assert (vos != null) : ("远程获取常量信息失败");
 		return vos;
 	}
+
 	private ArrayList<ConstVO> getConstVOs() {
 		// TODO Auto-generated method stub
 		ArrayList<ConstVO> vos = null;
@@ -2485,6 +2492,285 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	}
 
 	/**
+	 * 初始化薪水策略表
+	 * 
+	 * @param vos
+	 * @param n
+	 *            初始化后被选中的行
+	 */
+	/**
+	 * @param vos
+	 * @param n
+	 */
+	/**
+	 * @param vos
+	 * @param n
+	 */
+	private void initialSalaryPolicyJTable(ArrayList<SalaryPolicyVOPlus> vos,
+			int n) {
+		// TODO Auto-generated method stub
+		assert (vos != null) : ("表格获得的薪水策略信息为空");
+		Object[][] salaryPolicyObjects = null;
+		salaryPolicyObjects = new Object[vos.size()][3];
+		int i = 0;
+		for (java.util.Iterator<SalaryPolicyVOPlus> t = vos.iterator(); t
+				.hasNext(); i++) {
+			SalaryPolicyVO vo = t.next();
+			if (vo != null&&vo.salaryPolicy!=null&&authorityjComboBox!=null) {
+				salaryPolicyObjects[i][0] = authorityjComboBox
+						.getItemAt(vo.salaryPolicy.ordinal());
+				salaryPolicyObjects[i][1] = salaryPolicyjComboBox
+						.getItemAt(vo.salaryPolicy.ordinal());
+				salaryPolicyObjects[i][2] = vo.value;
+			}
+		}
+
+		salaryPolicyjTable.setModel(new javax.swing.table.DefaultTableModel(
+				salaryPolicyObjects, new String[] { "职位", "薪水策略", "内容" }) {
+			Class[] types = new Class[] { JComboBox.class, JComboBox.class,
+					java.lang.Double.class };
+			boolean[] canEdit = new boolean[] { true, true, true };
+
+			public Class getColumnClass(int columnIndex) {
+				return types[columnIndex];
+			}
+
+			public boolean isCellEditable(int rowIndex, int columnIndex) {
+				return canEdit[columnIndex];
+			}
+		});
+		// 添加jcombobox
+		salaryPolicyjTable.getColumnModel().getColumn(0)
+				.setCellEditor(new DefaultCellEditor(authorityjComboBox));
+		salaryPolicyjTable.getColumnModel().getColumn(1)
+				.setCellEditor(new DefaultCellEditor(salaryPolicyjComboBox));
+
+		salaryPolicyjTable.setGridColor(new java.awt.Color(0, 0, 0));
+		salaryPolicyjTable.setPreferredSize(new java.awt.Dimension(300, 630));
+		salaryPolicyjTable.getTableHeader().setReorderingAllowed(false);
+		jScrollPane5.setViewportView(salaryPolicyjTable);
+
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 这句和上句作用一样
+		salaryPolicyjTable.setDefaultRenderer(Object.class, tcr);
+
+		((DefaultTableCellRenderer) salaryPolicyjTable.getTableHeader()
+				.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
+		salaryPolicyjTable.setRowSelectionInterval(n, n);// 设置哪几行被选中
+		final JPopupMenu salaryPolicyjPop = new JPopupMenu();
+		final JMenuItem salaryPolicySubmitjItem = new JMenuItem("提交");
+		final JMenuItem salaryPolicyDeljItem = new JMenuItem("删除");
+		salaryPolicySubmitjItem.addMouseListener(/**
+		 * @author 1
+		 *         监听salaryPolicy的弹出菜单中的“提交”
+		 */
+		new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				if (e.getButton() == MouseEvent.BUTTON1) {
+					ResultMessage rmsg = null;
+					int n = salaryPolicyjTable.getSelectedRow();
+					SalaryPolicyVOPlus voPlus = salaryPolicyVOPlus.get(n);
+					ModifyState state = voPlus.isModify;
+					SalaryPolicyVO v = getViewSalaryPolicyVO(n);
+					if (state == ModifyState.NEW) {
+						try {
+							rmsg = salaryPolicyblController.insert(v);
+							setState(ResultMessage.toFriendlyString(rmsg),
+									DISPLAY_TIME);
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+							setState(REMOTEFAILD, DISPLAY_TIME);
+						}
+						salaryPolicyVOPlus.remove(n);
+						salaryPolicyVOPlus.add(n, new SalaryPolicyVOPlus(v,
+								ModifyState.SYNC));
+					} else {
+						if (v.equals(voPlus.getSalaryPolicyVO())) {
+							setState("您未进行修改！", DISPLAY_TIME);
+						} else {
+							try {
+								rmsg = salaryPolicyblController.update(v);
+								setState(ResultMessage.toFriendlyString(rmsg),
+										DISPLAY_TIME);
+							} catch (RemoteException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+								setState(REMOTEFAILD, DISPLAY_TIME);
+							}
+						}
+					}
+				}
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+		});
+		salaryPolicyDeljItem.addMouseListener(/**
+		 * @author 1
+		 *         监听SalaryPolicyjTable上弹出菜单的“删除”
+		 */
+		new MouseListener() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				if (e.getButton() == MouseEvent.BUTTON1) {
+					int tempN = 0;
+					ResultMessage rmsg = null;
+					int n = salaryPolicyjTable.getSelectedRow();
+					SalaryPolicyVOPlus voPlus = salaryPolicyVOPlus.get(n);
+					ModifyState state = voPlus.isModify;
+					if (state == ModifyState.NEW) {
+						salaryPolicyVOPlus.remove(n);
+						if (n == 0) {
+							tempN = 0;
+						} else {
+							tempN = n - 1;
+						}
+						initialSalaryPolicyJTable(salaryPolicyVOPlus, tempN);
+					} else {
+						Object[] options = { "取消", "删除" };
+						int result = JOptionPane.showOptionDialog(null,
+								"您确定要删除系统该薪水策略？", "是否删除",
+								JOptionPane.DEFAULT_OPTION,
+								JOptionPane.QUESTION_MESSAGE, null, options,
+								options[0]);
+						if (result == JOptionPane.NO_OPTION) {
+							try {
+								rmsg = salaryPolicyblController.delete(voPlus
+										.getSalaryPolicyVO());
+								if (rmsg == ResultMessage.SUCCESS) {
+									setState("删除成功:)", DISPLAY_TIME);
+									setSalaryPolicyVOs();
+									tempN = 0;
+									if (n == 0) {
+										tempN = 0;
+									} else {
+										tempN = n - 1;
+									}
+									initialSalaryPolicyJTable(
+											salaryPolicyVOPlus, tempN);
+								} else {
+									setState(ResultMessage
+											.toFriendlyString(rmsg),
+											DISPLAY_TIME);
+								}
+							} catch (RemoteException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+								setState(REMOTEFAILD, DISPLAY_TIME);
+							}
+						}
+					}
+				}
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
+		;
+		salaryPolicyjPop.add(salaryPolicySubmitjItem);
+		salaryPolicyjPop.add(salaryPolicyDeljItem);
+		MouseInputListener mil = new MouseInputListener() {
+
+			public void mouseClicked(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mousePressed(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				processEvent(e);
+				if ((e.getModifiers() & MouseEvent.BUTTON3_MASK) != 0
+						&& !e.isControlDown() && !e.isShiftDown()) {
+					salaryPolicyjPop.show(salaryPolicyjTable, e.getX(),
+							e.getY());
+				}
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseDragged(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseMoved(MouseEvent e) {
+				processEvent(e);
+			}
+
+			private void processEvent(MouseEvent e) {
+				if ((e.getModifiers() & MouseEvent.BUTTON3_MASK) != 0) {
+					int modifiers = e.getModifiers();
+					modifiers -= MouseEvent.BUTTON3_MASK;
+					modifiers |= MouseEvent.BUTTON1_MASK;
+					MouseEvent ne = new MouseEvent(e.getComponent(), e.getID(),
+							e.getWhen(), modifiers, e.getX(), e.getY(),
+							e.getClickCount(), false);
+					salaryPolicyjTable.dispatchEvent(ne);
+				}
+			}
+		};
+		salaryPolicyjTable.addMouseListener(mil);
+		salaryPolicyjTable.putClientProperty("terminateEditOnFocusLost",
+				Boolean.TRUE);
+
+	}
+
+	/**
 	 * 初始化常量表
 	 * 
 	 * @param vos
@@ -2494,7 +2780,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		constjTable.getTableHeader().setReorderingAllowed(false);
 		jScrollPane2.setViewportView(constjTable);
 
-		assert (vos != null) : ("表格获得的账户信息为空");
+		assert (vos != null) : ("表格获得的常量信息为空");
 		Object[][] constObjects = null;
 		constObjects = new Object[vos.size()][4];
 		int i = 0;
@@ -2719,6 +3005,36 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		constjTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
 	}
 
+	/**
+	 * 得到当前表格第n行的SalaryPolicyVO
+	 * 
+	 * @param n
+	 * @return
+	 */
+	protected SalaryPolicyVO getViewSalaryPolicyVO(int n) {
+		// TODO Auto-generated method stub
+		Authority authority = null;
+		SalaryPolicy salaryPolicy = null;
+		double value = 0;
+		try {
+			authority = Authority.toAuthority((String) constjTable.getValueAt(
+					n, 0));
+			salaryPolicy = SalaryPolicy.toSalaryPolicy((String) constjTable
+					.getValueAt(n, 1));
+			value = (double) constjTable.getValueAt(n, 2);
+		} catch (ClassCastException e) {
+			e.printStackTrace();
+			setState("您输入的值类型不正确：(", DISPLAY_TIME);
+		}
+		return new SalaryPolicyVO(authority, salaryPolicy, value);
+	}
+
+	/**
+	 * 得到当前表格第n行的ConstVO
+	 * 
+	 * @param n
+	 * @return
+	 */
 	private ConstVO getViewConstVO(int n) {
 		// TODO Auto-generated method stub
 		String[] cities = new String[2];
@@ -2836,7 +3152,12 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 			.newScheduledThreadPool(1);
 
 	// 界面变量声明
-	private JComboBox<String> sexjComboBox;
+	/**
+	 * 性别下拉框
+	 */
+	private JComboBox<Sex> sexjComboBox;
+	private JComboBox<Authority> authorityjComboBox;
+	private JComboBox<SalaryPolicy> salaryPolicyjComboBox;
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JTextField accountNamejTextField;
 	private javax.swing.JTextField accountNumjTextField;
@@ -2844,8 +3165,8 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	private javax.swing.JPanel accountjPanel;
 	private javax.swing.JButton addConstjButton;
 	private javax.swing.JButton addInstitutionjButton;
-	private javax.swing.JButton addSalaryPolicyjButton1;
-	private javax.swing.JButton addSalaryPolicyjButton2;
+	private javax.swing.JButton submitSalaryPolicyjButton;
+	private javax.swing.JButton addSalaryPolicyjButton;
 	private javax.swing.JPanel checkjPane;
 	private javax.swing.JLabel constTitlejLabel;
 	private javax.swing.JPanel constjPanel;
@@ -2925,7 +3246,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	private javax.swing.JButton profitFormjButton;
 	private javax.swing.JLabel salaryPolicyTitlejLabel;
 	private javax.swing.JPanel salaryPolicyjPane1;
-	private javax.swing.JTable salaryPolicyjTable1;
+	private javax.swing.JTable salaryPolicyjTable;
 	private javax.swing.JLabel statejLabel;
 	private javax.swing.JButton submitConstjButton;
 	private javax.swing.JButton submitInstitutionjButton;

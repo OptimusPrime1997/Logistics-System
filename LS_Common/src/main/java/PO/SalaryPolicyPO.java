@@ -9,19 +9,19 @@ public class SalaryPolicyPO implements Serializable, Comparable<SalaryPolicyPO> 
 	public final static long serialVersionUID = 1L;
 	private Authority authority;
 	private SalaryPolicy salaryPolicy;
-	private double salaryAmount;
+	private double value;
 
 	/**
 	 * @param authority
 	 * @param salaryPolicy
-	 * @param salaryAmount
+	 * @param value
 	 */
 	public SalaryPolicyPO(Authority authority, SalaryPolicy salaryPolicy,
-			double salaryAmount) {
+			double value) {
 		// TODO Auto-generated constructor stub
 		this.authority = authority;
 		this.salaryPolicy = salaryPolicy;
-		this.salaryAmount = salaryAmount;
+		this.value = value;
 
 	}
 
@@ -29,8 +29,8 @@ public class SalaryPolicyPO implements Serializable, Comparable<SalaryPolicyPO> 
 		this.authority = authority;
 	}
 
-	public void setSalaryAmount(double salaryAmount) {
-		this.salaryAmount = salaryAmount;
+	public void setValue(double value) {
+		this.value = value;
 	}
 
 	public SalaryPolicy getSalaryPolicy() {
@@ -41,8 +41,8 @@ public class SalaryPolicyPO implements Serializable, Comparable<SalaryPolicyPO> 
 		this.salaryPolicy = salaryPolicy;
 	}
 
-	public double getSalaryAmount() {
-		return salaryAmount;
+	public double getValue() {
+		return value;
 	}
 
 	public Authority getAuthority() {
@@ -52,7 +52,7 @@ public class SalaryPolicyPO implements Serializable, Comparable<SalaryPolicyPO> 
 	@Override
 	public int compareTo(SalaryPolicyPO o) {
 		// TODO Auto-generated method stub
-		return Double.compare(salaryAmount, o.getSalaryAmount());
+		return Double.compare(value, o.getValue());
 	}
 
 }

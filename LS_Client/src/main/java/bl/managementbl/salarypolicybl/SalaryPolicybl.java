@@ -171,7 +171,7 @@ public class SalaryPolicybl {
 	 * @return
 	 */
 	public static ResultMessage check(SalaryPolicyVO vo) {
-		if (vo.salaryAmount >= 0.0) {
+		if (vo.value >= 0.0) {
 			return ResultMessage.VALID;
 		} else {
 			return ResultMessage.INPUTNUM_MUST_BE_POSITIVE;

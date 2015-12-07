@@ -45,14 +45,14 @@ public class Accountbl {
 		if (accountDataService != null) {
 			if (check(vo) == ResultMessage.VALID) {
 				try {
-//					ArrayList<AccountPO> pos = accountDataService.show();
-//					int num = 0;
-//					for (AccountPO p : pos) {
-//						if (p.getAuthority() == vo.authority)
-//							num++;
-//					}
-//					vo.accountNum = vo.institutionNum
-//							+ Authority.value(vo.authority) + "00" + (num + 1);
+					ArrayList<AccountPO> pos = accountDataService.show();
+					int num = 0;
+					for (AccountPO p : pos) {
+						if (p.getAuthority() == vo.authority)
+							num++;
+					}
+					vo.accountNum = vo.institutionNum
+							+ Authority.value(vo.authority) + "00" + (num + 1);
 					ResultMessage rmsg = accountDataService.insert(manageVOPO
 							.voToPO(vo));
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);

@@ -71,7 +71,7 @@ public class ManageVOPO {
 
 	public SalaryPolicyPO voToPO(SalaryPolicyVO vo) {
 		return new SalaryPolicyPO(vo.authority, vo.salaryPolicy,
-				vo.salaryAmount);
+				vo.value);
 	}
 
 	public DriverPO voToPO(DriverVO vo) {
@@ -107,7 +107,7 @@ public class ManageVOPO {
 
 	public SalaryPolicyVO poToVO(SalaryPolicyPO po) {
 		return new SalaryPolicyVO(po.getAuthority(), po.getSalaryPolicy(),
-				po.getSalaryAmount());
+				po.getValue());
 	}
 
 	public DriverVO poToVO(DriverPO po) {

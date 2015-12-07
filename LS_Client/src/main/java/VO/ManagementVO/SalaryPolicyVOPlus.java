@@ -13,10 +13,10 @@ public class SalaryPolicyVOPlus extends SalaryPolicyVO {
 		this.isModify=isModify;
 	}
 	public SalaryPolicyVOPlus(SalaryPolicyVO v,ModifyState isModify){
-		super(v.authority, v.salaryPolicy, v.salaryAmount);
+		super(v.authority, v.salaryPolicy, v.value);
 		this.isModify=isModify;
 	}
 public SalaryPolicyVO getSalaryPolicyVO(){
-	return new SalaryPolicyVO(authority, salaryPolicy, salaryAmount);
+	return new SalaryPolicyVO(authority, salaryPolicy, value);
 }
 }
