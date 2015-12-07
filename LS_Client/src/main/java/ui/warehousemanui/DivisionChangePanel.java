@@ -66,6 +66,8 @@ public class DivisionChangePanel extends JFrame {
     	 */
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+    	
+    	
         jLabel9 = new javax.swing.JLabel();
         exit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -119,7 +121,7 @@ public class DivisionChangePanel extends JFrame {
 
         jLabel3.setText("位号：");
 
-        oldPlaces.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "oldplace", "Item 2", "Item 3", "Item 4" }));
+        oldPlaces.setModel(new DefaultComboBoxModel(new String[] { "   "}));
         oldPlaces.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 oldPlacesActionPerformed(evt);
@@ -132,7 +134,7 @@ public class DivisionChangePanel extends JFrame {
 
         jLabel7.setText("位号：");
 
-        newPlaces.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "newplace", "Item 2", "Item 3", "Item 4" }));
+        newPlaces.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "   "}));
         newPlaces.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newPlacesActionPerformed(evt);
@@ -183,7 +185,7 @@ public class DivisionChangePanel extends JFrame {
 
         jLabel12.setText("块号：");
 
-        newBlocks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "newblock", "Item 2", "Item 3", "Item 4" }));
+        newBlocks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "  "}));
         newBlocks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
@@ -316,7 +318,13 @@ public class DivisionChangePanel extends JFrame {
 			}
     		
        	}
-    	//TODO 要在oldplaces中显示这些位号
+    	
+    	//在oldplaces中显示这些位号
+    	oldplacesList = new Integer[result.size()];
+    	for (int i = 0; i < result.size(); i++) {
+			oldplacesList[i] = result.get(i);
+		}
+    	oldPlaces.setModel(new DefaultComboBoxModel<Integer>(oldplacesList));
     }                                          
 
     private void oldPlacesActionPerformed(java.awt.event.ActionEvent evt) {                                           
@@ -329,6 +337,7 @@ public class DivisionChangePanel extends JFrame {
 
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO 得到所有的复选框中的值，然后判断
+    	
     }                                        
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -390,6 +399,22 @@ public class DivisionChangePanel extends JFrame {
     	
     	
     	//TODO   要在newblocks下拉框中显示出这些小块
+    	int placeSize = 0;
+      	
+    	ArrayList<Integer> result = new ArrayList<Integer>();
+    	for (int i = 0; i < smallBlocks.length; i++) {
+			if (smallBlocks[i] == true) {
+				placeSize++;
+				result.add(i+1);
+			}
+		}	
+    	
+    	newblocksList = new Integer[placeSize];
+    	for (int i = 0; i < newblocksList.length; i++) {
+			newblocksList[i] = result.get(i);
+		}
+    	
+    	newBlocks.setModel(new DefaultComboBoxModel<Integer>(newblocksList));
     }                                          
 
     private void newBlocksActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
@@ -397,10 +422,11 @@ public class DivisionChangePanel extends JFrame {
     	int division = oldDivisions.getSelectedIndex()+1;	
     	City desCity = FromIntToCity.toCity(division);
     	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
-    	//初始places均为0，然后使得选中的小块中的位号全为1，然后再
-    	//把vo list中所有的位号全置为0，这样得到最后的所有位号为1的即为需要显示的位号
-    	//TODO 注意，其中places的下标与真实显示的位号相差1
-    	
+    	/**
+    	 *    初始places均为0，然后使得选中的小块中的位号全为1，然后再
+    	 *  把vo list中所有的位号全置为0，这样得到最后的所有位号为1的即为需要显示的位号
+    	 *  注意，其中places的下标与真实显示的位号相差1
+    	 */
     	int[] places = new int[1000];
     	int block = oldBlocks.getSelectedIndex()+1;    	
     	
@@ -411,12 +437,33 @@ public class DivisionChangePanel extends JFrame {
 			places[vo.place-1] = 0;
 		}
     	
-    	//TODO 在newplaces里面显示位号
+    	//在newplaces里面显示位号
+	
     	
+    	int placeSize = 0;
+  	
+    	ArrayList<Integer> result = new ArrayList<Integer>();
+    	for (int i = 0; i < places.length; i++) {
+			if (places[i] == 1) {
+				placeSize++;
+				result.add(i+1);
+			}
+		}	
+    	
+    	newplacesList = new Integer[placeSize];
+    	for (int i = 0; i < newplacesList.length; i++) {
+			newplacesList[i] = result.get(i);
+		}
+    	
+    	newPlaces.setModel(new DefaultComboBoxModel<Integer>(newplacesList));
     }                                          
 
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify  
+    private Integer[] oldblocksList;
+    private Integer[] newblocksList;
+    private Integer[] oldplacesList;
+    private Integer[] newplacesList;
     private javax.swing.JButton exit;
     private javax.swing.JButton confirm;
     private javax.swing.JButton back;
