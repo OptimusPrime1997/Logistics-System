@@ -292,8 +292,6 @@ public class car_detail extends JFrame {
     private JComboBox<String> combobox;
     private JLabel jLabel1,jLabel2,jLabel3,jLabel4;
     private car_management parentPanel;
-    
-    
     // End of variables declaration//GEN-END:variables
 
 }

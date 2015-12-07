@@ -67,9 +67,7 @@ public class MainFrame extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("登录");
 				login_btnMouseClicked();
-
 			}
-
 		});
 		search_btn.addMouseListener(new MouseAdapter() {
 			@Override
@@ -105,7 +103,6 @@ public class MainFrame extends JFrame {
 			}
 		});
 	}
-	
 	
     /**
      * 监听们
@@ -143,7 +140,7 @@ public class MainFrame extends JFrame {
          password=password_text.getText();
          account=account_text.getText();         
          this.setVisible(false);
-         new courier_main();       
+         new businessOfficer_main();       
          //TODO 先不判断   账号 密码的正确性
          
          
@@ -239,7 +236,6 @@ public class MainFrame extends JFrame {
 	
     private void createDialog(ResultMessage msg) {
     	this.feedback_text.setText(ResultMessage.toFriendlyString(msg));
-		System.out.println(msg);
 	}
     /**
      * @param args the command line arguments
@@ -266,8 +262,6 @@ public class MainFrame extends JFrame {
         } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -275,7 +269,6 @@ public class MainFrame extends JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JTextField account_text,password_text,feedback_text,goodsNum_text;
     private final String standard_password="密码",standard_goodsNum="输入订单号10位",standard_account="账号";

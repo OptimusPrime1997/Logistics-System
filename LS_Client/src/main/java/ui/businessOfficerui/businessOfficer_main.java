@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
@@ -276,7 +277,7 @@ public class businessOfficer_main extends JPanel {
         
     }
     private void send_btnMouseClicked(MouseEvent evt) {
-    	System.out.println("装车单");
+    	System.out.println("营业厅装车单");
     	new MyFrame(800, 600, new ShipmentRep());
 //    	this.getFrame().setContentPane(new car_management());        
     }
@@ -288,17 +289,23 @@ public class businessOfficer_main extends JPanel {
     }
     
     private void exit_btnActionPerformed(ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
-        System.exit(0);
-    }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    	if (evt.getSource() == exit_btn) {
+			Object[] options = { "取消", "确定" };
+			int result = JOptionPane.showOptionDialog(null, "您确定要退出系统？",
+					"是否退出", JOptionPane.DEFAULT_OPTION,
+					JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+			if (result == JOptionPane.NO_OPTION) {
+				System.exit(0);
+			}
+		}
+	}
+	public JPanel getPanel1() {
+		return panel1;
+	}
+	// Variables declaration - do not modify//GEN-BEGIN:variables
 //	private 
 	
     private MyFrame frame;
-    public JPanel getPanel1() {
-		return panel1;
-	}
-
 	private car_management panel_car;
     private driver_management panel_driver;
     private JButton account_btn,arrival_btn, deliver_btn,exit_btn,

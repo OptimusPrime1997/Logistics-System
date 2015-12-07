@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 import ui.mainFrame.MainFrame;
@@ -176,7 +177,15 @@ public class car_management extends javax.swing.JPanel {
 		search_textMouseClicked(e);
 	}	
     private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
-        System.exit(0);
+    	if (evt.getSource() == exit_btn) {
+			Object[] options = { "取消", "确定" };
+			int result = JOptionPane.showOptionDialog(null, "您确定要退出系统？",
+					"是否退出", JOptionPane.DEFAULT_OPTION,
+					JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+			if (result == JOptionPane.NO_OPTION) {
+				System.exit(0);
+			}
+		}
     }
     private void add_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_btnMouseClicked
         new car_add();
@@ -334,7 +343,6 @@ public class car_management extends javax.swing.JPanel {
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
-    private JFrame frame;
     private businessOfficer_main panel_parent;
     private javax.swing.JButton account_btn,add_btn,back_btn,exit_btn,search_btn;
     private javax.swing.JLabel businessOffNum2_label,jLabel4,jLabel5,jLabel6;

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
@@ -45,20 +46,18 @@ public class courier_main extends JPanel {
 		feedBack_text.setText(ResultMessage.toFriendlyString(msg));
 	}
 	private void initComponents() {
-		GroupLayout layout = new GroupLayout(this);
-		this.setLayout(layout);
 		initLabel();
 		initProBar();
 		initbtn();
 		initText();
-		initLayOut(layout);
+		initLayOut();
 	}
-	
 	/*
 	 * 初始化布局
 	 */
-	private void initLayOut(GroupLayout layout) {
-
+	private void initLayOut() {
+		GroupLayout layout = new GroupLayout(this);
+		this.setLayout(layout);
 		layout.setHorizontalGroup(layout
 				.createParallelGroup(GroupLayout.Alignment.LEADING)
 				.addGroup(
@@ -426,7 +425,15 @@ public class courier_main extends JPanel {
 
 	}
 	private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_exit_btnActionPerformed
-		System.exit(0);
+		if (evt.getSource() == exit_btn) {
+			Object[] options = { "取消", "确定" };
+			int result = JOptionPane.showOptionDialog(null, "您确定要退出系统？",
+					"是否退出", JOptionPane.DEFAULT_OPTION,
+					JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+			if (result == JOptionPane.NO_OPTION) {
+				System.exit(0);
+			}
+		}
 	}
 	// Variables declaration
 	private JButton account_btn;
