@@ -76,6 +76,8 @@ public class TransferRep extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+        dateText.setEditable(false);
+
         dateLabel.setText("日期:");
 
         officeText.setEditable(false);
@@ -97,7 +99,7 @@ public class TransferRep extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
+                {null}
             },
             new String [] {
                 "订单号"
@@ -190,7 +192,7 @@ public class TransferRep extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(checkAllRepsButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                         .addComponent(officeLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

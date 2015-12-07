@@ -11,7 +11,7 @@ package ui.receiptui.generalUI;
  * @author apple
  */
 public class PayRepRefund extends javax.swing.JPanel {
-	
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JLabel balanceLabel;
@@ -78,8 +78,6 @@ public class PayRepRefund extends javax.swing.JPanel {
 
         moneyLabel.setText("金额:");
 
-        moneyText.setText("0");
-
         cancelButton.setText("取消");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +104,7 @@ public class PayRepRefund extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "金额", "备注"
+                "金额", "付款原因"
             }
         ) {
             Class[] types = new Class [] {
@@ -123,7 +121,6 @@ public class PayRepRefund extends javax.swing.JPanel {
         sumLabel.setText("总计:");
 
         sumText.setEditable(false);
-        sumText.setText("0");
 
         bankAccountLabel.setText("付款账户:");
 
@@ -132,7 +129,6 @@ public class PayRepRefund extends javax.swing.JPanel {
         balanceLabel.setText("账户余额:");
 
         balanceText.setEditable(false);
-        balanceText.setText("0");
 
         resultMsgText.setEditable(false);
 

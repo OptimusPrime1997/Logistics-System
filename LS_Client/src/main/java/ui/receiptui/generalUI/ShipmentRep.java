@@ -11,7 +11,7 @@ package ui.receiptui.generalUI;
  * @author apple
  */
 public class ShipmentRep extends javax.swing.JPanel {
-	
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JButton cancelButton;
@@ -80,11 +80,13 @@ public class ShipmentRep extends javax.swing.JPanel {
 
         dateLabel.setText("日期:");
 
+        dateText.setEditable(false);
+
         driverLabel.setText("司机编号:");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
+                {null}
             },
             new String [] {
                 "订单号"
@@ -176,10 +178,11 @@ public class ShipmentRep extends javax.swing.JPanel {
                             .addComponent(checkAllRepsButton)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(15, 15, 15)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(32, 32, 32)
+                                        .addGap(14, 14, 14)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(addButton)
                                             .addGroup(layout.createSequentialGroup()
@@ -187,11 +190,10 @@ public class ShipmentRep extends javax.swing.JPanel {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(orderText, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
                                         .addComponent(cancelButton)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(okButton)))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 38, Short.MAX_VALUE))))
             .addComponent(resultMsgText)
         );
         layout.setVerticalGroup(

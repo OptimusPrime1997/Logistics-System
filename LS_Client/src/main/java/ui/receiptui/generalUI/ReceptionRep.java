@@ -12,7 +12,7 @@ package ui.receiptui.generalUI;
  */
 public class ReceptionRep extends javax.swing.JPanel {
 	
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+	 // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JComboBox arriveStateBox;
     private javax.swing.JLabel arriveStateLabel;
@@ -78,9 +78,11 @@ public class ReceptionRep extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+        dateText.setEditable(false);
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
+                {null, null}
             },
             new String [] {
                 "订单号", "到达状态"
@@ -95,7 +97,6 @@ public class ReceptionRep extends javax.swing.JPanel {
             }
         });
         jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jTable1.setOpaque(false);
         jScrollPane1.setViewportView(jTable1);
 
         dateLabel.setText("日期:");

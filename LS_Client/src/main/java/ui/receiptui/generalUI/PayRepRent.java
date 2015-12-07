@@ -11,7 +11,7 @@ package ui.receiptui.generalUI;
  * @author apple
  */
 public class PayRepRent extends javax.swing.JPanel {
-	
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JLabel balanceLabel;
@@ -82,8 +82,6 @@ public class PayRepRent extends javax.swing.JPanel {
 
         moneyLabel.setText("租金:");
 
-        moneyText.setText("0");
-
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null}
@@ -104,12 +102,10 @@ public class PayRepRent extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         sumText.setEditable(false);
-        sumText.setText("0");
 
         balanceLabel.setText("账户余额:");
 
         balanceText.setEditable(false);
-        balanceText.setText("0");
 
         bankAccountLabel.setText("付款账户:");
 

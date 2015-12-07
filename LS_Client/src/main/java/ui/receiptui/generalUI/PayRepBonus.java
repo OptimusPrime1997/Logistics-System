@@ -11,7 +11,6 @@ package ui.receiptui.generalUI;
  * @author apple
  */
 public class PayRepBonus extends javax.swing.JPanel {
-	
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
@@ -77,8 +76,6 @@ public class PayRepBonus extends javax.swing.JPanel {
 
         moneyLabel.setText("金额:");
 
-        moneyText.setText("0");
-
         cancelButton.setText("取消");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +99,7 @@ public class PayRepBonus extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
                 "名字", "编号", "金额", "备注"
@@ -122,16 +119,16 @@ public class PayRepBonus extends javax.swing.JPanel {
         sumLabel.setText("总计:");
 
         sumText.setEditable(false);
-        sumText.setText("0");
 
         balanceLabel.setText("账户余额:");
 
         balanceText.setEditable(false);
-        balanceText.setText("0");
 
         bankAccountLabel.setText("付款账户:");
 
         bankAccountText.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        resultMsgText.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -162,7 +159,7 @@ public class PayRepBonus extends javax.swing.JPanel {
                                 .addComponent(cancelButton)
                                 .addGap(58, 58, 58)
                                 .addComponent(okButton))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -174,7 +171,7 @@ public class PayRepBonus extends javax.swing.JPanel {
                             .addComponent(bankAccountText, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(balanceText, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,5 +223,6 @@ public class PayRepBonus extends javax.swing.JPanel {
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_okButtonActionPerformed
+
 
 }

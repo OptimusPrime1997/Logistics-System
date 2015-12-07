@@ -11,8 +11,8 @@ package ui.receiptui.generalUI;
  * @author apple
  */
 public class PayRepSalary extends javax.swing.JPanel {
-	
-	// Variables declaration - do not modify//GEN-BEGIN:variables
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel balanceLabel;
     private javax.swing.JTextField balanceText;
     private javax.swing.JComboBox bankAccountBox;
@@ -25,7 +25,7 @@ public class PayRepSalary extends javax.swing.JPanel {
     private javax.swing.JLabel sumLabel;
     private javax.swing.JTextField sumText;
     // End of variables declaration//GEN-END:variables
-
+    
     /**
      * Creates new form PayRep工资
      */
@@ -94,14 +94,14 @@ public class PayRepSalary extends javax.swing.JPanel {
         sumLabel.setText("总计:");
 
         sumText.setEditable(false);
-        sumText.setText("0");
 
         balanceLabel.setText("账户余额:");
 
         balanceText.setEditable(false);
-        balanceText.setText("0");
 
         bankAccountLabel.setText("付款账户:");
+
+        resultMsgText.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -164,5 +164,6 @@ public class PayRepSalary extends javax.swing.JPanel {
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_okButtonActionPerformed
+
 
 }

@@ -96,8 +96,11 @@ public class DeliverRep extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+        resultMsgText.setEditable(false);
+
         dateLabel.setText("日期:");
         
+        dateText.setEditable(false);
         dateText.setText(control.getDate());
 
         officeText.setEditable(false);
@@ -131,8 +134,6 @@ public class DeliverRep extends javax.swing.JPanel {
         model.setDataVector(dataVector, columnIdentifiers);
         jTable.setModel(model);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
-        jTable.setOpaque(false);
-        jTable.setShowGrid(true);
         jScrollPane1.setViewportView(jTable);
 
         orderNumLabel.setText("订单号:");

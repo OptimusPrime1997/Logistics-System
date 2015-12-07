@@ -11,7 +11,6 @@ package ui.receiptui.generalUI;
  * @author apple
  */
 public class PayRepDriver extends javax.swing.JPanel {
-	
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel balanceLabel;
@@ -59,7 +58,7 @@ public class PayRepDriver extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
                 "名字", "编号", "出车次数", "金额"
@@ -93,12 +92,10 @@ public class PayRepDriver extends javax.swing.JPanel {
         sumLabel.setText("总计:");
 
         sumText.setEditable(false);
-        sumText.setText("0");
 
         balanceLabel.setText("账户余额:");
 
         balanceText.setEditable(false);
-        balanceText.setText("0");
 
         bankAccountLabel.setText("付款账户:");
 

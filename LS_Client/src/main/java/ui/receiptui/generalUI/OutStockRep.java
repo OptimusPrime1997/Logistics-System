@@ -11,8 +11,8 @@ package ui.receiptui.generalUI;
  * @author apple
  */
 public class OutStockRep extends javax.swing.JPanel {
-	
-	 // Variables declaration - do not modify//GEN-BEGIN:variables
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton checkAllRepsButton;
@@ -36,7 +36,6 @@ public class OutStockRep extends javax.swing.JPanel {
     private javax.swing.JComboBox shipFormBox;
     private javax.swing.JLabel shipFormLabel;
     // End of variables declaration//GEN-END:variables
-
     /**
      * Creates new form OutStockRep
      */
@@ -78,6 +77,8 @@ public class OutStockRep extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+        dateText.setEditable(false);
+
         dateLabel.setText("日期:");
 
         officeText.setEditable(false);
@@ -116,7 +117,6 @@ public class OutStockRep extends javax.swing.JPanel {
             }
         });
         jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jTable1.setOpaque(false);
         jScrollPane1.setViewportView(jTable1);
 
         orderLabel.setText("订单号:");

@@ -11,7 +11,6 @@ package ui.receiptui.generalUI;
  * @author apple
  */
 public class PayRepCourier extends javax.swing.JPanel {
-	
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel balanceLabel;
@@ -77,12 +76,10 @@ public class PayRepCourier extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         sumText.setEditable(false);
-        sumText.setText("0");
 
         balanceLabel.setText("账户余额:");
 
         balanceText.setEditable(false);
-        balanceText.setText("0");
 
         bankAccountLabel.setText("付款账户:");
 
