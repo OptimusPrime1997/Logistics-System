@@ -45,6 +45,7 @@ public class car_detail extends JFrame {
 //	    controller=ControllerFactoryImpl.getInstance().getVehicleController();
 		this.setVisible(true);
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+		this.setLocationRelativeTo(null);
 		this.parentPanel = panel;
 		this.carCode = code;
 		this.carLicence = licenseNum;

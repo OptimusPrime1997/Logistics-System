@@ -45,6 +45,7 @@ public class MainFrame extends JFrame {
         ctr_login=ControllerFactoryImpl.getInstance().getLoginController();
     	this.setVisible(true);
     	setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    	this.setLocationRelativeTo(null);
     	this.setResizable(false);
         initComponents();
     }

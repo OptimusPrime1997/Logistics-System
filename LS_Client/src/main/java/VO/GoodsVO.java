@@ -18,12 +18,12 @@ import util.enumData.*;
 				GoodsLogisticState.SENDED, null, null);
  */
 public class GoodsVO {
-	public String listNum;
+	public String listNum="";
 	public Boolean ifExaminePassed=false;
 	public String getCourierAccount;
-	public String deliverCourierAccount;
+	public String deliverCourierAccount="";
 	public String startTime;
-	public String overtime;
+	public String overtime="";
 	public String destinationCity;
 	public String senderName;
 	public String senderAddress;
@@ -43,8 +43,8 @@ public class GoodsVO {
 	public double moneyFare;
 	public GoodsArrivalState arrivalState=GoodsArrivalState.INTACT;
 	public GoodsLogisticState logisticState=GoodsLogisticState.SENDED;
-	public String realReceiverName;
-	public String realReceiverPhone;
+	public String realReceiverName="";
+	public String realReceiverPhone="";
 
 	public GoodsVO(Boolean ifExaminePassed,
 			String getCourierAccount, String deliverCourierAccount,
@@ -57,7 +57,6 @@ public class GoodsVO {
 			double moneyTotal, double moneyFare,
 			GoodsArrivalState arrivalState, GoodsLogisticState logisticState,
 			String realReceiverName, String realReceiverPhone) {
-//		this.listNum = getCourierAccount.substring(0, 3)+listNumToCount;
 		//TODO
 		this.ifExaminePassed = ifExaminePassed;
 		this.getCourierAccount = getCourierAccount;

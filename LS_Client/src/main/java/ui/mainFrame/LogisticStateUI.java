@@ -25,6 +25,7 @@ public class LogisticStateUI extends javax.swing.JFrame {
         this.setVisible(true);
     }
     private void initComponents() {
+    	this.setLocationRelativeTo(null);
     	setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
     	initLabel();
     	initbtn();

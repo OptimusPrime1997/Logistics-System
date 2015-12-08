@@ -23,14 +23,14 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 			GoodsPO temp;
 		    try {
 				all=helper.getAll(filename);
-			    for(Object o:all){
-			    	temp=(GoodsPO)o;
-			    	//该订单号已存在  则添加失败
-			    	if(temp.getListNum().equals(po.getListNum())){
-			    		return ResultMessage.EXIST;
-			    	}
-			    }
-			    System.out.println("已添加");
+//			    for(Object o:all){
+//			    	temp=(GoodsPO)o;
+//			    	//该订单号已存在  则添加失败
+//			    	if(temp.getListNum().equals(po.getListNum())){
+//			    		return ResultMessage.EXIST;
+//			    	}
+//			    }
+//			    System.out.println("已添加");
 			    return helper.save(po, filename);
 			} catch ( IOException | ClassNotFoundException e) {
 				e.printStackTrace();
@@ -170,7 +170,7 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 				po=(GoodsPO)o;
 				//找到了货物~
 				if(po.getGetCourierAccount().equals(CourierNum)//TODO
-						//||po.getDeliverCourierAccount().equals(CourierNum)
+						||po.getDeliverCourierAccount().equals(CourierNum)
 						){
 					sum++;
 				}

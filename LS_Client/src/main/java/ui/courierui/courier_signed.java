@@ -119,6 +119,7 @@ public class courier_signed extends JFrame {
 	
 
     private void initComponents() {
+    	this.setLocationRelativeTo(null);
         panel = new JPanel();
         GroupLayout layout0 = new GroupLayout(panel);
         panel.setLayout(layout0);
