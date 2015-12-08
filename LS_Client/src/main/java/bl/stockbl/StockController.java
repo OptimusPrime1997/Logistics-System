@@ -3,7 +3,7 @@
  */
 package bl.stockbl;
 
-import java.io.IOException; 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 import util.enumData.City;
 import util.enumData.ResultMessage;
-import util.enumData.place;
 import VO.StockDivisionVO;
 import VO.StockVO;
 import VO.ReceiptVO.InStockRepVO;
@@ -84,7 +83,7 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 
 	
 	@Override
-	public ResultMessage initial(String input) {
+	public ResultMessage initial(String input) throws RemoteException {
 		return ininum.initial(input);
 		
 	}

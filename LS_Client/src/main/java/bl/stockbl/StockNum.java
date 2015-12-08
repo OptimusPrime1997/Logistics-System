@@ -10,6 +10,8 @@ import java.rmi.RemoteException;
 
 import dataservice.stockdataservice.StockInitialDataService;
 import ui.warehousemanui.CheckUtil;
+import util.CurrentCity;
+import util.enumData.City;
 import util.enumData.ResultMessage;
 import PO.StockNumPO;
 import VO.StockNumVO;
@@ -26,13 +28,14 @@ public class StockNum {
 	/**
 	 * 由当前城市，得到初始库存数量
 	 * @return
+	 * @throws RemoteException 
 	 */
-	public int getInitialStockNum() {
-		//TODO 得到当前城市
+	public int getInitialStockNum() throws RemoteException {
+		City cityNum =  CurrentCity.getCurrentCity();
 		int i = 0;
 		try {
 			StockInitialDataService si = (StockInitialDataService) Naming.lookup("stockini");
-			i = si.getInitialNum("Nanjing").getInitialNum();
+			i = si.getInitialNum(cityNum).getInitialNum();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -49,9 +52,10 @@ public class StockNum {
 	 * 初始化当前城市库存数量
 	 * @param initialNum
 	 * @return
+	 * @throws RemoteException 
 	 */
-	public ResultMessage initial(String initialNum) {
-		//TODO 本地城市
+	public ResultMessage initial(String initialNum) throws RemoteException {
+		City cityNum = CurrentCity.getCurrentCity();
 		if(CheckUtil.isSucceNumber(initialNum)){
 			if(initialNum.length()>=10){
 				
@@ -60,7 +64,7 @@ public class StockNum {
 			}else{
 
 				int n = Integer.parseInt(initialNum);
-				StockNumVO vo = new StockNumVO("Nanjing", n);
+				StockNumVO vo = new StockNumVO(cityNum, n);
 				StockNumPO po = vo.voToPo(vo);
 				
 				

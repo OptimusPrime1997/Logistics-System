@@ -416,10 +416,10 @@ public class courier_main extends JPanel {
 	 * 监听们～
 	 */
 	private void signedGoodsbtnMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_signedGoodsbtnMouseClicked
-		new courier_signed(this).setVisible(true);
+		new courier_signed(this);
 	}
 	private void newGoodsbtnMouseClicked(MouseEvent evt) {
-		MyFrame frame=new MyFrame(500, 600, new Order());
+		new Order(this);
 	}
 	private void account_btnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_account_btnActionPerformed
 

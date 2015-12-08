@@ -19,7 +19,7 @@ public class PayRepRefundRepVO {
 	public PayRepRefundRepVO (PayRepRefundRepPO po){
 		this.sum = po.getSum();
 		this.date = po.getDate();
-		this.littleThingVOs = PayRefundVO.toArrayVO(po.getLittleThingPOs());
+		this.littleThingVOs = PayRefundVO.toArrayVO(po.getRefundPOs());
 		this.bankAccountNum = po.getBankAccountNum();
 	}
 	public static PayRepRefundRepPO toPO(PayRepRefundRepVO vo){

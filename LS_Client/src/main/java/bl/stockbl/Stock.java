@@ -12,11 +12,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
+import util.CurrentCity;
 import util.CurrentTime;
 import util.enumData.City;
 import util.enumData.ResultMessage;
 import dataservice.stockdataservice.StockDataService;
+import bl.loginbl.LoginblController;
 import bl.receiptbl.InStockRepbl.InStockRepController;
 import bl.receiptbl.OutStockRepbl.OutStockRepController;
 import PO.StockPO;
@@ -77,8 +80,8 @@ public class Stock {
              
             while(calendar.getTime().compareTo(dateTwo)<=0){               
             	
-                instockreps.addAll(in.getRepBydate(dateFormat.format(calendar.getTime())));
-                outstockreps.addAll(out.getRepBydate(dateFormat.format(calendar.getTime())));
+                instockreps.addAll(in.getRepByDate(dateFormat.format(calendar.getTime())));
+                outstockreps.addAll(out.getRepByDate(dateFormat.format(calendar.getTime())));
                 
                 calendar.add(Calendar.DAY_OF_MONTH, 1);               
             }
@@ -120,6 +123,7 @@ public class Stock {
 	}
 
 	
+	
 	/**
 	 * 得到本仓库当前所有有完整信息的库存
 	 * @return
@@ -132,8 +136,8 @@ public class Stock {
 		ArrayList<StockPO> list = new ArrayList<StockPO>();
 		
 		StockDataService s = getStockDataService();
-		//TODO  得到当前城市编号
-		City cityNum = City.BEIJING;
+		
+		City cityNum = CurrentCity.getCurrentCity();
 		
 		list = s.getStock(cityNum);
 		for(StockPO po:list) {
@@ -166,7 +170,8 @@ public class Stock {
 	public ResultMessage update(InStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException{
 		InStockRepPO po = vo.toPO(vo);
 		StockDataService sd = getStockDataService();
-		return sd.update(po);
+		City cityNum = CurrentCity.getCurrentCity();
+		return sd.update(po, cityNum);
 	}
 	
 	
@@ -203,9 +208,28 @@ public class Stock {
 	 * @throws ClassNotFoundException 
 	 */
 	public ResultMessage exportExcel() throws ClassNotFoundException, NotBoundException, IOException {
-		// TODO Auto-generated method stub
-		ArrayList<StockVO> list = show();
-		return null;
 		
+		ArrayList<StockVO> list = show();
+		
+		if (list.isEmpty()) {
+			return ResultMessage.NOT_FOUND;
+		}
+		
+		String currentTime = CurrentTime.getTime();
+	
+		return ExportToExcel.exportStockExcel(list, "/Users/G/Desktop/库存快照"+currentTime);
+
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		Stock s = new Stock();
+		try {
+	
+			System.out.println(s.exportExcel());
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

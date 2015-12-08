@@ -133,20 +133,17 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 	 * @see dataservice.stockdataservice.StockDataService#update(PO.ReceiptPO.InStockRepPO)
 	 */
 	@Override
-	public ResultMessage update(InStockRepPO po) throws RemoteException {
+	public ResultMessage update(InStockRepPO po, City cityNum) throws RemoteException {
 		ResultMessage rm = ResultMessage.SUCCESS;
 		String inrepnum = po.getNum();
 		String date = po.getDate();
-		//TODO 得到本地城市
-		City citynum = City.BEIJING;
-	
-				
+			
 		ArrayList<InStockPO> list = po.getInStockPOs();
 		for(InStockPO inpo : list) {
 			int block = Integer.parseInt(inpo.getArea());
 			int place = Integer.parseInt(inpo.getLoc());
 			City desCity = FromIntToCity.toCity(block);
-			rm = add(new StockPO(citynum, inpo.getOrder(), inrepnum, date, desCity, block, place));
+			rm = add(new StockPO(cityNum, inpo.getOrder(), inrepnum, date, desCity, block, place));
 
 		}
 		return rm;

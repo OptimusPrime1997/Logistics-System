@@ -11,11 +11,17 @@ import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import ui.courierui.courier_main;
+import ui.util.GoodsPackageMoney;
 import ui.util.MyFrame;
+import ui.util.StrToGoodsExpressType;
 import util.CurrentTime;
+import util.InputCheck;
+import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsExpressType;
 import util.enumData.GoodsLogisticState;
 import util.enumData.ResultMessage;
+import Exception.ExistException;
 import VO.GoodsVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.goodsblservice.GoodsInitBLService;
@@ -29,19 +35,23 @@ public class Order extends javax.swing.JPanel {
 
 	/**
      * Creates new form Order
+	 * @param courier_main 
      */
-    public Order() {
+    public Order(courier_main courier_main) {
+    	parentPanel=courier_main;
     	ctr_account=ControllerFactoryImpl.getInstance().getLoginController();
     	ctr_newgoods=ControllerFactoryImpl.getInstance().getGoodsInitController();
-        try {
+        startTime=CurrentTime.getDate();
+    	try {
 			getCourierAccount=ctr_account.getCurrentOptorId();
 			officeNum=getCourierAccount.substring(3,6);
 		} catch (RemoteException e) {
 		}
     	initComponents();
+    	frame=new MyFrame(600, 600,this);
     }
     public static void main(String[] args) {
-		new MyFrame(600, 600,new Order() );
+		new Order(new courier_main());
 	}
     private void initComponents() {
         setBackground(new java.awt.Color(255, 255, 255));
@@ -90,15 +100,15 @@ public class Order extends javax.swing.JPanel {
                                  .addComponent(cancelButton)
                                  .addGap(64, 64, 64)
                                  .addComponent(okButton))
-                             .addComponent(receiverAddText, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                             .addComponent(receiverAddressText, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                              .addComponent(itemNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                              .addGroup(layout.createSequentialGroup()
-                                 .addComponent(receiverText, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                 .addComponent(receiverNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                  .addGap(18, 18, 18)
                                  .addComponent(receiverPhoneNumLabel)
                                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                  .addComponent(receiverPhoneNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                             .addComponent(senderAddText, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                             .addComponent(senderAddressText, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                              .addGroup(layout.createSequentialGroup()
                                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                      .addComponent(typeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -108,13 +118,13 @@ public class Order extends javax.swing.JPanel {
                              .addGroup(layout.createSequentialGroup()
                                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                      .addComponent(sumText, javax.swing.GroupLayout.Alignment.LEADING)
-                                     .addComponent(senderText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                     .addComponent(senderNameText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                  .addGap(18, 18, 18)
                                  .addComponent(senderPhoneNumLabel)
                                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                  .addComponent(senderPhoneNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                              .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                 .addComponent(measureText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                                 .addComponent(volumeText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                                  .addComponent(weightText, javax.swing.GroupLayout.Alignment.LEADING)
                                  .addComponent(itemNumText, javax.swing.GroupLayout.Alignment.LEADING))))
                      .addGroup(layout.createSequentialGroup()
@@ -148,7 +158,7 @@ public class Order extends javax.swing.JPanel {
                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                      .addComponent(measureLabel)
-                     .addComponent(measureText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                     .addComponent(volumeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                      .addComponent(itemNameLabel)
@@ -169,25 +179,25 @@ public class Order extends javax.swing.JPanel {
                  .addGap(18, 18, 18)
                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                      .addComponent(senderLabel)
-                     .addComponent(senderText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                     .addComponent(senderNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                      .addComponent(senderPhoneNumLabel)
                      .addComponent(senderPhoneNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                      .addComponent(senderAddLabel)
-                     .addComponent(senderAddText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                     .addComponent(senderAddressText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                      .addGroup(layout.createSequentialGroup()
                          .addGap(18, 18, 18)
                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                              .addComponent(receiverLabel)
-                             .addComponent(receiverText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                             .addComponent(receiverNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                              .addComponent(receiverPhoneNumLabel)
                              .addComponent(receiverPhoneNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                      .addGroup(layout.createSequentialGroup()
                          .addGap(55, 55, 55)
                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                             .addComponent(receiverAddText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                             .addComponent(receiverAddressText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                              .addComponent(receiverAddLabel))))
                  .addGap(18, 18, 18)
                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,29 +210,31 @@ public class Order extends javax.swing.JPanel {
 	private void initBox() {
     	pkgBox = new javax.swing.JComboBox<String>();
 		typeBox = new javax.swing.JComboBox<String>();
-        pkgBox.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "快递袋", "纸箱", "木箱" }));
-        pkgBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pkgBoxActionPerformed(evt);
-            }
-        });
-        typeBox.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "标准", "经济", "特快" }));
-        typeBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                typeBoxActionPerformed(evt);
-            }
-        });
+		pkgBox.setModel(new javax.swing.DefaultComboBoxModel<String>(
+				new String[] { "快递袋", "纸箱", "木箱" }));
+		pkgBox.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				pkgBoxActionPerformed(evt);
+			}
+		});
+		typeBox.setModel(new javax.swing.DefaultComboBoxModel<String>(
+				new String[] { "标准", "经济", "特快" }));
+		typeBox.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				typeBoxActionPerformed(evt);
+			}
+		});
 	}
 	private void initbtn() {
     	sumButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
         okButton = new javax.swing.JButton();
         sumButton.setText("确定");
-        sumButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sumButtonActionPerformed(evt);
-            }
-        });
+        sumButton.addMouseListener(new MouseAdapter() {
+    	public void mouseClicked(MouseEvent e) {
+    		sumButtonMouseClicked(e);
+    	}
+	});
         cancelButton.setText("取消");
         okButton.setText("确认");
         okButton.addMouseListener(new MouseAdapter() {
@@ -258,10 +270,10 @@ public class Order extends javax.swing.JPanel {
         itemNumLabel.setText("原件数:");
 
         weightLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        weightLabel.setText("重量:");
+        weightLabel.setText("重量(kg):");
 
         measureLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        measureLabel.setText("尺寸:");
+        measureLabel.setText("体积(m^3):");
 
         itemNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         itemNameLabel.setText("内件品名:");
@@ -273,7 +285,7 @@ public class Order extends javax.swing.JPanel {
         typeLabel.setText("快递类型:");
         
         sumLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        sumLabel.setText("总计:");
+        sumLabel.setText("总费用:");
 
         senderLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         senderLabel.setText("寄件人:");
@@ -299,15 +311,15 @@ public class Order extends javax.swing.JPanel {
 	}
 	private void initTxt() {
     	officeText = new javax.swing.JTextField();
-		senderText = new javax.swing.JTextField();
+		senderNameText = new javax.swing.JTextField();
 		itemNumText = new javax.swing.JTextField();
 		itemNameText = new javax.swing.JTextField();
 		weightText = new javax.swing.JTextField();
 		sumText = new javax.swing.JTextField();
-		measureText = new javax.swing.JTextField();
-		receiverAddText = new javax.swing.JTextField();
-		receiverText = new javax.swing.JTextField();
-		senderAddText = new javax.swing.JTextField();
+		volumeText = new javax.swing.JTextField();
+		receiverAddressText = new javax.swing.JTextField();
+		receiverNameText = new javax.swing.JTextField();
+		senderAddressText = new javax.swing.JTextField();
 		senderPhoneNumText = new javax.swing.JTextField();
 		receiverPhoneNumText = new javax.swing.JTextField();
 		dateText = new javax.swing.JTextField();
@@ -333,45 +345,109 @@ public class Order extends javax.swing.JPanel {
      * 弹出对话框提示输入信息有误或订单不存在
      * @param msg
      */
-	private void showFeedBack(ArrayList<ResultMessage> messages) {
-		String feedback="";		
-		for(ResultMessage msg:messages){
-			feedback=feedback+ResultMessage.toFriendlyString(msg)+";   ";
-		}
-		resultMsgText.setText(feedback);
+	private void showFeedBack(ResultMessage msg) {
+		resultMsgText.setText(ResultMessage.toFriendlyString(msg));
 	}
 	/**
 	 * 监听们
 	 * @param evt
 	 */
-	private void pkgBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pkgBoxActionPerformed
-          // TODO add your handling code here:
-    }//GEN-LAST:event_pkgBoxActionPerformed
-
-    private void typeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_typeBoxActionPerformed
-
-    private void sumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sumButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sumButtonActionPerformed
-
-    private void sumTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sumTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sumTextActionPerformed
+	private void pkgBoxActionPerformed(java.awt.event.ActionEvent evt) {
+		String pkgType=pkgBox.getSelectedItem().toString();
+		moneyOfPackage=GoodsPackageMoney.packageToMoney(pkgType);
+	}
+    private void typeBoxActionPerformed(java.awt.event.ActionEvent evt) {
+    	String expType=typeBox.getSelectedItem().toString();
+    	expressType=StrToGoodsExpressType.toExpressType(expType);
+    }
+    /**
+     * 提交~算运费
+     * @param evt
+     */
+    private void sumButtonMouseClicked(MouseEvent e) {
+    	resultMsgText.setText("");
+    	ResultMessage msg_senderPhone=InputCheck.checkInputPhoneNum(senderPhoneNumText.getText()),
+    			msg_receiverPhone=InputCheck.checkInputPhoneNum(receiverPhoneNumText.getText()),
+    			msg_itemNum=InputCheck.checkIfAllNum(itemNumText.getText()),
+    			msg_weight=InputCheck.checkIfPositiveFloat(weightText.getText()),
+    			msg_volume=InputCheck.checkIfPositiveFloat(volumeText.getText()),
+                msg_senderAds=InputCheck.ifWritten(senderAddressText.getText()),
+                msg_receiverAds=InputCheck.ifWritten(receiverAddressText.getText());
+                
+    	if(msg_itemNum==ResultMessage.VALID&&
+    			msg_receiverPhone==ResultMessage.VALID&&
+    			msg_senderPhone==ResultMessage.VALID&&
+    			msg_volume==ResultMessage.VALID&&
+    			msg_weight==ResultMessage.VALID&&
+    			msg_receiverAds==ResultMessage.VALID&&
+    			msg_senderAds==ResultMessage.VALID){
+    		this.numOfGoods=Integer.parseInt(itemNumText.getText());
+        	this.senderName=senderNameText.getText();
+        	this.senderAddress=senderAddressText.getText();
+        	this.senderPhone=senderPhoneNumText.getText();
+        	this.receiverAddress=receiverAddressText.getText();
+        	this.receiverName=receiverNameText.getText();
+        	this.receiverPhone=receiverPhoneNumText.getText();
+        	this.receiverCompany="";
+        	this.weight=Double.parseDouble(weightText.getText());
+        	this.volume=Double.parseDouble(volumeText.getText());
+        	this.nameOfInside=itemNameText.getText();
+			vo = new GoodsVO(false, getCourierAccount, "", startTime, "",
+					destinationCity, senderName, senderAddress, senderCompany,
+					senderPhone, receiverName, receiverAddress,
+					receiverCompany, receiverPhone, numOfGoods, weight, volume,
+					nameOfInside, expressType, moneyOfPackage, moneyTotal,
+					moneyFare, GoodsArrivalState.INTACT,
+					logisticState, "", receiverPhone);
+			ResultMessage msg_newGoods=ctr_newgoods.init(vo);
+			if(msg_newGoods==ResultMessage.SUCCESS){
+				//输入合法~
+				try {
+					vo=ctr_newgoods.initCompleteGoods(vo);
+				} catch (ExistException e1) {
+				}
+			}
+			numText.setText(vo.listNum);
+			sumText.setText(vo.moneyTotal+"");
+			
+    	}else{
+    		//有输入信息 不合法
+    	if(msg_itemNum!=ResultMessage.VALID) showFeedBack(msg_itemNum);
+    	if(msg_volume!=ResultMessage.VALID) showFeedBack(msg_volume);
+    	if(msg_receiverPhone!=ResultMessage.VALID) showFeedBack(msg_receiverPhone);
+    	if(msg_senderPhone!=ResultMessage.VALID) showFeedBack(msg_senderPhone);
+    	if(msg_weight!=ResultMessage.VALID) showFeedBack(msg_weight);
+    	if(msg_receiverAds!=ResultMessage.VALID)showFeedBack(msg_receiverAds);
+    	if(msg_senderAds!=ResultMessage.VALID)showFeedBack(msg_senderAds);
+    	}
+    	
+    	
+    	System.out.println("寄件人 "+senderName+"  "+senderAddress+" "+senderPhone);
+    	
+    	
+	}
+    private void sumTextActionPerformed(java.awt.event.ActionEvent evt) {
+    	
+    }
+    /**
+     * 确认完费用，最终提交
+     */
     private void okBtnMouseClicked() {
+    	this.frame.setVisible(false);
+    	parentPanel.setFeedBack(ResultMessage.SUBMIT_SUCCESS);
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
+    private courier_main parentPanel;
 	private javax.swing.JLabel dateLabel, itemNameLabel, itemNumLabel,
 			measureLabel, numLabel, officeLabel, pkgLabel, receiverAddLabel,
 			senderLabel, senderPhoneNumLabel, receiverLabel,
 			receiverPhoneNumLabel, senderAddLabel, sumLabel, typeLabel,
 			weightLabel;
-	private javax.swing.JTextField itemNumText, measureText, numText,
-			officeText, dateText, itemNameText, receiverAddText,
-			receiverPhoneNumText, receiverText, resultMsgText, senderAddText,
-			senderPhoneNumText, senderText, sumText, weightText;
+	private javax.swing.JTextField itemNumText, volumeText, numText,
+			officeText, dateText, itemNameText, receiverAddressText,
+			receiverPhoneNumText, receiverNameText, resultMsgText, senderAddressText,
+			senderPhoneNumText, senderNameText, sumText, weightText;
 	private javax.swing.JComboBox<String> pkgBox, typeBox;
 	private javax.swing.JButton okButton, sumButton, cancelButton;
 	private String officeNum,getCourierAccount, startTime, destinationCity,
@@ -379,12 +455,14 @@ public class Order extends javax.swing.JPanel {
 			receiverName, receiverAddress, receiverCompany, receiverPhone,
 			nameOfInside;
 	private Boolean ifExaminePassed = false;
-    private int numOfGoods;
-    private double  weight, volume, moneyOfPackage, moneyTotal, moneyFare;
-	private LoginBLService ctr_account;
+    private int numOfGoods=1;
+    private double  weight, volume, moneyOfPackage=1, moneyTotal, moneyFare;
+    private GoodsExpressType expressType=GoodsExpressType.NORMAL;
+	private GoodsLogisticState logisticState=GoodsLogisticState.SENDED;
+    private LoginBLService ctr_account;
 	private GoodsInitBLService ctr_newgoods;
-	private GoodsExpressType expressType;
-	private GoodsLogisticState logisticState;
+	private MyFrame frame;
+	private GoodsVO vo;
 	private static final long serialVersionUID = 1L;
     // End of variables declaration//GEN-END:variables
 }

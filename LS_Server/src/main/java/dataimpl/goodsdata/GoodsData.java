@@ -10,6 +10,7 @@ import Exception.CourierNotFoundException;
 import Exception.GoodsNotFound;
 import PO.GoodsPO;
 import dataservice.goodsdataservice.GoodsDataService;
+import datautil.DataOrdinary;
 import datautil.DataUtility;
 
 public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
@@ -22,14 +23,14 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 			GoodsPO temp;
 		    try {
 				all=helper.getAll(filename);
-			    for(Object o:all){
-			    	temp=(GoodsPO)o;
-			    	//该订单号已存在  则添加失败
-			    	if(temp.getListNum().equals(po.getListNum())){
-			    		return ResultMessage.EXIST;
-			    	}
-			    }
-			    System.out.println("已添加");
+//			    for(Object o:all){
+//			    	temp=(GoodsPO)o;
+//			    	//该订单号已存在  则添加失败
+//			    	if(temp.getListNum().equals(po.getListNum())){
+//			    		return ResultMessage.EXIST;
+//			    	}
+//			    }
+//			    System.out.println("已添加");
 			    return helper.save(po, filename);
 			} catch ( IOException | ClassNotFoundException e) {
 				e.printStackTrace();
@@ -169,7 +170,7 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 				po=(GoodsPO)o;
 				//找到了货物~
 				if(po.getGetCourierAccount().equals(CourierNum)//TODO
-						//||po.getDeliverCourierAccount().equals(CourierNum)
+						||po.getDeliverCourierAccount().equals(CourierNum)
 						){
 					sum++;
 				}
@@ -183,5 +184,16 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 		super();
 	}
 	private static final long serialVersionUID = 1L;
-
+	/**
+	 * 记录快件总数量的 
+	 * 
+	 */
+	@Override
+	public int recordListNum() throws RemoteException {
+		String fName="GoodsTotal";
+		int sum=DataOrdinary.getOneNum(fName);
+		sum++;
+		DataOrdinary.saveOneNum(sum, fName);
+		return DataOrdinary.getOneNum(fName);
+	}
 }

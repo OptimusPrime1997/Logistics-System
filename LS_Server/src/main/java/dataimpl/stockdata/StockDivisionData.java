@@ -43,10 +43,9 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 
 	
 	@Override
-	public ResultMessage update(InStockRepPO po) throws RemoteException {
+	public ResultMessage update(InStockRepPO po, City cityNum) throws RemoteException {
 		ResultMessage rm = ResultMessage.SUCCESS;
-		//TODO 得到本地城市
-		City cityNum = City.BEIJING;
+	
 		ArrayList<InStockPO> list = po.getInStockPOs();
 		
 		for(InStockPO inpo : list) {

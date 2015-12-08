@@ -7,12 +7,10 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import VO.ReceiptVO.CashVO;
 import VO.ReceiptVO.InStockRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.InStockRepblService;
-import util.enumData.ResultMessage;
 
 public class InStockRepController extends ReceiptblController implements InStockRepblService{
 	private InStockRepbl inStockRepbl = new InStockRepbl();
@@ -20,7 +18,7 @@ public class InStockRepController extends ReceiptblController implements InStock
 	private InStockRepShowbl inStockRepShowbl = new InStockRepShowbl();
 
 	@Override
-	public String createNum(String date) throws RemoteException, MalformedURLException, NotBoundException {
+	public String createNum(String date) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return inStockRepbl.createNum(date);
 	}
@@ -36,13 +34,13 @@ public class InStockRepController extends ReceiptblController implements InStock
 	}
 
 	@Override
-	public InStockRepVO getRepByNum(String num) throws RemoteException, MalformedURLException, NotBoundException {
+	public InStockRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return inStockRepCheckbl.getRepByNum(num);
 	}
 
 	@Override
-	public void submit(ReceiptVO vo) throws RemoteException, MalformedURLException, NotBoundException {
+	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		inStockRepbl.submit(vo);
 	}
@@ -54,16 +52,10 @@ public class InStockRepController extends ReceiptblController implements InStock
 	}
 
 	@Override
-	public ArrayList<InStockRepVO> getRepBydate(String date)
-			throws RemoteException, MalformedURLException, NotBoundException {
+	public ArrayList<InStockRepVO> getRepByDate(String date)
+			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int[] getTwoPosition(String destination) {
-		// TODO Auto-generated method stub
-		return null;
+		return inStockRepbl.getRepByDate(date);
 	}
 
 	@Override

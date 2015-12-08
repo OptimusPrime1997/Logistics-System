@@ -12,6 +12,7 @@ import bl.receiptbl.Receiptbl.Receiptbl;
 import util.enumData.Rep;
 
 public class CashRepCheckbl {
+	
 	private Receiptbl receiptbl = new Receiptbl();
 
 	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {

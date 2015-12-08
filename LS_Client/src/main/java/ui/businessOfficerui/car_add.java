@@ -22,6 +22,15 @@ public class car_add extends JFrame {
 	public static void main(String[] args) {
 		new car_add();
 	}
+	 /**
+     * Creates new form car_add
+     */
+    public car_add() {
+    	this.setVisible(true);
+    	setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+    	this.setLocationRelativeTo(null);
+        initComponents();
+    }
 	/**
 	 * 监听们~
 	 * @param evt
@@ -41,14 +50,7 @@ public class car_add extends JFrame {
     private void ok_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ok_btnMouseClicked
         this.setVisible(false);
     }
-    /**
-     * Creates new form car_add
-     */
-    public car_add() {
-    	this.setVisible(true);
-    	setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-        initComponents();
-    }
+   
     private void initComponents() {
     	GroupLayout layout = new GroupLayout(getContentPane());
     	initText();

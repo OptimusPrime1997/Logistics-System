@@ -11,11 +11,22 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 import javax.swing.WindowConstants;
 public class driver_add extends JFrame {
-	 public static void main(String[] args) {
+	public static void main(String[] args) {
 			new driver_add();
-		}
-	private void day_comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_day_comboBoxActionPerformed
-	       
+	}
+
+	/**
+	 * Creates new form driver__add
+	 */
+	public driver_add() {
+		this.setVisible(true);
+		initComponents();
+		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+		this.setLocationRelativeTo(null);
+	}
+
+	private void day_comboBoxActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_day_comboBoxActionPerformed
+
     }
     private void cancel_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_btnMouseClicked
         this.setVisible(false);
@@ -23,14 +34,7 @@ public class driver_add extends JFrame {
     private void ok_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ok_btnMouseClicked
         this.setVisible(false);
     }   
-    /**
-     * Creates new form driver__add
-     */
-    public driver_add() {
-    	this.setVisible(true);
-        initComponents();
-        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-    }   
+    
     private void initComponents() {
     	panel = new JPanel();
     	GroupLayout layout1 = new GroupLayout(panel);    	

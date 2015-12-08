@@ -60,7 +60,7 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	}
 
 	@Override
-	public ArrayList<CashRepVO> getRepBydate(String date) throws NotBoundException, ClassNotFoundException, IOException {
+	public ArrayList<CashRepVO> getRepByDate(String date) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return cashRepbl.getRepByDate(date);
 	}

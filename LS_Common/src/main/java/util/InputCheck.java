@@ -30,7 +30,26 @@ public class InputCheck {
 			return ResultMessage.LENGTH_WRONG;
 		}
 	}
-
+	/**
+	 * 检查是否是正数  （可以在数字存在小数点） 
+	 * @param str
+	 * @return   没写NOT_COMPLETED;
+	 *           出现非数字，非小数点UNVALID_CHAR;
+	 *           合法VALID;
+	 */
+	public static ResultMessage checkIfPositiveFloat(String str){
+		if(str.length()==0){
+			return ResultMessage.NOT_COMPLETED;
+		}else{
+			for(int i=0;i<str.length();i++){
+				char c=str.charAt(i);
+				if (!((c >= '0' && c <= '9')||c=='.')) {
+					return ResultMessage.UNVALID_CHAR;
+				}
+			}
+		}
+		return ResultMessage.VALID;
+	}
 	/**
 	 * 检查是否填写
 	 * 

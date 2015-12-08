@@ -61,6 +61,8 @@ public class WarehousePanel extends javax.swing.JFrame {
     	 * 关闭窗口
     	 */
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
+    	
+    	this.setVisible(true);
 
 
         jProgressBar2 = new javax.swing.JProgressBar();

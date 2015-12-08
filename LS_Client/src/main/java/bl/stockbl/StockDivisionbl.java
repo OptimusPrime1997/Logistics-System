@@ -8,21 +8,20 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
-import dataservice.stockdataservice.StockDataService;
-import dataservice.stockdataservice.StockDivisionDataService;
+import util.CurrentCity;
 import util.enumData.City;
 import util.enumData.ResultMessage;
-import util.enumData.place;
 import PO.StockDivisionPO;
 import PO.ReceiptPO.InStockRepPO;
 import PO.ReceiptPO.OutStockRepPO;
 import VO.StockDivisionVO;
 import VO.ReceiptVO.InStockRepVO;
 import VO.ReceiptVO.OutStockRepVO;
-import bl.receiptbl.InStockRepbl.InStockRepbl;
 import blservice.stockblservice.StockDivisionBLService;
+import dataservice.stockdataservice.StockDivisionDataService;
 
 /**
  * @author G
@@ -42,7 +41,8 @@ public class StockDivisionbl implements StockDivisionBLService{
 	public ResultMessage update(InStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException{
 		InStockRepPO po = vo.toPO(vo);
 		StockDivisionDataService sd = getStockDivisionDataService();
-		return sd.update(po);
+		City cityNum = CurrentCity.getCurrentCity();
+		return sd.update(po, cityNum);
 		
 	}
 	public ResultMessage update(OutStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException{
@@ -74,8 +74,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 	 
 	public ArrayList<StockDivisionVO> getBlock(City destination) throws NotBoundException, IOException {
 		StockDivisionDataService sd = getStockDivisionDataService();
-		//TODO 得到当前城市
-		City city = City.BEIJING;
+		City city = CurrentCity.getCurrentCity();
 		ArrayList<StockDivisionVO> resultList = new ArrayList<StockDivisionVO>();
 		ArrayList<StockDivisionPO> list = sd.getStockDivision(city);
 		for (StockDivisionPO po : list) {
@@ -101,8 +100,8 @@ public class StockDivisionbl implements StockDivisionBLService{
 		
 		boolean available = true;
 		StockDivisionDataService sd = getStockDivisionDataService();
-		//TODO 得到当前城市
-		City cityNum = City.BEIJING;
+		
+		City cityNum = CurrentCity.getCurrentCity();
 		ArrayList<StockDivisionPO> list = sd.getStockDivision(cityNum);
 
 		
@@ -148,8 +147,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 		 */
 		int [] block = new int[8];
 		StockDivisionDataService sd = getStockDivisionDataService();
-		//TODO 得到当前城市
-		City cityNum = City.BEIJING;
+		City cityNum = CurrentCity.getCurrentCity();
 		ArrayList<StockDivisionPO> list = sd.getStockDivision(cityNum);
 		for(StockDivisionPO po:list) {
 			block[po.getBlock()-1]+=block[po.getBlock()-1];

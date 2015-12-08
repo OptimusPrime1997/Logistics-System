@@ -5,7 +5,12 @@ import java.util.ArrayList;
 import PO.GoodsPO;
 import util.enumData.*;
 /*
- *  GoodsVO vo = new GoodsVO("0250000123", false, "02400100006014",
+ * 010北京 
+ * 020广州 
+ * 021上海
+ * 025南京
+ * 
+ * GoodsVO vo = new GoodsVO("0250000123", false, "02400100006014",
 				"", "20151026", "", "025", "李华",
 				"上海市浦东新区张杨路500号", "上海华润时代广场", "87511426", "陆宏",
 				"南京市栖霞区仙林大道和园12号", null, "15500001112", 1, 5, 8, "书",
@@ -13,13 +18,12 @@ import util.enumData.*;
 				GoodsLogisticState.SENDED, null, null);
  */
 public class GoodsVO {
-	private static long listNumToCount=0; 
-	public String listNum;
+	public String listNum="";
 	public Boolean ifExaminePassed=false;
 	public String getCourierAccount;
-	public String deliverCourierAccount;
+	public String deliverCourierAccount="";
 	public String startTime;
-	public String overtime;
+	public String overtime="";
 	public String destinationCity;
 	public String senderName;
 	public String senderAddress;
@@ -39,8 +43,8 @@ public class GoodsVO {
 	public double moneyFare;
 	public GoodsArrivalState arrivalState=GoodsArrivalState.INTACT;
 	public GoodsLogisticState logisticState=GoodsLogisticState.SENDED;
-	public String realReceiverName;
-	public String realReceiverPhone;
+	public String realReceiverName="";
+	public String realReceiverPhone="";
 
 	public GoodsVO(Boolean ifExaminePassed,
 			String getCourierAccount, String deliverCourierAccount,
@@ -53,7 +57,7 @@ public class GoodsVO {
 			double moneyTotal, double moneyFare,
 			GoodsArrivalState arrivalState, GoodsLogisticState logisticState,
 			String realReceiverName, String realReceiverPhone) {
-		this.listNum = getCourierAccount.substring(0, 3)+listNumToCount;
+		//TODO
 		this.ifExaminePassed = ifExaminePassed;
 		this.getCourierAccount = getCourierAccount;
 		this.deliverCourierAccount = deliverCourierAccount;
@@ -80,7 +84,7 @@ public class GoodsVO {
 		this.logisticState = logisticState;
 		this.realReceiverName = realReceiverName;
 		this.realReceiverPhone = realReceiverPhone;
-		listNumToCount++;
+		
 	}
 
 	public GoodsVO(GoodsPO po){

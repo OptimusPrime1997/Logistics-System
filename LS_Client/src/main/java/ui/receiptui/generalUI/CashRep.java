@@ -340,8 +340,7 @@ public class CashRep extends javax.swing.JPanel {
     	double money;
 		try {
 			courierName = control.getCourierName(courierNum);
-		} catch (javax.naming.NameNotFoundException | ClassNotFoundException | NameNotFoundException
-				| NumNotFoundException | IOException e) {
+		} catch (ClassNotFoundException | NameNotFoundException | NumNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));

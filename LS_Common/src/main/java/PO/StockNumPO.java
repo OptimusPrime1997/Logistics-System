@@ -5,12 +5,14 @@ package PO;
 
 import java.io.Serializable;
 
+import util.enumData.City;
+
 /**
  * @author G
  *
  */
 public class StockNumPO implements Serializable{
-	private String cityNum;
+	private City cityNum;
 	private int initialNum;
 	
 	/**
@@ -18,12 +20,12 @@ public class StockNumPO implements Serializable{
 	 * @param cn    id of this warehouse
 	 * @param in    the initial number of this warehouse 
 	 */
-	public StockNumPO(String cn,int in) {
+	public StockNumPO(City cn,int in) {
 		cityNum=cn;
 		initialNum=in;
 	}
 
-	public String getCityNum() {
+	public City getCityNum() {
 		return cityNum;
 	}
 
@@ -31,7 +33,7 @@ public class StockNumPO implements Serializable{
 		return initialNum;
 	}
 
-	public void setCityNum(String cityNum) {
+	public void setCityNum(City cityNum) {
 		this.cityNum = cityNum;
 	}
 
