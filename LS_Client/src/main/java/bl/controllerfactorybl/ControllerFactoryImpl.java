@@ -64,25 +64,27 @@ import blservice.stockblservice.StockBLService;
 import blservice.stockblservice.StockDivisionBLService;
 import blservice.stockblservice.StockNumBLService;
 
-public class ControllerFactoryImpl implements ControllerFactoryblService{
-private ControllerFactoryImpl() {}
-	
+public class ControllerFactoryImpl implements ControllerFactoryblService {
+	private ControllerFactoryImpl() {
+	}
+
 	public static ControllerFactoryImpl getInstance() {
 		return ControllerFactoryImplHolder.controllerFactory;
 	}
-	
+
 	private static class ControllerFactoryImplHolder {
 		private static ControllerFactoryImpl controllerFactory = new ControllerFactoryImpl();
 	}
+
 	@Override
 	public BusinessFormBLService getBusinessFromController() {
-		
+
 		return new BusinessFormController();
 	}
 
 	@Override
 	public ProfitFormBLService getProfitFormController() {
-		
+
 		return new ProfitFormController();
 	}
 
@@ -91,15 +93,16 @@ private ControllerFactoryImpl() {}
 	 */
 	@Override
 	public GoodsCheckValidBLService getGoodsCheckController() {
-		
+
 		return new GoodsCheckValidController();
 	}
+
 	/**
 	 * 删除订单
 	 */
 	@Override
 	public GoodsDeleteBLService getGoodsDeleteController() {
-		
+
 		return new GoodsDeleteController();
 	}
 
@@ -108,7 +111,7 @@ private ControllerFactoryImpl() {}
 	 */
 	@Override
 	public GoodsExamineBLService getGoodsExamineController() {
-		
+
 		return new GoodsExamineController();
 	}
 
@@ -117,7 +120,7 @@ private ControllerFactoryImpl() {}
 	 */
 	@Override
 	public GoodsFindBLService getGoodsFindController() {
-		
+
 		return new GoodsFindController();
 	}
 
@@ -126,7 +129,7 @@ private ControllerFactoryImpl() {}
 	 */
 	@Override
 	public GoodsInitBLService getGoodsInitController() {
-		
+
 		return new GoodsInitController();
 	}
 
@@ -135,16 +138,16 @@ private ControllerFactoryImpl() {}
 	 */
 	@Override
 	public GoodsSetStateBLService getGoodsSetStateController() {
-		
+
 		return new GoodsSetStateController();
 	}
+
 	@Override
 	public LogBLService getLogController() {
-		
+
 		return new LogController();
 	}
 
-	
 	@Override
 	public AccountBLService getAccountController() {
 		// TODO Auto-generated method stub
@@ -153,117 +156,116 @@ private ControllerFactoryImpl() {}
 
 	@Override
 	public BankAccountBLService getBankAccountController() {
-		
-		return  new BankAccountblController();
+
+		return new BankAccountblController();
 	}
 
 	@Override
 	public ConstBLService getConstController() {
-//		return  new ConstblController();
+		// return new ConstblController();
 		return new ConstblController();
 	}
 
 	@Override
 	public InstitutionBLService getInstitutionController() {
-		
+
 		return new InstitutionblController();
 	}
 
 	@Override
 	public SalaryPolicyBLService getSalaryPolicyController() {
-		
+
 		return new SalaryPolicyblController();
 	}
 
 	@Override
 	public DriverBLService getDriverController() {
-		
+
 		return new DriverblController();
 	}
 
 	@Override
 	public VehicleBLService getVehicleController() {
-		
+
 		return new VehicleblController();
 	}
 
-	@Override
+	
 	public LoginBLService getLoginController() {
-		
 		return new LoginblController();
 	}
 
 	@Override
 	public CashRepblService getCashRepblService() {
-		
+
 		return new CashRepController();
 	}
 
 	@Override
 	public DeliverRepblService getDeliverRepblService() {
-		
+
 		return new DeliverController();
 	}
 
 	@Override
 	public GetRepblService getGetRepblService() {
-		
+
 		return new GetRepController();
 	}
 
 	@Override
 	public InStockRepblService getInStockRepblService() {
-		
+
 		return new InStockRepController();
 	}
 
 	@Override
 	public OutStockRepblService getOutStockRepblService() {
-		
+
 		return new OutStockRepController();
 	}
 
 	@Override
 	public PayRepblService getPayRepblService() {
-		
+
 		return new PayRepController();
 	}
 
 	@Override
 	public ReceptionRepblService getReceptionRepblService() {
-		
+
 		return new ReceptionRepController();
 	}
 
 	@Override
 	public ShipmentRepblServce getShipmentRepblServce() {
-		
+
 		return new ShipmentController();
 	}
 
 	@Override
 	public ShippingRepblService getShippingRepblService() {
-		
+
 		return new ShippingRepController();
 	}
 
 	@Override
 	public TransferRepblService getTransferRepblService() {
-		
+
 		return new TransferRepController();
 	}
 
-	
 	@Override
 	public StockBLService getStockController() {
 		return new StockController();
 	}
+
 	/**
 	 * 货物收件信息输入
 	 */
 	@Override
 	public GoodsEndBLService getGoodsEndController() {
-		
+
 		return new GoodsEndController();
 	}
 
@@ -272,13 +274,9 @@ private ControllerFactoryImpl() {}
 		return new StockController();
 	}
 
-	
 	@Override
 	public StockDivisionBLService getStockDivisionController() {
 		return new StockController();
 	}
 
-
-	
-	
 }
