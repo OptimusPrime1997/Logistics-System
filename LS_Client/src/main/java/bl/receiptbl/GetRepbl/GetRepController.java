@@ -38,7 +38,8 @@ public class GetRepController extends ReceiptblController implements GetRepblSer
 	}
 
 	@Override
-	public ArriveRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException {
+	public ArriveRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, 
+	IOException {
 		// TODO Auto-generated method stub
 		return getRepCheckbl.getRepByNum(num);
 	}
@@ -50,9 +51,10 @@ public class GetRepController extends ReceiptblController implements GetRepblSer
 	}
 
 	@Override
-	public ArrayList<ArriveRepVO> getAllRep() throws RemoteException, MalformedURLException, NotBoundException {
+	public ArrayList<ArriveRepVO> getAllRep() throws NotBoundException, ClassNotFoundException, 
+	IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return getRepbl.getAllRep();
 	}
 
 	@Override
@@ -69,7 +71,8 @@ public class GetRepController extends ReceiptblController implements GetRepblSer
 	}
 
 	@Override
-	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException, 
+	IOException {
 		// TODO Auto-generated method stub
 		return getRepShowbl.initShow(num);
 	}

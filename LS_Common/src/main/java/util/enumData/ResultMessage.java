@@ -40,6 +40,10 @@ public enum ResultMessage {
 	 */
 	NOT_FOUND,
 	/**
+	 * 起止日期颠倒
+	 */
+	WRONG_ORDER_OF_DATE,
+	/**
 	 * 合法
 	 */
 	VALID,
@@ -240,6 +244,8 @@ public enum ResultMessage {
 			return "签收成功~";
 		case MODIFY_SUCCESS:
 			return "修改成功";
+		case WRONG_ORDER_OF_DATE:
+			return "起止日期填反啦";
 		case IOFAILED:
 			return "读写文件失败";
 		case FAILED:

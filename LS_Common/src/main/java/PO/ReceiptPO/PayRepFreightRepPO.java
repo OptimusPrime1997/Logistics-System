@@ -12,11 +12,11 @@ public class PayRepFreightRepPO implements Serializable{
 	private double sum;
 	private String bankAccountNum;
 	private ArrayList<PayFreightPO> payFreightPOs;
-	public PayRepFreightRepPO(double sum, String bankAccountNum, ArrayList<PayFreightPO> transferPayPOs) {
+	public PayRepFreightRepPO(double sum, String bankAccountNum, ArrayList<PayFreightPO> payFreightPOs) {
 		super();
 		this.sum = sum;
 		this.bankAccountNum = bankAccountNum;
-		this.payFreightPOs = transferPayPOs;
+		this.payFreightPOs = payFreightPOs;
 	}
 	public double getSum() {
 		return sum;
@@ -24,7 +24,7 @@ public class PayRepFreightRepPO implements Serializable{
 	public String getBankAccountNum() {
 		return bankAccountNum;
 	}
-	public ArrayList<PayFreightPO> getTransferPayPOs() {
+	public ArrayList<PayFreightPO> getPayFreightPOs() {
 		return payFreightPOs;
 	}
 	

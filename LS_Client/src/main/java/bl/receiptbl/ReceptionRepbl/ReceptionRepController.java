@@ -16,73 +16,73 @@ import blservice.receiptblservice.ReceptionRepblService;
 import util.enumData.Rep;
 
 public class ReceptionRepController extends ReceiptblController implements ReceptionRepblService{
-	ReceptionRepbl receptionRep = new ReceptionRepbl();
+	private ReceptionRepbl receptionRepbl = new ReceptionRepbl();
+	private ReceptionRepCheckbl receptionRepCheckbl = new ReceptionRepCheckbl();
+	private ReceptionRepShowbl receptionRepShowbl = new ReceptionRepShowbl();
 
 	@Override
 	public String createNum(String date) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		return receptionRep.createNum(date);
+		return receptionRepbl.createNum(date);
 	}
 
 	@Override
 	public void delete(int n) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		receptionRep.delete(n);
 	}
 
 	@Override
 	public void delete(String num) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		receptionRep.delete(num);
 	}
 
 	@Override
 	public ArriveRepVO getRepByNum(String num) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		return receptionRep.getRepByNum(num);
+		return receptionRepCheckbl.getRepByNum(num);
 	}
 
 	@Override
 	public void submit(ReceiptVO vo) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		receptionRep.submit(vo);
+		receptionRepbl.submit(vo);
 	}
 
 	@Override
 	public ArrayList<ArriveRepVO> getAllRep() throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		return receptionRep.getAllRep();
+		return receptionRepbl.getAllRep();
 	}
 
 	@Override
-	public ArrayList<ArriveRepVO> getRepBydate(String date)
+	public ArrayList<ArriveRepVO> getRepByDate(String date)
 			throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		return receptionRep.getRepByDate(date);
-	}
-
-	@Override
-	public String updateShip(Rep rep, String num) {
-		// TODO Auto-generated method stub
-		return receptionRep.updateShip(rep, num);
+		return null;
 	}
 
 	@Override
 	public ShipmentRepVO getShipmentRep(String num) {
 		// TODO Auto-generated method stub
-		return receptionRep.getShipmentRep(num);
+		return receptionRepbl.getShipmentRep(num);
 	}
 
 	@Override
 	public TransferRepVO getTransferRep(String num) {
 		// TODO Auto-generated method stub
-		return receptionRep.getTransferRep(num);
+		return receptionRepbl.getTransferRep(num);
 	}
 
 	@Override
 	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return receptionRepCheckbl.initCheck();
+	}
+
+	@Override
+	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		return receptionRepShowbl.initShow(num);
 	}
 
 

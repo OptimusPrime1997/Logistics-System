@@ -53,7 +53,7 @@ public class OutStockRepController extends ReceiptblController implements OutSto
 	public ArrayList<OutStockRepVO> getAllRep()
 			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return outStackRepbl.getAllRep();
 	}
 
 	@Override

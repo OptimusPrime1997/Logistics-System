@@ -17,7 +17,7 @@ import javax.swing.WindowConstants;
 
 import ui.businessOfficerui.businessOfficer_main;
 import ui.courierui.courier_main;
-import ui.financialstaffui.FinancialStaffJFrame1;
+import ui.financialstaffui.FinancialStaffJFrame;
 import ui.managerui.ManagerJFrame1;
 import ui.transferCtrOfficerui.transferCtrOfficer_main;
 import ui.warehousemanui.WarehousePanel;
@@ -201,7 +201,7 @@ public class MainFrame extends JFrame {
                   switch (job) {
          		case 1:new ManagerJFrame1();
          			break;
-         		case 2:new FinancialStaffJFrame1();
+         		case 2:new FinancialStaffJFrame();
          			break;
          		case 3:new businessOfficer_main();   
          			break;

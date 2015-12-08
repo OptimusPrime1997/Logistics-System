@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import Exception.GoodsNotFound;
+import PO.ReceiptPO.ReceiptPO;
 import VO.ReceiptVO.DeliverRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.goodsbl.Goodsbl;
@@ -14,6 +16,7 @@ import util.enumData.Rep;
 import util.enumData.ResultMessage;
 
 public class DeliverRepbl {
+	
 	Receiptbl receiptbl = new Receiptbl();
 	Goodsbl goodsbl = new Goodsbl();
 
@@ -25,7 +28,8 @@ public class DeliverRepbl {
 		return num;
 	}
 
-	public void submit(ReceiptVO vo) throws RemoteException, MalformedURLException, IOException, NotBoundException {
+	public void submit(ReceiptVO vo) throws RemoteException, MalformedURLException, IOException,
+	NotBoundException {
 		receiptbl.submit(DeliverRepVO.toPO((DeliverRepVO) vo), Rep.DeliverRep);
 	}
 
@@ -54,6 +58,13 @@ public class DeliverRepbl {
 	public String getAddressByOrder(String order) throws GoodsNotFound {
 		// TODO Auto-generated method stub
 		return goodsbl.findByListNum(order).receiverAddress;
+	}
+
+	public ArrayList<DeliverRepVO> getAllRep() throws ClassNotFoundException, NotBoundException, 
+	IOException {
+		// TODO Auto-generated method stub
+		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.DeliverRep);
+		return DeliverRepVO.toArrayVO(receiptPOs);
 	}
 
 }
