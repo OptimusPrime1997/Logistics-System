@@ -41,12 +41,14 @@ public class driver_detail extends JFrame {
     /**
      * Creates new form driver_detail
      */
-    public driver_detail() {
-    	this.setVisible(true);
-    	 setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-        initComponents();
-    }
-  private void initComponents() {
+	public driver_detail() {
+		this.setVisible(true);
+		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+		this.setLocationRelativeTo(null);
+		initComponents();
+	}
+
+	private void initComponents() {
 	  GroupLayout layout = new GroupLayout(getContentPane());
 	  initLabel();
 	  initComboBox();

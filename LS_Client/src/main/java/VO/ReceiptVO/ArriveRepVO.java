@@ -5,20 +5,20 @@ import java.util.ArrayList;
 import PO.ReceiptPO.ArriveRepPO;
 import PO.ReceiptPO.ReceiptPO;
 import util.enumData.Rep;
-import util.enumData.Place;
+import util.enumData.City;
 
 public class ArriveRepVO extends ReceiptVO{
 	public Rep rep;
 	public String shipNum;
-	public Place place;
+	public City City;
 	public ArrayList<ArriveVO> arriveVOs;
 	
-	public ArriveRepVO(String num, String date, Rep rep, String shipNum, util.enumData.Place place,
+	public ArriveRepVO(String num, String date, Rep rep, String shipNum, util.enumData.City City,
 			ArrayList<ArriveVO> arriveVOs) {
 		super(num, date);
 		this.rep = rep;
 		this.shipNum = shipNum;
-		this.place = place;
+		this.City = City;
 		this.arriveVOs = arriveVOs;
 	}
 	
@@ -27,12 +27,12 @@ public class ArriveRepVO extends ReceiptVO{
 		this.num = po.getNum();
 		this.rep = po.getRep();
 		this.shipNum = po.getShipNum();
-		this.place = po.getPlace();
+		this.City = po.getCity();
 		this.arriveVOs = ArriveVO.toArrayVO(po.getArrivePOs());
 	}
 	
 	public static ArriveRepPO toPO(ArriveRepVO vo){
-		return new ArriveRepPO(vo.num, vo.date, vo.rep, vo.shipNum, vo.place, ArriveVO.toArrayPO(vo.arriveVOs));
+		return new ArriveRepPO(vo.num, vo.date, vo.rep, vo.shipNum, vo.City, ArriveVO.toArrayPO(vo.arriveVOs));
 	}
 	
 	public static ArrayList<ArriveRepVO> toArrayVO(ArrayList<ReceiptPO> receiptPOs) {

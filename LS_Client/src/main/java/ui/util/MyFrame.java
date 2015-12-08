@@ -10,6 +10,7 @@ public class MyFrame extends JFrame{
 		this.setVisible(true);
 		this.setContentPane(panel);
 		this.setResizable(false);
+		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 	}
 	public MyFrame(JPanel panel){
@@ -17,6 +18,7 @@ public class MyFrame extends JFrame{
 		this.setVisible(true);
 		this.setContentPane(panel);
 		this.setResizable(false);
+		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 }

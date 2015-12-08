@@ -2,10 +2,21 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-public class ShipmentRepVO extends ShipRepVO {
+import util.enumData.*;
 
-	public ShipmentRepVO(String num, String date, String plateNum, String driverNum, boolean arriveAlready,
-			ArrayList<String> goods){
-		super(num, date, plateNum, driverNum, arriveAlready, goods);
+public class ShipmentRepVO extends ReceiptVO {
+	public City City;
+	public String plateNum;
+	public String driverNum;
+	public boolean arriveAlready;
+	public ArrayList<String> goods;
+	public ShipmentRepVO(String num, String date, City City, String plateNum, String driverNum,
+			boolean arriveAlready, ArrayList<String> goods) {
+		super(num, date);
+		this.City = City;
+		this.plateNum = plateNum;
+		this.driverNum = driverNum;
+		this.arriveAlready = arriveAlready;
+		this.goods = goods;
 	}
 }

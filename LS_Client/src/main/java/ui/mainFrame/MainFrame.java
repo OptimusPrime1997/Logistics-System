@@ -29,7 +29,20 @@ import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.goodsblservice.GoodsCheckValidBLService;
 import blservice.goodsblservice.GoodsFindBLService;
 import blservice.loginblservice.LoginBLService;
-
+/*
+ * msgAcc_ifValid-->检查账号是否合法
+ * msgKey_ifValid-->检查密码是否输入了
+ * msgMatch-->访问数据层，账号是否存在，账号与密码是否匹配
+ *  
+ *  02500106027
+ *   025     001           01      027
+ *  3位城市  3位营业厅编号     身份           序号
+ *（01总经理、02财务人员、03营业厅业务员、
+ *04中转中心业务员、05中转中心仓库管理员、
+ *06快递员、07司机）+3位顺序编号 
+ *
+ *
+ */
 /**
  *
  * @author Administrator
@@ -45,6 +58,7 @@ public class MainFrame extends JFrame {
         ctr_login=ControllerFactoryImpl.getInstance().getLoginController();
     	this.setVisible(true);
     	setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    	this.setLocationRelativeTo(null);
     	this.setResizable(false);
         initComponents();
     }
@@ -160,7 +174,7 @@ public class MainFrame extends JFrame {
 		 * msgKey_ifValid-->检查密码是否输入了
 		 * msgMatch-->访问数据层，账号是否存在，账号与密码是否匹配
 		 *  
-		 *  02500104027
+		 *  02500106027
 		 *   025     001           01      027
 		 *  3位城市  3位营业厅编号     身份           序号
 	     *（01总经理、02财务人员、03营业厅业务员、
