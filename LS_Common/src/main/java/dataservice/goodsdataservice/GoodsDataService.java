@@ -22,5 +22,5 @@ public interface GoodsDataService extends Remote {
 	public GoodsPO findbygoods(String ListNum)throws RemoteException, GoodsNotFound;
 	public ArrayList<GoodsPO> findbyGetCourier(String CourierNum,String date)throws RemoteException;
 	public int findbyCourier(String CourierNum,String date)throws RemoteException;
-
+	public void recordListNum()throws RemoteException;
 }

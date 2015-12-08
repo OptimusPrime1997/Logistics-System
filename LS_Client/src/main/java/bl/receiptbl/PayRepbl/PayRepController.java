@@ -15,62 +15,61 @@ import blservice.receiptblservice.PayRepblService;
 import util.enumData.ResultMessage;
 
 public class PayRepController extends ReceiptblController implements PayRepblService{
-	PayRepbl payRep = new PayRepbl();
+	private PayRepbl payRepbl = new PayRepbl();
+	private PayRepCheckbl payRepCheckbl = new PayRepCheckbl();
+	private PayRepShowbl payRepShowbl = new PayRepShowbl();
 
 	@Override
-	public String createNum(String date) throws RemoteException, MalformedURLException, NotBoundException {
+	public String createNum(String date) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return payRep.createNum(date);
+		return payRepbl.createNum(date);
 	}
 
 	@Override
 	public void delete(int n) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		payRep.delete(n);
 	}
 
 	@Override
 	public void delete(String num) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		payRep.delete(num);
 	}
 
 	@Override
-	public PayRepVO getRepByNum(String num) throws RemoteException, MalformedURLException, NotBoundException {
+	public PayRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return payRep.getRepByNum(num);
+		return payRepCheckbl.getRepByNum(num);
 	}
 
 	@Override
-	public void submit(ReceiptVO vo) throws RemoteException, MalformedURLException, NotBoundException {
+	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		payRep.submit(vo);
+		payRepbl.submit(vo);
 	}
 
 	@Override
 	public ArrayList<PayRepVO> getAllRep() throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		return payRep.getAllRep();
+		return null;
 	}
 
 	@Override
-	public ArrayList<PayRepVO> getRepBydate(String date)
-			throws RemoteException, MalformedURLException, NotBoundException {
+	public ArrayList<PayRepVO> getRepByDate(String date)
+			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return payRep.getRepByDate(date);
-	}
-
-	@Override
-	public ArrayList<ReceiptVO> forPay() {
-		// TODO Auto-generated method stub
-		return payRep.forPay();
+		return null;
 	}
 
 	@Override
 	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return payRepCheckbl.initCheck();
 	}
 
+	@Override
+	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		return payRepShowbl.initShow(num);
+	}
 
 }

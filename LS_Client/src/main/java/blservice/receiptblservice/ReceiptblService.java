@@ -26,7 +26,7 @@ public interface ReceiptblService extends PreReceiptblService{
 	
 	public <T extends ReceiptVO> ArrayList<T> getAllRep() throws NotBoundException, ClassNotFoundException, IOException;
 	
-	public <T extends ReceiptVO> ArrayList<T> getRepBydate(String date) throws NotBoundException, ClassNotFoundException, IOException;
+	public <T extends ReceiptVO> ArrayList<T> getRepByDate(String date) throws NotBoundException, ClassNotFoundException, IOException;
 	
 	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException, NameNotFoundException, NumNotFoundException;
 	

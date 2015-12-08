@@ -10,6 +10,7 @@ import Exception.CourierNotFoundException;
 import Exception.GoodsNotFound;
 import PO.GoodsPO;
 import dataservice.goodsdataservice.GoodsDataService;
+import datautil.DataOrdinary;
 import datautil.DataUtility;
 
 public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
@@ -183,5 +184,16 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 		super();
 	}
 	private static final long serialVersionUID = 1L;
+	/**
+	 * 记录快件总数量的 
+	 */
+	@Override
+	public void recordListNum() throws RemoteException {
+		String fName="GoodsTotal";
+		int sum=DataOrdinary.getOneNum(fName);
+		DataOrdinary.saveOneNum(sum++, fName);
+		System.out.println(DataOrdinary.getOneNum(fName));
+		
+	}
 
 }

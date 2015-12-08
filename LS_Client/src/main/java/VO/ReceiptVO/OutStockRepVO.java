@@ -7,12 +7,12 @@ import PO.ReceiptPO.ReceiptPO;
 import util.enumData.*;
 
 public class OutStockRepVO extends ReceiptVO {
-	public place place;
+	public Place place;
 	public ShipForm form;
 	public Rep rep;
 	public String shipNum;
 	public ArrayList<String> goods;
-	public OutStockRepVO(String num, String date, util.enumData.place place, ShipForm form, Rep rep, String shipNum,
+	public OutStockRepVO(String num, String date, util.enumData.Place place, ShipForm form, Rep rep, String shipNum,
 			ArrayList<String> goods) {
 		super(num, date);
 		this.place = place;

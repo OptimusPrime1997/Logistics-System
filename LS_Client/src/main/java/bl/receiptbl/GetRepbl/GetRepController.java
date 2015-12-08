@@ -56,7 +56,7 @@ public class GetRepController extends ReceiptblController implements GetRepblSer
 	}
 
 	@Override
-	public ArrayList<ArriveRepVO> getRepBydate(String date)
+	public ArrayList<ArriveRepVO> getRepByDate(String date)
 			throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
 		return null;

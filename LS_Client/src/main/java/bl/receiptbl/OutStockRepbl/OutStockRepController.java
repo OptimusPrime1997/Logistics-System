@@ -13,7 +13,9 @@ import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.OutStockRepblService;
 
 public class OutStockRepController extends ReceiptblController implements OutStockRepblService{
-	OutStockRepbl outStackRepbl = new OutStockRepbl();
+	private OutStockRepbl outStackRepbl = new OutStockRepbl();
+	private OutStockRepCheckbl outStockRepCheckbl = new OutStockRepCheckbl();
+	private OutStockRepShowbl outStockRepShowbl = new OutStockRepShowbl();
 
 	@Override
 	public String createNum(String date)
@@ -26,21 +28,19 @@ public class OutStockRepController extends ReceiptblController implements OutSto
 	public void delete(int n)
 			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		outStackRepbl.delete(n);
 	}
 
 	@Override
 	public void delete(String num)
 			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		outStackRepbl.delete(num);
 	}
 
 	@Override
 	public OutStockRepVO getRepByNum(String num)
 			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return outStackRepbl.getRepByNum(num);
+		return outStockRepCheckbl.getRepByNum(num);
 	}
 
 	@Override
@@ -53,11 +53,11 @@ public class OutStockRepController extends ReceiptblController implements OutSto
 	public ArrayList<OutStockRepVO> getAllRep()
 			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return outStackRepbl.getAllRep();
+		return null;
 	}
 
 	@Override
-	public ArrayList<OutStockRepVO> getRepBydate(String date)
+	public ArrayList<OutStockRepVO> getRepByDate(String date)
 			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return outStackRepbl.getRepByDate(date);
@@ -66,7 +66,13 @@ public class OutStockRepController extends ReceiptblController implements OutSto
 	@Override
 	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return outStockRepCheckbl.initCheck();
+	}
+
+	@Override
+	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		return outStockRepShowbl.initShow(num);
 	}
 
 

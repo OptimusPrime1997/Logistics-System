@@ -198,7 +198,7 @@ public enum ResultMessage {
 		case NOT_COMPLETED:
 			return "有项目未填写，请完成后再提交";
 		case LENGTH_WRONG:
-			return "长度有误,订单号是11位哦~";
+			return "长度有误,订单号、手机号都是11位哦~";
 		case WRONG_FORMAT:
 			return "格式错误";
 		case WRONG_DATA:
@@ -247,6 +247,8 @@ public enum ResultMessage {
 			return "薪水策略为空";
 		case NULL_AUTHORITY:
 			return "空职位";
+		default:
+			break;
 		}
 
 		return null;

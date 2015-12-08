@@ -10,19 +10,16 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import dataservice.stockdataservice.StockDataService;
-import dataservice.stockdataservice.StockDivisionDataService;
 import util.enumData.City;
 import util.enumData.ResultMessage;
-import util.enumData.place;
 import PO.StockDivisionPO;
 import PO.ReceiptPO.InStockRepPO;
 import PO.ReceiptPO.OutStockRepPO;
 import VO.StockDivisionVO;
 import VO.ReceiptVO.InStockRepVO;
 import VO.ReceiptVO.OutStockRepVO;
-import bl.receiptbl.InStockRepbl.InStockRepbl;
 import blservice.stockblservice.StockDivisionBLService;
+import dataservice.stockdataservice.StockDivisionDataService;
 
 /**
  * @author G

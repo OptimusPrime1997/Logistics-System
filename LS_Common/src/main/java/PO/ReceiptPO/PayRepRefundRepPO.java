@@ -11,13 +11,13 @@ public class PayRepRefundRepPO implements Serializable{
 	
 	private double sum;
 	private String date;
-	private ArrayList<PayRefundPO> littleThingPOs;
+	private ArrayList<PayRefundPO> refundPOs;
 	private String bankAccountNum;
-	public PayRepRefundRepPO(double sum, String date, ArrayList<PayRefundPO> littleThingPOs, String bankAccountNum) {
+	public PayRepRefundRepPO(double sum, String date, ArrayList<PayRefundPO> refundPOs, String bankAccountNum) {
 		super();
 		this.sum = sum;
 		this.date = date;
-		this.littleThingPOs = littleThingPOs;
+		this.refundPOs = refundPOs;
 		this.bankAccountNum = bankAccountNum;
 	}
 	public double getSum() {
@@ -26,8 +26,8 @@ public class PayRepRefundRepPO implements Serializable{
 	public String getDate() {
 		return date;
 	}
-	public ArrayList<PayRefundPO> getLittleThingPOs() {
-		return littleThingPOs;
+	public ArrayList<PayRefundPO> getRefundPOs() {
+		return refundPOs;
 	}
 	public String getBankAccountNum() {
 		return bankAccountNum;

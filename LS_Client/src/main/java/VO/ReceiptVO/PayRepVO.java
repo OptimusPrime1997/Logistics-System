@@ -3,6 +3,7 @@ package VO.ReceiptVO;
 import java.util.ArrayList;
 
 import PO.ReceiptPO.PayRepPO;
+import PO.ReceiptPO.ReceiptPO;
 import PO.ReceiptPO.PayRepFreightRepPO;
 
 public class PayRepVO extends ReceiptVO {
@@ -37,7 +38,7 @@ public class PayRepVO extends ReceiptVO {
 		this.sum = po.getSum();
 		this.payVOs = PayVO.toArrayVO(po.getPayPOs());
 		this.payPersonNum = po.getPayPersonNum();
-		this.littleThing = PayRepRefundRepVO.toArrayVO(po.getLittleThing());
+		this.littleThing = PayRepRefundRepVO.toArrayVO(po.getRefund());
 		this.salary = new PayRepStaffSalaryRepVO(po.getSalary());
 		this.transferPay = new PayRepFreightRepVO(po.getTransferPay());
 		this.rent = new PayRepRentRepVO(po.getRent());
@@ -53,10 +54,10 @@ public class PayRepVO extends ReceiptVO {
 				PayRepBonusRepVO.toPO(vo.bonus));
 	}
 
-	public static ArrayList<PayRepVO> toArrayVO(ArrayList<PayRepPO> payrepPOs){
+	public static ArrayList<PayRepVO> toArrayVO(ArrayList<ReceiptPO> receiptPOs){
 		ArrayList<PayRepVO> payRepVOs  = new ArrayList<PayRepVO>();
-		for(PayRepPO payRepPO : payrepPOs){
-			payRepVOs.add(new PayRepVO(payRepPO));
+		for(ReceiptPO receiptPO : receiptPOs){
+			payRepVOs.add(new PayRepVO((PayRepPO) receiptPO));
 		}
 		return payRepVOs;
 	}
