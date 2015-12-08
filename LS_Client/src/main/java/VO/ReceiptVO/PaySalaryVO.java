@@ -14,17 +14,4 @@ public class PaySalaryVO {
 	public PaySalaryVO(){
 		
 	}
-
-	public String getGetterName() {
-		return getterName;
-	}
-
-	public String getGetterNum() {
-		return getterNum;
-	}
-
-	public double getMoney() {
-		return money;
-	}
-	
 }

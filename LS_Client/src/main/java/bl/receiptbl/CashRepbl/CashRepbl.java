@@ -50,40 +50,18 @@ public class CashRepbl {
 		receiptbl.submit(CashRepVO.toPO((CashRepVO) vo), Rep.CashRep);
 	}
 
-	public ArrayList<CashRepVO> getRepByDate(String date)
-			throws NotBoundException, ClassNotFoundException, IOException {
-		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.CashRep);
-		if(receiptPOs==null)
-			return null;
-		return CashRepVO.toArrayVO(receiptPOs);
-	}
-
 	public String createNum(String date) throws NotBoundException, ClassNotFoundException, IOException {
 		return receiptbl.createNum(date, Rep.CashRep);
 	}
 
-	public Vector<Object> initTable(String date) throws NotBoundException, ClassNotFoundException, IOException {
-		Vector<Object> data = new Vector<Object>();
-		ArrayList<CashRepVO> cashRepVOs = getRepByDate(date);
-		if(cashRepVOs==null){
-			return data;
-		}
-		CashRepVO cashRepVO = cashRepVOs.get(0);
-		ArrayList<CashVO> cashs = cashRepVO.cashVOs;
-		CashVO cash;
-		for (int i = 0; i < cashs.size(); i++) {
-			Vector<Object> arr = new Vector<Object>();
-			cash = cashs.get(i);
-			arr.add(cash.courierName);
-			arr.add(cash.courierNum);
-			arr.add(cash.money);
-			arr.add(cash.remark);
-			data.add(arr);
-		}
-		return data;
+	public CashRepVO getRepByNum(String num) throws ClassNotFoundException, NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.CashRep);
+		return new CashRepVO((CashRepPO)receiptPO);
 	}
 	
-	public void addMoneyInBankAccount(String bankAccount, double money) throws AddMoneyInBankException, FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException {
+	public void addMoneyInBankAccount(String bankAccount, double money) throws AddMoneyInBankException, 
+	FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException {
 		BankAccountVO bankAccountVO = bankAccountbl.findByBankAccountNum(bankAccount);
 		double preBalance = bankAccountVO.balance;
 		bankAccountVO.balance += money;
@@ -99,6 +77,37 @@ public class CashRepbl {
 			bankAccounts.add(bankAccountVO.bankAccountNum);
 		}
 		return bankAccounts;
+	}
+
+	public ArrayList<CashRepVO> getAllRep() throws ClassNotFoundException, NotBoundException, IOException{
+		// TODO Auto-generated method stub
+		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.CashRep);
+		return CashRepVO.toArrayVO(receiptPOs);
+	}
+	
+	public Vector<Object> initTable(String num) throws ClassNotFoundException, 
+	NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		CashRepVO cashRepVO = getRepByNum(num);
+		Vector<Object> data = new Vector<Object>();
+		for(int i = 0;i < cashRepVO.cashVOs.size();i++){
+			Vector<Object> arr = new Vector<Object>();
+			CashVO cashVO = cashRepVO.cashVOs.get(i);
+			arr.add(cashVO.courierName);
+			arr.add(cashVO.courierNum);
+			arr.add(cashVO.money);
+			arr.add(cashVO.remark);
+			data.add(arr);
+		}
+		return data;
+	}
+
+	public ArrayList<CashRepVO> getRepByDate(String date)
+			throws NotBoundException, ClassNotFoundException, IOException {
+		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.CashRep);
+		if(receiptPOs==null)
+			return null;
+		return CashRepVO.toArrayVO(receiptPOs);
 	}
 
 }

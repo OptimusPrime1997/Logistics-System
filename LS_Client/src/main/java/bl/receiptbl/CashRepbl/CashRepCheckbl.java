@@ -4,20 +4,14 @@ import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
-
-import PO.ReceiptPO.CashRepPO;
-import PO.ReceiptPO.ReceiptPO;
 import VO.ReceiptVO.CashRepVO;
-import bl.receiptbl.Receiptbl.Receiptbl;
-import util.enumData.Rep;
 
 public class CashRepCheckbl {
 	
-	private Receiptbl receiptbl = new Receiptbl();
+	private CashRepbl cashRepbl = new CashRepbl();
 
 	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
-		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.CashRep);
-		ArrayList<CashRepVO> cashRepVOs = CashRepVO.toArrayVO(receiptPOs);
+		ArrayList<CashRepVO> cashRepVOs = cashRepbl.getAllRep();
 		Vector<Object> data = new Vector<Object>();
 		for (int i = 0; i < cashRepVOs.size(); i++) {
 			CashRepVO cashRepVO = cashRepVOs.get(i);
@@ -29,11 +23,5 @@ public class CashRepCheckbl {
 			data.add(arr);
 		}
 		return data;
-	}
-
-	public CashRepVO getRepByNum(String num) throws ClassNotFoundException, NotBoundException, IOException {
-		// TODO Auto-generated method stub
-		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.CashRep);
-		return new CashRepVO((CashRepPO)receiptPO);
 	}
 }

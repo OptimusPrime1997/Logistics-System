@@ -5,18 +5,16 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import PO.ReceiptPO.InStockRepPO;
 import PO.ReceiptPO.OutStockRepPO;
 import PO.ReceiptPO.ReceiptPO;
-import VO.ReceiptVO.InStockRepVO;
 import VO.ReceiptVO.OutStockRepVO;
 import bl.receiptbl.Receiptbl.Receiptbl;
-import util.enumData.Place;
 import util.enumData.Rep;
 
 public class OutStockRepCheckbl {
 	
 	private Receiptbl receiptbl = new Receiptbl();
+	private OutStockRepbl outStockRepbl = new OutStockRepbl();
 
 	public OutStockRepVO getRepByNum(String num) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
@@ -26,8 +24,7 @@ public class OutStockRepCheckbl {
 
 	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.OutStockRep);
-		ArrayList<OutStockRepVO> outStockRepVOs = OutStockRepVO.toArrayVO(receiptPOs);
+		ArrayList<OutStockRepVO> outStockRepVOs = outStockRepbl.getAllRep();
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < outStockRepVOs.size();i++){
 			OutStockRepVO outStockRepVO = outStockRepVOs.get(i);

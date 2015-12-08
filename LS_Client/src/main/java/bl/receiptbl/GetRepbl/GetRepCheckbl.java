@@ -8,12 +8,12 @@ import java.util.Vector;
 import PO.ReceiptPO.ArriveRepPO;
 import PO.ReceiptPO.ReceiptPO;
 import VO.ReceiptVO.ArriveRepVO;
-import VO.ReceiptVO.DeliverRepVO;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import util.enumData.Rep;
 
 public class GetRepCheckbl {
 	private Receiptbl receiptbl = new Receiptbl();
+	private GetRepbl getRepbl = new GetRepbl();
 
 	public ArriveRepVO getRepByNum(String num) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
@@ -23,8 +23,7 @@ public class GetRepCheckbl {
 
 	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.GetRep);
-		ArrayList<ArriveRepVO> getRepVOs = ArriveRepVO.toArrayVO(receiptPOs);
+		ArrayList<ArriveRepVO> getRepVOs = getRepbl.getAllRep();
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < getRepVOs.size();i++){
 			Vector<Object> arr = new Vector<Object>();

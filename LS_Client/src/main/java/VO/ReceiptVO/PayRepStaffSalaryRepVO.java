@@ -7,7 +7,8 @@ import PO.ReceiptPO.PayRepSalaryRepPO;
 public class PayRepStaffSalaryRepVO extends PayRepSalaryRepVO{
 	public ArrayList<PayStaffSalaryVO> salaryVOs;
 
-	public PayRepStaffSalaryRepVO(String bankAccountNum, double sum, ArrayList<PayStaffSalaryVO> salaryVOs) {
+	public PayRepStaffSalaryRepVO(String bankAccountNum, double sum, 
+			ArrayList<PayStaffSalaryVO> salaryVOs) {
 		super(bankAccountNum, sum);
 		this.salaryVOs = salaryVOs;
 	}
@@ -17,6 +18,7 @@ public class PayRepStaffSalaryRepVO extends PayRepSalaryRepVO{
 		this.sum = po.getSum();
 	}
 	public static PayRepSalaryRepPO toPO(PayRepStaffSalaryRepVO vo){
-		return new PayRepSalaryRepPO(PayStaffSalaryVO.toArrayPO(vo.salaryVOs), vo.bankAccountNum, vo.sum);
+		return new PayRepSalaryRepPO(PayStaffSalaryVO.toArrayPO(vo.salaryVOs),
+				vo.bankAccountNum, vo.sum);
 	}
 }

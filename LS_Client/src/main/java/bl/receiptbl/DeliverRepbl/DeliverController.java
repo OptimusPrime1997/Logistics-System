@@ -50,7 +50,7 @@ public class DeliverController extends ReceiptblController implements DeliverRep
 	@Override
 	public ArrayList<DeliverRepVO> getAllRep() throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return deliverRepbl.getAllRep();
 	}
 
 	@Override

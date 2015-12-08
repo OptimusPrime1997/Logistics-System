@@ -17,6 +17,7 @@ import util.enumData.Rep;
 public class DeliverRepCheckbl {
 	private Receiptbl receiptbl = new Receiptbl();
 	private CashRepbl cashRepbl = new CashRepbl();
+	private DeliverRepbl deliverRepbl = new DeliverRepbl();
 
 	public DeliverRepVO getRepByNum(String num) throws ClassNotFoundException, NotBoundException, IOException {
 		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.DeliverRep);
@@ -24,8 +25,7 @@ public class DeliverRepCheckbl {
 	}
 
 	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException, NameNotFoundException, NumNotFoundException {
-		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.DeliverRep);
-		ArrayList<DeliverRepVO> deliverRepVOs = DeliverRepVO.toArrayVO(receiptPOs);
+		ArrayList<DeliverRepVO> deliverRepVOs = deliverRepbl.getAllRep();
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < deliverRepVOs.size();i++){
 			DeliverRepVO deliverRepVO = deliverRepVOs.get(i);

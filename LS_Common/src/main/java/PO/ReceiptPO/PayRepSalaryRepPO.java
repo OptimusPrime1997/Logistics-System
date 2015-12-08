@@ -1,9 +1,8 @@
 package PO.ReceiptPO;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PayRepSalaryRepPO implements Serializable{
+public class PayRepSalaryRepPO{
 	/**
 	 * 
 	 */
@@ -12,11 +11,14 @@ public class PayRepSalaryRepPO implements Serializable{
 	private ArrayList<PaySalaryPO> allSalaryPOs;
 	private String bankAccountNum;
 	private double sum;
-	public PayRepSalaryRepPO(ArrayList<PaySalaryPO> allSalaryPOs, String bankAccountNum, double sum) {
-		super();
+	public PayRepSalaryRepPO(ArrayList<PaySalaryPO> allSalaryPOs, 
+			String bankAccountNum, double sum) {
 		this.allSalaryPOs = allSalaryPOs;
 		this.bankAccountNum = bankAccountNum;
 		this.sum = sum;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	public ArrayList<PaySalaryPO> getAllSalaryPOs() {
 		return allSalaryPOs;

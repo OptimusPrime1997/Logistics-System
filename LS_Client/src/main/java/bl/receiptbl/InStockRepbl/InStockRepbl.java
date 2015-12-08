@@ -33,4 +33,11 @@ public class InStockRepbl{
 		return InStockRepVO.toArrayVO(receiptPOs);
 	}
 
+	public ArrayList<InStockRepVO> getAllRep() throws ClassNotFoundException, NotBoundException,
+	IOException {
+		// TODO Auto-generated method stub
+		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.InStockRep);
+		return InStockRepVO.toArrayVO(receiptPOs);
+	}
+
 }

@@ -1,22 +1,22 @@
 package bl.receiptbl.ReceptionRepbl;
 
+import java.io.IOException;
+import java.rmi.NotBoundException;
 import java.util.ArrayList;
 
 import VO.ReceiptVO.ArriveRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import VO.ReceiptVO.ShipmentRepVO;
 import VO.ReceiptVO.TransferRepVO;
+import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepbl;
 import bl.receiptbl.TransferRepbl.TransferRepbl;
 import util.enumData.Rep;
 
 public class ReceptionRepbl{
-
-	public String updateShip(Rep rep, String num) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
+	Receiptbl receiptbl = new Receiptbl();
+
 	public ShipmentRepVO getShipmentRep(String num){
 		ShipmentRepbl shipment = new ShipmentRepbl();
 		return shipment.getShipmentRep(num);
@@ -27,37 +27,17 @@ public class ReceptionRepbl{
 		return transfer.getTransferRep(num);
 	}
 
-	public String createNum(String date) {
+	public String createNum(String date) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return receiptbl.createNum(date, Rep.ReceptionRep);
 	}
 
-	public void delete(int n) {
+	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		
-	}
-
-	public void delete(String num) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public ArriveRepVO getRepByNum(String num) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void submit(ReceiptVO vo) {
-		// TODO Auto-generated method stub
-		
+		receiptbl.submit(ArriveRepVO.toPO((ArriveRepVO) vo), Rep.ReceptionRep);
 	}
 
 	public ArrayList<ArriveRepVO> getAllRep() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public ArrayList<ArriveRepVO> getRepByDate(String date) {
 		// TODO Auto-generated method stub
 		return null;
 	}
