@@ -147,6 +147,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 		 */
 		int [] block = new int[8];
 		StockDivisionDataService sd = getStockDivisionDataService();
+		//TODO 这里不可以用city,因为同一个城市有不同库存
 		City cityNum = CurrentCity.getCurrentCity();
 		ArrayList<StockDivisionPO> list = sd.getStockDivision(cityNum);
 		for(StockDivisionPO po:list) {

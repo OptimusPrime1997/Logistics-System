@@ -13,14 +13,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
+
 
 import util.CurrentCity;
 import util.CurrentTime;
 import util.enumData.City;
 import util.enumData.ResultMessage;
-import dataservice.stockdataservice.StockDataService;
-import bl.loginbl.LoginblController;
+import dataservice.stockdataservice.StockDataService; 
 import bl.receiptbl.InStockRepbl.InStockRepController;
 import bl.receiptbl.OutStockRepbl.OutStockRepController;
 import PO.StockPO;

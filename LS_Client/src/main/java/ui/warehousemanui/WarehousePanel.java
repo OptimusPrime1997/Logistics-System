@@ -108,7 +108,7 @@ public class WarehousePanel extends javax.swing.JFrame {
 
         jLabel4.setText("上海04");
 
-    
+        
       
 
         jLabel5.setText("南京05");
@@ -125,7 +125,8 @@ public class WarehousePanel extends javax.swing.JFrame {
         jLabel8.setText("广州08");
 
        
-
+        showProcess();
+        
         jButton1.setText("出库单填写");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -313,7 +314,9 @@ public class WarehousePanel extends javax.swing.JFrame {
     
 
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+  
+
+	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     	OutStockRep out = new OutStockRep();
     	this.getContentPane().removeAll();
     	this.getContentPane().add(out);
@@ -353,6 +356,18 @@ public class WarehousePanel extends javax.swing.JFrame {
 
     StockBLService s = ControllerFactoryImpl.getInstance().getStockController();
     
+    /**
+  	 * 
+  	 */
+  	private void showProcess() {
+  		// TODO Auto-generated method stub
+  		try {
+			s.checkPresentStockQuantity();
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+			//
+		}
+  		
+  	}
     
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) throws ClassNotFoundException, NotBoundException, IOException {//GEN-FIRST:event_jButton6ActionPerformed
     	
