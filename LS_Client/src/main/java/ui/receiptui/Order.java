@@ -8,6 +8,7 @@ package ui.receiptui;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import ui.util.MyFrame;
@@ -32,7 +33,12 @@ public class Order extends javax.swing.JPanel {
     public Order() {
     	ctr_account=ControllerFactoryImpl.getInstance().getLoginController();
     	ctr_newgoods=ControllerFactoryImpl.getInstance().getGoodsInitController();
-        initComponents();
+        try {
+			getCourierAccount=ctr_account.getCurrentOptorId();
+			officeNum=getCourierAccount.substring(3,6);
+		} catch (RemoteException e) {
+		}
+    	initComponents();
     }
     public static void main(String[] args) {
 		new MyFrame(600, 600,new Order() );
@@ -309,8 +315,8 @@ public class Order extends javax.swing.JPanel {
 		resultMsgText = new javax.swing.JTextField();
 
 		officeText.setEditable(false);
-//		String officeText=ctr_account.
-		officeText.setText("025001");//TODO
+		
+		officeText.setText(officeNum);//TODO
 		sumText.setEditable(false);
 		sumText.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -368,7 +374,7 @@ public class Order extends javax.swing.JPanel {
 			senderPhoneNumText, senderText, sumText, weightText;
 	private javax.swing.JComboBox<String> pkgBox, typeBox;
 	private javax.swing.JButton okButton, sumButton, cancelButton;
-	private String getCourierAccount, startTime, destinationCity,
+	private String officeNum,getCourierAccount, startTime, destinationCity,
 			senderName, senderAddress, senderCompany, senderPhone,
 			receiverName, receiverAddress, receiverCompany, receiverPhone,
 			nameOfInside;
