@@ -17,4 +17,20 @@ public enum City {
 		}
 		return null;
 	}
+	
+	public static int toInt(City city) {
+		switch (city) {
+		case BEIJING:
+			return 1;
+		case NANJING:
+			return 3;
+		case SHANGHAI:
+			return 5;
+		case GUANGZHOU:
+			return 7;
+		default:
+			break;
+		}
+		return 0;
+	}
 }

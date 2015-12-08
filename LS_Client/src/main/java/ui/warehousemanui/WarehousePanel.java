@@ -313,7 +313,6 @@ public class WarehousePanel extends javax.swing.JFrame {
 
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    	//TODO 
     	OutStockRep out = new OutStockRep();
     	this.getContentPane().removeAll();
     	this.getContentPane().add(out);
@@ -323,7 +322,6 @@ public class WarehousePanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed    	
-    	//TODO 
     	InStockRep in = new InStockRep();
     	this.getContentPane().removeAll();
     	this.getContentPane().add(in);
@@ -360,8 +358,7 @@ public class WarehousePanel extends javax.swing.JFrame {
     	StockShowPanel ss = new StockShowPanel();
     	ss.setVisible(true);
     	this.dispose();
-    	//TODO  把返回的list里的内容显示在界面
-    	ArrayList<StockVO> list = s.show();
+    	
     	
     }//GEN-LAST:event_jButton6ActionPerformed
 
