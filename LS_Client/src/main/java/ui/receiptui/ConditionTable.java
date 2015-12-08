@@ -17,6 +17,7 @@ import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.formblservice.BusinessFormBLService;
 import ui.util.MyFrame;
 import util.CurrentTime;
+import util.enumData.ResultMessage;
 
 /**
  *
@@ -212,17 +213,49 @@ public class ConditionTable extends javax.swing.JPanel {
      * 2015-11-2"
      */
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
-        //TODO 
+         resultMsgText.setText("");
+    	//TODO 
     	String startT=startTimeText.getText();
     	String endT=endTimeText.getText();
-    	if(dateIfValid(startT)&&dateIfValid(endT)){
-    		try {
+    	ResultMessage msgt=datesIfValid(startT,endT);
+    	
+    	if(msgt==ResultMessage.VALID){
+    		try {System.out.println("找");
 				formVO=ctr.show(startT, endT);
+				
 			} catch (ClassNotFoundException | NotBoundException | IOException e) {
+	     	}
+		}else{
+			showFeedback(msgt);
 		}
+    	
+    }
+    private void showFeedback(ResultMessage msg) {
+		resultMsgText.setText(ResultMessage.toFriendlyString(msg));
+	}
+/**
+ * 合法返回VALID
+ * @param startT
+ * @param endT
+ * @return
+ */
+    public static ResultMessage datesIfValid(String startT,String endT){
+    	if(startT.length()==0||endT.length()==0){
+    		return ResultMessage.NOT_COMPLETED;
+    	}
+    	if(!(dtIfValid(startT)&&dtIfValid(endT))){
+    		return ResultMessage.WRONG_FORMAT;
+    	}else{
+    		if(CurrentTime.ifearlier(startT, endT)){
+    			return ResultMessage.VALID;
+    		}else if((!CurrentTime.ifearlier(startT, endT))&&(!CurrentTime.ifearlier(endT, startT))){
+    			return ResultMessage.VALID;
+    		}else{
+    			return ResultMessage.WRONG_ORDER_OF_DATE;
+    		}
     	}
     }
-    public Boolean dateIfValid(String date) {
+	private static Boolean dtIfValid(String date) {
 		ArrayList<Integer> loc=new ArrayList<Integer>(2);
 		for(int i=0;i<date.length();i++){
 			char c=date.charAt(i);
@@ -245,9 +278,8 @@ public class ConditionTable extends javax.swing.JPanel {
 		return true;
 	}
 	private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_resetButtonActionPerformed
-
+        // TODO 
+	}
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
          frame.setVisible(false);
     }

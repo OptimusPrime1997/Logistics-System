@@ -24,7 +24,7 @@ public class BusinessFormbl {
 		String tempT=startTime;
 		PayRepbl ctr_payRep=new PayRepbl();
 		CashRepbl ctr_cashRep=new CashRepbl();
-		
+		System.out.println("BusinessFormbl.show");
 		try {
 			while(CurrentTime.ifearlier(tempT, endTime)){
 				moneyOut.add(ctr_payRep.getRepByDate(tempT));

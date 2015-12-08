@@ -29,10 +29,10 @@ public class BusinessFormVO {
 		this.startTime=po.getStartTime();
 		this.endTime=po.getEndTime();
 		for(ArrayList<CashRepPO> p:po.getMoneyInRecord()){
-			this.moneyInRecord.add(CashRepVO.toArrayVO(p));
+			this.moneyInRecord.add(CashRepVO.cashToArrayVO(p));
 		}
 		for(ArrayList<PayRepPO>p:po.getMoneyOutRecord()){
-			this.moneyOutRecord.add(PayRepVO.toArrayVO(p));
+			this.moneyOutRecord.add(PayRepVO.payToArrayVO(p));
 		}
 	}
 	
