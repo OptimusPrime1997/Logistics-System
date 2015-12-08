@@ -110,6 +110,27 @@ public class InputCheck {
 		return checkInputNum(listNum, 10);
 	}
 	/**
+	 * 检查账号是否合法
+	 * 输入的账号长度不为11，或有非数字 则返回NOT_FOUND_ACCOUNTNUM;
+	 * 合法返回VALID;
+	 * @param accountNum
+	 * @return
+	 */
+	public static ResultMessage checkAccount(String accountNum){
+		if(accountNum.length()==0){
+			return ResultMessage.NOT_COMPLETED_ACCOUNT;
+		}else if(checkInputNum(accountNum, 11)==ResultMessage.VALID){
+			return ResultMessage.VALID;
+		}		
+		return ResultMessage.NOT_FOUND_ACCOUNTNUM;
+	}
+	public static ResultMessage keyIfWritten(String key){
+		if (key.length() == 0)
+			return ResultMessage.NOT_COMPLETED_KEY;
+		else
+			return ResultMessage.VALID;
+	}
+	/**
 	 * 检查输入的字符串是否都是数字
 	 * @param str
 	 * @return

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import util.enumData.City;
 import util.enumData.ResultMessage;
+import util.enumData.place;
 import VO.StockDivisionVO;
 import VO.StockVO;
 import VO.ReceiptVO.InStockRepVO;
@@ -32,6 +33,9 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 	 
 
  
+	public StockDivisionVO getAvailableDivision (City des) throws NotBoundException, IOException {
+		return division.getAvailableDivision (des);
+	}
 	
 	public boolean isExist(int block, int place) throws MalformedURLException, RemoteException, NotBoundException{
 		return division.isExist(block, place);
@@ -75,24 +79,8 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 		return stock.checkPresentStockQuantity();
 	}
 	
-	@Override
-	public ArrayList<StockVO> show() throws ClassNotFoundException, NotBoundException, IOException {
-		return stock.show();
-	}
-
 	
-	@Override
-	public InStockRepVO toWriteInStockRep() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	
-	@Override
-	public OutStockRepVO toWriteOutStockRep() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	
 	@Override
@@ -119,9 +107,24 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 	 * @see blservice.stockblservice.StockDivisionBLService#modifyDivision(int, int, int, int, int, int)
 	 */
 	@Override
-	public ResultMessage modifyDivision (int oldBlock, int oldPlace, int newBlock, int newPlace) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultMessage modifyDivision (int oldBlock, int oldPlace, int newBlock, int newPlace) throws ClassNotFoundException, NotBoundException, IOException {
+		return division.modifyDivision(oldBlock, oldPlace, newBlock, newPlace);
+	}
+
+	/* (non-Javadoc)
+	 * @see blservice.stockblservice.StockBLService#showToday()
+	 */
+	@Override
+	public ArrayList<StockVO> showToday() throws ClassNotFoundException, NotBoundException, IOException {
+		return stock.showToday();
+	}
+
+	/* (non-Javadoc)
+	 * @see blservice.stockblservice.StockBLService#exportExcel()
+	 */
+	@Override
+	public ResultMessage exportExcel() throws ClassNotFoundException, NotBoundException, IOException {
+		return stock.exportExcel();
 	}
 	
 	

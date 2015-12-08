@@ -4,6 +4,8 @@ package ui.mainFrame;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,12 +18,18 @@ import javax.swing.WindowConstants;
 
 import ui.businessOfficerui.businessOfficer_main;
 import ui.courierui.courier_main;
+import ui.financialstaffui.FinancialStaffJFrame1;
+import ui.managerui.ManagerJFrame1;
+import ui.transferCtrOfficerui.transferCtrOfficer_main;
+import ui.warehousemanui.WarehousePanel;
+import util.InputCheck;
 import util.enumData.ResultMessage;
 import Exception.GoodsNotFound;
 import VO.GoodsVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.goodsblservice.GoodsCheckValidBLService;
 import blservice.goodsblservice.GoodsFindBLService;
+import blservice.managementblservice.accountblservice.AccountBLService;
 
 /**
  *
@@ -35,6 +43,7 @@ public class MainFrame extends JFrame {
     public MainFrame() {
     	ctr_checkValid = ControllerFactoryImpl.getInstance().getGoodsCheckController();
     	ctr_find=ControllerFactoryImpl.getInstance().getGoodsFindController();
+        ctr_account=ControllerFactoryImpl.getInstance().getAccountController();
     	this.setVisible(true);
     	setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     	this.setResizable(false);
@@ -85,8 +94,6 @@ public class MainFrame extends JFrame {
 	    feedback_text.setEditable(false);
 	    feedback_text.setForeground(Color.red);
 		goodsNum_text.setText(standard_goodsNum);
-		password_text.setText(standard_password);
-		account_text.setText(standard_account);
 		goodsNum_text.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				goodsNum_textMouseClicked(evt);
@@ -116,7 +123,7 @@ public class MainFrame extends JFrame {
 		msg=ctr_checkValid.checkifWritten(goodsNum);
 		//没填 反馈用户请填写
 		if(msg==ResultMessage.NOT_COMPLETED){
-			createDialog(msg);
+			showFeedback(msg);
 		}else{
 			/*
 			 * 填写了 
@@ -128,19 +135,71 @@ public class MainFrame extends JFrame {
 				try {
 					vo=ctr_find.findByGoods(goodsNum);
 				} catch (GoodsNotFound e1) {
-					createDialog(ResultMessage.NOT_FOUND);
+					showFeedback(ResultMessage.NOT_FOUND);
 				}
 			}else{//不合法  反馈用户哪里不合法
-				createDialog(msg);
+				showFeedback(msg);
 			}
 			
 		}
 	}
 	private void login_btnMouseClicked() {
+		/*
+		 * msgAcc_ifValid-->检查账号是否合法
+		 * msgKey_ifValid-->检查密码是否输入了
+		 * msgMatch-->访问数据层，账号是否存在，账号与密码是否匹配
+		 *  
+		 *  02500104027
+		 *   025     001           01      027
+		 *  3位城市  3位营业厅编号     身份           序号
+	     *（01总经理、02财务人员、03营业厅业务员、
+         *04中转中心业务员、05中转中心仓库管理员、
+         *06快递员、07司机）+3位顺序编号 
+         *
+         *
+		 */
+		ResultMessage msgAcc_ifValid,msgKey_ifValid,
+		              msgMatch=ResultMessage.NOT_FOUND_ACCOUNTNUM;
          password=password_text.getText();
-         account=account_text.getText();         
-         this.setVisible(false);
-         new businessOfficer_main();       
+         account=account_text.getText(); 
+         msgAcc_ifValid=InputCheck.checkAccount(account);
+         msgKey_ifValid=InputCheck.keyIfWritten(password);
+         //输入合法 调用数据层检查账号与密码是否匹配
+         if(msgAcc_ifValid==ResultMessage.VALID&&msgKey_ifValid==ResultMessage.VALID){
+        	  try {
+				msgMatch=ctr_account.login(account,password);
+			} catch (RemoteException e) {
+			}
+        	  if(msgMatch==ResultMessage.SUCCESS){
+        		  int job=Integer.parseInt(account.substring(6, 8));
+                  this.setVisible(false);              
+                  switch (job) {
+         		case 1:new ManagerJFrame1();
+         			break;
+         		case 2:new FinancialStaffJFrame1();
+         			break;
+         		case 3:new businessOfficer_main();   
+         			break;
+         		case 4:new transferCtrOfficer_main();   
+         			break;
+         		case 5:new WarehousePanel();
+         			break;
+         		case 6:new courier_main();
+         			break;
+         		default:showFeedback(ResultMessage.NOT_FOUND_ACCOUNTNUM);
+         			break;
+         		}
+        	  }
+         }else{//不合法 反馈
+        	 if(msgKey_ifValid!=ResultMessage.VALID){
+        		 showFeedback(msgKey_ifValid);
+        	 }
+        	 if(msgAcc_ifValid!=ResultMessage.VALID){
+        		showFeedback(msgAcc_ifValid);
+        	 }
+         }
+       
+          
          //TODO 先不判断   账号 密码的正确性
          
          
@@ -153,14 +212,10 @@ public class MainFrame extends JFrame {
     	}
     }
     private void account_textMouseClicked(java.awt.event.MouseEvent evt) {
-    	if(account_text.getText().equals(standard_account)){
-    		account_text.setText(null);
-    	}    	
+    	  	
     }
     private void password_textMouseClicked(java.awt.event.MouseEvent evt) {
-    	if(password_text.getText().equals(standard_password)){
-    		password_text.setText(null);
-    	}    	
+    	  	
     }  
 	
     private void initLayout() {
@@ -234,7 +289,7 @@ public class MainFrame extends JFrame {
 	}
 
 	
-    private void createDialog(ResultMessage msg) {
+    private void showFeedback(ResultMessage msg) {
     	this.feedback_text.setText(ResultMessage.toFriendlyString(msg));
 	}
     /**
@@ -271,7 +326,7 @@ public class MainFrame extends JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JTextField account_text,password_text,feedback_text,goodsNum_text;
-    private final String standard_password="密码",standard_goodsNum="输入订单号10位",standard_account="账号";
+    private final String standard_goodsNum="输入订单号10位";
     private String	password,goodsNum,account;
     private JButton search_btn,login_btn;
     private JLabel jLabel1;
@@ -281,5 +336,6 @@ public class MainFrame extends JFrame {
     private GoodsVO vo;
     private GoodsCheckValidBLService ctr_checkValid;
     private GoodsFindBLService ctr_find;
+    private AccountBLService ctr_account;
     // End of variables declaration//GEN-END:variables
 }

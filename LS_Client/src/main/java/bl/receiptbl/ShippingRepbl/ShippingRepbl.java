@@ -46,4 +46,9 @@ public class ShippingRepbl{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public int getTruckNum(String date) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
