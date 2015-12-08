@@ -22,10 +22,10 @@ public class LogController implements LogBLService{
 		return logbl.show(startTime, endTime, type);
 	}
 //
-	public static void main(String[] args) {
-		LogBLService ctr=ControllerFactoryImpl.getInstance().getLogController();
-		ArrayList<LogVO> vos=ctr.show(CurrentTime.getDate(), CurrentTime.getDate(), LogType.ADD_A_GOODS);
-	     System.out.println(vos.get(0).operatorID);
-	}
+//	public static void main(String[] args) {
+//		LogBLService ctr=ControllerFactoryImpl.getInstance().getLogController();
+//		ArrayList<LogVO> vos=ctr.show(CurrentTime.getDate(), CurrentTime.getDate(), LogType.ADD_A_GOODS);
+//	     System.out.println(vos.get(0).operatorID);
+//	}
 
 }
