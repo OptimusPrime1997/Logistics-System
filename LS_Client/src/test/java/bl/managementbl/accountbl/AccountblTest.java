@@ -22,12 +22,18 @@ public class AccountblTest {
 		AccountVO vo = null;
 		AccountVO vo1 =null;
 		try {
-			accountbl.add(new AccountVO("02500107001", "王二", "12345678",
-					Sex.Sex_MALE, Authority.COURIER, "12345678980", "025001"));
-			accountbl.add(new AccountVO("02500107002", "周季", "12345679",
-					Sex.Sex_MALE, Authority.COURIER, "12345678981", "025001"));
-			accountbl.add(new AccountVO("02500107003", "王石", "12345670",
-					Sex.Sex_MALE, Authority.COURIER, "12345678982", "025001"));
+			accountbl.add(new AccountVO("02500101011", "王二", "1111",
+					Sex.Sex_MALE, Authority.MANAGER, "12345678980", "025001"));
+			accountbl.add(new AccountVO("02500102022", "周季", "2222",
+					Sex.Sex_MALE, Authority.FINANCIALSTAFF_C, "12345678981", "025001"));
+			accountbl.add(new AccountVO("02500103033", "王石", "3333",
+					Sex.Sex_MALE, Authority.BUSSINESSOFFICER, "12345678982", "025001"));
+			accountbl.add(new AccountVO("02500104044", "大玉儿", "4444",
+					Sex.Sex_MALE, Authority.TRANSFERCTROFFICER, "12345678980", "025001"));
+			accountbl.add(new AccountVO("02500105055", "刘钦", "5555",
+					Sex.Sex_MALE, Authority.WAREHOUSEMAN, "12345678981", "025001"));
+			accountbl.add(new AccountVO("02500106066", "田田", "6666",
+					Sex.Sex_FAMALE, Authority.COURIER, "12345678982", "025001"));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

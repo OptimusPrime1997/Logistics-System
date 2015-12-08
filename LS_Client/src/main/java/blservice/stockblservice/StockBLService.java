@@ -20,11 +20,7 @@ import VO.ReceiptVO.OutStockRepVO;
  */
 public interface StockBLService {
 	
-	//TODO
-//	
-	public InStockRepVO toWriteInStockRep();
-	public OutStockRepVO toWriteOutStockRep();
-	
+
 	
 	
 	/**
@@ -46,16 +42,16 @@ public interface StockBLService {
 	 */
 	public int checkPresentStockQuantity() throws ClassNotFoundException, NotBoundException, IOException;
 	
+	
 	/**
-	 * 系统提供该仓库当前库存的所有已存储的Stock信息
 	 * @return
 	 * @throws IOException 
 	 * @throws NotBoundException 
 	 * @throws ClassNotFoundException 
 	 */
-	public ArrayList<StockVO> show() throws ClassNotFoundException, NotBoundException, IOException; 
+	public ArrayList<StockVO> showToday() throws ClassNotFoundException, NotBoundException, IOException; 
 	
-	
+	public ResultMessage exportExcel() throws ClassNotFoundException, NotBoundException, IOException;
 	
 
 }

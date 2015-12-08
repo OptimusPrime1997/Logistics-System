@@ -7,6 +7,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
+import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import PO.InstitutionPO;
 import dataservice.managementdataservice.institutiondataservice.InstitutionDataService;
@@ -138,6 +139,32 @@ public class InstitutionData extends UnicastRemoteObject implements
 		}
 		if (exist == null) {
 			throw new NumNotFoundException();
+		} else {
+			return exist;
+		}
+	}
+
+	@Override
+	public InstitutionPO findByinstitutionName(String institutionName)
+			throws ClassNotFoundException, IOException, NameNotFoundException {
+		// TODO Auto-generated method stub
+		print();
+		InstitutionPO exist = null;
+		ArrayList<Object> objects = d.getAll(path);
+		if (objects == null) {
+			throw new FileNotFoundException();
+		} else {
+			InstitutionPO p = null;
+			for (int i = 0; i < objects.size(); i++) {
+				p = (InstitutionPO) objects.get(i);
+				if (p.getInstitutionName().equals(institutionName)) {
+					exist = p;
+					break;
+				}
+			}
+		}
+		if (exist == null) {
+			throw new NameNotFoundException();
 		} else {
 			return exist;
 		}

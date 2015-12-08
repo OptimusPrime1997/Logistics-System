@@ -2,6 +2,8 @@
 package ui.mainFrame;
 
 import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
@@ -93,8 +95,6 @@ public class MainFrame extends JFrame {
 	    feedback_text.setEditable(false);
 	    feedback_text.setForeground(Color.red);
 		goodsNum_text.setText(standard_goodsNum);
-		password_text.setText(standard_password);
-		account_text.setText(standard_account);
 		goodsNum_text.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				goodsNum_textMouseClicked(evt);
@@ -110,6 +110,17 @@ public class MainFrame extends JFrame {
 				password_textMouseClicked(evt);
 			}
 		});
+		//TODO 密码加密
+//		password_text.addKeyListener(new KeyAdapter() {
+//			@Override
+//			public void keyTyped(KeyEvent e) {
+//				System.out.println(e.getKeyChar());
+//			}
+//			@Override
+//			public void keyReleased(KeyEvent e) {
+//				password_text.setText(password_text.getText().substring(0, password_text.getText().length()-1)+"*");
+//			}
+//		});
 	}
 	
     /**
@@ -135,6 +146,7 @@ public class MainFrame extends JFrame {
 			if(msg==ResultMessage.VALID){
 				try {
 					vo=ctr_find.findByGoods(goodsNum);
+					new LogisticStateUI(vo);
 				} catch (GoodsNotFound e1) {
 					showFeedback(ResultMessage.NOT_FOUND);
 				}
@@ -150,7 +162,9 @@ public class MainFrame extends JFrame {
 		 * msgKey_ifValid-->检查密码是否输入了
 		 * msgMatch-->访问数据层，账号是否存在，账号与密码是否匹配
 		 *  
-		 *  3位城市
+		 *  02500104027
+		 *   025     001           01      027
+		 *  3位城市  3位营业厅编号     身份           序号
 	     *（01总经理、02财务人员、03营业厅业务员、
          *04中转中心业务员、05中转中心仓库管理员、
          *06快递员、07司机）+3位顺序编号 
@@ -169,27 +183,33 @@ public class MainFrame extends JFrame {
 				msgMatch=ctr_account.login(account,password);
 			} catch (RemoteException e) {
 			}
-//        	  if()
-        	  int job=Integer.parseInt(account.substring(6, 8));
-              this.setVisible(false);
-          
-              switch (job) {
-     		case 1:new ManagerJFrame1();
-     			break;
-     		case 2:new FinancialStaffJFrame1();
-     			break;
-     		case 3:new businessOfficer_main();   
-     			break;
-     		case 4:new transferCtrOfficer_main();   
-     			break;
-     		case 5:new WarehousePanel();
-     			break;
-     		case 6:new courier_main();
-     			break;
-     		default:showFeedback(ResultMessage.NOT_FOUND_ACCOUNTNUM);
-     			break;
-     		}
-              
+        	  if(msgMatch==ResultMessage.SUCCESS){
+        		  int job=Integer.parseInt(account.substring(6, 8));
+                  this.setVisible(false);              
+                  switch (job) {
+         		case 1:new ManagerJFrame1();
+         			break;
+         		case 2:new FinancialStaffJFrame1();
+         			break;
+         		case 3:new businessOfficer_main();   
+         			break;
+         		case 4:new transferCtrOfficer_main();   
+         			break;
+         		case 5:new WarehousePanel();
+         			break;
+         		case 6:new courier_main();
+         			break;
+         		default:showFeedback(ResultMessage.NOT_FOUND_ACCOUNTNUM);
+         			break;
+         		}
+        	  }
+         }else{//不合法 反馈
+        	 if(msgKey_ifValid!=ResultMessage.VALID){
+        		 showFeedback(msgKey_ifValid);
+        	 }
+        	 if(msgAcc_ifValid!=ResultMessage.VALID){
+        		showFeedback(msgAcc_ifValid);
+        	 }
          }
        
           
@@ -205,14 +225,10 @@ public class MainFrame extends JFrame {
     	}
     }
     private void account_textMouseClicked(java.awt.event.MouseEvent evt) {
-    	if(account_text.getText().equals(standard_account)){
-    		account_text.setText(null);
-    	}    	
+    	  	
     }
     private void password_textMouseClicked(java.awt.event.MouseEvent evt) {
-    	if(password_text.getText().equals(standard_password)){
-    		password_text.setText(null);
-    	}    	
+    	  	
     }  
 	
     private void initLayout() {
@@ -323,7 +339,7 @@ public class MainFrame extends JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JTextField account_text,password_text,feedback_text,goodsNum_text;
-    private final String standard_password="密码",standard_goodsNum="输入订单号10位",standard_account="账号";
+    private final String standard_goodsNum="输入订单号10位";
     private String	password,goodsNum,account;
     private JButton search_btn,login_btn;
     private JLabel jLabel1;

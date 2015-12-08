@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
 import Exception.InstitutionNotFoundException;
+import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import VO.ManagementVO.InstitutionVO;
 import blservice.managementblservice.institutionblservice.InstitutionBLService;
@@ -30,7 +31,7 @@ public class InstitutionblController implements InstitutionBLService {
 	}
 
 	public ArrayList<InstitutionVO> show() throws ClassNotFoundException,
-			IOException,RemoteException {
+			IOException, RemoteException {
 		// TODO Auto-generated method stub
 		return institutionbl.show();
 	}
@@ -38,9 +39,19 @@ public class InstitutionblController implements InstitutionBLService {
 	@Override
 	public InstitutionVO findByInstitutionNum(String institutionNum)
 			throws FileNotFoundException, ClassNotFoundException,
-			InstitutionNotFoundException, IOException,RemoteException, NumNotFoundException {
+			InstitutionNotFoundException, IOException, RemoteException,
+			NumNotFoundException {
 		// TODO Auto-generated method stub
 		return institutionbl.findByInstitutionNum(institutionNum);
+	}
+
+	@Override
+	public InstitutionVO findByInstitutionName(String institutionName)
+			throws RemoteException, FileNotFoundException,
+			ClassNotFoundException, InstitutionNotFoundException, IOException,
+			NameNotFoundException {
+		// TODO Auto-generated method stub
+		return institutionbl.findByInstitutionName(institutionName);
 	}
 
 }

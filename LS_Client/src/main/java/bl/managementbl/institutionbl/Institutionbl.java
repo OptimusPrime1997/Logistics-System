@@ -14,6 +14,7 @@ import util.InputCheck;
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
 import Exception.InstitutionNotFoundException;
+import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import PO.InstitutionPO;
 import VO.ManagementVO.InstitutionVO;
@@ -157,6 +158,21 @@ public class Institutionbl {
 		if (institutionDataService != null) {
 			InstitutionPO findPO = institutionDataService
 					.findByInstitutionNum(institutionNum);
+			InstitutionVO findVO = manageVOPO.poToVO(findPO);
+			return findVO;
+		} else {
+			throw new RemoteException();
+		}
+	}
+
+	public InstitutionVO findByInstitutionName(String institutionName)
+			throws FileNotFoundException, ClassNotFoundException,
+			InstitutionNotFoundException, IOException, NameNotFoundException {
+		// TODO Auto-generated method stub
+		manageVOPO.addLog(LogType.INSTITUTION_MANAGEMENT);
+		if (institutionDataService != null) {
+			InstitutionPO findPO = institutionDataService
+					.findByinstitutionName(institutionName);
 			InstitutionVO findVO = manageVOPO.poToVO(findPO);
 			return findVO;
 		} else {

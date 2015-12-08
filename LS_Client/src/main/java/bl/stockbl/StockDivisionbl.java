@@ -10,8 +10,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import dataservice.stockdataservice.StockDataService;
-import dataservice.stockdataservice.StockDivisionDataService;
 import util.enumData.City;
 import util.enumData.ResultMessage;
 import PO.StockDivisionPO;
@@ -20,8 +18,8 @@ import PO.ReceiptPO.OutStockRepPO;
 import VO.StockDivisionVO;
 import VO.ReceiptVO.InStockRepVO;
 import VO.ReceiptVO.OutStockRepVO;
-import bl.receiptbl.InStockRepbl.InStockRepbl;
 import blservice.stockblservice.StockDivisionBLService;
+import dataservice.stockdataservice.StockDivisionDataService;
 
 /**
  * @author G
@@ -134,7 +132,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 	
 	
 	/**
-	 * 返回库存超过80的区号们，如果所有区号均未报警，则返回null
+	 * 返回库存超过80%的区号们，如果所有区号均未报警，则返回null
 	 * @param vo
 	 * @return
 	 * @throws NotBoundException 
@@ -162,6 +160,34 @@ public class StockDivisionbl implements StockDivisionBLService{
 		}
 		
 		return result;
+	}
+
+
+	/**
+	 * @param des
+	 * @return
+	 * @throws IOException 
+	 * @throws NotBoundException 
+	 */
+	public StockDivisionVO getAvailableDivision(City des) throws NotBoundException, IOException {
+		
+		int block1 = des.toInt(des);
+		int block2 = block1 + 1;
+		
+		for (int i = 1; i <= 1000; i++) {
+			if (isPlaceAvailable(block1, i)) {
+				return new StockDivisionVO(null, null, des, block1, i);
+			}
+			
+			if (isPlaceAvailable(block2, i)) {
+				return new StockDivisionVO(null, null, des, block2, i);
+			}
+			
+		}
+		
+		
+		
+		return null;
 	}
 
 }

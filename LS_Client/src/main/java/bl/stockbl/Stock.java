@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import util.CurrentTime;
 import util.enumData.City;
 import util.enumData.ResultMessage;
 import dataservice.stockdataservice.StockDataService;
@@ -173,5 +174,38 @@ public class Stock {
 		OutStockRepPO po = vo.toPO(vo);
 		StockDataService sd = getStockDataService();
 		return sd.update(po);
+	}
+	/**
+	 * 得到今天的库存盘点
+	 * @return
+	 * @throws IOException 
+	 * @throws NotBoundException 
+	 * @throws ClassNotFoundException 
+	 */
+	public ArrayList<StockVO> showToday() throws ClassNotFoundException, NotBoundException, IOException {
+		result = null;
+		ArrayList<StockVO> list = show();
+		
+		String date = CurrentTime.getDate();
+		
+		for (StockVO vo : list) {
+			if (vo.inStockDate.equals(date)) {
+				result.add(vo);
+			}
+		}
+		
+		return result;
+	}
+	/**
+	 * @return
+	 * @throws IOException 
+	 * @throws NotBoundException 
+	 * @throws ClassNotFoundException 
+	 */
+	public ResultMessage exportExcel() throws ClassNotFoundException, NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		ArrayList<StockVO> list = show();
+		return null;
+		
 	}
 }
