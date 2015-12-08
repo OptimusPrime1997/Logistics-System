@@ -4,11 +4,11 @@
 package dataimpl.stockdata;
 
 import java.io.IOException;
-
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import util.enumData.City;
 import util.enumData.ResultMessage;
 import PO.StockNumPO;
 import dataservice.stockdataservice.StockInitialDataService;
@@ -75,7 +75,7 @@ public class StockInitialData extends UnicastRemoteObject implements StockInitia
 	 * 得到库存初始化的值
 	 */
 	@Override
-	public StockNumPO getInitialNum(String citynum) throws RemoteException {
+	public StockNumPO getInitialNum(City citynum) throws RemoteException {
 		
 		ArrayList<Object> list;
 		try {
