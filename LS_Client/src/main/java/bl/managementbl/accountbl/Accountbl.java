@@ -213,7 +213,7 @@ public class Accountbl {
 	public ResultMessage login(String accountNum, String key) {
 		AccountVO accountVO = null;
 		if (InputCheck.checkInputNum(accountNum, 10) == ResultMessage.WRONG) {
-			return ResultMessage.WRONG;
+			return ResultMessage.WRONG_ACCOUNTNUM;
 		} else {
 			try {
 				accountVO = findByAccountNum(accountNum);

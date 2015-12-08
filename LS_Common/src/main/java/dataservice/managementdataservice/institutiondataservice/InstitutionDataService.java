@@ -1,11 +1,13 @@
 package dataservice.managementdataservice.institutiondataservice;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
+import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import PO.InstitutionPO;
 
@@ -25,5 +27,9 @@ public interface InstitutionDataService extends Remote {
 	public InstitutionPO findByInstitutionNum(String institutionNum)
 			throws RemoteException, ClassNotFoundException, IOException,
 			NumNotFoundException;
+
+	public InstitutionPO findByinstitutionName(String institutionName)
+			throws FileNotFoundException, ClassNotFoundException, IOException,
+			NameNotFoundException;
 
 }

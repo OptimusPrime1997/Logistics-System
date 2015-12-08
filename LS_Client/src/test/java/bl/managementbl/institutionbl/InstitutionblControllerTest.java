@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import util.enumData.ResultMessage;
 import Exception.InstitutionNotFoundException;
+import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import VO.ManagementVO.InstitutionVO;
 
@@ -49,7 +50,7 @@ public class InstitutionblControllerTest {
 			System.out.println(vo.address);
 			assertEquals("南京市栖霞区仙林大道235号", vo.address);
 			// institutionbl.delete(vo);
-			vo1 = institutionblController.findByInstitutionNum("025003");
+			vo1 = institutionblController.findByInstitutionName("南京市栖霞区营业厅");
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -66,6 +67,9 @@ public class InstitutionblControllerTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NameNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
