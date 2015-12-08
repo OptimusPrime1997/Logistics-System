@@ -32,6 +32,7 @@ public class WarehousePanel extends javax.swing.JFrame {
      */
     public WarehousePanel() {
         initComponents();
+        this.setVisible(true);
     }
 
     /**
@@ -406,7 +407,7 @@ public class WarehousePanel extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new WarehousePanel().setVisible(true);
+                new WarehousePanel();
             }
         });
     }

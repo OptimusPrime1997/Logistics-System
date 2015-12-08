@@ -4,11 +4,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import Exception.GoodsNotFound;
-import PO.ReceiptPO.DeliverRepPO;
-import PO.ReceiptPO.ReceiptPO;
 import VO.ReceiptVO.DeliverRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.goodsbl.Goodsbl;
@@ -29,16 +26,7 @@ public class DeliverRepbl {
 	}
 
 	public void submit(ReceiptVO vo) throws RemoteException, MalformedURLException, IOException, NotBoundException {
-		receiptbl.clearSubmit(Rep.DeliverRep);
 		receiptbl.submit(DeliverRepVO.toPO((DeliverRepVO) vo), Rep.DeliverRep);
-	}
-
-	public ArrayList<DeliverRepVO> getRepByDate(String date)
-			throws ClassNotFoundException, NotBoundException, IOException {
-		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.DeliverRep);
-		if (receiptPOs == null)
-			return null;
-		return DeliverRepVO.toArrayVO(receiptPOs);
 	}
 
 	public ResultMessage checkCourierNum(String string) {

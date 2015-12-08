@@ -1,19 +1,13 @@
 package blservice.receiptblservice;
 
-import VO.ReceiptVO.ShipmentRepVO;
-import VO.ReceiptVO.ShippingRepVO;
+import java.util.ArrayList;
+import java.util.Vector;
+
+import VO.GoodsVO;
 import util.enumData.Rep;
 
 public interface GetRepblService extends ReceiptblService{
-	/**
-	 * 将到达的营业厅装车单或中转中心装车单的属性改为“已到达”
-	 * @param rep
-	 * @param num
-	 * @return
-	 */
-	public String updateShip (Rep rep, String num);
+	public Vector<Object> initTable(Rep rep, String num, ArrayList<String> existOrders);
 	
-	public ShipmentRepVO getShipmentRep(String num);
-	
-	public ShippingRepVO getShippingRep(String num);
+	public void transferOver(String num);
 }

@@ -7,16 +7,18 @@ import PO.ReceiptPO.ReceiptPO;
 
 public class CashRepVO extends ReceiptVO {
 	public double sum;
+	public String bankAccount;
 	public ArrayList<CashVO> cashVOs;
 
-	public CashRepVO(String num, String date, ArrayList<CashVO> cashVOs, double sum) {
+	public CashRepVO(String num, String date, double sum, String bankAccount, ArrayList<CashVO> cashVOs) {
 		super(num, date);
-		this.cashVOs = cashVOs;
 		this.sum = sum;
+		this.bankAccount = bankAccount;
+		this.cashVOs = cashVOs;
 	}
 
 	public static CashRepPO toPO(CashRepVO vo){
-		return new CashRepPO(vo.num, vo.date, CashVO.toArrayPO(vo.cashVOs), vo.sum);
+		return new CashRepPO(vo.num, vo.date, CashVO.toArrayPO(vo.cashVOs), vo.sum, vo.bankAccount);
 	}
 	
 	public CashRepVO(CashRepPO po){
@@ -24,6 +26,7 @@ public class CashRepVO extends ReceiptVO {
 		this.date = po.getDate();
 		this.cashVOs = CashVO.toArrayVO(po.getCashPOs());
 		this.sum = po.getSum();
+		this.bankAccount = po.getBankAccount();
 	}
 	
 	public static ArrayList<CashRepVO> toArrayVO(ArrayList<ReceiptPO> receiptPOs) {

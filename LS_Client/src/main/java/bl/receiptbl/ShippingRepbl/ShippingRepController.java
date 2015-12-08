@@ -65,9 +65,15 @@ public class ShippingRepController extends ReceiptblController implements Shippi
 	}
 
 	@Override
-	public Vector<Object> checkAll() throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int getTruckNum(String date) {
+		// TODO Auto-generated method stub
+		return shippingRep.getTruckNum(date);
 	}
 
 

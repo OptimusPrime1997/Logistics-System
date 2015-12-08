@@ -104,9 +104,17 @@ public enum ResultMessage {
 	 */
 	NOT_COMPLETED,
 	/**
+	 * 账号未填写
+	 */
+	NOT_COMPLETED_ACCOUNT,
+	/**
+	 * 密码未填写
+	 */
+	NOT_COMPLETED_KEY,
+	/**
 	 * 账号格式错误
 	 */
-	WRONG_ACCOUNTNUM,
+	WRONG_ACCOUNTNUM,//TODO
 	/**
 	 * 账号不存在
 	 */
@@ -197,6 +205,12 @@ public enum ResultMessage {
 			return "数据错误";
 		case WRONG_ACCOUNTNUM:
 			return "账号错误";
+		case NOT_FOUND_ACCOUNTNUM:
+			return "账号不存在";
+		case NOT_COMPLETED_ACCOUNT:
+			return "请输入账号~";
+		case NOT_COMPLETED_KEY:
+			return "请输入密码~";
 		case ADD_SUCCESS:
 			return "添加成功";
 		case SUBMIT_SUCCESS:
@@ -236,6 +250,13 @@ public enum ResultMessage {
 		}
 
 		return null;
+	}
+	public static void postCheck(ResultMessage expected,ResultMessage rmsg){
+		try{
+			assert (expected==rmsg):(ResultMessage.toFriendlyString(rmsg));
+		}catch(AssertionError e){
+			System.out.println(e.getMessage());
+		}
 	}
 
 }

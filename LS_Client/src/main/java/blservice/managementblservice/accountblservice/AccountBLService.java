@@ -20,6 +20,13 @@ public interface AccountBLService {
 
 	public ResultMessage delete(AccountVO VO) throws RemoteException;
 
+/**
+ * .NOT_FOUND;SUCCESS;WRONG_PASSWORD;
+ * @param accountNum
+ * @param key
+ * @return
+ * @throws RemoteException
+ */
 	public ResultMessage login(String accountNum, String key)
 			throws RemoteException;
 

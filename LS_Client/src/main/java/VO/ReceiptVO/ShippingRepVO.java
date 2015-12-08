@@ -4,19 +4,13 @@ import java.util.ArrayList;
 
 import util.enumData.*;
 
-public class ShippingRepVO extends ReceiptVO {
+public class ShippingRepVO extends ShipRepVO {
 	public place place;
-	public String plateNum;
-	public String driverNum;
-	public boolean arriveAlready;
-	public ArrayList<String> goods;
-	public ShippingRepVO(String num, String date, place place, String plateNum, String driverNum,
-			boolean arriveAlready, ArrayList<String> goods) {
-		super(num, date);
+
+	public ShippingRepVO(String num, String date, String plateNum, String driverNum, boolean arriveAlready,
+			ArrayList<String> goods, util.enumData.place place) {
+		super(num, date, plateNum, driverNum, arriveAlready, goods);
 		this.place = place;
-		this.plateNum = plateNum;
-		this.driverNum = driverNum;
-		this.arriveAlready = arriveAlready;
-		this.goods = goods;
 	}
+	
 }

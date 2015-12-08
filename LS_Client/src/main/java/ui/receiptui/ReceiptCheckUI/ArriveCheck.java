@@ -12,6 +12,18 @@ package ui.receiptui.ReceiptCheckUI;
  */
 public class ArriveCheck extends javax.swing.JPanel {
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel dateLabel;
+    private javax.swing.JTextField dateText;
+    private javax.swing.JButton findButton;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton okButton;
+    private javax.swing.JTextField resultMsgText;
+    // End of variables declaration//GEN-END:variables
+	
+
     /**
      * Creates new form GetCheck
      */
@@ -109,23 +121,12 @@ public class ArriveCheck extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_findButtonActionPerformed
+    private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	
+    }
 
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_okButtonActionPerformed
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
+    }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel dateLabel;
-    private javax.swing.JTextField dateText;
-    private javax.swing.JButton findButton;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JButton okButton;
-    private javax.swing.JTextField resultMsgText;
-    // End of variables declaration//GEN-END:variables
 }
