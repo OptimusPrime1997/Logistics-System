@@ -247,6 +247,8 @@ public enum ResultMessage {
 			return "薪水策略为空";
 		case NULL_AUTHORITY:
 			return "空职位";
+		default:
+			break;
 		}
 
 		return null;

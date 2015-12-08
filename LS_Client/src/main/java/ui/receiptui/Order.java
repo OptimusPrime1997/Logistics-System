@@ -33,7 +33,8 @@ public class Order extends javax.swing.JPanel {
     public Order() {
     	ctr_account=ControllerFactoryImpl.getInstance().getLoginController();
     	ctr_newgoods=ControllerFactoryImpl.getInstance().getGoodsInitController();
-        try {
+        startTime=CurrentTime.getDate();
+    	try {
 			getCourierAccount=ctr_account.getCurrentOptorId();
 			officeNum=getCourierAccount.substring(3,6);
 		} catch (RemoteException e) {
@@ -98,7 +99,7 @@ public class Order extends javax.swing.JPanel {
                                  .addComponent(receiverPhoneNumLabel)
                                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                  .addComponent(receiverPhoneNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                             .addComponent(senderAddText, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                             .addComponent(senderAddressText, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                              .addGroup(layout.createSequentialGroup()
                                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                      .addComponent(typeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -108,7 +109,7 @@ public class Order extends javax.swing.JPanel {
                              .addGroup(layout.createSequentialGroup()
                                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                      .addComponent(sumText, javax.swing.GroupLayout.Alignment.LEADING)
-                                     .addComponent(senderText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                     .addComponent(sender_nameText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                  .addGap(18, 18, 18)
                                  .addComponent(senderPhoneNumLabel)
                                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -169,13 +170,13 @@ public class Order extends javax.swing.JPanel {
                  .addGap(18, 18, 18)
                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                      .addComponent(senderLabel)
-                     .addComponent(senderText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                     .addComponent(sender_nameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                      .addComponent(senderPhoneNumLabel)
                      .addComponent(senderPhoneNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                      .addComponent(senderAddLabel)
-                     .addComponent(senderAddText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                     .addComponent(senderAddressText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                      .addGroup(layout.createSequentialGroup()
                          .addGap(18, 18, 18)
@@ -299,7 +300,7 @@ public class Order extends javax.swing.JPanel {
 	}
 	private void initTxt() {
     	officeText = new javax.swing.JTextField();
-		senderText = new javax.swing.JTextField();
+		sender_nameText = new javax.swing.JTextField();
 		itemNumText = new javax.swing.JTextField();
 		itemNameText = new javax.swing.JTextField();
 		weightText = new javax.swing.JTextField();
@@ -307,7 +308,7 @@ public class Order extends javax.swing.JPanel {
 		measureText = new javax.swing.JTextField();
 		receiverAddText = new javax.swing.JTextField();
 		receiverText = new javax.swing.JTextField();
-		senderAddText = new javax.swing.JTextField();
+		senderAddressText = new javax.swing.JTextField();
 		senderPhoneNumText = new javax.swing.JTextField();
 		receiverPhoneNumText = new javax.swing.JTextField();
 		dateText = new javax.swing.JTextField();
@@ -345,21 +346,27 @@ public class Order extends javax.swing.JPanel {
 	 * @param evt
 	 */
 	private void pkgBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pkgBoxActionPerformed
-          // TODO add your handling code here:
     }//GEN-LAST:event_pkgBoxActionPerformed
 
     private void typeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeBoxActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_typeBoxActionPerformed
 
     private void sumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sumButtonActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_sumButtonActionPerformed
 
     private void sumTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sumTextActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_sumTextActionPerformed
     private void okBtnMouseClicked() {
+    	this.senderName=sender_nameText.getText();
+    	this.senderAddress=senderAddressText.getText();
+    	this.senderPhone=senderPhoneNumText.getText();
+    	/*
+    	 * destinationCity,
+			senderName, senderAddress, senderCompany, senderPhone,
+			receiverName, receiverAddress, receiverCompany, receiverPhone,
+			nameOfInside;
+    	 */
+    	
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
@@ -370,8 +377,8 @@ public class Order extends javax.swing.JPanel {
 			weightLabel;
 	private javax.swing.JTextField itemNumText, measureText, numText,
 			officeText, dateText, itemNameText, receiverAddText,
-			receiverPhoneNumText, receiverText, resultMsgText, senderAddText,
-			senderPhoneNumText, senderText, sumText, weightText;
+			receiverPhoneNumText, receiverText, resultMsgText, senderAddressText,
+			senderPhoneNumText, sender_nameText, sumText, weightText;
 	private javax.swing.JComboBox<String> pkgBox, typeBox;
 	private javax.swing.JButton okButton, sumButton, cancelButton;
 	private String officeNum,getCourierAccount, startTime, destinationCity,
