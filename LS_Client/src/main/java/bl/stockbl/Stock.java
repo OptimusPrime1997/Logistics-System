@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import util.CurrentTime;
 import util.enumData.City;
@@ -204,9 +205,41 @@ public class Stock {
 	 */
 	public ResultMessage exportExcel() throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<StockVO> list = show();
 		
-		return null;
 		
+		
+//		
+//		ArrayList<StockVO> list = show();
+		
+		
+		
+		ArrayList<StockVO> list  = new ArrayList<StockVO>();
+		list.add(new StockVO(null, "11111", "11112222", "2011-1-1", City.BEIJING, 20, 30));
+		list.add(new StockVO(null, "2211", "1345222", "2012-1-1", City.BEIJING, 50, 40));
+		list.add(new StockVO(null, "333311", "68975222", "2013-1-1", City.GUANGZHOU, 90, 70));
+		
+		
+		if (list.isEmpty()) {
+			return ResultMessage.NOT_FOUND;
+		}
+		
+		String currentTime = CurrentTime.getTime();
+	
+//		return ExportToExcel.exportStockExcel(list, "/Users/G/Desktop/库存快照"+currentTime);
+		return ExportToExcel.exportStockExcel(list, "/Users/G/Desktop/test");
+		
+		
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		Stock s = new Stock();
+		try {
+	
+			System.out.println(s.exportExcel());
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
