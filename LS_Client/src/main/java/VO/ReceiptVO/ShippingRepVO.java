@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import util.enumData.*;
 
 public class ShippingRepVO extends ShipRepVO {
-	public place place;
+	public City City;
 
 	public ShippingRepVO(String num, String date, String plateNum, String driverNum, boolean arriveAlready,
-			ArrayList<String> goods, util.enumData.place place) {
+			ArrayList<String> goods, util.enumData.City City) {
 		super(num, date, plateNum, driverNum, arriveAlready, goods);
-		this.place = place;
+		this.City = City;
 	}
 	
 }

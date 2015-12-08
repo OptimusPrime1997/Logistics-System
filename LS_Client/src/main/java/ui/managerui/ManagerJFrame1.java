@@ -1197,17 +1197,17 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 					}
 				});
 
-		findInstitutioNumjButton.setText("编号查找");
-		findInstitutioNumjButton
+		findInstitutionNumjButton.setText("编号查找");
+		findInstitutionNumjButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
-						findInstitutioNamejButtonMouseReleased(evt);
+						findInstitutionNumjButtonMouseReleased(evt);
 					}
 				});
-		findInstitutioNumjButton
+		findInstitutionNumjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						findInstitutioNamejButtonActionPerformed(evt);
+						findInstitutionNumjButtonActionPerformed(evt);
 					}
 				});
 
@@ -1221,12 +1221,12 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 					}
 				});
 
-		findInstitutionNumjButton.setText("名称查找");
-		findInstitutionNumjButton.setToolTipText("");
-		findInstitutionNumjButton
+		findInstitutionNamejButton.setText("名称查找");
+		findInstitutionNamejButton.setToolTipText("");
+		findInstitutionNamejButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
-						findInstitutionNumjButtonMouseReleased(evt);
+						findInstitutionNamejButtonMouseReleased(evt);
 					}
 				});
 
@@ -1285,7 +1285,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 																				18,
 																				18)
 																		.addComponent(
-																				findInstitutioNumjButton))
+																				findInstitutionNumjButton))
 														.addGroup(
 																institutionjPanelLayout
 																		.createSequentialGroup()
@@ -1302,7 +1302,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 																				18,
 																				18)
 																		.addComponent(
-																				findInstitutionNumjButton)))
+																				findInstitutionNamejButton)))
 										.addGap(230, 230, 230))
 						.addGroup(
 								javax.swing.GroupLayout.Alignment.TRAILING,
@@ -1362,7 +1362,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 																javax.swing.GroupLayout.DEFAULT_SIZE,
 																javax.swing.GroupLayout.PREFERRED_SIZE)
 														.addComponent(
-																findInstitutioNumjButton))
+																findInstitutionNumjButton))
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 										.addGroup(
@@ -1376,7 +1376,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 																javax.swing.GroupLayout.DEFAULT_SIZE,
 																javax.swing.GroupLayout.PREFERRED_SIZE)
 														.addComponent(
-																findInstitutionNumjButton))
+																findInstitutionNamejButton))
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 										.addComponent(jLabel15)
@@ -1917,10 +1917,10 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		institutionjPanel = new javax.swing.JPanel();
 		jLabel12 = new javax.swing.JLabel();
 		institutionNumjTextField = new javax.swing.JTextField();
-		findInstitutioNumjButton = new javax.swing.JButton();
+		findInstitutionNumjButton = new javax.swing.JButton();
 		jLabel13 = new javax.swing.JLabel();
 		findInstitutionNamejTextField = new javax.swing.JTextField();
-		findInstitutionNumjButton = new javax.swing.JButton();
+		findInstitutionNamejButton = new javax.swing.JButton();
 		jLabel15 = new javax.swing.JLabel();
 		jScrollPane8 = new javax.swing.JScrollPane();
 		institutionjTable = new javax.swing.JTable();
@@ -2068,7 +2068,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	private void findAccountNumjButtonMouseReleased(
 			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_findInstitutionNumjButtonMouseReleased
 		// TODO add your handling code here:
-		if (evt.getSource() == findInstitutionNumjButton) {
+		if (evt.getSource() == findInstitutionNamejButton) {
 			String findInstitutionNum = institutionNumjTextField.getText();
 			ResultMessage rmsg = InputCheck.checkInputNum(findInstitutionNum,
 					11);
@@ -2182,38 +2182,46 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	}// GEN-LAST:event_submitInstitutionjButtonMouseReleased
 
 	private void addInstitutionjButtonMouseReleased(
-			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_addInstitutionjButtonMouseReleased
+			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_addInstitutionjButton2ActionPerformed
 		// TODO add your handling code here:
+		if (evt.getSource() == addInstitutionjButton) {
+			institutionVOPlus.add(new InstitutionVOPlus("", "", "", "", "",
+					ModifyState.NEW));
+			initialInstitutionJTable(institutionVOPlus,
+					institutionVOPlus.size() - 1);
+		}
 	}// GEN-LAST:event_addInstitutionjButtonMouseReleased
 
-	private void findInstitutionNumjButtonMouseReleased(
-			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_findInstitutionNumjButtonMouseReleased
+	private void findInstitutionNamejButtonMouseReleased(
+			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_findInstitutionNamejButtonMouseReleased
 		// TODO add your handling code here:
-		if (evt.getSource() == findAccountNumjButton) {
-			String findAccountNum = accountNumjTextField.getText();
-			ResultMessage rmsg = InputCheck.checkInputNum(findAccountNum, 11);
+		if (evt.getSource() == findInstitutionNamejButton) {
+			String findInstitutionName = findInstitutionNamejTextField
+					.getText();
+			ResultMessage rmsg = InputCheck.checkInputName(findInstitutionName);
 			if (rmsg == ResultMessage.VALID) {
 				int i = 0;
-				AccountVO tempVO = null;
-				for (Iterator<AccountVO> t = accountVOs.iterator(); t.hasNext(); i++) {
+				InstitutionVO tempVO = null;
+				for (Iterator<InstitutionVOPlus> t = institutionVOPlus
+						.iterator(); t.hasNext(); i++) {
 					tempVO = t.next();
-					if (tempVO.accountNum.equals(findAccountNum)) {
+					if (tempVO.institutionName.equals(findInstitutionName)) {
 						break;
 					}
 				}
-				if (i < accountVOs.size()) {
-					accountViewjTable.setRowSelectionInterval(i, i);// 设置哪几行被选中
+				if (i < institutionVOPlus.size()) {
+					institutionjTable.setRowSelectionInterval(i, i);// 设置哪几行被选中
 					setState("该账户在第" + (i + 1) + "行", 5);
 				} else {
-					setState("系统中无该账户", 5);
+					setState("系统中无该机构", 5);
 				}
 			} else {
 				String msg = ResultMessage.toFriendlyString(rmsg);
-				setState("账号" + msg, 5);
+				setState("机构" + msg, 5);
 			}
 		}
 
-	}// GEN-LAST:event_findInstitutionNumjButtonMouseReleased
+	}// GEN-LAST:event_findInstitutionNamejButtonMouseReleased
 
 	private void findInstitutionNamejTextFieldMouseClicked(
 			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jTextField4MouseClicked
@@ -2221,12 +2229,38 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		findInstitutionNamejTextField.setText("");
 	}// GEN-LAST:event_jTextField4MouseClicked
 
-	private void findInstitutioNamejButtonActionPerformed(
-			java.awt.event.ActionEvent evt) {// GEN-FIRST:event_findInstitutioNamejButtonActionPerformed
+	private void findInstitutionNumjButtonActionPerformed(
+			java.awt.event.ActionEvent evt) {// GEN-FIRST:event_findInstitutionNumjButtonMouseReleased
 		// TODO add your handling code here:
+		if (evt.getSource() == findInstitutionNumjButton) {
+			String findInstitutionNum = institutionNumjTextField.getText();
+			ResultMessage rmsg = InputCheck.checkInputNum(findInstitutionNum,
+					6);
+			if (rmsg == ResultMessage.VALID) {
+				int i = 0;
+				InstitutionVO tempVO = null;
+				for (Iterator<InstitutionVOPlus> t = institutionVOPlus
+						.iterator(); t.hasNext(); i++) {
+					tempVO = t.next();
+					if (tempVO.institutionNum.equals(findInstitutionNum)) {
+						break;
+					}
+				}
+				if (i < institutionVOPlus.size()) {
+					institutionjTable.setRowSelectionInterval(i, i);// 设置哪几行被选中
+					setState("该账户在第" + (i + 1) + "行", 5);
+				} else {
+					setState("系统中无该机构", 5);
+				}
+			} else {
+				String msg = ResultMessage.toFriendlyString(rmsg);
+				setState("机构" + msg, 5);
+			}
+		}
+
 	}// GEN-LAST:event_findInstitutioNamejButtonActionPerformed
 
-	private void findInstitutioNamejButtonMouseReleased(
+	private void findInstitutionNumjButtonMouseReleased(
 			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_findInstitutioNamejButtonMouseReleased
 		// TODO add your handling code here:
 	}// GEN-LAST:event_findInstitutioNamejButtonMouseReleased
@@ -3499,8 +3533,8 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	private javax.swing.JTable documentCheckjTable;
 	private javax.swing.JButton findAccountNamejButton;
 	private javax.swing.JButton findAccountNumjButton;
-	private javax.swing.JButton findInstitutioNumjButton;
 	private javax.swing.JButton findInstitutionNumjButton;
+	private javax.swing.JButton findInstitutionNamejButton;
 	private javax.swing.JButton findLogjButton;
 	private javax.swing.JComboBox formEDatejComboBox;
 	private javax.swing.JComboBox formEMonthjComboBox;
