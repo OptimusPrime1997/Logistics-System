@@ -8,6 +8,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -66,29 +67,42 @@ public class Stock {
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd");
         
-        try{
-            Date dateOne = dateFormat.parse(startMonth+"-"+startDay);
-            Date dateTwo = dateFormat.parse(endMonth+"-"+endDay);
-             
-            Calendar calendar = Calendar.getInstance();
-   
-            if(!checkDateValid(dateOne,dateTwo)){
-    			return null;
-    		}
-            
-            calendar.setTime(dateOne);
-             
-            while(calendar.getTime().compareTo(dateTwo)<=0){               
-            	
-                instockreps.addAll(in.getRepByDate(dateFormat.format(calendar.getTime())));
-                outstockreps.addAll(out.getRepByDate(dateFormat.format(calendar.getTime())));
-                
-                calendar.add(Calendar.DAY_OF_MONTH, 1);               
-            }
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
+        
+           
+			try {
+		   	    Date dateOne = dateFormat.parse(startMonth+"-"+startDay);
+				
+			    Date dateTwo = dateFormat.parse(endMonth+"-"+endDay);
+	             
+	            Calendar calendar = Calendar.getInstance();
+	   
+	            if(!checkDateValid(dateOne,dateTwo)){
+	            	//返回值-1表示日期无效
+	    			return "-1";
+	    		}
+	            
+	            calendar.setTime(dateOne);
+	             
+	            while(calendar.getTime().compareTo(dateTwo)<=0){               
+	            	
+	                instockreps.addAll(in.getRepByDate(dateFormat.format(calendar.getTime())));
+	                outstockreps.addAll(out.getRepByDate(dateFormat.format(calendar.getTime())));
+	                
+	                calendar.add(Calendar.DAY_OF_MONTH, 1);               
+	            }
+			} catch (ParseException e) {
+				//这个应该不可能错
+			} catch (ClassNotFoundException e) {
+				//返回值-2表示远程错误
+				return "-3";
+			} catch (NotBoundException e) {
+				return "-3";
+			} catch (IOException e) {
+				return "-2";
+			}
+        
+       
+        
         
 
          

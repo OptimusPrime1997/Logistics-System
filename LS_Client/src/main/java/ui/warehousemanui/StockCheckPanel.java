@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ui.warehousemanui;
 
 import java.awt.*;
@@ -9,9 +14,9 @@ import java.util.regex.Pattern;
 import javax.swing.*;
 
 import bl.controllerfactorybl.ControllerFactoryImpl;
-
 import blservice.stockblservice.StockBLService;
 import ui.mainFrame.MainFrame;
+import util.enumData.ResultMessage;
 /**
  *
  * @author G
@@ -76,6 +81,10 @@ public class StockCheckPanel extends javax.swing.JFrame {
         outnum = new javax.swing.JLabel();
  
         back = new javax.swing.JButton();
+        resultMessage = new JLabel();
+        
+        
+        
 
         confirm.setText("确认");
         confirm.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +187,8 @@ public class StockCheckPanel extends javax.swing.JFrame {
                             .addComponent(innum))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(resultMessage,javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                		.addGroup(layout.createSequentialGroup()
                         .addComponent(usernamelabel)
                         .addGap(26, 26, 26)
                         .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -218,9 +228,11 @@ public class StockCheckPanel extends javax.swing.JFrame {
                     .addComponent(outnum)
                     .addComponent(back))
                 .addGap(22, 22, 22)
+                .addComponent(resultMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 )
+                
         );
-    }// </editor-fold>                        
+    }// </editor-fold>  //GEN-END:initComponents          
 
     
 	StockBLService s = ControllerFactoryImpl.getInstance().getStockController();
@@ -232,42 +244,65 @@ public class StockCheckPanel extends javax.swing.JFrame {
         String endDay = (String) jComboBox7.getSelectedItem();
         
         String result = s.checkStock(startMonth, startDay, endMonth, endDay);
+        String operation = "库存查看";
         
-        showResult(result);
+        if (result.equals("-1")) {
+			showFeedback(ResultMessage.INVALID_DATE, operation);
+		} else if (result.equals("-2")) {
+			showFeedback(ResultMessage.IOFAILED, operation);
+		} else if (result.equals("-3")) {
+			showFeedback(ResultMessage.REMOTE_FAILED, operation);
+		} else {
+			 showResult(result);
+			 showFeedback(ResultMessage.SUCCESS, operation);
+		}
         
-    }                                        
+    
+        
+    } //GEN-LAST:event_jButton4ActionPerformed                                       
 
     /**
      * 从结果字符串中提取出入库出库数量并显示
      * @param result
      */
-    private static void showResult(String result) {
-    	StockCheckPanel s = new StockCheckPanel();
+    private void showResult(String result) {
+    	
     	Pattern p = Pattern.compile("\\d+(\\.\\d+)?");
     	Matcher m = p.matcher(result);
     	m.find();
-    	s.innum.setText(m.group());
+    	this.innum.setText(m.group());
     	m.find();
-    	s.outnum.setText(m.group());
+    	this.outnum.setText(m.group());
     	 	
-    }
+    }//GEN-LAST:event_jButton4ActionPerformed
     
     
     private void exitActionPerformed(ActionEvent evt) {
     	MainFrame mf = new MainFrame();
     	mf.setVisible(true);
     	this.dispose();
-    }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void backActionPerformed(ActionEvent evt) {
     	WarehousePanel w = new WarehousePanel();
 		w.setVisible(true);
 		this.dispose();
 		
-    }
+    }//GEN-LAST:event_jButton4ActionPerformed
     
     public void setUsername(String username) {
 		this.username = username;
+	}
+    
+    private void showFeedback(ResultMessage msg, String operation) {
+    	
+    	if (msg.equals(ResultMessage.SUCCESS)) {
+    		this.resultMessage.setForeground(Color.GREEN);
+		} else {
+			this.resultMessage.setForeground(Color.RED);
+		}
+    	
+    	this.resultMessage.setText(operation + ResultMessage.toFriendlyString(msg));
 	}
     
     // Variables declaration - do not modify                     
@@ -290,6 +325,7 @@ public class StockCheckPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    private JLabel resultMessage;
     private String username = "大玉儿";
     // End of variables declaration                   
 }
