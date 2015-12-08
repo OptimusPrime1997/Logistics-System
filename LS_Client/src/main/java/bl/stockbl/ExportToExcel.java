@@ -9,8 +9,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.swing.text.AbstractDocument.BranchElement;
-
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -77,7 +75,7 @@ public class ExportToExcel {
 			File f = new File(pathname);
 		
 	        if(!f.exists()){
-	            f.mkdirs();
+	            f.createNewFile();
 	        }
 			
 			FileOutputStream fout;
