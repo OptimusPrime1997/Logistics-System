@@ -67,6 +67,9 @@ public class LogisticStateUI extends javax.swing.JFrame {
 		// TODO Auto-generated method stub
 		
 	}
+	public static void main(String[] args) {
+		new LogisticStateUI(new GoodsVO(null));
+	}
 	private void initLayout() {
     	 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
          getContentPane().setLayout(layout);

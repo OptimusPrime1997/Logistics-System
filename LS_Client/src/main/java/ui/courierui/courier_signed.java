@@ -36,6 +36,7 @@ public class courier_signed extends JFrame {
     	controller_end=ControllerFactoryImpl.getInstance().getGoodsEndController();
     	controller_check=ControllerFactoryImpl.getInstance().getGoodsCheckController();
     	initComponents();
+    	this.setVisible(true);
         setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
     }
 	public courier_signed(courier_main panel) {
@@ -43,6 +44,7 @@ public class courier_signed extends JFrame {
     	controller_end=ControllerFactoryImpl.getInstance().getGoodsEndController();
     	controller_check=ControllerFactoryImpl.getInstance().getGoodsCheckController();
     	initComponents();
+    	this.setVisible(true);
         setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
     }
 	/*

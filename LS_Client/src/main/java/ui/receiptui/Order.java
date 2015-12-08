@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import ui.courierui.courier_main;
 import ui.util.GoodsPackageMoney;
 import ui.util.MyFrame;
 import ui.util.StrToGoodsExpressType;
@@ -34,8 +35,10 @@ public class Order extends javax.swing.JPanel {
 
 	/**
      * Creates new form Order
+	 * @param courier_main 
      */
-    public Order() {
+    public Order(courier_main courier_main) {
+    	parentPanel=courier_main;
     	ctr_account=ControllerFactoryImpl.getInstance().getLoginController();
     	ctr_newgoods=ControllerFactoryImpl.getInstance().getGoodsInitController();
         startTime=CurrentTime.getDate();
@@ -45,9 +48,10 @@ public class Order extends javax.swing.JPanel {
 		} catch (RemoteException e) {
 		}
     	initComponents();
+    	frame=new MyFrame(600, 600,this);
     }
     public static void main(String[] args) {
-		new MyFrame(600, 600,new Order() );
+		new Order(new courier_main());
 	}
     private void initComponents() {
         setBackground(new java.awt.Color(255, 255, 255));
@@ -226,7 +230,7 @@ public class Order extends javax.swing.JPanel {
         cancelButton = new javax.swing.JButton();
         okButton = new javax.swing.JButton();
         sumButton.setText("确定");
-       sumButton.addMouseListener(new MouseAdapter() {
+        sumButton.addMouseListener(new MouseAdapter() {
     	public void mouseClicked(MouseEvent e) {
     		sumButtonMouseClicked(e);
     	}
@@ -366,12 +370,17 @@ public class Order extends javax.swing.JPanel {
     			msg_receiverPhone=InputCheck.checkInputPhoneNum(receiverPhoneNumText.getText()),
     			msg_itemNum=InputCheck.checkIfAllNum(itemNumText.getText()),
     			msg_weight=InputCheck.checkIfPositiveFloat(weightText.getText()),
-    			msg_volume=InputCheck.checkIfPositiveFloat(volumeText.getText());
+    			msg_volume=InputCheck.checkIfPositiveFloat(volumeText.getText()),
+                msg_senderAds=InputCheck.ifWritten(senderAddressText.getText()),
+                msg_receiverAds=InputCheck.ifWritten(receiverAddressText.getText());
+                
     	if(msg_itemNum==ResultMessage.VALID&&
     			msg_receiverPhone==ResultMessage.VALID&&
     			msg_senderPhone==ResultMessage.VALID&&
     			msg_volume==ResultMessage.VALID&&
-    			msg_weight==ResultMessage.VALID){
+    			msg_weight==ResultMessage.VALID&&
+    			msg_receiverAds==ResultMessage.VALID&&
+    			msg_senderAds==ResultMessage.VALID){
     		this.numOfGoods=Integer.parseInt(itemNumText.getText());
         	this.senderName=senderNameText.getText();
         	this.senderAddress=senderAddressText.getText();
@@ -394,11 +403,12 @@ public class Order extends javax.swing.JPanel {
 			if(msg_newGoods==ResultMessage.SUCCESS){
 				//输入合法~
 				try {
-					ctr_newgoods.initCompleteGoods(vo);
+					vo=ctr_newgoods.initCompleteGoods(vo);
 				} catch (ExistException e1) {
 				}
 			}
 			numText.setText(vo.listNum);
+			sumText.setText(vo.moneyTotal+"");
 			
     	}else{
     		//有输入信息 不合法
@@ -407,6 +417,8 @@ public class Order extends javax.swing.JPanel {
     	if(msg_receiverPhone!=ResultMessage.VALID) showFeedBack(msg_receiverPhone);
     	if(msg_senderPhone!=ResultMessage.VALID) showFeedBack(msg_senderPhone);
     	if(msg_weight!=ResultMessage.VALID) showFeedBack(msg_weight);
+    	if(msg_receiverAds!=ResultMessage.VALID)showFeedBack(msg_receiverAds);
+    	if(msg_senderAds!=ResultMessage.VALID)showFeedBack(msg_senderAds);
     	}
     	
     	
@@ -421,10 +433,12 @@ public class Order extends javax.swing.JPanel {
      * 确认完费用，最终提交
      */
     private void okBtnMouseClicked() {
-    	
+    	this.frame.setVisible(false);
+    	parentPanel.setFeedBack(ResultMessage.SUBMIT_SUCCESS);
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
+    private courier_main parentPanel;
 	private javax.swing.JLabel dateLabel, itemNameLabel, itemNumLabel,
 			measureLabel, numLabel, officeLabel, pkgLabel, receiverAddLabel,
 			senderLabel, senderPhoneNumLabel, receiverLabel,
@@ -447,7 +461,7 @@ public class Order extends javax.swing.JPanel {
 	private GoodsLogisticState logisticState=GoodsLogisticState.SENDED;
     private LoginBLService ctr_account;
 	private GoodsInitBLService ctr_newgoods;
-	
+	private MyFrame frame;
 	private GoodsVO vo;
 	private static final long serialVersionUID = 1L;
     // End of variables declaration//GEN-END:variables
