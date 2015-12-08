@@ -94,7 +94,7 @@ public class WarehousePanel extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Peking1.setToolTipText("tip---");
+       
        
 
         jLabel1.setText("北京01");
@@ -108,24 +108,23 @@ public class WarehousePanel extends javax.swing.JFrame {
 
         jLabel4.setText("上海04");
 
-        Shanghai2.setToolTipText("");
+    
       
 
         jLabel5.setText("南京05");
 
-        Nanjing1.setValue(60);
-
+        
         jLabel6.setText("南京06");
 
-        Nanjing2.setValue(40);
+      
 
         jLabel7.setText("广州07");
 
-        Guangzhou1.setValue(15);
+       
 
         jLabel8.setText("广州08");
 
-        Guangzhou2.setValue(20);
+       
 
         jButton1.setText("出库单填写");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
