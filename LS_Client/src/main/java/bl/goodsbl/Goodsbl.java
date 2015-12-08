@@ -53,6 +53,7 @@ public class Goodsbl {
 	 * 填写新订单
 	 * @param vo
 	 * @return填写的信息是否符合规格
+	 * SUCCESS
 	 */
 	public ResultMessage init(GoodsVO vo) {
 		if (vo.expressType == null || vo.nameOfInside == null
@@ -82,12 +83,18 @@ public class Goodsbl {
 	public GoodsVO initComplete(GoodsVO vo) throws ExistException{//TODO可能初始化失败！没有反馈给界面
 		Constbl constBL = new Constbl();
 		ResultMessage msg;
-		
+		/*
+		 *  025     001           01      027
+		 *  3位城市  3位营业厅编号     身份           序号
+		 */
 		try {
 			// TODO 计算运费
 			double basicprice = 0;//constBL.findByConstName(Const.FARE).priceConst;
 			double distance = 0;//constBL.findByConstName(Const.DISTANCE).distanceConst;
-
+			int listNum_part=getGoodsDataService().recordListNum();
+			//补齐7位
+			String temp=String.format("%7d",listNum_part).replace(" ","0");
+			vo.listNum=vo.getCourierAccount.substring(0, 3)+temp;
 			vo.moneyFare = moneyCounter(vo.expressType, vo.weight, distance,
 					basicprice);
 			vo.moneyTotal = vo.moneyFare + vo.moneyOfPackage;

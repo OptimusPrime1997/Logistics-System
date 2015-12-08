@@ -2,8 +2,6 @@
 package ui.mainFrame;
 
 import java.awt.Color;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
@@ -30,7 +28,7 @@ import VO.GoodsVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.goodsblservice.GoodsCheckValidBLService;
 import blservice.goodsblservice.GoodsFindBLService;
-import blservice.managementblservice.accountblservice.AccountBLService;
+import blservice.loginblservice.LoginBLService;
 
 /**
  *
@@ -44,7 +42,7 @@ public class MainFrame extends JFrame {
     public MainFrame() {
     	ctr_checkValid = ControllerFactoryImpl.getInstance().getGoodsCheckController();
     	ctr_find=ControllerFactoryImpl.getInstance().getGoodsFindController();
-        ctr_account=ControllerFactoryImpl.getInstance().getAccountController();
+        ctr_login=ControllerFactoryImpl.getInstance().getLoginController();
     	this.setVisible(true);
     	setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     	this.setResizable(false);
@@ -180,7 +178,7 @@ public class MainFrame extends JFrame {
          //输入合法 调用数据层检查账号与密码是否匹配
          if(msgAcc_ifValid==ResultMessage.VALID&&msgKey_ifValid==ResultMessage.VALID){
         	  try {
-				msgMatch=ctr_account.login(account,password);
+				msgMatch=ctr_login.login(account,password);
 			} catch (RemoteException e) {
 			}
         	  if(msgMatch==ResultMessage.SUCCESS){
@@ -349,6 +347,6 @@ public class MainFrame extends JFrame {
     private GoodsVO vo;
     private GoodsCheckValidBLService ctr_checkValid;
     private GoodsFindBLService ctr_find;
-    private AccountBLService ctr_account;
+    private LoginBLService ctr_login;
     // End of variables declaration//GEN-END:variables
 }

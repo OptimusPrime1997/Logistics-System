@@ -20,6 +20,7 @@ import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsExpressType;
 import util.enumData.GoodsLogisticState;
 import util.enumData.ResultMessage;
+import Exception.ExistException;
 import VO.GoodsVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.goodsblservice.GoodsInitBLService;
@@ -389,6 +390,14 @@ public class Order extends javax.swing.JPanel {
 					nameOfInside, expressType, moneyOfPackage, moneyTotal,
 					moneyFare, GoodsArrivalState.INTACT,
 					logisticState, "", receiverPhone);
+			ResultMessage msg_newGoods=ctr_newgoods.init(vo);
+			if(msg_newGoods==ResultMessage.SUCCESS){
+				//输入合法~
+				try {
+					ctr_newgoods.initCompleteGoods(vo);
+				} catch (ExistException e1) {
+				}
+			}
 			numText.setText(vo.listNum);
 			
     	}else{

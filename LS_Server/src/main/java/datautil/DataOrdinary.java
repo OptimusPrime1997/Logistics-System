@@ -18,7 +18,6 @@ public class DataOrdinary {
 			OutputStream fout=new FileOutputStream(file);
 			DataOutputStream dataout=new DataOutputStream(fout);
 			dataout.writeInt(num);
-			System.out.println("write "+num);
 			fout.close();
 			dataout.close();
 		} catch (IOException e) {

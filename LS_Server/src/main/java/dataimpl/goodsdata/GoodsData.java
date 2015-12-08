@@ -186,14 +186,14 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	private static final long serialVersionUID = 1L;
 	/**
 	 * 记录快件总数量的 
+	 * 
 	 */
 	@Override
-	public void recordListNum() throws RemoteException {
+	public int recordListNum() throws RemoteException {
 		String fName="GoodsTotal";
 		int sum=DataOrdinary.getOneNum(fName);
-		DataOrdinary.saveOneNum(sum++, fName);
-		System.out.println(DataOrdinary.getOneNum(fName));
-		
+		sum++;
+		DataOrdinary.saveOneNum(sum, fName);
+		return DataOrdinary.getOneNum(fName);
 	}
-
 }
