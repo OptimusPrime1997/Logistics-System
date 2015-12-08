@@ -10,18 +10,29 @@ public class CashRepPO extends ReceiptPO{
 	
 	private ArrayList<CashPO> cashPOs;
 	private double sum;
-
-	public CashRepPO(String num, String date, ArrayList<CashPO> cashPOs, double sum) {
+	private String bankAccount;
+	
+	public CashRepPO(String num, String date, ArrayList<CashPO> cashPOs, double sum, String bankAccount) {
 		super(num, date);
 		this.cashPOs = cashPOs;
 		this.sum = sum;
+		this.bankAccount = bankAccount;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public ArrayList<CashPO> getCashPOs() {
 		return cashPOs;
 	}
-	public double getSum(){
+
+	public double getSum() {
 		return sum;
+	}
+
+	public String getBankAccount() {
+		return bankAccount;
 	}
 	
 }

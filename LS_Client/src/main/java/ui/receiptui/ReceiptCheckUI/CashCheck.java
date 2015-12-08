@@ -11,6 +11,16 @@ package ui.receiptui.ReceiptCheckUI;
  * @author apple
  */
 public class CashCheck extends javax.swing.JPanel {
+	
+	 // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel dateLabel;
+    private javax.swing.JTextField dateText;
+    private javax.swing.JButton findButton;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JButton okButton;
+    private javax.swing.JTextField resultMsgText;
+    // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form cash
@@ -40,10 +50,10 @@ public class CashCheck extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null}
+                {null, null, null, null}
             },
             new String [] {
-                "日期", "编号", "金额"
+                "日期", "编号", "金额", "收款账户"
             }
         ));
         jTable1.setGridColor(new java.awt.Color(0, 0, 0));
@@ -86,8 +96,8 @@ public class CashCheck extends javax.swing.JPanel {
                         .addComponent(okButton))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,14 +124,4 @@ public class CashCheck extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_okButtonActionPerformed
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel dateLabel;
-    private javax.swing.JTextField dateText;
-    private javax.swing.JButton findButton;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JButton okButton;
-    private javax.swing.JTextField resultMsgText;
-    // End of variables declaration//GEN-END:variables
 }

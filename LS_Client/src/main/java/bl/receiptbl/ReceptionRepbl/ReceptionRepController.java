@@ -80,7 +80,7 @@ public class ReceptionRepController extends ReceiptblController implements Recep
 	}
 
 	@Override
-	public Vector<Object> checkAll() throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		return null;
 	}

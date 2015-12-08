@@ -67,7 +67,7 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 	}
 
 	@Override
-	public Vector<Object> checkAll() throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		return null;
 	}

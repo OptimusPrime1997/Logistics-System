@@ -1,63 +1,69 @@
 package bl.receiptbl.GetRepbl;
 
+import java.io.IOException;
+import java.rmi.NotBoundException;
 import java.util.ArrayList;
+import java.util.Vector;
 
+import VO.GoodsVO;
 import VO.ReceiptVO.ArriveRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import VO.ReceiptVO.ShipmentRepVO;
 import VO.ReceiptVO.ShippingRepVO;
-import bl.receiptbl.Receiptbl.ReceiptblController;
+import bl.goodsbl.Goodsbl;
+import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepbl;
 import bl.receiptbl.ShippingRepbl.ShippingRepbl;
 import util.enumData.Rep;
 
-public class GetRepbl extends ReceiptblController{
-
-	public String updateShip(Rep rep, String num) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+public class GetRepbl{
 	
-	public ShipmentRepVO getShipmentRep(String num){
+	private Receiptbl receiptbl = new Receiptbl();
+	private Goodsbl goodsbl = new Goodsbl();
+
+	public ShipmentRepVO getShipmentRep(String num){	//判断是否有丢失
 		ShipmentRepbl shipment = new ShipmentRepbl();
 		return shipment.getShipmentRep(num);
 	}
 	
-	public ShippingRepVO getShippingRep(String num){
+	public ShippingRepVO getShippingRep(String num){	//同上
 		ShippingRepbl shipping = new ShippingRepbl();
 		return shipping.getShippingRep(num);
 	}
 
-	public String createNum(String date) {
+	public String createNum(String date) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return receiptbl.createNum(date, Rep.GetRep);
 	}
 
-	public void delete(int n) {
+
+	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
 		// TODO Auto-generated method stub
+		receiptbl.submit(ArriveRepVO.toPO((ArriveRepVO) vo), Rep.GetRep);
 	}
 
-	public void delete(String num) {
+	public Vector<Object> initTable(Rep rep, String num, ArrayList<String> existOrders) {
 		// TODO Auto-generated method stub
+		Vector<Object> data = new Vector<Object>();
+		ArrayList<String> orders;
+		if(rep==Rep.ShipmentRep){
+			orders = getShipmentRep(num).goods;
+		}
+		else {
+			orders = getShippingRep(num).goods;
+		}
+		if(orders.size()>existOrders.size()){
+			for(int i = 0;i < orders.size();i++){
+				if(existOrders.contains(orders.get(i)))
+					data.add(orders.get(i));
+			}
+		}
+		return data;
 	}
 
-	public ArriveRepVO getRepByNum(String num) {
+	public void transferOver(String num) {
 		// TODO Auto-generated method stub
-		return null;
+		goodsbl.end(num);
 	}
 
-	public void submit(ReceiptVO vo) {
-		// TODO Auto-generated method stub
-	}
-
-	public ArrayList<ArriveRepVO> getAllRep() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public ArrayList<ArriveRepVO> getRepByDate(String date) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 }

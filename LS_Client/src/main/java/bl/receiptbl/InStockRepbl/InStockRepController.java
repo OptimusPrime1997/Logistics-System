@@ -15,36 +15,36 @@ import blservice.receiptblservice.InStockRepblService;
 import util.enumData.ResultMessage;
 
 public class InStockRepController extends ReceiptblController implements InStockRepblService{
-	InStockRepbl inStockRep = new InStockRepbl();
+	private InStockRepbl inStockRepbl = new InStockRepbl();
+	private InStockRepCheckbl inStockRepCheckbl = new InStockRepCheckbl();
+	private InStockRepShowbl inStockRepShowbl = new InStockRepShowbl();
 
 	@Override
 	public String createNum(String date) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		return inStockRep.createNum(date);
+		return inStockRepbl.createNum(date);
 	}
 
 	@Override
 	public void delete(int n) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		 inStockRep.delete(n);
 	}
 
 	@Override
 	public void delete(String num) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		 inStockRep.delete(num);
 	}
 
 	@Override
 	public InStockRepVO getRepByNum(String num) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		return inStockRep.getRepByNum(num);
+		return inStockRepCheckbl.getRepByNum(num);
 	}
 
 	@Override
 	public void submit(ReceiptVO vo) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
-		inStockRep.submit(vo);
+		inStockRepbl.submit(vo);
 	}
 
 	@Override
@@ -67,9 +67,15 @@ public class InStockRepController extends ReceiptblController implements InStock
 	}
 
 	@Override
-	public Vector<Object> checkAll() throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return inStockRepCheckbl.initCheck();
+	}
+
+	@Override
+	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		return inStockRepShowbl.initShow(num);
 	}
 
 }

@@ -7,6 +7,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.NameNotFoundException;
+import Exception.NumNotFoundException;
 import VO.ReceiptVO.ReceiptVO;
 import util.enumData.ResultMessage;
 
@@ -26,6 +28,8 @@ public interface ReceiptblService extends PreReceiptblService{
 	
 	public <T extends ReceiptVO> ArrayList<T> getRepBydate(String date) throws NotBoundException, ClassNotFoundException, IOException;
 	
-	public Vector<Object> checkAll() throws ClassNotFoundException, NotBoundException, IOException;
+	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException, NameNotFoundException, NumNotFoundException;
+	
+	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException, IOException;
 	
 }

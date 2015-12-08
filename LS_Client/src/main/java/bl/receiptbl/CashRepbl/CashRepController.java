@@ -20,6 +20,7 @@ import Exception.NumNotFoundException;
 public class CashRepController extends ReceiptblController implements CashRepblService{
 	private CashRepbl cashRepbl = new CashRepbl();
 	private CashRepCheckbl cashRepCheckbl = new CashRepCheckbl();
+	private CashRepShowbl cashRepShowbl = new CashRepShowbl();
 
 	@Override
 	public ArrayList<GoodsVO> getGoods(String courierNum, String date) {
@@ -83,7 +84,7 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	@Override
 	public CashRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return cashRepCheckbl.getRepByNum(num);
 	}
 
 	@Override
@@ -99,9 +100,15 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	}
 
 	@Override
-	public Vector<Object> checkAll() throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return cashRepCheckbl.checkAll();
+		return cashRepCheckbl.initCheck();
+	}
+
+	@Override
+	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		return cashRepShowbl.initShow(num);
 	}
 
 }

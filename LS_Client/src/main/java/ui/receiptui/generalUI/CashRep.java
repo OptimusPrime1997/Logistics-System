@@ -378,7 +378,7 @@ public class CashRep extends javax.swing.JPanel {
 			CashVO vo = new CashVO((double)jTable.getValueAt(i, 2), (String)jTable.getValueAt(i, 1), (String)jTable.getValueAt(i, 0), (String)jTable.getValueAt(i, 3));
 			cashVOs.add(vo);
 		}
-		CashRepVO cashRepVO = new CashRepVO(num, date, cashVOs, sum);
+		CashRepVO cashRepVO = new CashRepVO(num, date, sum, (String)jComboBox.getSelectedItem(), cashVOs);
 		try {
 			control.submit(cashRepVO);
 		} catch (NotBoundException | IOException e) {

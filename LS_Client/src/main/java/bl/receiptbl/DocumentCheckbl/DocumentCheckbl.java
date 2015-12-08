@@ -11,7 +11,7 @@ public class DocumentCheckbl{
 	
 	public String saveRep(ReceiptVO vo, Rep rep) {
 		// TODO Auto-generated method stub
-		return receiptbl.save(po, rep);
+		return null;
 	}
 
 	public Vector<Object> checkAllRep() {

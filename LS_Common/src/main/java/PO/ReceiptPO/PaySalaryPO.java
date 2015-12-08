@@ -12,9 +12,13 @@ public class PaySalaryPO implements Serializable{
 	private String getterNum;
 	private double money;
 	public PaySalaryPO(String getterName, String getterNum, double money) {
+		super();
 		this.getterName = getterName;
 		this.getterNum = getterNum;
 		this.money = money;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	public String getGetterName() {
 		return getterName;
