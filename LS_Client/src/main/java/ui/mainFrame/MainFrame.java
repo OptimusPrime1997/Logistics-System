@@ -134,6 +134,7 @@ public class MainFrame extends JFrame {
 			if(msg==ResultMessage.VALID){
 				try {
 					vo=ctr_find.findByGoods(goodsNum);
+					new LogisticStateUI();
 				} catch (GoodsNotFound e1) {
 					showFeedback(ResultMessage.NOT_FOUND);
 				}

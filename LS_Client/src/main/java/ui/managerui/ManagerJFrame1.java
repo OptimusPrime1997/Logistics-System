@@ -65,6 +65,10 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 
 	public ManagerJFrame1() {
 		initComponents();
+		this.setLocationRelativeTo(null);
+		this.setResizable(false);
+		// managerFrame.setUndecorated(false);
+		this.setVisible(true);
 	}
 
 	private void setInstitutionVOs() {
@@ -3443,10 +3447,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				ManagerJFrame1 managerFrame = new ManagerJFrame1();
-				managerFrame.setLocationRelativeTo(null);
-				managerFrame.setResizable(false);
-				// managerFrame.setUndecorated(false);
-				managerFrame.setVisible(true);
+				
 			}
 		});
 	}
