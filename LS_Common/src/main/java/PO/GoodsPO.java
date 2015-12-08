@@ -7,10 +7,10 @@ public class GoodsPO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String listNum;
 	private Boolean ifExaminePassed;
-	private String getCourierAccount;
-	private String deliverCourierAccount;
+	private String getCourierAccount="";
+	private String deliverCourierAccount="";
 	private String startTime;
-	private String overtime;
+	private String overtime="";
 	private String destinationCity;
 	private String senderName;
 	private String senderAddress;
@@ -30,8 +30,8 @@ public class GoodsPO implements Serializable {
 	private double moneyFare;
 	private GoodsArrivalState arrivalState;
 	private GoodsLogisticState logisticState;
-	private String realReceiverName;
-	private String realReceiverPhone;	
+	private String realReceiverName="";
+	private String realReceiverPhone="";	
 
 	public GoodsPO(String listNum, Boolean ifExaminePassed,
 			String getCourierAccount, String deliverCourierAccount,

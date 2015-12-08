@@ -22,7 +22,7 @@ import PO.ReceiptPO.OutStockRepPO;
 public interface StockDataService extends Remote{
 	
 	
-	public ResultMessage update(InStockRepPO po) throws RemoteException;
+	public ResultMessage update(InStockRepPO po, City cityNum) throws RemoteException;
 	
 	public ResultMessage update(OutStockRepPO po) throws RemoteException;
 	

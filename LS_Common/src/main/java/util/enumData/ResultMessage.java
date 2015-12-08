@@ -183,7 +183,18 @@ public enum ResultMessage {
 	/**
 	 * 远程连接失败
 	 */
-	REMOTE_FAILED;
+	REMOTE_FAILED,
+	/**
+	 * 
+	 * 输入的日期前后不合理
+	 * 
+	 */
+	INVALID_DATE,
+	/**
+	 * 库存报警
+	 */
+	ALARM;
+	
 	public static String toFriendlyString(ResultMessage resultMessage) {
 
 		switch (resultMessage) {
@@ -198,7 +209,7 @@ public enum ResultMessage {
 		case NOT_COMPLETED:
 			return "有项目未填写，请完成后再提交";
 		case LENGTH_WRONG:
-			return "长度有误,订单号是11位哦~";
+			return "长度有误,订单号、手机号都是11位哦~";
 		case WRONG_FORMAT:
 			return "格式错误";
 		case WRONG_DATA:
@@ -247,6 +258,12 @@ public enum ResultMessage {
 			return "薪水策略为空";
 		case NULL_AUTHORITY:
 			return "空职位";
+		case INPUT_SHOULD_BE_POSITIVE_INTEGER:
+			return "请输入正整数";
+		case INVALID_DATE:
+			return "起始日期必须早于结束日期";
+		case ALARM:
+			return "该区库存紧张";
 		default:
 			break;
 		}

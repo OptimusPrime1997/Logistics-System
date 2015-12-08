@@ -3,6 +3,7 @@
  */
 package VO;
 
+import util.enumData.City;
 import PO.StockNumPO;
 
 /**
@@ -10,7 +11,7 @@ import PO.StockNumPO;
  *
  */
 public class StockNumVO {
-	public String cityNum;
+	public City cityNum;
 	public int initialNum;
 	
 	/**
@@ -18,7 +19,7 @@ public class StockNumVO {
 	 * @param cn    id of this warehouse
 	 * @param in    the initial number of this warehouse 
 	 */
-	public StockNumVO(String cn,int in) {
+	public StockNumVO(City cn,int in) {
 		cityNum=cn;
 		initialNum=in;
 	}
@@ -30,7 +31,7 @@ public class StockNumVO {
 	 */
 	public StockNumPO voToPo(StockNumVO vo) {
 		
-		StockNumPO po = new StockNumPO("", 0);
+		StockNumPO po = new StockNumPO(null, 0);
 		po.setCityNum(vo.cityNum);
 		po.setInitialNum(vo.initialNum);
 		return po;
@@ -43,7 +44,7 @@ public class StockNumVO {
 	 */
 	public StockNumVO poToVo(StockNumPO po) {
 		
-		StockNumVO vo = new StockNumVO("", 0);
+		StockNumVO vo = new StockNumVO(null, 0);
 		vo.cityNum = po.getCityNum();
 		vo.initialNum = po.getInitialNum();
 		return vo;

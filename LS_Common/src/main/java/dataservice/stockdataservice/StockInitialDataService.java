@@ -7,6 +7,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import PO.StockNumPO;
+import util.enumData.City;
 import util.enumData.ResultMessage;
 
 /**
@@ -27,7 +28,7 @@ public interface StockInitialDataService extends Remote{
 	 * @return
 	 * @throws RemoteException
 	 */
-	public StockNumPO getInitialNum(String citynum)throws RemoteException;
+	public StockNumPO getInitialNum(City citynum)throws RemoteException;
 	
 
 }

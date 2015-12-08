@@ -1199,12 +1199,6 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 
 		findInstitutionNumjButton.setText("编号查找");
 		findInstitutionNumjButton
-				.addMouseListener(new java.awt.event.MouseAdapter() {
-					public void mouseReleased(java.awt.event.MouseEvent evt) {
-						findInstitutionNumjButtonMouseReleased(evt);
-					}
-				});
-		findInstitutionNumjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
 						findInstitutionNumjButtonActionPerformed(evt);
@@ -2260,10 +2254,6 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 
 	}// GEN-LAST:event_findInstitutioNamejButtonActionPerformed
 
-	private void findInstitutionNumjButtonMouseReleased(
-			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_findInstitutioNamejButtonMouseReleased
-		// TODO add your handling code here:
-	}// GEN-LAST:event_findInstitutioNamejButtonMouseReleased
 
 	private void institutionNamejTextFieldMouseClicked(
 			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_institutionNamejTextFieldMouseClicked
@@ -3069,7 +3059,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	private void initialInstitutionJTable(ArrayList<InstitutionVOPlus> vos,
 			int n) {
 		// TODoO Auto-generated method stub
-		assert (vos != null) : ("表格获得的常量信息为空");
+		assert (vos != null) : ("表格获得机构信息为空");
 		Object[][] institutionObjects = null;
 		institutionObjects = new Object[vos.size()][5];
 		int i = 0;
@@ -3105,7 +3095,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 
 		((DefaultTableCellRenderer) institutionjTable.getTableHeader()
 				.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
-		salaryPolicyjTable.setRowSelectionInterval(n, n);// 设置哪几行被选中
+		institutionjTable.setRowSelectionInterval(n, n);// 设置哪几行被选中
 		final JPopupMenu institutionjPop = new JPopupMenu();
 		final JMenuItem institutionSubmitjItem = new JMenuItem("提交");
 		final JMenuItem institutionDeljItem = new JMenuItem("删除");
@@ -3495,7 +3485,6 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	private ArrayList<InstitutionVOPlus> institutionVOPlus = null;
 	private ControllerFactoryblService controllerFactoryblService = ControllerFactoryImpl
 			.getInstance();
-	private final static long DISPLAY_TIME = 5;
 	private AccountBLService accountblController = controllerFactoryblService
 			.getAccountController();
 	private ConstBLService constblController = controllerFactoryblService
@@ -3611,5 +3600,5 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	 * 远程连接失败！
 	 */
 	private final static String REMOTEFAILD = "远程连接失败！";
-
+	private final static long DISPLAY_TIME = 5;
 }

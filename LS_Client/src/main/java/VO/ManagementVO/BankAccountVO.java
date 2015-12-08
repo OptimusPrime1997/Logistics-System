@@ -17,4 +17,14 @@ public class BankAccountVO implements Comparable<BankAccountVO> {
 		// TODO Auto-generated method stub
 		return bankAccountNum.compareTo(v.bankAccountNum);
 	}
+
+	public boolean equals(BankAccountVO v) {
+		if (v.bankAccountNum.equals(bankAccountNum)
+				&& v.bankAccountName.equals(bankAccountName)
+				&& v.balance == (balance)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

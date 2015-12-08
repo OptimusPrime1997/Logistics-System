@@ -83,7 +83,7 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 
 	
 	@Override
-	public ResultMessage initial(String input) {
+	public ResultMessage initial(String input) throws RemoteException {
 		return ininum.initial(input);
 		
 	}

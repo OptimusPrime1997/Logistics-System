@@ -24,7 +24,7 @@ public class BusinessFormVO {
 		this.startTime=po.getStartTime();
 		this.endTime=po.getEndTime();
 		this.moneyInRecord=CashVO.toArrayVO(po.getMoneyInRecord());
-		this.moneyOutRecord=PayRepVO.toArrayVO(po.getMoneyOutRecord());
+//		this.moneyOutRecord=PayRepVO.toArrayVO(po.getMoneyOutRecord());//TODO
 	}
 	public BusinessFormPO toPO(BusinessFormVO vo){
 		BusinessFormPO po=new BusinessFormPO(startTime, endTime, PayRepVO.toArrayPO(moneyOutRecord),CashVO.toArrayPO(moneyInRecord));

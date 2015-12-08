@@ -6,12 +6,9 @@
 package ui.warehousemanui;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-
 import VO.StockVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.stockblservice.StockBLService;
-import blservice.stockblservice.StockDivisionBLService;
 import ui.mainFrame.MainFrame;
 import util.enumData.City;
 import util.enumData.ResultMessage;
@@ -78,6 +75,7 @@ public class StockShowPanel extends JFrame {
         show = new javax.swing.JButton();
         export = new javax.swing.JButton();
         jTable1 = new JTable();
+        resultMessage = new JLabel();
 
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -87,7 +85,11 @@ public class StockShowPanel extends JFrame {
                 "货物编号", "入库单号", "入库日期", "目的地", "区号", "位号"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+			boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
             };
 
@@ -137,46 +139,104 @@ public class StockShowPanel extends JFrame {
         });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+       
+
         getContentPane().setLayout(layout);
+
         layout.setHorizontalGroup(
+
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 71, Short.MAX_VALUE))
+
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+
+                .addContainerGap(284, Short.MAX_VALUE)
+
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+
                         .addComponent(jLabel9)
+
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+
                         .addComponent(exit)
+
                         .addGap(3, 3, 3))
+
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+
                         .addComponent(back)
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(show, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(export, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+
+                        .addGap(33, 33, 33)
+
+                        .addComponent(show)
+
                         .addContainerGap())))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+
+            .addGroup(layout.createSequentialGroup()
+
+                .addGap(22, 22, 22)
+
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+
+                .addGap(0, 0, Short.MAX_VALUE))
+
+            .addGroup(layout.createSequentialGroup()
+
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(exit))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(show)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(back)
-                    .addComponent(export))
-                .addGap(19, 19, 19))
+
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
+                    .addComponent(resultMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+
+                        .addGap(0, 0, Short.MAX_VALUE)
+
+                        .addComponent(export, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+
+                .addContainerGap())
+
         );
+
+        layout.setVerticalGroup(
+
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+
+                .addContainerGap()
+
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+
+                    .addComponent(jLabel9)
+
+                    .addComponent(exit))
+
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+
+                        .addComponent(export)
+
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+
+                        .addComponent(show))
+
+                    .addComponent(back, javax.swing.GroupLayout.Alignment.TRAILING))
+
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+
+                .addComponent(resultMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+
+        );
+
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -189,13 +249,20 @@ public class StockShowPanel extends JFrame {
     
     StockBLService s = ControllerFactoryImpl.getInstance().getStockController();
     
+    /**
+     * 盘点货物
+     * @param evt
+     * @throws ClassNotFoundException
+     * @throws NotBoundException
+     * @throws IOException
+     */
     private void showActionPerformed(java.awt.event.ActionEvent evt) throws ClassNotFoundException, NotBoundException, IOException {//GEN-FIRST:event_jButton5ActionPerformed
     	ArrayList<StockVO> list = s.showToday();
 
     	int length = list.size();
     	
     	if (length == 0) {
-			//TODO 提示没有货物
+    		showFeedback(null, "今天还没有货物入库~");
 		}
     	
     	Object[][] showObjects = new Object[length][6];
@@ -230,7 +297,11 @@ public class StockShowPanel extends JFrame {
                     "货物编号", "入库单号", "入库日期", "目的地", "区号", "位号"
                 }
             ) {
-                boolean[] canEdit = new boolean [] {
+                /**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+				boolean[] canEdit = new boolean [] {
                     false, false, false, false, false, false
                 };
 
@@ -244,17 +315,18 @@ public class StockShowPanel extends JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO 显示结果
+    	String operation = "导出库存快照excel";
     	try {
 			ResultMessage rm = s.exportExcel();
+
+			
+			showFeedback(rm, operation);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			showFeedback(ResultMessage.FAILED, operation);
 		} catch (NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			showFeedback(ResultMessage.FAILED, operation);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			showFeedback(ResultMessage.FAILED, operation);
 		}
     	
     	
@@ -268,6 +340,17 @@ public class StockShowPanel extends JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
 
+    private void showFeedback(ResultMessage msg, String operation) {
+    	
+    	if (msg.equals(ResultMessage.SUCCESS)) {
+    		this.resultMessage.setForeground(Color.GREEN);
+		} else {
+			this.resultMessage.setForeground(Color.RED);
+		}
+    	
+    	this.resultMessage.setText(operation + ResultMessage.toFriendlyString(msg));
+	}
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exit;
     private javax.swing.JButton back;
@@ -276,5 +359,6 @@ public class StockShowPanel extends JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private JLabel resultMessage;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,15 +8,18 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+
+import util.CurrentCity;
 import util.CurrentTime;
 import util.enumData.City;
 import util.enumData.ResultMessage;
-import dataservice.stockdataservice.StockDataService;
+import dataservice.stockdataservice.StockDataService; 
 import bl.receiptbl.InStockRepbl.InStockRepController;
 import bl.receiptbl.OutStockRepbl.OutStockRepController;
 import PO.StockPO;
@@ -63,29 +66,42 @@ public class Stock {
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd");
         
-        try{
-            Date dateOne = dateFormat.parse(startMonth+"-"+startDay);
-            Date dateTwo = dateFormat.parse(endMonth+"-"+endDay);
-             
-            Calendar calendar = Calendar.getInstance();
-   
-            if(!checkDateValid(dateOne,dateTwo)){
-    			return null;
-    		}
-            
-            calendar.setTime(dateOne);
-             
-            while(calendar.getTime().compareTo(dateTwo)<=0){               
-            	
-                instockreps.addAll(in.getRepByDate(dateFormat.format(calendar.getTime())));
-                outstockreps.addAll(out.getRepByDate(dateFormat.format(calendar.getTime())));
-                
-                calendar.add(Calendar.DAY_OF_MONTH, 1);               
-            }
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
+        
+           
+			try {
+		   	    Date dateOne = dateFormat.parse(startMonth+"-"+startDay);
+				
+			    Date dateTwo = dateFormat.parse(endMonth+"-"+endDay);
+	             
+	            Calendar calendar = Calendar.getInstance();
+	   
+	            if(!checkDateValid(dateOne,dateTwo)){
+	            	//返回值-1表示日期无效
+	    			return "-1";
+	    		}
+	            
+	            calendar.setTime(dateOne);
+	             
+	            while(calendar.getTime().compareTo(dateTwo)<=0){               
+	            	
+	                instockreps.addAll(in.getRepByDate(dateFormat.format(calendar.getTime())));
+	                outstockreps.addAll(out.getRepByDate(dateFormat.format(calendar.getTime())));
+	                
+	                calendar.add(Calendar.DAY_OF_MONTH, 1);               
+	            }
+			} catch (ParseException e) {
+				//这个应该不可能错
+			} catch (ClassNotFoundException e) {
+				//返回值-2表示远程错误
+				return "-3";
+			} catch (NotBoundException e) {
+				return "-3";
+			} catch (IOException e) {
+				return "-2";
+			}
+        
+       
+        
         
 
          
@@ -120,6 +136,7 @@ public class Stock {
 	}
 
 	
+	
 	/**
 	 * 得到本仓库当前所有有完整信息的库存
 	 * @return
@@ -132,8 +149,8 @@ public class Stock {
 		ArrayList<StockPO> list = new ArrayList<StockPO>();
 		
 		StockDataService s = getStockDataService();
-		//TODO  得到当前城市编号
-		City cityNum = City.BEIJING;
+		
+		City cityNum = CurrentCity.getCurrentCity();
 		
 		list = s.getStock(cityNum);
 		for(StockPO po:list) {
@@ -166,7 +183,8 @@ public class Stock {
 	public ResultMessage update(InStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException{
 		InStockRepPO po = vo.toPO(vo);
 		StockDataService sd = getStockDataService();
-		return sd.update(po);
+		City cityNum = CurrentCity.getCurrentCity();
+		return sd.update(po, cityNum);
 	}
 	
 	
@@ -203,9 +221,28 @@ public class Stock {
 	 * @throws ClassNotFoundException 
 	 */
 	public ResultMessage exportExcel() throws ClassNotFoundException, NotBoundException, IOException {
-		// TODO Auto-generated method stub
-		ArrayList<StockVO> list = show();
-		return null;
 		
+		ArrayList<StockVO> list = show();
+		
+		if (list.isEmpty()) {
+			return ResultMessage.NOT_FOUND;
+		}
+		
+		String currentTime = CurrentTime.getTime();
+	
+		return ExportToExcel.exportStockExcel(list, "/Users/G/Desktop/库存快照"+currentTime);
+
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		Stock s = new Stock();
+		try {
+	
+			System.out.println(s.exportExcel());
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
