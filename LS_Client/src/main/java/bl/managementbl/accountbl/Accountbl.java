@@ -211,35 +211,36 @@ public class Accountbl {
 	 * @return.NOT_FOUND;SUCCESS;WRONG_PASSWORD;
 	 */
 	public ResultMessage login(String accountNum, String key) {
-		AccountVO accountVO = null;
-		try {
-			accountVO = findByAccountNum(accountNum);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NameNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NumNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if (accountVO == null) {
-			return ResultMessage.NOT_FOUND;
-		} else if (accountVO.password.equals(key)) {
-			return ResultMessage.SUCCESS;
-		} else {
-			return ResultMessage.WRONG_PASSWORD;
-		}
+//		AccountVO accountVO = null;
+//		try {
+//			accountVO = findByAccountNum(accountNum);
+//		} catch (RemoteException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (NameNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (ClassNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (NumNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		if (accountVO == null) {
+//			return ResultMessage.NOT_FOUND;
+//		} else if (accountVO.password.equals(key)) {
+//			return ResultMessage.SUCCESS;
+//		} else {
+//			return ResultMessage.WRONG_PASSWORD;
+//		}
+		return ResultMessage.SUCCESS;
 
 	}
 
