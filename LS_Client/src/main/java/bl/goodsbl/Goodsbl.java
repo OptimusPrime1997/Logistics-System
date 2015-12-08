@@ -179,8 +179,6 @@ public class Goodsbl {
 	 * @return
 	 */
 	public ResultMessage end(String listNum, String realReceiverName,String realReceiverPhone) {
-		System.out.println("到这里了 Goodsbl.end");
-		System.out.println("listnum "+listNum);
 		try {
 			GoodsVO vo = findByListNum(listNum);
 			System.out.println("改之前的货物信息 "+vo.listNum+"  "+vo.realReceiverName+"  "+vo.realReceiverPhone+"  "+vo.logisticState);
@@ -193,6 +191,23 @@ public class Goodsbl {
 				vo.realReceiverPhone = realReceiverPhone;
 			}			
 			vo.logisticState=GoodsLogisticState.SIGNED;
+			return getGoodsDataService().modify(GoodsVO.toPO(vo));
+		} catch (RemoteException e) {
+			return ResultMessage.LINK_FAILURE;
+		}catch(GoodsNotFound e1){
+			return ResultMessage.NOT_FOUND;
+		}
+	}
+	/**
+	 * 
+	 * @param listNum
+	 * @return
+	 */
+	public ResultMessage end(String listNum){
+		try {
+			GoodsVO vo = findByListNum(listNum);
+			vo.arrivalState=GoodsArrivalState.BROKEN;
+			vo.logisticState=GoodsLogisticState.BROKEN_OR_LOST;
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;

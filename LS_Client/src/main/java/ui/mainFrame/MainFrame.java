@@ -169,6 +169,7 @@ public class MainFrame extends JFrame {
 				msgMatch=ctr_account.login(account,password);
 			} catch (RemoteException e) {
 			}
+//        	  if()
         	  int job=Integer.parseInt(account.substring(6, 8));
               this.setVisible(false);
           
