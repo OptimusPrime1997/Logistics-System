@@ -237,5 +237,12 @@ public enum ResultMessage {
 
 		return null;
 	}
+	public static void postCheck(ResultMessage expected,ResultMessage rmsg){
+		try{
+			assert (expected==rmsg):(ResultMessage.toFriendlyString(rmsg));
+		}catch(AssertionError e){
+			System.out.println(e.getMessage());
+		}
+	}
 
 }
