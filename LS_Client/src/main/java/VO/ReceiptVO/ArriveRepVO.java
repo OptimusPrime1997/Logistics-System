@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import PO.ReceiptPO.ArriveRepPO;
 import PO.ReceiptPO.ReceiptPO;
 import util.enumData.Rep;
-import util.enumData.place;
+import util.enumData.Place;
 
 public class ArriveRepVO extends ReceiptVO{
 	public Rep rep;
 	public String shipNum;
-	public place place;
+	public Place place;
 	public ArrayList<ArriveVO> arriveVOs;
 	
-	public ArriveRepVO(String num, String date, Rep rep, String shipNum, util.enumData.place place,
+	public ArriveRepVO(String num, String date, Rep rep, String shipNum, util.enumData.Place place,
 			ArrayList<ArriveVO> arriveVOs) {
 		super(num, date);
 		this.rep = rep;

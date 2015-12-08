@@ -12,6 +12,7 @@ import bl.receiptbl.Receiptbl.Receiptbl;
 import util.enumData.Rep;
 
 public class CashRepShowbl {
+	
 	private Receiptbl receiptbl = new Receiptbl();
 
 	public Vector<Object> initShow(String num) throws ClassNotFoundException, 

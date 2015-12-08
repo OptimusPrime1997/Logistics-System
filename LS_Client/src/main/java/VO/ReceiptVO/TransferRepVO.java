@@ -8,10 +8,10 @@ import util.enumData.*;
 public class TransferRepVO extends ReceiptVO {
 	public ShipForm form;
 	public String carNum;
-	public place place;
+	public Place place;
 	public boolean arriveAlready;
 	public ArrayList<String> goods;
-	public TransferRepVO(String num, String date, ShipForm form, String carNum, place place,
+	public TransferRepVO(String num, String date, ShipForm form, String carNum, Place place,
 			boolean arriveAlready, ArrayList<String> goods) {
 		super(num, date);
 		this.form = form;

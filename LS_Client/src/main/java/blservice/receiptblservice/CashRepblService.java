@@ -36,7 +36,7 @@ public interface CashRepblService extends ReceiptblService{
 	 * @throws FileNotFoundException 
 	 */
 	public String getCourierName (String text) throws NameNotFoundException, RemoteException,
-	FileNotFoundException, javax.naming.NameNotFoundException, ClassNotFoundException, 
+	FileNotFoundException, ClassNotFoundException, 
 	NumNotFoundException, IOException;
 
 	/**

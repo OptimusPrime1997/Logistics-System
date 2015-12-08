@@ -22,7 +22,7 @@ public class GetRepShowbl {
 		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.GetRep);
 		ArriveRepVO arriveRepVO = new ArriveRepVO((ArriveRepPO)receiptPO);
 		Vector<Object> data = new Vector<Object>();
-		for(int i = 0;i<arriveRepVO.arriveVOs.size();i++){
+		for(int i = 0;i < arriveRepVO.arriveVOs.size();i++){
 			Vector<Object> arr = new Vector<Object>();
 			ArriveVO arriveVO = arriveRepVO.arriveVOs.get(i);
 			arr.add(arriveVO.order);

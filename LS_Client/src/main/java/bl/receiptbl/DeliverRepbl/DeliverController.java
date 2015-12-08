@@ -54,7 +54,7 @@ public class DeliverController extends ReceiptblController implements DeliverRep
 	}
 
 	@Override
-	public ArrayList<DeliverRepVO> getRepBydate(String date) throws NotBoundException, ClassNotFoundException, IOException {
+	public ArrayList<DeliverRepVO> getRepByDate(String date) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -76,8 +76,8 @@ public class Stock {
              
             while(calendar.getTime().compareTo(dateTwo)<=0){               
             	
-                instockreps.addAll(in.getRepBydate(dateFormat.format(calendar.getTime())));
-                outstockreps.addAll(out.getRepBydate(dateFormat.format(calendar.getTime())));
+                instockreps.addAll(in.getRepByDate(dateFormat.format(calendar.getTime())));
+                outstockreps.addAll(out.getRepByDate(dateFormat.format(calendar.getTime())));
                 
                 calendar.add(Calendar.DAY_OF_MONTH, 1);               
             }

@@ -11,7 +11,7 @@ public class PayRepPO extends ReceiptPO {
 	private double sum;
 	private ArrayList<PayPO> payPOs;
 	private String payPersonNum;
-	private ArrayList<PayRepRefundRepPO> littleThing;
+	private ArrayList<PayRepRefundRepPO> refund;
 	private PayRepSalaryRepPO salary; 
 	private PayRepFreightRepPO transferPay;
 	private PayRepRentRepPO rent;
@@ -19,13 +19,13 @@ public class PayRepPO extends ReceiptPO {
 	private PayRepSalaryRepPO courierSalary;
 	private PayRepSalaryRepPO bonus;
 	public PayRepPO(String num, String date, double sum, ArrayList<PayPO> payPOs, String payPersonNum,
-			ArrayList<PayRepRefundRepPO> littleThing, PayRepSalaryRepPO salary, PayRepFreightRepPO transferPay, PayRepRentRepPO rent,
+			ArrayList<PayRepRefundRepPO> refund, PayRepSalaryRepPO salary, PayRepFreightRepPO transferPay, PayRepRentRepPO rent,
 			PayRepSalaryRepPO driverSalary, PayRepSalaryRepPO courierSalary, PayRepSalaryRepPO bonus) {
 		super(num, date);
 		this.sum = sum;
 		this.payPOs = payPOs;
 		this.payPersonNum = payPersonNum;
-		this.littleThing = littleThing;
+		this.refund = refund;
 		this.salary = salary;
 		this.transferPay = transferPay;
 		this.rent = rent;
@@ -42,8 +42,8 @@ public class PayRepPO extends ReceiptPO {
 	public String getPayPersonNum() {
 		return payPersonNum;
 	}
-	public ArrayList<PayRepRefundRepPO> getLittleThing() {
-		return littleThing;
+	public ArrayList<PayRepRefundRepPO> getRefund() {
+		return refund;
 	}
 	public PayRepSalaryRepPO getSalary() {
 		return salary;
