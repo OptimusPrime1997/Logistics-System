@@ -7,31 +7,43 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.CurrentTime;
 import util.enumData.ResultMessage;
 import VO.BusinessFormVO;
-import VO.ReceiptVO.CashVO;
+import VO.ReceiptVO.CashRepVO;
 import VO.ReceiptVO.PayRepVO;
 import bl.receiptbl.CashRepbl.CashRepbl;
 import bl.receiptbl.PayRepbl.PayRepbl;
 import dataservice.formdataservice.BusinessFormDataService;
 
 public class BusinessFormbl {
-	public BusinessFormVO show(String startTime, String endTime) throws NotBoundException, ClassNotFoundException, IOException {
+	public BusinessFormVO show(String startTime, String endTime) {
+		ArrayList<ArrayList<PayRepVO>> moneyOut=new ArrayList<ArrayList<PayRepVO>>();
+		ArrayList<ArrayList<CashRepVO>> moneyIn=new ArrayList<ArrayList<CashRepVO>>();
+		//检验过的  合法时间 
 		String tempT=startTime;
-		PayRepbl payRep=new PayRepbl();
-		CashRepbl cashRep=new CashRepbl();
-		//TODO 改成  返回部分付款单，收款单的方法~
-//		ArrayList<PayRepVO> moneyOut = payRep.getAllRep();
-//		while()
-//		
-//		ArrayList<CashVO> moneyIn = cashRep.getRepByDate("4");
-//		BusinessFormVO vo =new BusinessFormVO(startTime, endTime, moneyOut, moneyIn);
+		PayRepbl ctr_payRep=new PayRepbl();
+		CashRepbl ctr_cashRep=new CashRepbl();
+		
+		try {
+			while(CurrentTime.ifearlier(tempT, endTime)){
+				moneyOut.add(ctr_payRep.getRepByDate(tempT));
+				moneyIn.add(ctr_cashRep.getRepByDate(tempT));
+				tempT=CurrentTime.addDate(tempT, 1);
+			}
+			//最后一天没加
+			moneyOut.add(ctr_payRep.getRepByDate(endTime));
+			moneyIn.add(ctr_cashRep.getRepByDate(endTime));
+			return new BusinessFormVO(startTime, endTime, moneyOut, moneyIn);			
+			
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+		}
 		return null;
 	}
 	
 	public ResultMessage save(BusinessFormVO vo) {
 		try {
-			return 	getBFormData().add(vo.toPO(vo));
+			return 	getBFormData().add(BusinessFormVO.toPO(vo));
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;
 		}

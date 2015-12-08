@@ -29,9 +29,9 @@ public class CashRepVO extends ReceiptVO {
 		this.bankAccount = po.getBankAccount();
 	}
 	
-	public static ArrayList<CashRepVO> toArrayVO(ArrayList<ReceiptPO> receiptPOs) {
+	public static ArrayList<CashRepVO> toArrayVO(ArrayList<CashRepPO> receiptPOs) {
 		ArrayList<CashRepVO> cashRepVOs = new ArrayList<CashRepVO>();
-		for (ReceiptPO receiptPO : receiptPOs)
+		for (CashRepPO receiptPO : receiptPOs)
 			cashRepVOs.add(new CashRepVO((CashRepPO) receiptPO));
 		return cashRepVOs;
 	}

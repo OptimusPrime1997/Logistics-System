@@ -3,18 +3,19 @@ package PO;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import PO.ReceiptPO.ReceiptPO;
+import PO.ReceiptPO.CashRepPO;
+import PO.ReceiptPO.PayRepPO;
 
 public class BusinessFormPO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String startTime;
 	private String endTime;
-	private ArrayList<PO.ReceiptPO.PayRepPO> moneyOutRecord;
-	private ArrayList<PO.ReceiptPO.CashPO> moneyInRecord;
+	private ArrayList<ArrayList<PayRepPO>> moneyOutRecord;
+	private ArrayList<ArrayList<CashRepPO>> moneyInRecord;
 	
 	public BusinessFormPO(String startTime, String endTime,
-			ArrayList<PO.ReceiptPO.PayRepPO> moneyOutRecord,
-			ArrayList<PO.ReceiptPO.CashPO> moneyInRecord) {
+			ArrayList<ArrayList<PayRepPO>> moneyOutRecord,
+			ArrayList<ArrayList<CashRepPO>> moneyInRecord) {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.moneyOutRecord = moneyOutRecord;
@@ -29,13 +30,15 @@ public class BusinessFormPO implements Serializable {
 		return endTime;
 	}
 
-	public ArrayList<PO.ReceiptPO.PayRepPO> getMoneyOutRecord() {
+	public ArrayList<ArrayList<PayRepPO>> getMoneyOutRecord() {
 		return moneyOutRecord;
 	}
 
-	public ArrayList<PO.ReceiptPO.CashPO> getMoneyInRecord() {
+	public ArrayList<ArrayList<CashRepPO>> getMoneyInRecord() {
 		return moneyInRecord;
 	}
+
+	
 	
 	
 	
