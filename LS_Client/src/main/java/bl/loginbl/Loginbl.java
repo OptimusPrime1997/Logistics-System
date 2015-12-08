@@ -9,7 +9,7 @@ public class Loginbl {
 	private static String currentOptorId="02500106027";
 	
 	public ResultMessage login(String accountNum, String key) {
-		// TODO Auto-generated method stub
+		currentOptorId=accountNum;
 		Accountbl accountbl = new Accountbl();
 		return accountbl.login(accountNum, key);
 	}
