@@ -13,8 +13,9 @@ import util.enumData.*;
 				GoodsLogisticState.SENDED, null, null);
  */
 public class GoodsVO {
-	static public String listNum;
-	public Boolean ifExaminePassed;
+	private static long listNumToCount=0; 
+	public String listNum;
+	public Boolean ifExaminePassed=false;
 	public String getCourierAccount;
 	public String deliverCourierAccount;
 	public String startTime;
@@ -36,12 +37,12 @@ public class GoodsVO {
 	public double moneyOfPackage;
 	public double moneyTotal;
 	public double moneyFare;
-	public GoodsArrivalState arrivalState;
-	public GoodsLogisticState logisticState;
+	public GoodsArrivalState arrivalState=GoodsArrivalState.INTACT;
+	public GoodsLogisticState logisticState=GoodsLogisticState.SENDED;
 	public String realReceiverName;
 	public String realReceiverPhone;
 
-	public GoodsVO(String listNum, Boolean ifExaminePassed,
+	public GoodsVO(Boolean ifExaminePassed,
 			String getCourierAccount, String deliverCourierAccount,
 			String startTime, String overtime, String destinationCity,
 			String senderName, String senderAddress, String senderCompany,
@@ -52,7 +53,7 @@ public class GoodsVO {
 			double moneyTotal, double moneyFare,
 			GoodsArrivalState arrivalState, GoodsLogisticState logisticState,
 			String realReceiverName, String realReceiverPhone) {
-		this.listNum = listNum;
+		this.listNum = getCourierAccount.substring(0, 3)+listNumToCount;
 		this.ifExaminePassed = ifExaminePassed;
 		this.getCourierAccount = getCourierAccount;
 		this.deliverCourierAccount = deliverCourierAccount;
@@ -79,6 +80,7 @@ public class GoodsVO {
 		this.logisticState = logisticState;
 		this.realReceiverName = realReceiverName;
 		this.realReceiverPhone = realReceiverPhone;
+		listNumToCount++;
 	}
 
 	public GoodsVO(GoodsPO po){

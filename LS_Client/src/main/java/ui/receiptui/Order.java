@@ -6,8 +6,19 @@
 
 package ui.receiptui;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import ui.util.MyFrame;
 import util.CurrentTime;
+import util.enumData.GoodsExpressType;
+import util.enumData.GoodsLogisticState;
+import util.enumData.ResultMessage;
+import VO.GoodsVO;
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.goodsblservice.GoodsInitBLService;
+import blservice.loginblservice.LoginBLService;
 
 /**
  *
@@ -15,10 +26,12 @@ import util.CurrentTime;
  */
 public class Order extends javax.swing.JPanel {
 
-    /**
+	/**
      * Creates new form Order
      */
     public Order() {
+    	ctr_account=ControllerFactoryImpl.getInstance().getLoginController();
+    	ctr_newgoods=ControllerFactoryImpl.getInstance().getGoodsInitController();
         initComponents();
     }
     public static void main(String[] args) {
@@ -179,15 +192,15 @@ public class Order extends javax.swing.JPanel {
          );
 	}
 	private void initBox() {
-    	pkgBox = new javax.swing.JComboBox();
-		typeBox = new javax.swing.JComboBox();
-        pkgBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "快递袋", "纸箱", "木箱" }));
+    	pkgBox = new javax.swing.JComboBox<String>();
+		typeBox = new javax.swing.JComboBox<String>();
+        pkgBox.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "快递袋", "纸箱", "木箱" }));
         pkgBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pkgBoxActionPerformed(evt);
             }
         });
-        typeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "标准", "经济", "特快" }));
+        typeBox.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "标准", "经济", "特快" }));
         typeBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 typeBoxActionPerformed(evt);
@@ -206,11 +219,12 @@ public class Order extends javax.swing.JPanel {
         });
         cancelButton.setText("取消");
         okButton.setText("确认");
-        okButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                okButtonActionPerformed(evt);
-            }
-        });
+        okButton.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		okBtnMouseClicked();
+        	}
+		});
 
 	}
 	private void initLabel() {
@@ -295,7 +309,8 @@ public class Order extends javax.swing.JPanel {
 		resultMsgText = new javax.swing.JTextField();
 
 		officeText.setEditable(false);
-		officeText.setText("025001");
+//		String officeText=ctr_account.
+		officeText.setText("025001");//TODO
 		sumText.setEditable(false);
 		sumText.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -308,6 +323,21 @@ public class Order extends javax.swing.JPanel {
 		numText.setEditable(false);
 		resultMsgText.setEditable(false);
 	}
+	 /**
+     * 弹出对话框提示输入信息有误或订单不存在
+     * @param msg
+     */
+	private void showFeedBack(ArrayList<ResultMessage> messages) {
+		String feedback="";		
+		for(ResultMessage msg:messages){
+			feedback=feedback+ResultMessage.toFriendlyString(msg)+";   ";
+		}
+		resultMsgText.setText(feedback);
+	}
+	/**
+	 * 监听们
+	 * @param evt
+	 */
 	private void pkgBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pkgBoxActionPerformed
           // TODO add your handling code here:
     }//GEN-LAST:event_pkgBoxActionPerformed
@@ -323,11 +353,8 @@ public class Order extends javax.swing.JPanel {
     private void sumTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sumTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sumTextActionPerformed
-
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_okButtonActionPerformed
-
+    private void okBtnMouseClicked() {
+	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JLabel dateLabel, itemNameLabel, itemNumLabel,
@@ -339,7 +366,19 @@ public class Order extends javax.swing.JPanel {
 			officeText, dateText, itemNameText, receiverAddText,
 			receiverPhoneNumText, receiverText, resultMsgText, senderAddText,
 			senderPhoneNumText, senderText, sumText, weightText;
-	private javax.swing.JComboBox pkgBox, typeBox;
+	private javax.swing.JComboBox<String> pkgBox, typeBox;
 	private javax.swing.JButton okButton, sumButton, cancelButton;
+	private String getCourierAccount, startTime, destinationCity,
+			senderName, senderAddress, senderCompany, senderPhone,
+			receiverName, receiverAddress, receiverCompany, receiverPhone,
+			nameOfInside;
+	private Boolean ifExaminePassed = false;
+    private int numOfGoods;
+    private double  weight, volume, moneyOfPackage, moneyTotal, moneyFare;
+	private LoginBLService ctr_account;
+	private GoodsInitBLService ctr_newgoods;
+	private GoodsExpressType expressType;
+	private GoodsLogisticState logisticState;
+	private static final long serialVersionUID = 1L;
     // End of variables declaration//GEN-END:variables
 }
