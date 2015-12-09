@@ -382,6 +382,7 @@ public class InStockRep extends javax.swing.JPanel {
 						
 						int i = 0;
 						//循环至找到一个不在templist中的区位
+						//TODO
 						while (list.get(i) != null) {
 							for (int j = 0; j < templist.size(); j++) {
 								if (isNumber) {
