@@ -24,7 +24,7 @@ public class DriverblControllerTest {
 
 	@Test
 	public void test() {
-		String[] autoNum = new String[3];
+		ResultMessage[] autoNum = new ResultMessage[3];
 		DriverblController driverblController = new DriverblController();
 		DriverVO vo = null;
 		DriverVO vo1 = null;
@@ -45,20 +45,10 @@ public class DriverblControllerTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("远程连接错误");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (AutoNumException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExistException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("该人员已存在");
-		}
+		} 
 		try {
 			vo = driverblController.findByDriverNum("12511119112");
 			System.out.println(vo.name);

@@ -12,7 +12,7 @@ import Exception.NumNotFoundException;
 import VO.ManagementVO.*;
 
 public interface DriverBLService {
-	public String insertDriver(DriverVO vo) throws RemoteException, ClassNotFoundException, IOException, AutoNumException, ExistException;
+	public ResultMessage insertDriver(DriverVO vo) throws RemoteException;
 
 	public ResultMessage updateDriver(DriverVO vo) throws RemoteException;
 

@@ -15,9 +15,7 @@ import VO.ManagementVO.AccountVO;
 
 public interface AccountBLService {
 
-	public String insert(AccountVO VO) throws RemoteException,
-			ClassNotFoundException, IOException, AutoNumException,
-			WrongDateException, ExistException;
+	public ResultMessage insert(AccountVO VO) throws RemoteException;;
 
 	public ResultMessage update(AccountVO VO) throws RemoteException;
 

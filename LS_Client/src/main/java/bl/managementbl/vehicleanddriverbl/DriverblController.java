@@ -13,9 +13,9 @@ import VO.ManagementVO.DriverVO;
 import blservice.managementblservice.vehicleanddriverblservice.DriverBLService;
 
 public class DriverblController implements DriverBLService {
-	Driverbl driverbl=new Driverbl();
+	Driverbl driverbl = new Driverbl();
 
-	public String insertDriver(DriverVO VO) throws ClassNotFoundException, IOException, AutoNumException, ExistException {
+	public ResultMessage insertDriver(DriverVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return driverbl.insertDriver(VO);
 	}
@@ -30,15 +30,17 @@ public class DriverblController implements DriverBLService {
 		return driverbl.deleteDriver(VO);
 	}
 
-	public ArrayList<DriverVO> showDriver() throws ClassNotFoundException, IOException {
+	public ArrayList<DriverVO> showDriver() throws ClassNotFoundException,
+			IOException {
 		// TODO Auto-generated method stub
 		return driverbl.showDriver();
 	}
 
-	public DriverVO findByDriverNum(String driverNum) throws FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException {
+	public DriverVO findByDriverNum(String driverNum)
+			throws FileNotFoundException, ClassNotFoundException,
+			NumNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return driverbl.findByDriverNum(driverNum);
 	}
-
 
 }

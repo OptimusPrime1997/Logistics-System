@@ -5,6 +5,7 @@
  */
 package ui.businessOfficerui;
 
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
@@ -149,7 +150,7 @@ public class driver_management extends JPanel {
     	drivers_table = new JTable(); 
         drivers_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
+                {"00001", "大玉儿", "13522200011", "      X"},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -243,6 +244,12 @@ public class driver_management extends JPanel {
                 return canEdit [columnIndex];
             }
         });
+        drivers_table.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		tableMouseClicked(e);
+        	}
+		});
         if (drivers_table.getColumnModel().getColumnCount() > 0) {
             drivers_table.getColumnModel().getColumn(3).setPreferredWidth(5);
         }
@@ -312,6 +319,32 @@ public class driver_management extends JPanel {
 			}
 		}
     }
+    
+    
+    /**
+     * 对表格的监听
+     * @param e
+     */
+	public void tableMouseClicked(MouseEvent e) {
+		Point p = e.getPoint();
+		int row = drivers_table.rowAtPoint(p);
+	    int	column = drivers_table.columnAtPoint(p);
+	    //编号 姓名  手机号
+	    String driverCode,driverName,phone;
+	    //点了删除
+		if(e.getClickCount()==1&&column==3){
+			System.out.println("删除第"+row+"行");
+		}
+		if (e.getClickCount() == 2) {
+			driverCode=drivers_table.getValueAt(row, 0).toString();
+			driverName=drivers_table.getValueAt(row, 1).toString();
+			phone=drivers_table.getValueAt(row, 2).toString();
+			System.out.print("坐标 "+row+"  "+column+"   ");
+			new driver_detail(this, driverCode,driverName,phone);
+		}
+	}
+
+    
     private void add_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_btnMouseClicked
         new driver_add().setVisible(true);
     }

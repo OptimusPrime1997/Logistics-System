@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import dataservice.managementdataservice.accountdataservice.AccountDataService;
 import dataservice.managementdataservice.managedataservice.ManageDataService;
@@ -18,6 +19,7 @@ import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import Exception.WrongDateException;
 import PO.AccountPO;
+import PO.BankAccountPO;
 import VO.ManagementVO.AccountVO;
 import bl.managementbl.managedata.ManageData;
 import bl.managementbl.managedata.ManageVOPO;
@@ -43,44 +45,46 @@ public class Accountbl {
 		manageVOPO = ManageVOPO.getInstance();
 	}
 
-	public String add(AccountVO vo) throws ClassNotFoundException, IOException,
-			AutoNumException, WrongDateException, ExistException {
+	public ResultMessage add(AccountVO vo) {
 		manageVOPO.addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {
 			if (check(vo) == ResultMessage.VALID) {
-				vo.accountNum = null;
-				ArrayList<AccountPO> pos = accountDataService.show();
-				if (pos != null) {
+				try {
+					ArrayList<AccountPO> pos = accountDataService.show();
 					int num = 0;
-					for (AccountPO p : pos) {
-						if(p.getPhoneNum().equals(vo.phoneNum)){
-							throw new ExistException();
-						}
-						if (p.getAuthority() == vo.authority
-								&& p.getInstitutionNum().equals(
-										vo.institutionNum)) {
-							num++;
+					if (pos != null) {
+						for (Iterator<AccountPO> t = pos.iterator(); t
+								.hasNext();) {
+							AccountPO p = t.next();
+							if (p.getAccountNum().equals(vo.accountNum)) {
+								return ResultMessage.EXIST;
+							}
+							// if (p.getAuthority() == vo.authority){
+							// num++;
+							// }
 						}
 					}
-					vo.accountNum = vo.institutionNum
-							+ Authority.value(vo.authority)
-							+ ThreeAutoNum.toThreeNum(num);
-					
-					String autoAccountNum = accountDataService
-							.insert(manageVOPO.voToPO(vo));
-					if (autoAccountNum != null || autoAccountNum.length() != 11) {
-						return vo.accountNum;
-					} else {
-						throw new AutoNumException();
-					}
-				} else {
-					throw new RemoteException();
+					// vo.accountNum = vo.institutionNum+
+					// Authority.value(vo.authority)+ "00" + (num+1);
+					ResultMessage rmsg = accountDataService.insert(manageVOPO
+							.voToPO(vo));
+					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
+					return rmsg;
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("存储文件出错");
+					return ResultMessage.IOFAILED;
+				} 
+				catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return ResultMessage.FAILED;
 				}
-			} else {
-				throw new WrongDateException();
-			}
+			} else
+				return ResultMessage.FAILED;
 		} else {
-			throw new RemoteException();
+			return ResultMessage.REMOTE_FAILED;
 		}
 	}
 
