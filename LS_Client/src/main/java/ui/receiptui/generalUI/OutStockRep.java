@@ -88,9 +88,12 @@ public class OutStockRep extends javax.swing.JPanel {
 
          numText.setEditable(false);
          LoginblController login = new LoginblController();
+         String repNum;
  		try {
 			 String s = login.getCurrentOptorId();
-			 String repNum = s.substring(0, 3);
+			 s.substring(0, 3);
+			 String date = CurrentTime.getDate();
+			 date.replaceAll("\", "");
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} 

@@ -33,7 +33,7 @@ public class OutStockRepCheckbl {
 			arr.add(outStockRepVO.num);
 			arr.add(outStockRepVO.rep);
 			arr.add(outStockRepVO.num);
-			arr.add(outStockRepVO.place);
+			arr.add(outStockRepVO.city);
 			arr.add(outStockRepVO.form);
 			data.add(arr);
 		}
