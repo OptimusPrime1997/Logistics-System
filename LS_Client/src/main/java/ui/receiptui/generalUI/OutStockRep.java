@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
+import Exception.NumNotFoundException;
 import VO.StockVO;
 import VO.ReceiptVO.OutStockRepVO;
 import VO.ReceiptVO.ShippingRepVO;
@@ -190,21 +191,24 @@ public class OutStockRep extends javax.swing.JPanel {
          });
 
          listsTable.setModel(new javax.swing.table.DefaultTableModel(
-             new Object [][] {
-                 {null}
-             },
-             new String [] {
-                 "订单号"
-             }
-         ) {
-             Class[] types = new Class [] {
-                 java.lang.String.class
-             };
+                 new Object [20][] 
+                     ,
+                 new String [] {
+                     "订单号"
+                 }
+             ) {
+     			/**
+     			 * 
+     			 */
+     			private static final long serialVersionUID = 1L;
+     			boolean[] canEdit = new boolean [] {
+                     false, false, false, false, false, false
+                 };
 
-             public Class getColumnClass(int columnIndex) {
-                 return types [columnIndex];
-             }
-         });
+                 public boolean isCellEditable(int rowIndex, int columnIndex) {
+                     return canEdit [columnIndex];
+                 }
+             });
          listsTable.setGridColor(new java.awt.Color(0, 0, 0));
          jScrollPane1.setViewportView(listsTable);
 
@@ -354,20 +358,13 @@ public class OutStockRep extends javax.swing.JPanel {
 		case ADD_SUCCESS:
 			//2.再看在中转单或是中转中心装车单中是否可以找到它
 			if (repTypeBox.getSelectedIndex() == 0) {
-//				try {					
-//					TransferRepVO vo = t.getRepByNum(repTypeText.getText());
-					
-					ArrayList<String>  toTestList = new ArrayList<String>();
-					toTestList.add("1111");
-					toTestList.add("222");
-					
-					TransferRepVO vo = new TransferRepVO(repNum, CurrentTime.getDate(), ShipForm.PLANE, "car123", City.BEIJING, true, toTestList);
-					
+				try {					
+					TransferRepVO vo = t.getRepByNum(repTypeText.getText());
+										
 					if (vo == null) {
 						showFeedback(null, "该中转单编号不存在");
 						break;
 					}
-					//TODO
 					//3.在表格中显示信息
 					ArrayList<String> list = vo.goods;
 					int length =list.size();
@@ -412,24 +409,68 @@ public class OutStockRep extends javax.swing.JPanel {
 			    	destinationText.setText(City.toString(vo.city));
 					shipForm.setText(ShipForm.toFrendlyString(vo.form));
 					showFeedback(rm, "输入编号");
-//				} catch (ClassNotFoundException | NotBoundException
-//						| IOException e) {
-//					showFeedback(ResultMessage.REMOTE_FAILED, "");
-//					destinationText.setText("未知");
-//					shipForm.setText("未知");
-//				}
+				} catch (ClassNotFoundException | NotBoundException
+						| IOException e) {
+					showFeedback(ResultMessage.REMOTE_FAILED, "");
+					destinationText.setText("未知");
+					shipForm.setText("未知");
+				} catch (NumNotFoundException e) {
+					showFeedback(ResultMessage.NOT_FOUND, "");
+					destinationText.setText("未知");
+					shipForm.setText("未知");
+				}
 			} else if (repTypeBox.getSelectedIndex() == 1) {
 				try {
 					ShippingRepVO vo = s.getRepByNum(repTypeText.getText());
-					
+
+			
+				
 					if (vo == null) {
 						showFeedback(null, "该中转中心装车单编号不存在");
 						break;
 					}
-					//TODO
 					//3.在表格中显示信息
-					//4.存入新的出库单，并update库存那边
-					destinationText.setText(vo.destination+"");
+					ArrayList<String> list = vo.goods;
+					int length =list.size();
+					Object[][] showObjects = new Object[length][1];
+					int count = 0;
+					
+					for (String listNum : list) {
+
+				    	showObjects[count][0] = listNum;
+				    	
+				    	++count;
+
+			    	}
+			    	
+			    	
+					listsTable.setModel(new javax.swing.table.DefaultTableModel(
+			                 showObjects 
+			                         ,
+			                     new String [] {
+			                        "订单号"
+			                     }
+			                 ) {
+			         			/**
+			         			 * 
+			         			 */
+			         			private static final long serialVersionUID = 1L;
+			         			boolean[] canEdit = new boolean [] {
+			                         false, false, false, false, false, false
+			                     };
+
+			                     public boolean isCellEditable(int rowIndex, int columnIndex) {
+			                         return canEdit [columnIndex];
+			                     }
+			                 });
+					//TODO
+					//4.存入新的出库单，commit自动update库存那边，问题同上
+//			    	OutStockRepVO outStockRepVO = new OutStockRepVO(repNum, CurrentTime.getDate(), vo.destination, "", rep?!!, "？！这里是什么", vo.goods);
+			    	//submit是保存吗？
+//			    	o.submit(outStockRepVO);
+			    	
+			    	//TODO  这里的vo.destination的类型应该改成City
+//					destinationText.setText(City.toString(vo.destination));
 					shipForm.setText("--");
 					showFeedback(rm, "输入编号");
 				} catch (ClassNotFoundException | NotBoundException
@@ -437,6 +478,10 @@ public class OutStockRep extends javax.swing.JPanel {
 					destinationText.setText("未知");
 					shipForm.setText("--");
 					showFeedback(ResultMessage.REMOTE_FAILED, "");
+				} catch (NumNotFoundException e) {
+					showFeedback(ResultMessage.NOT_FOUND, "");
+					destinationText.setText("未知");
+					shipForm.setText("--");
 				}
 			}
 			
