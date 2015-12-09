@@ -90,7 +90,6 @@ public class Goodsbl {
 		 *  3位城市  3位营业厅编号     身份           序号
 		 */
 		try {
-			System.out.println("到这了吧");
 			// TODO 计算运费
 			String cities=vo.receiverAddress.substring(0, 2)+"-"+vo.senderAddress.substring(0, 2);
 			double basicprice =0.3;//ctr_const.findByCities(cities).priceConst;
@@ -99,7 +98,6 @@ public class Goodsbl {
 			//补齐7位
 			String temp=String.format("%7d",listNum_part).replace(" ","0");
 			vo.listNum=vo.getCourierAccount.substring(0, 3)+temp;
-			System.out.println("这里的订单号呢   "+temp);
 			vo.moneyFare = moneyCounter(vo.expressType, vo.weight, distance,
 					basicprice);
 			vo.moneyTotal = vo.moneyFare + vo.moneyOfPackage;

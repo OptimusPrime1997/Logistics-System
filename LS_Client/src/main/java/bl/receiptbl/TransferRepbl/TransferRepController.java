@@ -75,5 +75,11 @@ public class TransferRepController extends ReceiptblController implements Transf
 		return transferRepShowbl.initShow(num);
 	}
 
+	@Override
+	public ArrayList<TransferRepVO> getByTransNum(String officeNum, String date) {
+		// TODO Auto-generated method stub
+		return transferRepbl.getByTransNum(officeNum,date);
+	}
+
 
 }
