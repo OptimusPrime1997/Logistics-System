@@ -26,7 +26,6 @@ import VO.ReceiptVO.CashVO;
 import bl.receiptbl.CashRepbl.CashRepController;
 import blservice.receiptblservice.CashRepblService;
 import util.enumData.ResultMessage;
-import Exception.AddMoneyInBankException;
 import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
 
@@ -210,6 +209,7 @@ public class CashRep extends javax.swing.JPanel {
 					model.removeRow(row);
 					jTable.setModel(model);
 				}
+				sumText.setText(calSum());
 			}
 			
 			@Override
@@ -334,6 +334,14 @@ public class CashRep extends javax.swing.JPanel {
         column5.setPreferredWidth(10);
     }
     
+    private String calSum(){
+    	double sum = 0;
+    	for(int i = 0;i < dataVector.size();i++){
+    		sum += (double)jTable.getValueAt(i, 2);
+    	}
+    	return sum+"";
+    }
+    
     private void courierButtonMouseClicked(java.awt.event.MouseEvent evt) {
     	String courierNum = courierNumText.getText();
     	String courierName = null;
@@ -354,7 +362,8 @@ public class CashRep extends javax.swing.JPanel {
     	arr.add(null);
     	dataVector.add(arr);
     	model.setDataVector(dataVector, columnIdentifiers);
-    	
+    	setColumn();
+    	sumText.setText(calSum());
     }
     
     private void okMouseClicked(java.awt.event.MouseEvent evt) {
@@ -366,15 +375,16 @@ public class CashRep extends javax.swing.JPanel {
 		String bankAccount = (String)jComboBox.getSelectedItem();
     	try {
 			control.addMoneyInBankAccount(bankAccount, sum);
-		} catch (ClassNotFoundException | AddMoneyInBankException | NumNotFoundException | IOException e) {
+		} catch (ClassNotFoundException | NumNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
     	
 		ArrayList<CashVO> cashVOs = new ArrayList<CashVO>();
-		for(int i = 0;i<dataVector.size();i++){
-			CashVO vo = new CashVO((double)jTable.getValueAt(i, 2), (String)jTable.getValueAt(i, 1), (String)jTable.getValueAt(i, 0), (String)jTable.getValueAt(i, 3));
+		for(int i = 0;i < dataVector.size();i++){
+			CashVO vo = new CashVO((double)jTable.getValueAt(i, 2), (String)jTable.getValueAt(i, 1), 
+					(String)jTable.getValueAt(i, 0), (String)jTable.getValueAt(i, 3));
 			cashVOs.add(vo);
 		}
 		CashRepVO cashRepVO = new CashRepVO(num, date, sum, (String)jComboBox.getSelectedItem(), cashVOs);
@@ -395,10 +405,10 @@ public class CashRep extends javax.swing.JPanel {
 
     }
     
-    public static void main (String[] args){
-    	JFrame myFrame = new JFrame();
-    	myFrame.setSize(467,635);
-    	myFrame.add(new CashRep());
-    	myFrame.setVisible(true);
-    }
+//    public static void main (String[] args){
+//    	JFrame myFrame = new JFrame();
+//    	myFrame.setSize(467,635);
+//    	myFrame.add(new CashRep());
+//    	myFrame.setVisible(true);
+//    }
 }

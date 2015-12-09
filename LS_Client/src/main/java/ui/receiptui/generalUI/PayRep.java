@@ -6,6 +6,14 @@
 
 package ui.receiptui.generalUI;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import bl.receiptbl.PayRepbl.PayRepController;
+import blservice.receiptblservice.PayRepblService;
+
 /**
  *
  * @author apple
@@ -18,7 +26,7 @@ public class PayRep extends javax.swing.JPanel {
     private javax.swing.JComboBox choosePayThingBox;
     private javax.swing.JLabel choosePayThingLabel;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     private javax.swing.JLabel numLabel;
     private javax.swing.JTextField numText;
     private javax.swing.JButton okButton;
@@ -27,6 +35,10 @@ public class PayRep extends javax.swing.JPanel {
     private javax.swing.JTextField resultMsgText;
     private javax.swing.JLabel sumLabel;
     private javax.swing.JTextField sumText;
+    private PayRepblService control;
+    private DefaultTableModel model;
+    private Vector<String> columnIdentifiers;
+    private Vector<Object> dataVector;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -48,7 +60,7 @@ public class PayRep extends javax.swing.JPanel {
         numLabel = new javax.swing.JLabel();
         numText = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         choosePayThingLabel = new javax.swing.JLabel();
         choosePayThingBox = new javax.swing.JComboBox();
         cancelLabel = new javax.swing.JButton();
@@ -59,31 +71,28 @@ public class PayRep extends javax.swing.JPanel {
         sumText = new javax.swing.JTextField();
         resultMsgText = new javax.swing.JTextField();
         checkAllRepsButton = new javax.swing.JButton();
+        control = new PayRepController();
+        model = new DefaultTableModel();
+        columnIdentifiers = new Vector<String>();
+        dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         numLabel.setText("编号:");
 
         numText.setEditable(false);
+        numText.setText(control.getDate());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null}
-            },
-            new String [] {
-                "付款项", "金额", "付款账户", "备注"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(jTable1);
+        columnIdentifiers.add("付款项");
+        columnIdentifiers.add("金额");
+        columnIdentifiers.add("付款账户");
+        columnIdentifiers.add("备注");
+        columnIdentifiers.add("删除");
+        
+        model.setDataVector(dataVector, columnIdentifiers);
+        jTable.setModel(model);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(jTable);
 
         choosePayThingLabel.setText("请选择付款对象:");
 
@@ -116,6 +125,46 @@ public class PayRep extends javax.swing.JPanel {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkAllRepsButtonActionPerformed(evt);
             }
+        });
+        
+        setColumn();
+        
+        jTable.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int row = jTable.getSelectedRow();
+				int col = jTable.getSelectedColumn();
+				if(col==4){
+					model.removeRow(row);
+					jTable.setModel(model);
+				}
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
         });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -181,17 +230,29 @@ public class PayRep extends javax.swing.JPanel {
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void setColumn(){
+    	TableColumn column1 = jTable.getColumnModel().getColumn(0);
+        column1.setPreferredWidth(100);
+        TableColumn column2 = jTable.getColumnModel().getColumn(1);
+        column2.setPreferredWidth(60);
+        TableColumn column3 = jTable.getColumnModel().getColumn(2);
+        column3.setPreferredWidth(180);
+        TableColumn column4 = jTable.getColumnModel().getColumn(3);
+        column4.setPreferredWidth(270);
+        TableColumn column5 = jTable.getColumnModel().getColumn(4);
+        column5.setPreferredWidth(10);
+    }
 
-    private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAllRepsButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkAllRepsButtonActionPerformed
+    private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	
+    }
 
-    private void cancelLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelLabelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cancelLabelActionPerformed
+    private void cancelLabelActionPerformed(java.awt.event.ActionEvent evt) {
 
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_okButtonActionPerformed
+    }
 
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	
+    }
 }

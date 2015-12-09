@@ -6,6 +6,24 @@
 
 package ui.receiptui.generalUI;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Vector;
+
+import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
+import Exception.ExceptionPrint;
+import Exception.NumNotFoundException;
+import VO.ReceiptVO.PayDriverSalaryVO;
+import VO.ReceiptVO.PayRepDriverSalaryRepVO;
+import VO.ReceiptVO.PayRepVO;
+import bl.receiptbl.PayRepbl.PayRepController;
+import blservice.receiptblservice.PayRepblService;
+
 /**
  *
  * @author apple
@@ -19,11 +37,16 @@ public class PayRepDriver extends javax.swing.JPanel {
     private javax.swing.JLabel bankAccountLabel;
     private javax.swing.JButton cancelButton;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     private javax.swing.JButton okButton;
     private javax.swing.JTextField resultMsgText;
     private javax.swing.JLabel sumLabel;
     private javax.swing.JTextField sumText;
+    private PayRepblService control;
+    private DefaultTableModel model;
+    private Vector<String> columnIdentifiers;
+    private Vector<Object> dataVector;
+    private PayRepVO payRepVO;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -43,7 +66,7 @@ public class PayRepDriver extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         cancelButton = new javax.swing.JButton();
         okButton = new javax.swing.JButton();
         sumLabel = new javax.swing.JLabel();
@@ -53,27 +76,23 @@ public class PayRepDriver extends javax.swing.JPanel {
         bankAccountLabel = new javax.swing.JLabel();
         bankAccountBox = new javax.swing.JComboBox();
         resultMsgText = new javax.swing.JTextField();
+        control = new PayRepController();
+        model = new DefaultTableModel();
+        columnIdentifiers = new Vector<String>();
+        dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null}
-            },
-            new String [] {
-                "名字", "编号", "出车次数", "金额"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(jTable1);
+        columnIdentifiers.add("名字");
+        columnIdentifiers.add("编号");
+        columnIdentifiers.add("出车次数");
+        columnIdentifiers.add("金额");
+        columnIdentifiers.add("删除");
+        dataVector = control.initDriverSalaryTable(payRepVO);
+        model.setDataVector(dataVector, columnIdentifiers);
+        jTable.setModel(model);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(jTable);
 
         cancelButton.setText("取消");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -100,8 +119,56 @@ public class PayRepDriver extends javax.swing.JPanel {
         bankAccountLabel.setText("付款账户:");
 
         bankAccountBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
+        try {
+			bankAccountBox = new JComboBox(control.showBankAccount());
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+        
         resultMsgText.setEditable(false);
+        
+        setColumn();
+        
+        jTable.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int row = jTable.getSelectedRow();
+				int col = jTable.getSelectedColumn();
+				if(col==4){
+					model.removeRow(row);
+					jTable.setModel(model);
+				}
+				sumText.setText(calSum());
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -157,13 +224,54 @@ public class PayRepDriver extends javax.swing.JPanel {
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void setColumn(){
+    	TableColumn column1 = jTable.getColumnModel().getColumn(0);
+        column1.setPreferredWidth(75);
+        TableColumn column2 = jTable.getColumnModel().getColumn(1);
+        column2.setPreferredWidth(115);
+        TableColumn column3 = jTable.getColumnModel().getColumn(2);
+        column3.setPreferredWidth(60);
+        TableColumn column4 = jTable.getColumnModel().getColumn(3);
+        column4.setPreferredWidth(60);
+        TableColumn column5 = jTable.getColumnModel().getColumn(4);
+        column5.setPreferredWidth(10);
+    }
+    
+    private String calSum(){
+    	double sum = 0;
+    	for(int i = 0;i < dataVector.size();i++){
+    		sum += (double)jTable.getValueAt(i, 3);
+    	}
+    	return sum+"";
+    }
 
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cancelButtonActionPerformed
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_okButtonActionPerformed
+    }
+
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	double sum = Double.parseDouble(sumText.getText());
+    	String bankAccount = (String)bankAccountBox.getSelectedItem();
+    	try {
+			control.minusMoneyInBankAccount(bankAccount, sum);
+		} catch (ClassNotFoundException | NumNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+    	
+    	ArrayList<PayDriverSalaryVO> payDriverSalaryVOs = new ArrayList<PayDriverSalaryVO>();
+    	for(int i = 0;i < dataVector.size();i++){
+    		PayDriverSalaryVO payDriverSalaryVO = new PayDriverSalaryVO((String)jTable.getValueAt(i, 0), 
+    				(String)jTable.getValueAt(i, 1), 
+    				(double)jTable.getValueAt(i, 3), 
+    				(int)jTable.getValueAt(i, 2));
+    		payDriverSalaryVOs.add(payDriverSalaryVO);
+    	}
+    	PayRepDriverSalaryRepVO payRepDriverSalaryRepVO =
+    			new PayRepDriverSalaryRepVO(bankAccount, sum, payDriverSalaryVOs);
+    	control.submitDriver(payRepVO, payRepDriverSalaryRepVO);
+    }
 
 }

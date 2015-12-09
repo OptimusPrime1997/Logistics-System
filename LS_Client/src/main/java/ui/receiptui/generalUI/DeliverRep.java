@@ -362,10 +362,10 @@ public class DeliverRep extends javax.swing.JPanel {
     	
     }
     
-    public static void main (String[] args){
-    	JFrame myFrame = new JFrame();
-    	myFrame.setSize(673, 503);
-    	myFrame.add(new DeliverRep());
-    	myFrame.setVisible(true);
-    }
+//    public static void main (String[] args){
+//    	JFrame myFrame = new JFrame();
+//    	myFrame.setSize(673, 503);
+//    	myFrame.add(new DeliverRep());
+//    	myFrame.setVisible(true);
+//    }
 }

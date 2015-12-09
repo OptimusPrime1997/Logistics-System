@@ -2,7 +2,6 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.CashRepPO;
 import PO.ReceiptPO.ReceiptPO;
 import PO.ReceiptPO.TransferRepPO;
 import util.enumData.*;
@@ -11,26 +10,23 @@ public class TransferRepVO extends ReceiptVO {
 	public ShipForm form;
 	public String carNum;
 	public City city;
-	public boolean arriveAlready;
 	public ArrayList<String> goods;
 	public TransferRepVO(String num, String date, ShipForm form, String carNum, City city,
-			boolean arriveAlready, ArrayList<String> goods) {
+			ArrayList<String> goods) {
 		super(num, date);
 		this.form = form;
 		this.carNum = carNum;
 		this.city = city;
-		this.arriveAlready = arriveAlready;
 		this.goods = goods;
 	}
 	public TransferRepVO(TransferRepPO po){
 		this.form = po.getForm();
 		this.carNum = po.getCarNum();
 		this.city = po.getCity();
-		this.arriveAlready = po.isArriveAlready();
 		this.goods = po.getGoods();
 	}
 	public static TransferRepPO toPO(TransferRepVO vo){
-		return new TransferRepPO(vo.num, vo.date, vo.form, vo.carNum, vo.city, vo.arriveAlready, vo.goods);
+		return new TransferRepPO(vo.num, vo.date, vo.form, vo.carNum, vo.city, vo.goods);
 	}
 	public static ArrayList<TransferRepVO> toArrayVO(ArrayList<ReceiptPO> receiptPOs) {
 		ArrayList<TransferRepVO> TransferRepVOs = new ArrayList<TransferRepVO>();
