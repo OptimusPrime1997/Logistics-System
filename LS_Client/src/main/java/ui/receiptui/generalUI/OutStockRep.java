@@ -494,7 +494,7 @@ public class OutStockRep extends javax.swing.JPanel {
 
      private void showFeedback(ResultMessage msg, String operation) {
      	
-    	 System.out.println(msg);
+    	
     	 
      	if (msg.equals(ResultMessage.ADD_SUCCESS)) {
      		this.resultMessage.setForeground(Color.GREEN);
