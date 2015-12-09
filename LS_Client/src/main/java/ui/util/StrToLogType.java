@@ -5,8 +5,10 @@ import util.enumData.LogType;
 public class StrToLogType {
 	public static LogType strToLogTye(String str){
 		switch(str){
-		case "决策制定":
-			return LogType.DECISION_MAKE;
+		case "薪水制定":
+			return LogType.DECISION_SALARYPOLICY;
+		case "常量制定":
+			return LogType.DECISION_CONST;
 		case "审批单据":
 			return LogType.DOCUMENT_CHECK;
 		case "用户账户管理":

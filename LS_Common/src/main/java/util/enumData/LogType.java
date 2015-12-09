@@ -78,10 +78,15 @@ public enum LogType {
 	 * 审批单据
 	 */
 	DOCUMENT_CHECK,
+	
 	/**
-	 *决策制定
+	 * 常量制定
 	 */
-	DECISION_MAKE,
+	DECISION_CONST, 
+	/**
+	 * 薪水制定
+	 */
+	DECISION_SALARYPOLICY,
 	
 	
 }
