@@ -247,7 +247,7 @@ public class Stock {
 		String currentTime = CurrentTime.getTime();
 	
 		return ExportToExcel.exportStockExcel(list, "/Users/G/Desktop/库存快照"+currentTime);
-
+		
 		
 	}
 	

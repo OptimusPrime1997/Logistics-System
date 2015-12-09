@@ -34,7 +34,7 @@ import util.enumData.ShipForm;
 
 /**
  *
- * @author apple
+ * @author apple, G
  */
 public class OutStockRep extends javax.swing.JPanel {
 	OutStockRepblService o = ControllerFactoryImpl.getInstance().getOutStockRepblService();
@@ -146,7 +146,7 @@ public class OutStockRep extends javax.swing.JPanel {
 			 repNum += 5;
 			 //4位顺序编号
 			 //TODO 这个方法有问题，没能执行过去	
-			 String number = o.createNum(date);			
+			 String number = o.createNum(date);	
 			 repNum += number;
 		} catch (RemoteException e) {
 			numText.setText("远程错误未能得到当前账号");
@@ -470,7 +470,7 @@ public class OutStockRep extends javax.swing.JPanel {
 //			    	o.submit(outStockRepVO);
 			    	
 			    	//TODO  这里的vo.destination的类型应该改成City
-//					destinationText.setText(City.toString(vo.destination));
+//					destinationText.setText(vo.destination);
 					shipForm.setText("--");
 					showFeedback(rm, "输入编号");
 				} catch (ClassNotFoundException | NotBoundException

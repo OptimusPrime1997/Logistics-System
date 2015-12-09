@@ -7,6 +7,8 @@
 package ui.receiptui.generalUI;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.html.HTMLDocument.HTMLReader.BlockAction;
 
 import Exception.NumNotFoundException;
 import VO.StockDivisionVO;
@@ -37,7 +40,7 @@ import util.enumData.ShipForm;
 
 /**
  *
- * @author apple
+ * @author apple, G
  */
 public class InStockRep extends javax.swing.JPanel {
 	StockDivisionBLService s = ControllerFactoryImpl.getInstance().getStockDivisionController();
@@ -340,7 +343,8 @@ public class InStockRep extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAllRepsButtonActionPerformed
-        // TODO add your handling code here:
+        // TODO 查看待写
+    	
     }//GEN-LAST:event_checkAllRepsButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {//GEN-FIRST:event_addButtonActionPerformed
@@ -358,7 +362,7 @@ public class InStockRep extends javax.swing.JPanel {
 			break;
 		case ADD_SUCCESS:
 			//2.得到用户输入的区号,将其转化成城市传给库存，让库存给出这个区的空余地方防入templist
-			//  ,然后每次从templist中得到第一个提供给用户，然后从templist中删除它，如果某次templist
+			//  ,然后每次从list中得到一个不和templist重复的提供给用户，然后从list中删除它，如果某次list
 			//  空了，那么就应该提醒用户该区已满，请换区
 			String inputarea = areaText.getText();
 			boolean isNumber = true;
@@ -368,10 +372,10 @@ public class InStockRep extends javax.swing.JPanel {
 					showFeedback(ResultMessage.REPNUM_NOT_ALL_NUM,"输入区号");
 			}
 			int area = 0;
+			//得到位号
 			if (isNumber) {
 				area = Integer.parseInt(inputarea);
 				if (area>=1&&area<=8) {
-					//TODO 
 					//转化成城市
 					City city = FromIntToCity.toCity(area);
 					ArrayList<StockDivisionVO> list = s.getBlock(city);
@@ -382,35 +386,44 @@ public class InStockRep extends javax.swing.JPanel {
 						
 						int i = 0;
 						//循环至找到一个不在templist中的区位
-						//TODO
 						while (list.get(i) != null) {
 							for (int j = 0; j < templist.size(); j++) {
-								if (isNumber) {
+								if (list.get(i).block == templist.get(j).block &&
+									list.get(i).place == templist.get(j).place) {
+									list.remove(i);
+								}	else {
+									locText.setText(list.get(i).place+"");
+									City cityNum = CurrentCity.getCurrentCity();
+									String listNum = numText.getText();
+									City des = FromIntToCity.toCity(Integer.parseInt(areaText.getText()));
+									int b = Integer.parseInt(areaText.getText());
+									int p = Integer.parseInt(locText.getText());
+									templist.add(new StockDivisionVO(cityNum, listNum, des, b, p));
 									
 								}
 							}
 							
 						}
-						StockDivisionVO vo = templist.get(0);
 						
-						locText.setText(vo.place+"");
 					} else {
 						showFeedback(null, "该区已满，请换区");
 					}
-					
-//					if (templist.size()>0) {
-//						StockDivisionVO vo = templist.get(0);
-//						
-//						locText.setText(vo.place+"");
-//					} else {
-//						showFeedback(null, "该区已满，请换区");
-//					}
+			
 					
 				} else {
 					showFeedback(null, "区号请输入1~8正整数");
 				}
 			} else {
 				showFeedback(null, "区号请输入1~8正整数");
+			}
+			
+			//3.得到订单号，区号，位号，判断位号是否为空，不为空建立表中新的一栏信息
+			//  否则提示用户完成输入
+			String loc = locText.getText();
+			if (loc != null) {
+				showTable(templist);
+			} else {
+				showFeedback(ResultMessage.NOT_COMPLETED, "订单号及区位号");
 			}
 			
 			break;
@@ -421,7 +434,7 @@ public class InStockRep extends javax.swing.JPanel {
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
+        // TODO 确定待写
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
@@ -430,6 +443,43 @@ public class InStockRep extends javax.swing.JPanel {
     	 this.frame.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
+    private void showTable (ArrayList<StockDivisionVO> templist) {
+    
+		int length =templist.size();
+		Object[][] showObjects = new Object[length][3];
+		int count = 0;
+		
+		for (StockDivisionVO vo : templist) {
+
+	    	showObjects[count][0] = vo.listNum;
+	    	showObjects[count][1] = vo.block;
+	    	showObjects[count][2] = vo.place;
+	    	
+	    	++count;
+
+    	}
+    	
+    	
+    	jTable1.setModel(new DefaultTableModel(
+               showObjects
+                    ,
+                new String [] {
+                    "订单号","区号","位号"
+                }
+            ) {
+                /**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+				boolean[] canEdit = new boolean [] {
+                    false, false, false, false, false, false
+                };
+
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit [columnIndex];
+                }
+            });
+    }
     private void showFeedback(ResultMessage msg, String operation) {
      	
    	
@@ -442,4 +492,7 @@ public class InStockRep extends javax.swing.JPanel {
     	
     	this.resultMessage.setText(operation + ResultMessage.toFriendlyString(msg));
 	}
+    
+    
+   
 }
