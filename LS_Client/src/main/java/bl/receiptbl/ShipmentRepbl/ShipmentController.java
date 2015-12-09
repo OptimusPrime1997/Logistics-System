@@ -78,4 +78,10 @@ public class ShipmentController extends ReceiptblController implements ShipmentR
 		return shipmentRepbl.getTruckSum(date);
 	}
 
+	@Override
+	public int getSumByBusiOfficerNum(String num, String date) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -89,7 +89,7 @@ public class businessOfficer_main extends JPanel {
     	num_label.setFont(new java.awt.Font("宋体", 1, 48));
     	num_label.setForeground(new java.awt.Color(240, 240, 240));
     	num_label.setText("0")
-    	ctr_log
+//    	ctr_log
     	;//TODO 数字 获取
          initNumLayout(num_panelLayout);
 	}
