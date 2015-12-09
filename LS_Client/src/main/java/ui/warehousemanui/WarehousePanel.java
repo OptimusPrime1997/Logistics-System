@@ -124,7 +124,8 @@ public class WarehousePanel extends javax.swing.JFrame {
 
         jLabel8.setText("广州08");
 
-        showProcess();
+        //TODO 怎么在刚开始显示不报错呀
+//        showProcess();
         
         jButton1.setText("出库单填写");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -316,16 +317,25 @@ public class WarehousePanel extends javax.swing.JFrame {
   
 
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    	OutStockRep out = new OutStockRep();
-    	this.getContentPane().removeAll();
-    	this.getContentPane().add(out);
-    	this.getContentPane().validate();
-    	this.getContentPane().repaint();
-  	
+    	JFrame frame = new JFrame();
+    	
+    	frame.setResizable(false);
+    	Toolkit tk = Toolkit.getDefaultToolkit();
+    	Dimension screensize = tk.getScreenSize();
+    	int screenh = screensize.height;
+    	int screenw = screensize.width;
+    	frame.setSize(400, 600);
+    	frame.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);	
+    	frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    	
+		OutStockRep out = new OutStockRep(frame);
+    	frame.setContentPane(out);
+    	frame.setVisible(true);
+    	this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed    	
-    	InStockRep in = new InStockRep();
+    	InStockRep in = new InStockRep(this);
     	this.getContentPane().removeAll();
     	this.getContentPane().add(in);
     	this.getContentPane().validate();
@@ -333,7 +343,6 @@ public class WarehousePanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    	//TODO 退出
     	MainFrame mf = new MainFrame();
     	mf.setVisible(true);
     	this.dispose();
@@ -371,6 +380,7 @@ public class WarehousePanel extends javax.swing.JFrame {
 			
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			//
+			
 		}
   		
   	}

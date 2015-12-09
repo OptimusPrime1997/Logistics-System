@@ -6,19 +6,25 @@
 
 package ui.receiptui.generalUI;
 
-import java.awt.Frame;
+import java.awt.Color;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import javax.swing.JFrame;
+
+import VO.ReceiptVO.ShippingRepVO;
+import VO.ReceiptVO.TransferRepVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.loginbl.LoginblController;
-import bl.receiptbl.OutStockRepbl.OutStockRepController;
 import blservice.receiptblservice.OutStockRepblService;
+import blservice.receiptblservice.ShippingRepblService;
+import blservice.receiptblservice.TransferRepblService;
 import ui.warehousemanui.WarehousePanel;
 import util.CurrentCity;
 import util.CurrentTime;
 import util.enumData.City;
+import util.enumData.ResultMessage;
 
 /**
  *
@@ -26,11 +32,13 @@ import util.enumData.City;
  */
 public class OutStockRep extends javax.swing.JPanel {
 	OutStockRepblService o = ControllerFactoryImpl.getInstance().getOutStockRepblService();
-    
+    TransferRepblService t = ControllerFactoryImpl.getInstance().getTransferRepblService();
+    ShippingRepblService s = ControllerFactoryImpl.getInstance().getShippingRepblService();
     /**
      * Creates new form OutStockRep
      */
-    public OutStockRep() {
+    public OutStockRep(JFrame frame) {
+    	this.frame = frame;
         initComponents();
     }
 
@@ -65,11 +73,11 @@ public class OutStockRep extends javax.swing.JPanel {
          shipForm = new javax.swing.JTextField();
          repTypeBox = new javax.swing.JComboBox();
          jScrollPane1 = new javax.swing.JScrollPane();
-         jTable1 = new javax.swing.JTable();
+         listsTable = new javax.swing.JTable();
          okButton = new javax.swing.JButton();
          cancelButton = new javax.swing.JButton();
          destinationText = new javax.swing.JTextField();
-         resultMsgText = new javax.swing.JTextField();
+         resultMessage = new javax.swing.JTextField();
          checkAllRepsButton = new javax.swing.JButton();
 
          setBackground(new java.awt.Color(255, 255, 255));
@@ -97,30 +105,35 @@ public class OutStockRep extends javax.swing.JPanel {
       
  		try {
 			 String s = login.getCurrentOptorId();
-			 //前三位+9
-			 repNum = s.substring(0, 3)+9;
+			 //前三位
+			 repNum = s.substring(0, 3);
 			 //中转中心编号
 			 String tranString = "000";
 			 repNum += tranString;
-			 //8位日期
+			 //8位日期+5
 			 String date = CurrentTime.getDate();
 			 String tempdate = date.replaceAll("-", "");
 			 repNum += tempdate;
-			 //5位顺序编号
-			 String number = o.createNum(date);
+			 repNum += 5;
+			 //4位顺序编号
+			 //TODO 这个方法有问题，没能执行过去	
+			 String number = o.createNum(date);			
 			 repNum += number;
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			numText.setText("远程错误未能得到当前账号");
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			numText.setText("远程错误未能得到当前账号");
 		} catch (NotBoundException e) {
-			e.printStackTrace();
+			numText.setText("远程错误未能得到当前账号");
 		} catch (IOException e) {
-			e.printStackTrace();
+			numText.setText("远程错误未能得到当前账号");
 		} 
+ 		
+ 		
  		
  		numText.setText(repNum);
  		 
+ 		
          numText.addActionListener(new java.awt.event.ActionListener() {
              public void actionPerformed(java.awt.event.ActionEvent evt) {
                  numTextActionPerformed(evt);
@@ -148,7 +161,7 @@ public class OutStockRep extends javax.swing.JPanel {
              }
          });
 
-         jTable1.setModel(new javax.swing.table.DefaultTableModel(
+         listsTable.setModel(new javax.swing.table.DefaultTableModel(
              new Object [][] {
                  {null}
              },
@@ -164,8 +177,8 @@ public class OutStockRep extends javax.swing.JPanel {
                  return types [columnIndex];
              }
          });
-         jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-         jScrollPane1.setViewportView(jTable1);
+         listsTable.setGridColor(new java.awt.Color(0, 0, 0));
+         jScrollPane1.setViewportView(listsTable);
 
          okButton.setText("确认");
          okButton.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +196,7 @@ public class OutStockRep extends javax.swing.JPanel {
 
          destinationText.setEditable(false);
 
-         resultMsgText.setEditable(false);
+         resultMessage.setEditable(false);
 
          checkAllRepsButton.setText("查看所有单据");
          checkAllRepsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -239,7 +252,7 @@ public class OutStockRep extends javax.swing.JPanel {
                                  .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                          .addGap(1, 1, 1)))
                  .addContainerGap(19, Short.MAX_VALUE))
-             .addComponent(resultMsgText)
+             .addComponent(resultMessage)
          );
          layout.setVerticalGroup(
              layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,34 +286,99 @@ public class OutStockRep extends javax.swing.JPanel {
                      .addComponent(okButton)
                      .addComponent(cancelButton))
                  .addGap(18, 18, 18)
-                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                 .addComponent(resultMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
          );
      }// </editor-fold>//GEN-END:initComponents
 
      private void numTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numTextActionPerformed
-         // TODO add your handling code here:
+    	 //这个应该不用写
      }//GEN-LAST:event_numTextActionPerformed
 
      private void repTypeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repTypeTextActionPerformed
-         // TODO add your handling code here:
+    	 //应该不用写
+		
      }//GEN-LAST:event_repTypeTextActionPerformed
 
      private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAllRepsButtonActionPerformed
-         // TODO add your handling code here:
      }//GEN-LAST:event_checkAllRepsButtonActionPerformed
 
      private void repTypeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repTypeBoxActionPerformed
-         // TODO add your handling code here:
      }//GEN-LAST:event_repTypeBoxActionPerformed
 
      private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-         // TODO add your handling code here:
+    	 WarehousePanel w = new WarehousePanel();
+    	 w.setVisible(true);
+    	 this.frame.dispose();
      }//GEN-LAST:event_cancelButtonActionPerformed
 
      private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
          // TODO add your handling code here:
+    	 //1.先判断输入是否符合19位数字
+    	ResultMessage rm = o.checkNum(repNum, 19);
+    	switch (rm) {
+		case REPNUM_LENGTH_LACKING:			
+		case REPNUM_LENGTH_OVER:
+		case REPNUM_NOT_ALL_NUM:
+			showFeedback(rm, "输入编号");
+			break;
+		case ADD_SUCCESS:
+			//2.再看在中转单或是中转中心装车单中是否可以找到它
+			if (repTypeBox.getSelectedIndex() == 0) {
+				try {
+					TransferRepVO vo = t.getRepByNum(repNum);
+					
+					if (vo == null) {
+						showFeedback(null, "该中转单编号不存在");
+						break;
+					}
+					//TODO
+					//3.在表格中显示信息
+					//4.存入新的出库单，并update库存那边
+					destinationText.setText(vo.city+"");
+					shipForm.setText(vo.form+"");
+					showFeedback(rm, "输入编号");
+				} catch (ClassNotFoundException | NotBoundException
+						| IOException e) {
+					destinationText.setText("未知");
+					shipForm.setText("未知");
+				}
+			} else if (repTypeBox.getSelectedIndex() == 1) {
+				try {
+					ShippingRepVO vo = s.getRepByNum(repNum);
+					
+					if (vo == null) {
+						showFeedback(null, "该中转中心装车单编号不存在");
+						break;
+					}
+					//TODO
+					//3.在表格中显示信息
+					destinationText.setText(vo.destination+"");
+					shipForm.setText("--");
+					showFeedback(rm, "输入编号");
+				} catch (ClassNotFoundException | NotBoundException
+						| IOException e) {
+					destinationText.setText("未知");
+					shipForm.setText("--");
+				}
+			}
+			
+			break;
+
+		default:
+			break;
+		}
      }//GEN-LAST:event_okButtonActionPerformed
 
+     private void showFeedback(ResultMessage msg, String operation) {
+     	
+     	if (msg.equals(ResultMessage.SUCCESS)) {
+     		this.resultMessage.setForeground(Color.GREEN);
+ 		} else {
+ 			this.resultMessage.setForeground(Color.RED);
+ 		}
+     	
+     	this.resultMessage.setText(operation + ResultMessage.toFriendlyString(msg));
+ 	}
 
      // Variables declaration - do not modify//GEN-BEGIN:variables
      private javax.swing.JButton cancelButton;
@@ -310,7 +388,7 @@ public class OutStockRep extends javax.swing.JPanel {
      private javax.swing.JLabel destinationLabel;
      private javax.swing.JTextField destinationText;
      private javax.swing.JScrollPane jScrollPane1;
-     private javax.swing.JTable jTable1;
+     private javax.swing.JTable listsTable;
      private javax.swing.JLabel numLabel;
      private javax.swing.JTextField numText;
      private javax.swing.JLabel officeLabel;
@@ -319,9 +397,11 @@ public class OutStockRep extends javax.swing.JPanel {
      private javax.swing.JComboBox repTypeBox;
      private javax.swing.JLabel repTypeLabel;
      private javax.swing.JTextField repTypeText;
-     private javax.swing.JTextField resultMsgText;
+     private javax.swing.JTextField resultMessage;
      private javax.swing.JTextField shipForm;
      private javax.swing.JLabel shipFormLabel;
      private String repNum;
+     private JFrame frame;
+ 
      // End of variables declaration//GEN-END:variables
  }
