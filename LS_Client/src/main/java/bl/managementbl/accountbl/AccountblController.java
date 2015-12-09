@@ -18,8 +18,7 @@ public class AccountblController implements AccountBLService {
 
 	Accountbl accountbl = new Accountbl();
 
-	public String insert(AccountVO VO) throws ClassNotFoundException,
-			IOException, AutoNumException, WrongDateException, ExistException {
+	public ResultMessage insert(AccountVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return accountbl.add(VO);
 	}
