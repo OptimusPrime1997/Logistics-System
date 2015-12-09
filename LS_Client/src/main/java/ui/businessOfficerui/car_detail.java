@@ -137,10 +137,7 @@ public class car_detail extends JFrame {
 		default:
 			break;
 		}
-    	 combobox = new JComboBox<String>();
-         combobox.setModel(new DefaultComboBoxModel<String>(
-        		 new String[] { "年", "月", "天" }));         
-         combobox.setSelectedIndex(i);
+    	
 	}
 	private void initbtn() {
     	 delete_btn = new JButton();
@@ -198,7 +195,7 @@ public class car_detail extends JFrame {
                                         .addComponent(ok_btn))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(combobox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))
+                                        ))))
                         .addGap(0, 43, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -227,7 +224,7 @@ public class car_detail extends JFrame {
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(timeText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(combobox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                   )
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(back_btn)
@@ -239,7 +236,7 @@ public class car_detail extends JFrame {
 	}
 	private void initTxt() {
 		//TODO carTime timeType要通过数据层获取
-		carTime="5";//先硬编码一下
+		carTime="2014-8-22";//先硬编码一下
     	  carCodeNum_text = new JTextField();          
           carLicenseNum_text = new JTextField();
           timeText = new JTextField();
@@ -291,7 +288,7 @@ public class car_detail extends JFrame {
     private JTextField carCodeNum_text,carLicenseNum_text,timeText;
     private String carCode,carLicence,carTime="5",carTimeType="年";//车辆代号，车牌号，服役时间,服役时间单位
     private JTextField feedback_text;//给用户反馈信息的信息栏
-    private JComboBox<String> combobox;
+    
     private JLabel jLabel1,jLabel2,jLabel3,jLabel4;
     private car_management parentPanel;
     // End of variables declaration//GEN-END:variables
