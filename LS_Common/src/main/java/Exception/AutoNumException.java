@@ -1,6 +1,6 @@
 package Exception;
 
-public class ExistException extends Exception{
+public class AutoNumException extends Exception{
 
 	/**
 	 * 

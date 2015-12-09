@@ -34,9 +34,8 @@ public class businessOfficer_main extends JPanel {
 	 /**
      * 初始化界面
      */
-    public businessOfficer_main() {
+	public businessOfficer_main() {
     	initComponents();
-    	
     	this.frame=new MyFrame(this);    	   	
               
     }

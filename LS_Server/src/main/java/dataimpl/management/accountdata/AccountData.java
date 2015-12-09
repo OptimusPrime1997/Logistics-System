@@ -7,8 +7,6 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-
-
 import util.enumData.ResultMessage;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
@@ -17,7 +15,7 @@ import dataservice.managementdataservice.accountdataservice.AccountDataService;
 import datautil.DataUtility;
 
 public class AccountData extends UnicastRemoteObject implements
-		AccountDataService,Serializable {
+		AccountDataService, Serializable {
 	private final String path = "data/currentdata/account";
 	private DataUtility d;
 	/**
@@ -32,13 +30,13 @@ public class AccountData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ResultMessage insert(AccountPO po) throws IOException {
+	public String insert(AccountPO po) throws IOException,FileNotFoundException {
 		// TODO Auto-generated method stub
 		print();
 		if (d.save(po, path) == ResultMessage.FAILED) {
-			return ResultMessage.FAILED;
+			throw new IOException();
 		} else {
-			return ResultMessage.SUCCESS;
+			return po.getAccountNum();
 		}
 	}
 
@@ -177,10 +175,10 @@ public class AccountData extends UnicastRemoteObject implements
 		}
 	}
 
-
 	@Override
 	public ArrayList<AccountPO> findByInstitutionNum(String institutionNum)
-			throws ClassNotFoundException, IOException,FileNotFoundException,NumNotFoundException {
+			throws ClassNotFoundException, IOException, FileNotFoundException,
+			NumNotFoundException {
 		// TODO Auto-generated method stub
 		print();
 		ArrayList<AccountPO> pos = new ArrayList<AccountPO>();
@@ -202,6 +200,7 @@ public class AccountData extends UnicastRemoteObject implements
 			return pos;
 		}
 	}
+
 	private void print() {
 		System.out.println(Thread.currentThread().getStackTrace()[1]
 				.getClassName()

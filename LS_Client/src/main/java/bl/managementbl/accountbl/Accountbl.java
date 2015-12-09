@@ -8,11 +8,15 @@ import java.util.ArrayList;
 import dataservice.managementdataservice.accountdataservice.AccountDataService;
 import dataservice.managementdataservice.managedataservice.ManageDataService;
 import util.InputCheck;
+import util.ThreeAutoNum;
 import util.enumData.Authority;
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
+import Exception.AutoNumException;
+import Exception.ExistException;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
+import Exception.WrongDateException;
 import PO.AccountPO;
 import VO.ManagementVO.AccountVO;
 import bl.managementbl.managedata.ManageData;
@@ -39,37 +43,43 @@ public class Accountbl {
 		manageVOPO = ManageVOPO.getInstance();
 	}
 
-	public ResultMessage add(AccountVO vo) throws RemoteException,
-			ClassNotFoundException {
+	public String add(AccountVO vo) throws ClassNotFoundException, IOException,
+			AutoNumException, WrongDateException, ExistException {
 		manageVOPO.addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {
 			if (check(vo) == ResultMessage.VALID) {
-				try {
-					ArrayList<AccountPO> pos = accountDataService.show();
+				vo.accountNum = null;
+				ArrayList<AccountPO> pos = accountDataService.show();
+				if (pos != null) {
 					int num = 0;
 					for (AccountPO p : pos) {
-						if (p.getAuthority() == vo.authority)
+						if(p.getPhoneNum().equals(vo.phoneNum)){
+							throw new ExistException();
+						}
+						if (p.getAuthority() == vo.authority
+								&& p.getInstitutionNum().equals(
+										vo.institutionNum)) {
 							num++;
+						}
 					}
 					vo.accountNum = vo.institutionNum
-							+ Authority.value(vo.authority) + "00" + (num + 1);
-					ResultMessage rmsg = accountDataService.insert(manageVOPO
-							.voToPO(vo));
-					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					System.out.println("存储文件出错");
-					return ResultMessage.IOFAILED;
+							+ Authority.value(vo.authority)
+							+ ThreeAutoNum.toThreeNum(num);
+					String autoAccountNum = accountDataService
+							.insert(manageVOPO.voToPO(vo));
+					if (autoAccountNum != null || autoAccountNum.length() != 11) {
+						return vo.accountNum;
+					} else {
+						throw new AutoNumException();
+					}
+				} else {
+					throw new RemoteException();
 				}
-				return ResultMessage.SUCCESS;
 			} else {
-				System.out.println("帐户"
-						+ ResultMessage.toFriendlyString(check(vo)));
-				return ResultMessage.WRONG_DATA;
+				throw new WrongDateException();
 			}
 		} else {
-			return ResultMessage.FAILED;
+			throw new RemoteException();
 		}
 	}
 
@@ -212,35 +222,35 @@ public class Accountbl {
 	 */
 	public ResultMessage login(String accountNum, String key) {
 		AccountVO accountVO = null;
-//		try {
-//			accountVO = findByAccountNum(accountNum);
-//		} catch (RemoteException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (NameNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (NumNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		if (accountVO == null) {
-//			return ResultMessage.NOT_FOUND;
-//		} else if (accountVO.password.equals(key)) {
-//			return ResultMessage.SUCCESS;
-//		} else {
-//			return ResultMessage.WRONG_PASSWORD;
-//		}
-return ResultMessage.SUCCESS;
+		// try {
+		// accountVO = findByAccountNum(accountNum);
+		// } catch (RemoteException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// } catch (FileNotFoundException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// } catch (NameNotFoundException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// } catch (ClassNotFoundException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// } catch (NumNotFoundException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// } catch (IOException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// if (accountVO == null) {
+		// return ResultMessage.NOT_FOUND;
+		// } else if (accountVO.password.equals(key)) {
+		// return ResultMessage.SUCCESS;
+		// } else {
+		// return ResultMessage.WRONG_PASSWORD;
+		// }
+		return ResultMessage.SUCCESS;
 	}
 
 	public ResultMessage check(AccountVO vo) {
@@ -257,7 +267,5 @@ return ResultMessage.SUCCESS;
 		} else {
 			return InputCheck.checkInputName(vo.accountName);
 		}
-
 	}
-
 }
