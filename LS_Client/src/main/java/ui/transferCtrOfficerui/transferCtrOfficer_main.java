@@ -6,27 +6,27 @@ import java.rmi.RemoteException;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.WindowConstants;
 
-import bl.controllerfactorybl.ControllerFactoryImpl;
-import blservice.loginblservice.LoginBLService;
-import ui.mainFrame.MainFrame;
 import ui.receiptui.generalUI.GetRep;
 import ui.receiptui.generalUI.ShippingRep;
 import ui.receiptui.generalUI.TransferRep;
 import ui.util.MyFrame;
 import util.CurrentCity;
+import util.CurrentTime;
 import util.enumData.City;
+import util.enumData.LogType;
 import util.enumData.ResultMessage;
+import VO.LogVO;
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.logblservice.LogBLService;
+import blservice.loginblservice.LoginBLService;
+import blservice.receiptblservice.ReceiptblService;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -43,7 +43,8 @@ public class transferCtrOfficer_main extends JPanel {
 	
     public transferCtrOfficer_main() {
     	ctr_login=ControllerFactoryImpl.getInstance().getLoginController();
-        initComponents();
+        ctr_log= ControllerFactoryImpl.getInstance().getLogController();
+    	initComponents();
         new MyFrame(this);
     }
     /**
@@ -254,10 +255,20 @@ public class transferCtrOfficer_main extends JPanel {
 	}
 	private void toBusinessOffice_btnMouseClicked() {
 		System.out.println("中转中心装车单");
+		try {
+			LogVO vo = new LogVO(LogType.TRANSFER_CTR_SHIP_MANAGEMENT, ctr_login.getCurrentOptorId(), CurrentTime.getDate());
+			ctr_log.add(vo);
+		} catch (RemoteException e1) {
+		}
 		new MyFrame(800,600,new ShippingRep());
 	}
 	private void arrival_btnMouseClicked() {
 		System.out.println("中转中心到达单");
+		try {
+			LogVO vo = new LogVO(LogType.TRANSFER_CTR_RECEPTION, ctr_login.getCurrentOptorId(), CurrentTime.getDate());
+			ctr_log.add(vo);
+		} catch (RemoteException e1) {
+		}
 		new MyFrame(800,600,new GetRep());
 	}
 	private void toTransferCTR_btnMouseClicked() {
@@ -297,6 +308,8 @@ public class transferCtrOfficer_main extends JPanel {
     private JButton toTransferCTR_btn;
     private JLabel transferOfficeNum_label;
     private LoginBLService ctr_login;
+    private LogBLService ctr_log;
+//    private ReceiptblService ctr_re
     // End of variables declaration//GEN-END:variables
     
    

@@ -6,6 +6,8 @@
 
 package ui.receiptui.generalUI;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author apple
@@ -13,7 +15,8 @@ package ui.receiptui.generalUI;
 public class InStockRep extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addButton;
+    private JFrame frame;  
+	private javax.swing.JButton addButton;
     private javax.swing.JLabel areaLabel;
     private javax.swing.JTextField areaText;
     private javax.swing.JButton cancelButton;
@@ -37,7 +40,8 @@ public class InStockRep extends javax.swing.JPanel {
     /**
      * Creates new form InStockRep
      */
-    public InStockRep() {
+    public InStockRep(JFrame frame) {
+    	this.frame = frame;
         initComponents();
     }
 

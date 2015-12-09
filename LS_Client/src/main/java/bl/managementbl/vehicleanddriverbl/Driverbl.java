@@ -12,6 +12,7 @@ import Exception.AutoNumException;
 import Exception.ExistException;
 import Exception.NumNotFoundException;
 import PO.DriverPO;
+import PO.VehiclePO;
 import VO.ManagementVO.DriverVO;
 import bl.loginbl.Loginbl;
 import bl.managementbl.managedata.ManageData;
@@ -40,80 +41,45 @@ public class Driverbl {
 		manageVOPO = ManageVOPO.getInstance();
 	}
 
-	public String insertDriver(DriverVO vo) throws IOException,
-			ClassNotFoundException, AutoNumException, ExistException {
+	public ResultMessage insertDriver(DriverVO vo) {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DRIVER_MANAGEMENT);
 		if (driverDataService != null) {
 			if (check(vo) == ResultMessage.VALID) {
-				String tempInstitutionNum = null;
-				int num = 0;
-				ArrayList<DriverPO> pos = driverDataService.showDriver();
-				if (pos != null) {
-					// pos.sort(null);
-					String driverNum = null;
-					boolean hasDriver = false;
-					String currentOptorId = Loginbl.getCurrentOptorId();
-
-					// 后面进行修改
-					// String currentInstitutionNum =
-					// currentOptorId.substring(0, 6);
-					String currentInstitutionNum = "025010";
-					DriverPO po = null;
+				try {
+					ArrayList<DriverPO> pos = driverDataService.showDriver();
 					if (pos != null) {
-						for (Iterator<DriverPO> t = pos.iterator(); t.hasNext();) {
-							po = t.next();
-							if (po != null) {
-								if (po.getId().equals(vo.id)) {
-									throw new ExistException();
-								}
-								if (po.getDriverNum() != null) {
-									tempInstitutionNum = po.getDriverNum()
-											.substring(0, 6);
-									if (tempInstitutionNum
-											.equals(currentInstitutionNum)) {
-										hasDriver = true;
-									}
-								}
+						for (Iterator<DriverPO> t = pos.iterator(); t
+								.hasNext();) {
+							if (t.next().getDriverNum().equals(vo.driverNum)) {
+								return ResultMessage.OVERRIDE_DATA;
 							}
 						}
 					}
-					driverNum = autoDriverNum(pos, currentInstitutionNum,
-							hasDriver);
-					DriverPO po2 = manageVOPO.voToPO(vo);
-					if (po2 != null) {
-						po2.setDriverNum(driverNum);
-						ResultMessage rmsg = driverDataService
-								.insertDriver(po2);
-						ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
-						if (rmsg == ResultMessage.SUCCESS) {
-							return po.getDriverNum();
-						} else {
-							throw new AutoNumException();
-						}
-					} else {
-						throw new AutoNumException();
-					}
-				} else {
-					System.out.println("司机"
-							+ ResultMessage.toFriendlyString(check(vo)));
+					ResultMessage rmsg = driverDataService
+							.insertDriver(manageVOPO.voToPO(vo));
+					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("存储文件出错");
+					return ResultMessage.IOFAILED;
+				} 
+				catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("系统程序错误");
+					return ResultMessage.FAILED;
 				}
+				return ResultMessage.SUCCESS;
 			} else {
-				throw new RemoteException();
+				System.out.println("司机"
+						+ ResultMessage.toFriendlyString(check(vo)));
+				return ResultMessage.WRONG_DATA;
 			}
-			// DriverPO po2 = manageVOPO.voToPO(vo);
-			// ResultMessage rmsg = driverDataService
-			// .insertDriver(po2);
-			// ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
-			// if (rmsg == ResultMessage.SUCCESS) {
-			// return po2.getDriverNum();
-			// } else {
-			// throw new AutoNumException();
-			// }
 		} else {
-			throw new RemoteException();
+			return ResultMessage.FAILED;
 		}
-		return null;
 	}
 
 	public ResultMessage updateDriver(DriverVO vo) throws RemoteException {
@@ -257,6 +223,7 @@ public class Driverbl {
 	private String autoDriverNum(ArrayList<DriverPO> pos,
 			String currentInstitutionNum, boolean hasDriver) {
 		DriverPO po = null;
+		DriverPO po2 = null;
 		String tempInstitutionNum = null;
 		String driverNum = null;
 		if (hasDriver) {
@@ -264,15 +231,15 @@ public class Driverbl {
 				po = pos.get(i);
 				if (po.getDriverNum().substring(0, 6)
 						.equals(currentInstitutionNum)) {
-					for (int j = i + 1; j < pos.size();) {
-						po = pos.get(j);
-						tempInstitutionNum = po.getDriverNum().substring(0, 6);
+					for (int j = i; j < pos.size();) {
+						po2 = pos.get(j);
+						tempInstitutionNum = po2.getDriverNum().substring(0, 6);
 						if (tempInstitutionNum.equals(currentInstitutionNum)) {
 							j++;
 						} else {
-							driverNum = po.getDriverNum().substring(0, 6)
+							driverNum = po2.getDriverNum().substring(0, 6)
 									+ ThreeAutoNum.toThreeNum(Integer
-											.parseInt(po.getDriverNum()
+											.parseInt(po2.getDriverNum()
 													.substring(6, 9) + 1));
 						}
 					}

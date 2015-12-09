@@ -14,7 +14,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 
+import VO.LogVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
+import bl.logbl.Logbl;
+import blservice.logblservice.LogBLService;
 import blservice.loginblservice.LoginBLService;
 import blservice.receiptblservice.ShipmentRepblServce;
 import ui.receiptui.generalUI.CashRep;
@@ -23,7 +26,9 @@ import ui.receiptui.generalUI.GetRep;
 import ui.receiptui.generalUI.ShipmentRep;
 import ui.util.MyFrame;
 import util.CurrentCity;
+import util.CurrentTime;
 import util.enumData.City;
+import util.enumData.LogType;
 import util.enumData.ResultMessage;
 
 /*
@@ -42,6 +47,8 @@ public class businessOfficer_main extends JPanel {
      */
     public businessOfficer_main() {
     	ctr_login=ControllerFactoryImpl.getInstance().getLoginController();
+    	ctr_log=ControllerFactoryImpl.getInstance().getLogController();
+    	ctr_ship=ControllerFactoryImpl.getInstance().getShipmentRepblServce();
     	initComponents();
     	this.frame=new MyFrame(this);    	   	
               
@@ -81,7 +88,9 @@ public class businessOfficer_main extends JPanel {
     	num_label = new JLabel();
     	num_label.setFont(new java.awt.Font("宋体", 1, 48));
     	num_label.setForeground(new java.awt.Color(240, 240, 240));
-    	num_label.setText("50");//TODO 数字 获取
+    	num_label.setText("0")
+//    	ctr_log
+    	;//TODO 数字 获取
          initNumLayout(num_panelLayout);
 	}
 
@@ -266,30 +275,41 @@ public class businessOfficer_main extends JPanel {
 	 * @param e
 	 */
 	private void arrival_btnMouseClicked(MouseEvent e) {
-		System.out.println("到达单");		
 		new MyFrame(800, 600, new GetRep());
 	}	
-    private void carManagement_btnMouseClicked(MouseEvent evt) {    	
-    	System.out.println("车辆管理");
+    private void carManagement_btnMouseClicked(MouseEvent evt) {   
+    	try {
+			LogVO vo = new LogVO(LogType.CAR_MANAGEMENT, ctr_login.getCurrentOptorId(), CurrentTime.getDate());
+			ctr_log.add(vo);
+		} catch (RemoteException e1) {
+		}
     	this.remove(panel1);
      	this.add(panel_car);
     	this.revalidate();
     	this.repaint();
     }
     private void driverManagement_btnMouseClicked(MouseEvent evt) {
-    	System.out.println("司机管理");
+    	try {
+			LogVO vo = new LogVO(LogType.DRIVER_MANAGEMENT, ctr_login.getCurrentOptorId(), CurrentTime.getDate());
+			ctr_log.add(vo);
+		} catch (RemoteException e1) {
+		}
     	this.remove(panel1);
      	this.add(panel_driver);
     	this.revalidate();
     	this.repaint();
     }
     private void deliver_btnMouseClicked(MouseEvent evt) {
-    	System.out.println("派件单");
+    	try {
+			LogVO vo = new LogVO(LogType.DELIVER, ctr_login.getCurrentOptorId(), CurrentTime.getDate());
+			ctr_log.add(vo);
+		} catch (RemoteException e1) {
+		}
     	new MyFrame(800, 600, new DeliverRep());
         
     }
     private void send_btnMouseClicked(MouseEvent evt) {
-    	System.out.println("营业厅装车单");
+    	
     	new MyFrame(800, 600, new ShipmentRep());
 //    	this.getFrame().setContentPane(new car_management());        
     }
@@ -328,6 +348,7 @@ public class businessOfficer_main extends JPanel {
     private String officeNum="",city;
     private ShipmentRepblServce ctr_ship;
     private LoginBLService ctr_login;
+    private LogBLService ctr_log;
     
     // End of variables declaration//GEN-END:variables
    

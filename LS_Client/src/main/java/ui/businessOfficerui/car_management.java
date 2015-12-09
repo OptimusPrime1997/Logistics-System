@@ -178,7 +178,7 @@ public class car_management extends javax.swing.JPanel {
     
 	}
 	private void search_textMouseClicked(MouseEvent e) {
-		search_textMouseClicked(e);
+		//TODO
 	}	
     private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
     	if (evt.getSource() == exit_btn) {
@@ -226,11 +226,10 @@ public class car_management extends javax.swing.JPanel {
 		if (e.getClickCount() == 2) {
 			carCode=cars_table.getValueAt(row, 0).toString();
 			carLicence=cars_table.getValueAt(row, 1).toString();
+			System.out.print("坐标 "+row+"  "+column+"   ");
+			System.out.println(carCode+"   "+carLicence);
 			new car_detail(this, carCode, carLicence);
-			System.out.println(carCode+" "+carLicence);
 		}
-		System.out.print("坐标 "+row+"  "+column+"   ");
-		System.out.println(cars_table.getValueAt(row, column));
 	}
 
 	private void initTable() {
@@ -349,11 +348,6 @@ public class car_management extends javax.swing.JPanel {
         		tableMouseClicked(e);
         	}
 		});
-        
-        
-        
-        
-        
         if (cars_table.getColumnModel().getColumnCount() > 0) {
             cars_table.getColumnModel().getColumn(3).setResizable(false);
             cars_table.getColumnModel().getColumn(3).setPreferredWidth(5);

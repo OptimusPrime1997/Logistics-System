@@ -12,7 +12,7 @@ import util.enumData.ResultMessage;
 import PO.AccountPO;
 
 public interface AccountDataService extends Remote {
-	public String insert(AccountPO po) throws RemoteException, IOException;
+	public ResultMessage insert(AccountPO po) throws RemoteException, IOException;
 
 	public ResultMessage update(AccountPO po) throws RemoteException,
 			ClassNotFoundException, IOException;

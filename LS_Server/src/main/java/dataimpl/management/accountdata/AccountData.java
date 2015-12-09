@@ -30,13 +30,13 @@ public class AccountData extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public String insert(AccountPO po) throws IOException,FileNotFoundException {
+	public ResultMessage insert(AccountPO po) throws IOException,FileNotFoundException {
 		// TODO Auto-generated method stub
 		print();
-		if (d.save(po, path) == ResultMessage.FAILED) {
-			throw new IOException();
+		if (d.save(po, path) == ResultMessage.SUCCESS) {
+			return ResultMessage.SIGNED_SUCCESS;
 		} else {
-			return po.getAccountNum();
+			return  ResultMessage.FAILED;
 		}
 	}
 

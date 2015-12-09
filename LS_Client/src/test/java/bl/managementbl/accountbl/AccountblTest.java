@@ -23,7 +23,7 @@ public class AccountblTest {
 
 	@Test
 	public void test() {
-		String[] rmsg = new String[6];
+		ResultMessage[] rmsg = new ResultMessage[6];
 		Accountbl accountbl = new Accountbl();
 		AccountVO vo = null;
 		AccountVO vo1 = null;
@@ -48,8 +48,14 @@ public class AccountblTest {
 							"025001"));
 
 			for (int i = 0; i < 6; i++) {
-				System.out.println("对应账号:" + rmsg[i]);
+				System.out.println(rmsg[i]);
 			}
+			vo = accountbl.findByAccountNum("02500101011");
+			System.out.println(vo.accountName);
+			assertEquals("王二", vo.accountName);
+			assertEquals("1111", vo.password);
+			accountbl.delete(vo);
+			vo1 = accountbl.findByAccountNum("02500102022");
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,47 +67,18 @@ public class AccountblTest {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (AutoNumException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (WrongDateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExistException e) {
-			// TODO Auto-generated catch block
-			System.out.println("用户账户信息已存在");
-			e.printStackTrace();
-		}
-		try {
-			vo = accountbl.findByAccountNum(rmsg[0]);
-			System.out.println(vo.accountName);
-			assertEquals("王二", vo.accountName);
-			assertEquals("1111", vo.password);
-			// accountbl.delete(vo);
-			vo1 = accountbl.findByAccountNum(rmsg[1]);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		} catch (NameNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NumNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		if (vo != null) {
+		if (vo1 != null) {
 			assertEquals("2222", vo1.password);
 		} else
-			System.out.println("vo is null");
+			System.out.println("vo1 is null");
 
 	}
 

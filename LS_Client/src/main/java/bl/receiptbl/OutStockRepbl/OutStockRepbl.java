@@ -22,7 +22,6 @@ public class OutStockRepbl{
 	private TransferRepbl transferRepbl = new TransferRepbl();
 
 	public String createNum(String date) throws ClassNotFoundException, NotBoundException, IOException {
-		// TODO Auto-generated method stub
 		return receiptbl.createNum(date, Rep.OutStockRep);
 	}
 
@@ -33,7 +32,6 @@ public class OutStockRepbl{
 
 	public ArrayList<OutStockRepVO> getRepByDate(String date) throws ClassNotFoundException, 
 	NotBoundException, IOException {
-		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.OutStockRep);
 		if(receiptPOs==null)
 			return null;

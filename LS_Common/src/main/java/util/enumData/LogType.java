@@ -2,11 +2,14 @@ package util.enumData;
 
 public enum LogType {
 	/**
-	 * 与用例一一对应
+	 * 所有
 	 */
-	BUSINESS_OFFICER_CAR_MANAGEMENT,
-	GET_AND_DELIVER,
-	ADD_A_CASHREP,
+	ALL,
+	/**
+	 * 派件
+	 */
+	DELIVER,
+	
 	/**
 	 * 司机管理
 	 */
@@ -15,33 +18,70 @@ public enum LogType {
 	 * 车辆管理
 	 */
 	CAR_MANAGEMENT,
+	/**
+	 * 入库管理
+	 */
 	INSTOCK_MANAGEMENT,
+	/**
+	 * 库存管理
+	 */
 	STOCK_MANAGEMENT,
+	/**
+	 * 出库管理
+	 */
 	OUTSTOCK_MANAGEMENT,
+	/**
+	 * 权限管理
+	 */
 	AUTHORITY_MANAGEMENT,
+	/**
+	 * 用户账户管理
+	 */
 	USER_ACCOUNT_MANAGEMENT,
+	/**
+	 * 创建订单
+	 */
 	ADD_A_GOODS,
+	/**
+	 * 签收订单
+	 */
 	END_A_GOODS,
+	/**
+	 * 中转中心装车管理
+	 */
 	TRANSFER_CTR_SHIP_MANAGEMENT,
+	/**
+	 * 中转中心接收
+	 */
 	TRANSFER_CTR_RECEPTION,
+	/**
+	 * 收支管理
+	 */
 	MONEY_IN_AND_OUT_MANAGEMENT,
+	/**
+	 * 银行账户管理
+	 */
 	BANKACCOUNT_MANAGEMENT,
-	CHECK_LOG,
+	/**
+	 * 查看报表
+	 */
 	CHECK_FORM,
+	/**
+	 * 查看银行账户
+	 */
 	CHECK_BANKACOUNT,
-	PERSONNEL_MANAGEMENT,
+	/**
+	 * 人员管理
+	 */
+	PERSONNEL_INSTITUTION_MANAGEMENT,
+	/**
+	 * 审批单据
+	 */
 	DOCUMENT_CHECK,
 	/**
-	 * 常量制定
+	 *决策制定
 	 */
-	DECISION_CONST,
-	/**
-	 * 薪水策略
-	 */
-	DECISION_SALARYPOLICY,
-	/**
-	 * 机构管理
-	 */
-	INSTITUTION_MANAGEMENT,
+	DECISION_MAKE,
+	
 	
 }

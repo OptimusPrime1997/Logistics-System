@@ -75,5 +75,11 @@ public class ShippingRepController extends ReceiptblController implements Shippi
 		return shippingRepShowbl.initShow(num);
 	}
 
+	@Override
+	public int getSumByTrsOfficeNum(String str, String date) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 }

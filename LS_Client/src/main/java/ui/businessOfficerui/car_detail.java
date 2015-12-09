@@ -289,7 +289,7 @@ public class car_detail extends JFrame {
 	private VehicleBLService controller;
     private JButton back_btn,ok_btn,delete_btn;
     private JTextField carCodeNum_text,carLicenseNum_text,timeText;
-    private String carCode,carLicence,carTime,carTimeType;//车辆代号，车牌号，服役时间,服役时间单位
+    private String carCode,carLicence,carTime="5",carTimeType="年";//车辆代号，车牌号，服役时间,服役时间单位
     private JTextField feedback_text;//给用户反馈信息的信息栏
     private JComboBox<String> combobox;
     private JLabel jLabel1,jLabel2,jLabel3,jLabel4;
