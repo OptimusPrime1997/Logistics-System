@@ -36,7 +36,7 @@ public class PayVO {
 	public static ArrayList<PayPO> toArrayPO(ArrayList<PayVO> PayVOs){
 		ArrayList<PayPO> PayPOs = new ArrayList<PayPO>();
 		for(PayVO PayVO : PayVOs)
-			PayPOs.add(PayVO.toPO(PayVO));
+			PayPOs.add(toPO(PayVO));
 		return PayPOs;
 	}
 }

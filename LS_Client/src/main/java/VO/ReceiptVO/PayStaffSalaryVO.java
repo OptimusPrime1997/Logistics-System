@@ -3,7 +3,6 @@ package VO.ReceiptVO;
 import java.util.ArrayList;
 
 import PO.ReceiptPO.PaySalaryPO;
-import PO.ReceiptPO.PayBonusPO;
 import PO.ReceiptPO.PayStaffSalaryPO;
 import util.enumData.Authority;
 
@@ -40,7 +39,7 @@ public class PayStaffSalaryVO extends PaySalaryVO{
 	public static ArrayList<PaySalaryPO> toArrayPO(ArrayList<PayStaffSalaryVO> SalaryVOs){
 		ArrayList<PaySalaryPO> SalaryPOs = new ArrayList<PaySalaryPO>();
 		for(PayStaffSalaryVO SalaryVO : SalaryVOs)
-			SalaryPOs.add(SalaryVO.toPO(SalaryVO));
+			SalaryPOs.add(toPO(SalaryVO));
 		return SalaryPOs;
 	}
 }

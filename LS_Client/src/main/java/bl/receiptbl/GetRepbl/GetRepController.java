@@ -6,12 +6,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
-
-import VO.GoodsVO;
-import VO.ReceiptVO.ArriveRepVO;
+import VO.ReceiptVO.GetRepVO;
 import VO.ReceiptVO.ReceiptVO;
-import VO.ReceiptVO.ShipmentRepVO;
-import VO.ReceiptVO.ShippingRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.GetRepblService;
 import util.enumData.Rep;
@@ -38,7 +34,7 @@ public class GetRepController extends ReceiptblController implements GetRepblSer
 	}
 
 	@Override
-	public ArriveRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, 
+	public GetRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, 
 	IOException {
 		// TODO Auto-generated method stub
 		return getRepCheckbl.getRepByNum(num);
@@ -51,14 +47,14 @@ public class GetRepController extends ReceiptblController implements GetRepblSer
 	}
 
 	@Override
-	public ArrayList<ArriveRepVO> getAllRep() throws NotBoundException, ClassNotFoundException, 
+	public ArrayList<GetRepVO> getAllRep() throws NotBoundException, ClassNotFoundException, 
 	IOException {
 		// TODO Auto-generated method stub
 		return getRepbl.getAllRep();
 	}
 
 	@Override
-	public ArrayList<ArriveRepVO> getRepByDate(String date)
+	public ArrayList<GetRepVO> getRepByDate(String date)
 			throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
 		return null;
@@ -78,7 +74,8 @@ public class GetRepController extends ReceiptblController implements GetRepblSer
 	}
 
 	@Override
-	public Vector<Object> initTable(Rep rep, String num, ArrayList<String> existOrders) {
+	public Vector<Object> initTable(Rep rep, String num, ArrayList<String> existOrders) 
+			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		return getRepbl.initTable(rep, num, existOrders);
 	}

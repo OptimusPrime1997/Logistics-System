@@ -36,7 +36,7 @@ public class DeliverRepVO extends ReceiptVO {
 	public static ArrayList<DeliverRepPO> toArrayPO(ArrayList<DeliverRepVO> DeliverRepVOs) {
 		ArrayList<DeliverRepPO> DeliverRepPOs = new ArrayList<DeliverRepPO>();
 		for (DeliverRepVO DeliverRepVO : DeliverRepVOs)
-			DeliverRepPOs.add(DeliverRepVO.toPO(DeliverRepVO));
+			DeliverRepPOs.add(toPO(DeliverRepVO));
 		return DeliverRepPOs;
 	}
 }
