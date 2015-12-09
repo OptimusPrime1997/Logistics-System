@@ -64,7 +64,7 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 	 * @param stockDivisionPO
 	 * @return
 	 */
-	public ResultMessage add(StockDivisionPO po) {		
+	public ResultMessage add(StockDivisionPO po)throws RemoteException {		
 
 		ArrayList<Object> list ;
 		try {
@@ -106,7 +106,7 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 	 * @param goods
 	 * @return
 	 */
-	public ResultMessage delete(String goods) {
+	public ResultMessage delete(String goods) throws RemoteException{
 		boolean isFound = false;
 		ArrayList<Object> list ;
 		try {
@@ -143,7 +143,7 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 	 * 得到本城市仓库所有的货物
 	 */
 	@Override
-	public ArrayList<StockDivisionPO> getStockDivision(City cityNum) throws IOException {
+	public ArrayList<StockDivisionPO> getStockDivision(City cityNum) throws IOException, RemoteException {
 	 
 		ArrayList<StockDivisionPO> list = new ArrayList<StockDivisionPO>();
 		ArrayList<Object> listo;
@@ -170,7 +170,7 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 	 * @see dataservice.stockdataservice.StockDivisionDataService#find(int, int)
 	 */
 	@Override
-	public StockDivisionPO find(int block, int place) throws ClassNotFoundException, IOException {
+	public StockDivisionPO find(int block, int place) throws ClassNotFoundException, IOException,RemoteException {
 		
 		ArrayList<Object> listo = du.getAll(filename);
 		

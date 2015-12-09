@@ -1,5 +1,5 @@
 
-package ui.mainFrame;
+package main;
 
 import java.awt.Color;
 import java.awt.event.MouseAdapter;

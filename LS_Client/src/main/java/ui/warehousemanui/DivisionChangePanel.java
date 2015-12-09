@@ -6,10 +6,10 @@
 package ui.warehousemanui;
 import javax.swing.*;
 
+import main.MainFrame;
 import VO.StockDivisionVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.stockblservice.StockDivisionBLService;
-import ui.mainFrame.MainFrame;
 import util.FromIntToCity;
 import util.enumData.City;
 import util.enumData.ResultMessage;

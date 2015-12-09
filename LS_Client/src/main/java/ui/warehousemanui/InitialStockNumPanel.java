@@ -17,7 +17,7 @@ import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import ui.mainFrame.MainFrame;
+import main.MainFrame;
 import util.enumData.ResultMessage;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.stockblservice.StockNumBLService;

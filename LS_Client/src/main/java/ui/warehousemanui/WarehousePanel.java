@@ -12,10 +12,10 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import main.MainFrame;
 import VO.StockVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.stockblservice.StockBLService;
-import ui.mainFrame.MainFrame;
 import ui.receiptui.generalUI.InStockRep;
 import ui.receiptui.generalUI.OutStockRep;
 
