@@ -41,7 +41,11 @@ public class driver_detail extends JFrame {
     /**
      * Creates new form driver_detail
      */
-	public driver_detail() {
+	public driver_detail(driver_management panel,String driverCode,String driverName,String phone) {
+		this.parentPanel=panel;
+		this.driverCode=driverCode;
+		this.driverName=driverName;
+		this.phone=phone;
 		this.setVisible(true);
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
@@ -187,11 +191,11 @@ public class driver_detail extends JFrame {
 		driverNum_text = new JTextField();
 		name_text = new JTextField();
 
-		IDnum_text.setText("有初始值");
-		phoneNum_text.setText("有初始值");
+		IDnum_text.setText(IDnum);
+		phoneNum_text.setText(phone);
 		validTime_text.setText("3");
-		driverNum_text.setText("02500107001");
-		name_text.setText("有初始值");
+		driverNum_text.setText(driverCode);
+		name_text.setText(driverName);
 		
 		IDnum_text.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,12 +207,6 @@ public class driver_detail extends JFrame {
 				validTime_textActionPerformed(evt);
 			}
 		});
-		driverNum_text.setEditable(false);		
-		driverNum_text.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				driverNum_textActionPerformed(evt);
-			}
-		});		
 		name_text.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				name_textActionPerformed(evt);
@@ -277,39 +275,6 @@ public class driver_detail extends JFrame {
 	
 }
 	
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(driver_detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(driver_detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(driver_detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(driver_detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new driver_detail().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JTextField IDnum_text,driverNum_text,name_text,phoneNum_text,validTime_text;
     private JButton cancel_btn;
@@ -318,6 +283,7 @@ public class driver_detail extends JFrame {
     private JButton delete_btn,ok_btn;
     private JLabel jLabel1,jLabel2,jLabel3,jLabel4,
     jLabel5,jLabel6,jLabel7,jLabel8,jLabel9,jLabela,jLabelb;
-    
+    private driver_management parentPanel;
+    private String driverCode,driverName,phone,IDnum;
     // End of variables declaration//GEN-END:variables
 }
