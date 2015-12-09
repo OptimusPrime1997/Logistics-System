@@ -1,9 +1,9 @@
 package blservice.receiptblservice;
 
-import VO.ReceiptVO.ShipmentRepVO;
+import java.io.IOException;
+import java.rmi.NotBoundException;
 
 public interface ShipmentRepblServce extends ReceiptblService{
 	
-	public ShipmentRepVO getShipmentRep(String num);
-	
+	public String getTruckSum(String date) throws ClassNotFoundException, NotBoundException, IOException;
 }

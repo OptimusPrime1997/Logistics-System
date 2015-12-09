@@ -38,7 +38,7 @@ public class DeliverVO {
 	public static ArrayList<DeliverPO> toArrayPO(ArrayList<DeliverVO> DeliverVOs){
 		ArrayList<DeliverPO> DeliverPOs = new ArrayList<DeliverPO>();
 		for(DeliverVO DeliverVO : DeliverVOs)
-			DeliverPOs.add(DeliverVO.toPO(DeliverVO));
+			DeliverPOs.add(toPO(DeliverVO));
 		return DeliverPOs;
 	}
 }

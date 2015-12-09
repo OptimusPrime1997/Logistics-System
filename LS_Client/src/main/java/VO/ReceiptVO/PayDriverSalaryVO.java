@@ -3,7 +3,6 @@ package VO.ReceiptVO;
 import java.util.ArrayList;
 
 import PO.ReceiptPO.PaySalaryPO;
-import PO.ReceiptPO.PayBonusPO;
 import PO.ReceiptPO.PayDriverSalaryPO;
 
 public class PayDriverSalaryVO extends PaySalaryVO{
@@ -36,7 +35,7 @@ public class PayDriverSalaryVO extends PaySalaryVO{
 	public static ArrayList<PaySalaryPO> toArrayPO(ArrayList<PayDriverSalaryVO> DriverSalaryVOs){
 		ArrayList<PaySalaryPO> DriverSalaryPOs = new ArrayList<PaySalaryPO>();
 		for(PayDriverSalaryVO DriverSalaryVO : DriverSalaryVOs)
-			DriverSalaryPOs.add(DriverSalaryVO.toPO(DriverSalaryVO));
+			DriverSalaryPOs.add(toPO(DriverSalaryVO));
 		return DriverSalaryPOs;
 	}
 }

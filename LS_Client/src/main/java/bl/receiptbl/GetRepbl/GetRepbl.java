@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import PO.ReceiptPO.ReceiptPO;
-import VO.ReceiptVO.ArriveRepVO;
+import VO.ReceiptVO.GetRepVO;
+import VO.ReceiptVO.GetRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import VO.ReceiptVO.ShipmentRepVO;
 import VO.ReceiptVO.ShippingRepVO;
@@ -21,14 +22,16 @@ public class GetRepbl{
 	private Receiptbl receiptbl = new Receiptbl();
 	private Goodsbl goodsbl = new Goodsbl();
 
-	public ShipmentRepVO getShipmentRep(String num){	//判断是否有丢失
+	public ShipmentRepVO getShipmentRep(String num) 
+			throws ClassNotFoundException, NotBoundException, IOException{	//判断是否有丢失
 		ShipmentRepbl shipment = new ShipmentRepbl();
-		return shipment.getShipmentRep(num);
+		return shipment.getRepByNum(num);
 	}
 	
-	public ShippingRepVO getShippingRep(String num){	//同上
+	public ShippingRepVO getShippingRep(String num) 
+			throws ClassNotFoundException, NotBoundException, IOException{	//同上
 		ShippingRepbl shipping = new ShippingRepbl();
-		return shipping.getShippingRep(num);
+		return shipping.getRepByNum(num);
 	}
 
 	public String createNum(String date) throws ClassNotFoundException, NotBoundException, IOException {
@@ -39,10 +42,11 @@ public class GetRepbl{
 
 	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		receiptbl.submit(ArriveRepVO.toPO((ArriveRepVO) vo), Rep.GetRep);
+		receiptbl.submit(GetRepVO.toPO((GetRepVO) vo), Rep.GetRep);
 	}
 
-	public Vector<Object> initTable(Rep rep, String num, ArrayList<String> existOrders) {
+	public Vector<Object> initTable(Rep rep, String num, ArrayList<String> existOrders) 
+			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		Vector<Object> data = new Vector<Object>();
 		ArrayList<String> orders;
@@ -66,11 +70,11 @@ public class GetRepbl{
 		goodsbl.end(num);
 	}
 
-	public ArrayList<ArriveRepVO> getAllRep() throws ClassNotFoundException, NotBoundException, 
+	public ArrayList<GetRepVO> getAllRep() throws ClassNotFoundException, NotBoundException, 
 	IOException {
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.GetRep);
-		return ArriveRepVO.toArrayVO(receiptPOs);
+		return GetRepVO.toArrayVO(receiptPOs);
 	}
 
 }

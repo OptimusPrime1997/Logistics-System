@@ -42,7 +42,7 @@ public class PayRefundVO {
 	public static ArrayList<PayRefundPO> toArrayPO(ArrayList<PayRefundVO> littleThingVOs){
 		ArrayList<PayRefundPO> littleThingPOs = new ArrayList<PayRefundPO>();
 		for(PayRefundVO littleThingVO : littleThingVOs){
-			littleThingPOs.add(PayRefundVO.toPO(littleThingVO));
+			littleThingPOs.add(toPO(littleThingVO));
 		}
 		return littleThingPOs;
 	}

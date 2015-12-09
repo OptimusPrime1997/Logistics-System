@@ -24,14 +24,20 @@ import javax.swing.SwingConstants;
 import javax.swing.event.MouseInputListener;
 import javax.swing.table.DefaultTableCellRenderer;
 
+import ui.receiptui.BusinessForm;
+import ui.receiptui.ProfitForm;
+import ui.util.StrToLogType;
 import util.InputCheck;
+import util.enumData.LogType;
 import util.enumData.ModifyState;
 import util.enumData.ResultMessage;
+import VO.LogVO;
 import VO.ManagementVO.BankAccountVO;
 import VO.ManagementVO.BankAccountVOPlus;
 import VO.ManagementVO.InstitutionVOPlus;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.controllerfactoryblservice.ControllerFactoryblService;
+import blservice.logblservice.LogBLService;
 import blservice.managementblservice.bankaccountblservice.BankAccountBLService;
 
 /**
@@ -50,6 +56,8 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	 * Creates new form FinancialStaffJFrame
 	 */
 	public FinancialStaffJFrame() {
+		ctr_log=ControllerFactoryImpl.getInstance().getLogController();
+		this.setVisible(true);
 		initComponents();
 	}
 
@@ -196,8 +204,8 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		viewManageForm.setText("查看经营情况表");
 		viewManageForm.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseReleased(java.awt.event.MouseEvent evt) {
-				viewManageFormMouseReleased(evt);
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				viewManageFormMouseClicked(evt);
 			}
 		});
 
@@ -495,8 +503,8 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		findLogjButton.setText("查找");
 		findLogjButton.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseReleased(java.awt.event.MouseEvent evt) {
-				findLogjButtonMouseReleased(evt);
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				findLogjButtonMouseClicked(evt);
 			}
 		});
 		findLogjButton.addActionListener(new java.awt.event.ActionListener() {
@@ -515,7 +523,8 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		logTypejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
 				new String[] { "所有操作", "决策制定", "审批单据", "用户账户管理", "银行账户管理",
-						"人员机构管理" }));
+						"人员机构管理" ,"司机管理","车辆管理","创建订单","权限管理",
+						"查看报表","派件","签收订单"}));
 		logTypejComboBox.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				logTypejComboBoxActionPerformed(evt);
@@ -1728,8 +1737,8 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	}
 
 	private void viewProfitFormjButtonActionPerformed(
-			java.awt.event.ActionEvent evt) {// GEN-FIRST:event_viewProfitFormjButtonActionPerformed
-		// TODO add your handling code here:
+			java.awt.event.ActionEvent evt) {
+		new ProfitForm();
 	}// GEN-LAST:event_viewProfitFormjButtonActionPerformed
 
 	private void formEDatejComboBoxActionPerformed(
@@ -1893,20 +1902,25 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		// TODO add your handling code here:
 	}// GEN-LAST:event_paymentjButtonActionPerformed
 
-	private void viewManageFormMouseReleased(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_viewManageFormMouseReleased
-		// TODO add your handling code here:
+	private void viewManageFormMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_viewManageFormMouseReleased
+		new BusinessForm();
 	}// GEN-LAST:event_viewManageFormMouseReleased
 
-	private void findLogjButtonMouseReleased(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_findLogjButtonMouseReleased
-		// TODO add your handling code here:
-	}// GEN-LAST:event_findLogjButtonMouseReleased
-
+	private void findLogjButtonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_findLogjButtonMouseReleased
+		String startT=logSYearjComboBox.getSelectedItem().toString()+"/"+logSMonthjComboBox.getSelectedItem().toString()
+				+"/"+logSDatejComboBox.getSelectedItem().toString();
+		String endT=logEYearjComboBox.getSelectedItem().toString()+"/"+logEMonthjComboBox.getSelectedItem().toString()
+				+"/"+logEDatejComboBox.getSelectedItem().toString();
+		
+		String type=logTypejComboBox.getSelectedItem().toString();
+		LogType logType=StrToLogType.strToLogTye(type);
+        logVOs=ctr_log.show(startT, endT, logType);
+        //TODO 得到了日志数据   没放到界面上
+	}
 	private void newFinanceIconjPanelMouseReleased(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_newFinanceIconjPanelMouseReleased
-		// TODO add your handling code here:
 	}// GEN-LAST:event_newFinanceIconjPanelMouseReleased
 
 	private void logEYearjComboBoxActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_logEYearjComboBoxActionPerformed
-		// TODO add your handling code here:
 	}// GEN-LAST:event_logEYearjComboBoxActionPerformed
 
 	/**
@@ -2083,6 +2097,8 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	private javax.swing.JLabel statejLabel;
 	private javax.swing.JButton viewManageForm;
 	private javax.swing.JButton viewProfitFormjButton;
+	private LogBLService ctr_log;
+	private ArrayList<LogVO> logVOs;
 	// End of variables declaration//GEN-END:variables
 	/**
 	 * 远程连接失败！

@@ -32,7 +32,7 @@ public class InStockVO {
 	public static ArrayList<InStockPO> toArrayPO(ArrayList<InStockVO> InStockVOs){
 		ArrayList<InStockPO> InStockPOs = new ArrayList<InStockPO>();
 		for(InStockVO InStockVO : InStockVOs)
-			InStockPOs.add(InStockVO.toPO(InStockVO));
+			InStockPOs.add(toPO(InStockVO));
 		return InStockPOs;
 	}
 }

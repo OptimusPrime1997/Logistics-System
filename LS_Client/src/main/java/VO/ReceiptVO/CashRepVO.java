@@ -45,7 +45,7 @@ public class CashRepVO extends ReceiptVO {
 	public static ArrayList<CashRepPO> toArrayPO(ArrayList<CashRepVO> cashRepVOs) {
 		ArrayList<CashRepPO> cashRepPOs = new ArrayList<CashRepPO>();
 		for (CashRepVO cashRepVO : cashRepVOs)
-			cashRepPOs.add(CashRepVO.toPO(cashRepVO));
+			cashRepPOs.add(toPO(cashRepVO));
 		return cashRepPOs;
 	}
 }

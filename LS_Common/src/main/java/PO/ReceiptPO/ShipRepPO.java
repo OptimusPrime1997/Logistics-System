@@ -10,14 +10,12 @@ public class ShipRepPO extends ReceiptPO{
 	
 	private String plateNum;
 	private String driverNum;
-	private boolean arriveAlready;
 	private ArrayList<String> goods;
-	public ShipRepPO(String num, String date, String plateNum, String driverNum, boolean arriveAlready,
+	public ShipRepPO(String num, String date, String plateNum, String driverNum,
 			ArrayList<String> goods) {
 		super(num, date);
 		this.plateNum = plateNum;
 		this.driverNum = driverNum;
-		this.arriveAlready = arriveAlready;
 		this.goods = goods;
 	}
 	public String getPlateNum() {
@@ -25,9 +23,6 @@ public class ShipRepPO extends ReceiptPO{
 	}
 	public String getDriverNum() {
 		return driverNum;
-	}
-	public boolean isArriveAlready() {
-		return arriveAlready;
 	}
 	public ArrayList<String> getGoods() {
 		return goods;

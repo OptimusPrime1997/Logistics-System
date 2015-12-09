@@ -1,11 +1,15 @@
 package blservice.receiptblservice;
 
-import VO.ReceiptVO.ShipmentRepVO;
-import VO.ReceiptVO.TransferRepVO;
+import java.io.IOException;
+import java.rmi.NotBoundException;
+import java.util.ArrayList;
+import java.util.Vector;
+import util.enumData.Rep;
 
 public interface ReceptionRepblService extends ReceiptblService{
 	
-	ShipmentRepVO getShipmentRep(String num);
-
-	TransferRepVO getTransferRep(String num);
+	public Vector<Object> initTable(Rep rep, String num, ArrayList<String> existOrders)
+			throws ClassNotFoundException, NotBoundException, IOException;
+	
+	public void transferOver(String num);
 }

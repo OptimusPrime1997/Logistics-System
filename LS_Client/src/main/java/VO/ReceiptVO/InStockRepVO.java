@@ -34,7 +34,7 @@ public class InStockRepVO extends ReceiptVO {
 	public static ArrayList<InStockRepPO> toArrayPO(ArrayList<InStockRepVO> InStockRepVOs) {
 		ArrayList<InStockRepPO> InStockRepPOs = new ArrayList<InStockRepPO>();
 		for (InStockRepVO InStockRepVO : InStockRepVOs)
-			InStockRepPOs.add(InStockRepVO.toPO(InStockRepVO));
+			InStockRepPOs.add(toPO(InStockRepVO));
 		return InStockRepPOs;
 	}
 }

@@ -12,15 +12,15 @@ public class TransferRepPO extends ReceiptPO {
 	
 	private ShipForm form;
 	private String carNum;
-	private Place place;
+	private City city;
 	private boolean arriveAlready;
 	private ArrayList<String> goods;
-	public TransferRepPO(String num, String date, ShipForm form, String carNum, Place place,
+	public TransferRepPO(String num, String date, ShipForm form, String carNum, City city,
 			boolean arriveAlready, ArrayList<String> goods) {
 		super(num, date);
 		this.form = form;
 		this.carNum = carNum;
-		this.place = place;
+		this.city = city;
 		this.arriveAlready = arriveAlready;
 		this.goods = goods;
 	}
@@ -30,8 +30,8 @@ public class TransferRepPO extends ReceiptPO {
 	public String getCarNum() {
 		return carNum;
 	}
-	public Place getPlace() {
-		return place;
+	public City getCity() {
+		return city;
 	}
 	public boolean isArriveAlready() {
 		return arriveAlready;

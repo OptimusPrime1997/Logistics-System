@@ -22,20 +22,19 @@ import util.enumData.ResultMessage;
  *
  * @author apple
  */
-public class IOTable extends javax.swing.JPanel {
+public class ProfitForm extends javax.swing.JPanel {
 
    public static void main(String[] args) {
-	new IOTable();}
+	new ProfitForm();}
 
     /**
      * Creates new form 成本收益表
      */
-    public IOTable() {
+    public ProfitForm() {
     	ctr=ControllerFactoryImpl.getInstance().getProfitFormController();
         initComponents();
-        frame=new MyFrame(415,250,this);
-        //TODO 一会删掉这句
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame=new MyFrame(415,280,this);
+        
     }
 
     /**
@@ -62,7 +61,19 @@ public class IOTable extends javax.swing.JPanel {
         startDateText.setText(CurrentTime.getDate());
         startDateText.setEditable(false);
         setBackground(new java.awt.Color(255, 255, 255));
-
+        incomeText.setText("0");
+		realIncomeText.setText("0");
+		costText.setText("0");
+        try {
+			vo=ctr.show();
+			System.out.println("显示"+vo.totalIn);
+			incomeText.setText(vo.totalIn+"");
+			realIncomeText.setText(vo.totalProfit+"");
+			costText.setText(vo.totalOut+"");
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+			showFeedback(ResultMessage.NOT_FOUND_FINACIAL);
+		}
+        
         startDateLabel.setText("今日日期:");
 
         costLabel.setText("成本:");
@@ -157,23 +168,8 @@ public class IOTable extends javax.swing.JPanel {
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-//       resultMsgText.setText("");
-//    	String startT = startDateText.getText();
-//       String endT=endDateText.getText();
-//       ResultMessage msg=ConditionTable.datesIfValid(startT, endT);
-//       if(msg==ResultMessage.VALID){
-    	    try {
-				vo=ctr.show();
-				incomeText.setText(vo.totalIn+"");
-				realIncomeText.setText(vo.totalProfit+"");
-				costText.setText(vo.totalOut+"");
-			} catch (ClassNotFoundException | NotBoundException | IOException e) {
-			}
-//       }else{
-//    	   showFeedback(msg);
-//       }
-       
-    }//GEN-LAST:event_okButtonActionPerformed
+        frame.setVisible(false);
+    }
     private void showFeedback(ResultMessage msg) {
 		resultMsgText.setText(ResultMessage.toFriendlyString(msg));
 	}
