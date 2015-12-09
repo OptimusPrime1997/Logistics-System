@@ -79,9 +79,17 @@ public enum LogType {
 	 */
 	DOCUMENT_CHECK,
 	/**
-	 *决策制定
+	 * 机构管理
 	 */
-	DECISION_MAKE,
+	INSTITUTION_MANAGEMENT,
+	/**
+	 *常量制定
+	 */
+	DECISION_CONST,
+	/**
+	 * 薪水策略制定
+	 */
+	DECISION_SALARYPOLICY;
 	
 	
 }
