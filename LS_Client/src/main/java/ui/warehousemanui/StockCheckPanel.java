@@ -8,6 +8,7 @@ package ui.warehousemanui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -237,25 +238,33 @@ public class StockCheckPanel extends javax.swing.JFrame {
     
 	StockBLService s = ControllerFactoryImpl.getInstance().getStockController();
  
-    private void confirmActionPerformed(ActionEvent evt) {                                         
+    private void confirmActionPerformed(ActionEvent evt)  {                                         
         String startMonth = (String) jComboBox1.getSelectedItem();
         String startDay = (String) jComboBox2.getSelectedItem();
         String endMonth = (String) jComboBox3.getSelectedItem();
         String endDay = (String) jComboBox7.getSelectedItem();
         
-        String result = s.checkStock(startMonth, startDay, endMonth, endDay);
+        String result;
         String operation = "库存查看";
-        
-        if (result.equals("-1")) {
-			showFeedback(ResultMessage.INVALID_DATE, operation);
-		} else if (result.equals("-2")) {
-			showFeedback(ResultMessage.IOFAILED, operation);
-		} else if (result.equals("-3")) {
+		try {
+			result = s.checkStock(startMonth, startDay, endMonth, endDay);
+				
+	   	    
+		        
+		        if (result.equals("-1")) {
+					showFeedback(ResultMessage.INVALID_DATE, operation);
+				} else if (result.equals("-2")) {
+					showFeedback(ResultMessage.IOFAILED, operation);
+				} else if (result.equals("-3")) {
+					showFeedback(ResultMessage.REMOTE_FAILED, operation);
+				} else {
+					 showResult(result);
+					 showFeedback(ResultMessage.SUCCESS, operation);
+				}
+		} catch (RemoteException e) {
 			showFeedback(ResultMessage.REMOTE_FAILED, operation);
-		} else {
-			 showResult(result);
-			 showFeedback(ResultMessage.SUCCESS, operation);
 		}
+       
         
     
         
