@@ -19,6 +19,7 @@ import javax.swing.table.TableColumn;
 import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
 import VO.ReceiptVO.PayCourierSalaryVO;
+import VO.ReceiptVO.PayRepCourierSalaryRepVO;
 import VO.ReceiptVO.PayRepVO;
 import bl.receiptbl.PayRepbl.PayRepController;
 import blservice.receiptblservice.PayRepblService;
@@ -103,7 +104,6 @@ public class PayRepCourier extends javax.swing.JPanel {
         bankAccountLabel.setText("付款账户:");
 
         bankAccountBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         try {
 			bankAccountBox = new JComboBox(control.showBankAccount());
 		} catch (ClassNotFoundException | IOException e) {
@@ -170,7 +170,6 @@ public class PayRepCourier extends javax.swing.JPanel {
 				
 			}
         });
-
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -240,13 +239,13 @@ public class PayRepCourier extends javax.swing.JPanel {
         TableColumn column5 = jTable.getColumnModel().getColumn(4);
         column5.setPreferredWidth(60);
         TableColumn column6 = jTable.getColumnModel().getColumn(5);
-        column5.setPreferredWidth(10);
+        column6.setPreferredWidth(10);
     }
     
     private String calSum(){
     	double sum = 0;
     	for(int i = 0;i < dataVector.size();i++){
-    		sum += (double)jTable.getValueAt(i, 2);
+    		sum += (double)jTable.getValueAt(i, 4);
     	}
     	return sum+"";
     }
@@ -273,7 +272,11 @@ public class PayRepCourier extends javax.swing.JPanel {
 					(double)jTable.getValueAt(i, 4), 
 					(int)jTable.getValueAt(i, 2),
 					(int)jTable.getValueAt(i, 3));
+    		payCourierSalaryVOs.add(payCourierSalaryVO);
     	}
+    	PayRepCourierSalaryRepVO payRepCourierSalaryRepVO = 
+    			new PayRepCourierSalaryRepVO(bankAccount, sum, payCourierSalaryVOs);
+    	control.submitCourier(payRepVO, payRepCourierSalaryRepVO);
     }
 
 }
