@@ -48,6 +48,7 @@ public class businessOfficer_main extends JPanel {
     public businessOfficer_main() {
     	ctr_login=ControllerFactoryImpl.getInstance().getLoginController();
     	ctr_log=ControllerFactoryImpl.getInstance().getLogController();
+    	ctr_ship=ControllerFactoryImpl.getInstance().getShipmentRepblServce();
     	initComponents();
     	this.frame=new MyFrame(this);    	   	
               
@@ -87,7 +88,9 @@ public class businessOfficer_main extends JPanel {
     	num_label = new JLabel();
     	num_label.setFont(new java.awt.Font("宋体", 1, 48));
     	num_label.setForeground(new java.awt.Color(240, 240, 240));
-    	num_label.setText("50");//TODO 数字 获取
+    	num_label.setText("0")
+    	ctr_log
+    	;//TODO 数字 获取
          initNumLayout(num_panelLayout);
 	}
 

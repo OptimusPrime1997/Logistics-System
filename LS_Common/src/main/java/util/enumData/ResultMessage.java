@@ -3,7 +3,6 @@
  */
 package util.enumData;
 
-import org.omg.CosNaming.NamingContextPackage.NotFound;
 
 /**
  * @author G

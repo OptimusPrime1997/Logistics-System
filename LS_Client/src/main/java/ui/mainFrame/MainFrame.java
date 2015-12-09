@@ -160,6 +160,7 @@ public class MainFrame extends JFrame {
 					vo=ctr_find.findByGoods(goodsNum);
 					new LogisticStateUI(vo);
 				} catch (GoodsNotFound e1) {
+					System.out.println("not found");
 					showFeedback(ResultMessage.NOT_FOUND);
 				}
 			}else{//不合法  反馈用户哪里不合法

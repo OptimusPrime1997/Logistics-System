@@ -178,7 +178,7 @@ public class car_management extends javax.swing.JPanel {
     
 	}
 	private void search_textMouseClicked(MouseEvent e) {
-		search_textMouseClicked(e);
+		//TODO
 	}	
     private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
     	if (evt.getSource() == exit_btn) {

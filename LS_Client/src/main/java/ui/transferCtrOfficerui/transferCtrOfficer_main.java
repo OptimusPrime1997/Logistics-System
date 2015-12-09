@@ -26,6 +26,7 @@ import VO.LogVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.logblservice.LogBLService;
 import blservice.loginblservice.LoginBLService;
+import blservice.receiptblservice.ReceiptblService;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -308,6 +309,7 @@ public class transferCtrOfficer_main extends JPanel {
     private JLabel transferOfficeNum_label;
     private LoginBLService ctr_login;
     private LogBLService ctr_log;
+//    private ReceiptblService ctr_re
     // End of variables declaration//GEN-END:variables
     
    
