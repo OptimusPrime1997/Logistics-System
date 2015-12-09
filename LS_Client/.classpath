@@ -23,5 +23,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/LS_Common"/>
+	<classpathentry kind="lib" path="/Users/G/Downloads/poi-3.6-20091214.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
