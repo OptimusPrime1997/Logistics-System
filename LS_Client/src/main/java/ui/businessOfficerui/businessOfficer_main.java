@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -13,11 +14,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.loginblservice.LoginBLService;
+import blservice.receiptblservice.ShipmentRepblServce;
 import ui.receiptui.generalUI.CashRep;
 import ui.receiptui.generalUI.DeliverRep;
 import ui.receiptui.generalUI.GetRep;
 import ui.receiptui.generalUI.ShipmentRep;
 import ui.util.MyFrame;
+import util.CurrentCity;
+import util.enumData.City;
 import util.enumData.ResultMessage;
 
 /*
@@ -34,7 +40,8 @@ public class businessOfficer_main extends JPanel {
 	 /**
      * 初始化界面
      */
-	public businessOfficer_main() {
+    public businessOfficer_main() {
+    	ctr_login=ControllerFactoryImpl.getInstance().getLoginController();
     	initComponents();
     	this.frame=new MyFrame(this);    	   	
               
@@ -188,9 +195,15 @@ public class businessOfficer_main extends JPanel {
         jLabel6 = new JLabel();
         businessOfficeNum_label = new JLabel();
         jLabel1.setText("今日流水（派出的车辆数）");
-        jLabel5.setText("账户：");
-        jLabel6.setText("营业厅：");
-        businessOfficeNum_label.setText("南京 025001");        
+		jLabel5.setText("账户：");
+		jLabel6.setText("营业厅：");
+		try {
+			officeNum = ctr_login.getCurrentOptorId().substring(0, 6);
+			System.out.println(ctr_login.getCurrentOptorId());
+			city = City.toString(CurrentCity.getCurrentCity());
+			businessOfficeNum_label.setText(city + officeNum);
+		} catch (RemoteException e) {
+		}
 	}
 
 	private void initbtn() {
@@ -312,6 +325,9 @@ public class businessOfficer_main extends JPanel {
     private JLabel jLabel1,jLabel5,jLabel6,num_label,businessOfficeNum_label;
     private JTextField feedback_text;//给用户反馈信息的信息栏
     private JPanel num_panel,panel1;//元件都放在panel1上   然后panel1放在this上
+    private String officeNum="",city;
+    private ShipmentRepblServce ctr_ship;
+    private LoginBLService ctr_login;
     
     // End of variables declaration//GEN-END:variables
    

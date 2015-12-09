@@ -7,15 +7,14 @@ import java.util.Vector;
 
 import PO.ReceiptPO.InStockRepPO;
 import PO.ReceiptPO.ReceiptPO;
-import VO.ReceiptVO.CashRepVO;
 import VO.ReceiptVO.InStockRepVO;
-import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import util.enumData.Rep;
 
 public class InStockRepCheckbl {
 	
 	private Receiptbl receiptbl = new Receiptbl();
+	private InStockRepbl inStockRepbl = new InStockRepbl();
 
 	public InStockRepVO getRepByNum(String num) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
@@ -25,8 +24,7 @@ public class InStockRepCheckbl {
 
 	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.InStockRep);
-		ArrayList<InStockRepVO> inStockRepVOs = InStockRepVO.toArrayVO(receiptPOs);
+		ArrayList<InStockRepVO> inStockRepVOs = inStockRepbl.getAllRep();
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < inStockRepVOs.size();i++){
 			InStockRepVO inStockRepVO = inStockRepVOs.get(i);

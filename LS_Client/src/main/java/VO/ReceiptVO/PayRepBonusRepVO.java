@@ -8,7 +8,8 @@ public class PayRepBonusRepVO extends PayRepSalaryRepVO{
 	
 	public ArrayList<PayBonusVO> bonusVOs;
 
-	public PayRepBonusRepVO(ArrayList<PayBonusVO> bonusVOs, String bankAccountNum, double sum) {
+	public PayRepBonusRepVO( String bankAccountNum, double sum,
+			ArrayList<PayBonusVO> bonusVOs) {
 		super(bankAccountNum, sum);
 		this.bonusVOs = bonusVOs;
 	}
@@ -18,6 +19,14 @@ public class PayRepBonusRepVO extends PayRepSalaryRepVO{
 		this.sum = po.getSum();
 	}
 	public static PayRepSalaryRepPO toPO(PayRepBonusRepVO vo){
-		return new PayRepSalaryRepPO(PayBonusVO.toArrayPO(vo.bonusVOs), vo.bankAccountNum, vo.sum);
+		return new PayRepSalaryRepPO(PayBonusVO.toArrayPO(vo.bonusVOs),
+				vo.bankAccountNum, vo.sum);
 	}
+//	public static ArrayList<PayRepBonusRepVO> toArrayVO(ArrayList<ReceiptPO> receiptPOs) {
+//		ArrayList<PayRepBonusRepVO> PayRepBonusRepVOs = new ArrayList<PayRepBonusRepVO>();
+//		for (ReceiptPO receiptPO : receiptPOs)
+//			PayRepBonusRepVOs.add(new PayRepBonusRepVO((PayRepSalaryRepPO) receiptPO));
+//		return PayRepBonusRepVOs;
+//	}
+	
 }

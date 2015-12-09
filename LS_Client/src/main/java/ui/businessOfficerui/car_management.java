@@ -8,11 +8,16 @@ package ui.businessOfficerui;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 
 import javax.swing.GroupLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.loginblservice.LoginBLService;
+import util.CurrentCity;
+import util.enumData.City;
 import util.enumData.ResultMessage;
 
 /**
@@ -22,6 +27,7 @@ import util.enumData.ResultMessage;
 public class car_management extends javax.swing.JPanel {
 	 
     public car_management(businessOfficer_main panel_parent) {
+    	ctr_login=ControllerFactoryImpl.getInstance().getLoginController();
     	this.panel_parent=panel_parent;
         initComponents();
     }
@@ -366,9 +372,14 @@ public class car_management extends javax.swing.JPanel {
 		jLabel4.setText("车辆管理");
 		jLabel5.setText("账户：");
 		jLabel6.setText("营业厅：");
-		businessOffNum2_label.setText("南京 025001");
+		try {
+			officeNum = ctr_login.getCurrentOptorId().substring(0, 6);
+			System.out.println(ctr_login.getCurrentOptorId());
+			city = City.toString(CurrentCity.getCurrentCity());
+			businessOffNum2_label.setText(city + officeNum);
+		} catch (RemoteException e) {
+		}
     	
-		
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
@@ -378,7 +389,8 @@ public class car_management extends javax.swing.JPanel {
     private javax.swing.JTable cars_table;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField feedback_text,search_text;
-    
+    String officeNum="",city="";
+    private LoginBLService ctr_login;
     private static final long serialVersionUID = 1L;//TODO  这是干啥的呀
     // End of variables declaration//GEN-END:variables
     

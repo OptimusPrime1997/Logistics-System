@@ -12,7 +12,6 @@ import VO.ReceiptVO.CashRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.CashRepblService;
-import ui.businessOfficerui.car_add;
 import Exception.AddMoneyInBankException;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
@@ -20,7 +19,6 @@ import Exception.NumNotFoundException;
 public class CashRepController extends ReceiptblController implements CashRepblService{
 	private CashRepbl cashRepbl = new CashRepbl();
 	private CashRepCheckbl cashRepCheckbl = new CashRepCheckbl();
-	private CashRepShowbl cashRepShowbl = new CashRepShowbl();
 
 	@Override
 	public ArrayList<GoodsVO> getGoods(String courierNum, String date) {
@@ -42,9 +40,9 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	}
 
 	@Override
-	public Vector<Object> initTable(String date) throws NotBoundException, ClassNotFoundException, IOException{
+	public Vector<Object> initTable(String num) throws NotBoundException, ClassNotFoundException, IOException{
 		// TODO Auto-generated method stub
-		return cashRepbl.initTable(date);
+		return cashRepbl.initTable(num);
 	}
 	
 	@Override
@@ -56,7 +54,7 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	@Override
 	public ArrayList<CashRepVO> getAllRep() throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return cashRepbl.getAllRep();
 	}
 
 	@Override
@@ -84,7 +82,7 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	@Override
 	public CashRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return cashRepCheckbl.getRepByNum(num);
+		return cashRepbl.getRepByNum(num);
 	}
 
 	@Override
@@ -108,7 +106,7 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	@Override
 	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return cashRepShowbl.initShow(num);
+		return null;
 	}
 
 }

@@ -5,8 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CurrentTime {
-	
-	
+	public static void main(String[] args) {
+		String a="2015/8/05";
+		String b="2015/08/5";
+		System.out.println(CurrentTime.ifearlier(a,b));
+	}
 	static Date d=new Date();// new Date()为获取当前系统时间
 	static SimpleDateFormat df;
 	public static String getTime() {
@@ -21,11 +24,13 @@ public class CurrentTime {
 	}
 	/**
 	 * 日期a早于b则返回true
-	 * @param a
+	 * 
+	 * @param a 形如 2015/07/21
 	 * @param b
 	 * @return
 	 */
 	public static boolean ifearlier(String a,String b){
+		df=new SimpleDateFormat("yyyy/MM/dd");
 		try {
 			Date x=df.parse(a);
 			Date y=df.parse(b);
@@ -39,20 +44,34 @@ public class CurrentTime {
 		
 	}
 	/**
-	 * 返回减一天的日期
+	 * 返回减t天的日期
 	 * @param Cdate
 	 * @return
 	 */
 	public static String minusDate(String Cdate,int t){
-		return df.format(new Date(d.getTime()-t*24*3600*1000));
+		String ans="";
+		df=new SimpleDateFormat("yyyy/MM/dd");
+		try {
+			Date x=df.parse(Cdate);
+			ans=df.format(new Date(x.getTime()-t*24*3600*1000));
+		} catch (ParseException e) {
+		}
+		return ans;
 	}
 	/**
-	 * 返回加一天的日期
+	 * 返回加t天的日期
 	 * @param Cdate
 	 * @return
 	 */
 	public static String addDate(String Cdate,int t){
-		return df.format(new Date(d.getTime()+t*24*3600*1000)); 
+		String ans="";
+		df=new SimpleDateFormat("yyyy/MM/dd");
+		try {
+			Date x=df.parse(Cdate);
+			ans=df.format(new Date(x.getTime()+t*24*3600*1000));
+		} catch (ParseException e) {
+		}
+		return ans;
 	}
 	
 }

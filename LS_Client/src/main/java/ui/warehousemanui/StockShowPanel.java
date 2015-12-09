@@ -318,6 +318,7 @@ public class StockShowPanel extends JFrame {
     	String operation = "导出库存快照excel";
     	try {
 			ResultMessage rm = s.exportExcel();
+
 			
 			showFeedback(rm, operation);
 		} catch (ClassNotFoundException e) {

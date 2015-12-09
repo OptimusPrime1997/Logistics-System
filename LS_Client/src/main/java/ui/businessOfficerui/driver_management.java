@@ -7,6 +7,7 @@ package ui.businessOfficerui;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -22,7 +23,11 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.loginblservice.LoginBLService;
 import ui.mainFrame.MainFrame;
+import util.CurrentCity;
+import util.enumData.City;
 import util.enumData.ResultMessage;
 
 /**
@@ -36,6 +41,7 @@ public class driver_management extends JPanel {
      */
     public driver_management(businessOfficer_main panel) {
     	this.panel_parent=panel;
+    	ctr_login=ControllerFactoryImpl.getInstance().getLoginController();
         initComponents();
     }
 	 /**
@@ -282,7 +288,13 @@ public class driver_management extends JPanel {
         jLabel1.setText("司机管理");
         jLabel2.setText("账户：");
         jLabel3.setText("营业厅：");
-        BusinessOfficeNum_label.setText("南京 025001");
+        try {
+			officeNum = ctr_login.getCurrentOptorId().substring(0, 6);
+			System.out.println(ctr_login.getCurrentOptorId());
+			city = City.toString(CurrentCity.getCurrentCity());
+			BusinessOfficeNum_label.setText(city + officeNum);
+		} catch (RemoteException e) {
+		}
 	}
 	/**
 	 * 监听们~
@@ -317,5 +329,7 @@ public class driver_management extends JPanel {
     private JButton account_btn,add_btn,back_btn,exit_btn,search_btn;
     private JScrollPane jScrollPane2;
     private JTextField search_text,feedback_text;
+    private LoginBLService ctr_login;
+    private String officeNum="",city="";
     // End of variables declaration//GEN-END:variables
 }

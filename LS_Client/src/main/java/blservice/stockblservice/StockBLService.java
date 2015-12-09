@@ -7,6 +7,7 @@ package blservice.stockblservice;
 
 import java.io.IOException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
@@ -28,8 +29,9 @@ public interface StockBLService {
 	 * @param startDate
 	 * @param endDate
 	 * @return
+	 * @throws RemoteException 
 	 */
-	public String checkStock(String startMonth, String startDay, String endMonth, String endDay);
+	public String checkStock(String startMonth, String startDay, String endMonth, String endDay) throws RemoteException;
 	
 	
 	
@@ -42,6 +44,15 @@ public interface StockBLService {
 	 */
 	public int checkPresentStockQuantity() throws ClassNotFoundException, NotBoundException, IOException;
 	
+	/**
+	 * 系统提供该仓库每个区当前的库存数量
+	 * @param block
+	 * @return
+	 * @throws IOException 
+	 * @throws NotBoundException 
+	 * @throws ClassNotFoundException 
+	 */
+	public int checkPresentStockQuantity(int block) throws ClassNotFoundException, NotBoundException, IOException;
 	
 	/**
 	 * @return
@@ -52,6 +63,7 @@ public interface StockBLService {
 	public ArrayList<StockVO> showToday() throws ClassNotFoundException, NotBoundException, IOException; 
 	
 	public ResultMessage exportExcel() throws ClassNotFoundException, NotBoundException, IOException;
+	
 	
 
 }

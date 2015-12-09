@@ -8,18 +8,17 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import util.CurrentCity;
 import util.CurrentTime;
 import util.enumData.City;
 import util.enumData.ResultMessage;
-import dataservice.stockdataservice.StockDataService;
-import bl.loginbl.LoginblController;
+import dataservice.stockdataservice.StockDataService; 
 import bl.receiptbl.InStockRepbl.InStockRepController;
 import bl.receiptbl.OutStockRepbl.OutStockRepController;
 import PO.StockPO;
@@ -66,29 +65,42 @@ public class Stock {
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd");
         
-        try{
-            Date dateOne = dateFormat.parse(startMonth+"-"+startDay);
-            Date dateTwo = dateFormat.parse(endMonth+"-"+endDay);
-             
-            Calendar calendar = Calendar.getInstance();
-   
-            if(!checkDateValid(dateOne,dateTwo)){
-    			return null;
-    		}
-            
-            calendar.setTime(dateOne);
-             
-            while(calendar.getTime().compareTo(dateTwo)<=0){               
-            	
-                instockreps.addAll(in.getRepByDate(dateFormat.format(calendar.getTime())));
-                outstockreps.addAll(out.getRepByDate(dateFormat.format(calendar.getTime())));
-                
-                calendar.add(Calendar.DAY_OF_MONTH, 1);               
-            }
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
+        
+           
+			try {
+		   	    Date dateOne = dateFormat.parse(startMonth+"-"+startDay);
+				
+			    Date dateTwo = dateFormat.parse(endMonth+"-"+endDay);
+	             
+	            Calendar calendar = Calendar.getInstance();
+	   
+	            if(!checkDateValid(dateOne,dateTwo)){
+	            	//返回值-1表示日期无效
+	    			return "-1";
+	    		}
+	            
+	            calendar.setTime(dateOne);
+	             
+	            while(calendar.getTime().compareTo(dateTwo)<=0){               
+	            	
+	                instockreps.addAll(in.getRepByDate(dateFormat.format(calendar.getTime())));
+	                outstockreps.addAll(out.getRepByDate(dateFormat.format(calendar.getTime())));
+	                
+	                calendar.add(Calendar.DAY_OF_MONTH, 1);               
+	            }
+			} catch (ParseException e) {
+				//这个应该不可能错
+			} catch (ClassNotFoundException e) {
+				//返回值-2表示远程错误
+				return "-3";
+			} catch (NotBoundException e) {
+				return "-3";
+			} catch (IOException e) {
+				return "-2";
+			}
+        
+       
+        
         
 
          
@@ -122,7 +134,24 @@ public class Stock {
 	
 	}
 
-	
+	/**
+	 * @param block
+	 * @return
+	 * @throws IOException 
+	 * @throws NotBoundException 
+	 * @throws ClassNotFoundException 
+	 */
+	public int checkPresentStockQuantity(int block) throws ClassNotFoundException, NotBoundException, IOException {
+		int result = 0;
+		ArrayList<StockVO> list = show();
+		
+		for (StockVO vo : list) {
+			if (vo.block == block) {
+				++result;
+			}
+		}
+		return result;
+	}
 	
 	/**
 	 * 得到本仓库当前所有有完整信息的库存
@@ -232,4 +261,5 @@ public class Stock {
 			e.printStackTrace();
 		}
 	}
+	
 }

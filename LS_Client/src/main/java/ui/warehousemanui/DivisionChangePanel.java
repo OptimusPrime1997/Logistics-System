@@ -8,7 +8,6 @@ import javax.swing.*;
 
 import VO.StockDivisionVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
-import blservice.stockblservice.StockBLService;
 import blservice.stockblservice.StockDivisionBLService;
 import ui.mainFrame.MainFrame;
 import util.FromIntToCity;
@@ -16,7 +15,6 @@ import util.enumData.City;
 import util.enumData.ResultMessage;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
@@ -89,7 +87,10 @@ public class DivisionChangePanel extends JFrame {
         newDivisions = new javax.swing.JComboBox();
         jLabel12 = new javax.swing.JLabel();
         newBlocks = new javax.swing.JComboBox();
+        resultMessage = new JLabel();
 
+      
+        
         jLabel9.setText("当前账户：大玉儿");
 
         exit.setText("退出");
@@ -109,13 +110,13 @@ public class DivisionChangePanel extends JFrame {
                 try {
 					oldBlocksActionPerformed(evt);
 				} catch (MalformedURLException e) {
-					e.printStackTrace();
+					showFeedback(ResultMessage.REMOTE_FAILED, "");
 				} catch (RemoteException e) {
-					e.printStackTrace();
+					showFeedback(ResultMessage.REMOTE_FAILED, "");
 				} catch (NotBoundException e) {
-					e.printStackTrace();
+					showFeedback(ResultMessage.REMOTE_FAILED, "");
 				} catch (IOException e) {
-					e.printStackTrace();
+					showFeedback(ResultMessage.REMOTE_FAILED, "");
 				}
             }
         });
@@ -148,9 +149,9 @@ public class DivisionChangePanel extends JFrame {
                 try {
 					confirmActionPerformed(evt);
 				} catch (NotBoundException | IOException e) {
-					e.printStackTrace();
+					showFeedback(ResultMessage.REMOTE_FAILED, "");
 				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
+					showFeedback(ResultMessage.REMOTE_FAILED, "");
 				}
             }
         });
@@ -173,7 +174,7 @@ public class DivisionChangePanel extends JFrame {
                 try {
 					oldDivisionsActionPerformed(evt);
 				} catch (NotBoundException | IOException e) {
-					e.printStackTrace();
+					showFeedback(ResultMessage.REMOTE_FAILED, "");
 				}
             }
         });
@@ -186,7 +187,7 @@ public class DivisionChangePanel extends JFrame {
                 try {
 					newDivisionsActionPerformed(evt);
 				} catch (NotBoundException | IOException e) {
-					e.printStackTrace();
+					showFeedback(ResultMessage.REMOTE_FAILED, "");
 				}
             }
         });
@@ -199,7 +200,7 @@ public class DivisionChangePanel extends JFrame {
                 try {
 					newBlocksActionPerformed(evt);
 				} catch (NotBoundException | IOException e) {
-					e.printStackTrace();
+					showFeedback(ResultMessage.REMOTE_FAILED, "");
 				}
             }
         });
@@ -211,68 +212,70 @@ public class DivisionChangePanel extends JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(285, 285, 285)
-                                .addComponent(back)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(confirm))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(oldDivisions, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(oldBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(oldPlaces, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 48, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(exit))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(exit))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel1))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(oldDivisions, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(oldBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(oldPlaces, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addGap(15, 15, 15)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(back)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(confirm))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                    .addComponent(jLabel11)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(newDivisions, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(21, 21, 21)
+                                                    .addComponent(jLabel12)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(newBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(jLabel7)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(newPlaces, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel11)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(newDivisions, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel12)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(newBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel7)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(newPlaces, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                                .addComponent(jLabel4)
+                                                .addGap(27, 27, 27))))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(resultMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 18, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
                     .addComponent(jLabel9)
-                    .addComponent(exit)
-                    .addComponent(jLabel10))
-                .addGap(37, 37, 37)
+                    .addComponent(exit))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -282,7 +285,7 @@ public class DivisionChangePanel extends JFrame {
                     .addComponent(oldPlaces, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(oldDivisions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
@@ -294,13 +297,17 @@ public class DivisionChangePanel extends JFrame {
                     .addComponent(newDivisions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
                     .addComponent(newBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(back)
                     .addComponent(confirm))
-                .addGap(41, 41, 41))
-        );
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(resultMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                .addContainerGap())
+        ); 
+        pack();
     }// </editor-fold>                        
+
 
     StockDivisionBLService s = ControllerFactoryImpl.getInstance().getStockDivisionController();
     
@@ -312,7 +319,7 @@ public class DivisionChangePanel extends JFrame {
     	MainFrame mf = new MainFrame();
     	mf.setVisible(true);
     	this.dispose();
-    }                                        
+    } //GEN-LAST:event_jButton3ActionPerformed                                       
 
     private void oldBlocksActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
     	//得到本仓库选中的区的所有VO
@@ -335,13 +342,13 @@ public class DivisionChangePanel extends JFrame {
 			oldplacesList[i] = result.get(i);
 		}
     	oldPlaces.setModel(new DefaultComboBoxModel<Integer>(oldplacesList));
-    }                                          
+    } //GEN-LAST:event_jButton3ActionPerformed                                         
 
     private void oldPlacesActionPerformed(java.awt.event.ActionEvent evt) {                                           
-    }                                          
+    } //GEN-LAST:event_jButton3ActionPerformed                                         
 
     private void newPlacesActionPerformed(java.awt.event.ActionEvent evt) {                                           
-    }                                          
+    }  //GEN-LAST:event_jButton3ActionPerformed                                        
 
     
     /**
@@ -362,20 +369,22 @@ public class DivisionChangePanel extends JFrame {
     		City desCity = FromIntToCity.toCity(newblock);
         	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
         	if (list.size()>800) {
-				//TODO 提醒换别的区
+        		showFeedback(ResultMessage.ALARM, "请调至别的区");
 			} else{
 				ResultMessage rm = s.modifyDivision((int)oldDivisions.getSelectedItem(), (int)oldPlaces.getSelectedItem(), (int)newDivisions.getSelectedItem(), (int)newPlaces.getSelectedItem());
-				//TODO 给出别的反馈信息
+				showFeedback(rm, " ");
 			}
 		}
     	
-    }                                        
+    }//GEN-LAST:event_jButton3ActionPerformed   
+    
+    
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {                                         
     	WarehousePanel w = new WarehousePanel();
 		w.setVisible(true);
 		this.dispose();
-    }                                        
+    } //GEN-LAST:event_jButton3ActionPerformed                                       
 
   
     
@@ -427,7 +436,7 @@ public class DivisionChangePanel extends JFrame {
     	
     	oldBlocks.setModel(new DefaultComboBoxModel<Integer>(oldblocksList));
     	
-    }                                          
+    } //GEN-LAST:event_jButton3ActionPerformed                                         
 
     private void newDivisionsActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
     	//得到本仓库选中的区的所有VO
@@ -468,7 +477,7 @@ public class DivisionChangePanel extends JFrame {
 		}
     	
     	newBlocks.setModel(new DefaultComboBoxModel<Integer>(newblocksList));
-    }                                          
+    } //GEN-LAST:event_jButton3ActionPerformed                                         
 
     private void newBlocksActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
     	//得到本仓库选中的区的所有VO
@@ -509,8 +518,18 @@ public class DivisionChangePanel extends JFrame {
 		}
     	
     	newPlaces.setModel(new DefaultComboBoxModel<Integer>(newplacesList));
-    }                                          
-
+    } //GEN-LAST:event_jButton3ActionPerformed
+    private void showFeedback(ResultMessage msg, String operation) {
+    	
+    	if (msg.equals(ResultMessage.SUCCESS)) {
+    		this.resultMessage.setForeground(Color.GREEN);
+		} else {
+			this.resultMessage.setForeground(Color.RED);
+		}
+    	
+    	this.resultMessage.setText(operation + ResultMessage.toFriendlyString(msg));
+	}
+    
 
     // Variables declaration - do not modify  
     private Integer[] oldblocksList;
@@ -537,5 +556,6 @@ public class DivisionChangePanel extends JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private JLabel resultMessage;
     // End of variables declaration                   
 }

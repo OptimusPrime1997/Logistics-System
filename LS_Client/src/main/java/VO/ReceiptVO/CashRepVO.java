@@ -35,6 +35,12 @@ public class CashRepVO extends ReceiptVO {
 			cashRepVOs.add(new CashRepVO((CashRepPO) receiptPO));
 		return cashRepVOs;
 	}
+	public static ArrayList<CashRepVO> cashToArrayVO(ArrayList<CashRepPO> receiptPOs) {
+		ArrayList<CashRepVO> cashRepVOs = new ArrayList<CashRepVO>();
+		for (CashRepPO receiptPO : receiptPOs)
+			cashRepVOs.add(new CashRepVO((CashRepPO) receiptPO));
+		return cashRepVOs;
+	}
 	
 	public static ArrayList<CashRepPO> toArrayPO(ArrayList<CashRepVO> cashRepVOs) {
 		ArrayList<CashRepPO> cashRepPOs = new ArrayList<CashRepPO>();

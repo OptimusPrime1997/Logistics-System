@@ -5,7 +5,7 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import VO.GoodsVO;
+import PO.ReceiptPO.ReceiptPO;
 import VO.ReceiptVO.ArriveRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import VO.ReceiptVO.ShipmentRepVO;
@@ -64,6 +64,13 @@ public class GetRepbl{
 	public void transferOver(String num) {
 		// TODO Auto-generated method stub
 		goodsbl.end(num);
+	}
+
+	public ArrayList<ArriveRepVO> getAllRep() throws ClassNotFoundException, NotBoundException, 
+	IOException {
+		// TODO Auto-generated method stub
+		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.GetRep);
+		return ArriveRepVO.toArrayVO(receiptPOs);
 	}
 
 }

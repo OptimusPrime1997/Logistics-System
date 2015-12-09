@@ -40,6 +40,10 @@ public enum ResultMessage {
 	 */
 	NOT_FOUND,
 	/**
+	 * 起止日期颠倒
+	 */
+	WRONG_ORDER_OF_DATE,
+	/**
 	 * 合法
 	 */
 	VALID,
@@ -183,7 +187,18 @@ public enum ResultMessage {
 	/**
 	 * 远程连接失败
 	 */
-	REMOTE_FAILED;
+	REMOTE_FAILED,
+	/**
+	 * 
+	 * 输入的日期前后不合理
+	 * 
+	 */
+	INVALID_DATE,
+	/**
+	 * 库存报警
+	 */
+	ALARM;
+	
 	public static String toFriendlyString(ResultMessage resultMessage) {
 
 		switch (resultMessage) {
@@ -229,6 +244,8 @@ public enum ResultMessage {
 			return "签收成功~";
 		case MODIFY_SUCCESS:
 			return "修改成功";
+		case WRONG_ORDER_OF_DATE:
+			return "起止日期填反啦";
 		case IOFAILED:
 			return "读写文件失败";
 		case FAILED:
@@ -247,6 +264,12 @@ public enum ResultMessage {
 			return "薪水策略为空";
 		case NULL_AUTHORITY:
 			return "空职位";
+		case INPUT_SHOULD_BE_POSITIVE_INTEGER:
+			return "请输入正整数";
+		case INVALID_DATE:
+			return "起始日期必须早于结束日期";
+		case ALARM:
+			return "该区库存紧张";
 		default:
 			break;
 		}

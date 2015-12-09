@@ -34,7 +34,8 @@ public class InStockRepController extends ReceiptblController implements InStock
 	}
 
 	@Override
-	public InStockRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException {
+	public InStockRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, 
+	IOException {
 		// TODO Auto-generated method stub
 		return inStockRepCheckbl.getRepByNum(num);
 	}
@@ -46,9 +47,10 @@ public class InStockRepController extends ReceiptblController implements InStock
 	}
 
 	@Override
-	public ArrayList<InStockRepVO> getAllRep() throws RemoteException, MalformedURLException, NotBoundException {
+	public ArrayList<InStockRepVO> getAllRep() throws NotBoundException, ClassNotFoundException, 
+	IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return inStockRepbl.getAllRep();
 	}
 
 	@Override
@@ -65,7 +67,8 @@ public class InStockRepController extends ReceiptblController implements InStock
 	}
 
 	@Override
-	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException,
+	IOException {
 		// TODO Auto-generated method stub
 		return inStockRepShowbl.initShow(num);
 	}
