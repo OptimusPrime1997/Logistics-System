@@ -11,6 +11,7 @@ import VO.ReceiptVO.OutStockRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.OutStockRepblService;
+import util.enumData.Rep;
 
 public class OutStockRepController extends ReceiptblController implements OutStockRepblService{
 	private OutStockRepbl outStackRepbl = new OutStockRepbl();
@@ -73,6 +74,13 @@ public class OutStockRepController extends ReceiptblController implements OutSto
 	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		return outStockRepShowbl.initShow(num);
+	}
+
+	@Override
+	public Vector<Object> initTable(Rep shipRep, String shipNum) 
+			throws ClassNotFoundException, NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		return outStackRepbl.initTable(shipRep, shipNum);
 	}
 
 

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import PO.ReceiptPO.PayRepPO;
 import PO.ReceiptPO.ReceiptPO;
-import PO.ReceiptPO.PayRepFreightRepPO;
 
 public class PayRepVO extends ReceiptVO {
 	public double sum;
@@ -67,7 +66,7 @@ public class PayRepVO extends ReceiptVO {
 	public static ArrayList<PayRepPO> toArrayPO(ArrayList<PayRepVO> payrepVOs){
 		ArrayList<PayRepPO> payRepPOs  = new ArrayList<PayRepPO>();
 		for(PayRepVO payRepVO : payrepVOs){
-			payRepPOs.add(PayRepVO.toPO(payRepVO));
+			payRepPOs.add(toPO(payRepVO));
 		}
 		return payRepPOs;
 	}

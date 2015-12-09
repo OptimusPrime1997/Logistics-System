@@ -22,11 +22,4 @@ public class PayRepBonusRepVO extends PayRepSalaryRepVO{
 		return new PayRepSalaryRepPO(PayBonusVO.toArrayPO(vo.bonusVOs),
 				vo.bankAccountNum, vo.sum);
 	}
-//	public static ArrayList<PayRepBonusRepVO> toArrayVO(ArrayList<ReceiptPO> receiptPOs) {
-//		ArrayList<PayRepBonusRepVO> PayRepBonusRepVOs = new ArrayList<PayRepBonusRepVO>();
-//		for (ReceiptPO receiptPO : receiptPOs)
-//			PayRepBonusRepVOs.add(new PayRepBonusRepVO((PayRepSalaryRepPO) receiptPO));
-//		return PayRepBonusRepVOs;
-//	}
-	
 }

@@ -37,7 +37,7 @@ public class PayFreightVO {
 	public static ArrayList<PayFreightPO> toArrayPO(ArrayList<PayFreightVO> transferPayVOs){
 		ArrayList<PayFreightPO> transferPayPOs = new  ArrayList<PayFreightPO>();
 		for(PayFreightVO transferPayVO : transferPayVOs){
-			transferPayPOs.add(PayFreightVO.toPO(transferPayVO));
+			transferPayPOs.add(toPO(transferPayVO));
 		}
 		return transferPayPOs;
 	}

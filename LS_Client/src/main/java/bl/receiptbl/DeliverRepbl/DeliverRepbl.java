@@ -17,8 +17,8 @@ import util.enumData.ResultMessage;
 
 public class DeliverRepbl {
 	
-	Receiptbl receiptbl = new Receiptbl();
-	Goodsbl goodsbl = new Goodsbl();
+	private Receiptbl receiptbl = new Receiptbl();
+	private Goodsbl goodsbl = new Goodsbl();
 
 	public String createNum(String date) throws ClassNotFoundException, NotBoundException, IOException {
 		String num = receiptbl.createNum(date, Rep.DeliverRep);

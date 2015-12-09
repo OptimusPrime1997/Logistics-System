@@ -1,54 +1,42 @@
 package bl.receiptbl.ShippingRepbl;
 
+import java.io.IOException;
+import java.rmi.NotBoundException;
 import java.util.ArrayList;
 
+import PO.ReceiptPO.ReceiptPO;
+import PO.ReceiptPO.ShippingRepPO;
 import VO.ReceiptVO.ReceiptVO;
 import VO.ReceiptVO.ShippingRepVO;
+import bl.receiptbl.Receiptbl.Receiptbl;
+import util.enumData.Rep;
 
 public class ShippingRepbl{
 	
-	public ShippingRepVO getShippingRep(String num) {
+	private Receiptbl receiptbl = new Receiptbl();
+	
+	public String createNum(String date) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return receiptbl.createNum(date, Rep.ShippingRep);
 	}
 
-	public String createNum(String date) {
+	public ShippingRepVO getRepByNum(String num) 
+			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.ShippingRep);
+		return new ShippingRepVO((ShippingRepPO)receiptPO);
 	}
 
-	public void delete(int n) {
+	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		
+		receiptbl.submit(ShippingRepVO.toPO((ShippingRepVO) vo), Rep.ShippingRep);
 	}
 
-	public void delete(String num) {
+	public ArrayList<ShippingRepVO> getAllRep() 
+			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		
+		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.ShippingRep);
+		return ShippingRepVO.toArrayVO(receiptPOs);
 	}
 
-	public ShippingRepVO getRepByNum(String num) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void submit(ReceiptVO vo) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public ArrayList<ShippingRepVO> getAllRep() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public ArrayList<ShippingRepVO> getRepByDate(String date) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public int getTruckNum(String date) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }

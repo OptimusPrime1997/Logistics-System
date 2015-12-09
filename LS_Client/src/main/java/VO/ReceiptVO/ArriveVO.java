@@ -33,7 +33,7 @@ public class ArriveVO {
 	public static ArrayList<ArrivePO> toArrayPO(ArrayList<ArriveVO> ArriveVOs){
 		ArrayList<ArrivePO> ArrivePOs = new ArrayList<ArrivePO>();
 		for(ArriveVO ArriveVO : ArriveVOs)
-			ArrivePOs.add(ArriveVO.toPO(ArriveVO));
+			ArrivePOs.add(toPO(ArriveVO));
 		return ArrivePOs;
 	}
 }

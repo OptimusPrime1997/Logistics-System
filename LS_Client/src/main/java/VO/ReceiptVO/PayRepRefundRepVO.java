@@ -38,7 +38,7 @@ public class PayRepRefundRepVO {
 	public static ArrayList<PayRepRefundRepPO> toArrayPO(ArrayList<PayRepRefundRepVO> payRepRefundRepVOs){
 		ArrayList<PayRepRefundRepPO> payRepRefundRepPOs = new ArrayList<PayRepRefundRepPO>();
 		for(PayRepRefundRepVO payRepRefundRepVO : payRepRefundRepVOs){
-			payRepRefundRepPOs.add(payRepRefundRepVO.toPO(payRepRefundRepVO));
+			payRepRefundRepPOs.add(toPO(payRepRefundRepVO));
 		}
 		return payRepRefundRepPOs;
 	}

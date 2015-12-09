@@ -38,7 +38,7 @@ public class CashVO {
 	public static ArrayList<CashPO> toArrayPO(ArrayList<CashVO> cashVOs){
 		ArrayList<CashPO> cashPOs = new ArrayList<CashPO>();
 		for(CashVO cashVO : cashVOs)
-			cashPOs.add(CashVO.toPO(cashVO));
+			cashPOs.add(toPO(cashVO));
 		return cashPOs;
 	}
 }

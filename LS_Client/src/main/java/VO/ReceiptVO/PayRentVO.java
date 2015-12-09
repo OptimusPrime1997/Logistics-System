@@ -56,7 +56,7 @@ public class PayRentVO {
 	public static ArrayList<PayRentPO> toArrayPO(ArrayList<PayRentVO> rentVOs){
 		ArrayList<PayRentPO> rentPOs = new ArrayList<PayRentPO>();
 		for(PayRentVO rentVO : rentVOs){
-			rentPOs.add(PayRentVO.toPO(rentVO));
+			rentPOs.add(toPO(rentVO));
 		}
 		return rentPOs;
 	}

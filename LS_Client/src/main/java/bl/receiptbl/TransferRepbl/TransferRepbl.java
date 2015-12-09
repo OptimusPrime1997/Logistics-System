@@ -1,50 +1,43 @@
 package bl.receiptbl.TransferRepbl;
 
+import java.io.IOException;
+import java.rmi.NotBoundException;
 import java.util.ArrayList;
 
+import PO.ReceiptPO.ReceiptPO;
+import PO.ReceiptPO.TransferRepPO;
 import VO.ReceiptVO.ReceiptVO;
 import VO.ReceiptVO.TransferRepVO;
+import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.receiptbl.Receiptbl.ReceiptblController;
+import util.enumData.Rep;
 
 public class TransferRepbl extends ReceiptblController{
 	
-	public TransferRepVO getTransferRep(String num) {
+	private Receiptbl receiptbl = new Receiptbl();
+	
+	public String createNum(String date) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return receiptbl.createNum(date, Rep.TransferRep);
 	}
 
-	public String createNum(String date) {
+	public TransferRepVO getRepByNum(String num) 
+			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.TransferRep);
+		return new TransferRepVO((TransferRepPO)receiptPO);
 	}
 
-	public void delete(int n) {
+	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		
+		receiptbl.submit(TransferRepVO.toPO((TransferRepVO) vo), Rep.TransferRep);
 	}
 
-	public void delete(String num) {
+	public ArrayList<TransferRepVO> getAllRep() 
+			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		
+		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.TransferRep);
+		return TransferRepVO.toArrayVO(receiptPOs);
 	}
 
-	public TransferRepVO getRepByNum(String num) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void submit(ReceiptVO vo) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public ArrayList<TransferRepVO> getAllRep() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public ArrayList<TransferRepVO> getRepByDate(String date) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

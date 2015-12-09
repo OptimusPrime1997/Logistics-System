@@ -1,9 +1,7 @@
 package PO.ReceiptPO;
 
 import java.util.ArrayList;
-
 import util.enumData.Rep;
-import util.enumData.Place;
 
 public class ArriveRepPO extends ReceiptPO{
 	/**
@@ -13,14 +11,12 @@ public class ArriveRepPO extends ReceiptPO{
 	
 	private Rep rep;
 	private String shipNum;
-	private Place place;
 	private ArrayList<ArrivePO> getArrivePOs;
-	public ArriveRepPO(String num, String date, Rep rep, String shipNum, util.enumData.Place place,
+	public ArriveRepPO(String num, String date, Rep rep, String shipNum,
 			ArrayList<ArrivePO> getArrivePOs) {
 		super(num, date);
 		this.rep = rep;
 		this.shipNum = shipNum;
-		this.place = place;
 		this.getArrivePOs = getArrivePOs;
 	}
 	public Rep getRep() {
@@ -28,9 +24,6 @@ public class ArriveRepPO extends ReceiptPO{
 	}
 	public String getShipNum() {
 		return shipNum;
-	}
-	public Place getPlace() {
-		return place;
 	}
 	public ArrayList<ArrivePO> getArrivePOs() {
 		return getArrivePOs;
