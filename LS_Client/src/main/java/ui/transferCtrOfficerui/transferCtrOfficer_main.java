@@ -3,6 +3,7 @@ package ui.transferCtrOfficerui;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -22,11 +23,14 @@ import util.CurrentTime;
 import util.enumData.City;
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
+import util.enumData.ShipForm;
 import VO.LogVO;
+import VO.ReceiptVO.TransferRepVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.logblservice.LogBLService;
 import blservice.loginblservice.LoginBLService;
 import blservice.receiptblservice.ReceiptblService;
+import blservice.receiptblservice.TransferRepblService;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -44,6 +48,7 @@ public class transferCtrOfficer_main extends JPanel {
     public transferCtrOfficer_main() {
     	ctr_login=ControllerFactoryImpl.getInstance().getLoginController();
         ctr_log= ControllerFactoryImpl.getInstance().getLogController();
+        ctr_trans=ControllerFactoryImpl.getInstance().getTransferRepblService();
     	initComponents();
         new MyFrame(this);
     }
@@ -100,7 +105,7 @@ public class transferCtrOfficer_main extends JPanel {
                                     .addComponent(jLabel5, GroupLayout.Alignment.TRAILING))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                    .addComponent(outByCar_progressBar, GroupLayout.PREFERRED_SIZE, 221, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(outByShip_progressBar, GroupLayout.PREFERRED_SIZE, 221, GroupLayout.PREFERRED_SIZE)
                                     .addComponent(outByPlane_progressBar, GroupLayout.PREFERRED_SIZE, 221, GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -113,7 +118,7 @@ public class transferCtrOfficer_main extends JPanel {
                             .addGap(26, 26, 26)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(outByCar_label, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(outByShip_label, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
                             .addComponent(outByPlane_label))
                         .addGap(57, 57, 57))))
             .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -150,9 +155,9 @@ public class transferCtrOfficer_main extends JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                .addComponent(outByCar_progressBar, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(outByShip_progressBar, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel5))
-                            .addComponent(outByCar_label))
+                            .addComponent(outByShip_label))
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                             .addComponent(outByPlane_progressBar, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
@@ -210,12 +215,19 @@ public class transferCtrOfficer_main extends JPanel {
 
 	}
 	private void initProBar() {
+		
     	 outByTrain_progressBar = new JProgressBar();
-         outByCar_progressBar = new JProgressBar();
+         outByShip_progressBar = new JProgressBar();
          outByPlane_progressBar = new JProgressBar();
-         outByTrain_progressBar.setValue(20);
-         outByCar_progressBar.setValue(60); 
-         outByPlane_progressBar.setValue(5);
+//         ArrayList<TransferRepVO> vos=ctr_trans.getByTransNum(officeNum, CurrentTime.getDate());         
+//         for(TransferRepVO vo:vos){
+//        	 if(vo.form==ShipForm.TRAIN) train++;
+//        	 if(vo.form==ShipForm.SHIP) ship++;
+//        	 if(vo.form==ShipForm.PLANE) plane++;
+//         }
+         outByTrain_progressBar.setValue(train);
+         outByShip_progressBar.setValue(ship); 
+         outByPlane_progressBar.setValue(plane);
 	}
 	private void initLabel() {
 		jLabel1 = new JLabel();
@@ -226,7 +238,7 @@ public class transferCtrOfficer_main extends JPanel {
 		jLabel6 = new JLabel();
 		transferOfficeNum_label = new JLabel();
 		outByTrain_label = new JLabel();
-		outByCar_label = new JLabel();
+		outByShip_label = new JLabel();
 		outByPlane_label = new JLabel();
 		jLabel1.setText("今日流水（派出数量）");
 		jLabel2.setText("中转中心：");
@@ -234,21 +246,20 @@ public class transferCtrOfficer_main extends JPanel {
 		jLabel4.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
 		jLabel4.setText("火车");
 		jLabel5.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
-		jLabel5.setText("汽车");
+		jLabel5.setText("轮船");
 		jLabel6.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
 		jLabel6.setText("飞机");
-		transferOfficeNum_label.setText("南京 001");
 		try {
+			officeNum=ctr_login.getCurrentOptorId().substring(0, 3);
 			transferOfficeNum_label.setText(City.toString(CurrentCity.getCurrentCity())
-					+ ctr_login.getCurrentOptorId().substring(0, 3));
+					+ officeNum);
 		} catch (RemoteException e) {
 		}
-    	
-		outByTrain_label.setText("10");
-		outByCar_label.setText("26");
-		outByPlane_label.setText("2");
+		outByTrain_label.setText(train+"");
+		outByShip_label.setText(ship+"");
+		outByPlane_label.setText(plane+"");
 		outByTrain_label.setFont(new java.awt.Font("宋体", 1, 24)); // NOI18N
-		outByCar_label.setFont(new java.awt.Font("宋体", 1, 24)); // NOI18N
+		outByShip_label.setFont(new java.awt.Font("宋体", 1, 24)); // NOI18N
 		outByPlane_label.setFont(new java.awt.Font("宋体", 1, 24)); // NOI18N
 	}
 	private void account_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_account_btnActionPerformed
@@ -297,8 +308,8 @@ public class transferCtrOfficer_main extends JPanel {
     private JLabel jLabel4;
     private JLabel jLabel5;
     private JLabel jLabel6;
-    private JLabel outByCar_label;
-    private JProgressBar outByCar_progressBar;
+    private JLabel outByShip_label;
+    private JProgressBar outByShip_progressBar;
     private JLabel outByPlane_label;
     private JProgressBar outByPlane_progressBar;
     private JLabel outByTrain_label;
@@ -307,9 +318,11 @@ public class transferCtrOfficer_main extends JPanel {
     private JButton toBusinessOffice_btn;
     private JButton toTransferCTR_btn;
     private JLabel transferOfficeNum_label;
+    private String officeNum="025";
     private LoginBLService ctr_login;
     private LogBLService ctr_log;
-//    private ReceiptblService ctr_re
+    private TransferRepblService ctr_trans;
+    private int train=0,ship=0,plane=0;
     // End of variables declaration//GEN-END:variables
     
    

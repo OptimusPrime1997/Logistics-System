@@ -6,16 +6,49 @@
 
 package ui.receiptui.generalUI;
 
+import java.awt.Color;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
+
+import Exception.NumNotFoundException;
+import VO.StockDivisionVO;
+import VO.StockVO;
+import VO.ReceiptVO.ShippingRepVO;
+import VO.ReceiptVO.TransferRepVO;
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import bl.loginbl.LoginblController;
+import bl.stockbl.Stock;
+import blservice.receiptblservice.InStockRepblService;
+import blservice.stockblservice.StockBLService;
+import blservice.stockblservice.StockDivisionBLService;
+import ui.warehousemanui.WarehousePanel;
+import util.CurrentCity;
+import util.CurrentTime;
+import util.FromIntToCity;
+import util.enumData.City;
+import util.enumData.ResultMessage;
+import util.enumData.ShipForm;
 
 /**
  *
  * @author apple
  */
 public class InStockRep extends javax.swing.JPanel {
-
+	StockDivisionBLService s = ControllerFactoryImpl.getInstance().getStockDivisionController();
+	InStockRepblService i = ControllerFactoryImpl.getInstance().getInStockRepblService();
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JFrame frame;  
+    private String repNum;
+	private JFrame frame; 
+	/**
+	 * 暂时储存添加在表中却没有存入数据层的区位号
+	 */
+	private ArrayList<StockDivisionVO> templist;
 	private javax.swing.JButton addButton;
     private javax.swing.JLabel areaLabel;
     private javax.swing.JTextField areaText;
@@ -34,7 +67,8 @@ public class InStockRep extends javax.swing.JPanel {
     private javax.swing.JButton okButton;
     private javax.swing.JLabel orderLabel;
     private javax.swing.JTextField orderText;
-    private javax.swing.JTextField resultMsgText;
+    private javax.swing.JTextField resultMessage;
+    
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -61,6 +95,7 @@ public class InStockRep extends javax.swing.JPanel {
     	
     	this.setVisible(true);
 
+    	templist = new ArrayList<StockDivisionVO>();
         dateText = new javax.swing.JTextField();
         dateLabel = new javax.swing.JLabel();
         officeText = new javax.swing.JTextField();
@@ -78,30 +113,89 @@ public class InStockRep extends javax.swing.JPanel {
         addButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
         okButton = new javax.swing.JButton();
-        resultMsgText = new javax.swing.JTextField();
+        resultMessage = new javax.swing.JTextField();
         checkAllRepsButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         
-        
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [30][] 
+                        ,
+                    new String [] {
+                       "订单号","区号","位号"
+                    }
+                ) {
+        			/**
+        			 * 
+        			 */
+        			private static final long serialVersionUID = 1L;
+        			boolean[] canEdit = new boolean [] {
+                        false, false, false, false, false, false
+                    };
+
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return canEdit [columnIndex];
+                    }
+                });
+        jScrollPane1.setViewportView(jTable1);
         
 
         dateText.setEditable(false);
+        dateText.setText(CurrentTime.getDate());
 
         dateLabel.setText("日期:");
 
         officeText.setEditable(false);
-        officeText.setText("025");
+        try {
+			officeText.setText(City.toString(CurrentCity.getCurrentCity()));
+		} catch (RemoteException e) {
+			officeText.setText("未知");
+		}
 
         officeLabel.setText("中转中心:");
 
         numLabel.setText("编号:");
 
         numText.setEditable(false);
+        
+        LoginblController login = new LoginblController();
+        
+ 		try {
+			 String s = login.getCurrentOptorId();
+			 //前三位
+			 repNum = s.substring(0, 3);
+			 //中转中心编号
+			 String tranString = "000";
+			 repNum += tranString;
+			 //8位日期+5
+			 String date = CurrentTime.getDate();
+			 String tempdate = date.replaceAll("-", "");
+			 repNum += tempdate;
+			 repNum += 2;
+			 //4位顺序编号
+			 //TODO 这个方法有问题，没能执行过去	
+			 String number = i.createNum(date);			
+			 repNum += number;
+		} catch (RemoteException e) {
+			numText.setText("远程错误未能得到当前账号");
+		} catch (ClassNotFoundException e) {
+			numText.setText("远程错误未能得到当前账号");
+		} catch (NotBoundException e) {
+			numText.setText("远程错误未能得到当前账号");
+		} catch (IOException e) {
+			numText.setText("远程错误未能得到当前账号");
+		} 
+ 		
+ 		
+ 		
+ 		numText.setText(repNum);
+        
+        
 
         areaLabel.setText("区号:");
 
         locLabel.setText("位号:");
+        locText.setEditable(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -127,7 +221,11 @@ public class InStockRep extends javax.swing.JPanel {
         addButton.setText("添加");
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButtonActionPerformed(evt);
+                try {
+					addButtonActionPerformed(evt);
+				} catch (NotBoundException | IOException e) {
+					showFeedback(ResultMessage.REMOTE_FAILED, "");
+				}
             }
         });
 
@@ -145,7 +243,7 @@ public class InStockRep extends javax.swing.JPanel {
             }
         });
 
-        resultMsgText.setEditable(false);
+        resultMessage.setEditable(false);
 
         checkAllRepsButton.setText("查看所有单据");
         checkAllRepsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +256,7 @@ public class InStockRep extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(resultMsgText, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+            .addComponent(resultMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,7 +335,7 @@ public class InStockRep extends javax.swing.JPanel {
                     .addComponent(okButton)
                     .addComponent(cancelButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(resultMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -245,8 +343,80 @@ public class InStockRep extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_checkAllRepsButtonActionPerformed
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
+    	
+    	//1.首先判断订单号是否符合10位数字
+    	ResultMessage rm = i.checkNum(orderText.getText(), 10);
+    	
+    	
+    	switch (rm) {
+		case REPNUM_LENGTH_LACKING:			
+		case REPNUM_LENGTH_OVER:
+		case REPNUM_NOT_ALL_NUM:
+			showFeedback(rm, "输入订单号");
+			break;
+		case ADD_SUCCESS:
+			//2.得到用户输入的区号,将其转化成城市传给库存，让库存给出这个区的空余地方防入templist
+			//  ,然后每次从templist中得到第一个提供给用户，然后从templist中删除它，如果某次templist
+			//  空了，那么就应该提醒用户该区已满，请换区
+			String inputarea = areaText.getText();
+			boolean isNumber = true;
+			for(int i = 0;i<inputarea.length();i++){
+				if(inputarea.charAt(i)<'0'||inputarea.charAt(i)>'9')
+					isNumber = false;
+					showFeedback(ResultMessage.REPNUM_NOT_ALL_NUM,"输入区号");
+			}
+			int area = 0;
+			if (isNumber) {
+				area = Integer.parseInt(inputarea);
+				if (area>=1&&area<=8) {
+					//TODO 
+					//转化成城市
+					City city = FromIntToCity.toCity(area);
+					ArrayList<StockDivisionVO> list = s.getBlock(city);
+					
+					
+					
+					if (list.size()>0) {
+						
+						int i = 0;
+						//循环至找到一个不在templist中的区位
+						while (list.get(i) != null) {
+							for (int j = 0; j < templist.size(); j++) {
+								if (isNumber) {
+									
+								}
+							}
+							
+						}
+						StockDivisionVO vo = templist.get(0);
+						
+						locText.setText(vo.place+"");
+					} else {
+						showFeedback(null, "该区已满，请换区");
+					}
+					
+//					if (templist.size()>0) {
+//						StockDivisionVO vo = templist.get(0);
+//						
+//						locText.setText(vo.place+"");
+//					} else {
+//						showFeedback(null, "该区已满，请换区");
+//					}
+					
+				} else {
+					showFeedback(null, "区号请输入1~8正整数");
+				}
+			} else {
+				showFeedback(null, "区号请输入1~8正整数");
+			}
+			
+			break;
+
+		default:
+			break;
+		}
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
@@ -254,7 +424,21 @@ public class InStockRep extends javax.swing.JPanel {
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        // TODO add your handling code here:
+    	 WarehousePanel w = new WarehousePanel();
+    	 w.setVisible(true);
+    	 this.frame.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
+    private void showFeedback(ResultMessage msg, String operation) {
+     	
+   	
+   	 
+    	if (msg.equals(ResultMessage.ADD_SUCCESS)) {
+    		this.resultMessage.setForeground(Color.GREEN);
+		} else {
+			this.resultMessage.setForeground(Color.RED);
+		}
+    	
+    	this.resultMessage.setText(operation + ResultMessage.toFriendlyString(msg));
+	}
 }

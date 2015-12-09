@@ -71,25 +71,22 @@ public enum LogType {
 	 */
 	CHECK_BANKACOUNT,
 	/**
-	 * 人员管理
+	 * 人员机构管理
 	 */
 	PERSONNEL_INSTITUTION_MANAGEMENT,
 	/**
 	 * 审批单据
 	 */
 	DOCUMENT_CHECK,
+	
 	/**
-	 * 机构管理
+	 * 常量制定
 	 */
-	INSTITUTION_MANAGEMENT,
+	DECISION_CONST, 
 	/**
-	 *常量制定
+	 * 薪水制定
 	 */
-	DECISION_CONST,
-	/**
-	 * 薪水策略制定
-	 */
-	DECISION_SALARYPOLICY;
+	DECISION_SALARYPOLICY,
 	
 	
 }

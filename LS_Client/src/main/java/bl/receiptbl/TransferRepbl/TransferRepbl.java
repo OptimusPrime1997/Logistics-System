@@ -43,4 +43,18 @@ public class TransferRepbl extends ReceiptblController{
 		return TransferRepVO.toArrayVO(receiptPOs);
 	}
 
+	public ArrayList<TransferRepVO> getByTransNum(String officeNum, String date) {
+		// TODO 现在是复制的~以后要写
+				ArrayList<ReceiptPO> receiptPOs;
+				try {
+					receiptPOs = receiptbl.getAllRep(Rep.TransferRep);
+					return TransferRepVO.toArrayVO(receiptPOs);
+				} catch (ClassNotFoundException | NotBoundException
+						| IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return null;
+	}
+
 }

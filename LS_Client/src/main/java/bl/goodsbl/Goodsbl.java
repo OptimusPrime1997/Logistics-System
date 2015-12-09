@@ -1,5 +1,6 @@
 package bl.goodsbl;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -11,6 +12,7 @@ import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsExpressType;
 import util.enumData.GoodsLogisticState;
 import util.enumData.ResultMessage;
+import Exception.ConstNotFoundException;
 import Exception.CourierNotFoundException;
 import Exception.ExistException;
 import Exception.GoodsNotFound;
@@ -81,7 +83,7 @@ public class Goodsbl {
 	 * @return返回计算过费用的GoodsVO
 	 */
 	public GoodsVO initComplete(GoodsVO vo) throws ExistException{//TODO可能初始化失败！没有反馈给界面
-		Constbl constBL = new Constbl();
+		Constbl ctr_const = new Constbl();
 		ResultMessage msg;
 		/*
 		 *  025     001           01      027
@@ -89,8 +91,9 @@ public class Goodsbl {
 		 */
 		try {
 			// TODO 计算运费
-			double basicprice = 0;//constBL.findByConstName(Const.FARE).priceConst;
-			double distance = 0;//constBL.findByConstName(Const.DISTANCE).distanceConst;
+			String cities=vo.receiverAddress.substring(0, 2)+"-"+vo.senderAddress.substring(0, 2);
+			double basicprice =0.3;//ctr_const.findByCities(cities).priceConst;
+			double distance =30;// ctr_const.findByCities(cities).distanceConst;
 			int listNum_part=getGoodsDataService().recordListNum();
 			//补齐7位
 			String temp=String.format("%7d",listNum_part).replace(" ","0");
@@ -101,7 +104,8 @@ public class Goodsbl {
 		   msg=getGoodsDataService().add(GoodsVO.toPO(vo));
 		   //已添加过该订单号
 		   if(msg.equals(ResultMessage.EXIST)) throw new ExistException();
-		} catch (RemoteException e) {
+		} catch (Exception e) {
+			System.out.println("多半是没找到常量");
 		}
 		return vo;
 	}
@@ -245,7 +249,7 @@ public class Goodsbl {
 	 * @param basicPrice
 	 * @return
 	 */
-	private double moneyCounter(GoodsExpressType expressType, double weight,
+	private int moneyCounter(GoodsExpressType expressType, double weight,
 			double distance, double basicPrice) {
 		double fare = 0;
 		// calculate the unit price of different types
@@ -255,7 +259,9 @@ public class Goodsbl {
 			basicPrice = basicPrice * expressRates[2] / expressRates[1];
 		// calculate the fare
 		fare = basicPrice * distance * weight;
-		return fare;
+		System.out.println(basicPrice+"  "+distance+"  "+weight);
+		System.out.println(fare);
+		return (int)fare;
 	}
 
 	/**

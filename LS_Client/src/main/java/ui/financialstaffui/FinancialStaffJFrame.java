@@ -522,7 +522,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		logTypejLabel.setText("操作类型：");
 
 		logTypejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "所有操作", "决策制定", "审批单据", "用户账户管理", "银行账户管理",
+				new String[] { "所有操作", "薪水制定","常量制定", "审批单据", "用户账户管理", "银行账户管理",
 						"人员机构管理" ,"司机管理","车辆管理","创建订单","权限管理",
 						"查看报表","派件","签收订单"}));
 		logTypejComboBox.addActionListener(new java.awt.event.ActionListener() {

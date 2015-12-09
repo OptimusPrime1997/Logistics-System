@@ -56,15 +56,9 @@ public class car_add extends JFrame {
     	initText();
     	initLabel();
         initbtn();
-        initComboBox();
         initLayout(layout);        
    }
 
-    private void initComboBox() {
-    	jComboBox6 = new JComboBox<String>();
-        jComboBox6.setModel(new DefaultComboBoxModel<String>(
-        		new String[] { "年", "月", "天" }));
-	}
 	private void initLayout(GroupLayout layout) {
     	getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,7 +84,7 @@ public class car_add extends JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(timeText, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))
+                               ))))
                 .addContainerGap(104, Short.MAX_VALUE))
             .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -116,7 +110,7 @@ public class car_add extends JFrame {
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(timeText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                   )
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(cancel_btn)
@@ -179,7 +173,6 @@ public class car_add extends JFrame {
     private JButton cancel_btn;
     private JTextField carCodeNum_text;
     private JTextField carLicenseNum_text;
-    private JComboBox<String> jComboBox6;
     private JLabel jLabel1;
     private JLabel jLabel2;
     private JLabel jLabel3;

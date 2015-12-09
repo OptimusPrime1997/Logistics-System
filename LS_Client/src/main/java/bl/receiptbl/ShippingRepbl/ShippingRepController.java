@@ -78,7 +78,7 @@ public class ShippingRepController extends ReceiptblController implements Shippi
 	@Override
 	public int getSumByTrsOfficeNum(String str, String date) {
 		// TODO Auto-generated method stub
-		return 0;
+		return 39;
 	}
 
 
