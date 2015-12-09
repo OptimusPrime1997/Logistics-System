@@ -27,7 +27,12 @@ public class ProfitFormbl {
 		ArrayList<CashRepVO> moneyIn = ctr_cashRep.getAllRep();
 		//TODO 
 		//算钱！
-		
+		for(PayRepVO payR:moneyOut){
+			totalOut=totalOut+payR.sum;
+		}
+		for(CashRepVO cashR:moneyIn){
+			totalIn=totalIn+cashR.sum;
+		}
 		totalProfit=totalIn-totalOut;
 	    ProfitFormVO vo = new ProfitFormVO(CurrentTime.getTime(), totalOut, totalIn, totalProfit);
 		return vo;
