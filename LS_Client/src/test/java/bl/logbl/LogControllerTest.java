@@ -21,13 +21,13 @@ public class LogControllerTest {
 
 	@Test
 	public void test() {
-		LogController logController = new LogController();
-
-		LogBLService ctr = ControllerFactoryImpl.getInstance()
-				.getLogController();
-		ArrayList<LogVO> vos = ctr.show(CurrentTime.getDate(),
-				CurrentTime.getDate(), LogType.ADD_A_GOODS);
-		System.out.println(vos.get(0).operatorID);
+//		LogController logController = new LogController();
+//
+//		LogBLService ctr = ControllerFactoryImpl.getInstance()
+//				.getLogController();
+//		ArrayList<LogVO> vos = ctr.show(CurrentTime.getDate(),
+//				CurrentTime.getDate(), LogType.ADD_A_GOODS);
+//		System.out.println(vos.get(0).operatorID);
 	}
 
 }
