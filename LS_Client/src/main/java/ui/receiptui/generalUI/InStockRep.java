@@ -53,7 +53,7 @@ public class InStockRep extends javax.swing.JPanel {
     	/**
     	 * 设置窗体大小
     	 */
-    	this.setSize(800, 430);
+    	this.setSize(500, 330);
     	
     	this.setVisible(true);
 
@@ -78,6 +78,9 @@ public class InStockRep extends javax.swing.JPanel {
         checkAllRepsButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        
+        
+        
 
         dateText.setEditable(false);
 
