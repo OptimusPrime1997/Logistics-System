@@ -10,7 +10,6 @@ import java.util.Vector;
 
 import VO.GoodsVO;
 import util.enumData.ResultMessage;
-import Exception.AddMoneyInBankException;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 
@@ -74,6 +73,6 @@ public interface CashRepblService extends ReceiptblService{
 	 * @throws ClassNotFoundException 
 	 * @throws FileNotFoundException 
 	 */
-	public void addMoneyInBankAccount(String bankAccount, double money) throws AddMoneyInBankException, FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException;
+	public void addMoneyInBankAccount(String bankAccount, double money) throws FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException;
 	
 }

@@ -1,5 +1,6 @@
 package bl.receiptbl.PayRepbl;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
@@ -7,6 +8,9 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.ComboBoxModel;
+
+import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import VO.ReceiptVO.PayRepBonusRepVO;
 import VO.ReceiptVO.PayRepCourierSalaryRepVO;
@@ -19,6 +23,7 @@ import VO.ReceiptVO.PayRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.PayRepblService;
+import util.enumData.PayThing;
 
 public class PayRepController extends ReceiptblController implements PayRepblService{
 	private PayRepbl payRepbl = new PayRepbl();
@@ -174,6 +179,33 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 	public Vector<Object> initStaffTable(PayRepVO payRepVO) {
 		// TODO Auto-generated method stub
 		return staffbl.initStaffTable(payRepVO);
+	}
+
+	@Override
+	public PayThing getPayThing(String type) {
+		// TODO Auto-generated method stub
+		return payRepbl.getPayThing(type);
+	}
+
+	@Override
+	public String getReceiverName(String num) 
+			throws RemoteException, FileNotFoundException, ClassNotFoundException, NameNotFoundException,
+			NumNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		return bonusbl.getReceiverName(num);
+	}
+
+	@Override
+	public Vector<String> showBankAccount() throws ClassNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		return payRepbl.showBankAccount();
+	}
+
+	@Override
+	public void minusMoneyInBankAccount(String bankAccount, double money) 
+			throws FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		payRepbl.minusMoneyInBankAccount(bankAccount, money);
 	}
 
 }

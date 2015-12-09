@@ -12,7 +12,6 @@ import VO.ReceiptVO.CashRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.CashRepblService;
-import Exception.AddMoneyInBankException;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 
@@ -88,7 +87,7 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	}
 
 	@Override
-	public void addMoneyInBankAccount(String bankAccount, double money) throws AddMoneyInBankException, FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException {
+	public void addMoneyInBankAccount(String bankAccount, double money) throws FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		cashRepbl.addMoneyInBankAccount(bankAccount, money);
 	}

@@ -1,11 +1,17 @@
 package bl.receiptbl.PayRepbl;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.NameNotFoundException;
+import Exception.NumNotFoundException;
 import VO.ReceiptVO.PayBonusVO;
 import VO.ReceiptVO.PayRepBonusRepVO;
 import VO.ReceiptVO.PayRepVO;
+import bl.receiptbl.CashRepbl.CashRepbl;
 
 public class Bonusbl{
 	
@@ -29,6 +35,13 @@ public class Bonusbl{
 			data.add(arr);
 		}
 		return data;
+	}
+	
+	public String getReceiverName(String num) 
+			throws RemoteException, FileNotFoundException, ClassNotFoundException, NameNotFoundException, 
+			NumNotFoundException, IOException{
+		CashRepbl cashRepbl = new CashRepbl();
+		return cashRepbl.getCourierName(num);
 	}
 	
 }

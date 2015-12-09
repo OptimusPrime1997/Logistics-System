@@ -11,8 +11,8 @@ public class BusinessFormServer {
 public static void main(String[] args) {
 	try {
 		BusinessFormDataService data=new BusinessFormData();
-		LocateRegistry.createRegistry(1099);
-		Naming.rebind("rmi://localhost:1099/business", data);
+		LocateRegistry.createRegistry(1423);
+		Naming.rebind("rmi://localhost:1423/business", data);
 	} catch (Exception e) {
 		
 	}

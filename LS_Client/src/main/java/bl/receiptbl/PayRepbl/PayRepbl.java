@@ -1,23 +1,30 @@
 package bl.receiptbl.PayRepbl;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.ComboBoxModel;
+
 import Exception.NumNotFoundException;
 import PO.ReceiptPO.PayRepPO;
 import PO.ReceiptPO.ReceiptPO;
+import VO.ManagementVO.BankAccountVO;
 import VO.ReceiptVO.PayRepVO;
 import VO.ReceiptVO.PayVO;
 import VO.ReceiptVO.ReceiptVO;
+import bl.managementbl.bankaccountbl.BankAccountbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.receiptbl.Receiptbl.ReceiptblController;
+import util.enumData.PayThing;
 import util.enumData.Rep;
 
 public class PayRepbl extends ReceiptblController{
 	
 	private Receiptbl receiptbl = new Receiptbl();
+	private BankAccountbl bankAccountbl = new BankAccountbl();
 	
 	public String createNum(String date) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
@@ -69,6 +76,29 @@ public class PayRepbl extends ReceiptblController{
 		if(receiptPOs==null)
 			return null;
 		return PayRepVO.toArrayVO(receiptPOs);
+	}
+
+	public PayThing getPayThing(String type) {
+		// TODO Auto-generated method stub
+		type = type.split("(")[0];
+		return PayThing.getPayThing(type);
+	}
+
+	public Vector<String> showBankAccount() throws ClassNotFoundException, IOException {
+		ArrayList<BankAccountVO> bankAccountVOs = bankAccountbl.show();
+		Vector<String> bankAccounts = new Vector<String>();
+		for(int i = 0;i<bankAccountVOs.size();i++){
+			BankAccountVO bankAccountVO = bankAccountVOs.get(i);
+			bankAccounts.add(bankAccountVO.bankAccountNum);
+		}
+		return bankAccounts;
+	}
+	
+	public void minusMoneyInBankAccount (String bankAccount, double money) 
+			throws FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException{
+		BankAccountVO bankAccountVO = bankAccountbl.findByBankAccountNum(bankAccount);
+		bankAccountVO.balance -= money;
+		bankAccountbl.update(bankAccountVO);
 	}
 	
 }

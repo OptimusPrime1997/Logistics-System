@@ -15,8 +15,6 @@ public class ExceptionPrint {
 				return "已存在";
 			case("GoodsNotFound"):
 				return "不存在该订单";
-			case("AddMoneyInBankException"):
-				return "账户余额增加错误";
 			default:
 				return null;
 		}

@@ -1,9 +1,16 @@
 package blservice.receiptblservice;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.Vector;
 
+import javax.swing.ComboBoxModel;
+
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
+
+import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import VO.ReceiptVO.PayRepBonusRepVO;
 import VO.ReceiptVO.PayRepCourierSalaryRepVO;
@@ -13,6 +20,7 @@ import VO.ReceiptVO.PayRepRefundRepVO;
 import VO.ReceiptVO.PayRepRentRepVO;
 import VO.ReceiptVO.PayRepStaffSalaryRepVO;
 import VO.ReceiptVO.PayRepVO;
+import util.enumData.PayThing;
 
 public interface PayRepblService extends ReceiptblService{
 	
@@ -45,5 +53,13 @@ public interface PayRepblService extends ReceiptblService{
 	public void submitStaff(PayRepVO payRepVO, PayRepStaffSalaryRepVO payRepStaffSalaryRepVO);
 	
 	public Vector<Object> initStaffTable(PayRepVO payRepVO);
+	
+	public PayThing getPayThing(String type);
+	
+	public String getReceiverName(String num) throws RemoteException, FileNotFoundException, ClassNotFoundException, NameNotFoundException, NumNotFoundException, IOException;
+
+	public Vector<String> showBankAccount() throws ClassNotFoundException, IOException;
+	
+	public void minusMoneyInBankAccount (String bankAccount, double money) throws FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException;
 	
 }

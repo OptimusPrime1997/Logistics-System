@@ -63,13 +63,11 @@ public class CashRepbl {
 		return new CashRepVO((CashRepPO)receiptPO);
 	}
 	
-	public void addMoneyInBankAccount(String bankAccount, double money) throws AddMoneyInBankException, 
-	FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException {
+	public void addMoneyInBankAccount(String bankAccount, double money) 
+			throws FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException {
 		BankAccountVO bankAccountVO = bankAccountbl.findByBankAccountNum(bankAccount);
-		double preBalance = bankAccountVO.balance;
 		bankAccountVO.balance += money;
-		if(preBalance+money!=bankAccountVO.balance)
-			throw new AddMoneyInBankException();
+		bankAccountbl.update(bankAccountVO);
 	}
 
 	public Vector<String> showBankAccount() throws ClassNotFoundException, IOException {
@@ -112,5 +110,5 @@ public class CashRepbl {
 			return null;
 		return CashRepVO.toArrayVO(receiptPOs);
 	}
-
+	
 }

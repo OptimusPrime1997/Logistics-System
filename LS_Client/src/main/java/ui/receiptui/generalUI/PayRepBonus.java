@@ -6,6 +6,26 @@
 
 package ui.receiptui.generalUI;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Vector;
+
+import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
+import Exception.ExceptionPrint;
+import Exception.NameNotFoundException;
+import Exception.NumNotFoundException;
+import VO.ReceiptVO.PayBonusVO;
+import VO.ReceiptVO.PayRepBonusRepVO;
+import VO.ReceiptVO.PayRepVO;
+import bl.receiptbl.PayRepbl.PayRepController;
+import blservice.receiptblservice.PayRepblService;
+import util.enumData.ResultMessage;
+
 /**
  *
  * @author apple
@@ -17,20 +37,23 @@ public class PayRepBonus extends javax.swing.JPanel {
     private javax.swing.JLabel balanceLabel;
     private javax.swing.JTextField balanceText;
     private javax.swing.JLabel bankAccountLabel;
-    private javax.swing.JComboBox bankAccountText;
+    private javax.swing.JComboBox bankAccountBox;
     private javax.swing.JButton cancelButton;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     private javax.swing.JLabel moneyLabel;
     private javax.swing.JTextField moneyText;
     private javax.swing.JButton okButton;
-    private javax.swing.JLabel receiverNameLabel;
-    private javax.swing.JTextField receiverNameText;
     private javax.swing.JLabel receiverNumLabel;
     private javax.swing.JTextField receiverNumText;
     private javax.swing.JTextField resultMsgText;
     private javax.swing.JLabel sumLabel;
     private javax.swing.JTextField sumText;
+    private PayRepblService control;
+    private DefaultTableModel model;
+    private Vector<String> columnIdentifiers;
+    private Vector<Object> dataVector;
+    private PayRepVO payRepVO;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -49,8 +72,6 @@ public class PayRepBonus extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        receiverNameLabel = new javax.swing.JLabel();
-        receiverNameText = new javax.swing.JTextField();
         receiverNumLabel = new javax.swing.JLabel();
         receiverNumText = new javax.swing.JTextField();
         moneyLabel = new javax.swing.JLabel();
@@ -59,18 +80,20 @@ public class PayRepBonus extends javax.swing.JPanel {
         okButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         sumLabel = new javax.swing.JLabel();
         sumText = new javax.swing.JTextField();
         balanceLabel = new javax.swing.JLabel();
         balanceText = new javax.swing.JTextField();
         bankAccountLabel = new javax.swing.JLabel();
-        bankAccountText = new javax.swing.JComboBox();
+        bankAccountBox = new javax.swing.JComboBox();
         resultMsgText = new javax.swing.JTextField();
+        control = new PayRepController();
+        model = new DefaultTableModel();
+        columnIdentifiers = new Vector<String>();
+        dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
-
-        receiverNameLabel.setText("收款人姓名:");
 
         receiverNumLabel.setText("收款人编号:");
 
@@ -97,24 +120,16 @@ public class PayRepBonus extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null}
-            },
-            new String [] {
-                "名字", "编号", "金额", "备注"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(jTable1);
+        columnIdentifiers.add("名字");
+        columnIdentifiers.add("编号");
+        columnIdentifiers.add("金额");
+        columnIdentifiers.add("备注");
+        columnIdentifiers.add("删除");
+        dataVector = control.initBonusTable(payRepVO);
+        model.setDataVector(dataVector, columnIdentifiers);
+        jTable.setModel(model);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(jTable);
 
         sumLabel.setText("总计:");
 
@@ -126,9 +141,58 @@ public class PayRepBonus extends javax.swing.JPanel {
 
         bankAccountLabel.setText("付款账户:");
 
-        bankAccountText.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        bankAccountBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         resultMsgText.setEditable(false);
+        
+        try {
+			bankAccountBox = new JComboBox(control.showBankAccount());
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+        
+        setColumn();
+        
+        jTable.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int row = jTable.getSelectedRow();
+				int col = jTable.getSelectedColumn();
+				if(col==4){
+					model.removeRow(row);
+					jTable.setModel(model);
+				}
+				sumText.setText(calSum());
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -136,42 +200,37 @@ public class PayRepBonus extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(resultMsgText)
             .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(moneyLabel)
+                            .addComponent(receiverNumLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(receiverNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(moneyLabel)
-                                        .addComponent(receiverNumLabel))
-                                    .addComponent(receiverNameLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(receiverNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(receiverNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(moneyText, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(33, 33, 33)
-                                        .addComponent(addButton))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(cancelButton)
-                                .addGap(58, 58, 58)
-                                .addComponent(okButton))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(moneyText, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(addButton))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addGap(49, 49, 49)
+                        .addComponent(cancelButton)
+                        .addGap(58, 58, 58)
+                        .addComponent(okButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(bankAccountLabel)
                             .addComponent(balanceLabel)
                             .addComponent(sumLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bankAccountText, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bankAccountBox, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(balanceText, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                            .addComponent(balanceText, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,10 +238,6 @@ public class PayRepBonus extends javax.swing.JPanel {
                 .addGap(19, 19, 19)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(receiverNameLabel)
-                    .addComponent(receiverNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(receiverNumLabel)
                     .addComponent(receiverNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -198,7 +253,7 @@ public class PayRepBonus extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bankAccountLabel)
-                    .addComponent(bankAccountText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bankAccountBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(balanceLabel)
@@ -211,18 +266,79 @@ public class PayRepBonus extends javax.swing.JPanel {
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void setColumn(){
+    	TableColumn column1 = jTable.getColumnModel().getColumn(0);
+        column1.setPreferredWidth(75);
+        TableColumn column2 = jTable.getColumnModel().getColumn(1);
+        column2.setPreferredWidth(115);
+        TableColumn column3 = jTable.getColumnModel().getColumn(2);
+        column3.setPreferredWidth(60);
+        TableColumn column4 = jTable.getColumnModel().getColumn(3);
+        column4.setPreferredWidth(150);
+        TableColumn column5 = jTable.getColumnModel().getColumn(4);
+        column5.setPreferredWidth(10);
+    }
+    
+    private String calSum(){
+    	double sum = 0;
+    	for(int i = 0;i < dataVector.size();i++){
+    		sum += (double)jTable.getValueAt(i, 2);
+    	}
+    	return sum+"";
+    }
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addButtonActionPerformed
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	String getterNum = receiverNumText.getText();
+    	double money = Double.parseDouble(moneyText.getText());
+		ResultMessage resultMessage = control.checkNum(getterNum, 11);
+		String resultMsg = ResultMessage.toFriendlyString(resultMessage);
+		resultMsgText.setText(resultMsg);
+		if (resultMessage == ResultMessage.ADD_SUCCESS) {
+			Vector<Object> arr = new Vector<Object>();
+			String getterName = null;
+			try {
+				getterName = control.getReceiverName(getterNum);
+			} catch (ClassNotFoundException | NameNotFoundException | NumNotFoundException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			}
+			arr.add(getterName);
+			arr.add(getterNum);
+			arr.add(money);
+			dataVector.add(arr);
+			model.setDataVector(dataVector, columnIdentifiers);
+			setColumn();
+			sumText.setText(calSum());
+		}
+    }
 
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cancelButtonActionPerformed
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_okButtonActionPerformed
+    }
 
-
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	double sum = Double.parseDouble(sumText.getText());
+    	String bankAccount = (String)bankAccountBox.getSelectedItem();
+    	try {
+			control.minusMoneyInBankAccount(bankAccount, sum);
+		} catch (ClassNotFoundException | NumNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+    	
+    	ArrayList<PayBonusVO> payBonusVOs = new ArrayList<PayBonusVO>();
+    	for(int i = 0;i < dataVector.size();i++){
+    		PayBonusVO payBonusVO = new PayBonusVO((String)jTable.getValueAt(i, 0), 
+    				(String)jTable.getValueAt(i, 1), 
+					(double)jTable.getValueAt(i, 2), 
+					(String)jTable.getValueAt(i, 3));
+    		payBonusVOs.add(payBonusVO);
+    	}
+    	PayRepBonusRepVO payRepBonusRepVO = new PayRepBonusRepVO(bankAccount, sum, payBonusVOs);
+    	control.submitBonus(payRepVO, payRepBonusRepVO);
+    }
+    
 }

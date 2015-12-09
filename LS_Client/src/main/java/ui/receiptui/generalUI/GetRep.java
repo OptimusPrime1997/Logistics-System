@@ -12,15 +12,12 @@ import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
-
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-
 import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
 import VO.ReceiptVO.ArriveVO;
 import VO.ReceiptVO.GetRepVO;
-import VO.ReceiptVO.ShipmentRepVO;
 import bl.receiptbl.GetRepbl.GetRepController;
 import blservice.receiptblservice.GetRepblService;
 import util.enumData.GoodsArrivalState;
