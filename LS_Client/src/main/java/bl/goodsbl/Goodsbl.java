@@ -90,20 +90,24 @@ public class Goodsbl {
 		 *  3位城市  3位营业厅编号     身份           序号
 		 */
 		try {
+			System.out.println("到这了吧");
 			// TODO 计算运费
-			double basicprice =ctr_const.findByCities(vo.receiverAddress.substring(0, 2)).priceConst;
-			double distance = ctr_const.findByCities(vo.senderAddress.substring(0, 2)).distanceConst;
+			String cities=vo.receiverAddress.substring(0, 2)+"-"+vo.senderAddress.substring(0, 2);
+			double basicprice =0.3;//ctr_const.findByCities(cities).priceConst;
+			double distance =30;// ctr_const.findByCities(cities).distanceConst;
 			int listNum_part=getGoodsDataService().recordListNum();
 			//补齐7位
 			String temp=String.format("%7d",listNum_part).replace(" ","0");
 			vo.listNum=vo.getCourierAccount.substring(0, 3)+temp;
+			System.out.println("这里的订单号呢   "+temp);
 			vo.moneyFare = moneyCounter(vo.expressType, vo.weight, distance,
 					basicprice);
 			vo.moneyTotal = vo.moneyFare + vo.moneyOfPackage;
 		   msg=getGoodsDataService().add(GoodsVO.toPO(vo));
 		   //已添加过该订单号
 		   if(msg.equals(ResultMessage.EXIST)) throw new ExistException();
-		} catch (ClassNotFoundException | ConstNotFoundException | IOException e) {
+		} catch (Exception e) {
+			System.out.println("多半是没找到常量");
 		}
 		return vo;
 	}
@@ -247,7 +251,7 @@ public class Goodsbl {
 	 * @param basicPrice
 	 * @return
 	 */
-	private double moneyCounter(GoodsExpressType expressType, double weight,
+	private int moneyCounter(GoodsExpressType expressType, double weight,
 			double distance, double basicPrice) {
 		double fare = 0;
 		// calculate the unit price of different types
@@ -257,7 +261,9 @@ public class Goodsbl {
 			basicPrice = basicPrice * expressRates[2] / expressRates[1];
 		// calculate the fare
 		fare = basicPrice * distance * weight;
-		return fare;
+		System.out.println(basicPrice+"  "+distance+"  "+weight);
+		System.out.println(fare);
+		return (int)fare;
 	}
 
 	/**

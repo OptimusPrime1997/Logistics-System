@@ -372,7 +372,9 @@ public class Order extends javax.swing.JPanel {
     			msg_weight=InputCheck.checkIfPositiveFloat(weightText.getText()),
     			msg_volume=InputCheck.checkIfPositiveFloat(volumeText.getText()),
                 msg_senderAds=InputCheck.ifWritten(senderAddressText.getText()),
-                msg_receiverAds=InputCheck.ifWritten(receiverAddressText.getText());
+                msg_receiverAds=InputCheck.ifWritten(receiverAddressText.getText()),
+    	        msg_receiver=InputCheck.ifWritten(receiverNameText.getText()),
+    	        msg_sender=InputCheck.ifWritten(receiverNameText.getText());
                 
     	if(msg_itemNum==ResultMessage.VALID&&
     			msg_receiverPhone==ResultMessage.VALID&&
@@ -380,7 +382,9 @@ public class Order extends javax.swing.JPanel {
     			msg_volume==ResultMessage.VALID&&
     			msg_weight==ResultMessage.VALID&&
     			msg_receiverAds==ResultMessage.VALID&&
-    			msg_senderAds==ResultMessage.VALID){
+    			msg_senderAds==ResultMessage.VALID&&
+    			msg_receiver==ResultMessage.VALID&&
+    			msg_sender==ResultMessage.VALID){
     		this.numOfGoods=Integer.parseInt(itemNumText.getText());
         	this.senderName=senderNameText.getText();
         	this.senderAddress=senderAddressText.getText();
@@ -407,6 +411,7 @@ public class Order extends javax.swing.JPanel {
 				} catch (ExistException e1) {
 				}
 			}
+			System.out.println("订单号 "+vo.listNum);
 			numText.setText(vo.listNum);
 			sumText.setText(vo.moneyTotal+"");
 			
