@@ -208,4 +208,11 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 		payRepbl.minusMoneyInBankAccount(bankAccount, money);
 	}
 
+	@Override
+	public double getFreightMoney(String num) 
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
+		// TODO Auto-generated method stub
+		return freightbl.getFreightMoney(num);
+	}
+
 }

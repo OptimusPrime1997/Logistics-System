@@ -62,4 +62,5 @@ public interface PayRepblService extends ReceiptblService{
 	
 	public void minusMoneyInBankAccount (String bankAccount, double money) throws FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException;
 	
+	public double getFreightMoney(String num) throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException;
 }
