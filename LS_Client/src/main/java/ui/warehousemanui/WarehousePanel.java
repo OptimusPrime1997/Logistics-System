@@ -335,11 +335,22 @@ public class WarehousePanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed    	
-    	InStockRep in = new InStockRep(this);
-    	this.getContentPane().removeAll();
-    	this.getContentPane().add(in);
-    	this.getContentPane().validate();
-    	this.getContentPane().repaint();
+    	JFrame frame = new JFrame();
+    	
+    	frame.setResizable(false);
+    	Toolkit tk = Toolkit.getDefaultToolkit();
+    	Dimension screensize = tk.getScreenSize();
+    	int screenh = screensize.height;
+    	int screenw = screensize.width;
+    	frame.setSize(500, 600);
+    	frame.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);	
+    	frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    	
+		InStockRep in = new InStockRep(frame);
+    	frame.setContentPane(in);
+    	frame.setVisible(true);
+    	
+    	this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

@@ -13,13 +13,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
-
-import VO.LogVO;
-import bl.controllerfactorybl.ControllerFactoryImpl;
-import bl.logbl.Logbl;
-import blservice.logblservice.LogBLService;
-import blservice.loginblservice.LoginBLService;
-import blservice.receiptblservice.ShipmentRepblServce;
 import ui.receiptui.generalUI.CashRep;
 import ui.receiptui.generalUI.DeliverRep;
 import ui.receiptui.generalUI.GetRep;
@@ -30,17 +23,13 @@ import util.CurrentTime;
 import util.enumData.City;
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
+import VO.LogVO;
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.logblservice.LogBLService;
+import blservice.loginblservice.LoginBLService;
+import blservice.receiptblservice.ShipmentRepblServce;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author Administrator
- */
 public class businessOfficer_main extends JPanel {
 	 /**
      * 初始化界面
@@ -88,9 +77,9 @@ public class businessOfficer_main extends JPanel {
     	num_label = new JLabel();
     	num_label.setFont(new java.awt.Font("宋体", 1, 48));
     	num_label.setForeground(new java.awt.Color(240, 240, 240));
-    	num_label.setText("0")
-//    	ctr_log
-    	;//TODO 数字 获取
+    	//TODO 数字 获取
+    	System.out.println("数量  "+ctr_ship.getSumByBusiOfficerNum(officeNum, CurrentTime.getDate()));
+    	num_label.setText(ctr_ship.getSumByBusiOfficerNum(officeNum, CurrentTime.getDate())+"");
          initNumLayout(num_panelLayout);
 	}
 

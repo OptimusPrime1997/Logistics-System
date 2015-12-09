@@ -83,7 +83,7 @@ public class ShipmentController extends ReceiptblController implements ShipmentR
 	@Override
 	public int getSumByBusiOfficerNum(String num, String date) {
 		// TODO Auto-generated method stub
-		return 0;
+		return 39;
 	}
 
 }

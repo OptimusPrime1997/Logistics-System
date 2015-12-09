@@ -44,7 +44,7 @@ public class Institutionbl {
 	 */
 	public ResultMessage insert(InstitutionVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		manageVOPO.addLog(LogType.INSTITUTION_MANAGEMENT);
+		manageVOPO.addLog(LogType.PERSONNEL_INSTITUTION_MANAGEMENT);
 		if (institutionDataService != null) {
 			try {
 				ArrayList<InstitutionPO> pos = institutionDataService.show();
@@ -77,7 +77,7 @@ public class Institutionbl {
 
 	public ResultMessage update(InstitutionVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		manageVOPO.addLog(LogType.INSTITUTION_MANAGEMENT);
+		manageVOPO.addLog(LogType.PERSONNEL_INSTITUTION_MANAGEMENT);
 		if (institutionDataService != null) {
 			if (check(vo) == ResultMessage.VALID) {
 				InstitutionPO po = manageVOPO.voToPO(vo);
@@ -106,7 +106,7 @@ public class Institutionbl {
 
 	public ResultMessage delete(InstitutionVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
-		manageVOPO.addLog(LogType.INSTITUTION_MANAGEMENT);
+		manageVOPO.addLog(LogType.PERSONNEL_INSTITUTION_MANAGEMENT);
 		if (institutionDataService != null) {
 			InstitutionPO po = manageVOPO.voToPO(VO);
 			try {
@@ -132,7 +132,7 @@ public class Institutionbl {
 	public ArrayList<InstitutionVO> show() throws ClassNotFoundException,
 			IOException {
 		// TODO Auto-generated method stub
-		manageVOPO.addLog(LogType.INSTITUTION_MANAGEMENT);
+		manageVOPO.addLog(LogType.PERSONNEL_INSTITUTION_MANAGEMENT);
 		if (institutionDataService != null) {
 			ArrayList<InstitutionPO> pos = institutionDataService.show();
 			if (pos != null) {
@@ -154,7 +154,7 @@ public class Institutionbl {
 			throws FileNotFoundException, ClassNotFoundException,
 			InstitutionNotFoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
-		manageVOPO.addLog(LogType.INSTITUTION_MANAGEMENT);
+		manageVOPO.addLog(LogType.PERSONNEL_INSTITUTION_MANAGEMENT);
 		if (institutionDataService != null) {
 			InstitutionPO findPO = institutionDataService
 					.findByInstitutionNum(institutionNum);
@@ -169,7 +169,7 @@ public class Institutionbl {
 			throws FileNotFoundException, ClassNotFoundException,
 			InstitutionNotFoundException, IOException, NameNotFoundException {
 		// TODO Auto-generated method stub
-		manageVOPO.addLog(LogType.INSTITUTION_MANAGEMENT);
+		manageVOPO.addLog(LogType.PERSONNEL_INSTITUTION_MANAGEMENT);
 		if (institutionDataService != null) {
 			InstitutionPO findPO = institutionDataService
 					.findByinstitutionName(institutionName);

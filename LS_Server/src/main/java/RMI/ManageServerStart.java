@@ -17,7 +17,7 @@ public class ManageServerStart {
 		return address.getHostAddress();
 	}
 
-	public static void main(String[] args) {
+	public static void launch(String[] args) {
 		int port = ManageDataService.port;
 		String ip = "";
 		try {

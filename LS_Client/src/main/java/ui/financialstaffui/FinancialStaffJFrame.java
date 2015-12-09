@@ -522,7 +522,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		logTypejLabel.setText("操作类型：");
 
 		logTypejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "所有操作", "决策制定", "审批单据", "用户账户管理", "银行账户管理",
+				new String[] { "所有操作", "薪水制定","常量制定", "审批单据", "用户账户管理", "银行账户管理",
 						"人员机构管理" ,"司机管理","车辆管理","创建订单","权限管理",
 						"查看报表","派件","签收订单"}));
 		logTypejComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -1907,10 +1907,10 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	}// GEN-LAST:event_viewManageFormMouseReleased
 
 	private void findLogjButtonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_findLogjButtonMouseReleased
-		String startT=logSYearjComboBox.getSelectedItem().toString()+"/"+logSMonthjComboBox.getSelectedItem().toString()
-				+"/"+logSDatejComboBox.getSelectedItem().toString();
-		String endT=logEYearjComboBox.getSelectedItem().toString()+"/"+logEMonthjComboBox.getSelectedItem().toString()
-				+"/"+logEDatejComboBox.getSelectedItem().toString();
+		String startT=logSYearjComboBox.getSelectedItem().toString()+"-"+logSMonthjComboBox.getSelectedItem().toString()
+				+"-"+logSDatejComboBox.getSelectedItem().toString();
+		String endT=logEYearjComboBox.getSelectedItem().toString()+"-"+logEMonthjComboBox.getSelectedItem().toString()
+				+"-"+logEDatejComboBox.getSelectedItem().toString();
 		
 		String type=logTypejComboBox.getSelectedItem().toString();
 		LogType logType=StrToLogType.strToLogTye(type);
@@ -1927,7 +1927,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	 * @param args
 	 *            the command line arguments
 	 */
-	public static void main(String args[]) {
+	public static void launch(String args[]) {
 		/* Set the Nimbus look and feel */
 		// <editor-fold defaultstate="collapsed"
 		// desc=" Look and feel setting code (optional) ">

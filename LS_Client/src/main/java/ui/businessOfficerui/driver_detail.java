@@ -37,7 +37,6 @@ public class driver_detail extends JFrame {
 
     private void name_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name_textActionPerformed
     }
-    
     /**
      * Creates new form driver_detail
      */
@@ -99,10 +98,9 @@ public class driver_detail extends JFrame {
                                       .addComponent(phoneNum_text, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
                                       .addComponent(driverNum_text, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
                                       .addGroup(layout.createSequentialGroup()
-                                          .addComponent(validTime_text, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(birthday_text, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
                                           .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                          .addComponent(jComboBox6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                      .addGroup(layout.createSequentialGroup()
+)                                      .addGroup(layout.createSequentialGroup()
                                           .addComponent(year_comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                           .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                           .addComponent(jLabel6)
@@ -172,9 +170,8 @@ public class driver_detail extends JFrame {
                   .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                       .addComponent(jLabel5)
                       .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                          .addComponent(validTime_text, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                          .addComponent(jComboBox6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                  .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                          .addComponent(birthday_text, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+))                  .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                   .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                       .addComponent(cancel_btn)
                       .addComponent(ok_btn))
@@ -187,13 +184,13 @@ public class driver_detail extends JFrame {
 	private void initTxt() {
 		IDnum_text = new JTextField();
 		phoneNum_text = new JTextField();
-		validTime_text = new JTextField();
+		birthday_text = new JTextField();
 		driverNum_text = new JTextField();
 		name_text = new JTextField();
 
 		IDnum_text.setText(IDnum);
 		phoneNum_text.setText(phone);
-		validTime_text.setText("3");
+		birthday_text.setText("1969-05-26");
 		driverNum_text.setText(driverCode);
 		name_text.setText(driverName);
 		
@@ -202,7 +199,7 @@ public class driver_detail extends JFrame {
 				IDnum_textActionPerformed(evt);
 			}
 		});
-		validTime_text.addActionListener(new java.awt.event.ActionListener() {
+		birthday_text.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				validTime_textActionPerformed(evt);
 			}
@@ -219,7 +216,6 @@ public class driver_detail extends JFrame {
 		year_comboBox = new JComboBox<String>();
 		month_comboBox = new JComboBox<String>();
         day_comboBox = new JComboBox<String>();
-        jComboBox6 = new JComboBox<String>();        
 		sex_comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {
 				"男", "女" }));
 		year_comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {
@@ -242,9 +238,6 @@ public class driver_detail extends JFrame {
 				day_comboBoxActionPerformed(evt);
 			}
 		});
-		jComboBox6.setModel(new DefaultComboBoxModel<String>(new String[] {
-				"年", "月", "天" }));
-
 }
 	private void initLabel() {
 		jLabel1 = new JLabel();
@@ -265,10 +258,10 @@ public class driver_detail extends JFrame {
 		jLabel4.setFont(new java.awt.Font("宋体", 1, 18)); // NOI18N
 		jLabel4.setForeground(new java.awt.Color(0, 102, 255));
 		jLabel4.setText("司机详细信息");
-		jLabel5.setText("行驶证期限");
+		jLabel5.setText("生日");
 		jLabel6.setText("年");
 		jLabel7.setText("身份证号");
-		jLabel8.setText("生日");
+		jLabel8.setText("行驶证期限");
 		jLabel9.setText("手机号");
 		jLabela.setText("月");
 		jLabelb.setText("日");
@@ -276,9 +269,9 @@ public class driver_detail extends JFrame {
 }
 	
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JTextField IDnum_text,driverNum_text,name_text,phoneNum_text,validTime_text;
+    private JTextField IDnum_text,driverNum_text,name_text,phoneNum_text,birthday_text;
     private JButton cancel_btn;
-    private JComboBox<String> day_comboBox,jComboBox6,month_comboBox,
+    private JComboBox<String> day_comboBox,month_comboBox,
     sex_comboBox,year_comboBox;
     private JButton delete_btn,ok_btn;
     private JLabel jLabel1,jLabel2,jLabel3,jLabel4,

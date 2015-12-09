@@ -48,7 +48,6 @@ public class driver_add extends JFrame {
     	year_comboBox = new JComboBox<String>();
 		sex_comboBox = new JComboBox<String>();
 		month_comboBox = new JComboBox<String>();
-		jComboBox6 = new JComboBox<String>();
 		day_comboBox = new JComboBox<String>();
 		year_comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {
 				"1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967",
@@ -67,8 +66,6 @@ public class driver_add extends JFrame {
 				"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
 				"13", "14", "15", "16", "17", "18", "19", "20", "21", "22",
 				"23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-		jComboBox6.setModel(new DefaultComboBoxModel<String>(new String[] {
-				"年", "月", "天" }));
 		day_comboBox.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				day_comboBoxActionPerformed(evt);
@@ -98,7 +95,7 @@ public class driver_add extends JFrame {
         name_text = new JTextField();
         IDnum_text = new JTextField();
         phoneNum_text = new JTextField();        
-        validTime_text = new JTextField();          
+        birthday_text = new JTextField();          
         driverNum_text.setEditable(false);
 	}
 	private void initLayout(GroupLayout layout1) {
@@ -119,9 +116,9 @@ public class driver_add extends JFrame {
 	                            .addGroup(GroupLayout.Alignment.LEADING, layout1.createSequentialGroup()
 	                                .addComponent(jLabel0)
 	                                .addGap(18, 18, 18)
-	                                .addComponent(validTime_text, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+	                                .addComponent(birthday_text, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
 	                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-	                                .addComponent(jComboBox6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+	                                )
 	                            .addGroup(layout1.createParallelGroup(GroupLayout.Alignment.LEADING)
 	                                .addGroup(layout1.createSequentialGroup()
 	                                    .addGroup(layout1.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -196,8 +193,8 @@ public class driver_add extends JFrame {
 	                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
 	                .addGroup(layout1.createParallelGroup(GroupLayout.Alignment.BASELINE)
 	                    .addComponent(jLabel0)
-	                    .addComponent(validTime_text, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-	                    .addComponent(jComboBox6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+	                    .addComponent(birthday_text, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	                   )
 	                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 	                .addGroup(layout1.createParallelGroup(GroupLayout.Alignment.BASELINE)
 	                    .addComponent(cancel_btn)
@@ -230,7 +227,7 @@ public class driver_add extends JFrame {
         jLabel9 = new JLabel();
         jLabela = new JLabel();
         
-        jLabel0.setText("行驶证期限");
+        jLabel0.setText("生日");
         jLabel1.setText("司机编号");
         jLabel2.setText("姓名");
         jLabel3.setText("性别");        
@@ -240,7 +237,7 @@ public class driver_add extends JFrame {
         jLabel5.setText("日");
         jLabel6.setText("月");
         jLabel7.setText("身份证号");
-        jLabel8.setText("生日");
+        jLabel8.setText("行驶证期限");
         jLabel9.setText("手机号");
         jLabela.setText("年");
         
@@ -248,10 +245,9 @@ public class driver_add extends JFrame {
 	
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JTextField IDnum_text,driverNum_text,name_text,
-                       phoneNum_text,validTime_text;
+                       phoneNum_text,birthday_text;
     private JButton cancel_btn;
-    private JComboBox<String> year_comboBox,month_comboBox,day_comboBox,
-                              jComboBox6,sex_comboBox;
+    private JComboBox<String> year_comboBox,month_comboBox,day_comboBox,sex_comboBox;
     private JLabel jLabel0,jLabel1,jLabel2,jLabel3,jLabel4,jLabel5,
                    jLabel6,jLabel7,jLabel8,jLabel9,jLabela;
     private JPanel panel;

@@ -12,6 +12,7 @@ import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.receiptbl.ShippingRepbl.ShippingRepbl;
 import bl.receiptbl.TransferRepbl.TransferRepbl;
+import bl.stockbl.StockController;
 import ui.receiptui.ReceiptDetailUI.Shipping;
 import util.enumData.Rep;
 
@@ -20,6 +21,7 @@ public class OutStockRepbl{
 	private Receiptbl receiptbl = new Receiptbl();
 	private ShippingRepbl shippingRepbl = new ShippingRepbl();
 	private TransferRepbl transferRepbl = new TransferRepbl();
+	private StockController stockController = new StockController();
 
 	public String createNum(String date) throws ClassNotFoundException, NotBoundException, IOException {
 		return receiptbl.createNum(date, Rep.OutStockRep);
@@ -28,6 +30,7 @@ public class OutStockRepbl{
 	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		receiptbl.submit(OutStockRepVO.toPO((OutStockRepVO)vo), Rep.OutStockRep);
+		stockController.update((OutStockRepVO)vo);
 	}
 
 	public ArrayList<OutStockRepVO> getRepByDate(String date) throws ClassNotFoundException, 

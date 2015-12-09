@@ -25,7 +25,9 @@ import util.enumData.ResultMessage;
  * @author Administrator
  */
 public class car_management extends javax.swing.JPanel {
-	 
+	 public static void main(String[] args) {
+		new car_management(new businessOfficer_main());
+	}
     public car_management(businessOfficer_main panel_parent) {
     	ctr_login=ControllerFactoryImpl.getInstance().getLoginController();
     	this.panel_parent=panel_parent;
