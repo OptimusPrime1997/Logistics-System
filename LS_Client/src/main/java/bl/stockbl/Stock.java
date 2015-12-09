@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-
 import util.CurrentCity;
 import util.CurrentTime;
 import util.enumData.City;
@@ -135,7 +134,24 @@ public class Stock {
 	
 	}
 
-	
+	/**
+	 * @param block
+	 * @return
+	 * @throws IOException 
+	 * @throws NotBoundException 
+	 * @throws ClassNotFoundException 
+	 */
+	public int checkPresentStockQuantity(int block) throws ClassNotFoundException, NotBoundException, IOException {
+		int result = 0;
+		ArrayList<StockVO> list = show();
+		
+		for (StockVO vo : list) {
+			if (vo.block == block) {
+				++result;
+			}
+		}
+		return result;
+	}
 	
 	/**
 	 * 得到本仓库当前所有有完整信息的库存
@@ -245,4 +261,5 @@ public class Stock {
 			e.printStackTrace();
 		}
 	}
+	
 }

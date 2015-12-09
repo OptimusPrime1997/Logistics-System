@@ -171,7 +171,7 @@ public class Vehiclebl {
 	public ResultMessage check(VehicleVO vo) {
 		if (InputCheck.checkInputNum(vo.vehicleNum, 9) == ResultMessage.VALID
 				&& InputCheck.checkInputDate(vo.startTime) == ResultMessage.VALID
-				&& vo.licenseNum.length() == 6) {
+				&& vo.licenseNum.length() == 7) {
 			return ResultMessage.VALID;
 		} else {
 			return ResultMessage.WRONG_DATA;

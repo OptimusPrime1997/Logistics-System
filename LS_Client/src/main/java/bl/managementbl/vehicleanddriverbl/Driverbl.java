@@ -8,6 +8,7 @@ import java.util.Iterator;
 
 import dataservice.managementdataservice.managedataservice.ManageDataService;
 import dataservice.managementdataservice.vehicleanddriverdataservice.DriverDataService;
+import Exception.ExistException;
 import Exception.NumNotFoundException;
 import PO.DriverPO;
 import VO.ManagementVO.DriverVO;
@@ -36,7 +37,7 @@ public class Driverbl {
 		manageVOPO = ManageVOPO.getInstance();
 	}
 
-	public ResultMessage insertDriver(DriverVO vo) throws RemoteException {
+	public String insertDriver(DriverVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DRIVER_MANAGEMENT);
 		if (driverDataService != null) {
@@ -44,12 +45,15 @@ public class Driverbl {
 				try {
 					ArrayList<DriverPO> pos = driverDataService.showDriver();
 					if (pos != null) {
+						DriverPO po=null;
 						for (Iterator<DriverPO> t = pos.iterator(); t.hasNext();) {
-							if (t.next().getDriverNum().equals(vo.driverNum)) {
-								return ResultMessage.OVERRIDE_DATA;
+							po=t.next();
+							if (po.getId().equals(vo.id)) {
+								throw new ExistException();
 							}
 						}
 					}
+//					String vehicleNum=
 					ResultMessage rmsg = driverDataService
 							.insertDriver(manageVOPO.voToPO(vo));
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);

@@ -43,7 +43,6 @@ public class businessOfficer_main extends JPanel {
     public businessOfficer_main() {
     	ctr_login=ControllerFactoryImpl.getInstance().getLoginController();
     	initComponents();
-    	
     	this.frame=new MyFrame(this);    	   	
               
     }
