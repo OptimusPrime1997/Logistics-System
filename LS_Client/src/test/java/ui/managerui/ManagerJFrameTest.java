@@ -8,7 +8,7 @@ public class ManagerJFrameTest {
 
 	@Test
 	public void test() {
-		ManagerJFrame1 managerJFrame=new ManagerJFrame1();
+		ManagerJFrame managerJFrame=new ManagerJFrame();
 		managerJFrame.setVisible(true);
 		assertEquals(0, 0);
 	}

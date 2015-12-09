@@ -18,7 +18,7 @@ import javax.swing.WindowConstants;
 import ui.businessOfficerui.businessOfficer_main;
 import ui.courierui.courier_main;
 import ui.financialstaffui.FinancialStaffJFrame;
-import ui.managerui.ManagerJFrame1;
+import ui.managerui.ManagerJFrame;
 import ui.transferCtrOfficerui.transferCtrOfficer_main;
 import ui.warehousemanui.WarehousePanel;
 import util.InputCheck;
@@ -200,7 +200,7 @@ public class MainFrame extends JFrame {
         		  int job=Integer.parseInt(account.substring(6, 8));
                   this.setVisible(false);              
                   switch (job) {
-         		case 1:new ManagerJFrame1();
+         		case 1:new ManagerJFrame();
          			break;
          		case 2:new FinancialStaffJFrame();
          			break;

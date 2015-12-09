@@ -1907,10 +1907,10 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	}// GEN-LAST:event_viewManageFormMouseReleased
 
 	private void findLogjButtonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_findLogjButtonMouseReleased
-		String startT=logSYearjComboBox.getSelectedItem().toString()+"/"+logSMonthjComboBox.getSelectedItem().toString()
-				+"/"+logSDatejComboBox.getSelectedItem().toString();
-		String endT=logEYearjComboBox.getSelectedItem().toString()+"/"+logEMonthjComboBox.getSelectedItem().toString()
-				+"/"+logEDatejComboBox.getSelectedItem().toString();
+		String startT=logSYearjComboBox.getSelectedItem().toString()+"-"+logSMonthjComboBox.getSelectedItem().toString()
+				+"-"+logSDatejComboBox.getSelectedItem().toString();
+		String endT=logEYearjComboBox.getSelectedItem().toString()+"-"+logEMonthjComboBox.getSelectedItem().toString()
+				+"-"+logEDatejComboBox.getSelectedItem().toString();
 		
 		String type=logTypejComboBox.getSelectedItem().toString();
 		LogType logType=StrToLogType.strToLogTye(type);
@@ -1927,7 +1927,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	 * @param args
 	 *            the command line arguments
 	 */
-	public static void main(String args[]) {
+	public static void launch(String args[]) {
 		/* Set the Nimbus look and feel */
 		// <editor-fold defaultstate="collapsed"
 		// desc=" Look and feel setting code (optional) ">

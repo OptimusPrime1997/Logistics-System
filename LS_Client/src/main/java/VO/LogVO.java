@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import util.enumData.LogType;
 import PO.LogPO;
-public class LogVO {
+public class LogVO implements Comparable<LogVO>{
 	public LogType operationName;
 	public String operatorID;
 	public String time;
@@ -34,7 +34,11 @@ public class LogVO {
 		for(LogVO vo:vos) pos.add(toPO(vo));
 		return pos;
 	}
-	
+	@Override
+	public int compareTo(LogVO o) {
+		// TODO Auto-generated method stub
+		return time.compareTo(o.time);
+	}
 	
 	
 }
