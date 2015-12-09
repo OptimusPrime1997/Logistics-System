@@ -7,9 +7,14 @@
 package ui.receiptui.generalUI;
 
 import java.awt.Frame;
+import java.io.IOException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.loginbl.LoginblController;
+import bl.receiptbl.OutStockRepbl.OutStockRepController;
+import blservice.receiptblservice.OutStockRepblService;
 import ui.warehousemanui.WarehousePanel;
 import util.CurrentCity;
 import util.CurrentTime;
@@ -20,7 +25,7 @@ import util.enumData.City;
  * @author apple
  */
 public class OutStockRep extends javax.swing.JPanel {
-
+	OutStockRepblService o = ControllerFactoryImpl.getInstance().getOutStockRepblService();
     
     /**
      * Creates new form OutStockRep
@@ -29,6 +34,7 @@ public class OutStockRep extends javax.swing.JPanel {
         initComponents();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,16 +94,32 @@ public class OutStockRep extends javax.swing.JPanel {
 
          numText.setEditable(false);
          LoginblController login = new LoginblController();
-         String repNum;
+      
  		try {
 			 String s = login.getCurrentOptorId();
-			 s.substring(0, 3);
+			 //前三位+9
+			 repNum = s.substring(0, 3)+9;
+			 //中转中心编号
+			 String tranString = "000";
+			 repNum += tranString;
+			 //8位日期
 			 String date = CurrentTime.getDate();
-			 date.replaceAll("\", "");
+			 String tempdate = date.replaceAll("-", "");
+			 repNum += tempdate;
+			 //5位顺序编号
+			 String number = o.createNum(date);
+			 repNum += number;
 		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		} 
  		
+ 		numText.setText(repNum);
  		 
          numText.addActionListener(new java.awt.event.ActionListener() {
              public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,5 +322,6 @@ public class OutStockRep extends javax.swing.JPanel {
      private javax.swing.JTextField resultMsgText;
      private javax.swing.JTextField shipForm;
      private javax.swing.JLabel shipFormLabel;
+     private String repNum;
      // End of variables declaration//GEN-END:variables
  }
