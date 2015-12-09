@@ -71,7 +71,7 @@ public enum LogType {
 	 */
 	CHECK_BANKACOUNT,
 	/**
-	 * 人员管理
+	 * 人员机构管理
 	 */
 	PERSONNEL_INSTITUTION_MANAGEMENT,
 	/**

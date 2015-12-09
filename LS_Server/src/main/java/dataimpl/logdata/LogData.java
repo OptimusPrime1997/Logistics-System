@@ -38,6 +38,13 @@ public class LogData extends UnicastRemoteObject implements LogDataService{
 		LogPO temp;
 		try {
 			all=helper.getAll(filename);
+			if(type==LogType.ALL){
+				for(Object o:all){
+					temp=(LogPO)o;
+					pos.add(temp);
+				}
+				return pos;
+			}
 			for(Object o:all){
 				temp=(LogPO)o;
 				if(temp.getOperationName()!=type){
