@@ -36,9 +36,13 @@ public enum ResultMessage {
 	 */
 	EXIST,
 	/**
-	 * 没找到对应结果
+	 * 没找到订单
 	 */
 	NOT_FOUND,
+	/**
+	 * 没找到有关收支记录
+	 */
+	NOT_FOUND_FINACIAL,
 	/**
 	 * 起止日期颠倒
 	 */
@@ -222,6 +226,8 @@ public enum ResultMessage {
 			return "账号错误";
 		case NOT_FOUND_ACCOUNTNUM:
 			return "账号不存在";
+		case NOT_FOUND_FINACIAL:
+			return "没有相关的财务记录";
 		case NOT_COMPLETED_ACCOUNT:
 			return "请输入账号~";
 		case NOT_COMPLETED_KEY:

@@ -17,19 +17,18 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.WindowConstants;
 
-import ui.mainFrame.MainFrame;
 import ui.receiptui.Order;
 import ui.util.MyFrame;
 import util.CurrentCity;
 import util.CurrentTime;
 import util.enumData.City;
+import util.enumData.LogType;
 import util.enumData.ResultMessage;
+import VO.LogVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.goodsblservice.GoodsFindBLService;
+import blservice.logblservice.LogBLService;
 import blservice.loginblservice.LoginBLService;
 
 public class courier_main extends JPanel {
@@ -39,6 +38,7 @@ public class courier_main extends JPanel {
 
 	public courier_main() {
 		ctr_login=ControllerFactoryImpl.getInstance().getLoginController();
+		ctr_log=ControllerFactoryImpl.getInstance().getLogController();
 		initComponents();
 		frame=new MyFrame(this);
 	}
@@ -427,9 +427,21 @@ public class courier_main extends JPanel {
 	 * 监听们～
 	 */
 	private void signedGoodsbtnMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_signedGoodsbtnMouseClicked
+		try {
+			LogVO vo = new LogVO(LogType.END_A_GOODS, ctr_login.getCurrentOptorId(), CurrentTime.getDate());
+			ctr_log.add(vo);
+		} catch (RemoteException e) {
+		}
+		
 		new courier_signed(this);
 	}
 	private void newGoodsbtnMouseClicked(MouseEvent evt) {
+		try {
+			LogVO vo = new LogVO(LogType.ADD_A_GOODS, ctr_login.getCurrentOptorId(), CurrentTime.getDate());
+			ctr_log.add(vo);
+		} catch (RemoteException e) {
+		}
+		
 		new Order(this);
 	}
 	private void account_btnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_account_btnActionPerformed
@@ -461,5 +473,6 @@ public class courier_main extends JPanel {
 	private JButton newGoodsbtn;
 	private JButton signedGoodsbtn;
 private LoginBLService ctr_login;
+private LogBLService ctr_log;
 	// End of variables declaration
 }

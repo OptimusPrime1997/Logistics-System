@@ -23,22 +23,17 @@ import util.enumData.ResultMessage;
  *
  * @author apple
  */
-public class ConditionTable extends javax.swing.JPanel {
+public class BusinessForm extends javax.swing.JPanel {
 
     /**
      * Creates new form 经营情况表
      */
-    public ConditionTable() {    	
+    public BusinessForm() {    	
     	ctr=ControllerFactoryImpl.getInstance().getBusinessFromController();
     	initComponents();
         frame=new MyFrame(900, 600, this);
-        //TODO 这句要删掉
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        
     }
-    
-    public static void main(String[] args) {
-    	new ConditionTable();
-	}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -220,11 +215,12 @@ public class ConditionTable extends javax.swing.JPanel {
     	ResultMessage msgt=datesIfValid(startT,endT);
     	
     	if(msgt==ResultMessage.VALID){
-    		try {System.out.println("找");
+    		try {
 				formVO=ctr.show(startT, endT);
-				
+				System.out.println("找到啦");
 			} catch (ClassNotFoundException | NotBoundException | IOException e) {
-	     	}
+	     	    showFeedback(ResultMessage.NOT_FOUND);
+			}
 		}else{
 			showFeedback(msgt);
 		}

@@ -24,6 +24,7 @@ public class Logbl {
 			logs = LogVO.toVOArray(getLogDataService().show(type, startTime, endTime));
 			
 		} catch (RemoteException e) {
+			System.out.println("meizhaodao");
 		}
 		return logs;
 	}
