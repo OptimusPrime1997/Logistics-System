@@ -20,7 +20,7 @@ public interface ReceiptblService extends PreReceiptblService{
 	
 	public void delete(String num) throws NotBoundException, ClassNotFoundException, IOException;
 	
-	public <T extends ReceiptVO> T getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException;
+	public <T extends ReceiptVO> T getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException, NumNotFoundException;
 	
 	public void submit(ReceiptVO vo) throws NotBoundException, IOException;
 	
@@ -30,6 +30,6 @@ public interface ReceiptblService extends PreReceiptblService{
 	
 	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException, NameNotFoundException, NumNotFoundException;
 	
-	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException, IOException;
+	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException;
 	
 }

@@ -157,7 +157,7 @@ public class CashRep extends javax.swing.JPanel {
 			dataVector = control.initTable(dateText.getText());
 			model.setDataVector(dataVector, columnIdentifiers);
 	        jTable.setModel(model);
-		} catch (NotBoundException | ClassNotFoundException | IOException e) {
+		} catch (NotBoundException | ClassNotFoundException | IOException | NumNotFoundException e) {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}

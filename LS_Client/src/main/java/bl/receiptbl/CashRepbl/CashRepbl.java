@@ -54,9 +54,12 @@ public class CashRepbl {
 		return receiptbl.createNum(date, Rep.CashRep);
 	}
 
-	public CashRepVO getRepByNum(String num) throws ClassNotFoundException, NotBoundException, IOException {
+	public CashRepVO getRepByNum(String num) 
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.CashRep);
+		if(receiptPO==null)
+			throw new NumNotFoundException();
 		return new CashRepVO((CashRepPO)receiptPO);
 	}
 	
@@ -86,7 +89,7 @@ public class CashRepbl {
 	}
 	
 	public Vector<Object> initTable(String num) throws ClassNotFoundException, 
-	NotBoundException, IOException {
+	NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		CashRepVO cashRepVO = getRepByNum(num);
 		Vector<Object> data = new Vector<Object>();

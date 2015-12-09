@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.NumNotFoundException;
 import PO.ReceiptPO.ReceiptPO;
 import VO.ReceiptVO.OutStockRepVO;
 import VO.ReceiptVO.ReceiptVO;
@@ -45,7 +46,7 @@ public class OutStockRepbl{
 	}
 
 	public Vector<Object> initTable(Rep shipRep, String shipNum) 
-			throws ClassNotFoundException, NotBoundException, IOException {
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		ArrayList<String> orders = new ArrayList<String>();
 		if(shipRep==Rep.ShippingRep)

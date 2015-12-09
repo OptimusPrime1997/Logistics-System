@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.NumNotFoundException;
 import VO.ReceiptVO.PayRepBonusRepVO;
 import VO.ReceiptVO.PayRepCourierSalaryRepVO;
 import VO.ReceiptVO.PayRepDriverSalaryRepVO;
@@ -47,7 +48,8 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 	}
 
 	@Override
-	public PayRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException {
+	public PayRepVO getRepByNum(String num) 
+			throws NotBoundException, ClassNotFoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return payRepbl.getRepByNum(num);
 	}
@@ -84,8 +86,8 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 	}
 
 	@Override
-	public Vector<Object> initTable(String num) throws ClassNotFoundException, NotBoundException, 
-	IOException {
+	public Vector<Object> initTable(String num) 
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return payRepbl.initTable(num);
 	}

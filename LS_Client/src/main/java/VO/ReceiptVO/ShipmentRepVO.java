@@ -6,19 +6,21 @@ import PO.ReceiptPO.ShipmentRepPO;
 
 public class ShipmentRepVO extends ShipRepVO {
 
-	public ShipmentRepVO(String num, String date, String plateNum, String driverNum, ArrayList<String> goods) {
-		super(num, date, plateNum, driverNum, goods);
+	public ShipmentRepVO(String num, String date, String depart, String plateNum, String driverNum,
+			ArrayList<String> goods) {
+		super(num, date, depart, plateNum, driverNum, goods);
 		// TODO Auto-generated constructor stub
 	}
 	public ShipmentRepVO(ShipmentRepPO po){
 		this.num = po.getNum();
 		this.date = po.getDate();
+		this.depart = po.getDepart();
 		this.plateNum = po.getPlateNum();
 		this.driverNum = po.getDriverNum();
 		this.goods = po.getGoods();
 	}
 	public static ShipmentRepPO toPO(ShipmentRepVO vo){
-		return new ShipmentRepPO(vo.num, vo.date, vo.plateNum, vo.driverNum, vo.goods);
+		return new ShipmentRepPO(vo.num, vo.date, vo.depart, vo.plateNum, vo.driverNum, vo.goods);
 	}
 	public static ArrayList<ShipmentRepVO> toArrayVO(ArrayList<ReceiptPO> receiptPOs) {
 		ArrayList<ShipmentRepVO> shipmentRepVOs = new ArrayList<ShipmentRepVO>();

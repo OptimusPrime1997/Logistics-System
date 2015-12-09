@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.NumNotFoundException;
 import VO.ReceiptVO.ReceptionRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import VO.ReceiptVO.ShipmentRepVO;
@@ -38,7 +39,7 @@ public class ReceptionRepController extends ReceiptblController implements Recep
 
 	@Override
 	public ReceptionRepVO getRepByNum(String num)
-			throws NotBoundException, ClassNotFoundException, IOException {
+			throws NotBoundException, ClassNotFoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return receptionRepCheckbl.getRepByNum(num);
 	}
@@ -70,14 +71,15 @@ public class ReceptionRepController extends ReceiptblController implements Recep
 	}
 
 	@Override
-	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initShow(String num) 
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return receptionRepShowbl.initShow(num);
 	}
 
 	@Override
 	public Vector<Object> initTable(Rep rep, String num, ArrayList<String> existOrders) 
-			throws ClassNotFoundException, NotBoundException, IOException {
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return receptionRepbl.initTable(rep, num, existOrders);
 	}

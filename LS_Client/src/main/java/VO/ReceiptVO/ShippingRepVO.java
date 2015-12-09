@@ -2,22 +2,22 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.CashRepPO;
 import PO.ReceiptPO.ReceiptPO;
 import PO.ReceiptPO.ShippingRepPO;
 
 public class ShippingRepVO extends ShipRepVO {
 	public String destination;
 
-	public ShippingRepVO(String num, String date, String plateNum,String driverNum,ArrayList<String> goods,
-			String destination) {
-		super(num, date, plateNum, driverNum, goods);
+	public ShippingRepVO(String num, String date, String depart, String plateNum, String driverNum,
+			ArrayList<String> goods, String destination) {
+		super(num, date, depart, plateNum, driverNum, goods);
 		this.destination = destination;
 	}
 	
 	public ShippingRepVO(ShippingRepPO po){
 		this.num = po.getNum();
 		this.date = po.getDate();
+		this.depart = po.getDepart();
 		this.plateNum = po.getPlateNum();
 		this.driverNum = po.getDriverNum();
 		this.goods = po.getGoods();
@@ -25,7 +25,7 @@ public class ShippingRepVO extends ShipRepVO {
 	}
 	
 	public static ShippingRepPO toPO(ShippingRepVO vo){
-		return new ShippingRepPO(vo.num, vo.date, vo.plateNum, vo.driverNum, vo.goods, vo.destination);
+		return new ShippingRepPO(vo.num, vo.date,vo.depart, vo.plateNum, vo.driverNum, vo.goods, vo.destination);
 	}
 	
 	public static ArrayList<ShippingRepVO> toArrayVO(ArrayList<ReceiptPO> receiptPOs) {

@@ -19,8 +19,11 @@ public class DeliverRepCheckbl {
 	private CashRepbl cashRepbl = new CashRepbl();
 	private DeliverRepbl deliverRepbl = new DeliverRepbl();
 
-	public DeliverRepVO getRepByNum(String num) throws ClassNotFoundException, NotBoundException, IOException {
+	public DeliverRepVO getRepByNum(String num)
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.DeliverRep);
+		if(receiptPO==null)
+			throw new NumNotFoundException();
 		return new DeliverRepVO((DeliverRepPO)receiptPO);
 	}
 

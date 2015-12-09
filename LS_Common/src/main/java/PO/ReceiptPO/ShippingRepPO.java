@@ -10,9 +10,9 @@ public class ShippingRepPO extends ShipRepPO {
 	
 	private String destination;
 
-	public ShippingRepPO(String num, String date, String plateNum, String driverNum,
+	public ShippingRepPO(String num, String date, String depart, String plateNum, String driverNum,
 			ArrayList<String> goods, String destination) {
-		super(num, date, plateNum, driverNum, goods);
+		super(num, date, depart, plateNum, driverNum, goods);
 		this.destination = destination;
 	}
 

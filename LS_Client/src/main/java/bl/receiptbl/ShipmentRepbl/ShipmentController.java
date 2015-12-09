@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.NumNotFoundException;
 import VO.ReceiptVO.ReceiptVO;
 import VO.ReceiptVO.ShipmentRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
@@ -35,7 +36,7 @@ public class ShipmentController extends ReceiptblController implements ShipmentR
 
 	@Override
 	public ShipmentRepVO getRepByNum(String num) 
-			throws NotBoundException, ClassNotFoundException, IOException {
+			throws NotBoundException, ClassNotFoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return shipmentRepbl.getRepByNum(num);
 	}
@@ -67,7 +68,8 @@ public class ShipmentController extends ReceiptblController implements ShipmentR
 	}
 
 	@Override
-	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initShow(String num) 
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return shipmentRepShowbl.initShow(num);
 	}

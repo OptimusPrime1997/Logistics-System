@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
 
+import Exception.NumNotFoundException;
 import PO.ReceiptPO.ReceiptPO;
 import PO.ReceiptPO.ShipmentRepPO;
 import VO.ReceiptVO.ReceiptVO;
@@ -33,9 +34,11 @@ public class ShipmentRepbl{
 	}
 
 	public ShipmentRepVO getRepByNum(String num) 
-			throws ClassNotFoundException, NotBoundException, IOException {
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.ShipmentRep);
+		if(receiptPO==null)
+			throw new NumNotFoundException();
 		return new ShipmentRepVO((ShipmentRepPO)receiptPO);
 	}
 

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.Vector;
 
+import Exception.NumNotFoundException;
 import VO.ReceiptVO.PayRepBonusRepVO;
 import VO.ReceiptVO.PayRepCourierSalaryRepVO;
 import VO.ReceiptVO.PayRepDriverSalaryRepVO;
@@ -15,8 +16,7 @@ import VO.ReceiptVO.PayRepVO;
 
 public interface PayRepblService extends ReceiptblService{
 	
-	public Vector<Object> initTable(String num) throws ClassNotFoundException, NotBoundException, 
-	IOException;
+	public Vector<Object> initTable(String num) throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException;
 	
 	public void submitBonus(PayRepVO payRepVO, PayRepBonusRepVO payRepBonusRepVO);
 	

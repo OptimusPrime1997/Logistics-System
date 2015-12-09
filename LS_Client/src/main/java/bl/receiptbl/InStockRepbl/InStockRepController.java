@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.NumNotFoundException;
 import VO.ReceiptVO.InStockRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
@@ -34,8 +35,8 @@ public class InStockRepController extends ReceiptblController implements InStock
 	}
 
 	@Override
-	public InStockRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, 
-	IOException {
+	public InStockRepVO getRepByNum(String num) 
+			throws NotBoundException, ClassNotFoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return inStockRepCheckbl.getRepByNum(num);
 	}
@@ -67,8 +68,8 @@ public class InStockRepController extends ReceiptblController implements InStock
 	}
 
 	@Override
-	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException,
-	IOException {
+	public Vector<Object> initShow(String num) 
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return inStockRepShowbl.initShow(num);
 	}

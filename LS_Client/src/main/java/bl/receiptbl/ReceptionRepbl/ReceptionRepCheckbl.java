@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.NumNotFoundException;
 import PO.ReceiptPO.ReceiptPO;
 import PO.ReceiptPO.ReceptionRepPO;
 import VO.ReceiptVO.ReceptionRepVO;
@@ -16,9 +17,11 @@ public class ReceptionRepCheckbl {
 	private ReceptionRepbl receptionRepbl = new ReceptionRepbl();
 
 	public ReceptionRepVO getRepByNum(String num) 
-			throws ClassNotFoundException, NotBoundException, IOException {
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.ReceptionRep);
+		if(receiptPO==null)
+			throw new NumNotFoundException();
 		return new ReceptionRepVO((ReceptionRepPO)receiptPO);
 	}
 

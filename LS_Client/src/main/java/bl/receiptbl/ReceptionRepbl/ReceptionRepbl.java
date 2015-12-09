@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.NumNotFoundException;
 import PO.ReceiptPO.ReceiptPO;
 import VO.ReceiptVO.ReceptionRepVO;
 import VO.ReceiptVO.ReceiptVO;
@@ -22,13 +23,13 @@ public class ReceptionRepbl{
 	Goodsbl goodsbl = new Goodsbl();
 
 	public ShipmentRepVO getShipmentRep(String num) 
-			throws ClassNotFoundException, NotBoundException, IOException{
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException{
 		ShipmentRepbl shipment = new ShipmentRepbl();
 		return shipment.getRepByNum(num);
 	}
 	
 	public TransferRepVO getTransferRep(String num) 
-			throws ClassNotFoundException, NotBoundException, IOException{
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException{
 		TransferRepbl transfer = new TransferRepbl();
 		return transfer.getRepByNum(num);
 	}
@@ -44,7 +45,7 @@ public class ReceptionRepbl{
 	}
 	
 	public Vector<Object> initTable(Rep rep, String num, ArrayList<String> existOrders) 
-			throws ClassNotFoundException, NotBoundException, IOException {
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		Vector<Object> data = new Vector<Object>();
 		ArrayList<String> orders;

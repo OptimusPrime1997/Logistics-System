@@ -6,6 +6,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
+
+import Exception.NumNotFoundException;
 import VO.ReceiptVO.GetRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
@@ -35,7 +37,7 @@ public class GetRepController extends ReceiptblController implements GetRepblSer
 
 	@Override
 	public GetRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, 
-	IOException {
+	IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return getRepCheckbl.getRepByNum(num);
 	}
@@ -67,15 +69,15 @@ public class GetRepController extends ReceiptblController implements GetRepblSer
 	}
 
 	@Override
-	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException, 
-	IOException {
+	public Vector<Object> initShow(String num) 
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return getRepShowbl.initShow(num);
 	}
 
 	@Override
 	public Vector<Object> initTable(Rep rep, String num, ArrayList<String> existOrders) 
-			throws ClassNotFoundException, NotBoundException, IOException {
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return getRepbl.initTable(rep, num, existOrders);
 	}
@@ -84,6 +86,13 @@ public class GetRepController extends ReceiptblController implements GetRepblSer
 	public void transferOver(String num) {
 		// TODO Auto-generated method stub
 		getRepbl.transferOver(num);
+	}
+
+	@Override
+	public String getDepart(Rep rep, String num)
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
+		// TODO Auto-generated method stub
+		return getRepbl.getDepart(rep, num);
 	}
 
 

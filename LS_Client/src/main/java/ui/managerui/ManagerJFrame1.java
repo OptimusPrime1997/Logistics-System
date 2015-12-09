@@ -437,37 +437,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		jLabel47.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
 		jLabel47.setText("系统日志");
 
-		logjTable.setModel(new javax.swing.table.DefaultTableModel(
-				new Object[][] {
-						{ "20151109", "用户账户管理", "管理员", "00065434232" },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null } }, new String[] { "日期",
-						"操做类型", "操作人员职位", "操作人员编号" }) {
-			Class[] types = new Class[] { java.lang.String.class,
-					java.lang.String.class, java.lang.String.class,
-					java.lang.String.class };
-
-			public Class getColumnClass(int columnIndex) {
-				return types[columnIndex];
-			}
-		});
-		logjTable.setGridColor(new java.awt.Color(0, 0, 0));
-		logjTable.setName("123"); // NOI18N
-		logjTable.getTableHeader().setReorderingAllowed(false);
-		jScrollPane11.setViewportView(logjTable);
+		initialLogJTable();
 
 		javax.swing.GroupLayout logjPanelLayout = new javax.swing.GroupLayout(
 				logjPanel);
@@ -698,6 +668,46 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 														.addGap(205, 205, 205))));
 
 		managerjTabbedPane.addTab("日志查看", logjPanel);
+	}
+
+	/**
+	 * 初始化日志查看列表
+	 */
+	private void initialLogJTable() {
+		// TODO Auto-generated method stub
+		logjTable.setModel(new javax.swing.table.DefaultTableModel(
+				new Object[][] {
+						{ "20151109", "用户账户管理", "管理员", "00065434232" },
+						{ null, null, null, null }, { null, null, null, null },
+						{ null, null, null, null }, { null, null, null, null },
+						{ null, null, null, null }, { null, null, null, null },
+						{ null, null, null, null }, { null, null, null, null },
+						{ null, null, null, null }, { null, null, null, null },
+						{ null, null, null, null }, { null, null, null, null },
+						{ null, null, null, null }, { null, null, null, null },
+						{ null, null, null, null }, { null, null, null, null },
+						{ null, null, null, null }, { null, null, null, null },
+						{ null, null, null, null }, { null, null, null, null },
+						{ null, null, null, null }, { null, null, null, null },
+						{ null, null, null, null }, { null, null, null, null },
+						{ null, null, null, null }, { null, null, null, null },
+						{ null, null, null, null }, { null, null, null, null },
+						{ null, null, null, null } }, new String[] { "日期",
+						"操做类型", "操作人员职位", "操作人员编号" }) {
+			Class[] types = new Class[] { java.lang.String.class,
+					java.lang.String.class, java.lang.String.class,
+					java.lang.String.class };
+
+			public Class getColumnClass(int columnIndex) {
+				return types[columnIndex];
+			}
+		});
+		logjTable.setGridColor(new java.awt.Color(0, 0, 0));
+		logjTable.setName("123"); // NOI18N
+		logjTable.getTableHeader().setReorderingAllowed(false);
+		jScrollPane11.setViewportView(logjTable);
+
+		setJTableTextCenter(logjTable);
 	}
 
 	/**
@@ -1748,8 +1758,8 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 				});
 		initialConstJTable(constVOPlus);
 		jScrollPane2.setViewportView(constjTable);
-		accountViewjTable.getTableHeader().setReorderingAllowed(false);
-		jScrollPane6.setViewportView(accountViewjTable);
+		jTable.getTableHeader().setReorderingAllowed(false);
+		jScrollPane6.setViewportView(jTable);
 
 		constTitlejLabel.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
 		constTitlejLabel.setText("距离常量列表");
@@ -1929,7 +1939,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		findAccountNumjButton = new javax.swing.JButton();
 		jLabel11 = new javax.swing.JLabel();
 		jScrollPane6 = new javax.swing.JScrollPane();
-		accountViewjTable = new javax.swing.JTable();
+		jTable = new javax.swing.JTable();
 		formjPanel = new javax.swing.JPanel();
 		profitFormjButton = new javax.swing.JButton();
 		manageStateFormjButton = new javax.swing.JButton();
@@ -2112,7 +2122,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 					}
 				}
 				if (i < accountVOs.size()) {
-					accountViewjTable.setRowSelectionInterval(i, i);// 设置哪几行被选中
+					jTable.setRowSelectionInterval(i, i);// 设置哪几行被选中
 					setState("该账户在第" + (i + 1) + "行", 5);
 				} else {
 					setState("系统中无该账户", DISPLAY_TIME);
@@ -2228,8 +2238,8 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		// TODO add your handling code here:
 		if (evt.getSource() == findInstitutionNumjButton) {
 			String findInstitutionNum = institutionNumjTextField.getText();
-			ResultMessage rmsg = InputCheck.checkInputNum(findInstitutionNum,
-					6);
+			ResultMessage rmsg = InputCheck
+					.checkInputNum(findInstitutionNum, 6);
 			if (rmsg == ResultMessage.VALID) {
 				int i = 0;
 				InstitutionVO tempVO = null;
@@ -2253,7 +2263,6 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		}
 
 	}// GEN-LAST:event_findInstitutioNamejButtonActionPerformed
-
 
 	private void institutionNamejTextFieldMouseClicked(
 			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_institutionNamejTextFieldMouseClicked
@@ -2493,9 +2502,8 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 			accountObjects[i][5] = vo.phoneNum;
 			i++;
 		}
-		accountViewjTable.setModel(new javax.swing.table.DefaultTableModel(
-				accountObjects, new String[] { "用户账号", "姓名", "性别", "职位",
-						"机构编号", "电话" }) {
+		jTable.setModel(new javax.swing.table.DefaultTableModel(accountObjects,
+				new String[] { "用户账号", "姓名", "性别", "职位", "机构编号", "电话" }) {
 			Class[] types = new Class[] { java.lang.String.class,
 					java.lang.String.class, JComboBox.class,
 					java.lang.String.class, java.lang.String.class,
@@ -2511,15 +2519,15 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 				return canEdit[columnIndex];
 			}
 		});
-		accountViewjTable.getColumnModel().getColumn(2)
+		jTable.getColumnModel().getColumn(2)
 				.setCellEditor(new DefaultCellEditor(sexjComboBox));
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容-11
 		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 设置table内容居中-2
-		accountViewjTable.setDefaultRenderer(Object.class, tcr);
+		jTable.setDefaultRenderer(Object.class, tcr);
 
-		((DefaultTableCellRenderer) accountViewjTable.getTableHeader()
+		((DefaultTableCellRenderer) jTable.getTableHeader()
 				.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
-		accountViewjTable.setRowSelectionInterval(0, 0);// 设置哪几行被选中
+		jTable.setRowSelectionInterval(0, 0);// 设置哪几行被选中
 
 	}
 
@@ -3423,6 +3431,21 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	}
 
 	/**
+	 * 设置表格文字居中显示
+	 * 
+	 * @param jTable
+	 */
+	public void setJTableTextCenter(JTable jTable) {
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容-11
+		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 设置table内容居中-2
+		jTable.setDefaultRenderer(Object.class, tcr);
+		((DefaultTableCellRenderer) jTable.getTableHeader()
+				.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
+		jTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
+
+	}
+
+	/**
 	 * managerui的启动方法
 	 * 
 	 * @param args
@@ -3471,7 +3494,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				ManagerJFrame1 managerFrame = new ManagerJFrame1();
-				
+
 			}
 		});
 	}
@@ -3506,7 +3529,7 @@ public class ManagerJFrame1 extends javax.swing.JFrame {
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JTextField accountNamejTextField;
 	private javax.swing.JTextField accountNumjTextField;
-	private javax.swing.JTable accountViewjTable;
+	private javax.swing.JTable jTable;
 	private javax.swing.JPanel accountjPanel;
 	private javax.swing.JButton addConstjButton;
 	private javax.swing.JButton addInstitutionjButton;
