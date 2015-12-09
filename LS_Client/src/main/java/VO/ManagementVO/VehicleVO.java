@@ -6,7 +6,7 @@ public class VehicleVO implements Comparable<VehicleVO> {
 	 */
 	public String vehicleNum;
 	/**
-	 * 车牌号，如“苏A8888”
+	 * 车牌号，如“苏A88888”
 	 */
 	public String licenseNum;
 	/**

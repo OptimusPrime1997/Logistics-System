@@ -62,6 +62,13 @@ public class PayRepVO extends ReceiptVO {
 		}
 		return payRepVOs;
 	}
+	public static ArrayList<PayRepVO> payToArrayVO(ArrayList<PayRepPO> receiptPOs){
+		ArrayList<PayRepVO> payRepVOs  = new ArrayList<PayRepVO>();
+		for(PayRepPO receiptPO : receiptPOs){
+			payRepVOs.add(new PayRepVO(receiptPO));
+		}
+		return payRepVOs;
+	}
 	
 	public static ArrayList<PayRepPO> toArrayPO(ArrayList<PayRepVO> payrepVOs){
 		ArrayList<PayRepPO> payRepPOs  = new ArrayList<PayRepPO>();

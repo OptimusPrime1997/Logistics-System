@@ -11,6 +11,8 @@ import org.junit.Test;
 
 import util.enumData.ResultMessage;
 import util.enumData.Sex;
+import Exception.AutoNumException;
+import Exception.ExistException;
 import Exception.NumNotFoundException;
 import VO.ManagementVO.DriverVO;
 
@@ -22,34 +24,47 @@ public class DriverblControllerTest {
 
 	@Test
 	public void test() {
+		String[] autoNum = new String[3];
 		DriverblController driverblController = new DriverblController();
 		DriverVO vo = null;
 		DriverVO vo1 = null;
 		try {
-			ResultMessage[] rmsgs = new ResultMessage[3];
-			rmsgs[0] = driverblController.insertDriver(new DriverVO(
-					"02500107002", "张五", Sex.Sex_MALE, "511302199903045342",
-					"18290392453", "20180101"));
-			rmsgs[1] = driverblController.insertDriver(new DriverVO(
-					"02500107003", "祝四", Sex.Sex_MALE, "511302199903054535",
-					"18290392454", "20180101"));
-			rmsgs[2] = driverblController.insertDriver(new DriverVO(
-					"02500107004", "周泰", Sex.Sex_MALE, "511302199903064536",
-					"18290392455", "20180101"));
-			for (int i = 0; i < 3; i++) {
-				System.out.println(rmsgs[i].toString());
+			autoNum[1] = driverblController.insertDriver(new DriverVO(
+					"12511119112", "张五", Sex.Sex_MALE, "911312166613145342",
+					"19261362453", "21191111"));
+			autoNum[1] = driverblController.insertDriver(new DriverVO(
+					"12511119113", "祝四", Sex.Sex_MALE, "911312166613154535",
+					"19261362454", "21191111"));
+			autoNum[2] = driverblController.insertDriver(new DriverVO(
+					"12511119114", "周泰", Sex.Sex_MALE, "911312166613164536",
+					"19261362455", "21191111"));
+			for (int i = 1; i < 3; i++) {
+				System.out.println(autoNum[i]);
 			}
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("远程连接错误");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (AutoNumException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExistException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("该人员已存在");
 		}
 		try {
-			vo = driverblController.findByDriverNum("02500107003");
+			vo = driverblController.findByDriverNum("12511119112");
 			System.out.println(vo.name);
-			assertEquals("祝四", vo.name);
+			assertEquals("张五", vo.name);
 			// driverbl.delete(vo);
-			vo1 = driverblController.findByDriverNum("02500107004");
+//			vo1 = driverblController.findByDriverNum(autoNum[1]);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -67,7 +82,7 @@ public class DriverblControllerTest {
 			e.printStackTrace();
 		}
 		if (vo1 != null) {
-			assertEquals("周泰", vo1.name);
+			assertEquals("911312166613154535", vo1.id);
 		} else {
 			System.out.println("vo is null");
 		}

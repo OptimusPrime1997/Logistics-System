@@ -124,7 +124,6 @@ public class WarehousePanel extends javax.swing.JFrame {
 
         jLabel8.setText("广州08");
 
-       
         showProcess();
         
         jButton1.setText("出库单填写");
@@ -359,10 +358,17 @@ public class WarehousePanel extends javax.swing.JFrame {
     /**
   	 * 
   	 */
-  	private void showProcess() {
-  		// TODO Auto-generated method stub
+  	public void showProcess() {
   		try {
-			s.checkPresentStockQuantity();
+			Peking1.setValue(s.checkPresentStockQuantity(1));
+			Peking2.setValue(s.checkPresentStockQuantity(2));
+			Nanjing1.setValue(s.checkPresentStockQuantity(3));
+			Nanjing2.setValue(s.checkPresentStockQuantity(4));
+			Shanghai1.setValue(s.checkPresentStockQuantity(5));
+			Shanghai2.setValue(s.checkPresentStockQuantity(6));
+			Guangzhou1.setValue(s.checkPresentStockQuantity(7));
+			Guangzhou2.setValue(s.checkPresentStockQuantity(8));
+			
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			//
 		}

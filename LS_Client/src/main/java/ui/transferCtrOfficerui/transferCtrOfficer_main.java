@@ -2,6 +2,7 @@ package ui.transferCtrOfficerui;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -16,11 +17,15 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.loginblservice.LoginBLService;
 import ui.mainFrame.MainFrame;
 import ui.receiptui.generalUI.GetRep;
 import ui.receiptui.generalUI.ShippingRep;
 import ui.receiptui.generalUI.TransferRep;
 import ui.util.MyFrame;
+import util.CurrentCity;
+import util.enumData.City;
 import util.enumData.ResultMessage;
 
 /*
@@ -37,6 +42,7 @@ public class transferCtrOfficer_main extends JPanel {
 
 	
     public transferCtrOfficer_main() {
+    	ctr_login=ControllerFactoryImpl.getInstance().getLoginController();
         initComponents();
         new MyFrame(this);
     }
@@ -231,6 +237,12 @@ public class transferCtrOfficer_main extends JPanel {
 		jLabel6.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
 		jLabel6.setText("飞机");
 		transferOfficeNum_label.setText("南京 001");
+		try {
+			transferOfficeNum_label.setText(City.toString(CurrentCity.getCurrentCity())
+					+ ctr_login.getCurrentOptorId().substring(0, 3));
+		} catch (RemoteException e) {
+		}
+    	
 		outByTrain_label.setText("10");
 		outByCar_label.setText("26");
 		outByPlane_label.setText("2");
@@ -284,6 +296,7 @@ public class transferCtrOfficer_main extends JPanel {
     private JButton toBusinessOffice_btn;
     private JButton toTransferCTR_btn;
     private JLabel transferOfficeNum_label;
+    private LoginBLService ctr_login;
     // End of variables declaration//GEN-END:variables
     
    

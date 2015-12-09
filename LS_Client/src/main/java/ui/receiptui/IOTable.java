@@ -6,33 +6,36 @@
 
 package ui.receiptui;
 
+import java.io.IOException;
+import java.rmi.NotBoundException;
+
+import javax.swing.WindowConstants;
+
+import VO.ProfitFormVO;
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.formblservice.ProfitFormBLService;
+import ui.util.MyFrame;
+import util.CurrentTime;
+import util.enumData.ResultMessage;
+
 /**
  *
  * @author apple
  */
 public class IOTable extends javax.swing.JPanel {
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel costLabel;
-    private javax.swing.JTextField costText;
-    private javax.swing.JLabel endDateLabel;
-    private javax.swing.JTextField endDateText;
-    private javax.swing.JLabel incomeLabel;
-    private javax.swing.JTextField incomeText;
-    private javax.swing.JButton okButton;
-    private javax.swing.JLabel realIncomeLabel;
-    private javax.swing.JTextField realIncomeText;
-    private javax.swing.JButton resetButton;
-    private javax.swing.JTextField resultMsgText;
-    private javax.swing.JLabel startDateLabel;
-    private javax.swing.JTextField startDateText;
-    // End of variables declaration//GEN-END:variables
+   public static void main(String[] args) {
+	new IOTable();}
 
     /**
      * Creates new form 成本收益表
      */
     public IOTable() {
+    	ctr=ControllerFactoryImpl.getInstance().getProfitFormController();
         initComponents();
+        frame=new MyFrame(415,250,this);
+        //TODO 一会删掉这句
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     /**
@@ -46,8 +49,6 @@ public class IOTable extends javax.swing.JPanel {
 
         startDateLabel = new javax.swing.JLabel();
         startDateText = new javax.swing.JTextField();
-        endDateLabel = new javax.swing.JLabel();
-        endDateText = new javax.swing.JTextField();
         costLabel = new javax.swing.JLabel();
         costText = new javax.swing.JTextField();
         incomeLabel = new javax.swing.JLabel();
@@ -58,11 +59,11 @@ public class IOTable extends javax.swing.JPanel {
         resetButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
 
+        startDateText.setText(CurrentTime.getDate());
+        startDateText.setEditable(false);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        startDateLabel.setText("开始日期:");
-
-        endDateLabel.setText("结束时间:");
+        startDateLabel.setText("今日日期:");
 
         costLabel.setText("成本:");
 
@@ -112,9 +113,7 @@ public class IOTable extends javax.swing.JPanel {
                             .addComponent(costText, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(incomeText, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(13, 13, 13)
-                        .addComponent(endDateLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(endDateText, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        ))
                 .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -131,8 +130,7 @@ public class IOTable extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(startDateLabel)
                     .addComponent(startDateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(endDateLabel)
-                    .addComponent(endDateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                   )
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(costLabel)
@@ -159,7 +157,40 @@ public class IOTable extends javax.swing.JPanel {
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
+//       resultMsgText.setText("");
+//    	String startT = startDateText.getText();
+//       String endT=endDateText.getText();
+//       ResultMessage msg=ConditionTable.datesIfValid(startT, endT);
+//       if(msg==ResultMessage.VALID){
+    	    try {
+				vo=ctr.show();
+				incomeText.setText(vo.totalIn+"");
+				realIncomeText.setText(vo.totalProfit+"");
+				costText.setText(vo.totalOut+"");
+			} catch (ClassNotFoundException | NotBoundException | IOException e) {
+			}
+//       }else{
+//    	   showFeedback(msg);
+//       }
+       
     }//GEN-LAST:event_okButtonActionPerformed
-
+    private void showFeedback(ResultMessage msg) {
+		resultMsgText.setText(ResultMessage.toFriendlyString(msg));
+	}
+	// Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel costLabel;
+    private javax.swing.JTextField costText;
+    private javax.swing.JLabel incomeLabel;
+    private javax.swing.JTextField incomeText;
+    private javax.swing.JButton okButton;
+    private javax.swing.JLabel realIncomeLabel;
+    private javax.swing.JTextField realIncomeText;
+    private javax.swing.JButton resetButton;
+    private javax.swing.JTextField resultMsgText;
+    private javax.swing.JLabel startDateLabel;
+    private javax.swing.JTextField startDateText;
+    private MyFrame frame;
+    private ProfitFormBLService ctr;
+    private ProfitFormVO vo;
+    // End of variables declaration//GEN-END:variables
 }

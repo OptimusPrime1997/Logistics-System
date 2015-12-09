@@ -26,9 +26,9 @@ public class VehicleblControllerTest {
 		VehicleVO vo1 = null;
 		try {
 			ResultMessage[] rmsgs = new ResultMessage[3];
-			rmsgs[0] = vehicleblController.insertVehicle(new VehicleVO("025001007","苏A8887","20100101"));
-			rmsgs[1] = vehicleblController.insertVehicle(new VehicleVO("025001008","苏A8888","20100101"));
-			rmsgs[2] = vehicleblController.insertVehicle(new VehicleVO("025001009","苏A8889","20100101"));
+			rmsgs[0] = vehicleblController.insertVehicle(new VehicleVO("025001007","苏A88887","20100101"));
+			rmsgs[1] = vehicleblController.insertVehicle(new VehicleVO("025001008","苏A88898","20100101"));
+			rmsgs[2] = vehicleblController.insertVehicle(new VehicleVO("025001009","苏A88889","20100101"));
 			for (int i = 0; i < 3; i++) {
 				System.out.println(rmsgs[i].toString());
 			}
