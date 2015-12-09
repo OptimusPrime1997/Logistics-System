@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.NumNotFoundException;
 import VO.ReceiptVO.ShippingRepVO;
 
 public class ShippingRepShowbl {
@@ -12,7 +13,7 @@ public class ShippingRepShowbl {
 	private ShippingRepbl shippingRepbl = new ShippingRepbl();
 
 	public Vector<Object> initShow(String num) 
-			throws ClassNotFoundException, NotBoundException, IOException {
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		ShippingRepVO shippingRepVO = shippingRepbl.getRepByNum(num);
 		Vector<Object> data = new Vector<Object>();

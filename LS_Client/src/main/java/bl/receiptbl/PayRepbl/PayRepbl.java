@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.NumNotFoundException;
 import PO.ReceiptPO.PayRepPO;
 import PO.ReceiptPO.ReceiptPO;
 import VO.ReceiptVO.PayRepVO;
@@ -29,9 +30,12 @@ public class PayRepbl extends ReceiptblController{
 		receiptbl.submit(PayRepVO.toPO((PayRepVO) vo), Rep.PayRep);
 	}
 	
-	public PayRepVO getRepByNum(String num) throws ClassNotFoundException, NotBoundException, IOException {
+	public PayRepVO getRepByNum(String num) 
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.PayRep);
+		if(receiptPO==null)
+			throw new NumNotFoundException();
 		return new PayRepVO((PayRepPO) receiptPO);
 	}
 	
@@ -41,8 +45,8 @@ public class PayRepbl extends ReceiptblController{
 		return PayRepVO.toArrayVO(receiptPOs);
 	}
 	
-	public Vector<Object> initTable(String num) throws ClassNotFoundException, NotBoundException, 
-	IOException {
+	public Vector<Object> initTable(String num)
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		PayRepVO payRepVO = getRepByNum(num);
 		Vector<Object> data = new Vector<Object>();

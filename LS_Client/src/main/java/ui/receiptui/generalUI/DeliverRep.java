@@ -306,9 +306,6 @@ public class DeliverRep extends javax.swing.JPanel {
     	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
     	resultMsgText.setText(resultMsg);
     	if(resultMessage==ResultMessage.ADD_SUCCESS){
-//    		String name = "bismuth";
-//    		String phoneNum = "13934517986";
-//    		String address = "南京大学";
     		String name = null;
     		String phoneNum = null;
     		String address = null;
@@ -340,8 +337,10 @@ public class DeliverRep extends javax.swing.JPanel {
     		String num = numText.getText();
     		String date = dateText.getText();
     		ArrayList<DeliverVO> deliverVOs = new ArrayList<DeliverVO>();
-    		for(int i = 0;i<dataVector.size();i++){
-    			DeliverVO vo = new DeliverVO((String)jTable.getValueAt(i, 0), (String)jTable.getValueAt(i, 1), (String)jTable.getValueAt(i, 2), (String)jTable.getValueAt(i, 3));
+    		for(int i = 0;i < dataVector.size();i++){
+    			DeliverVO vo = new DeliverVO((String)jTable.getValueAt(i, 0), 
+    					(String)jTable.getValueAt(i, 1), (String)jTable.getValueAt(i, 2), 
+    					(String)jTable.getValueAt(i, 3));
     			deliverVOs.add(vo);
     		}
     		DeliverRepVO deliverRepVO = new DeliverRepVO(num, date, courierText.getText(), deliverVOs);

@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.NumNotFoundException;
 import VO.ReceiptVO.ReceiptVO;
 import VO.ReceiptVO.TransferRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
@@ -36,7 +37,7 @@ public class TransferRepController extends ReceiptblController implements Transf
 
 	@Override
 	public TransferRepVO getRepByNum(String num) 
-			throws NotBoundException, ClassNotFoundException, IOException {
+			throws NotBoundException, ClassNotFoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return transferRepbl.getRepByNum(num);
 	}
@@ -69,7 +70,7 @@ public class TransferRepController extends ReceiptblController implements Transf
 
 	@Override
 	public Vector<Object> initShow(String num) 
-			throws ClassNotFoundException, NotBoundException, IOException {
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return transferRepShowbl.initShow(num);
 	}

@@ -40,7 +40,8 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	}
 
 	@Override
-	public Vector<Object> initTable(String num) throws NotBoundException, ClassNotFoundException, IOException{
+	public Vector<Object> initTable(String num) 
+			throws NotBoundException, ClassNotFoundException, IOException, NumNotFoundException{
 		// TODO Auto-generated method stub
 		return cashRepbl.initTable(num);
 	}
@@ -80,7 +81,8 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	}
 
 	@Override
-	public CashRepVO getRepByNum(String num) throws NotBoundException, ClassNotFoundException, IOException {
+	public CashRepVO getRepByNum(String num) 
+			throws NotBoundException, ClassNotFoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return cashRepbl.getRepByNum(num);
 	}

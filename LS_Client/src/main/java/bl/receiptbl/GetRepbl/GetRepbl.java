@@ -5,8 +5,8 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.NumNotFoundException;
 import PO.ReceiptPO.ReceiptPO;
-import VO.ReceiptVO.GetRepVO;
 import VO.ReceiptVO.GetRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import VO.ReceiptVO.ShipmentRepVO;
@@ -23,13 +23,13 @@ public class GetRepbl{
 	private Goodsbl goodsbl = new Goodsbl();
 
 	public ShipmentRepVO getShipmentRep(String num) 
-			throws ClassNotFoundException, NotBoundException, IOException{	//判断是否有丢失
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException{
 		ShipmentRepbl shipment = new ShipmentRepbl();
 		return shipment.getRepByNum(num);
 	}
 	
 	public ShippingRepVO getShippingRep(String num) 
-			throws ClassNotFoundException, NotBoundException, IOException{	//同上
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException{
 		ShippingRepbl shipping = new ShippingRepbl();
 		return shipping.getRepByNum(num);
 	}
@@ -46,7 +46,7 @@ public class GetRepbl{
 	}
 
 	public Vector<Object> initTable(Rep rep, String num, ArrayList<String> existOrders) 
-			throws ClassNotFoundException, NotBoundException, IOException {
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		Vector<Object> data = new Vector<Object>();
 		ArrayList<String> orders;
@@ -75,6 +75,17 @@ public class GetRepbl{
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.GetRep);
 		return GetRepVO.toArrayVO(receiptPOs);
+	}
+	
+	public String getDepart(Rep rep, String num) 
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException{
+		
+		if(rep==Rep.ShipmentRep){
+			return getShipmentRep(num).depart;
+		}
+		else {
+			return getShippingRep(num).depart;
+		}
 	}
 
 }

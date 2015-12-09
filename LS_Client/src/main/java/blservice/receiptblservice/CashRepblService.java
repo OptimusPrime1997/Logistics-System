@@ -54,8 +54,9 @@ public interface CashRepblService extends ReceiptblService{
 	 * @throws MalformedURLException 
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
+	 * @throws NumNotFoundException 
 	 */
-	public Vector<Object> initTable(String date) throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException;
+	public Vector<Object> initTable(String date) throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException, NumNotFoundException;
 	
 	/**
 	 * 显示所有银行账户
