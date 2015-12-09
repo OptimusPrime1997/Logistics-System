@@ -65,6 +65,7 @@ public class Accountbl {
 					vo.accountNum = vo.institutionNum
 							+ Authority.value(vo.authority)
 							+ ThreeAutoNum.toThreeNum(num);
+					
 					String autoAccountNum = accountDataService
 							.insert(manageVOPO.voToPO(vo));
 					if (autoAccountNum != null || autoAccountNum.length() != 11) {

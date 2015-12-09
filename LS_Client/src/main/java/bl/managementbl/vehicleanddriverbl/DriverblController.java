@@ -6,6 +6,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
+import Exception.AutoNumException;
+import Exception.ExistException;
 import Exception.NumNotFoundException;
 import VO.ManagementVO.DriverVO;
 import blservice.managementblservice.vehicleanddriverblservice.DriverBLService;
@@ -13,7 +15,7 @@ import blservice.managementblservice.vehicleanddriverblservice.DriverBLService;
 public class DriverblController implements DriverBLService {
 	Driverbl driverbl=new Driverbl();
 
-	public String insertDriver(DriverVO VO) throws RemoteException {
+	public String insertDriver(DriverVO VO) throws ClassNotFoundException, IOException, AutoNumException, ExistException {
 		// TODO Auto-generated method stub
 		return driverbl.insertDriver(VO);
 	}
