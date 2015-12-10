@@ -6,6 +6,7 @@ import java.util.Vector;
 import VO.ReceiptVO.PayRepStaffSalaryRepVO;
 import VO.ReceiptVO.PayRepVO;
 import VO.ReceiptVO.PayStaffSalaryVO;
+import util.enumData.Authority;
 
 public class Staffbl{
 	
@@ -22,7 +23,7 @@ public class Staffbl{
 		for(int i = 0;i < payStaffSalaryVOs.size();i++){
 			Vector<Object> arr = new Vector<Object>();
 			payStaffSalaryVO = payStaffSalaryVOs.get(i);
-			arr.add(payStaffSalaryVO.authority);
+			arr.add(Authority.toString(payStaffSalaryVO.authority));
 			arr.add(payStaffSalaryVO.getterName);
 			arr.add(payStaffSalaryVO.getterNum);
 			arr.add(payStaffSalaryVO.money);

@@ -6,6 +6,24 @@
 
 package ui.receiptui.generalUI;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Vector;
+
+import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
+import Exception.ExceptionPrint;
+import Exception.NumNotFoundException;
+import VO.ReceiptVO.PayRefundVO;
+import VO.ReceiptVO.PayRepRefundRepVO;
+import VO.ReceiptVO.PayRepVO;
+import bl.receiptbl.PayRepbl.PayRepController;
+import blservice.receiptblservice.PayRepblService;
+
 /**
  *
  * @author apple
@@ -21,7 +39,7 @@ public class PayRepRefund extends javax.swing.JPanel {
     private javax.swing.JButton cancelButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     private javax.swing.JLabel moneyLabel;
     private javax.swing.JTextField moneyText;
     private javax.swing.JButton okButton;
@@ -30,6 +48,12 @@ public class PayRepRefund extends javax.swing.JPanel {
     private javax.swing.JTextField resultMsgText;
     private javax.swing.JLabel sumLabel;
     private javax.swing.JTextField sumText;
+    private PayRepblService control;
+    private DefaultTableModel model;
+    private Vector<String> columnIdentifiers;
+    private Vector<Object> dataVector;
+    private PayRepVO payRepVO;
+    String date;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -57,7 +81,7 @@ public class PayRepRefund extends javax.swing.JPanel {
         okButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         sumLabel = new javax.swing.JLabel();
         sumText = new javax.swing.JTextField();
         bankAccountLabel = new javax.swing.JLabel();
@@ -65,6 +89,10 @@ public class PayRepRefund extends javax.swing.JPanel {
         balanceLabel = new javax.swing.JLabel();
         balanceText = new javax.swing.JTextField();
         resultMsgText = new javax.swing.JTextField();
+        control = new PayRepController();
+        model = new DefaultTableModel();
+        columnIdentifiers = new Vector<String>();
+        dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setToolTipText("");
@@ -99,24 +127,14 @@ public class PayRepRefund extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null}
-            },
-            new String [] {
-                "金额", "付款原因"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Double.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane2.setViewportView(jTable1);
+        columnIdentifiers.add("金额");
+        columnIdentifiers.add("付款原因");
+        columnIdentifiers.add("删除");
+        dataVector = control.initRefundTable(payRepVO, date);
+        model.setDataVector(dataVector, columnIdentifiers);
+        jTable.setModel(model);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane2.setViewportView(jTable);
 
         sumLabel.setText("总计:");
 
@@ -125,12 +143,60 @@ public class PayRepRefund extends javax.swing.JPanel {
         bankAccountLabel.setText("付款账户:");
 
         bankAccountBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
+        try {
+			bankAccountBox = new JComboBox(control.showBankAccount());
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+        
         balanceLabel.setText("账户余额:");
 
         balanceText.setEditable(false);
 
         resultMsgText.setEditable(false);
+        
+        setColumn();
+        
+        jTable.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int row = jTable.getSelectedRow();
+				int col = jTable.getSelectedColumn();
+				if(col==4){
+					model.removeRow(row);
+					jTable.setModel(model);
+				}
+				sumText.setText(calSum());
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -204,17 +270,59 @@ public class PayRepRefund extends javax.swing.JPanel {
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void setColumn(){
+    	TableColumn column1 = jTable.getColumnModel().getColumn(0);
+        column1.setPreferredWidth(60);
+        TableColumn column2 = jTable.getColumnModel().getColumn(1);
+        column2.setPreferredWidth(300);
+        TableColumn column3 = jTable.getColumnModel().getColumn(2);
+        column3.setPreferredWidth(10);
+    }
+    
+    private String calSum(){
+    	double sum = 0;
+    	for(int i = 0;i < dataVector.size();i++){
+    		sum += (double)jTable.getValueAt(i, 0);
+    	}
+    	return sum+"";
+    }
 
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_okButtonActionPerformed
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	double sum = Double.parseDouble(sumText.getText());
+    	String bankAccount = (String)bankAccountBox.getSelectedItem();
+    	try {
+			control.minusMoneyInBankAccount(bankAccount, sum);
+		} catch (ClassNotFoundException | NumNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+    	
+    	ArrayList<PayRefundVO> payRefundVOs = new ArrayList<PayRefundVO>();
+    	for(int i = 0;i < dataVector.size();i++){
+    		PayRefundVO payRefundVO = new PayRefundVO((String)jTable.getValueAt(i, 1), 
+    				(double)jTable.getValueAt(i, 0));
+    		payRefundVOs.add(payRefundVO);
+    	}
+    	PayRepRefundRepVO payRepRefundRepVO = new PayRepRefundRepVO(sum, date, payRefundVOs, bankAccount);
+    	control.submitRefund(payRepVO, payRepRefundRepVO);
+    }
 
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cancelButtonActionPerformed
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	
+    }
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addButtonActionPerformed
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	double money = Double.parseDouble(moneyText.getText());
+    	String reason = reasonText.getText();
+    	Vector<Object> arr = new Vector<Object>();
+    	arr.add(money);
+    	arr.add(reason);
+    	dataVector.add(arr);
+    	model.setDataVector(dataVector, columnIdentifiers);
+		setColumn();
+		sumText.setText(calSum());
+    }
 
 }
