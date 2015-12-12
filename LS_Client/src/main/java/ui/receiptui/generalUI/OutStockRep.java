@@ -6,11 +6,58 @@
 
 package ui.receiptui.generalUI;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.rmi.NotBoundException;
+import java.util.ArrayList;
+import java.util.Vector;
+
+import javax.swing.table.DefaultTableModel;
+
+import Exception.ExceptionPrint;
+import Exception.NumNotFoundException;
+import VO.ReceiptVO.OutStockRepVO;
+import VO.ReceiptVO.ShippingRepVO;
+import VO.ReceiptVO.TransferRepVO;
+import bl.receiptbl.InStockRepbl.InStockRepController;
+import bl.receiptbl.OutStockRepbl.OutStockRepController;
+import util.enumData.City;
+import util.enumData.Rep;
+import util.enumData.ShipForm;
+
 /**
  *
  * @author apple
  */
 public class OutStockRep extends javax.swing.JPanel {
+	
+	 // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JButton checkAllRepsButton;
+    private javax.swing.JLabel dateLabel;
+    private javax.swing.JTextField dateText;
+    private javax.swing.JLabel destinationLabel;
+    private javax.swing.JTextField destinationText;
+    private javax.swing.JButton confirmButton;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable;
+    private javax.swing.JTextField shipFormText;
+    private javax.swing.JLabel numLabel;
+    private javax.swing.JTextField numText;
+    private javax.swing.JLabel officeLabel;
+    private javax.swing.JTextField officeText;
+    private javax.swing.JButton okButton;
+    private javax.swing.JComboBox<String> repTypeBox;
+    private javax.swing.JLabel repTypeLabel;
+    private javax.swing.JTextField repTypeText;
+    private javax.swing.JTextField resultMsgText;
+    private javax.swing.JLabel shipFormLabel;
+    private OutStockRepController control;
+   	private DefaultTableModel model;
+   	private Vector<String> columnIdentifiers;
+   	private Vector<Object> dataVector;
+    // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form OutStockRep
@@ -38,19 +85,25 @@ public class OutStockRep extends javax.swing.JPanel {
         repTypeText = new javax.swing.JTextField();
         destinationLabel = new javax.swing.JLabel();
         shipFormLabel = new javax.swing.JLabel();
-        shipFormBox = new javax.swing.JComboBox();
-        repTypeBox = new javax.swing.JComboBox();
+        repTypeBox = new javax.swing.JComboBox<String>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         okButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
         destinationText = new javax.swing.JTextField();
         resultMsgText = new javax.swing.JTextField();
         checkAllRepsButton = new javax.swing.JButton();
+        shipFormText = new javax.swing.JTextField();
+        confirmButton = new javax.swing.JButton();
+        control = new OutStockRepController();
+		model = new DefaultTableModel();
+		columnIdentifiers = new Vector<String>();
+		dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         dateText.setEditable(false);
+        dateText.setText(control.getDate());
 
         dateLabel.setText("日期:");
 
@@ -62,51 +115,31 @@ public class OutStockRep extends javax.swing.JPanel {
         numLabel.setText("编号:");
 
         numText.setEditable(false);
-        numText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numTextActionPerformed(evt);
-            }
-        });
+        String num = officeText.getText() + "000";
+		num += control.getDateInNum(dateText.getText());
+		num += "4";
+		try {
+			num += control.createNum(dateText.getText(), officeText.getText());
+			numText.setText(num);
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
 
         repTypeLabel.setText("出库单据类型:");
-
-        repTypeText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                repTypeTextActionPerformed(evt);
-            }
-        });
 
         destinationLabel.setText("目的地:");
 
         shipFormLabel.setText("装运形式:");
 
-        shipFormBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "航运", "火车", "汽运" }));
-
         repTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "中转单", "中转中心装车单" }));
-        repTypeBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                repTypeBoxActionPerformed(evt);
-            }
-        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null}
-            },
-            new String [] {
-                "订单号"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(jTable1);
+        columnIdentifiers.add("订单号");
+        model.setDataVector(dataVector, columnIdentifiers);
+		jTable.setModel(model);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(jTable);
 
         okButton.setText("确认");
         okButton.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +166,15 @@ public class OutStockRep extends javax.swing.JPanel {
             }
         });
 
+        shipFormText.setEditable(false);
+
+        confirmButton.setText("确定");
+        confirmButton.addActionListener(new java.awt.event.ActionListener(){
+        	public void actionPerformed(java.awt.event.ActionEvent evt) {
+        		confirmButtonActionPerformed(evt);
+        	}
+        });
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -144,36 +186,39 @@ public class OutStockRep extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(numLabel)
-                            .addComponent(repTypeLabel)
-                            .addComponent(destinationLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(numLabel)
+                                    .addComponent(repTypeLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(destinationText, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(52, 52, 52)
-                                                .addComponent(shipFormLabel))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(29, 29, 29)
-                                                .addComponent(cancelButton)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(okButton)))
+                                        .addComponent(repTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(shipFormBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(9, 9, 9)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(repTypeText, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(confirmButton))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(repTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(repTypeText, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(15, Short.MAX_VALUE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(39, 39, 39)
+                                        .addComponent(cancelButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(okButton))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(52, 52, 52)
+                                        .addComponent(shipFormLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(shipFormText, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(65, 65, 65)
+                                        .addComponent(destinationLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(destinationText, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(92, 92, 92)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(checkAllRepsButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -200,72 +245,97 @@ public class OutStockRep extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(repTypeLabel)
-                    .addComponent(repTypeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(repTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(destinationLabel)
-                    .addComponent(shipFormLabel)
-                    .addComponent(shipFormBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(destinationText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(okButton)
-                    .addComponent(cancelButton))
-                .addGap(25, 25, 25)
-                .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(repTypeLabel)
+                            .addComponent(repTypeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(repTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(confirmButton))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(destinationLabel)
+                            .addComponent(destinationText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(shipFormLabel)
+                            .addComponent(shipFormText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(okButton)
+                            .addComponent(cancelButton))
+                        .addGap(0, 158, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    
 
-    private void numTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numTextActionPerformed
+    private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-    private void repTypeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repTypeTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_repTypeTextActionPerformed
+    }
 
-    private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAllRepsButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkAllRepsButtonActionPerformed
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-    private void repTypeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repTypeBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_repTypeBoxActionPerformed
+    }
 
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cancelButtonActionPerformed
-
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_okButtonActionPerformed
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cancelButton;
-    private javax.swing.JButton checkAllRepsButton;
-    private javax.swing.JLabel dateLabel;
-    private javax.swing.JTextField dateText;
-    private javax.swing.JLabel destinationLabel;
-    private javax.swing.JTextField destinationText;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel numLabel;
-    private javax.swing.JTextField numText;
-    private javax.swing.JLabel officeLabel;
-    private javax.swing.JTextField officeText;
-    private javax.swing.JButton okButton;
-    private javax.swing.JComboBox repTypeBox;
-    private javax.swing.JLabel repTypeLabel;
-    private javax.swing.JTextField repTypeText;
-    private javax.swing.JTextField resultMsgText;
-    private javax.swing.JComboBox shipFormBox;
-    private javax.swing.JLabel shipFormLabel;
-    // End of variables declaration//GEN-END:variables
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	String num = numText.getText();
+    	String date = dateText.getText();
+    	String destination = destinationText.getText();
+    	Rep rep = Rep.getRep(repTypeBox.getSelectedItem().toString());
+    	String shipNum = repTypeText.getText();
+    	ShipForm form = ShipForm.getShipForm(shipFormText.getText());
+    	ArrayList<String> goods = new ArrayList<String>();
+    	for(int i = 0;i < dataVector.size();i++){
+    		goods.add(dataVector.get(i).toString());
+    	}
+    	OutStockRepVO outStockRepVO = new OutStockRepVO(num, date, destination, form, rep, shipNum, goods);
+    	try {
+			control.submit(outStockRepVO);
+		} catch (NotBoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+    }
+    
+    private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt){
+    	if(repTypeBox.getSelectedItem().toString().equals("中转单")){
+    		ShippingRepVO shippingRepVO = null;
+    		try {
+				shippingRepVO = control.getShippingRepVO(repTypeText.getText());
+			} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			}
+    		ArrayList<String> orders = shippingRepVO.goods;
+    		dataVector.addAll(orders);
+    		model.setDataVector(dataVector, columnIdentifiers);
+    		destinationText.setText(shippingRepVO.destination);
+    		shipFormText.setText("汽运");
+    	}
+    	else {
+			TransferRepVO transferRepVO = null;
+			try {
+				transferRepVO = control.getTransferRepVO(repTypeText.getText());
+			} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			}
+			ArrayList<String> orders = transferRepVO.goods;
+    		dataVector.addAll(orders);
+    		model.setDataVector(dataVector, columnIdentifiers);
+    		destinationText.setText(City.toString(transferRepVO.city));
+    		shipFormText.setText(ShipForm.toFrendlyString(transferRepVO.form));
+		}
+    }
+   
 }

@@ -1,7 +1,5 @@
 package util.enumData;
 
-import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
-
 public enum City {
 	BEIJING, NANJING, SHANGHAI, GUANGZHOU;
 	public static String toString(City city) {

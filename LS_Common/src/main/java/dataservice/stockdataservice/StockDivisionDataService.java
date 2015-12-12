@@ -36,7 +36,6 @@ public interface StockDivisionDataService extends Remote{
 	
 	public StockDivisionPO find (int block, int place) throws ClassNotFoundException, IOException,RemoteException;
 	
-	
 	public ResultMessage delete (String listNum)throws RemoteException;
 	
 	/**

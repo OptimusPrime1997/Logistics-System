@@ -9,7 +9,9 @@ package ui.receiptui.generalUI;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -17,9 +19,12 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
-import bl.controllerfactorybl.ControllerFactoryImpl;
+import Exception.GoodsNotFound;
+import VO.StockDivisionVO;
+import VO.ReceiptVO.InStockRepVO;
+import VO.ReceiptVO.InStockVO;
 import bl.receiptbl.InStockRepbl.InStockRepController;
-import blservice.receiptblservice.InStockRepblService;
+import util.enumData.City;
 import util.enumData.ResultMessage;
 
 /**
@@ -97,6 +102,7 @@ public class InStockRep extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
 
         dateText.setEditable(false);
+        dateText.setText(control.getDate());
 
         dateLabel.setText("日期:");
 
@@ -184,6 +190,7 @@ public class InStockRep extends javax.swing.JPanel {
 				int row = jTable.getSelectedRow();
 				int col = jTable.getSelectedColumn();
 				if (col == 3) {
+					deleteBlock((String)jTable.getValueAt(row, 0));
 					model.removeRow(row);
 					jTable.setModel(model);
 				}
@@ -308,6 +315,16 @@ public class InStockRep extends javax.swing.JPanel {
 		TableColumn column4 = jTable.getColumnModel().getColumn(3);
 		column4.setPreferredWidth(10);
 	}
+    
+    private void deleteBlock(String order){
+    	try {
+			control.delete(order);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+    }
 
     private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	
@@ -319,13 +336,66 @@ public class InStockRep extends javax.swing.JPanel {
 		String resultMsg = ResultMessage.toFriendlyString(resultMessage);
 		resultMsgText.setText(resultMsg);
 		if (resultMessage == ResultMessage.ADD_SUCCESS) {
-			String destination = 
-			ArrayList<StockDivisionVO> stockDivisionVOs = control.getBlock(destination);
+			String destination = null;
+			StockDivisionVO stockDivisionVO = null;
+			try {
+				destination = control.getCity(order);
+			} catch (GoodsNotFound e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			}
+			City destinationCity = City.getCity(destination);
+			try {
+				stockDivisionVO = control.getAvailableDivision(destinationCity);
+			} catch (NotBoundException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			}
+			if(stockDivisionVO==null)
+				resultMsgText.setText("该区已满");
+			else{
+				Vector<Object> arr = new Vector<Object>();
+				arr.add(order);
+				arr.add(stockDivisionVO.block);
+				arr.add(stockDivisionVO.place);
+				dataVector.add(arr);
+				model.setDataVector(dataVector, columnIdentifiers);
+				setColumn();
+				ArrayList<InStockVO> inStockVOs = new ArrayList<InStockVO>();
+				inStockVOs.add(new InStockVO(order, stockDivisionVO.block+"", stockDivisionVO.place+""));
+				InStockRepVO inStockRepVO = new InStockRepVO(null, null, inStockVOs);
+				try {
+					control.update(inStockRepVO);
+				} catch (MalformedURLException | RemoteException | NotBoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					resultMsgText.setText(ExceptionPrint.print(e));
+				}
+			}
 		}
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+    	String num = numText.getText();
+		String date = dateText.getText();
+		ArrayList<InStockVO> inStockVOs = new ArrayList<InStockVO>();
+		for(int i = 0;i < dataVector.size();i++){
+			InStockVO inStockVO = new InStockVO((String)jTable.getValueAt(i, 0), 
+					(String)jTable.getValueAt(i, 1), 
+					(String)jTable.getValueAt(i, 2));
+			inStockVOs.add(inStockVO);
+		}
+		InStockRepVO inStockRepVO = new InStockRepVO(num, date, inStockVOs);
+		try {
+			control.submit(inStockRepVO);
+		} catch (NotBoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+		resultMsgText.setText(ResultMessage.toFriendlyString(ResultMessage.SUBMIT_SUCCESS));
     }
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {

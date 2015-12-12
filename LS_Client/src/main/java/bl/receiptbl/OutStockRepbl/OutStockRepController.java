@@ -10,6 +10,8 @@ import java.util.Vector;
 import Exception.NumNotFoundException;
 import VO.ReceiptVO.OutStockRepVO;
 import VO.ReceiptVO.ReceiptVO;
+import VO.ReceiptVO.ShippingRepVO;
+import VO.ReceiptVO.TransferRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.OutStockRepblService;
 import blservice.receiptblservice.PostReceiptblService;
@@ -62,7 +64,8 @@ implements OutStockRepblService, PostReceiptblService, SubmitblService{
 	}
 
 	@Override
-	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck(String office) 
+			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		return outStockRepCheckbl.initCheck(office);
 	}
@@ -75,11 +78,17 @@ implements OutStockRepblService, PostReceiptblService, SubmitblService{
 	}
 
 	@Override
-	public Vector<Object> initTable(Rep shipRep, String shipNum) 
+	public ShippingRepVO getShippingRepVO(String num)
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
-		return outStackRepbl.initTable(shipRep, shipNum);
+		return outStackRepbl.getShippingRepVO(num);
 	}
 
+	@Override
+	public TransferRepVO getTransferRepVO(String num)
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
+		// TODO Auto-generated method stub
+		return outStackRepbl.getTransferRepVO(num);
+	}
 
 }

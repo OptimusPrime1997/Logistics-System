@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
 import VO.StockDivisionVO;
 import VO.ReceiptVO.InStockRepVO;
@@ -16,6 +17,7 @@ import blservice.receiptblservice.InStockRepblService;
 import blservice.receiptblservice.PostReceiptblService;
 import blservice.receiptblservice.SubmitblService;
 import util.enumData.City;
+import util.enumData.ResultMessage;
 
 public class InStockRepController extends ReceiptblController 
 implements InStockRepblService, PostReceiptblService, SubmitblService{
@@ -70,9 +72,27 @@ implements InStockRepblService, PostReceiptblService, SubmitblService{
 	}
 
 	@Override
-	public ArrayList<StockDivisionVO> getBlock(City destination) throws NotBoundException, IOException {
+	public String getCity(String order) throws GoodsNotFound {
 		// TODO Auto-generated method stub
-		return inStockRepbl.getBlock(destination);
+		return inStockRepbl.getCity(order);
+	}
+
+	@Override
+	public StockDivisionVO getAvailableDivision(City des) throws NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		return inStockRepbl.getAvailableDivision(des);
+	}
+
+	@Override
+	public ResultMessage delete(String listNum) throws RemoteException, MalformedURLException, NotBoundException {
+		// TODO Auto-generated method stub
+		return inStockRepbl.delete(listNum);
+	}
+
+	@Override
+	public ResultMessage update(InStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException {
+		// TODO Auto-generated method stub
+		return inStockRepbl.update(vo);
 	}
 
 }
