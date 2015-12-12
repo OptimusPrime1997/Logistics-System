@@ -5,9 +5,11 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 
 import PO.ReceiptPO.ReceiptPO;
+import VO.StockDivisionVO;
 import VO.ReceiptVO.InStockRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.Receiptbl;
+import util.enumData.City;
 import util.enumData.Rep;
 
 public class InStockRepbl{
@@ -38,6 +40,10 @@ public class InStockRepbl{
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.InStockRep, office);
 		return InStockRepVO.toArrayVO(receiptPOs);
+	}
+	
+	public ArrayList<StockDivisionVO> getBlock(City destination){
+		
 	}
 
 }

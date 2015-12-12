@@ -32,7 +32,7 @@ public class BusinessFormVO {
 			this.moneyInRecord.add(CashRepVO.cashToArrayVO(p));
 		}
 		for(ArrayList<PayRepPO>p:po.getMoneyOutRecord()){
-			this.moneyOutRecord.add(PayRepVO.payToArrayVO(p));
+			this.moneyOutRecord.add(PayRepVO.toArrayVO(p));
 		}
 	}
 	
