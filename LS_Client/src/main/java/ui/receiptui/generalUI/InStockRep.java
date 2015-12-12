@@ -319,6 +319,7 @@ public class InStockRep extends javax.swing.JPanel {
 		String resultMsg = ResultMessage.toFriendlyString(resultMessage);
 		resultMsgText.setText(resultMsg);
 		if (resultMessage == ResultMessage.ADD_SUCCESS) {
+			String destination = 
 			ArrayList<StockDivisionVO> stockDivisionVOs = control.getBlock(destination);
 		}
     }

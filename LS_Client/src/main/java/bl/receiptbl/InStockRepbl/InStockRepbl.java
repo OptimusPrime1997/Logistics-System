@@ -47,5 +47,9 @@ public class InStockRepbl{
 	public ArrayList<StockDivisionVO> getBlock(City destination) throws NotBoundException, IOException{
 		return stockDivisionbl.getBlock(destination);
 	}
+	
+	public String getCity(String order){
+		
+	}
 
 }
