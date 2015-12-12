@@ -55,7 +55,6 @@ public class ProfitForm extends javax.swing.JPanel {
         realIncomeLabel = new javax.swing.JLabel();
         realIncomeText = new javax.swing.JTextField();
         okButton = new javax.swing.JButton();
-        resetButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
 
         startDateText.setText(CurrentTime.getDate());
@@ -92,13 +91,6 @@ public class ProfitForm extends javax.swing.JPanel {
             }
         });
 
-        resetButton.setText("重置");
-        resetButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetButtonActionPerformed(evt);
-            }
-        });
-
         resultMsgText.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -125,7 +117,6 @@ public class ProfitForm extends javax.swing.JPanel {
                 .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(resetButton)
                 .addGap(56, 56, 56)
                 .addComponent(okButton)
                 .addGap(93, 93, 93))
@@ -153,8 +144,7 @@ public class ProfitForm extends javax.swing.JPanel {
                     .addComponent(realIncomeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(okButton)
-                    .addComponent(resetButton))
+                    .addComponent(okButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -178,7 +168,6 @@ public class ProfitForm extends javax.swing.JPanel {
     private javax.swing.JButton okButton;
     private javax.swing.JLabel realIncomeLabel;
     private javax.swing.JTextField realIncomeText;
-    private javax.swing.JButton resetButton;
     private javax.swing.JTextField resultMsgText;
     private javax.swing.JLabel startDateLabel;
     private javax.swing.JTextField startDateText;

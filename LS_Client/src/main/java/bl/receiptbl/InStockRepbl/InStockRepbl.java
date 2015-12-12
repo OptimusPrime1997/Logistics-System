@@ -9,12 +9,14 @@ import VO.StockDivisionVO;
 import VO.ReceiptVO.InStockRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.Receiptbl;
+import bl.stockbl.StockDivisionbl;
 import util.enumData.City;
 import util.enumData.Rep;
 
 public class InStockRepbl{
 	
 	private Receiptbl receiptbl = new Receiptbl();
+	private StockDivisionbl stockDivisionbl = new StockDivisionbl();
 
 	public String createNum(String date, String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
@@ -42,8 +44,8 @@ public class InStockRepbl{
 		return InStockRepVO.toArrayVO(receiptPOs);
 	}
 	
-	public ArrayList<StockDivisionVO> getBlock(City destination){
-		
+	public ArrayList<StockDivisionVO> getBlock(City destination) throws NotBoundException, IOException{
+		return stockDivisionbl.getBlock(destination);
 	}
 
 }

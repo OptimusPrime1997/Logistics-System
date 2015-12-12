@@ -8,12 +8,14 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import Exception.NumNotFoundException;
+import VO.StockDivisionVO;
 import VO.ReceiptVO.InStockRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.InStockRepblService;
 import blservice.receiptblservice.PostReceiptblService;
 import blservice.receiptblservice.SubmitblService;
+import util.enumData.City;
 
 public class InStockRepController extends ReceiptblController 
 implements InStockRepblService, PostReceiptblService, SubmitblService{
@@ -65,6 +67,12 @@ implements InStockRepblService, PostReceiptblService, SubmitblService{
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return inStockRepShowbl.initShow(num);
+	}
+
+	@Override
+	public ArrayList<StockDivisionVO> getBlock(City destination) throws NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		return inStockRepbl.getBlock(destination);
 	}
 
 }
