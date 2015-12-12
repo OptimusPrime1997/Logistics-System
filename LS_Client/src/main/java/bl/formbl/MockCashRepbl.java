@@ -19,7 +19,8 @@ public class MockCashRepbl extends ReceiptblController{
 		return vos;
 	}
 	public ArrayList<CashRepVO> getRepByDate(String tempT) {
-		
+		System.out.println("我是MockCash的   按日期寻找方法");
+		//5个rep，每个rep有15个VO
 		//50,60,70,80,90=350
 		for (int i = 5; i < 10; i++) {
 			for(int j=1;j<4;j++){
@@ -35,9 +36,10 @@ public class MockCashRepbl extends ReceiptblController{
 			}
 			CashRepVO vo = new CashRepVO("000" + i, "2015-12-" + i, i * 10, "", cashVOs);
 			vos.add(vo);
-			
+			System.out.println("我是cashMock "+vos.size()+"    i "+i);
 		}
-		return vos;
+		return null;
 	}
+	
 
 }

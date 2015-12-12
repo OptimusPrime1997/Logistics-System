@@ -5,10 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CurrentTime {
+
 	public static void main(String[] args) {
 		String a="2015-8-05";
-		String b="2015-08-5";
-		System.out.println(CurrentTime.ifearlier(a,b));
+		String b="2015-08-01";
+		System.out.println(CurrentTime.ifsame(a,b));
 	}
 	static Date d=new Date();// new Date()为获取当前系统时间
 	static SimpleDateFormat df;
@@ -42,6 +43,17 @@ public class CurrentTime {
 			e.printStackTrace();
 		}return false;
 		
+	}
+	/**
+	 * 是否是同一天   是的话返回true
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	public static boolean ifsame(String a,String b){
+		if(!ifearlier(a, b)&&!ifearlier(b, a)){
+			return true;
+		}else return false;		
 	}
 	/**
 	 * 返回减t天的日期

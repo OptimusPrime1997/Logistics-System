@@ -36,7 +36,7 @@ public class MockPayRepbl extends ReceiptblController{
 					"4444", null, null, null, null, null, null, null);
 			vos.add(vo);
 		}
-		return vos;
+		return null;
 	}
 
 

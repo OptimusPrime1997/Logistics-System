@@ -7,43 +7,74 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import org.omg.CosNaming.NamingContextPackage.NotFound;
-
 import util.CurrentTime;
 import util.enumData.ResultMessage;
 import Exception.NotFoundMoneyInAndOutException;
 import VO.BusinessFormVO;
 import VO.ReceiptVO.CashRepVO;
 import VO.ReceiptVO.PayRepVO;
+import bl.receiptbl.CashRepbl.CashRepbl;
+import bl.receiptbl.PayRepbl.PayRepbl;
 import dataservice.formdataservice.BusinessFormDataService;
-
+/**
+ * 想测试的话    把两个引用的bl都加上Mock 
+ * 
+ */
 public class BusinessFormbl {
 	public BusinessFormVO show(String startTime, String endTime)
 			throws NotFoundMoneyInAndOutException {
 		ArrayList<ArrayList<PayRepVO>> moneyOut = new ArrayList<ArrayList<PayRepVO>>();
 		ArrayList<ArrayList<CashRepVO>> moneyIn = new ArrayList<ArrayList<CashRepVO>>();
+		ArrayList<CashRepVO> inTemp;
+		ArrayList<PayRepVO> outTemp;
 		// 检验过的 合法时间
 		String tempT = startTime;
-		MockPayRepbl ctr_payRep = new MockPayRepbl();
-		MockCashRepbl ctr_cashRep = new MockCashRepbl();
+		/*
+		 * to test
+		 * 
+		 *PayRepbl-->mockPayRepbl
+		 *CashRepbl-->MockCashRepbl		 * 
+		 */
+		PayRepbl ctr_payRep = new PayRepbl();
+		CashRepbl ctr_cashRep = new CashRepbl();
 		System.out.println("BusinessFormbl.show");
 		int i = 0;
-		while (CurrentTime.ifearlier(tempT, endTime)) {
-			System.out.println(tempT);
-			if (ctr_payRep.getRepByDate(tempT) != null)
-				moneyOut.add(ctr_payRep.getRepByDate(tempT));
-			if (ctr_cashRep.getRepByDate(tempT) != null)
-				moneyIn.add(ctr_cashRep.getRepByDate(tempT));
-			tempT = CurrentTime.addDate(tempT, 1);
+		try {
+			if (CurrentTime.ifsame(tempT, endTime)) {
+				System.out.println("同一天");
+				System.out.println(tempT);
+				outTemp = ctr_payRep.getRepByDate(tempT);
+				inTemp = ctr_cashRep.getRepByDate(tempT);
+				if (outTemp != null)
+					moneyOut.add(outTemp);
+				if (inTemp != null)
+					moneyIn.add(inTemp);
+			} else {
+				System.out.println("不同天");
+				while (CurrentTime.ifearlier(tempT, endTime)) {
+					System.out.println(tempT);
+					outTemp = ctr_payRep.getRepByDate(tempT);
+					inTemp = ctr_cashRep.getRepByDate(tempT);
+					if (outTemp != null)
+						moneyOut.add(outTemp);
+					if (inTemp != null)
+						moneyIn.add(inTemp);
+					tempT = CurrentTime.addDate(tempT, 1);
+				}
+				// 最后一天没加
+				outTemp = ctr_payRep.getRepByDate(tempT);
+				inTemp = ctr_cashRep.getRepByDate(tempT);
+				if (outTemp != null)
+					moneyOut.add(outTemp);
+				if (inTemp != null)
+					moneyIn.add(inTemp);
+			}
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+			if (moneyIn.size() == 0 && moneyOut.size() == 0) {
+				throw new NotFoundMoneyInAndOutException();
+			}
 		}
-		// 最后一天没加
-		if (ctr_payRep.getRepByDate(tempT) != null)
-			moneyOut.add(ctr_payRep.getRepByDate(tempT));
-		if (ctr_cashRep.getRepByDate(tempT) != null)
-			moneyIn.add(ctr_cashRep.getRepByDate(tempT));
-		tempT = CurrentTime.addDate(tempT, 1);
-		System.out.println("收入 " + moneyIn.size());
-		System.out.println("支出 " + moneyOut.size());
+
 		if (moneyIn.size() == 0 && moneyOut.size() == 0) {
 			throw new NotFoundMoneyInAndOutException();
 		}
