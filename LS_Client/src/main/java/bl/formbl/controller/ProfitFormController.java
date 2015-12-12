@@ -14,7 +14,7 @@ import blservice.formblservice.ProfitFormBLService;
 public class ProfitFormController implements ProfitFormBLService{
 	private ProfitFormbl profitFormbl = new ProfitFormbl();
 
-	public ProfitFormVO show() throws NotBoundException, ClassNotFoundException, IOException {
+	public ProfitFormVO show(){
 		return profitFormbl.show();
 	}
 

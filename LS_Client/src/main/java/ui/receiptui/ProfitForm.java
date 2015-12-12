@@ -64,15 +64,12 @@ public class ProfitForm extends javax.swing.JPanel {
         incomeText.setText("0");
 		realIncomeText.setText("0");
 		costText.setText("0");
-        try {
 			vo=ctr.show();
 			System.out.println("显示"+vo.totalIn);
 			incomeText.setText(vo.totalIn+"");
 			realIncomeText.setText(vo.totalProfit+"");
 			costText.setText(vo.totalOut+"");
-		} catch (ClassNotFoundException | NotBoundException | IOException e) {
-			showFeedback(ResultMessage.NOT_FOUND_FINACIAL);
-		}
+		
         
         startDateLabel.setText("今日日期:");
 
