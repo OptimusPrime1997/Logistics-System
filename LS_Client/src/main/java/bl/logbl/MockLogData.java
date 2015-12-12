@@ -18,6 +18,7 @@ public class MockLogData implements LogDataService {
 			LogPO po=new LogPO(LogType.ADD_A_GOODS, "0250000611"+i, "2015-12-"+i);
 			pos.add(po);
 		}
+		
 		return pos;
 	}
 
