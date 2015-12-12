@@ -23,8 +23,8 @@ public class OutStockRepbl{
 	private TransferRepbl transferRepbl = new TransferRepbl();
 	private StockController stockController = new StockController();
 
-	public String createNum(String date) throws ClassNotFoundException, NotBoundException, IOException {
-		return receiptbl.createNum(date, Rep.OutStockRep);
+	public String createNum(String date, String office) throws ClassNotFoundException, NotBoundException, IOException {
+		return receiptbl.createNum(date, Rep.OutStockRep, office);
 	}
 
 	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
@@ -33,18 +33,18 @@ public class OutStockRepbl{
 		stockController.update((OutStockRepVO)vo);
 	}
 
-	public ArrayList<OutStockRepVO> getRepByDate(String date) throws ClassNotFoundException, 
+	public ArrayList<OutStockRepVO> getRepByDate(String date, String office) throws ClassNotFoundException, 
 	NotBoundException, IOException {
-		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.OutStockRep);
+		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.OutStockRep, office);
 		if(receiptPOs==null)
 			return null;
 		return OutStockRepVO.toArrayVO(receiptPOs);
 	}
 
-	public ArrayList<OutStockRepVO> getAllRep() throws ClassNotFoundException, NotBoundException, 
+	public ArrayList<OutStockRepVO> getAllRep(String office) throws ClassNotFoundException, NotBoundException, 
 	IOException {
 		// TODO Auto-generated method stub
-		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.OutStockRep);
+		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.OutStockRep, office);
 		return OutStockRepVO.toArrayVO(receiptPOs);
 	}
 

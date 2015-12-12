@@ -12,33 +12,22 @@ import VO.ReceiptVO.OutStockRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.OutStockRepblService;
+import blservice.receiptblservice.PostReceiptblService;
+import blservice.receiptblservice.SubmitblService;
 import util.enumData.Rep;
 
-public class OutStockRepController extends ReceiptblController implements OutStockRepblService{
+public class OutStockRepController extends ReceiptblController 
+implements OutStockRepblService, PostReceiptblService, SubmitblService{
 	private OutStockRepbl outStackRepbl = new OutStockRepbl();
 	private OutStockRepCheckbl outStockRepCheckbl = new OutStockRepCheckbl();
 	private OutStockRepShowbl outStockRepShowbl = new OutStockRepShowbl();
 
 	@Override
-	public String createNum(String date)
+	public String createNum(String date, String office)
 			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException,
 			IOException {
 		// TODO Auto-generated method stub
-		return outStackRepbl.createNum(date);
-	}
-
-	@Override
-	public void delete(int n)
-			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, 
-			IOException {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void delete(String num)
-			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException,
-			IOException {
-		// TODO Auto-generated method stub
+		return outStackRepbl.createNum(date, office);
 	}
 
 	@Override
@@ -57,25 +46,25 @@ public class OutStockRepController extends ReceiptblController implements OutSto
 	}
 
 	@Override
-	public ArrayList<OutStockRepVO> getAllRep()
+	public ArrayList<OutStockRepVO> getAllRep(String office)
 			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, 
 			IOException {
 		// TODO Auto-generated method stub
-		return outStackRepbl.getAllRep();
+		return outStackRepbl.getAllRep(office);
 	}
 
 	@Override
-	public ArrayList<OutStockRepVO> getRepByDate(String date)
+	public ArrayList<OutStockRepVO> getRepByDate(String date, String office)
 			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException,
 			IOException {
 		// TODO Auto-generated method stub
-		return outStackRepbl.getRepByDate(date);
+		return outStackRepbl.getRepByDate(date, office);
 	}
 
 	@Override
-	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return outStockRepCheckbl.initCheck();
+		return outStockRepCheckbl.initCheck(office);
 	}
 
 	@Override

@@ -67,11 +67,8 @@ public class StockDivisionbl implements StockDivisionBLService{
 		} else {
 			return ResultMessage.FAILED;
 		}
-		
-		
 	}
 
-	 
 	public ArrayList<StockDivisionVO> getBlock(City destination) throws NotBoundException, IOException {
 		StockDivisionDataService sd = getStockDivisionDataService();
 		City city = CurrentCity.getCurrentCity();

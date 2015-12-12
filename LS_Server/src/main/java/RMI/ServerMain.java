@@ -8,6 +8,7 @@ import dataimpl.formdata.ProfitFormData;
 import dataimpl.goodsdata.GoodsData;
 import dataimpl.logdata.LogData;
 import dataimpl.management.managedata.ManageDataImpl;
+import dataimpl.receiptdata.PayRepData;
 import dataimpl.receiptdata.ReceiptData;
 import dataimpl.stockdata.StockData;
 import dataimpl.stockdata.StockDivisionData;
@@ -17,6 +18,7 @@ import dataservice.formdataservice.ProfitFormDataService;
 import dataservice.goodsdataservice.GoodsDataService;
 import dataservice.logdataservice.LogDataService;
 import dataservice.managementdataservice.managedataservice.ManageDataService;
+import dataservice.receiptdataservice.PayRepDataService;
 import dataservice.receiptdataservice.ReceiptDataService;
 import dataservice.stockdataservice.StockDataService;
 import dataservice.stockdataservice.StockDivisionDataService;
@@ -73,6 +75,12 @@ public class ServerMain {
 			Naming.rebind("rmi://" + ip + ":" + defaultPort + "/stockDivision",
 					sdd);
 			System.out.println("9");
+			
+			LocateRegistry.createRegistry(1025);
+			PayRepDataService payService = new PayRepData();
+			Naming.rebind("rmi://" + ip + ":" + "1024/payRep", payService);
+			System.out.println("10");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

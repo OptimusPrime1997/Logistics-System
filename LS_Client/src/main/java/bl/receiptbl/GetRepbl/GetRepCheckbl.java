@@ -25,9 +25,9 @@ public class GetRepCheckbl {
 		return new GetRepVO((GetRepPO)receiptPO);
 	}
 
-	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<GetRepVO> getRepVOs = getRepbl.getAllRep();
+		ArrayList<GetRepVO> getRepVOs = getRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < getRepVOs.size();i++){
 			Vector<Object> arr = new Vector<Object>();

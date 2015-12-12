@@ -14,8 +14,6 @@ import bl.loginbl.LoginblController;
  */
 public class CurrentCity {
 	
-	
-	
 	public static City getCurrentCity() throws RemoteException{
 		
 		LoginblController login = new LoginblController();
@@ -31,12 +29,24 @@ public class CurrentCity {
 			return City.GUANGZHOU;
 		case "021":
 			return City.SHANGHAI;
-
 		default:
-			break;
+			return null;
 		}
-		
-		return null;
+	}
+	
+	public static String getCurrentOptorID(String office){
+		switch (office) {
+		case "北京":
+			return "010";
+		case "南京":
+			return "025";
+		case "广州":
+			return "020";
+		case "上海":
+			return "021";
+		default:
+			return null;
+		}
 	}
 	
 	

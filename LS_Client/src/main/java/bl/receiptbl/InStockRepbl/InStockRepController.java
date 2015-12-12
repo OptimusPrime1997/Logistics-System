@@ -12,26 +12,19 @@ import VO.ReceiptVO.InStockRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.InStockRepblService;
+import blservice.receiptblservice.PostReceiptblService;
+import blservice.receiptblservice.SubmitblService;
 
-public class InStockRepController extends ReceiptblController implements InStockRepblService{
+public class InStockRepController extends ReceiptblController 
+implements InStockRepblService, PostReceiptblService, SubmitblService{
 	private InStockRepbl inStockRepbl = new InStockRepbl();
 	private InStockRepCheckbl inStockRepCheckbl = new InStockRepCheckbl();
 	private InStockRepShowbl inStockRepShowbl = new InStockRepShowbl();
 
 	@Override
-	public String createNum(String date) throws NotBoundException, ClassNotFoundException, IOException {
+	public String createNum(String date, String office) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return inStockRepbl.createNum(date);
-	}
-
-	@Override
-	public void delete(int n) throws RemoteException, MalformedURLException, NotBoundException {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void delete(String num) throws RemoteException, MalformedURLException, NotBoundException {
-		// TODO Auto-generated method stub
+		return inStockRepbl.createNum(date, office);
 	}
 
 	@Override
@@ -48,23 +41,23 @@ public class InStockRepController extends ReceiptblController implements InStock
 	}
 
 	@Override
-	public ArrayList<InStockRepVO> getAllRep() throws NotBoundException, ClassNotFoundException, 
+	public ArrayList<InStockRepVO> getAllRep(String office) throws NotBoundException, ClassNotFoundException, 
 	IOException {
 		// TODO Auto-generated method stub
-		return inStockRepbl.getAllRep();
+		return inStockRepbl.getAllRep(office);
 	}
 
 	@Override
-	public ArrayList<InStockRepVO> getRepByDate(String date)
+	public ArrayList<InStockRepVO> getRepByDate(String date, String office)
 			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return inStockRepbl.getRepByDate(date);
+		return inStockRepbl.getRepByDate(date, office);
 	}
 
 	@Override
-	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return inStockRepCheckbl.initCheck();
+		return inStockRepCheckbl.initCheck(office);
 	}
 
 	@Override

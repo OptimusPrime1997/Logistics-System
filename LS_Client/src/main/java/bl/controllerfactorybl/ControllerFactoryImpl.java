@@ -25,7 +25,7 @@ import bl.receiptbl.InStockRepbl.InStockRepController;
 import bl.receiptbl.OutStockRepbl.OutStockRepController;
 import bl.receiptbl.PayRepbl.PayRepController;
 import bl.receiptbl.ReceptionRepbl.ReceptionRepController;
-import bl.receiptbl.ShipmentRepbl.ShipmentController;
+import bl.receiptbl.ShipmentRepbl.ShipmentRepController;
 import bl.receiptbl.ShippingRepbl.ShippingRepController;
 import bl.receiptbl.TransferRepbl.TransferRepController;
 import bl.stockbl.StockController;
@@ -240,7 +240,7 @@ public class ControllerFactoryImpl implements ControllerFactoryblService {
 	@Override
 	public ShipmentRepblServce getShipmentRepblServce() {
 
-		return new ShipmentController();
+		return new ShipmentRepController();
 	}
 
 	@Override

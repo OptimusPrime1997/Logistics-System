@@ -35,7 +35,7 @@ public class PayRepStaff extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel balanceLabel;
     private javax.swing.JTextField balanceText;
-    private javax.swing.JComboBox bankAccountBox;
+    private javax.swing.JComboBox<String> bankAccountBox;
     private javax.swing.JLabel bankAccountLabel;
     private javax.swing.JButton cancelButton;
     private javax.swing.JScrollPane jScrollPane2;
@@ -44,7 +44,7 @@ public class PayRepStaff extends javax.swing.JPanel {
     private javax.swing.JTextField resultMsgText;
     private javax.swing.JLabel sumLabel;
     private javax.swing.JTextField sumText;
-    private PayRepblService control;
+    private PayRepController control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
@@ -69,7 +69,7 @@ public class PayRepStaff extends javax.swing.JPanel {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
-        bankAccountBox = new javax.swing.JComboBox();
+        bankAccountBox = new javax.swing.JComboBox<String>();
         cancelButton = new javax.swing.JButton();
         okButton = new javax.swing.JButton();
         sumLabel = new javax.swing.JLabel();
@@ -149,8 +149,8 @@ public class PayRepStaff extends javax.swing.JPanel {
 				if(col==4){
 					model.removeRow(row);
 					jTable.setModel(model);
+					sumText.setText(calSum());
 				}
-				sumText.setText(calSum());
 			}
 			
 			@Override

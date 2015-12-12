@@ -1,5 +1,7 @@
 package util.enumData;
 
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
+
 public enum City {
 	BEIJING, NANJING, SHANGHAI, GUANGZHOU;
 	public static String toString(City city) {
@@ -32,5 +34,20 @@ public enum City {
 			break;
 		}
 		return 0;
+	}
+	
+	public static City getCity(String ChineseName){
+		switch (ChineseName) {
+		case "北京":
+			return BEIJING;
+		case "南京":
+			return NANJING;
+		case "上海":
+			return SHANGHAI;
+		case "广州":
+			return GUANGZHOU;
+		default:
+			return null;
+		}
 	}
 }

@@ -15,14 +15,16 @@ public class TransferRepPO extends ReceiptPO {
 	private City city;
 	private ArrayList<String> goods;
 	private double money;
+	private String depart;
 	public TransferRepPO(String num, String date, ShipForm form, String carNum, City city, ArrayList<String> goods,
-			double money) {
+			double money, String depart) {
 		super(num, date);
 		this.form = form;
 		this.carNum = carNum;
 		this.city = city;
 		this.goods = goods;
 		this.money = money;
+		this.depart = depart;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -41,6 +43,9 @@ public class TransferRepPO extends ReceiptPO {
 	}
 	public double getMoney() {
 		return money;
+	}
+	public String getDepart() {
+		return depart;
 	}
 	
 }

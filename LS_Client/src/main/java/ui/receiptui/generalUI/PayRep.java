@@ -8,11 +8,27 @@ package ui.receiptui.generalUI;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.rmi.NotBoundException;
+import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+
+import Exception.ExceptionPrint;
+import Exception.NumNotFoundException;
+import VO.ReceiptVO.PayRepBonusRepVO;
+import VO.ReceiptVO.PayRepCourierSalaryRepVO;
+import VO.ReceiptVO.PayRepDriverSalaryRepVO;
+import VO.ReceiptVO.PayRepFreightRepVO;
+import VO.ReceiptVO.PayRepRefundRepVO;
+import VO.ReceiptVO.PayRepRentRepVO;
+import VO.ReceiptVO.PayRepStaffSalaryRepVO;
+import VO.ReceiptVO.PayRepVO;
+import VO.ReceiptVO.PayVO;
 import bl.receiptbl.PayRepbl.PayRepController;
 import blservice.receiptblservice.PayRepblService;
+import util.enumData.PayThing;
 
 /**
  *
@@ -23,7 +39,7 @@ public class PayRep extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelLabel;
     private javax.swing.JButton checkAllRepsButton;
-    private javax.swing.JComboBox choosePayThingBox;
+    private javax.swing.JComboBox<String> choosePayThingBox;
     private javax.swing.JLabel choosePayThingLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;
@@ -35,10 +51,18 @@ public class PayRep extends javax.swing.JPanel {
     private javax.swing.JTextField resultMsgText;
     private javax.swing.JLabel sumLabel;
     private javax.swing.JTextField sumText;
-    private PayRepblService control;
+    private PayRepController control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
+    private PayRepVO payRepVO;
+    private ArrayList<PayRepRefundRepVO> refund;
+	private PayRepStaffSalaryRepVO staffSalary; 
+	private PayRepFreightRepVO freight;
+	private PayRepRentRepVO rent;
+	private PayRepDriverSalaryRepVO driverSalary;
+	private PayRepCourierSalaryRepVO courierSalary;
+	private PayRepBonusRepVO bonus;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -62,7 +86,7 @@ public class PayRep extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         choosePayThingLabel = new javax.swing.JLabel();
-        choosePayThingBox = new javax.swing.JComboBox();
+        choosePayThingBox = new javax.swing.JComboBox<String>();
         cancelLabel = new javax.swing.JButton();
         okButton = new javax.swing.JButton();
         payManText = new javax.swing.JTextField();
@@ -75,20 +99,41 @@ public class PayRep extends javax.swing.JPanel {
         model = new DefaultTableModel();
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
-
+        
         setBackground(new java.awt.Color(255, 255, 255));
 
         numLabel.setText("编号:");
 
         numText.setEditable(false);
         numText.setText(control.getDate());
-
+        
+        try {
+			payRepVO = control.getSubmitPayRep();
+		} catch (ClassNotFoundException | IOException | NotBoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e1));
+		}
+        refund = payRepVO.refund;
+        staffSalary = payRepVO.staffSalary;
+        freight = payRepVO.freight;
+        rent = payRepVO.rent;
+        driverSalary = payRepVO.driverSalary;
+        courierSalary = payRepVO.courierSalary;
+        bonus = payRepVO.bonus;
+        
         columnIdentifiers.add("付款项");
         columnIdentifiers.add("金额");
         columnIdentifiers.add("付款账户");
         columnIdentifiers.add("备注");
         columnIdentifiers.add("删除");
-        
+        try {
+			dataVector = control.initTable();
+		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
         model.setDataVector(dataVector, columnIdentifiers);
         jTable.setModel(model);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
@@ -145,6 +190,7 @@ public class PayRep extends javax.swing.JPanel {
 				if(col==4){
 					model.removeRow(row);
 					jTable.setModel(model);
+					sumText.setText(calSum());
 				}
 			}
 			
@@ -243,6 +289,14 @@ public class PayRep extends javax.swing.JPanel {
         TableColumn column5 = jTable.getColumnModel().getColumn(4);
         column5.setPreferredWidth(10);
     }
+    
+    private String calSum(){
+    	double sum = 0;
+    	for(int i = 0;i < dataVector.size();i++){
+    		sum += (double)jTable.getValueAt(i, 1);
+    	}
+    	return sum+"";
+    }
 
     private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	
@@ -253,6 +307,23 @@ public class PayRep extends javax.swing.JPanel {
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	
+    	double sum = Double.parseDouble(sumText.getText());
+    	ArrayList<PayVO> payVOs = new ArrayList<PayVO>();
+    	for(int i = 0;i < dataVector.size();i++){
+    		PayVO payVO = new PayVO(PayThing.getPayThing((String)jTable.getValueAt(i, 0)),
+    				(double)jTable.getValueAt(i, 1), 
+    				(String)jTable.getValueAt(i, 2), 
+    				(String)jTable.getValueAt(i, 3));
+    		payVOs.add(payVO);
+    	}
+    	PayRepVO payRepVO = new PayRepVO(numText.getText(), numText.getText(), sum, payVOs, 
+    			payManText.getText(), refund, staffSalary, freight, rent, driverSalary, courierSalary, bonus);
+    	try {
+			control.submit(payRepVO);
+		} catch (NotBoundException | IOException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
     }
 }

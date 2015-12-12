@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import javax.swing.WindowConstants;
 
+import Exception.NotFoundMoneyInAndOutException;
 import VO.BusinessFormVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.formblservice.BusinessFormBLService;
@@ -84,9 +85,9 @@ public class BusinessForm extends javax.swing.JPanel {
         cashRepTable.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(cashRepTable);
 
-        cashLabel.setText("收款单");
+        cashLabel.setText("收款项");
 
-        payLabel.setText("付款单");
+        payLabel.setText("付款项");
 
         payRepTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,7 +123,7 @@ public class BusinessForm extends javax.swing.JPanel {
         });
 
         showText.setEditable(false);
-        showText.setText("示例:2015/11/2");
+        showText.setText("示例:2015-11-2");
 
         resultMsgText.setEditable(false);
 
@@ -218,8 +219,8 @@ public class BusinessForm extends javax.swing.JPanel {
     		try {
 				formVO=ctr.show(startT, endT);
 				System.out.println("找到啦");
-			} catch (ClassNotFoundException | NotBoundException | IOException e) {
-	     	    showFeedback(ResultMessage.NOT_FOUND);
+			} catch (NotFoundMoneyInAndOutException e) {
+	     	    showFeedback(ResultMessage.NOT_FOUND_FINACIAL);
 			}
 		}else{
 			showFeedback(msgt);
@@ -255,7 +256,7 @@ public class BusinessForm extends javax.swing.JPanel {
 		ArrayList<Integer> loc=new ArrayList<Integer>(2);
 		for(int i=0;i<date.length();i++){
 			char c=date.charAt(i);
-			if(c=='/'){
+			if(c=='-'){
 				loc.add(i);
 			}else if(!(c>='0'&&c<='9')){
 				return false;
@@ -263,8 +264,8 @@ public class BusinessForm extends javax.swing.JPanel {
 		}
 		if(loc.size()!=2) {
 			return false;
-		}else{//有两个斜杠~
-			//第一个斜杠前没数字   后一个斜杠后没数字  两斜杠间没数字
+		}else{//有两个短线~
+			//第一个短线前没数字   后一个短线后没数字  两短线间没数字
 			if(loc.get(0)==0||
 					loc.get(1)==date.length()-1||
 					(loc.get(1)-loc.get(0))==1){

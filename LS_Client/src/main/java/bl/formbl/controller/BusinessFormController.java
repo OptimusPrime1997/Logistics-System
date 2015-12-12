@@ -7,6 +7,7 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import Exception.NotFoundMoneyInAndOutException;
 import VO.BusinessFormVO;
 import bl.formbl.BusinessFormbl;
 import blservice.formblservice.BusinessFormBLService;
@@ -15,7 +16,7 @@ public class BusinessFormController implements BusinessFormBLService{
 
 	private BusinessFormbl businessFormbl = new BusinessFormbl();
 
-	public BusinessFormVO show(String startTime, String endTime) throws NotBoundException, ClassNotFoundException, IOException {
+	public BusinessFormVO show(String startTime, String endTime) throws NotFoundMoneyInAndOutException {
 		return businessFormbl.show(startTime, endTime);
 	}
 

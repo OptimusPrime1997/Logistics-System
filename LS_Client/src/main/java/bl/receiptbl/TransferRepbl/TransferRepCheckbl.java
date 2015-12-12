@@ -12,9 +12,9 @@ public class TransferRepCheckbl {
 	
 	private TransferRepbl transferRepbl = new TransferRepbl();
 
-	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<TransferRepVO> transferRepVOs = transferRepbl.getAllRep();
+		ArrayList<TransferRepVO> transferRepVOs = transferRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < transferRepVOs.size();i++){
 			Vector<Object> arr = new Vector<Object>();

@@ -10,31 +10,22 @@ import java.util.Vector;
 import Exception.NumNotFoundException;
 import VO.ReceiptVO.ReceptionRepVO;
 import VO.ReceiptVO.ReceiptVO;
-import VO.ReceiptVO.ShipmentRepVO;
-import VO.ReceiptVO.TransferRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
+import blservice.receiptblservice.PostReceiptblService;
 import blservice.receiptblservice.ReceptionRepblService;
+import blservice.receiptblservice.SubmitblService;
 import util.enumData.Rep;
 
-public class ReceptionRepController extends ReceiptblController implements ReceptionRepblService{
+public class ReceptionRepController extends ReceiptblController
+implements ReceptionRepblService, PostReceiptblService, SubmitblService{
 	private ReceptionRepbl receptionRepbl = new ReceptionRepbl();
 	private ReceptionRepCheckbl receptionRepCheckbl = new ReceptionRepCheckbl();
 	private ReceptionRepShowbl receptionRepShowbl = new ReceptionRepShowbl();
 
 	@Override
-	public String createNum(String date) throws NotBoundException, ClassNotFoundException, IOException {
+	public String createNum(String date, String office) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return receptionRepbl.createNum(date);
-	}
-
-	@Override
-	public void delete(int n) throws RemoteException, MalformedURLException, NotBoundException {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void delete(String num) throws RemoteException, MalformedURLException, NotBoundException {
-		// TODO Auto-generated method stub
+		return receptionRepbl.createNum(date, office);
 	}
 
 	@Override
@@ -51,23 +42,23 @@ public class ReceptionRepController extends ReceiptblController implements Recep
 	}
 
 	@Override
-	public ArrayList<ReceptionRepVO> getAllRep()
+	public ArrayList<ReceptionRepVO> getAllRep(String office)
 			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return receptionRepbl.getAllRep();
+		return receptionRepbl.getAllRep(office);
 	}
 
 	@Override
-	public ArrayList<ReceptionRepVO> getRepByDate(String date)
+	public ArrayList<ReceptionRepVO> getRepByDate(String date, String office)
 			throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return receptionRepCheckbl.initCheck();
+		return receptionRepCheckbl.initCheck(office);
 	}
 
 	@Override
@@ -88,6 +79,13 @@ public class ReceptionRepController extends ReceiptblController implements Recep
 	public void transferOver(String num) {
 		// TODO Auto-generated method stub
 		receptionRepbl.transferOver(num);
+	}
+
+	@Override
+	public String getDepart(Rep rep, String num)
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
+		// TODO Auto-generated method stub
+		return receptionRepbl.getDepart(rep, num);
 	}
 
 

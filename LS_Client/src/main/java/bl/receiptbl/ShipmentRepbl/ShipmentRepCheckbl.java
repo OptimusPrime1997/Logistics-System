@@ -11,9 +11,9 @@ public class ShipmentRepCheckbl {
 	
 	private ShipmentRepbl shipmentRepbl = new ShipmentRepbl();
 
-	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<ShipmentRepVO> shipmentRepVOs = shipmentRepbl.getAllRep();
+		ArrayList<ShipmentRepVO> shipmentRepVOs = shipmentRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < shipmentRepVOs.size();i++){
 			Vector<Object> arr = new Vector<Object>();

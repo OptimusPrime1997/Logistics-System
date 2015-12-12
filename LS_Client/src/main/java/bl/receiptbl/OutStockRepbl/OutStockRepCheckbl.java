@@ -26,9 +26,9 @@ public class OutStockRepCheckbl {
 		return new OutStockRepVO((OutStockRepPO)receiptPO);
 	}
 
-	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<OutStockRepVO> outStockRepVOs = outStockRepbl.getAllRep();
+		ArrayList<OutStockRepVO> outStockRepVOs = outStockRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < outStockRepVOs.size();i++){
 			OutStockRepVO outStockRepVO = outStockRepVOs.get(i);

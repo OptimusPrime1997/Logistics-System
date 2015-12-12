@@ -17,9 +17,9 @@ public class TransferRepbl extends ReceiptblController{
 	
 	private Receiptbl receiptbl = new Receiptbl();
 	
-	public String createNum(String date) throws ClassNotFoundException, NotBoundException, IOException {
+	public String createNum(String date, String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return receiptbl.createNum(date, Rep.TransferRep);
+		return receiptbl.createNum(date, Rep.TransferRep, office);
 	}
 
 	public TransferRepVO getRepByNum(String num) 
@@ -36,25 +36,20 @@ public class TransferRepbl extends ReceiptblController{
 		receiptbl.submit(TransferRepVO.toPO((TransferRepVO) vo), Rep.TransferRep);
 	}
 
-	public ArrayList<TransferRepVO> getAllRep() 
+	public ArrayList<TransferRepVO> getAllRep(String office) 
 			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.TransferRep);
+		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.TransferRep, office);
 		return TransferRepVO.toArrayVO(receiptPOs);
 	}
 
-	public ArrayList<TransferRepVO> getByTransNum(String officeNum, String date) {
-		// TODO 现在是复制的~以后要写
-				ArrayList<ReceiptPO> receiptPOs;
-				try {
-					receiptPOs = receiptbl.getAllRep(Rep.TransferRep);
-					return TransferRepVO.toArrayVO(receiptPOs);
-				} catch (ClassNotFoundException | NotBoundException
-						| IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				return null;
+	public ArrayList<TransferRepVO> getRepByDate(String date, String office) 
+			throws ClassNotFoundException, NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.TransferRep, office);
+		if(receiptPOs==null)
+			return null;
+		return TransferRepVO.toArrayVO(receiptPOs);
 	}
 
 }

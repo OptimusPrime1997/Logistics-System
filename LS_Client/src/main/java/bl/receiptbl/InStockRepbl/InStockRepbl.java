@@ -14,9 +14,9 @@ public class InStockRepbl{
 	
 	private Receiptbl receiptbl = new Receiptbl();
 
-	public String createNum(String date) throws ClassNotFoundException, NotBoundException, IOException {
+	public String createNum(String date, String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return receiptbl.createNum(date, Rep.InStockRep);
+		return receiptbl.createNum(date, Rep.InStockRep, office);
 	}
 
 	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
@@ -24,19 +24,19 @@ public class InStockRepbl{
 		receiptbl.submit(InStockRepVO.toPO((InStockRepVO) vo), Rep.InStockRep);
 	}
 
-	public ArrayList<InStockRepVO> getRepByDate(String date) throws ClassNotFoundException, 
+	public ArrayList<InStockRepVO> getRepByDate(String date, String office) throws ClassNotFoundException, 
 	NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.InStockRep);
+		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.InStockRep, office);
 		if(receiptPOs==null)
 			return null;
 		return InStockRepVO.toArrayVO(receiptPOs);
 	}
 
-	public ArrayList<InStockRepVO> getAllRep() throws ClassNotFoundException, NotBoundException,
+	public ArrayList<InStockRepVO> getAllRep(String office) throws ClassNotFoundException, NotBoundException,
 	IOException {
 		// TODO Auto-generated method stub
-		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.InStockRep);
+		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.InStockRep, office);
 		return InStockRepVO.toArrayVO(receiptPOs);
 	}
 

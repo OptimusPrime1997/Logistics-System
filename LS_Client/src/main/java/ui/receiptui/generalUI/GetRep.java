@@ -19,7 +19,6 @@ import Exception.NumNotFoundException;
 import VO.ReceiptVO.ArriveVO;
 import VO.ReceiptVO.GetRepVO;
 import bl.receiptbl.GetRepbl.GetRepController;
-import blservice.receiptblservice.GetRepblService;
 import util.enumData.GoodsArrivalState;
 import util.enumData.Rep;
 import util.enumData.ResultMessage;
@@ -32,7 +31,7 @@ public class GetRep extends javax.swing.JPanel {
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JButton addButton;
-	private javax.swing.JComboBox arriveStateBox;
+	private javax.swing.JComboBox<String> arriveStateBox;
 	private javax.swing.JLabel arriveStateLabel;
 	private javax.swing.JButton cancelButton;
 	private javax.swing.JButton checkAllRepsButton;
@@ -40,7 +39,7 @@ public class GetRep extends javax.swing.JPanel {
 	private javax.swing.JTextField dateText;
 	private javax.swing.JLabel departLabel;
 	private javax.swing.JTextField departText;
-	private javax.swing.JComboBox getTypeBox;
+	private javax.swing.JComboBox<String> getTypeBox;
 	private javax.swing.JLabel getTypeLabel;
 	private javax.swing.JTextField getTypeText;
 	private javax.swing.JScrollPane jScrollPane1;
@@ -53,12 +52,12 @@ public class GetRep extends javax.swing.JPanel {
 	private javax.swing.JLabel orderLabel;
 	private javax.swing.JTextField orderText;
 	private javax.swing.JTextField resultMsgText;
-	private GetRepblService control;
+	private javax.swing.JButton completeButton;
+	private javax.swing.JButton confirmButton;
+	private GetRepController control;
 	private DefaultTableModel model;
 	private Vector<String> columnIdentifiers;
 	private Vector<Object> dataVector;
-	private javax.swing.JButton completeButton;
-	private javax.swing.JButton confirmButton;
 
 	// End of variables declaration//GEN-END:variables
 
@@ -86,7 +85,7 @@ public class GetRep extends javax.swing.JPanel {
 		numLabel = new javax.swing.JLabel();
 		numText = new javax.swing.JTextField();
 		getTypeLabel = new javax.swing.JLabel();
-		arriveStateBox = new javax.swing.JComboBox();
+		arriveStateBox = new javax.swing.JComboBox<String>();
 		getTypeText = new javax.swing.JTextField();
 		departLabel = new javax.swing.JLabel();
 		departText = new javax.swing.JTextField();
@@ -95,7 +94,7 @@ public class GetRep extends javax.swing.JPanel {
 		orderLabel = new javax.swing.JLabel();
 		orderText = new javax.swing.JTextField();
 		arriveStateLabel = new javax.swing.JLabel();
-		getTypeBox = new javax.swing.JComboBox();
+		getTypeBox = new javax.swing.JComboBox<String>();
 		addButton = new javax.swing.JButton();
 		cancelButton = new javax.swing.JButton();
 		okButton = new javax.swing.JButton();
@@ -123,11 +122,11 @@ public class GetRep extends javax.swing.JPanel {
 		numLabel.setText("编号:");
 
 		numText.setEditable(false);
+		String num = officeText.getText();
+		num += control.getDateInNum(dateText.getText());
+		num += "4";
 		try {
-			String num = officeText.getText();
-			num += control.getDateInNum(dateText.getText());
-			num += "4";
-			num += control.createNum(dateText.getText());
+			num += control.createNum(dateText.getText(), officeText.getText());
 			numText.setText(num);
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
@@ -146,7 +145,6 @@ public class GetRep extends javax.swing.JPanel {
 		columnIdentifiers.add("订单号");
 		columnIdentifiers.add("到达状态");
 		columnIdentifiers.add("删除");
-
 		model.setDataVector(dataVector, columnIdentifiers);
 		jTable.setModel(model);
 		jTable.setGridColor(new java.awt.Color(0, 0, 0));
@@ -217,7 +215,7 @@ public class GetRep extends javax.swing.JPanel {
 				// TODO Auto-generated method stub
 				int row = jTable.getSelectedRow();
 				int col = jTable.getSelectedColumn();
-				if (col == 4) {
+				if (col == 2) {
 					model.removeRow(row);
 					jTable.setModel(model);
 				}

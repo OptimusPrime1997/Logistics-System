@@ -6,6 +6,22 @@
 
 package ui.receiptui.generalUI;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.rmi.NotBoundException;
+import java.util.ArrayList;
+import java.util.Vector;
+
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
+import Exception.ExceptionPrint;
+import VO.ReceiptVO.ShippingRepVO;
+import bl.receiptbl.ShipmentRepbl.ShipmentRepController;
+import bl.receiptbl.ShippingRepbl.ShippingRepController;
+import util.enumData.ResultMessage;
+
 /**
  *
  * @author apple
@@ -23,7 +39,7 @@ public class ShippingRep extends javax.swing.JPanel {
     private javax.swing.JLabel driverLabel;
     private javax.swing.JTextField driverText;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable;
     private javax.swing.JLabel numLabel;
     private javax.swing.JTextField numText;
     private javax.swing.JLabel officeLabel;
@@ -34,6 +50,10 @@ public class ShippingRep extends javax.swing.JPanel {
     private javax.swing.JLabel plateLabel;
     private javax.swing.JTextField plateText;
     private javax.swing.JTextField resultMsgText;
+    private ShippingRepController control;
+    private DefaultTableModel model;
+    private Vector<String> columnIdentifiers;
+    private Vector<Object> dataVector;
     // End of variables declaration//GEN-END:variables
     
     /**
@@ -69,10 +89,14 @@ public class ShippingRep extends javax.swing.JPanel {
         orderText = new javax.swing.JTextField();
         orderLabel = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         destinationText = new javax.swing.JTextField();
         resultMsgText = new javax.swing.JTextField();
         checkAllRepsButton = new javax.swing.JButton();
+        control = new ShippingRepController();
+        model = new DefaultTableModel();
+        columnIdentifiers = new Vector<String>();
+        dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -88,6 +112,17 @@ public class ShippingRep extends javax.swing.JPanel {
         numLabel.setText("编号:");
 
         numText.setEditable(false);
+        String num = officeText.getText() + "000";
+        num += control.getDateInNum(dateText.getText());
+        num += "4";
+        try {
+			num += control.createNum(dateText.getText(), officeText.getText());
+			numText.setText(num);
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
 
         plateLabel.setText("车牌号:");
 
@@ -118,24 +153,11 @@ public class ShippingRep extends javax.swing.JPanel {
 
         orderLabel.setText("订单号:");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null}
-            },
-            new String [] {
-                "订单号"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable2.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane2.setViewportView(jTable2);
+        columnIdentifiers.add("订单号");
+        model.setDataVector(dataVector, columnIdentifiers);
+        jTable.setModel(model);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane2.setViewportView(jTable);
 
         resultMsgText.setEditable(false);
 
@@ -144,6 +166,46 @@ public class ShippingRep extends javax.swing.JPanel {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkAllRepsButtonActionPerformed(evt);
             }
+        });
+        
+        setColumn();
+        
+        jTable.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int row = jTable.getSelectedRow();
+				int col = jTable.getSelectedColumn();
+				if(col==1){
+					model.removeRow(row);
+					jTable.setModel(model);
+				}
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
         });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -246,21 +308,63 @@ public class ShippingRep extends javax.swing.JPanel {
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void setColumn(){
+    	TableColumn column1 = jTable.getColumnModel().getColumn(0);
+        column1.setPreferredWidth(105);
+        TableColumn column2 = jTable.getColumnModel().getColumn(1);
+        column2.setPreferredWidth(10);
+    }
 
-    private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAllRepsButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkAllRepsButtonActionPerformed
+    private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addButtonActionPerformed
+    }
 
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cancelButtonActionPerformed
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	String order = orderText.getText();
+    	ResultMessage resultMessage = control.checkNum(order, 10);
+    	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
+    	resultMsgText.setText(resultMsg);
+    	if(resultMessage==ResultMessage.ADD_SUCCESS){
+    		
+    		dataVector.add(order);
+    		model.setDataVector(dataVector, columnIdentifiers);
+        	setColumn();
+    	}
+    }
 
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_okButtonActionPerformed
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
+
+    }
+
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	String driverNum = driverText.getText();
+    	ResultMessage resultMessage = control.checkDriverNum(driverNum);
+    	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
+    	resultMsgText.setText(resultMsg);
+    	if(resultMessage==ResultMessage.ADD_SUCCESS){
+    		if(control.isTrueAccount(driverNum)){
+    			String num = numText.getText();
+        		String date = dateText.getText();
+        		ArrayList<String> orders = new ArrayList<String>();
+        		for(int i = 0;i < dataVector.size();i++){
+        			orders.add((String)jTable.getValueAt(i, 0));
+        		}
+        		ShippingRepVO shippingRepVO = new ShippingRepVO(num, date, officeText.getText(), plateText.getText(), 
+        				driverNum, orders, destinationText.getText());
+        		try {
+					control.submit(shippingRepVO);
+				} catch (NotBoundException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					resultMsgText.setText(ExceptionPrint.print(e));
+				}
+        		resultMsgText.setText(ResultMessage.toFriendlyString(ResultMessage.SUBMIT_SUCCESS));
+    		}
+    		else {
+    			resultMsgText.setText("未找到该司机");
+			}
+    	}
+    }
 
 }

@@ -19,7 +19,6 @@ public class PayRepCheckbl {
 			Vector<Object> arr = new Vector<Object>();
 			PayRepVO payRepVO = payRepVOs.get(i);
 			arr.add(payRepVO.date);
-			arr.add(payRepVO.num);
 			arr.add(payRepVO.sum);
 			data.add(arr);
 		}
