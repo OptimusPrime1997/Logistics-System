@@ -8,6 +8,7 @@ import PO.ReceiptPO.ReceiptPO;
 import VO.StockDivisionVO;
 import VO.ReceiptVO.InStockRepVO;
 import VO.ReceiptVO.ReceiptVO;
+import bl.goodsbl.Goodsbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.stockbl.StockDivisionbl;
 import util.enumData.City;
@@ -17,6 +18,7 @@ public class InStockRepbl{
 	
 	private Receiptbl receiptbl = new Receiptbl();
 	private StockDivisionbl stockDivisionbl = new StockDivisionbl();
+	private Goodsbl goodsbl = new Goodsbl();
 
 	public String createNum(String date, String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
