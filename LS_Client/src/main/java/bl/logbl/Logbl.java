@@ -21,10 +21,11 @@ public class Logbl {
 	}
 
 	public ArrayList<LogVO> show(String startTime, String endTime, LogType type) {
+		MockLogData data=new MockLogData();
 		ArrayList<LogVO> logs = null;
 		try {
-			logs = LogVO.toVOArray(getLogDataService().show(type, startTime, endTime));
-			
+//			logs = LogVO.toVOArray(getLogDataService().show(type, startTime, endTime));
+			logs=LogVO.toVOArray(data.show(type, startTime, endTime));
 		} catch (RemoteException e) {
 		}
 		return logs;

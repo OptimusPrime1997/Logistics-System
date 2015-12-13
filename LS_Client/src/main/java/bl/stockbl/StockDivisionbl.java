@@ -30,8 +30,6 @@ import dataservice.stockdataservice.StockDivisionDataService;
 public class StockDivisionbl implements StockDivisionBLService{
 
 	
-	
-	
 	private StockDivisionDataService getStockDivisionDataService() throws MalformedURLException, RemoteException, NotBoundException {
 		StockDivisionDataService sd = (StockDivisionDataService) Naming.lookup("stockDivision");
 		return sd;
@@ -67,11 +65,8 @@ public class StockDivisionbl implements StockDivisionBLService{
 		} else {
 			return ResultMessage.FAILED;
 		}
-		
-		
 	}
 
-	 
 	public ArrayList<StockDivisionVO> getBlock(City destination) throws NotBoundException, IOException {
 		StockDivisionDataService sd = getStockDivisionDataService();
 		City city = CurrentCity.getCurrentCity();
@@ -86,8 +81,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 		return resultList;
 	}
 	
-	
-	
+
 	/**
 	 * 判断此区位号是否已存在货物
 	 * @param block
@@ -186,9 +180,12 @@ public class StockDivisionbl implements StockDivisionBLService{
 			
 		}
 		
-		
-		
 		return null;
+	}
+	
+	public ResultMessage delete(String listNum) throws RemoteException, MalformedURLException, NotBoundException{
+		StockDivisionDataService sd = getStockDivisionDataService();
+		return sd.delete(listNum);
 	}
 
 }

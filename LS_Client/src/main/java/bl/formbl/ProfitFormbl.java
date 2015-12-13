@@ -18,20 +18,24 @@ import dataservice.formdataservice.ProfitFormDataService;
 
 public class ProfitFormbl {
 	
-	public ProfitFormVO show() throws NotBoundException, ClassNotFoundException, IOException {
+	public ProfitFormVO show(){
 		double totalIn=0,totalOut=0,totalProfit=0;
-		PayRepbl ctr_payRep=new PayRepbl();
-		CashRepbl ctr_cashRep=new CashRepbl();
+		//TODO 待改回真的Repbl
+		MockPayRepbl ctr_payRep=new MockPayRepbl();
+		MockCashRepbl ctr_cashRep=new MockCashRepbl();
 		
 		ArrayList<PayRepVO> moneyOut = ctr_payRep.getAllRep();
 		ArrayList<CashRepVO> moneyIn = ctr_cashRep.getAllRep();
-		//TODO 
-		//算钱！
-		for(PayRepVO payR:moneyOut){
-			totalOut=totalOut+payR.sum;
+		//TODO //算钱！
+		if(moneyIn!=null){
+			for(CashRepVO cashR:moneyIn){
+				totalIn=totalIn+cashR.sum;
+			}
 		}
-		for(CashRepVO cashR:moneyIn){
-			totalIn=totalIn+cashR.sum;
+		if(moneyOut!=null){
+			for(PayRepVO payR:moneyOut){
+				totalOut=totalOut+payR.sum;
+			}
 		}
 		totalProfit=totalIn-totalOut;
 	    ProfitFormVO vo = new ProfitFormVO(CurrentTime.getTime(), totalOut, totalIn, totalProfit);

@@ -6,6 +6,24 @@
 
 package ui.receiptui.generalUI;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.rmi.NotBoundException;
+import java.util.ArrayList;
+import java.util.Vector;
+
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
+import Exception.ExceptionPrint;
+import VO.ReceiptVO.TransferRepVO;
+import bl.receiptbl.ShippingRepbl.ShippingRepController;
+import bl.receiptbl.TransferRepbl.TransferRepController;
+import util.enumData.City;
+import util.enumData.ResultMessage;
+import util.enumData.ShipForm;
+
 /**
  *
  * @author apple
@@ -23,17 +41,23 @@ public class TransferRep extends javax.swing.JPanel {
     private javax.swing.JLabel destinationLabel;
     private javax.swing.JTextField destinationText;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     private javax.swing.JLabel numLabel;
     private javax.swing.JTextField numText;
     private javax.swing.JLabel officeLabel;
     private javax.swing.JTextField officeText;
     private javax.swing.JButton okButton;
     private javax.swing.JLabel orderLabel;
-    private javax.swing.JTextField ordertext;
+    private javax.swing.JTextField orderText;
     private javax.swing.JTextField resultMsgText;
-    private javax.swing.JComboBox shipFormBox;
+    private javax.swing.JComboBox<String> shipFormBox;
     private javax.swing.JLabel shipFormLabel;
+    private javax.swing.JLabel moneyLabel;
+    private javax.swing.JTextField moneyText;
+    private TransferRepController control;
+    private DefaultTableModel model;
+    private Vector<String> columnIdentifiers;
+    private Vector<Object> dataVector;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -59,13 +83,13 @@ public class TransferRep extends javax.swing.JPanel {
         numLabel = new javax.swing.JLabel();
         numText = new javax.swing.JTextField();
         shipFormLabel = new javax.swing.JLabel();
-        shipFormBox = new javax.swing.JComboBox();
+        shipFormBox = new javax.swing.JComboBox<String>();
         carNumLabel = new javax.swing.JLabel();
         carNumText = new javax.swing.JTextField();
         destinationLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        ordertext = new javax.swing.JTextField();
+        jTable = new javax.swing.JTable();
+        orderText = new javax.swing.JTextField();
         orderLabel = new javax.swing.JLabel();
         destinationText = new javax.swing.JTextField();
         addButton = new javax.swing.JButton();
@@ -73,6 +97,12 @@ public class TransferRep extends javax.swing.JPanel {
         cancelButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
         checkAllRepsButton = new javax.swing.JButton();
+        moneyLabel = new javax.swing.JLabel();
+        moneyText = new javax.swing.JTextField();
+        control = new TransferRepController();
+        model = new DefaultTableModel();
+        columnIdentifiers = new Vector<String>();
+        dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -88,6 +118,17 @@ public class TransferRep extends javax.swing.JPanel {
         numLabel.setText("编号:");
 
         numText.setEditable(false);
+        String num = officeText.getText() + "000";
+        num += control.getDateInNum(dateText.getText());
+        num += "3";
+        try {
+			num += control.createNum(dateText.getText(), officeText.getText());
+			numText.setText(num);
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
 
         shipFormLabel.setText("装运形式:");
 
@@ -97,26 +138,15 @@ public class TransferRep extends javax.swing.JPanel {
 
         destinationLabel.setText("目的地:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null}
-            },
-            new String [] {
-                "订单号"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(jTable1);
+        columnIdentifiers.add("订单号");
+        model.setDataVector(dataVector, columnIdentifiers);
+        jTable.setModel(model);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(jTable);
 
         orderLabel.setText("订单号:");
+        
+        moneyLabel.setText("运费:");
 
         addButton.setText("添加");
         addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +177,46 @@ public class TransferRep extends javax.swing.JPanel {
                 checkAllRepsButtonActionPerformed(evt);
             }
         });
+        
+        setColumn();
+        
+        jTable.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int row = jTable.getSelectedRow();
+				int col = jTable.getSelectedColumn();
+				if(col==1){
+					model.removeRow(row);
+					jTable.setModel(model);
+				}
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -154,52 +224,60 @@ public class TransferRep extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(resultMsgText)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(orderLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(ordertext, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(orderText, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(cancelButton)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(okButton))
-                                    .addComponent(addButton)))
+                                    .addComponent(addButton))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(shipFormLabel)
-                                    .addComponent(numLabel))
+                                .addComponent(checkAllRepsButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                                .addComponent(officeLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dateLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(numLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(shipFormBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(carNumLabel)
+                                        .addComponent(shipFormLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(carNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(shipFormBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(destinationLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(destinationText, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(checkAllRepsButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                        .addComponent(officeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dateLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(destinationText, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(carNumLabel)
+                                    .addComponent(moneyLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(carNumText, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                                    .addComponent(moneyText, javax.swing.GroupLayout.Alignment.TRAILING))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -212,7 +290,7 @@ public class TransferRep extends javax.swing.JPanel {
                     .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(officeLabel)
                     .addComponent(checkAllRepsButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numLabel)
                     .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -221,43 +299,80 @@ public class TransferRep extends javax.swing.JPanel {
                     .addComponent(shipFormBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(shipFormLabel)
                     .addComponent(carNumLabel)
-                    .addComponent(carNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(carNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(destinationText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(destinationLabel))
+                    .addComponent(destinationLabel)
+                    .addComponent(moneyLabel)
+                    .addComponent(moneyText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
+                        .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ordertext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(orderText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(orderLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(addButton)
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(okButton)
-                            .addComponent(cancelButton))))
-                .addGap(18, 18, 18)
+                            .addComponent(cancelButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void setColumn(){
+    	TableColumn column1 = jTable.getColumnModel().getColumn(0);
+        column1.setPreferredWidth(105);
+        TableColumn column2 = jTable.getColumnModel().getColumn(1);
+        column2.setPreferredWidth(10);
+    }
 
-    private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAllRepsButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkAllRepsButtonActionPerformed
+    private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	
+    }
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addButtonActionPerformed
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	String order = orderText.getText();
+    	ResultMessage resultMessage = control.checkNum(order, 10);
+    	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
+    	resultMsgText.setText(resultMsg);
+    	if(resultMessage==ResultMessage.ADD_SUCCESS){
+    		dataVector.add(order);
+    		model.setDataVector(dataVector, columnIdentifiers);
+        	setColumn();
+    	}
+    }
 
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cancelButtonActionPerformed
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_okButtonActionPerformed
+    }
+
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	String num = numText.getText();
+		String date = dateText.getText();
+		ArrayList<String> orders = new ArrayList<String>();
+		for(int i = 0;i < dataVector.size();i++){
+			orders.add((String)jTable.getValueAt(i, 0));
+		}
+		TransferRepVO transferRepVO = new TransferRepVO(num, date, 
+				ShipForm.getShipForm(shipFormBox.getSelectedItem().toString()),
+				carNumText.getText(), City.getCity(destinationText.getText()), orders,
+				Double.parseDouble(moneyText.getText()), officeText.getText());
+		try {
+			control.submit(transferRepVO);
+		} catch (NotBoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+		resultMsgText.setText(ResultMessage.toFriendlyString(ResultMessage.SUBMIT_SUCCESS));
+    }
 
 }

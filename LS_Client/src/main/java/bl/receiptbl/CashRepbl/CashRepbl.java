@@ -2,6 +2,7 @@ package bl.receiptbl.CashRepbl;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -45,13 +46,15 @@ public class CashRepbl {
 		return moneysum;
 	}
 
-	public void submit(ReceiptVO vo) throws NotBoundException, IOException{
-		receiptbl.clearSubmit(Rep.CashRep);
+	public void submit(ReceiptVO vo, String office) 
+			throws NotBoundException, IOException, ClassNotFoundException{
+		receiptbl.clearSubmit(Rep.CashRep, office);
 		receiptbl.submit(CashRepVO.toPO((CashRepVO) vo), Rep.CashRep);
 	}
 
-	public String createNum(String date) throws NotBoundException, ClassNotFoundException, IOException {
-		return receiptbl.createNum(date, Rep.CashRep);
+	public String createNum(String date, String office) 
+			throws NotBoundException, ClassNotFoundException, IOException {
+		return receiptbl.createNum(date, Rep.CashRep, office);
 	}
 
 	public CashRepVO getRepByNum(String num) 
@@ -80,16 +83,22 @@ public class CashRepbl {
 		return bankAccounts;
 	}
 
-	public ArrayList<CashRepVO> getAllRep() throws ClassNotFoundException, NotBoundException, IOException{
+	public ArrayList<CashRepVO> getAllRep(String office) 
+			throws ClassNotFoundException, NotBoundException, IOException{
 		// TODO Auto-generated method stub
-		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.CashRep);
+		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.CashRep, office);
 		return CashRepVO.toArrayVO(receiptPOs);
 	}
 	
-	public Vector<Object> initTable(String num) throws ClassNotFoundException, 
+	public CashRepVO getSubmitCashRep(String office) throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException{
+		ReceiptPO receiptPO = receiptbl.getSubmitRep(Rep.CashRep, office);
+		return new CashRepVO((CashRepPO) receiptPO);
+	}
+	
+	public Vector<Object> initTable(String office) throws ClassNotFoundException, 
 	NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
-		CashRepVO cashRepVO = getRepByNum(num);
+		CashRepVO cashRepVO = getSubmitCashRep(office);
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < cashRepVO.cashVOs.size();i++){
 			Vector<Object> arr = new Vector<Object>();
@@ -103,9 +112,9 @@ public class CashRepbl {
 		return data;
 	}
 
-	public ArrayList<CashRepVO> getRepByDate(String date)
+	public ArrayList<CashRepVO> getRepByDate(String date, String office)
 			throws NotBoundException, ClassNotFoundException, IOException {
-		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.CashRep);
+		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.CashRep, office);
 		if(receiptPOs==null)
 			return null;
 		return CashRepVO.toArrayVO(receiptPOs);

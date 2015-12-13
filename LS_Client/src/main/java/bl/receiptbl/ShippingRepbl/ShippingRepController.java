@@ -11,28 +11,23 @@ import Exception.NumNotFoundException;
 import VO.ReceiptVO.ReceiptVO;
 import VO.ReceiptVO.ShippingRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
+import blservice.receiptblservice.FindAccountblService;
+import blservice.receiptblservice.PostReceiptblService;
 import blservice.receiptblservice.ShippingRepblService;
+import blservice.receiptblservice.SubmitblService;
+import util.enumData.ResultMessage;
 
-public class ShippingRepController extends ReceiptblController implements ShippingRepblService{
+public class ShippingRepController extends ReceiptblController 
+	implements ShippingRepblService, PostReceiptblService, SubmitblService, FindAccountblService{
 	
 	private ShippingRepbl shippingRepbl = new ShippingRepbl();
 	private ShippingRepCheckbl shippingRepCheckbl = new ShippingRepCheckbl();
 	private ShippingRepShowbl shippingRepShowbl = new ShippingRepShowbl();
 
 	@Override
-	public String createNum(String date) throws NotBoundException, ClassNotFoundException, IOException {
+	public String createNum(String date, String office) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return shippingRepbl.createNum(date);
-	}
-
-	@Override
-	public void delete(int n) throws RemoteException, MalformedURLException, NotBoundException {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void delete(String num) throws RemoteException, MalformedURLException, NotBoundException {
-		// TODO Auto-generated method stub
+		return shippingRepbl.createNum(date, office);
 	}
 
 	@Override
@@ -49,23 +44,23 @@ public class ShippingRepController extends ReceiptblController implements Shippi
 	}
 
 	@Override
-	public ArrayList<ShippingRepVO> getAllRep() 
+	public ArrayList<ShippingRepVO> getAllRep(String office) 
 			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return shippingRepbl.getAllRep();
+		return shippingRepbl.getAllRep(office);
 	}
 
 	@Override
-	public ArrayList<ShippingRepVO> getRepByDate(String date)
-			throws RemoteException, MalformedURLException, NotBoundException {
+	public ArrayList<ShippingRepVO> getRepByDate(String date, String office)
+			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return shippingRepbl.getRepByDate(date, office);
 	}
 
 	@Override
-	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return shippingRepCheckbl.initCheck();
+		return shippingRepCheckbl.initCheck(office);
 	}
 
 	@Override
@@ -76,10 +71,15 @@ public class ShippingRepController extends ReceiptblController implements Shippi
 	}
 
 	@Override
-	public int getSumByTrsOfficeNum(String str, String date) {
+	public boolean isTrueAccount(String num) {
 		// TODO Auto-generated method stub
-		return 39;
+		return shippingRepbl.isTrueAccount(num);
 	}
 
+	@Override
+	public ResultMessage checkDriverNum(String string) {
+		// TODO Auto-generated method stub
+		return shippingRepbl.checkDriverNum(string);
+	}
 
 }

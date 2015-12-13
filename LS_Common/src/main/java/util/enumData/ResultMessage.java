@@ -79,6 +79,14 @@ public enum ResultMessage {
 	 */
 	DELIVER_COURIER_NUM_OVER,
 	/**
+	 * 司机编号过短
+	 */
+	DRIVER_NUM_LACKING,
+	/**
+	 * 司机编号过长
+	 */
+	DRIVER_NUM_OVER,
+	/**
 	 * 手机号长度有误
 	 */
 	PHONE_LENGTH_WRONG,
@@ -275,6 +283,10 @@ public enum ResultMessage {
 			return "起始日期必须早于结束日期";
 		case ALARM:
 			return "该区库存紧张";
+		case DRIVER_NUM_LACKING:
+			return "司机编号过短";
+		case DRIVER_NUM_OVER:
+			return "司机编号过长";
 		default:
 			break;
 		}

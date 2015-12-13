@@ -14,4 +14,6 @@ public interface ReceptionRepblService extends ReceiptblService{
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException;
 	
 	public void transferOver(String num);
+	
+	public String getDepart(Rep rep, String num) throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException;
 }

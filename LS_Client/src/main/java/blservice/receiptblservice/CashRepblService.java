@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import VO.GoodsVO;
+import VO.ReceiptVO.ReceiptVO;
 import util.enumData.ResultMessage;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
@@ -55,7 +56,7 @@ public interface CashRepblService extends ReceiptblService{
 	 * @throws ClassNotFoundException 
 	 * @throws NumNotFoundException 
 	 */
-	public Vector<Object> initTable(String date) throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException, NumNotFoundException;
+	public Vector<Object> initTable(String office) throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException, NumNotFoundException;
 	
 	/**
 	 * 显示所有银行账户
@@ -74,5 +75,7 @@ public interface CashRepblService extends ReceiptblService{
 	 * @throws FileNotFoundException 
 	 */
 	public void addMoneyInBankAccount(String bankAccount, double money) throws FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException;
+	
+	public void submit(ReceiptVO vo, String office) throws NotBoundException, IOException, ClassNotFoundException;
 	
 }

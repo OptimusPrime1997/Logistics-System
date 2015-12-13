@@ -6,10 +6,11 @@
 package ui.warehousemanui;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
+import main.MainFrame;
 import VO.StockVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.stockblservice.StockBLService;
-import ui.mainFrame.MainFrame;
 import util.enumData.City;
 import util.enumData.ResultMessage;
 

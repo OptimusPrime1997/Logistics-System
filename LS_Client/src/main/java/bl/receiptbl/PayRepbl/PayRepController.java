@@ -8,8 +8,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import javax.swing.ComboBoxModel;
-
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import VO.ReceiptVO.PayRepBonusRepVO;
@@ -23,9 +21,10 @@ import VO.ReceiptVO.PayRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.PayRepblService;
+import blservice.receiptblservice.SubmitblService;
 import util.enumData.PayThing;
 
-public class PayRepController extends ReceiptblController implements PayRepblService{
+public class PayRepController extends ReceiptblController implements PayRepblService, SubmitblService{
 	private PayRepbl payRepbl = new PayRepbl();
 	private PayRepCheckbl payRepCheckbl = new PayRepCheckbl();
 	private Bonusbl bonusbl = new Bonusbl();
@@ -37,19 +36,9 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 	private Staffbl staffbl = new Staffbl();
 
 	@Override
-	public String createNum(String date) throws NotBoundException, ClassNotFoundException, IOException {
+	public String createNum(String date, String office) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return payRepbl.createNum(date);
-	}
-
-	@Override
-	public void delete(int n) throws RemoteException, MalformedURLException, NotBoundException {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void delete(String num) throws RemoteException, MalformedURLException, NotBoundException {
-		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -60,28 +49,10 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 	}
 
 	@Override
-	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
+	public void submit(ReceiptVO vo) 
+			throws NotBoundException, IOException, ClassNotFoundException {
 		// TODO Auto-generated method stub
 		payRepbl.submit(vo);
-	}
-
-	@Override
-	public ArrayList<PayRepVO> getAllRep() throws NotBoundException, ClassNotFoundException, IOException {
-		// TODO Auto-generated method stub
-		return payRepbl.getAllRep();
-	}
-
-	@Override
-	public ArrayList<PayRepVO> getRepByDate(String date)
-			throws NotBoundException, ClassNotFoundException, IOException {
-		// TODO Auto-generated method stub
-		return payRepbl.getRepByDate(date);
-	}
-
-	@Override
-	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
-		// TODO Auto-generated method stub
-		return payRepCheckbl.initCheck();
 	}
 
 	@Override
@@ -91,10 +62,10 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 	}
 
 	@Override
-	public Vector<Object> initTable(String num) 
+	public Vector<Object> initTable() 
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
-		return payRepbl.initTable(num);
+		return payRepbl.initTable();
 	}
 
 	@Override
@@ -206,6 +177,29 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 			throws FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		payRepbl.minusMoneyInBankAccount(bankAccount, money);
+	}
+
+	@Override
+	public double getFreightMoney(String num) 
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
+		// TODO Auto-generated method stub
+		return freightbl.getFreightMoney(num);
+	}
+
+	@Override
+	public String getRefundTime(String type) {
+		// TODO Auto-generated method stub
+		return payRepbl.getRefundTime(type);
+	}
+	
+	public PayRepVO getSubmitPayRep() throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException{
+		return payRepbl.getSubmitPayRep();
+	}
+
+	@Override
+	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		return payRepCheckbl.initCheck();
 	}
 
 }

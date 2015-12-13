@@ -24,9 +24,9 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
+import main.MainFrame;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.loginblservice.LoginBLService;
-import ui.mainFrame.MainFrame;
 import util.CurrentCity;
 import util.enumData.City;
 import util.enumData.ResultMessage;

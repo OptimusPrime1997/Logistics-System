@@ -14,9 +14,9 @@ import java.util.regex.Pattern;
 
 import javax.swing.*;
 
+import main.MainFrame;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.stockblservice.StockBLService;
-import ui.mainFrame.MainFrame;
 import util.enumData.ResultMessage;
 /**
  *

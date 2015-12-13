@@ -12,10 +12,12 @@ import VO.ReceiptVO.CashRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.CashRepblService;
+import blservice.receiptblservice.PostReceiptblService;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 
-public class CashRepController extends ReceiptblController implements CashRepblService{
+public class CashRepController extends ReceiptblController 
+implements CashRepblService, PostReceiptblService{
 	private CashRepbl cashRepbl = new CashRepbl();
 	private CashRepCheckbl cashRepCheckbl = new CashRepCheckbl();
 
@@ -39,44 +41,37 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	}
 
 	@Override
-	public Vector<Object> initTable(String num) 
+	public Vector<Object> initTable(String office) 
 			throws NotBoundException, ClassNotFoundException, IOException, NumNotFoundException{
 		// TODO Auto-generated method stub
-		return cashRepbl.initTable(num);
+		return cashRepbl.initTable(office);
 	}
 	
 	@Override
-	public void submit(ReceiptVO vo) throws NotBoundException, IOException{
+	public void submit(ReceiptVO vo, String office) 
+			throws NotBoundException, IOException, ClassNotFoundException{
 		// TODO Auto-generated method stub
-		cashRepbl.submit(vo);
+		cashRepbl.submit(vo, office);
 	}
 
 	@Override
-	public ArrayList<CashRepVO> getAllRep() throws NotBoundException, ClassNotFoundException, IOException {
+	public ArrayList<CashRepVO> getAllRep(String office)
+			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return cashRepbl.getAllRep();
+		return cashRepbl.getAllRep(office);
 	}
 
 	@Override
-	public ArrayList<CashRepVO> getRepByDate(String date) throws NotBoundException, ClassNotFoundException, IOException {
+	public ArrayList<CashRepVO> getRepByDate(String date, String office)
+			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return cashRepbl.getRepByDate(date);
+		return cashRepbl.getRepByDate(date, office);
 	}
 
 	@Override
-	public String createNum(String date) throws NotBoundException, ClassNotFoundException, IOException {
+	public String createNum(String date, String office) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return cashRepbl.createNum(date);
-	}
-
-	@Override
-	public void delete(int n) throws NotBoundException, ClassNotFoundException, IOException {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void delete(String num) throws NotBoundException, ClassNotFoundException, IOException {
-		// TODO Auto-generated method stub
+		return cashRepbl.createNum(date, office);
 	}
 
 	@Override
@@ -99,9 +94,9 @@ public class CashRepController extends ReceiptblController implements CashRepblS
 	}
 
 	@Override
-	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return cashRepCheckbl.initCheck();
+		return cashRepCheckbl.initCheck(office);
 	}
 
 	@Override

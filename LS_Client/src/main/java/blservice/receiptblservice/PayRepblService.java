@@ -2,6 +2,7 @@ package blservice.receiptblservice;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Vector;
@@ -24,7 +25,7 @@ import util.enumData.PayThing;
 
 public interface PayRepblService extends ReceiptblService{
 	
-	public Vector<Object> initTable(String num) throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException;
+	public Vector<Object> initTable() throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException;
 	
 	public void submitBonus(PayRepVO payRepVO, PayRepBonusRepVO payRepBonusRepVO);
 	
@@ -56,10 +57,17 @@ public interface PayRepblService extends ReceiptblService{
 	
 	public PayThing getPayThing(String type);
 	
+	public String getRefundTime(String type);
+	
 	public String getReceiverName(String num) throws RemoteException, FileNotFoundException, ClassNotFoundException, NameNotFoundException, NumNotFoundException, IOException;
 
 	public Vector<String> showBankAccount() throws ClassNotFoundException, IOException;
 	
 	public void minusMoneyInBankAccount (String bankAccount, double money) throws FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException;
 	
+	public double getFreightMoney(String num) throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException;
+	
+	public PayRepVO getSubmitPayRep() throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException;
+	
+	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException;
 }

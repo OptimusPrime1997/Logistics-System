@@ -50,7 +50,7 @@ public class DeliverRep extends javax.swing.JPanel {
     private javax.swing.JTextField orderNumText;
     private javax.swing.JTextField resultMsgText;
     private javax.swing.JButton checkAllRepsButton;
-    private DeliverRepblService control;
+    private DeliverController control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
@@ -111,11 +111,11 @@ public class DeliverRep extends javax.swing.JPanel {
         numLabel.setText("编号:");
 
         numText.setEditable(false);
+        String num = officeText.getText();
+		num += control.getDateInNum(dateText.getText());
+		num += "4";
 		try {
-			String num = officeText.getText();
-			num += control.getDateInNum(dateText.getText());
-			num += "2";
-			num += control.createNum(dateText.getText());
+			num += control.createNum(dateText.getText(), officeText.getText());
 			numText.setText(num);
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
@@ -130,7 +130,6 @@ public class DeliverRep extends javax.swing.JPanel {
         columnIdentifiers.add("手机");
         columnIdentifiers.add("地点");
         columnIdentifiers.add("删除");
-
         model.setDataVector(dataVector, columnIdentifiers);
         jTable.setModel(model);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
@@ -289,7 +288,7 @@ public class DeliverRep extends javax.swing.JPanel {
     
     private void setColumn(){
     	TableColumn column1 = jTable.getColumnModel().getColumn(0);
-        column1.setPreferredWidth(103);
+        column1.setPreferredWidth(105);
         TableColumn column2 = jTable.getColumnModel().getColumn(1);
         column2.setPreferredWidth(75);
         TableColumn column3 = jTable.getColumnModel().getColumn(2);
@@ -334,23 +333,28 @@ public class DeliverRep extends javax.swing.JPanel {
     	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
     	resultMsgText.setText(resultMsg);
     	if(resultMessage==ResultMessage.ADD_SUCCESS){
-    		String num = numText.getText();
-    		String date = dateText.getText();
-    		ArrayList<DeliverVO> deliverVOs = new ArrayList<DeliverVO>();
-    		for(int i = 0;i < dataVector.size();i++){
-    			DeliverVO vo = new DeliverVO((String)jTable.getValueAt(i, 0), 
-    					(String)jTable.getValueAt(i, 1), (String)jTable.getValueAt(i, 2), 
-    					(String)jTable.getValueAt(i, 3));
-    			deliverVOs.add(vo);
+    		if(control.isTrueAccount(courierNum)){
+    			String num = numText.getText();
+        		String date = dateText.getText();
+        		ArrayList<DeliverVO> deliverVOs = new ArrayList<DeliverVO>();
+        		for(int i = 0;i < dataVector.size();i++){
+        			DeliverVO vo = new DeliverVO((String)jTable.getValueAt(i, 0), 
+        					(String)jTable.getValueAt(i, 1), (String)jTable.getValueAt(i, 2), 
+        					(String)jTable.getValueAt(i, 3));
+        			deliverVOs.add(vo);
+        		}
+        		DeliverRepVO deliverRepVO = new DeliverRepVO(num, date, courierText.getText(), deliverVOs);
+        		try {
+        			control.submit(deliverRepVO);
+        		} catch (NotBoundException | IOException e) {
+        			e.printStackTrace();
+        			resultMsgText.setText(ExceptionPrint.print(e));
+        		}
+        		resultMsgText.setText(ResultMessage.toFriendlyString(ResultMessage.SUBMIT_SUCCESS));
     		}
-    		DeliverRepVO deliverRepVO = new DeliverRepVO(num, date, courierText.getText(), deliverVOs);
-    		try {
-    			control.submit(deliverRepVO);
-    		} catch (NotBoundException | IOException e) {
-    			e.printStackTrace();
-    			resultMsgText.setText(ExceptionPrint.print(e));
-    		}
-    		resultMsgText.setText(ResultMessage.toFriendlyString(ResultMessage.SUBMIT_SUCCESS));
+    		else {
+    			resultMsgText.setText("未找到该派件员");
+			}
     	}
     }
     

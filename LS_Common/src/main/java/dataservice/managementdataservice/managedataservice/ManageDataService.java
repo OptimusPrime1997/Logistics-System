@@ -12,7 +12,10 @@ import dataservice.managementdataservice.vehicleanddriverdataservice.DriverDataS
 import dataservice.managementdataservice.vehicleanddriverdataservice.VehicleDataService;
 
 public interface ManageDataService extends Remote {
-	public static final int port = 8888;
+	/**
+	 * 端口号9999
+	 */
+	public static final int port = 9999;
 
 	public static final String regname = "ManageData";
 

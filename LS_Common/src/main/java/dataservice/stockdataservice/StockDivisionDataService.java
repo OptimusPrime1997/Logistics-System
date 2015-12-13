@@ -32,12 +32,11 @@ public interface StockDivisionDataService extends Remote{
 	
 	public ResultMessage update(OutStockRepPO po) throws RemoteException;
 	
-	public ResultMessage add (StockDivisionPO po); 
+	public ResultMessage add (StockDivisionPO po) throws RemoteException; 
 	
-	public StockDivisionPO find (int block, int place) throws ClassNotFoundException, IOException;
+	public StockDivisionPO find (int block, int place) throws ClassNotFoundException, IOException,RemoteException;
 	
-	
-	public ResultMessage delete (String listNum);
+	public ResultMessage delete (String listNum)throws RemoteException;
 	
 	/**
 	 * 
