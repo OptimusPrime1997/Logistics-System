@@ -5,6 +5,7 @@
  */
 package ui.managerui;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -33,6 +34,7 @@ import javax.swing.event.MouseInputListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
 
+import ui.componentfactory.ComponentFactory;
 import ui.util.StrToLogType;
 import util.InputCheck;
 import util.enumData.Authority;
@@ -120,6 +122,11 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		// TODO Auto-generated method stub
 		accountVOs = getAccountVOs();
 		accountVOs.sort(null);
+	}
+
+	private void setLogVOs(String startTime, String endTime, LogType type) {
+		logVOs = getLogVOs(startTime, endTime, type);
+		logVOs.sort(null);
 	}
 
 	/**
@@ -355,19 +362,19 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		jLabel40.setText("操作类型：");
 
-		logTypejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "所有操作", "决策制定", "审批单据", "用户账户管理", "银行账户管理",
-						"人员机构管理" }));
+		// logTypejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+		// new String[] { "所有操作", "决策制定", "审批单据", "用户账户管理", "银行账户管理",
+		// "人员机构管理" }));
 		logTypejComboBox.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				logTypejComboBoxActionPerformed(evt);
 			}
 		});
 
-		logSYearjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "2000", "2001", "2002", "2003", "2004", "2005",
-						"2006", "2007", "2008", "2009", "2010", "2011", "2012",
-						"2013", "2014", "2015" }));
+		// logSYearjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+		// new String[] { "2000", "2001", "2002", "2003", "2004", "2005",
+		// "2006", "2007", "2008", "2009", "2010", "2011", "2012",
+		// "2013", "2014", "2015" }));
 		logSYearjComboBox
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -375,11 +382,11 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-		logSDatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
-						"10", "11", "12", "13", "14", "15", "16", "17", "18",
-						"9", "20", "21", "22", "23", "24", "25", "26", "27",
-						"28", "29", "30", "31" }));
+		// logSDatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+		// new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
+		// "10", "11", "12", "13", "14", "15", "16", "17", "18",
+		// "9", "20", "21", "22", "23", "24", "25", "26", "27",
+		// "28", "29", "30", "31" }));
 		logSDatejComboBox
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -387,9 +394,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-		logSMonthjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
-						"10", "11", "12" }));
+		// logSMonthjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+		// new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
+		// "10", "11", "12" }));
 		logSMonthjComboBox
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -403,10 +410,10 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		jLabel43.setText("日");
 
-		logEYearjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "2000", "2001", "2002", "2003", "2004", "2005",
-						"2006", "2007", "2008", "2009", "2010", "2011", "2012",
-						"2013", "2014", "2015" }));
+		// logEYearjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+		// new String[] { "2000", "2001", "2002", "2003", "2004", "2005",
+		// "2006", "2007", "2008", "2009", "2010", "2011", "2012",
+		// "2013", "2014", "2015" }));
 		logEYearjComboBox
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -414,11 +421,11 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-		logEDatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
-						"10", "11", "12", "13", "14", "15", "16", "17", "18",
-						"19", "20", "21", "22", "23", "24", "25", "26", "27",
-						"28", "29", "30", "31" }));
+		// logEDatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+		// new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
+		// "10", "11", "12", "13", "14", "15", "16", "17", "18",
+		// "19", "20", "21", "22", "23", "24", "25", "26", "27",
+		// "28", "29", "30", "31" }));
 		logEDatejComboBox
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -426,9 +433,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-		logEMonthjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
-						"10", "11", "12" }));
+		// logEMonthjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+		// new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
+		// "10", "11", "12" }));
 		logEMonthjComboBox
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -441,7 +448,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jLabel47.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
 		jLabel47.setText("系统日志");
 
-		// initialLogJTable();
+		// initialLogJTable(logVOs);
 
 		javax.swing.GroupLayout logjPanelLayout = new javax.swing.GroupLayout(
 				logjPanel);
@@ -680,45 +687,38 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private void initialLogJTable(ArrayList<LogVO> vos) {
 		// TODO Auto-generated method stub
 
-		assert (vos != null) : ("表格获得的账户信息为空");
+		assert (vos != null) : ("表格获得的日志信息为空");
 		Object[][] logObjects = null;
-		logObjects = new Object[vos.size()][6];
+		logObjects = new Object[vos.size()][4];
 		int i = 0;
 		for (java.util.Iterator<LogVO> t = vos.iterator(); t.hasNext(); i++) {
 			LogVO vo = t.next();
 			logObjects[i][0] = vo.time;
 			logObjects[i][1] = vo.operationName;
-			logObjects[i][2] = vo.operatorID;
+			logObjects[i][2] = authorityjComboBox.getItemAt(Integer
+					.parseInt(vo.operatorID.substring(7, 8)));
+			logObjects[i][3] = vo.operatorID;
 
 		}
 
-		logjTable.setModel(new javax.swing.table.DefaultTableModel(
-				new Object[][] {
-						{ "20151109", "用户账户管理", "管理员", "00065434232" },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null } }, new String[] { "日期",
-						"操做类型", "操作人员职位", "操作人员编号" }) {
+		logjTable.setModel(new javax.swing.table.DefaultTableModel(logObjects,
+				new String[] { "日期", "操做类型", "操作人员职位", "操作人员编号" }) {
 			Class[] types = new Class[] { java.lang.String.class,
-					java.lang.String.class, java.lang.String.class,
-					java.lang.String.class };
+					JComboBox.class, JComboBox.class, java.lang.String.class };
+			boolean[] canEdit = new boolean[] { false, false, false, false };
 
 			public Class getColumnClass(int columnIndex) {
 				return types[columnIndex];
 			}
 		});
+		jTable.getColumnModel().getColumn(1)
+				.setCellEditor(new DefaultCellEditor(logTypejComboBox));
+		jTable.getColumnModel().getColumn(2)
+				.setCellEditor(new DefaultCellEditor(authorityjComboBox));
+
+		ComponentFactory.getInstance().setJTableTextCenter(logjTable);
+		jTable.setRowSelectionInterval(0, 0);// 设置哪几行被选中
+
 		logjTable.setGridColor(new java.awt.Color(0, 0, 0));
 		logjTable.setName("123"); // NOI18N
 		logjTable.getTableHeader().setReorderingAllowed(false);
@@ -756,11 +756,8 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				});
 
 		jLabel30.setText("年");
-
 		jLabel31.setText("月");
-
 		jLabel32.setText("日");
-
 		formEYearjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
 				new String[] { "2000", "2001", "2002", "2003", "2004", "2005",
 						"2006", "2007", "2008", "2009", "2010", "2011", "2012",
@@ -772,7 +769,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 						formEYearjComboBoxActionPerformed(evt);
 					}
 				});
-
 		formEDatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
 				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
 						"10", "11", "12", "13", "14", "15", "16", "17", "18",
@@ -785,7 +781,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 						formEDatejComboBoxActionPerformed(evt);
 					}
 				});
-
 		formEMonthjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
 				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
 						"10", "11", "12" }));
@@ -796,8 +791,14 @@ public class ManagerJFrame extends javax.swing.JFrame {
 						formEMonthjComboBoxActionPerformed(evt);
 					}
 				});
-
 		jLabel33.setText("截止日期：");
+		jLabel33.setVisible(false);
+		jLabel30.setVisible(false);
+		jLabel31.setVisible(false);
+		jLabel32.setVisible(false);
+		formEYearjComboBox.setVisible(false);
+		formEMonthjComboBox.setVisible(false);
+		formEDatejComboBox.setVisible(false);
 
 		outputFormjButton.setText("导出报表");
 		outputFormjButton.setName("outFormButton"); // NOI18N
@@ -1978,16 +1979,18 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jLabel38 = new javax.swing.JLabel();
 		jLabel39 = new javax.swing.JLabel();
 		jLabel40 = new javax.swing.JLabel();
-		logTypejComboBox = new javax.swing.JComboBox();
-		logSYearjComboBox = new javax.swing.JComboBox();
-		logSDatejComboBox = new javax.swing.JComboBox();
-		logSMonthjComboBox = new javax.swing.JComboBox();
+		logTypejComboBox = ComponentFactory.getInstance().getLogTypeJComboBox();
+		logSYearjComboBox = ComponentFactory.getInstance().getYearJComboBox(
+				2015, 2050);
+		logSDatejComboBox = ComponentFactory.getInstance().getDayJComboBox();
+		logSMonthjComboBox = ComponentFactory.getInstance().getMonthJComboBox();
 		jLabel41 = new javax.swing.JLabel();
 		jLabel42 = new javax.swing.JLabel();
 		jLabel43 = new javax.swing.JLabel();
-		logEYearjComboBox = new javax.swing.JComboBox();
-		logEDatejComboBox = new javax.swing.JComboBox();
-		logEMonthjComboBox = new javax.swing.JComboBox();
+		logEYearjComboBox = ComponentFactory.getInstance().getYearJComboBox(
+				2015, 2050);
+		logEDatejComboBox = ComponentFactory.getInstance().getDayJComboBox();
+		logEMonthjComboBox = ComponentFactory.getInstance().getMonthJComboBox();
 		jLabel44 = new javax.swing.JLabel();
 		jSeparator7 = new javax.swing.JSeparator();
 		jLabel47 = new javax.swing.JLabel();
@@ -2046,18 +2049,22 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 	private void findLogjButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_findLogjButtonActionPerformed
 		// GEN-FIRST:event_findLogjButtonMouseReleased
-		String startT = logSYearjComboBox.getSelectedItem().toString() + "-"
-				+ logSMonthjComboBox.getSelectedItem().toString() + "-"
-				+ logSDatejComboBox.getSelectedItem().toString();
-		String endT = logEYearjComboBox.getSelectedItem().toString() + "-"
-				+ logEMonthjComboBox.getSelectedItem().toString() + "-"
-				+ logEDatejComboBox.getSelectedItem().toString();
+		if (evt.getSource() == findLogjButton) {
+			String startT = logSYearjComboBox.getSelectedItem()
+					+ "-" + logSMonthjComboBox.getSelectedItem()
+					+ "-" + logSDatejComboBox.getSelectedItem();
+			String endT = logEYearjComboBox.getSelectedItem() + "-"
+					+ logEMonthjComboBox.getSelectedItem() + "-"
+					+ logEDatejComboBox.getSelectedItem();
 
-		String type = logTypejComboBox.getSelectedItem().toString();
-		LogType logType = StrToLogType.strToLogTye(type);
-		logVOs = logblController.show(startT, endT, logType);
-		// TODO 得到了日志数据 没放到界面上
-
+			LogType type = (LogType) logTypejComboBox.getSelectedItem();
+			// LogType logType = StrToLogType.strToLogTye(type);
+			// logVOs = logblController.show(startT, endT, type);
+			System.out.println(logblController.getClass().getName());
+			setLogVOs(startT, endT, type);
+			// TODO 得到了日志数据 没放到界面上
+			initialLogJTable(logVOs);
+		}
 		// TODO add your handling code here:
 	}// GEN-LAST:event_findLogjButtonActionPerformed
 
@@ -2416,12 +2423,13 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	 * 
 	 * @return
 	 */
-	public ArrayList<LogVO> getLogVOs(String startTime, String endTime,
+	private ArrayList<LogVO> getLogVOs(String startTime, String endTime,
 			LogType type) {
 		ArrayList<LogVO> vos = null;
 		vos = logblController.show(startTime, endTime, type);
 		assert (vos != null) : ("远程获取账户信息失败");
 		vos.sort(null);
+		assert (vos != null) : ("获取日志失败");
 		return vos;
 	}
 
@@ -2565,14 +2573,14 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		});
 		jTable.getColumnModel().getColumn(2)
 				.setCellEditor(new DefaultCellEditor(sexjComboBox));
-		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容-11
-		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 设置table内容居中-2
-		jTable.setDefaultRenderer(Object.class, tcr);
 
 		((DefaultTableCellRenderer) jTable.getTableHeader()
 				.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
 		jTable.setRowSelectionInterval(0, 0);// 设置哪几行被选中
 
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容-11
+		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 设置table内容居中-2
+		jTable.setDefaultRenderer(Object.class, tcr);
 	}
 
 	/**
@@ -3495,7 +3503,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	 * @param args
 	 *            the command line arguments
 	 */
-	public static void launch(String args[]) {
+	public static void main(String args[]) {
 		/* Set the Nimbus look and feel */
 		// <editor-fold defaultstate="collapsed"
 		// desc=" Look and feel setting code (optional) ">
@@ -3563,6 +3571,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			.getInstitutionController();
 	private LogBLService logblController = controllerFactoryblService
 			.getLogController();
+	
 	private final ScheduledExecutorService scheduler = Executors
 			.newScheduledThreadPool(1);
 
@@ -3645,13 +3654,13 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private javax.swing.JSeparator jSeparator8;
 	private javax.swing.JSeparator jSeparator9;
 	private javax.swing.JTextField findInstitutionNamejTextField;
-	private javax.swing.JComboBox logEDatejComboBox;
-	private javax.swing.JComboBox logEYearjComboBox;
-	private javax.swing.JComboBox logEMonthjComboBox;
-	private javax.swing.JComboBox logSDatejComboBox;
-	private javax.swing.JComboBox logSMonthjComboBox;
-	private javax.swing.JComboBox logSYearjComboBox;
-	private javax.swing.JComboBox logTypejComboBox;
+	private javax.swing.JComboBox<Integer> logEDatejComboBox;
+	private javax.swing.JComboBox<Integer> logEYearjComboBox;
+	private javax.swing.JComboBox<Integer> logEMonthjComboBox;
+	private javax.swing.JComboBox<Integer> logSDatejComboBox;
+	private javax.swing.JComboBox<Integer> logSMonthjComboBox;
+	private javax.swing.JComboBox<Integer> logSYearjComboBox;
+	private javax.swing.JComboBox<LogType> logTypejComboBox;
 	private javax.swing.JPanel logjPanel;
 	private javax.swing.JTable logjTable;
 	private javax.swing.JButton manageStateFormjButton;

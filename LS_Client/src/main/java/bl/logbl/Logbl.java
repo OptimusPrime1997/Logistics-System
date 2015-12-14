@@ -11,31 +11,34 @@ import dataservice.logdataservice.LogDataService;
 
 public class Logbl {
 	public ResultMessage add(LogVO vo) {
-//		try {
-//			return getLogDataService().add(LogVO.toPO(vo));
-//		} catch (RemoteException e) {
-//			return ResultMessage.LINK_FAILURE;
-//		}
-		//TODO
+		// try {
+		// return getLogDataService().add(LogVO.toPO(vo));
+		// } catch (RemoteException e) {
+		// return ResultMessage.LINK_FAILURE;
+		// }
+		// TODO
 		return ResultMessage.SUCCESS;
 	}
 
 	public ArrayList<LogVO> show(String startTime, String endTime, LogType type) {
 		ArrayList<LogVO> logs = null;
 		try {
-			logs = LogVO.toVOArray(getLogDataService().show(type, startTime, endTime));
-			
+			logs = LogVO.toVOArray(getLogDataService().show(type, startTime,
+					endTime));
 		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
 		return logs;
 	}
+
 	private LogDataService getLogDataService() {
 		LogDataService dataservice = null;
 		try {
-			dataservice = (LogDataService)Naming.lookup("log");
-			
+			dataservice = (LogDataService) Naming.lookup("log");
+
 		} catch (Exception e) {
 			e.printStackTrace();
-		}return dataservice;
+		}
+		return dataservice;
 	}
 }

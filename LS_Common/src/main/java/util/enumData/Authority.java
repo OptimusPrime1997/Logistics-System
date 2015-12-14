@@ -21,22 +21,17 @@ public enum Authority {
 	}
 
 	public String getValue() {
-		
+
 		/*
-		 * new MyFrame(panel2);
-		 * panel2.setFrame(this.frame);
+		 * new MyFrame(panel2); panel2.setFrame(this.frame);
 		 */
 		return value;
 	}
-	
-	
-	
-	
-	
 
-	/* (non-Javadoc)
-	 * @see java.lang.Enum#toString()
-	 * 重构tostring方法
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Enum#toString() 重构tostring方法
 	 */
 	@Override
 	public String toString() {
@@ -177,7 +172,6 @@ public enum Authority {
 			return Authority.FINANCIALSTAFF_V;
 		case 9:
 			return Authority.ADMINISTRATOR;
-
 		default:
 			return null;
 		}
