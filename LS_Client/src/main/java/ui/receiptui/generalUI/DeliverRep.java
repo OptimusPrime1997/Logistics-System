@@ -316,7 +316,7 @@ public class DeliverRep extends javax.swing.JPanel {
 				e.printStackTrace();
 				resultMsgText.setText(ExceptionPrint.print(e));
 			}
-    		Vector<Object> arr = new Vector<Object>();
+    		Vector<String> arr = new Vector<String>();
     		arr.add(order);
     		arr.add(name);
     		arr.add(phoneNum);

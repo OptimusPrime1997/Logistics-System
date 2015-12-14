@@ -21,12 +21,12 @@ public class Staffbl{
 			return data;
 		PayStaffSalaryVO payStaffSalaryVO;
 		for(int i = 0;i < payStaffSalaryVOs.size();i++){
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			payStaffSalaryVO = payStaffSalaryVOs.get(i);
 			arr.add(Authority.toString(payStaffSalaryVO.authority));
 			arr.add(payStaffSalaryVO.getterName);
 			arr.add(payStaffSalaryVO.getterNum);
-			arr.add(payStaffSalaryVO.money);
+			arr.add(payStaffSalaryVO.money+"");
 			data.add(arr);
 		}
 		return data;

@@ -53,7 +53,7 @@ public class PayRepBonus extends javax.swing.JPanel {
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
-    private PayRepVO payRepVO;
+    private static PayRepVO payRepVO;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -295,7 +295,7 @@ public class PayRepBonus extends javax.swing.JPanel {
 		String resultMsg = ResultMessage.toFriendlyString(resultMessage);
 		resultMsgText.setText(resultMsg);
 		if (resultMessage == ResultMessage.ADD_SUCCESS) {
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			String getterName = null;
 			try {
 				getterName = control.getReceiverName(getterNum);
@@ -306,7 +306,7 @@ public class PayRepBonus extends javax.swing.JPanel {
 			}
 			arr.add(getterName);
 			arr.add(getterNum);
-			arr.add(money);
+			arr.add(money+"");
 			dataVector.add(arr);
 			model.setDataVector(dataVector, columnIdentifiers);
 			setColumn();

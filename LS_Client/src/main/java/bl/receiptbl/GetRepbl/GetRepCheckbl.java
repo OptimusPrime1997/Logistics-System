@@ -30,11 +30,11 @@ public class GetRepCheckbl {
 		ArrayList<GetRepVO> getRepVOs = getRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < getRepVOs.size();i++){
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			GetRepVO GetRepVO = getRepVOs.get(i);
 			arr.add(GetRepVO.date);
 			arr.add(GetRepVO.num);
-			arr.add(GetRepVO.rep);
+			arr.add(GetRepVO.rep.getChineseName());
 			arr.add(GetRepVO.shipNum);
 			arr.add(GetRepVO.depart);
 			data.add(arr);

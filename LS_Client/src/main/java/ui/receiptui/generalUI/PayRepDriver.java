@@ -46,7 +46,7 @@ public class PayRepDriver extends javax.swing.JPanel {
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
-    private PayRepVO payRepVO;
+    private static PayRepVO payRepVO;
     // End of variables declaration//GEN-END:variables
 
     /**

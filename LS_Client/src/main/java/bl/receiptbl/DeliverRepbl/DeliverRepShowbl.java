@@ -18,7 +18,7 @@ public class DeliverRepShowbl {
 		DeliverRepVO deliverRepVO = deliverRepCheckbl.getRepByNum(num);
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < deliverRepVO.deliverVOs.size();i++){
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			DeliverVO deliverVO = deliverRepVO.deliverVOs.get(i);
 			arr.add(deliverVO.order);
 			arr.add(deliverVO.receiverName);

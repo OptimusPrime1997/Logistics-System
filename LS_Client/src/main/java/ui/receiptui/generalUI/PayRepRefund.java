@@ -52,8 +52,8 @@ public class PayRepRefund extends javax.swing.JPanel {
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
-    private PayRepVO payRepVO;
-    String date;
+    private static PayRepVO payRepVO;
+    private static String date;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -316,8 +316,8 @@ public class PayRepRefund extends javax.swing.JPanel {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	double money = Double.parseDouble(moneyText.getText());
     	String reason = reasonText.getText();
-    	Vector<Object> arr = new Vector<Object>();
-    	arr.add(money);
+    	Vector<String> arr = new Vector<String>();
+    	arr.add(money+"");
     	arr.add(reason);
     	dataVector.add(arr);
     	model.setDataVector(dataVector, columnIdentifiers);

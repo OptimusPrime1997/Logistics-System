@@ -56,7 +56,7 @@ public class PayRepRent extends javax.swing.JPanel {
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
-    private PayRepVO payRepVO;
+    private static PayRepVO payRepVO;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -316,7 +316,7 @@ public class PayRepRent extends javax.swing.JPanel {
     	String name = receiverNameText.getText();
     	String phone = receiverPhoneText.getText();
     	String money = moneyText.getText();
-    	Vector<Object> arr = new Vector<Object>();
+    	Vector<String> arr = new Vector<String>();
     	arr.add(name);
     	arr.add(phone);
     	arr.add(money);

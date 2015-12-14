@@ -30,7 +30,8 @@ public class PayRepbl extends ReceiptblController{
 	private ReceiptClient client = new ReceiptClient();
 	private static PayRepDataService payRepDataService = null;
 	
-	public PayRepDataService getPayRepDataService() throws MalformedURLException, RemoteException, NotBoundException{
+	public PayRepDataService getPayRepDataService(
+			) throws MalformedURLException, RemoteException, NotBoundException{
 		if (payRepDataService==null) 
 			payRepDataService = client.getPayRepDataService();
 		return payRepDataService;
@@ -58,7 +59,9 @@ public class PayRepbl extends ReceiptblController{
 		return PayRepVO.toArrayVO(payRepPOs);
 	}
 	
-	public PayRepVO getSubmitPayRep() throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException{
+	public PayRepVO getSubmitPayRep() 
+			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, 
+			NotBoundException{
 		PayRepPO payRepPO = getPayRepDataService().getSubmitPayRep();
 		return new PayRepVO(payRepPO);
 	}
@@ -69,10 +72,10 @@ public class PayRepbl extends ReceiptblController{
 		PayRepVO payRepVO = getSubmitPayRep();
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < payRepVO.payVOs.size();i++){
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			PayVO payVO = payRepVO.payVOs.get(i);
-			arr.add(payVO.payThing);
-			arr.add(payVO.money);
+			arr.add(payVO.payThing.getChineseName());
+			arr.add(payVO.money+"");
 			arr.add(payVO.bankAccountNum);
 			arr.add(payVO.remark);
 			data.add(arr);

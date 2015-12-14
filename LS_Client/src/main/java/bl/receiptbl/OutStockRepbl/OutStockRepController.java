@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import Exception.NumNotFoundException;
+import VO.ReceiptVO.InStockRepVO;
 import VO.ReceiptVO.OutStockRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import VO.ReceiptVO.ShippingRepVO;
@@ -89,6 +90,13 @@ implements OutStockRepblService, PostReceiptblService, SubmitblService{
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return outStackRepbl.getTransferRepVO(num);
+	}
+
+	@Override
+	public ArrayList<OutStockRepVO> getAllRepByDate(String date)
+			throws ClassNotFoundException, MalformedURLException, RemoteException, IOException, NotBoundException {
+		// TODO Auto-generated method stub
+		return outStackRepbl.getAllRepByDate(date);
 	}
 
 }

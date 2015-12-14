@@ -20,13 +20,13 @@ public class Courierbl{
 			return data;
 		PayCourierSalaryVO payCourierSalaryVO;
 		for(int i = 0;i < payCourierSalaryVOs.size();i++){
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			payCourierSalaryVO = payCourierSalaryVOs.get(i);
 			arr.add(payCourierSalaryVO.getterName);
 			arr.add(payCourierSalaryVO.getterNum);
-			arr.add(payCourierSalaryVO.getMoneySum);
-			arr.add(payCourierSalaryVO.deliverItemNum);
-			arr.add(payCourierSalaryVO.money);
+			arr.add(payCourierSalaryVO.getMoneySum+"");
+			arr.add(payCourierSalaryVO.deliverItemNum+"");
+			arr.add(payCourierSalaryVO.money+"");
 			data.add(arr);
 		}
 		return data;

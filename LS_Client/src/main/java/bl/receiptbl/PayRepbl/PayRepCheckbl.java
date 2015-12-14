@@ -16,10 +16,10 @@ public class PayRepCheckbl {
 		ArrayList<PayRepVO> payRepVOs = payRepbl.getAllRep();
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < payRepVOs.size();i++){
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			PayRepVO payRepVO = payRepVOs.get(i);
 			arr.add(payRepVO.date);
-			arr.add(payRepVO.sum);
+			arr.add(payRepVO.sum+"");
 			data.add(arr);
 		}
 		return data;

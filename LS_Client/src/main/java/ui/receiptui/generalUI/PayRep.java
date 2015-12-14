@@ -55,14 +55,14 @@ public class PayRep extends javax.swing.JPanel {
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
-    private PayRepVO payRepVO;
-    private ArrayList<PayRepRefundRepVO> refund;
-	private PayRepStaffSalaryRepVO staffSalary; 
-	private PayRepFreightRepVO freight;
-	private PayRepRentRepVO rent;
-	private PayRepDriverSalaryRepVO driverSalary;
-	private PayRepCourierSalaryRepVO courierSalary;
-	private PayRepBonusRepVO bonus;
+    private static PayRepVO payRepVO;
+    private static ArrayList<PayRepRefundRepVO> refund;
+	private static PayRepStaffSalaryRepVO staffSalary; 
+	private static PayRepFreightRepVO freight;
+	private static PayRepRentRepVO rent;
+	private static PayRepDriverSalaryRepVO driverSalary;
+	private static PayRepCourierSalaryRepVO courierSalary;
+	private static PayRepBonusRepVO bonus;
     // End of variables declaration//GEN-END:variables
 
     /**

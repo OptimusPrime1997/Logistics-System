@@ -10,6 +10,7 @@ import PO.ReceiptPO.ReceiptPO;
 import PO.ReceiptPO.ReceptionRepPO;
 import VO.ReceiptVO.ReceptionRepVO;
 import bl.receiptbl.Receiptbl.Receiptbl;
+import util.enumData.City;
 import util.enumData.Rep;
 
 public class ReceptionRepCheckbl {
@@ -30,13 +31,13 @@ public class ReceptionRepCheckbl {
 		ArrayList<ReceptionRepVO> receptionVOs = receptionRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < receptionVOs.size();i++){
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			ReceptionRepVO RecepitonRepVO = receptionVOs.get(i);
 			arr.add(RecepitonRepVO.date);
 			arr.add(RecepitonRepVO.num);
-			arr.add(RecepitonRepVO.rep);
+			arr.add(RecepitonRepVO.rep.getChineseName());
 			arr.add(RecepitonRepVO.shipNum);
-			arr.add(RecepitonRepVO.city);
+			arr.add(City.toString(RecepitonRepVO.city));
 			data.add(arr);
 		}
 		return data;

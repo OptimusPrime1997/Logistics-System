@@ -6,6 +6,17 @@
 
 package ui.receiptui.ReceiptCheckUI;
 
+import java.io.IOException;
+import java.rmi.NotBoundException;
+import java.util.Vector;
+
+import javax.swing.table.DefaultTableModel;
+
+import Exception.ExceptionPrint;
+import bl.receiptbl.GetRepbl.GetRepController;
+import bl.receiptbl.ReceptionRepbl.ReceptionRepController;
+import util.enumData.Rep;
+
 /**
  *
  * @author apple
@@ -17,10 +28,16 @@ public class ArriveCheck extends javax.swing.JPanel {
     private javax.swing.JTextField dateText;
     private javax.swing.JButton findButton;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable jTable;
     private javax.swing.JButton okButton;
     private javax.swing.JTextField resultMsgText;
+    private GetRepController getControl;
+    private ReceptionRepController receptionControl;
+    private DefaultTableModel model;
+    private Vector<String> columnIdentifiers;
+    private Vector<Object> dataVector;
+    private static Rep rep;
+    private static String office;
     // End of variables declaration//GEN-END:variables
 	
 
@@ -40,16 +57,18 @@ public class ArriveCheck extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
         findButton = new javax.swing.JButton();
         dateLabel = new javax.swing.JLabel();
         dateText = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         okButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
-
-        jTextField1.setText("jTextField1");
+        getControl = new GetRepController();
+        receptionControl = new ReceptionRepController();
+        model = new DefaultTableModel();
+        columnIdentifiers = new Vector<String>();
+        dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -62,16 +81,28 @@ public class ArriveCheck extends javax.swing.JPanel {
 
         dateLabel.setText("时间:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "日期", "编号", "到达单据类型", "到达单据编号", "出发地"
-            }
-        ));
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(jTable1);
+        if(rep==Rep.GetRep){
+        	try {
+				dataVector = getControl.initCheck(office);
+			} catch (ClassNotFoundException | NotBoundException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			}
+        }
+        else {
+			try {
+				dataVector = receptionControl.initCheck(office);
+			} catch (ClassNotFoundException | NotBoundException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			}
+		}
+        model.setDataVector(dataVector, columnIdentifiers);
+        jTable.setModel(model);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(jTable);
 
         okButton.setText("完成");
         okButton.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +112,7 @@ public class ArriveCheck extends javax.swing.JPanel {
         });
 
         resultMsgText.setEditable(false);
-
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,13 +151,17 @@ public class ArriveCheck extends javax.swing.JPanel {
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	
+    	int row = jTable.getSelectedRow();
+    	for(int i = row;i < dataVector.size();i++){
+    		if(((String)jTable.getValueAt(i, 0)).equals(dateText.getText()))
+    			jTable.setRowSelectionInterval(i,i);
+    	}
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+    	
     }
 
 }

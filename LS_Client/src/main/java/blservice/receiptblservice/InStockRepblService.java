@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import Exception.GoodsNotFound;
 import VO.StockDivisionVO;
@@ -19,4 +20,6 @@ public interface InStockRepblService extends ReceiptblService{
 	public ResultMessage delete(String listNum) throws RemoteException, MalformedURLException, NotBoundException;
 	
 	public ResultMessage update(InStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException;
+	
+	public ArrayList<InStockRepVO> getAllRepByDate(String date) throws ClassNotFoundException, MalformedURLException, RemoteException, IOException, NotBoundException;
 }

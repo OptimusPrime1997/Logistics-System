@@ -15,10 +15,10 @@ public class CashRepCheckbl {
 		Vector<Object> data = new Vector<Object>();
 		for (int i = 0; i < cashRepVOs.size(); i++) {
 			CashRepVO cashRepVO = cashRepVOs.get(i);
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			arr.add(cashRepVO.date);
 			arr.add(cashRepVO.num);
-			arr.add(cashRepVO.sum);
+			arr.add(cashRepVO.sum+"");
 			arr.add(cashRepVO.bankAccount);
 			data.add(arr);
 		}

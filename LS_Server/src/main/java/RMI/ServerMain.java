@@ -78,8 +78,18 @@ public class ServerMain {
 			
 			LocateRegistry.createRegistry(1025);
 			PayRepDataService payService = new PayRepData();
-			Naming.rebind("rmi://" + ip + ":" + "1024/payRep", payService);
+			Naming.rebind("rmi://" + ip + ":" + "1025/payRep", payService);
 			System.out.println("10");
+			
+			LocateRegistry.createRegistry(1026);
+			PayRepDataService inStockService = new PayRepData();
+			Naming.rebind("rmi://" + ip + ":" + "1026/inStock", inStockService);
+			System.out.println("11");
+			
+			LocateRegistry.createRegistry(1027);
+			PayRepDataService outStockService = new PayRepData();
+			Naming.rebind("rmi://" + ip + ":" + "1027/outStock", outStockService);
+			System.out.println("12");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
