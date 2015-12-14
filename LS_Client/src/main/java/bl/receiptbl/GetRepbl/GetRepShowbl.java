@@ -18,10 +18,10 @@ throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundExcept
 		ArriveRepVO arriveRepVO = getRepCheckbl.getRepByNum(num);
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < arriveRepVO.arriveVOs.size();i++){
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			ArriveVO arriveVO = arriveRepVO.arriveVOs.get(i);
 			arr.add(arriveVO.order);
-			arr.add(arriveVO.goodsArrivalState);
+			arr.add(arriveVO.goodsArrivalState.getChineseName());
 			data.add(arr);
 		}
 		return data;

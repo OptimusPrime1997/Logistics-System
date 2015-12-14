@@ -275,7 +275,7 @@ public class PayRepFreight extends javax.swing.JPanel {
     	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
 		resultMsgText.setText(resultMsg);
 		if (resultMessage == ResultMessage.ADD_SUCCESS) {
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			double money = 0;
 			try {
 				money = control.getFreightMoney(transferRepNum);
@@ -285,7 +285,7 @@ public class PayRepFreight extends javax.swing.JPanel {
 				resultMsgText.setText(ExceptionPrint.print(e));
 			}
 			arr.add(transferRepNum);
-			arr.add(money);
+			arr.add(money+"");
 			dataVector.add(arr);
 			model.setDataVector(dataVector, columnIdentifiers);
 			setColumn();

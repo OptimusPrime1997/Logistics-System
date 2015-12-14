@@ -20,11 +20,11 @@ public class Rentbl{
 			return data;
 		PayRentVO payRentVO;
 		for(int i = 0;i < payRentVOs.size();i++){
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			payRentVO = payRentVOs.get(i);
 			arr.add(payRentVO.getterName);
 			arr.add(payRentVO.phoneNum);
-			arr.add(payRentVO.money);
+			arr.add(payRentVO.money+"");
 			arr.add(payRentVO.remark);
 			data.add(arr);
 		}

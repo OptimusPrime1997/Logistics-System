@@ -32,7 +32,7 @@ public class InStockRepCheckbl {
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < inStockRepVOs.size();i++){
 			InStockRepVO inStockRepVO = inStockRepVOs.get(i);
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			arr.add(inStockRepVO.date);
 			arr.add(inStockRepVO.num);
 			data.add(arr);

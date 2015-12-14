@@ -101,11 +101,11 @@ public class CashRepbl {
 		CashRepVO cashRepVO = getSubmitCashRep(office);
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < cashRepVO.cashVOs.size();i++){
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			CashVO cashVO = cashRepVO.cashVOs.get(i);
 			arr.add(cashVO.courierName);
 			arr.add(cashVO.courierNum);
-			arr.add(cashVO.money);
+			arr.add(cashVO.money+"");
 			arr.add(cashVO.remark);
 			data.add(arr);
 		}

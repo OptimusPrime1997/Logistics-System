@@ -17,7 +17,7 @@ public class OutStockRepShowbl {
 		OutStockRepVO outStockRepVO = outStockRepCheckbl.getRepByNum(num);
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < outStockRepVO.goods.size();i++){
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			String order = outStockRepVO.goods.get(i);
 			arr.add(order);
 			data.add(arr);

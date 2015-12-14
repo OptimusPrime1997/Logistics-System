@@ -359,10 +359,10 @@ public class CashRep extends javax.swing.JPanel {
     		}
         	ArrayList<GoodsVO> arrGoods = control.getGoods(courierNum, dateText.getText());
         	money = control.getMoneySum(arrGoods);
-        	Vector<Object> arr = new Vector<Object>();
+        	Vector<String> arr = new Vector<String>();
         	arr.add(courierName);
         	arr.add(courierNum);
-        	arr.add(money);
+        	arr.add(money+"");
         	arr.add(null);
         	dataVector.add(arr);
         	model.setDataVector(dataVector, columnIdentifiers);

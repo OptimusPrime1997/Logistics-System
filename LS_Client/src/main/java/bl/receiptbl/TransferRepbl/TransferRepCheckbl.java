@@ -7,6 +7,8 @@ import java.util.Vector;
 
 import VO.ReceiptVO.ShippingRepVO;
 import VO.ReceiptVO.TransferRepVO;
+import util.enumData.City;
+import util.enumData.ShipForm;
 
 public class TransferRepCheckbl {
 	
@@ -17,13 +19,13 @@ public class TransferRepCheckbl {
 		ArrayList<TransferRepVO> transferRepVOs = transferRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < transferRepVOs.size();i++){
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			TransferRepVO transferRepVO = transferRepVOs.get(i);
 			arr.add(transferRepVO.date);
 			arr.add(transferRepVO.num);
-			arr.add(transferRepVO.form);
+			arr.add(ShipForm.toFrendlyString(transferRepVO.form));
 			arr.add(transferRepVO.carNum);
-			arr.add(transferRepVO.city);
+			arr.add(City.toString(transferRepVO.city));
 			data.add(arr);
 		}
 		return data;

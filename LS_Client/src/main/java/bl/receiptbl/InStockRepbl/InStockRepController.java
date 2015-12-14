@@ -26,7 +26,8 @@ implements InStockRepblService, PostReceiptblService, SubmitblService{
 	private InStockRepShowbl inStockRepShowbl = new InStockRepShowbl();
 
 	@Override
-	public String createNum(String date, String office) throws NotBoundException, ClassNotFoundException, IOException {
+	public String createNum(String date, String office) 
+			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return inStockRepbl.createNum(date, office);
 	}
@@ -45,7 +46,8 @@ implements InStockRepblService, PostReceiptblService, SubmitblService{
 	}
 
 	@Override
-	public ArrayList<InStockRepVO> getAllRep(String office) throws NotBoundException, ClassNotFoundException, 
+	public ArrayList<InStockRepVO> getAllRep(String office) 
+			throws NotBoundException, ClassNotFoundException, 
 	IOException {
 		// TODO Auto-generated method stub
 		return inStockRepbl.getAllRep(office);
@@ -59,7 +61,8 @@ implements InStockRepblService, PostReceiptblService, SubmitblService{
 	}
 
 	@Override
-	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck(String office) 
+			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		return inStockRepCheckbl.initCheck(office);
 	}
@@ -84,15 +87,25 @@ implements InStockRepblService, PostReceiptblService, SubmitblService{
 	}
 
 	@Override
-	public ResultMessage delete(String listNum) throws RemoteException, MalformedURLException, NotBoundException {
+	public ResultMessage delete(String listNum) 
+			throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub
 		return inStockRepbl.delete(listNum);
 	}
 
 	@Override
-	public ResultMessage update(InStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException {
+	public ResultMessage update(InStockRepVO vo) 
+			throws MalformedURLException, RemoteException, NotBoundException {
 		// TODO Auto-generated method stub
 		return inStockRepbl.update(vo);
+	}
+
+	@Override
+	public ArrayList<InStockRepVO> getAllRepByDate(String date)
+			throws ClassNotFoundException, MalformedURLException, RemoteException, IOException,
+			NotBoundException {
+		// TODO Auto-generated method stub
+		return inStockRepbl.getAllRepByDate(date);
 	}
 
 }

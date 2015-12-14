@@ -11,6 +11,7 @@ import PO.ReceiptPO.ReceiptPO;
 import VO.ReceiptVO.OutStockRepVO;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import util.enumData.Rep;
+import util.enumData.ShipForm;
 
 public class OutStockRepCheckbl {
 	
@@ -32,13 +33,13 @@ public class OutStockRepCheckbl {
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < outStockRepVOs.size();i++){
 			OutStockRepVO outStockRepVO = outStockRepVOs.get(i);
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			arr.add(outStockRepVO.date);
 			arr.add(outStockRepVO.num);
-			arr.add(outStockRepVO.rep);
+			arr.add(outStockRepVO.rep.getChineseName());
 			arr.add(outStockRepVO.num);
 			arr.add(outStockRepVO.destination);
-			arr.add(outStockRepVO.form);
+			arr.add(ShipForm.toFrendlyString(outStockRepVO.form));
 			data.add(arr);
 		}
 		return data;

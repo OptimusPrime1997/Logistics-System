@@ -1,12 +1,14 @@
 package bl.receiptbl.OutStockRepbl;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Vector;
 
 import Exception.NumNotFoundException;
 import PO.ReceiptPO.ReceiptPO;
+import RMIClient.ReceiptClient;
 import VO.ReceiptVO.OutStockRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import VO.ReceiptVO.ShippingRepVO;
@@ -15,7 +17,7 @@ import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.receiptbl.ShippingRepbl.ShippingRepbl;
 import bl.receiptbl.TransferRepbl.TransferRepbl;
 import bl.stockbl.StockController;
-import ui.receiptui.ReceiptDetailUI.Shipping;
+import dataservice.receiptdataservice.OutStockRepDataService;
 import util.enumData.Rep;
 
 public class OutStockRepbl{
@@ -24,6 +26,12 @@ public class OutStockRepbl{
 	private ShippingRepbl shippingRepbl = new ShippingRepbl();
 	private TransferRepbl transferRepbl = new TransferRepbl();
 	private StockController stockController = new StockController();
+	private ReceiptClient client = new ReceiptClient();
+	
+	private OutStockRepDataService getOutStockRepDataService()
+			throws MalformedURLException, RemoteException, NotBoundException{
+		return client.getOutStockRepDataService();
+	}
 
 	public String createNum(String date, String office) throws ClassNotFoundException, NotBoundException, IOException {
 		return receiptbl.createNum(date, Rep.OutStockRep, office);
@@ -58,5 +66,11 @@ public class OutStockRepbl{
 	public TransferRepVO getTransferRepVO(String num) 
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException{
 		return transferRepbl.getRepByNum(num);
+	}
+	
+	public ArrayList<OutStockRepVO> getAllRepByDate(String date) 
+			throws ClassNotFoundException, MalformedURLException, RemoteException, IOException, 
+			NotBoundException{
+		return OutStockRepVO.toArrayVO(getOutStockRepDataService().getAllRepByDate(date));
 	}
 }

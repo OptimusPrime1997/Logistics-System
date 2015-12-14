@@ -27,10 +27,10 @@ public class Freightbl{
 			return data;
 		PayFreightVO payFreightVO;
 		for(int i = 0;i < payFreightVOs.size();i++){
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			payFreightVO = payFreightVOs.get(i);
 			arr.add(payFreightVO.transferRepNum);
-			arr.add(payFreightVO.money);
+			arr.add(payFreightVO.money+"");
 			arr.add(payFreightVO.remark);
 			data.add(arr);
 		}

@@ -32,7 +32,7 @@ public class DeliverRepCheckbl {
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < deliverRepVOs.size();i++){
 			DeliverRepVO deliverRepVO = deliverRepVOs.get(i);
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			arr.add(deliverRepVO.date);
 			arr.add(deliverRepVO.num);
 			arr.add(deliverRepVO.deliverCourierNum);

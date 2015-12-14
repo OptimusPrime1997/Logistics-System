@@ -29,9 +29,9 @@ public class Refundbl{
 			return data;
 		PayRefundVO payRefundVO;
 		for(int i = 0;i < payRefundVOs.size();i++){
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			payRefundVO = payRefundVOs.get(i);
-			arr.add(payRefundVO.money);
+			arr.add(payRefundVO.money+"");
 			arr.add(payRefundVO.reason);
 			data.add(arr);
 		}

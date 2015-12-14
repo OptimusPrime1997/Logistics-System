@@ -356,10 +356,10 @@ public class InStockRep extends javax.swing.JPanel {
 			if(stockDivisionVO==null)
 				resultMsgText.setText("该区已满");
 			else{
-				Vector<Object> arr = new Vector<Object>();
+				Vector<String> arr = new Vector<String>();
 				arr.add(order);
-				arr.add(stockDivisionVO.block);
-				arr.add(stockDivisionVO.place);
+				arr.add(stockDivisionVO.block+"");
+				arr.add(stockDivisionVO.place+"");
 				dataVector.add(arr);
 				model.setDataVector(dataVector, columnIdentifiers);
 				setColumn();

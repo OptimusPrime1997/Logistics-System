@@ -380,7 +380,7 @@ public class ReceptionRep extends javax.swing.JPanel {
     	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
     	resultMsgText.setText(resultMsg);
     	if(resultMessage==ResultMessage.ADD_SUCCESS){
-    		Vector<Object> arr = new Vector<Object>();
+    		Vector<String> arr = new Vector<String>();
     		arr.add(order);
     		arr.add(arriveStateBox.getSelectedItem().toString());
     		dataVector.add(arr);

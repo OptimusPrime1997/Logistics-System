@@ -26,11 +26,11 @@ public class Bonusbl{
 			return data;
 		PayBonusVO payBonusVO;
 		for(int i = 0;i < payBonusVOs.size();i++){
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			payBonusVO = payBonusVOs.get(i);
 			arr.add(payBonusVO.getterName);
 			arr.add(payBonusVO.getterNum);
-			arr.add(payBonusVO.money);
+			arr.add(payBonusVO.money+"");
 			arr.add(payBonusVO.remark);
 			data.add(arr);
 		}

@@ -18,7 +18,7 @@ public class InStockRepShowbl {
 		InStockRepVO inStockRepVO = inStockRepCheckbl.getRepByNum(num);
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < inStockRepVO.inStockVOs.size();i++){
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			InStockVO inStockVO = inStockRepVO.inStockVOs.get(i);
 			arr.add(inStockVO.order);
 			arr.add(inStockVO.area);

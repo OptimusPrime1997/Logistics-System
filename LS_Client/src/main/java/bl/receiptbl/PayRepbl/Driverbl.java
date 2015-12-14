@@ -19,12 +19,12 @@ public class Driverbl{
 			return data;
 		PayDriverSalaryVO payDriverSalaryVO;
 		for(int i = 0;i < payDriverSalaryVOs.size();i++){
-			Vector<Object> arr = new Vector<Object>();
+			Vector<String> arr = new Vector<String>();
 			payDriverSalaryVO = payDriverSalaryVOs.get(i);
 			arr.add(payDriverSalaryVO.getterName);
 			arr.add(payDriverSalaryVO.getterNum);
-			arr.add(payDriverSalaryVO.time);
-			arr.add(payDriverSalaryVO.money);
+			arr.add(payDriverSalaryVO.time+"");
+			arr.add(payDriverSalaryVO.money+"");
 			data.add(arr);
 		}
 		return data;
