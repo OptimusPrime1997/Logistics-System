@@ -11,28 +11,21 @@ import Exception.NumNotFoundException;
 import VO.ReceiptVO.ReceiptVO;
 import VO.ReceiptVO.TransferRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
+import blservice.receiptblservice.PostReceiptblService;
+import blservice.receiptblservice.SubmitblService;
 import blservice.receiptblservice.TransferRepblService;
 
-public class TransferRepController extends ReceiptblController implements TransferRepblService{
+public class TransferRepController extends ReceiptblController
+implements TransferRepblService, PostReceiptblService, SubmitblService{
 	
 	private TransferRepbl transferRepbl = new TransferRepbl();
 	private TransferRepCheckbl transferRepCheckbl = new TransferRepCheckbl();
 	private TransferRepShowbl transferRepShowbl = new TransferRepShowbl();
 
 	@Override
-	public String createNum(String date) throws NotBoundException, ClassNotFoundException, IOException {
+	public String createNum(String date, String office) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return transferRepbl.createNum(date);
-	}
-
-	@Override
-	public void delete(int n) throws RemoteException, MalformedURLException, NotBoundException {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void delete(String num) throws RemoteException, MalformedURLException, NotBoundException {
-		// TODO Auto-generated method stub
+		return transferRepbl.createNum(date, office);
 	}
 
 	@Override
@@ -49,23 +42,23 @@ public class TransferRepController extends ReceiptblController implements Transf
 	}
 
 	@Override
-	public ArrayList<TransferRepVO> getAllRep() 
+	public ArrayList<TransferRepVO> getAllRep(String office) 
 			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return transferRepbl.getAllRep();
+		return transferRepbl.getAllRep(office);
 	}
 
 	@Override
-	public ArrayList<TransferRepVO> getRepByDate(String date)
-			throws RemoteException, MalformedURLException, NotBoundException {
+	public ArrayList<TransferRepVO> getRepByDate(String date, String office)
+			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return transferRepbl.getRepByDate(date, office);
 	}
 
 	@Override
-	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return transferRepCheckbl.initCheck();
+		return transferRepCheckbl.initCheck(office);
 	}
 
 	@Override
@@ -74,12 +67,5 @@ public class TransferRepController extends ReceiptblController implements Transf
 		// TODO Auto-generated method stub
 		return transferRepShowbl.initShow(num);
 	}
-
-	@Override
-	public ArrayList<TransferRepVO> getByTransNum(String officeNum, String date) {
-		// TODO Auto-generated method stub
-		return transferRepbl.getByTransNum(officeNum,date);
-	}
-
 
 }

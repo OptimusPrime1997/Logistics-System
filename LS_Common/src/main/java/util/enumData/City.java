@@ -33,4 +33,19 @@ public enum City {
 		}
 		return 0;
 	}
+	
+	public static City getCity(String ChineseName){
+		switch (ChineseName) {
+		case "北京":
+			return BEIJING;
+		case "南京":
+			return NANJING;
+		case "上海":
+			return SHANGHAI;
+		case "广州":
+			return GUANGZHOU;
+		default:
+			return null;
+		}
+	}
 }

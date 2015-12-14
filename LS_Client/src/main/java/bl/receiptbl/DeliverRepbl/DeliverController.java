@@ -12,27 +12,21 @@ import VO.ReceiptVO.DeliverRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.DeliverRepblService;
+import blservice.receiptblservice.FindAccountblService;
+import blservice.receiptblservice.PostReceiptblService;
+import blservice.receiptblservice.SubmitblService;
 import util.enumData.ResultMessage;
 
-public class DeliverController extends ReceiptblController implements DeliverRepblService{
+public class DeliverController extends ReceiptblController 
+implements DeliverRepblService, PostReceiptblService, SubmitblService, FindAccountblService{
 	private DeliverRepbl deliverRepbl = new DeliverRepbl();
 	private DeliverRepCheckbl deliverRepCheckbl = new DeliverRepCheckbl();
 	private DeliverRepShowbl deliverRepShowbl =  new DeliverRepShowbl();
 
 	@Override
-	public String createNum(String date) throws NotBoundException, ClassNotFoundException, IOException {
+	public String createNum(String date, String office) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return deliverRepbl.createNum(date);
-	}
-
-	@Override
-	public void delete(int n) throws NotBoundException, ClassNotFoundException, IOException {
-		// TODO Auto-generated method stubxw
-	}
-
-	@Override
-	public void delete(String num) throws NotBoundException, ClassNotFoundException, IOException {
-		// TODO Auto-generated method stub
+		return deliverRepbl.createNum(date, office);
 	}
 
 	@Override
@@ -49,14 +43,14 @@ public class DeliverController extends ReceiptblController implements DeliverRep
 	}
 
 	@Override
-	public ArrayList<DeliverRepVO> getAllRep() 
+	public ArrayList<DeliverRepVO> getAllRep(String office) 
 			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return deliverRepbl.getAllRep();
+		return deliverRepbl.getAllRep(office);
 	}
 
 	@Override
-	public ArrayList<DeliverRepVO> getRepByDate(String date) 
+	public ArrayList<DeliverRepVO> getRepByDate(String date, String office) 
 			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return null;
@@ -87,11 +81,11 @@ public class DeliverController extends ReceiptblController implements DeliverRep
 	}
 
 	@Override
-	public Vector<Object> initCheck() 
+	public Vector<Object> initCheck(String office) 
 			throws ClassNotFoundException, NotBoundException, IOException, 
 			NameNotFoundException, NumNotFoundException {
 		// TODO Auto-generated method stub
-		return deliverRepCheckbl.initCheck();
+		return deliverRepCheckbl.initCheck(office);
 	}
 
 	@Override
@@ -99,6 +93,12 @@ public class DeliverController extends ReceiptblController implements DeliverRep
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return deliverRepShowbl.initShow(num);
+	}
+
+	@Override
+	public boolean isTrueAccount(String num) {
+		// TODO Auto-generated method stub
+		return deliverRepbl.isTrueAccount(num);
 	}
 
 }

@@ -34,9 +34,9 @@ public class ReceptionRepbl{
 		return transfer.getRepByNum(num);
 	}
 
-	public String createNum(String date) throws ClassNotFoundException, NotBoundException, IOException {
+	public String createNum(String date, String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		return receiptbl.createNum(date, Rep.ReceptionRep);
+		return receiptbl.createNum(date, Rep.ReceptionRep, office);
 	}
 
 	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
@@ -69,11 +69,22 @@ public class ReceptionRepbl{
 		goodsbl.end(num);
 	}
 
-	public ArrayList<ReceptionRepVO> getAllRep() 
+	public ArrayList<ReceptionRepVO> getAllRep(String office) 
 			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.ReceptionRep);
+		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.ReceptionRep, office);
 		return ReceptionRepVO.toArrayVO(receiptPOs);
+	}
+	
+	public String getDepart(Rep rep, String num) 
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException{
+		
+		if(rep==Rep.ShipmentRep){
+			return getShipmentRep(num).depart;
+		}
+		else {
+			return getTransferRep(num).depart;
+		}
 	}
 
 }

@@ -6,53 +6,35 @@
 
 package ui.receiptui.generalUI;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Vector;
 
-import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.html.HTMLDocument.HTMLReader.BlockAction;
+import javax.swing.table.TableColumn;
 
-import Exception.NumNotFoundException;
+import Exception.ExceptionPrint;
+import Exception.GoodsNotFound;
 import VO.StockDivisionVO;
-import VO.StockVO;
-import VO.ReceiptVO.ShippingRepVO;
-import VO.ReceiptVO.TransferRepVO;
-import bl.controllerfactorybl.ControllerFactoryImpl;
-import bl.loginbl.LoginblController;
-import bl.stockbl.Stock;
-import blservice.receiptblservice.InStockRepblService;
-import blservice.stockblservice.StockBLService;
-import blservice.stockblservice.StockDivisionBLService;
-import ui.warehousemanui.WarehousePanel;
-import util.CurrentCity;
-import util.CurrentTime;
-import util.FromIntToCity;
+import VO.ReceiptVO.InStockRepVO;
+import VO.ReceiptVO.InStockVO;
+import bl.receiptbl.InStockRepbl.InStockRepController;
 import util.enumData.City;
 import util.enumData.ResultMessage;
-import util.enumData.ShipForm;
 
 /**
  *
- * @author apple, G
+ * @author apple
  */
 public class InStockRep extends javax.swing.JPanel {
-	StockDivisionBLService s = ControllerFactoryImpl.getInstance().getStockDivisionController();
-	InStockRepblService i = ControllerFactoryImpl.getInstance().getInStockRepblService();
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private String repNum;
-	private JFrame frame; 
-	/**
-	 * 暂时储存添加在表中却没有存入数据层的区位号
-	 */
-	private ArrayList<StockDivisionVO> templist;
-	private javax.swing.JButton addButton;
+	
+	// Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addButton;
     private javax.swing.JLabel areaLabel;
     private javax.swing.JTextField areaText;
     private javax.swing.JButton cancelButton;
@@ -60,7 +42,7 @@ public class InStockRep extends javax.swing.JPanel {
     private javax.swing.JLabel dateLabel;
     private javax.swing.JTextField dateText;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     private javax.swing.JLabel locLabel;
     private javax.swing.JTextField locText;
     private javax.swing.JLabel numLabel;
@@ -70,15 +52,17 @@ public class InStockRep extends javax.swing.JPanel {
     private javax.swing.JButton okButton;
     private javax.swing.JLabel orderLabel;
     private javax.swing.JTextField orderText;
-    private javax.swing.JTextField resultMessage;
-    
+    private javax.swing.JTextField resultMsgText;
+    private InStockRepController control;
+	private DefaultTableModel model;
+	private Vector<String> columnIdentifiers;
+	private Vector<Object> dataVector;
     // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form InStockRep
      */
-    public InStockRep(JFrame frame) {
-    	this.frame = frame;
+    public InStockRep() {
         initComponents();
     }
 
@@ -90,15 +74,7 @@ public class InStockRep extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-    	
-    	/**
-    	 * 设置窗体大小
-    	 */
-    	this.setSize(500, 330);
-    	
-    	this.setVisible(true);
 
-    	templist = new ArrayList<StockDivisionVO>();
         dateText = new javax.swing.JTextField();
         dateLabel = new javax.swing.JLabel();
         officeText = new javax.swing.JTextField();
@@ -110,125 +86,68 @@ public class InStockRep extends javax.swing.JPanel {
         locLabel = new javax.swing.JLabel();
         locText = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         orderLabel = new javax.swing.JLabel();
         orderText = new javax.swing.JTextField();
         addButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
         okButton = new javax.swing.JButton();
-        resultMessage = new javax.swing.JTextField();
+        resultMsgText = new javax.swing.JTextField();
         checkAllRepsButton = new javax.swing.JButton();
+        control = new InStockRepController();
+		model = new DefaultTableModel();
+		columnIdentifiers = new Vector<String>();
+		dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [30][] 
-                        ,
-                    new String [] {
-                       "订单号","区号","位号"
-                    }
-                ) {
-        			/**
-        			 * 
-        			 */
-        			private static final long serialVersionUID = 1L;
-        			boolean[] canEdit = new boolean [] {
-                        false, false, false, false, false, false
-                    };
-
-                    public boolean isCellEditable(int rowIndex, int columnIndex) {
-                        return canEdit [columnIndex];
-                    }
-                });
-        jScrollPane1.setViewportView(jTable1);
-        
 
         dateText.setEditable(false);
-        dateText.setText(CurrentTime.getDate());
+        dateText.setText(control.getDate());
 
         dateLabel.setText("日期:");
 
         officeText.setEditable(false);
-        try {
-			officeText.setText(City.toString(CurrentCity.getCurrentCity()));
-		} catch (RemoteException e) {
-			officeText.setText("未知");
-		}
+        officeText.setText("025");
 
         officeLabel.setText("中转中心:");
 
         numLabel.setText("编号:");
 
         numText.setEditable(false);
-        
-        LoginblController login = new LoginblController();
-        
- 		try {
-			 String s = login.getCurrentOptorId();
-			 //前三位
-			 repNum = s.substring(0, 3);
-			 //中转中心编号
-			 String tranString = "000";
-			 repNum += tranString;
-			 //8位日期+5
-			 String date = CurrentTime.getDate();
-			 String tempdate = date.replaceAll("-", "");
-			 repNum += tempdate;
-			 repNum += 2;
-			 //4位顺序编号
-			 //TODO 这个方法有问题，没能执行过去	
-			 String number = i.createNum(date);			
-			 repNum += number;
-		} catch (RemoteException e) {
-			numText.setText("远程错误未能得到当前账号");
-		} catch (ClassNotFoundException e) {
-			numText.setText("远程错误未能得到当前账号");
-		} catch (NotBoundException e) {
-			numText.setText("远程错误未能得到当前账号");
-		} catch (IOException e) {
-			numText.setText("远程错误未能得到当前账号");
-		} 
- 		
- 		
- 		
- 		numText.setText(repNum);
-        
-        
-
+        String num = officeText.getText() + "000";
+		num += control.getDateInNum(dateText.getText());
+		num += "2";
+		try {
+			num += control.createNum(dateText.getText(), officeText.getText());
+			numText.setText(num);
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+		
         areaLabel.setText("区号:");
 
+        areaText.setEditable(false);
+
         locLabel.setText("位号:");
+
         locText.setEditable(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null}
-            },
-            new String [] {
-                "订单号", "区号", "位号"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(jTable1);
+        columnIdentifiers.add("订单号");
+        columnIdentifiers.add("区号");
+        columnIdentifiers.add("位号");
+        model.setDataVector(dataVector, columnIdentifiers);
+		jTable.setModel(model);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(jTable);
 
         orderLabel.setText("订单号:");
 
         addButton.setText("添加");
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-					addButtonActionPerformed(evt);
-				} catch (NotBoundException | IOException e) {
-					showFeedback(ResultMessage.REMOTE_FAILED, "");
-				}
+                addButtonActionPerformed(evt);
             }
         });
 
@@ -246,7 +165,7 @@ public class InStockRep extends javax.swing.JPanel {
             }
         });
 
-        resultMessage.setEditable(false);
+        resultMsgText.setEditable(false);
 
         checkAllRepsButton.setText("查看所有单据");
         checkAllRepsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -254,20 +173,56 @@ public class InStockRep extends javax.swing.JPanel {
                 checkAllRepsButtonActionPerformed(evt);
             }
         });
+        
+		setColumn();
+
+		jTable.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int row = jTable.getSelectedRow();
+				int col = jTable.getSelectedColumn();
+				if (col == 3) {
+					deleteBlock((String)jTable.getValueAt(row, 0));
+					model.removeRow(row);
+					jTable.setModel(model);
+				}
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(resultMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+            .addComponent(resultMsgText, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(numLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(checkAllRepsButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
@@ -279,26 +234,36 @@ public class InStockRep extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(cancelButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(okButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(areaLabel)
-                                    .addComponent(orderLabel))
+                                .addComponent(numLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(orderText, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(areaText, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(locLabel)
+                                        .addComponent(orderLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(locText, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(26, 26, 26)
-                        .addComponent(addButton)))
+                                        .addComponent(orderText, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(cancelButton)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(okButton))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(areaLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(areaText, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(locLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(locText, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(26, 26, 26)
+                                        .addComponent(addButton)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -321,178 +286,120 @@ public class InStockRep extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(orderLabel)
-                        .addComponent(orderText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(areaLabel)
-                            .addComponent(areaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(locLabel)
-                            .addComponent(locText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addButton))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(orderLabel)
+                    .addComponent(orderText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(areaLabel)
+                    .addComponent(areaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(locLabel)
+                    .addComponent(locText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addButton))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(okButton)
                     .addComponent(cancelButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addComponent(resultMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAllRepsButtonActionPerformed
-        // TODO 查看待写
-    	
-    }//GEN-LAST:event_checkAllRepsButtonActionPerformed
-
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {//GEN-FIRST:event_addButtonActionPerformed
-        // TODO add your handling code here:
-    	
-    	//1.首先判断订单号是否符合10位数字
-    	ResultMessage rm = i.checkNum(orderText.getText(), 10);
-    	
-    	
-    	switch (rm) {
-		case REPNUM_LENGTH_LACKING:			
-		case REPNUM_LENGTH_OVER:
-		case REPNUM_NOT_ALL_NUM:
-			showFeedback(rm, "输入订单号");
-			break;
-		case ADD_SUCCESS:
-			//2.得到用户输入的区号,将其转化成城市传给库存，让库存给出这个区的空余地方防入templist
-			//  ,然后每次从list中得到一个不和templist重复的提供给用户，然后从list中删除它，如果某次list
-			//  空了，那么就应该提醒用户该区已满，请换区
-			String inputarea = areaText.getText();
-			boolean isNumber = true;
-			for(int i = 0;i<inputarea.length();i++){
-				if(inputarea.charAt(i)<'0'||inputarea.charAt(i)>'9')
-					isNumber = false;
-					showFeedback(ResultMessage.REPNUM_NOT_ALL_NUM,"输入区号");
-			}
-			int area = 0;
-			//得到位号
-			if (isNumber) {
-				area = Integer.parseInt(inputarea);
-				if (area>=1&&area<=8) {
-					//转化成城市
-					City city = FromIntToCity.toCity(area);
-					ArrayList<StockDivisionVO> list = s.getBlock(city);
-					
-					
-					
-					if (list.size()>0) {
-						
-						int i = 0;
-						//循环至找到一个不在templist中的区位
-						while (list.get(i) != null) {
-							for (int j = 0; j < templist.size(); j++) {
-								if (list.get(i).block == templist.get(j).block &&
-									list.get(i).place == templist.get(j).place) {
-									list.remove(i);
-								}	else {
-									locText.setText(list.get(i).place+"");
-									City cityNum = CurrentCity.getCurrentCity();
-									String listNum = numText.getText();
-									City des = FromIntToCity.toCity(Integer.parseInt(areaText.getText()));
-									int b = Integer.parseInt(areaText.getText());
-									int p = Integer.parseInt(locText.getText());
-									templist.add(new StockDivisionVO(cityNum, listNum, des, b, p));
-									
-								}
-							}
-							
-						}
-						
-					} else {
-						showFeedback(null, "该区已满，请换区");
-					}
-			
-					
-				} else {
-					showFeedback(null, "区号请输入1~8正整数");
-				}
-			} else {
-				showFeedback(null, "区号请输入1~8正整数");
-			}
-			
-			//3.得到订单号，区号，位号，判断位号是否为空，不为空建立表中新的一栏信息
-			//  否则提示用户完成输入
-			String loc = locText.getText();
-			if (loc != null) {
-				showTable(templist);
-			} else {
-				showFeedback(ResultMessage.NOT_COMPLETED, "订单号及区位号");
-			}
-			
-			break;
-
-		default:
-			break;
-		}
-    }//GEN-LAST:event_addButtonActionPerformed
-
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO 确定待写
-    }//GEN-LAST:event_okButtonActionPerformed
-
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-    	 WarehousePanel w = new WarehousePanel();
-    	 w.setVisible(true);
-    	 this.frame.dispose();
-    }//GEN-LAST:event_cancelButtonActionPerformed
-
-    private void showTable (ArrayList<StockDivisionVO> templist) {
     
-		int length =templist.size();
-		Object[][] showObjects = new Object[length][3];
-		int count = 0;
-		
-		for (StockDivisionVO vo : templist) {
-
-	    	showObjects[count][0] = vo.listNum;
-	    	showObjects[count][1] = vo.block;
-	    	showObjects[count][2] = vo.place;
-	    	
-	    	++count;
-
-    	}
-    	
-    	
-    	jTable1.setModel(new DefaultTableModel(
-               showObjects
-                    ,
-                new String [] {
-                    "订单号","区号","位号"
-                }
-            ) {
-                /**
-				 * 
-				 */
-				private static final long serialVersionUID = 1L;
-				boolean[] canEdit = new boolean [] {
-                    false, false, false, false, false, false
-                };
-
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit [columnIndex];
-                }
-            });
-    }
-    private void showFeedback(ResultMessage msg, String operation) {
-     	
-   	
-   	 
-    	if (msg.equals(ResultMessage.ADD_SUCCESS)) {
-    		this.resultMessage.setForeground(Color.GREEN);
-		} else {
-			this.resultMessage.setForeground(Color.RED);
-		}
-    	
-    	this.resultMessage.setText(operation + ResultMessage.toFriendlyString(msg));
+    private void setColumn() {
+		TableColumn column1 = jTable.getColumnModel().getColumn(0);
+		column1.setPreferredWidth(105);
+		TableColumn column2 = jTable.getColumnModel().getColumn(1);
+		column2.setPreferredWidth(30);
+		TableColumn column3 = jTable.getColumnModel().getColumn(2);
+		column3.setPreferredWidth(30);
+		TableColumn column4 = jTable.getColumnModel().getColumn(3);
+		column4.setPreferredWidth(10);
 	}
     
-    
-   
+    private void deleteBlock(String order){
+    	try {
+			control.delete(order);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+    }
+
+    private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	
+    }
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	String order = orderText.getText();
+		ResultMessage resultMessage = control.checkNum(order, 10);
+		String resultMsg = ResultMessage.toFriendlyString(resultMessage);
+		resultMsgText.setText(resultMsg);
+		if (resultMessage == ResultMessage.ADD_SUCCESS) {
+			String destination = null;
+			StockDivisionVO stockDivisionVO = null;
+			try {
+				destination = control.getCity(order);
+			} catch (GoodsNotFound e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			}
+			City destinationCity = City.getCity(destination);
+			try {
+				stockDivisionVO = control.getAvailableDivision(destinationCity);
+			} catch (NotBoundException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			}
+			if(stockDivisionVO==null)
+				resultMsgText.setText("该区已满");
+			else{
+				Vector<Object> arr = new Vector<Object>();
+				arr.add(order);
+				arr.add(stockDivisionVO.block);
+				arr.add(stockDivisionVO.place);
+				dataVector.add(arr);
+				model.setDataVector(dataVector, columnIdentifiers);
+				setColumn();
+				ArrayList<InStockVO> inStockVOs = new ArrayList<InStockVO>();
+				inStockVOs.add(new InStockVO(order, stockDivisionVO.block+"", stockDivisionVO.place+""));
+				InStockRepVO inStockRepVO = new InStockRepVO(null, null, inStockVOs);
+				try {
+					control.update(inStockRepVO);
+				} catch (MalformedURLException | RemoteException | NotBoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					resultMsgText.setText(ExceptionPrint.print(e));
+				}
+			}
+		}
+    }
+
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	String num = numText.getText();
+		String date = dateText.getText();
+		ArrayList<InStockVO> inStockVOs = new ArrayList<InStockVO>();
+		for(int i = 0;i < dataVector.size();i++){
+			InStockVO inStockVO = new InStockVO((String)jTable.getValueAt(i, 0), 
+					(String)jTable.getValueAt(i, 1), 
+					(String)jTable.getValueAt(i, 2));
+			inStockVOs.add(inStockVO);
+		}
+		InStockRepVO inStockRepVO = new InStockRepVO(num, date, inStockVOs);
+		try {
+			control.submit(inStockRepVO);
+		} catch (NotBoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+		resultMsgText.setText(ResultMessage.toFriendlyString(ResultMessage.SUBMIT_SUCCESS));
+    }
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
+
+    }
+
 }

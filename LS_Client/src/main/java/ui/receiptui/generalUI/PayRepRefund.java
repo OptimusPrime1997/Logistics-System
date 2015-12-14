@@ -34,7 +34,7 @@ public class PayRepRefund extends javax.swing.JPanel {
     private javax.swing.JButton addButton;
     private javax.swing.JLabel balanceLabel;
     private javax.swing.JTextField balanceText;
-    private javax.swing.JComboBox bankAccountBox;
+    private javax.swing.JComboBox<String> bankAccountBox;
     private javax.swing.JLabel bankAccountLabel;
     private javax.swing.JButton cancelButton;
     private javax.swing.JScrollPane jScrollPane1;
@@ -48,7 +48,7 @@ public class PayRepRefund extends javax.swing.JPanel {
     private javax.swing.JTextField resultMsgText;
     private javax.swing.JLabel sumLabel;
     private javax.swing.JTextField sumText;
-    private PayRepblService control;
+    private PayRepController control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
@@ -85,7 +85,7 @@ public class PayRepRefund extends javax.swing.JPanel {
         sumLabel = new javax.swing.JLabel();
         sumText = new javax.swing.JTextField();
         bankAccountLabel = new javax.swing.JLabel();
-        bankAccountBox = new javax.swing.JComboBox();
+        bankAccountBox = new javax.swing.JComboBox<String>();
         balanceLabel = new javax.swing.JLabel();
         balanceText = new javax.swing.JTextField();
         resultMsgText = new javax.swing.JTextField();
@@ -172,11 +172,11 @@ public class PayRepRefund extends javax.swing.JPanel {
 				// TODO Auto-generated method stub
 				int row = jTable.getSelectedRow();
 				int col = jTable.getSelectedColumn();
-				if(col==4){
+				if(col==2){
 					model.removeRow(row);
 					jTable.setModel(model);
+					sumText.setText(calSum());
 				}
-				sumText.setText(calSum());
 			}
 			
 			@Override

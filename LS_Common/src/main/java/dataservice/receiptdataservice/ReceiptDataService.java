@@ -15,19 +15,17 @@ public interface ReceiptDataService extends Remote,Serializable{
 	
 	public void save(ReceiptPO po, Rep rep) throws IOException, RemoteException;
 	
-	public ArrayList<ReceiptPO> getAllRep(Rep rep) throws ClassNotFoundException, IOException, RemoteException;
+	public ArrayList<ReceiptPO> getAllRep(Rep rep, String office) throws ClassNotFoundException, IOException, RemoteException;
 	
-	public ArrayList<ReceiptPO> getRepByDate(String date, Rep rep) throws ClassNotFoundException, IOException, RemoteException;
+	public ArrayList<ReceiptPO> getRepByDate(String date, Rep rep, String office) throws ClassNotFoundException, IOException, RemoteException;
 	
 	public ReceiptPO getRepByNum(String num, Rep rep) throws IOException, ClassNotFoundException, RemoteException;
 	
-	public void delete(int n, Rep rep) throws ClassNotFoundException, IOException, RemoteException;
+	public String createNum(String date, Rep rep, String office) throws ClassNotFoundException, IOException, RemoteException;
 	
-	public void delete(String num, Rep rep) throws ClassNotFoundException, IOException, RemoteException;
+	public void clearSubmit(Rep rep, String office) throws IOException, ClassNotFoundException;
 	
-	public String createNum(String date, Rep rep) throws ClassNotFoundException, IOException, RemoteException;
+	public void clearSave(Rep rep, String office) throws IOException, ClassNotFoundException;
 	
-	public void clearSubmit(Rep rep) throws IOException;
-	
-	public void clearSave(Rep rep) throws IOException;
+	public ReceiptPO getSubmitRep(Rep rep, String office) throws ClassNotFoundException, IOException;
 }

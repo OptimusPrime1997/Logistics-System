@@ -25,9 +25,9 @@ public class ReceptionRepCheckbl {
 		return new ReceptionRepVO((ReceptionRepPO)receiptPO);
 	}
 
-	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<ReceptionRepVO> receptionVOs = receptionRepbl.getAllRep();
+		ArrayList<ReceptionRepVO> receptionVOs = receptionRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < receptionVOs.size();i++){
 			Vector<Object> arr = new Vector<Object>();

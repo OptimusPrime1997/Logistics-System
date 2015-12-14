@@ -7,10 +7,13 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import Exception.NameNotFoundException;
+import Exception.NumNotFoundException;
 import PO.ReceiptPO.ReceiptPO;
 import RMIClient.ReceiptClient;
 import VO.LogVO;
 import bl.logbl.Logbl;
+import bl.managementbl.accountbl.Accountbl;
 import dataservice.receiptdataservice.ReceiptDataService;
 import util.enumData.LogType;
 import util.enumData.Rep;
@@ -19,7 +22,8 @@ import util.enumData.ResultMessage;
 public class Receiptbl {
 	
 	private static ReceiptDataService receiptDataService = null;
-	ReceiptClient client = new ReceiptClient();
+	private ReceiptClient client = new ReceiptClient();
+	private Accountbl accountbl = new Accountbl();
 	
 	public ReceiptDataService getReceiptDataService() throws RemoteException, MalformedURLException, NotBoundException{
 		if(receiptDataService==null)
@@ -59,36 +63,32 @@ public class Receiptbl {
 		getReceiptDataService().save(po, rep);
 	}
 	
-	public ArrayList<ReceiptPO> getAllRep(Rep rep) throws NotBoundException, ClassNotFoundException, IOException{
-		return getReceiptDataService().getAllRep(rep);
+	public ArrayList<ReceiptPO> getAllRep(Rep rep, String office) throws NotBoundException, ClassNotFoundException, IOException{
+		return getReceiptDataService().getAllRep(rep, office);
 	}
 	
-	public ArrayList<ReceiptPO> getRepByDate(String date, Rep rep) throws NotBoundException, ClassNotFoundException, IOException{
-		return getReceiptDataService().getRepByDate(date, rep);
+	public ReceiptPO getSubmitRep(Rep rep, String office) throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException{
+		return getReceiptDataService().getSubmitRep(rep, office);
+	}
+	
+	public ArrayList<ReceiptPO> getRepByDate(String date, Rep rep, String office) throws NotBoundException, ClassNotFoundException, IOException{
+		return getReceiptDataService().getRepByDate(date, rep, office);
 	}
 	
 	public ReceiptPO getRepByNum(String num, Rep rep) throws NotBoundException, ClassNotFoundException, IOException{
 		return getReceiptDataService().getRepByNum(num, rep);
 	}
 	
-	public void delete(int n, Rep rep) throws ClassNotFoundException, IOException, NotBoundException{
-		 getReceiptDataService().delete(n, rep);
+	public String createNum(String date, Rep rep, String office) throws NotBoundException, ClassNotFoundException, IOException{
+		return getReceiptDataService().createNum(date, rep, office);
 	}
 	
-	public void delete(String num, Rep rep) throws NotBoundException, ClassNotFoundException, IOException{
-		 getReceiptDataService().delete(num, rep);
+	public void clearSubmit(Rep rep, String office) throws RemoteException, MalformedURLException, IOException, NotBoundException, ClassNotFoundException{
+		getReceiptDataService().clearSubmit(rep, office);
 	}
 	
-	public String createNum(String date, Rep rep) throws NotBoundException, ClassNotFoundException, IOException{
-		return getReceiptDataService().createNum(date, rep);
-	}
-	
-	public void clearSubmit(Rep rep) throws RemoteException, MalformedURLException, IOException, NotBoundException{
-		getReceiptDataService().clearSubmit(rep);
-	}
-	
-	public void clearSave(Rep rep) throws RemoteException, MalformedURLException, IOException, NotBoundException{
-		getReceiptDataService().clearSave(rep);
+	public void clearSave(Rep rep, String office) throws RemoteException, MalformedURLException, IOException, NotBoundException, ClassNotFoundException{
+		getReceiptDataService().clearSave(rep, office);
 	}
 	
 	public ResultMessage checkNum(String string, int n){
@@ -101,5 +101,16 @@ public class Receiptbl {
 				return ResultMessage.REPNUM_NOT_ALL_NUM;
 		}
 		return ResultMessage.ADD_SUCCESS;
+	}
+	
+	public boolean isTrueAccount(String num){
+		try {
+			accountbl.findByAccountNum(num);
+		} catch (ClassNotFoundException | NameNotFoundException | NumNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 }

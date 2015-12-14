@@ -27,8 +27,8 @@ public class DeliverRepCheckbl {
 		return new DeliverRepVO((DeliverRepPO)receiptPO);
 	}
 
-	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException, NameNotFoundException, NumNotFoundException {
-		ArrayList<DeliverRepVO> deliverRepVOs = deliverRepbl.getAllRep();
+	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException, NameNotFoundException, NumNotFoundException {
+		ArrayList<DeliverRepVO> deliverRepVOs = deliverRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
 		for(int i = 0;i < deliverRepVOs.size();i++){
 			DeliverRepVO deliverRepVO = deliverRepVOs.get(i);
