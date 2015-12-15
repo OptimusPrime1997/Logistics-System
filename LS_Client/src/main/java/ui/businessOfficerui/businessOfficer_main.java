@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import javax.swing.GroupLayout;
@@ -13,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
+
 import ui.receiptui.generalUI.CashRep;
 import ui.receiptui.generalUI.DeliverRep;
 import ui.receiptui.generalUI.GetRep;
@@ -78,8 +81,12 @@ public class businessOfficer_main extends JPanel {
     	num_label.setFont(new java.awt.Font("宋体", 1, 48));
     	num_label.setForeground(new java.awt.Color(240, 240, 240));
     	//TODO 数字 获取
-    	System.out.println("数量  "+ctr_ship.getTruckSum(CurrentTime.getDate()+"", officeNum));
-    	num_label.setText(ctr_ship.getTruckSum(CurrentTime.getDate()+"", officeNum));
+    	try {
+			System.out.println("数量  "+ctr_ship.getTruckSum(CurrentTime.getDate()+"", officeNum));
+			num_label.setText(ctr_ship.getTruckSum(CurrentTime.getDate()+"", officeNum));
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+		}
+    	
          initNumLayout(num_panelLayout);
 	}
 
