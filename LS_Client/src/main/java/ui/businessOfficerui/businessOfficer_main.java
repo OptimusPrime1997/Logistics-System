@@ -78,8 +78,8 @@ public class businessOfficer_main extends JPanel {
     	num_label.setFont(new java.awt.Font("宋体", 1, 48));
     	num_label.setForeground(new java.awt.Color(240, 240, 240));
     	//TODO 数字 获取
-    	System.out.println("数量  "+ctr_ship.getSumByBusiOfficerNum(officeNum, CurrentTime.getDate()));
-    	num_label.setText(ctr_ship.getSumByBusiOfficerNum(officeNum, CurrentTime.getDate())+"");
+    	System.out.println("数量  "+ctr_ship.getTruckSum(CurrentTime.getDate()+"", officeNum));
+    	num_label.setText(ctr_ship.getTruckSum(CurrentTime.getDate()+"", officeNum));
          initNumLayout(num_panelLayout);
 	}
 

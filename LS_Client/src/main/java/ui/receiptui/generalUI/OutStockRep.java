@@ -13,6 +13,7 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 import Exception.ExceptionPrint;
@@ -22,6 +23,7 @@ import VO.ReceiptVO.ShippingRepVO;
 import VO.ReceiptVO.TransferRepVO;
 import bl.receiptbl.InStockRepbl.InStockRepController;
 import bl.receiptbl.OutStockRepbl.OutStockRepController;
+import ui.warehousemanui.WarehousePanel;
 import util.enumData.City;
 import util.enumData.Rep;
 import util.enumData.ShipForm;
@@ -33,6 +35,7 @@ import util.enumData.ShipForm;
 public class OutStockRep extends javax.swing.JPanel {
 	
 	 // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JFrame frame;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton checkAllRepsButton;
     private javax.swing.JLabel dateLabel;
@@ -62,7 +65,8 @@ public class OutStockRep extends javax.swing.JPanel {
     /**
      * Creates new form OutStockRep
      */
-    public OutStockRep() {
+    public OutStockRep(JFrame frame) {
+    	this.frame = frame;
         initComponents();
     }
 
@@ -280,8 +284,10 @@ public class OutStockRep extends javax.swing.JPanel {
 
     }
 
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+   	 WarehousePanel w = new WarehousePanel();
+   	 w.setVisible(true);
+   	 this.frame.dispose();
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {

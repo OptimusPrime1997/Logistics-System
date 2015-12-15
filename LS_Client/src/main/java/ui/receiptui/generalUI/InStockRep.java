@@ -15,6 +15,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -25,6 +26,7 @@ import VO.ReceiptVO.InStockRepVO;
 import VO.ReceiptVO.InStockVO;
 import bl.receiptbl.InStockRepbl.InStockRepController;
 import ui.util.MyFrame;
+import ui.warehousemanui.WarehousePanel;
 import util.enumData.City;
 import util.enumData.ResultMessage;
 
@@ -35,7 +37,7 @@ import util.enumData.ResultMessage;
 public class InStockRep extends javax.swing.JPanel {
 	
 	// Variables declaration - do not modify//GEN-BEGIN:variables
-    private MyFrame frame;
+	private JFrame frame; 
     private javax.swing.JButton addButton;
     private javax.swing.JLabel areaLabel;
     private javax.swing.JTextField areaText;
@@ -64,13 +66,10 @@ public class InStockRep extends javax.swing.JPanel {
     /**
      * Creates new form InStockRep
      */
-	public static void main(String[] args){
-		InStockRep inStockRep = new InStockRep();
-	}
 	
-    public InStockRep() {
+    public InStockRep(JFrame frame) {
+    	this.frame = frame;
         initComponents();
-        frame = new MyFrame(410, 503, this);
     }
 
     /**
@@ -407,8 +406,10 @@ public class InStockRep extends javax.swing.JPanel {
 		resultMsgText.setText(ResultMessage.toFriendlyString(ResultMessage.SUBMIT_SUCCESS));
     }
 
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
-    }
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+   	 WarehousePanel w = new WarehousePanel();
+   	 w.setVisible(true);
+   	 this.frame.dispose();
+   }
 
 }
