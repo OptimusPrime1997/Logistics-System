@@ -6,12 +6,7 @@
 
 package ui.receiptui;
 
-import java.io.IOException;
-import java.rmi.NotBoundException;
 import java.util.ArrayList;
-
-import javax.swing.WindowConstants;
-
 import Exception.NotFoundMoneyInAndOutException;
 import VO.BusinessFormVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;

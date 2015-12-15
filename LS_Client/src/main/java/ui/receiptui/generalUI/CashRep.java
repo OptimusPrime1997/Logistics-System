@@ -25,6 +25,7 @@ import VO.ReceiptVO.CashRepVO;
 import VO.ReceiptVO.CashVO;
 import bl.receiptbl.CashRepbl.CashRepController;
 import blservice.receiptblservice.CashRepblService;
+import ui.util.MyFrame;
 import util.enumData.ResultMessage;
 import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
@@ -67,6 +68,10 @@ public class CashRep extends javax.swing.JPanel {
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
  // End of variables declaration//GEN-END:variables
+    
+	public static void main(String[] args){
+		MyFrame frame = new MyFrame(410, 503, new CashRep());
+	}
     
     public CashRep() {
         initComponents();

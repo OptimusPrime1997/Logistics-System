@@ -92,14 +92,18 @@ public class CashRepbl {
 	
 	public CashRepVO getSubmitCashRep(String office) throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException{
 		ReceiptPO receiptPO = receiptbl.getSubmitRep(Rep.CashRep, office);
+		if(receiptPO==null)
+			return null;
 		return new CashRepVO((CashRepPO) receiptPO);
 	}
 	
 	public Vector<Object> initTable(String office) throws ClassNotFoundException, 
 	NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
-		CashRepVO cashRepVO = getSubmitCashRep(office);
 		Vector<Object> data = new Vector<Object>();
+		CashRepVO cashRepVO = getSubmitCashRep(office);
+		if(cashRepVO==null)
+			return data;
 		for(int i = 0;i < cashRepVO.cashVOs.size();i++){
 			Vector<String> arr = new Vector<String>();
 			CashVO cashVO = cashRepVO.cashVOs.get(i);

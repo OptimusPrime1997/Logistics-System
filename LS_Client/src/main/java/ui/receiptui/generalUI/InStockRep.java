@@ -24,6 +24,7 @@ import VO.StockDivisionVO;
 import VO.ReceiptVO.InStockRepVO;
 import VO.ReceiptVO.InStockVO;
 import bl.receiptbl.InStockRepbl.InStockRepController;
+import ui.util.MyFrame;
 import util.enumData.City;
 import util.enumData.ResultMessage;
 
@@ -34,6 +35,7 @@ import util.enumData.ResultMessage;
 public class InStockRep extends javax.swing.JPanel {
 	
 	// Variables declaration - do not modify//GEN-BEGIN:variables
+    private MyFrame frame;
     private javax.swing.JButton addButton;
     private javax.swing.JLabel areaLabel;
     private javax.swing.JTextField areaText;
@@ -62,8 +64,13 @@ public class InStockRep extends javax.swing.JPanel {
     /**
      * Creates new form InStockRep
      */
+	public static void main(String[] args){
+		InStockRep inStockRep = new InStockRep();
+	}
+	
     public InStockRep() {
         initComponents();
+        frame = new MyFrame(410, 503, this);
     }
 
     /**
@@ -137,6 +144,7 @@ public class InStockRep extends javax.swing.JPanel {
         columnIdentifiers.add("订单号");
         columnIdentifiers.add("区号");
         columnIdentifiers.add("位号");
+        columnIdentifiers.add("删除");
         model.setDataVector(dataVector, columnIdentifiers);
 		jTable.setModel(model);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
@@ -303,6 +311,7 @@ public class InStockRep extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+        
     }// </editor-fold>//GEN-END:initComponents
     
     private void setColumn() {
