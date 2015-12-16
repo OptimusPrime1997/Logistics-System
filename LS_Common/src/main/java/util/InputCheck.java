@@ -193,7 +193,7 @@ public class InputCheck {
 	 * @return
 	 */
 	public static ResultMessage checkLicenseNum(String licenseNum) {
-		if (licenseNum.length() == 6) {
+		if (licenseNum.length() == 7) {
 			return ResultMessage.VALID;
 		} else {
 			return ResultMessage.LENGTH_WRONG;

@@ -9,9 +9,11 @@ import java.util.Iterator;
 import dataservice.managementdataservice.managedataservice.ManageDataService;
 import dataservice.managementdataservice.vehicleanddriverdataservice.VehicleDataService;
 import util.InputCheck;
+import util.ThreeAutoNum;
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
 import Exception.NumNotFoundException;
+import PO.InstitutionPO;
 import PO.VehiclePO;
 import VO.ManagementVO.VehicleVO;
 import bl.managementbl.managedata.ManageData;
@@ -43,12 +45,30 @@ public class Vehiclebl {
 			if (check(vo) == ResultMessage.VALID) {
 				try {
 					ArrayList<VehiclePO> pos = vehicleDataService.showVehicle();
-					if (pos != null) {
-						for (Iterator<VehiclePO> t = pos.iterator(); t
-								.hasNext();) {
-							if (t.next().getVehicleNum().equals(vo.vehicleNum)) {
-								return ResultMessage.OVERRIDE_DATA;
+					if (vo.vehicleNum.substring(6, 9).equals("000")) {
+						VehiclePO lastPO = null;
+						String temp = vo.vehicleNum.substring(0, 6);
+						if (pos != null) {
+							for (Iterator<VehiclePO> t = pos.iterator(); t
+									.hasNext();) {
+								VehiclePO p = t.next();
+								if (p.getLicenseNum().equals(vo.licenseNum)) {
+									return ResultMessage.EXIST;
+								}
+								if (p.getVehicleNum().substring(0, 6)
+										.equals(temp)) {
+									lastPO = p;
+								}
 							}
+						}
+						if (lastPO == null) {
+							vo.vehicleNum = vo.vehicleNum.substring(0, 6)
+									+ "001";
+						} else {
+							vo.vehicleNum = vo.vehicleNum.substring(0, 6)
+									+ ThreeAutoNum.toThreeNum(Integer
+											.parseInt(lastPO.getVehicleNum()
+													.substring(6, 9)) + 1);
 						}
 					}
 					ResultMessage rmsg = vehicleDataService

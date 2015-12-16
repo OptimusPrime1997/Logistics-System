@@ -11,6 +11,7 @@ import dataservice.managementdataservice.vehicleanddriverdataservice.DriverDataS
 import Exception.AutoNumException;
 import Exception.ExistException;
 import Exception.NumNotFoundException;
+import PO.AccountPO;
 import PO.DriverPO;
 import PO.VehiclePO;
 import VO.ManagementVO.DriverVO;
@@ -45,15 +46,32 @@ public class Driverbl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DRIVER_MANAGEMENT);
 		if (driverDataService != null) {
+			DriverPO lastPO = null;
 			if (check(vo) == ResultMessage.VALID) {
 				try {
 					ArrayList<DriverPO> pos = driverDataService.showDriver();
-					if (pos != null) {
-						for (Iterator<DriverPO> t = pos.iterator(); t
-								.hasNext();) {
-							if (t.next().getDriverNum().equals(vo.driverNum)) {
-								return ResultMessage.OVERRIDE_DATA;
+					if (vo.driverNum.substring(8, 11).equals("000")) {
+						String temp = vo.driverNum.substring(0, 6);
+						if (pos != null) {
+							for (Iterator<DriverPO> t = pos.iterator(); t
+									.hasNext();) {
+								DriverPO p = t.next();
+								if (p.getId().equals(vo.id)) {
+									return ResultMessage.EXIST;
+								}
+								if (p.getDriverNum().substring(0, 6)
+										.equals(temp)) {
+									lastPO = p;
+								}
 							}
+						}
+						if (lastPO == null) {
+							vo.driverNum = vo.driverNum.substring(0, 6) + "001";
+						} else {
+							vo.driverNum = vo.driverNum.substring(0, 6)
+									+ ThreeAutoNum.toThreeNum(Integer
+											.parseInt(lastPO.getDriverNum()
+													.substring(6, 9)) + 1);
 						}
 					}
 					ResultMessage rmsg = driverDataService
@@ -64,8 +82,7 @@ public class Driverbl {
 					e.printStackTrace();
 					System.out.println("存储文件出错");
 					return ResultMessage.IOFAILED;
-				} 
-				catch (ClassNotFoundException e) {
+				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					System.out.println("系统程序错误");

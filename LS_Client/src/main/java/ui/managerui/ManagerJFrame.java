@@ -711,13 +711,13 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				return types[columnIndex];
 			}
 		});
-		jTable.getColumnModel().getColumn(1)
+		accountjTable.getColumnModel().getColumn(1)
 				.setCellEditor(new DefaultCellEditor(logTypejComboBox));
-		jTable.getColumnModel().getColumn(2)
+		accountjTable.getColumnModel().getColumn(2)
 				.setCellEditor(new DefaultCellEditor(authorityjComboBox));
 
 		ComponentFactory.getInstance().setJTableTextCenter(logjTable);
-		jTable.setRowSelectionInterval(0, 0);// 设置哪几行被选中
+		accountjTable.setRowSelectionInterval(0, 0);// 设置哪几行被选中
 
 		logjTable.setGridColor(new java.awt.Color(0, 0, 0));
 		logjTable.setName("123"); // NOI18N
@@ -1776,8 +1776,8 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				});
 		initialConstJTable(constVOPlus);
 		jScrollPane2.setViewportView(constjTable);
-		jTable.getTableHeader().setReorderingAllowed(false);
-		jScrollPane6.setViewportView(jTable);
+		accountjTable.getTableHeader().setReorderingAllowed(false);
+		jScrollPane6.setViewportView(accountjTable);
 
 		constTitlejLabel.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
 		constTitlejLabel.setText("距离常量列表");
@@ -1957,7 +1957,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		findAccountNumjButton = new javax.swing.JButton();
 		jLabel11 = new javax.swing.JLabel();
 		jScrollPane6 = new javax.swing.JScrollPane();
-		jTable = new javax.swing.JTable();
+		accountjTable = new javax.swing.JTable();
 		formjPanel = new javax.swing.JPanel();
 		profitFormjButton = new javax.swing.JButton();
 		manageStateFormjButton = new javax.swing.JButton();
@@ -2159,7 +2159,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				}
 				if (i < accountVOs.size()) {
-					jTable.setRowSelectionInterval(i, i);// 设置哪几行被选中
+					accountjTable.setRowSelectionInterval(i, i);// 设置哪几行被选中
 					setState("该账户在第" + (i + 1) + "行", 5);
 				} else {
 					setState("系统中无该账户", DISPLAY_TIME);
@@ -2226,7 +2226,8 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_addInstitutionjButton2ActionPerformed
 		// TODO add your handling code here:
 		if (evt.getSource() == addInstitutionjButton) {
-			institutionVOPlus.add(new InstitutionVOPlus("", "", "", "", "",
+//			编号应为城市代号+000
+			institutionVOPlus.add(new InstitutionVOPlus("025000", "", "", "", "",
 					ModifyState.NEW));
 			initialInstitutionJTable(institutionVOPlus,
 					institutionVOPlus.size() - 1);
@@ -2554,7 +2555,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			accountObjects[i][5] = vo.phoneNum;
 			i++;
 		}
-		jTable.setModel(new javax.swing.table.DefaultTableModel(accountObjects,
+		accountjTable.setModel(new javax.swing.table.DefaultTableModel(accountObjects,
 				new String[] { "用户账号", "姓名", "性别", "职位", "机构编号", "电话" }) {
 			Class[] types = new Class[] { java.lang.String.class,
 					java.lang.String.class, JComboBox.class,
@@ -2571,16 +2572,16 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				return canEdit[columnIndex];
 			}
 		});
-		jTable.getColumnModel().getColumn(2)
+		accountjTable.getColumnModel().getColumn(2)
 				.setCellEditor(new DefaultCellEditor(sexjComboBox));
 
-		((DefaultTableCellRenderer) jTable.getTableHeader()
+		((DefaultTableCellRenderer) accountjTable.getTableHeader()
 				.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
-		jTable.setRowSelectionInterval(0, 0);// 设置哪几行被选中
+		accountjTable.setRowSelectionInterval(0, 0);// 设置哪几行被选中
 
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容-11
 		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 设置table内容居中-2
-		jTable.setDefaultRenderer(Object.class, tcr);
+		accountjTable.setDefaultRenderer(Object.class, tcr);
 	}
 
 	/**
@@ -3193,9 +3194,11 @@ public class ManagerJFrame extends javax.swing.JFrame {
 									"提交" + ResultMessage.toFriendlyString(rmsg),
 									DISPLAY_TIME);
 							if (rmsg == ResultMessage.SUCCESS) {
-								institutionVOPlus.remove(n);
-								institutionVOPlus.add(n, new InstitutionVOPlus(
-										v, ModifyState.SYNC));
+//								institutionVOPlus.remove(n);
+//								institutionVOPlus.add(n, new InstitutionVOPlus(
+//										v, ModifyState.SYNC));
+								setInstitutionVOs();
+								initialInstitutionJTable(institutionVOPlus, n);
 							}
 						} catch (RemoteException e1) {
 							// TODO Auto-generated catch block
@@ -3585,7 +3588,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JTextField accountNamejTextField;
 	private javax.swing.JTextField accountNumjTextField;
-	private javax.swing.JTable jTable;
+	private javax.swing.JTable accountjTable;
 	private javax.swing.JPanel accountjPanel;
 	private javax.swing.JButton addConstjButton;
 	private javax.swing.JButton addInstitutionjButton;

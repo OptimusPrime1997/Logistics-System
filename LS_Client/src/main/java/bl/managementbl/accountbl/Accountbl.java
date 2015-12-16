@@ -51,21 +51,34 @@ public class Accountbl {
 			if (check(vo) == ResultMessage.VALID) {
 				try {
 					ArrayList<AccountPO> pos = accountDataService.show();
-					int num = 0;
-					if (pos != null) {
-						for (Iterator<AccountPO> t = pos.iterator(); t
-								.hasNext();) {
-							AccountPO p = t.next();
-							if (p.getAccountNum().equals(vo.accountNum)) {
-								return ResultMessage.EXIST;
+					if (vo.accountNum.substring(8, 11).equals("000")) {
+						AccountPO lastPO = null;
+						int num = 0;
+						if (pos != null) {
+							for (Iterator<AccountPO> t = pos.iterator(); t
+									.hasNext();) {
+								AccountPO p = t.next();
+								if (p.getPhoneNum().equals(vo.phoneNum)) {
+									return ResultMessage.EXIST;
+								}
+								if (p.getAuthority() == vo.authority) {
+									if (p.getInstitutionNum() == vo.institutionNum) {
+										lastPO = p;
+									}
+								}
 							}
-							// if (p.getAuthority() == vo.authority){
-							// num++;
-							// }
+						}
+						if (lastPO == null) {
+							vo.accountNum = vo.institutionNum
+									+ Authority.value(vo.authority) + "001";
+						} else {
+							vo.accountNum = vo.institutionNum
+									+ Authority.value(vo.authority)
+									+ ThreeAutoNum.toThreeNum(Integer
+											.parseInt(lastPO.getAccountNum()
+													.substring(9)) + 1);
 						}
 					}
-					// vo.accountNum = vo.institutionNum+
-					// Authority.value(vo.authority)+ "00" + (num+1);
 					ResultMessage rmsg = accountDataService.insert(manageVOPO
 							.voToPO(vo));
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
@@ -75,8 +88,7 @@ public class Accountbl {
 					e.printStackTrace();
 					System.out.println("存储文件出错");
 					return ResultMessage.IOFAILED;
-				} 
-				catch (ClassNotFoundException e) {
+				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					return ResultMessage.FAILED;

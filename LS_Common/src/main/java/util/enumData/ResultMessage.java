@@ -288,15 +288,17 @@ public enum ResultMessage {
 		case DRIVER_NUM_OVER:
 			return "司机编号过长";
 		default:
-			break;
+			return "";
 		}
-
-		return null;
 	}
 	public static void postCheck(ResultMessage expected,ResultMessage rmsg){
 		try{
-			assert (expected==rmsg):(ResultMessage.toFriendlyString(rmsg));
+			assert (expected==rmsg):("与预期不符："+ResultMessage.toFriendlyString(rmsg));
+			if(expected==rmsg){
+				System.out.println(ResultMessage.toFriendlyString(rmsg));
+			}
 		}catch(AssertionError e){
+			System.out.println("程序与预期不符！");
 			System.out.println(e.getMessage());
 		}
 	}

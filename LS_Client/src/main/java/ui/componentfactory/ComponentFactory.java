@@ -1,12 +1,20 @@
 package ui.componentfactory;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import blservice.logblservice.LogBLService;
+import ui.financialstaffui.FinancialStaffJFrame;
 import util.enumData.Authority;
 import util.enumData.LogType;
 import util.enumData.Sex;
@@ -14,7 +22,6 @@ import util.enumData.Sex;
 public class ComponentFactory {
 	public final static String REMOTEFAILD = "远程连接失败！";
 	public final static long DISPLAY_TIME = 5;
-
 	private ComponentFactory() {
 	}
 
@@ -112,12 +119,30 @@ public class ComponentFactory {
 	 * 
 	 * @param jtable
 	 */
-	public void setJTableTextCenter(JTable jTable) {
+	public static void setJTableTextCenter(JTable jTable) {
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容-11
 		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 设置table内容居中-2
 		jTable.setDefaultRenderer(Object.class, tcr);
 		((DefaultTableCellRenderer) jTable.getTableHeader()
 				.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
 		jTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
+	}
+	
+	public  static void setState(String str, long time, final JTextField statejTextField) {
+		statejTextField.setText(str);
+		final Runnable setSateTextFieldText = new Runnable() {
+			public void run() {
+				statejTextField.setText("空闲");
+			}
+		};
+		 final ScheduledExecutorService scheduler = Executors
+				.newScheduledThreadPool(1);
+		final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(
+				setSateTextFieldText, time, time, TimeUnit.SECONDS);
+		scheduler.schedule(new Runnable() {
+			public void run() {
+				beeperHandle.cancel(true);
+			}
+		}, time, TimeUnit.SECONDS);
 	}
 }

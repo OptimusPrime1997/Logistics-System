@@ -11,11 +11,13 @@ import bl.managementbl.managedata.ManageVOPO;
 import dataservice.managementdataservice.institutiondataservice.InstitutionDataService;
 import dataservice.managementdataservice.managedataservice.ManageDataService;
 import util.InputCheck;
+import util.ThreeAutoNum;
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
 import Exception.InstitutionNotFoundException;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
+import PO.DriverPO;
 import PO.InstitutionPO;
 import VO.ManagementVO.InstitutionVO;
 
@@ -48,13 +50,30 @@ public class Institutionbl {
 		if (institutionDataService != null) {
 			try {
 				ArrayList<InstitutionPO> pos = institutionDataService.show();
-				if (pos != null) {
-					for (Iterator<InstitutionPO> t = pos.iterator(); t
-							.hasNext();) {
-						if (t.next().getInstitutionNum()
-								.equals(vo.institutionNum)) {
-							return ResultMessage.EXIST;
+				if (vo.institutionNum.substring(3, 6).equals("000")) {
+					InstitutionPO lastPO = null;
+					String temp = vo.institutionNum.substring(0, 3);
+					if (pos != null) {
+						for (Iterator<InstitutionPO> t = pos.iterator(); t
+								.hasNext();) {
+							InstitutionPO p = t.next();
+							if (p.getContactInfo().equals(vo.contactInfo)) {
+								return ResultMessage.EXIST;
+							}
+							if (p.getInstitutionNum().substring(0, 3)
+									.equals(temp)) {
+								lastPO = p;
+							}
 						}
+					}
+					if (lastPO == null) {
+						vo.institutionNum = vo.institutionNum.substring(0, 3)
+								+ "001";
+					} else {
+						vo.institutionNum = vo.institutionNum.substring(0, 3)
+								+ ThreeAutoNum.toThreeNum(Integer
+										.parseInt(lastPO.getInstitutionNum()
+												.substring(3, 6)) + 1);
 					}
 				}
 				ResultMessage rmsg = institutionDataService.insert(manageVOPO
