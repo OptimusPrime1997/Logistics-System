@@ -106,7 +106,7 @@ public class Receiptbl {
 	public boolean isTrueAccount(String num){
 		try {
 			accountbl.findByAccountNum(num);
-		} catch (ClassNotFoundException | NameNotFoundException | NumNotFoundException | IOException e) {
+		} catch (ClassNotFoundException | NumNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
