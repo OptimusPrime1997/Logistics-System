@@ -2,21 +2,15 @@ package bl.managementbl.accountbl;
 
 import static org.junit.Assert.*;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.RemoteException;
-import java.util.concurrent.ForkJoinPool;
 
 import org.junit.Test;
 
 import util.enumData.Authority;
 import util.enumData.ResultMessage;
 import util.enumData.Sex;
-import Exception.AutoNumException;
-import Exception.ExistException;
-import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
-import Exception.WrongDateException;
 import VO.ManagementVO.AccountVO;
 
 public class AccountblTest {
@@ -68,9 +62,6 @@ public class AccountblTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 
-		} catch (NameNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (NumNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
