@@ -3,8 +3,8 @@ package PO;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import PO.ReceiptPO.CashRepPO;
-import PO.ReceiptPO.PayRepPO;
+import PO.Receipt.CashRepPO;
+import PO.Receipt.PayRepPO;
 
 public class BusinessFormPO implements Serializable {
 	private static final long serialVersionUID = 1L;

@@ -14,9 +14,9 @@ import util.FromIntToCity;
 import util.enumData.City;
 import util.enumData.ResultMessage;
 import PO.StockPO;
-import PO.ReceiptPO.InStockPO;
-import PO.ReceiptPO.InStockRepPO;
-import PO.ReceiptPO.OutStockRepPO;
+import PO.Receipt.InStockPO;
+import PO.Receipt.InStockRepPO;
+import PO.Receipt.OutStockRepPO;
 import dataservice.stockdataservice.StockDataService;
 import datautil.DataUtility;
 

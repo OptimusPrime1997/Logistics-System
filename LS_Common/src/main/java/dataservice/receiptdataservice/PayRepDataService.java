@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.rmi.Remote;
 import java.util.ArrayList;
 
-import PO.ReceiptPO.PayRepPO;
+import PO.Receipt.PayRepPO;
 
 public interface PayRepDataService extends Remote,Serializable{
 	

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import Exception.GoodsNotFound;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
-import PO.ReceiptPO.ReceiptPO;
+import PO.Receipt.ReceiptPO;
 import VO.ReceiptVO.DeliverRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.goodsbl.Goodsbl;

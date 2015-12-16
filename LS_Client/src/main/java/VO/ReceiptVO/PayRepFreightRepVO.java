@@ -2,7 +2,7 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.PayRepFreightRepPO;
+import PO.Receipt.PayRepFreightRepPO;
 
 public class PayRepFreightRepVO {
 	public double sum;

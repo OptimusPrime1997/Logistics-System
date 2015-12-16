@@ -2,8 +2,8 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.PaySalaryPO;
-import PO.ReceiptPO.PayDriverSalaryPO;
+import PO.Receipt.PayDriverSalaryPO;
+import PO.Receipt.PaySalaryPO;
 
 public class PayDriverSalaryVO extends PaySalaryVO{
 	

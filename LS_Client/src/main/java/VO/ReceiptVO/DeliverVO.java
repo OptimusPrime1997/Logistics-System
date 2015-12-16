@@ -2,7 +2,7 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.DeliverPO;
+import PO.Receipt.DeliverPO;
 
 public class DeliverVO {
 	public String order;

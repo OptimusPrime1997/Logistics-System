@@ -7,8 +7,8 @@ import java.util.Vector;
 
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
-import PO.ReceiptPO.DeliverRepPO;
-import PO.ReceiptPO.ReceiptPO;
+import PO.Receipt.DeliverRepPO;
+import PO.Receipt.ReceiptPO;
 import VO.ReceiptVO.DeliverRepVO;
 import bl.receiptbl.CashRepbl.CashRepbl;
 import bl.receiptbl.Receiptbl.Receiptbl;

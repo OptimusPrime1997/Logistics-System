@@ -19,8 +19,8 @@ import bl.managementbl.accountbl.Accountbl;
 import bl.managementbl.bankaccountbl.BankAccountbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import Exception.*;
-import PO.ReceiptPO.CashRepPO;
-import PO.ReceiptPO.ReceiptPO;
+import PO.Receipt.CashRepPO;
+import PO.Receipt.ReceiptPO;
 
 public class CashRepbl {
 
@@ -50,11 +50,6 @@ public class CashRepbl {
 			throws NotBoundException, IOException, ClassNotFoundException{
 		receiptbl.clearSubmit(Rep.CashRep, office);
 		receiptbl.submit(CashRepVO.toPO((CashRepVO) vo), Rep.CashRep);
-	}
-
-	public String createNum(String date, String office) 
-			throws NotBoundException, ClassNotFoundException, IOException {
-		return receiptbl.createNum(date, Rep.CashRep, office);
 	}
 
 	public CashRepVO getRepByNum(String num) 

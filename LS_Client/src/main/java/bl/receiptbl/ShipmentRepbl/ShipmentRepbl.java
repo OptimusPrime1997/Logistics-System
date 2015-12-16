@@ -5,8 +5,8 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 
 import Exception.NumNotFoundException;
-import PO.ReceiptPO.ReceiptPO;
-import PO.ReceiptPO.ShipmentRepPO;
+import PO.Receipt.ReceiptPO;
+import PO.Receipt.ShipmentRepPO;
 import VO.ReceiptVO.ReceiptVO;
 import VO.ReceiptVO.ShipmentRepVO;
 import bl.receiptbl.Receiptbl.Receiptbl;

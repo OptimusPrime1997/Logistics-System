@@ -2,8 +2,8 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.PaySalaryPO;
-import PO.ReceiptPO.PayCourierSalaryPO;
+import PO.Receipt.PayCourierSalaryPO;
+import PO.Receipt.PaySalaryPO;
 
 public class PayCourierSalaryVO extends PaySalaryVO{
 	public int getMoneySum;

@@ -2,7 +2,7 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.PayFreightPO;
+import PO.Receipt.PayFreightPO;
 
 public class PayFreightVO {
 	public String transferRepNum;

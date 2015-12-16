@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import Exception.NumNotFoundException;
-import PO.ReceiptPO.GetRepPO;
-import PO.ReceiptPO.ReceiptPO;
+import PO.Receipt.GetRepPO;
+import PO.Receipt.ReceiptPO;
 import VO.ReceiptVO.GetRepVO;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import util.enumData.Rep;

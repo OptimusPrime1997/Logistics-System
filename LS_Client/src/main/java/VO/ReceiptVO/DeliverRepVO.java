@@ -2,8 +2,8 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.DeliverRepPO;
-import PO.ReceiptPO.ReceiptPO;
+import PO.Receipt.DeliverRepPO;
+import PO.Receipt.ReceiptPO;
 
 public class DeliverRepVO extends ReceiptVO {
 	public String deliverCourierNum;

@@ -2,8 +2,8 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.ReceiptPO;
-import PO.ReceiptPO.TransferRepPO;
+import PO.Receipt.ReceiptPO;
+import PO.Receipt.TransferRepPO;
 import util.enumData.*;
 
 public class TransferRepVO extends ReceiptVO {

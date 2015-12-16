@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.rmi.Remote;
 import java.util.ArrayList;
 
-import PO.ReceiptPO.ReceiptPO;
+import PO.Receipt.ReceiptPO;
 
 public interface InStockRepDataService extends Remote,Serializable{
 	

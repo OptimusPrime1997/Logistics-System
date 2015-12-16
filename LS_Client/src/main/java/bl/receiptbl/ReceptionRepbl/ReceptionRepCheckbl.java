@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import Exception.NumNotFoundException;
-import PO.ReceiptPO.ReceiptPO;
-import PO.ReceiptPO.ReceptionRepPO;
+import PO.Receipt.ReceiptPO;
+import PO.Receipt.ReceptionRepPO;
 import VO.ReceiptVO.ReceptionRepVO;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import util.enumData.City;

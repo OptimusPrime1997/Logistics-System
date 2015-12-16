@@ -2,8 +2,8 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.CashRepPO;
-import PO.ReceiptPO.ReceiptPO;
+import PO.Receipt.CashRepPO;
+import PO.Receipt.ReceiptPO;
 
 public class CashRepVO extends ReceiptVO {
 	public double sum;

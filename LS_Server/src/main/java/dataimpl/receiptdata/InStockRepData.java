@@ -3,8 +3,8 @@ package dataimpl.receiptdata;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import PO.ReceiptPO.InStockRepPO;
-import PO.ReceiptPO.ReceiptPO;
+import PO.Receipt.InStockRepPO;
+import PO.Receipt.ReceiptPO;
 import dataservice.receiptdataservice.InStockRepDataService;
 import datautil.DataUtility;
 

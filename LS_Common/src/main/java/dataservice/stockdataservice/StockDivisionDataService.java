@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import util.enumData.City;
 import util.enumData.ResultMessage;
 import PO.StockDivisionPO;
-import PO.ReceiptPO.InStockRepPO;
-import PO.ReceiptPO.OutStockRepPO;
+import PO.Receipt.InStockRepPO;
+import PO.Receipt.OutStockRepPO;
 
 
 /**

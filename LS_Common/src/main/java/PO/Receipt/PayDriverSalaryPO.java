@@ -1,4 +1,4 @@
-package PO.ReceiptPO;
+package PO.Receipt;
 
 public class PayDriverSalaryPO extends PaySalaryPO{
 	/**

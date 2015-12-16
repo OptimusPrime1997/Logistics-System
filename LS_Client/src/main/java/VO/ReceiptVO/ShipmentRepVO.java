@@ -1,8 +1,9 @@
 package VO.ReceiptVO;
 
 import java.util.ArrayList;
-import PO.ReceiptPO.ReceiptPO;
-import PO.ReceiptPO.ShipmentRepPO;
+
+import PO.Receipt.ReceiptPO;
+import PO.Receipt.ShipmentRepPO;
 
 public class ShipmentRepVO extends ShipRepVO {
 

@@ -2,9 +2,9 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.GetRepPO;
-import PO.ReceiptPO.ReceiptPO;
-import PO.ReceiptPO.ReceptionRepPO;
+import PO.Receipt.GetRepPO;
+import PO.Receipt.ReceiptPO;
+import PO.Receipt.ReceptionRepPO;
 import util.enumData.City;
 import util.enumData.Rep;
 

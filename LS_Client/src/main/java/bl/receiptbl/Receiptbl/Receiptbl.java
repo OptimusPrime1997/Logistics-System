@@ -9,7 +9,7 @@ import java.util.Calendar;
 
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
-import PO.ReceiptPO.ReceiptPO;
+import PO.Receipt.ReceiptPO;
 import RMIClient.ReceiptClient;
 import VO.LogVO;
 import bl.logbl.Logbl;

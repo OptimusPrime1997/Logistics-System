@@ -2,7 +2,7 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.PayRentPO;
+import PO.Receipt.PayRentPO;
 
 public class PayRentVO {
 	public String getterName;

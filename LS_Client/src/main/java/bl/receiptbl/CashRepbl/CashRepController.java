@@ -71,7 +71,7 @@ implements CashRepblService, PostReceiptblService{
 	@Override
 	public String createNum(String date, String office) throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return cashRepbl.createNum(date, office);
+		return null;
 	}
 
 	@Override

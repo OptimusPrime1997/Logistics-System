@@ -2,7 +2,7 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.InStockPO;
+import PO.Receipt.InStockPO;
 
 public class InStockVO {
 	public String order;

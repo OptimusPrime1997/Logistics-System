@@ -2,7 +2,7 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.CashPO;
+import PO.Receipt.CashPO;
 
 public class CashVO { 
 	public double money;

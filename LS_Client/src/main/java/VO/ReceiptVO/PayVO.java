@@ -2,7 +2,7 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.PayPO;
+import PO.Receipt.PayPO;
 import util.enumData.PayThing;
 
 public class PayVO {

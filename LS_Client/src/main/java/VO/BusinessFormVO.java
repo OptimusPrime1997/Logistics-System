@@ -3,8 +3,8 @@ package VO;
 import java.util.ArrayList;
 
 import PO.BusinessFormPO;
-import PO.ReceiptPO.CashRepPO;
-import PO.ReceiptPO.PayRepPO;
+import PO.Receipt.CashRepPO;
+import PO.Receipt.PayRepPO;
 import VO.ReceiptVO.CashRepVO;
 import VO.ReceiptVO.CashVO;
 import VO.ReceiptVO.PayRepVO;

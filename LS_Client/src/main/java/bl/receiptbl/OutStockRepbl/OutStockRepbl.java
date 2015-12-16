@@ -7,7 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import Exception.NumNotFoundException;
-import PO.ReceiptPO.ReceiptPO;
+import PO.Receipt.ReceiptPO;
 import RMIClient.ReceiptClient;
 import VO.ReceiptVO.OutStockRepVO;
 import VO.ReceiptVO.ReceiptVO;

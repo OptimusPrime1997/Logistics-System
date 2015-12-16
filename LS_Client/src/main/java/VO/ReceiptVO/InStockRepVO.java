@@ -2,8 +2,8 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.InStockRepPO;
-import PO.ReceiptPO.ReceiptPO;
+import PO.Receipt.InStockRepPO;
+import PO.Receipt.ReceiptPO;
 
 public class InStockRepVO extends ReceiptVO {
 	public ArrayList<InStockVO> inStockVOs;

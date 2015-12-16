@@ -2,7 +2,7 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.ArrivePO;
+import PO.Receipt.ArrivePO;
 import util.enumData.GoodsArrivalState;
 
 public class ArriveVO {

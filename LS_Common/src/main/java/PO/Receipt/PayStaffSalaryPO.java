@@ -1,4 +1,4 @@
-package PO.ReceiptPO;
+package PO.Receipt;
 
 import util.enumData.Authority;
 

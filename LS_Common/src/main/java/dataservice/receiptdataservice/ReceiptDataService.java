@@ -6,7 +6,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import PO.ReceiptPO.ReceiptPO;
+import PO.Receipt.ReceiptPO;
 import util.enumData.Rep;
 
 public interface ReceiptDataService extends Remote,Serializable{

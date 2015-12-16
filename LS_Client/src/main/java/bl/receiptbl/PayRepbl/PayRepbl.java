@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import Exception.NumNotFoundException;
-import PO.ReceiptPO.PayRepPO;
-import PO.ReceiptPO.ReceiptPO;
+import PO.Receipt.PayRepPO;
+import PO.Receipt.ReceiptPO;
 import RMIClient.ReceiptClient;
 import VO.ManagementVO.BankAccountVO;
 import VO.ReceiptVO.PayRepVO;

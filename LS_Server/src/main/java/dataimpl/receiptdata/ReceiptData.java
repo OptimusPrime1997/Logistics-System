@@ -7,7 +7,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import PO.ReceiptPO.ReceiptPO;
+import PO.Receipt.ReceiptPO;
 import dataservice.receiptdataservice.ReceiptDataService;
 import datautil.DataUtility;
 import util.enumData.*;
@@ -104,7 +104,11 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 		ArrayList<ReceiptPO> receiptPOs = getRepByDate(date, rep, office);
 		if (receiptPOs == null)
 			return 1 + "";
-		return receiptPOs.size() + 1 + "";
+		String s = receiptPOs.size() + 1 + "";
+		for(int i = s.length();i < 4;i++){
+			s = "0" + s;
+		}
+		return s;
 	}
 
 	public void clearSubmit(Rep rep, String office) throws IOException, ClassNotFoundException {

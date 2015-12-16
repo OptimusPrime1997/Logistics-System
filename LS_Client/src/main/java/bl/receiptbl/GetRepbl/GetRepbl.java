@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import Exception.NumNotFoundException;
-import PO.ReceiptPO.ReceiptPO;
+import PO.Receipt.ReceiptPO;
 import VO.ReceiptVO.GetRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import VO.ReceiptVO.ShipmentRepVO;

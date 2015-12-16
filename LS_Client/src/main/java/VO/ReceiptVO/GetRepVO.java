@@ -2,8 +2,8 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.GetRepPO;
-import PO.ReceiptPO.ReceiptPO;
+import PO.Receipt.GetRepPO;
+import PO.Receipt.ReceiptPO;
 import util.enumData.Rep;
 
 public class GetRepVO extends ArriveRepVO{

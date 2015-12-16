@@ -2,7 +2,7 @@ package VO.ReceiptVO;
 
 import java.util.ArrayList;
 
-import PO.ReceiptPO.PayRefundPO;
+import PO.Receipt.PayRefundPO;
 
 public class PayRefundVO {
 	public String reason;
