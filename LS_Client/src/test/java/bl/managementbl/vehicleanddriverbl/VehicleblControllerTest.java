@@ -25,10 +25,13 @@ public class VehicleblControllerTest {
 		VehicleVO vo = null;
 		VehicleVO vo1 = null;
 		try {
-			ResultMessage[] rmsgs = new ResultMessage[3];
-			rmsgs[0] = vehicleblController.insertVehicle(new VehicleVO("025001007","苏A88887","20100101"));
-			rmsgs[1] = vehicleblController.insertVehicle(new VehicleVO("025001008","苏A88898","20100101"));
-			rmsgs[2] = vehicleblController.insertVehicle(new VehicleVO("025001009","苏A88889","20100101"));
+			ResultMessage[] rmsgs = new ResultMessage[5];
+			rmsgs[0] = vehicleblController.insertVehicle(new VehicleVO("025001001","苏A11111","20110101"));
+			rmsgs[1] = vehicleblController.insertVehicle(new VehicleVO("025001002","苏A22222","20120101"));
+			rmsgs[2] = vehicleblController.insertVehicle(new VehicleVO("025001003","苏A33333","20130101"));
+			rmsgs[3] = vehicleblController.insertVehicle(new VehicleVO("025001004","苏A44444","20140101"));
+			rmsgs[4] = vehicleblController.insertVehicle(new VehicleVO("025001005","苏A55555","20150101"));
+			
 			for (int i = 0; i < 3; i++) {
 				System.out.println(rmsgs[i].toString());
 			}
@@ -38,11 +41,11 @@ public class VehicleblControllerTest {
 			System.out.println("远程连接错误");
 		}
 		try {
-			vo = vehicleblController.findByVehicleNum("025001007");
+			vo = vehicleblController.findByVehicleNum("025001002");
 			System.out.println(vo.licenseNum);
-			assertEquals("苏A8887", vo.licenseNum);
+			assertEquals("苏A22222", vo.licenseNum);
 			// vehiclebl.delete(vo);
-			vo1 = vehicleblController.findByVehicleNum("025001008");
+			vo1 = vehicleblController.findByVehicleNum("025001001");
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,7 +63,7 @@ public class VehicleblControllerTest {
 			e.printStackTrace();
 		}
 		if (vo1 != null) {
-			assertEquals("苏A8888", vo1.licenseNum);
+			assertEquals("苏A11111", vo1.licenseNum);
 		} else {
 			System.out.println("vo is null");
 		}

@@ -287,9 +287,8 @@ public enum ResultMessage {
 			return "司机编号过短";
 		case DRIVER_NUM_OVER:
 			return "司机编号过长";
-		default:
-			return "";
 		}
+		return "";
 	}
 	public static void postCheck(ResultMessage expected,ResultMessage rmsg){
 		try{

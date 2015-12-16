@@ -52,7 +52,7 @@ public class ComponentFactory {
 	 * 
 	 * @return
 	 */
-	public JComboBox<Sex> getSexJComboBox() {
+	public static JComboBox<Sex> getSexJComboBox() {
 		JComboBox<Sex> sexjComboBox = new JComboBox<Sex>();
 		sexjComboBox.addItem(Sex.Sex_MALE);
 		sexjComboBox.addItem(Sex.Sex_FAMALE);
@@ -64,7 +64,7 @@ public class ComponentFactory {
 	 * 
 	 * @return
 	 */
-	public JComboBox<LogType> getLogTypeJComboBox() {
+	public static  JComboBox<LogType> getLogTypeJComboBox() {
 		JComboBox<LogType> logjComboBox = new JComboBox<LogType>();
 		for (int i = 1; i <= 21; i++) {
 			logjComboBox.addItem(LogType.toLogType(i));
@@ -79,7 +79,7 @@ public class ComponentFactory {
 	 * @param endYear
 	 * @return
 	 */
-	public JComboBox<Integer> getYearJComboBox(int startYear, int endYear) {
+	public static JComboBox<Integer> getYearJComboBox(int startYear, int endYear) {
 		assert (startYear >= 1900 && endYear <= 2050) : ("startYear or endYear out of bounds!");
 		JComboBox<Integer> yearjComboBox = new JComboBox<Integer>();
 		for (int i = startYear; i <= endYear; i++) {
@@ -93,7 +93,7 @@ public class ComponentFactory {
 	 * 
 	 * @return
 	 */
-	public JComboBox<Integer> getMonthJComboBox() {
+	public  static JComboBox<Integer> getMonthJComboBox() {
 		JComboBox<Integer> monthjComboBox = new JComboBox<Integer>();
 		for (int i = 1; i <= 12; i++) {
 			monthjComboBox.addItem(i);
@@ -106,7 +106,7 @@ public class ComponentFactory {
 	 * 
 	 * @return
 	 */
-	public JComboBox<Integer> getDayJComboBox() {
+	public  static JComboBox<Integer> getDayJComboBox() {
 		JComboBox<Integer> dayjComboBox = new JComboBox<Integer>();
 		for (int i = 1; i <= 31; i++) {
 			dayjComboBox.addItem(i);

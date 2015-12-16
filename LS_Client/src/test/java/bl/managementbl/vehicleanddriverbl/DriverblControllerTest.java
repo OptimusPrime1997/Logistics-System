@@ -28,16 +28,28 @@ public class DriverblControllerTest {
 		DriverblController driverblController = new DriverblController();
 		DriverVO vo = null;
 		DriverVO vo1 = null;
+		DriverVO test=null;
 		try {
 			autoNum[1] = driverblController.insertDriver(new DriverVO(
-					"12511119112", "张五", Sex.Sex_MALE, "911312166613145342",
-					"19261362453", "21191111"));
+					"02500107001", "王一", Sex.Sex_MALE, "550550199101010001",
+					"18200010001", "20160101"));
 			autoNum[1] = driverblController.insertDriver(new DriverVO(
-					"12511119113", "祝四", Sex.Sex_MALE, "911312166613154535",
-					"19261362454", "21191111"));
+					"02500107002", "王二", Sex.Sex_MALE, "550550199101010002",
+					"18200020002", "20170101"));
 			autoNum[2] = driverblController.insertDriver(new DriverVO(
-					"12511119114", "周泰", Sex.Sex_MALE, "911312166613164536",
-					"19261362455", "21191111"));
+					"02500107003", "王三", Sex.Sex_FAMALE, "550550199101010003",
+					"18200030003", "20180101"));
+			autoNum[1] = driverblController.insertDriver(new DriverVO(
+					"02500107004", "王四", Sex.Sex_MALE, "550550199101010004",
+					"18200040004", "20190101"));
+			autoNum[1] = driverblController.insertDriver(new DriverVO(
+					"02500107005", "王五", Sex.Sex_MALE, "550550199101010005",
+					"18200050005", "20200101"));
+			autoNum[2] = driverblController.insertDriver(test=new DriverVO(
+					"02500107006", "王六", Sex.Sex_FAMALE, "550550199101010006",
+					"18200060006", "20210101"));
+			ResultMessage r=driverblController.deleteDriver(test);
+			System.out.println("删除driver"+r);
 			for (int i = 1; i < 3; i++) {
 				System.out.println(autoNum[i]);
 			}
@@ -50,11 +62,11 @@ public class DriverblControllerTest {
 			e.printStackTrace();
 		} 
 		try {
-			vo = driverblController.findByDriverNum("12511119112");
+			vo = driverblController.findByDriverNum("02500107001");
 			System.out.println(vo.name);
-			assertEquals("张五", vo.name);
+			assertEquals("王一", vo.name);
 			// driverbl.delete(vo);
-//			vo1 = driverblController.findByDriverNum(autoNum[1]);
+			vo1 = driverblController.findByDriverNum("02500107002");
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -72,9 +84,9 @@ public class DriverblControllerTest {
 			e.printStackTrace();
 		}
 		if (vo1 != null) {
-			assertEquals("911312166613154535", vo1.id);
+			assertEquals("550550199101010002", vo1.id);
 		} else {
-			System.out.println("vo is null");
+			System.out.println("vo1 is null");
 		}
 
 	}

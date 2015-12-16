@@ -5,6 +5,10 @@
  */
 package ui.businessOfficerui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -17,6 +21,11 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
+import VO.ManagementVO.DriverVO;
+import ui.componentfactory.ComponentFactory;
+import util.enumData.ResultMessage;
+import util.enumData.Sex;
+
 /**
  *
  * @author Administrator
@@ -24,27 +33,76 @@ import javax.swing.WindowConstants;
 public class driver_detail extends JFrame {
 	/**
 	 * 监听
+	 * 
 	 * @param evt
 	 */
-	private void IDnum_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDnum_textActionPerformed
+	private void IDnum_textActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_IDnum_textActionPerformed
 	}
-    private void validTime_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validTime_textActionPerformed
-    }
-    private void day_comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_day_comboBoxActionPerformed
-    }
-    private void driverNum_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_driverNum_textActionPerformed
-    }
 
-    private void name_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name_textActionPerformed
-    }
-    /**
-     * Creates new form driver_detail
-     */
-	public driver_detail(driver_management panel,String driverCode,String driverName,String phone) {
-		this.parentPanel=panel;
-		this.driverCode=driverCode;
-		this.driverName=driverName;
-		this.phone=phone;
+	private void validTime_textActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_validTime_textActionPerformed
+	}
+
+	private void day_comboBoxActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_day_comboBoxActionPerformed
+	}
+
+	private void driverNum_textActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_driverNum_textActionPerformed
+	}
+
+	private void name_textActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_name_textActionPerformed
+	}
+
+	private void ok_btnActionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void cancel_btnActionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		this.dispose();
+	}
+
+	/**
+	 * @param n
+	 * @return
+	 */
+	private DriverVO getViewdriverVO(int n) {
+		// TODO Auto-generated method stub
+		String driverNum = null;
+		String name = null;
+		Sex sex = null;
+		String id = null;
+		String phoneNum = null;
+		String licensedTime = null;
+		try {
+			driverNum = driverNum_text.getText();
+			name = (String) name_text.getText();
+			sex = (Sex) sex_comboBox.getSelectedItem();
+			id = (String) IDnum_text.getText();
+			phoneNum = phoneNum_text.getText();
+			licensedTime = year_comboBox.getSelectedItem() + ""
+					+ month_comboBox.getSelectedItem() + ""
+					+ day_comboBox.getSelectedItem();
+			assert (name != null && driverNum != null && id != null) : ("您输入的机构信息不完整！");
+		} catch (ClassCastException e) {
+			e.printStackTrace();
+			ComponentFactory.setState("您输入的值类型不正确：(",
+					ComponentFactory.DISPLAY_TIME, parent.feedback_text);
+		} catch (AssertionError e) {
+			ComponentFactory.setState("您输入的机构信息不完整！",
+					ComponentFactory.DISPLAY_TIME, parent.feedback_text);
+			System.out.println(e.getMessage());
+		}
+		return new DriverVO(driverNum, name, sex,id,phoneNum,licensedTime);
+	}
+
+	/**
+	 * Creates new form driver_detail
+	 */
+	public driver_detail(driver_management panel, int selected) {
+		this.parent = panel;
+		this.selectedN = selected;
+		this.driverVOs = parent.conveyDriverVOs();
+		this.driverVO = driverVOs.get(selected);
 		this.setVisible(true);
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
@@ -52,148 +110,327 @@ public class driver_detail extends JFrame {
 	}
 
 	private void initComponents() {
-	  GroupLayout layout = new GroupLayout(getContentPane());
-	  initLabel();
-	  initComboBox();
-	  initTxt();
-	  initbtn();	  
-	  initLayout(layout);
-    }
-    private void initbtn() {
-    	cancel_btn = new JButton();
-        ok_btn = new JButton();
-        delete_btn = new JButton();
-        cancel_btn.setText("取消");
-        ok_btn.setText("保存");
-        delete_btn.setText("X删除");
-        delete_btn.setBackground(new java.awt.Color(255, 0, 0));
-        delete_btn.setForeground(new java.awt.Color(255, 0, 0));
-       
-}
-	private void initLayout(GroupLayout layout) {
-    	  getContentPane().setLayout(layout);
-          layout.setHorizontalGroup(
-              layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-              .addGroup(layout.createSequentialGroup()
-                  .addContainerGap()
-                  .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                      .addGroup(layout.createSequentialGroup()
-                          .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                              .addComponent(jLabel1)
-                              .addComponent(jLabel2)
-                              .addComponent(jLabel3)
-                              .addComponent(jLabel7)
-                              .addComponent(jLabel8)
-                              .addComponent(jLabel9)
-                              .addComponent(jLabel5))
-                          .addGap(10, 10, 10)
-                          .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                              .addGroup(layout.createSequentialGroup()
-                                  .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                      .addComponent(sex_comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                      .addComponent(name_text, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE))
-                                  .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                              .addGroup(layout.createSequentialGroup()
-                                  .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                      .addComponent(phoneNum_text, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-                                      .addComponent(driverNum_text, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
-                                      .addGroup(layout.createSequentialGroup()
-                                          .addComponent(birthday_text, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                          .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-)                                      .addGroup(layout.createSequentialGroup()
-                                          .addComponent(year_comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                          .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                          .addComponent(jLabel6)
-                                          .addGap(18, 18, 18)
-                                          .addComponent(month_comboBox, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-                                          .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                          .addComponent(jLabela)
-                                          .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                          .addComponent(day_comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                          .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                          .addComponent(jLabelb))
-                                      .addComponent(IDnum_text, GroupLayout.PREFERRED_SIZE, 170, GroupLayout.PREFERRED_SIZE))
-                                  .addContainerGap(50, Short.MAX_VALUE))))
-                      .addGroup(layout.createSequentialGroup()
-                          .addComponent(jLabel4)
-                          .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-              .addGroup(layout.createSequentialGroup()
-                  .addGap(191, 191, 191)
-                  .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                      .addComponent(delete_btn)
-                      .addGroup(layout.createSequentialGroup()
-                          .addComponent(cancel_btn)
-                          .addGap(27, 27, 27)
-                          .addComponent(ok_btn)))
-                  .addGap(0, 15, Short.MAX_VALUE))
-          );
-          layout.setVerticalGroup(
-              layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-              .addGroup(layout.createSequentialGroup()
-                  .addContainerGap()
-                  .addComponent(jLabel4)
-                  .addGap(12, 12, 12)
-                  .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                      .addComponent(driverNum_text, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                      .addComponent(jLabel1, GroupLayout.Alignment.TRAILING))
-                  .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                      .addGroup(layout.createSequentialGroup()
-                          .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                          .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                              .addComponent(jLabel2)
-                              .addComponent(name_text, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                          .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                          .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                              .addComponent(jLabel3)
-                              .addComponent(sex_comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                      .addGroup(layout.createSequentialGroup()
-                          .addGap(11, 11, 11)
-                          .addComponent(delete_btn, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)))
-                  .addGap(5, 5, 5)
-                  .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                      .addComponent(jLabel7)
-                      .addComponent(IDnum_text, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                  .addGap(12, 12, 12)
-                  .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                      .addComponent(jLabel8)
-                      .addComponent(year_comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                      .addComponent(jLabel6)
-                      .addComponent(month_comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                      .addComponent(jLabela)
-                      .addComponent(day_comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                      .addComponent(jLabelb))
-                  .addGap(10, 10, 10)
-                  .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                      .addComponent(phoneNum_text, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                      .addComponent(jLabel9))
-                  .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                  .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                      .addComponent(jLabel5)
-                      .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                          .addComponent(birthday_text, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-))                  .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                  .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                      .addComponent(cancel_btn)
-                      .addComponent(ok_btn))
-                  .addGap(5, 5, 5))
-          );
+		GroupLayout layout = new GroupLayout(getContentPane());
+		initLabel();
+		initComboBox();
+		initTxt();
+		initbtn();
+		initLayout(layout);
+		setData();
+	}
 
-          pack();
-	
-}
+	private void initbtn() {
+		cancel_btn = new JButton();
+		ok_btn = new JButton();
+		delete_btn = new JButton();
+		cancel_btn.setText("取消");
+		ok_btn.setText("保存");
+		delete_btn.setText("X删除");
+		delete_btn.setBackground(new java.awt.Color(255, 0, 0));
+		delete_btn.setForeground(new java.awt.Color(255, 0, 0));
+
+		ok_btn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				ok_btnActionPerformed(e);
+			}
+
+		});
+		cancel_btn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				cancel_btnActionPerformed(e);
+			}
+
+		});
+	}
+
+	private void initLayout(GroupLayout layout) {
+		getContentPane().setLayout(layout);
+		layout.setHorizontalGroup(layout
+				.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(
+						layout.createSequentialGroup()
+								.addContainerGap()
+								.addGroup(
+										layout.createParallelGroup(
+												GroupLayout.Alignment.LEADING)
+												.addGroup(
+														layout.createSequentialGroup()
+																.addGroup(
+																		layout.createParallelGroup(
+																				GroupLayout.Alignment.LEADING)
+																				.addComponent(
+																						jLabel1)
+																				.addComponent(
+																						jLabel2)
+																				.addComponent(
+																						jLabel3)
+																				.addComponent(
+																						jLabel7)
+																				.addComponent(
+																						jLabel8)
+																				.addComponent(
+																						jLabel9)
+																				.addComponent(
+																						jLabel5))
+																.addGap(10, 10,
+																		10)
+																.addGroup(
+																		layout.createParallelGroup(
+																				GroupLayout.Alignment.LEADING,
+																				false)
+																				.addGroup(
+																						layout.createSequentialGroup()
+																								.addGroup(
+																										layout.createParallelGroup(
+																												GroupLayout.Alignment.LEADING)
+																												.addComponent(
+																														sex_comboBox,
+																														GroupLayout.PREFERRED_SIZE,
+																														GroupLayout.DEFAULT_SIZE,
+																														GroupLayout.PREFERRED_SIZE)
+																												.addComponent(
+																														name_text,
+																														GroupLayout.PREFERRED_SIZE,
+																														112,
+																														GroupLayout.PREFERRED_SIZE))
+																								.addContainerGap(
+																										GroupLayout.DEFAULT_SIZE,
+																										Short.MAX_VALUE))
+																				.addGroup(
+																						layout.createSequentialGroup()
+																								.addGroup(
+																										layout.createParallelGroup(
+																												GroupLayout.Alignment.LEADING)
+																												.addComponent(
+																														phoneNum_text,
+																														GroupLayout.PREFERRED_SIZE,
+																														100,
+																														GroupLayout.PREFERRED_SIZE)
+																												.addComponent(
+																														driverNum_text,
+																														GroupLayout.PREFERRED_SIZE,
+																														112,
+																														GroupLayout.PREFERRED_SIZE)
+																												.addGroup(
+																														layout.createSequentialGroup()
+																																.addComponent(
+																																		birthday_text,
+																																		GroupLayout.PREFERRED_SIZE,
+																																		33,
+																																		GroupLayout.PREFERRED_SIZE)
+																																.addPreferredGap(
+																																		LayoutStyle.ComponentPlacement.UNRELATED))
+																												.addGroup(
+																														layout.createSequentialGroup()
+																																.addComponent(
+																																		year_comboBox,
+																																		GroupLayout.PREFERRED_SIZE,
+																																		GroupLayout.DEFAULT_SIZE,
+																																		GroupLayout.PREFERRED_SIZE)
+																																.addPreferredGap(
+																																		LayoutStyle.ComponentPlacement.UNRELATED)
+																																.addComponent(
+																																		jLabel6)
+																																.addGap(18,
+																																		18,
+																																		18)
+																																.addComponent(
+																																		month_comboBox,
+																																		GroupLayout.PREFERRED_SIZE,
+																																		38,
+																																		GroupLayout.PREFERRED_SIZE)
+																																.addPreferredGap(
+																																		LayoutStyle.ComponentPlacement.UNRELATED)
+																																.addComponent(
+																																		jLabela)
+																																.addPreferredGap(
+																																		LayoutStyle.ComponentPlacement.RELATED)
+																																.addComponent(
+																																		day_comboBox,
+																																		GroupLayout.PREFERRED_SIZE,
+																																		GroupLayout.DEFAULT_SIZE,
+																																		GroupLayout.PREFERRED_SIZE)
+																																.addPreferredGap(
+																																		LayoutStyle.ComponentPlacement.UNRELATED)
+																																.addComponent(
+																																		jLabelb))
+																												.addComponent(
+																														IDnum_text,
+																														GroupLayout.PREFERRED_SIZE,
+																														170,
+																														GroupLayout.PREFERRED_SIZE))
+																								.addContainerGap(
+																										50,
+																										Short.MAX_VALUE))))
+												.addGroup(
+														layout.createSequentialGroup()
+																.addComponent(
+																		jLabel4)
+																.addContainerGap(
+																		GroupLayout.DEFAULT_SIZE,
+																		Short.MAX_VALUE))))
+				.addGroup(
+						layout.createSequentialGroup()
+								.addGap(191, 191, 191)
+								.addGroup(
+										layout.createParallelGroup(
+												GroupLayout.Alignment.TRAILING)
+												.addComponent(delete_btn)
+												.addGroup(
+														layout.createSequentialGroup()
+																.addComponent(
+																		cancel_btn)
+																.addGap(27, 27,
+																		27)
+																.addComponent(
+																		ok_btn)))
+								.addGap(0, 15, Short.MAX_VALUE)));
+		layout.setVerticalGroup(layout
+				.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(
+						layout.createSequentialGroup()
+								.addContainerGap()
+								.addComponent(jLabel4)
+								.addGap(12, 12, 12)
+								.addGroup(
+										layout.createParallelGroup(
+												GroupLayout.Alignment.LEADING)
+												.addComponent(
+														driverNum_text,
+														GroupLayout.Alignment.TRAILING,
+														GroupLayout.PREFERRED_SIZE,
+														GroupLayout.DEFAULT_SIZE,
+														GroupLayout.PREFERRED_SIZE)
+												.addComponent(
+														jLabel1,
+														GroupLayout.Alignment.TRAILING))
+								.addGroup(
+										layout.createParallelGroup(
+												GroupLayout.Alignment.LEADING)
+												.addGroup(
+														layout.createSequentialGroup()
+																.addPreferredGap(
+																		LayoutStyle.ComponentPlacement.UNRELATED)
+																.addGroup(
+																		layout.createParallelGroup(
+																				GroupLayout.Alignment.BASELINE)
+																				.addComponent(
+																						jLabel2)
+																				.addComponent(
+																						name_text,
+																						GroupLayout.PREFERRED_SIZE,
+																						GroupLayout.DEFAULT_SIZE,
+																						GroupLayout.PREFERRED_SIZE))
+																.addPreferredGap(
+																		LayoutStyle.ComponentPlacement.UNRELATED)
+																.addGroup(
+																		layout.createParallelGroup(
+																				GroupLayout.Alignment.BASELINE)
+																				.addComponent(
+																						jLabel3)
+																				.addComponent(
+																						sex_comboBox,
+																						GroupLayout.PREFERRED_SIZE,
+																						GroupLayout.DEFAULT_SIZE,
+																						GroupLayout.PREFERRED_SIZE)))
+												.addGroup(
+														layout.createSequentialGroup()
+																.addGap(11, 11,
+																		11)
+																.addComponent(
+																		delete_btn,
+																		GroupLayout.PREFERRED_SIZE,
+																		60,
+																		GroupLayout.PREFERRED_SIZE)))
+								.addGap(5, 5, 5)
+								.addGroup(
+										layout.createParallelGroup(
+												GroupLayout.Alignment.BASELINE)
+												.addComponent(jLabel7)
+												.addComponent(
+														IDnum_text,
+														GroupLayout.PREFERRED_SIZE,
+														GroupLayout.DEFAULT_SIZE,
+														GroupLayout.PREFERRED_SIZE))
+								.addGap(12, 12, 12)
+								.addGroup(
+										layout.createParallelGroup(
+												GroupLayout.Alignment.BASELINE)
+												.addComponent(jLabel8)
+												.addComponent(
+														year_comboBox,
+														GroupLayout.PREFERRED_SIZE,
+														GroupLayout.DEFAULT_SIZE,
+														GroupLayout.PREFERRED_SIZE)
+												.addComponent(jLabel6)
+												.addComponent(
+														month_comboBox,
+														GroupLayout.PREFERRED_SIZE,
+														GroupLayout.DEFAULT_SIZE,
+														GroupLayout.PREFERRED_SIZE)
+												.addComponent(jLabela)
+												.addComponent(
+														day_comboBox,
+														GroupLayout.PREFERRED_SIZE,
+														GroupLayout.DEFAULT_SIZE,
+														GroupLayout.PREFERRED_SIZE)
+												.addComponent(jLabelb))
+								.addGap(10, 10, 10)
+								.addGroup(
+										layout.createParallelGroup(
+												GroupLayout.Alignment.BASELINE)
+												.addComponent(
+														phoneNum_text,
+														GroupLayout.PREFERRED_SIZE,
+														GroupLayout.DEFAULT_SIZE,
+														GroupLayout.PREFERRED_SIZE)
+												.addComponent(jLabel9))
+								.addPreferredGap(
+										LayoutStyle.ComponentPlacement.UNRELATED)
+								.addGroup(
+										layout.createParallelGroup(
+												GroupLayout.Alignment.LEADING)
+												.addComponent(jLabel5)
+												.addGroup(
+														layout.createParallelGroup(
+																GroupLayout.Alignment.BASELINE)
+																.addComponent(
+																		birthday_text,
+																		GroupLayout.PREFERRED_SIZE,
+																		GroupLayout.DEFAULT_SIZE,
+																		GroupLayout.PREFERRED_SIZE)))
+								.addPreferredGap(
+										LayoutStyle.ComponentPlacement.RELATED,
+										GroupLayout.DEFAULT_SIZE,
+										Short.MAX_VALUE)
+								.addGroup(
+										layout.createParallelGroup(
+												GroupLayout.Alignment.BASELINE)
+												.addComponent(cancel_btn)
+												.addComponent(ok_btn))
+								.addGap(5, 5, 5)));
+
+		pack();
+
+	}
+
 	private void initTxt() {
 		IDnum_text = new JTextField();
 		phoneNum_text = new JTextField();
 		birthday_text = new JTextField();
+
+		birthday_text.setVisible(false);
+
 		driverNum_text = new JTextField();
 		name_text = new JTextField();
 
-		IDnum_text.setText(IDnum);
-		phoneNum_text.setText(phone);
-		birthday_text.setText("1969-05-26");
-		driverNum_text.setText(driverCode);
-		name_text.setText(driverName);
-		
+		driverNum_text.setEditable(false);
 		IDnum_text.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				IDnum_textActionPerformed(evt);
@@ -209,36 +446,37 @@ public class driver_detail extends JFrame {
 				name_textActionPerformed(evt);
 			}
 		});
-	
-}
+
+	}
+
+	private void setData() {
+		driverNum_text.setText(driverCode);
+		sex_comboBox.setSelectedItem(driverVO.sex);
+		name_text.setText(driverVO.name);
+		IDnum_text.setText(driverVO.id);
+		birthday_text.setText(driverVO.id.substring(6, 14));
+		phoneNum_text.setText(driverVO.phoneNum);
+		String licensedTime = driverVO.licensedTime;
+		int y = Integer.parseInt(licensedTime.substring(0, 4));
+		int m = Integer.parseInt(licensedTime.substring(4, 6));
+		int d = Integer.parseInt(licensedTime.substring(6, 8));
+		year_comboBox.setSelectedItem(y);
+		month_comboBox.setSelectedItem(m);
+		day_comboBox.setSelectedItem(d);
+	}
+
 	private void initComboBox() {
-		sex_comboBox = new JComboBox<String>();
-		year_comboBox = new JComboBox<String>();
-		month_comboBox = new JComboBox<String>();
-        day_comboBox = new JComboBox<String>();
-		sex_comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {
-				"男", "女" }));
-		year_comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {
-				"1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967",
-				"1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975",
-				"1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983",
-				"1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991",
-				"1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999",
-				"2000" }));
-		month_comboBox
-				.setModel(new DefaultComboBoxModel<String>(new String[] { "1",
-						"2", "3", "4", "5", "6", "7", "8", "9", "10", "11",
-						"12" }));
-		day_comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {
-				"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
-				"13", "14", "15", "16", "17", "18", "19", "20", "21", "22",
-				"23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+		sex_comboBox = ComponentFactory.getSexJComboBox();
+		year_comboBox = ComponentFactory.getYearJComboBox(1960, 2000);
+		month_comboBox = ComponentFactory.getMonthJComboBox();
+		day_comboBox = ComponentFactory.getDayJComboBox();
 		day_comboBox.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				day_comboBoxActionPerformed(evt);
 			}
 		});
-}
+	}
+
 	private void initLabel() {
 		jLabel1 = new JLabel();
 		jLabel2 = new JLabel();
@@ -259,24 +497,31 @@ public class driver_detail extends JFrame {
 		jLabel4.setForeground(new java.awt.Color(0, 102, 255));
 		jLabel4.setText("司机详细信息");
 		jLabel5.setText("生日");
+
+		jLabel5.setVisible(false);
+
 		jLabel6.setText("年");
 		jLabel7.setText("身份证号");
 		jLabel8.setText("行驶证期限");
 		jLabel9.setText("手机号");
 		jLabela.setText("月");
 		jLabelb.setText("日");
-	
-}
-	
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JTextField IDnum_text,driverNum_text,name_text,phoneNum_text,birthday_text;
-    private JButton cancel_btn;
-    private JComboBox<String> day_comboBox,month_comboBox,
-    sex_comboBox,year_comboBox;
-    private JButton delete_btn,ok_btn;
-    private JLabel jLabel1,jLabel2,jLabel3,jLabel4,
-    jLabel5,jLabel6,jLabel7,jLabel8,jLabel9,jLabela,jLabelb;
-    private driver_management parentPanel;
-    private String driverCode,driverName,phone,IDnum;
-    // End of variables declaration//GEN-END:variables
+
+	}
+
+	private DriverVO driverVO = null;
+	private int selectedN = 0;
+	private ArrayList<DriverVO> driverVOs = null;
+	// Variables declaration - do not modify//GEN-BEGIN:variables
+	private JTextField IDnum_text, driverNum_text, name_text, phoneNum_text,
+			birthday_text;
+	private JButton cancel_btn;
+	private JComboBox<Integer> year_comboBox, month_comboBox, day_comboBox;
+	private JComboBox<Sex> sex_comboBox;
+	private JButton delete_btn, ok_btn;
+	private JLabel jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6,
+			jLabel7, jLabel8, jLabel9, jLabela, jLabelb;
+	private driver_management parent;
+	private String driverCode, driverName, phone, IDnum;
+	// End of variables declaration//GEN-END:variables
 }

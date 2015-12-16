@@ -9,17 +9,22 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.GroupLayout;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.event.MouseInputListener;
 
 import VO.ManagementVO.AccountVO;
+import VO.ManagementVO.InstitutionVO;
 import VO.ManagementVO.InstitutionVOPlus;
 import VO.ManagementVO.VehicleVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
@@ -59,12 +64,18 @@ public class car_management extends javax.swing.JPanel {
 
 	private void initComponents() {
 		GroupLayout layout = new javax.swing.GroupLayout(this);
-		setVehicleVOs();
+		vehiclejTable = new javax.swing.JTable();
+		jScrollPane1 = new javax.swing.JScrollPane();
 		initLabel();
-		initTable(VehicleVOs, 0);
 		initbtn();
 		initTxt();
+		initTable();
 		initlayout(layout);
+	}
+
+	public void initTable() {
+		setVehicleVOs();
+		initialVehicleJTable(vehicleVOs, 0);
 	}
 
 	private void initlayout(GroupLayout layout) {
@@ -295,11 +306,11 @@ public class car_management extends javax.swing.JPanel {
 			VehicleVO v = null;
 			int i = 0;
 			if (InputCheck.checkLicenseNum(tofindVNum) == ResultMessage.VALID) {
-				Iterator<VehicleVO> t = VehicleVOs.iterator();
+				Iterator<VehicleVO> t = vehicleVOs.iterator();
 				for (; t.hasNext(); i++) {
 					v = t.next();
 					if (v.licenseNum.equals(tofindVNum)) {
-						cars_table.setRowSelectionInterval(i, i);
+						vehiclejTable.setRowSelectionInterval(i, i);
 						ComponentFactory.setState("该车辆在第" + (i + 1) + "行",
 								ComponentFactory.DISPLAY_TIME, feedback_text);
 						;
@@ -312,11 +323,11 @@ public class car_management extends javax.swing.JPanel {
 				}
 
 			} else if (InputCheck.checkInputNum(tofindVNum, 9) == ResultMessage.VALID) {
-				Iterator<VehicleVO> t = VehicleVOs.iterator();
+				Iterator<VehicleVO> t = vehicleVOs.iterator();
 				for (; t.hasNext(); i++) {
 					v = t.next();
 					if (v.vehicleNum.equals(tofindVNum)) {
-						cars_table.setRowSelectionInterval(i, i);
+						vehiclejTable.setRowSelectionInterval(i, i);
 						ComponentFactory.setState("该车辆在第" + (i + 1) + "行",
 								ComponentFactory.DISPLAY_TIME, feedback_text);
 						;
@@ -333,6 +344,7 @@ public class car_management extends javax.swing.JPanel {
 			}
 		}
 	}
+
 	private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_add_btnActionPerformed
 
 	}
@@ -378,93 +390,88 @@ public class car_management extends javax.swing.JPanel {
 	 * @param e
 	 */
 	public void tableMouseClicked(MouseEvent e) {
-		Point p = e.getPoint();
-		int row = cars_table.rowAtPoint(p);
-		int column = cars_table.columnAtPoint(p);
-		// 代号、车牌号
-		String carCode, carLicence, startTime;
-		// 点了删除
-		if (e.getClickCount() == 1 && column == 3) {
-
-			// TODO Auto-generated method stub
-			if (e.getButton() == MouseEvent.BUTTON1) {
-				int tempN = 0;
-				ResultMessage rmsg = null;
-				int n = cars_table.getSelectedRow();
-				VehicleVO vo = VehicleVOs.get(n);
-				Object[] options = { "取消", "删除" };
-				int result = JOptionPane
-						.showOptionDialog(null, "您确定要删除系统该车辆？", "是否删除",
-								JOptionPane.DEFAULT_OPTION,
-								JOptionPane.QUESTION_MESSAGE, null, options,
-								options[0]);
-				if (result == JOptionPane.NO_OPTION) {
-					try {
-						rmsg = vehicleblController.deleteVehicle(vo);
-						if (rmsg == ResultMessage.SUCCESS) {
-							ComponentFactory.setState("删除成功:)",
-									ComponentFactory.DISPLAY_TIME,
-									feedback_text);
-							VehicleVOs.remove(n);
-							tempN = 0;
-							if (n == 0) {
-								tempN = 0;
-							} else {
-								tempN = n - 1;
-							}
-							initTable(VehicleVOs, tempN);
-						} else {
-							ComponentFactory.setState(
-									ResultMessage.toFriendlyString(rmsg),
-									ComponentFactory.DISPLAY_TIME,
-									feedback_text);
-						}
-					} catch (RemoteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-						ComponentFactory.setState(ComponentFactory.REMOTEFAILD,
-								ComponentFactory.DISPLAY_TIME, feedback_text);
-					}
-				}
-			}
-
-			System.out.println("已删除删除第" + row + "行");
-		}
-		if (e.getClickCount() == 2) {
-			carCode = cars_table.getValueAt(row, 0).toString();
-			carLicence = cars_table.getValueAt(row, 1).toString();
-			startTime = VehicleVOs.get(row).startTime;
-			System.out.print("坐标 " + row + "  " + column + "   ");
-			System.out.println(carCode + "   " + carLicence);
-			new car_detail(this, carCode, carLicence, startTime);
-		}
+		// Point p = e.getPoint();
+		// int row = vehiclejTable.rowAtPoint(p);
+		// int column = vehiclejTable.columnAtPoint(p);
+		// // 代号、车牌号
+		// String carCode, carLicence, startTime;
+		// // 点了删除
+		// if (e.getClickCount() == 1 && column == 3) {
+		//
+		// // TODO Auto-generated method stub
+		// if (e.getButton() == MouseEvent.BUTTON1) {
+		// int tempN = 0;
+		// ResultMessage rmsg = null;
+		// int n = vehiclejTable.getSelectedRow();
+		// VehicleVO vo = vehicleVOs.get(n);
+		// Object[] options = { "取消", "删除" };
+		// int result = JOptionPane
+		// .showOptionDialog(null, "您确定要删除系统该车辆？", "是否删除",
+		// JOptionPane.DEFAULT_OPTION,
+		// JOptionPane.QUESTION_MESSAGE, null, options,
+		// options[0]);
+		// if (result == JOptionPane.NO_OPTION) {
+		// try {
+		// rmsg = vehicleblController.deleteVehicle(vo);
+		// if (rmsg == ResultMessage.SUCCESS) {
+		// ComponentFactory.setState("删除成功:)",
+		// ComponentFactory.DISPLAY_TIME,
+		// feedback_text);
+		// vehicleVOs.remove(n);
+		// tempN = 0;
+		// if (n == 0) {
+		// tempN = 0;
+		// } else {
+		// tempN = n - 1;
+		// }
+		// initialVehicleJTable(vehicleVOs, tempN);
+		// } else {
+		// ComponentFactory.setState(
+		// ResultMessage.toFriendlyString(rmsg),
+		// ComponentFactory.DISPLAY_TIME,
+		// feedback_text);
+		// }
+		// } catch (RemoteException e1) {
+		// // TODO Auto-generated catch block
+		// e1.printStackTrace();
+		// ComponentFactory.setState(ComponentFactory.REMOTEFAILD,
+		// ComponentFactory.DISPLAY_TIME, feedback_text);
+		// }
+		// }
+		// }
+		//
+		// System.out.println("已删除删除第" + row + "行");
+		// }
+		// if (e.getClickCount() == 2) {
+		// carCode = vehiclejTable.getValueAt(row, 0).toString();
+		// carLicence = vehiclejTable.getValueAt(row, 1).toString();
+		// startTime = vehicleVOs.get(row).startTime;
+		// System.out.print("坐标 " + row + "  " + column + "   ");
+		// System.out.println(carCode + "   " + carLicence);
+		// new car_detail(this, carCode, carLicence, startTime);
+		// }
 	}
 
-	private void initTable(ArrayList<VehicleVO> vos, int n) {
+	private void initialVehicleJTable(ArrayList<VehicleVO> vos, int n) {
 		assert (vos != null) : ("表格获得的账户信息为空");
 		Object[][] VehicleObjects = null;
-		VehicleObjects = new Object[vos.size()][4];
+		VehicleObjects = new Object[vos.size()][3];
 		int i = 0;
 		for (java.util.Iterator<VehicleVO> t = vos.iterator(); t.hasNext(); i++) {
 			VehicleVO vo = t.next();
 			VehicleObjects[i][0] = vo.vehicleNum;
 			VehicleObjects[i][1] = vo.licenseNum;
-			VehicleObjects[i][2] = vo.vehicleNum.substring(0, 6).equals(
-					officeNum);
-			VehicleObjects[i][3] = null;
-
+			VehicleObjects[i][2] = vo.startTime;
 		}
-		cars_table = new javax.swing.JTable();
-		jScrollPane1 = new javax.swing.JScrollPane();
-		jScrollPane1.setViewportView(cars_table);
-		cars_table.setModel(new javax.swing.table.DefaultTableModel(
-				VehicleObjects, new String[] { "编号", "车牌号", "是否在此营业厅", "删除" }) {
+		
+	
+		vehiclejTable.setModel(new javax.swing.table.DefaultTableModel(
+				VehicleObjects, new String[] { "车辆编号", "车牌号", "开始服役时间" }) {
 			private static final long serialVersionUID = 1L;
 			@SuppressWarnings("rawtypes")
-			Class[] types = new Class[] { java.lang.Object.class,
-					java.lang.Object.class, java.lang.Boolean.class,
-					java.lang.Object.class };
-			boolean[] canEdit = new boolean[] { false, false, false, false };
+			Class[] types = new Class[] { java.lang.String.class,
+					java.lang.String.class, java.lang.String.class, };
+			boolean[] canEdit = new boolean[] { false, true, true };
 
 			@SuppressWarnings({ "rawtypes", "unchecked" })
 			public Class getColumnClass(int columnIndex) {
@@ -476,18 +483,238 @@ public class car_management extends javax.swing.JPanel {
 			}
 		});
 
-		cars_table.addMouseListener(new MouseAdapter() {
+		vehiclejTable.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				tableMouseClicked(e);
 			}
 		});
-		if (cars_table.getColumnModel().getColumnCount() > 0) {
-			cars_table.getColumnModel().getColumn(3).setResizable(false);
-			cars_table.getColumnModel().getColumn(3).setPreferredWidth(5);
+		if (vehiclejTable.getColumnModel().getColumnCount() > 0) {
+			// vehiclejTable.getColumnModel().getColumn(2).setResizable(false);
+			// vehiclejTable.getColumnModel().getColumn(2).setPreferredWidth(5);
 		}
-		ComponentFactory.setJTableTextCenter(cars_table);
-		cars_table.setRowSelectionInterval(n, n);
+		ComponentFactory.setJTableTextCenter(vehiclejTable);
+		vehiclejTable.setRowSelectionInterval(n, n);
+
+		final JPopupMenu vehiclejPop = new JPopupMenu();
+		final JMenuItem vehicleSubmitjItem = new JMenuItem("提交");
+		final JMenuItem vehicleDeljItem = new JMenuItem("删除");
+		vehicleSubmitjItem.addMouseListener(/**
+		 * @author 1 监听vehicle的弹出菜单中的“提交”
+		 */
+		new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				if (e.getButton() == MouseEvent.BUTTON1) {
+					ResultMessage rmsg = null;
+					int n0 = vehiclejTable.getSelectedRow();
+					VehicleVO VO = vehicleVOs.get(n0);
+					VehicleVO v = getViewvehicleVO(n0);
+					if (v.equals(VO)) {
+						ComponentFactory.setState("您未对该车辆行进行修改！",
+								ComponentFactory.DISPLAY_TIME, feedback_text);
+					} else {
+						try {
+							rmsg = vehicleblController.updateVehicle(v);
+							ComponentFactory.setState(
+									ResultMessage.toFriendlyString(rmsg),
+									ComponentFactory.DISPLAY_TIME,
+									feedback_text);
+							if (rmsg == ResultMessage.SUCCESS) {
+								vehicleVOs.remove(n0);
+								vehicleVOs.add(v);
+							}
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+							ComponentFactory.setState(
+									ComponentFactory.REMOTEFAILD,
+									ComponentFactory.DISPLAY_TIME,
+									feedback_text);
+						}
+					}
+				}
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+		});
+		vehicleDeljItem.addMouseListener(/**
+		 * @author 1 监听vehiclejTable上弹出菜单的“删除”
+		 */
+		new MouseListener() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				if (e.getButton() == MouseEvent.BUTTON1) {
+					int tempN = 0;
+					ResultMessage rmsg = null;
+					int n1 = vehiclejTable.getSelectedRow();
+					VehicleVO VO = vehicleVOs.get(n1);
+					Object[] options = { "取消", "删除" };
+					int result = JOptionPane.showOptionDialog(null,
+							"您确定要删除系统该车辆？", "是否删除", JOptionPane.DEFAULT_OPTION,
+							JOptionPane.QUESTION_MESSAGE, null, options,
+							options[0]);
+					if (result == JOptionPane.NO_OPTION) {
+						try {
+							rmsg = vehicleblController.deleteVehicle(VO);
+							if (rmsg == ResultMessage.SUCCESS) {
+								ComponentFactory.setState("删除成功:)",
+										ComponentFactory.DISPLAY_TIME,
+										feedback_text);
+								vehicleVOs.remove(n1);
+								tempN = 0;
+								if (n1 == 0) {
+									tempN = 0;
+								} else {
+									tempN = n1 - 1;
+								}
+								initialVehicleJTable(vehicleVOs, tempN);
+								repaint();
+							} else {
+								ComponentFactory.setState(
+										ResultMessage.toFriendlyString(rmsg),
+										ComponentFactory.DISPLAY_TIME,
+										feedback_text);
+							}
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+							ComponentFactory.setState(
+									ComponentFactory.REMOTEFAILD,
+									ComponentFactory.DISPLAY_TIME,
+									feedback_text);
+						}
+					}
+				}
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
+		;
+		vehiclejPop.add(vehicleSubmitjItem);
+		vehiclejPop.add(vehicleDeljItem);
+		MouseInputListener mil = new MouseInputListener() {
+
+			public void mouseClicked(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mousePressed(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				processEvent(e);
+				if ((e.getModifiers() & MouseEvent.BUTTON3_MASK) != 0
+						&& !e.isControlDown() && !e.isShiftDown()) {
+					if (vehiclejTable.isShowing()) {
+						vehiclejPop.show(vehiclejTable, e.getX(), e.getY());
+					}
+				}
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseDragged(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseMoved(MouseEvent e) {
+				processEvent(e);
+			}
+
+			private void processEvent(MouseEvent e) {
+				if ((e.getModifiers() & MouseEvent.BUTTON3_MASK) != 0) {
+					int modifiers = e.getModifiers();
+					modifiers -= MouseEvent.BUTTON3_MASK;
+					modifiers |= MouseEvent.BUTTON1_MASK;
+					MouseEvent ne = new MouseEvent(e.getComponent(), e.getID(),
+							e.getWhen(), modifiers, e.getX(), e.getY(),
+							e.getClickCount(), false);
+					vehiclejTable.dispatchEvent(ne);
+				}
+			}
+		};
+		vehiclejTable.addMouseListener(mil);
+		vehiclejTable.putClientProperty("terminateEditOnFocusLost",
+				Boolean.TRUE);
+		jScrollPane1.setViewportView(vehiclejTable);
+	}
+
+	private VehicleVO getViewvehicleVO(int n) {
+		// TODO Auto-generated method stub
+		String vehicleNum = null;
+		String vehicleLicenseNum = null;
+		String startTime = null;
+		try {
+			vehicleNum = (String) vehiclejTable.getValueAt(n, 0);
+			vehicleLicenseNum = (String) vehiclejTable.getValueAt(n, 1);
+			startTime = (String) vehiclejTable.getValueAt(n, 2);
+			assert (vehicleLicenseNum != null && vehicleNum != null && startTime != null) : ("您输入的机构信息不完整！");
+		} catch (ClassCastException e) {
+			e.printStackTrace();
+			ComponentFactory.setState("您输入的值类型不正确：(",
+					ComponentFactory.DISPLAY_TIME, feedback_text);
+		} catch (AssertionError e) {
+			ComponentFactory.setState("您输入的机构信息不完整！",
+					ComponentFactory.DISPLAY_TIME, feedback_text);
+			System.out.println(e.getMessage());
+		}
+		return new VehicleVO(vehicleNum, vehicleLicenseNum, startTime);
 	}
 
 	private void initLabel() {
@@ -512,8 +739,8 @@ public class car_management extends javax.swing.JPanel {
 
 	private void setVehicleVOs() {
 		// TODO Auto-generated method stub
-		VehicleVOs = getVehicleVOs();
-		VehicleVOs.sort(null);
+		vehicleVOs = getVehicleVOs();
+		vehicleVOs.sort(null);
 	}
 
 	private ArrayList<VehicleVO> getVehicleVOs() {
@@ -554,7 +781,7 @@ public class car_management extends javax.swing.JPanel {
 		return officeNum;
 	}
 
-	private ArrayList<VehicleVO> VehicleVOs = null;
+	private ArrayList<VehicleVO> vehicleVOs = null;
 	private ControllerFactoryblService controllerFactoryblService = ControllerFactoryImpl
 			.getInstance();
 	private VehicleBLService vehicleblController = controllerFactoryblService
@@ -566,7 +793,7 @@ public class car_management extends javax.swing.JPanel {
 			search_btn;
 	private javax.swing.JLabel businessOffNum2_label, jLabel4, jLabel5,
 			jLabel6;
-	private javax.swing.JTable cars_table;
+	private javax.swing.JTable vehiclejTable;
 	final private javax.swing.JTextField feedback_text = new JTextField();
 	private javax.swing.JScrollPane jScrollPane1;
 	private JTextField search_text;
