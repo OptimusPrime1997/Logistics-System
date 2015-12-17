@@ -19,6 +19,8 @@ import Exception.NumNotFoundException;
 import VO.ReceiptVO.ArriveVO;
 import VO.ReceiptVO.GetRepVO;
 import bl.receiptbl.GetRepbl.GetRepController;
+import ui.receiptui.ReceiptCheckUI.ArriveCheck;
+import ui.util.MyFrame;
 import util.enumData.GoodsArrivalState;
 import util.enumData.Rep;
 import util.enumData.ResultMessage;
@@ -30,6 +32,7 @@ import util.enumData.ResultMessage;
 public class GetRep extends javax.swing.JPanel {
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
+	private MyFrame myFrame;
 	private javax.swing.JButton addButton;
 	private javax.swing.JComboBox<String> arriveStateBox;
 	private javax.swing.JLabel arriveStateLabel;
@@ -64,8 +67,10 @@ public class GetRep extends javax.swing.JPanel {
 	/**
 	 * Creates new form GetRep
 	 */
+	
 	public GetRep() {
 		initComponents();
+		myFrame = new MyFrame(556, 468, this);
 	}
 
 	/**
@@ -375,7 +380,7 @@ public class GetRep extends javax.swing.JPanel {
 	}
 
 	private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+		new ArriveCheck(Rep.GetRep, officeText.getText());
 	}
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -394,7 +399,7 @@ public class GetRep extends javax.swing.JPanel {
 	}
 
 	private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+		myFrame.dispose();
 	}
 
 	private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -418,7 +423,7 @@ public class GetRep extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
-		resultMsgText.setText(ResultMessage.toFriendlyString(ResultMessage.SUBMIT_SUCCESS));
+		myFrame.dispose();
 	}
 
 	private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {

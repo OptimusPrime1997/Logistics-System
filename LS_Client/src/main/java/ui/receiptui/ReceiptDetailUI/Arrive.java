@@ -6,17 +6,60 @@
 
 package ui.receiptui.ReceiptDetailUI;
 
+import java.io.IOException;
+import java.rmi.NotBoundException;
+import java.util.Vector;
+
+import javax.swing.table.DefaultTableModel;
+import util.enumData.*;
+import Exception.ExceptionPrint;
+import Exception.NumNotFoundException;
+import VO.ReceiptVO.GetRepVO;
+import VO.ReceiptVO.ReceptionRepVO;
+import bl.receiptbl.GetRepbl.GetRepController;
+import bl.receiptbl.ReceptionRepbl.ReceptionRepController;
+import ui.util.MyFrame;
+import util.enumData.Rep;
+
 /**
  *
  * @author apple
  */
 public class Arrive extends javax.swing.JPanel {
+	
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private MyFrame myFrame;
+    private javax.swing.JLabel dateLabel;
+    private javax.swing.JTextField dateText;
+    private javax.swing.JLabel departLabel;
+    private javax.swing.JTextField departText;
+    private javax.swing.JLabel getRepNumLabel;
+    private javax.swing.JTextField getRepNumText;
+    private javax.swing.JLabel getRepTypeLabel;
+    private javax.swing.JTextField getRepTypeText;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable;
+    private javax.swing.JLabel numLabel;
+    private javax.swing.JTextField numText;
+    private javax.swing.JButton okButton;
+    private javax.swing.JTextField resultMsgText;
+    private GetRepController getControl;
+    private ReceptionRepController receptionControl;
+    private DefaultTableModel model;
+    private Vector<String> columnIdentifiers;
+    private Vector<Object> dataVector;
+    private Rep rep;
+    private String num;
+    // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form GetCheck
      */
-    public Arrive() {
+    public Arrive(Rep oriRep, String oriNum) {
+    	rep = oriRep;
+    	num = oriNum;
         initComponents();
+        myFrame = new MyFrame(346, 558, this);
     }
 
     /**
@@ -39,9 +82,14 @@ public class Arrive extends javax.swing.JPanel {
         departLabel = new javax.swing.JLabel();
         departText = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         okButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
+        getControl = new GetRepController();
+        receptionControl = new ReceptionRepController();
+        model = new DefaultTableModel();
+        columnIdentifiers = new Vector<String>();
+        dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -64,26 +112,65 @@ public class Arrive extends javax.swing.JPanel {
         departLabel.setText("出发地:");
 
         departText.setEditable(false);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null}
-            },
-            new String [] {
-                "订单号", "到达状态"
-            }
-        ));
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(jTable1);
-
+        
         okButton.setText("完成");
         okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 okButtonActionPerformed(evt);
             }
         });
-
+        
         resultMsgText.setEditable(false);
+        
+        if(rep==Rep.GetRep){
+        	GetRepVO getRepVO = null;
+			try {
+				getRepVO = getControl.getRepByNum(num);
+			} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			}
+        	dateText.setText(getRepVO.date);
+        	numText.setText(num);
+        	getRepTypeText.setText(getRepVO.rep.getChineseName());
+        	getRepNumText.setText(getRepVO.shipNum);
+        	departText.setText(getRepVO.depart);
+        	try {
+				dataVector = getControl.initShow(num);
+			} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			}
+        }
+        else {
+			ReceptionRepVO receptionRepVO = null;
+			try {
+				receptionRepVO = receptionControl.getRepByNum(num);
+			} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			}
+			departText.setText(receptionRepVO.date);
+			numText.setText(num);
+			getRepTypeText.setText(receptionRepVO.rep.getChineseName());
+			getRepNumText.setText(receptionRepVO.shipNum);
+			departText.setText(City.toString(receptionRepVO.city));
+			try {
+				dataVector = receptionControl.initShow(num);
+			} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			}
+		}
+        
+        model.setDataVector(dataVector, columnIdentifiers);
+        jTable.setModel(model);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(jTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -148,25 +235,8 @@ public class Arrive extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_okButtonActionPerformed
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	myFrame.dispose();
+    }
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel dateLabel;
-    private javax.swing.JTextField dateText;
-    private javax.swing.JLabel departLabel;
-    private javax.swing.JTextField departText;
-    private javax.swing.JLabel getRepNumLabel;
-    private javax.swing.JTextField getRepNumText;
-    private javax.swing.JLabel getRepTypeLabel;
-    private javax.swing.JTextField getRepTypeText;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel numLabel;
-    private javax.swing.JTextField numText;
-    private javax.swing.JButton okButton;
-    private javax.swing.JTextField resultMsgText;
-    // End of variables declaration//GEN-END:variables
 }

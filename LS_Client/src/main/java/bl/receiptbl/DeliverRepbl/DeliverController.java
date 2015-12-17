@@ -1,7 +1,9 @@
 package bl.receiptbl.DeliverRepbl;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -99,6 +101,13 @@ implements DeliverRepblService, PostReceiptblService, SubmitblService, FindAccou
 	public boolean isTrueAccount(String num) {
 		// TODO Auto-generated method stub
 		return deliverRepbl.isTrueAccount(num);
+	}
+
+	@Override
+	public String getCourierName(String courierNum) throws RemoteException, FileNotFoundException,
+			ClassNotFoundException, NameNotFoundException, NumNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		return deliverRepShowbl.getCourierName(courierNum);
 	}
 
 }

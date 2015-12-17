@@ -29,6 +29,8 @@ public class GetRepCheckbl {
 		// TODO Auto-generated method stub
 		ArrayList<GetRepVO> getRepVOs = getRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
+		if(getRepVOs==null)
+			return data;
 		for(int i = 0;i < getRepVOs.size();i++){
 			Vector<String> arr = new Vector<String>();
 			GetRepVO GetRepVO = getRepVOs.get(i);

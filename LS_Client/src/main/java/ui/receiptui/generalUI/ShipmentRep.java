@@ -24,6 +24,8 @@ import bl.receiptbl.ShipmentRepbl.ShipmentRepCheckbl;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepbl;
 import blservice.receiptblservice.DeliverRepblService;
 import blservice.receiptblservice.ShipmentRepblServce;
+import ui.receiptui.ReceiptCheckUI.ShipmentCheck;
+import ui.util.MyFrame;
 import util.enumData.ResultMessage;
 
 /**
@@ -33,6 +35,7 @@ import util.enumData.ResultMessage;
 public class ShipmentRep extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+	private MyFrame myFrame;
     private javax.swing.JButton addButton;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton checkAllRepsButton;
@@ -63,6 +66,7 @@ public class ShipmentRep extends javax.swing.JPanel {
      */
     public ShipmentRep() {
         initComponents();
+        myFrame = new MyFrame(426, 461, this);
     }
 
     /**
@@ -332,7 +336,7 @@ public class ShipmentRep extends javax.swing.JPanel {
     				e.printStackTrace();
     				resultMsgText.setText(ExceptionPrint.print(e));
     			}
-        		resultMsgText.setText(ResultMessage.toFriendlyString(ResultMessage.SUBMIT_SUCCESS));
+        		myFrame.dispose();
     		}
     		else {
 				resultMsgText.setText("未找到该司机");
@@ -341,11 +345,11 @@ public class ShipmentRep extends javax.swing.JPanel {
     }
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+    	myFrame.dispose();
     }
 
     private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+    	new ShipmentCheck(officeText.getText());
     }
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {

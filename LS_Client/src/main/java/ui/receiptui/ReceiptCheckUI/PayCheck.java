@@ -4,19 +4,45 @@
  * and open the template in the editor.
  */
 
-package ui.receiptui.ReceiptDetailUI;
+package ui.receiptui.ReceiptCheckUI;
+
+import java.io.IOException;
+import java.rmi.NotBoundException;
+import java.util.Vector;
+
+import javax.swing.table.DefaultTableModel;
+
+import Exception.ExceptionPrint;
+import bl.receiptbl.PayRepbl.PayRepController;
+import ui.util.MyFrame;
 
 /**
  *
  * @author apple
  */
 public class PayCheck extends javax.swing.JPanel {
+	
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+	private MyFrame myFrame;
+    private javax.swing.JLabel dateLabel;
+    private javax.swing.JTextField dateText;
+    private javax.swing.JButton findButton;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable;
+    private javax.swing.JButton okButton;
+    private javax.swing.JTextField resultMsgText;
+    private PayRepController control;
+    private DefaultTableModel model;
+    private Vector<String> columnIdentifiers;
+    private Vector<Object> dataVector;
+    // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form PayRepCheck
      */
     public PayCheck() {
         initComponents();
+        myFrame = new MyFrame(279, 403, this);
     }
 
     /**
@@ -28,35 +54,40 @@ public class PayCheck extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        findButton4 = new javax.swing.JButton();
+        findButton = new javax.swing.JButton();
         dateText = new javax.swing.JTextField();
         dateLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         okButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
+        control = new PayRepController();
+        model = new DefaultTableModel();
+        columnIdentifiers = new Vector<String>();
+        dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        findButton4.setText("查找");
-        findButton4.addActionListener(new java.awt.event.ActionListener() {
+        findButton.setText("查找");
+        findButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                findButton4ActionPerformed(evt);
+                findButtonActionPerformed(evt);
             }
         });
 
         dateLabel.setText("时间:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null}
-            },
-            new String [] {
-                "日期", "编号", "总计"
-            }
-        ));
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(jTable1);
+        try {
+			dataVector = control.initCheck();
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+        model.setDataVector(dataVector, columnIdentifiers);
+        jTable.setModel(model);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(jTable);
 
         okButton.setText("完成");
         okButton.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +113,7 @@ public class PayCheck extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(findButton4))))
+                                .addComponent(findButton))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(183, 183, 183)
                         .addComponent(okButton)))
@@ -96,7 +127,7 @@ public class PayCheck extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dateLabel)
                     .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(findButton4))
+                    .addComponent(findButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -106,22 +137,16 @@ public class PayCheck extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void findButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_findButton4ActionPerformed
+    private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	int row = jTable.getSelectedRow();
+    	for(int i = row;i < dataVector.size();i++){
+    		if(((String)jTable.getValueAt(i, 0)).equals(dateText.getText()))
+    			jTable.setRowSelectionInterval(i,i);
+    	}
+    }
 
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_okButtonActionPerformed
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	myFrame.dispose();
+    }
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel dateLabel;
-    private javax.swing.JTextField dateText;
-    private javax.swing.JButton findButton4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JButton okButton;
-    private javax.swing.JTextField resultMsgText;
-    // End of variables declaration//GEN-END:variables
 }

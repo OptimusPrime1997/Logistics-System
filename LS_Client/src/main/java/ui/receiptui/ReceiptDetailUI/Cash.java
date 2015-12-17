@@ -6,17 +6,52 @@
 
 package ui.receiptui.ReceiptDetailUI;
 
+import java.io.IOException;
+import java.rmi.NotBoundException;
+import java.util.Vector;
+
+import javax.swing.table.DefaultTableModel;
+
+import Exception.ExceptionPrint;
+import Exception.NumNotFoundException;
+import VO.ReceiptVO.CashRepVO;
+import bl.receiptbl.CashRepbl.CashRepController;
+import ui.util.MyFrame;
+
 /**
  *
  * @author apple
  */
 public class Cash extends javax.swing.JPanel {
+	
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private MyFrame myFrame;
+    private javax.swing.JLabel bankAccountLabel;
+    private javax.swing.JTextField bankAccountText;
+    private javax.swing.JLabel dateLabel;
+    private javax.swing.JTextField dateText;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable;
+    private javax.swing.JLabel numLabel;
+    private javax.swing.JTextField numText;
+    private javax.swing.JButton okButton;
+    private javax.swing.JTextField resultMsgText;
+    private javax.swing.JLabel sumLabel;
+    private javax.swing.JTextField sumText;
+    private CashRepController control;
+    private DefaultTableModel model;
+    private Vector<String> columnIdentifiers;
+    private Vector<Object> dataVector;
+    private String num;
+    // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form Cash
      */
-    public Cash() {
+    public Cash(String oriNum) {
+    	num = oriNum;
         initComponents();
+        myFrame = new MyFrame(551, 518, this);
     }
 
     /**
@@ -35,11 +70,15 @@ public class Cash extends javax.swing.JPanel {
         sumLabel = new javax.swing.JLabel();
         sumText = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         bankAccountLabel = new javax.swing.JLabel();
         bankAccountText = new javax.swing.JTextField();
         okButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
+        control = new CashRepController();
+        model = new DefaultTableModel();
+        columnIdentifiers = new Vector<String>();
+        dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -55,18 +94,6 @@ public class Cash extends javax.swing.JPanel {
 
         sumText.setEditable(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null}
-            },
-            new String [] {
-                "快递员名字", "快递员编号", "金额", "备注"
-            }
-        ));
-        jTable1.setCellSelectionEnabled(true);
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(jTable1);
-
         bankAccountLabel.setText("收款账号:");
 
         bankAccountText.setEditable(false);
@@ -79,6 +106,30 @@ public class Cash extends javax.swing.JPanel {
         });
 
         resultMsgText.setEditable(false);
+        
+        CashRepVO cashRepVO = null;
+        try {
+        	cashRepVO = control.getRepByNum(num);
+		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+        dateText.setText(cashRepVO.date);
+        numText.setText(num);
+        sumText.setText(cashRepVO.sum+"");
+        bankAccountText.setText(cashRepVO.bankAccount);
+        try {
+			dataVector = control.initShow(num);
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+        model.setDataVector(dataVector, columnIdentifiers);
+        jTable.setModel(model);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(jTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -136,23 +187,8 @@ public class Cash extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_okButtonActionPerformed
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	myFrame.dispose();
+    }
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel bankAccountLabel;
-    private javax.swing.JTextField bankAccountText;
-    private javax.swing.JLabel dateLabel;
-    private javax.swing.JTextField dateText;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel numLabel;
-    private javax.swing.JTextField numText;
-    private javax.swing.JButton okButton;
-    private javax.swing.JTextField resultMsgText;
-    private javax.swing.JLabel sumLabel;
-    private javax.swing.JTextField sumText;
-    // End of variables declaration//GEN-END:variables
 }

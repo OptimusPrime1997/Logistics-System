@@ -50,14 +50,6 @@ public class courier_signed extends JFrame {
 	/*
 	 * Listeners~~
 	 */
-    private void year_ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {
-    }
-    private void month_ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {
-    }
-   
-    private void day_ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_day_ComboBoxActionPerformed
-       
-    }
     private void getterPhone_textMouseClicked(MouseEvent e) {
     	if(getterPhone_text.getText().equals(phone_)){
     		getterPhone_text.setText(null);
@@ -112,6 +104,7 @@ public class courier_signed extends JFrame {
         }else{//成功窗体才消失
         	this.setVisible(false);
         	parentPanel.setFeedBack(ResultMessage.SIGNED_SUCCESS);
+        	parentPanel.initProBar();
         }
     }
    
@@ -167,26 +160,6 @@ public class courier_signed extends JFrame {
 						"19", "20", "21", "22", "23", "24", "25", "26", "27",
 						"28", "29", "30", "31" }));
 		setTodayDate();
-		
-		
-		/*
-		 * add listener
-		 */
-         year_ComboBox.addActionListener(new java.awt.event.ActionListener() {
-             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                 year_ComboBoxActionPerformed(evt);
-             }
-         });
-         month_ComboBox.addActionListener(new java.awt.event.ActionListener() {
-             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                 month_ComboBoxActionPerformed(evt);
-             }
-         });
-         day_ComboBox.addActionListener(new java.awt.event.ActionListener() {
-             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                 day_ComboBoxActionPerformed(evt);
-             }
-         }); 
 	}
 	private void setTodayDate() {
 		String date=CurrentTime.getDate();		

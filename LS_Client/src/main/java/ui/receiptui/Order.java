@@ -50,9 +50,6 @@ public class Order extends javax.swing.JPanel {
     	initComponents();
     	frame=new MyFrame(600, 600,this);
     }
-    public static void main(String[] args) {
-		new Order(new courier_main());
-	}
     private void initComponents() {
         setBackground(new java.awt.Color(255, 255, 255));
     	initTxt();
@@ -240,7 +237,7 @@ public class Order extends javax.swing.JPanel {
         okButton.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
-        		okBtnMouseClicked();
+        		if(ifsummitted)okBtnMouseClicked();
         	}
 		});
 
@@ -405,6 +402,7 @@ public class Order extends javax.swing.JPanel {
 					logisticState, "", receiverPhone);
 			ResultMessage msg_newGoods=ctr_newgoods.init(vo);
 			if(msg_newGoods==ResultMessage.SUCCESS){
+				ifsummitted=true;
 				//输入合法~
 				try {
 					vo=ctr_newgoods.initCompleteGoods(vo);
@@ -426,10 +424,6 @@ public class Order extends javax.swing.JPanel {
     	if(msg_senderAds!=ResultMessage.VALID)showFeedBack(msg_senderAds);
     	}
     	
-    	
-    	System.out.println("寄件人 "+senderName+"  "+senderAddress+" "+senderPhone);
-    	
-    	
 	}
     private void sumTextActionPerformed(java.awt.event.ActionEvent evt) {
     	
@@ -439,6 +433,7 @@ public class Order extends javax.swing.JPanel {
      */
     private void okBtnMouseClicked() {
     	this.frame.setVisible(false);
+    	parentPanel.initProBar();
     	parentPanel.setFeedBack(ResultMessage.SUBMIT_SUCCESS);
 	}
 
@@ -468,6 +463,7 @@ public class Order extends javax.swing.JPanel {
 	private GoodsInitBLService ctr_newgoods;
 	private MyFrame frame;
 	private GoodsVO vo;
+	private Boolean ifsummitted=false;
 	private static final long serialVersionUID = 1L;
     // End of variables declaration//GEN-END:variables
 }

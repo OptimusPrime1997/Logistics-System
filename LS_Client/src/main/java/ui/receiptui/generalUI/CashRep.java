@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Vector;
 import Exception.NameNotFoundException;
@@ -25,6 +26,7 @@ import VO.ReceiptVO.CashRepVO;
 import VO.ReceiptVO.CashVO;
 import bl.receiptbl.CashRepbl.CashRepController;
 import blservice.receiptblservice.CashRepblService;
+import ui.receiptui.ReceiptCheckUI.CashCheck;
 import ui.util.MyFrame;
 import util.enumData.ResultMessage;
 import Exception.ExceptionPrint;
@@ -44,6 +46,7 @@ public class CashRep extends javax.swing.JPanel {
      * Creates new form CashRep
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+	private MyFrame myFrame;
     private javax.swing.JLabel accountLabel;
     private javax.swing.JComboBox<String> jComboBox;
     private javax.swing.JButton cancelButton;
@@ -69,12 +72,9 @@ public class CashRep extends javax.swing.JPanel {
     private Vector<Object> dataVector;
  // End of variables declaration//GEN-END:variables
     
-	public static void main(String[] args){
-		MyFrame frame = new MyFrame(410, 503, new CashRep());
-	}
-    
     public CashRep() {
         initComponents();
+        myFrame = new MyFrame(480, 635, this);
     }
 
     /**
@@ -404,21 +404,15 @@ public class CashRep extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
-		resultMsgText.setText(ResultMessage.toFriendlyString(ResultMessage.SUBMIT_SUCCESS));
+		myFrame.dispose();
 	}
     
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {
-
+    	myFrame.dispose();
     }
     
     private void checkAllRepsButtonMouseClicked(java.awt.event.MouseEvent evt) {
-
+    	new CashCheck(officeText.getText());
     }
     
-//    public static void main (String[] args){
-//    	JFrame myFrame = new JFrame();
-//    	myFrame.setSize(467,635);
-//    	myFrame.add(new CashRep());
-//    	myFrame.setVisible(true);
-//    }
 }

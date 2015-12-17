@@ -24,6 +24,7 @@ import VO.ReceiptVO.PayRepRentRepVO;
 import VO.ReceiptVO.PayRepVO;
 import bl.receiptbl.PayRepbl.PayRepController;
 import blservice.receiptblservice.PayRepblService;
+import ui.util.MyFrame;
 
 /**
  *
@@ -32,16 +33,15 @@ import blservice.receiptblservice.PayRepblService;
 public class PayRepRent extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+	private MyFrame myFrame;
     private javax.swing.JButton addButton;
     private javax.swing.JLabel balanceLabel;
     private javax.swing.JTextField balanceText;
     private javax.swing.JComboBox<String> bankAccountBox;
     private javax.swing.JLabel bankAccountLabel;
     private javax.swing.JButton cancelButton;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel moneyLabel;
     private javax.swing.JTextField moneyText;
     private javax.swing.JButton okButton;
@@ -56,14 +56,18 @@ public class PayRepRent extends javax.swing.JPanel {
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
-    private static PayRepVO payRepVO;
+    private PayRepVO payRepVO;
+    private PayRep payRep;
     // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form PayRep租金
      */
-    public PayRepRent() {
+    public PayRepRent(PayRep oriPayRep, PayRepVO oriPayRepVO) {
+    	payRep = oriPayRep;
+        payRepVO = oriPayRepVO;
         initComponents();
+        myFrame = new MyFrame(424, 583, this);
     }
 
     /**
@@ -75,8 +79,6 @@ public class PayRepRent extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         receiverNameLabel = new javax.swing.JLabel();
         receiverNameText = new javax.swing.JTextField();
         receiverPhoneLabel = new javax.swing.JLabel();
@@ -100,8 +102,6 @@ public class PayRepRent extends javax.swing.JPanel {
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
 
-        jTextField1.setText("jTextField1");
-
         setBackground(new java.awt.Color(255, 255, 255));
 
         receiverNameLabel.setText("收租人名字:");
@@ -115,7 +115,6 @@ public class PayRepRent extends javax.swing.JPanel {
         columnIdentifiers.add("金额");
         columnIdentifiers.add("备注");
         columnIdentifiers.add("删除");
-        dataVector = control.initRentTable(payRepVO);
         model.setDataVector(dataVector, columnIdentifiers);
         jTable.setModel(model);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
@@ -245,9 +244,7 @@ public class PayRepRent extends javax.swing.JPanel {
                                         .addComponent(cancelButton))
                                     .addComponent(balanceText, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(68, 68, 68)
-                                .addComponent(okButton)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)))
+                                .addComponent(okButton)))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -284,9 +281,7 @@ public class PayRepRent extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton)
                     .addComponent(okButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -327,7 +322,7 @@ public class PayRepRent extends javax.swing.JPanel {
     }
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+    	myFrame.dispose();
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -351,6 +346,13 @@ public class PayRepRent extends javax.swing.JPanel {
     	}
     	PayRepRentRepVO payRepRentRepVO = new PayRepRentRepVO(payRentVOs, bankAccount, sum);
     	control.submitRent(payRepVO, payRepRentRepVO);
+    	payRep.deleteRow("租金");
+    	Vector<String> arr = new Vector<String>();
+    	arr.add("租金");
+    	arr.add(sum+"");
+    	arr.add(bankAccount);
+    	payRep.createRow(arr);
+    	myFrame.dispose();
     }
 
 }

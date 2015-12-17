@@ -153,12 +153,6 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 	}
 
 	@Override
-	public PayThing getPayThing(String type) {
-		// TODO Auto-generated method stub
-		return payRepbl.getPayThing(type);
-	}
-
-	@Override
 	public String getReceiverName(String num) 
 			throws RemoteException, FileNotFoundException, ClassNotFoundException, NameNotFoundException,
 			NumNotFoundException, IOException {

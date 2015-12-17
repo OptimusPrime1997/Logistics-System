@@ -6,17 +6,48 @@
 
 package ui.receiptui.ReceiptDetailUI;
 
+import java.io.IOException;
+import java.rmi.NotBoundException;
+import java.util.Vector;
+
+import javax.swing.table.DefaultTableModel;
+
+import Exception.ExceptionPrint;
+import Exception.NumNotFoundException;
+import VO.ReceiptVO.InStockRepVO;
+import bl.receiptbl.InStockRepbl.InStockRepController;
+import ui.util.MyFrame;
+
 /**
  *
  * @author apple
  */
 public class InStock extends javax.swing.JPanel {
+	
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private MyFrame myFrame;
+    private javax.swing.JLabel dateLabel;
+    private javax.swing.JTextField dateText;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable;
+    private javax.swing.JLabel numLabel;
+    private javax.swing.JTextField numText;
+    private javax.swing.JButton okButton;
+    private javax.swing.JTextField resultMsgText;
+    private InStockRepController control;
+    private DefaultTableModel model;
+    private Vector<String> columnIdentifiers;
+    private Vector<Object> dataVector;
+    private String num;
+    // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form InStock
      */
-    public InStock() {
+    public InStock(String oriNum) {
+    	num = oriNum;
         initComponents();
+        myFrame = new MyFrame(423, 417, this);
     }
 
     /**
@@ -33,9 +64,13 @@ public class InStock extends javax.swing.JPanel {
         numLabel = new javax.swing.JLabel();
         numText = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         okButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
+        control = new InStockRepController();
+        model = new DefaultTableModel();
+        columnIdentifiers = new Vector<String>();
+        dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -47,17 +82,6 @@ public class InStock extends javax.swing.JPanel {
 
         numText.setEditable(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null}
-            },
-            new String [] {
-                "订单号", "区号", "位号"
-            }
-        ));
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(jTable1);
-
         okButton.setText("完成");
         okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,6 +90,28 @@ public class InStock extends javax.swing.JPanel {
         });
 
         resultMsgText.setEditable(false);
+        
+        InStockRepVO inStockRepVO = null;
+        try {
+			inStockRepVO = control.getRepByNum(num);
+		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+        dateText.setText(inStockRepVO.date);
+        numText.setText(num);
+        try {
+			dataVector = control.initShow(num);
+		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+        model.setDataVector(dataVector, columnIdentifiers);
+        jTable.setModel(model);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(jTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -111,19 +157,7 @@ public class InStock extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_okButtonActionPerformed
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel dateLabel;
-    private javax.swing.JTextField dateText;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel numLabel;
-    private javax.swing.JTextField numText;
-    private javax.swing.JButton okButton;
-    private javax.swing.JTextField resultMsgText;
-    // End of variables declaration//GEN-END:variables
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	myFrame.dispose();
+    }
 }

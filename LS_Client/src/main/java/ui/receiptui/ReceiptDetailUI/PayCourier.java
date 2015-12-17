@@ -6,17 +6,48 @@
 
 package ui.receiptui.ReceiptDetailUI;
 
+import java.util.Vector;
+
+import javax.swing.table.DefaultTableModel;
+
+import VO.ReceiptVO.PayRepVO;
+import bl.receiptbl.PayRepbl.PayRepController;
+import ui.util.MyFrame;
+
 /**
  *
  * @author apple
  */
 public class PayCourier extends javax.swing.JPanel {
+	
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+	 private MyFrame myFrame;
+    private javax.swing.JLabel bankAccountLabel;
+    private javax.swing.JTextField bankAccountText;
+    private javax.swing.JLabel dateLabel;
+    private javax.swing.JTextField dateText;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable;
+    private javax.swing.JLabel numLabel;
+    private javax.swing.JTextField numText;
+    private javax.swing.JButton okButton;
+    private javax.swing.JTextField resultMsgText;
+    private javax.swing.JLabel sumLabel;
+    private javax.swing.JTextField sumText;
+    private PayRepController control;
+    private DefaultTableModel model;
+    private Vector<String> columnIdentifiers;
+    private Vector<Object> dataVector;
+    private PayRepVO payRepVO;
+    // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form Courier
      */
-    public PayCourier() {
+    public PayCourier(PayRepVO oriPayRepVO) {
+    	payRepVO = oriPayRepVO;
         initComponents();
+        myFrame = new MyFrame(480, 511, this);
     }
 
     /**
@@ -38,8 +69,12 @@ public class PayCourier extends javax.swing.JPanel {
         resultMsgText = new javax.swing.JTextField();
         okButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         bankAccountText = new javax.swing.JTextField();
+        control = new PayRepController();
+        model = new DefaultTableModel();
+        columnIdentifiers = new Vector<String>();
+        dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -66,26 +101,17 @@ public class PayCourier extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "名字", "编号", "收件总金额", "派件总数", "金额"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(jTable1);
-
         bankAccountText.setEditable(false);
+        
+        dateText.setText(payRepVO.date);
+        numText.setText(payRepVO.num);
+        sumText.setText(payRepVO.courierSalary.sum+"");
+        bankAccountText.setText(payRepVO.courierSalary.bankAccountNum);
+        dataVector = control.initCourierSalaryTable(payRepVO);
+        model.setDataVector(dataVector, columnIdentifiers);
+        jTable.setModel(model);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(jTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -143,23 +169,8 @@ public class PayCourier extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_okButtonActionPerformed
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	myFrame.dispose();
+    }
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel bankAccountLabel;
-    private javax.swing.JTextField bankAccountText;
-    private javax.swing.JLabel dateLabel;
-    private javax.swing.JTextField dateText;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel numLabel;
-    private javax.swing.JTextField numText;
-    private javax.swing.JButton okButton;
-    private javax.swing.JTextField resultMsgText;
-    private javax.swing.JLabel sumLabel;
-    private javax.swing.JTextField sumText;
-    // End of variables declaration//GEN-END:variables
 }

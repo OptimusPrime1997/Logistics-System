@@ -6,8 +6,6 @@
 
 package ui.receiptui.generalUI;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
@@ -21,8 +19,8 @@ import Exception.NumNotFoundException;
 import VO.ReceiptVO.OutStockRepVO;
 import VO.ReceiptVO.ShippingRepVO;
 import VO.ReceiptVO.TransferRepVO;
-import bl.receiptbl.InStockRepbl.InStockRepController;
 import bl.receiptbl.OutStockRepbl.OutStockRepController;
+import ui.receiptui.ReceiptCheckUI.OutStockCheck;
 import ui.warehousemanui.WarehousePanel;
 import util.enumData.City;
 import util.enumData.Rep;
@@ -281,7 +279,7 @@ public class OutStockRep extends javax.swing.JPanel {
     
 
     private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+    	new OutStockCheck(officeText.getText());
     }
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
@@ -309,6 +307,7 @@ public class OutStockRep extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
+    	this.frame.dispose();
     }
     
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt){
