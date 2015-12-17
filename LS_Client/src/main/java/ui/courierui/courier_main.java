@@ -51,6 +51,9 @@ public class courier_main extends JPanel {
 	}
 	private void initComponents() {
 		initLabel();
+		for(int i=0;i<NUM_OF_DAYS;i++){
+			createJProgressBar();
+		}
 		initProBar();
 		initbtn();
 		initText();
@@ -386,11 +389,8 @@ public class courier_main extends JPanel {
 	}
 
 	private void initProBar() {
-		 JProgressBar bar=new JProgressBar();;//bars[0]==today,bars[i]=i days ago
-		for(int i=0;i<NUM_OF_DAYS;i++)createJProgressBar(bar);
 		//赋值
 		int[]values=goodsController.getdaysNumOfGoods(NUM_OF_DAYS);
-//		int[]values=new int[]{10,20,30,40,10,50,45};//TODO 获取数据		
 		for(int i=0;i<bars.size();i++) bars.get(i).setValue(values[i]);
 	}
 	private void initLabel() {
@@ -419,8 +419,8 @@ public class courier_main extends JPanel {
 		date=new JLabel();
 		labels.add(date);
 	}
-	private void createJProgressBar(JProgressBar bar) {
-		bar=new JProgressBar();
+	private void createJProgressBar() {
+		JProgressBar bar=new JProgressBar();
 		bars.add(bar);
 	}
 	/*
