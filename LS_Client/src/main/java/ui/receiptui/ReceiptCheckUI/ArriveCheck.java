@@ -6,15 +6,20 @@
 
 package ui.receiptui.ReceiptCheckUI;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
 import bl.receiptbl.GetRepbl.GetRepController;
 import bl.receiptbl.ReceptionRepbl.ReceptionRepController;
+import ui.receiptui.ReceiptDetailUI.Arrive;
+import ui.receiptui.generalUI.GetRep;
 import ui.util.MyFrame;
 import util.enumData.Rep;
 
@@ -86,6 +91,12 @@ public class ArriveCheck extends javax.swing.JPanel {
 
         dateLabel.setText("时间:");
 
+        columnIdentifiers.add("日期");
+        columnIdentifiers.add("编号");
+        columnIdentifiers.add("到达单据类型");
+        columnIdentifiers.add("到达单据编号");
+        columnIdentifiers.add("出发地");
+        columnIdentifiers.add("查看详细信息");
         if(rep==Rep.GetRep){
         	try {
 				dataVector = getControl.initCheck(office);
@@ -117,6 +128,45 @@ public class ArriveCheck extends javax.swing.JPanel {
         });
 
         resultMsgText.setEditable(false);
+        
+        setColumn();
+        
+        jTable.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int row = jTable.getSelectedRow();
+				int col = jTable.getSelectedColumn();
+				if(col==5){
+					new Arrive(rep, (String)jTable.getValueAt(row, 1));
+				}
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
         
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -156,6 +206,21 @@ public class ArriveCheck extends javax.swing.JPanel {
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void setColumn(){
+    	TableColumn column1 = jTable.getColumnModel().getColumn(0);
+        column1.setPreferredWidth(110);
+        TableColumn column2 = jTable.getColumnModel().getColumn(1);
+        column2.setPreferredWidth(180);
+        TableColumn column3 = jTable.getColumnModel().getColumn(2);
+        column3.setPreferredWidth(120);
+        TableColumn column4 = jTable.getColumnModel().getColumn(3);
+        column4.setPreferredWidth(180);
+        TableColumn column5 = jTable.getColumnModel().getColumn(4);
+        column5.setPreferredWidth(65);
+        TableColumn column6 = jTable.getColumnModel().getColumn(5);
+        column6.setPreferredWidth(20);
+    }
     
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	int row = jTable.getSelectedRow();

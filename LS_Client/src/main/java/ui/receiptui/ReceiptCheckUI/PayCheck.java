@@ -6,14 +6,19 @@
 
 package ui.receiptui.ReceiptCheckUI;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
 import bl.receiptbl.PayRepbl.PayRepController;
+import ui.receiptui.ReceiptDetailUI.Deliver;
+import ui.receiptui.ReceiptDetailUI.Pay;
 import ui.util.MyFrame;
 
 /**
@@ -77,6 +82,9 @@ public class PayCheck extends javax.swing.JPanel {
 
         dateLabel.setText("时间:");
 
+        columnIdentifiers.add("日期");
+        columnIdentifiers.add("总计");
+        columnIdentifiers.add("查看详细信息");
         try {
 			dataVector = control.initCheck();
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
@@ -97,6 +105,48 @@ public class PayCheck extends javax.swing.JPanel {
         });
 
         resultMsgText.setEditable(false);
+        
+        setColumn();
+        
+        jTable.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int row = jTable.getSelectedRow();
+				int col = jTable.getSelectedColumn();
+				if(col==2){
+					String num = (String)jTable.getValueAt(row, 0);
+					String[] strings = num.split("-");
+					num = strings[0] + strings[1];
+					new Pay(num);
+				}
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -136,6 +186,13 @@ public class PayCheck extends javax.swing.JPanel {
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void setColumn(){
+    	TableColumn column1 = jTable.getColumnModel().getColumn(0);
+        column1.setPreferredWidth(110);
+        TableColumn column2 = jTable.getColumnModel().getColumn(1);
+        column2.setPreferredWidth(60);
+    }
 
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	int row = jTable.getSelectedRow();
