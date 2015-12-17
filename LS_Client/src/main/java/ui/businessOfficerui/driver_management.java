@@ -25,15 +25,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.WindowConstants;
-
-import org.junit.experimental.theories.Theories;
-
-import main.MainFrame;
 import VO.ManagementVO.DriverVO;
-import VO.ManagementVO.VehicleVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.controllerfactoryblservice.ControllerFactoryblService;
 import blservice.loginblservice.LoginBLService;
@@ -43,7 +35,6 @@ import util.CurrentCity;
 import util.InputCheck;
 import util.enumData.City;
 import util.enumData.ResultMessage;
-import util.enumData.Sex;
 
 /**
  *
