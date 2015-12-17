@@ -4,6 +4,8 @@ package main;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.rmi.RemoteException;
 
 import javax.swing.JButton;
@@ -24,7 +26,9 @@ import ui.warehousemanui.WarehousePanel;
 import util.InputCheck;
 import util.enumData.ResultMessage;
 import Exception.GoodsNotFound;
+import Exception.NumNotFoundException;
 import VO.GoodsVO;
+import VO.ManagementVO.AccountVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.goodsblservice.GoodsCheckValidBLService;
 import blservice.goodsblservice.GoodsFindBLService;
@@ -215,7 +219,10 @@ public class MainFrame extends JFrame {
          		default:showFeedback(ResultMessage.NOT_FOUND_ACCOUNTNUM);
          			break;
          		}
-        	  }else showFeedback(ResultMessage.WRONG_PASSWORD);
+        	  }else if(msgMatch==ResultMessage.NOT_COMPLETED_ACCOUNT||msgMatch==ResultMessage.NOT_FOUND){
+        		  showFeedback(ResultMessage.NOT_FOUND_ACCOUNTNUM);
+        	  }
+        	  else showFeedback(ResultMessage.WRONG_PASSWORD);
          }else{//不合法 反馈
         	 if(msgKey_ifValid!=ResultMessage.VALID){
         		 showFeedback(msgKey_ifValid);

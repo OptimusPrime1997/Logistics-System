@@ -59,6 +59,14 @@ public class courier_main extends JPanel {
 		initText();
 		initLayOut();
 	}
+	/**
+	 * 给进度条赋值
+	 */
+	public void initProBar() {
+		//赋值
+		int[]values=goodsController.getdaysNumOfGoods(NUM_OF_DAYS);
+		for(int i=0;i<bars.size();i++) bars.get(i).setValue(values[i]);
+	}
 	/*
 	 * 初始化布局
 	 */
@@ -388,11 +396,7 @@ public class courier_main extends JPanel {
 		});
 	}
 
-	private void initProBar() {
-		//赋值
-		int[]values=goodsController.getdaysNumOfGoods(NUM_OF_DAYS);
-		for(int i=0;i<bars.size();i++) bars.get(i).setValue(values[i]);
-	}
+	
 	private void initLabel() {
 		String Cdate=CurrentTime.getDate();
 		businessOffice_label = new JLabel();
