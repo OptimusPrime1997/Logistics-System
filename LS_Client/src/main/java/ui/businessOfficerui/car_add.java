@@ -74,7 +74,7 @@ public class car_add extends JFrame {
 	}// GEN-LAST:event_cancel_btnMouseClicked
 
 	private void ok_btnMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_ok_btnMouseClicked
-		String vehicleNum = parent.getName() + "000";
+		String vehicleNum = parent.getOfficeNum() + "000";
 		String licenseNum = carLicenseNum_text.getText();
 		String startTime = timeText.getText();
 		ResultMessage[] rmsg = new ResultMessage[3];
@@ -87,6 +87,9 @@ public class car_add extends JFrame {
 			try {
 				ResultMessage r = vehicleblController.insertVehicle(v);
 				ResultMessage.postCheck(ResultMessage.SUCCESS, r);
+				if(r==ResultMessage.SUCCESS){
+					parent.initTable();
+				}
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -109,6 +112,9 @@ public class car_add extends JFrame {
 		initLayout(layout);
 	}
 
+	/**
+	 * @param layout
+	 */
 	private void initLayout(GroupLayout layout) {
 		getContentPane().setLayout(layout);
 		layout.setHorizontalGroup(layout
@@ -222,6 +228,9 @@ public class car_add extends JFrame {
 		pack();
 	}
 
+	/**
+	 * 
+	 */
 	private void initbtn() {
 		ok_btn = new JButton();
 		cancel_btn = new JButton();
@@ -246,6 +255,7 @@ public class car_add extends JFrame {
 		jLabel4 = new JLabel();
 
 		jLabel1.setText("车辆代号");
+		jLabel1.setVisible(false);
 		jLabel2.setText("车牌号");
 		jLabel4.setFont(new java.awt.Font("宋体", 1, 18)); // NOI18N
 		jLabel3.setText("服役时间");
@@ -261,6 +271,7 @@ public class car_add extends JFrame {
 
 		carCodeNum_text.setEditable(false);
 		carCodeNum_text.setText("025001014");
+		carCodeNum_text.setVisible(false);
 		carCodeNum_text.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				carCodeNum_textActionPerformed(evt);
@@ -275,8 +286,6 @@ public class car_add extends JFrame {
 				});
 	}
 
-	private ControllerFactoryblService controllerFactoryblService = ControllerFactoryImpl
-			.getInstance();
 	private VehicleBLService vehicleblController;
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables

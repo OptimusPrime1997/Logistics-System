@@ -74,18 +74,19 @@ public class Vehiclebl {
 					ResultMessage rmsg = vehicleDataService
 							.insertVehicle(manageVOPO.voToPO(vo));
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
+					return ResultMessage.SUCCESS;
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					System.out.println("存储文件出错");
 					return ResultMessage.IOFAILED;
-				} catch (ClassNotFoundException e) {
+				} 
+				catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					System.out.println("系统程序错误");
 					return ResultMessage.FAILED;
 				}
-				return ResultMessage.SUCCESS;
 			} else {
 				System.out.println("车辆"
 						+ ResultMessage.toFriendlyString(check(vo)));
@@ -131,7 +132,7 @@ public class Vehiclebl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.CAR_MANAGEMENT);
 		if (vehicleDataService != null) {
-			if (InputCheck.checkInputNum(vo.vehicleNum, 11) == ResultMessage.VALID) {
+			if (InputCheck.checkInputNum(vo.vehicleNum, 9) == ResultMessage.VALID) {
 				VehiclePO po = manageVOPO.voToPO(vo);
 				try {
 					ResultMessage rmsg = vehicleDataService.deleteVehicle(po);
@@ -150,7 +151,7 @@ public class Vehiclebl {
 				return ResultMessage.SUCCESS;
 			} else {
 				System.out.println("车辆"
-						+ InputCheck.checkInputNum(vo.vehicleNum, 11));
+						+ InputCheck.checkInputNum(vo.vehicleNum, 9));
 				return ResultMessage.WRONG_DATA;
 			}
 		} else
