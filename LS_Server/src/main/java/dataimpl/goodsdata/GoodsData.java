@@ -25,7 +25,6 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 				all=helper.getAll(filename);
 			    return helper.save(po, filename);
 			} catch ( IOException | ClassNotFoundException e) {
-				e.printStackTrace();
 			}
 		return ResultMessage.FAILED;
 	}

@@ -1917,6 +1917,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		String type=logTypejComboBox.getSelectedItem().toString();
 		LogType logType=StrToLogType.strToLogTye(type);
         logVOs=ctr_log.show(startT, endT, logType);
+        System.out.println(logVOs.get(0).time);
         //TODO 得到了日志数据   没放到界面上
 	}
 	private void newFinanceIconjPanelMouseReleased(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_newFinanceIconjPanelMouseReleased

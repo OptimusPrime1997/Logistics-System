@@ -24,6 +24,7 @@ public class LogData extends UnicastRemoteObject implements LogDataService{
 	@Override
 	public ResultMessage add(LogPO po) throws RemoteException {
 		try {
+			System.out.println("LogData.add "+po.getTime());
 			return helper.save(po, filename);
 		} catch (IOException e) {
 		}
@@ -33,12 +34,14 @@ public class LogData extends UnicastRemoteObject implements LogDataService{
 	@Override
 	public ArrayList<LogPO> show(LogType type, String startTime, String endTime)
 			throws RemoteException {
+		System.out.println("Logdata.show");
 		ArrayList<LogPO> pos=new ArrayList<LogPO>();
 		ArrayList<Object> all;
 		LogPO temp;
 		try {
 			all=helper.getAll(filename);
 			if(type==LogType.ALL){
+				System.out.println("管我要所有 ");
 				for(Object o:all){
 					temp=(LogPO)o;
 					pos.add(temp);
@@ -63,8 +66,9 @@ public class LogData extends UnicastRemoteObject implements LogDataService{
 				}
 			}
 		} catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
 		}
-		
 		return pos;
+		
 	}
 }

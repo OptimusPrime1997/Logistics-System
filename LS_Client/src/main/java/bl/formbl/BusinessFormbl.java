@@ -27,7 +27,6 @@ public class BusinessFormbl {
 		MockPayRepbl ctr_payRep = new MockPayRepbl();
 		MockCashRepbl ctr_cashRep = new MockCashRepbl();
 		System.out.println("BusinessFormbl.show");
-		int i = 0;
 		while (CurrentTime.ifearlier(tempT, endTime)) {
 			System.out.println(tempT);
 			if (ctr_payRep.getRepByDate(tempT) != null)

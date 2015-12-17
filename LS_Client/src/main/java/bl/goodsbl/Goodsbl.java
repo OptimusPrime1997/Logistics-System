@@ -259,8 +259,6 @@ public class Goodsbl {
 			basicPrice = basicPrice * expressRates[2] / expressRates[1];
 		// calculate the fare
 		fare = basicPrice * distance * weight;
-		System.out.println(basicPrice+"  "+distance+"  "+weight);
-		System.out.println(fare);
 		return (int)fare;
 	}
 
@@ -273,11 +271,11 @@ public class Goodsbl {
 		try {
 			data = (GoodsDataService)Naming.lookup("goodsServer");
 		} catch (MalformedURLException e) {
-			e.printStackTrace();
+			
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			
 		} catch (NotBoundException e) {
-			e.printStackTrace();
+			
 		}return data;
 	}
 	/**

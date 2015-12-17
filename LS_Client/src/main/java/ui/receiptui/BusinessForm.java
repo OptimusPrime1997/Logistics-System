@@ -213,6 +213,7 @@ public class BusinessForm extends javax.swing.JPanel {
     	if(msgt==ResultMessage.VALID){
     		try {
 				formVO=ctr.show(startT, endT);
+				
 				System.out.println("找到啦");
 			} catch (NotFoundMoneyInAndOutException e) {
 	     	    showFeedback(ResultMessage.NOT_FOUND_FINACIAL);
