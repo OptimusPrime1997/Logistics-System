@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 import VO.ReceiptVO.PayRepVO;
 import bl.receiptbl.PayRepbl.PayRepController;
+import ui.util.MyFrame;
 
 /**
  *
@@ -20,6 +21,7 @@ import bl.receiptbl.PayRepbl.PayRepController;
 public class PayDriver extends javax.swing.JPanel {
 	
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private MyFrame myFrame;
     private javax.swing.JLabel bankAccountLabel;
     private javax.swing.JTextField bankAccountText;
     private javax.swing.JLabel dateLabel;
@@ -42,8 +44,10 @@ public class PayDriver extends javax.swing.JPanel {
     /**
      * Creates new form PayDriver
      */
-    public PayDriver() {
+    public PayDriver(PayRepVO oriPayRepVO) {
+    	payRepVO = oriPayRepVO;
         initComponents();
+        myFrame = new MyFrame(436, 511, this);
     }
 
     /**
@@ -99,7 +103,13 @@ public class PayDriver extends javax.swing.JPanel {
 
         dateLabel.setText("日期:");
         
-        
+        dateText.setText(payRepVO.date);
+        numText.setText(payRepVO.num);
+        sumText.setText(payRepVO.driverSalary.sum+"");
+        bankAccountText.setText(payRepVO.driverSalary.bankAccountNum);
+        dataVector = control.initDriverSalaryTable(payRepVO);
+        model.setDataVector(dataVector, columnIdentifiers);
+        jTable.setModel(model);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(jTable);
 
@@ -160,7 +170,7 @@ public class PayDriver extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+    	myFrame.dispose();
     }
 
 }

@@ -196,4 +196,10 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 		return payRepCheckbl.initCheck();
 	}
 
+	@Override
+	public PayRepRefundRepVO getRefundByDate(ArrayList<PayRepRefundRepVO> payRepRefundRepVOs, String date) {
+		// TODO Auto-generated method stub
+		return refundbl.getRefundByDate(payRepRefundRepVOs, date);
+	}
+
 }

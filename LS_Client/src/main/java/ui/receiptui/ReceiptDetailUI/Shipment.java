@@ -6,17 +6,53 @@
 
 package ui.receiptui.ReceiptDetailUI;
 
+import java.io.IOException;
+import java.rmi.NotBoundException;
+import java.util.Vector;
+
+import javax.swing.table.DefaultTableModel;
+
+import Exception.ExceptionPrint;
+import Exception.NumNotFoundException;
+import VO.ReceiptVO.ShipmentRepVO;
+import bl.receiptbl.OutStockRepbl.OutStockRepController;
+import bl.receiptbl.ShipmentRepbl.ShipmentRepController;
+import ui.util.MyFrame;
+
 /**
  *
  * @author apple
  */
 public class Shipment extends javax.swing.JPanel {
+	
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private MyFrame myFrame;
+    private javax.swing.JLabel dateLabel;
+    private javax.swing.JTextField dateText;
+    private javax.swing.JLabel driverLabel;
+    private javax.swing.JTextField driverText;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable;
+    private javax.swing.JLabel numLabel;
+    private javax.swing.JTextField numText;
+    private javax.swing.JButton okButton;
+    private javax.swing.JLabel plateLabel;
+    private javax.swing.JTextField plateText;
+    private javax.swing.JTextField resultMsgText;
+    private ShipmentRepController control;
+    private DefaultTableModel model;
+    private Vector<String> columnIdentifiers;
+    private Vector<Object> dataVector;
+    private String num;
+    // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form Shipment
      */
-    public Shipment() {
+    public Shipment(String oriNum) {
+    	num = oriNum;
         initComponents();
+        myFrame = new MyFrame(457, 337, this);
     }
 
     /**
@@ -33,13 +69,17 @@ public class Shipment extends javax.swing.JPanel {
         dateText = new javax.swing.JTextField();
         dateLabel = new javax.swing.JLabel();
         plateLabel = new javax.swing.JLabel();
-        plateNum = new javax.swing.JTextField();
+        plateText = new javax.swing.JTextField();
         driverLabel = new javax.swing.JLabel();
         driverText = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         okButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
+        control = new ShipmentRepController();
+        model = new DefaultTableModel();
+        columnIdentifiers = new Vector<String>();
+        dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -53,22 +93,11 @@ public class Shipment extends javax.swing.JPanel {
 
         plateLabel.setText("车牌号:");
 
-        plateNum.setEditable(false);
+        plateText.setEditable(false);
 
         driverLabel.setText("司机编号:");
 
         driverText.setEditable(false);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null}
-            },
-            new String [] {
-                "订单号"
-            }
-        ));
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(jTable1);
 
         okButton.setText("完成");
         okButton.addActionListener(new java.awt.event.ActionListener() {
@@ -78,6 +107,30 @@ public class Shipment extends javax.swing.JPanel {
         });
 
         resultMsgText.setEditable(false);
+        
+        ShipmentRepVO shipmentRepVO = null;
+        try {
+			shipmentRepVO = control.getRepByNum(num);
+		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+        dateText.setText(shipmentRepVO.date);
+        numText.setText(num);
+        plateText.setText(shipmentRepVO.plateNum);
+        driverText.setText(shipmentRepVO.driverNum);
+        try {
+			dataVector = control.initShow(num);
+		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+        model.setDataVector(dataVector, columnIdentifiers);
+        jTable.setModel(model);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(jTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -95,7 +148,7 @@ public class Shipment extends javax.swing.JPanel {
                     .addComponent(driverText, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(plateNum, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plateText, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(okButton))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,7 +171,7 @@ public class Shipment extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(plateLabel)
-                            .addComponent(plateNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(plateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(driverLabel)
@@ -131,23 +184,8 @@ public class Shipment extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_okButtonActionPerformed
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	myFrame.dispose();
+    }
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel dateLabel;
-    private javax.swing.JTextField dateText;
-    private javax.swing.JLabel driverLabel;
-    private javax.swing.JTextField driverText;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel numLabel;
-    private javax.swing.JTextField numText;
-    private javax.swing.JButton okButton;
-    private javax.swing.JLabel plateLabel;
-    private javax.swing.JTextField plateNum;
-    private javax.swing.JTextField resultMsgText;
-    // End of variables declaration//GEN-END:variables
 }

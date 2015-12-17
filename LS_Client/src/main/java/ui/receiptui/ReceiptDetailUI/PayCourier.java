@@ -21,7 +21,7 @@ import ui.util.MyFrame;
 public class PayCourier extends javax.swing.JPanel {
 	
     // Variables declaration - do not modify//GEN-BEGIN:variables
-	 private MyFrame myFrame;
+	private MyFrame myFrame;
     private javax.swing.JLabel bankAccountLabel;
     private javax.swing.JTextField bankAccountText;
     private javax.swing.JLabel dateLabel;
