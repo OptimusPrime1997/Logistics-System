@@ -6,10 +6,10 @@
 
 package ui.receiptui.ReceiptDetailUI;
 
-import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import VO.ReceiptVO.PayRepRefundRepVO;
 import VO.ReceiptVO.PayRepVO;
@@ -107,6 +107,8 @@ public class PayRefund extends javax.swing.JPanel {
 
         bankAccountText.setEditable(false);
         
+        columnIdentifiers.add("金额");
+        columnIdentifiers.add("付款原因");
         PayRepRefundRepVO payRepRefundRepVO = control.getRefundByDate(payRepVO.refund, date);
         dateText.setText(payRepVO.date);
         numText.setText(payRepVO.num);
@@ -117,6 +119,8 @@ public class PayRefund extends javax.swing.JPanel {
         jTable.setModel(model);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(jTable);
+        
+        setColumn();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -135,9 +139,9 @@ public class PayRefund extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bankAccountText, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bankAccountText, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -173,6 +177,13 @@ public class PayRefund extends javax.swing.JPanel {
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void setColumn(){
+    	TableColumn column1 = jTable.getColumnModel().getColumn(0);
+        column1.setPreferredWidth(60);
+        TableColumn column2 = jTable.getColumnModel().getColumn(1);
+        column2.setPreferredWidth(300);
+    }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	myFrame.dispose();

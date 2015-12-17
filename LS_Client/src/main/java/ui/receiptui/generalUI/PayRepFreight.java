@@ -6,8 +6,6 @@
 
 package ui.receiptui.generalUI;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
@@ -23,9 +21,6 @@ import VO.ReceiptVO.PayFreightVO;
 import VO.ReceiptVO.PayRepFreightRepVO;
 import VO.ReceiptVO.PayRepVO;
 import bl.receiptbl.PayRepbl.PayRepController;
-import blservice.receiptblservice.PayRepblService;
-import ui.receiptui.ReceiptDetailUI.Pay;
-import ui.receiptui.ReceiptDetailUI.PayFreight;
 import ui.util.MyFrame;
 import util.enumData.ResultMessage;
 

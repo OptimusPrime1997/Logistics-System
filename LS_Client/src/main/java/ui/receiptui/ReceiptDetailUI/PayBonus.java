@@ -9,6 +9,7 @@ package ui.receiptui.ReceiptDetailUI;
 import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import VO.ReceiptVO.PayBonusVO;
 import VO.ReceiptVO.PayRepVO;
@@ -105,6 +106,10 @@ public class PayBonus extends javax.swing.JPanel {
 
         resultMsgText.setEditable(false);
         
+        columnIdentifiers.add("名字");
+        columnIdentifiers.add("编号");
+        columnIdentifiers.add("金额");
+        columnIdentifiers.add("备注");
         dateText.setText(payRepVO.date);
         numText.setText(payRepVO.num);
         sumText.setText(payRepVO.bonus.sum+"");
@@ -115,6 +120,8 @@ public class PayBonus extends javax.swing.JPanel {
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(jTable);
 
+        setColumn();
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,9 +139,9 @@ public class PayBonus extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bankAccountText, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(bankAccountText, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -170,6 +177,17 @@ public class PayBonus extends javax.swing.JPanel {
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void setColumn(){
+    	TableColumn column1 = jTable.getColumnModel().getColumn(0);
+        column1.setPreferredWidth(75);
+        TableColumn column2 = jTable.getColumnModel().getColumn(1);
+        column2.setPreferredWidth(115);
+        TableColumn column3 = jTable.getColumnModel().getColumn(2);
+        column3.setPreferredWidth(60);
+        TableColumn column4 = jTable.getColumnModel().getColumn(3);
+        column4.setPreferredWidth(150);
+    }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	myFrame.dispose();

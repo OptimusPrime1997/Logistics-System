@@ -9,6 +9,7 @@ package ui.receiptui.ReceiptDetailUI;
 import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import VO.ReceiptVO.PayRepVO;
 import bl.receiptbl.PayRepbl.PayRepController;
@@ -103,6 +104,11 @@ public class PayCourier extends javax.swing.JPanel {
 
         bankAccountText.setEditable(false);
         
+        columnIdentifiers.add("名字");
+        columnIdentifiers.add("编号");
+        columnIdentifiers.add("收件总金额");
+        columnIdentifiers.add("派件总数");
+        columnIdentifiers.add("金额");
         dateText.setText(payRepVO.date);
         numText.setText(payRepVO.num);
         sumText.setText(payRepVO.courierSalary.sum+"");
@@ -112,6 +118,8 @@ public class PayCourier extends javax.swing.JPanel {
         jTable.setModel(model);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(jTable);
+        
+        setColumn();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -130,9 +138,9 @@ public class PayCourier extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bankAccountText, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(bankAccountText, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(213, 213, 213)
                         .addComponent(okButton))
@@ -168,6 +176,19 @@ public class PayCourier extends javax.swing.JPanel {
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void setColumn(){
+    	TableColumn column1 = jTable.getColumnModel().getColumn(0);
+        column1.setPreferredWidth(75);
+        TableColumn column2 = jTable.getColumnModel().getColumn(1);
+        column2.setPreferredWidth(115);
+        TableColumn column3 = jTable.getColumnModel().getColumn(2);
+        column3.setPreferredWidth(60);
+        TableColumn column4 = jTable.getColumnModel().getColumn(3);
+        column4.setPreferredWidth(60);
+        TableColumn column5 = jTable.getColumnModel().getColumn(4);
+        column5.setPreferredWidth(60);
+    }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	myFrame.dispose();

@@ -18,12 +18,7 @@ import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
 import VO.ReceiptVO.ShipmentRepVO;
-import bl.receiptbl.DeliverRepbl.DeliverController;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepController;
-import bl.receiptbl.ShipmentRepbl.ShipmentRepCheckbl;
-import bl.receiptbl.ShipmentRepbl.ShipmentRepbl;
-import blservice.receiptblservice.DeliverRepblService;
-import blservice.receiptblservice.ShipmentRepblServce;
 import ui.receiptui.ReceiptCheckUI.ShipmentCheck;
 import ui.util.MyFrame;
 import util.enumData.ResultMessage;

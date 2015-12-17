@@ -126,6 +126,7 @@ public class OutStock extends javax.swing.JPanel {
 
         resultMsgText.setEditable(false);
         
+        columnIdentifiers.add("订单号");
         OutStockRepVO outStockRepVO = null;
         try {
 			outStockRepVO = control.getRepByNum(num);

@@ -156,7 +156,6 @@ public class CashRep extends javax.swing.JPanel {
         columnIdentifiers.add("金额");
         columnIdentifiers.add("备注");
         columnIdentifiers.add("删除");
-        
 		try {
 			dataVector = control.initTable(officeText.getText());
 			model.setDataVector(dataVector, columnIdentifiers);

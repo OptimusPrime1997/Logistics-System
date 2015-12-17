@@ -18,12 +18,10 @@ import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
-import PO.Receipt.PayRepRentRepPO;
 import VO.ReceiptVO.PayRentVO;
 import VO.ReceiptVO.PayRepRentRepVO;
 import VO.ReceiptVO.PayRepVO;
 import bl.receiptbl.PayRepbl.PayRepController;
-import blservice.receiptblservice.PayRepblService;
 import ui.util.MyFrame;
 
 /**
