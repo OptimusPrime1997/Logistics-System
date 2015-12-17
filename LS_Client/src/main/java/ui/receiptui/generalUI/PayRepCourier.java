@@ -23,6 +23,7 @@ import VO.ReceiptVO.PayRepCourierSalaryRepVO;
 import VO.ReceiptVO.PayRepVO;
 import bl.receiptbl.PayRepbl.PayRepController;
 import blservice.receiptblservice.PayRepblService;
+import ui.util.MyFrame;
 
 /**
  *
@@ -31,6 +32,7 @@ import blservice.receiptblservice.PayRepblService;
 public class PayRepCourier extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+	private MyFrame myFrame;
     private javax.swing.JLabel balanceLabel;
     private javax.swing.JTextField balanceText;
     private javax.swing.JComboBox<String> bankAccountBox;
@@ -46,14 +48,18 @@ public class PayRepCourier extends javax.swing.JPanel {
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
-    private static PayRepVO payRepVO;
+    private PayRepVO payRepVO;
+    private PayRep payRep;
     // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form PayRep快递员
      */
-    public PayRepCourier() {
+    public PayRepCourier(PayRep oriPayRep, PayRepVO oriPayRepVO) {
         initComponents();
+        payRepVO = oriPayRepVO;
+        payRep = oriPayRep;
+        myFrame = new MyFrame(493, 485, this);
     }
 
     /**
@@ -89,7 +95,6 @@ public class PayRepCourier extends javax.swing.JPanel {
         columnIdentifiers.add("派件总数");
         columnIdentifiers.add("金额");
         columnIdentifiers.add("删除");
-        dataVector = control.initCourierSalaryTable(payRepVO);
         model.setDataVector(dataVector, columnIdentifiers);
         jTable.setModel(model);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
@@ -132,45 +137,6 @@ public class PayRepCourier extends javax.swing.JPanel {
         
         setColumn();
         
-        jTable.addMouseListener(new MouseListener() {
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				int row = jTable.getSelectedRow();
-				int col = jTable.getSelectedColumn();
-				if(col==5){
-					model.removeRow(row);
-					jTable.setModel(model);
-					sumText.setText(calSum());
-				}
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -251,7 +217,7 @@ public class PayRepCourier extends javax.swing.JPanel {
     }
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+    	myFrame.dispose();
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,6 +243,13 @@ public class PayRepCourier extends javax.swing.JPanel {
     	PayRepCourierSalaryRepVO payRepCourierSalaryRepVO = 
     			new PayRepCourierSalaryRepVO(bankAccount, sum, payCourierSalaryVOs);
     	control.submitCourier(payRepVO, payRepCourierSalaryRepVO);
+    	payRep.deleteRow("快递员工资");
+    	Vector<String> arr = new Vector<String>();
+    	arr.add("快递员工资");
+    	arr.add(sum+"");
+    	arr.add(bankAccount);
+    	payRep.createRow(arr);
+    	myFrame.dispose();
     }
 
 }

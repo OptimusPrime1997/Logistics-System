@@ -7,13 +7,10 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import Exception.GoodsNotFound;
-import Exception.NameNotFoundException;
-import Exception.NumNotFoundException;
 import PO.Receipt.ReceiptPO;
 import VO.ReceiptVO.DeliverRepVO;
 import VO.ReceiptVO.ReceiptVO;
 import bl.goodsbl.Goodsbl;
-import bl.managementbl.accountbl.Accountbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import util.enumData.Rep;
 import util.enumData.ResultMessage;
@@ -23,7 +20,8 @@ public class DeliverRepbl {
 	private Receiptbl receiptbl = new Receiptbl();
 	private Goodsbl goodsbl = new Goodsbl();
 
-	public String createNum(String date, String office) throws ClassNotFoundException, NotBoundException, IOException {
+	public String createNum(String date, String office) 
+			throws ClassNotFoundException, NotBoundException, IOException {
 		String num = receiptbl.createNum(date, Rep.DeliverRep, office);
 		int k = num.length();
 		for (int i = 4; i > k; i--)
@@ -31,8 +29,8 @@ public class DeliverRepbl {
 		return num;
 	}
 
-	public void submit(ReceiptVO vo) throws RemoteException, MalformedURLException, IOException,
-	NotBoundException {
+	public void submit(ReceiptVO vo) 
+			throws RemoteException, MalformedURLException, IOException, NotBoundException {
 		receiptbl.submit(DeliverRepVO.toPO((DeliverRepVO) vo), Rep.DeliverRep);
 	}
 
@@ -63,8 +61,8 @@ public class DeliverRepbl {
 		return goodsbl.findByListNum(order).receiverAddress;
 	}
 
-	public ArrayList<DeliverRepVO> getAllRep(String office) throws ClassNotFoundException, NotBoundException, 
-	IOException {
+	public ArrayList<DeliverRepVO> getAllRep(String office) 
+			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.DeliverRep, office);
 		return DeliverRepVO.toArrayVO(receiptPOs);

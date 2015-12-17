@@ -18,8 +18,9 @@ import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
 import VO.ReceiptVO.TransferRepVO;
-import bl.receiptbl.ShippingRepbl.ShippingRepController;
 import bl.receiptbl.TransferRepbl.TransferRepController;
+import ui.receiptui.ReceiptCheckUI.TransferCheck;
+import ui.util.MyFrame;
 import util.enumData.City;
 import util.enumData.ResultMessage;
 import util.enumData.ShipForm;
@@ -31,6 +32,7 @@ import util.enumData.ShipForm;
 public class TransferRep extends javax.swing.JPanel {
 	
     // Variables declaration - do not modify//GEN-BEGIN:variables
+	private MyFrame myFrame;
     private javax.swing.JButton addButton;
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel carNumLabel;
@@ -65,6 +67,7 @@ public class TransferRep extends javax.swing.JPanel {
      */
     public TransferRep() {
         initComponents();
+        myFrame = new MyFrame(411, 483, this);
     }
 
     /**
@@ -335,7 +338,7 @@ public class TransferRep extends javax.swing.JPanel {
     }
 
     private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	
+    	new TransferCheck(officeText.getText());
     }
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -351,7 +354,7 @@ public class TransferRep extends javax.swing.JPanel {
     }
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+    	myFrame.dispose();
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -372,7 +375,7 @@ public class TransferRep extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
-		resultMsgText.setText(ResultMessage.toFriendlyString(ResultMessage.SUBMIT_SUCCESS));
+		myFrame.dispose();
     }
 
 }

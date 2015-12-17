@@ -24,6 +24,9 @@ import VO.ReceiptVO.DeliverRepVO;
 import VO.ReceiptVO.DeliverVO;
 import bl.receiptbl.DeliverRepbl.DeliverController;
 import blservice.receiptblservice.DeliverRepblService;
+import ui.receiptui.ReceiptCheckUI.DeliverCheck;
+import ui.util.MyFrame;
+import util.enumData.Rep;
 import util.enumData.ResultMessage;
 
 /**
@@ -33,6 +36,7 @@ import util.enumData.ResultMessage;
 public class DeliverRep extends javax.swing.JPanel {
 	
     // Variables declaration - do not modify//GEN-BEGIN:variables
+	private MyFrame myFrame;
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel courierLabel;
     private javax.swing.JTextField courierText;
@@ -61,6 +65,7 @@ public class DeliverRep extends javax.swing.JPanel {
      */
     public DeliverRep() {
         initComponents();
+        myFrame = new MyFrame(673, 506, this);
     }
 
     /**
@@ -350,7 +355,7 @@ public class DeliverRep extends javax.swing.JPanel {
         			e.printStackTrace();
         			resultMsgText.setText(ExceptionPrint.print(e));
         		}
-        		resultMsgText.setText(ResultMessage.toFriendlyString(ResultMessage.SUBMIT_SUCCESS));
+        		myFrame.dispose();
     		}
     		else {
     			resultMsgText.setText("未找到该派件员");
@@ -359,17 +364,11 @@ public class DeliverRep extends javax.swing.JPanel {
     }
     
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {
-
+    	myFrame.dispose();
     }
     
     private void checkAllRepsButtonMouseClicked(MouseEvent evt){
-    	
+    	new DeliverCheck(officeText.getText());
     }
     
-//    public static void main (String[] args){
-//    	JFrame myFrame = new JFrame();
-//    	myFrame.setSize(673, 503);
-//    	myFrame.add(new DeliverRep());
-//    	myFrame.setVisible(true);
-//    }
 }

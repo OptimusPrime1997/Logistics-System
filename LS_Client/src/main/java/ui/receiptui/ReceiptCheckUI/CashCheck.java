@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 import Exception.ExceptionPrint;
 import bl.receiptbl.CashRepbl.CashRepController;
+import ui.util.MyFrame;
 
 /**
  *
@@ -22,6 +23,7 @@ import bl.receiptbl.CashRepbl.CashRepController;
 public class CashCheck extends javax.swing.JPanel {
 	
 	 // Variables declaration - do not modify//GEN-BEGIN:variables
+	private MyFrame myFrame;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JTextField dateText;
     private javax.swing.JButton findButton;
@@ -33,14 +35,16 @@ public class CashCheck extends javax.swing.JPanel {
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
-    private static String office;
+    private String office;
     // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form cash
      */
-    public CashCheck() {
+    public CashCheck(String oriOffice) {
+        office = oriOffice;
         initComponents();
+        myFrame = new MyFrame(606, 415, this);
     }
 
     /**
@@ -144,7 +148,7 @@ public class CashCheck extends javax.swing.JPanel {
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+    	myFrame.dispose();
     }
 
 }

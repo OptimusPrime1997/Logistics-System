@@ -24,6 +24,7 @@ import VO.ReceiptVO.PayRepBonusRepVO;
 import VO.ReceiptVO.PayRepVO;
 import bl.receiptbl.PayRepbl.PayRepController;
 import blservice.receiptblservice.PayRepblService;
+import ui.util.MyFrame;
 import util.enumData.ResultMessage;
 
 /**
@@ -33,6 +34,7 @@ import util.enumData.ResultMessage;
 public class PayRepBonus extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+	private MyFrame myFrame;
     private javax.swing.JButton addButton;
     private javax.swing.JLabel balanceLabel;
     private javax.swing.JTextField balanceText;
@@ -53,14 +55,18 @@ public class PayRepBonus extends javax.swing.JPanel {
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
-    private static PayRepVO payRepVO;
+    private PayRepVO payRepVO;
+    private PayRep payRep;
     // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form 奖金
      */
-    public PayRepBonus() {
+    public PayRepBonus(PayRep oriPayRep, PayRepVO oriPayRepVO) {
+        payRep = oriPayRep;
+        payRepVO = oriPayRepVO;
         initComponents();
+        myFrame = new MyFrame(446, 563, this);
     }
 
     /**
@@ -125,7 +131,6 @@ public class PayRepBonus extends javax.swing.JPanel {
         columnIdentifiers.add("金额");
         columnIdentifiers.add("备注");
         columnIdentifiers.add("删除");
-        dataVector = control.initBonusTable(payRepVO);
         model.setDataVector(dataVector, columnIdentifiers);
         jTable.setModel(model);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
@@ -315,7 +320,7 @@ public class PayRepBonus extends javax.swing.JPanel {
     }
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+    	myFrame.dispose();
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -339,6 +344,13 @@ public class PayRepBonus extends javax.swing.JPanel {
     	}
     	PayRepBonusRepVO payRepBonusRepVO = new PayRepBonusRepVO(bankAccount, sum, payBonusVOs);
     	control.submitBonus(payRepVO, payRepBonusRepVO);
+    	payRep.deleteRow("奖金");
+    	Vector<String> arr = new Vector<String>();
+    	arr.add("奖金");
+    	arr.add(sum+"");
+    	arr.add(bankAccount);
+    	payRep.createRow(arr);
+    	myFrame.dispose();
     }
     
 }

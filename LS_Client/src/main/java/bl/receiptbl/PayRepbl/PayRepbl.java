@@ -83,12 +83,6 @@ public class PayRepbl extends ReceiptblController{
 		return data;
 	}
 
-	public PayThing getPayThing(String type) {
-		// TODO Auto-generated method stub
-		type = type.split("(")[0];
-		return PayThing.getPayThing(type);
-	}
-	
 	public String getRefundTime(String type){
 		type = type.split("(")[1];
 		type = type.split(")")[0];

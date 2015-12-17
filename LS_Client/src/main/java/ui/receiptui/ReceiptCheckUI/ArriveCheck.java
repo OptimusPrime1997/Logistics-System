@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import Exception.ExceptionPrint;
 import bl.receiptbl.GetRepbl.GetRepController;
 import bl.receiptbl.ReceptionRepbl.ReceptionRepController;
+import ui.util.MyFrame;
 import util.enumData.Rep;
 
 /**
@@ -24,6 +25,7 @@ import util.enumData.Rep;
 public class ArriveCheck extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+	private MyFrame myFrame;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JTextField dateText;
     private javax.swing.JButton findButton;
@@ -36,16 +38,19 @@ public class ArriveCheck extends javax.swing.JPanel {
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
-    private static Rep rep;
-    private static String office;
+    private Rep rep;
+    private String office;
     // End of variables declaration//GEN-END:variables
 	
 
     /**
      * Creates new form GetCheck
      */
-    public ArriveCheck() {
+    public ArriveCheck(Rep oriRep, String oriOffice) {
+        rep = oriRep;
+        office = oriOffice;
         initComponents();
+        myFrame = new MyFrame(717, 406, this);
     }
 
     /**
@@ -161,7 +166,7 @@ public class ArriveCheck extends javax.swing.JPanel {
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	
+    	myFrame.dispose();
     }
 
 }

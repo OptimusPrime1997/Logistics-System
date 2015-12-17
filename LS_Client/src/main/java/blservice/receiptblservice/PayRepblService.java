@@ -55,8 +55,6 @@ public interface PayRepblService extends ReceiptblService{
 	
 	public Vector<Object> initStaffTable(PayRepVO payRepVO);
 	
-	public PayThing getPayThing(String type);
-	
 	public String getRefundTime(String type);
 	
 	public String getReceiverName(String num) throws RemoteException, FileNotFoundException, ClassNotFoundException, NameNotFoundException, NumNotFoundException, IOException;

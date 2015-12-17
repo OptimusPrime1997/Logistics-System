@@ -6,6 +6,21 @@
 
 package ui.receiptui.ReceiptDetailUI;
 
+import java.io.IOException;
+import java.rmi.NotBoundException;
+import java.util.Vector;
+
+import javax.swing.table.DefaultTableModel;
+
+import Exception.ExceptionPrint;
+import Exception.NameNotFoundException;
+import Exception.NumNotFoundException;
+import VO.ReceiptVO.CashRepVO;
+import VO.ReceiptVO.DeliverRepVO;
+import bl.receiptbl.CashRepbl.CashRepController;
+import bl.receiptbl.DeliverRepbl.DeliverController;
+import ui.util.MyFrame;
+
 /**
  *
  * @author apple
@@ -13,6 +28,7 @@ package ui.receiptui.ReceiptDetailUI;
 public class Deliver extends javax.swing.JPanel {
 	
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private MyFrame myFrame;
     private javax.swing.JLabel courierNameLabel;
     private javax.swing.JTextField courierNameText;
     private javax.swing.JLabel courierNumLabel;
@@ -20,18 +36,25 @@ public class Deliver extends javax.swing.JPanel {
     private javax.swing.JLabel dateLabel;
     private javax.swing.JTextField dateText;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     private javax.swing.JLabel numLabel;
     private javax.swing.JTextField numText;
     private javax.swing.JButton okButton;
     private javax.swing.JTextField resultMsgText;
+    private DeliverController control;
+    private DefaultTableModel model;
+    private Vector<String> columnIdentifiers;
+    private Vector<Object> dataVector;
+    private String num;
     // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form Deliver
      */
-    public Deliver() {
+    public Deliver(String oriNum) {
+    	num = oriNum;
         initComponents();
+        myFrame = new MyFrame(684, 522, this);
     }
 
     /**
@@ -44,7 +67,7 @@ public class Deliver extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         numLabel = new javax.swing.JLabel();
         numText = new javax.swing.JTextField();
         courierNumLabel = new javax.swing.JLabel();
@@ -55,28 +78,12 @@ public class Deliver extends javax.swing.JPanel {
         resultMsgText = new javax.swing.JTextField();
         courierNameLabel = new javax.swing.JLabel();
         courierNameText = new javax.swing.JTextField();
+        control = new DeliverController();
+        model = new DefaultTableModel();
+        columnIdentifiers = new Vector<String>();
+        dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null}
-            },
-            new String [] {
-                "订单号", "收件人名字", "手机", "地点"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jTable1.setShowGrid(true);
-        jScrollPane1.setViewportView(jTable1);
 
         numLabel.setText("编号:");
 
@@ -102,6 +109,37 @@ public class Deliver extends javax.swing.JPanel {
         courierNameLabel.setText("派件员名字:");
 
         courierNameText.setEditable(false);
+        
+        DeliverRepVO deliverRepVO = null;
+        try {
+			deliverRepVO = control.getRepByNum(num);
+		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+        dateText.setText(deliverRepVO.date);
+        numText.setText(num);
+        courierNumText.setText(deliverRepVO.deliverCourierNum);
+        try {
+			courierNameText.setText(control.getCourierName(deliverRepVO.deliverCourierNum));
+		} catch (ClassNotFoundException | NameNotFoundException | NumNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+        try {
+			dataVector = control.initShow(num);
+		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+        
+        model.setDataVector(dataVector, columnIdentifiers);
+        jTable.setModel(model);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(jTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -157,8 +195,8 @@ public class Deliver extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_okButtonActionPerformed
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	myFrame.dispose();
+    }
 
 }

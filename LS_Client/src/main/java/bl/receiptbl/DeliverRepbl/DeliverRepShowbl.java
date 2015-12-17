@@ -1,16 +1,21 @@
 package bl.receiptbl.DeliverRepbl;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.Vector;
 
+import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import VO.ReceiptVO.DeliverRepVO;
 import VO.ReceiptVO.DeliverVO;
+import bl.managementbl.accountbl.Accountbl;
 
 public class DeliverRepShowbl {
 	
 	private DeliverRepCheckbl deliverRepCheckbl = new DeliverRepCheckbl();
+	private Accountbl accountbl = new Accountbl();
 
 	public Vector<Object> initShow(String num) 
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
@@ -27,6 +32,12 @@ public class DeliverRepShowbl {
 			data.add(arr);
 		}
 		return data;
+	}
+	
+	public String getCourierName(String courierNum) 
+			throws RemoteException, FileNotFoundException, ClassNotFoundException, NameNotFoundException,
+			NumNotFoundException, IOException{
+		return accountbl.findByAccountNum(courierNum).accountName;
 	}
 
 }

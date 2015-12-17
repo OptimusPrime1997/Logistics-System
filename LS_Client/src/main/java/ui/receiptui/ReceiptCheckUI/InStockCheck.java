@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import Exception.ExceptionPrint;
 import bl.receiptbl.DeliverRepbl.DeliverController;
 import bl.receiptbl.InStockRepbl.InStockRepController;
+import ui.util.MyFrame;
 
 /**
  *
@@ -23,6 +24,7 @@ import bl.receiptbl.InStockRepbl.InStockRepController;
 public class InStockCheck extends javax.swing.JPanel {
 	
     // Variables declaration - do not modify//GEN-BEGIN:variables
+	private MyFrame myFrame;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JTextField dateText;
     private javax.swing.JButton findButton;
@@ -34,14 +36,16 @@ public class InStockCheck extends javax.swing.JPanel {
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
-    private static String office;
+    private String office;
     // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form InStockCheck
      */
-    public InStockCheck() {
+    public InStockCheck(String oriOffice) {
+       	office = oriOffice;
         initComponents();
+        myFrame = new MyFrame(364, 411, this);
     }
 
     /**
@@ -143,7 +147,7 @@ public class InStockCheck extends javax.swing.JPanel {
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	
+    	myFrame.dispose();
     }
 
 }

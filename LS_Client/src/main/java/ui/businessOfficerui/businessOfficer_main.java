@@ -271,7 +271,7 @@ public class businessOfficer_main extends JPanel {
 	 * @param e
 	 */
 	private void arrival_btnMouseClicked(MouseEvent e) {
-		new MyFrame(800, 600, new GetRep());
+		new GetRep();
 	}	
     private void carManagement_btnMouseClicked(MouseEvent evt) {   
     	try {

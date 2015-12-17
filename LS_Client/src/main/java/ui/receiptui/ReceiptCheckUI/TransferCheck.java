@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import Exception.ExceptionPrint;
 import bl.receiptbl.ShippingRepbl.ShippingRepController;
 import bl.receiptbl.TransferRepbl.TransferRepController;
+import ui.util.MyFrame;
 
 /**
  *
@@ -23,6 +24,7 @@ import bl.receiptbl.TransferRepbl.TransferRepController;
 public class TransferCheck extends javax.swing.JPanel {
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
+	private MyFrame myFrame;
 	private javax.swing.JLabel dateLabel;
 	private javax.swing.JTextField dateText;
 	private javax.swing.JButton findButton;
@@ -34,14 +36,16 @@ public class TransferCheck extends javax.swing.JPanel {
 	private DefaultTableModel model;
 	private Vector<String> columnIdentifiers;
 	private Vector<Object> dataVector;
-	private static String office;
+	private String office;
 	// End of variables declaration//GEN-END:variables
 
 	/**
 	 * Creates new form TransferCheck
 	 */
-	public TransferCheck() {
+	public TransferCheck(String oriOffice) {
+    	office = oriOffice;
 		initComponents();
+		myFrame = new MyFrame(521, 398, this);
 	}
 
 	/**
@@ -139,7 +143,7 @@ public class TransferCheck extends javax.swing.JPanel {
 	}
 
 	private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		
+		myFrame.dispose();
 	}
 
 }

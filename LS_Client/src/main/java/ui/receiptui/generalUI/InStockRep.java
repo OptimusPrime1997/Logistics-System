@@ -25,6 +25,7 @@ import VO.StockDivisionVO;
 import VO.ReceiptVO.InStockRepVO;
 import VO.ReceiptVO.InStockVO;
 import bl.receiptbl.InStockRepbl.InStockRepController;
+import ui.receiptui.ReceiptCheckUI.InStockCheck;
 import ui.util.MyFrame;
 import ui.warehousemanui.WarehousePanel;
 import util.enumData.City;
@@ -335,7 +336,7 @@ public class InStockRep extends javax.swing.JPanel {
     }
 
     private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	
+    	new InStockCheck(officeText.getText());
     }
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -403,10 +404,13 @@ public class InStockRep extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
-		resultMsgText.setText(ResultMessage.toFriendlyString(ResultMessage.SUBMIT_SUCCESS));
+		this.frame.dispose();
     }
 
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    for(int i = 0;i < dataVector.size();i++){
+    	deleteBlock((String)jTable.getValueAt(i, 0));
+    }
    	 WarehousePanel w = new WarehousePanel();
    	 w.setVisible(true);
    	 this.frame.dispose();

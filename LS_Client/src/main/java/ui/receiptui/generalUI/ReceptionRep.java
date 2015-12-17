@@ -23,6 +23,8 @@ import VO.ReceiptVO.ArriveVO;
 import VO.ReceiptVO.ReceptionRepVO;
 import bl.receiptbl.ReceptionRepbl.ReceptionRepController;
 import blservice.receiptblservice.ReceptionRepblService;
+import ui.receiptui.ReceiptCheckUI.ArriveCheck;
+import ui.util.MyFrame;
 import util.enumData.City;
 import util.enumData.GoodsArrivalState;
 import util.enumData.Rep;
@@ -35,6 +37,7 @@ import util.enumData.ResultMessage;
 public class ReceptionRep extends javax.swing.JPanel {
 	
 	 // Variables declaration - do not modify//GEN-BEGIN:variables
+	private MyFrame myFrame;
     private javax.swing.JButton addButton;
     private javax.swing.JComboBox<String> arriveStateBox;
     private javax.swing.JLabel arriveStateLabel;
@@ -70,6 +73,7 @@ public class ReceptionRep extends javax.swing.JPanel {
      */
     public ReceptionRep() {
         initComponents();
+        myFrame = new MyFrame(556, 476, this);
     }
 
     /**
@@ -371,7 +375,7 @@ public class ReceptionRep extends javax.swing.JPanel {
     }
 
     private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+    	new ArriveCheck(Rep.ReceptionRep, officeText.getText());
     }
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -390,7 +394,7 @@ public class ReceptionRep extends javax.swing.JPanel {
     }
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+    	myFrame.dispose();
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -414,7 +418,7 @@ public class ReceptionRep extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
-		resultMsgText.setText(ResultMessage.toFriendlyString(ResultMessage.SUBMIT_SUCCESS));
+		myFrame.dispose();
     }
     
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {
