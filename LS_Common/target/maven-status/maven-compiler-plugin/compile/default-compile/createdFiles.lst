@@ -1,7 +1,7 @@
-util\enumData\ShipForm$1.class
-util\enumData\Sex$1.class
-util\enumData\ResultMessage$1.class
-util\enumData\GoodsLogisticState$1.class
-util\enumData\City$1.class
-util\enumData\Authority$1.class
-util\enumData\SalaryPolicy$1.class
+util/enumData/Authority$1.class
+util/enumData/Sex$1.class
+util/enumData/SalaryPolicy$1.class
+util/enumData/ResultMessage$1.class
+util/enumData/GoodsLogisticState$1.class
+util/enumData/ShipForm$1.class
+util/enumData/City$1.class
