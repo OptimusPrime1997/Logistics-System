@@ -6,8 +6,6 @@
 
 package ui.receiptui.generalUI;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -18,12 +16,10 @@ import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.PayRentVO;
 import VO.ReceiptVO.PayRepStaffSalaryRepVO;
 import VO.ReceiptVO.PayRepVO;
 import VO.ReceiptVO.PayStaffSalaryVO;
 import bl.receiptbl.PayRepbl.PayRepController;
-import blservice.receiptblservice.PayRepblService;
 import ui.util.MyFrame;
 import util.enumData.Authority;
 
@@ -218,6 +214,7 @@ public class PayRepStaff extends javax.swing.JPanel {
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	sumText.setText(calSum());
     	double sum = Double.parseDouble(sumText.getText());
     	String bankAccount = (String)bankAccountBox.getSelectedItem();
     	try {

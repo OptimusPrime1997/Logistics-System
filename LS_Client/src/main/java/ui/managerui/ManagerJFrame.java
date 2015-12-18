@@ -448,7 +448,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jLabel47.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
 		jLabel47.setText("系统日志");
 
-		// initialLogJTable(logVOs);
+//		 initialLogJTable(logVOs);
 
 		javax.swing.GroupLayout logjPanelLayout = new javax.swing.GroupLayout(
 				logjPanel);
@@ -1441,51 +1441,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jLabel29.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
 		jLabel29.setText("单据信息列表");
 
-		documentCheckjTable.setModel(new javax.swing.table.DefaultTableModel(
-				new Object[][] { { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null } }, new String[] { "全选",
-						"日期", "操作类型", "操作人员编号" }) {
-			Class[] types = new Class[] { java.lang.Object.class,
-					java.lang.String.class, java.lang.String.class,
-					java.lang.String.class };
-
-			public Class getColumnClass(int columnIndex) {
-				return types[columnIndex];
-			}
-		});
-		documentCheckjTable.setColumnSelectionAllowed(true);
-		documentCheckjTable.setPreferredSize(new java.awt.Dimension(300, 630));
-		documentCheckjTable.getTableHeader().setReorderingAllowed(false);
-		documentCheckjTable.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				documentCheckjTableMouseClicked(evt);
-			}
-
-			private void documentCheckjTableMouseClicked(MouseEvent evt) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-		jScrollPane1.setViewportView(documentCheckjTable);
-		documentCheckjTable
-				.getColumnModel()
-				.getSelectionModel()
-				.setSelectionMode(
-						javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
+//		initialCheckJTable();
 		javax.swing.GroupLayout checkjPaneLayout = new javax.swing.GroupLayout(
 				checkjPane);
 		checkjPane.setLayout(checkjPaneLayout);
@@ -1601,6 +1557,197 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		managerjTabbedPane.addTab("审批单据", checkjPane);
 
 	}
+
+	/**
+	 * 初始化单据审批列表
+	 */
+//	private void initialCheckJTable(ArrayList<E> vos) {
+//		// TODO Auto-generated method stub
+//		assert (vos != null) : ("表格获得机构信息为空");
+//		Object[][] documentObjects = null;
+//		documentObjects = new Object[vos.size()][5];
+//		int i = 0;
+//		for (java.util.Iterator<DocumentVOPlus> t = vos.iterator(); t
+//				.hasNext(); i++) {
+//			DocumentVO vo = t.next();
+//			documentObjects[i][0] = vo.documentNum;
+//			documentObjects[i][1] = vo.documentName;
+//			documentObjects[i][2] = vo.contactInfo;
+//			documentObjects[i][3] = vo.address;
+//			documentObjects[i][4] = vo.manning;
+//		}
+//
+//		documentCheckjTable.setModel(new javax.swing.table.DefaultTableModel(
+//				new Object[][] {}, new String[] { "日期",
+//						"编号", "单据类型", "是否审批" }) {
+//			Class[] types = new Class[] { java.lang.Object.class,
+//					java.lang.String.class, java.lang.String.class,
+//					java.lang.Boolean.class };
+//
+//			public Class getColumnClass(int columnIndex) {
+//				return types[columnIndex];
+//			}
+//		});
+//		documentCheckjTable.setColumnSelectionAllowed(true);
+//		documentCheckjTable.setPreferredSize(new java.awt.Dimension(300, 630));
+//		documentCheckjTable.getTableHeader().setReorderingAllowed(false);
+//
+//		documentCheckjTable.addMouseListener(new java.awt.event.MouseAdapter() {
+//			public void mouseClicked(java.awt.event.MouseEvent evt) {
+//				documentCheckjTableMouseClicked(evt);
+//			}
+//
+//			private void documentCheckjTableMouseClicked(MouseEvent evt) {
+//				// TODO Auto-generated method stub
+//
+//			}
+//		});
+//		final JPopupMenu documentjPop = new JPopupMenu();
+//		final JMenuItem documentSubmitjItem = new JMenuItem("提交");
+//		documentSubmitjItem.addMouseListener(/**
+//		 * @author 1
+//		 *         监听document的弹出菜单中的“提交”
+//		 */
+//		new MouseListener() {
+//
+//			@Override
+//			public void mouseClicked(MouseEvent e) {
+//				// TODO Auto-generated method stub
+//
+//			}
+//
+//			@Override
+//			public void mousePressed(MouseEvent e) {
+//				// TODO Auto-generated method stub
+//
+//			}
+//
+//			@Override
+//			public void mouseReleased(MouseEvent e) {
+//				// TODO Auto-generated method stub
+//				if (e.getButton() == MouseEvent.BUTTON1) {
+//					ResultMessage rmsg = null;
+//					int n = documentjTable.getSelectedRow();
+//					DocumentVOPlus voPlus = documentVOPlus.get(n);
+//					ModifyState state = voPlus.isModify;
+//					DocumentVO v = getViewDocumentVO(n);
+//					if (state == ModifyState.NEW) {
+//						try {
+//							rmsg = documentblController.insert(v);
+//							setState(
+//									"提交" + ResultMessage.toFriendlyString(rmsg),
+//									DISPLAY_TIME);
+//							if (rmsg == ResultMessage.SUCCESS) {
+////								documentVOPlus.remove(n);
+////								documentVOPlus.add(n, new DocumentVOPlus(
+////										v, ModifyState.SYNC));
+//								setDocumentVOs();
+//								initialDocumentJTable(documentVOPlus, n);
+//							}
+//						} catch (RemoteException e1) {
+//							// TODO Auto-generated catch block
+//							e1.printStackTrace();
+//							setState(REMOTEFAILD, DISPLAY_TIME);
+//						}
+//					} else {
+//						if (v.equals(voPlus.getDocumentVO())) {
+//							setState("您未对该行进行修改！", DISPLAY_TIME);
+//						} else {
+//							try {
+//								rmsg = documentblController.update(v);
+//								setState(ResultMessage.toFriendlyString(rmsg),
+//										DISPLAY_TIME);
+//								if (rmsg == ResultMessage.SUCCESS) {
+//									documentVOPlus.remove(n);
+//									documentVOPlus.add(n,
+//											new DocumentVOPlus(v,
+//													ModifyState.SYNC));
+//								}
+//							} catch (RemoteException e1) {
+//								// TODO Auto-generated catch block
+//								e1.printStackTrace();
+//								setState(REMOTEFAILD, DISPLAY_TIME);
+//							}
+//						}
+//					}
+//				}
+//
+//			}
+//
+//			@Override
+//			public void mouseEntered(MouseEvent e) {
+//				// TODO Auto-generated method stub
+//
+//			}
+//
+//			@Override
+//			public void mouseExited(MouseEvent e) {
+//				// TODO Auto-generated method stub
+//
+//			}
+//
+//		});
+//		documentjPop.add(documentSubmitjItem);
+//		MouseInputListener mil = new MouseInputListener() {
+//
+//			public void mouseClicked(MouseEvent e) {
+//				processEvent(e);
+//			}
+//
+//			public void mousePressed(MouseEvent e) {
+//				processEvent(e);
+//			}
+//
+//			public void mouseReleased(MouseEvent e) {
+//				processEvent(e);
+//				if ((e.getModifiers() & MouseEvent.BUTTON3_MASK) != 0
+//						&& !e.isControlDown() && !e.isShiftDown()) {
+//					documentjPop.show(documentjTable, e.getX(), e.getY());
+//				}
+//			}
+//
+//			public void mouseEntered(MouseEvent e) {
+//				processEvent(e);
+//			}
+//
+//			public void mouseExited(MouseEvent e) {
+//				processEvent(e);
+//			}
+//
+//			public void mouseDragged(MouseEvent e) {
+//				processEvent(e);
+//			}
+//
+//			public void mouseMoved(MouseEvent e) {
+//				processEvent(e);
+//			}
+//
+//			private void processEvent(MouseEvent e) {
+//				if ((e.getModifiers() & MouseEvent.BUTTON3_MASK) != 0) {
+//					int modifiers = e.getModifiers();
+//					modifiers -= MouseEvent.BUTTON3_MASK;
+//					modifiers |= MouseEvent.BUTTON1_MASK;
+//					MouseEvent ne = new MouseEvent(e.getComponent(), e.getID(),
+//							e.getWhen(), modifiers, e.getX(), e.getY(),
+//							e.getClickCount(), false);
+//					documentjTable.dispatchEvent(ne);
+//				}
+//			}
+//		};
+//		documentjTable.addMouseListener(mil);
+//		documentjTable.putClientProperty("terminateEditOnFocusLost",
+//				Boolean.TRUE);
+//
+//		
+//		ComponentFactory.setJTableTextCenter(documentCheckjTable);
+//		jScrollPane1.setViewportView(documentCheckjTable);
+//		documentCheckjTable
+//				.getColumnModel()
+//				.getSelectionModel()
+//				.setSelectionMode(
+//						javax.swing.ListSelectionModel.SINGLE_SELECTION);
+//
+//	}
 
 	/**
 	 * 初始化薪水策略面板

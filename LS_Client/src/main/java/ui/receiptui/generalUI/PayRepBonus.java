@@ -23,7 +23,6 @@ import VO.ReceiptVO.PayBonusVO;
 import VO.ReceiptVO.PayRepBonusRepVO;
 import VO.ReceiptVO.PayRepVO;
 import bl.receiptbl.PayRepbl.PayRepController;
-import blservice.receiptblservice.PayRepblService;
 import ui.util.MyFrame;
 import util.enumData.ResultMessage;
 

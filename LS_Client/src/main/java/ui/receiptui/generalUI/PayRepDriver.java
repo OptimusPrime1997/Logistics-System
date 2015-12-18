@@ -6,8 +6,6 @@
 
 package ui.receiptui.generalUI;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -22,7 +20,6 @@ import VO.ReceiptVO.PayDriverSalaryVO;
 import VO.ReceiptVO.PayRepDriverSalaryRepVO;
 import VO.ReceiptVO.PayRepVO;
 import bl.receiptbl.PayRepbl.PayRepController;
-import blservice.receiptblservice.PayRepblService;
 import ui.util.MyFrame;
 
 /**
@@ -217,6 +214,7 @@ public class PayRepDriver extends javax.swing.JPanel {
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	sumText.setText(calSum());
     	double sum = Double.parseDouble(sumText.getText());
     	String bankAccount = (String)bankAccountBox.getSelectedItem();
     	try {

@@ -6,15 +6,20 @@
 
 package ui.receiptui.ReceiptCheckUI;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
 import bl.receiptbl.OutStockRepbl.OutStockRepController;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepController;
+import ui.receiptui.ReceiptDetailUI.Deliver;
+import ui.receiptui.ReceiptDetailUI.Shipment;
 import ui.util.MyFrame;
 
 /**
@@ -43,7 +48,7 @@ public class ShipmentCheck extends javax.swing.JPanel {
 	 * Creates new form ShipmentCheck
 	 */
 	public ShipmentCheck(String oriOffice) {
-    	office = oriOffice;
+		office = oriOffice;
 		initComponents();
 		myFrame = new MyFrame(476, 404, this);
 	}
@@ -81,6 +86,11 @@ public class ShipmentCheck extends javax.swing.JPanel {
 
 		dateLabel.setText("时间:");
 
+		columnIdentifiers.add("日期");
+		columnIdentifiers.add("编号");
+		columnIdentifiers.add("车牌号");
+		columnIdentifiers.add("司机编号");
+		columnIdentifiers.add("查看详细信息");
 		try {
 			dataVector = control.initCheck(office);
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
@@ -88,8 +98,8 @@ public class ShipmentCheck extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
-        model.setDataVector(dataVector, columnIdentifiers);
-        jTable.setModel(model);
+		model.setDataVector(dataVector, columnIdentifiers);
+		jTable.setModel(model);
 		jTable.setGridColor(new java.awt.Color(0, 0, 0));
 		jScrollPane1.setViewportView(jTable);
 
@@ -97,6 +107,47 @@ public class ShipmentCheck extends javax.swing.JPanel {
 		okButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				okButtonActionPerformed(evt);
+			}
+		});
+
+		resultMsgText.setEditable(false);
+
+		setColumn();
+
+		jTable.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int row = jTable.getSelectedRow();
+				int col = jTable.getSelectedColumn();
+				if (col == 4) {
+					new Shipment((String) jTable.getValueAt(row, 1));
+				}
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+
 			}
 		});
 
@@ -134,6 +185,19 @@ public class ShipmentCheck extends javax.swing.JPanel {
 				.addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE,
 						javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)));
 	}// </editor-fold>//GEN-END:initComponents
+
+	private void setColumn() {
+		TableColumn column1 = jTable.getColumnModel().getColumn(0);
+		column1.setPreferredWidth(110);
+		TableColumn column2 = jTable.getColumnModel().getColumn(1);
+		column2.setPreferredWidth(180);
+		TableColumn column3 = jTable.getColumnModel().getColumn(2);
+		column3.setPreferredWidth(85);
+		TableColumn column4 = jTable.getColumnModel().getColumn(3);
+		column4.setPreferredWidth(115);
+		TableColumn column5 = jTable.getColumnModel().getColumn(4);
+		column5.setPreferredWidth(20);
+	}
 
 	private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		int row = jTable.getSelectedRow();

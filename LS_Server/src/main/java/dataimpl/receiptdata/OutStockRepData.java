@@ -7,7 +7,7 @@ import PO.Receipt.ReceiptPO;
 import dataservice.receiptdataservice.OutStockRepDataService;
 import datautil.DataUtility;
 
-public class OutStackRepData implements OutStockRepDataService{
+public class OutStockRepData implements OutStockRepDataService{
 
 	/**
 	 * 

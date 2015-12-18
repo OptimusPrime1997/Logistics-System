@@ -65,7 +65,7 @@ implements CashRepblService, PostReceiptblService{
 	public ArrayList<CashRepVO> getRepByDate(String date, String office)
 			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return cashRepbl.getRepByDate(date, office);
+		return ((PostReceiptblService) cashRepbl).getRepByDate(date, office);
 	}
 
 	@Override

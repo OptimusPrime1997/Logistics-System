@@ -12,6 +12,7 @@ public class ReceiptClient {
 	private static PayRepDataService payService = null;
 	private static InStockRepDataService inStockService = null;
 	private static OutStockRepDataService outStockService = null;
+	private static CashRepDataService cashRepDataService = null;
 	
 	public ReceiptDataService getReceiptDataService() throws MalformedURLException, RemoteException, NotBoundException{
 		if(service==null)
@@ -21,7 +22,7 @@ public class ReceiptClient {
 	
 	public PayRepDataService getPayRepDataService() throws MalformedURLException, RemoteException, NotBoundException{
 		if(payService==null)
-			payService = (PayRepDataService)Naming.lookup("rmi://localhost:1025/payRep");
+			payService = (PayRepDataService)Naming.lookup("rmi://localhost:1025/pay");
 		return payService;
 	}
 	
@@ -35,5 +36,10 @@ public class ReceiptClient {
 		if(outStockService==null)
 			outStockService = (OutStockRepDataService)Naming.lookup("rmi://localhost:1027/outStock");
 		return outStockService;
+	}
+	public CashRepDataService getCashRepDataService() throws MalformedURLException, RemoteException, NotBoundException{
+		if(cashRepDataService==null)
+			cashRepDataService = (CashRepDataService)Naming.lookup("rmi://localhost:1028/cash");
+		return cashRepDataService;
 	}
 }

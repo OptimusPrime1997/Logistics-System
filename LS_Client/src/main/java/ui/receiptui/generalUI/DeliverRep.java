@@ -301,7 +301,7 @@ public class DeliverRep extends javax.swing.JPanel {
         TableColumn column4 = jTable.getColumnModel().getColumn(3);
         column4.setPreferredWidth(355);
         TableColumn column5 = jTable.getColumnModel().getColumn(4);
-        column5.setPreferredWidth(30);
+        column5.setPreferredWidth(10);
     }
 
     private void orderMouseClicked(java.awt.event.MouseEvent evt) {

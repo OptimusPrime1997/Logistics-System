@@ -12,7 +12,7 @@ public class Refundbl{
 		payRepVO.refund.add(payRepRefundRepVO);
 	}
 	
-	public PayRepRefundRepVO getRepByDate(ArrayList<PayRepRefundRepVO> payRepRefundRepVOs, String date){
+	public PayRepRefundRepVO getRefundByDate(ArrayList<PayRepRefundRepVO> payRepRefundRepVOs, String date){
 		for(int i = 0;i < payRepRefundRepVOs.size();i++){
 			PayRepRefundRepVO payRepRefundRepVO = payRepRefundRepVOs.get(i);
 			if(payRepRefundRepVO.date.equals(date))
@@ -23,7 +23,7 @@ public class Refundbl{
 	
 	public Vector<Object> initRefundTable(PayRepVO payRepVO, String date){
 		Vector<Object> data = new Vector<Object>();
-		PayRepRefundRepVO payRepRefundRepVO = getRepByDate(payRepVO.refund, date);
+		PayRepRefundRepVO payRepRefundRepVO = getRefundByDate(payRepVO.refund, date);
 		ArrayList<PayRefundVO> payRefundVOs = payRepRefundRepVO.refundVOs;
 		if(payRefundVOs==null)
 			return data;

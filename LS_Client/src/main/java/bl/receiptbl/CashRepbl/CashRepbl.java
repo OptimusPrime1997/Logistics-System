@@ -18,9 +18,11 @@ import bl.goodsbl.Goodsbl;
 import bl.managementbl.accountbl.Accountbl;
 import bl.managementbl.bankaccountbl.BankAccountbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
+import dataservice.receiptdataservice.CashRepDataService;
 import Exception.*;
 import PO.Receipt.CashRepPO;
 import PO.Receipt.ReceiptPO;
+import RMIClient.ReceiptClient;
 
 public class CashRepbl {
 
@@ -28,6 +30,15 @@ public class CashRepbl {
 	private Accountbl accountbl = new Accountbl();
 	private BankAccountbl bankAccountbl = new BankAccountbl();
 	private Receiptbl receiptbl = new Receiptbl();
+	private ReceiptClient client = new ReceiptClient();
+	private static CashRepDataService cashRepDataService = null;
+	
+	public CashRepDataService getCashRepDataService() 
+			throws MalformedURLException, RemoteException, NotBoundException{
+		if(cashRepDataService==null)
+			cashRepDataService = client.getCashRepDataService();
+		return cashRepDataService;
+	}
 
 	public String getCourierName(String courierNum) throws RemoteException, FileNotFoundException, 
 	ClassNotFoundException, NameNotFoundException, NumNotFoundException, IOException{
@@ -110,13 +121,13 @@ public class CashRepbl {
 		}
 		return data;
 	}
-
-	public ArrayList<CashRepVO> getRepByDate(String date, String office)
-			throws NotBoundException, ClassNotFoundException, IOException {
-		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.CashRep, office);
-		if(receiptPOs==null)
-			return null;
-		return CashRepVO.toArrayVO(receiptPOs);
-	}
 	
+	public ArrayList<CashRepVO> getAllRepByDate(String date)
+			throws ClassNotFoundException, MalformedURLException, RemoteException, IOException, 
+			NotBoundException{
+		ArrayList<ReceiptPO> receiptPOs = getCashRepDataService().getAllRepByDate(date);
+		ArrayList<CashRepVO> cashRepVOs = CashRepVO.toArrayVO(receiptPOs);
+		return cashRepVOs;
+	}
+
 }

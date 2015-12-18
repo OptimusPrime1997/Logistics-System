@@ -6,8 +6,6 @@
 
 package ui.receiptui.generalUI;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
@@ -17,17 +15,9 @@ import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.PayRepBonusRepVO;
-import VO.ReceiptVO.PayRepCourierSalaryRepVO;
-import VO.ReceiptVO.PayRepDriverSalaryRepVO;
-import VO.ReceiptVO.PayRepFreightRepVO;
-import VO.ReceiptVO.PayRepRefundRepVO;
-import VO.ReceiptVO.PayRepRentRepVO;
-import VO.ReceiptVO.PayRepStaffSalaryRepVO;
 import VO.ReceiptVO.PayRepVO;
 import VO.ReceiptVO.PayVO;
 import bl.receiptbl.PayRepbl.PayRepController;
-import blservice.receiptblservice.PayRepblService;
 import ui.receiptui.ReceiptCheckUI.PayCheck;
 import ui.util.MyFrame;
 import util.enumData.PayThing;

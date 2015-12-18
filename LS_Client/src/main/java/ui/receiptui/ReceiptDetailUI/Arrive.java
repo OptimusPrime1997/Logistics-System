@@ -11,6 +11,8 @@ import java.rmi.NotBoundException;
 import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
 import util.enumData.*;
 import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
@@ -122,6 +124,8 @@ public class Arrive extends javax.swing.JPanel {
         
         resultMsgText.setEditable(false);
         
+		columnIdentifiers.add("订单号");
+		columnIdentifiers.add("到达状态");
         if(rep==Rep.GetRep){
         	GetRepVO getRepVO = null;
 			try {
@@ -166,11 +170,12 @@ public class Arrive extends javax.swing.JPanel {
 				resultMsgText.setText(ExceptionPrint.print(e));
 			}
 		}
-        
         model.setDataVector(dataVector, columnIdentifiers);
         jTable.setModel(model);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(jTable);
+        
+		setColumn();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -234,6 +239,13 @@ public class Arrive extends javax.swing.JPanel {
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+	private void setColumn() {
+		TableColumn column1 = jTable.getColumnModel().getColumn(0);
+		column1.setPreferredWidth(105);
+		TableColumn column2 = jTable.getColumnModel().getColumn(1);
+		column2.setPreferredWidth(50);
+	}
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	myFrame.dispose();

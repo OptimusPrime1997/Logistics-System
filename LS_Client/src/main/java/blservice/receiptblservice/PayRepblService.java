@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ComboBoxModel;
@@ -68,4 +69,6 @@ public interface PayRepblService extends ReceiptblService{
 	public PayRepVO getSubmitPayRep() throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException;
 	
 	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException;
+	
+	public PayRepRefundRepVO getRefundByDate(ArrayList<PayRepRefundRepVO> payRepRefundRepVOs, String date);
 }

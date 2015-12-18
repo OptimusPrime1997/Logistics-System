@@ -49,7 +49,7 @@ public class DriverblControllerTest {
 					"02500107006", "王六", Sex.Sex_FAMALE, "550550199101010006",
 					"18200060006", "20210101"));
 			ResultMessage r=driverblController.deleteDriver(test);
-			System.out.println("删除driver"+r);
+			System.out.println("删除driver:    "+r);
 			for (int i = 1; i < 3; i++) {
 				System.out.println(autoNum[i]);
 			}

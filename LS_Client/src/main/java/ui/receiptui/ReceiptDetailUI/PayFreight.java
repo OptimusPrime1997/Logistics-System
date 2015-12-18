@@ -6,17 +6,49 @@
 
 package ui.receiptui.ReceiptDetailUI;
 
+import java.util.Vector;
+
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
+import VO.ReceiptVO.PayRepVO;
+import bl.receiptbl.PayRepbl.PayRepController;
+import ui.util.MyFrame;
+
 /**
  *
  * @author apple
  */
 public class PayFreight extends javax.swing.JPanel {
+	
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+	private MyFrame myFrame;
+    private javax.swing.JLabel bankAccountLabel;
+    private javax.swing.JTextField bankAccountText;
+    private javax.swing.JLabel dateLabel;
+    private javax.swing.JTextField dateText;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable;
+    private javax.swing.JLabel numLabel;
+    private javax.swing.JTextField numText;
+    private javax.swing.JButton okButton;
+    private javax.swing.JTextField resultMsgText;
+    private javax.swing.JLabel sumLabel;
+    private javax.swing.JTextField sumText;
+    private PayRepController control;
+    private DefaultTableModel model;
+    private Vector<String> columnIdentifiers;
+    private Vector<Object> dataVector;
+    private PayRepVO payRepVO;
+    // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form PayFreight
      */
-    public PayFreight() {
+    public PayFreight(PayRepVO oriPayRepVO) {
+    	payRepVO = oriPayRepVO;
         initComponents();
+        myFrame = new MyFrame(505, 511, this);
     }
 
     /**
@@ -34,12 +66,16 @@ public class PayFreight extends javax.swing.JPanel {
         resultMsgText = new javax.swing.JTextField();
         okButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         bankAccountText = new javax.swing.JTextField();
         bankAccountLabel = new javax.swing.JLabel();
         sumText = new javax.swing.JTextField();
         sumLabel = new javax.swing.JLabel();
         numText = new javax.swing.JTextField();
+        control = new PayRepController();
+        model = new DefaultTableModel();
+        columnIdentifiers = new Vector<String>();
+        dataVector = new Vector<Object>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -58,25 +94,6 @@ public class PayFreight extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null}
-            },
-            new String [] {
-                "中转单编号", "金额", "备注"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Double.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(jTable1);
-
         bankAccountText.setEditable(false);
 
         bankAccountLabel.setText("付款账户:");
@@ -86,6 +103,21 @@ public class PayFreight extends javax.swing.JPanel {
         sumLabel.setText("总计:");
 
         numText.setEditable(false);
+        
+        columnIdentifiers.add("中转单编号");
+        columnIdentifiers.add("金额");
+        columnIdentifiers.add("备注");
+        dateText.setText(payRepVO.date);
+        numText.setText(payRepVO.num);
+        sumText.setText(payRepVO.freight.sum+"");
+        bankAccountText.setText(payRepVO.freight.bankAccountNum);
+        dataVector = control.initFreightTable(payRepVO);
+        model.setDataVector(dataVector, columnIdentifiers);
+        jTable.setModel(model);
+        jTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(jTable);
+        
+        setColumn();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -105,9 +137,9 @@ public class PayFreight extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bankAccountText, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bankAccountText, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(213, 213, 213)
@@ -142,24 +174,18 @@ public class PayFreight extends javax.swing.JPanel {
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void setColumn(){
+    	TableColumn column1 = jTable.getColumnModel().getColumn(0);
+        column1.setPreferredWidth(180);
+        TableColumn column2 = jTable.getColumnModel().getColumn(1);
+        column2.setPreferredWidth(60);
+        TableColumn column3 = jTable.getColumnModel().getColumn(2);
+        column3.setPreferredWidth(180);
+    }
 
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_okButtonActionPerformed
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	myFrame.dispose();
+    }
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel bankAccountLabel;
-    private javax.swing.JTextField bankAccountText;
-    private javax.swing.JLabel dateLabel;
-    private javax.swing.JTextField dateText;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel numLabel;
-    private javax.swing.JTextField numText;
-    private javax.swing.JButton okButton;
-    private javax.swing.JTextField resultMsgText;
-    private javax.swing.JLabel sumLabel;
-    private javax.swing.JTextField sumText;
-    // End of variables declaration//GEN-END:variables
 }
