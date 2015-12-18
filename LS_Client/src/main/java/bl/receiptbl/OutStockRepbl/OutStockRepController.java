@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.InStockRepVO;
-import VO.ReceiptVO.OutStockRepVO;
-import VO.ReceiptVO.ReceiptVO;
-import VO.ReceiptVO.ShippingRepVO;
-import VO.ReceiptVO.TransferRepVO;
+import VO.Receipt.InStockRepVO;
+import VO.Receipt.OutStockRepVO;
+import VO.Receipt.ReceiptVO;
+import VO.Receipt.ShippingRepVO;
+import VO.Receipt.TransferRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.OutStockRepblService;
 import blservice.receiptblservice.PostReceiptblService;

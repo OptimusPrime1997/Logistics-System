@@ -131,7 +131,19 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 			if (!getOffice(receiptPO.getNum()).equals(office))
 				save(receiptPO, rep);
 		}
-
+	}
+	
+	@Override
+	public ArrayList<ReceiptPO> forCheck(Rep rep) throws ClassNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		ArrayList<Object> objects = util.getAll(submitAdd(rep));
+		if(objects==null)
+			return null;
+		ArrayList<ReceiptPO> receiptPOs = new ArrayList<ReceiptPO>();
+		for(Object object : objects){
+			receiptPOs.add((ReceiptPO) object);
+		}
+		return receiptPOs;
 	}
 
 	class MyObjectOutputStream extends ObjectOutputStream {

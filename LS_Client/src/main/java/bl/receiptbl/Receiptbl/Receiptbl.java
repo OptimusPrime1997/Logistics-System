@@ -7,11 +7,12 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import Exception.NameNotFoundException;
+import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
 import PO.Receipt.ReceiptPO;
 import RMIClient.ReceiptClient;
 import VO.LogVO;
+import bl.goodsbl.Goodsbl;
 import bl.logbl.Logbl;
 import bl.managementbl.accountbl.Accountbl;
 import dataservice.receiptdataservice.ReceiptDataService;
@@ -24,6 +25,7 @@ public class Receiptbl {
 	private static ReceiptDataService receiptDataService = null;
 	private ReceiptClient client = new ReceiptClient();
 	private Accountbl accountbl = new Accountbl();
+	private Goodsbl goodsbl = new Goodsbl();
 	
 	public ReceiptDataService getReceiptDataService() throws RemoteException, MalformedURLException, NotBoundException{
 		if(receiptDataService==null)
@@ -91,6 +93,10 @@ public class Receiptbl {
 		getReceiptDataService().clearSave(rep, office);
 	}
 	
+	public ArrayList<ReceiptPO> forCheck(Rep rep) throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException{
+		return getReceiptDataService().forCheck(rep);
+	}
+	
 	public ResultMessage checkNum(String string, int n){
 		if (string.length() < n)
 			return ResultMessage.REPNUM_LENGTH_LACKING;
@@ -107,6 +113,17 @@ public class Receiptbl {
 		try {
 			accountbl.findByAccountNum(num);
 		} catch (ClassNotFoundException | NumNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean isTrueOrder(String order){
+		try {
+			goodsbl.findByListNum(order);
+		} catch (GoodsNotFound e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;

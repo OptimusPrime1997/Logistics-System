@@ -16,8 +16,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.ArriveVO;
-import VO.ReceiptVO.GetRepVO;
+import VO.Receipt.ArriveVO;
+import VO.Receipt.GetRepVO;
 import bl.receiptbl.GetRepbl.GetRepController;
 import ui.receiptui.ReceiptCheckUI.ArriveCheck;
 import ui.util.MyFrame;
@@ -389,12 +389,17 @@ public class GetRep extends javax.swing.JPanel {
 		String resultMsg = ResultMessage.toFriendlyString(resultMessage);
 		resultMsgText.setText(resultMsg);
 		if (resultMessage == ResultMessage.ADD_SUCCESS) {
-			Vector<String> arr = new Vector<String>();
-			arr.add(order);
-			arr.add(arriveStateBox.getSelectedItem().toString());
-			dataVector.add(arr);
-			model.setDataVector(dataVector, columnIdentifiers);
-			setColumn();
+			if(control.isTrueOrder(order)){
+				Vector<String> arr = new Vector<String>();
+				arr.add(order);
+				arr.add(arriveStateBox.getSelectedItem().toString());
+				dataVector.add(arr);
+				model.setDataVector(dataVector, columnIdentifiers);
+				setColumn();
+			}
+			else {
+				resultMsgText.setText("未找到该订单");
+			}
 		}
 	}
 

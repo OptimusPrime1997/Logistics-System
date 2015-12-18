@@ -11,7 +11,7 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-import VO.ReceiptVO.PayRepVO;
+import VO.Receipt.PayRepVO;
 import bl.receiptbl.PayRepbl.PayRepController;
 import ui.util.MyFrame;
 

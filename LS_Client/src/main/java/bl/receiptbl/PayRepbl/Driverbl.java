@@ -3,9 +3,9 @@ package bl.receiptbl.PayRepbl;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import VO.ReceiptVO.PayDriverSalaryVO;
-import VO.ReceiptVO.PayRepDriverSalaryRepVO;
-import VO.ReceiptVO.PayRepVO;
+import VO.Receipt.PayDriverSalaryVO;
+import VO.Receipt.PayRepDriverSalaryRepVO;
+import VO.Receipt.PayRepVO;
 
 public class Driverbl{
 	public void submitDriver(PayRepVO payRepVO, PayRepDriverSalaryRepVO payRepDriverSalaryRepVO){

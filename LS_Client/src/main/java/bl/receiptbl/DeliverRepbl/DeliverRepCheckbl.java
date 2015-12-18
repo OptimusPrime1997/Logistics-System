@@ -9,7 +9,7 @@ import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import PO.Receipt.DeliverRepPO;
 import PO.Receipt.ReceiptPO;
-import VO.ReceiptVO.DeliverRepVO;
+import VO.Receipt.DeliverRepVO;
 import bl.receiptbl.CashRepbl.CashRepbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import util.enumData.Rep;

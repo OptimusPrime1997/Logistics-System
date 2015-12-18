@@ -8,8 +8,8 @@ import java.util.Vector;
 
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.DeliverRepVO;
-import VO.ReceiptVO.DeliverVO;
+import VO.Receipt.DeliverRepVO;
+import VO.Receipt.DeliverVO;
 import bl.managementbl.accountbl.Accountbl;
 
 public class DeliverRepShowbl {

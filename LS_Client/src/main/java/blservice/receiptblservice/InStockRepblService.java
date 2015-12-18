@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import Exception.GoodsNotFound;
 import VO.StockDivisionVO;
-import VO.ReceiptVO.InStockRepVO;
+import VO.Receipt.InStockRepVO;
 import util.enumData.City;
 import util.enumData.ResultMessage;
 

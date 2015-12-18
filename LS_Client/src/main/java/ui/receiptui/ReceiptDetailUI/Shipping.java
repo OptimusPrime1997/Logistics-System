@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.ShippingRepVO;
+import VO.Receipt.ShippingRepVO;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepController;
 import bl.receiptbl.ShippingRepbl.ShippingRepController;
 import ui.util.MyFrame;

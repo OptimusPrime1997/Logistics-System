@@ -3,9 +3,9 @@ package bl.receiptbl.PayRepbl;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import VO.ReceiptVO.PayRepStaffSalaryRepVO;
-import VO.ReceiptVO.PayRepVO;
-import VO.ReceiptVO.PayStaffSalaryVO;
+import VO.Receipt.PayRepStaffSalaryRepVO;
+import VO.Receipt.PayRepVO;
+import VO.Receipt.PayStaffSalaryVO;
 import util.enumData.Authority;
 
 public class Staffbl{

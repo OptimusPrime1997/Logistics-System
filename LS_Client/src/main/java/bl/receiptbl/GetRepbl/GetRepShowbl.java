@@ -5,8 +5,8 @@ import java.rmi.NotBoundException;
 import java.util.Vector;
 
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.ArriveRepVO;
-import VO.ReceiptVO.ArriveVO;
+import VO.Receipt.ArriveRepVO;
+import VO.Receipt.ArriveVO;
 
 public class GetRepShowbl {
 	

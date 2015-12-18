@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import Exception.NumNotFoundException;
 import PO.Receipt.ReceiptPO;
 import PO.Receipt.TransferRepPO;
-import VO.ReceiptVO.ReceiptVO;
-import VO.ReceiptVO.TransferRepVO;
+import VO.Receipt.ReceiptVO;
+import VO.Receipt.TransferRepVO;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import util.enumData.Rep;
@@ -51,5 +51,8 @@ public class TransferRepbl extends ReceiptblController{
 			return null;
 		return TransferRepVO.toArrayVO(receiptPOs);
 	}
-
+	
+	public boolean isTrueOrder(String order){
+		return receiptbl.isTrueOrder(order);
+	}
 }

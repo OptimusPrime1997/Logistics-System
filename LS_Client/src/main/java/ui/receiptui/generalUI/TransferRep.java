@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -17,10 +18,11 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
-import VO.ReceiptVO.TransferRepVO;
+import VO.Receipt.TransferRepVO;
 import bl.receiptbl.TransferRepbl.TransferRepController;
 import ui.receiptui.ReceiptCheckUI.TransferCheck;
 import ui.util.MyFrame;
+import util.CurrentCity;
 import util.enumData.City;
 import util.enumData.ResultMessage;
 import util.enumData.ShipForm;
@@ -60,6 +62,7 @@ public class TransferRep extends javax.swing.JPanel {
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
+    private String officeID;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -114,18 +117,25 @@ public class TransferRep extends javax.swing.JPanel {
         dateLabel.setText("日期:");
 
         officeText.setEditable(false);
-        officeText.setText("025");
+        try {
+			officeText.setText(City.toString(CurrentCity.getCurrentCity()));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+        officeID = CurrentCity.getCurrentOptorID(officeText.getText());
 
         officeLabel.setText("中转中心:");
 
         numLabel.setText("编号:");
 
         numText.setEditable(false);
-        String num = officeText.getText() + "000";
+        String num = officeID + "000";
         num += control.getDateInNum(dateText.getText());
         num += "3";
         try {
-			num += control.createNum(dateText.getText(), officeText.getText());
+			num += control.createNum(dateText.getText(), officeID);
 			numText.setText(num);
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
@@ -142,6 +152,7 @@ public class TransferRep extends javax.swing.JPanel {
         destinationLabel.setText("目的地:");
 
         columnIdentifiers.add("订单号");
+        columnIdentifiers.add("删除");
         model.setDataVector(dataVector, columnIdentifiers);
         jTable.setModel(model);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
@@ -338,7 +349,7 @@ public class TransferRep extends javax.swing.JPanel {
     }
 
     private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	new TransferCheck(officeText.getText());
+    	new TransferCheck(officeID);
     }
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -347,9 +358,14 @@ public class TransferRep extends javax.swing.JPanel {
     	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
     	resultMsgText.setText(resultMsg);
     	if(resultMessage==ResultMessage.ADD_SUCCESS){
-    		dataVector.add(order);
-    		model.setDataVector(dataVector, columnIdentifiers);
-        	setColumn();
+    		if(control.isTrueOrder(order)){
+	    		dataVector.add(order);
+	    		model.setDataVector(dataVector, columnIdentifiers);
+	        	setColumn();
+			}
+			else {
+				resultMsgText.setText("未找到该订单");
+			}
     	}
     }
 

@@ -8,6 +8,7 @@ package ui.receiptui.generalUI;
 
 import java.io.IOException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -16,12 +17,13 @@ import javax.swing.table.DefaultTableModel;
 
 import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.OutStockRepVO;
-import VO.ReceiptVO.ShippingRepVO;
-import VO.ReceiptVO.TransferRepVO;
+import VO.Receipt.OutStockRepVO;
+import VO.Receipt.ShippingRepVO;
+import VO.Receipt.TransferRepVO;
 import bl.receiptbl.OutStockRepbl.OutStockRepController;
 import ui.receiptui.ReceiptCheckUI.OutStockCheck;
 import ui.warehousemanui.WarehousePanel;
+import util.CurrentCity;
 import util.enumData.City;
 import util.enumData.Rep;
 import util.enumData.ShipForm;
@@ -58,6 +60,7 @@ public class OutStockRep extends javax.swing.JPanel {
    	private DefaultTableModel model;
    	private Vector<String> columnIdentifiers;
    	private Vector<Object> dataVector;
+   	private String officeID;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -110,18 +113,25 @@ public class OutStockRep extends javax.swing.JPanel {
         dateLabel.setText("日期:");
 
         officeText.setEditable(false);
-        officeText.setText("025");
+        try {
+			officeText.setText(City.toString(CurrentCity.getCurrentCity()));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+        officeID = CurrentCity.getCurrentOptorID(officeText.getText());
 
         officeLabel.setText("中转中心:");
 
         numLabel.setText("编号:");
 
         numText.setEditable(false);
-        String num = officeText.getText() + "000";
+        String num = officeID + "000";
 		num += control.getDateInNum(dateText.getText());
 		num += "4";
 		try {
-			num += control.createNum(dateText.getText(), officeText.getText());
+			num += control.createNum(dateText.getText(), officeID);
 			numText.setText(num);
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
@@ -279,7 +289,7 @@ public class OutStockRep extends javax.swing.JPanel {
     
 
     private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	new OutStockCheck(officeText.getText());
+    	new OutStockCheck(officeID);
     }
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed

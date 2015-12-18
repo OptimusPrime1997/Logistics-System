@@ -22,8 +22,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import VO.GoodsVO;
-import VO.ReceiptVO.CashRepVO;
-import VO.ReceiptVO.CashVO;
+import VO.Receipt.CashRepVO;
+import VO.Receipt.CashVO;
 import bl.receiptbl.CashRepbl.CashRepController;
 import blservice.receiptblservice.CashRepblService;
 import ui.receiptui.ReceiptCheckUI.CashCheck;
@@ -356,22 +356,22 @@ public class CashRep extends javax.swing.JPanel {
         	double money;
     		try {
     			courierName = control.getCourierName(courierNum);
+    			ArrayList<GoodsVO> arrGoods = control.getGoods(courierNum, dateText.getText());
+            	money = control.getMoneySum(arrGoods);
+            	Vector<String> arr = new Vector<String>();
+            	arr.add(courierName);
+            	arr.add(courierNum);
+            	arr.add(money+"");
+            	arr.add(null);
+            	dataVector.add(arr);
+            	model.setDataVector(dataVector, columnIdentifiers);
+            	setColumn();
+            	sumText.setText(calSum());
     		} catch (ClassNotFoundException | NameNotFoundException | NumNotFoundException | IOException e) {
     			// TODO Auto-generated catch block
     			e.printStackTrace();
     			resultMsgText.setText(ExceptionPrint.print(e));
     		}
-        	ArrayList<GoodsVO> arrGoods = control.getGoods(courierNum, dateText.getText());
-        	money = control.getMoneySum(arrGoods);
-        	Vector<String> arr = new Vector<String>();
-        	arr.add(courierName);
-        	arr.add(courierNum);
-        	arr.add(money+"");
-        	arr.add(null);
-        	dataVector.add(arr);
-        	model.setDataVector(dataVector, columnIdentifiers);
-        	setColumn();
-        	sumText.setText(calSum());
     	}
     }
     

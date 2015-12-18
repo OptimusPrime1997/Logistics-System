@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.ReceiptVO;
-import VO.ReceiptVO.ShippingRepVO;
+import VO.Receipt.ReceiptVO;
+import VO.Receipt.ShippingRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.FindAccountblService;
 import blservice.receiptblservice.PostReceiptblService;
@@ -80,6 +80,12 @@ public class ShippingRepController extends ReceiptblController
 	public ResultMessage checkDriverNum(String string) {
 		// TODO Auto-generated method stub
 		return shippingRepbl.checkDriverNum(string);
+	}
+
+	@Override
+	public boolean isTrueOrder(String order) {
+		// TODO Auto-generated method stub
+		return shippingRepbl.isTrueOrder(order);
 	}
 
 }

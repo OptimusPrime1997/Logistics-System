@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 import Exception.GoodsNotFound;
 import PO.Receipt.ReceiptPO;
-import VO.ReceiptVO.DeliverRepVO;
-import VO.ReceiptVO.ReceiptVO;
+import VO.Receipt.DeliverRepVO;
+import VO.Receipt.ReceiptVO;
 import bl.goodsbl.Goodsbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import util.enumData.Rep;

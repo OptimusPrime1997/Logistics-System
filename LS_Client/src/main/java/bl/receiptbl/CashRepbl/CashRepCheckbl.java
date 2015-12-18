@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
-import VO.ReceiptVO.CashRepVO;
+
+import VO.Receipt.CashRepVO;
 
 public class CashRepCheckbl {
 	

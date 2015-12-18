@@ -18,8 +18,8 @@ import PO.StockDivisionPO;
 import PO.Receipt.InStockRepPO;
 import PO.Receipt.OutStockRepPO;
 import VO.StockDivisionVO;
-import VO.ReceiptVO.InStockRepVO;
-import VO.ReceiptVO.OutStockRepVO;
+import VO.Receipt.InStockRepVO;
+import VO.Receipt.OutStockRepVO;
 import blservice.stockblservice.StockDivisionBLService;
 import dataservice.stockdataservice.StockDivisionDataService;
 

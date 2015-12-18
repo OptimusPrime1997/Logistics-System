@@ -25,9 +25,8 @@ import PO.StockPO;
 import PO.Receipt.InStockRepPO;
 import PO.Receipt.OutStockRepPO;
 import VO.StockVO;
-import VO.ReceiptVO.InStockRepVO;
-import VO.ReceiptVO.InStockVO;
-import VO.ReceiptVO.OutStockRepVO;
+import VO.Receipt.InStockRepVO;
+import VO.Receipt.OutStockRepVO;
 
 /**
  * @author G

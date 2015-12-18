@@ -11,4 +11,8 @@ public interface ShipmentRepblServce extends ReceiptblService{
 	
 	public ResultMessage checkDriverNum(String string);
 	
+	public boolean isTrueAccount(String num);
+	
+	public boolean isTrueOrder(String order);
+	
 }

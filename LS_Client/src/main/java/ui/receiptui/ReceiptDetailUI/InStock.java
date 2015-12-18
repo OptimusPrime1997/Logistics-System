@@ -15,7 +15,7 @@ import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.InStockRepVO;
+import VO.Receipt.InStockRepVO;
 import bl.receiptbl.InStockRepbl.InStockRepController;
 import ui.util.MyFrame;
 

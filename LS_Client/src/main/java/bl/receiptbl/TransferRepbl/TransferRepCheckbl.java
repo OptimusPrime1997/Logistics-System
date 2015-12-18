@@ -5,8 +5,8 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import VO.ReceiptVO.ShippingRepVO;
-import VO.ReceiptVO.TransferRepVO;
+import VO.Receipt.ShippingRepVO;
+import VO.Receipt.TransferRepVO;
 import util.enumData.City;
 import util.enumData.ShipForm;
 

@@ -7,9 +7,9 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.OutStockRepVO;
-import VO.ReceiptVO.ShippingRepVO;
-import VO.ReceiptVO.TransferRepVO;
+import VO.Receipt.OutStockRepVO;
+import VO.Receipt.ShippingRepVO;
+import VO.Receipt.TransferRepVO;
 
 public interface OutStockRepblService extends ReceiptblService{
 	

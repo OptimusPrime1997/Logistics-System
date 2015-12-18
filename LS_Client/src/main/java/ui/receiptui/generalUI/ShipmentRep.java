@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
-import VO.ReceiptVO.ShipmentRepVO;
+import VO.Receipt.ShipmentRepVO;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepController;
 import ui.receiptui.ReceiptCheckUI.ShipmentCheck;
 import ui.util.MyFrame;
@@ -129,6 +129,7 @@ public class ShipmentRep extends javax.swing.JPanel {
         driverLabel.setText("司机编号:");
 
         columnIdentifiers.add("订单号");
+        columnIdentifiers.add("删除");
         model.setDataVector(dataVector, columnIdentifiers);
         jTable.setModel(model);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
@@ -248,17 +249,15 @@ public class ShipmentRep extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(14, 14, 14)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(addButton)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(orderLabel)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(orderText, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(cancelButton)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(okButton)))))
+                                        .addComponent(okButton))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(addButton)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(orderLabel)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(orderText, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(0, 38, Short.MAX_VALUE))))
             .addComponent(resultMsgText)
         );
@@ -284,13 +283,13 @@ public class ShipmentRep extends javax.swing.JPanel {
                     .addComponent(driverText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
+                        .addGap(64, 64, 64)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(orderLabel)
                             .addComponent(orderText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
                         .addComponent(addButton)
-                        .addGap(68, 68, 68)
+                        .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(okButton)
                             .addComponent(cancelButton)))
@@ -353,9 +352,14 @@ public class ShipmentRep extends javax.swing.JPanel {
     	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
     	resultMsgText.setText(resultMsg);
     	if(resultMessage==ResultMessage.ADD_SUCCESS){
-    		dataVector.add(order);
-    		model.setDataVector(dataVector, columnIdentifiers);
-        	setColumn();
+			if(control.isTrueOrder(order)){
+	    		dataVector.add(order);
+	    		model.setDataVector(dataVector, columnIdentifiers);
+	        	setColumn();
+			}
+			else {
+				resultMsgText.setText("未找到该订单");
+			}
     	}
     }
 

@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -19,12 +20,13 @@ import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.ArriveVO;
-import VO.ReceiptVO.ReceptionRepVO;
+import VO.Receipt.ArriveVO;
+import VO.Receipt.ReceptionRepVO;
 import bl.receiptbl.ReceptionRepbl.ReceptionRepController;
 import blservice.receiptblservice.ReceptionRepblService;
 import ui.receiptui.ReceiptCheckUI.ArriveCheck;
 import ui.util.MyFrame;
+import util.CurrentCity;
 import util.enumData.City;
 import util.enumData.GoodsArrivalState;
 import util.enumData.Rep;
@@ -66,6 +68,7 @@ public class ReceptionRep extends javax.swing.JPanel {
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
+    private String officeID;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -122,7 +125,14 @@ public class ReceptionRep extends javax.swing.JPanel {
         dateText.setText(control.getDate());
 
         officeText.setEditable(false);
-        officeText.setText("025");
+        try {
+			officeText.setText(City.toString(CurrentCity.getCurrentCity()));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+        officeID = CurrentCity.getCurrentOptorID(officeText.getText());
 
         orderLabel.setText("订单号:");
 
@@ -131,12 +141,12 @@ public class ReceptionRep extends javax.swing.JPanel {
         numLabel.setText("编号:");
         
         numText.setEditable(false);
-        String num = officeText.getText();
+        String num = officeID;
         num += "000";
         num += control.getDateInNum(dateText.getText());
         num += "1";
         try {
-			num += control.createNum(dateText.getText(), officeText.getText());
+			num += control.createNum(dateText.getText(), officeID);
 			numText.setText(num);
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
@@ -375,7 +385,7 @@ public class ReceptionRep extends javax.swing.JPanel {
     }
 
     private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	new ArriveCheck(Rep.ReceptionRep, officeText.getText());
+    	new ArriveCheck(Rep.ReceptionRep, officeID);
     }
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -384,12 +394,17 @@ public class ReceptionRep extends javax.swing.JPanel {
     	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
     	resultMsgText.setText(resultMsg);
     	if(resultMessage==ResultMessage.ADD_SUCCESS){
-    		Vector<String> arr = new Vector<String>();
-    		arr.add(order);
-    		arr.add(arriveStateBox.getSelectedItem().toString());
-    		dataVector.add(arr);
-    		model.setDataVector(dataVector, columnIdentifiers);
-        	setColumn();
+    		if(control.isTrueOrder(order)){
+				Vector<String> arr = new Vector<String>();
+				arr.add(order);
+				arr.add(arriveStateBox.getSelectedItem().toString());
+				dataVector.add(arr);
+				model.setDataVector(dataVector, columnIdentifiers);
+				setColumn();
+			}
+			else {
+				resultMsgText.setText("未找到该订单");
+			}
     	}
     }
 

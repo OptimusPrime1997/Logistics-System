@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import VO.GoodsVO;
-import VO.ReceiptVO.ReceiptVO;
+import VO.Receipt.ReceiptVO;
 import util.enumData.ResultMessage;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;

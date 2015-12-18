@@ -20,8 +20,8 @@ import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
 import Exception.GoodsNotFound;
-import VO.ReceiptVO.DeliverRepVO;
-import VO.ReceiptVO.DeliverVO;
+import VO.Receipt.DeliverRepVO;
+import VO.Receipt.DeliverVO;
 import bl.receiptbl.DeliverRepbl.DeliverController;
 import blservice.receiptblservice.DeliverRepblService;
 import ui.receiptui.ReceiptCheckUI.DeliverCheck;
@@ -317,18 +317,18 @@ public class DeliverRep extends javax.swing.JPanel {
 				name = control.getNameByOrder(order);
 				phoneNum = control.getPhoneByOrder(order);
 	    		address = control.getAddressByOrder(order);
+	    		Vector<String> arr = new Vector<String>();
+	    		arr.add(order);
+	    		arr.add(name);
+	    		arr.add(phoneNum);
+	    		arr.add(address);
+	    		dataVector.add(arr);
+	        	model.setDataVector(dataVector, columnIdentifiers);
+	        	setColumn();
 			} catch (GoodsNotFound e) {
 				e.printStackTrace();
 				resultMsgText.setText(ExceptionPrint.print(e));
 			}
-    		Vector<String> arr = new Vector<String>();
-    		arr.add(order);
-    		arr.add(name);
-    		arr.add(phoneNum);
-    		arr.add(address);
-    		dataVector.add(arr);
-        	model.setDataVector(dataVector, columnIdentifiers);
-        	setColumn();
     	}
     }
     

@@ -3,9 +3,9 @@ package bl.receiptbl.PayRepbl;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import VO.ReceiptVO.PayRentVO;
-import VO.ReceiptVO.PayRepRentRepVO;
-import VO.ReceiptVO.PayRepVO;
+import VO.Receipt.PayRentVO;
+import VO.Receipt.PayRepRentRepVO;
+import VO.Receipt.PayRepVO;
 
 public class Rentbl{
 
