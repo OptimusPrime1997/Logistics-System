@@ -124,8 +124,8 @@ public class WarehousePanel extends javax.swing.JFrame {
 
         jLabel8.setText("广州08");
 
-        //TODO 怎么在刚开始显示不报错呀
-//        showProcess();
+        //显示进度条
+        showProcess();
         
         jButton1.setText("出库单填写");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -389,6 +389,7 @@ public class WarehousePanel extends javax.swing.JFrame {
 			Guangzhou1.setValue(s.checkPresentStockQuantity(7));
 			Guangzhou2.setValue(s.checkPresentStockQuantity(8));
 			
+		
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			//
 			
