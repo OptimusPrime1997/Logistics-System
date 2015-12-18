@@ -5,8 +5,8 @@ import java.rmi.NotBoundException;
 import java.util.Vector;
 
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.InStockRepVO;
-import VO.ReceiptVO.InStockVO;
+import VO.Receipt.InStockRepVO;
+import VO.Receipt.InStockVO;
 
 public class InStockRepShowbl {
 	

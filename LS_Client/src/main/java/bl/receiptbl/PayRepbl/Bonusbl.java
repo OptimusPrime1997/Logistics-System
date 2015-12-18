@@ -8,9 +8,9 @@ import java.util.Vector;
 
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.PayBonusVO;
-import VO.ReceiptVO.PayRepBonusRepVO;
-import VO.ReceiptVO.PayRepVO;
+import VO.Receipt.PayBonusVO;
+import VO.Receipt.PayRepBonusRepVO;
+import VO.Receipt.PayRepVO;
 import bl.receiptbl.CashRepbl.CashRepbl;
 
 public class Bonusbl{

@@ -7,7 +7,7 @@ import java.util.Vector;
 
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.ReceiptVO;
+import VO.Receipt.ReceiptVO;
 
 public interface PostReceiptblService {
 

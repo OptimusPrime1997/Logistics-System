@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import VO.GoodsVO;
-import VO.ReceiptVO.CashRepVO;
-import VO.ReceiptVO.ReceiptVO;
+import VO.Receipt.CashRepVO;
+import VO.Receipt.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.CashRepblService;
 import blservice.receiptblservice.PostReceiptblService;
@@ -65,7 +65,7 @@ implements CashRepblService, PostReceiptblService{
 	public ArrayList<CashRepVO> getRepByDate(String date, String office)
 			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return cashRepbl.getRepByDate(date, office);
+		return null;
 	}
 
 	@Override

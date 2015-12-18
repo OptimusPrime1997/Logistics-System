@@ -5,7 +5,7 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import VO.ReceiptVO.PayRepVO;
+import VO.Receipt.PayRepVO;
 
 public class PayRepCheckbl {
 	

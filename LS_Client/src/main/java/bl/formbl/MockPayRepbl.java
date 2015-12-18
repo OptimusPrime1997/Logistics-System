@@ -2,9 +2,9 @@ package bl.formbl;
 
 import java.util.ArrayList;
 
+import VO.Receipt.PayRepVO;
+import VO.Receipt.PayVO;
 import util.enumData.PayThing;
-import VO.ReceiptVO.PayRepVO;
-import VO.ReceiptVO.PayVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 
 public class MockPayRepbl extends ReceiptblController{

@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import Exception.NumNotFoundException;
 import PO.Receipt.ReceiptPO;
 import PO.Receipt.ShippingRepPO;
-import VO.ReceiptVO.InStockRepVO;
-import VO.ReceiptVO.ReceiptVO;
-import VO.ReceiptVO.ShippingRepVO;
+import VO.Receipt.InStockRepVO;
+import VO.Receipt.ReceiptVO;
+import VO.Receipt.ShippingRepVO;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import util.enumData.Rep;
 import util.enumData.ResultMessage;
@@ -67,6 +67,10 @@ public class ShippingRepbl{
 	
 	public boolean isTrueAccount(String num){
 		return receiptbl.isTrueAccount(num);
+	}
+	
+	public boolean isTrueOrder(String order){
+		return receiptbl.isTrueOrder(order);
 	}
 
 }

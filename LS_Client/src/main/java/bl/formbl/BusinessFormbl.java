@@ -13,8 +13,8 @@ import util.CurrentTime;
 import util.enumData.ResultMessage;
 import Exception.NotFoundMoneyInAndOutException;
 import VO.BusinessFormVO;
-import VO.ReceiptVO.CashRepVO;
-import VO.ReceiptVO.PayRepVO;
+import VO.Receipt.CashRepVO;
+import VO.Receipt.PayRepVO;
 import dataservice.formdataservice.BusinessFormDataService;
 
 public class BusinessFormbl {

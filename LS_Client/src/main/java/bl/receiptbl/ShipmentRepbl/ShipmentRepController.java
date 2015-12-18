@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.ReceiptVO;
-import VO.ReceiptVO.ShipmentRepVO;
+import VO.Receipt.ReceiptVO;
+import VO.Receipt.ShipmentRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.FindAccountblService;
 import blservice.receiptblservice.PostReceiptblService;
@@ -85,6 +85,12 @@ implements ShipmentRepblServce, PostReceiptblService, SubmitblService, FindAccou
 	public boolean isTrueAccount(String num) {
 		// TODO Auto-generated method stub
 		return shipmentRepbl.isTrueAccount(num);
+	}
+
+	@Override
+	public boolean isTrueOrder(String order) {
+		// TODO Auto-generated method stub
+		return shipmentRepbl.isTrueOrder(order);
 	}
 
 }

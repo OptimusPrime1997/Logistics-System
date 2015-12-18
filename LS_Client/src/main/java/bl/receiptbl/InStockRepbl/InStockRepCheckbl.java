@@ -8,7 +8,7 @@ import java.util.Vector;
 import Exception.NumNotFoundException;
 import PO.Receipt.InStockRepPO;
 import PO.Receipt.ReceiptPO;
-import VO.ReceiptVO.InStockRepVO;
+import VO.Receipt.InStockRepVO;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import util.enumData.Rep;
 

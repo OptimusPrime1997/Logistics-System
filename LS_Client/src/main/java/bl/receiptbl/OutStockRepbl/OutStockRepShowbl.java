@@ -5,7 +5,7 @@ import java.rmi.NotBoundException;
 import java.util.Vector;
 
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.OutStockRepVO;
+import VO.Receipt.OutStockRepVO;
 
 public class OutStockRepShowbl {
 	

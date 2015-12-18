@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.PayFreightVO;
-import VO.ReceiptVO.PayRepFreightRepVO;
-import VO.ReceiptVO.PayRepVO;
-import VO.ReceiptVO.TransferRepVO;
+import VO.Receipt.PayFreightVO;
+import VO.Receipt.PayRepFreightRepVO;
+import VO.Receipt.PayRepVO;
+import VO.Receipt.TransferRepVO;
 import bl.receiptbl.TransferRepbl.TransferRepbl;
 
 public class Freightbl{

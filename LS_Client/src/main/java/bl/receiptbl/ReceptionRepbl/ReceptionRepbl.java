@@ -7,10 +7,10 @@ import java.util.Vector;
 
 import Exception.NumNotFoundException;
 import PO.Receipt.ReceiptPO;
-import VO.ReceiptVO.ReceptionRepVO;
-import VO.ReceiptVO.ReceiptVO;
-import VO.ReceiptVO.ShipmentRepVO;
-import VO.ReceiptVO.TransferRepVO;
+import VO.Receipt.ReceiptVO;
+import VO.Receipt.ReceptionRepVO;
+import VO.Receipt.ShipmentRepVO;
+import VO.Receipt.TransferRepVO;
 import bl.goodsbl.Goodsbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepbl;
@@ -87,4 +87,7 @@ public class ReceptionRepbl{
 		}
 	}
 
+	public boolean isTrueOrder(String order){
+		return receiptbl.isTrueOrder(order);
+	}
 }

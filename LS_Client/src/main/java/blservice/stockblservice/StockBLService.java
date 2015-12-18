@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 import util.enumData.ResultMessage;
 import VO.StockVO;
-import VO.ReceiptVO.InStockRepVO;
-import VO.ReceiptVO.OutStockRepVO;
+import VO.Receipt.InStockRepVO;
+import VO.Receipt.OutStockRepVO;
 
 /**
  * @author G

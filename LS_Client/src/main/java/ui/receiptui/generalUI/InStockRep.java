@@ -22,14 +22,14 @@ import javax.swing.table.TableColumn;
 import Exception.ExceptionPrint;
 import Exception.GoodsNotFound;
 import VO.StockDivisionVO;
-import VO.ReceiptVO.InStockRepVO;
-import VO.ReceiptVO.InStockVO;
+import VO.Receipt.InStockRepVO;
+import VO.Receipt.InStockVO;
 import bl.receiptbl.InStockRepbl.InStockRepController;
 import ui.receiptui.ReceiptCheckUI.InStockCheck;
-import ui.util.MyFrame;
 import ui.warehousemanui.WarehousePanel;
 import util.enumData.City;
 import util.enumData.ResultMessage;
+import util.CurrentCity;
 
 /**
  *
@@ -40,16 +40,12 @@ public class InStockRep extends javax.swing.JPanel {
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private JFrame frame; 
     private javax.swing.JButton addButton;
-    private javax.swing.JLabel areaLabel;
-    private javax.swing.JTextField areaText;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton checkAllRepsButton;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JTextField dateText;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;
-    private javax.swing.JLabel locLabel;
-    private javax.swing.JTextField locText;
     private javax.swing.JLabel numLabel;
     private javax.swing.JTextField numText;
     private javax.swing.JLabel officeLabel;
@@ -62,6 +58,7 @@ public class InStockRep extends javax.swing.JPanel {
 	private DefaultTableModel model;
 	private Vector<String> columnIdentifiers;
 	private Vector<Object> dataVector;
+	private String officeID;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -88,10 +85,6 @@ public class InStockRep extends javax.swing.JPanel {
         officeLabel = new javax.swing.JLabel();
         numLabel = new javax.swing.JLabel();
         numText = new javax.swing.JTextField();
-        areaLabel = new javax.swing.JLabel();
-        areaText = new javax.swing.JTextField();
-        locLabel = new javax.swing.JLabel();
-        locText = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         orderLabel = new javax.swing.JLabel();
@@ -114,18 +107,25 @@ public class InStockRep extends javax.swing.JPanel {
         dateLabel.setText("日期:");
 
         officeText.setEditable(false);
-        officeText.setText("025");
+        try {
+			officeText.setText(City.toString(CurrentCity.getCurrentCity()));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+        officeID = CurrentCity.getCurrentOptorID(officeText.getText());
 
         officeLabel.setText("中转中心:");
 
         numLabel.setText("编号:");
 
         numText.setEditable(false);
-        String num = officeText.getText() + "000";
+        String num = officeID + "000";
 		num += control.getDateInNum(dateText.getText());
 		num += "2";
 		try {
-			num += control.createNum(dateText.getText(), officeText.getText());
+			num += control.createNum(dateText.getText(), officeID);
 			numText.setText(num);
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
@@ -133,14 +133,6 @@ public class InStockRep extends javax.swing.JPanel {
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
 		
-        areaLabel.setText("区号:");
-
-        areaText.setEditable(false);
-
-        locLabel.setText("位号:");
-
-        locText.setEditable(false);
-
         columnIdentifiers.add("订单号");
         columnIdentifiers.add("区号");
         columnIdentifiers.add("位号");
@@ -223,56 +215,43 @@ public class InStockRep extends javax.swing.JPanel {
 			}
 		});
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(resultMsgText, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+            .addComponent(resultMsgText)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(checkAllRepsButton)
+                .addGap(15, 15, 15)
+                .addComponent(officeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dateLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(checkAllRepsButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                        .addComponent(officeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dateLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(numLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(orderLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(orderText, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(cancelButton)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(okButton))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(areaLabel)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(areaText, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(locLabel)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(locText, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(26, 26, 26)
-                                        .addComponent(addButton)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(orderLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(orderText, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(numLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(cancelButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(okButton)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,28 +269,21 @@ public class InStockRep extends javax.swing.JPanel {
                         .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(numLabel)
-                            .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                            .addComponent(numText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(orderLabel)
-                    .addComponent(orderText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(areaLabel)
-                    .addComponent(areaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(locLabel)
-                    .addComponent(locText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(orderText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addButton))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(okButton)
                     .addComponent(cancelButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        
     }// </editor-fold>//GEN-END:initComponents
     
     private void setColumn() {
@@ -336,7 +308,7 @@ public class InStockRep extends javax.swing.JPanel {
     }
 
     private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	new InStockCheck(officeText.getText());
+    	new InStockCheck(officeID);
     }
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {

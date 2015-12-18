@@ -15,5 +15,7 @@ public interface ReceptionRepblService extends ReceiptblService{
 	
 	public void transferOver(String num);
 	
+	public boolean isTrueOrder(String order);
+	
 	public String getDepart(Rep rep, String num) throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException;
 }

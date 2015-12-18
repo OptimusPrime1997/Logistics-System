@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.ShippingRepVO;
+import VO.Receipt.ShippingRepVO;
 
 public class ShippingRepShowbl {
 	

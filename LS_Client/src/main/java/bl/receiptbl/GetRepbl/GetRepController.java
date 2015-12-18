@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.GetRepVO;
-import VO.ReceiptVO.ReceiptVO;
+import VO.Receipt.GetRepVO;
+import VO.Receipt.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.GetRepblService;
 import blservice.receiptblservice.PostReceiptblService;
@@ -86,6 +86,12 @@ implements GetRepblService, PostReceiptblService, SubmitblService{
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		return getRepbl.getDepart(rep, num);
+	}
+
+	@Override
+	public boolean isTrueOrder(String order) {
+		// TODO Auto-generated method stub
+		return getRepbl.isTrueOrder(order);
 	}
 
 

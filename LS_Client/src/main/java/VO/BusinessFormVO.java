@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import PO.BusinessFormPO;
 import PO.Receipt.CashRepPO;
 import PO.Receipt.PayRepPO;
-import VO.ReceiptVO.CashRepVO;
-import VO.ReceiptVO.CashVO;
-import VO.ReceiptVO.PayRepVO;
+import VO.Receipt.CashRepVO;
+import VO.Receipt.CashVO;
+import VO.Receipt.PayRepVO;
 
 
 public class BusinessFormVO {

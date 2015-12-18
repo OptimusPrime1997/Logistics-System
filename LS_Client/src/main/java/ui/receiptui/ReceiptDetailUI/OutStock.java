@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.OutStockRepVO;
+import VO.Receipt.OutStockRepVO;
 import bl.receiptbl.CashRepbl.CashRepController;
 import bl.receiptbl.OutStockRepbl.OutStockRepController;
 import ui.util.MyFrame;

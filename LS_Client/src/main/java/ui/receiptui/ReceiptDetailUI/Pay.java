@@ -15,7 +15,7 @@ import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.PayRepVO;
+import VO.Receipt.PayRepVO;
 import bl.receiptbl.CashRepbl.CashRepController;
 import bl.receiptbl.PayRepbl.PayRepController;
 import ui.util.MyFrame;

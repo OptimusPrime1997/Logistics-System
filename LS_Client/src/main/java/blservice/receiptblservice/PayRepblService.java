@@ -14,14 +14,14 @@ import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.PayRepBonusRepVO;
-import VO.ReceiptVO.PayRepCourierSalaryRepVO;
-import VO.ReceiptVO.PayRepDriverSalaryRepVO;
-import VO.ReceiptVO.PayRepFreightRepVO;
-import VO.ReceiptVO.PayRepRefundRepVO;
-import VO.ReceiptVO.PayRepRentRepVO;
-import VO.ReceiptVO.PayRepStaffSalaryRepVO;
-import VO.ReceiptVO.PayRepVO;
+import VO.Receipt.PayRepBonusRepVO;
+import VO.Receipt.PayRepCourierSalaryRepVO;
+import VO.Receipt.PayRepDriverSalaryRepVO;
+import VO.Receipt.PayRepFreightRepVO;
+import VO.Receipt.PayRepRefundRepVO;
+import VO.Receipt.PayRepRentRepVO;
+import VO.Receipt.PayRepStaffSalaryRepVO;
+import VO.Receipt.PayRepVO;
 import util.enumData.PayThing;
 
 public interface PayRepblService extends ReceiptblService{

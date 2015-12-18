@@ -3,9 +3,9 @@ package bl.receiptbl.PayRepbl;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import VO.ReceiptVO.PayRefundVO;
-import VO.ReceiptVO.PayRepRefundRepVO;
-import VO.ReceiptVO.PayRepVO;
+import VO.Receipt.PayRefundVO;
+import VO.Receipt.PayRepRefundRepVO;
+import VO.Receipt.PayRepVO;
 
 public class Refundbl{
 	public void submitRefund(PayRepVO payRepVO, PayRepRefundRepVO payRepRefundRepVO){

@@ -16,9 +16,9 @@ import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
-import VO.ReceiptVO.PayRepStaffSalaryRepVO;
-import VO.ReceiptVO.PayRepVO;
-import VO.ReceiptVO.PayStaffSalaryVO;
+import VO.Receipt.PayRepStaffSalaryRepVO;
+import VO.Receipt.PayRepVO;
+import VO.Receipt.PayStaffSalaryVO;
 import bl.receiptbl.PayRepbl.PayRepController;
 import ui.util.MyFrame;
 import util.enumData.Authority;

@@ -25,7 +25,7 @@ import util.enumData.LogType;
 import util.enumData.ResultMessage;
 import util.enumData.ShipForm;
 import VO.LogVO;
-import VO.ReceiptVO.TransferRepVO;
+import VO.Receipt.TransferRepVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.logblservice.LogBLService;
 import blservice.loginblservice.LoginBLService;

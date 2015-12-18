@@ -2,8 +2,8 @@ package bl.formbl;
 
 import java.util.ArrayList;
 
-import VO.ReceiptVO.CashRepVO;
-import VO.ReceiptVO.CashVO;
+import VO.Receipt.CashRepVO;
+import VO.Receipt.CashVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 
 public class MockCashRepbl extends ReceiptblController{
