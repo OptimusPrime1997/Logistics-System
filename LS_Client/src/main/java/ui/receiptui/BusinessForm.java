@@ -20,7 +20,9 @@ import util.enumData.ResultMessage;
  * @author apple
  */
 public class BusinessForm extends javax.swing.JPanel {
-
+public static void main(String[] args) {
+	new BusinessForm();
+}
     /**
      * Creates new form 经营情况表
      */

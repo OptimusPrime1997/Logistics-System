@@ -63,9 +63,15 @@ public class courier_main extends JPanel {
 	 * 给进度条赋值
 	 */
 	public void initProBar() {
+		for(int i=0;i<bars.size();i++) {
+			bars.get(i).setValue(0);
+		}
 		//赋值
 		int[]values=goodsController.getdaysNumOfGoods(NUM_OF_DAYS);
-		for(int i=0;i<bars.size();i++) bars.get(i).setValue(values[i]);
+		for(int i=0;i<bars.size();i++) {
+			bars.get(i).setValue(values[i]);
+			System.out.println(values[i]);
+		}
 	}
 	/*
 	 * 初始化布局

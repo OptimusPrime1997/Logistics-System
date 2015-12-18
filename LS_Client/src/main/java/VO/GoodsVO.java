@@ -46,7 +46,7 @@ public class GoodsVO {
 	public String realReceiverName="";
 	public String realReceiverPhone="";
 
-	public GoodsVO(Boolean ifExaminePassed,
+	public GoodsVO(String listNum,Boolean ifExaminePassed,
 			String getCourierAccount, String deliverCourierAccount,
 			String startTime, String overtime, String destinationCity,
 			String senderName, String senderAddress, String senderCompany,
@@ -58,6 +58,7 @@ public class GoodsVO {
 			GoodsArrivalState arrivalState, GoodsLogisticState logisticState,
 			String realReceiverName, String realReceiverPhone) {
 		//TODO
+		this.listNum=listNum;
 		this.ifExaminePassed = ifExaminePassed;
 		this.getCourierAccount = getCourierAccount;
 		this.deliverCourierAccount = deliverCourierAccount;

@@ -92,16 +92,18 @@ public class Goodsbl {
 		try {
 			// TODO 计算运费
 			String cities=vo.receiverAddress.substring(0, 2)+"-"+vo.senderAddress.substring(0, 2);
-			double basicprice =0.3;//ctr_const.findByCities(cities).priceConst;
-			double distance =30;// ctr_const.findByCities(cities).distanceConst;
-			int listNum_part=getGoodsDataService().recordListNum();
-			//补齐7位
-			String temp=String.format("%7d",listNum_part).replace(" ","0");
-			vo.listNum=vo.getCourierAccount.substring(0, 3)+temp;
+			double basicprice =ctr_const.findByCities(cities).priceConst;
+			double distance =ctr_const.findByCities(cities).distanceConst;
+			if(vo.listNum.length()!=10){
+				int listNum_part=getGoodsDataService().recordListNum();
+				//补齐7位
+				String temp=String.format("%7d",listNum_part).replace(" ","0");
+				vo.listNum=vo.getCourierAccount.substring(0, 3)+temp;
+			}
 			vo.moneyFare = moneyCounter(vo.expressType, vo.weight, distance,
 					basicprice);
 			vo.moneyTotal = vo.moneyFare + vo.moneyOfPackage;
-		   msg=getGoodsDataService().add(GoodsVO.toPO(vo));
+		    msg=getGoodsDataService().add(GoodsVO.toPO(vo));
 		   //已添加过该订单号
 		   if(msg.equals(ResultMessage.EXIST)) throw new ExistException();
 		} catch (Exception e) {
@@ -197,6 +199,7 @@ public class Goodsbl {
 			vo.realReceiverName = realReceiverName;
 			//默认是本人签收
 			vo.realReceiverPhone=vo.receiverPhone;
+			vo.overtime=CurrentTime.getDate();
 			//是代收的~
 			if(realReceiverPhone.length()>0){
 				vo.realReceiverPhone = realReceiverPhone;
@@ -239,6 +242,8 @@ public class Goodsbl {
 		for (int i = 0; i < numOfDays; i++) {
 			nums[i] = getGoodsByCourier(Loginbl.getCurrentOptorId(), CurrentTime.minusDate(date, i));
 		}
+		System.out.print("ID: "+Loginbl.getCurrentOptorId());
+		System.out.println("  "+getGoodsByCourier(Loginbl.getCurrentOptorId(), CurrentTime.getDate()));
 		return nums;
 	}
 	/**

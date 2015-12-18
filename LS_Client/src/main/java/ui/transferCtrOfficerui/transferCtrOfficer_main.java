@@ -192,11 +192,7 @@ public class transferCtrOfficer_main extends JPanel {
                 exit_btnActionPerformed(evt);
             }
         });
-        account_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                account_btnActionPerformed(evt);
-            }
-        });
+        
         toBusinessOffice_btn.addMouseListener(new MouseAdapter() {
         	public void mouseClicked(MouseEvent e) {
         		toBusinessOffice_btnMouseClicked();
@@ -262,8 +258,7 @@ public class transferCtrOfficer_main extends JPanel {
 		outByShip_label.setFont(new java.awt.Font("宋体", 1, 24)); // NOI18N
 		outByPlane_label.setFont(new java.awt.Font("宋体", 1, 24)); // NOI18N
 	}
-	private void account_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_account_btnActionPerformed
-	}
+	
 	private void toBusinessOffice_btnMouseClicked() {
 		System.out.println("中转中心装车单");
 		try {
@@ -271,7 +266,7 @@ public class transferCtrOfficer_main extends JPanel {
 			ctr_log.add(vo);
 		} catch (RemoteException e1) {
 		}
-		new MyFrame(800,600,new ShippingRep());
+		new ShippingRep();
 	}
 	private void arrival_btnMouseClicked() {
 		System.out.println("中转中心到达单");
@@ -280,11 +275,11 @@ public class transferCtrOfficer_main extends JPanel {
 			ctr_log.add(vo);
 		} catch (RemoteException e1) {
 		}
-		new MyFrame(800,600,new GetRep());
+		new  GetRep();
 	}
 	private void toTransferCTR_btnMouseClicked() {
 		System.out.println("中转单");
-		new MyFrame(800, 600, new TransferRep());
+		new TransferRep();
 	}
     private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
     	if (evt.getSource() == exit_btn) {

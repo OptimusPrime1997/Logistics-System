@@ -301,17 +301,15 @@ public class businessOfficer_main extends JPanel {
 			ctr_log.add(vo);
 		} catch (RemoteException e1) {
 		}
-    	new MyFrame(800, 600, new DeliverRep());
-        
+    	new DeliverRep();
     }
     private void send_btnMouseClicked(MouseEvent evt) {
     	
-    	new MyFrame(800, 600, new ShipmentRep());
+    	new ShipmentRep();
 //    	this.getFrame().setContentPane(new car_management());        
     }
     private void recordMoney_btnMouseClicked(MouseEvent evt) {
-    	System.out.println("收款单");
-    	new MyFrame(800, 600, new CashRep());
+    	new CashRep();
 //    	this.getFrame().setContentPane(new car_management());
         
     }
