@@ -149,7 +149,6 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 		ArrayList<Object> listo;
 		try {
 			listo = du.getAll(filename);
-			
 			for(Object o:listo) {
 				StockDivisionPO po = (StockDivisionPO) o;
 				//筛选出本城市仓库
@@ -188,7 +187,18 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 
 
 
-	
+	public static void main(String[] args) {
+		StockDivisionData s;
+		try {
+			s = new StockDivisionData();
+			s.add(new StockDivisionPO(City.NANJING, "0000000101", City.BEIJING, 1, 1));
+			s.add(new StockDivisionPO(City.NANJING, "0000000102", City.BEIJING, 1, 2));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 	
 	
