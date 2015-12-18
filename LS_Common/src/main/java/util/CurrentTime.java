@@ -2,14 +2,15 @@ package util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class CurrentTime {
 
 	public static void main(String[] args) {
-		String a="2015-8";
+		String a="2015-06";
 		String b="2015-08";
-		System.out.println(CurrentTime.ifsame(a,b));
+		System.out.println(CurrentTime.addMonth(a,3));
 	}
 	static Date d=new Date();// new Date()为获取当前系统时间
 	static SimpleDateFormat df;
@@ -43,6 +44,37 @@ public class CurrentTime {
 			e.printStackTrace();
 		}return false;
 		
+	}
+	/**
+	 *仅含年-月 的日期a早于b则返回true
+	 * 
+	 * @param a 形如 2015-07
+	 * @param b
+	 * @return
+	 */
+	public static boolean ifMonthearlier(String a,String b){
+		df=new SimpleDateFormat("yyyy-MM");
+		try {
+			Date x=df.parse(a);
+			Date y=df.parse(b);
+			if(x.before(y)){
+				return true;
+			}
+		} catch (ParseException e) {
+		}return false;
+		
+	}
+	/**
+	 *仅含年-月 的日期a等于b则返回true
+	 * 
+	 * @param a 形如 2015-07
+	 * @param b
+	 * @return
+	 */
+	public static boolean ifMonthSame(String a,String b){
+		if(!ifMonthearlier(a, b)&&!ifMonthearlier(b, a)){
+			return true;
+		}else return false;	
 	}
 	/**
 	 * 是否是同一天   是的话返回true
@@ -85,5 +117,24 @@ public class CurrentTime {
 		}
 		return ans;
 	}
+	/**
+	 * 返回加t个月的日期
+	 * @param Cdate
+	 * @return
+	 */
+	public static String addMonth(String Cdate,int t){
+		String ans="";
+		df=new SimpleDateFormat("yyyy-MM");
+		try {
+			Date x=df.parse(Cdate);
+			Calendar cal=Calendar.getInstance();
+			cal.setTime(x);
+			cal.add(Calendar.MONTH, t);
+			ans=df.format(cal.getTime());
+		} catch (ParseException e) {
+		}
+		return ans;
+	}
+	
 	
 }

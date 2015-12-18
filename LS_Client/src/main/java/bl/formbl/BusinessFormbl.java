@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import util.CurrentTime;
 import util.enumData.ResultMessage;
 import Exception.NotFoundMoneyInAndOutException;
+import Exception.NumNotFoundException;
 import VO.BusinessFormVO;
 import VO.Receipt.CashRepVO;
 import VO.Receipt.PayRepVO;
@@ -20,40 +21,57 @@ import dataservice.formdataservice.BusinessFormDataService;
 public class BusinessFormbl {
 	public BusinessFormVO show(String startTime, String endTime)
 			throws NotFoundMoneyInAndOutException {
-		System.out.println(startTime);
-		System.out.println(endTime);
-		ArrayList<ArrayList<PayRepVO>> moneyOut = new ArrayList<ArrayList<PayRepVO>>();
+		//0,1,2分别是年、月、日
+		String[] startT=startTime.split("-");
+		String[] endT=endTime.split("-");
+		ArrayList<PayRepVO> moneyOut = new ArrayList<PayRepVO>();
 		ArrayList<ArrayList<CashRepVO>> moneyIn = new ArrayList<ArrayList<CashRepVO>>();
-		// 检验过的 合法时间
+//		 检验过的 合法时间
 		String tempT = startTime;
 		PayRepbl ctr_payRep = new PayRepbl();
 		CashRepbl ctr_cashRep = new CashRepbl();
-		System.out.println("BusinessFormbl.show");
 		//收款单们
+		System.out.println("收款单日期");
 		while (CurrentTime.ifearlier(tempT, endTime)) {
+			System.out.println(tempT);
 			try {
 				if (ctr_cashRep.getAllRepByDate(tempT) != null)
 					moneyIn.add(ctr_cashRep.getAllRepByDate(tempT));
-				tempT = CurrentTime.addDate(tempT, 1);
-				// 最后一天没加
-				if (ctr_cashRep.getAllRepByDate(tempT) != null)
-					moneyIn.add(ctr_cashRep.getAllRepByDate(tempT));
+				
+				tempT=CurrentTime.addDate(tempT, 1);
 			} catch (ClassNotFoundException | IOException | NotBoundException e) {
 			}
 		}
-//		while(CurrentTime.ifearlier(tempT, endTime)){
-//			
-//		}
-		/*
-		 * //付款单们
-			if (ctr_payRep.getRepByDate(tempT) != null)
-				moneyOut.add(ctr_payRep.getRepByDate(tempT));
-			
-		 */
+		System.out.println(tempT);
+//		// 最后一天没加
+		try {
+			if (ctr_cashRep.getAllRepByDate(tempT) != null)
+				moneyIn.add(ctr_cashRep.getAllRepByDate(tempT));
+		} catch (ClassNotFoundException | IOException | NotBoundException e1) {
+		}
+		tempT=startT[0]+"-"+startT[1];
+		System.out.println("付款单日期：");
+		while(CurrentTime.ifMonthearlier(tempT, endT[0]+"-"+endT[1])){
+			System.out.println(tempT);
+			  //付款单们
+				try {
+					if (ctr_payRep.getRepByNum(tempT) != null)
+						moneyOut.add(ctr_payRep.getRepByNum(tempT));
+					tempT=CurrentTime.addMonth(tempT, 1);
+				} catch (ClassNotFoundException | NotBoundException
+						| IOException | NumNotFoundException e) {
+				}
+		}
+		System.out.println(tempT);
 		// 最后一天没加
-//		if (ctr_payRep.getRepByDate(tempT) != null)
-//			moneyOut.add(ctr_payRep.getRepByDate(tempT));
-//		
+		try {
+			if (ctr_payRep.getRepByNum(tempT) != null)
+				moneyOut.add(ctr_payRep.getRepByNum(tempT));
+		} catch (ClassNotFoundException | NotBoundException | IOException
+				| NumNotFoundException e) {
+			
+		}
+		
 		tempT = CurrentTime.addDate(tempT, 1);
 		System.out.println("收入 " + moneyIn.size());
 		System.out.println("支出 " + moneyOut.size());

@@ -13,11 +13,11 @@ import VO.Receipt.PayRepVO;
 public class BusinessFormVO {
 	public String startTime;
 	public String endTime;
-	public ArrayList<ArrayList<PayRepVO>> moneyOutRecord;
+	public ArrayList<PayRepVO> moneyOutRecord;
 	public ArrayList<ArrayList<CashRepVO>> moneyInRecord;
 	
 	public BusinessFormVO(String startTime, String endTime,
-			ArrayList<ArrayList<PayRepVO>> MoneyOutRecord,ArrayList<ArrayList<CashRepVO>> MoneyInRecord) {
+			ArrayList<PayRepVO> MoneyOutRecord,ArrayList<ArrayList<CashRepVO>> MoneyInRecord) {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.moneyInRecord=MoneyInRecord;
@@ -25,25 +25,25 @@ public class BusinessFormVO {
 	}
 	public BusinessFormVO(BusinessFormPO po){
 		moneyInRecord=new ArrayList<ArrayList<CashRepVO>>();
-		moneyOutRecord=new ArrayList<ArrayList<PayRepVO>>();
+		moneyOutRecord=new ArrayList<PayRepVO>();
 		this.startTime=po.getStartTime();
 		this.endTime=po.getEndTime();
 		for(ArrayList<CashRepPO> p:po.getMoneyInRecord()){
 			this.moneyInRecord.add(CashRepVO.cashToArrayVO(p));
 		}
-		for(ArrayList<PayRepPO>p:po.getMoneyOutRecord()){
-			this.moneyOutRecord.add(PayRepVO.toArrayVO(p));
+		for(PayRepPO p:po.getMoneyOutRecord()){
+			this.moneyOutRecord.add(new PayRepVO(p));
 		}
 	}
 	
 	public static BusinessFormPO toPO(BusinessFormVO vo){
-		ArrayList<ArrayList<PayRepPO>> moneyOutPOs=new ArrayList<ArrayList<PayRepPO>>();
+		ArrayList<PayRepPO> moneyOutPOs=new ArrayList<PayRepPO>();
 		ArrayList<ArrayList<CashRepPO>> moneyInPOs=new ArrayList<ArrayList<CashRepPO>>();
 		for(ArrayList<CashRepVO> v:vo.moneyInRecord){
 			moneyInPOs.add(CashRepVO.toArrayPO(v));
 		}
-		for(ArrayList<PayRepVO>v:vo.moneyOutRecord){
-			moneyOutPOs.add(PayRepVO.toArrayPO(v));
+		for(PayRepVO v:vo.moneyOutRecord){
+			moneyOutPOs.add(PayRepVO.toPO(v));
 		}
 		
 		BusinessFormPO po=new BusinessFormPO(vo.startTime, vo.endTime,moneyOutPOs,moneyInPOs);
