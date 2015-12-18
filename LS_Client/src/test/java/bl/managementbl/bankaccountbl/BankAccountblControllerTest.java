@@ -2,20 +2,14 @@ package bl.managementbl.bankaccountbl;
 
 import static org.junit.Assert.*;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.RemoteException;
 
-import javax.naming.NameNotFoundException;
 
 import org.junit.Test;
 
-import dataservice.managementdataservice.bankaccountdataservice.BankAccountDataService;
-import dataservice.managementdataservice.managedataservice.ManageDataService;
 import Exception.NumNotFoundException;
-import PO.BankAccountPO;
 import VO.ManagementVO.BankAccountVO;
-import bl.managementbl.managedata.ManageData;
 import blservice.managementblservice.bankaccountblservice.BankAccountBLService;
 
 public class BankAccountblControllerTest {

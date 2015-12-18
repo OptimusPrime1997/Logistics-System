@@ -12,7 +12,6 @@ import Exception.ConstNotFoundException;
 import VO.ManagementVO.ConstVO;
 
 public class ConstblControllerTest {
-
 	@Test
 	public void test() {
 		ConstblController constblController = new ConstblController();
