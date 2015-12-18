@@ -12,7 +12,7 @@ import dataservice.logdataservice.LogDataService;
 public class Logbl {
 	public static void main(String[] args) {
 		Logbl ctr=new Logbl();
-		ctr.add(new LogVO(LogType.ADD_A_GOODS, "02500106066", "2015-12-17"));
+//		ctr.add(new LogVO(LogType.ADD_A_GOODS, "02500106066", "2015-12-17"));
 		ArrayList<LogVO> vos=ctr.show("2015-10-10", "2015-12-20", LogType.ALL);
 		for(LogVO vo:vos){
 			System.out.println(vo.operatorID+"  "+vo.time+"  "+vo.operationName);

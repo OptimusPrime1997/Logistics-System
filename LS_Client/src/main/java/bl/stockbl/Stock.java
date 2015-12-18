@@ -86,6 +86,7 @@ public class Stock {
 	                instockreps.addAll(in.getAllRepByDate(dateFormat.format(calendar.getTime())));
 	                outstockreps.addAll(out.getAllRepByDate(dateFormat.format(calendar.getTime())));
 	                
+	            	
 	                calendar.add(Calendar.DAY_OF_MONTH, 1);               
 	            }
 			} catch (ParseException e) {
@@ -252,14 +253,6 @@ public class Stock {
 	}
 	
 	
-	public static void main(String[] args) {
-		Stock s = new Stock();
-		try {
 	
-			System.out.println(s.exportExcel());
-		} catch (ClassNotFoundException | NotBoundException | IOException e) {
-			e.printStackTrace();
-		}
-	}
 	
 }

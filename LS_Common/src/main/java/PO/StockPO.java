@@ -13,6 +13,14 @@ import util.enumData.City;
  */
 public class StockPO implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3339434387147344492L;
+	/**
+	 * 
+	 */
+	
 	private City localCity;
 	private String listNum;
 	private String inStockRepNum;

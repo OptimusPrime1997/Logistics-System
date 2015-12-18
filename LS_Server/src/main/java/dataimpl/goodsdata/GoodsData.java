@@ -5,8 +5,10 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import util.enumData.GoodsArrivalState;
+import util.enumData.GoodsExpressType;
+import util.enumData.GoodsLogisticState;
 import util.enumData.ResultMessage;
-import Exception.CourierNotFoundException;
 import Exception.GoodsNotFound;
 import PO.GoodsPO;
 import dataservice.goodsdataservice.GoodsDataService;
@@ -14,6 +16,7 @@ import datautil.DataOrdinary;
 import datautil.DataUtility;
 
 public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
+	
 	String filename = "goods.txt";
 	DataUtility helper = new DataUtility();	
 	//Done!
@@ -151,12 +154,14 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	@Override
 	public int findbyCourier(String CourierNum,String date)
 			throws RemoteException{
+		System.out.println("GoodsData.findbyCourier");
 		ArrayList<Object> all=null;
 		//待返回的总数
 		int sum=0;
 		GoodsPO po=null;
 		try {
 			all=helper.getAll(filename);
+			if(all==null) return 0;
 			for(Object o:all){
 				po=(GoodsPO)o;
 				//找到了货物~
@@ -167,6 +172,7 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 				}
 			}
 		} catch (ClassNotFoundException | IOException e) {
+	       	return 0;
 		}
 		return sum;
 	

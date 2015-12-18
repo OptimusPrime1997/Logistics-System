@@ -288,7 +288,7 @@ public class Order extends javax.swing.JPanel {
         senderLabel.setText("寄件人:");
 
         senderAddLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        senderAddLabel.setText("住址:");
+        senderAddLabel.setText("住址(前两个字是城市):");
 
         senderPhoneNumLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         senderPhoneNumLabel.setText("手机:");
@@ -300,7 +300,7 @@ public class Order extends javax.swing.JPanel {
         receiverPhoneNumLabel.setText("手机:");
 
         receiverAddLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        receiverAddLabel.setText("住址:");
+        receiverAddLabel.setText("住址(前两个字是城市):");
 
         dateLabel.setText("日期:");
         officeLabel.setText("营业厅");
@@ -324,7 +324,6 @@ public class Order extends javax.swing.JPanel {
 		resultMsgText = new javax.swing.JTextField();
 
 		officeText.setEditable(false);
-		
 		officeText.setText(officeNum);//TODO
 		sumText.setEditable(false);
 		sumText.addActionListener(new java.awt.event.ActionListener() {
@@ -393,7 +392,7 @@ public class Order extends javax.swing.JPanel {
         	this.weight=Double.parseDouble(weightText.getText());
         	this.volume=Double.parseDouble(volumeText.getText());
         	this.nameOfInside=itemNameText.getText();
-			vo = new GoodsVO(false, getCourierAccount, "", startTime, "",
+			vo = new GoodsVO(numText.getText(),false, getCourierAccount, "", startTime, "",
 					destinationCity, senderName, senderAddress, senderCompany,
 					senderPhone, receiverName, receiverAddress,
 					receiverCompany, receiverPhone, numOfGoods, weight, volume,

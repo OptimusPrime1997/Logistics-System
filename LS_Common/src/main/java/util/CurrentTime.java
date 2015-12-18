@@ -7,8 +7,8 @@ import java.util.Date;
 public class CurrentTime {
 
 	public static void main(String[] args) {
-		String a="2015-8-05";
-		String b="2015-08-01";
+		String a="2015-8";
+		String b="2015-08";
 		System.out.println(CurrentTime.ifsame(a,b));
 	}
 	static Date d=new Date();// new Date()为获取当前系统时间

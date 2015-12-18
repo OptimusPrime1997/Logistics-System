@@ -16,7 +16,7 @@ public class StockDivisionPO implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 2717252400399634569L;
+	private static final long serialVersionUID = 1L;
 	private City cityNum;
 	private String listNum;
 	private City destination;

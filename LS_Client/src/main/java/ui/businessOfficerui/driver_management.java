@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
+
 import VO.ManagementVO.DriverVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.controllerfactoryblservice.ControllerFactoryblService;
@@ -263,22 +265,40 @@ public class driver_management extends JPanel {
 		feedback_text = new JTextField();
 		search_text = new JTextField();
 		search_text.setText("输入姓名或编号");
-		search_text.addActionListener(new ActionListener() {
-
+		search_text.addMouseListener(new MouseListener() {
+			
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
-				search_textActionPerformed(e);
+				
 			}
-
-		
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				search_text.setText("");
+			}
 		});
 		feedback_text.setEditable(false);
 
-	}
-	private void search_textActionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		search_text.setText("");
 	}
 	/**
 	 * @param vos

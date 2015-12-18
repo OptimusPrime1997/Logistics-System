@@ -78,16 +78,19 @@ public class DriverData extends UnicastRemoteObject implements
 		boolean findPO = false;
 		ArrayList<Object> objects = d.getAll(path);
 		if (objects == null) {
+			System.out.println("deleteDriver :not found the driver.");
 			return ResultMessage.NOT_FOUND_FILE;
 		} else {
 			DriverPO p = null;
 			for (int i = 0; i < objects.size(); i++) {
 				p = (DriverPO) objects.get(i);
+				System.out.println("this drivernum is:"+p.getDriverNum()+" and tofind "+po.getDriverNum());
 				if (p.getDriverNum().equals(po.getDriverNum())) {
 					findPO = true;
+					System.out.println("found the drivernum:"+p.getDriverNum());
 					objects.remove((Object) p);
+					break;
 				}
-				break;
 			}
 			d.SaveAll(objects, path);
 		}
