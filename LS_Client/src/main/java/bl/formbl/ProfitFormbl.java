@@ -24,8 +24,14 @@ public class ProfitFormbl {
 		MockPayRepbl ctr_payRep=new MockPayRepbl();
 		MockCashRepbl ctr_cashRep=new MockCashRepbl();
 		
-		ArrayList<PayRepVO> moneyOut = ctr_payRep.getAllRep();
-		ArrayList<CashRepVO> moneyIn = ctr_cashRep.getAllRep();
+		ArrayList<PayRepVO> moneyOut=null;
+		ArrayList<CashRepVO> moneyIn=null;
+		try {
+			moneyOut = ctr_payRep.getAllRep();
+			 moneyIn = ctr_cashRep.getAllRep();
+		} catch (ClassNotFoundException | IOException | NotBoundException e) {
+		}
+		
 		//TODO //算钱！
 		if(moneyIn!=null){
 			for(CashRepVO cashR:moneyIn){
