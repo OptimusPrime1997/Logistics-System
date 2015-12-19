@@ -147,14 +147,14 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	}
 	
 	@Override
-	public void submitSave(ReceiptPO po, Rep rep) throws ClassNotFoundException, IOException {
+	public void submitSave(String num, Rep rep) throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		ArrayList<Object> objects = util.getAll(saveAdd(rep));
 		util.clear(saveAdd(rep));
 		if(objects!=null){
 			for(Object object : objects){
 				ReceiptPO receiptPO = (ReceiptPO)object;
-				if(!receiptPO.getNum().equals(po.getNum()))
+				if(!receiptPO.getNum().equals(num))
 					submit(receiptPO, rep);
 				else
 					save(receiptPO, rep);

@@ -26,43 +26,10 @@ public class DocumentCheckbl {
 
 	Receiptbl receiptbl = new Receiptbl();
 	
-	public void submitSaveRep(ReceiptVO vo, Rep rep) 
-			throws RemoteException, MalformedURLException, IOException, NotBoundException {
-		// TODO Auto-generated method stub
-		ReceiptPO po = null;
-		switch (rep) {
-		case ShipmentRep:
-			po = ShipmentRepVO.toPO((ShipmentRepVO) vo);
-			break;
-		case GetRep:
-			po = GetRepVO.toPO((GetRepVO) vo);
-			break;
-		case DeliverRep:
-			po = DeliverRepVO.toPO((DeliverRepVO) vo);
-			break;
-		case InStockRep:
-			po = InStockRepVO.toPO((InStockRepVO) vo);
-			break;
-		case OutStockRep:
-			po = OutStockRepVO.toPO((OutStockRepVO) vo);
-			break;
-		case ShippingRep:
-			po = ShippingRepVO.toPO((ShippingRepVO) vo);
-			break;
-		case ReceptionRep:
-			po = ReceptionRepVO.toPO((ReceptionRepVO) vo);
-			break;
-		case TransferRep:
-			po = TransferRepVO.toPO((TransferRepVO) vo);
-			break;
-		case CashRep:
-			po = CashRepVO.toPO((CashRepVO) vo);
-			break;
-		case PayRep:
-			po = PayRepVO.toPO((PayRepVO) vo);
-			break;
-		}
-		receiptbl.submitSave(po, rep);
+	public void submitSaveRep(String num, Rep rep) 
+			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, 
+			NotBoundException {
+		receiptbl.submitSave(num, rep);
 	}
 
 	public Vector<Object> initTable()
@@ -72,33 +39,52 @@ public class DocumentCheckbl {
 		Vector<Object> data = new Vector<Object>();
 		ArrayList<String> dates = new ArrayList<String>();
 		ArrayList<String> nums = new ArrayList<String>();
+		ArrayList<String> reps = new ArrayList<String>();
+		
+		ArrayList<CashRepVO> cashRepVOs = cashCheck();
+		ArrayList<DeliverRepVO> deliverRepVOs = deliverCheck();
+		ArrayList<GetRepVO> getRepVOs = getCheck();
+		ArrayList<InStockRepVO> inStockRepVOs = inStockCheck();
+		ArrayList<OutStockRepVO> outStockRepVOs = outStockCheck();
+		ArrayList<ReceptionRepVO> receptionRepVOs = receptionCheck();
+		ArrayList<ShipmentRepVO> shipmentRepVOs = shipmentCheck();
+		ArrayList<ShippingRepVO> shippingRepVOs = shippingCheck();
+		ArrayList<TransferRepVO> transferRepVOs = transferCheck();
+ 
+		dates.addAll(getDate(cashRepVOs));
+		nums.addAll(getNum(cashRepVOs));
+		reps.addAll(getRep(cashRepVOs, "收款单"));
 
-		dates.addAll(getDate(cashCheck()));
-		nums.addAll(getNum(cashCheck()));
+		dates.addAll(getDate(deliverRepVOs));
+		nums.addAll(getNum(deliverRepVOs));
+		reps.addAll(getRep(deliverRepVOs, "派件单"));
 
-		dates.addAll(getDate(deliverCheck()));
-		nums.addAll(getNum(deliverCheck()));
+		dates.addAll(getDate(getRepVOs));
+		nums.addAll(getNum(getRepVOs));
+		reps.addAll(getRep(getRepVOs, "到达单"));
 
-		dates.addAll(getDate(getCheck()));
-		nums.addAll(getNum(getCheck()));
+		dates.addAll(getDate(inStockRepVOs));
+		nums.addAll(getNum(inStockRepVOs));
+		reps.addAll(getRep(inStockRepVOs, "入库单"));
 
-		dates.addAll(getDate(inStockCheck()));
-		nums.addAll(getNum(inStockCheck()));
+		dates.addAll(getDate(outStockRepVOs));
+		nums.addAll(getNum(outStockRepVOs));
+		reps.addAll(getRep(outStockRepVOs, "出库单"));
 
-		dates.addAll(getDate(outStockCheck()));
-		nums.addAll(getNum(outStockCheck()));
+		dates.addAll(getDate(receptionRepVOs));
+		nums.addAll(getNum(receptionRepVOs));
 
-		dates.addAll(getDate(receptionCheck()));
-		nums.addAll(getNum(receptionCheck()));
+		dates.addAll(getDate(shipmentRepVOs));
+		nums.addAll(getNum(shipmentRepVOs));
+		reps.addAll(getRep(shipmentRepVOs, "营业厅装车单"));
 
-		dates.addAll(getDate(shipmentCheck()));
-		nums.addAll(getNum(shipmentCheck()));
+		dates.addAll(getDate(shippingRepVOs));
+		nums.addAll(getNum(shippingRepVOs));
+		reps.addAll(getRep(shippingRepVOs, "中转中心装车单"));
 
-		dates.addAll(getDate(shippingCheck()));
-		nums.addAll(getNum(shippingCheck()));
-
-		dates.addAll(getDate(transferCheck()));
-		nums.addAll(getNum(transferCheck()));
+		dates.addAll(getDate(transferRepVOs));
+		nums.addAll(getNum(transferRepVOs));
+		reps.addAll(getRep(transferRepVOs, "中转单"));
 
 		if(payCheck()!=null){
 			dates.add(payCheck().date);
@@ -111,7 +97,6 @@ public class DocumentCheckbl {
 			arr.add(nums.get(i));
 			data.add(arr);
 		}
-
 		return data;
 	}
 
@@ -134,8 +119,18 @@ public class DocumentCheckbl {
 		}
 		return strings;
 	}
+	
+	private ArrayList<String> getRep(ArrayList<? extends ReceiptVO> receiptVOs, String repName) {
+		ArrayList<String> strings = new ArrayList<String>();
+		if(receiptVOs==null)
+			return null;
+		for(int i = 0;i < receiptVOs.size();i++){
+			strings.add(repName);
+		}
+		return strings;
+	}
 
-	public ArrayList<CashRepVO> cashCheck()
+	private ArrayList<CashRepVO> cashCheck()
 			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException,
 			NotBoundException {
 		// TODO Auto-generated method stub
@@ -149,7 +144,7 @@ public class DocumentCheckbl {
 		return cashRepVOs;
 	}
 
-	public ArrayList<DeliverRepVO> deliverCheck()
+	private ArrayList<DeliverRepVO> deliverCheck()
 			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException,
 			NotBoundException {
 		// TODO Auto-generated method stub
@@ -158,7 +153,7 @@ public class DocumentCheckbl {
 		return deliverRepVOs;
 	}
 
-	public ArrayList<GetRepVO> getCheck()
+	private ArrayList<GetRepVO> getCheck()
 			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, 
 			NotBoundException {
 		// TODO Auto-generated method stub
@@ -167,7 +162,7 @@ public class DocumentCheckbl {
 		return getRepVOs;
 	}
 
-	public ArrayList<InStockRepVO> inStockCheck()
+	private ArrayList<InStockRepVO> inStockCheck()
 			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, 
 			NotBoundException {
 		// TODO Auto-generated method stub
@@ -176,7 +171,7 @@ public class DocumentCheckbl {
 		return inStockRepVOs;
 	}
 
-	public ArrayList<OutStockRepVO> outStockCheck()
+	private ArrayList<OutStockRepVO> outStockCheck()
 			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException,
 			NotBoundException {
 		// TODO Auto-generated method stub
@@ -185,7 +180,7 @@ public class DocumentCheckbl {
 		return outStockRepVOs;
 	}
 
-	public PayRepVO payCheck()
+	private PayRepVO payCheck()
 			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, 
 			NotBoundException {
 		// TODO Auto-generated method stub
@@ -200,7 +195,7 @@ public class DocumentCheckbl {
 		return payRepVO;
 	}
 
-	public ArrayList<ReceptionRepVO> receptionCheck()
+	private ArrayList<ReceptionRepVO> receptionCheck()
 			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, 
 			NotBoundException {
 		// TODO Auto-generated method stub
@@ -209,7 +204,7 @@ public class DocumentCheckbl {
 		return receptionRepVOs;
 	}
 
-	public ArrayList<ShipmentRepVO> shipmentCheck()
+	private ArrayList<ShipmentRepVO> shipmentCheck()
 			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, 
 			NotBoundException {
 		// TODO Auto-generated method stub
@@ -218,7 +213,7 @@ public class DocumentCheckbl {
 		return shipmentRepVOs;
 	}
 
-	public ArrayList<ShippingRepVO> shippingCheck()
+	private ArrayList<ShippingRepVO> shippingCheck()
 			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException,
 			NotBoundException {
 		// TODO Auto-generated method stub
@@ -227,7 +222,7 @@ public class DocumentCheckbl {
 		return shippingRepVOs;
 	}
 
-	public ArrayList<TransferRepVO> transferCheck()
+	private ArrayList<TransferRepVO> transferCheck()
 			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, 
 			NotBoundException {
 		// TODO Auto-generated method stub
