@@ -35,6 +35,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
 
 import ui.componentfactory.ComponentFactory;
+import ui.receiptui.BusinessForm;
+import ui.receiptui.ProfitForm;
 import ui.util.StrToLogType;
 import util.InputCheck;
 import util.enumData.Authority;
@@ -2205,8 +2207,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					+ logEDatejComboBox.getSelectedItem();
 
 			LogType type = (LogType) logTypejComboBox.getSelectedItem();
-			// LogType logType = StrToLogType.strToLogTye(type);
-			// logVOs = logblController.show(startT, endT, type);
+			 logVOs = logblController.show(startT, endT, type);
 			System.out.println(logblController.getClass().getName());
 			setLogVOs(startT, endT, type);
 			// TODO 得到了日志数据 没放到界面上
@@ -2231,6 +2232,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 	private void profitFormjButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_profitFormjButtonActionPerformed
 		// TODO add your handling code here:
+		new ProfitForm();
 	}// GEN-LAST:event_profitFormjButtonActionPerformed
 
 	private void formEDatejComboBoxActionPerformed(
@@ -2362,6 +2364,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private void manageStateFormjButton1MouseReleased(
 			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_manageStateFormjButton1MouseReleased
 		// TODO add your handling code here:
+		new BusinessForm();
 	}// GEN-LAST:event_manageStateFormjButton1MouseReleased
 
 	private void submitInstitutionjButtonMouseReleased(
