@@ -8,15 +8,18 @@ package ui.receiptui;
 
 import java.util.ArrayList;
 
+import ui.util.MyFrame;
+import util.CurrentTime;
+import util.enumData.PayThing;
+import util.enumData.ResultMessage;
 import Exception.NotFoundMoneyInAndOutException;
 import VO.BusinessFormVO;
 import VO.Receipt.CashRepVO;
+import VO.Receipt.CashVO;
 import VO.Receipt.PayRepVO;
+import VO.Receipt.PayVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.formblservice.BusinessFormBLService;
-import ui.util.MyFrame;
-import util.CurrentTime;
-import util.enumData.ResultMessage;
 
 /**
  *
@@ -66,9 +69,7 @@ public static void main(String[] args) {
         endTimeLabel.setText("结束日期:");
 
         cashRepTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null}
-            },
+            null,
             new String [] {
                 "日期", "编号", "收款金额"
             }
@@ -89,11 +90,9 @@ public static void main(String[] args) {
         payLabel.setText("付款项");
 
         payRepTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null}
-            },
+           null,
             new String [] {
-                "日期", "编号", "支付金额"
+                "日期", "编号", "支付金额","备注"
             }
         ) {
             Class[] types = new Class [] {
@@ -209,52 +208,56 @@ public static void main(String[] args) {
     	if(msgt==ResultMessage.VALID){
     		try {
 				formVO=ctr.show(startT, endT);
-				/*
-		    	 *  cashRepTable.setModel(new javax.swing.table.DefaultTableModel(
-		            new Object [][] {
-		                {null, null, null}
-		            },
-		            new String [] {
-		                "日期", "编号", "收款金额"
-		            }
-		        ) {
-		            Class[] types = new Class [] {
-		                java.lang.String.class, java.lang.Double.class, java.lang.String.class
-		            };
-
-		            public Class getColumnClass(int columnIndex) {
-		                return types [columnIndex];
-		            }
-		        });
-		    	 */
+			
 				ArrayList<ArrayList<CashRepVO>>cashvos=formVO.moneyInRecord;
 				ArrayList<PayRepVO> payvos=formVO.moneyOutRecord;
 				int count=0;
-				payObjects=new Object[payvos.size()][3];
 				for(PayRepVO vo:payvos){
-					payObjects[count][0]=vo.date;
-					payObjects[count][1]=vo.num;
-					payObjects[count][2]=vo.sum;
-					count++;
+					count+=vo.payVOs.size();
+				}
+				payObjects=new Object[count][4];
+				count=0;
+				for(PayRepVO repvo:payvos){
+					for (PayVO vo : repvo.payVOs) {
+						payObjects[count][0] = repvo.date;
+						payObjects[count][1] = repvo.num;
+						payObjects[count][2] = vo.money;
+						payObjects[count][3]=PayThing.toFriendlyString(vo.payThing);
+						count++;
+					}
 				}
 				payRepTable.setModel(new javax.swing.table.DefaultTableModel(
 			            payObjects,
 			            new String [] {
-			                "日期", "编号", "收款金额"
+			                "日期", "编号", "支付金额","备注"
 			            }
-			        ) {
-			            Class[] types = new Class [] {
-			                java.lang.String.class, java.lang.Double.class, java.lang.String.class
-			            };
-
-			            public Class getColumnClass(int columnIndex) {
-			                return types [columnIndex];
-			            }
-			        });
+			        ) );
 				count=0;
-				
-				System.out.println(formVO.moneyInRecord);
-			} catch (NotFoundMoneyInAndOutException e) {
+				for(ArrayList<CashRepVO> repvos:cashvos){
+					for(CashRepVO repvo:repvos){
+						count+=repvo.cashVOs.size();
+					}
+				}
+				cashObjects=new Object[count][3];
+				count=0;
+				for(ArrayList<CashRepVO> repvos:cashvos){
+					for(CashRepVO repvo:repvos){
+						for(CashVO vo:repvo.cashVOs){
+							cashObjects[count][0]=repvo.date;
+							cashObjects[count][1]=repvo.num;
+							cashObjects[count][2]=vo.money;
+							count++;
+						}
+					}
+				}
+		    	 cashRepTable.setModel(new javax.swing.table.DefaultTableModel(
+		            cashObjects,
+		            new String [] {
+		                "日期", "编号", "收款金额"
+		            }
+		        ));
+		    	 System.out.println("收款单行数"+count);
+    		} catch (NotFoundMoneyInAndOutException e) {
 	     	    showFeedback(ResultMessage.NOT_FOUND_FINACIAL);
 			}
 		}else{

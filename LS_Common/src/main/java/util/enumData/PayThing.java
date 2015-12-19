@@ -18,7 +18,18 @@ public enum PayThing {
 	public String getChineseName(){
 		return ChineseName;
 	}
-	
+	public static String toFriendlyString(PayThing p){
+		switch(p){
+		case Refund:return "退款";
+		case StaffSalary:return "人员工资"; 
+		case Freight:return "运费"; 
+		case Rent:return "租金"; 
+		case DriverSalary:return "司机工资"; 
+		case CourierSalary:return "快递员工资"; 
+		case Bonus:return "奖金";
+		default:return null;
+		}
+	}
 	public static PayThing getPayThing(String ChineseName){
 		switch (ChineseName) {
 		case "退款":

@@ -14,6 +14,8 @@ import Exception.NumNotFoundException;
 import VO.BusinessFormVO;
 import VO.Receipt.CashRepVO;
 import VO.Receipt.PayRepVO;
+import bl.receiptbl.CashRepbl.CashRepbl;
+import bl.receiptbl.PayRepbl.PayRepbl;
 import dataservice.formdataservice.BusinessFormDataService;
 
 public class BusinessFormbl {
@@ -24,53 +26,47 @@ public class BusinessFormbl {
 		String[] endT=endTime.split("-");
 		ArrayList<PayRepVO> moneyOut = new ArrayList<PayRepVO>();
 		ArrayList<ArrayList<CashRepVO>> moneyIn = new ArrayList<ArrayList<CashRepVO>>();
-//		 检验过的 合法时间
+		 //检验过的 合法时间
 		String tempT = startTime;
 		//收款单们
-		System.out.println("收款单日期");
 		while (CurrentTime.ifearlier(tempT, endTime)) {
-			System.out.println(tempT);
 			try {
 				if (ctr_cashRep.getAllRepByDate(tempT) != null)
 					moneyIn.add(ctr_cashRep.getAllRepByDate(tempT));
 			} catch (ClassNotFoundException | IOException | NotBoundException e) {
+				throw new NotFoundMoneyInAndOutException();
 			}
 			tempT=CurrentTime.addDate(tempT, 1);
 		}
-		System.out.println(tempT);
-//		// 最后一天没加
+		// 最后一天没加
+		
 		try {
 			if (ctr_cashRep.getAllRepByDate(tempT) != null)
 				moneyIn.add(ctr_cashRep.getAllRepByDate(tempT));
 		} catch (ClassNotFoundException | IOException | NotBoundException e1) {
+			throw new NotFoundMoneyInAndOutException();
 		}
 		tempT=startT[0]+"-"+startT[1];
-		System.out.println("我给了你多少 "+moneyIn.get(0).get(0).date);
-		System.out.println("付款单日期：");
 		while(CurrentTime.ifMonthearlier(tempT, endT[0]+"-"+endT[1])){
-			System.out.println(tempT);
 			  //付款单们
 				try {
 					if (ctr_payRep.getRepByNum(tempT) != null)
 						moneyOut.add(ctr_payRep.getRepByNum(tempT));
 				} catch (ClassNotFoundException | NotBoundException
 						| IOException | NumNotFoundException e) {
+					throw new NotFoundMoneyInAndOutException();
 				}
 				tempT=CurrentTime.addMonth(tempT, 1);
 		}
-		System.out.println(tempT);
 		// 最后一天没加
 		try {
 			if (ctr_payRep.getRepByNum(tempT) != null)
 				moneyOut.add(ctr_payRep.getRepByNum(tempT));
 		} catch (ClassNotFoundException | NotBoundException | IOException
 				| NumNotFoundException e) {
-			
+			throw new NotFoundMoneyInAndOutException();
 		}
-		System.out.println("我给了你多少 "+moneyOut.get(0).date);
 		tempT = CurrentTime.addDate(tempT, 1);
-		System.out.println("收入 " + moneyIn.size());
-		System.out.println("支出 " + moneyOut.size());
 		if (moneyIn.size() == 0 && moneyOut.size() == 0) {
 			throw new NotFoundMoneyInAndOutException();
 		}
@@ -98,7 +94,7 @@ public class BusinessFormbl {
 		}
 		return service;
 	}
-	private MockPayRepbl ctr_payRep=new MockPayRepbl() ;
-	private MockCashRepbl ctr_cashRep=new MockCashRepbl();
+	private PayRepbl ctr_payRep=new PayRepbl() ;
+	private CashRepbl ctr_cashRep=new CashRepbl();
 
 }
