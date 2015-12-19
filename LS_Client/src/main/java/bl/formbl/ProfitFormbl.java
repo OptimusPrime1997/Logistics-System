@@ -12,7 +12,6 @@ import util.enumData.ResultMessage;
 import VO.ProfitFormVO;
 import VO.Receipt.CashRepVO;
 import VO.Receipt.PayRepVO;
-import bl.receiptbl.CashRepbl.CashRepbl;
 import bl.receiptbl.PayRepbl.PayRepbl;
 import dataservice.formdataservice.ProfitFormDataService;
 
@@ -21,7 +20,7 @@ public class ProfitFormbl {
 	public ProfitFormVO show(){
 		double totalIn=0,totalOut=0,totalProfit=0;
 		//TODO 待改回真的Repbl
-		MockPayRepbl ctr_payRep=new MockPayRepbl();
+		PayRepbl ctr_payRep=new PayRepbl();
 		MockCashRepbl ctr_cashRep=new MockCashRepbl();
 		
 		ArrayList<PayRepVO> moneyOut=null;
