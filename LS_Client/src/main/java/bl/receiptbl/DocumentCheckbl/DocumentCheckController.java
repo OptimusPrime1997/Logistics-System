@@ -25,75 +25,96 @@ public class DocumentCheckController implements DocumentCheckblService{
 	DocumentCheckbl documentCheckbl = new DocumentCheckbl();
 
 	@Override
-	public String saveRep(ReceiptVO vo, Rep rep) {
+	public void saveRep(ReceiptVO vo, Rep rep) {
 		// TODO Auto-generated method stub
-		return documentCheckbl.saveRep(vo, rep);
 	}
 
 	@Override
-	public Vector<Object> checkAllRep() {
+	public Vector<Object> initTable() 
+			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException,
+			NotBoundException {
 		// TODO Auto-generated method stub
-		return documentCheckbl.checkAllRep();
+		return documentCheckbl.initTable();
 	}
 
 	@Override
-	public ArrayList<CashRepVO> cashCheck() throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException {
+	public ArrayList<CashRepVO> cashCheck() 
+			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, 
+			NotBoundException {
 		// TODO Auto-generated method stub
 		return documentCheckbl.cashCheck();
 	}
 
 	@Override
-	public ArrayList<DeliverRepVO> deliverCheck() {
+	public ArrayList<DeliverRepVO> deliverCheck()  
+			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException,
+			NotBoundException {
 		// TODO Auto-generated method stub
 		return documentCheckbl.deliverCheck();
 	}
 
 	@Override
-	public ArrayList<GetRepVO> getCheck() {
+	public ArrayList<GetRepVO> getCheck()  
+			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException,
+			NotBoundException {
 		// TODO Auto-generated method stub
 		return documentCheckbl.getCheck();
 	}
 
 	@Override
-	public ArrayList<InStockRepVO> getInStock() {
+	public ArrayList<InStockRepVO> inStockCheck()  
+			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException,
+			NotBoundException {
 		// TODO Auto-generated method stub
-		return documentCheckbl.getInStock();
+		return documentCheckbl.inStockCheck();
 	}
 
 	@Override
-	public ArrayList<OutStockRepVO> getOutStock() {
+	public ArrayList<OutStockRepVO> outStockCheck()  
+			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException,
+			NotBoundException {
 		// TODO Auto-generated method stub
-		return documentCheckbl.getOutStock();
+		return documentCheckbl.outStockCheck();
 	}
 
 	@Override
-	public ArrayList<PayRepVO> getPay() {
+	public PayRepVO payCheck()  
+			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException,
+			NotBoundException {
 		// TODO Auto-generated method stub
-		return documentCheckbl.getPay();
+		return documentCheckbl.payCheck();
 	}
 
 	@Override
-	public ArrayList<ReceptionRepVO> getReception() {
+	public ArrayList<ReceptionRepVO> receptionCheck()  
+			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException,
+			NotBoundException {
 		// TODO Auto-generated method stub
-		return documentCheckbl.getReception();
+		return documentCheckbl.receptionCheck();
 	}
 
 	@Override
-	public ArrayList<ShipmentRepVO> getShipment() {
+	public ArrayList<ShipmentRepVO> shipmentCheck()  
+			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException,
+			NotBoundException {
 		// TODO Auto-generated method stub
-		return documentCheckbl.getShipment();
+		return documentCheckbl.shipmentCheck();
 	}
 
 	@Override
-	public ArrayList<ShippingRepVO> getShipping() {
+	public ArrayList<ShippingRepVO> shippingCheck()  
+			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException,
+			NotBoundException {
 		// TODO Auto-generated method stub
-		return documentCheckbl.getShipping();
+		return documentCheckbl.shippingCheck();
 	}
 
 	@Override
-	public ArrayList<TransferRepVO> getTransfer() {
+	public ArrayList<TransferRepVO> transferCheck()  
+			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException,
+			NotBoundException {
 		// TODO Auto-generated method stub
-		return documentCheckbl.getTransfer();
+		return documentCheckbl.transferCheck();
 	}
 
 }

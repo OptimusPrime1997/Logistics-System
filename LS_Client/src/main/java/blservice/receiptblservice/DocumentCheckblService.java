@@ -22,27 +22,27 @@ import util.enumData.Rep;
 
 public interface DocumentCheckblService {
 	
-	public String saveRep (ReceiptVO vo, Rep rep);
+	public void saveRep (ReceiptVO vo, Rep rep);
 	
-	public Vector<Object> checkAllRep();
+	public Vector<Object> initTable() throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException;
 	
 	public ArrayList<CashRepVO> cashCheck() throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException;
 	
-	public ArrayList<DeliverRepVO> deliverCheck();
+	public ArrayList<DeliverRepVO> deliverCheck() throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException;;
 	
-	public ArrayList<GetRepVO> getCheck();
+	public ArrayList<GetRepVO> getCheck() throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException;
 	
-	public ArrayList<InStockRepVO> getInStock();
+	public ArrayList<InStockRepVO> inStockCheck() throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException;
 	
-	public ArrayList<OutStockRepVO> getOutStock();
+	public ArrayList<OutStockRepVO> outStockCheck() throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException;
 	
-	public ArrayList<PayRepVO> getPay();
+	public PayRepVO payCheck() throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException;
 	
-	public ArrayList<ReceptionRepVO> getReception();
+	public ArrayList<ReceptionRepVO> receptionCheck() throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException;
 	
-	public ArrayList<ShipmentRepVO> getShipment();
+	public ArrayList<ShipmentRepVO> shipmentCheck() throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException;
 	
-	public ArrayList<ShippingRepVO> getShipping();
+	public ArrayList<ShippingRepVO> shippingCheck() throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException;
 	
-	public ArrayList<TransferRepVO> getTransfer();
+	public ArrayList<TransferRepVO> transferCheck() throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException;
 }
