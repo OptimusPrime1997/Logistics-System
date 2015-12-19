@@ -9,6 +9,9 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import PO.Receipt.ReceiptPO;
+import util.enumData.Rep;
 import util.enumData.ResultMessage;
 
 public class DataUtility implements Serializable {
@@ -52,15 +55,7 @@ public class DataUtility implements Serializable {
 			file.delete();
 		file.createNewFile();
 	}
-
-	public ResultMessage delete(int n, String add) throws ClassNotFoundException, IOException {
-		ArrayList<Object> objects = getAll(add);
-		clear(add);
-		for (int i = n; i < objects.size(); i++)
-			save(objects.get(i), add);
-		return ResultMessage.SUCCESS;
-	}
-
+	
 	/**
 	 * 传入某文件的所有待存对象和文件名，将它们存起来
 	 * 

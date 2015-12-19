@@ -97,6 +97,10 @@ public class Receiptbl {
 		return getReceiptDataService().forCheck(rep);
 	}
 	
+	public void submitSave(ReceiptPO po, Rep rep) throws RemoteException, MalformedURLException, IOException, NotBoundException{
+		getReceiptDataService().submit(po, rep);
+	}
+	
 	public ResultMessage checkNum(String string, int n){
 		if (string.length() < n)
 			return ResultMessage.REPNUM_LENGTH_LACKING;

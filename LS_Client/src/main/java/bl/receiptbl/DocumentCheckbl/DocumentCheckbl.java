@@ -6,7 +6,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
-
 import PO.Receipt.PayRepPO;
 import PO.Receipt.ReceiptPO;
 import VO.Receipt.CashRepVO;
@@ -27,11 +26,7 @@ public class DocumentCheckbl {
 
 	Receiptbl receiptbl = new Receiptbl();
 	
-	public void deleteFromSubmit(ReceiptVO vo, Rep rep){
-		
-	}
-
-	public void saveRep(ReceiptVO vo, Rep rep) 
+	public void submitSaveRep(ReceiptVO vo, Rep rep) 
 			throws RemoteException, MalformedURLException, IOException, NotBoundException {
 		// TODO Auto-generated method stub
 		ReceiptPO po = null;
@@ -67,7 +62,7 @@ public class DocumentCheckbl {
 			po = PayRepVO.toPO((PayRepVO) vo);
 			break;
 		}
-		receiptbl.save(po, rep);
+		receiptbl.submitSave(po, rep);
 	}
 
 	public Vector<Object> initTable()

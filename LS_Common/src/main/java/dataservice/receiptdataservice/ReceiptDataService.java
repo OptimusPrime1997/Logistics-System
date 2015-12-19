@@ -30,4 +30,7 @@ public interface ReceiptDataService extends Remote,Serializable{
 	public ReceiptPO getSubmitRep(Rep rep, String office) throws ClassNotFoundException, IOException;
 	
 	public ArrayList<ReceiptPO> forCheck(Rep rep) throws ClassNotFoundException, IOException;
+
+	void submitSave(ReceiptPO po, Rep rep) throws ClassNotFoundException, IOException;
+	
 }
