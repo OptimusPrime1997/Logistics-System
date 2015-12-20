@@ -5,20 +5,27 @@
  */
 package ui.administratorui;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
+import javax.swing.JFrame;
+
+import main.MainFrame;
+import ui.receiptui.generalUI.OutStockRep;
 import ui.util.MyFrame;
 
 /**
  *
  * @author G
  */
-public class AdministratorPanel extends javax.swing.JPanel {
+public class AdministratorPanel extends javax.swing.JFrame {
 
     /**
      * Creates new form Management
      */
     public AdministratorPanel() {
         initComponents();
-        new MyFrame(this);
+        this.setVisible(true);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,36 +36,57 @@ public class AdministratorPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+
+    	/**
+    	 * 设置窗体大小为不可变
+    	 */
+    	this.setResizable(false);
+    	/**
+    	 * 设置窗体在中部出现
+    	 */
+    	Toolkit tk = Toolkit.getDefaultToolkit();
+    	Dimension screensize = tk.getScreenSize();
+    	int screenh = screensize.height;
+    	int screenw = screensize.width;
+    	this.setSize(500, 300);
+    	this.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);
+    	/**
+    	 * 关闭窗口
+    	 */
+    	setDefaultCloseOperation(EXIT_ON_CLOSE);
+    	
+
+    	
         jLabel9 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
+        authority = new javax.swing.JButton();
+        userAccount = new javax.swing.JButton();
 
         jLabel9.setText("当前账户：大玉儿");
 
-        jButton3.setText("退出");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        exit.setText("退出");
+        exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                exitActionPerformed(evt);
             }
         });
 
-        jButton5.setText("权限");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        authority.setText("权限");
+        authority.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                authorityActionPerformed(evt);
             }
         });
 
-        jButton6.setText("用户账户");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        userAccount.setText("用户账户");
+        userAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                userAccountActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -68,11 +96,11 @@ public class AdministratorPanel extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3))
+                        .addComponent(exit))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                        .addComponent(authority, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(userAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22))))
         );
         layout.setVerticalGroup(
@@ -81,32 +109,50 @@ public class AdministratorPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jButton3))
+                    .addComponent(exit))
                 .addGap(74, 74, 74)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(authority, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(124, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    	MainFrame mf = new MainFrame();
+    	mf.setVisible(true);
+    	this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+    private void authorityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    	JFrame frame = new JFrame();
+   	
+    	frame.setResizable(false);
+    	Toolkit tk = Toolkit.getDefaultToolkit();
+    	Dimension screensize = tk.getScreenSize();
+    	int screenh = screensize.height;
+    	int screenw = screensize.width;
+    	frame.setSize(820, 340);
+    	frame.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);	
+    	frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    	
+		AuthorityManagementPanel amp = new AuthorityManagementPanel(frame);
+    	frame.setContentPane(amp);
+    	frame.setVisible(true);
+    	this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+    private void userAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    	UserAccountPanel userAccount = new UserAccountPanel();
+    	userAccount.setVisible(true);
+    	this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton exit;
+    private javax.swing.JButton authority;
+    private javax.swing.JButton userAccount;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }
