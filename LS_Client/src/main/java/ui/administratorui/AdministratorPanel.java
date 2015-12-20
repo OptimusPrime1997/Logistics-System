@@ -125,7 +125,6 @@ public class AdministratorPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void authorityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
     	JFrame frame = new JFrame();
    	
     	frame.setResizable(false);
@@ -133,7 +132,7 @@ public class AdministratorPanel extends javax.swing.JFrame {
     	Dimension screensize = tk.getScreenSize();
     	int screenh = screensize.height;
     	int screenw = screensize.width;
-    	frame.setSize(800, 300);
+    	frame.setSize(820, 340);
     	frame.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);	
     	frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     	
@@ -144,7 +143,9 @@ public class AdministratorPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void userAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+    	UserAccountPanel userAccount = new UserAccountPanel();
+    	userAccount.setVisible(true);
+    	this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
 
