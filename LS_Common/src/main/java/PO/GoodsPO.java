@@ -1,6 +1,8 @@
 package PO;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
 import util.enumData.*;
 
 public class GoodsPO implements Serializable {
@@ -11,7 +13,7 @@ public class GoodsPO implements Serializable {
 	private String deliverCourierAccount="";
 	private String startTime;
 	private String overtime="";
-	private String destinationCity;
+	private String destinationCity,startCity;
 	private String senderName;
 	private String senderAddress;
 	private String senderCompany;
@@ -32,7 +34,9 @@ public class GoodsPO implements Serializable {
 	private GoodsLogisticState logisticState;
 	private String realReceiverName="";
 	private String realReceiverPhone="";	
-
+	//物流历史状态
+	private ArrayList<String[]> allLogisticStates=new ArrayList<String[]>();
+		
 	public GoodsPO(String listNum, Boolean ifExaminePassed,
 			String getCourierAccount, String deliverCourierAccount,
 			String startTime, String overtime, String destinationCity,
@@ -43,7 +47,8 @@ public class GoodsPO implements Serializable {
 			GoodsExpressType expressType, double moneyOfPackage, double moneyTotal,
 			double moneyFare, GoodsArrivalState arrivalState,
 			GoodsLogisticState logisticState, String realReceiverName,
-			String realReceiverPhone) {
+			String realReceiverPhone,ArrayList<String[]> allLogisticStates,String startCity) {
+		this.allLogisticStates=allLogisticStates;
 		this.listNum = listNum;
 		this.ifExaminePassed = ifExaminePassed;
 		this.getCourierAccount = getCourierAccount;
@@ -71,6 +76,7 @@ public class GoodsPO implements Serializable {
 		this.logisticState = logisticState;
 		this.realReceiverName = realReceiverName;
 		this.realReceiverPhone = realReceiverPhone;
+		this.startCity=startCity;
 	}
 
 	public String getListNum() {
@@ -95,6 +101,10 @@ public class GoodsPO implements Serializable {
 
 	public String getOvertime() {
 		return overtime;
+	}
+
+	public ArrayList<String[]> getAllLogisticStates() {
+		return allLogisticStates;
 	}
 
 	public String getDestinationCity() {

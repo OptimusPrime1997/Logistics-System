@@ -39,7 +39,7 @@ public class GoodsVO {
 	public String deliverCourierAccount="";
 	public String startTime;
 	public String overtime="";
-	public String destinationCity;
+	public String destinationCity,startCity;
 	public String senderName;
 	public String senderAddress;
 	public String senderCompany;
@@ -60,7 +60,9 @@ public class GoodsVO {
 	public GoodsLogisticState logisticState=GoodsLogisticState.SENDED;
 	public String realReceiverName="";
 	public String realReceiverPhone="";
+	//物流历史状态
 	public ArrayList<String[]> allLogisticStates=new ArrayList<String[]>();
+	
 	public GoodsVO(String listNum,Boolean ifExaminePassed,
 			String getCourierAccount, String deliverCourierAccount,
 			String startTime, String overtime, String destinationCity,
@@ -100,7 +102,7 @@ public class GoodsVO {
 		this.logisticState = logisticState;
 		this.realReceiverName = realReceiverName;
 		this.realReceiverPhone = realReceiverPhone;
-		
+		this.startCity=getCourierAccount.substring(0, 3);
 	}
 
 	public GoodsVO(GoodsPO po){
@@ -131,6 +133,7 @@ public class GoodsVO {
 		this.logisticState = po.getLogisticState();
 		this.realReceiverName = po.getRealReceiverName();
 		this.realReceiverPhone = po.getRealReceiverPhone();
+		this.allLogisticStates=po.getAllLogisticStates();
 		
 	}
 	public static GoodsPO toPO(GoodsVO vo) {
@@ -140,7 +143,8 @@ public class GoodsVO {
 				vo.receiverName,vo.receiverAddress,vo.receiverCompany,vo.receiverPhone,
 				vo.numOfGoods,vo.weight,vo.volume,vo.nameOfInside,vo.expressType,
 				vo.moneyOfPackage,vo.moneyTotal,vo.moneyFare,vo.arrivalState,
-				vo.logisticState,vo.realReceiverName,vo.realReceiverPhone);
+				vo.logisticState,vo.realReceiverName,vo.realReceiverPhone,vo.allLogisticStates,
+				vo.startCity);
 		return po;
 	}
 	public static ArrayList<GoodsPO> toPOArray(ArrayList<GoodsVO> vos){
