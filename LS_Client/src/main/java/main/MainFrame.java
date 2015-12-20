@@ -17,6 +17,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
+import ui.administratorui.AdministratorPanel;
 import ui.businessOfficerui.businessOfficer_main;
 import ui.courierui.courier_main;
 import ui.financialstaffui.FinancialStaffJFrame;
@@ -216,6 +217,8 @@ public class MainFrame extends JFrame {
          			break;
          		case 6:new courier_main();
          			break;
+         		case 8:
+         			new AdministratorPanel();
          		default:showFeedback(ResultMessage.NOT_FOUND_ACCOUNTNUM);
          			break;
          		}
