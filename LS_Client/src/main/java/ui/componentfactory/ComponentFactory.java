@@ -119,7 +119,7 @@ public class ComponentFactory {
 	 * 
 	 * @param jtable
 	 */
-	public static void setJTableTextCenter(JTable jTable) {
+	public static  void setJTableTextCenter(JTable jTable) {
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容-11
 		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 设置table内容居中-2
 		jTable.setDefaultRenderer(Object.class, tcr);

@@ -26,7 +26,7 @@ public class ManageVOPO {
 	private static Logbl logbl;
 
 	private ManageVOPO() {
-		// logbl=new Logbl();
+		 logbl=new Logbl();
 	}
 
 	public static ManageVOPO getInstance() {
@@ -44,14 +44,14 @@ public class ManageVOPO {
 	 */
 	public ResultMessage addLog(LogType operation) {
 		LogVO logVO = new LogVO(operation, Loginbl.getCurrentOptorId(),
-				CurrentTime.getTime());
+				CurrentTime.getDate());
 		try{
 		assert (logbl != null) : ("Logbl is null!");
 		}catch(AssertionError e){
 			System.out.println("Logbl is null!");
 			System.out.println(e.getMessage());
 		}
-		// logbl.add(logVO);
+		 logbl.add(logVO);
 		return ResultMessage.SUCCESS;
 	}
 

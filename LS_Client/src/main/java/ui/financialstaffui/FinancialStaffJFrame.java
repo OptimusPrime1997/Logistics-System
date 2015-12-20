@@ -29,6 +29,7 @@ import ui.receiptui.BusinessForm;
 import ui.receiptui.ProfitForm;
 import ui.util.StrToLogType;
 import util.InputCheck;
+import util.enumData.Authority;
 import util.enumData.LogType;
 import util.enumData.ModifyState;
 import util.enumData.ResultMessage;
@@ -37,6 +38,7 @@ import VO.ManagementVO.BankAccountVO;
 import VO.ManagementVO.BankAccountVOPlus;
 import VO.ManagementVO.InstitutionVOPlus;
 import bl.controllerfactorybl.ControllerFactoryImpl;
+import bl.loginbl.Loginbl;
 import blservice.controllerfactoryblservice.ControllerFactoryblService;
 import blservice.logblservice.LogBLService;
 import blservice.managementblservice.bankaccountblservice.BankAccountBLService;
@@ -78,14 +80,16 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 		financialjPanel.setPreferredSize(new java.awt.Dimension(830, 590));
-
-		currentAccountNumjLabel.setText("02500102001");
+		String currentOptorId = Loginbl.getCurrentOptorId();
+		
+		currentAccountNumjLabel.setText(currentOptorId);
 		currentAccountNumjLabel.setToolTipText("当前用户账号");
 
 		accountNamejLabel.setText("李四");
 		accountNamejLabel.setToolTipText("当前用户姓名");
 
-		currentAuthorityjLabel.setText("普通财务人员");
+		currentAuthorityjLabel.setText(Authority.toAuthority(
+				currentOptorId.substring(7, 8)).getValue());
 		currentAuthorityjLabel.setToolTipText("当前用户职位");
 
 		statejLabel.setText("空闲");
@@ -193,314 +197,9 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		finacialjTabbedPane.addTab("收支管理", financialManagejPanel);
 
 		inititalBankAccountJPanel();
-		formjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
+	
 
-		viewProfitFormjButton.setText("查看成本收益表");
-		viewProfitFormjButton.setToolTipText("");
-		viewProfitFormjButton
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						viewProfitFormjButtonActionPerformed(evt);
-					}
-				});
-
-		viewManageForm.setText("查看经营情况表");
-		viewManageForm.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				viewManageFormMouseClicked(evt);
-			}
-		});
-
-		formEYearjLabel.setText("年");
-
-		formEMonthjLabel.setText("月");
-
-		formEDatejLabel.setText("日");
-
-		formEYearjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "2000", "2001", "2002", "2003", "2004", "2005",
-						"2006", "2007", "2008", "2009", "2010", "2011", "2012",
-						"2013", "2014", "2015" }));
-
-		formEDatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
-						"10", "11", "12", "13", "14", "15", "16", "17", "18",
-						"9", "20", "21", "22", "23", "24", "25", "26", "27",
-						"28", "29", "30", "31" }));
-		formEDatejComboBox
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						formEDatejComboBoxActionPerformed(evt);
-					}
-				});
-
-		formEMonthjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
-						"10", "11", "12" }));
-		formEMonthjComboBox
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						formEMonthjComboBoxActionPerformed(evt);
-					}
-				});
-
-		formDeadLinejLabel.setText("截止日期：");
-
-		profitFormIcon.setBackground(new java.awt.Color(0, 240, 240));
-		profitFormIcon.setToolTipText("");
-
-		javax.swing.GroupLayout profitFormIconLayout = new javax.swing.GroupLayout(
-				profitFormIcon);
-		profitFormIcon.setLayout(profitFormIconLayout);
-		profitFormIconLayout.setHorizontalGroup(profitFormIconLayout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGap(0, 200, Short.MAX_VALUE));
-		profitFormIconLayout.setVerticalGroup(profitFormIconLayout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGap(0, 200, Short.MAX_VALUE));
-
-		manageFormIcon.setBackground(new java.awt.Color(240, 240, 0));
-		manageFormIcon.setToolTipText("");
-
-		javax.swing.GroupLayout manageFormIconLayout = new javax.swing.GroupLayout(
-				manageFormIcon);
-		manageFormIcon.setLayout(manageFormIconLayout);
-		manageFormIconLayout.setHorizontalGroup(manageFormIconLayout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGap(0, 200, Short.MAX_VALUE));
-		manageFormIconLayout.setVerticalGroup(manageFormIconLayout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGap(0, 0, Short.MAX_VALUE));
-
-		formTitlejLabel.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
-		formTitlejLabel.setText("报表查看");
-
-		javax.swing.GroupLayout formjPanelLayout = new javax.swing.GroupLayout(
-				formjPanel);
-		formjPanel.setLayout(formjPanelLayout);
-		formjPanelLayout
-				.setHorizontalGroup(formjPanelLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(
-								formjPanelLayout
-										.createSequentialGroup()
-										.addGap(110, 110, 110)
-										.addGroup(
-												formjPanelLayout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING)
-														.addGroup(
-																formjPanelLayout
-																		.createSequentialGroup()
-																		.addComponent(
-																				profitFormIcon,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				javax.swing.GroupLayout.DEFAULT_SIZE,
-																				javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-																				201,
-																				Short.MAX_VALUE)
-																		.addComponent(
-																				manageFormIcon,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				javax.swing.GroupLayout.DEFAULT_SIZE,
-																				javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addContainerGap(
-																				114,
-																				Short.MAX_VALUE))
-														.addGroup(
-																formjPanelLayout
-																		.createSequentialGroup()
-																		.addGap(35,
-																				35,
-																				35)
-																		.addComponent(
-																				viewProfitFormjButton)
-																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-																				javax.swing.GroupLayout.DEFAULT_SIZE,
-																				Short.MAX_VALUE)
-																		.addComponent(
-																				viewManageForm)
-																		.addGap(144,
-																				144,
-																				144))))
-						.addGroup(
-								formjPanelLayout
-										.createSequentialGroup()
-										.addGroup(
-												formjPanelLayout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING)
-														.addGroup(
-																formjPanelLayout
-																		.createSequentialGroup()
-																		.addGap(387,
-																				387,
-																				387)
-																		.addComponent(
-																				formTitlejLabel))
-														.addGroup(
-																formjPanelLayout
-																		.createSequentialGroup()
-																		.addGap(287,
-																				287,
-																				287)
-																		.addComponent(
-																				formDeadLinejLabel)
-																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																		.addComponent(
-																				formEYearjComboBox,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				javax.swing.GroupLayout.DEFAULT_SIZE,
-																				javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																		.addComponent(
-																				formEYearjLabel)
-																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																		.addComponent(
-																				formEMonthjComboBox,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				javax.swing.GroupLayout.DEFAULT_SIZE,
-																				javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																		.addComponent(
-																				formEMonthjLabel)
-																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																		.addComponent(
-																				formEDatejComboBox,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				javax.swing.GroupLayout.DEFAULT_SIZE,
-																				javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																		.addComponent(
-																				formEDatejLabel)))
-										.addGap(0, 0, Short.MAX_VALUE))
-						.addGroup(
-								formjPanelLayout
-										.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
-										.addGroup(
-												formjPanelLayout
-														.createSequentialGroup()
-														.addGap(0, 664,
-																Short.MAX_VALUE)
-														.addComponent(
-																jSeparator3,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																50,
-																javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addGap(56, 56, 56)
-														.addComponent(
-																jSeparator1,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																50,
-																javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addGap(5, 5, 5))));
-		formjPanelLayout
-				.setVerticalGroup(formjPanelLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(
-								formjPanelLayout
-										.createSequentialGroup()
-										.addGap(19, 19, 19)
-										.addComponent(
-												formTitlejLabel,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												15,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addGap(27, 27, 27)
-										.addGroup(
-												formjPanelLayout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
-														.addComponent(
-																formDeadLinejLabel)
-														.addComponent(
-																formEYearjComboBox,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																javax.swing.GroupLayout.DEFAULT_SIZE,
-																javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																formEMonthjComboBox,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																javax.swing.GroupLayout.DEFAULT_SIZE,
-																javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																formEDatejComboBox,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																javax.swing.GroupLayout.DEFAULT_SIZE,
-																javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																formEMonthjLabel)
-														.addComponent(
-																formEYearjLabel)
-														.addComponent(
-																formEDatejLabel))
-										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-												35, Short.MAX_VALUE)
-										.addGroup(
-												formjPanelLayout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING,
-																false)
-														.addComponent(
-																manageFormIcon,
-																javax.swing.GroupLayout.DEFAULT_SIZE,
-																javax.swing.GroupLayout.DEFAULT_SIZE,
-																Short.MAX_VALUE)
-														.addComponent(
-																profitFormIcon,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																javax.swing.GroupLayout.DEFAULT_SIZE,
-																javax.swing.GroupLayout.PREFERRED_SIZE))
-										.addGap(35, 35, 35)
-										.addGroup(
-												formjPanelLayout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
-														.addComponent(
-																viewProfitFormjButton)
-														.addComponent(
-																viewManageForm))
-										.addGap(118, 118, 118))
-						.addGroup(
-								formjPanelLayout
-										.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
-										.addGroup(
-												formjPanelLayout
-														.createSequentialGroup()
-														.addGap(31, 31, 31)
-														.addGroup(
-																formjPanelLayout
-																		.createParallelGroup(
-																				javax.swing.GroupLayout.Alignment.LEADING)
-																		.addComponent(
-																				jSeparator3,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				javax.swing.GroupLayout.DEFAULT_SIZE,
-																				javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addComponent(
-																				jSeparator1,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				javax.swing.GroupLayout.DEFAULT_SIZE,
-																				javax.swing.GroupLayout.PREFERRED_SIZE))
-														.addContainerGap(460,
-																Short.MAX_VALUE))));
-
-		finacialjTabbedPane.addTab("报表查看", formjPanel);
-
+		initialFormJpanel();
 		logjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
 
 		findLogjButton.setText("查找");
@@ -1155,6 +854,324 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		pack();
 	}// </editor-fold>//GEN-END:initComponents
+
+	private void initialFormJpanel() {
+		// TODO Auto-generated method stub
+		formjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
+		viewProfitFormjButton.setText("查看成本收益表");
+		viewProfitFormjButton.setToolTipText("");
+		viewProfitFormjButton
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						viewProfitFormjButtonActionPerformed(evt);
+					}
+				});
+
+		viewManageForm.setText("查看经营情况表");
+		viewManageForm.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				viewManageFormMouseClicked(evt);
+			}
+		});
+
+		formEYearjLabel.setText("年");
+
+		formEMonthjLabel.setText("月");
+
+		formEDatejLabel.setText("日");
+
+		formEYearjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+				new String[] { "2000", "2001", "2002", "2003", "2004", "2005",
+						"2006", "2007", "2008", "2009", "2010", "2011", "2012",
+						"2013", "2014", "2015" }));
+
+		formEDatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
+						"10", "11", "12", "13", "14", "15", "16", "17", "18",
+						"9", "20", "21", "22", "23", "24", "25", "26", "27",
+						"28", "29", "30", "31" }));
+		formEDatejComboBox
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						formEDatejComboBoxActionPerformed(evt);
+					}
+				});
+
+		formEMonthjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
+						"10", "11", "12" }));
+		formEMonthjComboBox
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						formEMonthjComboBoxActionPerformed(evt);
+					}
+				});
+
+		formDeadLinejLabel.setText("截止日期：");
+		formDeadLinejLabel.setVisible(false);
+		formEDatejLabel.setVisible(false);
+		formEDatejComboBox.setVisible(false);
+		formEMonthjLabel.setVisible(false);
+		formEMonthjComboBox.setVisible(false);
+		formEYearjLabel.setVisible(false);
+		formEYearjComboBox.setVisible(false);
+		
+		profitFormIcon.setBackground(new java.awt.Color(0, 240, 240));
+		profitFormIcon.setToolTipText("");
+
+		javax.swing.GroupLayout profitFormIconLayout = new javax.swing.GroupLayout(
+				profitFormIcon);
+		profitFormIcon.setLayout(profitFormIconLayout);
+		profitFormIconLayout.setHorizontalGroup(profitFormIconLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGap(0, 200, Short.MAX_VALUE));
+		profitFormIconLayout.setVerticalGroup(profitFormIconLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGap(0, 200, Short.MAX_VALUE));
+
+		manageFormIcon.setBackground(new java.awt.Color(240, 240, 0));
+		manageFormIcon.setToolTipText("");
+
+		javax.swing.GroupLayout manageFormIconLayout = new javax.swing.GroupLayout(
+				manageFormIcon);
+		manageFormIcon.setLayout(manageFormIconLayout);
+		manageFormIconLayout.setHorizontalGroup(manageFormIconLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGap(0, 200, Short.MAX_VALUE));
+		manageFormIconLayout.setVerticalGroup(manageFormIconLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGap(0, 0, Short.MAX_VALUE));
+
+		formTitlejLabel.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
+		formTitlejLabel.setText("报表查看");
+
+		javax.swing.GroupLayout formjPanelLayout = new javax.swing.GroupLayout(
+				formjPanel);
+		formjPanel.setLayout(formjPanelLayout);
+		formjPanelLayout
+				.setHorizontalGroup(formjPanelLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								formjPanelLayout
+										.createSequentialGroup()
+										.addGap(110, 110, 110)
+										.addGroup(
+												formjPanelLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.LEADING)
+														.addGroup(
+																formjPanelLayout
+																		.createSequentialGroup()
+																		.addComponent(
+																				profitFormIcon,
+																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				javax.swing.GroupLayout.PREFERRED_SIZE)
+																		.addPreferredGap(
+																				javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+																				201,
+																				Short.MAX_VALUE)
+																		.addComponent(
+																				manageFormIcon,
+																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				javax.swing.GroupLayout.PREFERRED_SIZE)
+																		.addContainerGap(
+																				114,
+																				Short.MAX_VALUE))
+														.addGroup(
+																formjPanelLayout
+																		.createSequentialGroup()
+																		.addGap(35,
+																				35,
+																				35)
+																		.addComponent(
+																				viewProfitFormjButton)
+																		.addPreferredGap(
+																				javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				Short.MAX_VALUE)
+																		.addComponent(
+																				viewManageForm)
+																		.addGap(144,
+																				144,
+																				144))))
+						.addGroup(
+								formjPanelLayout
+										.createSequentialGroup()
+										.addGroup(
+												formjPanelLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.LEADING)
+														.addGroup(
+																formjPanelLayout
+																		.createSequentialGroup()
+																		.addGap(387,
+																				387,
+																				387)
+																		.addComponent(
+																				formTitlejLabel))
+														.addGroup(
+																formjPanelLayout
+																		.createSequentialGroup()
+																		.addGap(287,
+																				287,
+																				287)
+																		.addComponent(
+																				formDeadLinejLabel)
+																		.addPreferredGap(
+																				javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+																		.addComponent(
+																				formEYearjComboBox,
+																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				javax.swing.GroupLayout.PREFERRED_SIZE)
+																		.addPreferredGap(
+																				javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+																		.addComponent(
+																				formEYearjLabel)
+																		.addPreferredGap(
+																				javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+																		.addComponent(
+																				formEMonthjComboBox,
+																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				javax.swing.GroupLayout.PREFERRED_SIZE)
+																		.addPreferredGap(
+																				javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+																		.addComponent(
+																				formEMonthjLabel)
+																		.addPreferredGap(
+																				javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+																		.addComponent(
+																				formEDatejComboBox,
+																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				javax.swing.GroupLayout.PREFERRED_SIZE)
+																		.addPreferredGap(
+																				javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+																		.addComponent(
+																				formEDatejLabel)))
+										.addGap(0, 0, Short.MAX_VALUE))
+						.addGroup(
+								formjPanelLayout
+										.createParallelGroup(
+												javax.swing.GroupLayout.Alignment.LEADING)
+										.addGroup(
+												formjPanelLayout
+														.createSequentialGroup()
+														.addGap(0, 664,
+																Short.MAX_VALUE)
+														.addComponent(
+																jSeparator3,
+																javax.swing.GroupLayout.PREFERRED_SIZE,
+																50,
+																javax.swing.GroupLayout.PREFERRED_SIZE)
+														.addGap(56, 56, 56)
+														.addComponent(
+																jSeparator1,
+																javax.swing.GroupLayout.PREFERRED_SIZE,
+																50,
+																javax.swing.GroupLayout.PREFERRED_SIZE)
+														.addGap(5, 5, 5))));
+		formjPanelLayout
+				.setVerticalGroup(formjPanelLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								formjPanelLayout
+										.createSequentialGroup()
+										.addGap(19, 19, 19)
+										.addComponent(
+												formTitlejLabel,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												15,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addGap(27, 27, 27)
+										.addGroup(
+												formjPanelLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.BASELINE)
+														.addComponent(
+																formDeadLinejLabel)
+														.addComponent(
+																formEYearjComboBox,
+																javax.swing.GroupLayout.PREFERRED_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.PREFERRED_SIZE)
+														.addComponent(
+																formEMonthjComboBox,
+																javax.swing.GroupLayout.PREFERRED_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.PREFERRED_SIZE)
+														.addComponent(
+																formEDatejComboBox,
+																javax.swing.GroupLayout.PREFERRED_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.PREFERRED_SIZE)
+														.addComponent(
+																formEMonthjLabel)
+														.addComponent(
+																formEYearjLabel)
+														.addComponent(
+																formEDatejLabel))
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+												35, Short.MAX_VALUE)
+										.addGroup(
+												formjPanelLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.LEADING,
+																false)
+														.addComponent(
+																manageFormIcon,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																Short.MAX_VALUE)
+														.addComponent(
+																profitFormIcon,
+																javax.swing.GroupLayout.PREFERRED_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.PREFERRED_SIZE))
+										.addGap(35, 35, 35)
+										.addGroup(
+												formjPanelLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.BASELINE)
+														.addComponent(
+																viewProfitFormjButton)
+														.addComponent(
+																viewManageForm))
+										.addGap(118, 118, 118))
+						.addGroup(
+								formjPanelLayout
+										.createParallelGroup(
+												javax.swing.GroupLayout.Alignment.LEADING)
+										.addGroup(
+												formjPanelLayout
+														.createSequentialGroup()
+														.addGap(31, 31, 31)
+														.addGroup(
+																formjPanelLayout
+																		.createParallelGroup(
+																				javax.swing.GroupLayout.Alignment.LEADING)
+																		.addComponent(
+																				jSeparator3,
+																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				javax.swing.GroupLayout.PREFERRED_SIZE)
+																		.addComponent(
+																				jSeparator1,
+																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				javax.swing.GroupLayout.PREFERRED_SIZE))
+														.addContainerGap(460,
+																Short.MAX_VALUE))));
+
+		finacialjTabbedPane.addTab("报表查看", formjPanel);
+
+	}
 
 	private void inititalBankAccountJPanel() {
 		// TODO Auto-generated method stub

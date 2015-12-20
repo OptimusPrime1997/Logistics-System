@@ -14,7 +14,7 @@ import datautil.DataUtility;
 
 public class LogData extends UnicastRemoteObject implements LogDataService{
 
-	String filename = "Log.txt";
+	String filename = "Log";
 	DataUtility helper = new DataUtility();	
 	 
 	public LogData() throws RemoteException {
