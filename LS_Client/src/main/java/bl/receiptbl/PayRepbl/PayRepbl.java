@@ -20,7 +20,6 @@ import bl.managementbl.bankaccountbl.BankAccountbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import dataservice.receiptdataservice.PayRepDataService;
-import util.enumData.PayThing;
 import util.enumData.Rep;
 
 public class PayRepbl extends ReceiptblController{

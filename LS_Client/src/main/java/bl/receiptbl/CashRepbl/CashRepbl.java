@@ -129,5 +129,12 @@ public class CashRepbl {
 		ArrayList<CashRepVO> cashRepVOs = CashRepVO.toArrayVO(receiptPOs);
 		return cashRepVOs;
 	}
+	
+	public ArrayList<CashRepVO> getAllRep() 
+			throws ClassNotFoundException, MalformedURLException, RemoteException, IOException, 
+			NotBoundException{
+		ArrayList<ReceiptPO> receiptPOs = getCashRepDataService().getAllRep();
+		return CashRepVO.toArrayVO(receiptPOs);
+	}
 
 }

@@ -7,13 +7,19 @@
 package ui.receiptui;
 
 import java.util.ArrayList;
-import Exception.NotFoundMoneyInAndOutException;
-import VO.BusinessFormVO;
-import bl.controllerfactorybl.ControllerFactoryImpl;
-import blservice.formblservice.BusinessFormBLService;
+
 import ui.util.MyFrame;
 import util.CurrentTime;
+import util.enumData.PayThing;
 import util.enumData.ResultMessage;
+import Exception.NotFoundMoneyInAndOutException;
+import VO.BusinessFormVO;
+import VO.Receipt.CashRepVO;
+import VO.Receipt.CashVO;
+import VO.Receipt.PayRepVO;
+import VO.Receipt.PayVO;
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.formblservice.BusinessFormBLService;
 
 /**
  *
@@ -51,7 +57,6 @@ public static void main(String[] args) {
         payLabel = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         payRepTable = new javax.swing.JTable();
-        resetButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         showText = new javax.swing.JTextField();
         resultMsgText = new javax.swing.JTextField();
@@ -64,9 +69,7 @@ public static void main(String[] args) {
         endTimeLabel.setText("结束日期:");
 
         cashRepTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null}
-            },
+            null,
             new String [] {
                 "日期", "编号", "收款金额"
             }
@@ -87,11 +90,9 @@ public static void main(String[] args) {
         payLabel.setText("付款项");
 
         payRepTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null}
-            },
+           null,
             new String [] {
-                "日期", "编号", "支付金额"
+                "日期", "编号", "支付金额","备注"
             }
         ) {
             Class[] types = new Class [] {
@@ -105,12 +106,6 @@ public static void main(String[] args) {
         payRepTable.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane2.setViewportView(payRepTable);
 
-        resetButton.setText("重置");
-        resetButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetButtonActionPerformed(evt);
-            }
-        });
 
         backButton.setText("返回");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +143,6 @@ public static void main(String[] args) {
              .addGroup(layout.createSequentialGroup()
                  .addGap(31, 31, 31)
                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                     .addComponent(resetButton)
                      .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
                  .addGap(35, 35, 35)
                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +189,6 @@ public static void main(String[] args) {
                      .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                     .addComponent(resetButton)
                      .addComponent(backButton))
                  .addGap(18, 20, Short.MAX_VALUE)
                  .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -207,7 +200,7 @@ public static void main(String[] args) {
      */
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
          resultMsgText.setText("");
-    	//TODO 
+         //TODO 
     	String startT=startTimeText.getText();
     	String endT=endTimeText.getText();
     	ResultMessage msgt=datesIfValid(startT,endT);
@@ -215,9 +208,56 @@ public static void main(String[] args) {
     	if(msgt==ResultMessage.VALID){
     		try {
 				formVO=ctr.show(startT, endT);
-				
-				System.out.println("找到啦");
-			} catch (NotFoundMoneyInAndOutException e) {
+			
+				ArrayList<ArrayList<CashRepVO>>cashvos=formVO.moneyInRecord;
+				ArrayList<PayRepVO> payvos=formVO.moneyOutRecord;
+				int count=0;
+				for(PayRepVO vo:payvos){
+					count+=vo.payVOs.size();
+				}
+				payObjects=new Object[count][4];
+				count=0;
+				for(PayRepVO repvo:payvos){
+					for (PayVO vo : repvo.payVOs) {
+						payObjects[count][0] = repvo.date;
+						payObjects[count][1] = repvo.num;
+						payObjects[count][2] = vo.money;
+						payObjects[count][3]=PayThing.toFriendlyString(vo.payThing);
+						count++;
+					}
+				}
+				payRepTable.setModel(new javax.swing.table.DefaultTableModel(
+			            payObjects,
+			            new String [] {
+			                "日期", "编号", "支付金额","备注"
+			            }
+			        ) );
+				count=0;
+				for(ArrayList<CashRepVO> repvos:cashvos){
+					for(CashRepVO repvo:repvos){
+						count+=repvo.cashVOs.size();
+					}
+				}
+				cashObjects=new Object[count][3];
+				count=0;
+				for(ArrayList<CashRepVO> repvos:cashvos){
+					for(CashRepVO repvo:repvos){
+						for(CashVO vo:repvo.cashVOs){
+							cashObjects[count][0]=repvo.date;
+							cashObjects[count][1]=repvo.num;
+							cashObjects[count][2]=vo.money;
+							count++;
+						}
+					}
+				}
+		    	 cashRepTable.setModel(new javax.swing.table.DefaultTableModel(
+		            cashObjects,
+		            new String [] {
+		                "日期", "编号", "收款金额"
+		            }
+		        ));
+		    	 System.out.println("收款单行数"+count);
+    		} catch (NotFoundMoneyInAndOutException e) {
 	     	    showFeedback(ResultMessage.NOT_FOUND_FINACIAL);
 			}
 		}else{
@@ -286,12 +326,12 @@ public static void main(String[] args) {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel payLabel;
-    private javax.swing.JButton resetButton;
     private javax.swing.JTextField resultMsgText,showText;
     private javax.swing.JTextField startTimeText,endTimeText;
     private MyFrame frame;
     private BusinessFormBLService ctr;
     private BusinessFormVO formVO;
+    private Object[][] cashObjects,payObjects;
     // End of variables declaration//GEN-END:variables
 
 }

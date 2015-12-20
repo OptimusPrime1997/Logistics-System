@@ -97,6 +97,10 @@ public class Receiptbl {
 		return getReceiptDataService().forCheck(rep);
 	}
 	
+	public void submitSave(String num, Rep rep) throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException{
+		getReceiptDataService().submitSave(num, rep);
+	}
+	
 	public ResultMessage checkNum(String string, int n){
 		if (string.length() < n)
 			return ResultMessage.REPNUM_LENGTH_LACKING;

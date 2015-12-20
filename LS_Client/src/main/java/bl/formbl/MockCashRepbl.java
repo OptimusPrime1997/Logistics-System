@@ -1,5 +1,9 @@
 package bl.formbl;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import VO.Receipt.CashRepVO;
@@ -10,7 +14,8 @@ public class MockCashRepbl extends ReceiptblController{
 
 	ArrayList<CashRepVO> vos=new ArrayList<CashRepVO>();
 	ArrayList<CashVO> cashVOs=new ArrayList<CashVO>();
-	public ArrayList<CashRepVO> getAllRep() {
+	public ArrayList<CashRepVO> getAllRep() throws ClassNotFoundException, MalformedURLException, RemoteException, IOException, 
+	NotBoundException{
 		//50,60,70,80,90=350
 		for(int i=5;i<10;i++){
 			CashRepVO vo=new CashRepVO("0000", "2015-12-12", i*10, "大玉儿", cashVOs);
@@ -18,7 +23,8 @@ public class MockCashRepbl extends ReceiptblController{
 		}
 		return vos;
 	}
-	public ArrayList<CashRepVO> getRepByDate(String tempT) {
+	public ArrayList<CashRepVO> getAllRepByDate(String tempT) throws ClassNotFoundException, MalformedURLException, RemoteException, IOException, 
+	NotBoundException{
 		
 		//50,60,70,80,90=350
 		for (int i = 5; i < 10; i++) {
