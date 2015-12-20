@@ -13,6 +13,12 @@ public class Courierbl{
 		payRepVO.courierSalary = payRepCourierSalaryRepVO;
 	}
 	
+	public Vector<Object> initCourierSalaryTable(){
+		Vector<Object> data = new Vector<Object>();
+		
+		return data;
+	}
+	
 	public Vector<Object> initCourierSalaryTable(PayRepVO payRepVO){
 		Vector<Object> data = new Vector<Object>();
 		ArrayList<PayCourierSalaryVO> payCourierSalaryVOs = payRepVO.courierSalary.courierSalaryVOs;
@@ -25,7 +31,7 @@ public class Courierbl{
 			arr.add(payCourierSalaryVO.getterName);
 			arr.add(payCourierSalaryVO.getterNum);
 			arr.add(payCourierSalaryVO.getMoneySum+"");
-			arr.add(payCourierSalaryVO.deliverItemNum+"");
+			arr.add(payCourierSalaryVO.deliverMoneySum+"");
 			arr.add(payCourierSalaryVO.money+"");
 			data.add(arr);
 		}

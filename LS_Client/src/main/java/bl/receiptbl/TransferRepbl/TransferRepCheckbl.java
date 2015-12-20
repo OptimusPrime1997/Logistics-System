@@ -25,7 +25,7 @@ public class TransferRepCheckbl {
 			arr.add(transferRepVO.num);
 			arr.add(ShipForm.toFrendlyString(transferRepVO.form));
 			arr.add(transferRepVO.carNum);
-			arr.add(City.toString(transferRepVO.city));
+			arr.add(City.toString(transferRepVO.destination));
 			data.add(arr);
 		}
 		return data;

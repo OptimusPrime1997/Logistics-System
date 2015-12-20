@@ -1,9 +1,7 @@
 package bl.receiptbl.ShippingRepbl;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -11,14 +9,13 @@ import Exception.NumNotFoundException;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.ShippingRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
-import blservice.receiptblservice.FindAccountblService;
 import blservice.receiptblservice.PostReceiptblService;
 import blservice.receiptblservice.ShippingRepblService;
 import blservice.receiptblservice.SubmitblService;
 import util.enumData.ResultMessage;
 
 public class ShippingRepController extends ReceiptblController 
-	implements ShippingRepblService, PostReceiptblService, SubmitblService, FindAccountblService{
+	implements ShippingRepblService, PostReceiptblService, SubmitblService {
 	
 	private ShippingRepbl shippingRepbl = new ShippingRepbl();
 	private ShippingRepCheckbl shippingRepCheckbl = new ShippingRepCheckbl();
@@ -74,12 +71,6 @@ public class ShippingRepController extends ReceiptblController
 	public boolean isTrueAccount(String num) {
 		// TODO Auto-generated method stub
 		return shippingRepbl.isTrueAccount(num);
-	}
-
-	@Override
-	public ResultMessage checkDriverNum(String string) {
-		// TODO Auto-generated method stub
-		return shippingRepbl.checkDriverNum(string);
 	}
 
 	@Override

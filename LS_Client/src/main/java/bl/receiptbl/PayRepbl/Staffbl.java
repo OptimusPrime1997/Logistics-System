@@ -14,6 +14,12 @@ public class Staffbl{
 		payRepVO.staffSalary = payRepStaffSalaryRepVO;
 	}
 	
+	public Vector<Object> initStaffTable(){
+		Vector<Object> data = new Vector<Object>();
+		
+		return data;
+	}
+	
 	public Vector<Object> initStaffTable(PayRepVO payRepVO){
 		Vector<Object> data = new Vector<Object>();
 		ArrayList<PayStaffSalaryVO> payStaffSalaryVOs = payRepVO.staffSalary.salaryVOs;

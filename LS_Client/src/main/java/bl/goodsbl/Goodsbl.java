@@ -1,6 +1,5 @@
 package bl.goodsbl;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -12,8 +11,6 @@ import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsExpressType;
 import util.enumData.GoodsLogisticState;
 import util.enumData.ResultMessage;
-import Exception.ConstNotFoundException;
-import Exception.CourierNotFoundException;
 import Exception.ExistException;
 import Exception.GoodsNotFound;
 import PO.GoodsPO;
@@ -35,7 +32,25 @@ public class Goodsbl {
 	 * ECONOMIC NORMAL EXPRESS 18: 23: 25
 	 */
 	final double[] expressRates = { 18, 23, 25 };
-	
+	public static void main(String[] args) {
+		 GoodsVO vo = new GoodsVO("", false, "02500106066",
+					"", "2015-12-18", "", "025", "啦啦啦丽",
+					"上海 浦东新区张杨路500号", "上海华润时代广场", "13587511426", "小宏宏",
+					"南京 栖霞区仙林大道和园12号", null, "15500001112", 1, 5, 8, "袜子",
+					GoodsExpressType.NORMAL, 1, 10, 9, GoodsArrivalState.INTACT,
+					GoodsLogisticState.SENDED, null, null);
+		 Goodsbl ctr=new Goodsbl();
+		try {
+			ctr.initComplete(vo);
+			System.out.println(vo.listNum);
+			System.out.println(vo.destinationCity);
+			System.out.println("success!");
+		} catch (ExistException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+	}
 	/**
 	 * 查物流信息
 	 * @param listNum
@@ -96,6 +111,7 @@ public class Goodsbl {
 			double distance =ctr_const.findByCities(cities).distanceConst;
 			if(vo.listNum.length()!=10){
 				int listNum_part=getGoodsDataService().recordListNum();
+				System.out.println(listNum_part);
 				//补齐7位
 				String temp=String.format("%7d",listNum_part).replace(" ","0");
 				vo.listNum=vo.getCourierAccount.substring(0, 3)+temp;
@@ -103,6 +119,8 @@ public class Goodsbl {
 			vo.moneyFare = moneyCounter(vo.expressType, vo.weight, distance,
 					basicprice);
 			vo.moneyTotal = vo.moneyFare + vo.moneyOfPackage;
+			vo.allLogisticStates.add(new String[]{vo.startTime,
+					GoodsLogisticState.toFriendlyString(GoodsLogisticState.SENDED)});
 		    msg=getGoodsDataService().add(GoodsVO.toPO(vo));
 		   //已添加过该订单号
 		   if(msg.equals(ResultMessage.EXIST)) throw new ExistException();
@@ -138,7 +156,7 @@ public class Goodsbl {
 	 * @param state
 	 * @return
 	 */
-	public ResultMessage setArrivalState(String listNum, GoodsArrivalState state) {
+	public ResultMessage setArrivalState(String listNum, GoodsArrivalState state, String date) {
 		try {
 			GoodsVO vo = findByListNum(listNum);
 			vo.arrivalState = state;
@@ -155,11 +173,11 @@ public class Goodsbl {
 	 * @param state
 	 * @return
 	 */
-	public ResultMessage setLogisticState(String listNum,
-			GoodsLogisticState state) {
+	public ResultMessage setLogisticState(String listNum, GoodsLogisticState state, String date) {
 		try {
 			GoodsVO vo = findByListNum(listNum);
 			vo.logisticState = state;
+			vo.allLogisticStates.add(new String[]{date,GoodsLogisticState.toFriendlyString(state)});
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;

@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.TransferRepVO;
@@ -14,6 +15,7 @@ import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.PostReceiptblService;
 import blservice.receiptblservice.SubmitblService;
 import blservice.receiptblservice.TransferRepblService;
+import util.enumData.ShipForm;
 
 public class TransferRepController extends ReceiptblController
 implements TransferRepblService, PostReceiptblService, SubmitblService{
@@ -23,7 +25,8 @@ implements TransferRepblService, PostReceiptblService, SubmitblService{
 	private TransferRepShowbl transferRepShowbl = new TransferRepShowbl();
 
 	@Override
-	public String createNum(String date, String office) throws NotBoundException, ClassNotFoundException, IOException {
+	public String createNum(String date, String office)
+			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return transferRepbl.createNum(date, office);
 	}
@@ -56,7 +59,8 @@ implements TransferRepblService, PostReceiptblService, SubmitblService{
 	}
 
 	@Override
-	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck(String office)
+			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		return transferRepCheckbl.initCheck(office);
 	}
@@ -72,6 +76,26 @@ implements TransferRepblService, PostReceiptblService, SubmitblService{
 	public boolean isTrueOrder(String order) {
 		// TODO Auto-generated method stub
 		return transferRepbl.isTrueOrder(order);
+	}
+
+	@Override
+	public double getFreightMoney(String depart, String destination, double weight, ShipForm form) {
+		// TODO Auto-generated method stub
+		return transferRepbl.getFreightMoney(depart, destination, weight, form);
+	}
+
+	@Override
+	public double getWeightByOrder(String order) throws GoodsNotFound {
+		// TODO Auto-generated method stub
+		return transferRepbl.getWeightByOrder(order);
+	}
+
+	@Override
+	public ArrayList<TransferRepVO> getMonthRep(String date)
+			throws ClassNotFoundException, MalformedURLException, RemoteException, IOException,
+			NotBoundException {
+		// TODO Auto-generated method stub
+		return transferRepbl.getMonthRep(date);
 	}
 
 }

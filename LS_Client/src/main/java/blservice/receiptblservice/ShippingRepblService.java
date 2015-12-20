@@ -1,9 +1,20 @@
 package blservice.receiptblservice;
 
-import util.enumData.ResultMessage;
-
+/**
+ * @author bismuth
+ *
+ */
 public interface ShippingRepblService extends ReceiptblService{
-	public ResultMessage checkDriverNum(String string);
 	
+	/**是否存在该订单
+	 * @param order
+	 * @return
+	 */
 	public boolean isTrueOrder(String order);
+	
+	/**是否存在该账户
+	 * @param num
+	 * @return
+	 */
+	public boolean isTrueAccount(String num);
 }

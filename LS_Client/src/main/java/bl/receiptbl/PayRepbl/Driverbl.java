@@ -12,6 +12,12 @@ public class Driverbl{
 		payRepVO.driverSalary = payRepDriverSalaryRepVO;
 	}
 	
+	public Vector<Object> initDriverSalaryTable(){
+		Vector<Object> data = new Vector<Object>();
+		
+		return data;
+	}
+	
 	public Vector<Object> initDriverSalaryTable(PayRepVO payRepVO){
 		Vector<Object> data = new Vector<Object>();
 		ArrayList<PayDriverSalaryVO> payDriverSalaryVOs = payRepVO.driverSalary.driverSalaryVOs;

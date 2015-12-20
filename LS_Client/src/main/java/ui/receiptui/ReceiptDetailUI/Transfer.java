@@ -130,7 +130,7 @@ public class Transfer extends javax.swing.JPanel {
         numText.setText(num);
         shipFormText.setText(ShipForm.toFrendlyString(transferRepVO.form));
         carNumText.setText(transferRepVO.carNum);
-        destinationText.setText(City.toString(transferRepVO.city));
+        destinationText.setText(City.toString(transferRepVO.destination));
         try {
 			dataVector = control.initShow(num);
 		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {

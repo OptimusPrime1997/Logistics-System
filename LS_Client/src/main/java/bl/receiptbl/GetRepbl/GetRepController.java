@@ -14,6 +14,8 @@ import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.GetRepblService;
 import blservice.receiptblservice.PostReceiptblService;
 import blservice.receiptblservice.SubmitblService;
+import util.enumData.GoodsArrivalState;
+import util.enumData.GoodsLogisticState;
 import util.enumData.Rep;
 
 public class GetRepController extends ReceiptblController 
@@ -76,9 +78,9 @@ implements GetRepblService, PostReceiptblService, SubmitblService{
 	}
 
 	@Override
-	public void transferOver(String num) {
+	public void transferOver(String num, GoodsArrivalState goodsArrivalState) {
 		// TODO Auto-generated method stub
-		getRepbl.transferOver(num);
+		getRepbl.transferOver(num, goodsArrivalState);
 	}
 
 	@Override
@@ -92,6 +94,12 @@ implements GetRepblService, PostReceiptblService, SubmitblService{
 	public boolean isTrueOrder(String order) {
 		// TODO Auto-generated method stub
 		return getRepbl.isTrueOrder(order);
+	}
+
+	@Override
+	public void changeLogistic(String num, GoodsLogisticState goodsLogisticState) {
+		// TODO Auto-generated method stub
+		getRepbl.changeLogistic(num, goodsLogisticState);
 	}
 
 

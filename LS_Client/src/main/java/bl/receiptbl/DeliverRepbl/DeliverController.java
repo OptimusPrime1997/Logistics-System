@@ -14,13 +14,11 @@ import VO.Receipt.DeliverRepVO;
 import VO.Receipt.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.DeliverRepblService;
-import blservice.receiptblservice.FindAccountblService;
 import blservice.receiptblservice.PostReceiptblService;
 import blservice.receiptblservice.SubmitblService;
-import util.enumData.ResultMessage;
 
 public class DeliverController extends ReceiptblController 
-implements DeliverRepblService, PostReceiptblService, SubmitblService, FindAccountblService{
+implements DeliverRepblService, PostReceiptblService, SubmitblService{
 	private DeliverRepbl deliverRepbl = new DeliverRepbl();
 	private DeliverRepCheckbl deliverRepCheckbl = new DeliverRepCheckbl();
 	private DeliverRepShowbl deliverRepShowbl =  new DeliverRepShowbl();
@@ -56,12 +54,6 @@ implements DeliverRepblService, PostReceiptblService, SubmitblService, FindAccou
 			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public ResultMessage checkCourierNum(String string) {
-		// TODO Auto-generated method stub
-		return deliverRepbl.checkCourierNum(string);
 	}
 
 	@Override
@@ -108,6 +100,12 @@ implements DeliverRepblService, PostReceiptblService, SubmitblService, FindAccou
 			ClassNotFoundException, NameNotFoundException, NumNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return deliverRepShowbl.getCourierName(courierNum);
+	}
+
+	@Override
+	public void changeLogistic(String num) {
+		// TODO Auto-generated method stub
+		deliverRepbl.changeLogistic(num);
 	}
 
 }

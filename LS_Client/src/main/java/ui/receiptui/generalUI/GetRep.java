@@ -22,6 +22,7 @@ import bl.receiptbl.GetRepbl.GetRepController;
 import ui.receiptui.ReceiptCheckUI.ArriveCheck;
 import ui.util.MyFrame;
 import util.enumData.GoodsArrivalState;
+import util.enumData.GoodsLogisticState;
 import util.enumData.Rep;
 import util.enumData.ResultMessage;
 
@@ -385,14 +386,17 @@ public class GetRep extends javax.swing.JPanel {
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		String order = orderText.getText();
-		ResultMessage resultMessage = control.checkNum(order, 10);
-		String resultMsg = ResultMessage.toFriendlyString(resultMessage);
-		resultMsgText.setText(resultMsg);
-		if (resultMessage == ResultMessage.ADD_SUCCESS) {
+    	String resultMessage = control.checkNum(order, 10, "编号");
+    	resultMsgText.setText(resultMessage);
+    	if(resultMessage.equals("添加成功")){
 			if(control.isTrueOrder(order)){
+				String arriveState = arriveStateBox.getSelectedItem().toString();
+				if(arriveState.equals(GoodsArrivalState.BROKEN.getChineseName())){
+					control.transferOver(order, GoodsArrivalState.BROKEN);
+				}
 				Vector<String> arr = new Vector<String>();
 				arr.add(order);
-				arr.add(arriveStateBox.getSelectedItem().toString());
+				arr.add(arriveState);
 				dataVector.add(arr);
 				model.setDataVector(dataVector, columnIdentifiers);
 				setColumn();
@@ -459,9 +463,7 @@ public class GetRep extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
-		for(int i = 0;i < arrs.size();i++){
-			dataVector.add(arrs.get(i));
-		}
+		dataVector.addAll(arrs);
 		model.setDataVector(dataVector, columnIdentifiers);
 		setColumn();
 	}

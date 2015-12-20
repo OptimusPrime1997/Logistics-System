@@ -306,10 +306,9 @@ public class DeliverRep extends javax.swing.JPanel {
 
     private void orderMouseClicked(java.awt.event.MouseEvent evt) {
     	String order = orderNumText.getText();
-    	ResultMessage resultMessage = control.checkNum(order, 10);
-    	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
-    	resultMsgText.setText(resultMsg);
-    	if(resultMessage==ResultMessage.ADD_SUCCESS){
+    	String resultMessage = control.checkNum(order, 10, "编号");
+    	resultMsgText.setText(resultMessage);
+    	if(resultMessage.equals("添加成功")){
     		String name = null;
     		String phoneNum = null;
     		String address = null;
@@ -334,10 +333,9 @@ public class DeliverRep extends javax.swing.JPanel {
     
     private void okMouseClicked(java.awt.event.MouseEvent evt) {
     	String courierNum = courierText.getText();
-    	ResultMessage resultMessage = control.checkCourierNum(courierNum);
-    	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
-    	resultMsgText.setText(resultMsg);
-    	if(resultMessage==ResultMessage.ADD_SUCCESS){
+    	String resultMessage = control.checkNum(courierNum, 11, "快递员编号");
+    	resultMsgText.setText(resultMessage);
+    	if(resultMessage.equals("添加成功")){
     		if(control.isTrueAccount(courierNum)){
     			String num = numText.getText();
         		String date = dateText.getText();

@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
+import Exception.GoodsNotFound;
 import VO.Receipt.TransferRepVO;
 import bl.receiptbl.TransferRepbl.TransferRepController;
 import ui.receiptui.ReceiptCheckUI.TransferCheck;
@@ -56,8 +57,6 @@ public class TransferRep extends javax.swing.JPanel {
     private javax.swing.JTextField resultMsgText;
     private javax.swing.JComboBox<String> shipFormBox;
     private javax.swing.JLabel shipFormLabel;
-    private javax.swing.JLabel moneyLabel;
-    private javax.swing.JTextField moneyText;
     private TransferRepController control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
@@ -103,8 +102,6 @@ public class TransferRep extends javax.swing.JPanel {
         cancelButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
         checkAllRepsButton = new javax.swing.JButton();
-        moneyLabel = new javax.swing.JLabel();
-        moneyText = new javax.swing.JTextField();
         control = new TransferRepController();
         model = new DefaultTableModel();
         columnIdentifiers = new Vector<String>();
@@ -160,8 +157,6 @@ public class TransferRep extends javax.swing.JPanel {
 
         orderLabel.setText("订单号:");
         
-        moneyLabel.setText("运费:");
-
         addButton.setText("添加");
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,18 +243,21 @@ public class TransferRep extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(orderLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(orderText, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(cancelButton)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(okButton))
-                                    .addComponent(addButton))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(okButton)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(addButton)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(orderLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(orderText, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(37, 37, 37))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(checkAllRepsButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(officeLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(officeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -285,13 +283,9 @@ public class TransferRep extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(destinationText, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(carNumLabel)
-                                    .addComponent(moneyLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(carNumText, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                                    .addComponent(moneyText, javax.swing.GroupLayout.Alignment.TRAILING))))))
+                                .addComponent(carNumLabel)
+                                .addGap(10, 10, 10)
+                                .addComponent(carNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -317,9 +311,7 @@ public class TransferRep extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(destinationText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(destinationLabel)
-                    .addComponent(moneyLabel)
-                    .addComponent(moneyText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(destinationLabel))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
@@ -354,10 +346,9 @@ public class TransferRep extends javax.swing.JPanel {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	String order = orderText.getText();
-    	ResultMessage resultMessage = control.checkNum(order, 10);
-    	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
-    	resultMsgText.setText(resultMsg);
-    	if(resultMessage==ResultMessage.ADD_SUCCESS){
+    	String resultMessage = control.checkNum(order, 10, "编号");
+    	resultMsgText.setText(resultMessage);
+    	if(resultMessage.equals("添加成功")){
     		if(control.isTrueOrder(order)){
 	    		dataVector.add(order);
 	    		model.setDataVector(dataVector, columnIdentifiers);
@@ -376,14 +367,26 @@ public class TransferRep extends javax.swing.JPanel {
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	String num = numText.getText();
 		String date = dateText.getText();
+		double weight = 0;
 		ArrayList<String> orders = new ArrayList<String>();
 		for(int i = 0;i < dataVector.size();i++){
-			orders.add((String)jTable.getValueAt(i, 0));
+			String order = (String)jTable.getValueAt(i, 0);
+			orders.add(order);
+			try {
+				weight += control.getWeightByOrder(order);
+			} catch (GoodsNotFound e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+				
+			}
 		}
+		String depart = officeText.getText();
+		String destination = destinationText.getText();
+		ShipForm form = ShipForm.getShipForm(shipFormBox.getSelectedItem().toString());
 		TransferRepVO transferRepVO = new TransferRepVO(num, date, 
-				ShipForm.getShipForm(shipFormBox.getSelectedItem().toString()),
-				carNumText.getText(), City.getCity(destinationText.getText()), orders,
-				Double.parseDouble(moneyText.getText()), officeText.getText());
+				form, carNumText.getText(), City.getCity(destination), orders,
+				control.getFreightMoney(depart, destination, weight, form), City.getCity(depart));
 		try {
 			control.submit(transferRepVO);
 		} catch (NotBoundException | IOException e) {

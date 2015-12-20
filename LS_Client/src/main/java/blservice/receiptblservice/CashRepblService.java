@@ -10,10 +10,13 @@ import java.util.Vector;
 
 import VO.GoodsVO;
 import VO.Receipt.ReceiptVO;
-import util.enumData.ResultMessage;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 
+/**
+ * @author bismuth
+ *
+ */
 public interface CashRepblService extends ReceiptblService{
 	
 	
@@ -76,6 +79,14 @@ public interface CashRepblService extends ReceiptblService{
 	 */
 	public void addMoneyInBankAccount(String bankAccount, double money) throws FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException;
 	
+	/**
+	 * 提交
+	 * @param vo
+	 * @param office
+	 * @throws NotBoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public void submit(ReceiptVO vo, String office) throws NotBoundException, IOException, ClassNotFoundException;
 	
 }

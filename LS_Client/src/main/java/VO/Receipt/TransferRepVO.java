@@ -9,17 +9,17 @@ import util.enumData.*;
 public class TransferRepVO extends ReceiptVO {
 	public ShipForm form;
 	public String carNum;
-	public City city;
+	public City destination;
 	public ArrayList<String> goods;
 	public double money;
-	public String depart;
+	public City depart;
 	
-	public TransferRepVO(String num, String date, ShipForm form, String carNum, City city, 
-			ArrayList<String> goods, double money, String depart) {
+	public TransferRepVO(String num, String date, ShipForm form, String carNum, City destination, 
+			ArrayList<String> goods, double money, City depart) {
 		super(num, date);
 		this.form = form;
 		this.carNum = carNum;
-		this.city = city;
+		this.destination = destination;
 		this.goods = goods;
 		this.money = money;
 		this.depart = depart;
@@ -27,13 +27,13 @@ public class TransferRepVO extends ReceiptVO {
 	public TransferRepVO(TransferRepPO po){
 		this.form = po.getForm();
 		this.carNum = po.getCarNum();
-		this.city = po.getCity();
+		this.destination = po.getDestination();
 		this.goods = po.getGoods();
 		this.money = po.getMoney();
 		this.depart = po.getDepart();
 	}
 	public static TransferRepPO toPO(TransferRepVO vo){
-		return new TransferRepPO(vo.num, vo.date, vo.form, vo.carNum, vo.city, vo.goods, vo.money, 
+		return new TransferRepPO(vo.num, vo.date, vo.form, vo.carNum, vo.destination, vo.goods, vo.money, 
 				vo.depart);
 	}
 	public static ArrayList<TransferRepVO> toArrayVO(ArrayList<ReceiptPO> receiptPOs) {

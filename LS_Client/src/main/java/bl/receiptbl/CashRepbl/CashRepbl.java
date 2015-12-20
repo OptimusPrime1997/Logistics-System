@@ -33,7 +33,7 @@ public class CashRepbl {
 	private ReceiptClient client = new ReceiptClient();
 	private static CashRepDataService cashRepDataService = null;
 	
-	public CashRepDataService getCashRepDataService() 
+	private CashRepDataService getCashRepDataService() 
 			throws MalformedURLException, RemoteException, NotBoundException{
 		if(cashRepDataService==null)
 			cashRepDataService = client.getCashRepDataService();
