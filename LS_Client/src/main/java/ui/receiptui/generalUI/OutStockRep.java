@@ -348,7 +348,7 @@ public class OutStockRep extends javax.swing.JPanel {
 			ArrayList<String> orders = transferRepVO.goods;
     		dataVector.addAll(orders);
     		model.setDataVector(dataVector, columnIdentifiers);
-    		destinationText.setText(City.toString(transferRepVO.city));
+    		destinationText.setText(City.toString(transferRepVO.destination));
     		shipFormText.setText(ShipForm.toFrendlyString(transferRepVO.form));
 		}
     }

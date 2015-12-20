@@ -15,6 +15,7 @@ import bl.goodsbl.Goodsbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepbl;
 import bl.receiptbl.TransferRepbl.TransferRepbl;
+import util.enumData.City;
 import util.enumData.Rep;
 
 public class ReceptionRepbl{
@@ -83,7 +84,7 @@ public class ReceptionRepbl{
 			return getShipmentRep(num).depart;
 		}
 		else {
-			return getTransferRep(num).depart;
+			return City.toString(getTransferRep(num).depart);
 		}
 	}
 

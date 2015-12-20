@@ -12,16 +12,16 @@ public class TransferRepPO extends ReceiptPO {
 	
 	private ShipForm form;
 	private String carNum;
-	private City city;
+	private City destination;
 	private ArrayList<String> goods;
 	private double money;
-	private String depart;
-	public TransferRepPO(String num, String date, ShipForm form, String carNum, City city, ArrayList<String> goods,
-			double money, String depart) {
+	private City depart;
+	public TransferRepPO(String num, String date, ShipForm form, String carNum, City destination, 
+			ArrayList<String> goods, double money, City depart) {
 		super(num, date);
 		this.form = form;
 		this.carNum = carNum;
-		this.city = city;
+		this.destination = destination;
 		this.goods = goods;
 		this.money = money;
 		this.depart = depart;
@@ -35,8 +35,8 @@ public class TransferRepPO extends ReceiptPO {
 	public String getCarNum() {
 		return carNum;
 	}
-	public City getCity() {
-		return city;
+	public City getDestination() {
+		return destination;
 	}
 	public ArrayList<String> getGoods() {
 		return goods;
@@ -44,7 +44,7 @@ public class TransferRepPO extends ReceiptPO {
 	public double getMoney() {
 		return money;
 	}
-	public String getDepart() {
+	public City getDepart() {
 		return depart;
 	}
 	

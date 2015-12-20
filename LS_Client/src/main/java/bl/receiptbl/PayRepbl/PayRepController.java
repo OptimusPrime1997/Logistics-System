@@ -23,6 +23,7 @@ import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.PayRepblService;
 import blservice.receiptblservice.SubmitblService;
 import util.enumData.PayThing;
+import util.enumData.ShipForm;
 
 public class PayRepController extends ReceiptblController implements PayRepblService, SubmitblService{
 	private PayRepbl payRepbl = new PayRepbl();
@@ -111,7 +112,9 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 	}
 
 	@Override
-	public Vector<Object> initFreightTable(PayRepVO payRepVO) {
+	public Vector<Object> initFreightTable(PayRepVO payRepVO) 
+			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, 
+			NotBoundException {
 		// TODO Auto-generated method stub
 		return freightbl.initFreightTable(payRepVO);
 	}
@@ -174,13 +177,6 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 	}
 
 	@Override
-	public double getFreightMoney(String num) 
-			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
-		// TODO Auto-generated method stub
-		return freightbl.getFreightMoney(num);
-	}
-
-	@Override
 	public String getRefundTime(String type) {
 		// TODO Auto-generated method stub
 		return payRepbl.getRefundTime(type);
@@ -200,6 +196,12 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 	public PayRepRefundRepVO getRefundByDate(ArrayList<PayRepRefundRepVO> payRepRefundRepVOs, String date) {
 		// TODO Auto-generated method stub
 		return refundbl.getRefundByDate(payRepRefundRepVOs, date);
+	}
+
+	@Override
+	public Vector<Object> initFreightCheck(PayRepVO payRepVO) {
+		// TODO Auto-generated method stub
+		return freightbl.initFreightCheck(payRepVO);
 	}
 
 }

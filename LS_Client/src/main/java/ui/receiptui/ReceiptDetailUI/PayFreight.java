@@ -111,7 +111,7 @@ public class PayFreight extends javax.swing.JPanel {
         numText.setText(payRepVO.num);
         sumText.setText(payRepVO.freight.sum+"");
         bankAccountText.setText(payRepVO.freight.bankAccountNum);
-        dataVector = control.initFreightTable(payRepVO);
+        dataVector = control.initFreightCheck(payRepVO);
         model.setDataVector(dataVector, columnIdentifiers);
         jTable.setModel(model);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));

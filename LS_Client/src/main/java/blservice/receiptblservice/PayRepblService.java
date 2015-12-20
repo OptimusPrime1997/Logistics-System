@@ -23,6 +23,7 @@ import VO.Receipt.PayRepRentRepVO;
 import VO.Receipt.PayRepStaffSalaryRepVO;
 import VO.Receipt.PayRepVO;
 import util.enumData.PayThing;
+import util.enumData.ShipForm;
 
 public interface PayRepblService extends ReceiptblService{
 	
@@ -42,7 +43,7 @@ public interface PayRepblService extends ReceiptblService{
 	
 	public void submitFreight(PayRepVO payRepVO, PayRepFreightRepVO payRepFreightRepVO);
 	
-	public Vector<Object> initFreightTable(PayRepVO payRepVO);
+	public Vector<Object> initFreightTable(PayRepVO payRepVO) throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException;
 	
 	public void submitRefund(PayRepVO payRepVO, PayRepRefundRepVO payRepRefundRepVO);
 	
@@ -64,11 +65,12 @@ public interface PayRepblService extends ReceiptblService{
 	
 	public void minusMoneyInBankAccount (String bankAccount, double money) throws FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException;
 	
-	public double getFreightMoney(String num) throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException;
-	
 	public PayRepVO getSubmitPayRep() throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException;
 	
 	public Vector<Object> initCheck() throws ClassNotFoundException, NotBoundException, IOException;
 	
 	public PayRepRefundRepVO getRefundByDate(ArrayList<PayRepRefundRepVO> payRepRefundRepVOs, String date);
+	
+	public Vector<Object> initFreightCheck(PayRepVO payRepVO);
+	
 }
