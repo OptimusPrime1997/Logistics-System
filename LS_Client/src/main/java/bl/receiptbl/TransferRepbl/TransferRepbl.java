@@ -1,18 +1,22 @@
 package bl.receiptbl.TransferRepbl;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
 import PO.Receipt.ReceiptPO;
 import PO.Receipt.TransferRepPO;
+import RMIClient.ReceiptClient;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.TransferRepVO;
 import bl.goodsbl.Goodsbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.receiptbl.Receiptbl.ReceiptblController;
+import dataservice.receiptdataservice.TransferRepDataService;
 import util.enumData.Rep;
 import util.enumData.ShipForm;
 
@@ -20,6 +24,15 @@ public class TransferRepbl extends ReceiptblController{
 	
 	private Receiptbl receiptbl = new Receiptbl();
 	private Goodsbl goodsbl = new Goodsbl();
+	private static TransferRepDataService transferRepDataService = null;
+	private ReceiptClient client = new ReceiptClient();
+	
+	private TransferRepDataService getTransferRepDataService()
+			throws MalformedURLException, RemoteException, NotBoundException{
+		if(transferRepDataService==null)
+			transferRepDataService = client.getTransferRepDataService();
+		return transferRepDataService;
+	}
 	
 	public String createNum(String date, String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
@@ -66,5 +79,12 @@ public class TransferRepbl extends ReceiptblController{
 	
 	public double getWeightByOrder(String order) throws GoodsNotFound{
 		return goodsbl.findByListNum(order).weight;
+	}
+	
+	public ArrayList<TransferRepVO> getMonthRep(String date) 
+			throws ClassNotFoundException, MalformedURLException, RemoteException, IOException,
+			NotBoundException{
+		ArrayList<ReceiptPO> receiptPOs = getTransferRepDataService().getMonthRep(date);
+		return TransferRepVO.toArrayVO(receiptPOs);
 	}
 }

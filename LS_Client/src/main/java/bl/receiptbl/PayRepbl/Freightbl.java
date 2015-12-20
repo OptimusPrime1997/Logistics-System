@@ -7,29 +7,25 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import PO.Receipt.ReceiptPO;
 import VO.Receipt.PayFreightVO;
 import VO.Receipt.PayRepFreightRepVO;
 import VO.Receipt.PayRepVO;
 import VO.Receipt.TransferRepVO;
-import bl.receiptbl.Receiptbl.Receiptbl;
-import util.enumData.Rep;
+import bl.receiptbl.TransferRepbl.TransferRepbl;
 
 public class Freightbl{
 	
-	private Receiptbl receiptbl = new Receiptbl();
+	private TransferRepbl transferRepbl = new TransferRepbl();
 	
 	public void submitFreight(PayRepVO payRepVO, PayRepFreightRepVO payRepFreightRepVO){
 		payRepVO.freight = payRepFreightRepVO;
 	}
 	
-	public Vector<Object> initFreightTable(PayRepVO payRepVO) 
+	public Vector<Object> initFreightTable(String date) 
 			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException,
 			NotBoundException{
 		Vector<Object> data = new Vector<Object>();
-		ArrayList<ReceiptPO> receiptPOs = new ArrayList<ReceiptPO>();
-		receiptPOs = receiptbl.forCheck(Rep.TransferRep);
-		ArrayList<TransferRepVO> transferRepVOs = TransferRepVO.toArrayVO(receiptPOs);
+		ArrayList<TransferRepVO> transferRepVOs = transferRepbl.getMonthRep(date);
 		for(TransferRepVO transferRepVO : transferRepVOs){
 			Vector<String> arr = new Vector<String>();
 			arr.add(transferRepVO.num);
@@ -39,7 +35,7 @@ public class Freightbl{
 		return data;
 	}
 	
-	public Vector<Object> initFreightCheck(PayRepVO payRepVO){
+	public Vector<Object> initFreightTable(PayRepVO payRepVO){
 		Vector<Object> data = new Vector<Object>();
 		ArrayList<PayFreightVO> payFreightVOs = payRepVO.freight.payFreightVOs;
 		if(payFreightVOs==null)

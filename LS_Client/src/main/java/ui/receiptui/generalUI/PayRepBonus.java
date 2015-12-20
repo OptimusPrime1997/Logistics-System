@@ -295,10 +295,9 @@ public class PayRepBonus extends javax.swing.JPanel {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	String getterNum = receiverNumText.getText();
     	double money = Double.parseDouble(moneyText.getText());
-		ResultMessage resultMessage = control.checkNum(getterNum, 11);
-		String resultMsg = ResultMessage.toFriendlyString(resultMessage);
-		resultMsgText.setText(resultMsg);
-		if (resultMessage == ResultMessage.ADD_SUCCESS) {
+    	String resultMessage = control.checkNum(getterNum, 11, "人员编号");
+    	resultMsgText.setText(resultMessage);
+    	if(resultMessage.equals("添加成功")){
 			Vector<String> arr = new Vector<String>();
 			String getterName = null;
 			try {

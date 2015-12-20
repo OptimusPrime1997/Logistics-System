@@ -12,8 +12,8 @@ import VO.Receipt.DeliverRepVO;
 import VO.Receipt.ReceiptVO;
 import bl.goodsbl.Goodsbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
+import util.enumData.GoodsLogisticState;
 import util.enumData.Rep;
-import util.enumData.ResultMessage;
 
 public class DeliverRepbl {
 	
@@ -32,18 +32,6 @@ public class DeliverRepbl {
 	public void submit(ReceiptVO vo) 
 			throws RemoteException, MalformedURLException, IOException, NotBoundException {
 		receiptbl.submit(DeliverRepVO.toPO((DeliverRepVO) vo), Rep.DeliverRep);
-	}
-
-	public ResultMessage checkCourierNum(String string) {
-		if (string.length() < 11)
-			return ResultMessage.DELIVER_COURIER_NUM_LACKING;
-		if (string.length() > 11)
-			return ResultMessage.DELIVER_COURIER_NUM_OVER;
-		for (int i = 0; i < 11; i++) {
-			if (string.charAt(i) < '0' || string.charAt(i) > '9')
-				return ResultMessage.REPNUM_NOT_ALL_NUM;
-		}
-		return ResultMessage.ADD_SUCCESS;
 	}
 
 	public String getNameByOrder(String order) throws GoodsNotFound {
@@ -70,6 +58,10 @@ public class DeliverRepbl {
 	
 	public boolean isTrueAccount(String num){
 		return receiptbl.isTrueAccount(num);
+	}
+	
+	public void changeLogistic(String num){
+		goodsbl.setLogisticState(num, GoodsLogisticState.DELIVERING, receiptbl.getDate());
 	}
 	
 }

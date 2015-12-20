@@ -22,8 +22,6 @@ import VO.Receipt.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.PayRepblService;
 import blservice.receiptblservice.SubmitblService;
-import util.enumData.PayThing;
-import util.enumData.ShipForm;
 
 public class PayRepController extends ReceiptblController implements PayRepblService, SubmitblService{
 	private PayRepbl payRepbl = new PayRepbl();
@@ -37,7 +35,8 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 	private Staffbl staffbl = new Staffbl();
 
 	@Override
-	public String createNum(String date, String office) throws NotBoundException, ClassNotFoundException, IOException {
+	public String createNum(String date, String office) 
+			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -57,7 +56,8 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 	}
 
 	@Override
-	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initShow(String num) 
+			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -112,9 +112,7 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 	}
 
 	@Override
-	public Vector<Object> initFreightTable(PayRepVO payRepVO) 
-			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, 
-			NotBoundException {
+	public Vector<Object> initFreightTable(PayRepVO payRepVO){
 		// TODO Auto-generated method stub
 		return freightbl.initFreightTable(payRepVO);
 	}
@@ -182,7 +180,10 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 		return payRepbl.getRefundTime(type);
 	}
 	
-	public PayRepVO getSubmitPayRep() throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException{
+	@Override
+	public PayRepVO getSubmitPayRep() 
+			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, 
+			NotBoundException{
 		return payRepbl.getSubmitPayRep();
 	}
 
@@ -193,15 +194,35 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 	}
 
 	@Override
-	public PayRepRefundRepVO getRefundByDate(ArrayList<PayRepRefundRepVO> payRepRefundRepVOs, String date) {
+	public PayRepRefundRepVO getRefundByDate(ArrayList<PayRepRefundRepVO> payRepRefundRepVOs, String date){
 		// TODO Auto-generated method stub
 		return refundbl.getRefundByDate(payRepRefundRepVOs, date);
 	}
 
 	@Override
-	public Vector<Object> initFreightCheck(PayRepVO payRepVO) {
+	public Vector<Object> initFreightTable(String date)
+			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, 
+			NotBoundException {
 		// TODO Auto-generated method stub
-		return freightbl.initFreightCheck(payRepVO);
+		return freightbl.initFreightTable(date);
+	}
+
+	@Override
+	public Vector<Object> initCourierSalaryTable() {
+		// TODO Auto-generated method stub
+		return courierbl.initCourierSalaryTable();
+	}
+
+	@Override
+	public Vector<Object> initDriverSalaryTable() {
+		// TODO Auto-generated method stub
+		return driverbl.initDriverSalaryTable();
+	}
+
+	@Override
+	public Vector<Object> initStaffTable() {
+		// TODO Auto-generated method stub
+		return staffbl.initStaffTable();
 	}
 
 }

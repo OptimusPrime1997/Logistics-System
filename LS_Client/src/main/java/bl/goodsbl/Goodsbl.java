@@ -138,7 +138,7 @@ public class Goodsbl {
 	 * @param state
 	 * @return
 	 */
-	public ResultMessage setArrivalState(String listNum, GoodsArrivalState state) {
+	public ResultMessage setArrivalState(String listNum, GoodsArrivalState state, String date) {
 		try {
 			GoodsVO vo = findByListNum(listNum);
 			vo.arrivalState = state;
@@ -155,8 +155,7 @@ public class Goodsbl {
 	 * @param state
 	 * @return
 	 */
-	public ResultMessage setLogisticState(String listNum,
-			GoodsLogisticState state) {
+	public ResultMessage setLogisticState(String listNum, GoodsLogisticState state, String date) {
 		try {
 			GoodsVO vo = findByListNum(listNum);
 			vo.logisticState = state;

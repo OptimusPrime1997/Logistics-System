@@ -101,16 +101,16 @@ public class Receiptbl {
 		getReceiptDataService().submitSave(num, rep);
 	}
 	
-	public ResultMessage checkNum(String string, int n){
+	public String checkNum(String string, int n, String info){
 		if (string.length() < n)
-			return ResultMessage.REPNUM_LENGTH_LACKING;
+			return info + "长度过短";
 		if (string.length() > n)
-			return ResultMessage.REPNUM_LENGTH_OVER;
+			return info + "长度过长";
 		for(int i = 0;i<n;i++){
 			if(string.charAt(i)<'0'||string.charAt(i)>'9')
-				return ResultMessage.REPNUM_NOT_ALL_NUM;
+				return "存在非数字字符 ";
 		}
-		return ResultMessage.ADD_SUCCESS;
+		return "添加成功";
 	}
 	
 	public boolean isTrueAccount(String num){

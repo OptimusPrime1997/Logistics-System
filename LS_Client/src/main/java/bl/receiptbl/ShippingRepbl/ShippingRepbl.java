@@ -7,12 +7,10 @@ import java.util.ArrayList;
 import Exception.NumNotFoundException;
 import PO.Receipt.ReceiptPO;
 import PO.Receipt.ShippingRepPO;
-import VO.Receipt.InStockRepVO;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.ShippingRepVO;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import util.enumData.Rep;
-import util.enumData.ResultMessage;
 
 public class ShippingRepbl{
 	
@@ -53,24 +51,16 @@ public class ShippingRepbl{
 		return ShippingRepVO.toArrayVO(receiptPOs);
 	}
 	
-	public ResultMessage checkDriverNum(String string){
-		if(string.length() < 11)
-			return ResultMessage.DRIVER_NUM_LACKING;
-		if(string.length() > 11)
-			return ResultMessage.DRIVER_NUM_OVER;
-		for (int i = 0; i < 11; i++) {
-			if (string.charAt(i) < '0' || string.charAt(i) > '9')
-				return ResultMessage.REPNUM_NOT_ALL_NUM;
-		}
-		return ResultMessage.SUCCESS;
-	}
-	
 	public boolean isTrueAccount(String num){
 		return receiptbl.isTrueAccount(num);
 	}
 	
 	public boolean isTrueOrder(String order){
 		return receiptbl.isTrueOrder(order);
+	}
+	
+	public void changeLogistic(String num){
+		
 	}
 
 }

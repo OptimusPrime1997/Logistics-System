@@ -390,10 +390,9 @@ public class ReceptionRep extends javax.swing.JPanel {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	String order = orderText.getText();
-    	ResultMessage resultMessage = control.checkNum(order, 10);
-    	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
-    	resultMsgText.setText(resultMsg);
-    	if(resultMessage==ResultMessage.ADD_SUCCESS){
+    	String resultMessage = control.checkNum(order, 10, "编号");
+    	resultMsgText.setText(resultMessage);
+    	if(resultMessage.equals("添加成功")){
     		if(control.isTrueOrder(order)){
 				Vector<String> arr = new Vector<String>();
 				arr.add(order);

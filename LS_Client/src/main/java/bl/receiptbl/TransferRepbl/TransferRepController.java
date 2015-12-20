@@ -25,7 +25,8 @@ implements TransferRepblService, PostReceiptblService, SubmitblService{
 	private TransferRepShowbl transferRepShowbl = new TransferRepShowbl();
 
 	@Override
-	public String createNum(String date, String office) throws NotBoundException, ClassNotFoundException, IOException {
+	public String createNum(String date, String office)
+			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return transferRepbl.createNum(date, office);
 	}
@@ -58,7 +59,8 @@ implements TransferRepblService, PostReceiptblService, SubmitblService{
 	}
 
 	@Override
-	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException {
+	public Vector<Object> initCheck(String office)
+			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		return transferRepCheckbl.initCheck(office);
 	}
@@ -86,6 +88,14 @@ implements TransferRepblService, PostReceiptblService, SubmitblService{
 	public double getWeightByOrder(String order) throws GoodsNotFound {
 		// TODO Auto-generated method stub
 		return transferRepbl.getWeightByOrder(order);
+	}
+
+	@Override
+	public ArrayList<TransferRepVO> getMonthRep(String date)
+			throws ClassNotFoundException, MalformedURLException, RemoteException, IOException,
+			NotBoundException {
+		// TODO Auto-generated method stub
+		return transferRepbl.getMonthRep(date);
 	}
 
 }

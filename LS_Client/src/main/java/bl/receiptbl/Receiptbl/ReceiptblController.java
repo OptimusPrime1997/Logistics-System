@@ -24,9 +24,9 @@ public class ReceiptblController implements PreReceiptblService{
 	}
 
 	@Override
-	public ResultMessage checkNum(String string, int n) {
+	public String checkNum(String string, int n, String info) {
 		// TODO Auto-generated method stub
-		return receiptbl.checkNum(string, n);
+		return receiptbl.checkNum(string, n, info);
 	}
 
 }

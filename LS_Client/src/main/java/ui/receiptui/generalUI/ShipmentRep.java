@@ -310,10 +310,9 @@ public class ShipmentRep extends javax.swing.JPanel {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	String driverNum = driverText.getText();
-    	ResultMessage resultMessage = control.checkDriverNum(driverNum);
-    	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
-    	resultMsgText.setText(resultMsg);
-    	if(resultMessage==ResultMessage.ADD_SUCCESS){
+    	String resultMessage = control.checkNum(driverNum, 11, "司机编号");
+    	resultMsgText.setText(resultMessage);
+    	if(resultMessage.equals("添加成功")){
     		if(control.isTrueAccount(driverNum)){
     			String num = numText.getText();
         		String date = dateText.getText();
@@ -348,10 +347,9 @@ public class ShipmentRep extends javax.swing.JPanel {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	String order = orderText.getText();
-    	ResultMessage resultMessage = control.checkNum(order, 10);
-    	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
-    	resultMsgText.setText(resultMsg);
-    	if(resultMessage==ResultMessage.ADD_SUCCESS){
+    	String resultMessage = control.checkNum(order, 10, "编号");
+    	resultMsgText.setText(resultMessage);
+    	if(resultMessage.equals("添加成功")){
 			if(control.isTrueOrder(order)){
 	    		dataVector.add(order);
 	    		model.setDataVector(dataVector, columnIdentifiers);

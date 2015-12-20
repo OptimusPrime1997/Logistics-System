@@ -348,10 +348,9 @@ public class CashRep extends javax.swing.JPanel {
     
     private void courierButtonMouseClicked(java.awt.event.MouseEvent evt) {
     	String courierNum = courierNumText.getText();
-    	ResultMessage resultMessage = control.checkNum(courierNum, 11);
-    	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
-    	resultMsgText.setText(resultMsg);
-    	if(resultMessage==ResultMessage.ADD_SUCCESS){
+    	String resultMessage = control.checkNum(courierNum, 11, "快递员编号");
+    	resultMsgText.setText(resultMessage);
+    	if(resultMessage.equals("添加成功")){
     		String courierName = null;
         	double money;
     		try {
