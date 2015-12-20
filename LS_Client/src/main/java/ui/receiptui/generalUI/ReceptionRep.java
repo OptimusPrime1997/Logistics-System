@@ -19,18 +19,18 @@ import javax.swing.table.TableColumn;
 
 
 import Exception.ExceptionPrint;
+import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
 import VO.Receipt.ArriveVO;
 import VO.Receipt.ReceptionRepVO;
 import bl.receiptbl.ReceptionRepbl.ReceptionRepController;
-import blservice.receiptblservice.ReceptionRepblService;
 import ui.receiptui.ReceiptCheckUI.ArriveCheck;
 import ui.util.MyFrame;
 import util.CurrentCity;
 import util.enumData.City;
 import util.enumData.GoodsArrivalState;
+import util.enumData.GoodsLogisticState;
 import util.enumData.Rep;
-import util.enumData.ResultMessage;
 
 /**
  *
@@ -469,4 +469,31 @@ public class ReceptionRep extends javax.swing.JPanel {
 		model.setDataVector(dataVector, columnIdentifiers);
 		setColumn();
 	}
+    
+//    private void changeArrivalState(){
+//		for(int i = 0;i < dataVector.size();i++){
+//			String order = (String)jTable.getValueAt(i, 0);
+//			GoodsArrivalState goodsArrivalState = 
+//					GoodsArrivalState.getGoodsArrivalState((String)jTable.getValueAt(i, 1));
+//			if(goodsArrivalState!=GoodsArrivalState.INTACT){
+//				control.transferOver(order, goodsArrivalState);
+//			}
+//			else {
+//				String destination = null;
+//				try {
+//					destination = control.getDestination(order);
+//				} catch (GoodsNotFound e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//					resultMsgText.setText(ExceptionPrint.print(e));
+//				}
+//				if(officeID.equals(destination)){
+//					control.changeLogistic(order, GoodsLogisticState.RECEIVER_BUSINESSOFFICE_ARRIVED);
+//				}
+//				else if(officeID.equals()){
+//					
+//				}
+//			}
+//		}
+//	}
 }

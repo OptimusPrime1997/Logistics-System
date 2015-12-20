@@ -43,6 +43,10 @@ public class AccountblTest {
 					.add(new AccountVO("02500108088", "我是管理员！", "8888",
 							Sex.Sex_FAMALE, Authority.ADMINISTRATOR, "12345678666",
 							"025001"));	
+			rmsg[7] = accountbl.
+					add(new AccountVO("02500107077", "driver", "7777",
+							Sex.Sex_MALE, Authority.DRIVER, "12345678900", 
+							"025001"));
 			
 			for (int i = 0; i < 7; i++) {
 				System.out.println(rmsg[i]);

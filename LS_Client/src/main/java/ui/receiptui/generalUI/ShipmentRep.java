@@ -351,7 +351,9 @@ public class ShipmentRep extends javax.swing.JPanel {
     	resultMsgText.setText(resultMessage);
     	if(resultMessage.equals("添加成功")){
 			if(control.isTrueOrder(order)){
-	    		dataVector.add(order);
+				Vector<String> arr = new Vector<String>();
+				arr.add(order);
+	    		dataVector.add(arr);
 	    		model.setDataVector(dataVector, columnIdentifiers);
 	        	setColumn();
 			}
