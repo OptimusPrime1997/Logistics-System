@@ -68,7 +68,7 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 		Dimension screensize = tk.getScreenSize();
 		int screenh = screensize.height;
 		int screenw = screensize.width;
-		this.setSize(400, 400);
+		this.setSize(830, 590);
 		this.setLocation(screenw / 2 - this.getWidth() / 2,
 				screenh / 2 - this.getHeight() / 2);
 		/**
@@ -539,7 +539,6 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 			ComponentFactory.setState("读取文件失败", ComponentFactory.DISPLAY_TIME,
 					resultMsg);
 		}
-
 		assert (vos != null) : ("远程获取账户信息失败");
 		return vos;
 	}

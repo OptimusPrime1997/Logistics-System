@@ -28,4 +28,10 @@ public class AccountVO implements Comparable<AccountVO> {
 		// TODO Auto-generated method stub
 		return accountNum.compareTo(v.accountNum);
 	}
+
+	public String toString() {
+		return accountNum + "," + accountName + "," + password + ","
+				+ sex.toString() + "," + authority.toString() + "," + phoneNum
+				+ "," + institutionNum;
+	}
 }

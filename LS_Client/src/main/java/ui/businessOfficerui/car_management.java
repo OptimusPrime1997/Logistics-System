@@ -297,6 +297,8 @@ public class car_management extends javax.swing.JPanel {
 	private void search_btnActionPerformed(ActionEvent evt) {
 		// TODO Auto-generated method stub
 		if (evt.getSource() == search_btn) {
+			
+			boolean  found=false;
 			String tofindVNum = search_text.getText();
 			VehicleVO v = null;
 			int i = 0;
@@ -305,6 +307,7 @@ public class car_management extends javax.swing.JPanel {
 				for (; t.hasNext(); i++) {
 					v = t.next();
 					if (v.licenseNum.equals(tofindVNum)) {
+						found=true;
 						vehiclejTable.setRowSelectionInterval(i, i);
 						ComponentFactory.setState("该车辆在第" + (i + 1) + "行",
 								ComponentFactory.DISPLAY_TIME, feedback_text);
@@ -312,11 +315,10 @@ public class car_management extends javax.swing.JPanel {
 						break;
 					}
 				}
-				if (!t.hasNext()) {
-					ComponentFactory.setState("系统无找该车牌号的车辆",
+				if (!found) {
+					ComponentFactory.setState("系统未找到该车牌号的车辆",
 							ComponentFactory.DISPLAY_TIME, feedback_text);
 				}
-
 			} else if (InputCheck.checkInputNum(tofindVNum, 9) == ResultMessage.VALID) {
 				Iterator<VehicleVO> t = vehicleVOs.iterator();
 				for (; t.hasNext(); i++) {
@@ -329,8 +331,8 @@ public class car_management extends javax.swing.JPanel {
 						break;
 					}
 				}
-				if (!t.hasNext()) {
-					ComponentFactory.setState("系统无找该编号的车辆",
+				if (!found) {
+					ComponentFactory.setState("系统未找该编号的车辆",
 							ComponentFactory.DISPLAY_TIME, feedback_text);
 				}
 			} else {
