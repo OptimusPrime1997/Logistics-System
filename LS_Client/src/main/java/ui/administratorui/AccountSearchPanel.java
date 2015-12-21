@@ -68,7 +68,7 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 		Dimension screensize = tk.getScreenSize();
 		int screenh = screensize.height;
 		int screenw = screensize.width;
-		this.setSize(830, 590);
+		this.setSize(500, 450);
 		this.setLocation(screenw / 2 - this.getWidth() / 2,
 				screenh / 2 - this.getHeight() / 2);
 		/**
