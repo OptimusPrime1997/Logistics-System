@@ -1,6 +1,5 @@
 package util.enumData;
 
-import javax.sql.rowset.CachedRowSet;
 
 public enum LogType {
 	/**

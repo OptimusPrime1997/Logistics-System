@@ -14,6 +14,8 @@ public class CashRepCheckbl {
 	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException {
 		ArrayList<CashRepVO> cashRepVOs = cashRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
+		if(cashRepVOs==null)
+			return null;
 		for (int i = 0; i < cashRepVOs.size(); i++) {
 			CashRepVO cashRepVO = cashRepVOs.get(i);
 			Vector<String> arr = new Vector<String>();

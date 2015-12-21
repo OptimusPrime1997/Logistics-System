@@ -11,9 +11,13 @@ import Exception.NumNotFoundException;
 import VO.Receipt.PayBonusVO;
 import VO.Receipt.PayRepBonusRepVO;
 import VO.Receipt.PayRepVO;
+import bl.managementbl.accountbl.Accountbl;
 import bl.receiptbl.CashRepbl.CashRepbl;
+import util.enumData.ResultMessage;
 
 public class Bonusbl{
+	
+	private Accountbl accountbl = new Accountbl();
 	
 	public void submitBonus(PayRepVO payRepVO, PayRepBonusRepVO payRepBonusRepVO){
 		payRepVO.bonus = payRepBonusRepVO;
@@ -40,8 +44,14 @@ public class Bonusbl{
 	public String getReceiverName(String num) 
 			throws RemoteException, FileNotFoundException, ClassNotFoundException, NameNotFoundException, 
 			NumNotFoundException, IOException{
-		CashRepbl cashRepbl = new CashRepbl();
-		return cashRepbl.getCourierName(num);
+		return accountbl.findByAccountNum(num).accountName;
+	}
+	
+	public ResultMessage checkMoney(double money){
+		if(money<0){
+			return ResultMessage.INPUTNUM_MUST_BE_POSITIVE;
+		}
+		return ResultMessage.ADD_SUCCESS;
 	}
 	
 }

@@ -13,10 +13,13 @@ import VO.StockDivisionVO;
 import VO.Receipt.InStockRepVO;
 import VO.Receipt.ReceiptVO;
 import bl.goodsbl.Goodsbl;
+import bl.loginbl.LoginblController;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.stockbl.StockDivisionbl;
 import dataservice.receiptdataservice.InStockRepDataService;
+import util.CurrentTime;
 import util.enumData.City;
+import util.enumData.LogType;
 import util.enumData.Rep;
 import util.enumData.ResultMessage;
 
@@ -25,6 +28,7 @@ public class InStockRepbl{
 	private Receiptbl receiptbl = new Receiptbl();
 	private StockDivisionbl stockDivisionbl = new StockDivisionbl();
 	private Goodsbl goodsbl = new Goodsbl();
+	private LoginblController login = new LoginblController();
 	private ReceiptClient client = new ReceiptClient();
 	
 	private InStockRepDataService getInStockRepDataService()
@@ -41,6 +45,9 @@ public class InStockRepbl{
 	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		receiptbl.submit(InStockRepVO.toPO((InStockRepVO) vo), Rep.InStockRep);
+		String operatorID = login.getCurrentOptorId();
+		receiptbl.addLog(LogType.INSTOCK_MANAGEMENT, operatorID, CurrentTime.getTime());
+		
 	}
 
 	public ArrayList<InStockRepVO> getRepByDate(String date, String office) 
@@ -81,7 +88,9 @@ public class InStockRepbl{
 	public ArrayList<InStockRepVO> getAllRepByDate(String date) 
 			throws ClassNotFoundException, MalformedURLException, RemoteException, IOException, 
 			NotBoundException{
-		return InStockRepVO.toArrayVO(getInStockRepDataService().getAllRepByDate(date));
+		ArrayList<ReceiptPO> receiptPOs = getInStockRepDataService().getAllRepByDate(date);
+		if(receiptPOs==null)
+			return null;
+		return InStockRepVO.toArrayVO(receiptPOs);
 	}
-
 }

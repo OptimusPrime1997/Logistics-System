@@ -5,7 +5,6 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import VO.Receipt.ShippingRepVO;
 import VO.Receipt.TransferRepVO;
 import util.enumData.City;
 import util.enumData.ShipForm;
@@ -18,6 +17,8 @@ public class TransferRepCheckbl {
 		// TODO Auto-generated method stub
 		ArrayList<TransferRepVO> transferRepVOs = transferRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
+		if(transferRepVOs==null)
+			return null;
 		for(int i = 0;i < transferRepVOs.size();i++){
 			Vector<String> arr = new Vector<String>();
 			TransferRepVO transferRepVO = transferRepVOs.get(i);

@@ -27,6 +27,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 import ui.receiptui.BusinessForm;
 import ui.receiptui.ProfitForm;
+import ui.receiptui.generalUI.PayRep;
 import ui.util.StrToLogType;
 import util.InputCheck;
 import util.enumData.Authority;
@@ -1922,9 +1923,9 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		}
 	}
 
-	private void paymentjButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_paymentjButtonActionPerformed
-		// TODO add your handling code here:
-	}// GEN-LAST:event_paymentjButtonActionPerformed
+	private void paymentjButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		new PayRep();
+	}
 
 	private void viewManageFormMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_viewManageFormMouseReleased
 		new BusinessForm();

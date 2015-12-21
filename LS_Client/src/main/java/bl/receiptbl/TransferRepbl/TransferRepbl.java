@@ -43,8 +43,6 @@ public class TransferRepbl extends ReceiptblController{
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.TransferRep);
-		if(receiptPO==null)
-			throw new NumNotFoundException();
 		return new TransferRepVO((TransferRepPO)receiptPO);
 	}
 
@@ -57,6 +55,8 @@ public class TransferRepbl extends ReceiptblController{
 			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.TransferRep, office);
+		if(receiptPOs==null)
+			return null;
 		return TransferRepVO.toArrayVO(receiptPOs);
 	}
 
@@ -85,6 +85,8 @@ public class TransferRepbl extends ReceiptblController{
 			throws ClassNotFoundException, MalformedURLException, RemoteException, IOException,
 			NotBoundException{
 		ArrayList<ReceiptPO> receiptPOs = getTransferRepDataService().getMonthRep(date);
+		if(receiptPOs==null)
+			return null;
 		return TransferRepVO.toArrayVO(receiptPOs);
 	}
 }

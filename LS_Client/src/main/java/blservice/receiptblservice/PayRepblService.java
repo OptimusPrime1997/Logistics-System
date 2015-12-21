@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
+import Exception.SalaryPolicyNotFoundException;
 import VO.Receipt.PayRepBonusRepVO;
 import VO.Receipt.PayRepCourierSalaryRepVO;
 import VO.Receipt.PayRepDriverSalaryRepVO;
@@ -18,6 +19,7 @@ import VO.Receipt.PayRepRefundRepVO;
 import VO.Receipt.PayRepRentRepVO;
 import VO.Receipt.PayRepStaffSalaryRepVO;
 import VO.Receipt.PayRepVO;
+import util.enumData.ResultMessage;
 
 /**
  * @author bismuth
@@ -88,8 +90,13 @@ public interface PayRepblService extends ReceiptblService{
 	
 	/**初始化快递员付款单表格
 	 * @return
+	 * @throws NumNotFoundException 
+	 * @throws IOException 
+	 * @throws SalaryPolicyNotFoundException 
+	 * @throws ClassNotFoundException 
+	 * @throws FileNotFoundException 
 	 */
-	public Vector<Object> initCourierSalaryTable();
+	public Vector<Object> initCourierSalaryTable() throws FileNotFoundException, ClassNotFoundException, SalaryPolicyNotFoundException, IOException, NumNotFoundException;
 	
 	/**初始化快递员付款单检查表格
 	 * @param payRepVO
@@ -107,8 +114,13 @@ public interface PayRepblService extends ReceiptblService{
 
 	/**初始化司机付款单表格
 	 * @return
+	 * @throws NumNotFoundException 
+	 * @throws IOException 
+	 * @throws SalaryPolicyNotFoundException 
+	 * @throws ClassNotFoundException 
+	 * @throws FileNotFoundException 
 	 */
-	public Vector<Object> initDriverSalaryTable();
+	public Vector<Object> initDriverSalaryTable() throws FileNotFoundException, ClassNotFoundException, SalaryPolicyNotFoundException, IOException, NumNotFoundException;
 	
 	/**初始化司机付款单检查表格
 	 * @param payRepVO
@@ -198,8 +210,13 @@ public interface PayRepblService extends ReceiptblService{
 	
 	/**初始化普通员工付款单表格
 	 * @return
+	 * @throws NumNotFoundException 
+	 * @throws IOException 
+	 * @throws SalaryPolicyNotFoundException 
+	 * @throws ClassNotFoundException 
+	 * @throws FileNotFoundException 
 	 */
-	public Vector<Object> initStaffTable();
+	public Vector<Object> initStaffTable() throws FileNotFoundException, ClassNotFoundException, SalaryPolicyNotFoundException, IOException, NumNotFoundException;
 	
 	/**初始化普通员工付款单检查表格
 	 * @param payRepVO
@@ -225,5 +242,20 @@ public interface PayRepblService extends ReceiptblService{
 	 * @throws IOException
 	 */
 	public void minusMoneyInBankAccount (String bankAccount, double money) throws FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException;
+	
+	/**检查输入金额是否大于0
+	 * @param money
+	 * @return
+	 */
+	public ResultMessage checkMoney(double money);
+	
+	/**自动填写当前付款人 
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws ClassNotFoundException
+	 * @throws NumNotFoundException
+	 * @throws IOException
+	 */
+	public String payPeople() throws FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException;
 	
 }

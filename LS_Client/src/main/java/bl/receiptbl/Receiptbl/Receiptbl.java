@@ -77,7 +77,7 @@ public class Receiptbl {
 		return getReceiptDataService().getRepByDate(date, rep, office);
 	}
 	
-	public ReceiptPO getRepByNum(String num, Rep rep) throws NotBoundException, ClassNotFoundException, IOException{
+	public ReceiptPO getRepByNum(String num, Rep rep) throws NotBoundException, ClassNotFoundException, IOException, NumNotFoundException{
 		return getReceiptDataService().getRepByNum(num, rep);
 	}
 	

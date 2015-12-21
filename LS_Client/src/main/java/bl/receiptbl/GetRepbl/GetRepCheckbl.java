@@ -20,8 +20,6 @@ public class GetRepCheckbl {
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.GetRep);
-		if(receiptPO==null)
-			throw new NumNotFoundException();
 		return new GetRepVO((GetRepPO)receiptPO);
 	}
 
