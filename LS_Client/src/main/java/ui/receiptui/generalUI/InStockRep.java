@@ -28,7 +28,6 @@ import bl.receiptbl.InStockRepbl.InStockRepController;
 import ui.receiptui.ReceiptCheckUI.InStockCheck;
 import ui.warehousemanui.WarehousePanel;
 import util.enumData.City;
-import util.enumData.ResultMessage;
 import util.CurrentCity;
 
 /**
@@ -304,6 +303,7 @@ public class InStockRep extends javax.swing.JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
 		}
     }
 
@@ -315,44 +315,49 @@ public class InStockRep extends javax.swing.JPanel {
     	String order = orderText.getText();
     	String resultMessage = control.checkNum(order, 10, "编号");
     	resultMsgText.setText(resultMessage);
-    	if(resultMessage.equals("添加成功")){
-			String destination = null;
-			StockDivisionVO stockDivisionVO = null;
+    	if(!resultMessage.equals("添加成功")){
+    		return;
+		}
+		String destination = null;
+		StockDivisionVO stockDivisionVO = null;
+		try {
+			destination = control.getCity(order);
+		} catch (GoodsNotFound e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		}
+		City destinationCity = City.getCity(destination);
+		try {
+			stockDivisionVO = control.getAvailableDivision(destinationCity);
+		} catch (NotBoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		}
+		if(stockDivisionVO==null)
+			resultMsgText.setText("该区已满");
+		else{
+			Vector<String> arr = new Vector<String>();
+			arr.add(order);
+			arr.add(stockDivisionVO.block+"");
+			arr.add(stockDivisionVO.place+"");
+			dataVector.add(arr);
+			model.setDataVector(dataVector, columnIdentifiers);
+			setColumn();
+			ArrayList<InStockVO> inStockVOs = new ArrayList<InStockVO>();
+			inStockVOs.add(new InStockVO(order, stockDivisionVO.block+"", stockDivisionVO.place+""));
+			InStockRepVO inStockRepVO = new InStockRepVO(null, null, inStockVOs);
+			orderText.setText("");
 			try {
-				destination = control.getCity(order);
-			} catch (GoodsNotFound e) {
+				control.update(inStockRepVO);
+			} catch (MalformedURLException | RemoteException | NotBoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				resultMsgText.setText(ExceptionPrint.print(e));
-			}
-			City destinationCity = City.getCity(destination);
-			try {
-				stockDivisionVO = control.getAvailableDivision(destinationCity);
-			} catch (NotBoundException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				resultMsgText.setText(ExceptionPrint.print(e));
-			}
-			if(stockDivisionVO==null)
-				resultMsgText.setText("该区已满");
-			else{
-				Vector<String> arr = new Vector<String>();
-				arr.add(order);
-				arr.add(stockDivisionVO.block+"");
-				arr.add(stockDivisionVO.place+"");
-				dataVector.add(arr);
-				model.setDataVector(dataVector, columnIdentifiers);
-				setColumn();
-				ArrayList<InStockVO> inStockVOs = new ArrayList<InStockVO>();
-				inStockVOs.add(new InStockVO(order, stockDivisionVO.block+"", stockDivisionVO.place+""));
-				InStockRepVO inStockRepVO = new InStockRepVO(null, null, inStockVOs);
-				try {
-					control.update(inStockRepVO);
-				} catch (MalformedURLException | RemoteException | NotBoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					resultMsgText.setText(ExceptionPrint.print(e));
-				}
+				return;
 			}
 		}
     }
@@ -374,6 +379,7 @@ public class InStockRep extends javax.swing.JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
 		}
 		this.frame.dispose();
     }

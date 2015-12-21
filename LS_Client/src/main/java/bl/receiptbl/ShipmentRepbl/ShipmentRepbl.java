@@ -45,7 +45,7 @@ public class ShipmentRepbl{
 	public String getTruckSum(String date, String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		String truckNum = createNum(date, office);
-		for(int i = 0;i < 4;i++){
+		for(int i = 0;i < truckNum.length();i++){
 			if(truckNum.charAt(i)=='0'){
 				truckNum = truckNum.substring(1);
 			}

@@ -4,8 +4,6 @@ package main;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.rmi.RemoteException;
 
 import javax.swing.JButton;
@@ -27,9 +25,7 @@ import ui.warehousemanui.WarehousePanel;
 import util.InputCheck;
 import util.enumData.ResultMessage;
 import Exception.GoodsNotFound;
-import Exception.NumNotFoundException;
 import VO.GoodsVO;
-import VO.ManagementVO.AccountVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.goodsblservice.GoodsCheckValidBLService;
 import blservice.goodsblservice.GoodsFindBLService;

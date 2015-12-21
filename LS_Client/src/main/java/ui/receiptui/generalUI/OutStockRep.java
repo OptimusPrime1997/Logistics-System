@@ -119,6 +119,7 @@ public class OutStockRep extends javax.swing.JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
 		}
         officeID = CurrentCity.getCurrentOptorID(officeText.getText());
 
@@ -316,6 +317,7 @@ public class OutStockRep extends javax.swing.JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
 		}
     	this.frame.dispose();
     }
@@ -323,38 +325,39 @@ public class OutStockRep extends javax.swing.JPanel {
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt){
     	String resultMessage = control.checkNum(repTypeText.getText(), 19, "编号");
     	resultMsgText.setText(resultMessage);
-    	if(resultMessage.equals("添加成功")){
-    		if(repTypeBox.getSelectedItem().toString().equals("中转单")){
-        		ShippingRepVO shippingRepVO = null;
-        		try {
-    				shippingRepVO = control.getShippingRepVO(repTypeText.getText());
-    			} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
-    				// TODO Auto-generated catch block
-    				e.printStackTrace();
-    				resultMsgText.setText(ExceptionPrint.print(e));
-    			}
-        		ArrayList<String> orders = shippingRepVO.goods;
-        		dataVector.addAll(orders);
-        		model.setDataVector(dataVector, columnIdentifiers);
-        		destinationText.setText(shippingRepVO.destination);
-        		shipFormText.setText("汽运");
-        	}
-        	else {
-    			TransferRepVO transferRepVO = null;
-    			try {
-    				transferRepVO = control.getTransferRepVO(repTypeText.getText());
-    			} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
-    				// TODO Auto-generated catch block
-    				e.printStackTrace();
-    				resultMsgText.setText(ExceptionPrint.print(e));
-    			}
-    			ArrayList<String> orders = transferRepVO.goods;
-        		dataVector.addAll(orders);
-        		model.setDataVector(dataVector, columnIdentifiers);
-        		destinationText.setText(City.toString(transferRepVO.destination));
-        		shipFormText.setText(ShipForm.toFrendlyString(transferRepVO.form));
-    		}
+    	if(!resultMessage.equals("添加成功")){
+    		return;
     	}
+    	if(repTypeBox.getSelectedItem().toString().equals("中转单")){
+    		ShippingRepVO shippingRepVO = null;
+    		try {
+				shippingRepVO = control.getShippingRepVO(repTypeText.getText());
+			} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			}
+    		ArrayList<String> orders = shippingRepVO.goods;
+    		dataVector.addAll(orders);
+    		model.setDataVector(dataVector, columnIdentifiers);
+    		destinationText.setText(shippingRepVO.destination);
+    		shipFormText.setText("汽运");
+    	}
+    	else {
+			TransferRepVO transferRepVO = null;
+			try {
+				transferRepVO = control.getTransferRepVO(repTypeText.getText());
+			} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			}
+			ArrayList<String> orders = transferRepVO.goods;
+    		dataVector.addAll(orders);
+    		model.setDataVector(dataVector, columnIdentifiers);
+    		destinationText.setText(City.toString(transferRepVO.destination));
+    		shipFormText.setText(ShipForm.toFrendlyString(transferRepVO.form));
+		}
     }
    
 }
