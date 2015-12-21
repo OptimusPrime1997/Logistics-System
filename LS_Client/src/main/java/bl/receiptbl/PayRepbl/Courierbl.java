@@ -1,20 +1,31 @@
 package bl.receiptbl.PayRepbl;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.NumNotFoundException;
+import Exception.SalaryPolicyNotFoundException;
 import VO.Receipt.PayCourierSalaryVO;
 import VO.Receipt.PayRepCourierSalaryRepVO;
 import VO.Receipt.PayRepVO;
+import bl.managementbl.salarypolicybl.SalaryPolicybl;
+import util.enumData.Authority;
 
 public class Courierbl{
+	
+	private SalaryPolicybl salaryPolicybl = new SalaryPolicybl();
 	
 	public void submitCourier(PayRepVO payRepVO, PayRepCourierSalaryRepVO payRepCourierSalaryRepVO){
 		payRepVO.courierSalary = payRepCourierSalaryRepVO;
 	}
 	
-	public Vector<Object> initCourierSalaryTable(){
+	public Vector<Object> initCourierSalaryTable() 
+			throws FileNotFoundException, ClassNotFoundException, SalaryPolicyNotFoundException, 
+			IOException, NumNotFoundException{
 		Vector<Object> data = new Vector<Object>();
+		double moneyPercentage = salaryPolicybl.findByAuthority(Authority.COURIER).value;
 		
 		return data;
 	}

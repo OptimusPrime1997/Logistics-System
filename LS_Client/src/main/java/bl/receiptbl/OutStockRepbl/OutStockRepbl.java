@@ -13,11 +13,14 @@ import VO.Receipt.OutStockRepVO;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.ShippingRepVO;
 import VO.Receipt.TransferRepVO;
+import bl.loginbl.LoginblController;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.receiptbl.ShippingRepbl.ShippingRepbl;
 import bl.receiptbl.TransferRepbl.TransferRepbl;
 import bl.stockbl.StockController;
 import dataservice.receiptdataservice.OutStockRepDataService;
+import util.CurrentTime;
+import util.enumData.LogType;
 import util.enumData.Rep;
 
 public class OutStockRepbl{
@@ -26,6 +29,7 @@ public class OutStockRepbl{
 	private ShippingRepbl shippingRepbl = new ShippingRepbl();
 	private TransferRepbl transferRepbl = new TransferRepbl();
 	private StockController stockController = new StockController();
+	private LoginblController login = new LoginblController();
 	private ReceiptClient client = new ReceiptClient();
 	
 	private OutStockRepDataService getOutStockRepDataService()
@@ -41,6 +45,8 @@ public class OutStockRepbl{
 		// TODO Auto-generated method stub
 		receiptbl.submit(OutStockRepVO.toPO((OutStockRepVO)vo), Rep.OutStockRep);
 		stockController.update((OutStockRepVO)vo);
+		String operatorID = login.getCurrentOptorId();
+		receiptbl.addLog(LogType.OUTSTOCK_MANAGEMENT, operatorID, CurrentTime.getTime());
 	}
 
 	public ArrayList<OutStockRepVO> getRepByDate(String date, String office) throws ClassNotFoundException, 
@@ -55,6 +61,8 @@ public class OutStockRepbl{
 	IOException {
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.OutStockRep, office);
+		if(receiptPOs==null)
+			return null;
 		return OutStockRepVO.toArrayVO(receiptPOs);
 	}
 	
@@ -71,6 +79,9 @@ public class OutStockRepbl{
 	public ArrayList<OutStockRepVO> getAllRepByDate(String date) 
 			throws ClassNotFoundException, MalformedURLException, RemoteException, IOException, 
 			NotBoundException{
-		return OutStockRepVO.toArrayVO(getOutStockRepDataService().getAllRepByDate(date));
+		ArrayList<ReceiptPO> receiptPOs = getOutStockRepDataService().getAllRepByDate(date);
+		if(receiptPOs==null)
+			return null;
+		return OutStockRepVO.toArrayVO(receiptPOs);
 	}
 }

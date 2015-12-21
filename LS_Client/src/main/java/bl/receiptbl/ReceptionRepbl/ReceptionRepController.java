@@ -110,7 +110,7 @@ implements ReceptionRepblService, PostReceiptblService, SubmitblService{
 	}
 
 	@Override
-	public String getDepart(String order) {
+	public String getDepart(String order) throws GoodsNotFound {
 		// TODO Auto-generated method stub
 		return receptionRepbl.getDepart(order);
 	}

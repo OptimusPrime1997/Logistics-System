@@ -22,14 +22,14 @@ public class DeliverRepCheckbl {
 	public DeliverRepVO getRepByNum(String num)
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.DeliverRep);
-		if(receiptPO==null)
-			throw new NumNotFoundException();
 		return new DeliverRepVO((DeliverRepPO)receiptPO);
 	}
 
 	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException, NameNotFoundException, NumNotFoundException {
 		ArrayList<DeliverRepVO> deliverRepVOs = deliverRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
+		if(deliverRepVOs==null)
+			return data;
 		for(int i = 0;i < deliverRepVOs.size();i++){
 			DeliverRepVO deliverRepVO = deliverRepVOs.get(i);
 			Vector<String> arr = new Vector<String>();

@@ -13,18 +13,22 @@ import VO.Receipt.ReceptionRepVO;
 import VO.Receipt.ShipmentRepVO;
 import VO.Receipt.TransferRepVO;
 import bl.goodsbl.Goodsbl;
+import bl.loginbl.LoginblController;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepbl;
 import bl.receiptbl.TransferRepbl.TransferRepbl;
+import util.CurrentTime;
 import util.enumData.City;
 import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsLogisticState;
+import util.enumData.LogType;
 import util.enumData.Rep;
 
 public class ReceptionRepbl{
 	
 	Receiptbl receiptbl = new Receiptbl();
 	Goodsbl goodsbl = new Goodsbl();
+	private LoginblController login = new LoginblController();
 
 	public ShipmentRepVO getShipmentRep(String num) 
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException{
@@ -46,6 +50,8 @@ public class ReceptionRepbl{
 	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		receiptbl.submit(ReceptionRepVO.toPO((ReceptionRepVO) vo), Rep.ReceptionRep);
+		String operatorID = login.getCurrentOptorId();
+		receiptbl.addLog(LogType.TRANSFER_CTR_RECEPTION, operatorID, CurrentTime.getTime());
 	}
 	
 	public Vector<Object> initTable(Rep rep, String num, ArrayList<String> existOrders) 
@@ -107,9 +113,8 @@ public class ReceptionRepbl{
 		return goodsbl.findByListNum(order).destinationCity;
 	}
 	
-	public String getDepart(String order){
-//		return goodsbl.findByListNum(order).
-		return null;
+	public String getDepart(String order) throws GoodsNotFound{
+		return goodsbl.findByListNum(order).startCity;
 	}
 	
 }

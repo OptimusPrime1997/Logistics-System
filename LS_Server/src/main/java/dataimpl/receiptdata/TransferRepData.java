@@ -3,10 +3,7 @@ package dataimpl.receiptdata;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.apache.poi.hssf.record.formula.functions.NumericFunction.OneArg;
-
 import PO.Receipt.ReceiptPO;
-import PO.Receipt.TransferRepPO;
 import dataservice.receiptdataservice.TransferRepDataService;
 import datautil.DataUtility;
 

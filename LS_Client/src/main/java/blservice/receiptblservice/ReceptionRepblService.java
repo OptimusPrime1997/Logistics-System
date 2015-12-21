@@ -67,6 +67,7 @@ public interface ReceptionRepblService extends ReceiptblService{
 	/**得到货物出发地
 	 * @param order
 	 * @return
+	 * @throws GoodsNotFound 
 	 */
-	public String getDepart(String order);
+	public String getDepart(String order) throws GoodsNotFound;
 }

@@ -67,8 +67,6 @@ public class CashRepbl {
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.CashRep);
-		if(receiptPO==null)
-			throw new NumNotFoundException();
 		return new CashRepVO((CashRepPO)receiptPO);
 	}
 	
@@ -134,6 +132,8 @@ public class CashRepbl {
 			throws ClassNotFoundException, MalformedURLException, RemoteException, IOException, 
 			NotBoundException{
 		ArrayList<ReceiptPO> receiptPOs = getCashRepDataService().getAllRep();
+		if(receiptPOs==null)
+			return null;
 		return CashRepVO.toArrayVO(receiptPOs);
 	}
 

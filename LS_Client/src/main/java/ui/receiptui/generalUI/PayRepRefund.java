@@ -23,6 +23,7 @@ import VO.Receipt.PayRepRefundRepVO;
 import VO.Receipt.PayRepVO;
 import bl.receiptbl.PayRepbl.PayRepController;
 import ui.util.MyFrame;
+import util.enumData.ResultMessage;
 
 /**
  *
@@ -301,7 +302,6 @@ public class PayRepRefund extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
-    	
     	ArrayList<PayRefundVO> payRefundVOs = new ArrayList<PayRefundVO>();
     	for(int i = 0;i < dataVector.size();i++){
     		PayRefundVO payRefundVO = new PayRefundVO((String)jTable.getValueAt(i, 1), 
@@ -324,14 +324,18 @@ public class PayRepRefund extends javax.swing.JPanel {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	double money = Double.parseDouble(moneyText.getText());
-    	String reason = reasonText.getText();
-    	Vector<String> arr = new Vector<String>();
-    	arr.add(money+"");
-    	arr.add(reason);
-    	dataVector.add(arr);
-    	model.setDataVector(dataVector, columnIdentifiers);
-		setColumn();
-		sumText.setText(calSum());
+    	ResultMessage resultMessage = control.checkMoney(money);
+    	resultMsgText.setText(ResultMessage.toFriendlyString(resultMessage));
+    	if(resultMessage==ResultMessage.ADD_SUCCESS){
+        	String reason = reasonText.getText();
+        	Vector<String> arr = new Vector<String>();
+        	arr.add(money+"");
+        	arr.add(reason);
+        	dataVector.add(arr);
+        	model.setDataVector(dataVector, columnIdentifiers);
+    		setColumn();
+    		sumText.setText(calSum());
+    	}
     }
 
 }

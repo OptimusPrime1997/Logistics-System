@@ -15,6 +15,8 @@ public class ShippingRepCheckbl {
 		// TODO Auto-generated method stub
 		ArrayList<ShippingRepVO> shippingRepVOs = shippingRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
+		if(shippingRepVOs==null)
+			return null;
 		for(int i = 0;i < shippingRepVOs.size();i++){
 			Vector<String> arr = new Vector<String>();
 			ShippingRepVO shippingRepVO = shippingRepVOs.get(i);

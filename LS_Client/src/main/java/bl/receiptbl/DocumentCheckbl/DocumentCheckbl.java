@@ -19,17 +19,24 @@ import VO.Receipt.ReceptionRepVO;
 import VO.Receipt.ShipmentRepVO;
 import VO.Receipt.ShippingRepVO;
 import VO.Receipt.TransferRepVO;
+import bl.loginbl.LoginblController;
 import bl.receiptbl.Receiptbl.Receiptbl;
+import util.CurrentTime;
+import util.enumData.LogType;
 import util.enumData.Rep;
 
 public class DocumentCheckbl {
 
-	Receiptbl receiptbl = new Receiptbl();
+	private Receiptbl receiptbl = new Receiptbl();
+	private LoginblController login = new LoginblController();
 	
 	public void submitSaveRep(String num, Rep rep) 
 			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, 
 			NotBoundException {
 		receiptbl.submitSave(num, rep);
+		String operatorID = login.getCurrentOptorId();
+		receiptbl.addLog(LogType.DOCUMENT_CHECK, operatorID, CurrentTime.getTime());
+		
 	}
 
 	public Vector<Object> initTable()

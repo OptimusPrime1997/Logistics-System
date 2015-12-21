@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
+import Exception.SalaryPolicyNotFoundException;
 import VO.Receipt.PayRepBonusRepVO;
 import VO.Receipt.PayRepCourierSalaryRepVO;
 import VO.Receipt.PayRepDriverSalaryRepVO;
@@ -22,6 +23,7 @@ import VO.Receipt.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.PayRepblService;
 import blservice.receiptblservice.SubmitblService;
+import util.enumData.ResultMessage;
 
 public class PayRepController extends ReceiptblController implements PayRepblService, SubmitblService{
 	private PayRepbl payRepbl = new PayRepbl();
@@ -208,21 +210,39 @@ public class PayRepController extends ReceiptblController implements PayRepblSer
 	}
 
 	@Override
-	public Vector<Object> initCourierSalaryTable() {
+	public Vector<Object> initCourierSalaryTable() 
+			throws FileNotFoundException, ClassNotFoundException, SalaryPolicyNotFoundException, IOException,
+			NumNotFoundException {
 		// TODO Auto-generated method stub
 		return courierbl.initCourierSalaryTable();
 	}
 
 	@Override
-	public Vector<Object> initDriverSalaryTable() {
+	public Vector<Object> initDriverSalaryTable()
+			throws FileNotFoundException, ClassNotFoundException, SalaryPolicyNotFoundException, IOException,
+			NumNotFoundException {
 		// TODO Auto-generated method stub
 		return driverbl.initDriverSalaryTable();
 	}
 
 	@Override
-	public Vector<Object> initStaffTable() {
+	public Vector<Object> initStaffTable() 
+			throws FileNotFoundException, ClassNotFoundException, SalaryPolicyNotFoundException, IOException,
+			NumNotFoundException {
 		// TODO Auto-generated method stub
 		return staffbl.initStaffTable();
+	}
+
+	@Override
+	public ResultMessage checkMoney(double money) {
+		// TODO Auto-generated method stub
+		return bonusbl.checkMoney(money);
+	}
+
+	@Override
+	public String payPeople() throws FileNotFoundException, ClassNotFoundException, NumNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		return payRepbl.payPeople();
 	}
 
 }

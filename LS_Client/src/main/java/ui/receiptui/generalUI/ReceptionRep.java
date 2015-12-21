@@ -432,6 +432,7 @@ public class ReceptionRep extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
+		changeArrivalState();
 		myFrame.dispose();
     }
     
@@ -470,30 +471,32 @@ public class ReceptionRep extends javax.swing.JPanel {
 		setColumn();
 	}
     
-//    private void changeArrivalState(){
-//		for(int i = 0;i < dataVector.size();i++){
-//			String order = (String)jTable.getValueAt(i, 0);
-//			GoodsArrivalState goodsArrivalState = 
-//					GoodsArrivalState.getGoodsArrivalState((String)jTable.getValueAt(i, 1));
-//			if(goodsArrivalState!=GoodsArrivalState.INTACT){
-//				control.transferOver(order, goodsArrivalState);
-//			}
-//			else {
-//				String destination = null;
-//				try {
-//					destination = control.getDestination(order);
-//				} catch (GoodsNotFound e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//					resultMsgText.setText(ExceptionPrint.print(e));
-//				}
-//				if(officeID.equals(destination)){
-//					control.changeLogistic(order, GoodsLogisticState.RECEIVER_BUSINESSOFFICE_ARRIVED);
-//				}
-//				else if(officeID.equals()){
-//					
-//				}
-//			}
-//		}
-//	}
+    private void changeArrivalState(){
+		for(int i = 0;i < dataVector.size();i++){
+			String order = (String)jTable.getValueAt(i, 0);
+			GoodsArrivalState goodsArrivalState = 
+					GoodsArrivalState.getGoodsArrivalState((String)jTable.getValueAt(i, 1));
+			if(goodsArrivalState!=GoodsArrivalState.INTACT){
+				control.transferOver(order, goodsArrivalState);
+			}
+			else {
+				String destination = null;
+				String depart = null;
+				try {
+					depart = control.getDepart(order);
+					destination = control.getDestination(order);
+				} catch (GoodsNotFound e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					resultMsgText.setText(ExceptionPrint.print(e));
+				}
+				if(officeID.equals(destination)){
+					control.changeLogistic(order, GoodsLogisticState.RECEIVER_TRANSCENTER_ARRIVED);
+				}
+				else if(officeID.equals(depart)){
+					control.changeLogistic(order, GoodsLogisticState.SENDER_TRANSCENTER_ARRIVED);
+				}
+			}
+		}
+	}
 }

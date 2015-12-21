@@ -295,25 +295,34 @@ public class PayRepBonus extends javax.swing.JPanel {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	String getterNum = receiverNumText.getText();
     	double money = Double.parseDouble(moneyText.getText());
-    	String resultMessage = control.checkNum(getterNum, 11, "人员编号");
-    	resultMsgText.setText(resultMessage);
-    	if(resultMessage.equals("添加成功")){
-			Vector<String> arr = new Vector<String>();
-			String getterName = null;
-			try {
-				getterName = control.getReceiverName(getterNum);
-			} catch (ClassNotFoundException | NameNotFoundException | NumNotFoundException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				resultMsgText.setText(ExceptionPrint.print(e));
+    	String resultMsg = control.checkNum(getterNum, 11, "人员编号");
+    	ResultMessage resultMessage = control.checkMoney(money);
+    	if(resultMsg.equals("添加成功")){
+    		if(resultMessage==ResultMessage.ADD_SUCCESS){
+    			resultMsgText.setText("添加成功");
+    			Vector<String> arr = new Vector<String>();
+    			String getterName = null;
+    			try {
+    				getterName = control.getReceiverName(getterNum);
+    			} catch (ClassNotFoundException | NameNotFoundException | NumNotFoundException | IOException e) {
+    				// TODO Auto-generated catch block
+    				e.printStackTrace();
+    				resultMsgText.setText(ExceptionPrint.print(e));
+    			}
+    			arr.add(getterName);
+    			arr.add(getterNum);
+    			arr.add(money+"");
+    			dataVector.add(arr);
+    			model.setDataVector(dataVector, columnIdentifiers);
+    			setColumn();
+    			sumText.setText(calSum());
+    		}
+    		else {
+				resultMsgText.setText(ResultMessage.toFriendlyString(resultMessage));
 			}
-			arr.add(getterName);
-			arr.add(getterNum);
-			arr.add(money+"");
-			dataVector.add(arr);
-			model.setDataVector(dataVector, columnIdentifiers);
-			setColumn();
-			sumText.setText(calSum());
+    	}
+    	else {
+			resultMsgText.setText(resultMsg);
 		}
     }
 

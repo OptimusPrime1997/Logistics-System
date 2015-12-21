@@ -23,6 +23,7 @@ import VO.Receipt.PayRepRentRepVO;
 import VO.Receipt.PayRepVO;
 import bl.receiptbl.PayRepbl.PayRepController;
 import ui.util.MyFrame;
+import util.enumData.ResultMessage;
 
 /**
  *
@@ -308,15 +309,28 @@ public class PayRepRent extends javax.swing.JPanel {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	String name = receiverNameText.getText();
     	String phone = receiverPhoneText.getText();
-    	String money = moneyText.getText();
-    	Vector<String> arr = new Vector<String>();
-    	arr.add(name);
-    	arr.add(phone);
-    	arr.add(money);
-    	dataVector.add(arr);
-    	model.setDataVector(dataVector, columnIdentifiers);
-		setColumn();
-		sumText.setText(calSum());
+    	double money = Double.parseDouble(moneyText.getText());
+    	String resultMsg = control.checkNum(phone, 11, "手机号");
+    	ResultMessage resultMessage = control.checkMoney(money);
+    	if(resultMsg.equals("添加成功")){
+    		if(resultMessage==ResultMessage.ADD_SUCCESS){
+    			resultMsgText.setText("添加成功");
+    			Vector<String> arr = new Vector<String>();
+    	    	arr.add(name);
+    	    	arr.add(phone);
+    	    	arr.add(money+"");
+    	    	dataVector.add(arr);
+    	    	model.setDataVector(dataVector, columnIdentifiers);
+    			setColumn();
+    			sumText.setText(calSum());
+    		}
+    		else {
+    			resultMsgText.setText(ResultMessage.toFriendlyString(resultMessage));
+			}
+    	}
+    	else {
+    		resultMsgText.setText(resultMsg);
+		}
     }
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -333,7 +347,6 @@ public class PayRepRent extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
-    	
     	ArrayList<PayRentVO> payRentVOs = new ArrayList<PayRentVO>();
     	for(int i = 0;i < dataVector.size();i++){
     		PayRentVO payRentVO = new PayRentVO((String)jTable.getValueAt(i, 0), 

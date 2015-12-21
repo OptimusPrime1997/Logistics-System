@@ -21,8 +21,6 @@ public class InStockRepCheckbl {
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.InStockRep);
-		if(receiptPO==null)
-			throw new NumNotFoundException();
 		return new InStockRepVO((InStockRepPO)receiptPO);
 	}
 
@@ -30,6 +28,8 @@ public class InStockRepCheckbl {
 		// TODO Auto-generated method stub
 		ArrayList<InStockRepVO> inStockRepVOs = inStockRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
+		if(inStockRepVOs==null)
+			return null;
 		for(int i = 0;i < inStockRepVOs.size();i++){
 			InStockRepVO inStockRepVO = inStockRepVOs.get(i);
 			Vector<String> arr = new Vector<String>();

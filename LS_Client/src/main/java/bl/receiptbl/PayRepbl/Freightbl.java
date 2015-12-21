@@ -26,6 +26,8 @@ public class Freightbl{
 			NotBoundException{
 		Vector<Object> data = new Vector<Object>();
 		ArrayList<TransferRepVO> transferRepVOs = transferRepbl.getMonthRep(date);
+		if(transferRepVOs==null)
+			return null;
 		for(TransferRepVO transferRepVO : transferRepVOs){
 			Vector<String> arr = new Vector<String>();
 			arr.add(transferRepVO.num);

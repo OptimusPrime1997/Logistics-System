@@ -9,12 +9,16 @@ import PO.Receipt.ReceiptPO;
 import PO.Receipt.ShippingRepPO;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.ShippingRepVO;
+import bl.loginbl.LoginblController;
 import bl.receiptbl.Receiptbl.Receiptbl;
+import util.CurrentTime;
+import util.enumData.LogType;
 import util.enumData.Rep;
 
 public class ShippingRepbl{
 	
 	private Receiptbl receiptbl = new Receiptbl();
+	private LoginblController login = new LoginblController();
 	
 	public String createNum(String date, String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
@@ -25,20 +29,22 @@ public class ShippingRepbl{
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.ShippingRep);
-		if(receiptPO==null)
-			throw new NumNotFoundException();
 		return new ShippingRepVO((ShippingRepPO)receiptPO);
 	}
 
 	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		receiptbl.submit(ShippingRepVO.toPO((ShippingRepVO) vo), Rep.ShippingRep);
+		String operatorID = login.getCurrentOptorId();
+		receiptbl.addLog(LogType.TRANSFER_CTR_SHIP_MANAGEMENT, operatorID, CurrentTime.getTime());
 	}
 
 	public ArrayList<ShippingRepVO> getAllRep(String office) 
 			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.ShippingRep, office);
+		if(receiptPOs==null)
+			return null;
 		return ShippingRepVO.toArrayVO(receiptPOs);
 	}
 
@@ -59,8 +65,4 @@ public class ShippingRepbl{
 		return receiptbl.isTrueOrder(order);
 	}
 	
-	public void changeLogistic(String num){
-		
-	}
-
 }

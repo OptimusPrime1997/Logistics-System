@@ -94,13 +94,21 @@ public class PayRep extends javax.swing.JPanel {
 
 		numText.setEditable(false);
 		numText.setText(control.getDate());
+		
+		try {
+			payManText.setText(control.payPeople());
+		} catch (ClassNotFoundException | NumNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
 
 		try {
 			oriPayRepVO = control.getSubmitPayRep();
-		} catch (ClassNotFoundException | IOException | NotBoundException e1) {
+		} catch (ClassNotFoundException | IOException | NotBoundException e) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
-			resultMsgText.setText(ExceptionPrint.print(e1));
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
 		}
 
 		columnIdentifiers.add("付款项");
