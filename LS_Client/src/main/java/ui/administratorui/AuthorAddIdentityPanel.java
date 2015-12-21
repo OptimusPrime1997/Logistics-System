@@ -24,7 +24,8 @@ public class AuthorAddIdentityPanel extends javax.swing.JFrame {
     /**
      * Creates new form AuthorAddIdentity
      */
-    public AuthorAddIdentityPanel() {
+    public AuthorAddIdentityPanel(AdministratorPanel panel) {
+    	this.administratorPanel=panel;
         initComponents();
     }
 
@@ -163,7 +164,7 @@ public class AuthorAddIdentityPanel extends javax.swing.JFrame {
     	frame.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);	
     	frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     	
-		AuthorityManagementPanel amp = new AuthorityManagementPanel(frame);
+		AuthorityManagementPanel amp = new AuthorityManagementPanel(frame,administratorPanel);
     	frame.setContentPane(amp);
     	frame.setVisible(true);
     	this.dispose();
@@ -183,7 +184,7 @@ public class AuthorAddIdentityPanel extends javax.swing.JFrame {
 	  this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-
+  	private AdministratorPanel administratorPanel;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton confirm;
     private javax.swing.JButton back;

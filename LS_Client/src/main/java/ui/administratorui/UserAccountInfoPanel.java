@@ -9,6 +9,8 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 
+import javax.swing.JFrame;
+
 import main.MainFrame;
 
 /**
@@ -20,7 +22,8 @@ public class UserAccountInfoPanel extends javax.swing.JFrame {
     /**
      * Creates new form UserAccountInfo
      */
-    public UserAccountInfoPanel() {
+    public UserAccountInfoPanel(AdministratorPanel panel) {
+    	administratorPanel=panel;
         initComponents();
     }
 
@@ -223,7 +226,7 @@ public class UserAccountInfoPanel extends javax.swing.JFrame {
 	 * @param evt
 	 */
 	protected void backActionPerformed(ActionEvent evt) {
-		UserAccountPanel ua = new UserAccountPanel();
+		UserAccountPanel ua = new UserAccountPanel(administratorPanel);
 		ua.setVisible(true);
 		this.dispose();
 		
@@ -247,7 +250,7 @@ public class UserAccountInfoPanel extends javax.swing.JFrame {
 		
 	}
 
-
+	private AdministratorPanel administratorPanel;
 	// Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exit;
     private javax.swing.JButton confirm;

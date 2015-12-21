@@ -88,8 +88,8 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		accountNamejLabel.setText("李四");
 		accountNamejLabel.setToolTipText("当前用户姓名");
 
-		currentAuthorityjLabel.setText(Authority.toAuthority(
-				currentOptorId.substring(7, 8)).getValue());
+		currentAuthorityjLabel.setText(Authority.getAuthority(
+				Integer.parseInt(currentOptorId.substring(7, 8))).getValue());
 		currentAuthorityjLabel.setToolTipText("当前用户职位");
 
 		statejLabel.setText("空闲");
@@ -587,6 +587,136 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		finacialjTabbedPane.addTab("日志查看", logjPanel);
 
+//		initialNewFinanceJpanel();
+		jLabel6.setText("财务人员");
+
+		exitjButton.setText("退出系统");
+		exitjButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				exitjButtonActionPerformed(evt);
+			}
+		});
+
+		javax.swing.GroupLayout financialjPanelLayout = new javax.swing.GroupLayout(
+				financialjPanel);
+		financialjPanel.setLayout(financialjPanelLayout);
+		financialjPanelLayout
+				.setHorizontalGroup(financialjPanelLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								financialjPanelLayout
+										.createSequentialGroup()
+										.addComponent(stateTitlejLabel)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addComponent(
+												statejLabel,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												Short.MAX_VALUE))
+						.addComponent(finacialjTabbedPane,
+								javax.swing.GroupLayout.DEFAULT_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE,
+								Short.MAX_VALUE)
+						.addGroup(
+								financialjPanelLayout
+										.createSequentialGroup()
+										.addContainerGap(
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												Short.MAX_VALUE)
+										.addComponent(jLabel6)
+										.addContainerGap(
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												Short.MAX_VALUE))
+						.addGroup(
+								javax.swing.GroupLayout.Alignment.TRAILING,
+								financialjPanelLayout
+										.createSequentialGroup()
+										.addContainerGap(
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												Short.MAX_VALUE)
+										.addComponent(currentAccountNumjLabel)
+										.addGap(29, 29, 29)
+										.addComponent(accountNamejLabel)
+										.addGap(26, 26, 26)
+										.addComponent(currentAuthorityjLabel)
+										.addGap(18, 18, 18)
+										.addComponent(exitjButton)
+										.addGap(40, 40, 40)));
+		financialjPanelLayout
+				.setVerticalGroup(financialjPanelLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								javax.swing.GroupLayout.Alignment.TRAILING,
+								financialjPanelLayout
+										.createSequentialGroup()
+										.addComponent(
+												jLabel6,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												15,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												Short.MAX_VALUE)
+										.addGroup(
+												financialjPanelLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.BASELINE)
+														.addComponent(
+																accountNamejLabel)
+														.addComponent(
+																currentAuthorityjLabel)
+														.addComponent(
+																currentAccountNumjLabel)
+														.addComponent(
+																exitjButton))
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addComponent(
+												finacialjTabbedPane,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												522,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addGroup(
+												financialjPanelLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.LEADING,
+																false)
+														.addComponent(
+																stateTitlejLabel,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																Short.MAX_VALUE)
+														.addComponent(
+																statejLabel,
+																javax.swing.GroupLayout.PREFERRED_SIZE,
+																21,
+																javax.swing.GroupLayout.PREFERRED_SIZE))
+										.addGap(22, 22, 22)));
+
+		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
+				getContentPane());
+		getContentPane().setLayout(layout);
+		layout.setHorizontalGroup(layout.createParallelGroup(
+				javax.swing.GroupLayout.Alignment.LEADING).addComponent(
+				financialjPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
+				javax.swing.GroupLayout.DEFAULT_SIZE,
+				javax.swing.GroupLayout.PREFERRED_SIZE));
+		layout.setVerticalGroup(layout.createParallelGroup(
+				javax.swing.GroupLayout.Alignment.LEADING).addComponent(
+				financialjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 600,
+				javax.swing.GroupLayout.PREFERRED_SIZE));
+
+		pack();
+	}// </editor-fold>//GEN-END:initComponents
+
+	private void initialNewFinanceJpanel() {
+		// TODO Auto-generated method stub
 		jPanel6.setPreferredSize(new java.awt.Dimension(830, 460));
 
 		initialFinancejButton.setText("账目初始化");
@@ -728,132 +858,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		finacialjTabbedPane.addTab("期初建账", jPanel6);
 
-		jLabel6.setText("财务人员");
-
-		exitjButton.setText("退出系统");
-		exitjButton.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				exitjButtonActionPerformed(evt);
-			}
-		});
-
-		javax.swing.GroupLayout financialjPanelLayout = new javax.swing.GroupLayout(
-				financialjPanel);
-		financialjPanel.setLayout(financialjPanelLayout);
-		financialjPanelLayout
-				.setHorizontalGroup(financialjPanelLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(
-								financialjPanelLayout
-										.createSequentialGroup()
-										.addComponent(stateTitlejLabel)
-										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-										.addComponent(
-												statejLabel,
-												javax.swing.GroupLayout.DEFAULT_SIZE,
-												javax.swing.GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE))
-						.addComponent(finacialjTabbedPane,
-								javax.swing.GroupLayout.DEFAULT_SIZE,
-								javax.swing.GroupLayout.DEFAULT_SIZE,
-								Short.MAX_VALUE)
-						.addGroup(
-								financialjPanelLayout
-										.createSequentialGroup()
-										.addContainerGap(
-												javax.swing.GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE)
-										.addComponent(jLabel6)
-										.addContainerGap(
-												javax.swing.GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE))
-						.addGroup(
-								javax.swing.GroupLayout.Alignment.TRAILING,
-								financialjPanelLayout
-										.createSequentialGroup()
-										.addContainerGap(
-												javax.swing.GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE)
-										.addComponent(currentAccountNumjLabel)
-										.addGap(29, 29, 29)
-										.addComponent(accountNamejLabel)
-										.addGap(26, 26, 26)
-										.addComponent(currentAuthorityjLabel)
-										.addGap(18, 18, 18)
-										.addComponent(exitjButton)
-										.addGap(40, 40, 40)));
-		financialjPanelLayout
-				.setVerticalGroup(financialjPanelLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(
-								javax.swing.GroupLayout.Alignment.TRAILING,
-								financialjPanelLayout
-										.createSequentialGroup()
-										.addComponent(
-												jLabel6,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												15,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-												javax.swing.GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE)
-										.addGroup(
-												financialjPanelLayout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
-														.addComponent(
-																accountNamejLabel)
-														.addComponent(
-																currentAuthorityjLabel)
-														.addComponent(
-																currentAccountNumjLabel)
-														.addComponent(
-																exitjButton))
-										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-										.addComponent(
-												finacialjTabbedPane,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												522,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-										.addGroup(
-												financialjPanelLayout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING,
-																false)
-														.addComponent(
-																stateTitlejLabel,
-																javax.swing.GroupLayout.DEFAULT_SIZE,
-																javax.swing.GroupLayout.DEFAULT_SIZE,
-																Short.MAX_VALUE)
-														.addComponent(
-																statejLabel,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																21,
-																javax.swing.GroupLayout.PREFERRED_SIZE))
-										.addGap(22, 22, 22)));
-
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
-				getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(
-				javax.swing.GroupLayout.Alignment.LEADING).addComponent(
-				financialjPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
-				javax.swing.GroupLayout.DEFAULT_SIZE,
-				javax.swing.GroupLayout.PREFERRED_SIZE));
-		layout.setVerticalGroup(layout.createParallelGroup(
-				javax.swing.GroupLayout.Alignment.LEADING).addComponent(
-				financialjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 600,
-				javax.swing.GroupLayout.PREFERRED_SIZE));
-
-		pack();
-	}// </editor-fold>//GEN-END:initComponents
+	}
 
 	private void initialFormJpanel() {
 		// TODO Auto-generated method stub

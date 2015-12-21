@@ -10,6 +10,9 @@ import java.awt.Toolkit;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 import main.MainFrame;
 
 /**
@@ -21,7 +24,8 @@ public class UserAccountPanel extends javax.swing.JFrame {
     /**
      * Creates new form UserAccount
      */
-    public UserAccountPanel() {
+    public UserAccountPanel(AdministratorPanel panel) {
+    	this.administratorPanel=panel;
         initComponents();
     }
 
@@ -221,13 +225,13 @@ public class UserAccountPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void addAccountActionPer(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    	UserAccountInfoPanel accountInfo = new UserAccountInfoPanel();
+    	UserAccountInfoPanel accountInfo = new UserAccountInfoPanel(administratorPanel);
     	accountInfo.setVisible(true);
     	this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void checkAccountsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-    	AccountSearchPanel as = new AccountSearchPanel();
+    	AccountSearchPanel as = new AccountSearchPanel(administratorPanel);
     	as.setVisible(true);
     	this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -252,7 +256,7 @@ public class UserAccountPanel extends javax.swing.JFrame {
     	this.dispose();
     }//GEN-LAST:event_jButton9ActionPerformed
 
-
+    private AdministratorPanel administratorPanel;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton useless_exit;
     private javax.swing.JButton addAccount;
