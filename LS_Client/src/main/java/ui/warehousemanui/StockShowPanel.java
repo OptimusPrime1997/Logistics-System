@@ -260,6 +260,7 @@ public class StockShowPanel extends JFrame {
     private void showActionPerformed(java.awt.event.ActionEvent evt) throws ClassNotFoundException, NotBoundException, IOException {//GEN-FIRST:event_jButton5ActionPerformed
     	ArrayList<StockVO> list = s.showToday();
 
+    
     	int length = list.size();
     	
     	if (length == 0) {

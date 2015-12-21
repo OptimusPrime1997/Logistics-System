@@ -220,7 +220,7 @@ public class Stock {
 	public ArrayList<StockVO> showToday() throws ClassNotFoundException, NotBoundException, IOException {
 		result = null;
 		ArrayList<StockVO> list = show();
-		
+	
 		String date = CurrentTime.getDate();
 		
 		for (StockVO vo : list) {
