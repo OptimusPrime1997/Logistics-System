@@ -341,7 +341,7 @@ public class CashRep extends javax.swing.JPanel {
     private String calSum(){
     	double sum = 0;
     	for(int i = 0;i < dataVector.size();i++){
-    		sum += (double)jTable.getValueAt(i, 2);
+    		sum += Double.parseDouble((String)jTable.getValueAt(i, 2));
     	}
     	return sum+"";
     }
@@ -391,7 +391,7 @@ public class CashRep extends javax.swing.JPanel {
     	
 		ArrayList<CashVO> cashVOs = new ArrayList<CashVO>();
 		for(int i = 0;i < dataVector.size();i++){
-			CashVO vo = new CashVO((double)jTable.getValueAt(i, 2), (String)jTable.getValueAt(i, 1), 
+			CashVO vo = new CashVO(Double.parseDouble((String)jTable.getValueAt(i, 2)), (String)jTable.getValueAt(i, 1), 
 					(String)jTable.getValueAt(i, 0), (String)jTable.getValueAt(i, 3));
 			cashVOs.add(vo);
 		}

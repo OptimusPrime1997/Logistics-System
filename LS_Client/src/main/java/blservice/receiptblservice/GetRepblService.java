@@ -5,7 +5,9 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
+import util.enumData.City;
 import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsLogisticState;
 import util.enumData.Rep;
@@ -55,4 +57,10 @@ public interface GetRepblService extends ReceiptblService{
 	 * @param goodsLogisticState
 	 */
 	public void changeLogistic(String num, GoodsLogisticState goodsLogisticState);
+	
+	/**得到货物目的地
+	 * @return
+	 * @throws GoodsNotFound 
+	 */
+	public String getDestination(String order) throws GoodsNotFound;
 }

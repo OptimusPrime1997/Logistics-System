@@ -15,6 +15,7 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import Exception.ExceptionPrint;
+import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
 import VO.Receipt.ArriveVO;
 import VO.Receipt.GetRepVO;
@@ -390,13 +391,9 @@ public class GetRep extends javax.swing.JPanel {
     	resultMsgText.setText(resultMessage);
     	if(resultMessage.equals("添加成功")){
 			if(control.isTrueOrder(order)){
-				String arriveState = arriveStateBox.getSelectedItem().toString();
-				if(arriveState.equals(GoodsArrivalState.BROKEN.getChineseName())){
-					control.transferOver(order, GoodsArrivalState.BROKEN);
-				}
 				Vector<String> arr = new Vector<String>();
 				arr.add(order);
-				arr.add(arriveState);
+				arr.add(arriveStateBox.getSelectedItem().toString());
 				dataVector.add(arr);
 				model.setDataVector(dataVector, columnIdentifiers);
 				setColumn();
@@ -432,6 +429,7 @@ public class GetRep extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
+		changeArrivalState();
 		myFrame.dispose();
 	}
 
@@ -466,6 +464,30 @@ public class GetRep extends javax.swing.JPanel {
 		dataVector.addAll(arrs);
 		model.setDataVector(dataVector, columnIdentifiers);
 		setColumn();
+	}
+	
+	private void changeArrivalState(){
+		for(int i = 0;i < dataVector.size();i++){
+			String order = (String)jTable.getValueAt(i, 0);
+			GoodsArrivalState goodsArrivalState = 
+					GoodsArrivalState.getGoodsArrivalState((String)jTable.getValueAt(i, 1));
+			if(goodsArrivalState!=GoodsArrivalState.INTACT){
+				control.transferOver(order, goodsArrivalState);
+			}
+			else {
+				String destination = null;
+				try {
+					destination = control.getDestination(order);
+				} catch (GoodsNotFound e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					resultMsgText.setText(ExceptionPrint.print(e));
+				}
+				if(officeText.getText().substring(0, 3).equals(destination)){
+					control.changeLogistic(order, GoodsLogisticState.RECEIVER_BUSINESSOFFICE_ARRIVED);
+				}
+			}
+		}
 	}
 
 }

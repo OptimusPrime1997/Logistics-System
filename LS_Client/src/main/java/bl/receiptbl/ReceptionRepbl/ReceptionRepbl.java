@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
 import PO.Receipt.ReceiptPO;
 import VO.Receipt.ReceiptVO;
@@ -90,7 +91,6 @@ public class ReceptionRepbl{
 	
 	public String getDepart(Rep rep, String num) 
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException{
-		
 		if(rep==Rep.ShipmentRep){
 			return getShipmentRep(num).depart;
 		}
@@ -102,4 +102,14 @@ public class ReceptionRepbl{
 	public boolean isTrueOrder(String order){
 		return receiptbl.isTrueOrder(order);
 	}
+	
+	public String getDestination(String order) throws GoodsNotFound{
+		return goodsbl.findByListNum(order).destinationCity;
+	}
+	
+	public String getDepart(String order){
+//		return goodsbl.findByListNum(order).
+		return null;
+	}
+	
 }

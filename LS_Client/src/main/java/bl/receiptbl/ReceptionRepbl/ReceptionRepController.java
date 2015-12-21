@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.ReceptionRepVO;
@@ -100,6 +101,18 @@ implements ReceptionRepblService, PostReceiptblService, SubmitblService{
 	public void changeLogistic(String num, GoodsLogisticState goodsLogisticState) {
 		// TODO Auto-generated method stub
 		receptionRepbl.changeLogistic(num, goodsLogisticState);
+	}
+
+	@Override
+	public String getDestination(String order) throws GoodsNotFound {
+		// TODO Auto-generated method stub
+		return receptionRepbl.getDestination(order);
+	}
+
+	@Override
+	public String getDepart(String order) {
+		// TODO Auto-generated method stub
+		return receptionRepbl.getDepart(order);
 	}
 
 }

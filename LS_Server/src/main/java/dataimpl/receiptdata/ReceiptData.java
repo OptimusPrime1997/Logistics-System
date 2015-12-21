@@ -115,10 +115,12 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 		ArrayList<Object> objects = util.getAll(submitAdd(rep));
 		util.clear(submitAdd(rep));
 		ReceiptPO receiptPO = null;
-		for (Object object : objects) {
-			receiptPO = (ReceiptPO) object;
-			if (!getOffice(receiptPO.getNum()).equals(office))
-				save(receiptPO, rep);
+		if(objects!=null){
+			for (Object object : objects) {
+				receiptPO = (ReceiptPO) object;
+				if (!getOffice(receiptPO.getNum()).equals(office))
+					save(receiptPO, rep);
+			}
 		}
 	}
 
