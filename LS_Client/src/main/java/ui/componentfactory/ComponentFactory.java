@@ -128,11 +128,11 @@ public class ComponentFactory {
 		jTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
 	}
 	
-	public  static void setState(String str, long time, final JTextField statejTextField) {
-		statejTextField.setText(str);
+	public  static void setState(String str, long time, final JLabel statejLabel) {
+		statejLabel.setText(str);
 		final Runnable setSateTextFieldText = new Runnable() {
 			public void run() {
-				statejTextField.setText("空闲");
+				statejLabel.setText("空闲");
 			}
 		};
 		 final ScheduledExecutorService scheduler = Executors

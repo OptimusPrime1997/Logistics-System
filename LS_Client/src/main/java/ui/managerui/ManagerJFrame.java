@@ -2276,7 +2276,8 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			if (rmsg == ResultMessage.VALID) {
 				int i = 0;
 				AccountVO tempVO = null;
-				for (Iterator<AccountVO> t = accountVOs.iterator(); t.hasNext(); i++) {
+				for (Iterator<AccountVO> t = accountVOs
+						.iterator(); t.hasNext(); i++) {
 					tempVO = t.next();
 					if (tempVO.accountNum.equals(findAccountNum)) {
 						break;

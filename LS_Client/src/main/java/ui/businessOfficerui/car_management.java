@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.GroupLayout;
+import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
@@ -244,7 +245,7 @@ public class car_management extends javax.swing.JPanel {
 			}
 
 		});
-		feedback_text.setEditable(false);
+		feedback_text.setFocusable(false);
 
 	}
 
@@ -788,7 +789,7 @@ public class car_management extends javax.swing.JPanel {
 	private javax.swing.JLabel businessOffNum2_label, jLabel4, jLabel5,
 			jLabel6;
 	private javax.swing.JTable vehiclejTable;
-	final private javax.swing.JTextField feedback_text = new JTextField();
+	final private javax.swing.JLabel feedback_text = new JLabel();
 	private javax.swing.JScrollPane jScrollPane1;
 	private JTextField search_text;
 	private String officeNum = "", city = "";

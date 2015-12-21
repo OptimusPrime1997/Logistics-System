@@ -23,7 +23,8 @@ public class AuthorityManagementPanel extends javax.swing.JPanel {
     /**
      * Creates new form AuthorityManagementPanel
      */
-    public AuthorityManagementPanel(JFrame frame) {
+    public AuthorityManagementPanel(JFrame frame,AdministratorPanel panel) {
+    	this.amdministorPanel=panel;
     	this.frame = frame;
         initComponents();
     }
@@ -409,7 +410,7 @@ public class AuthorityManagementPanel extends javax.swing.JPanel {
 	 * @param evt
 	 */
 	protected void addIdentityActionPerformed(ActionEvent evt) {
-		AuthorAddIdentityPanel add = new AuthorAddIdentityPanel();
+		AuthorAddIdentityPanel add = new AuthorAddIdentityPanel(amdministorPanel);
 		add.setVisible(true);
 		this.frame.dispose();
 	}
@@ -492,7 +493,8 @@ public class AuthorityManagementPanel extends javax.swing.JPanel {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-
+    private AdministratorPanel amdministorPanel;
+    private JFrame frame;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
     private javax.swing.JButton exit;
@@ -525,6 +527,5 @@ public class AuthorityManagementPanel extends javax.swing.JPanel {
     private javax.swing.JToggleButton confirm;
     private JLabel resultMsg;
     
-    private JFrame frame;
     // End of variables declaration//GEN-END:variables
 }
