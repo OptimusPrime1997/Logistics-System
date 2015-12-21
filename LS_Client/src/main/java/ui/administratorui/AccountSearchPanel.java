@@ -97,7 +97,7 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 		});
 
 		// TODO 显示需要的表格
-		initialAccountJTable(accountVOs,0);
+		initialAccountJTable(accountVOs, 0);
 		back.setText("返回");
 		back.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,30 +232,30 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 																		14)))));
 	}// </editor-fold>//GEN-END:initComponents
 
-	private void initialAccountJTable(ArrayList<AccountVO> vos,int row) {
+	private void initialAccountJTable(ArrayList<AccountVO> vos, int row) {
 		// TODO Auto-generated method stub
 		Object[][] accountObjects = null;
 		accountObjects = new Object[vos.size()][7];
 		int i = 0;
-		for (java.util.Iterator<AccountVO> t = vos.iterator(); t.hasNext();i++) {
+		for (java.util.Iterator<AccountVO> t = vos.iterator(); t.hasNext(); i++) {
 			AccountVO vo = t.next();
 			accountObjects[i][0] = vo.accountNum;
 			accountObjects[i][1] = vo.accountName;
-			accountObjects[i][2]=vo.password;
+			accountObjects[i][2] = vo.password;
 			accountObjects[i][3] = vo.sex;
 			accountObjects[i][4] = vo.authority;
 			accountObjects[i][5] = vo.institutionNum;
 			accountObjects[i][6] = vo.phoneNum;
-			
+
 		}
 		accountjTable.setModel(new javax.swing.table.DefaultTableModel(
-				accountObjects, new String[] { "用户账号", "姓名", "性别", "职位",
+				accountObjects, new String[] { "用户账号", "姓名", "密码", "性别", "职位",
 						"机构编号", "电话" }) {
 			Class[] types = new Class[] { java.lang.String.class,
-					java.lang.String.class, JComboBox.class, JComboBox.class,
-					java.lang.String.class, java.lang.String.class };
+					java.lang.String.class, java.lang.String.class,
+					JComboBox.class, JComboBox.class, java.lang.String.class,java.lang.String.class  };
 			boolean[] canEdit = new boolean[] { false, true, true, true, true,
-					true };
+					true, true };
 
 			public Class getColumnClass(int columnIndex) {
 				return types[columnIndex];
@@ -275,8 +275,7 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 		final JMenuItem accountSubmitjItem = new JMenuItem("提交");
 		final JMenuItem accountDeljItem = new JMenuItem("删除");
 		accountSubmitjItem.addMouseListener(/**
-		 * @author 1
-		 *         监听account的弹出菜单中的“提交”
+		 * @author 1 监听account的弹出菜单中的“提交”
 		 */
 		new MouseListener() {
 
@@ -300,23 +299,27 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 					int n = accountjTable.getSelectedRow();
 					AccountVO vo = accountVOs.get(n);
 					AccountVO v = getViewAccountVO(n);
-						if (v.equals(vo)) {
-							ComponentFactory.setState("您未对该行进行修改！", ComponentFactory.DISPLAY_TIME,resultMsg);
-						} else {
-							try {
-								rmsg = accountblController.update(v);
-								ComponentFactory.setState(ResultMessage.toFriendlyString(rmsg),
-										ComponentFactory.DISPLAY_TIME,resultMsg);
-								if (rmsg == ResultMessage.SUCCESS) {
-									accountVOs.remove(n);
-									accountVOs.add(n,v);
-								}
-							} catch (RemoteException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-								ComponentFactory.setState(ComponentFactory.REMOTEFAILD, ComponentFactory.DISPLAY_TIME,resultMsg);
+					if (v.equals(vo)) {
+						ComponentFactory.setState("您未对该行账户进行修改！",
+								ComponentFactory.DISPLAY_TIME, resultMsg);
+					} else {
+						try {
+							rmsg = accountblController.update(v);
+							ComponentFactory.setState(
+									ResultMessage.toFriendlyString(rmsg),
+									ComponentFactory.DISPLAY_TIME, resultMsg);
+							if (rmsg == ResultMessage.SUCCESS) {
+								accountVOs.remove(n);
+								accountVOs.add(n, v);
 							}
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+							ComponentFactory.setState(
+									ComponentFactory.REMOTEFAILD,
+									ComponentFactory.DISPLAY_TIME, resultMsg);
 						}
+					}
 				}
 
 			}
@@ -335,8 +338,7 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 
 		});
 		accountDeljItem.addMouseListener(/**
-		 * @author 1
-		 *         监听accountjTable上弹出菜单的“删除”
+		 * @author 1 监听accountjTable上弹出菜单的“删除”
 		 */
 		new MouseListener() {
 			@Override
@@ -347,38 +349,40 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 					ResultMessage rmsg = null;
 					int n = accountjTable.getSelectedRow();
 					AccountVO vo = accountVOs.get(n);
-						Object[] options = { "取消", "删除" };
-						int result = JOptionPane.showOptionDialog(null,
-								"您确定要删除系统该账户？", "是否删除",
-								JOptionPane.DEFAULT_OPTION,
-								JOptionPane.QUESTION_MESSAGE, null, options,
-								options[0]);
-						if (result == JOptionPane.NO_OPTION) {
-							try {
-								rmsg = accountblController.delete(vo
-										);
-								if (rmsg == ResultMessage.SUCCESS) {
-									ComponentFactory.setState("删除成功:)", ComponentFactory.DISPLAY_TIME,resultMsg);
-									accountVOs.remove(n);
+					Object[] options = { "取消", "删除" };
+					int result = JOptionPane.showOptionDialog(null,
+							"您确定要删除系统该账户？", "是否删除", JOptionPane.DEFAULT_OPTION,
+							JOptionPane.QUESTION_MESSAGE, null, options,
+							options[0]);
+					if (result == JOptionPane.NO_OPTION) {
+						try {
+							rmsg = accountblController.delete(vo);
+							if (rmsg == ResultMessage.SUCCESS) {
+								ComponentFactory.setState("删除成功:)",
+										ComponentFactory.DISPLAY_TIME,
+										resultMsg);
+								accountVOs.remove(n);
+								tempN = 0;
+								if (n == 0) {
 									tempN = 0;
-									if (n == 0) {
-										tempN = 0;
-									} else {
-										tempN = n - 1;
-									}
-									initialAccountJTable(accountVOs,
-											tempN);
 								} else {
-									ComponentFactory.setState(ResultMessage
-											.toFriendlyString(rmsg),
-											ComponentFactory.DISPLAY_TIME,resultMsg);
+									tempN = n - 1;
 								}
-							} catch (RemoteException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-								ComponentFactory.setState(ComponentFactory.REMOTEFAILD, ComponentFactory.DISPLAY_TIME,resultMsg);
+								initialAccountJTable(accountVOs, tempN);
+							} else {
+								ComponentFactory.setState(
+										ResultMessage.toFriendlyString(rmsg),
+										ComponentFactory.DISPLAY_TIME,
+										resultMsg);
 							}
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+							ComponentFactory.setState(
+									ComponentFactory.REMOTEFAILD,
+									ComponentFactory.DISPLAY_TIME, resultMsg);
 						}
+					}
 				}
 			}
 
@@ -457,45 +461,47 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 		accountjTable.addMouseListener(mil);
 		accountjTable.putClientProperty("terminateEditOnFocusLost",
 				Boolean.TRUE);
-		
-		
-		
+
 		accountjTable.setGridColor(new java.awt.Color(0, 0, 0));
 		ComponentFactory.setJTableTextCenter(accountjTable);
+
 		accountjTable.setRowSelectionInterval(row, row);
 		jScrollPane1.setViewportView(accountjTable);
 	}
+
 	protected AccountVO getViewAccountVO(int n) {
 		// TODO Auto-generated method stub
 		String accountNum = null;
 		String accountName = null;
-		String password=null;
-		Sex sex=null;
-		Authority  authority = null;
+		String password = null;
+		Sex sex = null;
+		Authority authority = null;
 		String institutionNum = null;
 		String phoneNum = null;
 		try {
 			accountNum = (String) accountjTable.getValueAt(n, 0);
 			accountName = (String) accountjTable.getValueAt(n, 1);
-			password=(String)accountjTable.getValueAt(n, 2);
+			password = (String) accountjTable.getValueAt(n, 2);
 			sex = (Sex) accountjTable.getValueAt(n, 3);
 			authority = (Authority) accountjTable.getValueAt(n, 4);
 			institutionNum = (String) accountjTable.getValueAt(n, 5);
-			phoneNum=(String) accountjTable.getValueAt(n, 6);
-			
-			assert (accountName != null && accountNum != null
-					&& sex != null && authority != null && institutionNum != null
-					&&phoneNum !=null) : ("您输入的机构信息不完整！");
+			phoneNum = (String) accountjTable.getValueAt(n, 6);
+
+			assert (accountName != null && accountNum != null && sex != null
+					&& authority != null && institutionNum != null && phoneNum != null) : ("您输入的账户信息不完整！");
 		} catch (ClassCastException e) {
 			e.printStackTrace();
-			ComponentFactory.setState("您输入的值类型不正确：(", ComponentFactory.DISPLAY_TIME,resultMsg);
+			ComponentFactory.setState("您输入的值类型不正确：(",
+					ComponentFactory.DISPLAY_TIME, resultMsg);
 		} catch (AssertionError e) {
-			ComponentFactory.setState("您输入的机构信息不完整！", ComponentFactory.DISPLAY_TIME,resultMsg);
+			ComponentFactory.setState("您输入的账户信息不完整！",
+					ComponentFactory.DISPLAY_TIME, resultMsg);
 			System.out.println(e.getMessage());
 		}
-		return new AccountVO(accountNum, accountName,password, sex,authority,
+		return new AccountVO(accountNum, accountName, password, sex, authority,
 				institutionNum, phoneNum);
 	}
+
 	private void exitActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton3ActionPerformed
 		MainFrame mf = new MainFrame();
 		mf.setVisible(true);

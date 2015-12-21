@@ -60,19 +60,19 @@ public class UserAccountPanel extends javax.swing.JFrame {
         useless_exit = new javax.swing.JButton();
         addAccount = new javax.swing.JButton();
         checkAccounts = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        findAccountNumjT = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         exit = new javax.swing.JButton();
         confirm_account = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        findAcountNamejT = new javax.swing.JTextField();
         confirm_name = new javax.swing.JButton();
         back = new javax.swing.JButton();
         resultMsg = new javax.swing.JLabel();
         
         resultMsg.setText("反馈");
 
-        jLabel9.setText("当前账户：大玉儿");
+        jLabel9.setText("当前账户："+administratorPanel.getOptorName());
 
         useless_exit.setText("退出");
         useless_exit.addActionListener(new java.awt.event.ActionListener() {
@@ -95,18 +95,15 @@ public class UserAccountPanel extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setText("在此输入账号");
-        jTextField1.addFocusListener(new FocusAdapter() {
+        findAccountNumjT.setText("请输入查找账号（11位）");
+        findAccountNumjT.addFocusListener(new FocusAdapter() {
         	
         	public void focusGained(FocusEvent e) {
-        		jTextField1.setText("");
+        		findAccountNumjT.setText("");
         	}
-        
-        	
 		});
-
-        jLabel1.setText("待搜索账号：");
-
+        
+        jLabel1.setText("账号：");
         exit.setText("退出");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,25 +112,29 @@ public class UserAccountPanel extends javax.swing.JFrame {
         });
 
         confirm_account.setText("确认");
+//        jLabel1.setVisible(false);
+//        findAccountNumjT.setVisible(false);
+//        confirm_account.setVisible(false);
+        
         confirm_account.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirm_accountActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("待搜索姓名：");
+        jLabel2.setText("账号或姓名：");
 
-        jTextField2.setText("在此输入姓名");
+        findAcountNamejT.setText("请输入账号（11位）或姓名");
 
-        jTextField2.addFocusListener(new FocusAdapter() {
+        findAcountNamejT.addFocusListener(new FocusAdapter() {
         	
         	public void focusGained(FocusEvent e) {
-        		jTextField2.setText("");
+        		findAcountNamejT.setText("");
         	}
-        
-        	
 		});
-        confirm_name.setText("确认");
+        
+        confirm_name.setText("查找");
+        
         confirm_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirm_nameActionPerformed(evt);
@@ -175,12 +176,12 @@ public class UserAccountPanel extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(checkAccounts, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(findAcountNamejT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(confirm_account))
                             .addComponent(jLabel2)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(findAccountNumjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(confirm_name)))
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -201,12 +202,12 @@ public class UserAccountPanel extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirm_account)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(findAcountNamejT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(findAccountNumjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(confirm_name))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -248,6 +249,9 @@ public class UserAccountPanel extends javax.swing.JFrame {
 
     private void confirm_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+    	
+    	
+    	
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -269,7 +273,7 @@ public class UserAccountPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel resultMsg;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField findAccountNumjT;
+    private javax.swing.JTextField findAcountNamejT;
     // End of variables declaration//GEN-END:variables
 }
