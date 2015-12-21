@@ -4,14 +4,13 @@ package main;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -27,9 +26,7 @@ import ui.warehousemanui.WarehousePanel;
 import util.InputCheck;
 import util.enumData.ResultMessage;
 import Exception.GoodsNotFound;
-import Exception.NumNotFoundException;
 import VO.GoodsVO;
-import VO.ManagementVO.AccountVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.goodsblservice.GoodsCheckValidBLService;
 import blservice.goodsblservice.GoodsFindBLService;
@@ -105,8 +102,8 @@ public class MainFrame extends JFrame {
 	}
 	private void initTxt() {
 		goodsNum_text = new javax.swing.JTextField();
-		account_text = new javax.swing.JTextField();
-		password_text = new javax.swing.JTextField();
+		account_text = new javax.swing.JTextField(11);
+		password_text = new javax.swing.JPasswordField(6);
 	    feedback_text = new JTextField();
 		
 	    feedback_text.setEditable(false);
@@ -356,8 +353,10 @@ public class MainFrame extends JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JTextField account_text,password_text,feedback_text,goodsNum_text;
-    private final String standard_goodsNum="输入订单号10位";
+    private JTextField account_text,
+    feedback_text,goodsNum_text;
+    private JPasswordField password_text;
+    final String standard_goodsNum="输入订单号10位";
     private String	password,goodsNum,account;
     private JButton search_btn,login_btn;
     private JLabel jLabel1;

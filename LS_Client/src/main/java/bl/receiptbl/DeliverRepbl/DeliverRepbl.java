@@ -11,14 +11,18 @@ import PO.Receipt.ReceiptPO;
 import VO.Receipt.DeliverRepVO;
 import VO.Receipt.ReceiptVO;
 import bl.goodsbl.Goodsbl;
+import bl.loginbl.LoginblController;
 import bl.receiptbl.Receiptbl.Receiptbl;
+import util.CurrentTime;
+import util.enumData.GoodsLogisticState;
+import util.enumData.LogType;
 import util.enumData.Rep;
-import util.enumData.ResultMessage;
 
 public class DeliverRepbl {
 	
 	private Receiptbl receiptbl = new Receiptbl();
 	private Goodsbl goodsbl = new Goodsbl();
+	private LoginblController login = new LoginblController();
 
 	public String createNum(String date, String office) 
 			throws ClassNotFoundException, NotBoundException, IOException {
@@ -32,18 +36,8 @@ public class DeliverRepbl {
 	public void submit(ReceiptVO vo) 
 			throws RemoteException, MalformedURLException, IOException, NotBoundException {
 		receiptbl.submit(DeliverRepVO.toPO((DeliverRepVO) vo), Rep.DeliverRep);
-	}
-
-	public ResultMessage checkCourierNum(String string) {
-		if (string.length() < 11)
-			return ResultMessage.DELIVER_COURIER_NUM_LACKING;
-		if (string.length() > 11)
-			return ResultMessage.DELIVER_COURIER_NUM_OVER;
-		for (int i = 0; i < 11; i++) {
-			if (string.charAt(i) < '0' || string.charAt(i) > '9')
-				return ResultMessage.REPNUM_NOT_ALL_NUM;
-		}
-		return ResultMessage.ADD_SUCCESS;
+		String operatorID = login.getCurrentOptorId();
+		receiptbl.addLog(LogType.DELIVER, operatorID, CurrentTime.getTime());
 	}
 
 	public String getNameByOrder(String order) throws GoodsNotFound {
@@ -65,11 +59,17 @@ public class DeliverRepbl {
 			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.DeliverRep, office);
+		if(receiptPOs==null)
+			return null;
 		return DeliverRepVO.toArrayVO(receiptPOs);
 	}
 	
 	public boolean isTrueAccount(String num){
 		return receiptbl.isTrueAccount(num);
+	}
+	
+	public void changeLogistic(String num){
+		goodsbl.setLogisticState(num, GoodsLogisticState.DELIVERING, receiptbl.getDate());
 	}
 	
 }

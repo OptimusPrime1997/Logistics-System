@@ -10,14 +10,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.Vector;
 import Exception.NameNotFoundException;
 
-import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -25,10 +22,8 @@ import VO.GoodsVO;
 import VO.Receipt.CashRepVO;
 import VO.Receipt.CashVO;
 import bl.receiptbl.CashRepbl.CashRepController;
-import blservice.receiptblservice.CashRepblService;
 import ui.receiptui.ReceiptCheckUI.CashCheck;
 import ui.util.MyFrame;
-import util.enumData.ResultMessage;
 import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
 
@@ -38,10 +33,6 @@ import Exception.NumNotFoundException;
  */
 public class CashRep extends javax.swing.JPanel {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	/**
      * Creates new form CashRep
      */
@@ -187,7 +178,7 @@ public class CashRep extends javax.swing.JPanel {
         });
         
         try {
-			jComboBox = new JComboBox(control.showBankAccount());
+			jComboBox = new JComboBox<String>(control.showBankAccount());
 		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -341,38 +332,40 @@ public class CashRep extends javax.swing.JPanel {
     private String calSum(){
     	double sum = 0;
     	for(int i = 0;i < dataVector.size();i++){
-    		sum += (double)jTable.getValueAt(i, 2);
+    		sum += Double.parseDouble((String)jTable.getValueAt(i, 2));
     	}
     	return sum+"";
     }
     
     private void courierButtonMouseClicked(java.awt.event.MouseEvent evt) {
     	String courierNum = courierNumText.getText();
-    	ResultMessage resultMessage = control.checkNum(courierNum, 11);
-    	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
-    	resultMsgText.setText(resultMsg);
-    	if(resultMessage==ResultMessage.ADD_SUCCESS){
-    		String courierName = null;
-        	double money;
-    		try {
-    			courierName = control.getCourierName(courierNum);
-    			ArrayList<GoodsVO> arrGoods = control.getGoods(courierNum, dateText.getText());
-            	money = control.getMoneySum(arrGoods);
-            	Vector<String> arr = new Vector<String>();
-            	arr.add(courierName);
-            	arr.add(courierNum);
-            	arr.add(money+"");
-            	arr.add(null);
-            	dataVector.add(arr);
-            	model.setDataVector(dataVector, columnIdentifiers);
-            	setColumn();
-            	sumText.setText(calSum());
-    		} catch (ClassNotFoundException | NameNotFoundException | NumNotFoundException | IOException e) {
-    			// TODO Auto-generated catch block
-    			e.printStackTrace();
-    			resultMsgText.setText(ExceptionPrint.print(e));
-    		}
+    	String resultMessage = control.checkNum(courierNum, 11, "快递员编号");
+    	resultMsgText.setText(resultMessage);
+    	if(!resultMessage.equals("添加成功")){
+    		return;
     	}
+    	String courierName = null;
+    	double money;
+		try {
+			courierName = control.getCourierName(courierNum);
+		} catch (ClassNotFoundException | NameNotFoundException | NumNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		}
+		ArrayList<GoodsVO> arrGoods = control.getGoods(courierNum, dateText.getText());
+    	money = control.getMoneySum(arrGoods);
+    	Vector<String> arr = new Vector<String>();
+    	arr.add(courierName);
+    	arr.add(courierNum);
+    	arr.add(money+"");
+    	arr.add(null);
+    	dataVector.add(arr);
+    	model.setDataVector(dataVector, columnIdentifiers);
+    	setColumn();
+    	sumText.setText(calSum());
+    	courierNumText.setText("");
     }
     
     private void okMouseClicked(java.awt.event.MouseEvent evt) {
@@ -380,7 +373,6 @@ public class CashRep extends javax.swing.JPanel {
 		String num = numText.getText();
 		String date = dateText.getText();
 		double sum = Double.parseDouble(sumText.getText());
-		
 		String bankAccount = (String)jComboBox.getSelectedItem();
     	try {
 			control.addMoneyInBankAccount(bankAccount, sum);
@@ -388,12 +380,14 @@ public class CashRep extends javax.swing.JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
 		}
-    	
 		ArrayList<CashVO> cashVOs = new ArrayList<CashVO>();
 		for(int i = 0;i < dataVector.size();i++){
-			CashVO vo = new CashVO((double)jTable.getValueAt(i, 2), (String)jTable.getValueAt(i, 1), 
-					(String)jTable.getValueAt(i, 0), (String)jTable.getValueAt(i, 3));
+			CashVO vo = new CashVO(Double.parseDouble((String)jTable.getValueAt(i, 2)),
+					(String)jTable.getValueAt(i, 1), 
+					(String)jTable.getValueAt(i, 0), 
+					(String)jTable.getValueAt(i, 3));
 			cashVOs.add(vo);
 		}
 		CashRepVO cashRepVO = new CashRepVO(num, date, sum, (String)jComboBox.getSelectedItem(), cashVOs);
@@ -402,6 +396,7 @@ public class CashRep extends javax.swing.JPanel {
 		} catch (NotBoundException | IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
 		}
 		myFrame.dispose();
 	}

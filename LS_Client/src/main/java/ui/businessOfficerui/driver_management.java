@@ -262,7 +262,7 @@ public class driver_management extends JPanel {
 	 * 
 	 */
 	private void initTxt() {
-		feedback_text = new JTextField();
+		feedback_text = new JLabel();
 		search_text = new JTextField();
 		search_text.setText("输入姓名或编号");
 		search_text.addMouseListener(new MouseListener() {
@@ -297,7 +297,7 @@ public class driver_management extends JPanel {
 				search_text.setText("");
 			}
 		});
-		feedback_text.setEditable(false);
+		feedback_text.setFocusable(false);
 
 	}
 	/**
@@ -653,7 +653,7 @@ public class driver_management extends JPanel {
 	private JButton account_btn, add_btn, back_btn, exit_btn, search_btn;
 	private JScrollPane jScrollPane2;
 	private JTextField search_text;
-	public JTextField feedback_text;
+	public  JLabel feedback_text;
 	private LoginBLService ctr_login;
 	private String officeNum = "", city = "";
 	// End of variables declaration//GEN-END:variables

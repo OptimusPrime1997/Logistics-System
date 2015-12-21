@@ -177,8 +177,8 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		String currentOptorId = Loginbl.getCurrentOptorId();
 		currentAccountNamejLabel.setText(currentOptorId);
 
-		currentAuthorityjLabel.setText(Authority.toAuthority(
-				currentOptorId.substring(7, 8)).getValue());
+		currentAuthorityjLabel.setText(Authority.getAuthority(
+				Integer.parseInt(currentOptorId.substring(7, 8))).getValue());
 
 		currentAccoutNamejLabel.setText("12345");
 
@@ -2267,36 +2267,36 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	 * @param evt
 	 */
 	private void findAccountNumjButtonMouseReleased(
-			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_findInstitutionNumjButtonMouseReleased
+			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_findAccountNumjButtonMouseReleased
 		// TODO add your handling code here:
-		if (evt.getSource() == findInstitutionNamejButton) {
-			String findInstitutionNum = institutionNumjTextField.getText();
-			ResultMessage rmsg = InputCheck.checkInputNum(findInstitutionNum,
+		if (evt.getSource() == findAccountNamejButton) {
+			String findAccountNum = accountNumjTextField.getText();
+			ResultMessage rmsg = InputCheck.checkInputNum(findAccountNum,
 					11);
 			if (rmsg == ResultMessage.VALID) {
 				int i = 0;
-				InstitutionVO tempVO = null;
-				for (Iterator<InstitutionVOPlus> t = institutionVOPlus
+				AccountVO tempVO = null;
+				for (Iterator<AccountVO> t = accountVOs
 						.iterator(); t.hasNext(); i++) {
 					tempVO = t.next();
-					if (tempVO.institutionNum.equals(findInstitutionNum)) {
+					if (tempVO.accountNum.equals(findAccountNum)) {
 						break;
 					}
 				}
-				if (i < institutionVOPlus.size()) {
-					institutionjTable.setRowSelectionInterval(i, i);// 设置哪几行被选中
+				if (i < accountVOs.size()) {
+					accountjTable.setRowSelectionInterval(i, i);// 设置哪几行被选中
 					setState("该账户在第" + (i + 1) + "行", DISPLAY_TIME);
 				} else {
 					setState("系统中无该机构", DISPLAY_TIME);
 				}
 			} else {
 				String msg = ResultMessage.toFriendlyString(rmsg);
-				setState("账号" + msg, 5);
+				setState("账号" + msg, ComponentFactory.DISPLAY_TIME);
 			}
 
 		}
 
-	}// GEN-LAST:event_findInstitutionNumjButtonMouseReleased
+	}// GEN-LAST:event_findAccountNumjButtonMouseReleased
 
 	/**
 	 * findAccountnum

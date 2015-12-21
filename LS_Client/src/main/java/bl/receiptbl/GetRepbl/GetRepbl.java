@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
 import PO.Receipt.ReceiptPO;
 import VO.Receipt.GetRepVO;
@@ -15,6 +16,9 @@ import bl.goodsbl.Goodsbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepbl;
 import bl.receiptbl.ShippingRepbl.ShippingRepbl;
+import util.enumData.City;
+import util.enumData.GoodsArrivalState;
+import util.enumData.GoodsLogisticState;
 import util.enumData.Rep;
 
 public class GetRepbl{
@@ -58,16 +62,25 @@ public class GetRepbl{
 		}
 		if(orders.size()>existOrders.size()){
 			for(int i = 0;i < orders.size();i++){
-				if(existOrders.contains(orders.get(i)))
-					data.add(orders.get(i));
+				String order = orders.get(i);
+				if(!existOrders.contains(order)){
+					data.add(order);
+					transferOver(order, GoodsArrivalState.LOST);
+				}
 			}
 		}
 		return data;
 	}
 
-	public void transferOver(String num) {
+	public void transferOver(String num, GoodsArrivalState goodsArrivalState) {
 		// TODO Auto-generated method stub
 		goodsbl.end(num);
+		goodsbl.setArrivalState(num, goodsArrivalState, receiptbl.getDate());
+		goodsbl.setLogisticState(num, GoodsLogisticState.BROKEN_OR_LOST, receiptbl.getDate());
+	}
+	
+	public void changeLogistic(String num, GoodsLogisticState goodsLogisticState){
+		goodsbl.setLogisticState(num, goodsLogisticState, receiptbl.getDate());
 	}
 
 	public ArrayList<GetRepVO> getAllRep(String office) throws ClassNotFoundException, NotBoundException, 
@@ -81,7 +94,6 @@ public class GetRepbl{
 	
 	public String getDepart(Rep rep, String num) 
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException{
-		
 		if(rep==Rep.ShipmentRep){
 			return getShipmentRep(num).depart;
 		}
@@ -92,6 +104,10 @@ public class GetRepbl{
 	
 	public boolean isTrueOrder(String order){
 		return receiptbl.isTrueOrder(order);
+	}
+	
+	public String getDestination(String order) throws GoodsNotFound{
+		return goodsbl.findByListNum(order).destinationCity;
 	}
 
 }

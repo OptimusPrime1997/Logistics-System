@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import Exception.NumNotFoundException;
 import PO.Receipt.ReceiptPO;
 import dataservice.receiptdataservice.ReceiptDataService;
 import datautil.DataUtility;
@@ -22,6 +23,8 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	 * 
 	 */
 	private static final long serialVersionUID = -4116800219997834632L;
+	
+	private DataUtility util = new DataUtility();
 
 	public String getOffice(String num) {
 		if (num.substring(2, 5).equals("000"))
@@ -36,8 +39,6 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	public String saveAdd(Rep rep) {
 		return "data/ReceiptSaveData/" + rep + "Save.txt";
 	}
-
-	private DataUtility util = new DataUtility();
 
 	public void submit(ReceiptPO po, Rep rep) throws IOException, RemoteException {
 		util.save(po, submitAdd(rep));
@@ -88,15 +89,17 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 		return dateReceiptPOs;
 	}
 
-	public ReceiptPO getRepByNum(String num, Rep rep) throws IOException, ClassNotFoundException, RemoteException {
+	public ReceiptPO getRepByNum(String num, Rep rep) throws IOException, ClassNotFoundException, RemoteException, NumNotFoundException {
 		ArrayList<ReceiptPO> receiptPOs = getAllRep(rep, getOffice(num));
-		if (receiptPOs == null)
-			return null;
+		if (receiptPOs == null){
+			throw new NumNotFoundException();
+		}
+			
 		for (ReceiptPO receiptPO : receiptPOs) {
 			if (receiptPO.getNum().equals(num))
 				return receiptPO;
 		}
-		return null;
+		throw new NumNotFoundException();
 	}
 
 	public String createNum(String date, Rep rep, String office)
@@ -115,10 +118,12 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 		ArrayList<Object> objects = util.getAll(submitAdd(rep));
 		util.clear(submitAdd(rep));
 		ReceiptPO receiptPO = null;
-		for (Object object : objects) {
-			receiptPO = (ReceiptPO) object;
-			if (!getOffice(receiptPO.getNum()).equals(office))
-				save(receiptPO, rep);
+		if(objects!=null){
+			for (Object object : objects) {
+				receiptPO = (ReceiptPO) object;
+				if (!getOffice(receiptPO.getNum()).equals(office))
+					save(receiptPO, rep);
+			}
 		}
 	}
 

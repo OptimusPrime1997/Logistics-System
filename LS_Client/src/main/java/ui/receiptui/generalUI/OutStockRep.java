@@ -119,6 +119,7 @@ public class OutStockRep extends javax.swing.JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
 		}
         officeID = CurrentCity.getCurrentOptorID(officeText.getText());
 
@@ -316,11 +317,17 @@ public class OutStockRep extends javax.swing.JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
 		}
     	this.frame.dispose();
     }
     
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt){
+    	String resultMessage = control.checkNum(repTypeText.getText(), 19, "编号");
+    	resultMsgText.setText(resultMessage);
+    	if(!resultMessage.equals("添加成功")){
+    		return;
+    	}
     	if(repTypeBox.getSelectedItem().toString().equals("中转单")){
     		ShippingRepVO shippingRepVO = null;
     		try {

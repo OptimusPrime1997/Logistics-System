@@ -6,8 +6,11 @@ import java.util.Vector;
 import VO.Receipt.PayRentVO;
 import VO.Receipt.PayRepRentRepVO;
 import VO.Receipt.PayRepVO;
+import bl.receiptbl.Receiptbl.Receiptbl;
 
 public class Rentbl{
+	
+	Receiptbl receiptbl = new Receiptbl();
 
 	public void submitRent(PayRepVO payRepVO, PayRepRentRepVO payRepRentRepVO){
 		payRepVO.rent = payRepRentRepVO;
@@ -30,4 +33,5 @@ public class Rentbl{
 		}
 		return data;
 	}
+	
 }

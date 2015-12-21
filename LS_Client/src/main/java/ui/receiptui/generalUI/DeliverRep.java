@@ -14,7 +14,6 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -23,11 +22,8 @@ import Exception.GoodsNotFound;
 import VO.Receipt.DeliverRepVO;
 import VO.Receipt.DeliverVO;
 import bl.receiptbl.DeliverRepbl.DeliverController;
-import blservice.receiptblservice.DeliverRepblService;
 import ui.receiptui.ReceiptCheckUI.DeliverCheck;
 import ui.util.MyFrame;
-import util.enumData.Rep;
-import util.enumData.ResultMessage;
 
 /**
  *
@@ -306,61 +302,63 @@ public class DeliverRep extends javax.swing.JPanel {
 
     private void orderMouseClicked(java.awt.event.MouseEvent evt) {
     	String order = orderNumText.getText();
-    	ResultMessage resultMessage = control.checkNum(order, 10);
-    	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
-    	resultMsgText.setText(resultMsg);
-    	if(resultMessage==ResultMessage.ADD_SUCCESS){
-    		String name = null;
-    		String phoneNum = null;
-    		String address = null;
-			try {
-				name = control.getNameByOrder(order);
-				phoneNum = control.getPhoneByOrder(order);
-	    		address = control.getAddressByOrder(order);
-	    		Vector<String> arr = new Vector<String>();
-	    		arr.add(order);
-	    		arr.add(name);
-	    		arr.add(phoneNum);
-	    		arr.add(address);
-	    		dataVector.add(arr);
-	        	model.setDataVector(dataVector, columnIdentifiers);
-	        	setColumn();
-			} catch (GoodsNotFound e) {
-				e.printStackTrace();
-				resultMsgText.setText(ExceptionPrint.print(e));
-			}
+    	String resultMessage = control.checkNum(order, 10, "编号");
+    	resultMsgText.setText(resultMessage);
+    	if(!resultMessage.equals("添加成功")){
+    		return;
     	}
+    	String name = null;
+		String phoneNum = null;
+		String address = null;
+		try {
+			name = control.getNameByOrder(order);
+			phoneNum = control.getPhoneByOrder(order);
+    		address = control.getAddressByOrder(order);
+		} catch (GoodsNotFound e) {
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		}
+		Vector<String> arr = new Vector<String>();
+		arr.add(order);
+		arr.add(name);
+		arr.add(phoneNum);
+		arr.add(address);
+		dataVector.add(arr);
+    	model.setDataVector(dataVector, columnIdentifiers);
+    	setColumn();
+    	orderNumText.setText("");
     }
     
     private void okMouseClicked(java.awt.event.MouseEvent evt) {
     	String courierNum = courierText.getText();
-    	ResultMessage resultMessage = control.checkCourierNum(courierNum);
-    	String resultMsg = ResultMessage.toFriendlyString(resultMessage);
-    	resultMsgText.setText(resultMsg);
-    	if(resultMessage==ResultMessage.ADD_SUCCESS){
-    		if(control.isTrueAccount(courierNum)){
-    			String num = numText.getText();
-        		String date = dateText.getText();
-        		ArrayList<DeliverVO> deliverVOs = new ArrayList<DeliverVO>();
-        		for(int i = 0;i < dataVector.size();i++){
-        			DeliverVO vo = new DeliverVO((String)jTable.getValueAt(i, 0), 
-        					(String)jTable.getValueAt(i, 1), (String)jTable.getValueAt(i, 2), 
-        					(String)jTable.getValueAt(i, 3));
-        			deliverVOs.add(vo);
-        		}
-        		DeliverRepVO deliverRepVO = new DeliverRepVO(num, date, courierText.getText(), deliverVOs);
-        		try {
-        			control.submit(deliverRepVO);
-        		} catch (NotBoundException | IOException e) {
-        			e.printStackTrace();
-        			resultMsgText.setText(ExceptionPrint.print(e));
-        		}
-        		myFrame.dispose();
-    		}
-    		else {
-    			resultMsgText.setText("未找到该派件员");
-			}
+    	String resultMessage = control.checkNum(courierNum, 11, "快递员编号");
+    	resultMsgText.setText(resultMessage);
+    	if(!resultMessage.equals("添加成功")){
+    		return;
     	}
+    	if(!control.isTrueAccount(courierNum)){
+    		resultMsgText.setText("未找到该派件员");
+    		return;
+		}
+    	String num = numText.getText();
+		String date = dateText.getText();
+		ArrayList<DeliverVO> deliverVOs = new ArrayList<DeliverVO>();
+		for(int i = 0;i < dataVector.size();i++){
+			DeliverVO vo = new DeliverVO((String)jTable.getValueAt(i, 0), 
+					(String)jTable.getValueAt(i, 1), (String)jTable.getValueAt(i, 2), 
+					(String)jTable.getValueAt(i, 3));
+			deliverVOs.add(vo);
+		}
+		DeliverRepVO deliverRepVO = new DeliverRepVO(num, date, courierText.getText(), deliverVOs);
+		try {
+			control.submit(deliverRepVO);
+		} catch (NotBoundException | IOException e) {
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		}
+		myFrame.dispose();
     }
     
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {

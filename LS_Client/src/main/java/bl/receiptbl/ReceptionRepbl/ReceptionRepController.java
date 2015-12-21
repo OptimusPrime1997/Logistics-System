@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.ReceptionRepVO;
@@ -14,6 +15,8 @@ import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.PostReceiptblService;
 import blservice.receiptblservice.ReceptionRepblService;
 import blservice.receiptblservice.SubmitblService;
+import util.enumData.GoodsArrivalState;
+import util.enumData.GoodsLogisticState;
 import util.enumData.Rep;
 
 public class ReceptionRepController extends ReceiptblController
@@ -76,9 +79,9 @@ implements ReceptionRepblService, PostReceiptblService, SubmitblService{
 	}
 
 	@Override
-	public void transferOver(String num) {
+	public void transferOver(String num, GoodsArrivalState goodsArrivalState) {
 		// TODO Auto-generated method stub
-		receptionRepbl.transferOver(num);
+		receptionRepbl.transferOver(num, goodsArrivalState);
 	}
 
 	@Override
@@ -92,6 +95,24 @@ implements ReceptionRepblService, PostReceiptblService, SubmitblService{
 	public boolean isTrueOrder(String order) {
 		// TODO Auto-generated method stub
 		return receptionRepbl.isTrueOrder(order);
+	}
+
+	@Override
+	public void changeLogistic(String num, GoodsLogisticState goodsLogisticState) {
+		// TODO Auto-generated method stub
+		receptionRepbl.changeLogistic(num, goodsLogisticState);
+	}
+
+	@Override
+	public String getDestination(String order) throws GoodsNotFound {
+		// TODO Auto-generated method stub
+		return receptionRepbl.getDestination(order);
+	}
+
+	@Override
+	public String getDepart(String order) throws GoodsNotFound {
+		// TODO Auto-generated method stub
+		return receptionRepbl.getDepart(order);
 	}
 
 }

@@ -11,14 +11,13 @@ import Exception.NumNotFoundException;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.ShipmentRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
-import blservice.receiptblservice.FindAccountblService;
 import blservice.receiptblservice.PostReceiptblService;
 import blservice.receiptblservice.ShipmentRepblServce;
 import blservice.receiptblservice.SubmitblService;
 import util.enumData.ResultMessage;
 
 public class ShipmentRepController extends ReceiptblController 
-implements ShipmentRepblServce, PostReceiptblService, SubmitblService, FindAccountblService{
+implements ShipmentRepblServce, PostReceiptblService, SubmitblService {
 	private ShipmentRepbl shipmentRepbl = new ShipmentRepbl();
 	private ShipmentRepCheckbl shipmentRepCheckbl = new ShipmentRepCheckbl();
 	private ShipmentRepShowbl shipmentRepShowbl = new ShipmentRepShowbl();
@@ -73,12 +72,6 @@ implements ShipmentRepblServce, PostReceiptblService, SubmitblService, FindAccou
 	public String getTruckSum(String date, String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		return shipmentRepbl.getTruckSum(date, office);
-	}
-
-	@Override
-	public ResultMessage checkDriverNum(String string) {
-		// TODO Auto-generated method stub
-		return shipmentRepbl.checkDriverNum(string);
 	}
 
 	@Override

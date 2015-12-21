@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
 import PO.Receipt.ReceiptPO;
 import VO.Receipt.ReceiptVO;
@@ -12,16 +13,22 @@ import VO.Receipt.ReceptionRepVO;
 import VO.Receipt.ShipmentRepVO;
 import VO.Receipt.TransferRepVO;
 import bl.goodsbl.Goodsbl;
+import bl.loginbl.LoginblController;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepbl;
 import bl.receiptbl.TransferRepbl.TransferRepbl;
+import util.CurrentTime;
 import util.enumData.City;
+import util.enumData.GoodsArrivalState;
+import util.enumData.GoodsLogisticState;
+import util.enumData.LogType;
 import util.enumData.Rep;
 
 public class ReceptionRepbl{
 	
 	Receiptbl receiptbl = new Receiptbl();
 	Goodsbl goodsbl = new Goodsbl();
+	private LoginblController login = new LoginblController();
 
 	public ShipmentRepVO getShipmentRep(String num) 
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException{
@@ -43,6 +50,8 @@ public class ReceptionRepbl{
 	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		receiptbl.submit(ReceptionRepVO.toPO((ReceptionRepVO) vo), Rep.ReceptionRep);
+		String operatorID = login.getCurrentOptorId();
+		receiptbl.addLog(LogType.TRANSFER_CTR_RECEPTION, operatorID, CurrentTime.getTime());
 	}
 	
 	public Vector<Object> initTable(Rep rep, String num, ArrayList<String> existOrders) 
@@ -58,16 +67,25 @@ public class ReceptionRepbl{
 		}
 		if(orders.size()>existOrders.size()){
 			for(int i = 0;i < orders.size();i++){
-				if(existOrders.contains(orders.get(i)))
-					data.add(orders.get(i));
+				String order = orders.get(i);
+				if(!existOrders.contains(order)){
+					data.add(order);
+					transferOver(order, GoodsArrivalState.LOST);
+				}
 			}
 		}
 		return data;
 	}
 	
-	public void transferOver(String num) {
+	public void transferOver(String num, GoodsArrivalState goodsArrivalState) {
 		// TODO Auto-generated method stub
 		goodsbl.end(num);
+		goodsbl.setArrivalState(num, goodsArrivalState, receiptbl.getDate());
+		goodsbl.setLogisticState(num, GoodsLogisticState.BROKEN_OR_LOST, receiptbl.getDate());
+	}
+	
+	public void changeLogistic(String num, GoodsLogisticState goodsLogisticState){
+		goodsbl.setLogisticState(num, goodsLogisticState, receiptbl.getDate());
 	}
 
 	public ArrayList<ReceptionRepVO> getAllRep(String office) 
@@ -79,7 +97,6 @@ public class ReceptionRepbl{
 	
 	public String getDepart(Rep rep, String num) 
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException{
-		
 		if(rep==Rep.ShipmentRep){
 			return getShipmentRep(num).depart;
 		}
@@ -91,4 +108,13 @@ public class ReceptionRepbl{
 	public boolean isTrueOrder(String order){
 		return receiptbl.isTrueOrder(order);
 	}
+	
+	public String getDestination(String order) throws GoodsNotFound{
+		return goodsbl.findByListNum(order).destinationCity;
+	}
+	
+	public String getDepart(String order) throws GoodsNotFound{
+		return goodsbl.findByListNum(order).startCity;
+	}
+	
 }

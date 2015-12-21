@@ -71,22 +71,6 @@ public enum ResultMessage {
 	 */
 	REPNUM_NOT_RIGHT,
 	/**
-	 * 派件员编号过短
-	 */
-	DELIVER_COURIER_NUM_LACKING,
-	/**
-	 * 派件员编号过长
-	 */
-	DELIVER_COURIER_NUM_OVER,
-	/**
-	 * 司机编号过短
-	 */
-	DRIVER_NUM_LACKING,
-	/**
-	 * 司机编号过长
-	 */
-	DRIVER_NUM_OVER,
-	/**
 	 * 手机号长度有误
 	 */
 	PHONE_LENGTH_WRONG,
@@ -245,10 +229,6 @@ public enum ResultMessage {
 			return "提交成功";
 		case REPNUM_NOT_ALL_NUM:
 			return "编号中存在非数字字符";
-		case DELIVER_COURIER_NUM_LACKING:
-			return "派件员编号过短";
-		case DELIVER_COURIER_NUM_OVER:
-			return "派件员编号过长";
 		case OVERRIDE_DATA:
 			return "覆盖数据";
 		case NOT_FOUND:
@@ -283,10 +263,6 @@ public enum ResultMessage {
 			return "起始日期必须早于结束日期";
 		case ALARM:
 			return "该区库存紧张";
-		case DRIVER_NUM_LACKING:
-			return "司机编号过短";
-		case DRIVER_NUM_OVER:
-			return "司机编号过长";
 		}
 		return "";
 	}

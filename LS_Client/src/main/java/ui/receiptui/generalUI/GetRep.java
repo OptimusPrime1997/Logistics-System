@@ -15,6 +15,7 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import Exception.ExceptionPrint;
+import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
 import VO.Receipt.ArriveVO;
 import VO.Receipt.GetRepVO;
@@ -22,8 +23,8 @@ import bl.receiptbl.GetRepbl.GetRepController;
 import ui.receiptui.ReceiptCheckUI.ArriveCheck;
 import ui.util.MyFrame;
 import util.enumData.GoodsArrivalState;
+import util.enumData.GoodsLogisticState;
 import util.enumData.Rep;
-import util.enumData.ResultMessage;
 
 /**
  *
@@ -67,7 +68,7 @@ public class GetRep extends javax.swing.JPanel {
 	/**
 	 * Creates new form GetRep
 	 */
-	
+
 	public GetRep() {
 		initComponents();
 		myFrame = new MyFrame(556, 468, this);
@@ -385,22 +386,22 @@ public class GetRep extends javax.swing.JPanel {
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		String order = orderText.getText();
-		ResultMessage resultMessage = control.checkNum(order, 10);
-		String resultMsg = ResultMessage.toFriendlyString(resultMessage);
-		resultMsgText.setText(resultMsg);
-		if (resultMessage == ResultMessage.ADD_SUCCESS) {
-			if(control.isTrueOrder(order)){
-				Vector<String> arr = new Vector<String>();
-				arr.add(order);
-				arr.add(arriveStateBox.getSelectedItem().toString());
-				dataVector.add(arr);
-				model.setDataVector(dataVector, columnIdentifiers);
-				setColumn();
-			}
-			else {
-				resultMsgText.setText("未找到该订单");
-			}
+		String resultMessage = control.checkNum(order, 10, "编号");
+		resultMsgText.setText(resultMessage);
+		if (!resultMessage.equals("添加成功")) {
+			return;
 		}
+		if (!control.isTrueOrder(order)) {
+			resultMsgText.setText("未找到该订单");
+			return;
+		}
+		Vector<String> arr = new Vector<String>();
+		arr.add(order);
+		arr.add(arriveStateBox.getSelectedItem().toString());
+		dataVector.add(arr);
+		model.setDataVector(dataVector, columnIdentifiers);
+		setColumn();
+		orderText.setText("");
 	}
 
 	private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -427,7 +428,9 @@ public class GetRep extends javax.swing.JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
 		}
+		changeArrivalState();
 		myFrame.dispose();
 	}
 
@@ -441,6 +444,7 @@ public class GetRep extends javax.swing.JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
 		}
 	}
 
@@ -458,12 +462,35 @@ public class GetRep extends javax.swing.JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
 		}
-		for(int i = 0;i < arrs.size();i++){
-			dataVector.add(arrs.get(i));
-		}
+		dataVector.addAll(arrs);
 		model.setDataVector(dataVector, columnIdentifiers);
 		setColumn();
+	}
+
+	private void changeArrivalState() {
+		for (int i = 0; i < dataVector.size(); i++) {
+			String order = (String) jTable.getValueAt(i, 0);
+			GoodsArrivalState goodsArrivalState = GoodsArrivalState
+					.getGoodsArrivalState((String) jTable.getValueAt(i, 1));
+			if (goodsArrivalState != GoodsArrivalState.INTACT) {
+				control.transferOver(order, goodsArrivalState);
+				return;
+			}
+			String destination = null;
+			try {
+				destination = control.getDestination(order);
+			} catch (GoodsNotFound e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+				return;
+			}
+			if (officeText.getText().substring(0, 3).equals(destination)) {
+				control.changeLogistic(order, GoodsLogisticState.RECEIVER_BUSINESSOFFICE_ARRIVED);
+			}
+		}
 	}
 
 }

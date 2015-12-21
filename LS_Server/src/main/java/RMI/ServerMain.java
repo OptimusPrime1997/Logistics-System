@@ -13,6 +13,7 @@ import dataimpl.receiptdata.InStockRepData;
 import dataimpl.receiptdata.OutStockRepData;
 import dataimpl.receiptdata.PayRepData;
 import dataimpl.receiptdata.ReceiptData;
+import dataimpl.receiptdata.TransferRepData;
 import dataimpl.stockdata.StockData;
 import dataimpl.stockdata.StockDivisionData;
 import dataimpl.stockdata.StockInitialData;
@@ -26,6 +27,7 @@ import dataservice.receiptdataservice.InStockRepDataService;
 import dataservice.receiptdataservice.OutStockRepDataService;
 import dataservice.receiptdataservice.PayRepDataService;
 import dataservice.receiptdataservice.ReceiptDataService;
+import dataservice.receiptdataservice.TransferRepDataService;
 import dataservice.stockdataservice.StockDataService;
 import dataservice.stockdataservice.StockDivisionDataService;
 import dataservice.stockdataservice.StockInitialDataService;
@@ -101,6 +103,11 @@ public class ServerMain {
 			CashRepDataService cashService = new CashRepData();
 			Naming.rebind("rmi://" + ip + ":" + "1028/cash", cashService);
 			System.out.println("13");
+			
+			LocateRegistry.createRegistry(1029);
+			TransferRepDataService transferService = new TransferRepData();
+			Naming.rebind("rmi://" + ip + ":" + "1029/transfer", transferService);
+			System.out.println("14");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
