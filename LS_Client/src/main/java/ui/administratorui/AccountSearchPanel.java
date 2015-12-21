@@ -79,13 +79,11 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 		int screenh = screensize.height;
 
 		int screenw = screensize.width;
-<<<<<<< HEAD
+
 
 		this.setSize(797, 312);
 
-=======
-		this.setSize(500, 450);
->>>>>>> origin/master
+
 		this.setLocation(screenw / 2 - this.getWidth() / 2,
 
 		screenh / 2 - this.getHeight() / 2);
