@@ -111,9 +111,10 @@ public class SalaryPolicybl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DECISION_SALARYPOLICY);
 		if (salaryPolicyDataService != null) {
+			ResultMessage rmsg=null;
 			SalaryPolicyPO po = manageVOPO.voToPO(VO);
 			try {
-				ResultMessage rmsg = salaryPolicyDataService.delete(po);
+				rmsg = salaryPolicyDataService.delete(po);
 				ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -126,7 +127,7 @@ public class SalaryPolicybl {
 				System.out.println("读写文件出错");
 				return ResultMessage.IOFAILED;
 			}
-			return ResultMessage.SUCCESS;
+			return rmsg;
 		} else {
 			return ResultMessage.REMOTE_FAILED;
 		}

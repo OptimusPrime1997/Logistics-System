@@ -34,7 +34,7 @@ public class AccountData extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		print();
 		if (d.save(po, path) == ResultMessage.SUCCESS) {
-			return ResultMessage.SIGNED_SUCCESS;
+			return ResultMessage.SUCCESS;
 		} else {
 			return  ResultMessage.FAILED;
 		}
@@ -85,8 +85,8 @@ public class AccountData extends UnicastRemoteObject implements
 				if (p.getAccountNum().equals(po.getAccountNum())) {
 					findPO = true;
 					objects.remove((Object) p);
+					break;
 				}
-				break;
 			}
 			d.SaveAll(objects, path);
 		}

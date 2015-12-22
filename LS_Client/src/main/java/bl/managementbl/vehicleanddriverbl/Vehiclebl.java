@@ -132,10 +132,11 @@ public class Vehiclebl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.CAR_MANAGEMENT);
 		if (vehicleDataService != null) {
+			ResultMessage rmsg=null;
 			if (InputCheck.checkInputNum(vo.vehicleNum, 9) == ResultMessage.VALID) {
 				VehiclePO po = manageVOPO.voToPO(vo);
 				try {
-					ResultMessage rmsg = vehicleDataService.deleteVehicle(po);
+					rmsg = vehicleDataService.deleteVehicle(po);
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -148,7 +149,7 @@ public class Vehiclebl {
 					System.out.println("读写文件出错");
 					return ResultMessage.IOFAILED;
 				}
-				return ResultMessage.SUCCESS;
+				return rmsg;
 			} else {
 				System.out.println("车辆"
 						+ InputCheck.checkInputNum(vo.vehicleNum, 9));

@@ -85,8 +85,8 @@ public class SalaryPolicyData extends UnicastRemoteObject implements
 				if(p.getAuthority()==(po.getAuthority())){
 					findPO=true;
 					objects.remove((Object)p);
+					break;
 				}
-				break;
 			}
 			d.SaveAll(objects, path);
 		}

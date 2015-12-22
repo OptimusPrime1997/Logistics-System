@@ -85,8 +85,8 @@ public class InstitutionData extends UnicastRemoteObject implements
 				if (p.getInstitutionNum().equals(po.getInstitutionNum())) {
 					findPO = true;
 					objects.remove((Object) p);
+					break;
 				}
-				break;
 			}
 			d.SaveAll(objects, path);
 		}

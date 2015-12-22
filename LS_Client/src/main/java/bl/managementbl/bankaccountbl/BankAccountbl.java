@@ -8,6 +8,7 @@ import java.util.Iterator;
 
 import dataservice.managementdataservice.bankaccountdataservice.BankAccountDataService;
 import dataservice.managementdataservice.managedataservice.ManageDataService;
+import util.InputCheck;
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
 import Exception.NameNotFoundException;
@@ -95,9 +96,11 @@ public class BankAccountbl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (bankAccountDataService != null) {
+			ResultMessage rmsg=null;
 			BankAccountPO po = manageVOPO.voToPO(vo);
 			try {
-				bankAccountDataService.delete(po);
+				rmsg=bankAccountDataService.delete(po);
+				ResultMessage.postCheck(rmsg, ResultMessage.SUCCESS);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -109,7 +112,7 @@ public class BankAccountbl {
 				System.out.println("读写文件出错");
 				return ResultMessage.IOFAILED;
 			}
-			return ResultMessage.SUCCESS;
+			return rmsg;
 		} else
 			return ResultMessage.FAILED;
 	}

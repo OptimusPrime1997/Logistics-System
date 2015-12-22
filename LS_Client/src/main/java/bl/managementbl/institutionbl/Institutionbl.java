@@ -127,9 +127,10 @@ public class Institutionbl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.PERSONNEL_INSTITUTION_MANAGEMENT);
 		if (institutionDataService != null) {
+			ResultMessage rmsg=null;
 			InstitutionPO po = manageVOPO.voToPO(VO);
 			try {
-				ResultMessage rmsg = institutionDataService.delete(po);
+				 rmsg = institutionDataService.delete(po);
 				ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -142,7 +143,7 @@ public class Institutionbl {
 				System.out.println("读写文件出错");
 				return ResultMessage.IOFAILED;
 			}
-			return ResultMessage.SUCCESS;
+			return rmsg;
 		} else {
 			return ResultMessage.WRONG_FORMAT;
 		}

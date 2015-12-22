@@ -45,6 +45,7 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 	public AccountSearchPanel(AdministratorPanel panel) {
 		this.administratorPanel = panel;
 		this.accountblController = panel.getAccountblController();
+		setAccountVOs();
 		initComponents();
 	}
 
@@ -103,8 +104,8 @@ public class AccountSearchPanel extends javax.swing.JFrame {
         back = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         resultMsg = new javax.swing.JLabel();
-
-        jLabel9.setText("当前账户：大玉儿");
+        String optorName=administratorPanel.getOptorName();
+        jLabel9.setText("当前账户："+optorName);
 
         exit.setText("退出");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -113,28 +114,7 @@ public class AccountSearchPanel extends javax.swing.JFrame {
             }
         });
 
-        accountjTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "账号", "姓名", "密码", "性别", "职位", "机构", "电话"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        accountjTable.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(accountjTable);
+        initialAccountJTable(accountVOs, 0);
 
         back.setText("返回");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +126,7 @@ public class AccountSearchPanel extends javax.swing.JFrame {
         jTabbedPane1.setToolTipText("");
         jTabbedPane1.setAutoscrolls(true);
 
-        resultMsg.setText("反馈");
+        resultMsg.setText("空闲");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -208,13 +188,12 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 			accountObjects[i][2] = vo.password;
 			accountObjects[i][3] = vo.sex;
 			accountObjects[i][4] = vo.authority;
-			accountObjects[i][5] = vo.institutionNum;
-			accountObjects[i][6] = vo.phoneNum;
-
+			accountObjects[i][5] = vo.phoneNum;
+			accountObjects[i][6] = vo.institutionNum;
 		}
 		accountjTable.setModel(new javax.swing.table.DefaultTableModel(
 				accountObjects, new String[] { "用户账号", "姓名", "密码", "性别", "职位",
-						"机构编号", "电话" }) {
+						 "电话","机构编号" }) {
 			Class[] types = new Class[] { java.lang.String.class,
 					java.lang.String.class, java.lang.String.class,
 					JComboBox.class, JComboBox.class, java.lang.String.class,java.lang.String.class  };
@@ -235,6 +214,7 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 		accountjTable.getColumnModel().getColumn(4)
 				.setCellEditor(new DefaultCellEditor(authorityjComboBox));
 
+		
 		final JPopupMenu accountjPop = new JPopupMenu();
 		final JMenuItem accountSubmitjItem = new JMenuItem("提交");
 		final JMenuItem accountDeljItem = new JMenuItem("删除");
@@ -448,8 +428,8 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 			password = (String) accountjTable.getValueAt(n, 2);
 			sex = (Sex) accountjTable.getValueAt(n, 3);
 			authority = (Authority) accountjTable.getValueAt(n, 4);
-			institutionNum = (String) accountjTable.getValueAt(n, 5);
-			phoneNum = (String) accountjTable.getValueAt(n, 6);
+			phoneNum = (String) accountjTable.getValueAt(n, 5);
+			institutionNum = (String) accountjTable.getValueAt(n, 6);
 
 			assert (accountName != null && accountNum != null && sex != null
 					&& authority != null && institutionNum != null && phoneNum != null) : ("您输入的账户信息不完整！");
@@ -463,7 +443,7 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 			System.out.println(e.getMessage());
 		}
 		return new AccountVO(accountNum, accountName, password, sex, authority,
-				institutionNum, phoneNum);
+				 phoneNum,institutionNum);
 	}
 
 	private void exitActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton3ActionPerformed
@@ -516,8 +496,8 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 	private ArrayList<AccountVO> accountVOs = null;
 	private AccountBLService accountblController = null;
 	private AdministratorPanel administratorPanel;
-	private JComboBox sexjComboBox;
-	private JComboBox authorityjComboBox;
+	private JComboBox sexjComboBox=ComponentFactory.getSexJComboBox();
+	private JComboBox authorityjComboBox=ComponentFactory.getInstance().getAuthorityJComboBox();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exit;
     private javax.swing.JButton back;

@@ -85,8 +85,8 @@ public class BankAccountData extends UnicastRemoteObject implements
 				if (p.getBankAccountNum().equals(po.getBankAccountNum())) {
 					findPO = true;
 					objects.remove((Object) p);
+					break;
 				}
-				break;
 			}
 			d.SaveAll(objects, path);
 		}

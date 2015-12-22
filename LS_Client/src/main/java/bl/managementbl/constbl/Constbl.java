@@ -103,10 +103,11 @@ public class Constbl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DECISION_CONST);
 		if (constDataService != null) {
+			ResultMessage rmsg=null;
 			if (VO.twoCities.contains("-") && VO.twoCities.length() < 20) {
 				ConstPO po = manageVOPO.voToPO(VO);
 				try {
-					ResultMessage rmsg = constDataService.delete(po);
+				rmsg = constDataService.delete(po);
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -119,7 +120,7 @@ public class Constbl {
 					System.out.println("读写文件出错");
 					return ResultMessage.IOFAILED;
 				}
-				return ResultMessage.SUCCESS;
+				return rmsg;
 			} else {
 				return ResultMessage.WRONG_FORMAT;
 			}

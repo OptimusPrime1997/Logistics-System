@@ -107,9 +107,10 @@ public class Driverbl {
 		manageVOPO.addLog(LogType.DRIVER_MANAGEMENT);
 		if (driverDataService != null) {
 			if (check(vo) == ResultMessage.VALID) {
+				ResultMessage rmsg=null;
 				DriverPO po = manageVOPO.voToPO(vo);
 				try {
-					ResultMessage rmsg = driverDataService.updateDriver(po);
+					rmsg = driverDataService.updateDriver(po);
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -122,7 +123,7 @@ public class Driverbl {
 					System.out.println("读写文件出错");
 					return ResultMessage.IOFAILED;
 				}
-				return ResultMessage.SUCCESS;
+				return rmsg;
 			} else {
 				System.out.println("司机"
 						+ ResultMessage.toFriendlyString(check(vo)));

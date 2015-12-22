@@ -84,8 +84,8 @@ public class ConstData extends UnicastRemoteObject implements ConstDataService {
 				if (p.getTwoCities().equals(po.getTwoCities())) {
 					findPO = true;
 					objects.remove((Object) p);
+					break;
 				}
-				break;
 			}
 			d.SaveAll(objects, path);
 		}
