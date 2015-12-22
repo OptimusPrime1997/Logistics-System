@@ -7,6 +7,7 @@ package ui.administratorui;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -54,183 +55,146 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 	 */
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed"
-	// desc="Generated Code">//GEN-BEGIN:initComponents
-	private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
 		/**
-		 * 设置窗体大小为不可变
-		 */
+
+		* 设置窗体大小为不可变
+
+		*/
+
 		this.setResizable(false);
+
 		/**
-		 * 设置窗体在中部出现
-		 */
+
+		* 设置窗体在中部出现
+
+		*/
+
 		Toolkit tk = Toolkit.getDefaultToolkit();
+
 		Dimension screensize = tk.getScreenSize();
+
 		int screenh = screensize.height;
+
 		int screenw = screensize.width;
-		this.setSize(500, 450);
+
+
+		this.setSize(797, 312);
+
+
 		this.setLocation(screenw / 2 - this.getWidth() / 2,
-				screenh / 2 - this.getHeight() / 2);
+
+		screenh / 2 - this.getHeight() / 2);
+
 		/**
-		 * 关闭窗口
-		 */
+
+		* 关闭窗口
+
+		*/
+
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		sexjComboBox = ComponentFactory.getSexJComboBox();
-		authorityjComboBox = ComponentFactory.getInstance()
-				.getAuthorityJComboBox();
-		jLabel9 = new javax.swing.JLabel();
-		exit = new javax.swing.JButton();
-		jScrollPane1 = new javax.swing.JScrollPane();
-		accountjTable = new javax.swing.JTable();
-		back = new javax.swing.JButton();
-		jTabbedPane1 = new javax.swing.JTabbedPane();
+		
+        jLabel9 = new javax.swing.JLabel();
+        exit = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        accountjTable = new javax.swing.JTable();
+        back = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        resultMsg = new javax.swing.JLabel();
 
-		setAccountVOs();
+        jLabel9.setText("当前账户：大玉儿");
 
-		jLabel9.setText("当前账户：" + administratorPanel.getOptorName());
+        exit.setText("退出");
+        exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitActionPerformed(evt);
+            }
+        });
 
-		exit.setText("退出");
-		exit.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				exitActionPerformed(evt);
-			}
-		});
+        accountjTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "账号", "姓名", "密码", "性别", "职位", "机构", "电话"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
 
-		// TODO 显示需要的表格
-		initialAccountJTable(accountVOs, 0);
-		back.setText("返回");
-		back.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				backActionPerformed(evt);
-			}
-		});
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        accountjTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(accountjTable);
 
-		jTabbedPane1.setToolTipText("");
-		jTabbedPane1.setAutoscrolls(true);
+        back.setText("返回");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
 
-		resultMsg.setText("空闲");
+        jTabbedPane1.setToolTipText("");
+        jTabbedPane1.setAutoscrolls(true);
 
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
-				getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(
-						layout.createSequentialGroup()
-								.addContainerGap(
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										Short.MAX_VALUE)
-								.addGroup(
-										layout.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
-												.addGroup(
-														javax.swing.GroupLayout.Alignment.TRAILING,
-														layout.createSequentialGroup()
-																.addComponent(
-																		jLabel9)
-																.addPreferredGap(
-																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																.addComponent(
-																		exit)
-																.addContainerGap())
-												.addGroup(
-														javax.swing.GroupLayout.Alignment.TRAILING,
-														layout.createSequentialGroup()
-																.addComponent(
-																		jTabbedPane1,
-																		javax.swing.GroupLayout.PREFERRED_SIZE,
-																		javax.swing.GroupLayout.DEFAULT_SIZE,
-																		javax.swing.GroupLayout.PREFERRED_SIZE)
-																.addPreferredGap(
-																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																.addGroup(
-																		layout.createParallelGroup(
-																				javax.swing.GroupLayout.Alignment.LEADING,
-																				false)
-																				.addGroup(
-																						javax.swing.GroupLayout.Alignment.TRAILING,
-																						layout.createSequentialGroup()
-																								.addComponent(
-																										resultMsg,
-																										javax.swing.GroupLayout.PREFERRED_SIZE,
-																										303,
-																										javax.swing.GroupLayout.PREFERRED_SIZE)
-																								.addPreferredGap(
-																										javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-																										javax.swing.GroupLayout.DEFAULT_SIZE,
-																										Short.MAX_VALUE)
-																								.addComponent(
-																										back)
-																								.addContainerGap())
-																				.addGroup(
-																						javax.swing.GroupLayout.Alignment.TRAILING,
-																						layout.createSequentialGroup()
-																								.addComponent(
-																										jScrollPane1,
-																										javax.swing.GroupLayout.PREFERRED_SIZE,
-																										366,
-																										javax.swing.GroupLayout.PREFERRED_SIZE)
-																								.addGap(15,
-																										15,
-																										15)))))));
-		layout.setVerticalGroup(layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(
-						layout.createSequentialGroup()
-								.addContainerGap()
-								.addGroup(
-										layout.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
-												.addGroup(
-														layout.createSequentialGroup()
-																.addGroup(
-																		layout.createParallelGroup(
-																				javax.swing.GroupLayout.Alignment.BASELINE)
-																				.addComponent(
-																						jLabel9)
-																				.addComponent(
-																						exit))
-																.addPreferredGap(
-																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																.addComponent(
-																		jScrollPane1,
-																		javax.swing.GroupLayout.PREFERRED_SIZE,
-																		205,
-																		javax.swing.GroupLayout.PREFERRED_SIZE)
-																.addGap(18, 18,
-																		18))
-												.addGroup(
-														javax.swing.GroupLayout.Alignment.TRAILING,
-														layout.createSequentialGroup()
-																.addComponent(
-																		jTabbedPane1,
-																		javax.swing.GroupLayout.PREFERRED_SIZE,
-																		javax.swing.GroupLayout.DEFAULT_SIZE,
-																		javax.swing.GroupLayout.PREFERRED_SIZE)
-																.addGap(76, 76,
-																		76)))
-								.addGroup(
-										layout.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
-												.addGroup(
-														layout.createSequentialGroup()
-																.addComponent(
-																		back)
-																.addContainerGap(
-																		29,
-																		Short.MAX_VALUE))
-												.addGroup(
-														javax.swing.GroupLayout.Alignment.TRAILING,
-														layout.createSequentialGroup()
-																.addPreferredGap(
-																		javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-																		javax.swing.GroupLayout.DEFAULT_SIZE,
-																		Short.MAX_VALUE)
-																.addComponent(
-																		resultMsg)
-																.addGap(14, 14,
-																		14)))));
-	}// </editor-fold>//GEN-END:initComponents
+        resultMsg.setText("反馈");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(30, 30, 30)
+                        .addComponent(exit))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 121, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(resultMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(back)))))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(84, 84, 84))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(exit))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(resultMsg)
+                    .addComponent(back))
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+    }// </editor-fold>//GEN-END:initComponents
+
+	
 
 	private void initialAccountJTable(ArrayList<AccountVO> vos, int row) {
 		// TODO Auto-generated method stub
@@ -554,13 +518,13 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 	private AdministratorPanel administratorPanel;
 	private JComboBox sexjComboBox;
 	private JComboBox authorityjComboBox;
-	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private javax.swing.JButton exit;
-	private javax.swing.JButton back;
-	final private javax.swing.JLabel resultMsg = new javax.swing.JLabel();
-	private javax.swing.JLabel jLabel9;
-	private javax.swing.JScrollPane jScrollPane1;
-	private javax.swing.JTabbedPane jTabbedPane1;
-	private javax.swing.JTable accountjTable;
-	// End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton exit;
+    private javax.swing.JButton back;
+    private javax.swing.JLabel resultMsg;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable accountjTable;
+    // End of variables declaration//GEN-END:variables
 }
