@@ -3,6 +3,7 @@
  */
 package util.enumData;
 
+import javax.print.attribute.standard.RequestingUserName;
 
 /**
  * @author G
@@ -12,188 +13,199 @@ public enum ResultMessage {
 	/**
 	 * 成功
 	 */
-	SUCCESS,
+	SUCCESS(""),
 	/**
 	 * 失败
 	 */
-	FAILED,
+	FAILED("失败"),
 	/**
 	 * 错误
 	 */
-	WRONG,
+	WRONG(""),
 	/**
 	 * 修改成功
 	 */
-	MODIFY_SUCCESS,
+	MODIFY_SUCCESS(""),
 
 	/**
 	 * 连接错误
 	 */
-	LINK_FAILURE,
+	LINK_FAILURE(""),
 	/**
 	 * 已存在
 	 */
-	EXIST,
+	EXIST(""),
 	/**
 	 * 没找到订单
 	 */
-	NOT_FOUND,
+	NOT_FOUND(""),
 	/**
 	 * 没找到有关收支记录
 	 */
-	NOT_FOUND_FINACIAL,
+	NOT_FOUND_FINACIAL(""),
 	/**
 	 * 起止日期颠倒
 	 */
-	WRONG_ORDER_OF_DATE,
+	WRONG_ORDER_OF_DATE(""),
 	/**
 	 * 合法
 	 */
-	VALID,
+	VALID(""),
 	/**
 	 * 编号过长
 	 */
-	REPNUM_LENGTH_OVER,
+	REPNUM_LENGTH_OVER(""),
 	/**
 	 * 编号过短
 	 */
-	REPNUM_LENGTH_LACKING,
+	REPNUM_LENGTH_LACKING(""),
 	/**
 	 * 编号长度有误
 	 */
-	REPNUM_LENGTH_WRONG,
+	REPNUM_LENGTH_WRONG(""),
 	/**
 	 * 编号出现非数字的字符
 	 */
-	REPNUM_NOT_ALL_NUM,
+	REPNUM_NOT_ALL_NUM(""),
 	/**
 	 * 编号不正确
 	 */
-	REPNUM_NOT_RIGHT,
+	REPNUM_NOT_RIGHT(""),
 	/**
 	 * 手机号长度有误
 	 */
-	PHONE_LENGTH_WRONG,
+	PHONE_LENGTH_WRONG(""),
 	/**
 	 * 长度有误
 	 */
-	LENGTH_WRONG,
+	LENGTH_WRONG(""),
 	/**
 	 * 字符超出长度
 	 */
-	LENGTH_OVER,
+	LENGTH_OVER(""),
 	/**
 	 * 含非法字符
 	 */
-	UNVALID_CHAR,
+	UNVALID_CHAR(""),
 	/**
 	 * 不合理的内件数
 	 */
-	UNREASONABLE_GOODS_NUM,
+	UNREASONABLE_GOODS_NUM(""),
 	/**
 	 * 不合理的重量数值
 	 */
-	UNREASONABLE_WEIGHT_NUM,
+	UNREASONABLE_WEIGHT_NUM(""),
 	/**
 	 * 不合理的体积数值
 	 */
-	UNREASONABLE_VOLUME_NUM,
+	UNREASONABLE_VOLUME_NUM(""),
 	/**
 	 * 未填写
 	 */
-	NOT_COMPLETED,
+	NOT_COMPLETED(""),
 	/**
 	 * 账号未填写
 	 */
-	NOT_COMPLETED_ACCOUNT,
+	NOT_COMPLETED_ACCOUNT(""),
 	/**
 	 * 密码未填写
 	 */
-	NOT_COMPLETED_KEY,
+	NOT_COMPLETED_KEY(""),
 	/**
 	 * 账号格式错误
 	 */
-	WRONG_ACCOUNTNUM,//TODO
+	WRONG_ACCOUNTNUM(""), // TODO
 	/**
 	 * 账号不存在
 	 */
-	NOT_FOUND_ACCOUNTNUM,
+	NOT_FOUND_ACCOUNTNUM(""),
 	/**
 	 * 数据格式错误
 	 */
-	WRONG_FORMAT,
+	WRONG_FORMAT(""),
 	/**
 	 * 错误密码
 	 */
-	WRONG_PASSWORD,
+	WRONG_PASSWORD(""),
 	/**
 	 * 数据错误
 	 */
-	WRONG_DATA,
+	WRONG_DATA(""),
 	/**
 	 * 文件未找到
 	 */
-	NOT_FOUND_FILE,
+	NOT_FOUND_FILE(""),
 	/**
 	 * 文件读写失败
 	 */
-	IOFAILED,
+	IOFAILED(""),
 	/**
 	 * 输入应该为正整数
 	 */
-	INPUT_SHOULD_BE_POSITIVE_INTEGER,
+	INPUT_SHOULD_BE_POSITIVE_INTEGER(""),
 	/**
 	 * 输入数值太大
 	 */
-	NUMBER_OVER,
+	NUMBER_OVER(""),
 	/**
 	 * 该库存区位已被占用
 	 */
-	NOT_AVAILABLE,
+	NOT_AVAILABLE(""),
 	/**
 	 * 覆盖数据
 	 */
-	OVERRIDE_DATA,
+	OVERRIDE_DATA(""),
 	/**
 	 * 添加成功
 	 */
-	ADD_SUCCESS,
+	ADD_SUCCESS(""),
 	/**
 	 * 提交成功
 	 */
-	SUBMIT_SUCCESS,
+	SUBMIT_SUCCESS(""),
 	/**
 	 * 签收成功
 	 */
 
-	SIGNED_SUCCESS,
+	SIGNED_SUCCESS(""),
 	/**
 	 * 输入必须为正数
 	 */
-	INPUTNUM_MUST_BE_POSITIVE,
+	INPUTNUM_MUST_BE_POSITIVE(""),
 	/**
 	 * 职位为空
 	 */
-	NULL_AUTHORITY,
+	NULL_AUTHORITY(""),
 	/**
 	 * 薪水策略
 	 */
-	NULL_SALARYPOLICY,
+	NULL_SALARYPOLICY(""),
 	/**
 	 * 远程连接失败
 	 */
-	REMOTE_FAILED,
+	REMOTE_FAILED(""),
 	/**
 	 * 
 	 * 输入的日期前后不合理
 	 * 
 	 */
-	INVALID_DATE,
+	INVALID_DATE(""),
 	/**
 	 * 库存报警
 	 */
-	ALARM;
+	ALARM("库存报警");
 	
+	
+//	有空就把所有空的字符串补齐，然后把下面长长的switch去掉
+
+	
+	private String value;
+	private ResultMessage(String v){
+		this.value=v;
+	}
+	public String toString(){
+		return this.value;
+	}
 	public static String toFriendlyString(ResultMessage resultMessage) {
 
 		switch (resultMessage) {
@@ -208,7 +220,7 @@ public enum ResultMessage {
 		case NOT_COMPLETED:
 			return "有项目未填写，请完成后再提交";
 		case LENGTH_WRONG:
-			return "长度有误,订单号是10位~手机号是11位哦~";
+			return "号码长度有误,订单号是10位~手机号是11位~";
 		case WRONG_FORMAT:
 			return "格式错误";
 		case WRONG_DATA:
@@ -242,7 +254,7 @@ public enum ResultMessage {
 		case IOFAILED:
 			return "读写文件失败";
 		case FAILED:
-			return "系统程序错误";
+			return "失败";
 		case SUCCESS:
 			return "成功";
 		case WRONG:
@@ -263,16 +275,19 @@ public enum ResultMessage {
 			return "起始日期必须早于结束日期";
 		case ALARM:
 			return "该区库存紧张";
+		default:
+			return "";
 		}
-		return "";
 	}
-	public static void postCheck(ResultMessage expected,ResultMessage rmsg){
-		try{
-			assert (expected==rmsg):("与预期不符："+ResultMessage.toFriendlyString(rmsg));
-			if(expected==rmsg){
+
+	public static void postCheck(ResultMessage expected, ResultMessage rmsg) {
+		try {
+			assert (expected == rmsg) : ("与预期不符：" + ResultMessage
+					.toFriendlyString(rmsg));
+			if (expected == rmsg) {
 				System.out.println(ResultMessage.toFriendlyString(rmsg));
 			}
-		}catch(AssertionError e){
+		} catch (AssertionError e) {
 			System.out.println("程序与预期不符！");
 			System.out.println(e.getMessage());
 		}
