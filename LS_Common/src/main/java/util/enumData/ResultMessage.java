@@ -171,7 +171,7 @@ public enum ResultMessage {
 	/**
 	 * 输入必须为正数
 	 */
-	INPUTNUM_MUST_BE_POSITIVE(""),
+	INPUTNUM_MUST_BE_POSITIVE("输入必须为正数"),
 	/**
 	 * 职位为空
 	 */

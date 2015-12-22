@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import dataservice.managementdataservice.accountdataservice.AccountDataService;
+import dataservice.managementdataservice.accountdataservice.CourierDataService;
 import dataservice.managementdataservice.bankaccountdataservice.BankAccountDataService;
 import dataservice.managementdataservice.constdataservice.ConstDataService;
 import dataservice.managementdataservice.institutiondataservice.InstitutionDataService;
@@ -53,6 +54,12 @@ public class ManageData extends UnicastRemoteObject implements
 	}
 
 	@Override
+	public CourierDataService getCourierData() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public BankAccountDataService getBankAccountData() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
@@ -87,5 +94,6 @@ public class ManageData extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import dataimpl.management.accountdata.AccountData;
+import dataimpl.management.accountdata.CourierData;
 import dataimpl.management.bankaccountdata.BankAccountData;
 import dataimpl.management.constdata.ConstData;
 import dataimpl.management.institutiondata.InstitutionData;
@@ -11,6 +12,7 @@ import dataimpl.management.salarypolicydata.SalaryPolicyData;
 import dataimpl.management.vehicleanddriverdata.DriverData;
 import dataimpl.management.vehicleanddriverdata.VehicleData;
 import dataservice.managementdataservice.accountdataservice.AccountDataService;
+import dataservice.managementdataservice.accountdataservice.CourierDataService;
 import dataservice.managementdataservice.bankaccountdataservice.BankAccountDataService;
 import dataservice.managementdataservice.constdataservice.ConstDataService;
 import dataservice.managementdataservice.institutiondataservice.InstitutionDataService;
@@ -26,6 +28,7 @@ public class ManageDataImpl extends UnicastRemoteObject implements
 
 	private static ManageDataImpl manageData;
 	private static AccountData accountData;
+	private static CourierData courierData;
 	private static BankAccountData bankAccountData;
 	private static ConstData constData;
 	private static InstitutionData institutionData;
@@ -54,6 +57,14 @@ public class ManageDataImpl extends UnicastRemoteObject implements
 		if (accountData == null)
 			accountData = new AccountData();
 		return accountData;
+	}
+
+	@Override
+	public CourierDataService getCourierData() throws RemoteException {
+		// TODO Auto-generated method stub
+		if (courierData == null)
+			courierData = new CourierData();
+		return courierData;
 	}
 
 	@Override
