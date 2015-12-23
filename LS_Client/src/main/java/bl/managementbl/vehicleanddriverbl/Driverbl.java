@@ -4,18 +4,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import dataservice.managementdataservice.managedataservice.ManageDataService;
 import dataservice.managementdataservice.vehicleanddriverdataservice.DriverDataService;
-import Exception.AutoNumException;
-import Exception.ExistException;
 import Exception.NumNotFoundException;
-import PO.AccountPO;
 import PO.DriverPO;
-import PO.VehiclePO;
 import VO.ManagementVO.DriverVO;
-import bl.loginbl.Loginbl;
 import bl.managementbl.managedata.ManageData;
 import bl.managementbl.managedata.ManageVOPO;
 import util.InputCheck;

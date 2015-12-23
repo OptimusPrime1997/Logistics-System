@@ -62,7 +62,7 @@ public class ShipmentRep extends javax.swing.JPanel {
 	 */
 	public ShipmentRep() {
 		initComponents();
-		myFrame = new MyFrame(426, 461, this);
+		myFrame = new MyFrame(446, 481, this);
 	}
 
 	/**

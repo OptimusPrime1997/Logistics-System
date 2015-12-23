@@ -5,7 +5,6 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
@@ -16,6 +15,7 @@ import bl.goodsbl.Goodsbl;
 import bl.logbl.Logbl;
 import bl.managementbl.accountbl.Accountbl;
 import dataservice.receiptdataservice.ReceiptDataService;
+import util.CurrentTime;
 import util.enumData.LogType;
 import util.enumData.Rep;
 import util.enumData.ResultMessage;
@@ -40,12 +40,7 @@ public class Receiptbl {
 	}
 	
 	public String getDate(){
-		int y,m,d;
-		Calendar cal=Calendar.getInstance();   
-		y=cal.get(Calendar.YEAR);   
-		m=cal.get(Calendar.MONTH)+1;   
-		d=cal.get(Calendar.DATE);  
-		return y+"-"+m+"-"+d;
+		return CurrentTime.getDate();
 	}
 	
 	public String getDateInNum(String string){
@@ -106,22 +101,7 @@ public class Receiptbl {
 			return info + "长度过短";
 		if (string.length() > n)
 			return info + "长度过长";
-		for(int i = 0;i<n;i++){
-			if(string.charAt(i)<'0'||string.charAt(i)>'9')
-				return "存在非数字字符 ";
-		}
 		return "添加成功";
-	}
-	
-	public boolean isTrueAccount(String num){
-		try {
-			accountbl.findByAccountNum(num);
-		} catch (ClassNotFoundException | NumNotFoundException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}
-		return true;
 	}
 	
 	public boolean isTrueOrder(String order){

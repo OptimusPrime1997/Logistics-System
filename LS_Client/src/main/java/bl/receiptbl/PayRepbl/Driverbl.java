@@ -7,15 +7,18 @@ import java.util.Vector;
 
 import Exception.NumNotFoundException;
 import Exception.SalaryPolicyNotFoundException;
+import VO.ManagementVO.DriverVO;
 import VO.Receipt.PayDriverSalaryVO;
 import VO.Receipt.PayRepDriverSalaryRepVO;
 import VO.Receipt.PayRepVO;
+import bl.managementbl.accountbl.Accountbl;
 import bl.managementbl.salarypolicybl.SalaryPolicybl;
 import util.enumData.Authority;
 
 public class Driverbl{
 	
 	private SalaryPolicybl salaryPolicybl = new SalaryPolicybl();
+	private bl.managementbl.vehicleanddriverbl.Driverbl driverbl = new bl.managementbl.vehicleanddriverbl.Driverbl();
 	
 	public void submitDriver(PayRepVO payRepVO, PayRepDriverSalaryRepVO payRepDriverSalaryRepVO){
 		payRepVO.driverSalary = payRepDriverSalaryRepVO;
@@ -26,7 +29,15 @@ public class Driverbl{
 			NumNotFoundException{
 		Vector<Object> data = new Vector<Object>();
 		double moneyTime = salaryPolicybl.findByAuthority(Authority.DRIVER).value;
-		
+		ArrayList<DriverVO> driverVOs = driverbl.showDriver();
+		for(DriverVO driverVO : driverVOs){
+			Vector<String> arr = new Vector<String>();
+			arr.add(driverVO.name);
+			arr.add(driverVO.driverNum);
+			arr.add(driverVO.number+"");
+			arr.add(driverVO.number*moneyTime+"");
+			data.add(arr);
+		}
 		return data;
 	}
 	

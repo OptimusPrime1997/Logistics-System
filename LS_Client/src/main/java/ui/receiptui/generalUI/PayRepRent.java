@@ -128,6 +128,8 @@ public class PayRepRent extends javax.swing.JPanel {
 		columnIdentifiers.add("备注");
 		columnIdentifiers.add("删除");
 		dataVector = control.initRentTable(payRepVO);
+		if(dataVector==null)
+			dataVector = new Vector<Object>();
 		model.setDataVector(dataVector, columnIdentifiers);
 		jTable.setModel(model);
 		jTable.setGridColor(new java.awt.Color(0, 0, 0));
@@ -153,6 +155,15 @@ public class PayRepRent extends javax.swing.JPanel {
 			for (int i = 0; i < bankAccountBox.getItemCount(); i++) {
 				if (bankAccountBox.getItemAt(i).equals(bankAccount)) {
 					bankAccountBox.setSelectedIndex(i);
+					double balance = 0;
+					try {
+						balance = control.showBankBalance(bankAccount);
+					} catch (ClassNotFoundException | NameNotFoundException | IOException | NumNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						resultMsgText.setText(ExceptionPrint.print(e));
+					}
+					balanceText.setText(balance+"");
 					break;
 				}
 			}

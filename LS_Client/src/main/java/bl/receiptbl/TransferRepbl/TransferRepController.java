@@ -1,5 +1,6 @@
 package bl.receiptbl.TransferRepbl;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
@@ -7,6 +8,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import Exception.ConstNotFoundException;
 import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
 import VO.Receipt.ReceiptVO;
@@ -76,7 +78,8 @@ public class TransferRepController extends ReceiptblController implements Transf
 	}
 
 	@Override
-	public double getFreightMoney(String depart, String destination, double weight, ShipForm form) {
+	public double getFreightMoney(String depart, String destination, double weight, ShipForm form)
+			throws FileNotFoundException, ClassNotFoundException, ConstNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return transferRepbl.getFreightMoney(depart, destination, weight, form);
 	}

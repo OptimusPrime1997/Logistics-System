@@ -80,6 +80,7 @@ public class DocumentCheckbl {
 
 		dates.addAll(getDate(receptionRepVOs));
 		nums.addAll(getNum(receptionRepVOs));
+		reps.addAll(getRep(receptionRepVOs, "中转中心到达单"));
 
 		dates.addAll(getDate(shipmentRepVOs));
 		nums.addAll(getNum(shipmentRepVOs));
@@ -96,12 +97,14 @@ public class DocumentCheckbl {
 		if(payCheck()!=null){
 			dates.add(payCheck().date);
 			nums.add(payCheck().num);
+			reps.add("付款单");
 		}
 
 		for (int i = 0; i < dates.size(); i++) {
 			Vector<String> arr = new Vector<String>();
 			arr.add(dates.get(i));
 			arr.add(nums.get(i));
+			arr.add(reps.get(i));
 			data.add(arr);
 		}
 		return data;
@@ -142,6 +145,8 @@ public class DocumentCheckbl {
 			NotBoundException {
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.forCheck(Rep.CashRep);
+		if(receiptPOs==null)
+			return null;
 		ArrayList<CashRepVO> cashRepVOs = CashRepVO.toArrayVO(receiptPOs);
 		for (CashRepVO cashRepVO : cashRepVOs) {
 			if (!cashRepVO.date.equals(receiptbl.getDate())) {

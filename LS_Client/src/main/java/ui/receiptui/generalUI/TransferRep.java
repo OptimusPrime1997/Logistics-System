@@ -17,6 +17,7 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import Exception.ConstNotFoundException;
 import Exception.ExceptionPrint;
 import Exception.GoodsNotFound;
 import VO.Receipt.TransferRepVO;
@@ -414,9 +415,16 @@ public class TransferRep extends javax.swing.JPanel {
 		String depart = officeText.getText();
 		String destination = destinationText.getText();
 		ShipForm form = ShipForm.getShipForm(shipFormBox.getSelectedItem().toString());
+		double money = 0;
+		try {
+			money = control.getFreightMoney(depart, destination, weight, form);
+		} catch (ClassNotFoundException | ConstNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
 		TransferRepVO transferRepVO = new TransferRepVO(num, date, form, carNumText.getText(),
-				City.getCity(destination), orders, control.getFreightMoney(depart, destination, weight, form),
-				City.getCity(depart));
+				City.getCity(destination), orders, money, City.getCity(depart));
 		try {
 			control.submit(transferRepVO);
 		} catch (NotBoundException | IOException e) {

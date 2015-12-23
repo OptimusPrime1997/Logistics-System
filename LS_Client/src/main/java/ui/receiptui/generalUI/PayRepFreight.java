@@ -126,11 +126,20 @@ public class PayRepFreight extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
-        if (bankAccount != null) {
+		if (bankAccount != null) {
 			bankAccountBox.setEnabled(false);
 			for (int i = 0; i < bankAccountBox.getItemCount(); i++) {
 				if (bankAccountBox.getItemAt(i).equals(bankAccount)) {
 					bankAccountBox.setSelectedIndex(i);
+					double balance = 0;
+					try {
+						balance = control.showBankBalance(bankAccount);
+					} catch (ClassNotFoundException | NameNotFoundException | IOException | NumNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						resultMsgText.setText(ExceptionPrint.print(e));
+					}
+					balanceText.setText(balance+"");
 					break;
 				}
 			}
