@@ -375,7 +375,10 @@ public class courier_main extends JPanel {
 		exit_btn = new JButton();
 		signedGoodsbtn.setText("已签收");
 		newGoodsbtn.setText("新订单");
-		account_btn.setText("老王（包括更改密码、退出登录）");
+		try {
+			account_btn.setText(ctr_login.getCurrentName());
+		} catch (RemoteException e1) {
+		}
 		exit_btn.setText("退出系统");
 		addListeners();
 	}
@@ -484,7 +487,7 @@ public class courier_main extends JPanel {
 	private JLabel recentDays_label;
 	private JButton newGoodsbtn;
 	private JButton signedGoodsbtn;
-private LoginBLService ctr_login;
-private LogBLService ctr_log;
+	private LoginBLService ctr_login;
+	private LogBLService ctr_log;
 	// End of variables declaration
 }

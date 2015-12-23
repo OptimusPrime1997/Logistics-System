@@ -22,12 +22,11 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	//Done!
 	@Override	
 	public ResultMessage add(GoodsPO po) throws RemoteException {
-		ArrayList<Object> all;
-			GoodsPO temp;
+		System.out.println("goodsData.add "+po.getStartTime());
 		    try {
-				all=helper.getAll(filename);
 			    return helper.save(po, filename);
-			} catch ( IOException | ClassNotFoundException e) {
+			    
+			} catch ( IOException  e) {
 			}
 		return ResultMessage.FAILED;
 	}
@@ -154,7 +153,7 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	@Override
 	public int findbyCourier(String CourierNum,String date)
 			throws RemoteException{
-		System.out.println("GoodsData.findbyCourier");
+		System.out.print("GoodsData.findbyCourier  ");
 		ArrayList<Object> all=null;
 		//待返回的总数
 		int sum=0;
@@ -168,12 +167,14 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 				if((po.getGetCourierAccount().equals(CourierNum)&&po.getStartTime().equals(date))//TODO
 						||(po.getDeliverCourierAccount().equals(CourierNum)&&po.getOvertime().equals(date))
 						){
+					System.out.println("我要找的日期 "+date+" ;"+"找到的订单 "+po.getListNum()+" "+po.getStartTime());
 					sum++;
 				}
 			}
 		} catch (ClassNotFoundException | IOException e) {
 	       	return 0;
 		}
+		System.out.println("日期 "+date+" "+sum);
 		return sum;
 	
 	}

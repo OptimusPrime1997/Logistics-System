@@ -100,6 +100,7 @@ public class GoodsPO implements Serializable {
 	}
 
 	public String getStartTime() {
+		System.out.println("订单 "+listNum+"  "+startTime);
 		return startTime;
 	}
 

@@ -392,6 +392,7 @@ public class Order extends javax.swing.JPanel {
         	this.weight=Double.parseDouble(weightText.getText());
         	this.volume=Double.parseDouble(volumeText.getText());
         	this.nameOfInside=itemNameText.getText();
+        	startTime=CurrentTime.getDate();
 			vo = new GoodsVO(numText.getText(),false, getCourierAccount, "", startTime, "",
 					destinationCity, senderName, senderAddress, senderCompany,
 					senderPhone, receiverName, receiverAddress,
@@ -409,6 +410,7 @@ public class Order extends javax.swing.JPanel {
 				}
 			}
 			System.out.println("订单号 "+vo.listNum);
+			System.out.println("Order.填写日期   "+startTime);
 			numText.setText(vo.listNum);
 			sumText.setText(vo.moneyTotal+"");
 			

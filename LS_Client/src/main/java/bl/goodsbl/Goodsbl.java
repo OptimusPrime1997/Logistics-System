@@ -122,6 +122,7 @@ public class Goodsbl {
 			vo.allLogisticStates.add(new String[]{vo.startTime,
 					GoodsLogisticState.toFriendlyString(GoodsLogisticState.SENDED)});
 		    msg=getGoodsDataService().add(GoodsVO.toPO(vo));
+		    System.out.println("Goodsbl.initComplete 日期 "+vo.startTime);
 		   //已添加过该订单号
 		   if(msg.equals(ResultMessage.EXIST)) throw new ExistException();
 		} catch (Exception e) {
@@ -259,6 +260,7 @@ public class Goodsbl {
 		String date = CurrentTime.getDate();
 		for (int i = 0; i < numOfDays; i++) {
 			nums[i] = getGoodsByCourier(Loginbl.getCurrentOptorId(), CurrentTime.minusDate(date, i));
+			System.out.println("Goodsbl "+CurrentTime.minusDate(date, i)+" "+nums[i]);
 		}
 		System.out.print("ID: "+Loginbl.getCurrentOptorId());
 		System.out.println("  "+getGoodsByCourier(Loginbl.getCurrentOptorId(), CurrentTime.getDate()));
