@@ -20,6 +20,8 @@ import VO.Receipt.GetRepVO;
 import VO.Receipt.ReceptionRepVO;
 import bl.receiptbl.GetRepbl.GetRepController;
 import bl.receiptbl.ReceptionRepbl.ReceptionRepController;
+import blservice.receiptblservice.GetRepblService;
+import blservice.receiptblservice.ReceptionRepblService;
 import ui.util.MyFrame;
 import util.enumData.Rep;
 
@@ -45,8 +47,8 @@ public class Arrive extends javax.swing.JPanel {
     private javax.swing.JTextField numText;
     private javax.swing.JButton okButton;
     private javax.swing.JTextField resultMsgText;
-    private GetRepController getControl;
-    private ReceptionRepController receptionControl;
+    private GetRepblService getControl;
+    private ReceptionRepblService receptionControl;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
@@ -88,9 +90,14 @@ public class Arrive extends javax.swing.JPanel {
         resultMsgText = new javax.swing.JTextField();
         getControl = new GetRepController();
         receptionControl = new ReceptionRepController();
-        model = new DefaultTableModel();
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
         setBackground(new java.awt.Color(255, 255, 255));
 

@@ -7,7 +7,7 @@ import java.rmi.NotBoundException;
  * @author bismuth
  *
  */
-public interface ShipmentRepblServce extends ReceiptblService{
+public interface ShipmentRepblServce extends ReceiptblService, NotForPayblService, NotForCashblService, NotForPayAndCashblService{
 	
 	/**得到该日期内的出车总数
 	 * @param date

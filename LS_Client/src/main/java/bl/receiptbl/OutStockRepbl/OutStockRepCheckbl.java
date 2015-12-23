@@ -30,7 +30,7 @@ public class OutStockRepCheckbl {
 		ArrayList<OutStockRepVO> outStockRepVOs = outStockRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
 		if(outStockRepVOs==null)
-			return null;
+			return data;
 		for(int i = 0;i < outStockRepVOs.size();i++){
 			OutStockRepVO outStockRepVO = outStockRepVOs.get(i);
 			Vector<String> arr = new Vector<String>();

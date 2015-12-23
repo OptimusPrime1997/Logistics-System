@@ -6,6 +6,8 @@
 
 package ui.receiptui.ReceiptDetailUI;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.Vector;
@@ -17,6 +19,7 @@ import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
 import VO.Receipt.PayRepVO;
 import bl.receiptbl.PayRepbl.PayRepController;
+import blservice.receiptblservice.PayRepblService;
 import ui.util.MyFrame;
 
 /**
@@ -37,11 +40,12 @@ public class Pay extends javax.swing.JPanel {
     private javax.swing.JTextField resultMsgText;
     private javax.swing.JLabel sumLabel;
     private javax.swing.JTextField sumText;
-    private PayRepController control;
+    private PayRepblService control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
     private String num;
+    PayRepVO payRepVO = null;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -72,9 +76,14 @@ public class Pay extends javax.swing.JPanel {
         okButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
         control = new PayRepController();
-        model = new DefaultTableModel();
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -103,7 +112,7 @@ public class Pay extends javax.swing.JPanel {
 		columnIdentifiers.add("金额");
 		columnIdentifiers.add("付款账户");
 		columnIdentifiers.add("备注");
-        PayRepVO payRepVO = null;
+		columnIdentifiers.add("查看");
         try {
 			payRepVO = control.getRepByNum(num);
 		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
@@ -116,7 +125,7 @@ public class Pay extends javax.swing.JPanel {
         sumText.setText(payRepVO.sum+"");
         try {
 			dataVector = control.initShow(num);
-		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
@@ -127,6 +136,68 @@ public class Pay extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable);
         
     	setColumn();
+    	
+    	jTable.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int row = jTable.getSelectedRow();
+				int col = jTable.getSelectedColumn();
+				if(col==4){
+					String payThing = (String)jTable.getValueAt(row, 0);
+					switch (payThing) {
+					case "奖金":
+						new PayBonus(payRepVO);
+						break;
+					case "快递员工资":
+						new PayCourier(payRepVO);
+						break;
+					case "司机工资":
+						new PayDriver(payRepVO);
+						break;
+					case "运费":
+						new PayFreight(payRepVO);
+						break;
+					case "租金":
+						new PayRent(payRepVO);
+						break;
+					case "普通员工工资":
+						new PayStaff(payRepVO);
+						break;
+					default:
+						String date = payThing.split("(")[1];
+						date = date.split(")")[0];
+						new PayRefund(date, payRepVO);
+						break;
+					}
+				}
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

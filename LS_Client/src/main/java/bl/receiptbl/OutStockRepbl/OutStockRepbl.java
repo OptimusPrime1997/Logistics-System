@@ -52,8 +52,6 @@ public class OutStockRepbl{
 	public ArrayList<OutStockRepVO> getRepByDate(String date, String office) throws ClassNotFoundException, 
 	NotBoundException, IOException {
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.OutStockRep, office);
-		if(receiptPOs==null)
-			return null;
 		return OutStockRepVO.toArrayVO(receiptPOs);
 	}
 
@@ -61,8 +59,6 @@ public class OutStockRepbl{
 	IOException {
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.OutStockRep, office);
-		if(receiptPOs==null)
-			return null;
 		return OutStockRepVO.toArrayVO(receiptPOs);
 	}
 	
@@ -80,8 +76,6 @@ public class OutStockRepbl{
 			throws ClassNotFoundException, MalformedURLException, RemoteException, IOException, 
 			NotBoundException{
 		ArrayList<ReceiptPO> receiptPOs = getOutStockRepDataService().getAllRepByDate(date);
-		if(receiptPOs==null)
-			return null;
 		return OutStockRepVO.toArrayVO(receiptPOs);
 	}
 }

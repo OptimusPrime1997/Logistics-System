@@ -15,7 +15,7 @@ import util.enumData.Rep;
  * @author bismuth
  *
  */
-public interface ReceptionRepblService extends ReceiptblService{
+public interface ReceptionRepblService extends ReceiptblService, NotForPayblService, NotForCashblService, NotForPayAndCashblService{
 	
 	/**初始化表格
 	 * @param rep

@@ -16,7 +16,7 @@ public class ShippingRepCheckbl {
 		ArrayList<ShippingRepVO> shippingRepVOs = shippingRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
 		if(shippingRepVOs==null)
-			return null;
+			return data;
 		for(int i = 0;i < shippingRepVOs.size();i++){
 			Vector<String> arr = new Vector<String>();
 			ShippingRepVO shippingRepVO = shippingRepVOs.get(i);

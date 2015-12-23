@@ -3,6 +3,7 @@ package dataservice.receiptdataservice;
 import java.io.IOException;
 import java.io.Serializable;
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import PO.Receipt.PayRepPO;
@@ -11,7 +12,7 @@ import PO.Receipt.PayRepPO;
  * @author bismuth
  *
  */
-public interface PayRepDataService extends Remote,Serializable{
+public interface PayRepDataService extends Remote, Serializable{
 	
 	/**得到未提交的付款单
 	 * @return
@@ -23,7 +24,7 @@ public interface PayRepDataService extends Remote,Serializable{
 	/**清空提交文件
 	 * @throws IOException
 	 */
-	public void clearPaySubmit() throws IOException;
+	public void clearPaySubmit() throws IOException, RemoteException;
 	
 	/**得到所有付款单
 	 * @return

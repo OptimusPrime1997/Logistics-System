@@ -18,9 +18,10 @@ public class Rentbl{
 	
 	public Vector<Object> initRentTable(PayRepVO payRepVO){
 		Vector<Object> data = new Vector<Object>();
-		ArrayList<PayRentVO> payRentVOs = payRepVO.rent.rentVOs;
-		if(payRentVOs==null)
+		PayRepRentRepVO payRepRentRepVO = payRepVO.rent;
+		if(payRepRentRepVO==null)
 			return data;
+		ArrayList<PayRentVO> payRentVOs = payRepRentRepVO.rentVOs;
 		PayRentVO payRentVO;
 		for(int i = 0;i < payRentVOs.size();i++){
 			Vector<String> arr = new Vector<String>();

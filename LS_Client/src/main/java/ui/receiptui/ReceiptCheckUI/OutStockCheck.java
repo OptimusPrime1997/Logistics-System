@@ -16,7 +16,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
+import Exception.NameNotFoundException;
+import Exception.NumNotFoundException;
 import bl.receiptbl.OutStockRepbl.OutStockRepController;
+import blservice.receiptblservice.OutStockRepblService;
 import ui.receiptui.ReceiptDetailUI.OutStock;
 import ui.util.MyFrame;
 
@@ -35,7 +38,7 @@ public class OutStockCheck extends javax.swing.JPanel {
     private javax.swing.JTable jTable;
     private javax.swing.JButton okButton;
     private javax.swing.JTextField resultMsgText;
-    private OutStockRepController control;
+    private OutStockRepblService control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
@@ -67,9 +70,14 @@ public class OutStockCheck extends javax.swing.JPanel {
         okButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
         control = new OutStockRepController();
-        model = new DefaultTableModel();
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -91,7 +99,7 @@ public class OutStockCheck extends javax.swing.JPanel {
         columnIdentifiers.add("查看详细信息");
         try {
 			dataVector = control.initCheck(office);
-		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+		} catch (ClassNotFoundException | NotBoundException | IOException | NameNotFoundException | NumNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
@@ -201,7 +209,7 @@ public class OutStockCheck extends javax.swing.JPanel {
         TableColumn column6 = jTable.getColumnModel().getColumn(5);
         column6.setPreferredWidth(65);
         TableColumn column7 = jTable.getColumnModel().getColumn(6);
-        column7.setPreferredWidth(20);
+        column7.setPreferredWidth(50);
     }
 
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {

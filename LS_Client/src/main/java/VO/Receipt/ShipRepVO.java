@@ -2,13 +2,13 @@ package VO.Receipt;
 
 import java.util.ArrayList;
 
-public class ShipRepVO extends ReceiptVO{
-	
+public class ShipRepVO extends ReceiptVO {
+
 	public String depart;
 	public String plateNum;
 	public String driverNum;
 	public ArrayList<String> goods;
-	
+
 	public ShipRepVO(String num, String date, String depart, String plateNum, String driverNum,
 			ArrayList<String> goods) {
 		super(num, date);
@@ -18,7 +18,6 @@ public class ShipRepVO extends ReceiptVO{
 		this.goods = goods;
 	}
 
-	public ShipRepVO(){
-		
+	public ShipRepVO() {
 	}
 }

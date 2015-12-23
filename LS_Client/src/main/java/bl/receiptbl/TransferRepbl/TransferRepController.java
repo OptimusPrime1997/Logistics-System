@@ -12,13 +12,10 @@ import Exception.NumNotFoundException;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.TransferRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
-import blservice.receiptblservice.PostReceiptblService;
-import blservice.receiptblservice.SubmitblService;
 import blservice.receiptblservice.TransferRepblService;
 import util.enumData.ShipForm;
 
-public class TransferRepController extends ReceiptblController
-implements TransferRepblService, PostReceiptblService, SubmitblService{
+public class TransferRepController extends ReceiptblController implements TransferRepblService{
 	
 	private TransferRepbl transferRepbl = new TransferRepbl();
 	private TransferRepCheckbl transferRepCheckbl = new TransferRepCheckbl();

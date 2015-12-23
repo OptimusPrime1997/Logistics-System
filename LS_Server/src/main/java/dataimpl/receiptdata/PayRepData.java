@@ -1,6 +1,8 @@
 package dataimpl.receiptdata;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import PO.Receipt.PayRepPO;
@@ -8,7 +10,12 @@ import PO.Receipt.ReceiptPO;
 import dataservice.receiptdataservice.PayRepDataService;
 import datautil.DataUtility;
 
-public class PayRepData implements PayRepDataService{
+public class PayRepData extends UnicastRemoteObject implements PayRepDataService{
+
+	public PayRepData() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * 
@@ -17,12 +24,16 @@ public class PayRepData implements PayRepDataService{
 	
 	private DataUtility util = new DataUtility();
 	
-	public String getAdd() {
+	private String getSubmitAdd() {
 		return "data/ReceiptSubmitData/PayRepSubmit.txt";
+	}
+	
+	private String getSaveAdd() {
+		return "data/ReceiptSaveData/PayRepSave.txt";
 	}
 
 	public PayRepPO getSubmitPayRep() throws ClassNotFoundException, IOException{
-		ArrayList<Object> objects = util.getAll(getAdd());
+		ArrayList<Object> objects = util.getAll(getSubmitAdd());
 		if (objects == null)
 			return null;
 		ReceiptPO receiptPO = (ReceiptPO)objects.get(0);
@@ -30,12 +41,12 @@ public class PayRepData implements PayRepDataService{
 	}
 	
 	public void clearPaySubmit() throws IOException{
-		util.clear(getAdd());
+		util.clear(getSubmitAdd());
 	}
 	
 	public ArrayList<PayRepPO> getAllPayRep() throws ClassNotFoundException, IOException{
 		ArrayList<PayRepPO> payRepPOs = new ArrayList<PayRepPO>();
-		ArrayList<Object> objects = util.getAll(getAdd());
+		ArrayList<Object> objects = util.getAll(getSaveAdd());
 		if (objects == null)
 			return null;
 		for (Object object : objects) {

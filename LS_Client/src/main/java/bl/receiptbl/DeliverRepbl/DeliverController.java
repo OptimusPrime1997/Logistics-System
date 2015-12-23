@@ -14,11 +14,8 @@ import VO.Receipt.DeliverRepVO;
 import VO.Receipt.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.DeliverRepblService;
-import blservice.receiptblservice.PostReceiptblService;
-import blservice.receiptblservice.SubmitblService;
 
-public class DeliverController extends ReceiptblController 
-implements DeliverRepblService, PostReceiptblService, SubmitblService{
+public class DeliverController extends ReceiptblController implements DeliverRepblService{
 	private DeliverRepbl deliverRepbl = new DeliverRepbl();
 	private DeliverRepCheckbl deliverRepCheckbl = new DeliverRepCheckbl();
 	private DeliverRepShowbl deliverRepShowbl =  new DeliverRepShowbl();
@@ -47,13 +44,6 @@ implements DeliverRepblService, PostReceiptblService, SubmitblService{
 			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return deliverRepbl.getAllRep(office);
-	}
-
-	@Override
-	public ArrayList<DeliverRepVO> getRepByDate(String date, String office) 
-			throws NotBoundException, ClassNotFoundException, IOException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

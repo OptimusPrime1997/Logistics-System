@@ -14,7 +14,7 @@ import util.enumData.ShipForm;
  * @author bismuth
  *
  */
-public interface TransferRepblService extends ReceiptblService{
+public interface TransferRepblService extends ReceiptblService, GetRepByDateblService, NotForPayblService, NotForCashblService, NotForPayAndCashblService{
 	
 	/**是否存在该订单
 	 * @param order

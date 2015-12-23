@@ -3,14 +3,13 @@ package VO.Receipt;
 import java.util.ArrayList;
 
 import PO.Receipt.PayPO;
-import util.enumData.PayThing;
 
 public class PayVO {
-	public PayThing payThing;
+	public String payThing;
 	public double money;
 	public String bankAccountNum;
 	public String remark;
-	public PayVO(PayThing payThing, double money, String bankAccountNum, String remark) {
+	public PayVO(String payThing, double money, String bankAccountNum, String remark) {
 		super();
 		this.payThing = payThing;
 		this.money = money;
@@ -27,6 +26,8 @@ public class PayVO {
 		return new PayPO(vo.payThing, vo.money, vo.bankAccountNum, vo.remark);
 	}
 	public static ArrayList<PayVO> toArrayVO(ArrayList<PayPO> PayPOs){
+		if(PayPOs==null)
+			return null;
 		ArrayList<PayVO> PayVOs = new ArrayList<PayVO>();
 		for(PayPO PayPO : PayPOs)
 			PayVOs.add(new PayVO(PayPO));

@@ -32,9 +32,10 @@ public class Courierbl{
 	
 	public Vector<Object> initCourierSalaryTable(PayRepVO payRepVO){
 		Vector<Object> data = new Vector<Object>();
-		ArrayList<PayCourierSalaryVO> payCourierSalaryVOs = payRepVO.courierSalary.courierSalaryVOs;
-		if(payCourierSalaryVOs==null)
+		PayRepCourierSalaryRepVO courierSalaryRepVO = payRepVO.courierSalary;
+		if(courierSalaryRepVO==null)
 			return data;
+		ArrayList<PayCourierSalaryVO> payCourierSalaryVOs = courierSalaryRepVO.courierSalaryVOs;
 		PayCourierSalaryVO payCourierSalaryVO;
 		for(int i = 0;i < payCourierSalaryVOs.size();i++){
 			Vector<String> arr = new Vector<String>();

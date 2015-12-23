@@ -17,7 +17,7 @@ import Exception.NumNotFoundException;
  * @author bismuth
  *
  */
-public interface CashRepblService extends ReceiptblService{
+public interface CashRepblService extends ReceiptblService, NotForPayblService{
 	
 	
 	/**

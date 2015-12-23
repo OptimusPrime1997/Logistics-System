@@ -38,9 +38,10 @@ public class Staffbl{
 	
 	public Vector<Object> initStaffTable(PayRepVO payRepVO){
 		Vector<Object> data = new Vector<Object>();
-		ArrayList<PayStaffSalaryVO> payStaffSalaryVOs = payRepVO.staffSalary.salaryVOs;
-		if(payStaffSalaryVOs==null)
+		PayRepStaffSalaryRepVO payRepStaffSalaryRepVO = payRepVO.staffSalary;
+		if(payRepStaffSalaryRepVO==null)
 			return data;
+		ArrayList<PayStaffSalaryVO> payStaffSalaryVOs = payRepStaffSalaryRepVO.salaryVOs;
 		PayStaffSalaryVO payStaffSalaryVO;
 		for(int i = 0;i < payStaffSalaryVOs.size();i++){
 			Vector<String> arr = new Vector<String>();

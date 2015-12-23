@@ -14,6 +14,7 @@ import datautil.DataUtility;
 import util.enumData.*;
 
 public class ReceiptData extends UnicastRemoteObject implements ReceiptDataService {
+	
 	public ReceiptData() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub

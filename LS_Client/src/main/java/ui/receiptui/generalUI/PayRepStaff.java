@@ -15,11 +15,15 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
+import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
+import Exception.SalaryPolicyNotFoundException;
 import VO.Receipt.PayRepStaffSalaryRepVO;
 import VO.Receipt.PayRepVO;
 import VO.Receipt.PayStaffSalaryVO;
 import bl.receiptbl.PayRepbl.PayRepController;
+import bl.receiptbl.PayRepbl.PayRepStaffController;
+import blservice.receiptblservice.PayRepStaffblService;
 import ui.util.MyFrame;
 import util.enumData.Authority;
 
@@ -42,20 +46,22 @@ public class PayRepStaff extends javax.swing.JPanel {
     private javax.swing.JTextField resultMsgText;
     private javax.swing.JLabel sumLabel;
     private javax.swing.JTextField sumText;
-    private PayRepController control;
+    private PayRepStaffblService control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
     private PayRepVO payRepVO;
     private PayRep payRep;
+    private String bankAccount;
     // End of variables declaration//GEN-END:variables
     
     /**
      * Creates new form PayRep工资
      */
-    public PayRepStaff(PayRep oriPayRep, PayRepVO oriPayRepVO) {
+    public PayRepStaff(PayRep oriPayRep, PayRepVO oriPayRepVO, String bank) {
     	payRepVO = oriPayRepVO;
     	payRep = oriPayRep;
+    	bankAccount = bank;
         initComponents();
         myFrame = new MyFrame(442, 474, this);
     }
@@ -79,10 +85,15 @@ public class PayRepStaff extends javax.swing.JPanel {
         balanceText = new javax.swing.JTextField();
         bankAccountLabel = new javax.swing.JLabel();
         resultMsgText = new javax.swing.JTextField();
-        control = new PayRepController();
-        model = new DefaultTableModel();
+        control = new PayRepStaffController();
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -91,6 +102,13 @@ public class PayRepStaff extends javax.swing.JPanel {
         columnIdentifiers.add("编号");
         columnIdentifiers.add("金额");
         columnIdentifiers.add("删除");
+        try {
+			dataVector = control.initStaffTable();
+		} catch (ClassNotFoundException | SalaryPolicyNotFoundException | IOException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
         model.setDataVector(dataVector, columnIdentifiers);
         jTable.setModel(model);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
@@ -103,6 +121,20 @@ public class PayRepStaff extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		} 
+        if (bankAccount != null) {
+			bankAccountBox.setEnabled(false);
+			for (int i = 0; i < bankAccountBox.getItemCount(); i++) {
+				if (bankAccountBox.getItemAt(i).equals(bankAccount)) {
+					bankAccountBox.setSelectedIndex(i);
+					break;
+				}
+			}
+		}
+		bankAccountBox.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				bankAccountBoxActionPerformed(evt);
+			}
+		});
         
         cancelButton.setText("取消");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -196,13 +228,13 @@ public class PayRepStaff extends javax.swing.JPanel {
         TableColumn column4 = jTable.getColumnModel().getColumn(3);
         column4.setPreferredWidth(60);
         TableColumn column5 = jTable.getColumnModel().getColumn(4);
-        column5.setPreferredWidth(10);
+        column5.setPreferredWidth(50);
     }
     
     private String calSum(){
     	double sum = 0;
     	for(int i = 0;i < dataVector.size();i++){
-    		sum += (double)jTable.getValueAt(i, 3);
+    		sum += Double.parseDouble((String)jTable.getValueAt(i, 3));
     	}
     	return sum+"";
     }
@@ -214,6 +246,11 @@ public class PayRepStaff extends javax.swing.JPanel {
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	sumText.setText(calSum());
     	double sum = Double.parseDouble(sumText.getText());
+		double balance = Double.parseDouble(balanceText.getText());
+		if(sum>balance){
+			resultMsgText.setText("付款金额超过账户余额，请更换账户");
+			return;
+		}
     	String bankAccount = (String)bankAccountBox.getSelectedItem();
     	try {
 			control.minusMoneyInBankAccount(bankAccount, sum);
@@ -227,7 +264,7 @@ public class PayRepStaff extends javax.swing.JPanel {
     	for(int i = 0;i < dataVector.size();i++){
     		PayStaffSalaryVO payStaffSalaryVO = new PayStaffSalaryVO((String)jTable.getValueAt(i, 1),
     				(String)jTable.getValueAt(i, 2),
-    				(double)jTable.getValueAt(i, 3),
+    				Double.parseDouble((String)jTable.getValueAt(i, 3)),
     				Authority.toAuthority((String)jTable.getValueAt(i, 0)));
     		PayStaffSalaryVOs.add(payStaffSalaryVO);
     	}
@@ -243,5 +280,16 @@ public class PayRepStaff extends javax.swing.JPanel {
     	myFrame.dispose();
     }
 
-
+	private void bankAccountBoxActionPerformed(java.awt.event.ActionEvent evt){
+		String bankAccount = (String)bankAccountBox.getSelectedItem();
+		double balance = 0;
+		try {
+			balance = control.showBankBalance(bankAccount);
+		} catch (ClassNotFoundException | NameNotFoundException | IOException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+		balanceText.setText(balance+"");
+	}
 }

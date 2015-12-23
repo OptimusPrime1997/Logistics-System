@@ -87,8 +87,6 @@ public class GetRepbl{
 	IOException {
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.GetRep, office);
-		if(receiptPOs==null)
-			return null;
 		return GetRepVO.toArrayVO(receiptPOs);
 	}
 	

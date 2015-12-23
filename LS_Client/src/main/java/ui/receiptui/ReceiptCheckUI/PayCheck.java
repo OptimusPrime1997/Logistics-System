@@ -17,6 +17,7 @@ import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
 import bl.receiptbl.PayRepbl.PayRepController;
+import blservice.receiptblservice.PayRepblService;
 import ui.receiptui.ReceiptDetailUI.Pay;
 import ui.util.MyFrame;
 
@@ -35,7 +36,7 @@ public class PayCheck extends javax.swing.JPanel {
     private javax.swing.JTable jTable;
     private javax.swing.JButton okButton;
     private javax.swing.JTextField resultMsgText;
-    private PayRepController control;
+    private PayRepblService control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
@@ -65,9 +66,14 @@ public class PayCheck extends javax.swing.JPanel {
         okButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
         control = new PayRepController();
-        model = new DefaultTableModel();
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
         setBackground(new java.awt.Color(255, 255, 255));
 

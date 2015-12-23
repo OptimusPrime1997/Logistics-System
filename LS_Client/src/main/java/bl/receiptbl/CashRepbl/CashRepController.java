@@ -12,12 +12,10 @@ import VO.Receipt.CashRepVO;
 import VO.Receipt.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.CashRepblService;
-import blservice.receiptblservice.PostReceiptblService;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 
-public class CashRepController extends ReceiptblController 
-implements CashRepblService, PostReceiptblService{
+public class CashRepController extends ReceiptblController implements CashRepblService{
 	private CashRepbl cashRepbl = new CashRepbl();
 	private CashRepCheckbl cashRepCheckbl = new CashRepCheckbl();
 
@@ -62,19 +60,6 @@ implements CashRepblService, PostReceiptblService{
 	}
 
 	@Override
-	public ArrayList<CashRepVO> getRepByDate(String date, String office)
-			throws NotBoundException, ClassNotFoundException, IOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String createNum(String date, String office) throws NotBoundException, ClassNotFoundException, IOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public CashRepVO getRepByNum(String num) 
 			throws NotBoundException, ClassNotFoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
@@ -97,12 +82,6 @@ implements CashRepblService, PostReceiptblService{
 	public Vector<Object> initCheck(String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		return cashRepCheckbl.initCheck(office);
-	}
-
-	@Override
-	public Vector<Object> initShow(String num) throws ClassNotFoundException, NotBoundException, IOException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

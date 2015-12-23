@@ -16,6 +16,7 @@ import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
 import VO.Receipt.ShippingRepVO;
 import bl.receiptbl.ShippingRepbl.ShippingRepController;
+import blservice.receiptblservice.ShippingRepblService;
 import ui.util.MyFrame;
 
 /**
@@ -40,7 +41,7 @@ public class Shipping extends javax.swing.JPanel {
     private javax.swing.JLabel plateLabel;
     private javax.swing.JTextField plateNum;
     private javax.swing.JTextField resultMsgText;
-    private ShippingRepController control;
+    private ShippingRepblService control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
@@ -79,9 +80,14 @@ public class Shipping extends javax.swing.JPanel {
         destinationLabel = new javax.swing.JLabel();
         destinationText = new javax.swing.JTextField();
         control = new ShippingRepController();
-        model = new DefaultTableModel();
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
         setBackground(new java.awt.Color(255, 255, 255));
 

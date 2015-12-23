@@ -12,8 +12,9 @@ public class OutStockRepVO extends ReceiptVO {
 	public Rep rep;
 	public String shipNum;
 	public ArrayList<String> goods;
-	public OutStockRepVO(String num, String date, String destination, ShipForm form, Rep rep, 
-			String shipNum, ArrayList<String> goods) {
+
+	public OutStockRepVO(String num, String date, String destination, ShipForm form, Rep rep, String shipNum,
+			ArrayList<String> goods) {
 		super(num, date);
 		this.destination = destination;
 		this.form = form;
@@ -21,7 +22,8 @@ public class OutStockRepVO extends ReceiptVO {
 		this.shipNum = shipNum;
 		this.goods = goods;
 	}
-	public OutStockRepVO(OutStockRepPO po){
+
+	public OutStockRepVO(OutStockRepPO po) {
 		this.date = po.getDate();
 		this.num = po.getNum();
 		this.destination = po.getDestination();
@@ -30,17 +32,25 @@ public class OutStockRepVO extends ReceiptVO {
 		this.shipNum = po.getShipNum();
 		this.goods = po.getGoods();
 	}
-	public static OutStockRepPO toPO(OutStockRepVO vo){
+
+	public static OutStockRepPO toPO(OutStockRepVO vo) {
+		if (vo == null)
+			return null;
 		return new OutStockRepPO(vo.num, vo.date, vo.destination, vo.form, vo.rep, vo.shipNum, vo.goods);
 	}
+
 	public static ArrayList<OutStockRepVO> toArrayVO(ArrayList<ReceiptPO> receiptPOs) {
+		if (receiptPOs == null)
+			return null;
 		ArrayList<OutStockRepVO> OutStockRepVOs = new ArrayList<OutStockRepVO>();
 		for (ReceiptPO receiptPO : receiptPOs)
 			OutStockRepVOs.add(new OutStockRepVO((OutStockRepPO) receiptPO));
 		return OutStockRepVOs;
 	}
-	
+
 	public static ArrayList<OutStockRepPO> toArrayPO(ArrayList<OutStockRepVO> OutStockRepVOs) {
+		if (OutStockRepVOs == null)
+			return null;
 		ArrayList<OutStockRepPO> OutStockRepPOs = new ArrayList<OutStockRepPO>();
 		for (OutStockRepVO OutStockRepVO : OutStockRepVOs)
 			OutStockRepPOs.add(toPO(OutStockRepVO));

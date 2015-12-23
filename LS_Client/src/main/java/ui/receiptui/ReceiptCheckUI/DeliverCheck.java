@@ -19,6 +19,7 @@ import Exception.ExceptionPrint;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import bl.receiptbl.DeliverRepbl.DeliverController;
+import blservice.receiptblservice.DeliverRepblService;
 import ui.receiptui.ReceiptDetailUI.Deliver;
 import ui.util.MyFrame;
 
@@ -37,7 +38,7 @@ public class DeliverCheck extends javax.swing.JPanel {
     private javax.swing.JTable jTable;
     private javax.swing.JButton okButton;
     private javax.swing.JTextField resultMsgText;
-    private DeliverController control;
+    private DeliverRepblService control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
@@ -69,9 +70,14 @@ public class DeliverCheck extends javax.swing.JPanel {
         findButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
         control = new DeliverController();
-        model = new DefaultTableModel();
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -199,7 +205,7 @@ public class DeliverCheck extends javax.swing.JPanel {
         TableColumn column4 = jTable.getColumnModel().getColumn(3);
         column4.setPreferredWidth(65);
         TableColumn column5 = jTable.getColumnModel().getColumn(4);
-        column5.setPreferredWidth(20);
+        column5.setPreferredWidth(50);
     }
 
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {

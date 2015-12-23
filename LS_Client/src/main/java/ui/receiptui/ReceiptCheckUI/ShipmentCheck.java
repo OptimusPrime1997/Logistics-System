@@ -16,7 +16,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
+import Exception.NameNotFoundException;
+import Exception.NumNotFoundException;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepController;
+import blservice.receiptblservice.ShipmentRepblServce;
 import ui.receiptui.ReceiptDetailUI.Shipment;
 import ui.util.MyFrame;
 
@@ -35,7 +38,7 @@ public class ShipmentCheck extends javax.swing.JPanel {
 	private javax.swing.JTable jTable;
 	private javax.swing.JButton okButton;
 	private javax.swing.JTextField resultMsgText;
-	private ShipmentRepController control;
+	private ShipmentRepblServce control;
 	private DefaultTableModel model;
 	private Vector<String> columnIdentifiers;
 	private Vector<Object> dataVector;
@@ -68,9 +71,14 @@ public class ShipmentCheck extends javax.swing.JPanel {
 		okButton = new javax.swing.JButton();
 		resultMsgText = new javax.swing.JTextField();
 		control = new ShipmentRepController();
-		model = new DefaultTableModel();
-		columnIdentifiers = new Vector<String>();
-		dataVector = new Vector<Object>();
+        columnIdentifiers = new Vector<String>();
+        dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
 		setBackground(new java.awt.Color(255, 255, 255));
 
@@ -90,7 +98,7 @@ public class ShipmentCheck extends javax.swing.JPanel {
 		columnIdentifiers.add("查看详细信息");
 		try {
 			dataVector = control.initCheck(office);
-		} catch (ClassNotFoundException | NotBoundException | IOException e) {
+		} catch (ClassNotFoundException | NotBoundException | IOException | NameNotFoundException | NumNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
@@ -193,7 +201,7 @@ public class ShipmentCheck extends javax.swing.JPanel {
 		TableColumn column4 = jTable.getColumnModel().getColumn(3);
 		column4.setPreferredWidth(115);
 		TableColumn column5 = jTable.getColumnModel().getColumn(4);
-		column5.setPreferredWidth(20);
+		column5.setPreferredWidth(50);
 	}
 
 	private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {

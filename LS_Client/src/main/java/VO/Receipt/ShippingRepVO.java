@@ -13,8 +13,8 @@ public class ShippingRepVO extends ShipRepVO {
 		super(num, date, depart, plateNum, driverNum, goods);
 		this.destination = destination;
 	}
-	
-	public ShippingRepVO(ShippingRepPO po){
+
+	public ShippingRepVO(ShippingRepPO po) {
 		this.num = po.getNum();
 		this.date = po.getDate();
 		this.depart = po.getDepart();
@@ -23,23 +23,29 @@ public class ShippingRepVO extends ShipRepVO {
 		this.goods = po.getGoods();
 		this.destination = po.getDestination();
 	}
-	
-	public static ShippingRepPO toPO(ShippingRepVO vo){
-		return new ShippingRepPO(vo.num, vo.date,vo.depart, vo.plateNum, vo.driverNum, vo.goods, vo.destination);
+
+	public static ShippingRepPO toPO(ShippingRepVO vo) {
+		if (vo == null)
+			return null;
+		return new ShippingRepPO(vo.num, vo.date, vo.depart, vo.plateNum, vo.driverNum, vo.goods, vo.destination);
 	}
-	
+
 	public static ArrayList<ShippingRepVO> toArrayVO(ArrayList<ReceiptPO> receiptPOs) {
+		if (receiptPOs == null)
+			return null;
 		ArrayList<ShippingRepVO> shippingRepVOs = new ArrayList<ShippingRepVO>();
 		for (ReceiptPO receiptPO : receiptPOs)
 			shippingRepVOs.add(new ShippingRepVO((ShippingRepPO) receiptPO));
 		return shippingRepVOs;
 	}
-	
+
 	public static ArrayList<ShippingRepPO> toArrayPO(ArrayList<ShippingRepVO> shippingRepVOs) {
+		if (shippingRepVOs == null)
+			return null;
 		ArrayList<ShippingRepPO> shippingRepPOs = new ArrayList<ShippingRepPO>();
 		for (ShippingRepVO shippingRepVO : shippingRepVOs)
 			shippingRepPOs.add(toPO(shippingRepVO));
 		return shippingRepPOs;
 	}
-	
+
 }

@@ -16,6 +16,7 @@ import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
 import VO.Receipt.TransferRepVO;
 import bl.receiptbl.TransferRepbl.TransferRepController;
+import blservice.receiptblservice.TransferRepblService;
 import ui.util.MyFrame;
 import util.enumData.City;
 import util.enumData.ShipForm;
@@ -42,7 +43,7 @@ public class Transfer extends javax.swing.JPanel {
     private javax.swing.JTextField resultMsgText;
     private javax.swing.JLabel shipFormLabel;
     private javax.swing.JTextField shipFormText;
-    private TransferRepController control;
+    private TransferRepblService control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
@@ -81,9 +82,14 @@ public class Transfer extends javax.swing.JPanel {
         okButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
         control = new TransferRepController();
-        model = new DefaultTableModel();
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
         setBackground(new java.awt.Color(255, 255, 255));
 

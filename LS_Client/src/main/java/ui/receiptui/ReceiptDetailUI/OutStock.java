@@ -16,6 +16,7 @@ import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
 import VO.Receipt.OutStockRepVO;
 import bl.receiptbl.OutStockRepbl.OutStockRepController;
+import blservice.receiptblservice.OutStockRepblService;
 import ui.util.MyFrame;
 import util.enumData.ShipForm;
 
@@ -43,7 +44,7 @@ public class OutStock extends javax.swing.JPanel {
     private javax.swing.JTextField shipRepNumText;
     private javax.swing.JLabel shipRepTypeLabel;
     private javax.swing.JTextField shipRepTypeText;
-    private OutStockRepController control;
+    private OutStockRepblService control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
@@ -84,9 +85,14 @@ public class OutStock extends javax.swing.JPanel {
         okButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
         control = new OutStockRepController();
-        model = new DefaultTableModel();
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
 
         setBackground(new java.awt.Color(255, 255, 255));

@@ -192,7 +192,10 @@ public class DocumentCheckbl {
 			NotBoundException {
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.forCheck(Rep.PayRep);
-		PayRepVO payRepVO = new PayRepVO((PayRepPO) receiptPOs.get(0));
+		if(receiptPOs==null)
+			return null;
+		PayRepPO payRepPO = (PayRepPO)receiptPOs.get(0);
+		PayRepVO payRepVO = new PayRepVO(payRepPO);
 		String date = receiptbl.getDate();
 		String[] strings = date.split("-");
 		date = strings[0]+strings[1];

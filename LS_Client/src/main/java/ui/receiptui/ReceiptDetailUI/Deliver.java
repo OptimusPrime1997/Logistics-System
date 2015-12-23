@@ -18,6 +18,7 @@ import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import VO.Receipt.DeliverRepVO;
 import bl.receiptbl.DeliverRepbl.DeliverController;
+import blservice.receiptblservice.DeliverRepblService;
 import ui.util.MyFrame;
 
 /**
@@ -40,7 +41,7 @@ public class Deliver extends javax.swing.JPanel {
     private javax.swing.JTextField numText;
     private javax.swing.JButton okButton;
     private javax.swing.JTextField resultMsgText;
-    private DeliverController control;
+    private DeliverRepblService control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
@@ -77,9 +78,14 @@ public class Deliver extends javax.swing.JPanel {
         courierNameLabel = new javax.swing.JLabel();
         courierNameText = new javax.swing.JTextField();
         control = new DeliverController();
-        model = new DefaultTableModel();
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
         setBackground(new java.awt.Color(255, 255, 255));
 

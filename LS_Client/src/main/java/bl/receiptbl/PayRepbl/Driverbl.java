@@ -32,9 +32,10 @@ public class Driverbl{
 	
 	public Vector<Object> initDriverSalaryTable(PayRepVO payRepVO){
 		Vector<Object> data = new Vector<Object>();
-		ArrayList<PayDriverSalaryVO> payDriverSalaryVOs = payRepVO.driverSalary.driverSalaryVOs;
-		if(payDriverSalaryVOs==null)
+		PayRepDriverSalaryRepVO driverSalaryRepVO = payRepVO.driverSalary;
+		if(driverSalaryRepVO==null)
 			return data;
+		ArrayList<PayDriverSalaryVO> payDriverSalaryVOs = driverSalaryRepVO.driverSalaryVOs;
 		PayDriverSalaryVO payDriverSalaryVO;
 		for(int i = 0;i < payDriverSalaryVOs.size();i++){
 			Vector<String> arr = new Vector<String>();

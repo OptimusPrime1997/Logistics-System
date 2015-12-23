@@ -9,6 +9,13 @@ import VO.Receipt.PayRepVO;
 
 public class Refundbl{
 	public void submitRefund(PayRepVO payRepVO, PayRepRefundRepVO payRepRefundRepVO){
+		ArrayList<PayRepRefundRepVO> payRepRefundRepVOs = payRepVO.refund;
+		for(PayRepRefundRepVO payRepRefundRepVO2 : payRepRefundRepVOs){
+			if((payRepRefundRepVO.date).equals((payRepRefundRepVO2.date))){
+				payRepRefundRepVOs.remove(payRepRefundRepVO2);
+				break;
+			}
+		}
 		payRepVO.refund.add(payRepRefundRepVO);
 	}
 	
@@ -24,9 +31,9 @@ public class Refundbl{
 	public Vector<Object> initRefundTable(PayRepVO payRepVO, String date){
 		Vector<Object> data = new Vector<Object>();
 		PayRepRefundRepVO payRepRefundRepVO = getRefundByDate(payRepVO.refund, date);
-		ArrayList<PayRefundVO> payRefundVOs = payRepRefundRepVO.refundVOs;
-		if(payRefundVOs==null)
+		if(payRepRefundRepVO==null)
 			return data;
+		ArrayList<PayRefundVO> payRefundVOs = payRepRefundRepVO.refundVOs;
 		PayRefundVO payRefundVO;
 		for(int i = 0;i < payRefundVOs.size();i++){
 			Vector<String> arr = new Vector<String>();
@@ -36,5 +43,11 @@ public class Refundbl{
 			data.add(arr);
 		}
 		return data;
+	}
+	
+	public String getRefundTime(String type){
+		type = type.split("(")[1];
+		type = type.split(")")[0];
+		return type;
 	}
 }

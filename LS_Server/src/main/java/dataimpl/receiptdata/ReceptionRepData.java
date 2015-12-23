@@ -1,8 +1,16 @@
 package dataimpl.receiptdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
 import dataservice.receiptdataservice.ReceptionRepDataService;
 
-public class ReceptionRepData implements ReceptionRepDataService{
+public class ReceptionRepData extends UnicastRemoteObject implements ReceptionRepDataService{
+
+	public ReceptionRepData() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * 

@@ -8,16 +8,15 @@ import PO.Receipt.ReceptionRepPO;
 import util.enumData.City;
 import util.enumData.Rep;
 
-public class ReceptionRepVO extends ArriveRepVO{
+public class ReceptionRepVO extends ArriveRepVO {
 	public City city;
 
-	public ReceptionRepVO(String num, String date, Rep rep, String shipNum, ArrayList<ArriveVO> arriveVOs,
-			City city) {
+	public ReceptionRepVO(String num, String date, Rep rep, String shipNum, ArrayList<ArriveVO> arriveVOs, City city) {
 		super(num, date, rep, shipNum, arriveVOs);
 		this.city = city;
 	}
-	
-	public ReceptionRepVO(ReceptionRepPO po){
+
+	public ReceptionRepVO(ReceptionRepPO po) {
 		this.num = po.getNum();
 		this.date = po.getDate();
 		this.rep = po.getRep();
@@ -25,20 +24,25 @@ public class ReceptionRepVO extends ArriveRepVO{
 		this.arriveVOs = ArriveVO.toArrayVO(po.getArrivePOs());
 		this.city = po.getCity();
 	}
-	
-	public static ReceptionRepPO toPO(ReceptionRepVO vo){
-		return new ReceptionRepPO(vo.num, vo.date, vo.rep, vo.shipNum, ArriveVO.toArrayPO(vo.arriveVOs), 
-				vo.city);
+
+	public static ReceptionRepPO toPO(ReceptionRepVO vo) {
+		if (vo == null)
+			return null;
+		return new ReceptionRepPO(vo.num, vo.date, vo.rep, vo.shipNum, ArriveVO.toArrayPO(vo.arriveVOs), vo.city);
 	}
-	
+
 	public static ArrayList<ReceptionRepVO> toArrayVO(ArrayList<ReceiptPO> receiptPOs) {
+		if (receiptPOs == null)
+			return null;
 		ArrayList<ReceptionRepVO> receptionRepVOs = new ArrayList<ReceptionRepVO>();
 		for (ReceiptPO receiptPO : receiptPOs)
 			receptionRepVOs.add(new ReceptionRepVO((ReceptionRepPO) receiptPO));
 		return receptionRepVOs;
 	}
-	
+
 	public static ArrayList<ReceptionRepPO> toArrayPO(ArrayList<ReceptionRepVO> receptionRepVOs) {
+		if (receptionRepVOs == null)
+			return null;
 		ArrayList<ReceptionRepPO> ReceptionRepPOs = new ArrayList<ReceptionRepPO>();
 		for (ReceptionRepVO ReceptionRepVO : receptionRepVOs)
 			ReceptionRepPOs.add(toPO(ReceptionRepVO));

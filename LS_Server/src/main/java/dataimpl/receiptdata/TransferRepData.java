@@ -1,13 +1,20 @@
 package dataimpl.receiptdata;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import PO.Receipt.ReceiptPO;
 import dataservice.receiptdataservice.TransferRepDataService;
 import datautil.DataUtility;
 
-public class TransferRepData implements TransferRepDataService{
+public class TransferRepData extends UnicastRemoteObject implements TransferRepDataService{
+
+	public TransferRepData() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * 

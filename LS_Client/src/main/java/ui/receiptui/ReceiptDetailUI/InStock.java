@@ -17,6 +17,7 @@ import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
 import VO.Receipt.InStockRepVO;
 import bl.receiptbl.InStockRepbl.InStockRepController;
+import blservice.receiptblservice.InStockRepblService;
 import ui.util.MyFrame;
 
 /**
@@ -35,7 +36,7 @@ public class InStock extends javax.swing.JPanel {
     private javax.swing.JTextField numText;
     private javax.swing.JButton okButton;
     private javax.swing.JTextField resultMsgText;
-    private InStockRepController control;
+    private InStockRepblService control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
@@ -68,9 +69,14 @@ public class InStock extends javax.swing.JPanel {
         okButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
         control = new InStockRepController();
-        model = new DefaultTableModel();
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
         setBackground(new java.awt.Color(255, 255, 255));
 

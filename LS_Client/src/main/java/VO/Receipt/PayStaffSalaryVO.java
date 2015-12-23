@@ -30,6 +30,8 @@ public class PayStaffSalaryVO extends PaySalaryVO{
 	}
 	
 	public static ArrayList<PayStaffSalaryVO> toArrayVO(ArrayList<PaySalaryPO> allSalaryPOs){
+		if(allSalaryPOs==null)
+			return null;
 		ArrayList<PayStaffSalaryVO> SalaryVOs = new ArrayList<PayStaffSalaryVO>();
 		for(PaySalaryPO allSalaryPO : allSalaryPOs)
 			SalaryVOs.add(new PayStaffSalaryVO((PayStaffSalaryPO)allSalaryPO));
@@ -37,6 +39,8 @@ public class PayStaffSalaryVO extends PaySalaryVO{
 	}
 	
 	public static ArrayList<PaySalaryPO> toArrayPO(ArrayList<PayStaffSalaryVO> SalaryVOs){
+		if(SalaryVOs==null)
+			return null;
 		ArrayList<PaySalaryPO> SalaryPOs = new ArrayList<PaySalaryPO>();
 		for(PayStaffSalaryVO SalaryVO : SalaryVOs)
 			SalaryPOs.add(toPO(SalaryVO));

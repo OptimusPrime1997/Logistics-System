@@ -19,7 +19,9 @@ import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
 import VO.Receipt.ShippingRepVO;
+import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.receiptbl.ShippingRepbl.ShippingRepController;
+import blservice.receiptblservice.ShippingRepblService;
 import ui.receiptui.ReceiptCheckUI.ShippingCheck;
 import ui.util.MyFrame;
 import util.CurrentCity;
@@ -54,7 +56,7 @@ public class ShippingRep extends javax.swing.JPanel {
 	private javax.swing.JLabel plateLabel;
 	private javax.swing.JTextField plateText;
 	private javax.swing.JTextField resultMsgText;
-	private ShippingRepController control;
+	private ShippingRepblService control;
 	private DefaultTableModel model;
 	private Vector<String> columnIdentifiers;
 	private Vector<Object> dataVector;
@@ -99,10 +101,15 @@ public class ShippingRep extends javax.swing.JPanel {
 		destinationText = new javax.swing.JTextField();
 		resultMsgText = new javax.swing.JTextField();
 		checkAllRepsButton = new javax.swing.JButton();
-		control = new ShippingRepController();
-		model = new DefaultTableModel();
+        control = ControllerFactoryImpl.getInstance().getShippingRepblService();
 		columnIdentifiers = new Vector<String>();
 		dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
 		setBackground(new java.awt.Color(255, 255, 255));
 
@@ -323,7 +330,7 @@ public class ShippingRep extends javax.swing.JPanel {
 		TableColumn column1 = jTable.getColumnModel().getColumn(0);
 		column1.setPreferredWidth(105);
 		TableColumn column2 = jTable.getColumnModel().getColumn(1);
-		column2.setPreferredWidth(10);
+		column2.setPreferredWidth(50);
 	}
 
 	private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -331,6 +338,10 @@ public class ShippingRep extends javax.swing.JPanel {
 	}
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		if(orderText.getText().equals("")){
+			resultMsgText.setText("请填写订单号");
+			return;
+		}
 		String order = orderText.getText();
 		String resultMessage = control.checkNum(order, 10, "编号");
 		resultMsgText.setText(resultMessage);
@@ -352,6 +363,18 @@ public class ShippingRep extends javax.swing.JPanel {
 	}
 
 	private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		if(plateText.getText().equals("")){
+			resultMsgText.setText("请填写车牌号");
+			return;
+		}
+		if(driverText.getText().equals("")){
+			resultMsgText.setText("请填写司机编号");
+			return;
+		}
+		if(destinationText.getText().equals("")){
+			resultMsgText.setText("请填写目的地");
+			return;
+		}
 		String driverNum = driverText.getText();
 		String resultMessage = control.checkNum(driverNum, 11, "司机编号");
 		resultMsgText.setText(resultMessage);

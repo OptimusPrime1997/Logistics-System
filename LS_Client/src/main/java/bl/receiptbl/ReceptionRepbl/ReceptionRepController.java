@@ -1,9 +1,7 @@
 package bl.receiptbl.ReceptionRepbl;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -12,15 +10,12 @@ import Exception.NumNotFoundException;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.ReceptionRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
-import blservice.receiptblservice.PostReceiptblService;
 import blservice.receiptblservice.ReceptionRepblService;
-import blservice.receiptblservice.SubmitblService;
 import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsLogisticState;
 import util.enumData.Rep;
 
-public class ReceptionRepController extends ReceiptblController
-implements ReceptionRepblService, PostReceiptblService, SubmitblService{
+public class ReceptionRepController extends ReceiptblController implements ReceptionRepblService{
 	private ReceptionRepbl receptionRepbl = new ReceptionRepbl();
 	private ReceptionRepCheckbl receptionRepCheckbl = new ReceptionRepCheckbl();
 	private ReceptionRepShowbl receptionRepShowbl = new ReceptionRepShowbl();
@@ -49,13 +44,6 @@ implements ReceptionRepblService, PostReceiptblService, SubmitblService{
 			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return receptionRepbl.getAllRep(office);
-	}
-
-	@Override
-	public ArrayList<ReceptionRepVO> getRepByDate(String date, String office)
-			throws RemoteException, MalformedURLException, NotBoundException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

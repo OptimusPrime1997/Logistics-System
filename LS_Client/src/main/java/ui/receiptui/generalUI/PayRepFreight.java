@@ -7,6 +7,7 @@
 package ui.receiptui.generalUI;
 
 import java.io.IOException;
+import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -15,11 +16,14 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
+import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import VO.Receipt.PayFreightVO;
 import VO.Receipt.PayRepFreightRepVO;
 import VO.Receipt.PayRepVO;
 import bl.receiptbl.PayRepbl.PayRepController;
+import bl.receiptbl.PayRepbl.PayRepFreightController;
+import blservice.receiptblservice.PayRepFreightblService;
 import ui.util.MyFrame;
 
 /**
@@ -41,20 +45,22 @@ public class PayRepFreight extends javax.swing.JPanel {
     private javax.swing.JTextField resultMsgText;
     private javax.swing.JLabel sumLabel;
     private javax.swing.JTextField sumText;
-    private PayRepController control;
+    private PayRepFreightblService control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
     private PayRepVO payRepVO;
     private PayRep payRep;
+    private String bankAccount;
     // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form PayRep运费
      */
-    public PayRepFreight(PayRep oriPayRep, PayRepVO oriPayRepVO) {
+    public PayRepFreight(PayRep oriPayRep, PayRepVO oriPayRepVO, String bank) {
     	payRepVO = oriPayRepVO;
     	payRep = oriPayRep;
+    	bankAccount = bank;
         initComponents();
         myFrame = new MyFrame(441, 527, this);
     }
@@ -78,10 +84,15 @@ public class PayRepFreight extends javax.swing.JPanel {
         okButton = new javax.swing.JButton();
         sumLabel = new javax.swing.JLabel();
         resultMsgText = new javax.swing.JTextField();
-        control = new PayRepController();
-        model = new DefaultTableModel();
+        control = new PayRepFreightController();
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -89,6 +100,13 @@ public class PayRepFreight extends javax.swing.JPanel {
         columnIdentifiers.add("金额");
         columnIdentifiers.add("备注");
         columnIdentifiers.add("删除");
+        try {
+			dataVector = control.initFreightTable(control.getDate());
+		} catch (ClassNotFoundException | IOException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
         model.setDataVector(dataVector, columnIdentifiers);
         jTable.setModel(model);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
@@ -109,6 +127,20 @@ public class PayRepFreight extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
+        if (bankAccount != null) {
+			bankAccountBox.setEnabled(false);
+			for (int i = 0; i < bankAccountBox.getItemCount(); i++) {
+				if (bankAccountBox.getItemAt(i).equals(bankAccount)) {
+					bankAccountBox.setSelectedIndex(i);
+					break;
+				}
+			}
+		}
+		bankAccountBox.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				bankAccountBoxActionPerformed(evt);
+			}
+		});
         
         cancelButton.setText("取消");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -190,13 +222,13 @@ public class PayRepFreight extends javax.swing.JPanel {
         TableColumn column3 = jTable.getColumnModel().getColumn(2);
         column3.setPreferredWidth(180);
         TableColumn column4 = jTable.getColumnModel().getColumn(3);
-        column4.setPreferredWidth(10);
+        column4.setPreferredWidth(50);
     }
     
     private String calSum(){
     	double sum = 0;
     	for(int i = 0;i < dataVector.size();i++){
-    		sum += (double)jTable.getValueAt(i, 1);
+    		sum += Double.parseDouble((String)jTable.getValueAt(i, 1));
     	}
     	return sum+"";
     }
@@ -208,6 +240,11 @@ public class PayRepFreight extends javax.swing.JPanel {
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	calSum();
     	double sum = Double.parseDouble(sumText.getText());
+		double balance = Double.parseDouble(balanceText.getText());
+		if(sum>balance){
+			resultMsgText.setText("付款金额超过账户余额，请更换账户");
+			return;
+		}
     	String bankAccount = (String)bankAccountBox.getSelectedItem();
     	try {
 			control.minusMoneyInBankAccount(bankAccount, sum);
@@ -221,7 +258,7 @@ public class PayRepFreight extends javax.swing.JPanel {
     	for(int i = 0;i < dataVector.size();i++){
     		PayFreightVO payFreightVO = new PayFreightVO((String)jTable.getValueAt(i, 0), 
     				(String)jTable.getValueAt(i, 2), 
-					(double)jTable.getValueAt(i, 1));
+					Double.parseDouble((String)jTable.getValueAt(i, 1)));
     		payFreightVOs.add(payFreightVO);
     	}
     	PayRepFreightRepVO payRepFreightRepVO = new PayRepFreightRepVO(sum, bankAccount, payFreightVOs);
@@ -234,5 +271,18 @@ public class PayRepFreight extends javax.swing.JPanel {
     	payRep.createRow(arr);
     	myFrame.dispose();
     }
+    
+	private void bankAccountBoxActionPerformed(java.awt.event.ActionEvent evt){
+		String bankAccount = (String)bankAccountBox.getSelectedItem();
+		double balance = 0;
+		try {
+			balance = control.showBankBalance(bankAccount);
+		} catch (ClassNotFoundException | NameNotFoundException | IOException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+		balanceText.setText(balance+"");
+	}
 
 }

@@ -16,8 +16,12 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
+import Exception.NameNotFoundException;
+import Exception.NumNotFoundException;
 import bl.receiptbl.GetRepbl.GetRepController;
 import bl.receiptbl.ReceptionRepbl.ReceptionRepController;
+import blservice.receiptblservice.GetRepblService;
+import blservice.receiptblservice.ReceptionRepblService;
 import ui.receiptui.ReceiptDetailUI.Arrive;
 import ui.util.MyFrame;
 import util.enumData.Rep;
@@ -37,8 +41,8 @@ public class ArriveCheck extends javax.swing.JPanel {
     private javax.swing.JTable jTable;
     private javax.swing.JButton okButton;
     private javax.swing.JTextField resultMsgText;
-    private GetRepController getControl;
-    private ReceptionRepController receptionControl;
+    private GetRepblService getControl;
+    private ReceptionRepblService receptionControl;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
@@ -74,9 +78,14 @@ public class ArriveCheck extends javax.swing.JPanel {
         resultMsgText = new javax.swing.JTextField();
         getControl = new GetRepController();
         receptionControl = new ReceptionRepController();
-        model = new DefaultTableModel();
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -98,7 +107,7 @@ public class ArriveCheck extends javax.swing.JPanel {
         if(rep==Rep.GetRep){
         	try {
 				dataVector = getControl.initCheck(office);
-			} catch (ClassNotFoundException | NotBoundException | IOException e) {
+			} catch (ClassNotFoundException | NotBoundException | IOException | NameNotFoundException | NumNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				resultMsgText.setText(ExceptionPrint.print(e));
@@ -107,7 +116,7 @@ public class ArriveCheck extends javax.swing.JPanel {
         else {
 			try {
 				dataVector = receptionControl.initCheck(office);
-			} catch (ClassNotFoundException | NotBoundException | IOException e) {
+			} catch (ClassNotFoundException | NotBoundException | IOException | NameNotFoundException | NumNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				resultMsgText.setText(ExceptionPrint.print(e));
@@ -217,7 +226,7 @@ public class ArriveCheck extends javax.swing.JPanel {
         TableColumn column5 = jTable.getColumnModel().getColumn(4);
         column5.setPreferredWidth(65);
         TableColumn column6 = jTable.getColumnModel().getColumn(5);
-        column6.setPreferredWidth(20);
+        column6.setPreferredWidth(50);
     }
     
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {

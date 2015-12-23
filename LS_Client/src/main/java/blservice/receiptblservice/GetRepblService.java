@@ -7,7 +7,6 @@ import java.util.Vector;
 
 import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
-import util.enumData.City;
 import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsLogisticState;
 import util.enumData.Rep;
@@ -16,7 +15,7 @@ import util.enumData.Rep;
  * @author bismuth
  *
  */
-public interface GetRepblService extends ReceiptblService{
+public interface GetRepblService extends ReceiptblService, NotForPayblService, NotForCashblService, NotForPayAndCashblService{
 	
 	/**初始化表格
 	 * @param rep

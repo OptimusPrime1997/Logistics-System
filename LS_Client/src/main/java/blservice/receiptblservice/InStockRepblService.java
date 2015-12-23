@@ -16,7 +16,7 @@ import util.enumData.ResultMessage;
  * @author bismuth
  *
  */
-public interface InStockRepblService extends ReceiptblService{
+public interface InStockRepblService extends ReceiptblService, NotForPayblService, GetRepByDateblService, NotForCashblService, NotForPayAndCashblService{
 	
 	/**根据订单号得到目的城市
 	 * @param order

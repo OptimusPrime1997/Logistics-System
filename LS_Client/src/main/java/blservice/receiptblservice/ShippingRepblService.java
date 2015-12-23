@@ -4,7 +4,7 @@ package blservice.receiptblservice;
  * @author bismuth
  *
  */
-public interface ShippingRepblService extends ReceiptblService{
+public interface ShippingRepblService extends ReceiptblService, GetRepByDateblService, NotForPayblService, NotForCashblService, NotForPayAndCashblService{
 	
 	/**是否存在该订单
 	 * @param order

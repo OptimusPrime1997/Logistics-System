@@ -27,7 +27,7 @@ public class Freightbl{
 		Vector<Object> data = new Vector<Object>();
 		ArrayList<TransferRepVO> transferRepVOs = transferRepbl.getMonthRep(date);
 		if(transferRepVOs==null)
-			return null;
+			return data;
 		for(TransferRepVO transferRepVO : transferRepVOs){
 			Vector<String> arr = new Vector<String>();
 			arr.add(transferRepVO.num);
@@ -39,9 +39,10 @@ public class Freightbl{
 	
 	public Vector<Object> initFreightTable(PayRepVO payRepVO){
 		Vector<Object> data = new Vector<Object>();
-		ArrayList<PayFreightVO> payFreightVOs = payRepVO.freight.payFreightVOs;
-		if(payFreightVOs==null)
+		PayRepFreightRepVO payRepFreightRepVO = payRepVO.freight;
+		if(payRepFreightRepVO==null)
 			return data;
+		ArrayList<PayFreightVO> payFreightVOs = payRepFreightRepVO.payFreightVOs;
 		PayFreightVO payFreightVO;
 		for(int i = 0;i < payFreightVOs.size();i++){
 			Vector<String> arr = new Vector<String>();

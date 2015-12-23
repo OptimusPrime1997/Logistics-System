@@ -29,7 +29,7 @@ public class InStockRepCheckbl {
 		ArrayList<InStockRepVO> inStockRepVOs = inStockRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
 		if(inStockRepVOs==null)
-			return null;
+			return data;
 		for(int i = 0;i < inStockRepVOs.size();i++){
 			InStockRepVO inStockRepVO = inStockRepVOs.get(i);
 			Vector<String> arr = new Vector<String>();

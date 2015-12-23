@@ -20,7 +20,8 @@ import Exception.NumNotFoundException;
 import VO.Receipt.OutStockRepVO;
 import VO.Receipt.ShippingRepVO;
 import VO.Receipt.TransferRepVO;
-import bl.receiptbl.OutStockRepbl.OutStockRepController;
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.receiptblservice.OutStockRepblService;
 import ui.receiptui.ReceiptCheckUI.OutStockCheck;
 import ui.warehousemanui.WarehousePanel;
 import util.CurrentCity;
@@ -56,7 +57,7 @@ public class OutStockRep extends javax.swing.JPanel {
     private javax.swing.JTextField repTypeText;
     private javax.swing.JTextField resultMsgText;
     private javax.swing.JLabel shipFormLabel;
-    private OutStockRepController control;
+    private OutStockRepblService control;
    	private DefaultTableModel model;
    	private Vector<String> columnIdentifiers;
    	private Vector<Object> dataVector;
@@ -100,10 +101,15 @@ public class OutStockRep extends javax.swing.JPanel {
         checkAllRepsButton = new javax.swing.JButton();
         shipFormText = new javax.swing.JTextField();
         confirmButton = new javax.swing.JButton();
-        control = new OutStockRepController();
-		model = new DefaultTableModel();
+        control = ControllerFactoryImpl.getInstance().getOutStockRepblService();
 		columnIdentifiers = new Vector<String>();
 		dataVector = new Vector<Object>();
+        model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -287,8 +293,6 @@ public class OutStockRep extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     
-    
-
     private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	new OutStockCheck(officeID);
     }
@@ -323,6 +327,10 @@ public class OutStockRep extends javax.swing.JPanel {
     }
     
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt){
+    	if(repTypeText.getText().equals("")){
+    		resultMsgText.setText("请填写出库单据编号");
+    		return;
+    	}
     	String resultMessage = control.checkNum(repTypeText.getText(), 19, "编号");
     	resultMsgText.setText(resultMessage);
     	if(!resultMessage.equals("添加成功")){

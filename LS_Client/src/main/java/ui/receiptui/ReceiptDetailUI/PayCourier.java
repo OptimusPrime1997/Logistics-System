@@ -13,6 +13,8 @@ import javax.swing.table.TableColumn;
 
 import VO.Receipt.PayRepVO;
 import bl.receiptbl.PayRepbl.PayRepController;
+import bl.receiptbl.PayRepbl.PayRepCourierController;
+import blservice.receiptblservice.PayRepCourierblService;
 import ui.util.MyFrame;
 
 /**
@@ -35,7 +37,7 @@ public class PayCourier extends javax.swing.JPanel {
     private javax.swing.JTextField resultMsgText;
     private javax.swing.JLabel sumLabel;
     private javax.swing.JTextField sumText;
-    private PayRepController control;
+    private PayRepCourierblService control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
@@ -71,10 +73,15 @@ public class PayCourier extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         bankAccountText = new javax.swing.JTextField();
-        control = new PayRepController();
-        model = new DefaultTableModel();
+        control = new PayRepCourierController();
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
         setBackground(new java.awt.Color(255, 255, 255));
 

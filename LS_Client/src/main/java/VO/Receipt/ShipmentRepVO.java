@@ -12,7 +12,8 @@ public class ShipmentRepVO extends ShipRepVO {
 		super(num, date, depart, plateNum, driverNum, goods);
 		// TODO Auto-generated constructor stub
 	}
-	public ShipmentRepVO(ShipmentRepPO po){
+
+	public ShipmentRepVO(ShipmentRepPO po) {
 		this.num = po.getNum();
 		this.date = po.getDate();
 		this.depart = po.getDepart();
@@ -20,17 +21,25 @@ public class ShipmentRepVO extends ShipRepVO {
 		this.driverNum = po.getDriverNum();
 		this.goods = po.getGoods();
 	}
-	public static ShipmentRepPO toPO(ShipmentRepVO vo){
+
+	public static ShipmentRepPO toPO(ShipmentRepVO vo) {
+		if (vo == null)
+			return null;
 		return new ShipmentRepPO(vo.num, vo.date, vo.depart, vo.plateNum, vo.driverNum, vo.goods);
 	}
+
 	public static ArrayList<ShipmentRepVO> toArrayVO(ArrayList<ReceiptPO> receiptPOs) {
+		if (receiptPOs == null)
+			return null;
 		ArrayList<ShipmentRepVO> shipmentRepVOs = new ArrayList<ShipmentRepVO>();
 		for (ReceiptPO receiptPO : receiptPOs)
 			shipmentRepVOs.add(new ShipmentRepVO((ShipmentRepPO) receiptPO));
 		return shipmentRepVOs;
 	}
-	
+
 	public static ArrayList<ShipmentRepPO> toArrayPO(ArrayList<ShipmentRepVO> shipmentRepVOs) {
+		if (shipmentRepVOs == null)
+			return null;
 		ArrayList<ShipmentRepPO> shipmentRepPOs = new ArrayList<ShipmentRepPO>();
 		for (ShipmentRepVO shipmentRepVO : shipmentRepVOs)
 			shipmentRepPOs.add(toPO(shipmentRepVO));

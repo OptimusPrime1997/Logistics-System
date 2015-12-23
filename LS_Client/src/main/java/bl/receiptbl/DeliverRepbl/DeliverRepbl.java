@@ -59,8 +59,6 @@ public class DeliverRepbl {
 			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.DeliverRep, office);
-		if(receiptPOs==null)
-			return null;
 		return DeliverRepVO.toArrayVO(receiptPOs);
 	}
 	

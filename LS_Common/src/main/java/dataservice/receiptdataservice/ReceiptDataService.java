@@ -14,7 +14,7 @@ import util.enumData.Rep;
  * @author bismuth
  *
  */
-public interface ReceiptDataService extends Remote,Serializable{
+public interface ReceiptDataService extends Remote, Serializable{
 	
 	/**提交
 	 * @param po
@@ -81,7 +81,7 @@ public interface ReceiptDataService extends Remote,Serializable{
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
-	public void clearSubmit(Rep rep, String office) throws IOException, ClassNotFoundException;
+	public void clearSubmit(Rep rep, String office) throws IOException, ClassNotFoundException, RemoteException;
 	
 	/**清空某个工作地点的某种已保存的单据
 	 * @param rep
@@ -89,7 +89,7 @@ public interface ReceiptDataService extends Remote,Serializable{
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
-	public void clearSave(Rep rep, String office) throws IOException, ClassNotFoundException;
+	public void clearSave(Rep rep, String office) throws IOException, ClassNotFoundException, RemoteException;
 	
 	/**得到某个工作地点的某种已提交的单据
 	 * @param rep
@@ -98,7 +98,7 @@ public interface ReceiptDataService extends Remote,Serializable{
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
-	public ReceiptPO getSubmitRep(Rep rep, String office) throws ClassNotFoundException, IOException;
+	public ReceiptPO getSubmitRep(Rep rep, String office) throws ClassNotFoundException, IOException, RemoteException;
 	
 	/**得到某种单据类型所有单据
 	 * @param rep
@@ -106,7 +106,7 @@ public interface ReceiptDataService extends Remote,Serializable{
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
-	public ArrayList<ReceiptPO> forCheck(Rep rep) throws ClassNotFoundException, IOException;
+	public ArrayList<ReceiptPO> forCheck(Rep rep) throws ClassNotFoundException, IOException, RemoteException;
 
 	/**将某个单据从提交文件转移到保存文件
 	 * @param num
@@ -114,6 +114,6 @@ public interface ReceiptDataService extends Remote,Serializable{
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
-	void submitSave(String num, Rep rep) throws ClassNotFoundException, IOException;
+	void submitSave(String num, Rep rep) throws ClassNotFoundException, IOException, RemoteException;
 	
 }

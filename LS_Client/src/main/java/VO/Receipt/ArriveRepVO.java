@@ -16,8 +16,6 @@ public class ArriveRepVO extends ReceiptVO{
 		this.arriveVOs = arriveVOs;
 	}
 	
-	public ArriveRepVO(){
-		
-	}
+	public ArriveRepVO(){}
 	
 }

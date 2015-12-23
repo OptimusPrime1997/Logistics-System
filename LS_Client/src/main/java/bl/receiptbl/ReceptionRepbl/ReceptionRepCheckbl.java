@@ -21,8 +21,6 @@ public class ReceptionRepCheckbl {
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.ReceptionRep);
-		if(receiptPO==null)
-			throw new NumNotFoundException();
 		return new ReceptionRepVO((ReceptionRepPO)receiptPO);
 	}
 
@@ -30,6 +28,8 @@ public class ReceptionRepCheckbl {
 		// TODO Auto-generated method stub
 		ArrayList<ReceptionRepVO> receptionVOs = receptionRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
+		if(receptionVOs==null)
+			return data;
 		for(int i = 0;i < receptionVOs.size();i++){
 			Vector<String> arr = new Vector<String>();
 			ReceptionRepVO RecepitonRepVO = receptionVOs.get(i);

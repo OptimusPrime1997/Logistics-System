@@ -54,14 +54,11 @@ public class InStockRepbl{
 			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.InStockRep, office);
-		if(receiptPOs==null)
-			return null;
 		return InStockRepVO.toArrayVO(receiptPOs);
 	}
 
 	public ArrayList<InStockRepVO> getAllRep(String office) 
-			throws ClassNotFoundException, NotBoundException,
-	IOException {
+			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.InStockRep, office);
 		return InStockRepVO.toArrayVO(receiptPOs);
@@ -89,8 +86,6 @@ public class InStockRepbl{
 			throws ClassNotFoundException, MalformedURLException, RemoteException, IOException, 
 			NotBoundException{
 		ArrayList<ReceiptPO> receiptPOs = getInStockRepDataService().getAllRepByDate(date);
-		if(receiptPOs==null)
-			return null;
 		return InStockRepVO.toArrayVO(receiptPOs);
 	}
 }

@@ -8,19 +8,14 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import Exception.NumNotFoundException;
-import VO.Receipt.InStockRepVO;
 import VO.Receipt.OutStockRepVO;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.ShippingRepVO;
 import VO.Receipt.TransferRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.OutStockRepblService;
-import blservice.receiptblservice.PostReceiptblService;
-import blservice.receiptblservice.SubmitblService;
-import util.enumData.Rep;
 
-public class OutStockRepController extends ReceiptblController 
-implements OutStockRepblService, PostReceiptblService, SubmitblService{
+public class OutStockRepController extends ReceiptblController implements OutStockRepblService{
 	private OutStockRepbl outStackRepbl = new OutStockRepbl();
 	private OutStockRepCheckbl outStockRepCheckbl = new OutStockRepCheckbl();
 	private OutStockRepShowbl outStockRepShowbl = new OutStockRepShowbl();

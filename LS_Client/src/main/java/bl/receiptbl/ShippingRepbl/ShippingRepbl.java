@@ -43,8 +43,6 @@ public class ShippingRepbl{
 			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.ShippingRep, office);
-		if(receiptPOs==null)
-			return null;
 		return ShippingRepVO.toArrayVO(receiptPOs);
 	}
 
@@ -52,8 +50,6 @@ public class ShippingRepbl{
 			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getRepByDate(date, Rep.ShippingRep, office);
-		if(receiptPOs==null)
-			return null;
 		return ShippingRepVO.toArrayVO(receiptPOs);
 	}
 	

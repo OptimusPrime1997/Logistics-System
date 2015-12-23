@@ -18,7 +18,7 @@ public class TransferRepCheckbl {
 		ArrayList<TransferRepVO> transferRepVOs = transferRepbl.getAllRep(office);
 		Vector<Object> data = new Vector<Object>();
 		if(transferRepVOs==null)
-			return null;
+			return data;
 		for(int i = 0;i < transferRepVOs.size();i++){
 			Vector<String> arr = new Vector<String>();
 			TransferRepVO transferRepVO = transferRepVOs.get(i);

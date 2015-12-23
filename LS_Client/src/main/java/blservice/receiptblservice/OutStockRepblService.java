@@ -15,7 +15,7 @@ import VO.Receipt.TransferRepVO;
  * @author bismuth
  *
  */
-public interface OutStockRepblService extends ReceiptblService{
+public interface OutStockRepblService extends ReceiptblService, GetRepByDateblService, NotForPayblService, NotForCashblService, NotForPayAndCashblService{
 	
 	/**得到相应中转中心装车单
 	 * @param num

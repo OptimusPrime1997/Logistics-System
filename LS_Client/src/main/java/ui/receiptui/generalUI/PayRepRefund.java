@@ -17,11 +17,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
+import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import VO.Receipt.PayRefundVO;
 import VO.Receipt.PayRepRefundRepVO;
 import VO.Receipt.PayRepVO;
-import bl.receiptbl.PayRepbl.PayRepController;
+import bl.receiptbl.PayRepbl.PayRepRefundController;
+import blservice.receiptblservice.PayRepRefundblService;
 import ui.util.MyFrame;
 import util.enumData.ResultMessage;
 
@@ -50,20 +52,22 @@ public class PayRepRefund extends javax.swing.JPanel {
     private javax.swing.JTextField resultMsgText;
     private javax.swing.JLabel sumLabel;
     private javax.swing.JTextField sumText;
-    private PayRepController control;
+    private PayRepRefundblService control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
     private PayRepVO payRepVO;
     private PayRep payRep;
+    private String bankAccount;
     // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form PayRep付款项
      */ 
-    public PayRepRefund(PayRep oriPayRep, PayRepVO oriPayRepVO) {
+    public PayRepRefund(PayRep oriPayRep, PayRepVO oriPayRepVO, String bank) {
         payRepVO = oriPayRepVO;
         payRep = oriPayRep;
+        bankAccount = bank;
         initComponents();
         myFrame = new MyFrame(627, 355, this);
     }
@@ -93,10 +97,15 @@ public class PayRepRefund extends javax.swing.JPanel {
         balanceLabel = new javax.swing.JLabel();
         balanceText = new javax.swing.JTextField();
         resultMsgText = new javax.swing.JTextField();
-        control = new PayRepController();
-        model = new DefaultTableModel();
+        control = new PayRepRefundController();
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
         
         setBackground(new java.awt.Color(255, 255, 255));
         setToolTipText("");
@@ -134,6 +143,7 @@ public class PayRepRefund extends javax.swing.JPanel {
         columnIdentifiers.add("金额");
         columnIdentifiers.add("付款原因");
         columnIdentifiers.add("删除");
+        dataVector = control.initRefundTable(payRepVO, control.getDate());
         model.setDataVector(dataVector, columnIdentifiers);
         jTable.setModel(model);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
@@ -152,6 +162,20 @@ public class PayRepRefund extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
+        if (bankAccount != null) {
+			bankAccountBox.setEnabled(false);
+			for (int i = 0; i < bankAccountBox.getItemCount(); i++) {
+				if (bankAccountBox.getItemAt(i).equals(bankAccount)) {
+					bankAccountBox.setSelectedIndex(i);
+					break;
+				}
+			}
+		}
+		bankAccountBox.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				bankAccountBoxActionPerformed(evt);
+			}
+		});
         
         balanceLabel.setText("账户余额:");
 
@@ -279,19 +303,24 @@ public class PayRepRefund extends javax.swing.JPanel {
         TableColumn column2 = jTable.getColumnModel().getColumn(1);
         column2.setPreferredWidth(300);
         TableColumn column3 = jTable.getColumnModel().getColumn(2);
-        column3.setPreferredWidth(10);
+        column3.setPreferredWidth(50);
     }
     
     private String calSum(){
     	double sum = 0;
     	for(int i = 0;i < dataVector.size();i++){
-    		sum += (double)jTable.getValueAt(i, 0);
+    		sum += Double.parseDouble((String)jTable.getValueAt(i, 0));
     	}
     	return sum+"";
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	double sum = Double.parseDouble(sumText.getText());
+		double balance = Double.parseDouble(balanceText.getText());
+		if(sum>balance){
+			resultMsgText.setText("付款金额超过账户余额，请更换账户");
+			return;
+		}
     	String bankAccount = (String)bankAccountBox.getSelectedItem();
     	try {
 			control.minusMoneyInBankAccount(bankAccount, sum);
@@ -304,13 +333,15 @@ public class PayRepRefund extends javax.swing.JPanel {
     	ArrayList<PayRefundVO> payRefundVOs = new ArrayList<PayRefundVO>();
     	for(int i = 0;i < dataVector.size();i++){
     		PayRefundVO payRefundVO = new PayRefundVO((String)jTable.getValueAt(i, 1), 
-    				(double)jTable.getValueAt(i, 0));
+    				Double.parseDouble((String)jTable.getValueAt(i, 0)));
     		payRefundVOs.add(payRefundVO);
     	}
-    	PayRepRefundRepVO payRepRefundRepVO = new PayRepRefundRepVO(sum, control.getDate(), payRefundVOs, bankAccount);
+    	PayRepRefundRepVO payRepRefundRepVO = 
+    			new PayRepRefundRepVO(sum, control.getDate(), payRefundVOs, bankAccount);
+    	payRep.deleteRow("退款" + "(" + control.getDate() + ")");
     	control.submitRefund(payRepVO, payRepRefundRepVO);
     	Vector<String> arr = new Vector<String>();
-    	arr.add("退款"+control.getDate());
+    	arr.add("退款" + "(" + control.getDate() + ")");
     	arr.add(sum+"");
     	arr.add(bankAccount);
     	payRep.createRow(arr);
@@ -322,6 +353,14 @@ public class PayRepRefund extends javax.swing.JPanel {
     }
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	if(moneyText.getText().equals("")){
+    		resultMsgText.setText("请填写付款原因");
+    		return;
+    	}
+    	if(moneyText.getText().equals("")){
+    		resultMsgText.setText("请填写付款金额");
+    		return;
+    	}
     	double money = Double.parseDouble(moneyText.getText());
     	ResultMessage resultMessage = control.checkMoney(money);
     	resultMsgText.setText(ResultMessage.toFriendlyString(resultMessage));
@@ -338,5 +377,18 @@ public class PayRepRefund extends javax.swing.JPanel {
     		moneyText.setText("");
     	}
     }
+    
+	private void bankAccountBoxActionPerformed(java.awt.event.ActionEvent evt){
+		String bankAccount = (String)bankAccountBox.getSelectedItem();
+		double balance = 0;
+		try {
+			balance = control.showBankBalance(bankAccount);
+		} catch (ClassNotFoundException | NameNotFoundException | IOException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+		balanceText.setText(balance+"");
+	}
 
 }

@@ -26,6 +26,7 @@ import dataservice.receiptdataservice.PayRepDataService;
 import util.CurrentTime;
 import util.enumData.LogType;
 import util.enumData.Rep;
+import util.enumData.ResultMessage;
 
 public class PayRepbl extends ReceiptblController{
 	
@@ -43,8 +44,7 @@ public class PayRepbl extends ReceiptblController{
 		return payRepDataService;
 	}
 	
-	public void submit(ReceiptVO vo)
-			throws IOException, NotBoundException, ClassNotFoundException {
+	public void submit(ReceiptVO vo) throws IOException, NotBoundException{
 		// TODO Auto-generated method stub
 		getPayRepDataService().clearPaySubmit();
 		receiptbl.submit(PayRepVO.toPO((PayRepVO) vo), Rep.PayRep);
@@ -56,16 +56,12 @@ public class PayRepbl extends ReceiptblController{
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.PayRep);
-		if(receiptPO==null)
-			throw new NumNotFoundException();
 		return new PayRepVO((PayRepPO) receiptPO);
 	}
 	
 	public ArrayList<PayRepVO> getAllRep() throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		ArrayList<PayRepPO> payRepPOs = getPayRepDataService().getAllPayRep();
-		if(payRepPOs==null)
-			return null;
 		return PayRepVO.toArrayVO(payRepPOs);
 	}
 	
@@ -84,23 +80,18 @@ public class PayRepbl extends ReceiptblController{
 		PayRepVO payRepVO = getSubmitPayRep();
 		Vector<Object> data = new Vector<Object>();
 		if(payRepVO==null)
-			return null;
+			return data;
 		for(int i = 0;i < payRepVO.payVOs.size();i++){
 			Vector<String> arr = new Vector<String>();
 			PayVO payVO = payRepVO.payVOs.get(i);
-			arr.add(payVO.payThing.getChineseName());
+			System.out.println(payVO.payThing);
+			arr.add(payVO.payThing);
 			arr.add(payVO.money+"");
 			arr.add(payVO.bankAccountNum);
 			arr.add(payVO.remark);
 			data.add(arr);
 		}
 		return data;
-	}
-
-	public String getRefundTime(String type){
-		type = type.split("(")[1];
-		type = type.split(")")[0];
-		return type;
 	}
 
 	public Vector<String> showBankAccount() throws ClassNotFoundException, IOException {
@@ -125,6 +116,33 @@ public class PayRepbl extends ReceiptblController{
 		String num = login.getCurrentOptorId();
 		AccountVO accountVO = accountbl.findByAccountNum(num);
 		return accountVO.accountName;
+	}
+	
+	public ResultMessage checkMoney(double money){
+		if(money<0){
+			return ResultMessage.INPUTNUM_MUST_BE_POSITIVE;
+		}
+		return ResultMessage.ADD_SUCCESS;
+	}
+
+	public Vector<Object> initShow(String num) 
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
+		// TODO Auto-generated method stub
+		PayRepVO payRepVO = getRepByNum(num);
+		Vector<Object> data = new Vector<Object>();
+		if(payRepVO==null)
+			return data;
+		for(int i = 0;i < payRepVO.payVOs.size();i++){
+			Vector<String> arr = new Vector<String>();
+			PayVO payVO = payRepVO.payVOs.get(i);
+			System.out.println(payVO.payThing);
+			arr.add(payVO.payThing);
+			arr.add(payVO.money+"");
+			arr.add(payVO.bankAccountNum);
+			arr.add(payVO.remark);
+			data.add(arr);
+		}
+		return data;
 	}
 	
 }

@@ -1,13 +1,20 @@
 package dataimpl.receiptdata;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import PO.Receipt.ReceiptPO;
 import dataservice.receiptdataservice.CashRepDataService;
 import datautil.DataUtility;
 
-public class CashRepData implements CashRepDataService{
+public class CashRepData extends UnicastRemoteObject implements CashRepDataService{
+
+	public CashRepData() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * 

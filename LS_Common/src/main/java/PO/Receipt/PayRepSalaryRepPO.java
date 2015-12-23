@@ -1,8 +1,9 @@
 package PO.Receipt;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PayRepSalaryRepPO{
+public class PayRepSalaryRepPO implements Serializable{
 	/**
 	 * 
 	 */

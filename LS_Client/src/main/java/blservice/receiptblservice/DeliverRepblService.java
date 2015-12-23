@@ -12,7 +12,7 @@ import Exception.NumNotFoundException;
  * @author bismuth
  *
  */
-public interface DeliverRepblService extends ReceiptblService{
+public interface DeliverRepblService extends ReceiptblService, NotForPayblService, NotForCashblService, NotForPayAndCashblService{
 	
 	/**通过订单号得到收件人名字
 	 * @param order

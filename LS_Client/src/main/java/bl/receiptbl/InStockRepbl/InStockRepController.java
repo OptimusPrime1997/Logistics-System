@@ -14,13 +14,10 @@ import VO.Receipt.InStockRepVO;
 import VO.Receipt.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.InStockRepblService;
-import blservice.receiptblservice.PostReceiptblService;
-import blservice.receiptblservice.SubmitblService;
 import util.enumData.City;
 import util.enumData.ResultMessage;
 
-public class InStockRepController extends ReceiptblController 
-implements InStockRepblService, PostReceiptblService, SubmitblService{
+public class InStockRepController extends ReceiptblController implements InStockRepblService{
 	private InStockRepbl inStockRepbl = new InStockRepbl();
 	private InStockRepCheckbl inStockRepCheckbl = new InStockRepCheckbl();
 	private InStockRepShowbl inStockRepShowbl = new InStockRepShowbl();

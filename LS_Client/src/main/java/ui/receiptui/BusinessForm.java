@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import ui.util.MyFrame;
 import util.CurrentTime;
-import util.enumData.PayThing;
 import util.enumData.ResultMessage;
 import Exception.NotFoundMoneyInAndOutException;
 import VO.BusinessFormVO;
@@ -222,7 +221,7 @@ public static void main(String[] args) {
 						payObjects[count][0] = repvo.date;
 						payObjects[count][1] = repvo.num;
 						payObjects[count][2] = vo.money;
-						payObjects[count][3]=PayThing.toFriendlyString(vo.payThing);
+						payObjects[count][3]= vo.payThing;
 						count++;
 					}
 				}

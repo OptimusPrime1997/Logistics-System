@@ -1,13 +1,20 @@
 package dataimpl.receiptdata;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import PO.Receipt.ReceiptPO;
 import dataservice.receiptdataservice.OutStockRepDataService;
 import datautil.DataUtility;
 
-public class OutStockRepData implements OutStockRepDataService{
+public class OutStockRepData extends UnicastRemoteObject implements OutStockRepDataService{
+
+	public OutStockRepData() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * 

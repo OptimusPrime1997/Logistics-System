@@ -19,7 +19,9 @@ import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
 import VO.Receipt.ArriveVO;
 import VO.Receipt.GetRepVO;
+import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.receiptbl.GetRepbl.GetRepController;
+import blservice.receiptblservice.GetRepblService;
 import ui.receiptui.ReceiptCheckUI.ArriveCheck;
 import ui.util.MyFrame;
 import util.enumData.GoodsArrivalState;
@@ -58,7 +60,7 @@ public class GetRep extends javax.swing.JPanel {
 	private javax.swing.JTextField resultMsgText;
 	private javax.swing.JButton completeButton;
 	private javax.swing.JButton confirmButton;
-	private GetRepController control;
+	private GetRepblService control;
 	private DefaultTableModel model;
 	private Vector<String> columnIdentifiers;
 	private Vector<Object> dataVector;
@@ -106,12 +108,17 @@ public class GetRep extends javax.swing.JPanel {
 		okButton = new javax.swing.JButton();
 		resultMsgText = new javax.swing.JTextField();
 		checkAllRepsButton = new javax.swing.JButton();
-		control = new GetRepController();
-		model = new DefaultTableModel();
-		columnIdentifiers = new Vector<String>();
-		dataVector = new Vector<Object>();
 		confirmButton = new javax.swing.JButton();
 		completeButton = new javax.swing.JButton();
+		control = ControllerFactoryImpl.getInstance().getGetRepblService();
+		columnIdentifiers = new Vector<String>();
+		dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
 		setBackground(new java.awt.Color(255, 255, 255));
 
@@ -377,7 +384,7 @@ public class GetRep extends javax.swing.JPanel {
 		TableColumn column2 = jTable.getColumnModel().getColumn(1);
 		column2.setPreferredWidth(50);
 		TableColumn column3 = jTable.getColumnModel().getColumn(2);
-		column3.setPreferredWidth(10);
+		column3.setPreferredWidth(50);
 	}
 
 	private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -385,6 +392,10 @@ public class GetRep extends javax.swing.JPanel {
 	}
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		if (orderText.getText() == null || orderText.getText() == "") {
+			resultMsgText.setText("请填写订单号");
+			return;
+		}
 		String order = orderText.getText();
 		String resultMessage = control.checkNum(order, 10, "编号");
 		resultMsgText.setText(resultMessage);
@@ -435,6 +446,10 @@ public class GetRep extends javax.swing.JPanel {
 	}
 
 	private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		if (getTypeText.getText().equals("")) {
+			resultMsgText.setText("请填写到达单据编号");
+			return;
+		}
 		String repString = getTypeBox.getSelectedItem().toString();
 		Rep rep = Rep.getRep(repString);
 		String shipNum = getTypeText.getText();

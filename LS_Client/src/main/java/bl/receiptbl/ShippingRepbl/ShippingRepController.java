@@ -9,13 +9,9 @@ import Exception.NumNotFoundException;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.ShippingRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
-import blservice.receiptblservice.PostReceiptblService;
 import blservice.receiptblservice.ShippingRepblService;
-import blservice.receiptblservice.SubmitblService;
-import util.enumData.ResultMessage;
 
-public class ShippingRepController extends ReceiptblController 
-	implements ShippingRepblService, PostReceiptblService, SubmitblService {
+public class ShippingRepController extends ReceiptblController implements ShippingRepblService {
 	
 	private ShippingRepbl shippingRepbl = new ShippingRepbl();
 	private ShippingRepCheckbl shippingRepCheckbl = new ShippingRepCheckbl();

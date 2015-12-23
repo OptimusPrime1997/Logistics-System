@@ -6,6 +6,8 @@
 
 package ui.receiptui.generalUI;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
@@ -18,17 +20,25 @@ import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
 import VO.Receipt.PayRepVO;
 import VO.Receipt.PayVO;
+import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.receiptbl.PayRepbl.PayRepController;
+import blservice.receiptblservice.PayRepblService;
 import ui.receiptui.ReceiptCheckUI.PayCheck;
+import ui.receiptui.ReceiptDetailUI.PayBonus;
+import ui.receiptui.ReceiptDetailUI.PayCourier;
+import ui.receiptui.ReceiptDetailUI.PayDriver;
+import ui.receiptui.ReceiptDetailUI.PayFreight;
+import ui.receiptui.ReceiptDetailUI.PayRefund;
+import ui.receiptui.ReceiptDetailUI.PayRent;
+import ui.receiptui.ReceiptDetailUI.PayStaff;
 import ui.util.MyFrame;
-import util.enumData.PayThing;
 
 /**
  *
  * @author apple
  */
 public class PayRep extends javax.swing.JPanel {
-
+	
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private MyFrame myFrame;
 	private javax.swing.JButton cancelLabel;
@@ -45,7 +55,7 @@ public class PayRep extends javax.swing.JPanel {
 	private javax.swing.JTextField resultMsgText;
 	private javax.swing.JLabel sumLabel;
 	private javax.swing.JTextField sumText;
-	private PayRepController control;
+	private PayRepblService control;
 	private DefaultTableModel model;
 	private Vector<String> columnIdentifiers;
 	private Vector<Object> dataVector;
@@ -83,10 +93,18 @@ public class PayRep extends javax.swing.JPanel {
 		sumText = new javax.swing.JTextField();
 		resultMsgText = new javax.swing.JTextField();
 		checkAllRepsButton = new javax.swing.JButton();
-		control = new PayRepController();
-		model = new DefaultTableModel();
+		control = ControllerFactoryImpl.getInstance().getPayRepblService();
 		columnIdentifiers = new Vector<String>();
 		dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers){
+			@Override
+			public boolean isCellEditable(int row, int column){
+				if(column==3)
+					return true;
+				else 
+					return false;
+			}
+		};
 
 		setBackground(new java.awt.Color(255, 255, 255));
 
@@ -105,6 +123,9 @@ public class PayRep extends javax.swing.JPanel {
 
 		try {
 			oriPayRepVO = control.getSubmitPayRep();
+			if(oriPayRepVO==null){
+				oriPayRepVO = new PayRepVO(null, null, 0, null, null, null, null, null, null, null, null, null);
+			}
 		} catch (ClassNotFoundException | IOException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -115,7 +136,6 @@ public class PayRep extends javax.swing.JPanel {
 		columnIdentifiers.add("金额");
 		columnIdentifiers.add("付款账户");
 		columnIdentifiers.add("备注");
-		columnIdentifiers.add("删除");
 		try {
 			dataVector = control.initTable();
 		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
@@ -168,6 +188,68 @@ public class PayRep extends javax.swing.JPanel {
 		});
 
 		setColumn();
+		
+		jTable.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int row = jTable.getSelectedRow();
+				int col = jTable.getSelectedColumn();
+				if(col==0){
+					String payThing = (String)jTable.getValueAt(row, 0);
+					switch (payThing) {
+					case "奖金":
+						new PayBonus(oriPayRepVO);
+						break;
+					case "快递员工资":
+						new PayCourier(oriPayRepVO);
+						break;
+					case "司机工资":
+						new PayDriver(oriPayRepVO);
+						break;
+					case "运费":
+						new PayFreight(oriPayRepVO);
+						break;
+					case "租金":
+						new PayRent(oriPayRepVO);
+						break;
+					case "普通员工工资":
+						new PayStaff(oriPayRepVO);
+						break;
+					default:
+						String date = payThing.split("(")[1];
+						date = date.split(")")[0];
+						new PayRefund(date, oriPayRepVO);
+						break;
+					}
+				}
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
 		this.setLayout(layout);
@@ -230,21 +312,19 @@ public class PayRep extends javax.swing.JPanel {
 
 	private void setColumn() {
 		TableColumn column1 = jTable.getColumnModel().getColumn(0);
-		column1.setPreferredWidth(100);
+		column1.setPreferredWidth(150);
 		TableColumn column2 = jTable.getColumnModel().getColumn(1);
 		column2.setPreferredWidth(60);
 		TableColumn column3 = jTable.getColumnModel().getColumn(2);
 		column3.setPreferredWidth(180);
 		TableColumn column4 = jTable.getColumnModel().getColumn(3);
-		column4.setPreferredWidth(270);
-		TableColumn column5 = jTable.getColumnModel().getColumn(4);
-		column5.setPreferredWidth(10);
+		column4.setPreferredWidth(200);
 	}
 
 	private String calSum() {
 		double sum = 0;
 		for (int i = 0; i < dataVector.size(); i++) {
-			sum += (double) jTable.getValueAt(i, 1);
+			sum += Double.parseDouble((String) jTable.getValueAt(i, 1));
 		}
 		return sum + "";
 	}
@@ -258,11 +338,14 @@ public class PayRep extends javax.swing.JPanel {
 	}
 
 	private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		calSum();
 		double sum = Double.parseDouble(sumText.getText());
 		ArrayList<PayVO> payVOs = new ArrayList<PayVO>();
 		for (int i = 0; i < dataVector.size(); i++) {
-			PayVO payVO = new PayVO(PayThing.getPayThing((String) jTable.getValueAt(i, 0)),
-					(double) jTable.getValueAt(i, 1), (String) jTable.getValueAt(i, 2),
+			PayVO payVO = new PayVO(
+					(String) jTable.getValueAt(i, 0),
+					Double.parseDouble((String) jTable.getValueAt(i, 1)), 
+					(String) jTable.getValueAt(i, 2),
 					(String) jTable.getValueAt(i, 3));
 			payVOs.add(payVO);
 		}
@@ -271,7 +354,7 @@ public class PayRep extends javax.swing.JPanel {
 				oriPayRepVO.rent, oriPayRepVO.driverSalary, oriPayRepVO.courierSalary, oriPayRepVO.bonus);
 		try {
 			control.submit(payRepVO);
-		} catch (NotBoundException | IOException | ClassNotFoundException e) {
+		} catch (NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
@@ -281,40 +364,58 @@ public class PayRep extends javax.swing.JPanel {
 	}
 
 	private void choosePayThingBoxActionPerformed(java.awt.event.ActionEvent evt) {
-		if (evt.getSource() == choosePayThingBox) {
+		String bankAccount = null;
+//		if (evt.getSource() == choosePayThingBox) {
 			int index = choosePayThingBox.getSelectedIndex();
 			switch (index) {
 			case 1:
-				new PayRepRefund(this, oriPayRepVO);
+				bankAccount = getBankAccount("退款" + "(" + control.getDate() + ")");
+				new PayRepRefund(this, oriPayRepVO, bankAccount);
 				break;
 			case 2:
-				new PayRepDriver(this, oriPayRepVO);
+				bankAccount = getBankAccount("司机工资");
+				new PayRepDriver(this, oriPayRepVO, bankAccount);
 				break;
 			case 3:
-				new PayRepBonus(this, oriPayRepVO);
+				bankAccount = getBankAccount("奖金");
+				new PayRepBonus(this, oriPayRepVO, bankAccount);
 				break;
 			case 4:
-				new PayRepStaff(this, oriPayRepVO);
+				bankAccount = getBankAccount("人员工资");
+				new PayRepStaff(this, oriPayRepVO, bankAccount);
 				break;
 			case 5:
-				new PayRepCourier(this, oriPayRepVO);
+				bankAccount = getBankAccount("快递员工资");
+				new PayRepCourier(this, oriPayRepVO, bankAccount);
 				break;
 			case 6:
-				new PayRepRent(this, oriPayRepVO);
+				bankAccount = getBankAccount("租金");
+				new PayRepRent(this, oriPayRepVO, bankAccount);
 				break;
 			case 7:
-				new PayRepFreight(this, oriPayRepVO);
+				bankAccount = getBankAccount("运费");
+				new PayRepFreight(this, oriPayRepVO, bankAccount);
 				break;
 			default:
 				break;
 			}
+//		}
+	}
+	
+	private String getBankAccount(String payThing){
+		for(int i = 0;i < dataVector.size();i++){
+			if(((String)jTable.getValueAt(i, 0)).equals(payThing)){
+				return (String)jTable.getValueAt(i, 2);
+			}
 		}
+		return null;
 	}
 	
 	public void createRow(Vector<String> arr){
 		dataVector.add(arr);
 		model.setDataVector(dataVector, columnIdentifiers);
     	setColumn();
+    	sumText.setText(calSum());
 	}
 	
 	public void deleteRow(String payThing){

@@ -30,8 +30,6 @@ public class ShipmentRepbl{
 			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.ShipmentRep, office);
-		if(receiptPOs==null)
-			return null;
 		return ShipmentRepVO.toArrayVO(receiptPOs);
 	}
 
@@ -45,7 +43,7 @@ public class ShipmentRepbl{
 	public String getTruckSum(String date, String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		String truckNum = createNum(date, office);
-		for(int i = 0;i < truckNum.length();i++){
+		for(int i = 0;i <= truckNum.length();i++){
 			if(truckNum.charAt(i)=='0'){
 				truckNum = truckNum.substring(1);
 			}

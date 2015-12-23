@@ -1,5 +1,5 @@
 package util.enumData;
 
-public enum goodsState {
+public enum GoodsState {
 
 }

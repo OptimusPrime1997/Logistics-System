@@ -17,11 +17,14 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
+import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import VO.Receipt.PayRentVO;
 import VO.Receipt.PayRepRentRepVO;
 import VO.Receipt.PayRepVO;
 import bl.receiptbl.PayRepbl.PayRepController;
+import bl.receiptbl.PayRepbl.PayRepRentController;
+import blservice.receiptblservice.PayRepRentblService;
 import ui.util.MyFrame;
 import util.enumData.ResultMessage;
 
@@ -51,20 +54,22 @@ public class PayRepRent extends javax.swing.JPanel {
 	private javax.swing.JTextField resultMsgText;
 	private javax.swing.JLabel sumLabel;
 	private javax.swing.JTextField sumText;
-	private PayRepController control;
+	private PayRepRentblService control;
 	private DefaultTableModel model;
 	private Vector<String> columnIdentifiers;
 	private Vector<Object> dataVector;
 	private PayRepVO payRepVO;
 	private PayRep payRep;
+	private String bankAccount;
 	// End of variables declaration//GEN-END:variables
 
 	/**
 	 * Creates new form PayRep租金
 	 */
-	public PayRepRent(PayRep oriPayRep, PayRepVO oriPayRepVO) {
+	public PayRepRent(PayRep oriPayRep, PayRepVO oriPayRepVO, String bank) {
 		payRep = oriPayRep;
 		payRepVO = oriPayRepVO;
+		bankAccount = bank;
 		initComponents();
 		myFrame = new MyFrame(424, 583, this);
 	}
@@ -96,10 +101,18 @@ public class PayRepRent extends javax.swing.JPanel {
 		sumLabel = new javax.swing.JLabel();
 		addButton = new javax.swing.JButton();
 		resultMsgText = new javax.swing.JTextField();
-		control = new PayRepController();
-		model = new DefaultTableModel();
+		control = new PayRepRentController();
 		columnIdentifiers = new Vector<String>();
 		dataVector = new Vector<Object>();
+		model = new DefaultTableModel(dataVector, columnIdentifiers){
+			@Override
+			public boolean isCellEditable(int row, int column){
+				if(column==3)
+					return true;
+				else 
+					return false;
+			}
+		};
 
 		setBackground(new java.awt.Color(255, 255, 255));
 
@@ -114,6 +127,7 @@ public class PayRepRent extends javax.swing.JPanel {
 		columnIdentifiers.add("金额");
 		columnIdentifiers.add("备注");
 		columnIdentifiers.add("删除");
+		dataVector = control.initRentTable(payRepVO);
 		model.setDataVector(dataVector, columnIdentifiers);
 		jTable.setModel(model);
 		jTable.setGridColor(new java.awt.Color(0, 0, 0));
@@ -134,6 +148,20 @@ public class PayRepRent extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
+		if (bankAccount != null) {
+			bankAccountBox.setEnabled(false);
+			for (int i = 0; i < bankAccountBox.getItemCount(); i++) {
+				if (bankAccountBox.getItemAt(i).equals(bankAccount)) {
+					bankAccountBox.setSelectedIndex(i);
+					break;
+				}
+			}
+		}
+		bankAccountBox.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				bankAccountBoxActionPerformed(evt);
+			}
+		});
 
 		cancelButton.setText("取消");
 		cancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -309,18 +337,30 @@ public class PayRepRent extends javax.swing.JPanel {
 		TableColumn column4 = jTable.getColumnModel().getColumn(3);
 		column4.setPreferredWidth(300);
 		TableColumn column5 = jTable.getColumnModel().getColumn(4);
-		column5.setPreferredWidth(10);
+		column5.setPreferredWidth(50);
 	}
 
 	private String calSum() {
 		double sum = 0;
 		for (int i = 0; i < dataVector.size(); i++) {
-			sum += (double) jTable.getValueAt(i, 2);
+    		sum += Double.parseDouble((String)jTable.getValueAt(i, 2));
 		}
 		return sum + "";
 	}
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		if(receiverNameText.getText().equals("")){
+			resultMsgText.setText("请填写收租人姓名");
+			return;
+		}
+		if(receiverPhoneText.getText().equals("")){
+			resultMsgText.setText("请填写收租人手机");
+			return;
+		}
+		if(moneyText.getText().equals("")){
+			resultMsgText.setText("请填写租金金额");
+			return;
+		}
 		String name = receiverNameText.getText();
 		String phone = receiverPhoneText.getText();
 		double money = Double.parseDouble(moneyText.getText());
@@ -330,7 +370,7 @@ public class PayRepRent extends javax.swing.JPanel {
 			resultMsgText.setText(resultMsg);
 			return;
 		}
-		if (resultMessage == ResultMessage.ADD_SUCCESS) {
+		if (resultMessage != ResultMessage.ADD_SUCCESS) {
 			resultMsgText.setText(ResultMessage.toFriendlyString(resultMessage));
 			return;
 		}
@@ -354,6 +394,11 @@ public class PayRepRent extends javax.swing.JPanel {
 
 	private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		double sum = Double.parseDouble(sumText.getText());
+		double balance = Double.parseDouble(balanceText.getText());
+		if(sum>balance){
+			resultMsgText.setText("付款金额超过账户余额，请更换账户");
+			return;
+		}
 		String bankAccount = (String) bankAccountBox.getSelectedItem();
 		try {
 			control.minusMoneyInBankAccount(bankAccount, sum);
@@ -365,8 +410,10 @@ public class PayRepRent extends javax.swing.JPanel {
 		}
 		ArrayList<PayRentVO> payRentVOs = new ArrayList<PayRentVO>();
 		for (int i = 0; i < dataVector.size(); i++) {
-			PayRentVO payRentVO = new PayRentVO((String) jTable.getValueAt(i, 0), (String) jTable.getValueAt(i, 1),
-					(double) jTable.getValueAt(i, 2), (String) jTable.getValueAt(i, 3));
+			PayRentVO payRentVO = new PayRentVO((String) jTable.getValueAt(i, 0), 
+					(String) jTable.getValueAt(i, 1),
+					Double.parseDouble((String) jTable.getValueAt(i, 2)), 
+					(String) jTable.getValueAt(i, 3));
 			payRentVOs.add(payRentVO);
 		}
 		PayRepRentRepVO payRepRentRepVO = new PayRepRentRepVO(payRentVOs, bankAccount, sum);
@@ -378,6 +425,19 @@ public class PayRepRent extends javax.swing.JPanel {
 		arr.add(bankAccount);
 		payRep.createRow(arr);
 		myFrame.dispose();
+	}
+	
+	private void bankAccountBoxActionPerformed(java.awt.event.ActionEvent evt){
+		String bankAccount = (String)bankAccountBox.getSelectedItem();
+		double balance = 0;
+		try {
+			balance = control.showBankBalance(bankAccount);
+		} catch (ClassNotFoundException | NameNotFoundException | IOException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
+		balanceText.setText(balance+"");
 	}
 
 }

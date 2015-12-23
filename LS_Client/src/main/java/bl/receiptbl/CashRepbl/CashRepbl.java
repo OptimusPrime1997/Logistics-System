@@ -94,7 +94,9 @@ public class CashRepbl {
 		return CashRepVO.toArrayVO(receiptPOs);
 	}
 	
-	public CashRepVO getSubmitCashRep(String office) throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, NotBoundException{
+	public CashRepVO getSubmitCashRep(String office) 
+			throws ClassNotFoundException, RemoteException, MalformedURLException, IOException, 
+			NotBoundException{
 		ReceiptPO receiptPO = receiptbl.getSubmitRep(Rep.CashRep, office);
 		if(receiptPO==null)
 			return null;
@@ -132,8 +134,6 @@ public class CashRepbl {
 			throws ClassNotFoundException, MalformedURLException, RemoteException, IOException, 
 			NotBoundException{
 		ArrayList<ReceiptPO> receiptPOs = getCashRepDataService().getAllRep();
-		if(receiptPOs==null)
-			return null;
 		return CashRepVO.toArrayVO(receiptPOs);
 	}
 

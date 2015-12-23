@@ -16,7 +16,7 @@ public class PayRepCheckbl {
 		ArrayList<PayRepVO> payRepVOs = payRepbl.getAllRep();
 		Vector<Object> data = new Vector<Object>();
 		if(payRepVOs==null)
-			return null;
+			return data;
 		for(int i = 0;i < payRepVOs.size();i++){
 			Vector<String> arr = new Vector<String>();
 			PayRepVO payRepVO = payRepVOs.get(i);

@@ -11,6 +11,7 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
+import java.util.ResourceBundle.Control;
 import java.util.Vector;
 import Exception.NameNotFoundException;
 
@@ -21,7 +22,9 @@ import javax.swing.table.TableColumn;
 import VO.GoodsVO;
 import VO.Receipt.CashRepVO;
 import VO.Receipt.CashVO;
+import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.receiptbl.CashRepbl.CashRepController;
+import blservice.receiptblservice.CashRepblService;
 import ui.receiptui.ReceiptCheckUI.CashCheck;
 import ui.util.MyFrame;
 import Exception.ExceptionPrint;
@@ -57,7 +60,7 @@ public class CashRep extends javax.swing.JPanel {
     private javax.swing.JTextField sumText;
     private javax.swing.JTextField resultMsgText;
     private javax.swing.JButton checkAllRepsButton;
-    private CashRepController control;
+    private CashRepblService control;
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
@@ -96,10 +99,18 @@ public class CashRep extends javax.swing.JPanel {
         courierButton = new javax.swing.JButton();
         resultMsgText = new javax.swing.JTextField();
         checkAllRepsButton = new javax.swing.JButton();
-        control = new CashRepController();
-        model = new DefaultTableModel();
+        control = ControllerFactoryImpl.getInstance().getCashRepblService();
         columnIdentifiers = new Vector<String>();
         dataVector = new Vector<Object>();
+        model = new DefaultTableModel(dataVector, columnIdentifiers){
+			@Override
+			public boolean isCellEditable(int row, int column){
+				if(column==3)
+					return true;
+				else 
+					return false;
+			}
+		};
 
         setBackground(new java.awt.Color(255, 255, 255));
         
@@ -322,11 +333,11 @@ public class CashRep extends javax.swing.JPanel {
         TableColumn column2 = jTable.getColumnModel().getColumn(1);
         column2.setPreferredWidth(80);
         TableColumn column3 = jTable.getColumnModel().getColumn(2);
-        column3.setPreferredWidth(30);
+        column3.setPreferredWidth(50);
         TableColumn column4 = jTable.getColumnModel().getColumn(3);
         column4.setPreferredWidth(60);
         TableColumn column5 = jTable.getColumnModel().getColumn(4);
-        column5.setPreferredWidth(10);
+        column5.setPreferredWidth(50);
     }
     
     private String calSum(){
@@ -338,6 +349,10 @@ public class CashRep extends javax.swing.JPanel {
     }
     
     private void courierButtonMouseClicked(java.awt.event.MouseEvent evt) {
+    	if(courierNumText.getText().equals("")){
+    		resultMsgText.setText("请填写快递员编号");
+    		return;
+    	}
     	String courierNum = courierNumText.getText();
     	String resultMessage = control.checkNum(courierNum, 11, "快递员编号");
     	resultMsgText.setText(resultMessage);
@@ -369,7 +384,6 @@ public class CashRep extends javax.swing.JPanel {
     }
     
     private void okMouseClicked(java.awt.event.MouseEvent evt) {
-    	
 		String num = numText.getText();
 		String date = dateText.getText();
 		double sum = Double.parseDouble(sumText.getText());
