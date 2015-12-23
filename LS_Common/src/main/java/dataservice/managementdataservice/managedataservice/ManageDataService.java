@@ -4,6 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import dataservice.managementdataservice.accountdataservice.AccountDataService;
+import dataservice.managementdataservice.accountdataservice.CourierDataService;
 import dataservice.managementdataservice.bankaccountdataservice.BankAccountDataService;
 import dataservice.managementdataservice.constdataservice.ConstDataService;
 import dataservice.managementdataservice.institutiondataservice.InstitutionDataService;
@@ -20,6 +21,8 @@ public interface ManageDataService extends Remote {
 	public static final String regname = "ManageData";
 
 	public AccountDataService getAccountData() throws RemoteException;
+	
+	public CourierDataService getCourierData() throws RemoteException;
 
 	public BankAccountDataService getBankAccountData() throws RemoteException;
 

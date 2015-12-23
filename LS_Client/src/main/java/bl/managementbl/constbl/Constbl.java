@@ -43,6 +43,7 @@ public class Constbl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DECISION_CONST);
 		if (constDataService != null) {
+			ResultMessage rmsg = null;
 			try {
 				ArrayList<ConstPO> pos = constDataService.show();
 				if (pos != null) {
@@ -52,7 +53,7 @@ public class Constbl {
 						}
 					}
 				}
-				ResultMessage rmsg = constDataService.insert(manageVOPO
+				 rmsg = constDataService.insert(manageVOPO
 						.voToPO(vo));
 				ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 			} catch (IOException e) {
@@ -65,7 +66,7 @@ public class Constbl {
 				e.printStackTrace();
 				System.out.println("系统程序错误");
 			}
-			return ResultMessage.SUCCESS;
+			return  rmsg;
 		} else
 			return ResultMessage.FAILED;
 	}
@@ -74,10 +75,11 @@ public class Constbl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DECISION_CONST);
 		if (constDataService != null) {
+			ResultMessage rmsg=check(vo);
 			if (check(vo) == ResultMessage.VALID) {
 				ConstPO po = manageVOPO.voToPO(vo);
 				try {
-					ResultMessage rmsg = constDataService.update(po);
+					 rmsg = constDataService.update(po);
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -90,7 +92,7 @@ public class Constbl {
 					System.out.println("读写文件出错");
 					return ResultMessage.IOFAILED;
 				}
-				return ResultMessage.SUCCESS;
+				return rmsg;
 			} else {
 				return check(vo);
 			}
@@ -103,10 +105,11 @@ public class Constbl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DECISION_CONST);
 		if (constDataService != null) {
+			ResultMessage rmsg=ResultMessage.WRONG_DATA;
 			if (VO.twoCities.contains("-") && VO.twoCities.length() < 20) {
 				ConstPO po = manageVOPO.voToPO(VO);
 				try {
-					ResultMessage rmsg = constDataService.delete(po);
+				rmsg = constDataService.delete(po);
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -119,7 +122,7 @@ public class Constbl {
 					System.out.println("读写文件出错");
 					return ResultMessage.IOFAILED;
 				}
-				return ResultMessage.SUCCESS;
+				return rmsg;
 			} else {
 				return ResultMessage.WRONG_FORMAT;
 			}

@@ -23,13 +23,14 @@ public interface AccountDataService extends Remote {
 	public ArrayList<AccountPO> show() throws RemoteException,
 			ClassNotFoundException, IOException;
 
+	public AccountPO findByAccountNum(String accountNum)
+			throws RemoteException, FileNotFoundException,
+			NumNotFoundException, ClassNotFoundException, IOException;
+
 	public AccountPO findByName(String name) throws RemoteException,
 			FileNotFoundException, NameNotFoundException,
 			ClassNotFoundException, IOException;
 
-	public AccountPO findByAccountNum(String accountNum)
-			throws RemoteException, FileNotFoundException,
-			NumNotFoundException, ClassNotFoundException, IOException;
 
 	public ArrayList<AccountPO> findByInstitutionNum(String institutionNum)
 			throws RemoteException, ClassNotFoundException, IOException,

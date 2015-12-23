@@ -13,7 +13,7 @@ public class AccountVO implements Comparable<AccountVO> {
 	public String institutionNum;
 
 	public AccountVO(String accountNum, String accountName, String password,
-			Sex sex, Authority authority, String phoneNum, String institution) {
+			Sex sex, Authority authority,  String phoneNum,String institutionNum) {
 		// TODO Auto-generated constructor stub
 		this.accountNum = accountNum;
 		this.accountName = accountName;
@@ -21,11 +21,17 @@ public class AccountVO implements Comparable<AccountVO> {
 		this.sex = sex;
 		this.authority = authority;
 		this.phoneNum = phoneNum;
-		this.institutionNum = institution;
+		this.institutionNum = institutionNum;
 	}
 
 	public int compareTo(AccountVO v) {
 		// TODO Auto-generated method stub
 		return accountNum.compareTo(v.accountNum);
+	}
+
+	public String toString() {
+		return accountNum + "," + accountName + "," + password + ","
+				+ sex.toString() + "," + authority.toString() + "," + phoneNum
+				+ "," + institutionNum;
 	}
 }

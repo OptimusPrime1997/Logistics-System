@@ -48,6 +48,7 @@ public class Institutionbl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.PERSONNEL_INSTITUTION_MANAGEMENT);
 		if (institutionDataService != null) {
+			ResultMessage rmsg = null;
 			try {
 				ArrayList<InstitutionPO> pos = institutionDataService.show();
 				if (vo.institutionNum.substring(3, 6).equals("000")) {
@@ -76,8 +77,7 @@ public class Institutionbl {
 												.substring(3, 6)) + 1);
 					}
 				}
-				ResultMessage rmsg = institutionDataService.insert(manageVOPO
-						.voToPO(vo));
+				rmsg = institutionDataService.insert(manageVOPO.voToPO(vo));
 				ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -89,7 +89,7 @@ public class Institutionbl {
 				e.printStackTrace();
 				System.out.println("系统程序错误");
 			}
-			return ResultMessage.SUCCESS;
+			return rmsg;
 		} else
 			return ResultMessage.FAILED;
 	}
@@ -98,10 +98,11 @@ public class Institutionbl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.PERSONNEL_INSTITUTION_MANAGEMENT);
 		if (institutionDataService != null) {
+			ResultMessage rmsg = check(vo);
 			if (check(vo) == ResultMessage.VALID) {
 				InstitutionPO po = manageVOPO.voToPO(vo);
 				try {
-					ResultMessage rmsg = institutionDataService.update(po);
+					rmsg = institutionDataService.update(po);
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -114,7 +115,7 @@ public class Institutionbl {
 					System.out.println("读写文件出错");
 					return ResultMessage.IOFAILED;
 				}
-				return ResultMessage.SUCCESS;
+				return rmsg;
 			} else {
 				return check(vo);
 			}
@@ -127,22 +128,25 @@ public class Institutionbl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.PERSONNEL_INSTITUTION_MANAGEMENT);
 		if (institutionDataService != null) {
-			InstitutionPO po = manageVOPO.voToPO(VO);
-			try {
-				ResultMessage rmsg = institutionDataService.delete(po);
-				ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("class文件未找到");
-				return ResultMessage.FAILED;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("读写文件出错");
-				return ResultMessage.IOFAILED;
+			ResultMessage rmsg = InputCheck.checkInputNum(VO.institutionNum, 6);
+			if (rmsg == ResultMessage.VALID) {
+				InstitutionPO po = manageVOPO.voToPO(VO);
+				try {
+					rmsg = institutionDataService.delete(po);
+					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("class文件未找到");
+					return ResultMessage.FAILED;
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("读写文件出错");
+					return ResultMessage.IOFAILED;
+				}
 			}
-			return ResultMessage.SUCCESS;
+			return rmsg;
 		} else {
 			return ResultMessage.WRONG_FORMAT;
 		}

@@ -49,7 +49,7 @@ public class AuthorAddIdentityPanel extends javax.swing.JFrame {
     	Dimension screensize = tk.getScreenSize();
     	int screenh = screensize.height;
     	int screenw = screensize.width;
-    	this.setSize(400, 300);
+    	this.setSize(500, 400);
     	this.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);
     	/**
     	 * 关闭窗口

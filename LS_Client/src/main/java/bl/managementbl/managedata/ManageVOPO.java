@@ -8,6 +8,7 @@ import bl.loginbl.Loginbl;
 import PO.AccountPO;
 import PO.BankAccountPO;
 import PO.ConstPO;
+import PO.CourierPO;
 import PO.DriverPO;
 import PO.InstitutionPO;
 import PO.SalaryPolicyPO;
@@ -16,6 +17,7 @@ import VO.LogVO;
 import VO.ManagementVO.AccountVO;
 import VO.ManagementVO.BankAccountVO;
 import VO.ManagementVO.ConstVO;
+import VO.ManagementVO.CourierVO;
 import VO.ManagementVO.DriverVO;
 import VO.ManagementVO.InstitutionVO;
 import VO.ManagementVO.SalaryPolicyVO;
@@ -26,7 +28,7 @@ public class ManageVOPO {
 	private static Logbl logbl;
 
 	private ManageVOPO() {
-		 logbl=new Logbl();
+		logbl = new Logbl();
 	}
 
 	public static ManageVOPO getInstance() {
@@ -45,19 +47,23 @@ public class ManageVOPO {
 	public ResultMessage addLog(LogType operation) {
 		LogVO logVO = new LogVO(operation, Loginbl.getCurrentOptorId(),
 				CurrentTime.getDate());
-		try{
-		assert (logbl != null) : ("Logbl is null!");
-		}catch(AssertionError e){
+		try {
+			assert (logbl != null) : ("Logbl is null!");
+		} catch (AssertionError e) {
 			System.out.println("Logbl is null!");
 			System.out.println(e.getMessage());
 		}
-		 logbl.add(logVO);
+		logbl.add(logVO);
 		return ResultMessage.SUCCESS;
 	}
 
 	public AccountPO voToPO(AccountVO vo) {
 		return new AccountPO(vo.accountNum, vo.accountName, vo.password,
 				vo.sex, vo.authority, vo.phoneNum, vo.institutionNum);
+	}
+
+	public CourierPO voToPO(CourierVO vo) {
+		return new CourierPO(vo.courierNum, vo.courrentMonthMoney);
 	}
 
 	public BankAccountPO voToPO(BankAccountVO vo) {
@@ -71,12 +77,11 @@ public class ManageVOPO {
 
 	public InstitutionPO voToPO(InstitutionVO vo) {
 		return new InstitutionPO(vo.institutionNum, vo.institutionName,
-				vo.contactInfo,vo.address,  vo.manning);
+				vo.contactInfo, vo.address, vo.manning);
 	}
 
 	public SalaryPolicyPO voToPO(SalaryPolicyVO vo) {
-		return new SalaryPolicyPO(vo.authority, vo.salaryPolicy,
-				vo.value);
+		return new SalaryPolicyPO(vo.authority, vo.salaryPolicy, vo.value);
 	}
 
 	public DriverPO voToPO(DriverVO vo) {
@@ -92,6 +97,10 @@ public class ManageVOPO {
 		return new AccountVO(po.getAccountNum(), po.getAccountName(),
 				po.getPassword(), po.getSex(), po.getAuthority(),
 				po.getPhoneNum(), po.getInstitutionNum());
+	}
+
+	public CourierVO poToVO(CourierPO po) {
+		return new CourierVO(po.getCourierNum(), po.getCourrentMonthMoney());
 	}
 
 	public BankAccountVO poToVO(BankAccountPO po) {
@@ -124,4 +133,5 @@ public class ManageVOPO {
 		return new VehicleVO(po.getVehicleNum(), po.getLicenseNum(),
 				po.getStartTime());
 	}
+
 }

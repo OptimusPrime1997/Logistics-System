@@ -110,8 +110,8 @@ public class VehicleData extends UnicastRemoteObject implements
 				if (p.getVehicleNum().equals(po.getVehicleNum())) {
 					findPO = true;
 					objects.remove((Object) p);
+					break;
 				}
-				break;
 			}
 			d.SaveAll(objects, path);
 		}

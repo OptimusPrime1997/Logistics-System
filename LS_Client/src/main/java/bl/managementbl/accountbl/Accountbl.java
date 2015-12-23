@@ -49,7 +49,6 @@ public class Accountbl {
 					ArrayList<AccountPO> pos = accountDataService.show();
 					if (vo.accountNum.substring(8, 11).equals("000")) {
 						AccountPO lastPO = null;
-						int num = 0;
 						if (pos != null) {
 							for (Iterator<AccountPO> t = pos.iterator(); t
 									.hasNext();) {
@@ -100,10 +99,11 @@ public class Accountbl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {
+			ResultMessage rmsg = null;
 			if (check(vo) == ResultMessage.VALID) {
 				AccountPO po = manageVOPO.voToPO(vo);
 				try {
-					ResultMessage rmsg = accountDataService.update(po);
+					rmsg = accountDataService.update(po);
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -116,7 +116,7 @@ public class Accountbl {
 					System.out.println("读写文件出错");
 					return ResultMessage.IOFAILED;
 				}
-				return ResultMessage.SUCCESS;
+				return rmsg;
 			} else {
 				System.out.println("帐户"
 						+ ResultMessage.toFriendlyString(check(vo)));
@@ -131,10 +131,11 @@ public class Accountbl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {
+			ResultMessage rmsg = InputCheck.checkInputNum(vo.accountNum, 11);
 			if (InputCheck.checkInputNum(vo.accountNum, 11) == ResultMessage.VALID) {
 				AccountPO po = manageVOPO.voToPO(vo);
 				try {
-					ResultMessage rmsg = accountDataService.delete(po);
+					rmsg = accountDataService.delete(po);
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -147,7 +148,7 @@ public class Accountbl {
 					System.out.println("读写文件出错");
 					return ResultMessage.IOFAILED;
 				}
-				return ResultMessage.SUCCESS;
+				return rmsg;
 			} else {
 				System.out.println("帐户"
 						+ InputCheck.checkInputNum(vo.accountNum, 11));

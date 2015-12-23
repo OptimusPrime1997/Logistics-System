@@ -74,14 +74,13 @@ public class Vehiclebl {
 					ResultMessage rmsg = vehicleDataService
 							.insertVehicle(manageVOPO.voToPO(vo));
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
-					return ResultMessage.SUCCESS;
+					return rmsg;
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					System.out.println("存储文件出错");
 					return ResultMessage.IOFAILED;
-				} 
-				catch (ClassNotFoundException e) {
+				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					System.out.println("系统程序错误");
@@ -101,10 +100,11 @@ public class Vehiclebl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.CAR_MANAGEMENT);
 		if (vehicleDataService != null) {
+			ResultMessage rmsg = check(vo);
 			if (check(vo) == ResultMessage.VALID) {
 				VehiclePO po = manageVOPO.voToPO(vo);
 				try {
-					ResultMessage rmsg = vehicleDataService.updateVehicle(po);
+					rmsg = vehicleDataService.updateVehicle(po);
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -117,7 +117,7 @@ public class Vehiclebl {
 					System.out.println("读写文件出错");
 					return ResultMessage.IOFAILED;
 				}
-				return ResultMessage.SUCCESS;
+				return rmsg;
 			} else {
 				System.out.println("车辆"
 						+ ResultMessage.toFriendlyString(check(vo)));
@@ -132,10 +132,11 @@ public class Vehiclebl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.CAR_MANAGEMENT);
 		if (vehicleDataService != null) {
+			ResultMessage rmsg = InputCheck.checkInputNum(vo.vehicleNum, 9);
 			if (InputCheck.checkInputNum(vo.vehicleNum, 9) == ResultMessage.VALID) {
 				VehiclePO po = manageVOPO.voToPO(vo);
 				try {
-					ResultMessage rmsg = vehicleDataService.deleteVehicle(po);
+					rmsg = vehicleDataService.deleteVehicle(po);
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -148,7 +149,7 @@ public class Vehiclebl {
 					System.out.println("读写文件出错");
 					return ResultMessage.IOFAILED;
 				}
-				return ResultMessage.SUCCESS;
+				return rmsg;
 			} else {
 				System.out.println("车辆"
 						+ InputCheck.checkInputNum(vo.vehicleNum, 9));

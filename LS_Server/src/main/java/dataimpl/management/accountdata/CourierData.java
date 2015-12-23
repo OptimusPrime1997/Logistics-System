@@ -1,48 +1,48 @@
-package dataimpl.management.bankaccountdata;
+package dataimpl.management.accountdata;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-
-
 import util.enumData.ResultMessage;
-import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
-import PO.BankAccountPO;
-import dataservice.managementdataservice.bankaccountdataservice.BankAccountDataService;
+import PO.CourierPO;
+import dataservice.managementdataservice.accountdataservice.CourierDataService;
 import datautil.DataUtility;
 
-public class BankAccountData extends UnicastRemoteObject implements
-		BankAccountDataService {
+public class CourierData extends UnicastRemoteObject implements
+		CourierDataService, Serializable {
+	private final String path = "data/currentdata/courier";
+	private DataUtility d;
+	/**
+* 
+*/
 	private static final long serialVersionUID = 1L;
 
-	private final String path = "data/currentdata/bankaccount";
-	private DataUtility d;
-
-	/**
-	 * 
-	 */
-	public BankAccountData() throws RemoteException {
+	public CourierData() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 		d = new DataUtility();
 	}
 
 	@Override
-	public ResultMessage insert(BankAccountPO po) throws IOException {
+	public ResultMessage insert(CourierPO po) throws IOException,
+			FileNotFoundException {
 		// TODO Auto-generated method stub
-		if (d.save(po, path) == ResultMessage.FAILED) {
-			return ResultMessage.FAILED;
-		} else {
+		print();
+		if (d.save(po, path) == ResultMessage.SUCCESS) {
 			return ResultMessage.SUCCESS;
+		} else {
+			return ResultMessage.FAILED;
 		}
 	}
 
 	@Override
-	public ResultMessage update(BankAccountPO po) throws ClassNotFoundException, IOException {
+	public ResultMessage update(CourierPO po) throws ClassNotFoundException,
+			IOException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO = false;
@@ -50,10 +50,10 @@ public class BankAccountData extends UnicastRemoteObject implements
 		if (objects == null) {
 			return ResultMessage.NOT_FOUND_FILE;
 		} else {
-			BankAccountPO p = null;
+			CourierPO p = null;
 			for (int i = 0; i < objects.size(); i++) {
-				p = (BankAccountPO) objects.get(i);
-				if (p.getBankAccountNum().equals(po.getBankAccountNum())) {
+				p = (CourierPO) objects.get(i);
+				if (p.getCourierNum().equals(po.getCourierNum())) {
 					objects.remove((Object) p);
 					objects.add((Object) po);
 					findPO = true;
@@ -67,11 +67,11 @@ public class BankAccountData extends UnicastRemoteObject implements
 		} else {
 			return ResultMessage.NOT_FOUND;
 		}
-
 	}
 
 	@Override
-	public ResultMessage delete(BankAccountPO po) throws ClassNotFoundException, IOException {
+	public ResultMessage delete(CourierPO po) throws ClassNotFoundException,
+			IOException {
 		// TODO Auto-generated method stub
 		print();
 		boolean findPO = false;
@@ -79,10 +79,10 @@ public class BankAccountData extends UnicastRemoteObject implements
 		if (objects == null) {
 			return ResultMessage.NOT_FOUND_FILE;
 		} else {
-			BankAccountPO p = null;
+			CourierPO p = null;
 			for (int i = 0; i < objects.size(); i++) {
-				p = (BankAccountPO) objects.get(i);
-				if (p.getBankAccountNum().equals(po.getBankAccountNum())) {
+				p = (CourierPO) objects.get(i);
+				if (p.getCourierNum().equals(po.getCourierNum())) {
 					findPO = true;
 					objects.remove((Object) p);
 					break;
@@ -95,61 +95,35 @@ public class BankAccountData extends UnicastRemoteObject implements
 		} else {
 			return ResultMessage.NOT_FOUND;
 		}
-
 	}
 
 	@Override
-	public ArrayList<BankAccountPO> show() throws ClassNotFoundException, IOException {
+	public ArrayList<CourierPO> show() throws ClassNotFoundException,
+			IOException {
 		// TODO Auto-generated method stub
 		print();
 		ArrayList<Object> objects = d.getAll(path);
-		ArrayList<BankAccountPO> BankAccountPOs = new ArrayList<BankAccountPO>();
+		ArrayList<CourierPO> accountPOs = new ArrayList<CourierPO>();
 		for (Object o : objects) {
-			BankAccountPOs.add((BankAccountPO) o);
+			accountPOs.add((CourierPO) o);
 		}
-		return BankAccountPOs;
+		return accountPOs;
 	}
 
 	@Override
-	public BankAccountPO findByName(String name) throws NameNotFoundException, ClassNotFoundException, IOException {
-		// TODO Auto-generated method stub
-		print();
-		BankAccountPO exist=null;
-		ArrayList<Object> objects=d.getAll(path);
-		if(objects==null){
-			throw new FileNotFoundException();
-		}else{
-			BankAccountPO p=null;
-			for(int i=0;i<objects.size();i++){
-				p=(BankAccountPO)objects.get(i);
-				if(p.getBankAccountName().equals(name)){
-					exist=p;
-					break;
-				}
-			}
-		}
-		if(exist==null){
-			throw new NameNotFoundException();
-		}else{
-			return exist;
-		}
-	
-	}
-
-	@Override
-	public BankAccountPO findByBankAccountNum(String bankAccountNum)
+	public CourierPO findByCourierNum(String accountNum)
 			throws NumNotFoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
-		BankAccountPO exist = null;
+		CourierPO exist = null;
 		ArrayList<Object> objects = d.getAll(path);
 		if (objects == null) {
 			throw new FileNotFoundException();
 		} else {
-			BankAccountPO p = null;
+			CourierPO p = null;
 			for (int i = 0; i < objects.size(); i++) {
-				p = (BankAccountPO) objects.get(i);
-				if (p.getBankAccountNum().equals(bankAccountNum)) {
+				p = (CourierPO) objects.get(i);
+				if (p.getCourierNum().equals(accountNum)) {
 					exist = p;
 					break;
 				}

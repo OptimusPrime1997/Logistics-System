@@ -46,6 +46,7 @@ public class SalaryPolicybl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DECISION_SALARYPOLICY);
 		if (salaryPolicyDataService != null) {
+			ResultMessage rmsg=check(vo);
 			try {
 				ArrayList<SalaryPolicyPO> pos = salaryPolicyDataService.show();
 				if (pos != null) {
@@ -56,11 +57,11 @@ public class SalaryPolicybl {
 						}
 					}
 				}
-				if(check(vo)==ResultMessage.VALID){
-				ResultMessage rmsg = salaryPolicyDataService.insert(manageVOPO
-						.voToPO(vo));
-				ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
-				}else{
+				if (check(vo) == ResultMessage.VALID) {
+					 rmsg = salaryPolicyDataService
+							.insert(manageVOPO.voToPO(vo));
+					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
+				} else {
 					System.out.println(check(vo).toString());
 				}
 			} catch (IOException e) {
@@ -73,7 +74,7 @@ public class SalaryPolicybl {
 				e.printStackTrace();
 				System.out.println("系统程序错误");
 			}
-			return ResultMessage.SUCCESS;
+			return rmsg;
 		} else
 			return ResultMessage.FAILED;
 	}
@@ -82,10 +83,11 @@ public class SalaryPolicybl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DECISION_SALARYPOLICY);
 		if (salaryPolicyDataService != null) {
+			ResultMessage rmsg = check(vo);
 			if (check(vo) == ResultMessage.VALID) {
 				SalaryPolicyPO po = manageVOPO.voToPO(vo);
 				try {
-					ResultMessage rmsg = salaryPolicyDataService.update(po);
+					rmsg = salaryPolicyDataService.update(po);
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -98,7 +100,7 @@ public class SalaryPolicybl {
 					System.out.println("读写文件出错");
 					return ResultMessage.IOFAILED;
 				}
-				return ResultMessage.SUCCESS;
+				return rmsg;
 			} else {
 				return check(vo);
 			}
@@ -111,22 +113,25 @@ public class SalaryPolicybl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DECISION_SALARYPOLICY);
 		if (salaryPolicyDataService != null) {
-			SalaryPolicyPO po = manageVOPO.voToPO(VO);
-			try {
-				ResultMessage rmsg = salaryPolicyDataService.delete(po);
-				ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("class文件未找到");
-				return ResultMessage.FAILED;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("读写文件出错");
-				return ResultMessage.IOFAILED;
+			ResultMessage rmsg = check(VO);
+			if (check(VO) == ResultMessage.VALID) {
+				SalaryPolicyPO po = manageVOPO.voToPO(VO);
+				try {
+					rmsg = salaryPolicyDataService.delete(po);
+					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("class文件未找到");
+					return ResultMessage.FAILED;
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("读写文件出错");
+					return ResultMessage.IOFAILED;
+				}
 			}
-			return ResultMessage.SUCCESS;
+			return rmsg;
 		} else {
 			return ResultMessage.REMOTE_FAILED;
 		}

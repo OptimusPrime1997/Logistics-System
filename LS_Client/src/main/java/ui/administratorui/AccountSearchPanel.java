@@ -7,6 +7,7 @@ package ui.administratorui;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -44,6 +45,7 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 	public AccountSearchPanel(AdministratorPanel panel) {
 		this.administratorPanel = panel;
 		this.accountblController = panel.getAccountblController();
+		setAccountVOs();
 		initComponents();
 	}
 
@@ -54,208 +56,149 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 	 */
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed"
-	// desc="Generated Code">//GEN-BEGIN:initComponents
-	private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
 		/**
-		 * 设置窗体大小为不可变
-		 */
+
+		* 设置窗体大小为不可变
+
+		*/
+
 		this.setResizable(false);
+
 		/**
-		 * 设置窗体在中部出现
-		 */
+
+		* 设置窗体在中部出现
+
+		*/
+
 		Toolkit tk = Toolkit.getDefaultToolkit();
+
 		Dimension screensize = tk.getScreenSize();
+
 		int screenh = screensize.height;
+
 		int screenw = screensize.width;
-		this.setSize(400, 400);
+
+
+		this.setSize(797, 312);
+
+
 		this.setLocation(screenw / 2 - this.getWidth() / 2,
-				screenh / 2 - this.getHeight() / 2);
+
+		screenh / 2 - this.getHeight() / 2);
+
 		/**
-		 * 关闭窗口
-		 */
+
+		* 关闭窗口
+
+		*/
+
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		sexjComboBox = ComponentFactory.getSexJComboBox();
-		authorityjComboBox = ComponentFactory.getInstance()
-				.getAuthorityJComboBox();
-		jLabel9 = new javax.swing.JLabel();
-		exit = new javax.swing.JButton();
-		jScrollPane1 = new javax.swing.JScrollPane();
-		accountjTable = new javax.swing.JTable();
-		back = new javax.swing.JButton();
-		jTabbedPane1 = new javax.swing.JTabbedPane();
+		
+        jLabel9 = new javax.swing.JLabel();
+        exit = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        accountjTable = new javax.swing.JTable();
+        back = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        resultMsg = new javax.swing.JLabel();
+        String optorName=administratorPanel.getOptorName();
+        jLabel9.setText("当前账户："+optorName);
 
-		setAccountVOs();
+        exit.setText("退出");
+        exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitActionPerformed(evt);
+            }
+        });
 
-		jLabel9.setText("当前账户：" + administratorPanel.getOptorName());
+        initialAccountJTable(accountVOs, 0);
 
-		exit.setText("退出");
-		exit.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				exitActionPerformed(evt);
-			}
-		});
+        back.setText("返回");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
 
-		// TODO 显示需要的表格
-		initialAccountJTable(accountVOs,0);
-		back.setText("返回");
-		back.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				backActionPerformed(evt);
-			}
-		});
+        jTabbedPane1.setToolTipText("");
+        jTabbedPane1.setAutoscrolls(true);
 
-		jTabbedPane1.setToolTipText("");
-		jTabbedPane1.setAutoscrolls(true);
+        resultMsg.setText("空闲");
 
-		resultMsg.setText("空闲");
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(30, 30, 30)
+                        .addComponent(exit))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 121, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(resultMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(back)))))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(84, 84, 84))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(exit))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(resultMsg)
+                    .addComponent(back))
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+    }// </editor-fold>//GEN-END:initComponents
 
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
-				getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(
-						layout.createSequentialGroup()
-								.addContainerGap(
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										Short.MAX_VALUE)
-								.addGroup(
-										layout.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
-												.addGroup(
-														javax.swing.GroupLayout.Alignment.TRAILING,
-														layout.createSequentialGroup()
-																.addComponent(
-																		jLabel9)
-																.addPreferredGap(
-																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																.addComponent(
-																		exit)
-																.addContainerGap())
-												.addGroup(
-														javax.swing.GroupLayout.Alignment.TRAILING,
-														layout.createSequentialGroup()
-																.addComponent(
-																		jTabbedPane1,
-																		javax.swing.GroupLayout.PREFERRED_SIZE,
-																		javax.swing.GroupLayout.DEFAULT_SIZE,
-																		javax.swing.GroupLayout.PREFERRED_SIZE)
-																.addPreferredGap(
-																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																.addGroup(
-																		layout.createParallelGroup(
-																				javax.swing.GroupLayout.Alignment.LEADING,
-																				false)
-																				.addGroup(
-																						javax.swing.GroupLayout.Alignment.TRAILING,
-																						layout.createSequentialGroup()
-																								.addComponent(
-																										resultMsg,
-																										javax.swing.GroupLayout.PREFERRED_SIZE,
-																										303,
-																										javax.swing.GroupLayout.PREFERRED_SIZE)
-																								.addPreferredGap(
-																										javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-																										javax.swing.GroupLayout.DEFAULT_SIZE,
-																										Short.MAX_VALUE)
-																								.addComponent(
-																										back)
-																								.addContainerGap())
-																				.addGroup(
-																						javax.swing.GroupLayout.Alignment.TRAILING,
-																						layout.createSequentialGroup()
-																								.addComponent(
-																										jScrollPane1,
-																										javax.swing.GroupLayout.PREFERRED_SIZE,
-																										366,
-																										javax.swing.GroupLayout.PREFERRED_SIZE)
-																								.addGap(15,
-																										15,
-																										15)))))));
-		layout.setVerticalGroup(layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(
-						layout.createSequentialGroup()
-								.addContainerGap()
-								.addGroup(
-										layout.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
-												.addGroup(
-														layout.createSequentialGroup()
-																.addGroup(
-																		layout.createParallelGroup(
-																				javax.swing.GroupLayout.Alignment.BASELINE)
-																				.addComponent(
-																						jLabel9)
-																				.addComponent(
-																						exit))
-																.addPreferredGap(
-																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																.addComponent(
-																		jScrollPane1,
-																		javax.swing.GroupLayout.PREFERRED_SIZE,
-																		205,
-																		javax.swing.GroupLayout.PREFERRED_SIZE)
-																.addGap(18, 18,
-																		18))
-												.addGroup(
-														javax.swing.GroupLayout.Alignment.TRAILING,
-														layout.createSequentialGroup()
-																.addComponent(
-																		jTabbedPane1,
-																		javax.swing.GroupLayout.PREFERRED_SIZE,
-																		javax.swing.GroupLayout.DEFAULT_SIZE,
-																		javax.swing.GroupLayout.PREFERRED_SIZE)
-																.addGap(76, 76,
-																		76)))
-								.addGroup(
-										layout.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
-												.addGroup(
-														layout.createSequentialGroup()
-																.addComponent(
-																		back)
-																.addContainerGap(
-																		29,
-																		Short.MAX_VALUE))
-												.addGroup(
-														javax.swing.GroupLayout.Alignment.TRAILING,
-														layout.createSequentialGroup()
-																.addPreferredGap(
-																		javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-																		javax.swing.GroupLayout.DEFAULT_SIZE,
-																		Short.MAX_VALUE)
-																.addComponent(
-																		resultMsg)
-																.addGap(14, 14,
-																		14)))));
-	}// </editor-fold>//GEN-END:initComponents
+	
 
-	private void initialAccountJTable(ArrayList<AccountVO> vos,int row) {
+	private void initialAccountJTable(ArrayList<AccountVO> vos, int row) {
 		// TODO Auto-generated method stub
 		Object[][] accountObjects = null;
 		accountObjects = new Object[vos.size()][7];
 		int i = 0;
-		for (java.util.Iterator<AccountVO> t = vos.iterator(); t.hasNext();i++) {
+		for (java.util.Iterator<AccountVO> t = vos.iterator(); t.hasNext(); i++) {
 			AccountVO vo = t.next();
 			accountObjects[i][0] = vo.accountNum;
 			accountObjects[i][1] = vo.accountName;
-			accountObjects[i][2]=vo.password;
+			accountObjects[i][2] = vo.password;
 			accountObjects[i][3] = vo.sex;
 			accountObjects[i][4] = vo.authority;
-			accountObjects[i][5] = vo.institutionNum;
-			accountObjects[i][6] = vo.phoneNum;
-			
+			accountObjects[i][5] = vo.phoneNum;
+			accountObjects[i][6] = vo.institutionNum;
 		}
 		accountjTable.setModel(new javax.swing.table.DefaultTableModel(
-				accountObjects, new String[] { "用户账号", "姓名", "性别", "职位",
-						"机构编号", "电话" }) {
+				accountObjects, new String[] { "用户账号", "姓名", "密码", "性别", "职位",
+						 "电话","机构编号" }) {
 			Class[] types = new Class[] { java.lang.String.class,
-					java.lang.String.class, JComboBox.class, JComboBox.class,
-					java.lang.String.class, java.lang.String.class };
+					java.lang.String.class, java.lang.String.class,
+					JComboBox.class, JComboBox.class, java.lang.String.class,java.lang.String.class  };
 			boolean[] canEdit = new boolean[] { false, true, true, true, true,
-					true };
+					true, true };
 
 			public Class getColumnClass(int columnIndex) {
 				return types[columnIndex];
@@ -271,12 +214,12 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 		accountjTable.getColumnModel().getColumn(4)
 				.setCellEditor(new DefaultCellEditor(authorityjComboBox));
 
+		
 		final JPopupMenu accountjPop = new JPopupMenu();
 		final JMenuItem accountSubmitjItem = new JMenuItem("提交");
 		final JMenuItem accountDeljItem = new JMenuItem("删除");
 		accountSubmitjItem.addMouseListener(/**
-		 * @author 1
-		 *         监听account的弹出菜单中的“提交”
+		 * @author 1 监听account的弹出菜单中的“提交”
 		 */
 		new MouseListener() {
 
@@ -300,23 +243,27 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 					int n = accountjTable.getSelectedRow();
 					AccountVO vo = accountVOs.get(n);
 					AccountVO v = getViewAccountVO(n);
-						if (v.equals(vo)) {
-							ComponentFactory.setState("您未对该行进行修改！", ComponentFactory.DISPLAY_TIME,resultMsg);
-						} else {
-							try {
-								rmsg = accountblController.update(v);
-								ComponentFactory.setState(ResultMessage.toFriendlyString(rmsg),
-										ComponentFactory.DISPLAY_TIME,resultMsg);
-								if (rmsg == ResultMessage.SUCCESS) {
-									accountVOs.remove(n);
-									accountVOs.add(n,v);
-								}
-							} catch (RemoteException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-								ComponentFactory.setState(ComponentFactory.REMOTEFAILD, ComponentFactory.DISPLAY_TIME,resultMsg);
+					if (v.equals(vo)) {
+						ComponentFactory.setState("您未对该行账户进行修改！",
+								ComponentFactory.DISPLAY_TIME, resultMsg);
+					} else {
+						try {
+							rmsg = accountblController.update(v);
+							ComponentFactory.setState(
+									ResultMessage.toFriendlyString(rmsg),
+									ComponentFactory.DISPLAY_TIME, resultMsg);
+							if (rmsg == ResultMessage.SUCCESS) {
+								accountVOs.remove(n);
+								accountVOs.add(n, v);
 							}
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+							ComponentFactory.setState(
+									ComponentFactory.REMOTEFAILD,
+									ComponentFactory.DISPLAY_TIME, resultMsg);
 						}
+					}
 				}
 
 			}
@@ -335,8 +282,7 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 
 		});
 		accountDeljItem.addMouseListener(/**
-		 * @author 1
-		 *         监听accountjTable上弹出菜单的“删除”
+		 * @author 1 监听accountjTable上弹出菜单的“删除”
 		 */
 		new MouseListener() {
 			@Override
@@ -347,38 +293,40 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 					ResultMessage rmsg = null;
 					int n = accountjTable.getSelectedRow();
 					AccountVO vo = accountVOs.get(n);
-						Object[] options = { "取消", "删除" };
-						int result = JOptionPane.showOptionDialog(null,
-								"您确定要删除系统该账户？", "是否删除",
-								JOptionPane.DEFAULT_OPTION,
-								JOptionPane.QUESTION_MESSAGE, null, options,
-								options[0]);
-						if (result == JOptionPane.NO_OPTION) {
-							try {
-								rmsg = accountblController.delete(vo
-										);
-								if (rmsg == ResultMessage.SUCCESS) {
-									ComponentFactory.setState("删除成功:)", ComponentFactory.DISPLAY_TIME,resultMsg);
-									accountVOs.remove(n);
+					Object[] options = { "取消", "删除" };
+					int result = JOptionPane.showOptionDialog(null,
+							"您确定要删除系统该账户？", "是否删除", JOptionPane.DEFAULT_OPTION,
+							JOptionPane.QUESTION_MESSAGE, null, options,
+							options[0]);
+					if (result == JOptionPane.NO_OPTION) {
+						try {
+							rmsg = accountblController.delete(vo);
+							if (rmsg == ResultMessage.SUCCESS) {
+								ComponentFactory.setState("删除成功:)",
+										ComponentFactory.DISPLAY_TIME,
+										resultMsg);
+								accountVOs.remove(n);
+								tempN = 0;
+								if (n == 0) {
 									tempN = 0;
-									if (n == 0) {
-										tempN = 0;
-									} else {
-										tempN = n - 1;
-									}
-									initialAccountJTable(accountVOs,
-											tempN);
 								} else {
-									ComponentFactory.setState(ResultMessage
-											.toFriendlyString(rmsg),
-											ComponentFactory.DISPLAY_TIME,resultMsg);
+									tempN = n - 1;
 								}
-							} catch (RemoteException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-								ComponentFactory.setState(ComponentFactory.REMOTEFAILD, ComponentFactory.DISPLAY_TIME,resultMsg);
+								initialAccountJTable(accountVOs, tempN);
+							} else {
+								ComponentFactory.setState(
+										ResultMessage.toFriendlyString(rmsg),
+										ComponentFactory.DISPLAY_TIME,
+										resultMsg);
 							}
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+							ComponentFactory.setState(
+									ComponentFactory.REMOTEFAILD,
+									ComponentFactory.DISPLAY_TIME, resultMsg);
 						}
+					}
 				}
 			}
 
@@ -457,45 +405,47 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 		accountjTable.addMouseListener(mil);
 		accountjTable.putClientProperty("terminateEditOnFocusLost",
 				Boolean.TRUE);
-		
-		
-		
+
 		accountjTable.setGridColor(new java.awt.Color(0, 0, 0));
 		ComponentFactory.setJTableTextCenter(accountjTable);
+
 		accountjTable.setRowSelectionInterval(row, row);
 		jScrollPane1.setViewportView(accountjTable);
 	}
+
 	protected AccountVO getViewAccountVO(int n) {
 		// TODO Auto-generated method stub
 		String accountNum = null;
 		String accountName = null;
-		String password=null;
-		Sex sex=null;
-		Authority  authority = null;
+		String password = null;
+		Sex sex = null;
+		Authority authority = null;
 		String institutionNum = null;
 		String phoneNum = null;
 		try {
 			accountNum = (String) accountjTable.getValueAt(n, 0);
 			accountName = (String) accountjTable.getValueAt(n, 1);
-			password=(String)accountjTable.getValueAt(n, 2);
+			password = (String) accountjTable.getValueAt(n, 2);
 			sex = (Sex) accountjTable.getValueAt(n, 3);
 			authority = (Authority) accountjTable.getValueAt(n, 4);
-			institutionNum = (String) accountjTable.getValueAt(n, 5);
-			phoneNum=(String) accountjTable.getValueAt(n, 6);
-			
-			assert (accountName != null && accountNum != null
-					&& sex != null && authority != null && institutionNum != null
-					&&phoneNum !=null) : ("您输入的机构信息不完整！");
+			phoneNum = (String) accountjTable.getValueAt(n, 5);
+			institutionNum = (String) accountjTable.getValueAt(n, 6);
+
+			assert (accountName != null && accountNum != null && sex != null
+					&& authority != null && institutionNum != null && phoneNum != null) : ("您输入的账户信息不完整！");
 		} catch (ClassCastException e) {
 			e.printStackTrace();
-			ComponentFactory.setState("您输入的值类型不正确：(", ComponentFactory.DISPLAY_TIME,resultMsg);
+			ComponentFactory.setState("您输入的值类型不正确：(",
+					ComponentFactory.DISPLAY_TIME, resultMsg);
 		} catch (AssertionError e) {
-			ComponentFactory.setState("您输入的机构信息不完整！", ComponentFactory.DISPLAY_TIME,resultMsg);
+			ComponentFactory.setState("您输入的账户信息不完整！",
+					ComponentFactory.DISPLAY_TIME, resultMsg);
 			System.out.println(e.getMessage());
 		}
-		return new AccountVO(accountNum, accountName,password, sex,authority,
-				institutionNum, phoneNum);
+		return new AccountVO(accountNum, accountName, password, sex, authority,
+				 phoneNum,institutionNum);
 	}
+
 	private void exitActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton3ActionPerformed
 		MainFrame mf = new MainFrame();
 		mf.setVisible(true);
@@ -533,7 +483,6 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 			ComponentFactory.setState("读取文件失败", ComponentFactory.DISPLAY_TIME,
 					resultMsg);
 		}
-
 		assert (vos != null) : ("远程获取账户信息失败");
 		return vos;
 	}
@@ -547,15 +496,15 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 	private ArrayList<AccountVO> accountVOs = null;
 	private AccountBLService accountblController = null;
 	private AdministratorPanel administratorPanel;
-	private JComboBox sexjComboBox;
-	private JComboBox authorityjComboBox;
-	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private javax.swing.JButton exit;
-	private javax.swing.JButton back;
-	final private javax.swing.JLabel resultMsg = new javax.swing.JLabel();
-	private javax.swing.JLabel jLabel9;
-	private javax.swing.JScrollPane jScrollPane1;
-	private javax.swing.JTabbedPane jTabbedPane1;
-	private javax.swing.JTable accountjTable;
-	// End of variables declaration//GEN-END:variables
+	private JComboBox sexjComboBox=ComponentFactory.getSexJComboBox();
+	private JComboBox authorityjComboBox=ComponentFactory.getInstance().getAuthorityJComboBox();
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton exit;
+    private javax.swing.JButton back;
+    private javax.swing.JLabel resultMsg;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable accountjTable;
+    // End of variables declaration//GEN-END:variables
 }
