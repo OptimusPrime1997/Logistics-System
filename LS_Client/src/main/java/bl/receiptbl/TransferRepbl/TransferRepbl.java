@@ -1,11 +1,13 @@
 package bl.receiptbl.TransferRepbl;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import Exception.ConstNotFoundException;
 import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
 import PO.Receipt.ReceiptPO;
@@ -14,9 +16,11 @@ import RMIClient.ReceiptClient;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.TransferRepVO;
 import bl.goodsbl.Goodsbl;
+import bl.managementbl.constbl.Constbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import dataservice.receiptdataservice.TransferRepDataService;
+import util.enumData.City;
 import util.enumData.Rep;
 import util.enumData.ShipForm;
 
@@ -24,6 +28,7 @@ public class TransferRepbl extends ReceiptblController{
 	
 	private Receiptbl receiptbl = new Receiptbl();
 	private Goodsbl goodsbl = new Goodsbl();
+	private Constbl constbl = new Constbl();
 	private static TransferRepDataService transferRepDataService = null;
 	private ReceiptClient client = new ReceiptClient();
 	
@@ -69,8 +74,11 @@ public class TransferRepbl extends ReceiptblController{
 		return receiptbl.isTrueOrder(order);
 	}
 	
-	public double getFreightMoney(String depart, String destination, double weight, ShipForm form){
-		return 0;
+	public double getFreightMoney(String depart, String destination, double weight, ShipForm form) 
+			throws FileNotFoundException, ClassNotFoundException, ConstNotFoundException, IOException{
+		City c1 = City.getCity(depart);
+		City c2 = City.getCity(destination);
+		return constbl.computeFare(c1, c2, form, weight);
 	}
 	
 	public double getWeightByOrder(String order) throws GoodsNotFound{

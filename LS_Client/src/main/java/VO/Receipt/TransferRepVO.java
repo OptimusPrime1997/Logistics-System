@@ -26,6 +26,8 @@ public class TransferRepVO extends ReceiptVO {
 	}
 
 	public TransferRepVO(TransferRepPO po) {
+		this.num = po.getNum();
+		this.date = po.getDate();
 		this.form = po.getForm();
 		this.carNum = po.getCarNum();
 		this.destination = po.getDestination();

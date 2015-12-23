@@ -59,7 +59,14 @@ public class ShippingRepbl{
 	}
 	
 	public boolean isTrueAccount(String num){
-		return receiptbl.isTrueAccount(num);
+		try {
+			driverbl.findByDriverNum(num);
+		} catch (ClassNotFoundException | NumNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 	
 	public boolean isTrueOrder(String order){

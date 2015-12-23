@@ -42,6 +42,8 @@ public class PayRepVO extends ReceiptVO {
 	}
 
 	public PayRepVO(PayRepPO po) {
+		this.num = po.getNum();
+		this.date = po.getDate();
 		this.sum = po.getSum();
 		this.payVOs = PayVO.toArrayVO(po.getPayPOs());
 		this.payPersonNum = po.getPayPersonNum();

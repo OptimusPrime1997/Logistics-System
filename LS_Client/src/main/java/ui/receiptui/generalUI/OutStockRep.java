@@ -347,7 +347,7 @@ public class OutStockRep extends javax.swing.JPanel {
 			}
     		ArrayList<String> orders = shippingRepVO.goods;
 			Vector<String> arr = new Vector<String>();
-			for(int i = 0;i < arr.size();i++){
+			for(int i = 0;i < orders.size();i++){
 				arr.add(orders.get(i));
 				dataVector.add(arr);
 			}

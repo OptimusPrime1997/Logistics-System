@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import Exception.GoodsNotFound;
+import Exception.NumNotFoundException;
 import PO.Receipt.ReceiptPO;
 import VO.Receipt.DeliverRepVO;
 import VO.Receipt.DeliverVO;
@@ -76,7 +77,14 @@ public class DeliverRepbl {
 	}
 	
 	public boolean isTrueAccount(String num){
-		return receiptbl.isTrueAccount(num);
+		try {
+			courierbl.findByCourierNum(num);
+		} catch (ClassNotFoundException | NumNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 	
 	public void changeLogistic(String num){

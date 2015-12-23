@@ -13,10 +13,6 @@ public class PayStaffSalaryVO extends PaySalaryVO{
 		super(getterName, getterNum, money);
 		this.authority = authority;
 	}
-
-	public Authority getAuthority() {
-		return authority;
-	}
 	
 	public PayStaffSalaryVO(PayStaffSalaryPO po){
 		this.getterName = po.getGetterName();
