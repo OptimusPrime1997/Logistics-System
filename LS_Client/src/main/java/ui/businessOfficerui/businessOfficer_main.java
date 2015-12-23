@@ -81,16 +81,20 @@ public class businessOfficer_main extends JPanel {
     	num_label = new JLabel();
     	num_label.setFont(new java.awt.Font("宋体", 1, 48));
     	num_label.setForeground(new java.awt.Color(240, 240, 240));
-    	//TODO 数字 获取
+    	refreshNum();
+        initNumLayout(num_panelLayout);
+	}
+	/**
+	 * 刷新营业厅发货的数量
+	 */
+	public void refreshNum() {
+		//TODO 数字 获取
     	try {
 			System.out.println("数量  "+ctr_ship.getTruckSum(CurrentTime.getDate()+"", officeNum));
 			num_label.setText(ctr_ship.getTruckSum(CurrentTime.getDate()+"", officeNum));
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 		}
-    	
-         initNumLayout(num_panelLayout);
 	}
-
 	private void initTxt() {
 		feedback_text = new JTextField();
 		feedback_text.setEditable(false);
@@ -302,16 +306,14 @@ public class businessOfficer_main extends JPanel {
 			ctr_log.add(vo);
 		} catch (RemoteException e1) {
 		}
-    	new DeliverRep();
+    	new DeliverRep(this);
     }
     private void send_btnMouseClicked(MouseEvent evt) {
     	
-    	new ShipmentRep();
-//    	this.getFrame().setContentPane(new car_management());        
+    	new ShipmentRep(this);
     }
     private void recordMoney_btnMouseClicked(MouseEvent evt) {
     	new CashRep();
-//    	this.getFrame().setContentPane(new car_management());
         
     }
     

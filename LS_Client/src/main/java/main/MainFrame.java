@@ -124,17 +124,7 @@ public class MainFrame extends JFrame {
 				password_textMouseClicked(evt);
 			}
 		});
-		//TODO 密码加密
-//		password_text.addKeyListener(new KeyAdapter() {
-//			@Override
-//			public void keyTyped(KeyEvent e) {
-//				System.out.println(e.getKeyChar());
-//			}
-//			@Override
-//			public void keyReleased(KeyEvent e) {
-//				password_text.setText(password_text.getText().substring(0, password_text.getText().length()-1)+"*");
-//			}
-//		});
+		
 	}
 	
     /**

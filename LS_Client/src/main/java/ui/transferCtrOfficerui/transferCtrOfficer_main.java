@@ -217,24 +217,33 @@ public class transferCtrOfficer_main extends JPanel {
 
 	}
 	private void initProBar() {
-		
     	 outByTrain_progressBar = new JProgressBar();
          outByTruck_progressBar = new JProgressBar();
          outByPlane_progressBar = new JProgressBar();
-         ArrayList<TransferRepVO> vos;
+		refreshValues();
+	}
+
+	public void refreshValues() {
+		ArrayList<TransferRepVO> vos;
 		try {
 			vos = ctr_trans.getRepByDate(CurrentTime.getDate(), officeNum);
-			for(TransferRepVO vo:vos){
-	        	 if(vo.form==ShipForm.TRAIN) train++;
-	        	 if(vo.form==ShipForm.TRUCK) truck++;
-	        	 if(vo.form==ShipForm.PLANE) plane++;
-	         }
+			for (TransferRepVO vo : vos) {
+				if (vo.form == ShipForm.TRAIN)
+					train++;
+				if (vo.form == ShipForm.TRUCK)
+					truck++;
+				if (vo.form == ShipForm.PLANE)
+					plane++;
+			}
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
-		}         
-         
-         outByTrain_progressBar.setValue(train);
-         outByTruck_progressBar.setValue(truck); 
-         outByPlane_progressBar.setValue(plane);
+		}
+		outByTrain_progressBar.setValue(train);
+		outByTruck_progressBar.setValue(truck);
+		outByPlane_progressBar.setValue(plane);
+
+		outByTrain_label.setText(train + "");
+		outByShip_label.setText(truck + "");
+		outByPlane_label.setText(plane + "");
 	}
 	private void initLabel() {
 		jLabel1 = new JLabel();
@@ -262,9 +271,6 @@ public class transferCtrOfficer_main extends JPanel {
 					+ officeNum);
 		} catch (RemoteException e) {
 		}
-		outByTrain_label.setText(train+"");
-		outByShip_label.setText(truck+"");
-		outByPlane_label.setText(plane+"");
 		outByTrain_label.setFont(new java.awt.Font("宋体", 1, 24)); // NOI18N
 		outByShip_label.setFont(new java.awt.Font("宋体", 1, 24)); // NOI18N
 		outByPlane_label.setFont(new java.awt.Font("宋体", 1, 24)); // NOI18N

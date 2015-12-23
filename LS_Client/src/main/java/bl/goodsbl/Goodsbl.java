@@ -20,37 +20,19 @@ import bl.managementbl.constbl.Constbl;
 import dataservice.goodsdataservice.GoodsDataService;
 
 /*
- *  GoodsVO vo = new GoodsVO("0250000123", false, "02400100006014",
-				"", "20151026", "", "025", "李华",
-				"上海市浦东新区张杨路500号", "上海华润时代广场", "87511426", "陆宏",
-				"南京市栖霞区仙林大道和园12号", null, "15500001112", 1, 5, 8, "书",
-				GoodsExpressType.NORMAL, 5, 0, 0, GoodsArrivalState.INTACT,
-				GoodsLogisticState.SENDED, null, null);
+ *   GoodsVO vo = new GoodsVO("", false, "02500106066",
+					"", "2015-12-20", "", "025", "啦啦啦丽",
+					"上海 浦东新区张杨路500号", "上海华润时代广场", "13587511426", "小宏宏",
+					"南京 栖霞区仙林大道和园12号", null, "15500001112", 1, 5, 8, "袜子",
+					GoodsExpressType.NORMAL, 1, 10, 9, GoodsArrivalState.INTACT,
+					GoodsLogisticState.SENDED, null, null);
  */
 public class Goodsbl {
 	/*
 	 * ECONOMIC NORMAL EXPRESS 18: 23: 25
 	 */
 	final double[] expressRates = { 18, 23, 25 };
-	public static void main(String[] args) {
-		 GoodsVO vo = new GoodsVO("", false, "02500106066",
-					"", "2015-12-20", "", "025", "啦啦啦丽",
-					"上海 浦东新区张杨路500号", "上海华润时代广场", "13587511426", "小宏宏",
-					"南京 栖霞区仙林大道和园12号", null, "15500001112", 1, 5, 8, "袜子",
-					GoodsExpressType.NORMAL, 1, 10, 9, GoodsArrivalState.INTACT,
-					GoodsLogisticState.SENDED, null, null);
-		 Goodsbl ctr=new Goodsbl();
-		try {
-			ctr.initComplete(vo);
-			System.out.println(vo.listNum);
-			System.out.println(vo.destinationCity);
-			System.out.println("success!");
-		} catch (ExistException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 
-	}
+	
 	/**
 	 * 查物流信息
 	 * @param listNum

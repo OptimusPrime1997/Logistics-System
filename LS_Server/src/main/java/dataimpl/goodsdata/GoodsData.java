@@ -19,10 +19,25 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	
 	String filename = "goods.txt";
 	DataUtility helper = new DataUtility();	
+	public static void main(String[] args) {
+		try {
+			String filename = "goods.txt";
+			DataUtility helper = new DataUtility();
+			ArrayList<Object> all;
+			GoodsPO temp;
+			all = helper.getAll(filename);
+			for (int i = 0; i < all.size(); i++) {
+				temp = (GoodsPO) all.get(i);
+				System.out.println("GoodsData.main "+temp.getListNum()+"  "+temp.getStartTime()+"  "+temp.getOvertime());
+			}
+		} catch (ClassNotFoundException | IOException e) {
+		}
+		
+	}
 	//Done!
 	@Override	
 	public ResultMessage add(GoodsPO po) throws RemoteException {
-		System.out.println("goodsData.add "+po.getStartTime());
+		System.out.println("goodsData.add "+po.getListNum()+"  "+po.getStartTime());
 		    try {
 			    return helper.save(po, filename);
 			    

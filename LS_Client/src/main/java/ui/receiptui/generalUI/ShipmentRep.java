@@ -21,6 +21,7 @@ import VO.Receipt.ShipmentRepVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepController;
 import blservice.receiptblservice.ShipmentRepblServce;
+import ui.businessOfficerui.businessOfficer_main;
 import ui.receiptui.ReceiptCheckUI.ShipmentCheck;
 import ui.util.MyFrame;
 
@@ -55,11 +56,17 @@ public class ShipmentRep extends javax.swing.JPanel {
 	private DefaultTableModel model;
 	private Vector<String> columnIdentifiers;
 	private Vector<Object> dataVector;
+	private businessOfficer_main parentPanel;
 	// End of variables declaration//GEN-END:variables
 
 	/**
 	 * Creates new form ShippingRep
 	 */
+	public ShipmentRep(businessOfficer_main parentPanel) {
+		initComponents();
+		this.parentPanel=parentPanel;
+		myFrame = new MyFrame(446, 481, this);
+	}
 	public ShipmentRep() {
 		initComponents();
 		myFrame = new MyFrame(446, 481, this);
@@ -325,6 +332,7 @@ public class ShipmentRep extends javax.swing.JPanel {
 		String resultMessage = control.checkNum(driverNum, 11, "司机编号");
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
+			parentPanel.refreshNum();
 			return;
 		}
 		if (!control.isTrueAccount(driverNum)) {
