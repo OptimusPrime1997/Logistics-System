@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.Vector;
 
+import Exception.GoodsNotFound;
 import Exception.NumNotFoundException;
 import VO.Receipt.ReceiptVO;
 
@@ -17,6 +18,7 @@ public interface NotForCashblService {
 	 * @param vo
 	 * @throws NotBoundException
 	 * @throws IOException
+	 * @throws GoodsNotFound 
 	 * @throws ClassNotFoundException
 	 */
 	public void submit(ReceiptVO vo) throws NotBoundException, IOException;

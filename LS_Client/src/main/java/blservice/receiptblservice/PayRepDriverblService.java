@@ -33,8 +33,7 @@ public interface PayRepDriverblService extends PayThingblService, PreReceiptblSe
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException
 	 */
-	public Vector<Object> initDriverSalaryTable() throws FileNotFoundException, ClassNotFoundException,
-			SalaryPolicyNotFoundException, IOException, NumNotFoundException;
+	public Vector<Object> initDriverSalaryTable() throws FileNotFoundException, ClassNotFoundException, SalaryPolicyNotFoundException, IOException, NumNotFoundException;
 
 	/**
 	 * 初始化司机付款单检查表格

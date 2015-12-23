@@ -99,10 +99,8 @@ public class PayRepCourier extends javax.swing.JPanel {
 
 		columnIdentifiers.add("名字");
 		columnIdentifiers.add("编号");
-		columnIdentifiers.add("收件总金额");
-		columnIdentifiers.add("派件总数");
+		columnIdentifiers.add("收/派件总金额");
 		columnIdentifiers.add("金额");
-		columnIdentifiers.add("删除");
 		try {
 			dataVector = control.initCourierSalaryTable();
 		} catch (ClassNotFoundException | SalaryPolicyNotFoundException | IOException | NumNotFoundException e) {
@@ -234,10 +232,6 @@ public class PayRepCourier extends javax.swing.JPanel {
 		column3.setPreferredWidth(60);
 		TableColumn column4 = jTable.getColumnModel().getColumn(3);
 		column4.setPreferredWidth(60);
-		TableColumn column5 = jTable.getColumnModel().getColumn(4);
-		column5.setPreferredWidth(60);
-		TableColumn column6 = jTable.getColumnModel().getColumn(5);
-		column6.setPreferredWidth(50);
 	}
 
 	private String calSum() {

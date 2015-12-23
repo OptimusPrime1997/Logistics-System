@@ -42,7 +42,7 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	}
 
 	public void submit(ReceiptPO po, Rep rep) throws IOException, RemoteException {
-		util.save(po, submitAdd(rep));
+		util.save(po, saveAdd(rep));
 	}
 
 	public void save(ReceiptPO po, Rep rep) throws IOException, RemoteException {
