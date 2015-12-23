@@ -28,8 +28,13 @@ public class DriverVO implements Comparable<DriverVO> {
 	 */
 	public String licensedTime;
 
+	/**
+	 * monthly work task
+	 */
+	public int number;
+
 	public DriverVO(String driverNum, String name, Sex sex, String id,
-			String phoneNum, String licensedTime) {
+			String phoneNum, String licensedTime, int number) {
 		// TODO Auto-generated constructor stub
 		this.driverNum = driverNum;
 		this.name = name;
@@ -37,6 +42,7 @@ public class DriverVO implements Comparable<DriverVO> {
 		this.phoneNum = phoneNum;
 		this.sex = sex;
 		this.licensedTime = licensedTime;
+		this.number = number;
 	}
 
 	public int compareTo(DriverVO v) {

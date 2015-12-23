@@ -6,12 +6,16 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.apache.xmlbeans.impl.common.ResolverUtil;
+
 import bl.managementbl.managedata.ManageData;
 import bl.managementbl.managedata.ManageVOPO;
 import dataservice.managementdataservice.constdataservice.ConstDataService;
 import dataservice.managementdataservice.managedataservice.ManageDataService;
+import util.enumData.City;
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
+import util.enumData.ShipForm;
 import Exception.ConstNotFoundException;
 import PO.ConstPO;
 import VO.ManagementVO.ConstVO;
@@ -53,8 +57,7 @@ public class Constbl {
 						}
 					}
 				}
-				 rmsg = constDataService.insert(manageVOPO
-						.voToPO(vo));
+				rmsg = constDataService.insert(manageVOPO.voToPO(vo));
 				ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -66,7 +69,7 @@ public class Constbl {
 				e.printStackTrace();
 				System.out.println("系统程序错误");
 			}
-			return  rmsg;
+			return rmsg;
 		} else
 			return ResultMessage.FAILED;
 	}
@@ -75,11 +78,11 @@ public class Constbl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DECISION_CONST);
 		if (constDataService != null) {
-			ResultMessage rmsg=check(vo);
+			ResultMessage rmsg = check(vo);
 			if (check(vo) == ResultMessage.VALID) {
 				ConstPO po = manageVOPO.voToPO(vo);
 				try {
-					 rmsg = constDataService.update(po);
+					rmsg = constDataService.update(po);
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -105,11 +108,11 @@ public class Constbl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DECISION_CONST);
 		if (constDataService != null) {
-			ResultMessage rmsg=ResultMessage.WRONG_DATA;
+			ResultMessage rmsg = ResultMessage.WRONG_DATA;
 			if (VO.twoCities.contains("-") && VO.twoCities.length() < 20) {
 				ConstPO po = manageVOPO.voToPO(VO);
 				try {
-				rmsg = constDataService.delete(po);
+					rmsg = constDataService.delete(po);
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -162,6 +165,24 @@ public class Constbl {
 		} else {
 			throw new RemoteException();
 		}
+	}
+
+	public double computeFare(City c1, City c2, ShipForm shipForm, double weight)
+			throws FileNotFoundException, ClassNotFoundException,
+			ConstNotFoundException, IOException {
+		String twoCities = "";
+		double result = 0;
+		if (c1.ordinal() < c2.ordinal()) {
+			twoCities = c1.toString() + "-" + c2.toString();
+		} else {
+			twoCities = c2.toString() + "-" + c1.toString();
+		}
+		ConstVO v = findByCities(twoCities);
+		double price=v.priceConst;
+		double distance=v.distanceConst;
+		result=price*shipForm.getRatio()*(weight/1000)*distance;
+		assert(result!=0):("运费计算错误");
+		return result;
 	}
 
 	/**

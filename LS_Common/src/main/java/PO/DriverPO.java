@@ -12,9 +12,10 @@ public class DriverPO implements Serializable, Comparable<DriverPO> {
 	private String phoneNum;
 	private Sex sex;
 	private String licensedTime;
+	private int number;
 
 	public DriverPO(String driverNum, String name, Sex sex, String id,
-			String phoneNum, String licensedTime) {
+			String phoneNum, String licensedTime, int number) {
 		// TODO Auto-generated constructor stub
 		this.driverNum = driverNum;
 		this.name = name;
@@ -22,6 +23,7 @@ public class DriverPO implements Serializable, Comparable<DriverPO> {
 		this.phoneNum = phoneNum;
 		this.setSex(sex);
 		this.licensedTime = licensedTime;
+		this.number = number;
 	}
 
 	public String getDriverNum() {
@@ -70,6 +72,14 @@ public class DriverPO implements Serializable, Comparable<DriverPO> {
 
 	public void setLicensedTime(String licensedTime) {
 		this.licensedTime = licensedTime;
+	}
+
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
 	}
 
 	@Override

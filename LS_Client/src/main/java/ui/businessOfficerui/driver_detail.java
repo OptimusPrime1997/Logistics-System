@@ -92,7 +92,7 @@ public class driver_detail extends JFrame {
 					ComponentFactory.DISPLAY_TIME, parent.feedback_text);
 			System.out.println(e.getMessage());
 		}
-		return new DriverVO(driverNum, name, sex,id,phoneNum,licensedTime);
+		return new DriverVO(driverNum, name, sex, id, phoneNum, licensedTime, 0);
 	}
 
 	/**

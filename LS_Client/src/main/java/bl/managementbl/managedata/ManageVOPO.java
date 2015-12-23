@@ -86,7 +86,7 @@ public class ManageVOPO {
 
 	public DriverPO voToPO(DriverVO vo) {
 		return new DriverPO(vo.driverNum, vo.name, vo.sex, vo.id, vo.phoneNum,
-				vo.licensedTime);
+				vo.licensedTime, vo.number);
 	}
 
 	public VehiclePO voToPO(VehicleVO vo) {
@@ -126,7 +126,8 @@ public class ManageVOPO {
 
 	public DriverVO poToVO(DriverPO po) {
 		return new DriverVO(po.getDriverNum(), po.getName(), po.getSex(),
-				po.getId(), po.getPhoneNum(), po.getLicensedTime());
+				po.getId(), po.getPhoneNum(), po.getLicensedTime(),
+				po.getNumber());
 	}
 
 	public VehicleVO poToVO(VehiclePO po) {

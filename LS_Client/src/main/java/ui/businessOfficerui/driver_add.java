@@ -66,7 +66,7 @@ public class driver_add extends JFrame {
 				&& rmsg[3] == ResultMessage.VALID
 				&& rmsg[4] == ResultMessage.VALID) {
 			DriverVO v = new DriverVO(driverNum, name, sex, id, phoneNum,
-					id.substring(6, 14));
+					id.substring(6, 14),0);
 			try {
 				ResultMessage r = driverblController.insertDriver(v);
 				ResultMessage.postCheck(ResultMessage.SUCCESS, r);

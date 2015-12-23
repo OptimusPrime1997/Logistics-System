@@ -90,6 +90,42 @@ public class Courierbl {
 		}
 	}
 
+	/**
+	 * @param courierNum
+	 * @param amount
+	 * @return
+	 */
+	public ResultMessage updateMoney(String courierNum, double amount) {
+		ResultMessage rmsg = null;
+		CourierVO vo = null;
+		try {
+			vo = findByCourierNum(courierNum);
+			vo.courrentMonthMoney += amount;
+			rmsg = update(vo);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.REMOTE_FAILED;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.NOT_FOUND_FILE;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.FAILED;
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.NOT_FOUND_ACCOUNTNUM;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.IOFAILED;
+		}
+		return rmsg;
+	}
+
 	public ResultMessage delete(CourierVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.USER_ACCOUNT_MANAGEMENT);

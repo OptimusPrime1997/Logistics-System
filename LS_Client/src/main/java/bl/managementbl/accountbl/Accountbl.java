@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import dataservice.managementdataservice.accountdataservice.AccountDataService;
+import dataservice.managementdataservice.accountdataservice.CourierDataService;
 import dataservice.managementdataservice.managedataservice.ManageDataService;
 import util.InputCheck;
 import util.ThreeAutoNum;
@@ -16,13 +17,16 @@ import util.enumData.ResultMessage;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import PO.AccountPO;
+import PO.CourierPO;
 import VO.ManagementVO.AccountVO;
+import VO.ManagementVO.CourierVO;
 import bl.managementbl.managedata.ManageData;
 import bl.managementbl.managedata.ManageVOPO;
 
 public class Accountbl {
 	private AccountDataService accountDataService;
 	private ManageVOPO manageVOPO;
+	private Courierbl courierbl;
 
 	// Logbl logbl;
 
@@ -33,6 +37,7 @@ public class Accountbl {
 			ManageDataService manageDataService = ManageData.getInstance();
 			accountDataService = (AccountDataService) manageDataService
 					.getAccountData();
+			courierbl = new Courierbl();
 		} catch (RemoteException e) {
 			System.out.println("远程获取accountDataService失败!");
 			e.printStackTrace();
@@ -45,9 +50,11 @@ public class Accountbl {
 		manageVOPO.addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {
 			if (check(vo) == ResultMessage.VALID) {
+				boolean firstInsert = false;
 				try {
 					ArrayList<AccountPO> pos = accountDataService.show();
 					if (vo.accountNum.substring(8, 11).equals("000")) {
+						firstInsert = true;
 						AccountPO lastPO = null;
 						if (pos != null) {
 							for (Iterator<AccountPO> t = pos.iterator(); t
@@ -77,6 +84,10 @@ public class Accountbl {
 					ResultMessage rmsg = accountDataService.insert(manageVOPO
 							.voToPO(vo));
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
+					if (rmsg == ResultMessage.SUCCESS && firstInsert == true
+							&& vo.authority == Authority.COURIER) {
+						courierbl.add(new CourierVO(vo.accountNum, 0));
+					}
 					return rmsg;
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -137,6 +148,10 @@ public class Accountbl {
 				try {
 					rmsg = accountDataService.delete(po);
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
+					if (rmsg == ResultMessage.SUCCESS
+							&& vo.authority == Authority.COURIER) {
+						courierbl.delete(new CourierVO(vo.accountNum, 0));
+					}
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

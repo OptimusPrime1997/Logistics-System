@@ -137,6 +137,29 @@ public class Driverbl {
 		}
 	}
 
+	public ResultMessage addNumber(String driverNum) {
+		ResultMessage rmsg = null;
+		DriverVO vo = null;
+		try {
+			vo = findByDriverNum(driverNum);
+			vo.number += 1;
+			rmsg = updateDriver(vo);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rmsg;
+	}
+
 	public ResultMessage deleteDriver(DriverVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DRIVER_MANAGEMENT);
