@@ -336,7 +336,7 @@ public class OutStockRep extends javax.swing.JPanel {
     	if(!resultMessage.equals("添加成功")){
     		return;
     	}
-    	if(repTypeBox.getSelectedItem().toString().equals("中转单")){
+    	if(repTypeBox.getSelectedItem().toString().equals("中转中心装车单")){
     		ShippingRepVO shippingRepVO = null;
     		try {
 				shippingRepVO = control.getShippingRepVO(repTypeText.getText());
@@ -346,7 +346,11 @@ public class OutStockRep extends javax.swing.JPanel {
 				resultMsgText.setText(ExceptionPrint.print(e));
 			}
     		ArrayList<String> orders = shippingRepVO.goods;
-    		dataVector.addAll(orders);
+			Vector<String> arr = new Vector<String>();
+			for(int i = 0;i < arr.size();i++){
+				arr.add(orders.get(i));
+				dataVector.add(arr);
+			}
     		model.setDataVector(dataVector, columnIdentifiers);
     		destinationText.setText(shippingRepVO.destination);
     		shipFormText.setText("汽运");
@@ -361,7 +365,11 @@ public class OutStockRep extends javax.swing.JPanel {
 				resultMsgText.setText(ExceptionPrint.print(e));
 			}
 			ArrayList<String> orders = transferRepVO.goods;
-    		dataVector.addAll(orders);
+			Vector<String> arr = new Vector<String>();
+			for(int i = 0;i < orders.size();i++){
+				arr.add(orders.get(i));
+				dataVector.add(arr);
+			}
     		model.setDataVector(dataVector, columnIdentifiers);
     		destinationText.setText(City.toString(transferRepVO.destination));
     		shipFormText.setText(ShipForm.toFrendlyString(transferRepVO.form));

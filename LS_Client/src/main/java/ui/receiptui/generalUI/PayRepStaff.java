@@ -101,7 +101,6 @@ public class PayRepStaff extends javax.swing.JPanel {
         columnIdentifiers.add("名字");
         columnIdentifiers.add("编号");
         columnIdentifiers.add("金额");
-        columnIdentifiers.add("删除");
         try {
 			dataVector = control.initStaffTable();
 		} catch (ClassNotFoundException | SalaryPolicyNotFoundException | IOException | NumNotFoundException e) {
@@ -227,8 +226,6 @@ public class PayRepStaff extends javax.swing.JPanel {
         column3.setPreferredWidth(115);
         TableColumn column4 = jTable.getColumnModel().getColumn(3);
         column4.setPreferredWidth(60);
-        TableColumn column5 = jTable.getColumnModel().getColumn(4);
-        column5.setPreferredWidth(50);
     }
     
     private String calSum(){

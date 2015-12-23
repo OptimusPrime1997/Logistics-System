@@ -10,6 +10,7 @@ import PO.Receipt.ShippingRepPO;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.ShippingRepVO;
 import bl.loginbl.LoginblController;
+import bl.managementbl.vehicleanddriverbl.Driverbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import util.CurrentTime;
 import util.enumData.LogType;
@@ -19,6 +20,7 @@ public class ShippingRepbl{
 	
 	private Receiptbl receiptbl = new Receiptbl();
 	private LoginblController login = new LoginblController();
+	private Driverbl driverbl = new Driverbl();
 	
 	public String createNum(String date, String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
@@ -34,7 +36,10 @@ public class ShippingRepbl{
 
 	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
 		// TODO Auto-generated method stub
-		receiptbl.submit(ShippingRepVO.toPO((ShippingRepVO) vo), Rep.ShippingRep);
+		ShippingRepVO shippingRepVO = (ShippingRepVO) vo;
+		String driverNum = shippingRepVO.driverNum;
+		updateDriver(driverNum);
+		receiptbl.submit(ShippingRepVO.toPO(shippingRepVO), Rep.ShippingRep);
 		String operatorID = login.getCurrentOptorId();
 		receiptbl.addLog(LogType.TRANSFER_CTR_SHIP_MANAGEMENT, operatorID, CurrentTime.getTime());
 	}
@@ -59,6 +64,10 @@ public class ShippingRepbl{
 	
 	public boolean isTrueOrder(String order){
 		return receiptbl.isTrueOrder(order);
+	}
+	
+	private void updateDriver(String driverNum){
+		driverbl.addNumber(driverNum);
 	}
 	
 }

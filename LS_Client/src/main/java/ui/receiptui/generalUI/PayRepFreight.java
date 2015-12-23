@@ -99,7 +99,6 @@ public class PayRepFreight extends javax.swing.JPanel {
         columnIdentifiers.add("中转单编号");
         columnIdentifiers.add("金额");
         columnIdentifiers.add("备注");
-        columnIdentifiers.add("删除");
         try {
 			dataVector = control.initFreightTable(control.getDate());
 		} catch (ClassNotFoundException | IOException | NotBoundException e) {

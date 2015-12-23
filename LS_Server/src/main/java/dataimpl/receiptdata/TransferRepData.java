@@ -24,7 +24,7 @@ public class TransferRepData extends UnicastRemoteObject implements TransferRepD
 	private DataUtility util = new DataUtility();
 	
 	private String getAdd() {
-		return "data/ReceiptSaveData/PayRepSave.txt";
+		return "data/ReceiptSaveData/TransferRepSave.txt";
 	}
 	
 	private String yyyymmInDate(String date){
