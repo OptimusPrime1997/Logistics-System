@@ -18,6 +18,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 
+import main.MainFrame;
 import ui.receiptui.Order;
 import ui.util.MyFrame;
 import util.CurrentCity;
@@ -464,7 +465,8 @@ public class courier_main extends JPanel {
 					"是否退出", JOptionPane.DEFAULT_OPTION,
 					JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 			if (result == JOptionPane.NO_OPTION) {
-				System.exit(0);
+				frame.dispose();
+				new MainFrame();
 			}
 		}
 	}

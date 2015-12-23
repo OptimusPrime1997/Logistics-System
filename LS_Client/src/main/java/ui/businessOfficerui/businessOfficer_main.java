@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 
+import main.MainFrame;
 import ui.receiptui.generalUI.CashRep;
 import ui.receiptui.generalUI.DeliverRep;
 import ui.receiptui.generalUI.GetRep;
@@ -321,7 +322,8 @@ public class businessOfficer_main extends JPanel {
 					"是否退出", JOptionPane.DEFAULT_OPTION,
 					JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 			if (result == JOptionPane.NO_OPTION) {
-				System.exit(0);
+				frame.dispose();
+				new MainFrame();
 			}
 		}
 	}

@@ -134,6 +134,7 @@ public class GoodsVO {
 		this.realReceiverName = po.getRealReceiverName();
 		this.realReceiverPhone = po.getRealReceiverPhone();
 		this.allLogisticStates=po.getAllLogisticStates();
+		this.startCity=po.getStartCity();
 		
 	}
 	public static GoodsPO toPO(GoodsVO vo) {
