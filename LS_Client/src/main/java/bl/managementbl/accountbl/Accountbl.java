@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import dataservice.managementdataservice.accountdataservice.AccountDataService;
-import dataservice.managementdataservice.accountdataservice.CourierDataService;
 import dataservice.managementdataservice.managedataservice.ManageDataService;
 import util.InputCheck;
 import util.ThreeAutoNum;
@@ -17,7 +16,6 @@ import util.enumData.ResultMessage;
 import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import PO.AccountPO;
-import PO.CourierPO;
 import VO.ManagementVO.AccountVO;
 import VO.ManagementVO.CourierVO;
 import bl.managementbl.managedata.ManageData;
@@ -188,6 +186,20 @@ public class Accountbl {
 			return vos;
 		} else
 			throw new RemoteException();
+	}
+
+	public ArrayList<AccountVO> showoOther() throws RemoteException,
+			ClassNotFoundException, IOException {
+		ArrayList<AccountVO> vos = show();
+		if (vos != null) {
+			for (int i = 0; i < vos.size(); i++) {
+				if (vos.get(i).authority == Authority.COURIER) {
+					vos.remove(i);
+				}
+			}
+		}
+		assert (vos != null) : ("返回除了快递员的人员的信息为空");
+		return vos;
 	}
 
 	public AccountVO findByName(String name) throws RemoteException,
