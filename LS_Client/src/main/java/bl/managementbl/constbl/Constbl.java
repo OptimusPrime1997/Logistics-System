@@ -6,7 +6,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import org.apache.xmlbeans.impl.common.ResolverUtil;
 
 import bl.managementbl.managedata.ManageData;
 import bl.managementbl.managedata.ManageVOPO;

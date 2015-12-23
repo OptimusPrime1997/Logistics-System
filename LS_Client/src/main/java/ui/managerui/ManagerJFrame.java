@@ -10,12 +10,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Vector;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -55,6 +58,7 @@ import VO.ManagementVO.SalaryPolicyVO;
 import VO.ManagementVO.SalaryPolicyVOPlus;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.loginbl.Loginbl;
+import bl.receiptbl.DocumentCheckbl.DocumentCheckbl;
 import blservice.controllerfactoryblservice.ControllerFactoryblService;
 import blservice.logblservice.LogBLService;
 import blservice.managementblservice.accountblservice.AccountBLService;
@@ -146,6 +150,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed"
 	// desc="Generated Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
+		setDocumentVector();
 		setAccountVOs();
 		setConstVOs();
 		setSalaryPolicyVOs();
@@ -803,12 +808,12 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 		jLabel33.setText("截止日期：");
-		
+
 		jLabel33.setVisible(false);
 		jLabel30.setVisible(false);
 		jLabel31.setVisible(false);
 		jLabel32.setVisible(false);
-		
+
 		formEYearjComboBox.setVisible(false);
 		formEMonthjComboBox.setVisible(false);
 		formEDatejComboBox.setVisible(false);
@@ -1574,193 +1579,183 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	/**
 	 * 初始化单据审批列表
 	 */
-	// private void initialCheckJTable(ArrayList<E> vos) {
-	// // TODO Auto-generated method stub
-	// assert (vos != null) : ("表格获得机构信息为空");
-	// Object[][] documentObjects = null;
-	// documentObjects = new Object[vos.size()][5];
-	// int i = 0;
-	// for (java.util.Iterator<DocumentVOPlus> t = vos.iterator(); t
-	// .hasNext(); i++) {
-	// DocumentVO vo = t.next();
-	// documentObjects[i][0] = vo.documentNum;
-	// documentObjects[i][1] = vo.documentName;
-	// documentObjects[i][2] = vo.contactInfo;
-	// documentObjects[i][3] = vo.address;
-	// documentObjects[i][4] = vo.manning;
-	// }
-	//
-	// documentCheckjTable.setModel(new javax.swing.table.DefaultTableModel(
-	// new Object[][] {}, new String[] { "日期",
-	// "编号", "单据类型", "是否审批" }) {
-	// Class[] types = new Class[] { java.lang.Object.class,
-	// java.lang.String.class, java.lang.String.class,
-	// java.lang.Boolean.class };
-	//
-	// public Class getColumnClass(int columnIndex) {
-	// return types[columnIndex];
-	// }
-	// });
-	// documentCheckjTable.setColumnSelectionAllowed(true);
-	// documentCheckjTable.setPreferredSize(new java.awt.Dimension(300, 630));
-	// documentCheckjTable.getTableHeader().setReorderingAllowed(false);
-	//
-	// documentCheckjTable.addMouseListener(new java.awt.event.MouseAdapter() {
-	// public void mouseClicked(java.awt.event.MouseEvent evt) {
-	// documentCheckjTableMouseClicked(evt);
-	// }
-	//
-	// private void documentCheckjTableMouseClicked(MouseEvent evt) {
-	// // TODO Auto-generated method stub
-	//
-	// }
-	// });
-	// final JPopupMenu documentjPop = new JPopupMenu();
-	// final JMenuItem documentSubmitjItem = new JMenuItem("提交");
-	// documentSubmitjItem.addMouseListener(/**
-	// * @author 1
-	// * 监听document的弹出菜单中的“提交”
-	// */
-	// new MouseListener() {
-	//
-	// @Override
-	// public void mouseClicked(MouseEvent e) {
-	// // TODO Auto-generated method stub
-	//
-	// }
-	//
-	// @Override
-	// public void mousePressed(MouseEvent e) {
-	// // TODO Auto-generated method stub
-	//
-	// }
-	//
-	// @Override
-	// public void mouseReleased(MouseEvent e) {
-	// // TODO Auto-generated method stub
-	// if (e.getButton() == MouseEvent.BUTTON1) {
-	// ResultMessage rmsg = null;
-	// int n = documentjTable.getSelectedRow();
-	// DocumentVOPlus voPlus = documentVOPlus.get(n);
-	// ModifyState state = voPlus.isModify;
-	// DocumentVO v = getViewDocumentVO(n);
-	// if (state == ModifyState.NEW) {
-	// try {
-	// rmsg = documentblController.insert(v);
-	// setState(
-	// "提交" + ResultMessage.toFriendlyString(rmsg),
-	// DISPLAY_TIME);
-	// if (rmsg == ResultMessage.SUCCESS) {
-	// // documentVOPlus.remove(n);
-	// // documentVOPlus.add(n, new DocumentVOPlus(
-	// // v, ModifyState.SYNC));
-	// setDocumentVOs();
-	// initialDocumentJTable(documentVOPlus, n);
-	// }
-	// } catch (RemoteException e1) {
-	// // TODO Auto-generated catch block
-	// e1.printStackTrace();
-	// setState(REMOTEFAILD, DISPLAY_TIME);
-	// }
-	// } else {
-	// if (v.equals(voPlus.getDocumentVO())) {
-	// setState("您未对该行进行修改！", DISPLAY_TIME);
-	// } else {
-	// try {
-	// rmsg = documentblController.update(v);
-	// setState(ResultMessage.toFriendlyString(rmsg),
-	// DISPLAY_TIME);
-	// if (rmsg == ResultMessage.SUCCESS) {
-	// documentVOPlus.remove(n);
-	// documentVOPlus.add(n,
-	// new DocumentVOPlus(v,
-	// ModifyState.SYNC));
-	// }
-	// } catch (RemoteException e1) {
-	// // TODO Auto-generated catch block
-	// e1.printStackTrace();
-	// setState(REMOTEFAILD, DISPLAY_TIME);
-	// }
-	// }
-	// }
-	// }
-	//
-	// }
-	//
-	// @Override
-	// public void mouseEntered(MouseEvent e) {
-	// // TODO Auto-generated method stub
-	//
-	// }
-	//
-	// @Override
-	// public void mouseExited(MouseEvent e) {
-	// // TODO Auto-generated method stub
-	//
-	// }
-	//
-	// });
-	// documentjPop.add(documentSubmitjItem);
-	// MouseInputListener mil = new MouseInputListener() {
-	//
-	// public void mouseClicked(MouseEvent e) {
-	// processEvent(e);
-	// }
-	//
-	// public void mousePressed(MouseEvent e) {
-	// processEvent(e);
-	// }
-	//
-	// public void mouseReleased(MouseEvent e) {
-	// processEvent(e);
-	// if ((e.getModifiers() & MouseEvent.BUTTON3_MASK) != 0
-	// && !e.isControlDown() && !e.isShiftDown()) {
-	// documentjPop.show(documentjTable, e.getX(), e.getY());
-	// }
-	// }
-	//
-	// public void mouseEntered(MouseEvent e) {
-	// processEvent(e);
-	// }
-	//
-	// public void mouseExited(MouseEvent e) {
-	// processEvent(e);
-	// }
-	//
-	// public void mouseDragged(MouseEvent e) {
-	// processEvent(e);
-	// }
-	//
-	// public void mouseMoved(MouseEvent e) {
-	// processEvent(e);
-	// }
-	//
-	// private void processEvent(MouseEvent e) {
-	// if ((e.getModifiers() & MouseEvent.BUTTON3_MASK) != 0) {
-	// int modifiers = e.getModifiers();
-	// modifiers -= MouseEvent.BUTTON3_MASK;
-	// modifiers |= MouseEvent.BUTTON1_MASK;
-	// MouseEvent ne = new MouseEvent(e.getComponent(), e.getID(),
-	// e.getWhen(), modifiers, e.getX(), e.getY(),
-	// e.getClickCount(), false);
-	// documentjTable.dispatchEvent(ne);
-	// }
-	// }
-	// };
-	// documentjTable.addMouseListener(mil);
-	// documentjTable.putClientProperty("terminateEditOnFocusLost",
-	// Boolean.TRUE);
-	//
-	//
-	// ComponentFactory.setJTableTextCenter(documentCheckjTable);
-	// jScrollPane1.setViewportView(documentCheckjTable);
-	// documentCheckjTable
-	// .getColumnModel()
-	// .getSelectionModel()
-	// .setSelectionMode(
-	// javax.swing.ListSelectionModel.SINGLE_SELECTION);
-	//
-	// }
+	private void initialCheckJTable() {
+		// TODO Auto-generated method stub
+		assert (documents != null) : ("表格获得机构信息为空");
+		Vector<String> colums=new Vector<String>();
+		colums.add("日期");
+		colums.add("编号");
+		colums.add("单据类型");
+		colums.add("通过审批");
+
+		documentCheckjTable
+				.setModel(new javax.swing.table.DefaultTableModel(
+						documents, colums) {
+					Class[] types = new Class[] { java.lang.String.class,
+							java.lang.String.class, java.lang.String.class,
+							java.lang.Boolean.class };
+
+					public Class getColumnClass(int columnIndex) {
+						return types[columnIndex];
+					}
+				});
+		documentCheckjTable.setColumnSelectionAllowed(true);
+		documentCheckjTable.setPreferredSize(new java.awt.Dimension(300, 630));
+		documentCheckjTable.getTableHeader().setReorderingAllowed(false);
+
+		documentCheckjTable.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				documentCheckjTableMouseClicked(evt);
+			}
+
+			private void documentCheckjTableMouseClicked(MouseEvent evt) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		final JPopupMenu documentjPop = new JPopupMenu();
+		final JMenuItem documentSubmitjItem = new JMenuItem("提交");
+		documentSubmitjItem.addMouseListener(/**
+		 * @author 1 监听document的弹出菜单中的“提交”
+		 */
+		new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				if (e.getButton() == MouseEvent.BUTTON1) {
+//					ResultMessage rmsg = null;
+//					int n = documentCheckjTable.getSelectedRow();
+//					Object vo = documents.get(n);
+//					ModifyState state = vo.isModify;
+//					DocumentVO v = getViewDocumentVO(n);
+//					if (state == ModifyState.NEW) {
+//						try {
+//							rmsg = documentblController.insert(v);
+//							setState(
+//									"提交" + ResultMessage.toFriendlyString(rmsg),
+//									DISPLAY_TIME);
+//							if (rmsg == ResultMessage.SUCCESS) {
+//								// documentVOPlus.remove(n);
+//								// documentVOPlus.add(n, new DocumentVOPlus(
+//								// v, ModifyState.SYNC));
+//								setDocumentVOs();
+//								initialDocumentJTable(documents, n);
+//							}
+//						} catch (RemoteException e1) {
+//							// TODO Auto-generated catch block
+//							e1.printStackTrace();
+//							setState(REMOTEFAILD, DISPLAY_TIME);
+//						}
+//					} else {
+//						if (v.equals(vo.getDocumentVO())) {
+//							setState("您未对该行进行修改！", DISPLAY_TIME);
+//						} else {
+//							try {
+//								rmsg = documentblController.update(v);
+//								setState(ResultMessage.toFriendlyString(rmsg),
+//										DISPLAY_TIME);
+//								if (rmsg == ResultMessage.SUCCESS) {
+//									documents.remove(n);
+//									documents.add(n, new DocumentVOPlus(v,
+//											ModifyState.SYNC));
+//								}
+//							} catch (RemoteException e1) {
+//								// TODO Auto-generated catch block
+//								e1.printStackTrace();
+//								setState(REMOTEFAILD, DISPLAY_TIME);
+//							}
+//						}
+//					}
+//				}
+				}
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+		});
+		documentjPop.add(documentSubmitjItem);
+		MouseInputListener mil = new MouseInputListener() {
+
+			public void mouseClicked(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mousePressed(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				processEvent(e);
+				if ((e.getModifiers() & MouseEvent.BUTTON3_MASK) != 0
+						&& !e.isControlDown() && !e.isShiftDown()) {
+					documentjPop.show(documentCheckjTable, e.getX(), e.getY());
+				}
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseDragged(MouseEvent e) {
+				processEvent(e);
+			}
+
+			public void mouseMoved(MouseEvent e) {
+				processEvent(e);
+			}
+
+			private void processEvent(MouseEvent e) {
+				if ((e.getModifiers() & MouseEvent.BUTTON3_MASK) != 0) {
+					int modifiers = e.getModifiers();
+					modifiers -= MouseEvent.BUTTON3_MASK;
+					modifiers |= MouseEvent.BUTTON1_MASK;
+					MouseEvent ne = new MouseEvent(e.getComponent(), e.getID(),
+							e.getWhen(), modifiers, e.getX(), e.getY(),
+							e.getClickCount(), false);
+					documentCheckjTable.dispatchEvent(ne);
+				}
+			}
+		};
+		documentCheckjTable.addMouseListener(mil);
+		documentCheckjTable.putClientProperty("terminateEditOnFocusLost",
+				Boolean.TRUE);
+
+		ComponentFactory.setJTableTextCenter(documentCheckjTable);
+		jScrollPane1.setViewportView(documentCheckjTable);
+		documentCheckjTable
+				.getColumnModel()
+				.getSelectionModel()
+				.setSelectionMode(
+						javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+	}
 
 	/**
 	 * 初始化薪水策略面板
@@ -2271,13 +2266,11 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		// TODO add your handling code here:
 		if (evt.getSource() == findAccountNamejButton) {
 			String findAccountNum = accountNumjTextField.getText();
-			ResultMessage rmsg = InputCheck.checkInputNum(findAccountNum,
-					11);
+			ResultMessage rmsg = InputCheck.checkInputNum(findAccountNum, 11);
 			if (rmsg == ResultMessage.VALID) {
 				int i = 0;
 				AccountVO tempVO = null;
-				for (Iterator<AccountVO> t = accountVOs
-						.iterator(); t.hasNext(); i++) {
+				for (Iterator<AccountVO> t = accountVOs.iterator(); t.hasNext(); i++) {
 					tempVO = t.next();
 					if (tempVO.accountNum.equals(findAccountNum)) {
 						break;
@@ -3662,6 +3655,31 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
 
 	}
+	private void setDocumentVector(){
+		try {
+			documents=documentCheckbl.initTable();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			ComponentFactory.setState("程序错误", DISPLAY_TIME,statejLabel);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			ComponentFactory.setState(ComponentFactory.REMOTEFAILD, DISPLAY_TIME,statejLabel);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			ComponentFactory.setState("程序错误", DISPLAY_TIME,statejLabel);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			ComponentFactory.setState("文件读写错误", DISPLAY_TIME,statejLabel);
+		} catch (NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			ComponentFactory.setState("网络连接错误", DISPLAY_TIME,statejLabel);
+		}
+	}
 
 	/**
 	 * managerui的启动方法
@@ -3720,6 +3738,8 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	// 变量声明
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	// bl相关变量声明
+	private DocumentCheckbl documentCheckbl=new DocumentCheckbl();
+	private Vector<Object> documents=null;
 	private ArrayList<AccountVO> accountVOs = null;
 	private ArrayList<ConstVOPlus> constVOPlus = null;
 	private ArrayList<SalaryPolicyVOPlus> salaryPolicyVOPlus = null;

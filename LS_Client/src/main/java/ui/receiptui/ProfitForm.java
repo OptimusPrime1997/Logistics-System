@@ -26,6 +26,7 @@ public class ProfitForm extends javax.swing.JPanel {
 
    public static void main(String[] args) {
 	new ProfitForm();}
+   
 
     /**
      * Creates new form 成本收益表
