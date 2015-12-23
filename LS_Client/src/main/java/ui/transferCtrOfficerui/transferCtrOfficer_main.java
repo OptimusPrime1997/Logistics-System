@@ -14,6 +14,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 
+import main.MainFrame;
 import ui.receiptui.generalUI.GetRep;
 import ui.receiptui.generalUI.ShippingRep;
 import ui.receiptui.generalUI.TransferRep;
@@ -50,7 +51,7 @@ public class transferCtrOfficer_main extends JPanel {
         ctr_log= ControllerFactoryImpl.getInstance().getLogController();
         ctr_trans=ControllerFactoryImpl.getInstance().getTransferRepblService();
     	initComponents();
-        new MyFrame(this);
+       this.frame=new MyFrame(this);
     }
     /**
 	 * 给main的子界面调用~反馈给用户操作成功的message
@@ -288,7 +289,8 @@ public class transferCtrOfficer_main extends JPanel {
 					"是否退出", JOptionPane.DEFAULT_OPTION,
 					JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 			if (result == JOptionPane.NO_OPTION) {
-				System.exit(0);
+				frame.dispose();
+				new MainFrame();
 			}
 		}
     }
@@ -318,6 +320,7 @@ public class transferCtrOfficer_main extends JPanel {
     private LogBLService ctr_log;
     private TransferRepblService ctr_trans;
     private int train=0,ship=0,plane=0;
+    MyFrame frame;
     // End of variables declaration//GEN-END:variables
     
    

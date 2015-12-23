@@ -36,7 +36,7 @@ public class Stock {
 	
 	
 	StockNum sn = new StockNum();
-	private ArrayList<StockVO> result;
+	private ArrayList<StockVO> result = new ArrayList<StockVO>();
 	
 
 	private StockDataService getStockDataService() throws MalformedURLException, RemoteException, NotBoundException {
@@ -162,7 +162,7 @@ public class Stock {
 	 * @throws ClassNotFoundException 
 	 */
 	public ArrayList<StockVO> show() throws NotBoundException, ClassNotFoundException, IOException {
-		result = null;
+
 		ArrayList<StockPO> list = new ArrayList<StockPO>();
 		
 		StockDataService s = getStockDataService();
@@ -170,9 +170,13 @@ public class Stock {
 		City cityNum = CurrentCity.getCurrentCity();
 		
 		list = s.getStock(cityNum);
+	
 		for(StockPO po:list) {
+			
 			result.add(new StockVO().poToVo(po));
+
 		}
+		
 		return result;
 	}
 
@@ -218,7 +222,7 @@ public class Stock {
 	 * @throws ClassNotFoundException 
 	 */
 	public ArrayList<StockVO> showToday() throws ClassNotFoundException, NotBoundException, IOException {
-		result = null;
+
 		ArrayList<StockVO> list = show();
 	
 		String date = CurrentTime.getDate();

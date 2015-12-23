@@ -83,6 +83,10 @@ public class GoodsPO implements Serializable {
 		return listNum;
 	}
 
+	public String getStartCity() {
+		return startCity;
+	}
+
 	public Boolean getIfExaminePassed() {
 		return ifExaminePassed;
 	}

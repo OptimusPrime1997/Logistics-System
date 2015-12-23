@@ -124,7 +124,7 @@ public class WarehousePanel extends javax.swing.JFrame {
 
         jLabel8.setText("广州08");
 
-        //显示进度条
+        //TODO  显示进度条
 //        showProcess();
         
         jButton1.setText("出库单填写");

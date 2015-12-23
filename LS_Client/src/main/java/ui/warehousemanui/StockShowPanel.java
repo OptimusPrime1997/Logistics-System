@@ -264,7 +264,7 @@ public class StockShowPanel extends JFrame {
     	int length = list.size();
     	
     	if (length == 0) {
-    		showFeedback(null, "今天还没有货物入库~");
+    		showFeedback(ResultMessage.SUCCESS, "今天还没有货物入库~");
 		}
     	
     	Object[][] showObjects = new Object[length][6];

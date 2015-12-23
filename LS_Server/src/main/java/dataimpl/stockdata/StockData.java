@@ -165,8 +165,8 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 	}
 	
 	public static void main(String[] args) {
-		StockPO p1 = new StockPO(City.NANJING, "0000000000001", "00010000000110", "01-02", City.BEIJING, 1, 1);
-		StockPO p2 = new StockPO(City.NANJING, "0000000000002", "00010000000110", "01-03", City.BEIJING, 1, 2);
+		StockPO p1 = new StockPO(City.NANJING, "0000000000001", "00010000000110", "12-23", City.BEIJING, 1, 1);
+		StockPO p2 = new StockPO(City.NANJING, "0000000000002", "00010000000110", "12-23", City.BEIJING, 1, 2);
 		StockPO p3 = new StockPO(City.NANJING, "0000000000003", "00010000000110", "01-04", City.BEIJING, 1, 3);
 		StockData s;
 		try {
