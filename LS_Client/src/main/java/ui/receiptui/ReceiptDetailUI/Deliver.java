@@ -132,6 +132,10 @@ public class Deliver extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
+        columnIdentifiers.add("订单号");
+        columnIdentifiers.add("收件人名字");
+        columnIdentifiers.add("手机");
+        columnIdentifiers.add("地点");
         try {
 			dataVector = control.initShow(num);
 		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {

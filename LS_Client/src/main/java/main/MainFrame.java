@@ -338,7 +338,9 @@ public class MainFrame extends JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                MainFrame mainFrame=new MainFrame();
+                mainFrame.setLocationRelativeTo(null);
+                mainFrame.setVisible(true);
             }
         });
     }

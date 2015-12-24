@@ -29,7 +29,6 @@ public enum ShipForm {
 	public double getWeight() {
 		return weight;
 	}
-
 	public double getRatio() {
 		return ratio;
 	}

@@ -17,6 +17,8 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -25,6 +27,8 @@ import javax.swing.SwingConstants;
 import javax.swing.event.MouseInputListener;
 import javax.swing.table.DefaultTableCellRenderer;
 
+import main.MainFrame;
+import ui.componentfactory.ComponentFactory;
 import ui.receiptui.BusinessForm;
 import ui.receiptui.ProfitForm;
 import ui.receiptui.generalUI.PayRep;
@@ -49,7 +53,7 @@ import blservice.managementblservice.bankaccountblservice.BankAccountBLService;
  * @author 1
  * 
  */
-	
+
 public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 	/**
@@ -61,7 +65,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	 * Creates new form FinancialStaffJFrame
 	 */
 	public FinancialStaffJFrame() {
-		ctr_log=ControllerFactoryImpl.getInstance().getLogController();
+		ctr_log = ControllerFactoryImpl.getInstance().getLogController();
 		this.setVisible(true);
 		initComponents();
 	}
@@ -82,7 +86,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		financialjPanel.setPreferredSize(new java.awt.Dimension(830, 590));
 		String currentOptorId = Loginbl.getCurrentOptorId();
-		
+
 		currentAccountNumjLabel.setText(currentOptorId);
 		currentAccountNumjLabel.setToolTipText("当前用户账号");
 
@@ -198,132 +202,9 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		finacialjTabbedPane.addTab("收支管理", financialManagejPanel);
 
 		inititalBankAccountJPanel();
-	
 
 		initialFormJpanel();
-		logjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
-
-		findLogjButton.setText("查找");
-		findLogjButton.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				findLogjButtonMouseClicked(evt);
-			}
-		});
-		findLogjButton.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				findLogjButtonActionPerformed(evt);
-			}
-		});
-
-		logSDatejLabel.setText("开始日期：");
-
-		logSYearjLabel.setText("年");
-
-		logSMonthjLabel.setText("月");
-
-		logTypejLabel.setText("操作类型：");
-
-		logTypejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "所有操作", "薪水制定","常量制定", "审批单据", "用户账户管理", "银行账户管理",
-						"人员机构管理" ,"司机管理","车辆管理","创建订单","权限管理",
-						"查看报表","派件","签收订单"}));
-		logTypejComboBox.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				logTypejComboBoxActionPerformed(evt);
-			}
-		});
-
-		logSYearjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "2000", "2001", "2002", "2003", "2004", "2005",
-						"2006", "2007", "2008", "2009", "2010", "2011", "2012",
-						"2013", "2014", "2015" }));
-
-		logSDatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
-						"10", "11", "12", "13", "14", "15", "16", "17", "18",
-						"9", "20", "21", "22", "23", "24", "25", "26", "27",
-						"28", "29", "30", "31" }));
-
-		logSMonthjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
-						"10", "11", "12" }));
-		logSMonthjComboBox
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						logSMonthjComboBoxActionPerformed(evt);
-					}
-				});
-
-		logEYearjLabel.setText("年");
-
-		logEMonthjLabel.setText("月");
-
-		logEDayjLabel.setText("日");
-
-		logEYearjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "2000", "2001", "2002", "2003", "2004", "2005",
-						"2006", "2007", "2008", "2009", "2010", "2011", "2012",
-						"2013", "2014", "2015" }));
-		logEYearjComboBox
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						logEYearjComboBoxActionPerformed(evt);
-					}
-				});
-
-		logEDatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
-						"10", "11", "12", "13", "14", "15", "16", "17", "18",
-						"19", "20", "21", "22", "23", "24", "25", "26", "27",
-						"28", "29", "30", "31" }));
-
-		logEMonthjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
-						"10", "11", "12" }));
-		logEMonthjComboBox
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						logEMonthjComboBoxActionPerformed(evt);
-					}
-				});
-
-		logEDatejLabel.setText("截止日期：");
-
-		logTitlejLabel.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
-		logTitlejLabel.setText("系统日志");
-
-		logjTable
-				.setModel(new javax.swing.table.DefaultTableModel(
-						new Object[][] {
-								{ "20151109", "用户账户管理", "管理员", "00065434232" },
-								{ null, null, null, null },
-								{ null, null, null, null },
-								{ null, null, null, null },
-								{ null, null, null, null },
-								{ null, null, null, null },
-								{ null, null, null, null },
-								{ null, null, null, null },
-								{ null, null, null, null },
-								{ null, null, null, null },
-								{ null, null, null, null },
-								{ null, null, null, null },
-								{ null, null, null, null },
-								{ null, null, null, null },
-								{ null, null, null, null } }, new String[] {
-								"日期", "操做类型", "操作人员职位", "操作人员编号" }) {
-					Class[] types = new Class[] { java.lang.String.class,
-							java.lang.String.class, java.lang.String.class,
-							java.lang.String.class };
-
-					public Class getColumnClass(int columnIndex) {
-						return types[columnIndex];
-					}
-				});
-		logjTable.setGridColor(new java.awt.Color(0, 0, 0));
-		logjTable.setName("123"); // NOI18N
-		jScrollPane4.setViewportView(logjTable);
-
-		logStartDayjLabel.setText("日");
+		initialLogjPanel();
 
 		javax.swing.GroupLayout logjPanelLayout = new javax.swing.GroupLayout(
 				logjPanel);
@@ -588,7 +469,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		finacialjTabbedPane.addTab("日志查看", logjPanel);
 
-//		initialNewFinanceJpanel();
+		// initialNewFinanceJpanel();
 		jLabel6.setText("财务人员");
 
 		exitjButton.setText("退出系统");
@@ -715,6 +596,154 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		pack();
 	}// </editor-fold>//GEN-END:initComponents
+
+	private void initialLogjPanel() {
+		// TODO Auto-generated method stub
+		logjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
+
+		findLogjButton.setText("查找");
+		findLogjButton.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				findLogjButtonMouseClicked(evt);
+			}
+		});
+		findLogjButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				findLogjButtonActionPerformed(evt);
+			}
+		});
+
+		logSDatejLabel.setText("开始日期：");
+
+		logSYearjLabel.setText("年");
+
+		logSMonthjLabel.setText("月");
+
+		logTypejLabel.setText("操作类型：");
+		logTypejComboBox = ComponentFactory.getLogTypeJComboBox();
+		// logTypejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+		// new String[] { "所有操作", "薪水制定", "常量制定", "审批单据", "用户账户管理",
+		// "银行账户管理", "人员机构管理", "司机管理", "车辆管理", "创建订单", "权限管理",
+		// "查看报表", "派件", "签收订单" }));
+
+		logTypejComboBox.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				logTypejComboBoxActionPerformed(evt);
+			}
+		});
+
+		// logSYearjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+		// new String[] { "2000", "2001", "2002", "2003", "2004", "2005",
+		// "2006", "2007", "2008", "2009", "2010", "2011", "2012",
+		// "2013", "2014", "2015" }));
+		//
+		// logSDatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+		// new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
+		// "10", "11", "12", "13", "14", "15", "16", "17", "18",
+		// "9", "20", "21", "22", "23", "24", "25", "26", "27",
+		// "28", "29", "30", "31" }));
+		//
+		// logSMonthjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+		// new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
+		// "10", "11", "12" }));
+		logSYearjComboBox = ComponentFactory.getYearJComboBox(2015, 2020);
+		logSMonthjComboBox = ComponentFactory.getMonthJComboBox();
+		logSDatejComboBox = ComponentFactory.getDayJComboBox();
+
+		logSMonthjComboBox
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						logSMonthjComboBoxActionPerformed(evt);
+					}
+				});
+
+		logEYearjLabel.setText("年");
+
+		logEMonthjLabel.setText("月");
+
+		logEDayjLabel.setText("日");
+
+		// logEYearjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+		// new String[] { "2000", "2001", "2002", "2003", "2004", "2005",
+		// "2006", "2007", "2008", "2009", "2010", "2011", "2012",
+		// "2013", "2014", "2015" }));
+		//
+		// logEDatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+		// new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
+		// "10", "11", "12", "13", "14", "15", "16", "17", "18",
+		// "19", "20", "21", "22", "23", "24", "25", "26", "27",
+		// "28", "29", "30", "31" }));
+		//
+		// logEMonthjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+		// new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
+		// "10", "11", "12" }));
+		logEYearjComboBox = ComponentFactory.getYearJComboBox(2015, 2020);
+		logEMonthjComboBox = ComponentFactory.getMonthJComboBox();
+		logEDatejComboBox = ComponentFactory.getDayJComboBox();
+		logEYearjComboBox
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						logEYearjComboBoxActionPerformed(evt);
+					}
+				});
+		logEMonthjComboBox
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						logEMonthjComboBoxActionPerformed(evt);
+					}
+				});
+
+		logEDatejLabel.setText("截止日期：");
+
+		logTitlejLabel.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
+		logTitlejLabel.setText("系统日志");
+
+		// initialLogJTable(logVOs);
+		logStartDayjLabel.setText("日");
+	}
+
+	private void initialLogJTable(ArrayList<LogVO> vos) {
+		// TODO Auto-generated method stub
+		assert (vos != null) : ("表格获得的日志信息为空");
+		Object[][] logObjects = null;
+		logObjects = new Object[vos.size()][4];
+		int i = 0;
+		for (java.util.Iterator<LogVO> t = vos.iterator(); t.hasNext(); i++) {
+			LogVO vo = t.next();
+			System.out.println("得到的log信息：" + vo.time);
+			logObjects[i][0] = vo.time;
+			logObjects[i][1] = vo.operationName;
+			logObjects[i][2] = authorityjComboBox.getItemAt(Integer
+					.parseInt(vo.operatorID.substring(7, 8)));
+			logObjects[i][3] = vo.operatorID;
+
+		}
+
+		logjTable.setModel(new javax.swing.table.DefaultTableModel(logObjects,
+				new String[] { "日期", "操做类型", "操作人员职位", "操作人员编号" }) {
+			Class[] types = new Class[] { java.lang.String.class,
+					JComboBox.class, JComboBox.class, java.lang.String.class };
+			boolean[] canEdit = new boolean[] { false, false, false, false };
+
+			public Class getColumnClass(int columnIndex) {
+				return types[columnIndex];
+			}
+		});
+		logjTable.getColumnModel().getColumn(1)
+				.setCellEditor(new DefaultCellEditor(logTypejComboBox));
+		logjTable.getColumnModel().getColumn(2)
+				.setCellEditor(new DefaultCellEditor(authorityjComboBox));
+
+		// logjTable.setRowSelectionInterval(0, 0);// 设置哪几行被选中
+
+		logjTable.setGridColor(new java.awt.Color(0, 0, 0));
+		logjTable.setName("123"); // NOI18N
+		logjTable.getTableHeader().setReorderingAllowed(false);
+
+		ComponentFactory.setJTableTextCenter(logjTable);
+		jScrollPane4.setViewportView(logjTable);
+
+	}
 
 	private void initialNewFinanceJpanel() {
 		// TODO Auto-generated method stub
@@ -921,7 +950,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		formEMonthjComboBox.setVisible(false);
 		formEYearjLabel.setVisible(false);
 		formEYearjComboBox.setVisible(false);
-		
+
 		profitFormIcon.setBackground(new java.awt.Color(0, 240, 240));
 		profitFormIcon.setToolTipText("");
 
@@ -1734,16 +1763,16 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		logSYearjLabel = new javax.swing.JLabel();
 		logSMonthjLabel = new javax.swing.JLabel();
 		logTypejLabel = new javax.swing.JLabel();
-		logTypejComboBox = new javax.swing.JComboBox();
-		logSYearjComboBox = new javax.swing.JComboBox();
-		logSDatejComboBox = new javax.swing.JComboBox();
-		logSMonthjComboBox = new javax.swing.JComboBox();
+		logTypejComboBox = new JComboBox<LogType>();
+		logSYearjComboBox = new javax.swing.JComboBox<Integer>();
+		logSDatejComboBox = new javax.swing.JComboBox<Integer>();
+		logSMonthjComboBox = new javax.swing.JComboBox<Integer>();
 		logEYearjLabel = new javax.swing.JLabel();
 		logEMonthjLabel = new javax.swing.JLabel();
 		logEDayjLabel = new javax.swing.JLabel();
-		logEYearjComboBox = new javax.swing.JComboBox();
-		logEDatejComboBox = new javax.swing.JComboBox();
-		logEMonthjComboBox = new javax.swing.JComboBox();
+		logEYearjComboBox = new javax.swing.JComboBox<Integer>();
+		logEDatejComboBox = new javax.swing.JComboBox<Integer>();
+		logEMonthjComboBox = new javax.swing.JComboBox<Integer>();
 		logEDatejLabel = new javax.swing.JLabel();
 		jSeparator5 = new javax.swing.JSeparator();
 		logTitlejLabel = new javax.swing.JLabel();
@@ -1810,12 +1839,12 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		// TODO Auto-generated method stub
 		if (evt.getSource() == exitjButton) {
 			Object[] options = { "取消", "确定" };
-			int result = JOptionPane.showOptionDialog(null,
-					"您确定要退出系统？", "是否退出", JOptionPane.DEFAULT_OPTION,
-					JOptionPane.QUESTION_MESSAGE, null, options,
-					options[0]);
+			int result = JOptionPane.showOptionDialog(null, "您确定要退出系统？",
+					"是否退出", JOptionPane.DEFAULT_OPTION,
+					JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 			if (result == JOptionPane.NO_OPTION) {
-				System.exit(0);
+				this.dispose();
+				new MainFrame();
 			}
 		}
 	}// GEN-LAST:event_exitjButtonActionPerformed
@@ -1932,17 +1961,34 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	}// GEN-LAST:event_viewManageFormMouseReleased
 
 	private void findLogjButtonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_findLogjButtonMouseReleased
-		String startT=logSYearjComboBox.getSelectedItem().toString()+"-"+logSMonthjComboBox.getSelectedItem().toString()
-				+"-"+logSDatejComboBox.getSelectedItem().toString();
-		String endT=logEYearjComboBox.getSelectedItem().toString()+"-"+logEMonthjComboBox.getSelectedItem().toString()
-				+"-"+logEDatejComboBox.getSelectedItem().toString();
-		
-		String type=logTypejComboBox.getSelectedItem().toString();
-		LogType logType=StrToLogType.strToLogTye(type);
-        logVOs=ctr_log.show(startT, endT, logType);
-        System.out.println(logVOs.size());
-        //TODO 得到了日志数据   没放到界面上
+		if (evt.getSource() == findLogjButton) {
+			String startT = logSYearjComboBox.getSelectedItem() + "-"
+					+ logSMonthjComboBox.getSelectedItem() + "-"
+					+ logSDatejComboBox.getSelectedItem();
+			String endT = logEYearjComboBox.getSelectedItem() + "-"
+					+ logEMonthjComboBox.getSelectedItem() + "-"
+					+ logEDatejComboBox.getSelectedItem();
+			if (startT.compareTo(endT) <= 0) {
+				LogType type = (LogType) logTypejComboBox.getSelectedItem();
+				if (logVOs != null) {
+					if (logVOs.size() == 0) {
+						ComponentFactory.setState("该时间段无日志",
+								ComponentFactory.DISPLAY_TIME, statejLabel);
+					} else {
+						setLogVOs(startT, endT, type);
+						initialLogJTable(logVOs);
+					}
+				} else {
+					ComponentFactory.setState("系统程序错误",
+							ComponentFactory.DISPLAY_TIME, statejLabel);
+				}
+			} else {
+				ComponentFactory.setState("截止日期早于开始日期",
+						ComponentFactory.DISPLAY_TIME, statejLabel);
+			}
+		}
 	}
+
 	private void newFinanceIconjPanelMouseReleased(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_newFinanceIconjPanelMouseReleased
 	}// GEN-LAST:event_newFinanceIconjPanelMouseReleased
 
@@ -2045,16 +2091,45 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		}, time, TimeUnit.SECONDS);
 	}
 
+	private void setLogVOs(String startTime, String endTime, LogType type) {
+		logVOs = getLogVOs(startTime, endTime, type);
+		if (logVOs != null) {
+			System.out.println("得到的log数据：" + logVOs.size());
+		} else {
+			System.out.println("得到的log数据为空!");
+		}
+		logVOs.sort(null);
+	}
+
+	/**
+	 * 获得
+	 * 
+	 * @return
+	 */
+	private ArrayList<LogVO> getLogVOs(String startTime, String endTime,
+			LogType type) {
+		ArrayList<LogVO> vos = null;
+		vos = logblController.show(startTime, endTime, type);
+		assert (vos != null) : ("远程获取账户信息失败");
+		vos.sort(null);
+		assert (vos != null) : ("获取日志失败");
+		return vos;
+	}
+
 	// bl相关变量
 	private ArrayList<BankAccountVO> bankAccountVOs = null;
 	private ArrayList<BankAccountVOPlus> bankAccountVOPlus = null;
+	private ArrayList<LogVO> logVOs = null;
 	private ControllerFactoryblService controllerFactoryblService = ControllerFactoryImpl
 			.getInstance();
 	private BankAccountBLService bankAccountblController = controllerFactoryblService
 			.getBankAccountController();
+	private LogBLService logblController = controllerFactoryblService
+			.getLogController();
 	private final ScheduledExecutorService scheduler = Executors
 			.newScheduledThreadPool(1);
-
+	private JComboBox<Authority> authorityjComboBox = ComponentFactory
+			.getInstance().getAuthorityJComboBox();
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JLabel accountNamejLabel;
 	private javax.swing.JButton addBankAccountjButton;
@@ -2094,22 +2169,22 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	private javax.swing.JSeparator jSeparator1;
 	private javax.swing.JSeparator jSeparator3;
 	private javax.swing.JSeparator jSeparator5;
-	private javax.swing.JComboBox logEDatejComboBox;
+	private javax.swing.JComboBox<Integer> logEDatejComboBox;
 	private javax.swing.JLabel logEDatejLabel;
 	private javax.swing.JLabel logEDayjLabel;
-	private javax.swing.JComboBox logEMonthjComboBox;
+	private javax.swing.JComboBox<Integer> logEMonthjComboBox;
 	private javax.swing.JLabel logEMonthjLabel;
-	private javax.swing.JComboBox logEYearjComboBox;
+	private javax.swing.JComboBox<Integer> logEYearjComboBox;
 	private javax.swing.JLabel logEYearjLabel;
-	private javax.swing.JComboBox logSDatejComboBox;
+	private javax.swing.JComboBox<Integer> logSDatejComboBox;
 	private javax.swing.JLabel logSDatejLabel;
-	private javax.swing.JComboBox logSMonthjComboBox;
+	private javax.swing.JComboBox<Integer> logSMonthjComboBox;
 	private javax.swing.JLabel logSMonthjLabel;
-	private javax.swing.JComboBox logSYearjComboBox;
+	private javax.swing.JComboBox<Integer> logSYearjComboBox;
 	private javax.swing.JLabel logSYearjLabel;
 	private javax.swing.JLabel logStartDayjLabel;
 	private javax.swing.JLabel logTitlejLabel;
-	private javax.swing.JComboBox logTypejComboBox;
+	private javax.swing.JComboBox<LogType> logTypejComboBox;
 	private javax.swing.JLabel logTypejLabel;
 	private javax.swing.JPanel logjPanel;
 	private javax.swing.JTable logjTable;
@@ -2124,7 +2199,6 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	private javax.swing.JButton viewManageForm;
 	private javax.swing.JButton viewProfitFormjButton;
 	private LogBLService ctr_log;
-	private ArrayList<LogVO> logVOs;
 	// End of variables declaration//GEN-END:variables
 	/**
 	 * 远程连接失败！

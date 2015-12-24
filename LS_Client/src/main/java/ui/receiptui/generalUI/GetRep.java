@@ -392,11 +392,15 @@ public class GetRep extends javax.swing.JPanel {
 	}
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		if (orderText.getText() == null || orderText.getText() == "") {
+		String order = orderText.getText();
+		if (order.equals("")) {
 			resultMsgText.setText("请填写订单号");
 			return;
 		}
-		String order = orderText.getText();
+    	if(checkRepeat(order)){
+    		resultMsgText.setText("该订单号已填写");
+    		return;
+    	}
 		String resultMessage = control.checkNum(order, 10, "编号");
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
@@ -446,13 +450,13 @@ public class GetRep extends javax.swing.JPanel {
 	}
 
 	private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		if (getTypeText.getText().equals("")) {
+		String shipNum = getTypeText.getText();
+		if (shipNum.equals("")) {
 			resultMsgText.setText("请填写到达单据编号");
 			return;
 		}
 		String repString = getTypeBox.getSelectedItem().toString();
 		Rep rep = Rep.getRep(repString);
-		String shipNum = getTypeText.getText();
 		try {
 			departText.setText(control.getDepart(rep, shipNum));
 		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
@@ -470,16 +474,14 @@ public class GetRep extends javax.swing.JPanel {
 		for (int i = 0; i < dataVector.size(); i++) {
 			existOrders.add((String) jTable.getValueAt(i, 0));
 		}
-		Vector<Object> arrs = null;
 		try {
-			arrs = control.initTable(rep, getTypeText.getText(), existOrders);
+			dataVector = control.initTable(rep, getTypeText.getText(), existOrders);
 		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
 		}
-		dataVector.addAll(arrs);
 		model.setDataVector(dataVector, columnIdentifiers);
 		setColumn();
 	}
@@ -507,5 +509,18 @@ public class GetRep extends javax.swing.JPanel {
 			}
 		}
 	}
+	
+    /**返回true表示重复
+     * @param num
+     * @return
+     */
+    private boolean checkRepeat(String num){
+    	for(int i = 0;i < dataVector.size();i++){
+    		if(((String)jTable.getValueAt(i, 0)).equals(num)){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 
 }

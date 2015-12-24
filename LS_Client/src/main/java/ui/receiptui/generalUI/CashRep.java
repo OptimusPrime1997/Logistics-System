@@ -11,6 +11,7 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.ResourceBundle.Control;
 import java.util.Vector;
 import Exception.NameNotFoundException;
@@ -354,6 +355,10 @@ public class CashRep extends javax.swing.JPanel {
     		return;
     	}
     	String courierNum = courierNumText.getText();
+    	if(checkRepeat(courierNum)){
+    		resultMsgText.setText("该快递员编号已填写");
+    		return;
+    	}
     	String resultMessage = control.checkNum(courierNum, 11, "快递员编号");
     	resultMsgText.setText(resultMessage);
     	if(!resultMessage.equals("添加成功")){
@@ -421,6 +426,19 @@ public class CashRep extends javax.swing.JPanel {
     
     private void checkAllRepsButtonMouseClicked(java.awt.event.MouseEvent evt) {
     	new CashCheck(officeText.getText());
+    }
+    
+    /**返回true表示重复
+     * @param num
+     * @return
+     */
+    private boolean checkRepeat(String num){
+    	for(int i = 0;i < dataVector.size();i++){
+    		if(((String)jTable.getValueAt(i, 1)).equals(num)){
+    			return true;
+    		}
+    	}
+    	return false;
     }
     
 }

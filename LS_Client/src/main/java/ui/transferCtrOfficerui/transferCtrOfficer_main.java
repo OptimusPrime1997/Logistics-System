@@ -227,13 +227,15 @@ public class transferCtrOfficer_main extends JPanel {
 		ArrayList<TransferRepVO> vos;
 		try {
 			vos = ctr_trans.getRepByDate(CurrentTime.getDate(), officeNum);
-			for (TransferRepVO vo : vos) {
-				if (vo.form == ShipForm.TRAIN)
-					train++;
-				if (vo.form == ShipForm.TRUCK)
-					truck++;
-				if (vo.form == ShipForm.PLANE)
-					plane++;
+			if(vos!=null){
+				for (TransferRepVO vo : vos) {
+					if (vo.form == ShipForm.TRAIN)
+						train++;
+					if (vo.form == ShipForm.TRUCK)
+						truck++;
+					if (vo.form == ShipForm.PLANE)
+						plane++;
+				}
 			}
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 		}
