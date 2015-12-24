@@ -486,17 +486,13 @@ public class ReceptionRep extends javax.swing.JPanel {
 		for (int i = 0; i < dataVector.size(); i++) {
 			existOrders.add((String) jTable.getValueAt(i, 0));
 		}
-		Vector<Object> arrs = null;
 		try {
-			arrs = control.initTable(rep, getTypeText.getText(), existOrders);
+			dataVector = control.initTable(rep, getTypeText.getText(), existOrders);
 		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
-		}
-		for (int i = 0; i < arrs.size(); i++) {
-			dataVector.add(arrs.get(i));
 		}
 		model.setDataVector(dataVector, columnIdentifiers);
 		setColumn();

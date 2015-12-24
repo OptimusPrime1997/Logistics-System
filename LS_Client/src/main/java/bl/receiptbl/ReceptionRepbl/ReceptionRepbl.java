@@ -69,7 +69,10 @@ public class ReceptionRepbl{
 			for(int i = 0;i < orders.size();i++){
 				String order = orders.get(i);
 				if(!existOrders.contains(order)){
-					data.add(order);
+					Vector<String> arr = new Vector<String>();
+					arr.add(order);
+					arr.add(GoodsArrivalState.LOST.getChineseName());
+					data.add(arr);
 					transferOver(order, GoodsArrivalState.LOST);
 				}
 			}

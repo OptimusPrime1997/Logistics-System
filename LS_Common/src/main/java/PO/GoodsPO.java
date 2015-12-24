@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import util.enumData.*;
 
 public class GoodsPO implements Serializable {
-	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -234791575811234218L;
 	private String listNum;
 	private Boolean ifExaminePassed;
 	private String getCourierAccount="";
