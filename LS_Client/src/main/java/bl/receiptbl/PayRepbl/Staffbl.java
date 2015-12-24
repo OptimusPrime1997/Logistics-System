@@ -28,13 +28,41 @@ public class Staffbl{
 			throws FileNotFoundException, ClassNotFoundException, SalaryPolicyNotFoundException, IOException, 
 			NumNotFoundException{
 		Vector<Object> data = new Vector<Object>();
-		double managerSalary = salaryPolicybl.findByAuthority(Authority.MANAGER).value;
-		double fStaff_CSalary = salaryPolicybl.findByAuthority(Authority.FINANCIALSTAFF_C).value;
-		double busOfficer = salaryPolicybl.findByAuthority(Authority.BUSSINESSOFFICER).value;
-		double transCTROfficer = salaryPolicybl.findByAuthority(Authority.TRANSFERCTROFFICER).value;
-		double warehouseSalary = salaryPolicybl.findByAuthority(Authority.WAREHOUSEMAN).value;
-		double fStaff_VSalary = salaryPolicybl.findByAuthority(Authority.FINANCIALSTAFF_V).value;
-		double adminSalary = salaryPolicybl.findByAuthority(Authority.ADMINISTRATOR).value;
+		double managerSalary = 0;
+		double fStaff_CSalary = 0;
+		double busOfficer = 0;
+		double transCTROfficer = 0;
+		double warehouseSalary = 0;
+		double fStaff_VSalary = 0;
+		double adminSalary = 0;
+		try {
+			managerSalary = salaryPolicybl.findByAuthority(Authority.MANAGER).value;
+		} catch (SalaryPolicyNotFoundException e) {
+		}
+		try {
+			fStaff_CSalary = salaryPolicybl.findByAuthority(Authority.FINANCIALSTAFF_C).value;
+		} catch (SalaryPolicyNotFoundException e) {
+		}
+		try {
+			busOfficer = salaryPolicybl.findByAuthority(Authority.BUSSINESSOFFICER).value;
+		} catch (SalaryPolicyNotFoundException e) {
+		}
+		try {
+			transCTROfficer = salaryPolicybl.findByAuthority(Authority.TRANSFERCTROFFICER).value;
+		} catch (SalaryPolicyNotFoundException e) {
+		}
+		try {
+			warehouseSalary = salaryPolicybl.findByAuthority(Authority.WAREHOUSEMAN).value;
+		} catch (SalaryPolicyNotFoundException e2) {
+		}
+		try {
+			fStaff_VSalary = salaryPolicybl.findByAuthority(Authority.FINANCIALSTAFF_V).value;
+		} catch (SalaryPolicyNotFoundException e1) {
+		}
+		try {
+			adminSalary = salaryPolicybl.findByAuthority(Authority.ADMINISTRATOR).value;
+		} catch (SalaryPolicyNotFoundException e) {
+		}
 		ArrayList<AccountVO> accountVOs = accountbl.showOther();
 		for(AccountVO accountVO : accountVOs){
 			Vector<String> arr = new Vector<String>();

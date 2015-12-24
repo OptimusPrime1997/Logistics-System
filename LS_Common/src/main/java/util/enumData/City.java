@@ -1,8 +1,7 @@
 package util.enumData;
 
 public enum City implements Comparable<City> {
-	BEIJING(21, "北京"), GUANGZHOU(27, "广州"), NANJING(23, "南京"), SHANGHAI(25,
-			"上海");
+	BEIJING(10, "北京"), GUANGZHOU(20, "广州"), NANJING(25, "南京"), SHANGHAI(21, "上海");
 	private int index;
 	private String value;
 
@@ -64,5 +63,21 @@ public enum City implements Comparable<City> {
 		default:
 			return null;
 		}
+	}
+	
+	public static City getCityByNum(String num){
+		switch (num) {
+		case "010":
+			return BEIJING;
+		case "020":
+			return GUANGZHOU;
+		case "021":
+			return SHANGHAI;
+		case "025":
+			return NANJING;
+		default:
+			return null;
+		}
+		
 	}
 }

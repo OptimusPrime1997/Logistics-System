@@ -361,11 +361,15 @@ public class TransferRep extends javax.swing.JPanel {
 	}
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		if(orderText.getText().equals("")){
+		String order = orderText.getText();
+		if(order.equals("")){
 			resultMsgText.setText("请填写订单号");
 			return;
 		}
-		String order = orderText.getText();
+    	if(checkRepeat(order)){
+    		resultMsgText.setText("该订单号已填写");
+    		return;
+    	}
 		String resultMessage = control.checkNum(order, 10, "编号");
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
@@ -435,5 +439,14 @@ public class TransferRep extends javax.swing.JPanel {
 		}
 		myFrame.dispose();
 	}
+	
+    private boolean checkRepeat(String num){
+    	for(int i = 0;i < dataVector.size();i++){
+    		if(((String)jTable.getValueAt(i, 0)).equals(num)){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 
 }

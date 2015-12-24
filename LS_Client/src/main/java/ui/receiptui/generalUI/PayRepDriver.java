@@ -128,8 +128,6 @@ public class PayRepDriver extends javax.swing.JPanel {
 
         sumLabel.setText("总计:");
 
-        sumText.setEditable(false);
-
         balanceLabel.setText("账户余额:");
 
         balanceText.setEditable(false);
@@ -168,6 +166,9 @@ public class PayRepDriver extends javax.swing.JPanel {
 		});
         
         resultMsgText.setEditable(false);
+        
+        sumText.setEditable(false);
+		sumText.setText(calSum());
         
         setColumn();
         
@@ -250,7 +251,6 @@ public class PayRepDriver extends javax.swing.JPanel {
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	sumText.setText(calSum());
     	double sum = Double.parseDouble(sumText.getText());
 		double balance = Double.parseDouble(balanceText.getText());
 		if(sum>balance){

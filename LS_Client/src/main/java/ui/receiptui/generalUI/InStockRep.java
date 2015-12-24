@@ -312,11 +312,15 @@ public class InStockRep extends javax.swing.JPanel {
 	}
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		if (orderText.getText().equals("")) {
+		String order = orderText.getText();
+		if (order.equals("")) {
 			resultMsgText.setText("请填写订单号");
 			return;
 		}
-		String order = orderText.getText();
+    	if(checkRepeat(order)){
+    		resultMsgText.setText("该订单号已填写");
+    		return;
+    	}
 		String resultMessage = control.checkNum(order, 10, "编号");
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
@@ -332,7 +336,7 @@ public class InStockRep extends javax.swing.JPanel {
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
 		}
-		City destinationCity = City.getCity(destination);
+		City destinationCity = City.getCityByNum(destination);
 		try {
 			stockDivisionVO = control.getAvailableDivision(destinationCity);
 		} catch (NotBoundException | IOException e) {
@@ -384,6 +388,8 @@ public class InStockRep extends javax.swing.JPanel {
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
 		}
+		WarehousePanel w = new WarehousePanel();
+		w.setVisible(true);
 		this.frame.dispose();
 	}
 
@@ -395,5 +401,14 @@ public class InStockRep extends javax.swing.JPanel {
 		w.setVisible(true);
 		this.frame.dispose();
 	}
+	
+    private boolean checkRepeat(String num){
+    	for(int i = 0;i < dataVector.size();i++){
+    		if(((String)jTable.getValueAt(i, 0)).equals(num)){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 
 }

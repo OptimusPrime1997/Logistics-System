@@ -310,11 +310,15 @@ public class DeliverRep extends javax.swing.JPanel {
 	}
 
 	private void orderMouseClicked(java.awt.event.MouseEvent evt) {
-		if (orderNumText.getText().equals("")) {
+		String order = orderNumText.getText();
+		if (order.equals("")) {
 			resultMsgText.setText("请填写订单号");
 			return;
 		}
-		String order = orderNumText.getText();
+    	if(checkRepeat(order)){
+    		resultMsgText.setText("该订单号已填写");
+    		return;
+    	}
 		String resultMessage = control.checkNum(order, 10, "编号");
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
@@ -344,11 +348,11 @@ public class DeliverRep extends javax.swing.JPanel {
 	}
 
 	private void okMouseClicked(java.awt.event.MouseEvent evt) {
-		if (courierText.getText().equals("")) {
+		String courierNum = courierText.getText();
+		if (courierNum.equals("")) {
 			resultMsgText.setText("请填写快递员编号");
 			return;
 		}
-		String courierNum = courierText.getText();
 		String resultMessage = control.checkNum(courierNum, 11, "快递员编号");
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
@@ -385,5 +389,18 @@ public class DeliverRep extends javax.swing.JPanel {
 	private void checkAllRepsButtonMouseClicked(MouseEvent evt) {
 		new DeliverCheck(officeText.getText());
 	}
+	
+    /**返回true表示重复
+     * @param num
+     * @return
+     */
+    private boolean checkRepeat(String num){
+    	for(int i = 0;i < dataVector.size();i++){
+    		if(((String)jTable.getValueAt(i, 0)).equals(num)){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 
 }
