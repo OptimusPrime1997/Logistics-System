@@ -51,15 +51,12 @@ public class LogisticStateUI extends javax.swing.JFrame {
         jLabel2.setText("物流信息");
 
         jLabel3.setText("订单号");
-content=new Object[][]{
-                {null, GoodsLogisticState.toFriendlyString(vo.logisticState)},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-};
+        int count=0;
+        content=new Object[vo.allLogisticStates.size()][2];
+        for(String[] states:vo.allLogisticStates){
+        	content[count][0]=states[0];
+        	content[count][1]=states[1];
+        }
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             content,
             new String [] {

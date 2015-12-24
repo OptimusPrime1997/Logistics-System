@@ -32,6 +32,19 @@ public class Goodsbl {
 	 * ECONOMIC NORMAL EXPRESS 18: 23: 25
 	 */
 	final double[] expressRates = { 18, 23, 25 };
+	public static void main(String[] args) {
+		Goodsbl ctr=new Goodsbl();
+		GoodsVO vo = new GoodsVO("", false, "02500106066",
+				"", "2015-12-21", "", "025", "啦啦啦丽",
+				"上海 浦东新区张杨路500号", "上海华润时代广场", "13587511426", "小宏宏",
+				"南京 栖霞区仙林大道和园12号", null, "15500001112", 1, 5, 8, "袜子",
+				GoodsExpressType.NORMAL, 1, 10, 9, GoodsArrivalState.INTACT,
+				GoodsLogisticState.SENDED, null, null);
+		try {
+			ctr.initComplete(vo);
+		} catch (ExistException e) {
+		}
+	}
 	
 	/**
 	 * 查物流信息
@@ -206,6 +219,11 @@ public class Goodsbl {
 				vo.realReceiverPhone = realReceiverPhone;
 			}			
 			vo.logisticState=GoodsLogisticState.SIGNED;
+			vo.allLogisticStates.add(new String[]{vo.overtime,GoodsLogisticState.toFriendlyString(GoodsLogisticState.SIGNED)});
+			//TODO
+			for(String[]state:vo.allLogisticStates){
+				System.out.println(state[0]+"  "+state[1]);
+			}
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;
