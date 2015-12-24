@@ -114,6 +114,7 @@ public class ShippingRep extends javax.swing.JPanel {
 		setBackground(new java.awt.Color(255, 255, 255));
 
 		dateText.setEditable(false);
+		dateText.setText(control.getDate());
 
 		dateLabel.setText("日期:");
 
@@ -352,7 +353,9 @@ public class ShippingRep extends javax.swing.JPanel {
 			resultMsgText.setText("未找到该订单");
 			return;
 		}
-		dataVector.add(order);
+		Vector<String> arr = new Vector<String>();
+		arr.add(order);
+		dataVector.add(arr);
 		model.setDataVector(dataVector, columnIdentifiers);
 		setColumn();
 		orderText.setText("");

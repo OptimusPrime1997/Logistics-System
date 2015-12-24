@@ -7,11 +7,14 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import Exception.GoodsNotFound;
+import Exception.NumNotFoundException;
 import PO.Receipt.ReceiptPO;
 import VO.Receipt.DeliverRepVO;
+import VO.Receipt.DeliverVO;
 import VO.Receipt.ReceiptVO;
 import bl.goodsbl.Goodsbl;
 import bl.loginbl.LoginblController;
+import bl.managementbl.accountbl.Courierbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import util.CurrentTime;
 import util.enumData.GoodsLogisticState;
@@ -22,6 +25,7 @@ public class DeliverRepbl {
 	
 	private Receiptbl receiptbl = new Receiptbl();
 	private Goodsbl goodsbl = new Goodsbl();
+	private Courierbl courierbl = new Courierbl();
 	private LoginblController login = new LoginblController();
 
 	public String createNum(String date, String office) 
@@ -35,7 +39,17 @@ public class DeliverRepbl {
 
 	public void submit(ReceiptVO vo) 
 			throws RemoteException, MalformedURLException, IOException, NotBoundException {
-		receiptbl.submit(DeliverRepVO.toPO((DeliverRepVO) vo), Rep.DeliverRep);
+		DeliverRepVO deliverRepVO = (DeliverRepVO) vo;
+		ArrayList<DeliverVO> deliverVOs = deliverRepVO.deliverVOs;
+		double deliverSum = 0;
+		for(DeliverVO deliverVO : deliverVOs){
+			String order = deliverVO.order;
+			try {
+				deliverSum += goodsbl.findByListNum(order).moneyTotal;
+			} catch (GoodsNotFound e) {}
+		}
+		updateCourierMoney(deliverRepVO.deliverCourierNum, deliverSum);
+		receiptbl.submit(DeliverRepVO.toPO(deliverRepVO), Rep.DeliverRep);
 		String operatorID = login.getCurrentOptorId();
 		receiptbl.addLog(LogType.DELIVER, operatorID, CurrentTime.getTime());
 	}
@@ -63,11 +77,22 @@ public class DeliverRepbl {
 	}
 	
 	public boolean isTrueAccount(String num){
-		return receiptbl.isTrueAccount(num);
+		try {
+			courierbl.findByCourierNum(num);
+		} catch (ClassNotFoundException | NumNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 	
 	public void changeLogistic(String num){
 		goodsbl.setLogisticState(num, GoodsLogisticState.DELIVERING, receiptbl.getDate());
+	}
+	
+	private void updateCourierMoney(String courierNum, double money){
+		courierbl.updateMoney(courierNum, money);
 	}
 	
 }

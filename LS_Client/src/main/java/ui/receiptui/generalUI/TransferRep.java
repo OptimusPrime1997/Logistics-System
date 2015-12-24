@@ -17,6 +17,7 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import Exception.ConstNotFoundException;
 import Exception.ExceptionPrint;
 import Exception.GoodsNotFound;
 import VO.Receipt.TransferRepVO;
@@ -116,6 +117,7 @@ public class TransferRep extends javax.swing.JPanel {
 		setBackground(new java.awt.Color(255, 255, 255));
 
 		dateText.setEditable(false);
+		dateText.setText(control.getDate());
 
 		dateLabel.setText("日期:");
 
@@ -373,7 +375,9 @@ public class TransferRep extends javax.swing.JPanel {
 			resultMsgText.setText("未找到该订单");
 			return;
 		}
-		dataVector.add(order);
+		Vector<String> arr = new Vector<String>();
+		arr.add(order);
+		dataVector.add(arr);
 		model.setDataVector(dataVector, columnIdentifiers);
 		setColumn();
 		orderText.setText("");
@@ -411,9 +415,16 @@ public class TransferRep extends javax.swing.JPanel {
 		String depart = officeText.getText();
 		String destination = destinationText.getText();
 		ShipForm form = ShipForm.getShipForm(shipFormBox.getSelectedItem().toString());
+		double money = 0;
+		try {
+			money = control.getFreightMoney(depart, destination, weight, form);
+		} catch (ClassNotFoundException | ConstNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
 		TransferRepVO transferRepVO = new TransferRepVO(num, date, form, carNumText.getText(),
-				City.getCity(destination), orders, control.getFreightMoney(depart, destination, weight, form),
-				City.getCity(depart));
+				City.getCity(destination), orders, money, City.getCity(depart));
 		try {
 			control.submit(transferRepVO);
 		} catch (NotBoundException | IOException e) {

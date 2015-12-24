@@ -124,6 +124,7 @@ public class Shipment extends javax.swing.JPanel {
         numText.setText(num);
         plateText.setText(shipmentRepVO.plateNum);
         driverText.setText(shipmentRepVO.driverNum);
+        columnIdentifiers.add("订单号");
         try {
 			dataVector = control.initShow(num);
 		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {

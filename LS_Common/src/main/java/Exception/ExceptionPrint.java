@@ -21,6 +21,8 @@ public class ExceptionPrint {
 			return "已存在";
 		case ("GoodsNotFound"):
 			return "不存在该订单";
+		case ("SalaryPolicyNotFoundException"):
+			return "薪水策略未制定";
 		default:
 			return null;
 		}

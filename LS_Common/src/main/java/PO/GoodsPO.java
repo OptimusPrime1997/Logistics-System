@@ -83,6 +83,10 @@ public class GoodsPO implements Serializable {
 		return listNum;
 	}
 
+	public String getStartCity() {
+		return startCity;
+	}
+
 	public Boolean getIfExaminePassed() {
 		return ifExaminePassed;
 	}
@@ -96,6 +100,7 @@ public class GoodsPO implements Serializable {
 	}
 
 	public String getStartTime() {
+		System.out.println("订单 "+listNum+"  "+startTime);
 		return startTime;
 	}
 

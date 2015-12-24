@@ -100,7 +100,6 @@ public class PayRepDriver extends javax.swing.JPanel {
         columnIdentifiers.add("编号");
         columnIdentifiers.add("出车次数");
         columnIdentifiers.add("金额");
-        columnIdentifiers.add("删除");
         try {
 			dataVector = control.initDriverSalaryTable();
 		} catch (ClassNotFoundException | SalaryPolicyNotFoundException | IOException | NumNotFoundException e) {
@@ -144,11 +143,20 @@ public class PayRepDriver extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
-        if (bankAccount != null) {
+		if (bankAccount != null) {
 			bankAccountBox.setEnabled(false);
 			for (int i = 0; i < bankAccountBox.getItemCount(); i++) {
 				if (bankAccountBox.getItemAt(i).equals(bankAccount)) {
 					bankAccountBox.setSelectedIndex(i);
+					double balance = 0;
+					try {
+						balance = control.showBankBalance(bankAccount);
+					} catch (ClassNotFoundException | NameNotFoundException | IOException | NumNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						resultMsgText.setText(ExceptionPrint.print(e));
+					}
+					balanceText.setText(balance+"");
 					break;
 				}
 			}
@@ -227,8 +235,6 @@ public class PayRepDriver extends javax.swing.JPanel {
         column3.setPreferredWidth(60);
         TableColumn column4 = jTable.getColumnModel().getColumn(3);
         column4.setPreferredWidth(60);
-        TableColumn column5 = jTable.getColumnModel().getColumn(4);
-        column5.setPreferredWidth(50);
     }
     
     private String calSum(){

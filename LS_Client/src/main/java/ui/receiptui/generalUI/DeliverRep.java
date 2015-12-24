@@ -17,15 +17,15 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import ui.businessOfficerui.businessOfficer_main;
+import ui.receiptui.ReceiptCheckUI.DeliverCheck;
+import ui.util.MyFrame;
 import Exception.ExceptionPrint;
 import Exception.GoodsNotFound;
 import VO.Receipt.DeliverRepVO;
 import VO.Receipt.DeliverVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
-import bl.receiptbl.DeliverRepbl.DeliverController;
 import blservice.receiptblservice.DeliverRepblService;
-import ui.receiptui.ReceiptCheckUI.DeliverCheck;
-import ui.util.MyFrame;
 
 /**
  *
@@ -56,6 +56,7 @@ public class DeliverRep extends javax.swing.JPanel {
 	private DefaultTableModel model;
 	private Vector<String> columnIdentifiers;
 	private Vector<Object> dataVector;
+	private businessOfficer_main parentPanel;
 	// End of variables declaration//GEN-END:variables
 
 	/**
@@ -64,6 +65,12 @@ public class DeliverRep extends javax.swing.JPanel {
 	public DeliverRep() {
 		initComponents();
 		myFrame = new MyFrame(673, 506, this);
+	}
+
+	public DeliverRep(businessOfficer_main parentPanel) {
+		initComponents();
+		myFrame = new MyFrame(673, 506, this);
+		this.parentPanel=parentPanel;
 	}
 
 	/**
@@ -345,6 +352,7 @@ public class DeliverRep extends javax.swing.JPanel {
 		String resultMessage = control.checkNum(courierNum, 11, "快递员编号");
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
+			parentPanel.refreshNum();
 			return;
 		}
 		if (!control.isTrueAccount(courierNum)) {

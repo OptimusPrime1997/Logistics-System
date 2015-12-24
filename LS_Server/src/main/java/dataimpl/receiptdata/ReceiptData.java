@@ -28,9 +28,9 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	private DataUtility util = new DataUtility();
 
 	public String getOffice(String num) {
-		if (num.substring(2, 5).equals("000"))
-			return num.substring(2, 5);
-		return num.substring(0, 5);
+		if (num.substring(3, 6).equals("000"))
+			return num.substring(0, 3);
+		return num.substring(0, 6);
 	}
 
 	public String submitAdd(Rep rep) {
@@ -42,7 +42,7 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	}
 
 	public void submit(ReceiptPO po, Rep rep) throws IOException, RemoteException {
-		util.save(po, submitAdd(rep));
+		util.save(po, saveAdd(rep));
 	}
 
 	public void save(ReceiptPO po, Rep rep) throws IOException, RemoteException {
@@ -105,8 +105,24 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 
 	public String createNum(String date, Rep rep, String office)
 			throws ClassNotFoundException, IOException, RemoteException {
-		ArrayList<ReceiptPO> receiptPOs = getRepByDate(date, rep, office);
-		if (receiptPOs == null)
+		ArrayList<ReceiptPO> receiptPOs = new ArrayList<ReceiptPO>();
+		ArrayList<Object> objectsSubmit = util.getAll(submitAdd(rep));
+		ArrayList<Object> objectsSave = util.getAll(saveAdd(rep));
+		if(objectsSubmit!=null){
+			for (Object object : objectsSubmit) {
+				ReceiptPO receiptPO = (ReceiptPO) object;
+				if ((getOffice(receiptPO.getNum()).equals(office))&&(receiptPO.getDate().equals(date)))
+					receiptPOs.add(receiptPO);
+			}
+		}
+		if(objectsSave!=null){
+			for (Object object : objectsSave) {
+				ReceiptPO receiptPO = (ReceiptPO) object;
+				if ((getOffice(receiptPO.getNum()).equals(office))&&(receiptPO.getDate().equals(date)))
+					receiptPOs.add(receiptPO);
+			}
+		}
+		if(receiptPOs==null)
 			return "0001";
 		String s = receiptPOs.size() + 1 + "";
 		for(int i = s.length();i < 4;i++){

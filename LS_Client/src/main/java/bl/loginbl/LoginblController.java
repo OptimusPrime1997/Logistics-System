@@ -11,19 +11,21 @@ public class LoginblController implements LoginBLService {
 
 	public ResultMessage login(String accountNum, String key)
 			throws RemoteException {
-		// TODO Auto-generated method stub
 		return loginbl.login(accountNum, key);
 	}
 
 	public Authority loginChoose(String accountNum) throws RemoteException {
-		// TODO Auto-generated method stub
 		return loginbl.loginChoose(accountNum);
 	}
 
 	@Override
 	public String getCurrentOptorId() throws RemoteException {
-		// TODO Auto-generated method stub
 		return loginbl.getCurrentOptorId();
+	}
+
+	@Override
+	public String getCurrentName() throws RemoteException {
+		return loginbl.getCurrentOptorName();
 	}
 
 }

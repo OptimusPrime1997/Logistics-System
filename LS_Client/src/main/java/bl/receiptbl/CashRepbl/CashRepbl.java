@@ -16,6 +16,7 @@ import VO.Receipt.CashVO;
 import VO.Receipt.ReceiptVO;
 import bl.goodsbl.Goodsbl;
 import bl.managementbl.accountbl.Accountbl;
+import bl.managementbl.accountbl.Courierbl;
 import bl.managementbl.bankaccountbl.BankAccountbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import dataservice.receiptdataservice.CashRepDataService;
@@ -29,6 +30,7 @@ public class CashRepbl {
 	private Goodsbl goodsbl = new Goodsbl();
 	private Accountbl accountbl = new Accountbl();
 	private BankAccountbl bankAccountbl = new BankAccountbl();
+	private Courierbl courierbl = new Courierbl();
 	private Receiptbl receiptbl = new Receiptbl();
 	private ReceiptClient client = new ReceiptClient();
 	private static CashRepDataService cashRepDataService = null;
@@ -60,7 +62,12 @@ public class CashRepbl {
 	public void submit(ReceiptVO vo, String office) 
 			throws NotBoundException, IOException, ClassNotFoundException{
 		receiptbl.clearSubmit(Rep.CashRep, office);
-		receiptbl.submit(CashRepVO.toPO((CashRepVO) vo), Rep.CashRep);
+		CashRepVO cashRepVO = (CashRepVO) vo;
+		ArrayList<CashVO> cashVOs = cashRepVO.cashVOs;
+		for(CashVO cashVO : cashVOs){
+			updateCourierMoney(cashVO.courierName, cashVO.money);
+		}
+		receiptbl.submit(CashRepVO.toPO(cashRepVO), Rep.CashRep);
 	}
 
 	public CashRepVO getRepByNum(String num) 
@@ -135,6 +142,10 @@ public class CashRepbl {
 			NotBoundException{
 		ArrayList<ReceiptPO> receiptPOs = getCashRepDataService().getAllRep();
 		return CashRepVO.toArrayVO(receiptPOs);
+	}
+	
+	private void updateCourierMoney(String courierNum, double money){
+		courierbl.updateMoney(courierNum, money);
 	}
 
 }
