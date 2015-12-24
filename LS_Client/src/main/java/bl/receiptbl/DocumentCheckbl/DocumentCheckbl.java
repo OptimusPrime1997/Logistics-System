@@ -58,41 +58,59 @@ public class DocumentCheckbl {
 		ArrayList<ShippingRepVO> shippingRepVOs = shippingCheck();
 		ArrayList<TransferRepVO> transferRepVOs = transferCheck();
  
-		dates.addAll(getDate(cashRepVOs));
-		nums.addAll(getNum(cashRepVOs));
-		reps.addAll(getRep(cashRepVOs, "收款单"));
+		if(cashRepVOs!=null){
+			dates.addAll(getDate(cashRepVOs));
+			nums.addAll(getNum(cashRepVOs));
+			reps.addAll(getRep(cashRepVOs, "收款单"));
+		}
 
-		dates.addAll(getDate(deliverRepVOs));
-		nums.addAll(getNum(deliverRepVOs));
-		reps.addAll(getRep(deliverRepVOs, "派件单"));
+		if(deliverRepVOs!=null){
+			dates.addAll(getDate(deliverRepVOs));
+			nums.addAll(getNum(deliverRepVOs));
+			reps.addAll(getRep(deliverRepVOs, "派件单"));
+		}
 
-		dates.addAll(getDate(getRepVOs));
-		nums.addAll(getNum(getRepVOs));
-		reps.addAll(getRep(getRepVOs, "到达单"));
+		if(getRepVOs!=null){
+			dates.addAll(getDate(getRepVOs));
+			nums.addAll(getNum(getRepVOs));
+			reps.addAll(getRep(getRepVOs, "到达单"));
+		}
 
-		dates.addAll(getDate(inStockRepVOs));
-		nums.addAll(getNum(inStockRepVOs));
-		reps.addAll(getRep(inStockRepVOs, "入库单"));
+		if(inStockRepVOs!=null){
+			dates.addAll(getDate(inStockRepVOs));
+			nums.addAll(getNum(inStockRepVOs));
+			reps.addAll(getRep(inStockRepVOs, "入库单"));
+		}
 
-		dates.addAll(getDate(outStockRepVOs));
-		nums.addAll(getNum(outStockRepVOs));
-		reps.addAll(getRep(outStockRepVOs, "出库单"));
+		if(outStockRepVOs!=null){
+			dates.addAll(getDate(outStockRepVOs));
+			nums.addAll(getNum(outStockRepVOs));
+			reps.addAll(getRep(outStockRepVOs, "出库单"));
+		}
 
-		dates.addAll(getDate(receptionRepVOs));
-		nums.addAll(getNum(receptionRepVOs));
-		reps.addAll(getRep(receptionRepVOs, "中转中心到达单"));
+		if(receptionRepVOs!=null){
+			dates.addAll(getDate(receptionRepVOs));
+			nums.addAll(getNum(receptionRepVOs));
+			reps.addAll(getRep(receptionRepVOs, "中转中心到达单"));
+		}
 
-		dates.addAll(getDate(shipmentRepVOs));
-		nums.addAll(getNum(shipmentRepVOs));
-		reps.addAll(getRep(shipmentRepVOs, "营业厅装车单"));
+		if(shipmentRepVOs!=null){
+			dates.addAll(getDate(shipmentRepVOs));
+			nums.addAll(getNum(shipmentRepVOs));
+			reps.addAll(getRep(shipmentRepVOs, "营业厅装车单"));
+		}
 
-		dates.addAll(getDate(shippingRepVOs));
-		nums.addAll(getNum(shippingRepVOs));
-		reps.addAll(getRep(shippingRepVOs, "中转中心装车单"));
+		if(shippingRepVOs!=null){
+			dates.addAll(getDate(shippingRepVOs));
+			nums.addAll(getNum(shippingRepVOs));
+			reps.addAll(getRep(shippingRepVOs, "中转中心装车单"));
+		}
 
-		dates.addAll(getDate(transferRepVOs));
-		nums.addAll(getNum(transferRepVOs));
-		reps.addAll(getRep(transferRepVOs, "中转单"));
+		if(transferRepVOs!=null){
+			dates.addAll(getDate(transferRepVOs));
+			nums.addAll(getNum(transferRepVOs));
+			reps.addAll(getRep(transferRepVOs, "中转单"));
+		}
 
 		if(payCheck()!=null){
 			dates.add(payCheck().date);
