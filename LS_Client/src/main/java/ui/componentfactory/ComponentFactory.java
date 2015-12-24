@@ -38,7 +38,7 @@ public class ComponentFactory {
 	 * 
 	 * @return
 	 */
-	public JComboBox<Authority> getAuthorityJComboBox() {
+	public static  JComboBox<Authority> getAuthorityJComboBox() {
 		JComboBox<Authority> authorityjComboBox = new JComboBox<Authority>();
 		for (int i = 1; i <= 9; i++) {
 			authorityjComboBox.addItem(Authority.getAuthority(i));

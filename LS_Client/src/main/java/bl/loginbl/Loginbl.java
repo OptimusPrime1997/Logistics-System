@@ -2,22 +2,29 @@ package bl.loginbl;
 
 import java.io.IOException;
 
+import org.apache.poi.xwpf.usermodel.VerticalAlign;
+
 import util.enumData.Authority;
 import util.enumData.ResultMessage;
 import Exception.NumNotFoundException;
+import VO.ManagementVO.AccountVO;
 import bl.managementbl.accountbl.Accountbl;
 
 public class Loginbl {
 	private static String currentOptorId = "02500106027";
 	private static String currentOptorName = "李四";
+	private static Authority currentAuthority = Authority.COURIER;
 
 	public ResultMessage login(String accountNum, String key) {
 		currentOptorId = accountNum;
 		Accountbl accountbl = new Accountbl();
 		ResultMessage r = accountbl.login(accountNum, key);
+		AccountVO v = null;
 		if (r == ResultMessage.SUCCESS) {
 			try {
-				currentOptorName = accountbl.findByAccountNum(accountNum).accountName;
+				v = accountbl.findByAccountNum(accountNum);
+				currentOptorName = v.accountName;
+				currentAuthority = v.authority;
 			} catch (ClassNotFoundException | NumNotFoundException
 					| IOException e) {
 				// TODO Auto-generated catch block
@@ -59,5 +66,9 @@ public class Loginbl {
 
 	public static String getCurrentOptorName() {
 		return currentOptorName;
+	}
+
+	public static Authority getCurrentAuthority() {
+		return currentAuthority;
 	}
 }

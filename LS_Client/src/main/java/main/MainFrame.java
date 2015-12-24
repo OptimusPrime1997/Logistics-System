@@ -63,6 +63,7 @@ public class MainFrame extends JFrame {
     	this.setLocationRelativeTo(null);
     	this.setResizable(false);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 	private void initComponents() {
 		contentPane=new JPanel();
@@ -206,6 +207,8 @@ public class MainFrame extends JFrame {
          			break;
          		case 8:
          			new AdministratorPanel();
+         		case 9:
+         			new FinancialStaffJFrame();
          		default:showFeedback(ResultMessage.NOT_FOUND_ACCOUNTNUM);
          			break;
          		}
@@ -339,7 +342,6 @@ public class MainFrame extends JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 MainFrame mainFrame=new MainFrame();
-                mainFrame.setLocationRelativeTo(null);
                 mainFrame.setVisible(true);
             }
         });

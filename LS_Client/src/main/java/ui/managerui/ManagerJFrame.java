@@ -691,6 +691,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		// TODO Auto-generated method stub
 
 		assert (vos != null) : ("表格获得的日志信息为空");
+		authorityjComboBox.setEditable(false);
 		Object[][] logObjects = null;
 		logObjects = new Object[vos.size()][4];
 		int i = 0;
@@ -2024,15 +2025,8 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		sexjComboBox.addItem(Sex.Sex_MALE);
 		sexjComboBox.addItem(Sex.Sex_FAMALE);
 
-		authorityjComboBox = new JComboBox<Authority>();
-		Authority authority = null;
-		for (int i = 1; i <= Authority.PERSON_NUM; i++) {
-			authority = null;
-			authority = Authority.getAuthority(i);
-			if (authority != null) {
-				authorityjComboBox.addItem(authority);
-			}
-		}
+		authorityjComboBox =ComponentFactory.getAuthorityJComboBox();
+		
 
 		salaryPolicyjComboBox = new JComboBox<SalaryPolicy>();
 		SalaryPolicy salaryPolicy = null;
@@ -2122,18 +2116,21 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jLabel38 = new javax.swing.JLabel();
 		jLabel39 = new javax.swing.JLabel();
 		jLabel40 = new javax.swing.JLabel();
-		logTypejComboBox = ComponentFactory.getInstance().getLogTypeJComboBox();
-		logSYearjComboBox = ComponentFactory.getInstance().getYearJComboBox(
+		logTypejComboBox = ComponentFactory.getLogTypeJComboBox();
+		
+		logTypejComboBox.setEditable(false);
+		
+		logSYearjComboBox = ComponentFactory.getYearJComboBox(
 				2015, 2050);
-		logSDatejComboBox = ComponentFactory.getInstance().getDayJComboBox();
-		logSMonthjComboBox = ComponentFactory.getInstance().getMonthJComboBox();
+		logSDatejComboBox = ComponentFactory.getDayJComboBox();
+		logSMonthjComboBox = ComponentFactory.getMonthJComboBox();
 		jLabel41 = new javax.swing.JLabel();
 		jLabel42 = new javax.swing.JLabel();
 		jLabel43 = new javax.swing.JLabel();
-		logEYearjComboBox = ComponentFactory.getInstance().getYearJComboBox(
+		logEYearjComboBox = ComponentFactory.getYearJComboBox(
 				2015, 2050);
-		logEDatejComboBox = ComponentFactory.getInstance().getDayJComboBox();
-		logEMonthjComboBox = ComponentFactory.getInstance().getMonthJComboBox();
+		logEDatejComboBox = ComponentFactory.getDayJComboBox();
+		logEMonthjComboBox = ComponentFactory.getMonthJComboBox();
 		jLabel44 = new javax.swing.JLabel();
 		jSeparator7 = new javax.swing.JSeparator();
 		jLabel47 = new javax.swing.JLabel();
@@ -2751,6 +2748,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			int n) {
 		// TODO Auto-generated method stub
 		assert (vos != null) : ("表格获得的薪水策略信息为空");
+		
+		authorityjComboBox.setEditable(false);
+		
 		Object[][] salaryPolicyObjects = null;
 		salaryPolicyObjects = new Object[vos.size()][3];
 		int i = 0;
@@ -3762,8 +3762,8 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private ArrayList<SalaryPolicyVOPlus> salaryPolicyVOPlus = null;
 	private ArrayList<InstitutionVOPlus> institutionVOPlus = null;
 	private ArrayList<LogVO> logVOs = null;
-	private ControllerFactoryblService controllerFactoryblService = ControllerFactoryImpl
-			.getInstance();
+	private ControllerFactoryblService controllerFactoryblService = ControllerFactoryImpl.getInstance()
+			;
 	private AccountBLService accountblController = controllerFactoryblService
 			.getAccountController();
 	private ConstBLService constblController = controllerFactoryblService

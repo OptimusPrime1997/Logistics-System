@@ -27,12 +27,13 @@ import javax.swing.SwingConstants;
 import javax.swing.event.MouseInputListener;
 import javax.swing.table.DefaultTableCellRenderer;
 
+import org.apache.poi.hssf.record.formula.functions.If;
+
 import main.MainFrame;
 import ui.componentfactory.ComponentFactory;
 import ui.receiptui.BusinessForm;
 import ui.receiptui.ProfitForm;
 import ui.receiptui.generalUI.PayRep;
-import ui.util.StrToLogType;
 import util.InputCheck;
 import util.enumData.Authority;
 import util.enumData.LogType;
@@ -41,7 +42,6 @@ import util.enumData.ResultMessage;
 import VO.LogVO;
 import VO.ManagementVO.BankAccountVO;
 import VO.ManagementVO.BankAccountVOPlus;
-import VO.ManagementVO.InstitutionVOPlus;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.loginbl.Loginbl;
 import blservice.controllerfactoryblservice.ControllerFactoryblService;
@@ -79,18 +79,20 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed"
 	// desc="Generated Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
+		currentOptorId = Loginbl.getCurrentOptorId();
+		String optorName = Loginbl.getCurrentOptorName();
+		currentAuthority = Loginbl.getCurrentAuthority();
 		setBankAccountVOs();
 		initialVariables();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 		financialjPanel.setPreferredSize(new java.awt.Dimension(830, 590));
-		String currentOptorId = Loginbl.getCurrentOptorId();
 
 		currentAccountNumjLabel.setText(currentOptorId);
 		currentAccountNumjLabel.setToolTipText("当前用户账号");
 
-		accountNamejLabel.setText("李四");
+		accountNamejLabel.setText(optorName);
 		accountNamejLabel.setToolTipText("当前用户姓名");
 
 		currentAuthorityjLabel.setText(Authority.getAuthority(
@@ -1424,23 +1426,39 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 			bankAccountObjects[i][1] = vo.bankAccountName;
 			bankAccountObjects[i][2] = vo.balance;
 		}
+		if (currentAuthority == Authority.FINANCIALSTAFF_C) {
+			bankAccountjTable.setModel(new javax.swing.table.DefaultTableModel(
+					bankAccountObjects, new String[] { "银行账号", "账户名称",
+							"账户余额（元）" }) {
+				Class[] types = new Class[] { java.lang.String.class,
+						java.lang.String.class, java.lang.Long.class };
+				boolean[] canEdit = new boolean[] { false, false, false };
 
-		bankAccountjTable
-				.setModel(new javax.swing.table.DefaultTableModel(
-						bankAccountObjects, new String[] { "银行账号", "账户名称",
-								"账户余额（元）" }) {
-					Class[] types = new Class[] { java.lang.String.class,
-							java.lang.String.class, java.lang.Long.class };
-					boolean[] canEdit = new boolean[] { true, true, false };
+				public Class getColumnClass(int columnIndex) {
+					return types[columnIndex];
+				}
 
-					public Class getColumnClass(int columnIndex) {
-						return types[columnIndex];
-					}
+				public boolean isCellEditable(int rowIndex, int columnIndex) {
+					return canEdit[columnIndex];
+				}
+			});
+		} else if (currentAuthority == Authority.FINANCIALSTAFF_V) {
+			bankAccountjTable.setModel(new javax.swing.table.DefaultTableModel(
+					bankAccountObjects, new String[] { "银行账号", "账户名称",
+							"账户余额（元）" }) {
+				Class[] types = new Class[] { java.lang.String.class,
+						java.lang.String.class, java.lang.Long.class };
+				boolean[] canEdit = new boolean[] { false, true, true };
 
-					public boolean isCellEditable(int rowIndex, int columnIndex) {
-						return canEdit[columnIndex];
-					}
-				});
+				public Class getColumnClass(int columnIndex) {
+					return types[columnIndex];
+				}
+
+				public boolean isCellEditable(int rowIndex, int columnIndex) {
+					return canEdit[columnIndex];
+				}
+			});
+		}
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 这句和上句作用一样
 		bankAccountjTable.setDefaultRenderer(Object.class, tcr);
@@ -1448,60 +1466,44 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		((DefaultTableCellRenderer) bankAccountjTable.getTableHeader()
 				.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
 		bankAccountjTable.setRowSelectionInterval(n, n);// 设置哪几行被选中
+		if (currentAuthority == Authority.FINANCIALSTAFF_V) {
+			final JPopupMenu bankAccountjPop = new JPopupMenu();
+			final JMenuItem bankAccountSubmitjItem = new JMenuItem("提交");
+			final JMenuItem bankAccountDeljItem = new JMenuItem("删除");
+			bankAccountSubmitjItem.addMouseListener(/**
+			 * @author 1
+			 *         监听bankAccount的弹出菜单中的“提交”
+			 */
+			new MouseListener() {
 
-		final JPopupMenu bankAccountjPop = new JPopupMenu();
-		final JMenuItem bankAccountSubmitjItem = new JMenuItem("提交");
-		final JMenuItem bankAccountDeljItem = new JMenuItem("删除");
-		bankAccountSubmitjItem.addMouseListener(/**
-		 * @author 1
-		 *         监听bankAccount的弹出菜单中的“提交”
-		 */
-		new MouseListener() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// TODO Auto-generated method stub
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
+				}
 
-			}
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
+				}
 
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				if (e.getButton() == MouseEvent.BUTTON1) {
-					ResultMessage rmsg = null;
-					int n = bankAccountjTable.getSelectedRow();
-					BankAccountVOPlus voPlus = bankAccountVOPlus.get(n);
-					ModifyState state = voPlus.isModify;
-					BankAccountVO v = getViewBankAccountVO(n);
-					if (state == ModifyState.NEW) {
-						try {
-							rmsg = bankAccountblController.insert(v);
-							setState(
-									"提交" + ResultMessage.toFriendlyString(rmsg),
-									DISPLAY_TIME);
-							if (rmsg == ResultMessage.SUCCESS) {
-								bankAccountVOPlus.remove(n);
-								bankAccountVOPlus.add(n, new BankAccountVOPlus(
-										v, ModifyState.SYNC));
-							}
-						} catch (RemoteException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-							setState(REMOTEFAILD, DISPLAY_TIME);
-						}
-					} else {
-						if (v.equals(voPlus.getBankAccountVO())) {
-							setState("您未对该行进行修改！", DISPLAY_TIME);
-						} else {
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+					if (e.getButton() == MouseEvent.BUTTON1) {
+						ResultMessage rmsg = null;
+						int n = bankAccountjTable.getSelectedRow();
+						BankAccountVOPlus voPlus = bankAccountVOPlus.get(n);
+						ModifyState state = voPlus.isModify;
+						BankAccountVO v = getViewBankAccountVO(n);
+						if (state == ModifyState.NEW) {
 							try {
-								rmsg = bankAccountblController.update(v);
-								setState(ResultMessage.toFriendlyString(rmsg),
+								rmsg = bankAccountblController.insert(v);
+								setState(
+										"提交"
+												+ ResultMessage
+														.toFriendlyString(rmsg),
 										DISPLAY_TIME);
 								if (rmsg == ResultMessage.SUCCESS) {
 									bankAccountVOPlus.remove(n);
@@ -1514,157 +1516,179 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 								e1.printStackTrace();
 								setState(REMOTEFAILD, DISPLAY_TIME);
 							}
-						}
-					}
-				}
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-		});
-		bankAccountDeljItem.addMouseListener(/**
-		 * @author 1
-		 *         监听bankAccountjTable上弹出菜单的“删除”
-		 */
-		new MouseListener() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				if (e.getButton() == MouseEvent.BUTTON1) {
-					int tempN = 0;
-					ResultMessage rmsg = null;
-					int n = bankAccountjTable.getSelectedRow();
-					BankAccountVOPlus voPlus = bankAccountVOPlus.get(n);
-					ModifyState state = voPlus.isModify;
-					if (state == ModifyState.NEW) {
-						bankAccountVOPlus.remove(n);
-						if (n == 0) {
-							tempN = 0;
 						} else {
-							tempN = n - 1;
-						}
-						initialBankAccountJTable(bankAccountVOPlus, tempN);
-					} else {
-						Object[] options = { "取消", "删除" };
-						int result = JOptionPane.showOptionDialog(null,
-								"您确定要删除系统该薪水策略？", "是否删除",
-								JOptionPane.DEFAULT_OPTION,
-								JOptionPane.QUESTION_MESSAGE, null, options,
-								options[0]);
-						if (result == JOptionPane.NO_OPTION) {
-							try {
-								rmsg = bankAccountblController.delete(voPlus
-										.getBankAccountVO());
-								if (rmsg == ResultMessage.SUCCESS) {
-									setState("删除成功:)", DISPLAY_TIME);
-									bankAccountVOPlus.remove(n);
-									tempN = 0;
-									if (n == 0) {
-										tempN = 0;
-									} else {
-										tempN = n - 1;
-									}
-									initialBankAccountJTable(bankAccountVOPlus,
-											tempN);
-								} else {
+							if (v.equals(voPlus.getBankAccountVO())) {
+								setState("您未对该行进行修改！", DISPLAY_TIME);
+							} else {
+								try {
+									rmsg = bankAccountblController.update(v);
 									setState(ResultMessage
 											.toFriendlyString(rmsg),
 											DISPLAY_TIME);
+									if (rmsg == ResultMessage.SUCCESS) {
+										bankAccountVOPlus.remove(n);
+										bankAccountVOPlus.add(n,
+												new BankAccountVOPlus(v,
+														ModifyState.SYNC));
+									}
+								} catch (RemoteException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+									setState(REMOTEFAILD, DISPLAY_TIME);
 								}
-							} catch (RemoteException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-								setState(REMOTEFAILD, DISPLAY_TIME);
+							}
+						}
+					}
+
+				}
+
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO Auto-generated method stub
+
+				}
+
+				@Override
+				public void mouseExited(MouseEvent e) {
+					// TODO Auto-generated method stub
+
+				}
+
+			});
+			bankAccountDeljItem.addMouseListener(/**
+			 * @author 1
+			 *         监听bankAccountjTable上弹出菜单的“删除”
+			 */
+			new MouseListener() {
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+					if (e.getButton() == MouseEvent.BUTTON1) {
+						int tempN = 0;
+						ResultMessage rmsg = null;
+						int n = bankAccountjTable.getSelectedRow();
+						BankAccountVOPlus voPlus = bankAccountVOPlus.get(n);
+						ModifyState state = voPlus.isModify;
+						if (state == ModifyState.NEW) {
+							bankAccountVOPlus.remove(n);
+							if (n == 0) {
+								tempN = 0;
+							} else {
+								tempN = n - 1;
+							}
+							initialBankAccountJTable(bankAccountVOPlus, tempN);
+						} else {
+							Object[] options = { "取消", "删除" };
+							int result = JOptionPane.showOptionDialog(null,
+									"您确定要删除系统该薪水策略？", "是否删除",
+									JOptionPane.DEFAULT_OPTION,
+									JOptionPane.QUESTION_MESSAGE, null,
+									options, options[0]);
+							if (result == JOptionPane.NO_OPTION) {
+								try {
+									rmsg = bankAccountblController
+											.delete(voPlus.getBankAccountVO());
+									if (rmsg == ResultMessage.SUCCESS) {
+										setState("删除成功:)", DISPLAY_TIME);
+										bankAccountVOPlus.remove(n);
+										tempN = 0;
+										if (n == 0) {
+											tempN = 0;
+										} else {
+											tempN = n - 1;
+										}
+										initialBankAccountJTable(
+												bankAccountVOPlus, tempN);
+									} else {
+										setState(ResultMessage
+												.toFriendlyString(rmsg),
+												DISPLAY_TIME);
+									}
+								} catch (RemoteException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+									setState(REMOTEFAILD, DISPLAY_TIME);
+								}
 							}
 						}
 					}
 				}
-			}
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
 
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
-		});
-		;
-		bankAccountjPop.add(bankAccountSubmitjItem);
-		bankAccountjPop.add(bankAccountDeljItem);
-		MouseInputListener mil = new MouseInputListener() {
-
-			public void mouseClicked(MouseEvent e) {
-				processEvent(e);
-			}
-
-			public void mousePressed(MouseEvent e) {
-				processEvent(e);
-			}
-
-			public void mouseReleased(MouseEvent e) {
-				processEvent(e);
-				if ((e.getModifiers() & MouseEvent.BUTTON3_MASK) != 0
-						&& !e.isControlDown() && !e.isShiftDown()) {
-					bankAccountjPop.show(bankAccountjTable, e.getX(), e.getY());
 				}
-			}
 
-			public void mouseEntered(MouseEvent e) {
-				processEvent(e);
-			}
+				@Override
+				public void mouseExited(MouseEvent e) {
+					// TODO Auto-generated method stub
 
-			public void mouseExited(MouseEvent e) {
-				processEvent(e);
-			}
-
-			public void mouseDragged(MouseEvent e) {
-				processEvent(e);
-			}
-
-			public void mouseMoved(MouseEvent e) {
-				processEvent(e);
-			}
-
-			private void processEvent(MouseEvent e) {
-				if ((e.getModifiers() & MouseEvent.BUTTON3_MASK) != 0) {
-					int modifiers = e.getModifiers();
-					modifiers -= MouseEvent.BUTTON3_MASK;
-					modifiers |= MouseEvent.BUTTON1_MASK;
-					MouseEvent ne = new MouseEvent(e.getComponent(), e.getID(),
-							e.getWhen(), modifiers, e.getX(), e.getY(),
-							e.getClickCount(), false);
-					bankAccountjTable.dispatchEvent(ne);
 				}
-			}
-		};
-		bankAccountjTable.addMouseListener(mil);
+
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO Auto-generated method stub
+
+				}
+
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// TODO Auto-generated method stub
+				}
+			});
+			;
+			bankAccountjPop.add(bankAccountSubmitjItem);
+			bankAccountjPop.add(bankAccountDeljItem);
+			MouseInputListener mil = new MouseInputListener() {
+
+				public void mouseClicked(MouseEvent e) {
+					processEvent(e);
+				}
+
+				public void mousePressed(MouseEvent e) {
+					processEvent(e);
+				}
+
+				public void mouseReleased(MouseEvent e) {
+					processEvent(e);
+					if ((e.getModifiers() & MouseEvent.BUTTON3_MASK) != 0
+							&& !e.isControlDown() && !e.isShiftDown()) {
+						bankAccountjPop.show(bankAccountjTable, e.getX(),
+								e.getY());
+					}
+				}
+
+				public void mouseEntered(MouseEvent e) {
+					processEvent(e);
+				}
+
+				public void mouseExited(MouseEvent e) {
+					processEvent(e);
+				}
+
+				public void mouseDragged(MouseEvent e) {
+					processEvent(e);
+				}
+
+				public void mouseMoved(MouseEvent e) {
+					processEvent(e);
+				}
+
+				private void processEvent(MouseEvent e) {
+					if ((e.getModifiers() & MouseEvent.BUTTON3_MASK) != 0) {
+						int modifiers = e.getModifiers();
+						modifiers -= MouseEvent.BUTTON3_MASK;
+						modifiers |= MouseEvent.BUTTON1_MASK;
+						MouseEvent ne = new MouseEvent(e.getComponent(),
+								e.getID(), e.getWhen(), modifiers, e.getX(),
+								e.getY(), e.getClickCount(), false);
+						bankAccountjTable.dispatchEvent(ne);
+					}
+				}
+			};
+			bankAccountjTable.addMouseListener(mil);
+		}
 		bankAccountjTable.putClientProperty("terminateEditOnFocusLost",
 				Boolean.TRUE);
 
@@ -2117,6 +2141,9 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	}
 
 	// bl相关变量
+	private LogBLService ctr_log;
+	private Authority currentAuthority = null;
+	private String currentOptorId = null;
 	private ArrayList<BankAccountVO> bankAccountVOs = null;
 	private ArrayList<BankAccountVOPlus> bankAccountVOPlus = null;
 	private ArrayList<LogVO> logVOs = null;
@@ -2129,7 +2156,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	private final ScheduledExecutorService scheduler = Executors
 			.newScheduledThreadPool(1);
 	private JComboBox<Authority> authorityjComboBox = ComponentFactory
-			.getInstance().getAuthorityJComboBox();
+			.getAuthorityJComboBox();
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JLabel accountNamejLabel;
 	private javax.swing.JButton addBankAccountjButton;
@@ -2198,7 +2225,6 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	private javax.swing.JLabel statejLabel;
 	private javax.swing.JButton viewManageForm;
 	private javax.swing.JButton viewProfitFormjButton;
-	private LogBLService ctr_log;
 	// End of variables declaration//GEN-END:variables
 	/**
 	 * 远程连接失败！
