@@ -56,11 +56,17 @@ public class businessOfficer_main extends JPanel {
 	
    
     private void initComponents() {
+    	try {
+			officeNum = ctr_login.getCurrentOptorId().substring(0, 6);
+			city = City.toString(CurrentCity.getCurrentCity());
+		} catch (RemoteException e) {
+		}
         initPanel();       
     	initbtn();
     	initLabel();
     	initTxt();
     	initLayout();      
+    	
     }
     private void initPanel() {
     	panel1=new JPanel();
@@ -81,13 +87,13 @@ public class businessOfficer_main extends JPanel {
     	num_label = new JLabel();
     	num_label.setFont(new java.awt.Font("宋体", 1, 48));
     	num_label.setForeground(new java.awt.Color(240, 240, 240));
-    	refreshNum();
+    	refreshValue();
         initNumLayout(num_panelLayout);
 	}
 	/**
 	 * 刷新营业厅发货的数量
 	 */
-	public void refreshNum() {
+	public void refreshValue() {
 		//TODO 数字 获取
     	try {
 			System.out.println("数量  "+ctr_ship.getTruckSum(CurrentTime.getDate()+"", officeNum));
@@ -204,16 +210,11 @@ public class businessOfficer_main extends JPanel {
     	jLabel5 = new JLabel();
         jLabel6 = new JLabel();
         businessOfficeNum_label = new JLabel();
+        businessOfficeNum_label.setText(city + officeNum);
         jLabel1.setText("今日流水（派出的车辆数）");
 		jLabel5.setText("账户：");
 		jLabel6.setText("营业厅：");
-		try {
-			officeNum = ctr_login.getCurrentOptorId().substring(0, 6);
-			System.out.println(ctr_login.getCurrentOptorId());
-			city = City.toString(CurrentCity.getCurrentCity());
-			businessOfficeNum_label.setText(city + officeNum);
-		} catch (RemoteException e) {
-		}
+		refreshValue();
 	}
 
 	private void initbtn() {

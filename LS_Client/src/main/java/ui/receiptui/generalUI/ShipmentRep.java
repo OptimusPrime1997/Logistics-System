@@ -332,7 +332,7 @@ public class ShipmentRep extends javax.swing.JPanel {
 		String resultMessage = control.checkNum(driverNum, 11, "司机编号");
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
-			parentPanel.refreshNum();
+			parentPanel.refreshValue();
 			return;
 		}
 		if (!control.isTrueAccount(driverNum)) {

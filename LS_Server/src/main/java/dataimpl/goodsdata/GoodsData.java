@@ -21,23 +21,27 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	DataUtility helper = new DataUtility();	
 	public static void main(String[] args) {
 		try {
-			String filename = "goods.txt";
-			DataUtility helper = new DataUtility();
-			ArrayList<Object> all;
-			GoodsPO temp;
-			all = helper.getAll(filename);
-			for (int i = 0; i < all.size(); i++) {
-				temp = (GoodsPO) all.get(i);
-				System.out.println("GoodsData.main "+temp.getListNum()+"  "+temp.getStartTime()+"  "+temp.getOvertime());
+			ArrayList<GoodsPO> pos=new GoodsData().show();
+			for(GoodsPO po:pos){
+				System.out.println(po.getListNum()+"  "+po.getStartTime()+"  "+po.getOvertime());
 			}
-		} catch (ClassNotFoundException | IOException e) {
+//			String filename = "goods.txt";
+//			DataUtility helper = new DataUtility();
+//			ArrayList<Object> all;
+//			GoodsPO temp;
+//			all = helper.getAll(filename);
+//			for (int i = 0; i < all.size(); i++) {
+//				temp = (GoodsPO) all.get(i);
+//				System.out.println("GoodsData.main "+temp.getListNum()+"  "+temp.getStartTime()+"  "+temp.getOvertime());
+//			}
+		} catch (IOException e) {
 		}
 		
 	}
 	//Done!
 	@Override	
 	public ResultMessage add(GoodsPO po) throws RemoteException {
-		System.out.println("goodsData.add "+po.getListNum()+"  "+po.getStartTime());
+		System.out.println("GoodsData.add "+po.getListNum()+"  "+po.getStartTime());
 		    try {
 			    return helper.save(po, filename);
 			    
@@ -62,6 +66,7 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 		    		break;
 		    	}
 		    }
+		    System.out.println(po.getListNum()+" "+po.getStartTime()+" "+po.getOvertime()+"  "+po.getAllLogisticStates().size());
 		    all.add(po);
 		    helper.SaveAll(all, filename);
 		    return ResultMessage.SUCCESS;

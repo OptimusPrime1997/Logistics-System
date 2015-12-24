@@ -352,7 +352,7 @@ public class DeliverRep extends javax.swing.JPanel {
 		String resultMessage = control.checkNum(courierNum, 11, "快递员编号");
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
-			parentPanel.refreshNum();
+			parentPanel.refreshValue();
 			return;
 		}
 		if (!control.isTrueAccount(courierNum)) {
