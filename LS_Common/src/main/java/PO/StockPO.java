@@ -68,6 +68,7 @@ public class StockPO implements Serializable{
 		return destination;
 	}
 	public int getBlock() {
+		System.out.println("stockpo : block   "+block);
 		return block;
 	}
 	public int getPlace() {

@@ -23,7 +23,7 @@ import ui.receiptui.generalUI.OutStockRep;
  *
  * @author G
  */
-public class WarehousePanel extends javax.swing.JFrame {
+public class WarehousePanel extends javax.swing.JFrame implements Runnable{
 	
 	
 
@@ -32,6 +32,8 @@ public class WarehousePanel extends javax.swing.JFrame {
      */
     public WarehousePanel() {
         initComponents();
+//        Thread t = new Thread(this);
+//        t.start();
         this.setVisible(true);
     }
 
@@ -66,6 +68,7 @@ public class WarehousePanel extends javax.swing.JFrame {
 
 
         Peking1 = new javax.swing.JProgressBar();
+        
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Peking2 = new javax.swing.JProgressBar();
@@ -94,8 +97,35 @@ public class WarehousePanel extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        //TODO to show, 1000--->100  
+        Peking1.setMaximum(10);
+        Peking2.setMaximum(1000);
+        Shanghai1.setMaximum(1000);
+        Shanghai2.setMaximum(1000);
+        Nanjing1.setMaximum(1000);
+        Nanjing2.setMaximum(1000);
+        Guangzhou1.setMaximum(1000);
+        Guangzhou2.setMaximum(1000);
        
-       
+        Peking1.setForeground(Color.PINK);
+        Peking1.setBackground(Color.pink);
+        Peking1.setOpaque(true);
+        Peking1.setStringPainted(true);
+        Peking2.setStringPainted(true);
+        Peking2.setOpaque(true);
+        Peking2.setForeground(Color.PINK);
+        Shanghai1.setForeground(Color.blue);
+        Shanghai1.setStringPainted(true);
+        Shanghai2.setStringPainted(true);
+        Shanghai2.setForeground(Color.blue);
+        Nanjing1.setForeground(Color.GREEN);
+        Nanjing1.setStringPainted(true);
+        Nanjing2.setStringPainted(true);
+        Nanjing2.setForeground(Color.GREEN);
+        Guangzhou1.setForeground(Color.ORANGE);
+        Guangzhou2.setForeground(Color.ORANGE);
+        Guangzhou1.setStringPainted(true);
+        Guangzhou2.setStringPainted(true);
 
         jLabel1.setText("北京01");
 
@@ -125,7 +155,7 @@ public class WarehousePanel extends javax.swing.JFrame {
         jLabel8.setText("广州08");
 
         //TODO  显示进度条
-//        showProcess();
+        showProcess();
         
         jButton1.setText("出库单填写");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -378,10 +408,14 @@ public class WarehousePanel extends javax.swing.JFrame {
     /**
   	 * 
   	 */
+    //TODO test 为什么refresh三次，而且为什么refresh会引起查询数量的变化
+//    int count = 0;
   	public void showProcess() {
-  		//TODO  有bug待解决
   		try {
+//  			count++;
+//  			System.out.println("i'm refreshing  "+count);
 			Peking1.setValue(s.checkPresentStockQuantity(1));
+//			System.out.println(s.checkPresentStockQuantity(1));
 			Peking2.setValue(s.checkPresentStockQuantity(2));
 			Nanjing1.setValue(s.checkPresentStockQuantity(3));
 			Nanjing2.setValue(s.checkPresentStockQuantity(4));
@@ -483,6 +517,26 @@ public class WarehousePanel extends javax.swing.JFrame {
     private JProgressBar Nanjing2;
     private JProgressBar Guangzhou1;
     private JProgressBar Guangzhou2;
+
+	/* (non-Javadoc)
+	 * @see java.lang.Runnable#run()
+	 */
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		System.out.println("run --");
+		try {
+			Thread.sleep(1000);
+			showProcess();
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		showProcess();
+		
+		
+	}
  
 
     // End of variables declaration//GEN-END:variables

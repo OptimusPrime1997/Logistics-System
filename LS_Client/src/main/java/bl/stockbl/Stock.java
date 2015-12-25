@@ -109,6 +109,8 @@ public class Stock {
         int outstocknum = outstockreps.size();
 
 		 
+       
+        
 		return instocknum+" "+outstocknum;
 	}
 
@@ -147,6 +149,7 @@ public class Stock {
 		ArrayList<StockVO> list = show();
 		
 		for (StockVO vo : list) {
+
 			if (vo.block == block) {
 				++result;
 			}
@@ -172,7 +175,6 @@ public class Stock {
 		list = s.getStock(cityNum);
 	
 		for(StockPO po:list) {
-			
 			result.add(new StockVO().poToVo(po));
 
 		}

@@ -10,6 +10,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+
 import util.FromIntToCity;
 import util.enumData.City;
 import util.enumData.ResultMessage;
@@ -47,7 +48,7 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 	 */
 	@Override
 	public ResultMessage add(StockPO po) throws RemoteException {
-		ArrayList<Object> list;
+		ArrayList<Object> list = new ArrayList<Object>();
 		try {
 			list = du.getAll(filename);
 			if (list != null){
@@ -108,7 +109,7 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 	public ArrayList<StockPO> getStock(City cityNum) throws IOException {
 		
 		ArrayList<StockPO> list = new ArrayList<StockPO>();
-		ArrayList<Object> listo;
+		ArrayList<Object> listo = new ArrayList<Object>();
 		try {
 			
 			
@@ -116,6 +117,7 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 			if (listo != null) {
 				for(Object o:listo) {
 					StockPO po = (StockPO) o;
+					//TODO 为什么全是123
 					if (po.getCityNum().equals(cityNum)){
 						list.add(po);
 					}
@@ -165,15 +167,24 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 	}
 	
 	public static void main(String[] args) {
-		StockPO p1 = new StockPO(City.NANJING, "0000000000001", "00010000000110", "12-23", City.BEIJING, 1, 1);
-		StockPO p2 = new StockPO(City.NANJING, "0000000000002", "00010000000110", "12-23", City.BEIJING, 1, 2);
-		StockPO p3 = new StockPO(City.NANJING, "0000000000003", "00010000000110", "01-04", City.BEIJING, 1, 3);
+//		StockPO p1 = new StockPO(City.NANJING, "0000000000001", "00010000000110", "12-23", City.BEIJING, 1, 1);
+//		StockPO p2 = new StockPO(City.NANJING, "0000000000002", "00010000000110", "12-23", City.BEIJING, 1, 2);
+//		StockPO p3 = new StockPO(City.NANJING, "0000000000003", "00010000000110", "01-04", City.BEIJING, 1, 3);
+		StockPO p4 = new StockPO(City.NANJING, "0000000000003", "00010000000110", "01-04", City.BEIJING, 4, 3);
+		StockPO p5 = new StockPO(City.NANJING, "0000000000003", "00010000000110", "01-04", City.BEIJING, 4, 1);
+		StockPO p6 = new StockPO(City.NANJING, "0000000000003", "00010000000110", "01-04", City.BEIJING, 4, 18);
+		StockPO p7 = new StockPO(City.NANJING, "0000000000003", "00010000000110", "01-04", City.BEIJING, 4, 8);
 		StockData s;
 		try {
 			s = new StockData();
-			s.add(p1);
-			s.add(p2);
-			s.add(p3);
+			
+//			s.add(p1);
+//			s.add(p2);
+//			s.add(p3);
+			s.add(p4);
+			s.add(p5);
+			s.add(p6);
+			s.add(p7);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -146,7 +146,7 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 	public ArrayList<StockDivisionPO> getStockDivision(City cityNum) throws IOException, RemoteException {
 	 
 		ArrayList<StockDivisionPO> list = new ArrayList<StockDivisionPO>();
-		ArrayList<Object> listo;
+		ArrayList<Object> listo = new ArrayList<Object>();
 		try {
 			listo = du.getAll(filename);
 			for(Object o:listo) {
