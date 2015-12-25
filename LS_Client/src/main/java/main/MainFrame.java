@@ -5,6 +5,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
 
+import ui.util.NumOnlyDocument;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -109,6 +111,7 @@ public class MainFrame extends JFrame {
 	private void initTxt() {
 		goodsNum_text = new javax.swing.JTextField();
 		account_text = new javax.swing.JTextField(11);
+		account_text.setDocument(new NumOnlyDocument());
 		password_text = new javax.swing.JPasswordField(6);
 		feedback_text = new JTextField();
 
