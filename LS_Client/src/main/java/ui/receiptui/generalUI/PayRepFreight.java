@@ -237,7 +237,9 @@ public class PayRepFreight extends javax.swing.JPanel {
     private String calSum(){
     	double sum = 0;
     	for(int i = 0;i < dataVector.size();i++){
-    		sum += Double.parseDouble((String)jTable.getValueAt(i, 1));
+    		String value = (String)jTable.getValueAt(i, 1);
+    		if(value!=null)
+    			sum += Double.parseDouble(value);
     	}
     	return sum+"";
     }

@@ -36,7 +36,7 @@ public class Goodsbl {
 		Goodsbl ctr=new Goodsbl();
 		GoodsVO vo = new GoodsVO("", false, "02500106066",
 				"", "2015-12-21", "", "025", "啦啦啦丽",
-				"上海 浦东新区张杨路500号", "上海华润时代广场", "13587511426", "小宏宏",
+				"上海 浦东新区张杨路500号", "上海华润时代广场", "13587511426", "zxc",
 				"南京 栖霞区仙林大道和园12号", null, "15500001112", 1, 5, 8, "袜子",
 				GoodsExpressType.NORMAL, 1, 10, 9, GoodsArrivalState.INTACT,
 				GoodsLogisticState.SENDED, null, null);
@@ -294,7 +294,8 @@ public class Goodsbl {
 	private GoodsDataService getGoodsDataService() {
 		GoodsDataService data=null;
 		try {
-			data = (GoodsDataService)Naming.lookup("goodsServer");
+			String ip = "127.0.0.1";
+			data = (GoodsDataService)Naming.lookup("rmi://" + ip + ":1099/goodsServer");
 		} catch (MalformedURLException e) {
 			
 		} catch (RemoteException e) {

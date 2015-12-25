@@ -402,14 +402,16 @@ public class GetRep extends javax.swing.JPanel {
     		return;
     	}
 		String resultMessage = control.checkNum(order, 10, "编号");
-		resultMsgText.setText(resultMessage);
+
 		if (!resultMessage.equals("添加成功")) {
+			resultMsgText.setText(resultMessage);
 			return;
 		}
 		if (!control.isTrueOrder(order)) {
 			resultMsgText.setText("未找到该订单");
 			return;
 		}
+		resultMsgText.setText(resultMessage);
 		Vector<String> arr = new Vector<String>();
 		arr.add(order);
 		arr.add(arriveStateBox.getSelectedItem().toString());
@@ -474,14 +476,16 @@ public class GetRep extends javax.swing.JPanel {
 		for (int i = 0; i < dataVector.size(); i++) {
 			existOrders.add((String) jTable.getValueAt(i, 0));
 		}
+		Vector<Object> arrs = null;
 		try {
-			dataVector = control.initTable(rep, getTypeText.getText(), existOrders);
+			arrs = control.initTable(rep, getTypeText.getText(), existOrders);
 		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
 		}
+		dataVector.addAll(arrs);
 		model.setDataVector(dataVector, columnIdentifiers);
 		setColumn();
 	}
@@ -493,19 +497,20 @@ public class GetRep extends javax.swing.JPanel {
 					.getGoodsArrivalState((String) jTable.getValueAt(i, 1));
 			if (goodsArrivalState != GoodsArrivalState.INTACT) {
 				control.transferOver(order, goodsArrivalState);
-				return;
 			}
-			String destination = null;
-			try {
-				destination = control.getDestination(order);
-			} catch (GoodsNotFound e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				resultMsgText.setText(ExceptionPrint.print(e));
-				return;
-			}
-			if (officeText.getText().substring(0, 3).equals(destination)) {
-				control.changeLogistic(order, GoodsLogisticState.RECEIVER_BUSINESSOFFICE_ARRIVED);
+			else {
+				String destination = null;
+				try {
+					destination = control.getDestination(order);
+				} catch (GoodsNotFound e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					resultMsgText.setText(ExceptionPrint.print(e));
+					return;
+				}
+				if (officeText.getText().substring(0, 3).equals(destination)) {
+					control.changeLogistic(order, GoodsLogisticState.RECEIVER_BUSINESSOFFICE_ARRIVED);
+				}
 			}
 		}
 	}

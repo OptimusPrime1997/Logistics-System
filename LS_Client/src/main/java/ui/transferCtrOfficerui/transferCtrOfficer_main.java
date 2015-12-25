@@ -18,6 +18,7 @@ import javax.swing.LayoutStyle;
 
 import main.MainFrame;
 import ui.receiptui.generalUI.GetRep;
+import ui.receiptui.generalUI.ReceptionRep;
 import ui.receiptui.generalUI.ShippingRep;
 import ui.receiptui.generalUI.TransferRep;
 import ui.util.MyFrame;
@@ -294,7 +295,7 @@ public class transferCtrOfficer_main extends JPanel {
 			ctr_log.add(vo);
 		} catch (RemoteException e1) {
 		}
-		new  GetRep();
+		new  ReceptionRep();
 	}
 	private void toTransferCTR_btnMouseClicked() {
 		System.out.println("中转单");
