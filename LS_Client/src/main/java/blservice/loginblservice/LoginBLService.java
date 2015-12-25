@@ -18,4 +18,8 @@ public interface LoginBLService {
 	 * @throws RemoteException
 	 */
 	public String getCurrentOptorId() throws RemoteException;
+	/**
+	 * 获得当前登录人员的名字
+	 */
+	public String getCurrentName()throws RemoteException;
 }

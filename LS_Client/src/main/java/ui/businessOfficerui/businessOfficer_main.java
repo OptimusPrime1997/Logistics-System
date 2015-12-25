@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 
+import main.MainFrame;
 import ui.receiptui.generalUI.CashRep;
 import ui.receiptui.generalUI.DeliverRep;
 import ui.receiptui.generalUI.GetRep;
@@ -55,11 +56,17 @@ public class businessOfficer_main extends JPanel {
 	
    
     private void initComponents() {
+    	try {
+			officeNum = ctr_login.getCurrentOptorId().substring(0, 6);
+			city = City.toString(CurrentCity.getCurrentCity());
+		} catch (RemoteException e) {
+		}
         initPanel();       
     	initbtn();
     	initLabel();
     	initTxt();
     	initLayout();      
+    	
     }
     private void initPanel() {
     	panel1=new JPanel();
@@ -80,16 +87,20 @@ public class businessOfficer_main extends JPanel {
     	num_label = new JLabel();
     	num_label.setFont(new java.awt.Font("宋体", 1, 48));
     	num_label.setForeground(new java.awt.Color(240, 240, 240));
-    	//TODO 数字 获取
+    	refreshValue();
+        initNumLayout(num_panelLayout);
+	}
+	/**
+	 * 刷新营业厅发货的数量
+	 */
+	public void refreshValue() {
+		//TODO 数字 获取
     	try {
 			System.out.println("数量  "+ctr_ship.getTruckSum(CurrentTime.getDate()+"", officeNum));
 			num_label.setText(ctr_ship.getTruckSum(CurrentTime.getDate()+"", officeNum));
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 		}
-    	
-         initNumLayout(num_panelLayout);
 	}
-
 	private void initTxt() {
 		feedback_text = new JTextField();
 		feedback_text.setEditable(false);
@@ -199,16 +210,11 @@ public class businessOfficer_main extends JPanel {
     	jLabel5 = new JLabel();
         jLabel6 = new JLabel();
         businessOfficeNum_label = new JLabel();
+        businessOfficeNum_label.setText(city + officeNum);
         jLabel1.setText("今日流水（派出的车辆数）");
 		jLabel5.setText("账户：");
 		jLabel6.setText("营业厅：");
-		try {
-			officeNum = ctr_login.getCurrentOptorId().substring(0, 6);
-			System.out.println(ctr_login.getCurrentOptorId());
-			city = City.toString(CurrentCity.getCurrentCity());
-			businessOfficeNum_label.setText(city + officeNum);
-		} catch (RemoteException e) {
-		}
+		refreshValue();
 	}
 
 	private void initbtn() {
@@ -301,16 +307,14 @@ public class businessOfficer_main extends JPanel {
 			ctr_log.add(vo);
 		} catch (RemoteException e1) {
 		}
-    	new DeliverRep();
+    	new DeliverRep(this);
     }
     private void send_btnMouseClicked(MouseEvent evt) {
     	
-    	new ShipmentRep();
-//    	this.getFrame().setContentPane(new car_management());        
+    	new ShipmentRep(this);
     }
     private void recordMoney_btnMouseClicked(MouseEvent evt) {
     	new CashRep();
-//    	this.getFrame().setContentPane(new car_management());
         
     }
     
@@ -321,7 +325,8 @@ public class businessOfficer_main extends JPanel {
 					"是否退出", JOptionPane.DEFAULT_OPTION,
 					JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 			if (result == JOptionPane.NO_OPTION) {
-				System.exit(0);
+				frame.dispose();
+				new MainFrame();
 			}
 		}
 	}

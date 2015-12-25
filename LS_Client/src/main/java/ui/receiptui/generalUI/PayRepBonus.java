@@ -173,6 +173,15 @@ public class PayRepBonus extends javax.swing.JPanel {
 			for (int i = 0; i < bankAccountBox.getItemCount(); i++) {
 				if (bankAccountBox.getItemAt(i).equals(bankAccount)) {
 					bankAccountBox.setSelectedIndex(i);
+					double balance = 0;
+					try {
+						balance = control.showBankBalance(bankAccount);
+					} catch (ClassNotFoundException | NameNotFoundException | IOException | NumNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						resultMsgText.setText(ExceptionPrint.print(e));
+					}
+					balanceText.setText(balance+"");
 					break;
 				}
 			}
@@ -316,15 +325,19 @@ public class PayRepBonus extends javax.swing.JPanel {
 	}
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		if(receiverNumText.getText().equals("")){
+		String getterNum = receiverNumText.getText();
+		if(getterNum.equals("")){
 			resultMsgText.setText("请填写收款人编号");
 			return;
 		}
+    	if(checkRepeat(getterNum)){
+    		resultMsgText.setText("该人员已填写");
+    		return;
+    	}
 		if(moneyText.getText().equals("")){
 			resultMsgText.setText("请填写奖金金额");
 			return;
 		}
-		String getterNum = receiverNumText.getText();
 		double money = Double.parseDouble(moneyText.getText());
 		String resultMsg = control.checkNum(getterNum, 11, "人员编号");
 		ResultMessage resultMessage = control.checkMoney(money);
@@ -409,5 +422,14 @@ public class PayRepBonus extends javax.swing.JPanel {
 		}
 		balanceText.setText(balance+"");
 	}
+	
+    private boolean checkRepeat(String num){
+    	for(int i = 0;i < dataVector.size();i++){
+    		if(((String)jTable.getValueAt(i, 1)).equals(num)){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 
 }

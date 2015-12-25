@@ -17,15 +17,15 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import ui.businessOfficerui.businessOfficer_main;
+import ui.receiptui.ReceiptCheckUI.DeliverCheck;
+import ui.util.MyFrame;
 import Exception.ExceptionPrint;
 import Exception.GoodsNotFound;
 import VO.Receipt.DeliverRepVO;
 import VO.Receipt.DeliverVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
-import bl.receiptbl.DeliverRepbl.DeliverController;
 import blservice.receiptblservice.DeliverRepblService;
-import ui.receiptui.ReceiptCheckUI.DeliverCheck;
-import ui.util.MyFrame;
 
 /**
  *
@@ -56,6 +56,7 @@ public class DeliverRep extends javax.swing.JPanel {
 	private DefaultTableModel model;
 	private Vector<String> columnIdentifiers;
 	private Vector<Object> dataVector;
+	private businessOfficer_main parentPanel;
 	// End of variables declaration//GEN-END:variables
 
 	/**
@@ -64,6 +65,12 @@ public class DeliverRep extends javax.swing.JPanel {
 	public DeliverRep() {
 		initComponents();
 		myFrame = new MyFrame(673, 506, this);
+	}
+
+	public DeliverRep(businessOfficer_main parentPanel) {
+		initComponents();
+		myFrame = new MyFrame(673, 506, this);
+		this.parentPanel=parentPanel;
 	}
 
 	/**
@@ -303,11 +310,15 @@ public class DeliverRep extends javax.swing.JPanel {
 	}
 
 	private void orderMouseClicked(java.awt.event.MouseEvent evt) {
-		if (orderNumText.getText().equals("")) {
+		String order = orderNumText.getText();
+		if (order.equals("")) {
 			resultMsgText.setText("请填写订单号");
 			return;
 		}
-		String order = orderNumText.getText();
+    	if(checkRepeat(order)){
+    		resultMsgText.setText("该订单号已填写");
+    		return;
+    	}
 		String resultMessage = control.checkNum(order, 10, "编号");
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
@@ -337,14 +348,15 @@ public class DeliverRep extends javax.swing.JPanel {
 	}
 
 	private void okMouseClicked(java.awt.event.MouseEvent evt) {
-		if (courierText.getText().equals("")) {
+		String courierNum = courierText.getText();
+		if (courierNum.equals("")) {
 			resultMsgText.setText("请填写快递员编号");
 			return;
 		}
-		String courierNum = courierText.getText();
 		String resultMessage = control.checkNum(courierNum, 11, "快递员编号");
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
+			parentPanel.refreshValue();
 			return;
 		}
 		if (!control.isTrueAccount(courierNum)) {
@@ -377,5 +389,18 @@ public class DeliverRep extends javax.swing.JPanel {
 	private void checkAllRepsButtonMouseClicked(MouseEvent evt) {
 		new DeliverCheck(officeText.getText());
 	}
+	
+    /**返回true表示重复
+     * @param num
+     * @return
+     */
+    private boolean checkRepeat(String num){
+    	for(int i = 0;i < dataVector.size();i++){
+    		if(((String)jTable.getValueAt(i, 0)).equals(num)){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 
 }

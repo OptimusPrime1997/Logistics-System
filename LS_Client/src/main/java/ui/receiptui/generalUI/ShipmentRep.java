@@ -21,6 +21,7 @@ import VO.Receipt.ShipmentRepVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepController;
 import blservice.receiptblservice.ShipmentRepblServce;
+import ui.businessOfficerui.businessOfficer_main;
 import ui.receiptui.ReceiptCheckUI.ShipmentCheck;
 import ui.util.MyFrame;
 
@@ -55,14 +56,20 @@ public class ShipmentRep extends javax.swing.JPanel {
 	private DefaultTableModel model;
 	private Vector<String> columnIdentifiers;
 	private Vector<Object> dataVector;
+	private businessOfficer_main parentPanel;
 	// End of variables declaration//GEN-END:variables
 
 	/**
 	 * Creates new form ShippingRep
 	 */
+	public ShipmentRep(businessOfficer_main parentPanel) {
+		initComponents();
+		this.parentPanel=parentPanel;
+		myFrame = new MyFrame(446, 481, this);
+	}
 	public ShipmentRep() {
 		initComponents();
-		myFrame = new MyFrame(426, 461, this);
+		myFrame = new MyFrame(446, 481, this);
 	}
 
 	/**
@@ -325,6 +332,7 @@ public class ShipmentRep extends javax.swing.JPanel {
 		String resultMessage = control.checkNum(driverNum, 11, "司机编号");
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
+			parentPanel.refreshValue();
 			return;
 		}
 		if (!control.isTrueAccount(driverNum)) {
@@ -359,11 +367,15 @@ public class ShipmentRep extends javax.swing.JPanel {
 	}
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		if(orderText.getText().equals("")){
+		String order = orderText.getText();
+		if(order.equals("")){
 			resultMsgText.setText("请填写订单号");
 			return;
 		}
-		String order = orderText.getText();
+    	if(checkRepeat(order)){
+    		resultMsgText.setText("该订单号已填写");
+    		return;
+    	}
 		String resultMessage = control.checkNum(order, 10, "编号");
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
@@ -380,5 +392,14 @@ public class ShipmentRep extends javax.swing.JPanel {
 		setColumn();
 		orderText.setText("");
 	}
+	
+    private boolean checkRepeat(String num){
+    	for(int i = 0;i < dataVector.size();i++){
+    		if(((String)jTable.getValueAt(i, 0)).equals(num)){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 
 }

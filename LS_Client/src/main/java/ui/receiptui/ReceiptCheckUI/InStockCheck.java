@@ -199,13 +199,17 @@ public class InStockCheck extends javax.swing.JPanel {
         column2.setPreferredWidth(180);
     }
 
-    private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	int row = jTable.getSelectedRow();
-    	for(int i = row;i < dataVector.size();i++){
-    		if(((String)jTable.getValueAt(i, 0)).equals(dateText.getText()))
-    			jTable.setRowSelectionInterval(i,i);
-    	}
-    }
+	private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		int row = jTable.getSelectedRow();
+		if (row == -1)
+			row = 0;
+		for (int i = row; i < dataVector.size(); i++) {
+			if (((String) jTable.getValueAt(i, 0)).equals(dateText.getText())) {
+				jTable.setRowSelectionInterval(i, i);
+				break;
+			}
+		}
+	}
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	myFrame.dispose();

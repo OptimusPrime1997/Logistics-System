@@ -63,6 +63,7 @@ public class MainFrame extends JFrame {
     	this.setLocationRelativeTo(null);
     	this.setResizable(false);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 	private void initComponents() {
 		contentPane=new JPanel();
@@ -124,17 +125,7 @@ public class MainFrame extends JFrame {
 				password_textMouseClicked(evt);
 			}
 		});
-		//TODO 密码加密
-//		password_text.addKeyListener(new KeyAdapter() {
-//			@Override
-//			public void keyTyped(KeyEvent e) {
-//				System.out.println(e.getKeyChar());
-//			}
-//			@Override
-//			public void keyReleased(KeyEvent e) {
-//				password_text.setText(password_text.getText().substring(0, password_text.getText().length()-1)+"*");
-//			}
-//		});
+		
 	}
 	
     /**
@@ -216,6 +207,8 @@ public class MainFrame extends JFrame {
          			break;
          		case 8:
          			new AdministratorPanel();
+         		case 9:
+         			new FinancialStaffJFrame();
          		default:showFeedback(ResultMessage.NOT_FOUND_ACCOUNTNUM);
          			break;
          		}
@@ -348,7 +341,8 @@ public class MainFrame extends JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                MainFrame mainFrame=new MainFrame();
+                mainFrame.setVisible(true);
             }
         });
     }

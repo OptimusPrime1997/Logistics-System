@@ -17,6 +17,7 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import Exception.ConstNotFoundException;
 import Exception.ExceptionPrint;
 import Exception.GoodsNotFound;
 import VO.Receipt.TransferRepVO;
@@ -360,11 +361,15 @@ public class TransferRep extends javax.swing.JPanel {
 	}
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		if(orderText.getText().equals("")){
+		String order = orderText.getText();
+		if(order.equals("")){
 			resultMsgText.setText("请填写订单号");
 			return;
 		}
-		String order = orderText.getText();
+    	if(checkRepeat(order)){
+    		resultMsgText.setText("该订单号已填写");
+    		return;
+    	}
 		String resultMessage = control.checkNum(order, 10, "编号");
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
@@ -414,9 +419,16 @@ public class TransferRep extends javax.swing.JPanel {
 		String depart = officeText.getText();
 		String destination = destinationText.getText();
 		ShipForm form = ShipForm.getShipForm(shipFormBox.getSelectedItem().toString());
+		double money = 0;
+		try {
+			money = control.getFreightMoney(depart, destination, weight, form);
+		} catch (ClassNotFoundException | ConstNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		}
 		TransferRepVO transferRepVO = new TransferRepVO(num, date, form, carNumText.getText(),
-				City.getCity(destination), orders, control.getFreightMoney(depart, destination, weight, form),
-				City.getCity(depart));
+				City.getCity(destination), orders, money, City.getCity(depart));
 		try {
 			control.submit(transferRepVO);
 		} catch (NotBoundException | IOException e) {
@@ -427,5 +439,14 @@ public class TransferRep extends javax.swing.JPanel {
 		}
 		myFrame.dispose();
 	}
+	
+    private boolean checkRepeat(String num){
+    	for(int i = 0;i < dataVector.size();i++){
+    		if(((String)jTable.getValueAt(i, 0)).equals(num)){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 
 }

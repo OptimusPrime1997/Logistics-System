@@ -19,7 +19,9 @@ public class ShippingRepShowbl {
 		Vector<Object> data = new Vector<Object>();
 		ArrayList<String> orders = shippingRepVO.goods;
 		for(int i = 0;i < orders.size();i++){
-			data.add(orders.get(i));
+			Vector<String> arr = new Vector<String>();
+			arr.add(orders.get(i));
+			data.add(arr);
 		}
 		return data;
 	}

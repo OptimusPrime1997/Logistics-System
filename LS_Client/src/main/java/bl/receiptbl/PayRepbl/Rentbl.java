@@ -22,6 +22,8 @@ public class Rentbl{
 		if(payRepRentRepVO==null)
 			return data;
 		ArrayList<PayRentVO> payRentVOs = payRepRentRepVO.rentVOs;
+		if(payRentVOs==null)
+			return null;
 		PayRentVO payRentVO;
 		for(int i = 0;i < payRentVOs.size();i++){
 			Vector<String> arr = new Vector<String>();

@@ -113,8 +113,6 @@ public class PayRepCourier extends javax.swing.JPanel {
 		jTable.setGridColor(new java.awt.Color(0, 0, 0));
 		jScrollPane1.setViewportView(jTable);
 
-		sumText.setEditable(false);
-
 		balanceLabel.setText("账户余额:");
 
 		balanceText.setEditable(false);
@@ -133,6 +131,15 @@ public class PayRepCourier extends javax.swing.JPanel {
 			for (int i = 0; i < bankAccountBox.getItemCount(); i++) {
 				if (bankAccountBox.getItemAt(i).equals(bankAccount)) {
 					bankAccountBox.setSelectedIndex(i);
+					double balance = 0;
+					try {
+						balance = control.showBankBalance(bankAccount);
+					} catch (ClassNotFoundException | NameNotFoundException | IOException | NumNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						resultMsgText.setText(ExceptionPrint.print(e));
+					}
+					balanceText.setText(balance+"");
 					break;
 				}
 			}
@@ -160,6 +167,9 @@ public class PayRepCourier extends javax.swing.JPanel {
 		sumLabel.setText("总计:");
 
 		resultMsgText.setEditable(false);
+		
+		sumText.setEditable(false);
+		sumText.setText(calSum());
 
 		setColumn();
 
@@ -247,7 +257,6 @@ public class PayRepCourier extends javax.swing.JPanel {
 	}
 
 	private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		sumText.setText(calSum());
 		double sum = Double.parseDouble(sumText.getText());
 		double balance = Double.parseDouble(balanceText.getText());
 		if(sum>balance){
@@ -295,5 +304,5 @@ public class PayRepCourier extends javax.swing.JPanel {
 		}
 		balanceText.setText(balance+"");
 	}
-
+	
 }

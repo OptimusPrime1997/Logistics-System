@@ -120,11 +120,20 @@ public class PayRepStaff extends javax.swing.JPanel {
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 		} 
-        if (bankAccount != null) {
+		if (bankAccount != null) {
 			bankAccountBox.setEnabled(false);
 			for (int i = 0; i < bankAccountBox.getItemCount(); i++) {
 				if (bankAccountBox.getItemAt(i).equals(bankAccount)) {
 					bankAccountBox.setSelectedIndex(i);
+					double balance = 0;
+					try {
+						balance = control.showBankBalance(bankAccount);
+					} catch (ClassNotFoundException | NameNotFoundException | IOException | NumNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						resultMsgText.setText(ExceptionPrint.print(e));
+					}
+					balanceText.setText(balance+"");
 					break;
 				}
 			}
@@ -151,8 +160,6 @@ public class PayRepStaff extends javax.swing.JPanel {
 
         sumLabel.setText("总计:");
 
-        sumText.setEditable(false);
-
         balanceLabel.setText("账户余额:");
 
         balanceText.setEditable(false);
@@ -160,6 +167,9 @@ public class PayRepStaff extends javax.swing.JPanel {
         bankAccountLabel.setText("付款账户:");
 
         resultMsgText.setEditable(false);
+        
+		sumText.setEditable(false);
+		sumText.setText(calSum());
         
         setColumn();
         
@@ -241,7 +251,6 @@ public class PayRepStaff extends javax.swing.JPanel {
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	sumText.setText(calSum());
     	double sum = Double.parseDouble(sumText.getText());
 		double balance = Double.parseDouble(balanceText.getText());
 		if(sum>balance){

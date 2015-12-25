@@ -23,7 +23,6 @@ import Exception.NumNotFoundException;
 import VO.Receipt.ArriveVO;
 import VO.Receipt.ReceptionRepVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
-import bl.receiptbl.ReceptionRepbl.ReceptionRepController;
 import blservice.receiptblservice.ReceptionRepblService;
 import ui.receiptui.ReceiptCheckUI.ArriveCheck;
 import ui.util.MyFrame;
@@ -405,11 +404,15 @@ public class ReceptionRep extends javax.swing.JPanel {
 	}
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		if(orderText.getText().equals("")){
+		String order = orderText.getText();
+		if(order.equals("")){
 			resultMsgText.setText("请填写订单号");
 			return;
 		}
-		String order = orderText.getText();
+    	if(checkRepeat(order)){
+    		resultMsgText.setText("该订单号已填写");
+    		return;
+    	}
 		String resultMessage = control.checkNum(order, 10, "编号");
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
@@ -483,17 +486,13 @@ public class ReceptionRep extends javax.swing.JPanel {
 		for (int i = 0; i < dataVector.size(); i++) {
 			existOrders.add((String) jTable.getValueAt(i, 0));
 		}
-		Vector<Object> arrs = null;
 		try {
-			arrs = control.initTable(rep, getTypeText.getText(), existOrders);
+			dataVector = control.initTable(rep, getTypeText.getText(), existOrders);
 		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
-		}
-		for (int i = 0; i < arrs.size(); i++) {
-			dataVector.add(arrs.get(i));
 		}
 		model.setDataVector(dataVector, columnIdentifiers);
 		setColumn();
@@ -526,4 +525,13 @@ public class ReceptionRep extends javax.swing.JPanel {
 			}
 		}
 	}
+	
+    private boolean checkRepeat(String num){
+    	for(int i = 0;i < dataVector.size();i++){
+    		if(((String)jTable.getValueAt(i, 0)).equals(num)){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 }

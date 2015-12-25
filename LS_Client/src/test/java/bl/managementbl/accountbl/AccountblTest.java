@@ -44,6 +44,10 @@
 //							Sex.Sex_FAMALE, Authority.ADMINISTRATOR, "12345678666",
 //							"025001"));	
 //			
+//	rmsg[7] = accountbl
+//					.add(new AccountVO("02500109099", "东东", "9999",
+//							Sex.Sex_MALE, Authority.FINANCIALSTAFF_V, "1234578999",
+//							"025001"));	
 //			for (int i = 0; i < 7; i++) {
 //				System.out.println(rmsg[i]);
 //			}

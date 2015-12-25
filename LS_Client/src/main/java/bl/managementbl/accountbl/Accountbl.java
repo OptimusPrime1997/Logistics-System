@@ -188,7 +188,7 @@ public class Accountbl {
 			throw new RemoteException();
 	}
 
-	public ArrayList<AccountVO> showoOther() throws RemoteException,
+	public ArrayList<AccountVO> showOther() throws RemoteException,
 			ClassNotFoundException, IOException {
 		ArrayList<AccountVO> vos = show();
 		if (vos != null) {
