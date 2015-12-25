@@ -38,8 +38,7 @@ public class GoodsPO implements Serializable {
 	private String realReceiverName="";
 	private String realReceiverPhone="";	
 	//物流历史状态
-	private ArrayList<String[]> allLogisticStates=new ArrayList<String[]>();
-		
+	public String dates="";
 	public GoodsPO(String listNum, Boolean ifExaminePassed,
 			String getCourierAccount, String deliverCourierAccount,
 			String startTime, String overtime, String destinationCity,
@@ -50,8 +49,8 @@ public class GoodsPO implements Serializable {
 			GoodsExpressType expressType, double moneyOfPackage, double moneyTotal,
 			double moneyFare, GoodsArrivalState arrivalState,
 			GoodsLogisticState logisticState, String realReceiverName,
-			String realReceiverPhone,ArrayList<String[]> allLogisticStates,String startCity) {
-		this.allLogisticStates=allLogisticStates;
+			String realReceiverPhone,String dates,String startCity) {
+		this.dates=dates;
 		this.listNum = listNum;
 		this.ifExaminePassed = ifExaminePassed;
 		this.getCourierAccount = getCourierAccount;
@@ -80,6 +79,8 @@ public class GoodsPO implements Serializable {
 		this.realReceiverName = realReceiverName;
 		this.realReceiverPhone = realReceiverPhone;
 		this.startCity=startCity;
+		System.out.println("GoodsPO.dates "+dates);
+		
 	}
 
 	public String getListNum() {
@@ -110,8 +111,8 @@ public class GoodsPO implements Serializable {
 		return overtime;
 	}
 
-	public ArrayList<String[]> getAllLogisticStates() {
-		return allLogisticStates;
+	public String getDates() {
+		return dates;
 	}
 
 	public String getDestinationCity() {

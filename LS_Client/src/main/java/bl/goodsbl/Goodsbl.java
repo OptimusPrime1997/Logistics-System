@@ -34,15 +34,26 @@ public class Goodsbl {
 	final double[] expressRates = { 18, 23, 25 };
 	public static void main(String[] args) {
 		Goodsbl ctr=new Goodsbl();
-		GoodsVO vo = new GoodsVO("", false, "02500106066",
-				"", "2015-12-21", "", "025", "啦啦啦丽",
-				"上海 浦东新区张杨路500号", "上海华润时代广场", "13587511426", "qwe",
-				"南京 栖霞区仙林大道和园12号", null, "15500001112", 1, 5, 8, "袜子",
-				GoodsExpressType.NORMAL, 1, 10, 9, GoodsArrivalState.INTACT,
-				GoodsLogisticState.SENDED, null, null);
+//		GoodsVO vo = new GoodsVO("", false, "02500106066",
+//				"", "2015-12-22", "", "025", "啦啦啦丽",
+//				"上海 浦东新区张杨路500号", "上海华润时代广场", "13587511426", "小宏宏",
+//				"南京 栖霞区仙林大道和园12号", null, "15500001112", 1, 5, 8, "袜子",
+//				GoodsExpressType.NORMAL, 1, 10, 9, GoodsArrivalState.INTACT,
+//				GoodsLogisticState.SENDED, null, null,"2015-12-22");
+//		try {
+//			ctr.initComplete(vo);
+//			System.out.println("Goodsbl.main  vo.dates "+vo.dates);
+//		} catch (ExistException e) {
+//		}
+		ArrayList<GoodsVO> vos=ctr.show();
+		for(GoodsVO vo:vos){
+			System.out.println(vo.listNum+"  "+vo.startTime);
+		}
 		try {
-			ctr.initComplete(vo);
-		} catch (ExistException e) {
+			GoodsVO vo=ctr.findByListNum("0250000003");
+			System.out.println("0250000003  "+vo.dates);
+		} catch (GoodsNotFound e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -60,6 +71,15 @@ public class Goodsbl {
 		} catch (RemoteException e) {
 		}
 		return vo;
+	}
+	
+	
+	public ArrayList<GoodsVO> show(){
+		try {
+			return GoodsVO.toVOArray(getGoodsDataService().show());
+		} catch (RemoteException e) {
+			return null;
+		}
 	}
 	/**
 	 * 填写新订单
@@ -95,10 +115,7 @@ public class Goodsbl {
 	public GoodsVO initComplete(GoodsVO vo) throws ExistException{//TODO可能初始化失败！没有反馈给界面
 		Constbl ctr_const = new Constbl();
 		ResultMessage msg;
-		/*
-		 *  025     001           01      027
-		 *  3位城市  3位营业厅编号     身份           序号
-		 */
+	
 		try {
 			// TODO 计算运费
 			String cities=vo.receiverAddress.substring(0, 2)+"-"+vo.senderAddress.substring(0, 2);
@@ -114,8 +131,7 @@ public class Goodsbl {
 			vo.moneyFare = moneyCounter(vo.expressType, vo.weight, distance,
 					basicprice);
 			vo.moneyTotal = vo.moneyFare + vo.moneyOfPackage;
-			vo.allLogisticStates.add(new String[]{vo.startTime,
-					GoodsLogisticState.toFriendlyString(GoodsLogisticState.SENDED)});
+//			vo.dates=vo.startTime;
 		    msg=getGoodsDataService().add(GoodsVO.toPO(vo));
 		    System.out.println("Goodsbl.initComplete 日期 "+vo.startTime);
 		   //已添加过该订单号
@@ -173,7 +189,7 @@ public class Goodsbl {
 		try {
 			GoodsVO vo = findByListNum(listNum);
 			vo.logisticState = state;
-			vo.allLogisticStates.add(new String[]{date,GoodsLogisticState.toFriendlyString(state)});
+			vo.dates=vo.dates+" "+date;
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;
@@ -205,26 +221,26 @@ public class Goodsbl {
 	 * @param realReceiverPhone可不填写 即传入null
 	 * @return
 	 */
-	public ResultMessage end(String listNum, String realReceiverName,String realReceiverPhone) {
+	public ResultMessage end(String listNum, String date,String realReceiverName,String realReceiverPhone) {
 		try {
 			GoodsVO vo = findByListNum(listNum);
-			System.out.println("改之前的货物信息 "+vo.listNum+"  "+vo.realReceiverName+"  "+vo.realReceiverPhone+"  "+vo.logisticState);
+			getGoodsDataService().delete(GoodsVO.toPO(vo));
+			System.out.println("改之前的货物信息 "+vo.listNum+"  "+vo.realReceiverName+"  "+vo.realReceiverPhone+"  "+vo.logisticState+" 历史");
+			System.out.println(vo.dates);
 			vo.deliverCourierAccount=Loginbl.getCurrentOptorId();
 			vo.realReceiverName = realReceiverName;
 			//默认是本人签收
 			vo.realReceiverPhone=vo.receiverPhone;
-			vo.overtime=CurrentTime.getDate();
+			vo.overtime=date;
 			//是代收的~
 			if(realReceiverPhone.length()>0){
 				vo.realReceiverPhone = realReceiverPhone;
-			}			
+			}		
 			vo.logisticState=GoodsLogisticState.SIGNED;
-			vo.allLogisticStates.add(new String[]{vo.overtime,GoodsLogisticState.toFriendlyString(GoodsLogisticState.SIGNED)});
-			//TODO
-			for(String[]state:vo.allLogisticStates){
-				System.out.println(state[0]+"  "+state[1]);
-			}
-			return getGoodsDataService().modify(GoodsVO.toPO(vo));
+			vo.dates=vo.dates+" "+CurrentTime.getDate();
+			System.out.println("Goodsbl.end "+vo.dates);
+			
+			return getGoodsDataService().add(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;
 		}catch(GoodsNotFound e1){
@@ -236,11 +252,13 @@ public class Goodsbl {
 	 * @param listNum
 	 * @return
 	 */
-	public ResultMessage end(String listNum){
+	public ResultMessage end(String listNum,GoodsArrivalState arrivalState){
 		try {
 			GoodsVO vo = findByListNum(listNum);
-			vo.arrivalState=GoodsArrivalState.BROKEN;
+			vo.arrivalState=arrivalState;
 			vo.logisticState=GoodsLogisticState.BROKEN_OR_LOST;
+			vo.overtime=CurrentTime.getDate();//TODO
+			
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;
@@ -294,8 +312,7 @@ public class Goodsbl {
 	private GoodsDataService getGoodsDataService() {
 		GoodsDataService data=null;
 		try {
-			String ip = "127.0.0.1";
-			data = (GoodsDataService)Naming.lookup("rmi://" + ip + ":1099/goodsServer");
+			data = (GoodsDataService)Naming.lookup("goodsServer");
 		} catch (MalformedURLException e) {
 			
 		} catch (RemoteException e) {

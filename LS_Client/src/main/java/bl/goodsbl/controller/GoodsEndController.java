@@ -7,9 +7,9 @@ import blservice.goodsblservice.GoodsEndBLService;
 public class GoodsEndController implements GoodsEndBLService {
 	private Goodsbl goodsbl = new Goodsbl();
 	@Override
-	public ResultMessage end(String listNum, String realReceiverName,
+	public ResultMessage end(String listNum,String date, String realReceiverName,
 			String realReceiverPhone) {
-		return goodsbl.end(listNum, realReceiverName, realReceiverPhone);
+		return goodsbl.end(listNum,date, realReceiverName, realReceiverPhone);
 	}
 
 }

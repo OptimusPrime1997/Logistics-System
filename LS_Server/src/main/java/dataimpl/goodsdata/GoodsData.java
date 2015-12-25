@@ -5,9 +5,6 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import util.enumData.GoodsArrivalState;
-import util.enumData.GoodsExpressType;
-import util.enumData.GoodsLogisticState;
 import util.enumData.ResultMessage;
 import Exception.GoodsNotFound;
 import PO.GoodsPO;
@@ -17,27 +14,8 @@ import datautil.DataUtility;
 
 public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	
-	String filename = "goods.txt";
+	String filename = "data/currentdata/goods.txt";
 	DataUtility helper = new DataUtility();	
-	public static void main(String[] args) {
-		try {
-			ArrayList<GoodsPO> pos=new GoodsData().show();
-			for(GoodsPO po:pos){
-				System.out.println(po.getListNum()+"  "+po.getStartTime()+"  "+po.getOvertime());
-			}
-//			String filename = "goods.txt";
-//			DataUtility helper = new DataUtility();
-//			ArrayList<Object> all;
-//			GoodsPO temp;
-//			all = helper.getAll(filename);
-//			for (int i = 0; i < all.size(); i++) {
-//				temp = (GoodsPO) all.get(i);
-//				System.out.println("GoodsData.main "+temp.getListNum()+"  "+temp.getStartTime()+"  "+temp.getOvertime());
-//			}
-		} catch (IOException e) {
-		}
-		
-	}
 	//Done!
 	@Override	
 	public ResultMessage add(GoodsPO po) throws RemoteException {
@@ -66,7 +44,7 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 		    		break;
 		    	}
 		    }
-		    System.out.println(po.getListNum()+" "+po.getStartTime()+" "+po.getOvertime()+"  "+po.getAllLogisticStates().size());
+		    System.out.println(po.getListNum()+" "+po.getStartTime()+" "+po.getOvertime());
 		    all.add(po);
 		    helper.SaveAll(all, filename);
 		    return ResultMessage.SUCCESS;
@@ -184,10 +162,16 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 			for(Object o:all){
 				po=(GoodsPO)o;
 				//找到了货物~
-				if((po.getGetCourierAccount().equals(CourierNum)&&po.getStartTime().equals(date))//TODO
-						||(po.getDeliverCourierAccount().equals(CourierNum)&&po.getOvertime().equals(date))
+				String startT=po.getDates().split(" ")[0];
+				if((po.getGetCourierAccount().equals(CourierNum)&&startT.equals(date))){
+					System.out.println("取件：：我要找的日期 "+date+" ;"+
+							"找到的订单 "+po.getListNum()+" "+po.getStartTime());
+					sum++;
+				}
+				else if((po.getDeliverCourierAccount().equals(CourierNum)&&po.getOvertime().equals(date))
 						){
-					System.out.println("我要找的日期 "+date+" ;"+"找到的订单 "+po.getListNum()+" "+po.getStartTime());
+					System.out.println("派件：：我要找的日期 "+date+" ;"+
+						"找到的订单 "+po.getListNum()+" "+po.getStartTime());
 					sum++;
 				}
 			}
@@ -208,7 +192,7 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	 */
 	@Override
 	public int recordListNum() throws RemoteException {
-		String fName="GoodsTotal";
+		String fName="data/currentdata/GoodsTotal";
 		int sum=DataOrdinary.getOneNum(fName);
 		sum++;
 		DataOrdinary.saveOneNum(sum, fName);
