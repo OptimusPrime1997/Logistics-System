@@ -38,7 +38,7 @@ public class Institutionbl {
 		}
 		manageVOPO = ManageVOPO.getInstance();
 	}
-
+	
 	/**
 	 * @param vo
 	 * @return OVER_DATA IOFAILED SUCCESS FAILED
@@ -93,7 +93,7 @@ public class Institutionbl {
 		} else
 			return ResultMessage.FAILED;
 	}
-
+	
 	public ResultMessage update(InstitutionVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.PERSONNEL_INSTITUTION_MANAGEMENT);
@@ -123,7 +123,9 @@ public class Institutionbl {
 			return ResultMessage.FAILED;
 		}
 	}
-
+//public ResultMessage updateManning(String institutionNum,String ){
+//	r
+//}
 	public ResultMessage delete(InstitutionVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.PERSONNEL_INSTITUTION_MANAGEMENT);
