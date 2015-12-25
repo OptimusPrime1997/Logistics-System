@@ -14,6 +14,20 @@ public class Loginbl {
 	private static String currentOptorId = "02500106027";
 	private static String currentOptorName = "李四";
 	private static Authority currentAuthority = Authority.COURIER;
+	private static String ip = "127.0.0.1";
+
+	/**
+	 * 得到服务器的ip地址
+	 * 
+	 * @return
+	 */
+	public static String getIP() {
+		return ip;
+	}
+
+	public static void setIP(String inputIP) {
+		ip = inputIP;
+	}
 
 	public ResultMessage login(String accountNum, String key) {
 		currentOptorId = accountNum;

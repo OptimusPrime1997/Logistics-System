@@ -118,7 +118,7 @@ public enum ResultMessage {
 	/**
 	 * 账号不存在
 	 */
-	NOT_FOUND_ACCOUNTNUM(""),
+	NOT_FOUND_ACCOUNTNUM("账号不存在"),
 	/**
 	 * 数据格式错误
 	 */

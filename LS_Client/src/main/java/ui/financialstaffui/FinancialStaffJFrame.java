@@ -6,6 +6,7 @@
  */
 package ui.financialstaffui;
 
+import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -79,6 +80,9 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed"
 	// desc="Generated Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
+	
+		this.setResizable(false);
+		this.setVisible(true);
 		currentOptorId = Loginbl.getCurrentOptorId();
 		String optorName = Loginbl.getCurrentOptorName();
 		currentAuthority = Loginbl.getCurrentAuthority();
@@ -472,6 +476,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		finacialjTabbedPane.addTab("日志查看", logjPanel);
 
 		// initialNewFinanceJpanel();
+		jLabel6.setFont(new Font("宋体",Font.BOLD,12));
 		jLabel6.setText("财务人员");
 
 		exitjButton.setText("退出系统");
@@ -597,6 +602,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 				javax.swing.GroupLayout.PREFERRED_SIZE));
 
 		pack();
+		this.setLocationRelativeTo(null);
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void initialLogjPanel() {
@@ -1227,7 +1233,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		bankAccountNumjLabel.setText("银行账号：");
 
-		findBankAccountNumjTextField.setText("jTextField1");
+		findBankAccountNumjTextField.setText("请输入19位银行账户");
 		findBankAccountNumjTextField
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1245,7 +1251,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		bankAccountNamejLabel.setText("账户名称：");
 
-		findBankAccountNamejTextField.setText("jTextField1");
+		findBankAccountNamejTextField.setText("请输入银行账户名称");
 		findBankAccountNamejTextField
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1447,8 +1453,8 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 					bankAccountObjects, new String[] { "银行账号", "账户名称",
 							"账户余额（元）" }) {
 				Class[] types = new Class[] { java.lang.String.class,
-						java.lang.String.class, java.lang.Long.class };
-				boolean[] canEdit = new boolean[] { false, true, true };
+						java.lang.String.class, java.lang.Double.class };
+				boolean[] canEdit = new boolean[] { true, true, true };
 
 				public Class getColumnClass(int columnIndex) {
 					return types[columnIndex];
@@ -2067,9 +2073,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				FinancialStaffJFrame financialStaffJFrame = new FinancialStaffJFrame();
-				financialStaffJFrame.setLocationRelativeTo(null);
-				financialStaffJFrame.setResizable(false);
-				financialStaffJFrame.setVisible(true);
+				
 			}
 		});
 	}

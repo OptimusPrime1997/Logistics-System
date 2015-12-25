@@ -79,7 +79,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 	public ManagerJFrame() {
 		initComponents();
-		this.setLocationRelativeTo(null);
+		
 		this.setResizable(false);
 		// managerFrame.setUndecorated(false);
 		this.setVisible(true);
@@ -151,6 +151,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed"
 	// desc="Generated Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
+		
 		setDocumentVector();
 		setAccountVOs();
 		setConstVOs();
@@ -337,6 +338,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
 		pack();
+		this.setLocationRelativeTo(null);
 	}// </editor-fold>//GEN-END:initComponents
 
 	/**
