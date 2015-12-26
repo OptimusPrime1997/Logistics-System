@@ -24,20 +24,20 @@ import util.enumData.GoodsLogisticState;
 import util.enumData.LogType;
 import util.enumData.Rep;
 
-public class ReceptionRepbl{
-	
+public class ReceptionRepbl {
+
 	Receiptbl receiptbl = new Receiptbl();
 	Goodsbl goodsbl = new Goodsbl();
 	private LoginblController login = new LoginblController();
 
-	public ShipmentRepVO getShipmentRep(String num) 
-			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException{
+	public ShipmentRepVO getShipmentRep(String num)
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		ShipmentRepbl shipment = new ShipmentRepbl();
 		return shipment.getRepByNum(num);
 	}
-	
-	public TransferRepVO getTransferRep(String num) 
-			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException{
+
+	public TransferRepVO getTransferRep(String num)
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		TransferRepbl transfer = new TransferRepbl();
 		return transfer.getRepByNum(num);
 	}
@@ -53,71 +53,70 @@ public class ReceptionRepbl{
 		String operatorID = login.getCurrentOptorId();
 		receiptbl.addLog(LogType.TRANSFER_CTR_RECEPTION, operatorID, CurrentTime.getTime());
 	}
-	
-	public Vector<Object> initTable(Rep rep, String num, ArrayList<String> existOrders) 
+
+	public Vector<Object> initTable(Rep rep, String num, ArrayList<String> existOrders)
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		Vector<Object> data = new Vector<Object>();
 		ArrayList<String> orders;
-		if(rep==Rep.ShipmentRep){
+		if (rep == Rep.ShipmentRep) {
 			orders = getShipmentRep(num).goods;
-		}
-		else {
+		} else {
 			orders = getTransferRep(num).goods;
 		}
-		if(orders.size()>existOrders.size()){
-			for(int i = 0;i < orders.size();i++){
+		if (orders.size() > existOrders.size()) {
+			for (int i = 0; i < orders.size(); i++) {
 				String order = orders.get(i);
-				if(!existOrders.contains(order)){
+				if (!existOrders.contains(order)) {
 					Vector<String> arr = new Vector<String>();
 					arr.add(order);
 					arr.add(GoodsArrivalState.LOST.getChineseName());
 					data.add(arr);
-					transferOver(order, GoodsArrivalState.LOST);
+					// transferOver(order, GoodsArrivalState.LOST);
 				}
 			}
 		}
 		return data;
 	}
-	
+
 	public void transferOver(String num, GoodsArrivalState goodsArrivalState) {
 		// TODO Auto-generated method stub
-		goodsbl.end(num,goodsArrivalState);
-		goodsbl.setArrivalState(num, goodsArrivalState, receiptbl.getDate());
-		goodsbl.setLogisticState(num, GoodsLogisticState.BROKEN_OR_LOST, receiptbl.getDate());
+		goodsbl.end(num, goodsArrivalState);
+		// goodsbl.setArrivalState(num, goodsArrivalState, receiptbl.getDate());
+		// goodsbl.setLogisticState(num, GoodsLogisticState.BROKEN_OR_LOST,
+		// receiptbl.getDate());
 	}
-	
-	public void changeLogistic(String num, GoodsLogisticState goodsLogisticState){
+
+	public void changeLogistic(String num, GoodsLogisticState goodsLogisticState) {
 		goodsbl.setLogisticState(num, goodsLogisticState, receiptbl.getDate());
 	}
 
-	public ArrayList<ReceptionRepVO> getAllRep(String office) 
+	public ArrayList<ReceptionRepVO> getAllRep(String office)
 			throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.ReceptionRep, office);
 		return ReceptionRepVO.toArrayVO(receiptPOs);
 	}
-	
-	public String getDepart(Rep rep, String num) 
-			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException{
-		if(rep==Rep.ShipmentRep){
+
+	public String getDepart(Rep rep, String num)
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
+		if (rep == Rep.ShipmentRep) {
 			return getShipmentRep(num).depart;
-		}
-		else {
+		} else {
 			return City.toString(getTransferRep(num).depart);
 		}
 	}
 
-	public boolean isTrueOrder(String order){
+	public boolean isTrueOrder(String order) {
 		return receiptbl.isTrueOrder(order);
 	}
-	
-	public String getDestination(String order) throws GoodsNotFound{
+
+	public String getDestination(String order) throws GoodsNotFound {
 		return goodsbl.findByListNum(order).destinationCity;
 	}
-	
-	public String getDepart(String order) throws GoodsNotFound{
+
+	public String getDepart(String order) throws GoodsNotFound {
 		return goodsbl.findByListNum(order).startCity;
 	}
-	
+
 }

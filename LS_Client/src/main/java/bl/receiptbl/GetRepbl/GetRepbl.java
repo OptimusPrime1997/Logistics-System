@@ -16,24 +16,23 @@ import bl.goodsbl.Goodsbl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.receiptbl.ShipmentRepbl.ShipmentRepbl;
 import bl.receiptbl.ShippingRepbl.ShippingRepbl;
-import util.enumData.City;
 import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsLogisticState;
 import util.enumData.Rep;
 
-public class GetRepbl{
-	
+public class GetRepbl {
+
 	private Receiptbl receiptbl = new Receiptbl();
 	private Goodsbl goodsbl = new Goodsbl();
 
-	public ShipmentRepVO getShipmentRep(String num) 
-			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException{
+	public ShipmentRepVO getShipmentRep(String num)
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		ShipmentRepbl shipment = new ShipmentRepbl();
 		return shipment.getRepByNum(num);
 	}
-	
-	public ShippingRepVO getShippingRep(String num) 
-			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException{
+
+	public ShippingRepVO getShippingRep(String num)
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		ShippingRepbl shipping = new ShippingRepbl();
 		return shipping.getRepByNum(num);
 	}
@@ -43,32 +42,30 @@ public class GetRepbl{
 		return receiptbl.createNum(date, Rep.GetRep, office);
 	}
 
-
 	public void submit(ReceiptVO vo) throws NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		receiptbl.submit(GetRepVO.toPO((GetRepVO) vo), Rep.GetRep);
 	}
 
-	public Vector<Object> initTable(Rep rep, String num, ArrayList<String> existOrders) 
+	public Vector<Object> initTable(Rep rep, String num, ArrayList<String> existOrders)
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		Vector<Object> data = new Vector<Object>();
 		ArrayList<String> orders;
-		if(rep==Rep.ShipmentRep){
+		if (rep == Rep.ShipmentRep) {
 			orders = getShipmentRep(num).goods;
-		}
-		else {
+		} else {
 			orders = getShippingRep(num).goods;
 		}
-		if(orders.size()>existOrders.size()){
-			for(int i = 0;i < orders.size();i++){
+		if (orders.size() > existOrders.size()) {
+			for (int i = 0; i < orders.size(); i++) {
 				String order = orders.get(i);
-				if(!existOrders.contains(order)){
+				if (!existOrders.contains(order)) {
 					Vector<String> arr = new Vector<String>();
 					arr.add(order);
 					arr.add(GoodsArrivalState.LOST.getChineseName());
 					data.add(arr);
-					transferOver(order, GoodsArrivalState.LOST);
+					// transferOver(order, GoodsArrivalState.LOST);
 				}
 			}
 		}
@@ -77,37 +74,36 @@ public class GetRepbl{
 
 	public void transferOver(String num, GoodsArrivalState goodsArrivalState) {
 		// TODO Auto-generated method stub
-		goodsbl.end(num,goodsArrivalState);
-		goodsbl.setArrivalState(num, goodsArrivalState, receiptbl.getDate());
-		goodsbl.setLogisticState(num, GoodsLogisticState.BROKEN_OR_LOST, receiptbl.getDate());
+		goodsbl.end(num, goodsArrivalState);
+		// goodsbl.setArrivalState(num, goodsArrivalState, receiptbl.getDate());
+		// goodsbl.setLogisticState(num, GoodsLogisticState.BROKEN_OR_LOST,
+		// receiptbl.getDate());
 	}
-	
-	public void changeLogistic(String num, GoodsLogisticState goodsLogisticState){
+
+	public void changeLogistic(String num, GoodsLogisticState goodsLogisticState) {
 		goodsbl.setLogisticState(num, goodsLogisticState, receiptbl.getDate());
 	}
 
-	public ArrayList<GetRepVO> getAllRep(String office) throws ClassNotFoundException, NotBoundException, 
-	IOException {
+	public ArrayList<GetRepVO> getAllRep(String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.GetRep, office);
 		return GetRepVO.toArrayVO(receiptPOs);
 	}
-	
-	public String getDepart(Rep rep, String num) 
-			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException{
-		if(rep==Rep.ShipmentRep){
+
+	public String getDepart(Rep rep, String num)
+			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
+		if (rep == Rep.ShipmentRep) {
 			return getShipmentRep(num).depart;
-		}
-		else {
+		} else {
 			return getShippingRep(num).depart;
 		}
 	}
-	
-	public boolean isTrueOrder(String order){
+
+	public boolean isTrueOrder(String order) {
 		return receiptbl.isTrueOrder(order);
 	}
-	
-	public String getDestination(String order) throws GoodsNotFound{
+
+	public String getDestination(String order) throws GoodsNotFound {
 		return goodsbl.findByListNum(order).destinationCity;
 	}
 
