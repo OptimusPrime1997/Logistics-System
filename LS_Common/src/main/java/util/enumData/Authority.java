@@ -5,8 +5,8 @@ package util.enumData;
 public enum Authority {
 	MANAGER("01", "总经理"), FINANCIALSTAFF_C("02", "普通财务人员"), BUSSINESSOFFICER(
 			"03", "营业厅业务员"), TRANSFERCTROFFICER("04", "中转中心业务员"), WAREHOUSEMAN(
-			"05", "仓库管理员"), COURIER("06", "快递员"), DRIVER("07", "司机"), FINANCIALSTAFF_V(
-			"08", "高级财务人员"), ADMINISTRATOR("09", "管理员");
+			"05", "仓库管理员"), COURIER("06", "快递员"), DRIVER("07", "司机"), ADMINISTRATOR("08", "管理员"), FINANCIALSTAFF_V(
+			"09", "高级财务人员");
 	final private String numStr;
 	final private String value;
 	final public static int PERSON_NUM = 9;
@@ -62,10 +62,10 @@ public enum Authority {
 		case DRIVER:
 			result = "07";
 			break;
-		case FINANCIALSTAFF_V:
+		case ADMINISTRATOR:
 			result = "08";
 			break;
-		case ADMINISTRATOR:
+		case FINANCIALSTAFF_V:
 			result = "09";
 			break;
 		default:
@@ -101,11 +101,11 @@ public enum Authority {
 		case DRIVER:
 			result = "司机";
 			break;
-		case FINANCIALSTAFF_V:
-			result = "高级财务人员";
-			break;
 		case ADMINISTRATOR:
 			result = "管理员";
+			break;
+		case FINANCIALSTAFF_V:
+			result = "高级财务人员";
 			break;
 		default:
 			result = "";
@@ -140,11 +140,11 @@ public enum Authority {
 		case "司机":
 			result = DRIVER;
 			break;
-		case "高级财务人员":
-			result = FINANCIALSTAFF_V;
-			break;
 		case "管理员":
 			result = ADMINISTRATOR;
+			break;
+		case "高级财务人员":
+			result = FINANCIALSTAFF_V;
 			break;
 		default:
 			break;
@@ -169,9 +169,9 @@ public enum Authority {
 		case 7:
 			return Authority.DRIVER;
 		case 8:
-			return Authority.FINANCIALSTAFF_V;
-		case 9:
 			return Authority.ADMINISTRATOR;
+		case 9:
+			return Authority.FINANCIALSTAFF_V;
 		default:
 			return null;
 		}
