@@ -164,12 +164,12 @@ public class PayRepCourier extends javax.swing.JPanel {
 		});
 
 		sumLabel.setText("总计:");
-
-		resultMsgText.setEditable(false);
 		
 		sumText.setEditable(false);
 		sumText.setText(calSum());
 
+		resultMsgText.setEditable(false);
+		
 		setColumn();
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -258,8 +258,13 @@ public class PayRepCourier extends javax.swing.JPanel {
 	}
 
 	private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		String balanceT = balanceText.getText();
+		if(balanceT.equals("")){
+			resultMsgText.setText("请选择付款账户");
+			return;
+		}
+		double balance = Double.parseDouble(balanceT);
 		double sum = Double.parseDouble(sumText.getText());
-		double balance = Double.parseDouble(balanceText.getText());
 		if(sum>balance){
 			resultMsgText.setText("付款金额超过账户余额，请更换账户");
 			return;
@@ -280,9 +285,9 @@ public class PayRepCourier extends javax.swing.JPanel {
 		ArrayList<PayCourierSalaryVO> payCourierSalaryVOs = new ArrayList<PayCourierSalaryVO>();
 		for (int i = 0; i < dataVector.size(); i++) {
 			PayCourierSalaryVO payCourierSalaryVO = new PayCourierSalaryVO((String) jTable.getValueAt(i, 0),
-					(String) jTable.getValueAt(i, 1), Double.parseDouble((String) jTable.getValueAt(i, 4)),
-					Integer.parseInt((String) jTable.getValueAt(i, 2)),
-					Integer.parseInt((String) jTable.getValueAt(i, 3)));
+					(String) jTable.getValueAt(i, 1),
+					Double.parseDouble((String) jTable.getValueAt(i, 3)),
+					Double.parseDouble((String) jTable.getValueAt(i, 2)));
 			payCourierSalaryVOs.add(payCourierSalaryVO);
 		}
 		PayRepCourierSalaryRepVO payRepCourierSalaryRepVO = new PayRepCourierSalaryRepVO(bankAccount, sum,

@@ -147,10 +147,13 @@ public class PayRepBonus extends javax.swing.JPanel {
 		jTable.setGridColor(new java.awt.Color(0, 0, 0));
 		jScrollPane1.setViewportView(jTable);
 
-		sumLabel.setText("总计:");
+        sumLabel.setText("总和:");
 
-		sumText.setEditable(false);
-
+        sumText.setEditable(false);
+        if(dataVector.size()!=0){
+        	sumText.setText(calSum());
+        }
+		
 		balanceLabel.setText("账户余额:");
 
 		balanceText.setEditable(false);
@@ -379,8 +382,13 @@ public class PayRepBonus extends javax.swing.JPanel {
 	}
 
 	private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		String balanceT = balanceText.getText();
+		if(balanceT.equals("")){
+			resultMsgText.setText("请选择付款账户");
+			return;
+		}
+		double balance = Double.parseDouble(balanceT);
 		double sum = Double.parseDouble(sumText.getText());
-		double balance = Double.parseDouble(balanceText.getText());
 		if(sum>balance){
 			resultMsgText.setText("付款金额超过账户余额，请更换账户");
 			return;

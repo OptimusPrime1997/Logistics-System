@@ -152,6 +152,9 @@ public class PayRepRefund extends javax.swing.JPanel {
         sumLabel.setText("总计:");
 
         sumText.setEditable(false);
+        if(dataVector.size()!=0){
+        	sumText.setText(calSum());
+        }
 
         bankAccountLabel.setText("付款账户:");
 
@@ -324,8 +327,13 @@ public class PayRepRefund extends javax.swing.JPanel {
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	double sum = Double.parseDouble(sumText.getText());
-		double balance = Double.parseDouble(balanceText.getText());
+		String balanceT = balanceText.getText();
+		if(balanceT.equals("")){
+			resultMsgText.setText("请选择付款账户");
+			return;
+		}
+		double balance = Double.parseDouble(balanceT);
+		double sum = Double.parseDouble(sumText.getText());
 		if(sum>balance){
 			resultMsgText.setText("付款金额超过账户余额，请更换账户");
 			return;

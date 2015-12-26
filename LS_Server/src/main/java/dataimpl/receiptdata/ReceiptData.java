@@ -42,7 +42,7 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	}
 
 	public void submit(ReceiptPO po, Rep rep) throws IOException, RemoteException {
-		util.save(po, saveAdd(rep));
+		util.save(po, submitAdd(rep));
 	}
 
 	public void save(ReceiptPO po, Rep rep) throws IOException, RemoteException {
@@ -106,15 +106,15 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	public String createNum(String date, Rep rep, String office)
 			throws ClassNotFoundException, IOException, RemoteException {
 		ArrayList<ReceiptPO> receiptPOs = new ArrayList<ReceiptPO>();
-//		ArrayList<Object> objectsSubmit = util.getAll(submitAdd(rep));
+		ArrayList<Object> objectsSubmit = util.getAll(submitAdd(rep));
 		ArrayList<Object> objectsSave = util.getAll(saveAdd(rep));
-//		if(objectsSubmit!=null){
-//			for (Object object : objectsSubmit) {
-//				ReceiptPO receiptPO = (ReceiptPO) object;
-//				if ((getOffice(receiptPO.getNum()).equals(office))&&(receiptPO.getDate().equals(date)))
-//					receiptPOs.add(receiptPO);
-//			}
-//		}
+		if(objectsSubmit!=null){
+			for (Object object : objectsSubmit) {
+				ReceiptPO receiptPO = (ReceiptPO) object;
+				if ((getOffice(receiptPO.getNum()).equals(office))&&(receiptPO.getDate().equals(date)))
+					receiptPOs.add(receiptPO);
+			}
+		}
 		if(objectsSave!=null){
 			for (Object object : objectsSave) {
 				ReceiptPO receiptPO = (ReceiptPO) object;

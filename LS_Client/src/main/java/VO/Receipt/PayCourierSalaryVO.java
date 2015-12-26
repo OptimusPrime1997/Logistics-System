@@ -6,28 +6,24 @@ import PO.Receipt.PayCourierSalaryPO;
 import PO.Receipt.PaySalaryPO;
 
 public class PayCourierSalaryVO extends PaySalaryVO {
-	public double getMoneySum;
-	public double deliverMoneySum;
+	public double workMoney;
 
-	public PayCourierSalaryVO(String getterName, String getterNum, double money, double getMoneySum,
-			double deliverMoneySum) {
+	public PayCourierSalaryVO(String getterName, String getterNum, double money, double workMoney) {
 		super(getterName, getterNum, money);
-		this.getMoneySum = getMoneySum;
-		this.deliverMoneySum = deliverMoneySum;
+		this.workMoney = workMoney;
 	}
 
 	public PayCourierSalaryVO(PayCourierSalaryPO po) {
 		this.getterName = po.getGetterName();
 		this.getterNum = po.getGetterNum();
 		this.money = po.getMoney();
-		this.getMoneySum = po.getGetMoneySum();
-		this.deliverMoneySum = po.getDeliverMoneySum();
+		this.workMoney = po.getWorkMoney();
 	}
 
 	public static PayCourierSalaryPO toPO(PayCourierSalaryVO vo) {
 		if (vo == null)
 			return null;
-		return new PayCourierSalaryPO(vo.getterName, vo.getterNum, vo.money, vo.getMoneySum, vo.deliverMoneySum);
+		return new PayCourierSalaryPO(vo.getterName, vo.getterNum, vo.money, vo.workMoney);
 	}
 
 	public static ArrayList<PayCourierSalaryVO> toArrayVO(ArrayList<PaySalaryPO> allSalaryPOs) {

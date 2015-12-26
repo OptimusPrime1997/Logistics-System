@@ -336,7 +336,7 @@ public class InStockRep extends javax.swing.JPanel {
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
 		}
-		City destinationCity = City.getCity(destination);
+		City destinationCity = City.getCityByNum(destination);
 		try {
 			stockDivisionVO = control.getAvailableDivision(destinationCity);
 		} catch (NotBoundException | IOException e) {

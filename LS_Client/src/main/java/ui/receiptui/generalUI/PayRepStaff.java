@@ -111,6 +111,11 @@ public class PayRepStaff extends javax.swing.JPanel {
         jTable.setModel(model);
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane2.setViewportView(jTable);
+        
+        sumLabel.setText("总计:");
+        
+		sumText.setEditable(false);
+		sumText.setText(calSum());
 
         try {
 			bankAccountBox = new JComboBox<String>(control.showBankAccount());
@@ -157,8 +162,6 @@ public class PayRepStaff extends javax.swing.JPanel {
             }
         });
 
-        sumLabel.setText("总计:");
-
         balanceLabel.setText("账户余额:");
 
         balanceText.setEditable(false);
@@ -166,9 +169,6 @@ public class PayRepStaff extends javax.swing.JPanel {
         bankAccountLabel.setText("付款账户:");
 
         resultMsgText.setEditable(false);
-        
-		sumText.setEditable(false);
-		sumText.setText(calSum());
         
         setColumn();
         
@@ -252,8 +252,13 @@ public class PayRepStaff extends javax.swing.JPanel {
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	double sum = Double.parseDouble(sumText.getText());
-		double balance = Double.parseDouble(balanceText.getText());
+		String balanceT = balanceText.getText();
+		if(balanceT.equals("")){
+			resultMsgText.setText("请选择付款账户");
+			return;
+		}
+		double balance = Double.parseDouble(balanceT);
+		double sum = Double.parseDouble(sumText.getText());
 		if(sum>balance){
 			resultMsgText.setText("付款金额超过账户余额，请更换账户");
 			return;

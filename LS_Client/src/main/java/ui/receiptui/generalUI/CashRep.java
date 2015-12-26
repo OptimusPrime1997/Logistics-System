@@ -131,10 +131,6 @@ public class CashRep extends javax.swing.JPanel {
 
         courierNumLabel.setText("快递员编号:");
 
-        sumLabel.setText("总和:");
-
-        sumText.setEditable(false);
-
         cancelButton.setText("取消");
         cancelButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -177,7 +173,12 @@ public class CashRep extends javax.swing.JPanel {
             }
         });
         
-        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        sumLabel.setText("总和:");
+
+        sumText.setEditable(false);
+        if(dataVector.size()!=0){
+        	sumText.setText(calSum());
+        }
         
         checkAllRepsButton.setText("查看所有单据");
         checkAllRepsButton.addMouseListener(new java.awt.event.MouseAdapter() {

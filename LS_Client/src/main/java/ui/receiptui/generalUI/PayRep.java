@@ -146,6 +146,13 @@ public class PayRep extends javax.swing.JPanel {
 		jTable.setModel(model);
 		jTable.setGridColor(new java.awt.Color(0, 0, 0));
 		jScrollPane1.setViewportView(jTable);
+		
+        sumLabel.setText("总和:");
+
+        sumText.setEditable(false);
+        if(dataVector.size()!=0){
+        	sumText.setText(calSum());
+        }
 
 		choosePayThingLabel.setText("请选择付款对象:");
 
@@ -172,10 +179,6 @@ public class PayRep extends javax.swing.JPanel {
 		});
 
 		payManLabel.setText("付款人");
-
-		sumLabel.setText("总计:");
-
-		sumText.setEditable(false);
 
 		resultMsgText.setEditable(false);
 

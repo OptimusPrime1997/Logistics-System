@@ -6,20 +6,14 @@ public class PayCourierSalaryPO extends PaySalaryPO{
 	 */
 	private static final long serialVersionUID = -5246247747908523375L;
 	
-	private double getMoneySum;
-	private double deliverMoneySum;
+	private double workMoney;
 	
-	public PayCourierSalaryPO(String getterName, String getterNum, double money, double getMoneySum,
-			double deliverMoneySum) {
+	public PayCourierSalaryPO(String getterName, String getterNum, double money, double workMoney) {
 		super(getterName, getterNum, money);
-		this.getMoneySum = getMoneySum;
-		this.deliverMoneySum = deliverMoneySum;
+		this.workMoney = workMoney;
 	}
-	public double getGetMoneySum() {
-		return getMoneySum;
-	}
-	public double getDeliverMoneySum() {
-		return deliverMoneySum;
+	public double getWorkMoney() {
+		return workMoney;
 	}
 	
 }
