@@ -20,9 +20,6 @@ public class ShipRepPO extends ReceiptPO{
 		this.driverNum = driverNum;
 		this.goods = goods;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 	public String getDepart() {
 		return depart;
 	}

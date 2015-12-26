@@ -1,6 +1,6 @@
 package util.enumData;
 
-public enum City implements Comparable<City> {
+public enum City {
 	BEIJING(10, "北京"), GUANGZHOU(20, "广州"), NANJING(25, "南京"), SHANGHAI(21, "上海");
 	private int index;
 	private String value;

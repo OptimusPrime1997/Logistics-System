@@ -77,7 +77,7 @@ public class GetRepbl{
 
 	public void transferOver(String num, GoodsArrivalState goodsArrivalState) {
 		// TODO Auto-generated method stub
-		goodsbl.end(num);
+		goodsbl.end(num,goodsArrivalState);
 		goodsbl.setArrivalState(num, goodsArrivalState, receiptbl.getDate());
 		goodsbl.setLogisticState(num, GoodsLogisticState.BROKEN_OR_LOST, receiptbl.getDate());
 	}

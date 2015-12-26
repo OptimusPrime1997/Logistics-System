@@ -84,8 +84,12 @@ public class courier_signed extends JFrame {
         /*
          * 若非法则创建dialog窗口向用户反馈
          */
+        String date=year_ComboBox.getSelectedItem().toString()+"-"+
+        		month_ComboBox.getSelectedItem().toString()+"-"+    
+        		day_ComboBox.getSelectedItem().toString();
+        System.out.println("签收 "+date);
         if(msg_check_listNum==ResultMessage.VALID&&msg_check_name==ResultMessage.VALID){
-        	msg=controller_end.end(listNum, getterName, getterPhone);
+        	msg=controller_end.end(listNum,date, getterName, getterPhone);
             if(msg==ResultMessage.NOT_FOUND){
             	messages.add(msg);            	
             }	

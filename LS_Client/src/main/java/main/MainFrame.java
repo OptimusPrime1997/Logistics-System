@@ -2,26 +2,26 @@
 package main;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.rmi.RemoteException;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.WindowConstants;
 
+import ui.Img;
 import ui.administratorui.AdministratorPanel;
 import ui.businessOfficerui.businessOfficer_main;
 import ui.courierui.courier_main;
 import ui.financialstaffui.FinancialStaffJFrame;
 import ui.managerui.ManagerJFrame;
 import ui.transferCtrOfficerui.transferCtrOfficer_main;
+import ui.util.MyButton;
 import ui.warehousemanui.WarehousePanel;
 import util.InputCheck;
 import util.enumData.ResultMessage;
@@ -50,7 +50,9 @@ import blservice.loginblservice.LoginBLService;
  * @author Administrator5
  */
 public class MainFrame extends JFrame {
+	private int mousePressedX;
 
+	private int mousePressedY;
 	/**
      * Creates new form MainFrame
      */
@@ -58,58 +60,63 @@ public class MainFrame extends JFrame {
     	ctr_checkValid = ControllerFactoryImpl.getInstance().getGoodsCheckController();
     	ctr_find=ControllerFactoryImpl.getInstance().getGoodsFindController();
         ctr_login=ControllerFactoryImpl.getInstance().getLoginController();
-    	this.setVisible(true);
-    	setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    	this.setLocationRelativeTo(null);
     	this.setResizable(false);
-        initComponents();
+    	this.setSize(width,height);
         this.setLocationRelativeTo(null);
+        addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				mousePressedX = e.getX();
+				mousePressedY = e.getY();
+			}
+		});
+		addMouseMotionListener(new MouseMotionAdapter() {
+			public void mouseDragged(MouseEvent e) {
+				int x = (int) getLocation().getX();
+				int y = (int) getLocation().getY();
+				setLocation(x + e.getX() - mousePressedX, y + e.getY()
+						- mousePressedY);
+			}
+		});
+		initComponents();
+		this.setUndecorated(true);
+		this.setVisible(true);
     }
 	private void initComponents() {
-		contentPane=new JPanel();
+		contentPane=new JPanel(){
+			@Override
+			protected void paintComponent(Graphics g) {
+				g.drawImage(Img.getBackground0(), 0, 0, width,height,null);
+			}
+		};
+		contentPane.setLayout(null);
 		initTxt();
 		initbtn();
 		initLabel();
 		initLayout();
 	}
 	private void initLabel() {
- 		jLabel2 = new javax.swing.JLabel();
- 		jLabel3 = new javax.swing.JLabel();
- 		jLabel1 = new javax.swing.JLabel();
- 		jLabel2.setText("账号");
- 		jLabel3.setText("密码");
- 		jLabel1.setFont(new java.awt.Font("华文行楷", 1, 24));
-		jLabel1.setText("LS  快递物流系统");
-	}
-	private void initbtn() {
-		search_btn = new javax.swing.JButton();
-		login_btn = new javax.swing.JButton();
-		search_btn.setText("查询");
-		login_btn.setText("登录");
-
-		login_btn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("登录");
-				login_btnMouseClicked();
-			}
-		});
-		search_btn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				search_btnMouseClicked();
-			}
-		});
+ 		account_label = new javax.swing.JLabel();
+ 		key_label = new javax.swing.JLabel();
+ 		account_label.setText("账号");
+ 		account_label.setBounds(260, 150, 30, 15);
+ 		key_label.setText("密码");
+ 		key_label.setBounds(260, 180, 30, 15);
+ 		loginLABLEBTN=new JLabel();
+ 		loginLABLEBTN.setBounds(50, 50, 50, 50);
 	}
 	private void initTxt() {
 		goodsNum_text = new javax.swing.JTextField();
 		account_text = new javax.swing.JTextField(11);
 		password_text = new javax.swing.JPasswordField(6);
 	    feedback_text = new JTextField();
-		
+	    
+	    account_text.setBounds(290, 145, 100, 20);
+	    password_text.setBounds(290, 180, 100, 20);
+	    feedback_text.setBounds(20,265,400, 20);
 	    feedback_text.setEditable(false);
-	    feedback_text.setForeground(Color.red);
+	    feedback_text.setForeground(Color.MAGENTA);//TODO 其他的颜色都改成这个
 		goodsNum_text.setText(standard_goodsNum);
+		goodsNum_text.setBounds(40, 145, 100, 20);
 		goodsNum_text.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				goodsNum_textMouseClicked(evt);
@@ -127,10 +134,39 @@ public class MainFrame extends JFrame {
 		});
 		
 	}
+	private void initbtn() {
+		search_btn = new MyButton(150, 140,60, 25);
+		login_btn = new MyButton(320, 210, 60, 25);
+		exit_btn=new MyButton(370,20,60,25);
+
+		login_btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				login_btnMouseClicked();
+			}
+		});
+		search_btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				search_btnMouseClicked();
+			}
+		});
+		exit_btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				exit_btnMouseClicked();
+			}
+		});
+	}
+	
 	
     /**
      * 监听们
      */
+
+	private void exit_btnMouseClicked() {
+		System.exit(0);
+	}
     /**
 	 * 对用户输入的订单号进行检查和寻找
 	 */
@@ -207,8 +243,6 @@ public class MainFrame extends JFrame {
          			break;
          		case 8:
          			new AdministratorPanel();
-         		case 9:
-         			new FinancialStaffJFrame();
          		default:showFeedback(ResultMessage.NOT_FOUND_ACCOUNTNUM);
          			break;
          		}
@@ -240,73 +274,19 @@ public class MainFrame extends JFrame {
     }  
 	
     private void initLayout() {
-    	 javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(contentPane);
-         contentPane.setLayout(jPanel1Layout);
-         jPanel1Layout.setHorizontalGroup(
-             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-             .addGroup(jPanel1Layout.createSequentialGroup()
-                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                     .addGroup(jPanel1Layout.createSequentialGroup()
-                         .addGap(32, 32, 32)
-                         .addComponent(goodsNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                         .addGap(18, 18, 18)
-                         .addComponent(search_btn)
-                         .addGap(66, 66, 66)
-                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                             .addComponent(login_btn)
-                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                     .addComponent(jLabel2)
-                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                     .addComponent(account_text, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                     .addComponent(jLabel3)
-                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                     .addComponent(password_text, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                     .addGroup(jPanel1Layout.createSequentialGroup()
-                         .addGap(68, 68, 68)
-                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                     .addGroup(jPanel1Layout.createSequentialGroup()
-                         .addContainerGap()
-                         .addComponent(feedback_text, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                 .addContainerGap(50, Short.MAX_VALUE))
-         );
-         jPanel1Layout.setVerticalGroup(
-             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-             .addGroup(jPanel1Layout.createSequentialGroup()
-                 .addGap(20, 20, 20)
-                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                 .addGap(28, 28, 28)
-                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                     .addComponent(account_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                     .addComponent(jLabel2))
-                 .addGap(15, 15, 15)
-                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                     .addComponent(password_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                     .addComponent(jLabel3)
-                     .addComponent(goodsNum_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                     .addComponent(search_btn))
-                 .addGap(18, 18, 18)
-                 .addComponent(login_btn)
-                 .addGap(55, 55, 55)
-                 .addComponent(feedback_text, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-         );
-
-         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-         getContentPane().setLayout(layout);
-         layout.setHorizontalGroup(
-             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-             .addGroup(layout.createSequentialGroup()
-                 .addComponent(contentPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                 .addGap(0, 0, Short.MAX_VALUE))
-         );
-         layout.setVerticalGroup(
-             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-             .addComponent(contentPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-         );
-
-         pack();
+    	contentPane.setLayout(null);
+    	
+    	contentPane.add(account_label);
+    	contentPane.add(key_label);
+    	contentPane.add(search_btn);
+    	contentPane.add(login_btn);
+    	contentPane.add(feedback_text);
+    	contentPane.add(password_text);
+    	contentPane.add(account_text);
+    	contentPane.add(goodsNum_text);
+    	contentPane.add(loginLABLEBTN);
+    	contentPane.add(exit_btn);
+    	this.setContentPane(contentPane);
 	}
 
 	
@@ -322,29 +302,30 @@ public class MainFrame extends JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                MainFrame mainFrame=new MainFrame();
-                mainFrame.setVisible(true);
-            }
-        });
+    	MainFrame mainFrame=new MainFrame();
+//        try {
+//            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                MainFrame mainFrame=new MainFrame();
+//               
+//            }
+//        });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JTextField account_text,
@@ -352,14 +333,15 @@ public class MainFrame extends JFrame {
     private JPasswordField password_text;
     final String standard_goodsNum="输入订单号10位";
     private String	password,goodsNum,account;
-    private JButton search_btn,login_btn;
-    private JLabel jLabel1;
-    private JLabel jLabel2;
-    private JLabel jLabel3;
+    private MyButton search_btn,login_btn,exit_btn;
+    private JLabel loginLABLEBTN;
+    private JLabel account_label;
+    private JLabel key_label;
     private JPanel contentPane;
     private GoodsVO vo;
     private GoodsCheckValidBLService ctr_checkValid;
     private GoodsFindBLService ctr_find;
     private LoginBLService ctr_login;
+    private final int width=450,height=300;
     // End of variables declaration//GEN-END:variables
 }

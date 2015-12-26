@@ -118,7 +118,7 @@ public enum ResultMessage {
 	/**
 	 * 账号不存在
 	 */
-	NOT_FOUND_ACCOUNTNUM(""),
+	NOT_FOUND_ACCOUNTNUM("账号不存在"),
 	/**
 	 * 数据格式错误
 	 */
@@ -134,7 +134,7 @@ public enum ResultMessage {
 	/**
 	 * 文件未找到
 	 */
-	NOT_FOUND_FILE(""),
+	NOT_FOUND_FILE("文件未找到"),
 	/**
 	 * 文件读写失败
 	 */
@@ -207,7 +207,6 @@ public enum ResultMessage {
 		return this.value;
 	}
 	public static String toFriendlyString(ResultMessage resultMessage) {
-
 		switch (resultMessage) {
 		case REPNUM_LENGTH_OVER:
 			return "过长";
@@ -244,7 +243,7 @@ public enum ResultMessage {
 		case OVERRIDE_DATA:
 			return "覆盖数据";
 		case NOT_FOUND:
-			return "对不起，该订单不存在";
+			return "对不起，该未找到数据";
 		case SIGNED_SUCCESS:
 			return "签收成功~";
 		case MODIFY_SUCCESS:
@@ -275,6 +274,8 @@ public enum ResultMessage {
 			return "起始日期必须早于结束日期";
 		case ALARM:
 			return "该区库存紧张";
+		case NOT_FOUND_FILE:
+			return "文件未找到";
 		default:
 			return "";
 		}

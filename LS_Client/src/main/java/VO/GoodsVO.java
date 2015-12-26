@@ -21,17 +21,12 @@ import util.enumData.*;
 public class GoodsVO {
 	public static void main(String[] args) {
 		 GoodsVO vo = new GoodsVO("0250000123", false, "02400100006014",
-					"", "20151026", "", "025", "李华",
+					"", "2015-12-23", "", "025", "李华",
 					"上海市浦东新区张杨路500号", "上海华润时代广场", "87511426", "陆宏",
 					"南京市栖霞区仙林大道和园12号", null, "15500001112", 1, 5, 8, "书",
 					GoodsExpressType.NORMAL, 5, 0, 0, GoodsArrivalState.INTACT,
-					GoodsLogisticState.SENDED, null, null);
-		 vo.allLogisticStates.add(new String[]{"2015-12-20","到达营业厅"});
-		 vo.allLogisticStates.add(new String[]{"2015-12-21","到达目的地中转中心"});
-		 for(String[] t:vo.allLogisticStates){
-			 System.out.println(t[0]+"  "+t[1]);
-			 
-		 }
+					GoodsLogisticState.SENDED, null, null,"2015-12-23");
+		 
 	}
 	public String listNum="";
 	public Boolean ifExaminePassed=false;
@@ -61,8 +56,7 @@ public class GoodsVO {
 	public String realReceiverName="";
 	public String realReceiverPhone="";
 	//物流历史状态
-	public ArrayList<String[]> allLogisticStates=new ArrayList<String[]>();
-	
+	public String dates="";
 	public GoodsVO(String listNum,Boolean ifExaminePassed,
 			String getCourierAccount, String deliverCourierAccount,
 			String startTime, String overtime, String destinationCity,
@@ -73,7 +67,7 @@ public class GoodsVO {
 			GoodsExpressType expressType, double moneyOfPackage,
 			double moneyTotal, double moneyFare,
 			GoodsArrivalState arrivalState, GoodsLogisticState logisticState,
-			String realReceiverName, String realReceiverPhone) {
+			String realReceiverName, String realReceiverPhone,String dates) {
 		//TODO
 		this.listNum=listNum;
 		this.ifExaminePassed = ifExaminePassed;
@@ -103,6 +97,7 @@ public class GoodsVO {
 		this.realReceiverName = realReceiverName;
 		this.realReceiverPhone = realReceiverPhone;
 		this.startCity=getCourierAccount.substring(0, 3);
+		this.dates=dates;
 	}
 
 	public GoodsVO(GoodsPO po){
@@ -133,7 +128,7 @@ public class GoodsVO {
 		this.logisticState = po.getLogisticState();
 		this.realReceiverName = po.getRealReceiverName();
 		this.realReceiverPhone = po.getRealReceiverPhone();
-		this.allLogisticStates=po.getAllLogisticStates();
+		this.dates=po.getDates();
 		this.startCity=po.getStartCity();
 		
 	}
@@ -144,7 +139,7 @@ public class GoodsVO {
 				vo.receiverName,vo.receiverAddress,vo.receiverCompany,vo.receiverPhone,
 				vo.numOfGoods,vo.weight,vo.volume,vo.nameOfInside,vo.expressType,
 				vo.moneyOfPackage,vo.moneyTotal,vo.moneyFare,vo.arrivalState,
-				vo.logisticState,vo.realReceiverName,vo.realReceiverPhone,vo.allLogisticStates,
+				vo.logisticState,vo.realReceiverName,vo.realReceiverPhone,vo.dates,
 				vo.startCity);
 		return po;
 	}

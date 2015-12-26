@@ -6,6 +6,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
+import bl.loginbl.Loginbl;
+import bl.loginbl.LoginblController;
 import dataservice.managementdataservice.accountdataservice.AccountDataService;
 import dataservice.managementdataservice.accountdataservice.CourierDataService;
 import dataservice.managementdataservice.bankaccountdataservice.BankAccountDataService;
@@ -23,7 +25,7 @@ public class ManageData extends UnicastRemoteObject implements
 
 	private static ManageDataService manageDataService;
 
-	public static String address = "127.0.0.1";
+	public static String address = Loginbl.getIP();
 
 	public static int port = ManageDataService.port;
 

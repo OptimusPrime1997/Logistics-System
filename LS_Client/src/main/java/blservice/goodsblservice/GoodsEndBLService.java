@@ -11,6 +11,6 @@ public interface GoodsEndBLService {
 	 * @param realReceiverPhone
 	 * @return
 	 */
-	public ResultMessage end(String listNum,String realReceiverName,String realReceiverPhone);
+	public ResultMessage end(String listNum,String date,String realReceiverName,String realReceiverPhone);
 
 }

@@ -15,7 +15,6 @@ import VO.GoodsVO;
  * @author Administrator
  */
 public class LogisticStateUI extends javax.swing.JFrame {
-
     /**
      * Creates new form toResearch
      * @param vo 
@@ -52,10 +51,12 @@ public class LogisticStateUI extends javax.swing.JFrame {
 
         jLabel3.setText("订单号");
         int count=0;
-        content=new Object[vo.allLogisticStates.size()][2];
-        for(String[] states:vo.allLogisticStates){
-        	content[count][0]=states[0];
-        	content[count][1]=states[1];
+        String[] dates=vo.dates.split(" ");
+        content=new Object[dates.length][2];
+        for(String date:dates){
+        	content[count][0]=date;
+        	content[count][1]=GoodsLogisticState.toFriendlyString(GoodsLogisticState.get(count));
+        	count++;
         }
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             content,

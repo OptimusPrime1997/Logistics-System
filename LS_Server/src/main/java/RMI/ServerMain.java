@@ -1,5 +1,7 @@
 package RMI;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
 
@@ -33,10 +35,27 @@ import dataservice.stockdataservice.StockDivisionDataService;
 import dataservice.stockdataservice.StockInitialDataService;
 
 public class ServerMain {
-	final public static String ip = "127.0.0.1";
+	 public static String ip = "127.0.0.1";
 	final static int defaultPort = 1099;
 
+	private static String getIpAddress() throws UnknownHostException {
+		InetAddress address = InetAddress.getLocalHost();
+		return address.getHostAddress();
+	}
+
 	public static void main(String[] args) {
+		String currentIP=null;
+		try {
+			 currentIP = getIpAddress();
+			System.out.println("当前服务器IP地址："+currentIP);
+		} catch (UnknownHostException e1) {
+			// TODO Auto-generated catch block
+			System.out.println("获取当前IP地址失败。");
+			e1.printStackTrace();
+		}
+		if(currentIP!=null){
+//			ip=currentIP;
+		}
 		try {
 			BusinessFormDataService business = new BusinessFormData();
 			LocateRegistry.createRegistry(3331);
@@ -83,32 +102,34 @@ public class ServerMain {
 			Naming.rebind("rmi://" + ip + ":" + defaultPort + "/stockDivision",
 					sdd);
 			System.out.println("9");
-			
+
 			LocateRegistry.createRegistry(1025);
 			PayRepDataService payService = new PayRepData();
 			Naming.rebind("rmi://" + ip + ":" + "1025/pay", payService);
 			System.out.println("10");
-			
+
 			LocateRegistry.createRegistry(1026);
 			InStockRepDataService inStockService = new InStockRepData();
 			Naming.rebind("rmi://" + ip + ":" + "1026/inStock", inStockService);
 			System.out.println("11");
-			
+
 			LocateRegistry.createRegistry(1027);
 			OutStockRepDataService outStockService = new OutStockRepData();
-			Naming.rebind("rmi://" + ip + ":" + "1027/outStock", outStockService);
+			Naming.rebind("rmi://" + ip + ":" + "1027/outStock",
+					outStockService);
 			System.out.println("12");
-			
+
 			LocateRegistry.createRegistry(1028);
 			CashRepDataService cashService = new CashRepData();
 			Naming.rebind("rmi://" + ip + ":" + "1028/cash", cashService);
 			System.out.println("13");
-			
+
 			LocateRegistry.createRegistry(1029);
 			TransferRepDataService transferService = new TransferRepData();
-			Naming.rebind("rmi://" + ip + ":" + "1029/transfer", transferService);
+			Naming.rebind("rmi://" + ip + ":" + "1029/transfer",
+					transferService);
 			System.out.println("14");
-			
+			System.out.println("服务器启动完成！");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

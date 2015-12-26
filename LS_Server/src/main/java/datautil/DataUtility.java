@@ -1,5 +1,7 @@
 package datautil;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -7,11 +9,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import PO.Receipt.ReceiptPO;
-import util.enumData.Rep;
 import util.enumData.ResultMessage;
 
 public class DataUtility implements Serializable {
@@ -24,6 +25,7 @@ public class DataUtility implements Serializable {
 	public ResultMessage save(Object o, String add) throws IOException {
 		File saveFile = new File(add);
 		FileOutputStream fo = new FileOutputStream(saveFile, true);
+//		BufferedOutputStream bos = new BufferedOutputStream(fo);
 		ObjectOutputStream os;
 		if (saveFile.length() < 1)
 			os = new ObjectOutputStream(fo);
@@ -32,6 +34,7 @@ public class DataUtility implements Serializable {
 		os.writeObject(o);
 		os.close();
 		return ResultMessage.SUCCESS;
+		
 	}
 
 	public ArrayList<Object> getAll(String add) throws IOException, ClassNotFoundException {
@@ -40,6 +43,7 @@ public class DataUtility implements Serializable {
 			return null;
 		ArrayList<Object> objects = new ArrayList<Object>();
 		FileInputStream fin = new FileInputStream(saveFile);
+//		BufferedInputStream bos = new BufferedInputStream(fin);
 		ObjectInputStream is = new ObjectInputStream(fin);
 		while (fin.available() > 0) {
 			Object o = is.readObject();
@@ -85,5 +89,5 @@ public class DataUtility implements Serializable {
 			return;
 		}
 	}
-
+	
 }

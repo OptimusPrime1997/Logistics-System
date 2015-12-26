@@ -241,7 +241,9 @@ public class PayRepStaff extends javax.swing.JPanel {
     private String calSum(){
     	double sum = 0;
     	for(int i = 0;i < dataVector.size();i++){
-    		sum += Double.parseDouble((String)jTable.getValueAt(i, 3));
+    		String value = (String)jTable.getValueAt(i, 3);
+    		if(value!=null)
+    			sum += Double.parseDouble(value);
     	}
     	return sum+"";
     }
