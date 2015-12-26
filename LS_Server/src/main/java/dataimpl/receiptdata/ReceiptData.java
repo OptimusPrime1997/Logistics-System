@@ -130,6 +130,11 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 		}
 		return s;
 	}
+	
+	public static void main(String[] args) throws ClassNotFoundException, IOException{
+		ReceiptData receiptData = new ReceiptData();
+		receiptData.createNum("2015-12-26", Rep.GetRep, "025001");
+	}
 
 	public void clearSubmit(Rep rep, String office) throws IOException, ClassNotFoundException {
 		ArrayList<Object> objects = util.getAll(submitAdd(rep));

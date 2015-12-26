@@ -13,7 +13,7 @@ public class ArriveRepPO extends ReceiptPO{
 	private String shipNum;
 	private ArrayList<ArrivePO> getArrivePOs;
 	public ArriveRepPO(String num, String date, Rep rep, String shipNum,
-			ArrayList<ArrivePO> getArrivePOs) {
+ ArrayList<ArrivePO> getArrivePOs) {
 		super(num, date);
 		this.rep = rep;
 		this.shipNum = shipNum;

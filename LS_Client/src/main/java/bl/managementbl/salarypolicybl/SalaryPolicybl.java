@@ -56,7 +56,7 @@ public class SalaryPolicybl {
 							return ResultMessage.EXIST;
 						}
 					}
-				}
+	}
 				if (check(vo) == ResultMessage.VALID) {
 					 rmsg = salaryPolicyDataService
 							.insert(manageVOPO.voToPO(vo));
@@ -69,7 +69,8 @@ public class SalaryPolicybl {
 				e.printStackTrace();
 				System.out.println("存储文件出错");
 				return ResultMessage.IOFAILED;
-			} catch (ClassNotFoundException e) {
+			}
+			catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("系统程序错误");
