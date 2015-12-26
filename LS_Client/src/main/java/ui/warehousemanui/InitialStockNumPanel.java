@@ -20,6 +20,7 @@ import javax.swing.JLabel;
 import main.MainFrame;
 import util.enumData.ResultMessage;
 import bl.controllerfactorybl.ControllerFactoryImpl;
+import bl.loginbl.Loginbl;
 import blservice.stockblservice.StockNumBLService;
 
 
@@ -80,7 +81,7 @@ public class InitialStockNumPanel extends JFrame{
         resultMessage = new JLabel();
         
        
-        jLabel9.setText("当前账户：大玉儿");
+        jLabel9.setText("当前账户："+Loginbl.getCurrentOptorName());
 
         jButton3.setText("退出");
         jButton3.addActionListener(new java.awt.event.ActionListener() {

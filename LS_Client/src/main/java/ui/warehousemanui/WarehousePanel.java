@@ -8,6 +8,7 @@ package ui.warehousemanui;
 import java.awt.*;
 import java.io.IOException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -15,6 +16,8 @@ import javax.swing.*;
 import main.MainFrame;
 import VO.StockVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
+import bl.loginbl.Loginbl;
+import bl.loginbl.LoginblController;
 import blservice.stockblservice.StockBLService;
 import ui.receiptui.generalUI.InStockRep;
 import ui.receiptui.generalUI.OutStockRep;
@@ -23,7 +26,7 @@ import ui.receiptui.generalUI.OutStockRep;
  *
  * @author G
  */
-public class WarehousePanel extends javax.swing.JFrame implements Runnable{
+public class WarehousePanel extends javax.swing.JFrame {
 	
 	
 
@@ -31,9 +34,13 @@ public class WarehousePanel extends javax.swing.JFrame implements Runnable{
      * Creates new form NewJFrame
      */
     public WarehousePanel() {
+    	try {
+			username = new LoginblController().getCurrentName();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
         initComponents();
-//        Thread t = new Thread(this);
-//        t.start();
+       
         this.setVisible(true);
     }
 
@@ -178,7 +185,7 @@ public class WarehousePanel extends javax.swing.JFrame implements Runnable{
             }
         });
 
-        jLabel9.setText("当前账户：大玉儿");
+        jLabel9.setText("当前账户："+username);
 
         jButton4.setText("调整分区");
         
@@ -415,15 +422,21 @@ public class WarehousePanel extends javax.swing.JFrame implements Runnable{
 //  			count++;
 //  			System.out.println("i'm refreshing  "+count);
 			Peking1.setValue(s.checkPresentStockQuantity(1));
-//			System.out.println(s.checkPresentStockQuantity(1));
+			System.out.println("block1 "+s.checkPresentStockQuantity(1));
 			Peking2.setValue(s.checkPresentStockQuantity(2));
+			System.out.println("block2 "+s.checkPresentStockQuantity(2));
 			Nanjing1.setValue(s.checkPresentStockQuantity(3));
+			System.out.println("block3 "+s.checkPresentStockQuantity(3));
 			Nanjing2.setValue(s.checkPresentStockQuantity(4));
+			System.out.println("block4 "+s.checkPresentStockQuantity(4));
 			Shanghai1.setValue(s.checkPresentStockQuantity(5));
+			System.out.println("block5 "+s.checkPresentStockQuantity(5));
 			Shanghai2.setValue(s.checkPresentStockQuantity(6));
+			System.out.println("block6 "+s.checkPresentStockQuantity(6));
 			Guangzhou1.setValue(s.checkPresentStockQuantity(7));
+			System.out.println("block7 "+s.checkPresentStockQuantity(7));
 			Guangzhou2.setValue(s.checkPresentStockQuantity(8));
-			
+			System.out.println("block8 "+s.checkPresentStockQuantity(8));
 		
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			//
@@ -517,26 +530,8 @@ public class WarehousePanel extends javax.swing.JFrame implements Runnable{
     private JProgressBar Nanjing2;
     private JProgressBar Guangzhou1;
     private JProgressBar Guangzhou2;
-
-	/* (non-Javadoc)
-	 * @see java.lang.Runnable#run()
-	 */
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		System.out.println("run --");
-		try {
-			Thread.sleep(1000);
-			showProcess();
-			
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		showProcess();
-		
-		
-	}
+    private String username;
+	
  
 
     // End of variables declaration//GEN-END:variables

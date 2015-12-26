@@ -12,7 +12,7 @@ import bl.managementbl.accountbl.Accountbl;
 
 public class Loginbl {
 	private static String currentOptorId = "02500106027";
-	private static String currentOptorName = "李四";
+	private static String currentOptorName = "大玉儿";
 	private static Authority currentAuthority = Authority.COURIER;
 
 	public ResultMessage login(String accountNum, String key) {

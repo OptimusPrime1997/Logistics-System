@@ -16,6 +16,7 @@ import javax.swing.*;
 
 import main.MainFrame;
 import bl.controllerfactorybl.ControllerFactoryImpl;
+import bl.loginbl.Loginbl;
 import blservice.stockblservice.StockBLService;
 import util.enumData.ResultMessage;
 /**
@@ -136,11 +137,11 @@ public class StockCheckPanel extends javax.swing.JFrame {
 
         jLabel15.setText("出库数量：");
 
-        innum.setText("5000");
+        innum.setText("0");
 
         jLabel17.setText("入库数量：");
 
-        outnum.setText("2000");
+        outnum.setText("0");
 
     
 
@@ -276,6 +277,8 @@ public class StockCheckPanel extends javax.swing.JFrame {
      */
     private void showResult(String result) {
     	
+  
+    	
     	Pattern p = Pattern.compile("\\d+(\\.\\d+)?");
     	Matcher m = p.matcher(result);
     	m.find();
@@ -335,7 +338,7 @@ public class StockCheckPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private JLabel resultMessage;
-    private String username = "大玉儿";
+    private String username = Loginbl.getCurrentOptorName();
     // End of variables declaration                   
 }
 

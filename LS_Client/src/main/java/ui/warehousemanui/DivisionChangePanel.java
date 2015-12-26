@@ -9,6 +9,7 @@ import javax.swing.*;
 import main.MainFrame;
 import VO.StockDivisionVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
+import bl.loginbl.Loginbl;
 import blservice.stockblservice.StockDivisionBLService;
 import util.FromIntToCity;
 import util.enumData.City;
@@ -91,7 +92,7 @@ public class DivisionChangePanel extends JFrame {
 
       
         
-        jLabel9.setText("当前账户：大玉儿");
+        jLabel9.setText("当前账户："+Loginbl.getCurrentOptorName());
 
         exit.setText("退出");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -325,12 +326,15 @@ public class DivisionChangePanel extends JFrame {
     	//得到本仓库选中的区的所有VO
     	int division = oldDivisions.getSelectedIndex()+1;	
     	City desCity = FromIntToCity.toCity(division);
+    	//TODO 
+    	
     	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
     	//得到本区所选小块的存在的所有位号
-    	int block = oldBlocks.getSelectedIndex()+1;    	
+//    	int block = oldBlocks.getSelectedIndex()+1;    
+    	int block = (int) oldBlocks.getSelectedItem();
     	ArrayList<Integer> result = new ArrayList<Integer>();
     	for (StockDivisionVO vo : list) {
-    		if (vo.place<=(100*block)&&vo.place>=((block-1)*100+1)) {
+    		if (vo.place<=(100*block)&&vo.place>=((block-1)*100+1)&&(vo.block == division)) {
 				result.add(vo.place);
 			}
     		
@@ -391,6 +395,7 @@ public class DivisionChangePanel extends JFrame {
     private void oldDivisionsActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
     	//得到本仓库选中的区的所有VO
     	int division = oldDivisions.getSelectedIndex()+1;	
+    	
     	City desCity = FromIntToCity.toCity(division);
     	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
     	//得到中间参数小块号，布尔值为true的需要显示
@@ -398,6 +403,9 @@ public class DivisionChangePanel extends JFrame {
     	
     	for (StockDivisionVO vo : list) {
     		int i = vo.place/100 ;
+    		
+
+    		
     		smallBlocks[i] = true;
     		//判断是不是所有的小块都满了，如果全满，则停止遍历
     		boolean full = true;
@@ -417,8 +425,7 @@ public class DivisionChangePanel extends JFrame {
     	int placeSize = 0;    	
     	
     	
-    	smallBlocks[0] = true;
-    	smallBlocks[9] = true;
+    
     	
     	
     	ArrayList<Integer> result = new ArrayList<Integer>();
