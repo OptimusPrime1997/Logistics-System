@@ -6,6 +6,7 @@
 package ui.managerui;
 
 import java.awt.Component;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -78,8 +79,34 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	 */
 
 	public ManagerJFrame() {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+			throw new RuntimeException();
+		}
+		try {
+			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
+					.getInstalledLookAndFeels()) {
+				if ("Nimbus".equals(info.getName())) {
+					javax.swing.UIManager.setLookAndFeel(info.getClassName());
+					break;
+				}
+			}
+		} catch (ClassNotFoundException ex) {
+			java.util.logging.Logger.getLogger(ManagerJFrame.class.getName())
+					.log(java.util.logging.Level.SEVERE, null, ex);
+		} catch (InstantiationException ex) {
+			java.util.logging.Logger.getLogger(ManagerJFrame.class.getName())
+					.log(java.util.logging.Level.SEVERE, null, ex);
+		} catch (IllegalAccessException ex) {
+			java.util.logging.Logger.getLogger(ManagerJFrame.class.getName())
+					.log(java.util.logging.Level.SEVERE, null, ex);
+		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+			java.util.logging.Logger.getLogger(ManagerJFrame.class.getName())
+					.log(java.util.logging.Level.SEVERE, null, ex);
+		}
 		initComponents();
-		
+
 		this.setResizable(false);
 		// managerFrame.setUndecorated(false);
 		this.setVisible(true);
@@ -151,7 +178,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed"
 	// desc="Generated Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
-		
+
 		setDocumentVector();
 		setAccountVOs();
 		setConstVOs();
@@ -184,10 +211,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		String currentOptorId = Loginbl.getCurrentOptorId();
 		currentAccountNamejLabel.setText(currentOptorId);
 
-		currentAuthorityjLabel.setText(Authority.getAuthority(
-				Integer.parseInt(currentOptorId.substring(7, 8))).getValue());
+		currentAuthorityjLabel.setText(Loginbl.getCurrentOptorName());
 
-		currentAccoutNamejLabel.setText("12345");
+		// currentAccoutNamejLabel.setText("12345");
 
 		jLabel48.setText("状态：");
 
@@ -1451,7 +1477,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jLabel29.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
 		jLabel29.setText("单据信息列表");
 
-		// initialCheckJTable();
+		initialCheckJTable();
 		javax.swing.GroupLayout checkjPaneLayout = new javax.swing.GroupLayout(
 				checkjPane);
 		checkjPane.setLayout(checkjPaneLayout);
@@ -1586,8 +1612,15 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					java.lang.String.class, java.lang.String.class,
 					java.lang.Boolean.class };
 
+			boolean[] canEdit = new boolean[] { false, false, false, false,
+					false, false };
+
 			public Class getColumnClass(int columnIndex) {
 				return types[columnIndex];
+			}
+
+			public boolean isCellEditable(int rowIndex, int columnIndex) {
+				return canEdit[columnIndex];
 			}
 		});
 		documentCheckjTable.setColumnSelectionAllowed(true);
@@ -1599,10 +1632,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				documentCheckjTableMouseClicked(evt);
 			}
 
-			private void documentCheckjTableMouseClicked(MouseEvent evt) {
-				// TODO Auto-generated method stub
-
-			}
 		});
 		final JPopupMenu documentjPop = new JPopupMenu();
 		final JMenuItem documentSubmitjItem = new JMenuItem("全部提交");
@@ -1746,6 +1775,22 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				.setSelectionMode(
 						javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
+	}
+
+	private void documentCheckjTableMouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		Point p = e.getPoint();
+		int row = documentCheckjTable.rowAtPoint(p);
+		int column = documentCheckjTable.columnAtPoint(p);
+		// 代号、车牌号
+		String carCode, carLicence, startTime;
+		// 点了删除
+		if (e.getClickCount() == 1 && column == 3) {
+			// TODO Auto-generated method stub
+			if (e.getButton() == MouseEvent.BUTTON1) {
+				
+			}
+		}
 	}
 
 	/**
@@ -2027,8 +2072,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		sexjComboBox.addItem(Sex.Sex_MALE);
 		sexjComboBox.addItem(Sex.Sex_FAMALE);
 
-		authorityjComboBox =ComponentFactory.getAuthorityJComboBox();
-		
+		authorityjComboBox = ComponentFactory.getAuthorityJComboBox();
 
 		salaryPolicyjComboBox = new JComboBox<SalaryPolicy>();
 		SalaryPolicy salaryPolicy = null;
@@ -2119,18 +2163,16 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jLabel39 = new javax.swing.JLabel();
 		jLabel40 = new javax.swing.JLabel();
 		logTypejComboBox = ComponentFactory.getLogTypeJComboBox();
-		
+
 		logTypejComboBox.setEditable(false);
-		
-		logSYearjComboBox = ComponentFactory.getYearJComboBox(
-				2015, 2050);
+
+		logSYearjComboBox = ComponentFactory.getYearJComboBox(2015, 2050);
 		logSDatejComboBox = ComponentFactory.getDayJComboBox();
 		logSMonthjComboBox = ComponentFactory.getMonthJComboBox();
 		jLabel41 = new javax.swing.JLabel();
 		jLabel42 = new javax.swing.JLabel();
 		jLabel43 = new javax.swing.JLabel();
-		logEYearjComboBox = ComponentFactory.getYearJComboBox(
-				2015, 2050);
+		logEYearjComboBox = ComponentFactory.getYearJComboBox(2015, 2050);
 		logEDatejComboBox = ComponentFactory.getDayJComboBox();
 		logEMonthjComboBox = ComponentFactory.getMonthJComboBox();
 		jLabel44 = new javax.swing.JLabel();
@@ -2750,9 +2792,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			int n) {
 		// TODO Auto-generated method stub
 		assert (vos != null) : ("表格获得的薪水策略信息为空");
-		
+
 		authorityjComboBox.setEditable(false);
-		
+
 		Object[][] salaryPolicyObjects = null;
 		salaryPolicyObjects = new Object[vos.size()][3];
 		int i = 0;
@@ -3764,8 +3806,8 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private ArrayList<SalaryPolicyVOPlus> salaryPolicyVOPlus = null;
 	private ArrayList<InstitutionVOPlus> institutionVOPlus = null;
 	private ArrayList<LogVO> logVOs = null;
-	private ControllerFactoryblService controllerFactoryblService = ControllerFactoryImpl.getInstance()
-			;
+	private ControllerFactoryblService controllerFactoryblService = ControllerFactoryImpl
+			.getInstance();
 	private AccountBLService accountblController = controllerFactoryblService
 			.getAccountController();
 	private ConstBLService constblController = controllerFactoryblService
