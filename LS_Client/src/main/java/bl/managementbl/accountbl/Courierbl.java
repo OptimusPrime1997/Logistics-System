@@ -117,7 +117,7 @@ public class Courierbl {
 		} catch (NumNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return ResultMessage.NOT_FOUND_ACCOUNTNUM;
+			return ResultMessage.NOT_FOUND_NUM;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

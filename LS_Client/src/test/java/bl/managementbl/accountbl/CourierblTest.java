@@ -25,6 +25,8 @@ public class CourierblTest {
 		CourierVO v=null;
 		ResultMessage rmsg=courierbl.add(new CourierVO("02500106066", 10.0));
 		System.out.println("添加快递员 运送金额"+ResultMessage.toFriendlyString(rmsg));
+		ResultMessage r=courierbl.updateMoney("02500106066", 1000);
+		System.out.println("添加快递员 修改金额"+ResultMessage.toFriendlyString(r));
 		if(rmsg==ResultMessage.SUCCESS){
 			try {
 				v=courierbl.findByCourierNum("02500106066");
@@ -44,10 +46,8 @@ public class CourierblTest {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			assertEquals(10, v.courrentMonthMoney,0.1);
+			assertEquals(1010, v.courrentMonthMoney,0.1);
 		}
-		
-		
 	}
 
 }

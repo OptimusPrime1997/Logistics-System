@@ -118,7 +118,7 @@ public enum ResultMessage {
 	/**
 	 * 账号不存在
 	 */
-	NOT_FOUND_ACCOUNTNUM("账号不存在"),
+	NOT_FOUND_NUM("账号不存在"),
 	/**
 	 * 数据格式错误
 	 */
@@ -226,8 +226,8 @@ public enum ResultMessage {
 			return "数据错误";
 		case WRONG_ACCOUNTNUM:
 			return "账号错误";
-		case NOT_FOUND_ACCOUNTNUM:
-			return "账号不存在";
+		case NOT_FOUND_NUM:
+			return "编号不存在";
 		case NOT_FOUND_FINACIAL:
 			return "没有相关的财务记录";
 		case NOT_COMPLETED_ACCOUNT:

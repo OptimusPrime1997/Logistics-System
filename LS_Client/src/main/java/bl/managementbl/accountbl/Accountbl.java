@@ -6,6 +6,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.apache.xmlbeans.impl.common.ResolverUtil;
+
 import dataservice.managementdataservice.accountdataservice.AccountDataService;
 import dataservice.managementdataservice.managedataservice.ManageDataService;
 import util.InputCheck;
@@ -18,6 +20,7 @@ import Exception.NumNotFoundException;
 import PO.AccountPO;
 import VO.ManagementVO.AccountVO;
 import VO.ManagementVO.CourierVO;
+import bl.managementbl.institutionbl.Institutionbl;
 import bl.managementbl.managedata.ManageData;
 import bl.managementbl.managedata.ManageVOPO;
 
@@ -25,6 +28,7 @@ public class Accountbl {
 	private AccountDataService accountDataService;
 	private ManageVOPO manageVOPO;
 	private Courierbl courierbl;
+	private Institutionbl institutionbl;
 
 	// Logbl logbl;
 
@@ -82,6 +86,11 @@ public class Accountbl {
 					ResultMessage rmsg = accountDataService.insert(manageVOPO
 							.voToPO(vo));
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
+					institutionbl=new Institutionbl();
+					ResultMessage r=institutionbl.updateManning(vo.institutionNum);
+					
+					System.out.println("更新机构人员信息："+ResultMessage.toFriendlyString(r));
+					
 					if (rmsg == ResultMessage.SUCCESS && firstInsert == true
 							&& vo.authority == Authority.COURIER) {
 						courierbl.add(new CourierVO(vo.accountNum, 0));
@@ -232,7 +241,7 @@ public class Accountbl {
 
 	public ArrayList<AccountVO> findByInstitutionNum(String institutionNum)
 			throws RemoteException, ClassNotFoundException,
-			NumberFormatException, IOException, NumNotFoundException {
+			 IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.USER_ACCOUNT_MANAGEMENT);
 		if (accountDataService != null) {

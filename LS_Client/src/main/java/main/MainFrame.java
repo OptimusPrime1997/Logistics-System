@@ -111,7 +111,9 @@ public class MainFrame extends JFrame {
 	private void initTxt() {
 		goodsNum_text = new javax.swing.JTextField();
 		account_text = new javax.swing.JTextField(11);
+		
 		account_text.setDocument(new NumOnlyDocument());
+		
 		password_text = new javax.swing.JPasswordField(6);
 		feedback_text = new JTextField();
 
@@ -179,7 +181,7 @@ public class MainFrame extends JFrame {
 		 * 02500106027 025 001 01 027 3位城市 3位营业厅编号 身份 序号（01总经理、02财务人员、03营业厅业务员、
 		 * 04中转中心业务员、05中转中心仓库管理员、06快递员、07司机）+3位顺序编号
 		 */
-		ResultMessage msgAcc_ifValid, msgKey_ifValid, msgMatch = ResultMessage.NOT_FOUND_ACCOUNTNUM;
+		ResultMessage msgAcc_ifValid, msgKey_ifValid, msgMatch = ResultMessage.NOT_FOUND_NUM;
 		password = password_text.getText();
 		account = account_text.getText();
 		msgAcc_ifValid = InputCheck.checkAccount(account);
@@ -220,12 +222,12 @@ public class MainFrame extends JFrame {
 					new FinancialStaffJFrame();
 					break;
 				default:
-					showFeedback(ResultMessage.NOT_FOUND_ACCOUNTNUM);
+					showFeedback(ResultMessage.NOT_FOUND_NUM);
 					break;
 				}
 			} else if (msgMatch == ResultMessage.NOT_COMPLETED_ACCOUNT
 					|| msgMatch == ResultMessage.NOT_FOUND) {
-				showFeedback(ResultMessage.NOT_FOUND_ACCOUNTNUM);
+				showFeedback(ResultMessage.NOT_FOUND_NUM);
 			} else
 				showFeedback(ResultMessage.WRONG_PASSWORD);
 		} else {// 不合法 反馈
