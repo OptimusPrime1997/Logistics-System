@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import dataservice.managementdataservice.managedataservice.ManageDataService;
 import dataservice.managementdataservice.vehicleanddriverdataservice.DriverDataService;
@@ -44,33 +45,33 @@ public class Driverbl {
 			DriverPO lastPO = null;
 			if (check(vo) == ResultMessage.VALID) {
 				try {
-					// ArrayList<DriverPO> pos = driverDataService.showDriver();
-					// if (vo.driverNum.substring(8, 11).equals("000")) {
-					// String temp = vo.driverNum.substring(0, 6);
-					// if (pos != null) {
-					// for (Iterator<DriverPO> t = pos.iterator(); t
-					// .hasNext();) {
-					// DriverPO p = t.next();
-					// if (p.getId().equals(vo.id)) {
-					// return ResultMessage.EXIST;
-					// }
-					// if (p.getDriverNum().substring(0, 6)
-					// .equals(temp)) {
-					// lastPO = p;
-					// }
-					// }
-					// }
-					// if (lastPO == null) {
-					// vo.driverNum = vo.driverNum.substring(0, 6) + "07"
-					// + "001";
-					// } else {
-					// vo.driverNum = vo.driverNum.substring(0, 6)
-					// + "07"
-					// + ThreeAutoNum.toThreeNum(Integer
-					// .parseInt(lastPO.getDriverNum()
-					// .substring(8, 11)) + 1);
-					// }
-					// }
+					ArrayList<DriverPO> pos = driverDataService.showDriver();
+					if (vo.driverNum.substring(8, 11).equals("000")) {
+						String temp = vo.driverNum.substring(0, 6);
+						if (pos != null) {
+							for (Iterator<DriverPO> t = pos.iterator(); t
+									.hasNext();) {
+								DriverPO p = t.next();
+								if (p.getId().equals(vo.id)) {
+									return ResultMessage.EXIST;
+								}
+								if (p.getDriverNum().substring(0, 6)
+										.equals(temp)) {
+									lastPO = p;
+								}
+							}
+						}
+						if (lastPO == null) {
+							vo.driverNum = vo.driverNum.substring(0, 6) + "07"
+									+ "001";
+						} else {
+							vo.driverNum = vo.driverNum.substring(0, 6)
+									+ "07"
+									+ ThreeAutoNum.toThreeNum(Integer
+											.parseInt(lastPO.getDriverNum()
+													.substring(8, 11)) + 1);
+						}
+					}
 					rmsg = driverDataService
 							.insertDriver(manageVOPO.voToPO(vo));
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
@@ -79,13 +80,10 @@ public class Driverbl {
 					e.printStackTrace();
 					System.out.println("存储文件出错");
 					return ResultMessage.IOFAILED;
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-				// catch (ClassNotFoundException e) {
-				// // TODO Auto-generated catch block
-				// e.printStackTrace();
-				// System.out.println("系统程序错误");
-				// return ResultMessage.FAILED;
-				// }
 				return rmsg;
 			} else {
 				System.out.println("司机"
