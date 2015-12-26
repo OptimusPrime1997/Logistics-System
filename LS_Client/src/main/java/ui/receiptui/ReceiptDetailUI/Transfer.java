@@ -125,9 +125,12 @@ public class Transfer extends javax.swing.JPanel {
         TransferRepVO transferRepVO = null;
         try {
 			transferRepVO = control.getRepByNum(num);
-		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
         dateText.setText(transferRepVO.date);
@@ -137,9 +140,12 @@ public class Transfer extends javax.swing.JPanel {
         destinationText.setText(City.toString(transferRepVO.destination));
         try {
 			dataVector = control.initShow(num);
-		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
         columnIdentifiers.add("订单号");

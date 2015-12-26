@@ -59,6 +59,8 @@ public class ShipmentRepbl {
 		}
 		String strLast = truckNum.substring(index);
 		int num = Integer.parseInt(strLast);
+		String ans=num-1+"";
+		System.out.println("Shipmentbl.getTruckSum "+ans);
 		return num-1+"";
 	}
 

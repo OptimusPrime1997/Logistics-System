@@ -22,9 +22,9 @@ import Exception.ExceptionPrint;
 import Exception.GoodsNotFound;
 import VO.Receipt.TransferRepVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
-import bl.receiptbl.TransferRepbl.TransferRepController;
 import blservice.receiptblservice.TransferRepblService;
 import ui.receiptui.ReceiptCheckUI.TransferCheck;
+import ui.transferCtrOfficerui.transferCtrOfficer_main;
 import ui.util.MyFrame;
 import util.CurrentCity;
 import util.enumData.City;
@@ -64,12 +64,15 @@ public class TransferRep extends javax.swing.JPanel {
 	private Vector<String> columnIdentifiers;
 	private Vector<Object> dataVector;
 	private String officeID;
+	private transferCtrOfficer_main parentPanel;
 	// End of variables declaration//GEN-END:variables
 
 	/**
 	 * Creates new form TransferRep
+	 * @param parentPanel 
 	 */
-	public TransferRep() {
+	public TransferRep(transferCtrOfficer_main parentPanel) {
+		this.parentPanel=parentPanel;
 		initComponents();
 		myFrame = new MyFrame(411, 483, this);
 	}
@@ -361,6 +364,7 @@ public class TransferRep extends javax.swing.JPanel {
 	}
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		resultMsgText.setText("");
 		String order = orderText.getText();
 		if(order.equals("")){
 			resultMsgText.setText("请填写订单号");
@@ -410,8 +414,6 @@ public class TransferRep extends javax.swing.JPanel {
 			try {
 				weight += control.getWeightByOrder(order);
 			} catch (GoodsNotFound e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 				resultMsgText.setText(ExceptionPrint.print(e));
 				return;
 			}
@@ -422,15 +424,21 @@ public class TransferRep extends javax.swing.JPanel {
 		double money = 0;
 		try {
 			money = control.getFreightMoney(depart, destination, weight, form);
-		} catch (ClassNotFoundException | ConstNotFoundException | IOException e) {
+		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		} catch (ConstNotFoundException e) {
+			// TODO Auto-generated catch block
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
 		}
 		TransferRepVO transferRepVO = new TransferRepVO(num, date, form, carNumText.getText(),
 				City.getCity(destination), orders, money, City.getCity(depart));
 		try {
 			control.submit(transferRepVO);
+			parentPanel.refreshValues();
 		} catch (NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

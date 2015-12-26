@@ -17,7 +17,6 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-import ui.businessOfficerui.businessOfficer_main;
 import ui.receiptui.ReceiptCheckUI.DeliverCheck;
 import ui.util.MyFrame;
 import Exception.ExceptionPrint;
@@ -56,7 +55,6 @@ public class DeliverRep extends javax.swing.JPanel {
 	private DefaultTableModel model;
 	private Vector<String> columnIdentifiers;
 	private Vector<Object> dataVector;
-	private businessOfficer_main parentPanel;
 	// End of variables declaration//GEN-END:variables
 
 	/**
@@ -67,11 +65,6 @@ public class DeliverRep extends javax.swing.JPanel {
 		myFrame = new MyFrame(673, 506, this);
 	}
 
-	public DeliverRep(businessOfficer_main parentPanel) {
-		initComponents();
-		myFrame = new MyFrame(673, 506, this);
-		this.parentPanel=parentPanel;
-	}
 
 	/**
 	 * This method is called from within the constructor to initialize the form.
@@ -310,6 +303,7 @@ public class DeliverRep extends javax.swing.JPanel {
 	}
 
 	private void orderMouseClicked(java.awt.event.MouseEvent evt) {
+    	resultMsgText.setText("");
 		String order = orderNumText.getText();
 		if (order.equals("")) {
 			resultMsgText.setText("请填写订单号");
@@ -332,7 +326,6 @@ public class DeliverRep extends javax.swing.JPanel {
 			phoneNum = control.getPhoneByOrder(order);
 			address = control.getAddressByOrder(order);
 		} catch (GoodsNotFound e) {
-			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
 		}
@@ -356,7 +349,6 @@ public class DeliverRep extends javax.swing.JPanel {
 		String resultMessage = control.checkNum(courierNum, 11, "快递员编号");
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
-			parentPanel.refreshValue();
 			return;
 		}
 		if (!control.isTrueAccount(courierNum)) {

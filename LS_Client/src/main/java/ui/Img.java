@@ -11,13 +11,26 @@ import javax.swing.WindowConstants;
 public class Img {
 	private static Image background0 = new ImageIcon("pic/background0.png")
 			.getImage();
-	private static ImageIcon button=new ImageIcon("pic/btn0.png");
-	private static ImageIcon button_over=new ImageIcon("pic/btn_over.png");
+	private static ImageIcon button0=new ImageIcon("pic/btn_all.png");
+	
+	private static ImageIcon button1=new ImageIcon("pic/btn1.png");
+	private static ImageIcon button1_p=new ImageIcon("pic/btn1_pressed.png");
+	
+	
+	private static ImageIcon button_over=new ImageIcon("pic/btn_all_pressed.png");
 	private static ImageIcon exit_btn=new ImageIcon("pic/btn_exit0.png");
 	private static ImageIcon exit_btn_pressed=new ImageIcon("pic/btn_exit1.png");
 	
 	public static ImageIcon getExit_btn() {
 		return exit_btn;
+	}
+
+	public static ImageIcon getButton1() {
+		return button1;
+	}
+
+	public static ImageIcon getButton1_p() {
+		return button1_p;
 	}
 
 	private static Image background_searchState=new ImageIcon("pic/background_searchState.png").getImage();
@@ -37,8 +50,8 @@ public class Img {
 		return background0;
 	}
 
-	public static ImageIcon getButton() {
-		return button;
+	public static ImageIcon getButton0() {
+		return button0;
 	}
 
 	public static void main(String[] args) {

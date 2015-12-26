@@ -307,7 +307,7 @@ public class businessOfficer_main extends JPanel {
 			ctr_log.add(vo);
 		} catch (RemoteException e1) {
 		}
-    	new DeliverRep(this);
+    	new DeliverRep();
     }
     private void send_btnMouseClicked(MouseEvent evt) {
     	

@@ -97,11 +97,14 @@ public class ReceptionRepbl {
 		ArrayList<ReceiptPO> receiptPOs = receiptbl.getAllRep(Rep.ReceptionRep, office);
 		return ReceptionRepVO.toArrayVO(receiptPOs);
 	}
-
+	
 	public String getDepart(Rep rep, String num)
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		if (rep == Rep.ShipmentRep) {
-			return getShipmentRep(num).depart;
+			String businessOfficeNum = getShipmentRep(num).depart;
+			String depart = businessOfficeNum.substring(0,3);
+			City departCity = City.getCityByNum(depart);
+			return City.toString(departCity);
 		} else {
 			return City.toString(getTransferRep(num).depart);
 		}

@@ -20,7 +20,6 @@ import Exception.NumNotFoundException;
 import VO.Receipt.ArriveVO;
 import VO.Receipt.GetRepVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
-import bl.receiptbl.GetRepbl.GetRepController;
 import blservice.receiptblservice.GetRepblService;
 import ui.receiptui.ReceiptCheckUI.ArriveCheck;
 import ui.util.MyFrame;
@@ -392,6 +391,7 @@ public class GetRep extends javax.swing.JPanel {
 	}
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		resultMsgText.setText("");
 		String order = orderText.getText();
 		if (order.equals("")) {
 			resultMsgText.setText("请填写订单号");
@@ -452,6 +452,7 @@ public class GetRep extends javax.swing.JPanel {
 	}
 
 	private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		resultMsgText.setText("");
 		String shipNum = getTypeText.getText();
 		if (shipNum.equals("")) {
 			resultMsgText.setText("请填写到达单据编号");
@@ -461,15 +462,20 @@ public class GetRep extends javax.swing.JPanel {
 		Rep rep = Rep.getRep(repString);
 		try {
 			departText.setText(control.getDepart(rep, shipNum));
-		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
 		}
 	}
 
 	private void completeButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		resultMsgText.setText("");
 		String repString = getTypeBox.getSelectedItem().toString();
 		Rep rep = Rep.getRep(repString);
 		ArrayList<String> existOrders = new ArrayList<String>();
@@ -479,9 +485,13 @@ public class GetRep extends javax.swing.JPanel {
 		Vector<Object> arrs = null;
 		try {
 			arrs = control.initTable(rep, getTypeText.getText(), existOrders);
-		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
 		}
@@ -504,7 +514,6 @@ public class GetRep extends javax.swing.JPanel {
 					destination = control.getDestination(order);
 				} catch (GoodsNotFound e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
 					resultMsgText.setText(ExceptionPrint.print(e));
 					return;
 				}

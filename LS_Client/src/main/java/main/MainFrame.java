@@ -172,9 +172,9 @@ public class MainFrame extends JFrame {
 	}
 
 	private void initbtn() {
-		search_btn = new MyButton(150, 140, 60, 25, 0);
-		login_btn = new MyButton(320, 210, 60, 25, 0);
-		exit_btn = new MyButton(390, 5, 50, 50, 1);
+		search_btn = new MyButton(150, 140,0);
+		login_btn = new MyButton(320, 210,0);
+		exit_btn=new MyButton(410,7,1);
 
 		login_btn.addMouseListener(new MouseAdapter() {
 			@Override

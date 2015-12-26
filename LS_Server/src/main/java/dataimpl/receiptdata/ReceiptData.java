@@ -34,7 +34,7 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	}
 
 	public String submitAdd(Rep rep) {
-		return "data/ReceiptSaveData/" + rep + "Save.txt";
+		return "data/ReceiptSubmitData/" + rep + "Submit.txt";
 	}
 
 	public String saveAdd(Rep rep) {
@@ -129,6 +129,11 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 			s = "0" + s;
 		}
 		return s;
+	}
+	
+	public static void main(String[] args) throws ClassNotFoundException, IOException{
+		ReceiptData receiptData = new ReceiptData();
+		receiptData.createNum("2015-12-26", Rep.GetRep, "025001");
 	}
 
 	public void clearSubmit(Rep rep, String office) throws IOException, ClassNotFoundException {

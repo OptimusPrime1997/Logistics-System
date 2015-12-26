@@ -23,6 +23,8 @@ public class ExceptionPrint {
 			return "不存在该订单";
 		case ("SalaryPolicyNotFoundException"):
 			return "薪水策略未制定";
+		case ("ConstNotFoundException"):
+			return "策略未制定";
 		default:
 			return null;
 		}

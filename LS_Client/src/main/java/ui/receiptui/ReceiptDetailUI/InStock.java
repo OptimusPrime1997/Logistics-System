@@ -103,18 +103,24 @@ public class InStock extends javax.swing.JPanel {
         InStockRepVO inStockRepVO = null;
         try {
 			inStockRepVO = control.getRepByNum(num);
-		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
         dateText.setText(inStockRepVO.date);
         numText.setText(num);
         try {
 			dataVector = control.initShow(num);
-		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
         model.setDataVector(dataVector, columnIdentifiers);

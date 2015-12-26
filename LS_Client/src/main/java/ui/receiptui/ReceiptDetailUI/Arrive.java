@@ -136,9 +136,12 @@ public class Arrive extends javax.swing.JPanel {
         	GetRepVO getRepVO = null;
 			try {
 				getRepVO = getControl.getRepByNum(num);
-			} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+			} catch (ClassNotFoundException | NotBoundException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			} catch (NumNotFoundException e) {
+				// TODO Auto-generated catch block
 				resultMsgText.setText(ExceptionPrint.print(e));
 			}
         	dateText.setText(getRepVO.date);
@@ -148,9 +151,12 @@ public class Arrive extends javax.swing.JPanel {
         	departText.setText(getRepVO.depart);
         	try {
 				dataVector = getControl.initShow(num);
-			} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+			} catch (ClassNotFoundException | NotBoundException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			} catch (NumNotFoundException e) {
+				// TODO Auto-generated catch block
 				resultMsgText.setText(ExceptionPrint.print(e));
 			}
         }
@@ -158,9 +164,12 @@ public class Arrive extends javax.swing.JPanel {
 			ReceptionRepVO receptionRepVO = null;
 			try {
 				receptionRepVO = receptionControl.getRepByNum(num);
-			} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+			} catch (ClassNotFoundException | NotBoundException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			} catch (NumNotFoundException e) {
+				// TODO Auto-generated catch block
 				resultMsgText.setText(ExceptionPrint.print(e));
 			}
 			departText.setText(receptionRepVO.date);
@@ -170,9 +179,12 @@ public class Arrive extends javax.swing.JPanel {
 			departText.setText(City.toString(receptionRepVO.city));
 			try {
 				dataVector = receptionControl.initShow(num);
-			} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+			} catch (ClassNotFoundException | NotBoundException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			} catch (NumNotFoundException e) {
+				// TODO Auto-generated catch block
 				resultMsgText.setText(ExceptionPrint.print(e));
 			}
 		}

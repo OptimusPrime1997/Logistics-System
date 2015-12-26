@@ -21,7 +21,6 @@ import Exception.NumNotFoundException;
 import VO.Receipt.PayFreightVO;
 import VO.Receipt.PayRepFreightRepVO;
 import VO.Receipt.PayRepVO;
-import bl.receiptbl.PayRepbl.PayRepController;
 import bl.receiptbl.PayRepbl.PayRepFreightController;
 import blservice.receiptblservice.PayRepFreightblService;
 import ui.util.MyFrame;
@@ -230,8 +229,6 @@ public class PayRepFreight extends javax.swing.JPanel {
         column2.setPreferredWidth(60);
         TableColumn column3 = jTable.getColumnModel().getColumn(2);
         column3.setPreferredWidth(180);
-        TableColumn column4 = jTable.getColumnModel().getColumn(3);
-        column4.setPreferredWidth(50);
     }
     
     private String calSum(){
@@ -258,9 +255,13 @@ public class PayRepFreight extends javax.swing.JPanel {
     	String bankAccount = (String)bankAccountBox.getSelectedItem();
     	try {
 			control.minusMoneyInBankAccount(bankAccount, sum);
-		} catch (ClassNotFoundException | NumNotFoundException | IOException e) {
+		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
 		}
@@ -283,14 +284,20 @@ public class PayRepFreight extends javax.swing.JPanel {
     }
     
 	private void bankAccountBoxActionPerformed(java.awt.event.ActionEvent evt){
+		resultMsgText.setText("");
 		String bankAccount = (String)bankAccountBox.getSelectedItem();
 		double balance = 0;
 		try {
 			balance = control.showBankBalance(bankAccount);
-		} catch (ClassNotFoundException | NameNotFoundException | IOException | NumNotFoundException e) {
+		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		} catch (NameNotFoundException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
 		}
 		balanceText.setText(balance+"");
 	}
