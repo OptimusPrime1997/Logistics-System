@@ -56,7 +56,6 @@ public class DeliverRep extends javax.swing.JPanel {
 	private DefaultTableModel model;
 	private Vector<String> columnIdentifiers;
 	private Vector<Object> dataVector;
-	private businessOfficer_main parentPanel;
 	// End of variables declaration//GEN-END:variables
 
 	/**
@@ -67,11 +66,6 @@ public class DeliverRep extends javax.swing.JPanel {
 		myFrame = new MyFrame(673, 506, this);
 	}
 
-	public DeliverRep(businessOfficer_main parentPanel) {
-		initComponents();
-		myFrame = new MyFrame(673, 506, this);
-		this.parentPanel=parentPanel;
-	}
 
 	/**
 	 * This method is called from within the constructor to initialize the form.
@@ -356,7 +350,6 @@ public class DeliverRep extends javax.swing.JPanel {
 		String resultMessage = control.checkNum(courierNum, 11, "快递员编号");
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
-			parentPanel.refreshValue();
 			return;
 		}
 		if (!control.isTrueAccount(courierNum)) {
