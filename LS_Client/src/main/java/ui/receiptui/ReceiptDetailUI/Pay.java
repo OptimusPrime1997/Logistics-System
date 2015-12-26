@@ -174,7 +174,7 @@ public class Pay extends javax.swing.JPanel {
 					case "租金":
 						new PayRent(payRepVO);
 						break;
-					case "普通员工工资":
+					case "人员工资":
 						new PayStaff(payRepVO);
 						break;
 					default:

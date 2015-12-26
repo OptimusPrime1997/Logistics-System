@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import Exception.ConstNotFoundException;
@@ -78,7 +79,9 @@ public class TransferRepbl extends ReceiptblController{
 			throws FileNotFoundException, ClassNotFoundException, ConstNotFoundException, IOException{
 		City c1 = City.getCity(depart);
 		City c2 = City.getCity(destination);
-		return constbl.computeFare(c1, c2, form, weight);
+		double freightMoney = constbl.computeFare(c1, c2, form, weight);
+		 String sal = new DecimalFormat("0.00").format(freightMoney);
+		return Double.parseDouble(sal);
 	}
 	
 	public double getWeightByOrder(String order) throws GoodsNotFound{

@@ -68,10 +68,7 @@ public class DocumentCheckbl {
 			return data;
 		ArrayList<CashRepVO> cashRepVOs = CashRepVO.toArrayVO(receiptPOs);
 		for (CashRepVO cashRepVO : cashRepVOs) {
-			if (cashRepVO.date.equals(receiptbl.getDate())) {
-				cashRepVOs.remove(cashRepVO);
-			}
-			else {
+			if (!cashRepVO.date.equals(receiptbl.getDate())) {
 				Vector<String> arr = new Vector<String>();
 				arr.add(cashRepVO.date);
 				arr.add(cashRepVO.num);
@@ -171,9 +168,9 @@ public class DocumentCheckbl {
 		String date = receiptbl.getDate();
 		String[] strings = date.split("-");
 		date = strings[0]+strings[1];
-//		if(payRepVO.num.equals(date)){
-//			return data;
-//		}
+		if(payRepVO.num.equals(date)){
+			return data;
+		}
 		Vector<String> arr = new Vector<String>();
 		arr.add(payRepVO.date);
 		arr.add(payRepVO.num);
