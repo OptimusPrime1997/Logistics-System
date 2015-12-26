@@ -85,7 +85,7 @@ public class LogisticStateUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-
+        jTable1.setBounds(30,30,250,150);
         listNum_label.setText("jLabel1");
 
         jLabel2.setFont(new java.awt.Font("宋体", 1, 14)); // NOI18N
