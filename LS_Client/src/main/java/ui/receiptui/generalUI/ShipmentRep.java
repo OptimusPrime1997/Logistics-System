@@ -332,7 +332,7 @@ public class ShipmentRep extends javax.swing.JPanel {
 		String resultMessage = control.checkNum(driverNum, 11, "司机编号");
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
-			parentPanel.refreshValue();
+			
 			return;
 		}
 		if (!control.isTrueAccount(driverNum)) {
@@ -349,6 +349,7 @@ public class ShipmentRep extends javax.swing.JPanel {
 				driverNum, orders);
 		try {
 			control.submit(shipmentRepVO);
+			parentPanel.refreshValue();
 		} catch (NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
