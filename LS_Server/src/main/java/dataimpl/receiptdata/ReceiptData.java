@@ -14,7 +14,7 @@ import datautil.DataUtility;
 import util.enumData.*;
 
 public class ReceiptData extends UnicastRemoteObject implements ReceiptDataService {
-	
+
 	public ReceiptData() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
@@ -24,7 +24,7 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	 * 
 	 */
 	private static final long serialVersionUID = -4116800219997834632L;
-	
+
 	private DataUtility util = new DataUtility();
 
 	public String getOffice(String num) {
@@ -34,11 +34,11 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	}
 
 	public String submitAdd(Rep rep) {
-		return "data/ReceiptSubmitData/" + rep + "Submit.txt";
+		return "data/ReceiptSubmitData/" + rep.name() + "Submit.txt";
 	}
 
 	public String saveAdd(Rep rep) {
-		return "data/ReceiptSaveData/" + rep + "Save.txt";
+		return "data/ReceiptSaveData/" + rep.name() + "Save.txt";
 	}
 
 	public void submit(ReceiptPO po, Rep rep) throws IOException, RemoteException {
@@ -90,12 +90,13 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 		return dateReceiptPOs;
 	}
 
-	public ReceiptPO getRepByNum(String num, Rep rep) throws IOException, ClassNotFoundException, RemoteException, NumNotFoundException {
+	public ReceiptPO getRepByNum(String num, Rep rep)
+			throws IOException, ClassNotFoundException, RemoteException, NumNotFoundException {
 		ArrayList<ReceiptPO> receiptPOs = getAllRep(rep, getOffice(num));
-		if (receiptPOs == null){
+		if (receiptPOs == null) {
 			throw new NumNotFoundException();
 		}
-			
+
 		for (ReceiptPO receiptPO : receiptPOs) {
 			if (receiptPO.getNum().equals(num))
 				return receiptPO;
@@ -108,39 +109,32 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 		ArrayList<ReceiptPO> receiptPOs = new ArrayList<ReceiptPO>();
 		ArrayList<Object> objectsSubmit = util.getAll(submitAdd(rep));
 		ArrayList<Object> objectsSave = util.getAll(saveAdd(rep));
-		if(objectsSubmit!=null){
+		if (objectsSubmit != null) {
 			for (Object object : objectsSubmit) {
 				ReceiptPO receiptPO = (ReceiptPO) object;
-				if ((getOffice(receiptPO.getNum()).equals(office))&&(receiptPO.getDate().equals(date)))
+				if ((getOffice(receiptPO.getNum()).equals(office)) && (receiptPO.getDate().equals(date)))
 					receiptPOs.add(receiptPO);
 			}
 		}
-		if(objectsSave!=null){
+		if (objectsSave != null) {
 			for (Object object : objectsSave) {
 				ReceiptPO receiptPO = (ReceiptPO) object;
-				if ((getOffice(receiptPO.getNum()).equals(office))&&(receiptPO.getDate().equals(date)))
+				if ((getOffice(receiptPO.getNum()).equals(office)) && (receiptPO.getDate().equals(date)))
 					receiptPOs.add(receiptPO);
 			}
 		}
-		if(receiptPOs==null)
-			return "0001";
 		String s = receiptPOs.size() + 1 + "";
-		for(int i = s.length();i < 4;i++){
+		for (int i = s.length(); i < 4; i++) {
 			s = "0" + s;
 		}
 		return s;
-	}
-	
-	public static void main(String[] args) throws ClassNotFoundException, IOException{
-		ReceiptData receiptData = new ReceiptData();
-		receiptData.createNum("2015-12-26", Rep.GetRep, "025001");
 	}
 
 	public void clearSubmit(Rep rep, String office) throws IOException, ClassNotFoundException {
 		ArrayList<Object> objects = util.getAll(submitAdd(rep));
 		util.clear(submitAdd(rep));
 		ReceiptPO receiptPO = null;
-		if(objects!=null){
+		if (objects != null) {
 			for (Object object : objects) {
 				receiptPO = (ReceiptPO) object;
 				if (!getOffice(receiptPO.getNum()).equals(office))
@@ -159,36 +153,36 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 				save(receiptPO, rep);
 		}
 	}
-	
+
 	@Override
 	public ArrayList<ReceiptPO> forCheck(Rep rep) throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<Object> objects = util.getAll(submitAdd(rep));
-		if(objects==null)
+		String add = submitAdd(rep);
+		ArrayList<Object> objects = util.getAll(add);
+		if (objects == null)
 			return null;
 		ArrayList<ReceiptPO> receiptPOs = new ArrayList<ReceiptPO>();
-		for(Object object : objects){
+		for (Object object : objects) {
 			receiptPOs.add((ReceiptPO) object);
 		}
 		return receiptPOs;
 	}
-	
+
 	@Override
 	public void submitSave(String num, Rep rep) throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		ArrayList<Object> objects = util.getAll(saveAdd(rep));
 		util.clear(saveAdd(rep));
-		if(objects!=null){
-			for(Object object : objects){
-				ReceiptPO receiptPO = (ReceiptPO)object;
-				if(!receiptPO.getNum().equals(num))
+		if (objects != null) {
+			for (Object object : objects) {
+				ReceiptPO receiptPO = (ReceiptPO) object;
+				if (!receiptPO.getNum().equals(num))
 					submit(receiptPO, rep);
 				else
 					save(receiptPO, rep);
 			}
 		}
 	}
-	
 
 	class MyObjectOutputStream extends ObjectOutputStream {
 
@@ -205,6 +199,5 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 			return;
 		}
 	}
-
 
 }
