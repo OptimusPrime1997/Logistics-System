@@ -47,6 +47,7 @@ import util.InputCheck;
 import util.enumData.Authority;
 import util.enumData.LogType;
 import util.enumData.ModifyState;
+import util.enumData.Rep;
 import util.enumData.ResultMessage;
 import util.enumData.SalaryPolicy;
 import util.enumData.Sex;
@@ -1780,14 +1781,15 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private void documentCheckjTableMouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		Point p = e.getPoint();
-		int row = documentCheckjTable.rowAtPoint(p);
 		int column = documentCheckjTable.columnAtPoint(p);
-		// 代号、车牌号
-		String carCode, carLicence, startTime;
-		// 点了删除
 		if (e.getClickCount() == 1 && column == 3) {
 			// TODO Auto-generated method stub
 			if (e.getButton() == MouseEvent.BUTTON1) {
+				int row = documentCheckjTable.rowAtPoint(p);
+				// 代号、车牌号
+				String num=null;
+				Rep rep=null;
+				// 点了删除
 				
 			}
 		}

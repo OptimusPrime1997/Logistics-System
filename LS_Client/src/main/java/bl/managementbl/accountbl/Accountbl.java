@@ -86,15 +86,16 @@ public class Accountbl {
 					ResultMessage rmsg = accountDataService.insert(manageVOPO
 							.voToPO(vo));
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
+					if(vo.authority==Authority.COURIER
+							&&rmsg==ResultMessage.SUCCESS){
+						ResultMessage re=courierbl.add(new CourierVO(vo.accountNum,0));
+						System.out.println("添加快递员"+ResultMessage.toFriendlyString(re));
+					}
 					institutionbl=new Institutionbl();
 					ResultMessage r=institutionbl.updateManning(vo.institutionNum);
 					
 					System.out.println("更新机构人员信息："+ResultMessage.toFriendlyString(r));
 					
-					if (rmsg == ResultMessage.SUCCESS && firstInsert == true
-							&& vo.authority == Authority.COURIER) {
-						courierbl.add(new CourierVO(vo.accountNum, 0));
-					}
 					return rmsg;
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
