@@ -15,6 +15,7 @@ import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 
 import ui.Img;
+import ui.util.MyButton;
 import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsExpressType;
 import util.enumData.GoodsLogisticState;
@@ -61,13 +62,23 @@ public class LogisticStateUI extends javax.swing.JFrame {
 		this.setUndecorated(true);
 		this.setVisible(true);
     }
-
+    private void exit_btnMouseClicked (MouseEvent e) {
+		this.dispose();
+	}
     private void initComponents() {
     	panel=new JPanel(){
     		@Override
     	protected void paintComponent(Graphics g) {
     		g.drawImage(Img.getBackground_searchState(), 0, 0, this.getWidth(),this.getHeight(),null);
     	}};
+    	exit_btn=new MyButton(288, 3, 10, 10, 1);
+    	exit_btn.addMouseListener(new MouseAdapter() {
+    		@Override
+    		public void mouseClicked(MouseEvent e) {
+    			exit_btnMouseClicked(e);
+    		}
+		});
+    	
     	panel.setLayout(null);
         listNum_label = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -109,8 +120,8 @@ public class LogisticStateUI extends javax.swing.JFrame {
         panel.add(listNum_label);
         panel.add(jTable1);
         panel.add(jScrollPane1);
+        panel.add(exit_btn);
         this.setContentPane(panel);
-
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
@@ -119,6 +130,7 @@ public class LogisticStateUI extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel listNum_label;
     private JPanel panel;
+    private MyButton exit_btn;
     private GoodsVO vo;
     private final int width=300,height=200;
     private Object[][] content;

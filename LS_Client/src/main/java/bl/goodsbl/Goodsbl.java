@@ -34,35 +34,16 @@ public class Goodsbl {
 	final double[] expressRates = { 18, 23, 25 };
 	public static void main(String[] args) {
 		Goodsbl ctr=new Goodsbl();
-<<<<<<< HEAD
 		GoodsVO vo = new GoodsVO("", false, "02500106066",
-				"", "2015-12-22", "", "025", "大玉儿",
+				"", "2015-12-22", "", "025", "啦啦啦丽",
 				"上海 浦东新区张杨路500号", "上海华润时代广场", "13587511426", "小宏宏",
 				"南京 栖霞区仙林大道和园12号", null, "15500001112", 1, 5, 8, "袜子",
 				GoodsExpressType.NORMAL, 1, 10, 9, GoodsArrivalState.INTACT,
-				GoodsLogisticState.SENDED, null, null);
-=======
-//		GoodsVO vo = new GoodsVO("", false, "02500106066",
-//				"", "2015-12-22", "", "025", "啦啦啦丽",
-//				"上海 浦东新区张杨路500号", "上海华润时代广场", "13587511426", "小宏宏",
-//				"南京 栖霞区仙林大道和园12号", null, "15500001112", 1, 5, 8, "袜子",
-//				GoodsExpressType.NORMAL, 1, 10, 9, GoodsArrivalState.INTACT,
-//				GoodsLogisticState.SENDED, null, null,"2015-12-22");
-//		try {
-//			ctr.initComplete(vo);
-//			System.out.println("Goodsbl.main  vo.dates "+vo.dates);
-//		} catch (ExistException e) {
-//		}
-		ArrayList<GoodsVO> vos=ctr.show();
-		for(GoodsVO vo:vos){
-			System.out.println(vo.listNum+"  "+vo.startTime);
-		}
->>>>>>> origin/master
+				GoodsLogisticState.SENDED, null, null,"2015-12-22");
 		try {
-			GoodsVO vo=ctr.findByListNum("0250000003");
-			System.out.println("0250000003  "+vo.dates);
-		} catch (GoodsNotFound e) {
-			e.printStackTrace();
+			ctr.initComplete(vo);
+			System.out.println("Goodsbl.main  vo.dates "+vo.dates);
+		} catch (ExistException e) {
 		}
 	}
 	
