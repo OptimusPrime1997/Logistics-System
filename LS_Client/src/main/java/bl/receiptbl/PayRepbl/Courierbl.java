@@ -55,8 +55,7 @@ public class Courierbl{
 			payCourierSalaryVO = payCourierSalaryVOs.get(i);
 			arr.add(payCourierSalaryVO.getterName);
 			arr.add(payCourierSalaryVO.getterNum);
-			arr.add(payCourierSalaryVO.getMoneySum+"");
-			arr.add(payCourierSalaryVO.deliverMoneySum+"");
+			arr.add(payCourierSalaryVO.workMoney+"");
 			arr.add(payCourierSalaryVO.money+"");
 			data.add(arr);
 		}
