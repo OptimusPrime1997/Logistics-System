@@ -56,4 +56,21 @@ public class PayRepData extends UnicastRemoteObject implements PayRepDataService
 		return payRepPOs;
 	}
 	
+	public PayRepPO getPayRepByNum(String num) throws ClassNotFoundException, IOException{
+		ArrayList<Object> objects = util.getAll(getSaveAdd());
+		if (objects == null)
+			return null;
+		for(Object object : objects){
+			PayRepPO payRepPO = (PayRepPO) object;
+			if(payRepPO.getNum().equals(num))
+				return payRepPO;
+		}
+		return null;
+	}
+	
+	public static void main(String[] args) throws ClassNotFoundException, IOException{
+		PayRepData payRepData = new PayRepData();
+		payRepData.getPayRepByNum("201512");
+	}
+	
 }

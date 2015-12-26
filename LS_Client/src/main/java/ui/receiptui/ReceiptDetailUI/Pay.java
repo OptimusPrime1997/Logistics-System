@@ -178,8 +178,7 @@ public class Pay extends javax.swing.JPanel {
 						new PayStaff(payRepVO);
 						break;
 					default:
-						String date = payThing.split("(")[1];
-						date = date.split(")")[0];
+						String date = payThing.substring(3, 13);	//付款(2015-01-01)
 						new PayRefund(date, payRepVO);
 						break;
 					}

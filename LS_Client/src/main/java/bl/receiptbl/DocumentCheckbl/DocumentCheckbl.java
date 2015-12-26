@@ -171,9 +171,9 @@ public class DocumentCheckbl {
 		String date = receiptbl.getDate();
 		String[] strings = date.split("-");
 		date = strings[0]+strings[1];
-		if(payRepVO.num.equals(date)){
-			return null;
-		}
+//		if(payRepVO.num.equals(date)){
+//			return data;
+//		}
 		Vector<String> arr = new Vector<String>();
 		arr.add(payRepVO.date);
 		arr.add(payRepVO.num);

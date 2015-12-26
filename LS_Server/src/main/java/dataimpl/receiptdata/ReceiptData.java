@@ -28,6 +28,9 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	private DataUtility util = new DataUtility();
 
 	public String getOffice(String num) {
+		if(num.length()==6){
+			return num;
+		}
 		if (num.substring(3, 6).equals("000"))
 			return num.substring(0, 3);
 		return num.substring(0, 6);
@@ -48,7 +51,7 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	public void save(ReceiptPO po, Rep rep) throws IOException, RemoteException {
 		util.save(po, saveAdd(rep));
 	}
-
+	
 	public ArrayList<ReceiptPO> getAllRep(Rep rep, String office)
 			throws ClassNotFoundException, IOException, RemoteException {
 		ArrayList<ReceiptPO> receiptPOs = new ArrayList<ReceiptPO>();
@@ -167,19 +170,24 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 		}
 		return receiptPOs;
 	}
+	
+	public static void main(String[] args) throws ClassNotFoundException, IOException{
+		ReceiptData receiptData = new ReceiptData();
+		receiptData.forCheck(Rep.PayRep);
+	}
 
 	@Override
 	public void submitSave(String num, Rep rep) throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<Object> objects = util.getAll(saveAdd(rep));
-		util.clear(saveAdd(rep));
+		ArrayList<Object> objects = util.getAll(submitAdd(rep));
+		util.clear(submitAdd(rep));
 		if (objects != null) {
 			for (Object object : objects) {
 				ReceiptPO receiptPO = (ReceiptPO) object;
-				if (!receiptPO.getNum().equals(num))
-					submit(receiptPO, rep);
-				else
+				if (receiptPO.getNum().equals(num))
 					save(receiptPO, rep);
+				else
+					submit(receiptPO, rep);
 			}
 		}
 	}

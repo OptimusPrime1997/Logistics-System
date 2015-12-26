@@ -349,7 +349,9 @@ public class PayRep extends javax.swing.JPanel {
 					(String) jTable.getValueAt(i, 3));
 			payVOs.add(payVO);
 		}
-		PayRepVO payRepVO = new PayRepVO(numText.getText(), numText.getText(), sum, payVOs, payManText.getText(),
+		String date = numText.getText();
+		String num = control.getDateInNum(date).substring(0, 6);
+		PayRepVO payRepVO = new PayRepVO(num, date, sum, payVOs, payManText.getText(),
 				oriPayRepVO.refund, oriPayRepVO.staffSalary, oriPayRepVO.freight, oriPayRepVO.rent,
 				oriPayRepVO.driverSalary, oriPayRepVO.courierSalary, oriPayRepVO.bonus);
 		try {

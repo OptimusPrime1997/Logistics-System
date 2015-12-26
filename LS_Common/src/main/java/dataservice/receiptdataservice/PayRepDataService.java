@@ -32,4 +32,12 @@ public interface PayRepDataService extends Remote, Serializable{
 	 * @throws IOException
 	 */
 	public ArrayList<PayRepPO> getAllPayRep() throws ClassNotFoundException, IOException;
+	
+	/**通过编号得到一个付款单
+	 * @param num
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
+	public PayRepPO getPayRepByNum(String num) throws ClassNotFoundException, IOException;
 }	

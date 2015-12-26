@@ -12,7 +12,6 @@ import VO.Receipt.PayRepVO;
 import VO.Receipt.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.PayRepblService;
-import util.enumData.ResultMessage;
 
 public class PayRepController extends ReceiptblController implements PayRepblService{
 	private PayRepbl payRepbl = new PayRepbl();

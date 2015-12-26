@@ -55,8 +55,8 @@ public class PayRepbl extends ReceiptblController{
 	public PayRepVO getRepByNum(String num) 
 			throws ClassNotFoundException, NotBoundException, IOException, NumNotFoundException {
 		// TODO Auto-generated method stub
-		ReceiptPO receiptPO = receiptbl.getRepByNum(num, Rep.PayRep);
-		return new PayRepVO((PayRepPO) receiptPO);
+		PayRepPO payRepPO = getPayRepDataService().getPayRepByNum(num);
+		return new PayRepVO((PayRepPO) payRepPO);
 	}
 	
 	public ArrayList<PayRepVO> getAllRep() throws ClassNotFoundException, NotBoundException, IOException {
