@@ -17,11 +17,13 @@ import blservice.logblservice.LogBLService;
 import ui.financialstaffui.FinancialStaffJFrame;
 import util.enumData.Authority;
 import util.enumData.LogType;
+import util.enumData.Rep;
 import util.enumData.Sex;
 
 public class ComponentFactory {
 	public final static String REMOTEFAILD = "远程连接失败！";
 	public final static long DISPLAY_TIME = 5;
+
 	private ComponentFactory() {
 	}
 
@@ -38,7 +40,7 @@ public class ComponentFactory {
 	 * 
 	 * @return
 	 */
-	public static  JComboBox<Authority> getAuthorityJComboBox() {
+	public static JComboBox<Authority> getAuthorityJComboBox() {
 		JComboBox<Authority> authorityjComboBox = new JComboBox<Authority>();
 		for (int i = 1; i <= 9; i++) {
 			authorityjComboBox.addItem(Authority.getAuthority(i));
@@ -64,7 +66,7 @@ public class ComponentFactory {
 	 * 
 	 * @return
 	 */
-	public static  JComboBox<LogType> getLogTypeJComboBox() {
+	public static JComboBox<LogType> getLogTypeJComboBox() {
 		JComboBox<LogType> logjComboBox = new JComboBox<LogType>();
 		for (int i = 1; i <= 21; i++) {
 			logjComboBox.addItem(LogType.toLogType(i));
@@ -93,7 +95,7 @@ public class ComponentFactory {
 	 * 
 	 * @return
 	 */
-	public  static JComboBox<Integer> getMonthJComboBox() {
+	public static JComboBox<Integer> getMonthJComboBox() {
 		JComboBox<Integer> monthjComboBox = new JComboBox<Integer>();
 		for (int i = 1; i <= 12; i++) {
 			monthjComboBox.addItem(i);
@@ -106,7 +108,7 @@ public class ComponentFactory {
 	 * 
 	 * @return
 	 */
-	public  static JComboBox<Integer> getDayJComboBox() {
+	public static JComboBox<Integer> getDayJComboBox() {
 		JComboBox<Integer> dayjComboBox = new JComboBox<Integer>();
 		for (int i = 1; i <= 31; i++) {
 			dayjComboBox.addItem(i);
@@ -119,7 +121,7 @@ public class ComponentFactory {
 	 * 
 	 * @param jtable
 	 */
-	public static  void setJTableTextCenter(JTable jTable) {
+	public static void setJTableTextCenter(JTable jTable) {
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容-11
 		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 设置table内容居中-2
 		jTable.setDefaultRenderer(Object.class, tcr);
@@ -127,15 +129,15 @@ public class ComponentFactory {
 				.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
 		jTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
 	}
-	
-	public  static void setState(String str, long time, final JLabel statejLabel) {
+
+	public static void setState(String str, long time, final JLabel statejLabel) {
 		statejLabel.setText(str);
 		final Runnable setSateTextFieldText = new Runnable() {
 			public void run() {
 				statejLabel.setText("空闲");
 			}
 		};
-		 final ScheduledExecutorService scheduler = Executors
+		final ScheduledExecutorService scheduler = Executors
 				.newScheduledThreadPool(1);
 		final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(
 				setSateTextFieldText, time, time, TimeUnit.SECONDS);
@@ -144,5 +146,21 @@ public class ComponentFactory {
 				beeperHandle.cancel(true);
 			}
 		}, time, TimeUnit.SECONDS);
+	}
+
+	public static JComboBox<Rep> getRepJComboBox() {
+		// TODO Auto-generated method stub
+		JComboBox<Rep> r = new JComboBox<Rep>();
+		r.addItem(Rep.ShipmentRep);
+		r.addItem(Rep.GetRep);
+		r.addItem(Rep.DeliverRep);
+		r.addItem(Rep.InStockRep);
+		r.addItem(Rep.OutStockRep);
+		r.addItem(Rep.ShippingRep);
+		r.addItem(Rep.ReceptionRep);
+		r.addItem(Rep.TransferRep);
+		r.addItem(Rep.CashRep);
+		r.addItem(Rep.PayRep);
+		return r;
 	}
 }

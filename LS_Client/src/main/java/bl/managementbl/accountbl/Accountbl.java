@@ -93,7 +93,6 @@ public class Accountbl {
 					}
 					institutionbl=new Institutionbl();
 					ResultMessage r=institutionbl.updateManning(vo.institutionNum);
-					
 					System.out.println("更新机构人员信息："+ResultMessage.toFriendlyString(r));
 					
 					return rmsg;

@@ -46,7 +46,7 @@ public class ManageVOPO {
 	 */
 	public ResultMessage addLog(LogType operation) {
 		LogVO logVO = new LogVO(operation, Loginbl.getCurrentOptorId(),
-				CurrentTime.getDate());
+				CurrentTime.getTime());
 		try {
 			assert (logbl != null) : ("Logbl is null!");
 		} catch (AssertionError e) {

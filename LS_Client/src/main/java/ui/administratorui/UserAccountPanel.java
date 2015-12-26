@@ -279,8 +279,13 @@ public class UserAccountPanel extends javax.swing.JFrame {
     			AccountVO vo = t.next();
     			if(tofind.equals(vo.accountName)){
     				found=true;
-    				ComponentFactory.setState(vo.toString(), ComponentFactory.DISPLAY_TIME*6, resultMsg);
-    				break;
+    				ArrayList<AccountVO> accountVOs=new ArrayList<AccountVO>();
+    				accountVOs.add(vo);
+    				AccountSearchPanel accountSearchPanel=new AccountSearchPanel(administratorPanel,accountVOs);
+    				this.dispose();
+    				return;
+//    				ComponentFactory.setState(vo.toString(), ComponentFactory.DISPLAY_TIME*6, resultMsg);
+//    				break;
     			}
     		}
     	}else{

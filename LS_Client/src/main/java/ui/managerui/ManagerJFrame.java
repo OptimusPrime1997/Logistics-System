@@ -6,6 +6,7 @@
 package ui.managerui;
 
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
@@ -26,6 +27,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.DefaultCellEditor;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
@@ -187,6 +189,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		setInstitutionVOs();
 		initialVariables();
 
+		setAllLayout();
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 		managerjPanel.setBorder(javax.swing.BorderFactory
@@ -206,7 +209,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		initialFormjPanel();
 
 		initialLogjPaenl();
-
+		jLabel6.setFont(new Font("宋体", Font.BOLD, 12));
 		jLabel6.setText("总经理");
 		jLabel6.setToolTipText("");
 		String currentOptorId = Loginbl.getCurrentOptorId();
@@ -234,138 +237,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		});
 
-		javax.swing.GroupLayout managerjPanelLayout = new javax.swing.GroupLayout(
-				managerjPanel);
-		managerjPanel.setLayout(managerjPanelLayout);
-		managerjPanelLayout
-				.setHorizontalGroup(managerjPanelLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(
-								managerjPanelLayout
-										.createSequentialGroup()
-										.addComponent(jLabel48)
-										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-										.addComponent(
-												statejLabel,
-												javax.swing.GroupLayout.DEFAULT_SIZE,
-												javax.swing.GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE))
-						.addGroup(
-								javax.swing.GroupLayout.Alignment.TRAILING,
-								managerjPanelLayout
-										.createSequentialGroup()
-										.addGap(0, 471, Short.MAX_VALUE)
-										.addGroup(
-												managerjPanelLayout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING)
-														.addGroup(
-																javax.swing.GroupLayout.Alignment.TRAILING,
-																managerjPanelLayout
-																		.createSequentialGroup()
-																		.addComponent(
-																				jLabel6)
-																		.addGap(464,
-																				464,
-																				464))
-														.addGroup(
-																javax.swing.GroupLayout.Alignment.TRAILING,
-																managerjPanelLayout
-																		.createSequentialGroup()
-																		.addComponent(
-																				currentAccountNamejLabel)
-																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-																		.addComponent(
-																				currentAuthorityjLabel)
-																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-																		.addComponent(
-																				currentAccoutNamejLabel,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				32,
-																				javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-																		.addComponent(
-																				exitjButton))))
-						.addComponent(managerjTabbedPane,
-								javax.swing.GroupLayout.DEFAULT_SIZE,
-								javax.swing.GroupLayout.DEFAULT_SIZE,
-								Short.MAX_VALUE));
-		managerjPanelLayout
-				.setVerticalGroup(managerjPanelLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(
-								managerjPanelLayout
-										.createSequentialGroup()
-										.addComponent(
-												jLabel6,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												15,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-												16, Short.MAX_VALUE)
-										.addGroup(
-												managerjPanelLayout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
-														.addComponent(
-																currentAuthorityjLabel)
-														.addComponent(
-																currentAccountNamejLabel,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																24,
-																javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																currentAccoutNamejLabel)
-														.addComponent(
-																exitjButton))
-										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-										.addComponent(
-												managerjTabbedPane,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												550,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-										.addGroup(
-												managerjPanelLayout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
-														.addComponent(
-																jLabel48,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																21,
-																javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																statejLabel))));
-
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
-				getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(
-				javax.swing.GroupLayout.Alignment.LEADING).addGroup(
-				javax.swing.GroupLayout.Alignment.TRAILING,
-				layout.createSequentialGroup()
-						.addGap(0, 0, Short.MAX_VALUE)
-						.addComponent(managerjPanel,
-								javax.swing.GroupLayout.PREFERRED_SIZE,
-								javax.swing.GroupLayout.DEFAULT_SIZE,
-								javax.swing.GroupLayout.PREFERRED_SIZE)));
-		layout.setVerticalGroup(layout.createParallelGroup(
-				javax.swing.GroupLayout.Alignment.LEADING).addComponent(
-				managerjPanel, javax.swing.GroupLayout.Alignment.TRAILING,
-				javax.swing.GroupLayout.DEFAULT_SIZE,
-				javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
-
-		pack();
-		this.setLocationRelativeTo(null);
 	}// </editor-fold>//GEN-END:initComponents
 
 	/**
@@ -481,6 +352,619 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jLabel47.setText("系统日志");
 
 		// initialLogJTable(logVOs);
+
+		managerjTabbedPane.addTab("日志查看", logjPanel);
+	}
+
+	/**
+	 * 初始化日志查看列表
+	 */
+	private void initialLogJTable(ArrayList<LogVO> vos) {
+		// TODO Auto-generated method stub
+
+		assert (vos != null) : ("表格获得的日志信息为空");
+		authorityjComboBox.setEditable(false);
+		Object[][] logObjects = null;
+		logObjects = new Object[vos.size()][4];
+		int i = 0;
+		for (java.util.Iterator<LogVO> t = vos.iterator(); t.hasNext(); i++) {
+			LogVO vo = t.next();
+			System.out.println("得到的log信息：" + vo.time);
+			logObjects[i][0] = vo.time;
+			logObjects[i][1] = vo.operationName;
+			logObjects[i][2] = authorityjComboBox.getItemAt(Integer
+					.parseInt(vo.operatorID.substring(7, 8)));
+			logObjects[i][3] = vo.operatorID;
+
+		}
+
+		logjTable.setModel(new javax.swing.table.DefaultTableModel(logObjects,
+				new String[] { "日期", "操做类型", "操作人员职位", "操作人员编号" }) {
+			Class[] types = new Class[] { java.lang.String.class,
+					JComboBox.class, JComboBox.class, java.lang.String.class };
+			boolean[] canEdit = new boolean[] { false, false, false, false };
+
+			public Class getColumnClass(int columnIndex) {
+				return types[columnIndex];
+			}
+		});
+		logjTable.getColumnModel().getColumn(1)
+				.setCellEditor(new DefaultCellEditor(logTypejComboBox));
+		logjTable.getColumnModel().getColumn(2)
+				.setCellEditor(new DefaultCellEditor(authorityjComboBox));
+
+		// logjTable.setRowSelectionInterval(0, 0);// 设置哪几行被选中
+
+		logjTable.setGridColor(new java.awt.Color(0, 0, 0));
+		logjTable.setName("123"); // NOI18N
+		logjTable.getTableHeader().setReorderingAllowed(false);
+
+		ComponentFactory.setJTableTextCenter(logjTable);
+		jScrollPane11.setViewportView(logjTable);
+
+		setJTableTextCenter(logjTable);
+	}
+
+	/**
+	 * 初始化报表查看面板
+	 */
+	private void initialFormjPanel() {
+		// TODO Auto-generated method stub
+
+		formjPanel.setName("formView"); // NOI18N
+		formjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
+
+		profitFormjButton.setText("成本收益表");
+		profitFormjButton.setToolTipText("");
+		profitFormjButton.setName("profitFrom"); // NOI18N
+		profitFormjButton
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						profitFormjButtonActionPerformed(evt);
+					}
+				});
+
+		manageStateFormjButton.setText("经营情况表");
+		manageStateFormjButton.setName("businessFrom"); // NOI18N
+		manageStateFormjButton
+				.addMouseListener(new java.awt.event.MouseAdapter() {
+					public void mouseReleased(java.awt.event.MouseEvent evt) {
+						manageStateFormjButton1MouseReleased(evt);
+					}
+				});
+
+		jLabel30.setText("年");
+		jLabel31.setText("月");
+		jLabel32.setText("日");
+		formEYearjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+				new String[] { "2000", "2001", "2002", "2003", "2004", "2005",
+						"2006", "2007", "2008", "2009", "2010", "2011", "2012",
+						"2013", "2014", "2015" }));
+		formEYearjComboBox.setName("yearComBox"); // NOI18N
+		formEYearjComboBox
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						formEYearjComboBoxActionPerformed(evt);
+					}
+				});
+		formEDatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
+						"10", "11", "12", "13", "14", "15", "16", "17", "18",
+						"9", "20", "21", "22", "23", "24", "25", "26", "27",
+						"28", "29", "30", "31" }));
+		formEDatejComboBox.setName("dataComBox"); // NOI18N
+		formEDatejComboBox
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						formEDatejComboBoxActionPerformed(evt);
+					}
+				});
+		formEMonthjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
+						"10", "11", "12" }));
+		formEMonthjComboBox.setName("monthComBox"); // NOI18N
+		formEMonthjComboBox
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						formEMonthjComboBoxActionPerformed(evt);
+					}
+				});
+		jLabel33.setText("截止日期：");
+
+		jLabel33.setVisible(false);
+		jLabel30.setVisible(false);
+		jLabel31.setVisible(false);
+		jLabel32.setVisible(false);
+
+		formEYearjComboBox.setVisible(false);
+		formEMonthjComboBox.setVisible(false);
+		formEDatejComboBox.setVisible(false);
+
+		outputFormjButton.setText("导出报表");
+		outputFormjButton.setName("outFormButton"); // NOI18N
+		outputFormjButton.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseReleased(java.awt.event.MouseEvent evt) {
+				outputFormjButtonMouseReleased(evt);
+			}
+		});
+
+		managerjTabbedPane.addTab("报表查看", formjPanel);
+
+	}
+
+	/**
+	 * 初始化账户查看面板
+	 */
+	private void initialAccountjPanel() {
+		// TODO Auto-generated method stub
+		accountjPanel.setName("personnelView"); // NOI18N
+		accountjPanel.setPreferredSize(new java.awt.Dimension(930, 460));
+
+		jLabel19.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
+		jLabel19.setText("人员信息");
+
+		accountNamejTextField.setText("请输入人员姓名");
+		accountNamejTextField
+				.addMouseListener(new java.awt.event.MouseAdapter() {
+					public void mouseClicked(java.awt.event.MouseEvent evt) {
+						accountNamejTextFieldMouseClicked(evt);
+					}
+				});
+
+		findAccountNamejButton.setText("姓名查找");
+		findAccountNamejButton
+				.addMouseListener(new java.awt.event.MouseAdapter() {
+					public void mouseReleased(java.awt.event.MouseEvent evt) {
+						findAccountNamejButtonMouseReleased(evt);
+					}
+				});
+
+		jLabel9.setText("账号：");
+
+		accountNumjTextField.setText("请输入人员编号");
+		accountNumjTextField
+				.addMouseListener(new java.awt.event.MouseAdapter() {
+					public void mouseClicked(java.awt.event.MouseEvent evt) {
+						accountNumjTextFieldMouseClicked(evt);
+					}
+				});
+		accountNumjTextField
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						accountNumjTextFieldActionPerformed(evt);
+					}
+				});
+
+		findAccountNumjButton.setText("账号查找");
+		findAccountNumjButton
+				.addMouseListener(new java.awt.event.MouseAdapter() {
+					public void mouseReleased(java.awt.event.MouseEvent evt) {
+						findAccountNumjButtonMouseReleased(evt);
+					}
+				});
+		findAccountNumjButton
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						findAccountNumjButtonActionPerformed(evt);
+					}
+				});
+
+		jLabel11.setText("姓名：");
+		initialAccountJTable(accountVOs);
+
+		managerjTabbedPane.addTab("人员信息查看", accountjPanel);
+
+	}
+
+	/**
+	 * 初始化机构管理面板
+	 */
+	private void initialInstitutionjPanel() {
+		// TODO Auto-generated method stub
+		institutionjPanel.setName("institutionManagement"); // NOI18N
+		institutionjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
+
+		jLabel12.setText("机构编号：");
+
+		institutionNumjTextField.setText("请输入机构编号（6位数字）");
+		institutionNumjTextField
+				.addMouseListener(new java.awt.event.MouseAdapter() {
+					public void mouseClicked(java.awt.event.MouseEvent evt) {
+						institutionNamejTextFieldMouseClicked(evt);
+					}
+				});
+
+		findInstitutionNumjButton.setText("编号查找");
+		findInstitutionNumjButton
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						findInstitutionNumjButtonActionPerformed(evt);
+					}
+				});
+
+		jLabel13.setText("机构名称：");
+
+		findInstitutionNamejTextField.setText("请输入机构的完整名称");
+		findInstitutionNamejTextField
+				.addMouseListener(new java.awt.event.MouseAdapter() {
+					public void mouseClicked(java.awt.event.MouseEvent evt) {
+						findInstitutionNamejTextFieldMouseClicked(evt);
+					}
+				});
+
+		findInstitutionNamejButton.setText("名称查找");
+		findInstitutionNamejButton.setToolTipText("");
+		findInstitutionNamejButton
+				.addMouseListener(new java.awt.event.MouseAdapter() {
+					public void mouseReleased(java.awt.event.MouseEvent evt) {
+						findInstitutionNamejButtonMouseReleased(evt);
+					}
+				});
+
+		jLabel15.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
+		jLabel15.setText("机构信息");
+		jLabel15.setToolTipText("");
+
+		initialInstitutionJTable(institutionVOPlus, 0);
+		addInstitutionjButton.setText("添加新机构");
+		addInstitutionjButton.setToolTipText("");
+		addInstitutionjButton
+				.addMouseListener(new java.awt.event.MouseAdapter() {
+					public void mouseReleased(java.awt.event.MouseEvent evt) {
+						addInstitutionjButtonMouseReleased(evt);
+					}
+				});
+
+		submitInstitutionjButton.setText("提交");
+		submitInstitutionjButton.setToolTipText("");
+		submitInstitutionjButton
+				.addMouseListener(new java.awt.event.MouseAdapter() {
+					public void mouseReleased(java.awt.event.MouseEvent evt) {
+						submitInstitutionjButtonMouseReleased(evt);
+					}
+				});
+
+		managerjTabbedPane.addTab("机构管理", institutionjPanel);
+
+	}
+
+	/**
+	 * 初始化审批单据面板
+	 */
+	private void initialCheckjPanel() {
+		// TODO Auto-generated method stub
+		checkjPane.setName("documentCheck"); // NOI18N
+		checkjPane.setPreferredSize(new java.awt.Dimension(830, 460));
+
+		jLabel16.setText("状态：");
+
+		jLabel22.setText("jLabel13");
+
+		jLabel23.setToolTipText("");
+
+		jLabel29.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
+		jLabel29.setText("单据信息列表");
+
+		initialCheckJTable();
+
+		managerjTabbedPane.addTab("审批单据", checkjPane);
+
+	}
+
+	private void setAllLayout() {
+		// TODO Auto-generated method stub
+		javax.swing.GroupLayout checkjPaneLayout = new javax.swing.GroupLayout(
+				checkjPane);
+		checkjPane.setLayout(checkjPaneLayout);
+		checkjPaneLayout
+				.setHorizontalGroup(checkjPaneLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								checkjPaneLayout
+										.createSequentialGroup()
+										.addGroup(
+												checkjPaneLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.LEADING)
+														.addGroup(
+																checkjPaneLayout
+																		.createSequentialGroup()
+																		.addGap(41,
+																				41,
+																				41)
+																		.addComponent(
+																				jLabel22))
+														.addGroup(
+																checkjPaneLayout
+																		.createSequentialGroup()
+																		.addGap(194,
+																				194,
+																				194)
+																		.addComponent(
+																				jLabel23)))
+										.addContainerGap(
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												Short.MAX_VALUE))
+						.addGroup(
+								javax.swing.GroupLayout.Alignment.TRAILING,
+								checkjPaneLayout
+										.createSequentialGroup()
+										.addContainerGap(212, Short.MAX_VALUE)
+										.addGroup(
+												checkjPaneLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.LEADING)
+														.addGroup(
+																javax.swing.GroupLayout.Alignment.TRAILING,
+																checkjPaneLayout
+																		.createSequentialGroup()
+																		.addComponent(
+																				jLabel29)
+																		.addGap(435,
+																				435,
+																				435))
+														.addGroup(
+																javax.swing.GroupLayout.Alignment.TRAILING,
+																checkjPaneLayout
+																		.createSequentialGroup()
+																		.addComponent(
+																				jScrollPane1,
+																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				562,
+																				javax.swing.GroupLayout.PREFERRED_SIZE)
+																		.addGap(192,
+																				192,
+																				192))))
+						.addGroup(
+								checkjPaneLayout
+										.createParallelGroup(
+												javax.swing.GroupLayout.Alignment.LEADING)
+										.addGroup(
+												checkjPaneLayout
+														.createSequentialGroup()
+														.addContainerGap()
+														.addComponent(jLabel16)
+														.addContainerGap(920,
+																Short.MAX_VALUE))));
+		checkjPaneLayout
+				.setVerticalGroup(checkjPaneLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								checkjPaneLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addComponent(jLabel29)
+										.addGap(18, 18, 18)
+										.addComponent(
+												jScrollPane1,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												377,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addGap(513, 513, 513)
+										.addComponent(jLabel23)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												Short.MAX_VALUE)
+										.addComponent(jLabel22))
+						.addGroup(
+								checkjPaneLayout
+										.createParallelGroup(
+												javax.swing.GroupLayout.Alignment.LEADING)
+										.addGroup(
+												checkjPaneLayout
+														.createSequentialGroup()
+														.addContainerGap(932,
+																Short.MAX_VALUE)
+														.addComponent(
+																jLabel16,
+																javax.swing.GroupLayout.PREFERRED_SIZE,
+																21,
+																javax.swing.GroupLayout.PREFERRED_SIZE)
+														.addGap(1, 1, 1))));
+
+		javax.swing.GroupLayout salaryPolicyjPane1Layout = new javax.swing.GroupLayout(
+				salaryPolicyjPane1);
+		salaryPolicyjPane1.setLayout(salaryPolicyjPane1Layout);
+		salaryPolicyjPane1Layout
+				.setHorizontalGroup(salaryPolicyjPane1Layout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								salaryPolicyjPane1Layout
+										.createSequentialGroup()
+										.addGap(453, 453, 453)
+										.addComponent(salaryPolicyTitlejLabel)
+										.addGap(197, 197, 197)
+										.addComponent(
+												jSeparator9,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												50,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addGap(56, 56, 56)
+										.addComponent(
+												jSeparator8,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												50,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addContainerGap(82, Short.MAX_VALUE))
+						.addGroup(
+								javax.swing.GroupLayout.Alignment.TRAILING,
+								salaryPolicyjPane1Layout
+										.createSequentialGroup()
+										.addContainerGap(
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												Short.MAX_VALUE)
+										.addGroup(
+												salaryPolicyjPane1Layout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.LEADING)
+														.addGroup(
+																javax.swing.GroupLayout.Alignment.TRAILING,
+																salaryPolicyjPane1Layout
+																		.createSequentialGroup()
+																		.addComponent(
+																				addSalaryPolicyjButton)
+																		.addGap(46,
+																				46,
+																				46)
+																		.addComponent(
+																				submitSalaryPolicyjButton)
+																		.addGap(393,
+																				393,
+																				393))
+														.addGroup(
+																javax.swing.GroupLayout.Alignment.TRAILING,
+																salaryPolicyjPane1Layout
+																		.createSequentialGroup()
+																		.addComponent(
+																				jScrollPane5,
+																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				743,
+																				javax.swing.GroupLayout.PREFERRED_SIZE)
+																		.addGap(106,
+																				106,
+																				106)))));
+		salaryPolicyjPane1Layout
+				.setVerticalGroup(salaryPolicyjPane1Layout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								salaryPolicyjPane1Layout
+										.createSequentialGroup()
+										.addGroup(
+												salaryPolicyjPane1Layout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.LEADING)
+														.addGroup(
+																salaryPolicyjPane1Layout
+																		.createSequentialGroup()
+																		.addContainerGap(
+																				14,
+																				Short.MAX_VALUE)
+																		.addGroup(
+																				salaryPolicyjPane1Layout
+																						.createParallelGroup(
+																								javax.swing.GroupLayout.Alignment.LEADING)
+																						.addComponent(
+																								jSeparator9,
+																								javax.swing.GroupLayout.PREFERRED_SIZE,
+																								javax.swing.GroupLayout.DEFAULT_SIZE,
+																								javax.swing.GroupLayout.PREFERRED_SIZE)
+																						.addComponent(
+																								jSeparator8,
+																								javax.swing.GroupLayout.PREFERRED_SIZE,
+																								javax.swing.GroupLayout.DEFAULT_SIZE,
+																								javax.swing.GroupLayout.PREFERRED_SIZE))
+																		.addGap(24,
+																				24,
+																				24))
+														.addGroup(
+																salaryPolicyjPane1Layout
+																		.createSequentialGroup()
+																		.addContainerGap()
+																		.addComponent(
+																				salaryPolicyTitlejLabel,
+																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				25,
+																				javax.swing.GroupLayout.PREFERRED_SIZE)))
+										.addComponent(
+												jScrollPane5,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												400,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+												39, Short.MAX_VALUE)
+										.addGroup(
+												salaryPolicyjPane1Layout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.BASELINE)
+														.addComponent(
+																submitSalaryPolicyjButton)
+														.addComponent(
+																addSalaryPolicyjButton))
+										.addGap(19, 19, 19)));
+
+		javax.swing.GroupLayout constjPanel1Layout = new javax.swing.GroupLayout(
+				constjPanel);
+		constjPanel.setLayout(constjPanel1Layout);
+		constjPanel1Layout
+				.setHorizontalGroup(constjPanel1Layout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								constjPanel1Layout
+										.createSequentialGroup()
+										.addContainerGap(112, Short.MAX_VALUE)
+										.addGroup(
+												constjPanel1Layout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.LEADING)
+														.addGroup(
+																javax.swing.GroupLayout.Alignment.TRAILING,
+																constjPanel1Layout
+																		.createSequentialGroup()
+																		.addComponent(
+																				addConstjButton)
+																		.addGap(54,
+																				54,
+																				54)
+																		.addComponent(
+																				submitConstjButton)
+																		.addGap(385,
+																				385,
+																				385))
+														.addGroup(
+																javax.swing.GroupLayout.Alignment.TRAILING,
+																constjPanel1Layout
+																		.createSequentialGroup()
+																		.addComponent(
+																				constTitlejLabel)
+																		.addGap(437,
+																				437,
+																				437))
+														.addGroup(
+																javax.swing.GroupLayout.Alignment.TRAILING,
+																constjPanel1Layout
+																		.createSequentialGroup()
+																		.addComponent(
+																				jScrollPane2,
+																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				765,
+																				javax.swing.GroupLayout.PREFERRED_SIZE)
+																		.addGap(89,
+																				89,
+																				89)))));
+		constjPanel1Layout
+				.setVerticalGroup(constjPanel1Layout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								constjPanel1Layout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addComponent(constTitlejLabel)
+										.addGap(18, 18, 18)
+										.addComponent(
+												jScrollPane2,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												398,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+												30, Short.MAX_VALUE)
+										.addGroup(
+												constjPanel1Layout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.BASELINE)
+														.addComponent(
+																submitConstjButton)
+														.addComponent(
+																addConstjButton))
+										.addGap(27, 27, 27)));
 
 		javax.swing.GroupLayout logjPanelLayout = new javax.swing.GroupLayout(
 				logjPanel);
@@ -710,141 +1194,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 																javax.swing.GroupLayout.PREFERRED_SIZE)
 														.addGap(205, 205, 205))));
 
-		managerjTabbedPane.addTab("日志查看", logjPanel);
-	}
-
-	/**
-	 * 初始化日志查看列表
-	 */
-	private void initialLogJTable(ArrayList<LogVO> vos) {
-		// TODO Auto-generated method stub
-
-		assert (vos != null) : ("表格获得的日志信息为空");
-		authorityjComboBox.setEditable(false);
-		Object[][] logObjects = null;
-		logObjects = new Object[vos.size()][4];
-		int i = 0;
-		for (java.util.Iterator<LogVO> t = vos.iterator(); t.hasNext(); i++) {
-			LogVO vo = t.next();
-			System.out.println("得到的log信息：" + vo.time);
-			logObjects[i][0] = vo.time;
-			logObjects[i][1] = vo.operationName;
-			logObjects[i][2] = authorityjComboBox.getItemAt(Integer
-					.parseInt(vo.operatorID.substring(7, 8)));
-			logObjects[i][3] = vo.operatorID;
-
-		}
-
-		logjTable.setModel(new javax.swing.table.DefaultTableModel(logObjects,
-				new String[] { "日期", "操做类型", "操作人员职位", "操作人员编号" }) {
-			Class[] types = new Class[] { java.lang.String.class,
-					JComboBox.class, JComboBox.class, java.lang.String.class };
-			boolean[] canEdit = new boolean[] { false, false, false, false };
-
-			public Class getColumnClass(int columnIndex) {
-				return types[columnIndex];
-			}
-		});
-		logjTable.getColumnModel().getColumn(1)
-				.setCellEditor(new DefaultCellEditor(logTypejComboBox));
-		logjTable.getColumnModel().getColumn(2)
-				.setCellEditor(new DefaultCellEditor(authorityjComboBox));
-
-		// logjTable.setRowSelectionInterval(0, 0);// 设置哪几行被选中
-
-		logjTable.setGridColor(new java.awt.Color(0, 0, 0));
-		logjTable.setName("123"); // NOI18N
-		logjTable.getTableHeader().setReorderingAllowed(false);
-
-		ComponentFactory.setJTableTextCenter(logjTable);
-		jScrollPane11.setViewportView(logjTable);
-
-		setJTableTextCenter(logjTable);
-	}
-
-	/**
-	 * 初始化报表查看面板
-	 */
-	private void initialFormjPanel() {
-		// TODO Auto-generated method stub
-
-		formjPanel.setName("formView"); // NOI18N
-		formjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
-
-		profitFormjButton.setText("成本收益表");
-		profitFormjButton.setToolTipText("");
-		profitFormjButton.setName("profitFrom"); // NOI18N
-		profitFormjButton
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						profitFormjButtonActionPerformed(evt);
-					}
-				});
-
-		manageStateFormjButton.setText("经营情况表");
-		manageStateFormjButton.setName("businessFrom"); // NOI18N
-		manageStateFormjButton
-				.addMouseListener(new java.awt.event.MouseAdapter() {
-					public void mouseReleased(java.awt.event.MouseEvent evt) {
-						manageStateFormjButton1MouseReleased(evt);
-					}
-				});
-
-		jLabel30.setText("年");
-		jLabel31.setText("月");
-		jLabel32.setText("日");
-		formEYearjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "2000", "2001", "2002", "2003", "2004", "2005",
-						"2006", "2007", "2008", "2009", "2010", "2011", "2012",
-						"2013", "2014", "2015" }));
-		formEYearjComboBox.setName("yearComBox"); // NOI18N
-		formEYearjComboBox
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						formEYearjComboBoxActionPerformed(evt);
-					}
-				});
-		formEDatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
-						"10", "11", "12", "13", "14", "15", "16", "17", "18",
-						"9", "20", "21", "22", "23", "24", "25", "26", "27",
-						"28", "29", "30", "31" }));
-		formEDatejComboBox.setName("dataComBox"); // NOI18N
-		formEDatejComboBox
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						formEDatejComboBoxActionPerformed(evt);
-					}
-				});
-		formEMonthjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
-						"10", "11", "12" }));
-		formEMonthjComboBox.setName("monthComBox"); // NOI18N
-		formEMonthjComboBox
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						formEMonthjComboBoxActionPerformed(evt);
-					}
-				});
-		jLabel33.setText("截止日期：");
-
-		jLabel33.setVisible(false);
-		jLabel30.setVisible(false);
-		jLabel31.setVisible(false);
-		jLabel32.setVisible(false);
-
-		formEYearjComboBox.setVisible(false);
-		formEMonthjComboBox.setVisible(false);
-		formEDatejComboBox.setVisible(false);
-
-		outputFormjButton.setText("导出报表");
-		outputFormjButton.setName("outFormButton"); // NOI18N
-		outputFormjButton.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseReleased(java.awt.event.MouseEvent evt) {
-				outputFormjButtonMouseReleased(evt);
-			}
-		});
-
 		javax.swing.GroupLayout formjPanelLayout = new javax.swing.GroupLayout(
 				formjPanel);
 		formjPanel.setLayout(formjPanelLayout);
@@ -1050,70 +1399,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 																javax.swing.GroupLayout.PREFERRED_SIZE)
 														.addGap(205, 205, 205))));
 
-		managerjTabbedPane.addTab("报表查看", formjPanel);
-
-	}
-
-	/**
-	 * 初始化账户查看面板
-	 */
-	private void initialAccountjPanel() {
-		// TODO Auto-generated method stub
-		accountjPanel.setName("personnelView"); // NOI18N
-		accountjPanel.setPreferredSize(new java.awt.Dimension(930, 460));
-
-		jLabel19.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
-		jLabel19.setText("人员信息");
-
-		accountNamejTextField.setText("请输入人员姓名");
-		accountNamejTextField
-				.addMouseListener(new java.awt.event.MouseAdapter() {
-					public void mouseClicked(java.awt.event.MouseEvent evt) {
-						accountNamejTextFieldMouseClicked(evt);
-					}
-				});
-
-		findAccountNamejButton.setText("姓名查找");
-		findAccountNamejButton
-				.addMouseListener(new java.awt.event.MouseAdapter() {
-					public void mouseReleased(java.awt.event.MouseEvent evt) {
-						findAccountNamejButtonMouseReleased(evt);
-					}
-				});
-
-		jLabel9.setText("账号：");
-
-		accountNumjTextField.setText("请输入人员编号");
-		accountNumjTextField
-				.addMouseListener(new java.awt.event.MouseAdapter() {
-					public void mouseClicked(java.awt.event.MouseEvent evt) {
-						accountNumjTextFieldMouseClicked(evt);
-					}
-				});
-		accountNumjTextField
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						accountNumjTextFieldActionPerformed(evt);
-					}
-				});
-
-		findAccountNumjButton.setText("账号查找");
-		findAccountNumjButton
-				.addMouseListener(new java.awt.event.MouseAdapter() {
-					public void mouseReleased(java.awt.event.MouseEvent evt) {
-						findAccountNumjButtonMouseReleased(evt);
-					}
-				});
-		findAccountNumjButton
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						findAccountNumjButtonActionPerformed(evt);
-					}
-				});
-
-		jLabel11.setText("姓名：");
-		initialAccountJTable(accountVOs);
-
 		javax.swing.GroupLayout accountjPanelLayout = new javax.swing.GroupLayout(
 				accountjPanel);
 		accountjPanel.setLayout(accountjPanelLayout);
@@ -1239,78 +1524,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 										.addContainerGap(
 												javax.swing.GroupLayout.DEFAULT_SIZE,
 												Short.MAX_VALUE)));
-
-		managerjTabbedPane.addTab("人员信息查看", accountjPanel);
-
-	}
-
-	/**
-	 * 初始化机构管理面板
-	 */
-	private void initialInstitutionjPanel() {
-		// TODO Auto-generated method stub
-		institutionjPanel.setName("institutionManagement"); // NOI18N
-		institutionjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
-
-		jLabel12.setText("机构编号：");
-
-		institutionNumjTextField.setText("请输入机构编号（6位数字）");
-		institutionNumjTextField
-				.addMouseListener(new java.awt.event.MouseAdapter() {
-					public void mouseClicked(java.awt.event.MouseEvent evt) {
-						institutionNamejTextFieldMouseClicked(evt);
-					}
-				});
-
-		findInstitutionNumjButton.setText("编号查找");
-		findInstitutionNumjButton
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						findInstitutionNumjButtonActionPerformed(evt);
-					}
-				});
-
-		jLabel13.setText("机构名称：");
-
-		findInstitutionNamejTextField.setText("请输入机构的完整名称");
-		findInstitutionNamejTextField
-				.addMouseListener(new java.awt.event.MouseAdapter() {
-					public void mouseClicked(java.awt.event.MouseEvent evt) {
-						findInstitutionNamejTextFieldMouseClicked(evt);
-					}
-				});
-
-		findInstitutionNamejButton.setText("名称查找");
-		findInstitutionNamejButton.setToolTipText("");
-		findInstitutionNamejButton
-				.addMouseListener(new java.awt.event.MouseAdapter() {
-					public void mouseReleased(java.awt.event.MouseEvent evt) {
-						findInstitutionNamejButtonMouseReleased(evt);
-					}
-				});
-
-		jLabel15.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
-		jLabel15.setText("机构信息");
-		jLabel15.setToolTipText("");
-
-		initialInstitutionJTable(institutionVOPlus, 0);
-		addInstitutionjButton.setText("添加新机构");
-		addInstitutionjButton.setToolTipText("");
-		addInstitutionjButton
-				.addMouseListener(new java.awt.event.MouseAdapter() {
-					public void mouseReleased(java.awt.event.MouseEvent evt) {
-						addInstitutionjButtonMouseReleased(evt);
-					}
-				});
-
-		submitInstitutionjButton.setText("提交");
-		submitInstitutionjButton.setToolTipText("");
-		submitInstitutionjButton
-				.addMouseListener(new java.awt.event.MouseAdapter() {
-					public void mouseReleased(java.awt.event.MouseEvent evt) {
-						submitInstitutionjButtonMouseReleased(evt);
-					}
-				});
 
 		javax.swing.GroupLayout institutionjPanelLayout = new javax.swing.GroupLayout(
 				institutionjPanel);
@@ -1457,141 +1670,138 @@ public class ManagerJFrame extends javax.swing.JFrame {
 																submitInstitutionjButton))
 										.addGap(0, 20, Short.MAX_VALUE)));
 
-		managerjTabbedPane.addTab("机构管理", institutionjPanel);
-
-	}
-
-	/**
-	 * 初始化审批单据面板
-	 */
-	private void initialCheckjPanel() {
-		// TODO Auto-generated method stub
-		checkjPane.setName("documentCheck"); // NOI18N
-		checkjPane.setPreferredSize(new java.awt.Dimension(830, 460));
-
-		jLabel16.setText("状态：");
-
-		jLabel22.setText("jLabel13");
-
-		jLabel23.setToolTipText("");
-
-		jLabel29.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
-		jLabel29.setText("单据信息列表");
-
-		initialCheckJTable();
-		javax.swing.GroupLayout checkjPaneLayout = new javax.swing.GroupLayout(
-				checkjPane);
-		checkjPane.setLayout(checkjPaneLayout);
-		checkjPaneLayout
-				.setHorizontalGroup(checkjPaneLayout
+		javax.swing.GroupLayout managerjPanelLayout = new javax.swing.GroupLayout(
+				managerjPanel);
+		managerjPanel.setLayout(managerjPanelLayout);
+		managerjPanelLayout
+				.setHorizontalGroup(managerjPanelLayout
 						.createParallelGroup(
 								javax.swing.GroupLayout.Alignment.LEADING)
 						.addGroup(
-								checkjPaneLayout
+								managerjPanelLayout
 										.createSequentialGroup()
-										.addGroup(
-												checkjPaneLayout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING)
-														.addGroup(
-																checkjPaneLayout
-																		.createSequentialGroup()
-																		.addGap(41,
-																				41,
-																				41)
-																		.addComponent(
-																				jLabel22))
-														.addGroup(
-																checkjPaneLayout
-																		.createSequentialGroup()
-																		.addGap(194,
-																				194,
-																				194)
-																		.addComponent(
-																				jLabel23)))
-										.addContainerGap(
+										.addComponent(jLabel48)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+										.addComponent(
+												statejLabel,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
 												javax.swing.GroupLayout.DEFAULT_SIZE,
 												Short.MAX_VALUE))
 						.addGroup(
 								javax.swing.GroupLayout.Alignment.TRAILING,
-								checkjPaneLayout
+								managerjPanelLayout
 										.createSequentialGroup()
-										.addContainerGap(212, Short.MAX_VALUE)
+										.addGap(0, 471, Short.MAX_VALUE)
 										.addGroup(
-												checkjPaneLayout
+												managerjPanelLayout
 														.createParallelGroup(
 																javax.swing.GroupLayout.Alignment.LEADING)
 														.addGroup(
 																javax.swing.GroupLayout.Alignment.TRAILING,
-																checkjPaneLayout
+																managerjPanelLayout
 																		.createSequentialGroup()
 																		.addComponent(
-																				jLabel29)
-																		.addGap(435,
-																				435,
-																				435))
+																				jLabel6)
+																		.addGap(464,
+																				464,
+																				464))
 														.addGroup(
 																javax.swing.GroupLayout.Alignment.TRAILING,
-																checkjPaneLayout
+																managerjPanelLayout
 																		.createSequentialGroup()
 																		.addComponent(
-																				jScrollPane1,
+																				currentAccountNamejLabel)
+																		.addPreferredGap(
+																				javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+																		.addComponent(
+																				currentAuthorityjLabel)
+																		.addPreferredGap(
+																				javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+																		.addComponent(
+																				currentAccoutNamejLabel,
 																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				562,
+																				32,
 																				javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addGap(192,
-																				192,
-																				192))))
-						.addGroup(
-								checkjPaneLayout
-										.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
-										.addGroup(
-												checkjPaneLayout
-														.createSequentialGroup()
-														.addContainerGap()
-														.addComponent(jLabel16)
-														.addContainerGap(920,
-																Short.MAX_VALUE))));
-		checkjPaneLayout
-				.setVerticalGroup(checkjPaneLayout
+																		.addPreferredGap(
+																				javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+																		.addComponent(
+																				exitjButton))))
+						.addComponent(managerjTabbedPane,
+								javax.swing.GroupLayout.DEFAULT_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE,
+								Short.MAX_VALUE));
+		managerjPanelLayout
+				.setVerticalGroup(managerjPanelLayout
 						.createParallelGroup(
 								javax.swing.GroupLayout.Alignment.LEADING)
 						.addGroup(
-								checkjPaneLayout
+								managerjPanelLayout
 										.createSequentialGroup()
-										.addContainerGap()
-										.addComponent(jLabel29)
-										.addGap(18, 18, 18)
 										.addComponent(
-												jScrollPane1,
+												jLabel6,
 												javax.swing.GroupLayout.PREFERRED_SIZE,
-												377,
+												15,
 												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addGap(513, 513, 513)
-										.addComponent(jLabel23)
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-												javax.swing.GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE)
-										.addComponent(jLabel22))
-						.addGroup(
-								checkjPaneLayout
-										.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
+												16, Short.MAX_VALUE)
 										.addGroup(
-												checkjPaneLayout
-														.createSequentialGroup()
-														.addContainerGap(932,
-																Short.MAX_VALUE)
+												managerjPanelLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.BASELINE)
 														.addComponent(
-																jLabel16,
+																currentAuthorityjLabel)
+														.addComponent(
+																currentAccountNamejLabel,
+																javax.swing.GroupLayout.PREFERRED_SIZE,
+																24,
+																javax.swing.GroupLayout.PREFERRED_SIZE)
+														.addComponent(
+																currentAccoutNamejLabel)
+														.addComponent(
+																exitjButton))
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addComponent(
+												managerjTabbedPane,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												550,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addGroup(
+												managerjPanelLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.BASELINE)
+														.addComponent(
+																jLabel48,
 																javax.swing.GroupLayout.PREFERRED_SIZE,
 																21,
 																javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addGap(1, 1, 1))));
+														.addComponent(
+																statejLabel))));
 
-		managerjTabbedPane.addTab("审批单据", checkjPane);
+		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
+				getContentPane());
+		getContentPane().setLayout(layout);
+		layout.setHorizontalGroup(layout.createParallelGroup(
+				javax.swing.GroupLayout.Alignment.LEADING).addGroup(
+				javax.swing.GroupLayout.Alignment.TRAILING,
+				layout.createSequentialGroup()
+						.addGap(0, 0, Short.MAX_VALUE)
+						.addComponent(managerjPanel,
+								javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE,
+								javax.swing.GroupLayout.PREFERRED_SIZE)));
+		layout.setVerticalGroup(layout.createParallelGroup(
+				javax.swing.GroupLayout.Alignment.LEADING).addComponent(
+				managerjPanel, javax.swing.GroupLayout.Alignment.TRAILING,
+				javax.swing.GroupLayout.DEFAULT_SIZE,
+				javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+
+		pack();
+		this.setLocationRelativeTo(null);
 
 	}
 
@@ -1780,17 +1990,53 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 	private void documentCheckjTableMouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		Point p = e.getPoint();
-		int column = documentCheckjTable.columnAtPoint(p);
+		
+		int column = documentCheckjTable.getSelectedColumn();
 		if (e.getClickCount() == 1 && column == 3) {
 			// TODO Auto-generated method stub
 			if (e.getButton() == MouseEvent.BUTTON1) {
-				int row = documentCheckjTable.rowAtPoint(p);
+				int row =documentCheckjTable.getSelectedRow();
 				// 代号、车牌号
-				String num=null;
-				Rep rep=null;
+				String num = (String) documentCheckjTable.getValueAt(row, 1);
+				String repMsg = (String) documentCheckjTable.getValueAt(row, 2);
+				Rep rep = Rep.getRep(repMsg);
+				if (num != null && rep != null) {
+					try {
+						documentCheckbl.submitSaveRep(num, rep);
+						documents.remove(row);
+
+						documentCheckjTable.repaint();
+						documentCheckjTable.updateUI();
+
+					} catch (ClassNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						ComponentFactory.setState("程序错误",
+								ComponentFactory.DISPLAY_TIME, statejLabel);
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						ComponentFactory.setState(ComponentFactory.REMOTEFAILD,
+								ComponentFactory.DISPLAY_TIME, statejLabel);
+					} catch (MalformedURLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						ComponentFactory.setState("程序错误",
+								ComponentFactory.DISPLAY_TIME, statejLabel);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						ComponentFactory.setState("读写文件错误",
+								ComponentFactory.DISPLAY_TIME, statejLabel);
+					} catch (NotBoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						ComponentFactory.setState("数据越界",
+								ComponentFactory.DISPLAY_TIME, statejLabel);
+					}
+				}
 				// 点了删除
-				
+
 			}
 		}
 	}
@@ -1820,129 +2066,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		salaryPolicyTitlejLabel.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
 		salaryPolicyTitlejLabel.setText("薪水策略列表");
-
-		javax.swing.GroupLayout salaryPolicyjPane1Layout = new javax.swing.GroupLayout(
-				salaryPolicyjPane1);
-		salaryPolicyjPane1.setLayout(salaryPolicyjPane1Layout);
-		salaryPolicyjPane1Layout
-				.setHorizontalGroup(salaryPolicyjPane1Layout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(
-								salaryPolicyjPane1Layout
-										.createSequentialGroup()
-										.addGap(453, 453, 453)
-										.addComponent(salaryPolicyTitlejLabel)
-										.addGap(197, 197, 197)
-										.addComponent(
-												jSeparator9,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												50,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addGap(56, 56, 56)
-										.addComponent(
-												jSeparator8,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												50,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addContainerGap(82, Short.MAX_VALUE))
-						.addGroup(
-								javax.swing.GroupLayout.Alignment.TRAILING,
-								salaryPolicyjPane1Layout
-										.createSequentialGroup()
-										.addContainerGap(
-												javax.swing.GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE)
-										.addGroup(
-												salaryPolicyjPane1Layout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING)
-														.addGroup(
-																javax.swing.GroupLayout.Alignment.TRAILING,
-																salaryPolicyjPane1Layout
-																		.createSequentialGroup()
-																		.addComponent(
-																				addSalaryPolicyjButton)
-																		.addGap(46,
-																				46,
-																				46)
-																		.addComponent(
-																				submitSalaryPolicyjButton)
-																		.addGap(393,
-																				393,
-																				393))
-														.addGroup(
-																javax.swing.GroupLayout.Alignment.TRAILING,
-																salaryPolicyjPane1Layout
-																		.createSequentialGroup()
-																		.addComponent(
-																				jScrollPane5,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				743,
-																				javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addGap(106,
-																				106,
-																				106)))));
-		salaryPolicyjPane1Layout
-				.setVerticalGroup(salaryPolicyjPane1Layout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(
-								salaryPolicyjPane1Layout
-										.createSequentialGroup()
-										.addGroup(
-												salaryPolicyjPane1Layout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING)
-														.addGroup(
-																salaryPolicyjPane1Layout
-																		.createSequentialGroup()
-																		.addContainerGap(
-																				14,
-																				Short.MAX_VALUE)
-																		.addGroup(
-																				salaryPolicyjPane1Layout
-																						.createParallelGroup(
-																								javax.swing.GroupLayout.Alignment.LEADING)
-																						.addComponent(
-																								jSeparator9,
-																								javax.swing.GroupLayout.PREFERRED_SIZE,
-																								javax.swing.GroupLayout.DEFAULT_SIZE,
-																								javax.swing.GroupLayout.PREFERRED_SIZE)
-																						.addComponent(
-																								jSeparator8,
-																								javax.swing.GroupLayout.PREFERRED_SIZE,
-																								javax.swing.GroupLayout.DEFAULT_SIZE,
-																								javax.swing.GroupLayout.PREFERRED_SIZE))
-																		.addGap(24,
-																				24,
-																				24))
-														.addGroup(
-																salaryPolicyjPane1Layout
-																		.createSequentialGroup()
-																		.addContainerGap()
-																		.addComponent(
-																				salaryPolicyTitlejLabel,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				25,
-																				javax.swing.GroupLayout.PREFERRED_SIZE)))
-										.addComponent(
-												jScrollPane5,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												400,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-												39, Short.MAX_VALUE)
-										.addGroup(
-												salaryPolicyjPane1Layout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
-														.addComponent(
-																submitSalaryPolicyjButton)
-														.addComponent(
-																addSalaryPolicyjButton))
-										.addGap(19, 19, 19)));
 
 		managerjTabbedPane.addTab("薪水策略", salaryPolicyjPane1);
 
@@ -1975,84 +2098,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		constTitlejLabel.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
 		constTitlejLabel.setText("距离常量列表");
 
-		javax.swing.GroupLayout constjPanel1Layout = new javax.swing.GroupLayout(
-				constjPanel);
-		constjPanel.setLayout(constjPanel1Layout);
-		constjPanel1Layout
-				.setHorizontalGroup(constjPanel1Layout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(
-								constjPanel1Layout
-										.createSequentialGroup()
-										.addContainerGap(112, Short.MAX_VALUE)
-										.addGroup(
-												constjPanel1Layout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING)
-														.addGroup(
-																javax.swing.GroupLayout.Alignment.TRAILING,
-																constjPanel1Layout
-																		.createSequentialGroup()
-																		.addComponent(
-																				addConstjButton)
-																		.addGap(54,
-																				54,
-																				54)
-																		.addComponent(
-																				submitConstjButton)
-																		.addGap(385,
-																				385,
-																				385))
-														.addGroup(
-																javax.swing.GroupLayout.Alignment.TRAILING,
-																constjPanel1Layout
-																		.createSequentialGroup()
-																		.addComponent(
-																				constTitlejLabel)
-																		.addGap(437,
-																				437,
-																				437))
-														.addGroup(
-																javax.swing.GroupLayout.Alignment.TRAILING,
-																constjPanel1Layout
-																		.createSequentialGroup()
-																		.addComponent(
-																				jScrollPane2,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				765,
-																				javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addGap(89,
-																				89,
-																				89)))));
-		constjPanel1Layout
-				.setVerticalGroup(constjPanel1Layout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(
-								constjPanel1Layout
-										.createSequentialGroup()
-										.addContainerGap()
-										.addComponent(constTitlejLabel)
-										.addGap(18, 18, 18)
-										.addComponent(
-												jScrollPane2,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												398,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-												30, Short.MAX_VALUE)
-										.addGroup(
-												constjPanel1Layout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
-														.addComponent(
-																submitConstjButton)
-														.addComponent(
-																addConstjButton))
-										.addGap(27, 27, 27)));
-
 		managerjTabbedPane.addTab("距离常量", constjPanel);
 
 		jButton6.setText("jButton1");
@@ -2075,6 +2120,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		sexjComboBox.addItem(Sex.Sex_FAMALE);
 
 		authorityjComboBox = ComponentFactory.getAuthorityJComboBox();
+		repjComboBox = ComponentFactory.getRepJComboBox();
 
 		salaryPolicyjComboBox = new JComboBox<SalaryPolicy>();
 		SalaryPolicy salaryPolicy = null;
@@ -2189,6 +2235,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jLabel48 = new javax.swing.JLabel();
 		statejLabel = new javax.swing.JLabel();
 		exitjButton = new javax.swing.JButton();
+		viewChecked = new JButton();
 
 	}
 
@@ -3828,9 +3875,12 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	/**
 	 * 性别下拉框
 	 */
+
 	private JComboBox<Sex> sexjComboBox;
 	private JComboBox<Authority> authorityjComboBox;
 	private JComboBox<SalaryPolicy> salaryPolicyjComboBox;
+	private JComboBox<Rep> repjComboBox;
+	private JButton viewChecked;
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JTextField accountNamejTextField;
 	private javax.swing.JTextField accountNumjTextField;
