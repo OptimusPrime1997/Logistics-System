@@ -137,7 +137,9 @@ public class MainFrame extends JFrame {
 	private void initbtn() {
 		search_btn = new MyButton(150, 140,60, 25);
 		login_btn = new MyButton(320, 210, 60, 25);
-		exit_btn=new MyButton(370,20,60,25);
+		exit_btn=new MyButton(390,5,50,50);
+		exit_btn.setIcon(Img.getExit_btn());
+		exit_btn.setRolloverIcon(Img.getExit_btn_pressed());
 
 		login_btn.addMouseListener(new MouseAdapter() {
 			@Override
@@ -187,6 +189,7 @@ public class MainFrame extends JFrame {
 			if(msg==ResultMessage.VALID){
 				try {
 					vo=ctr_find.findByGoods(goodsNum);
+					System.out.println("MAinFrame.search "+vo.listNum);
 					new LogisticStateUI(vo);
 				} catch (GoodsNotFound e1) {
 					System.out.println("not found");
