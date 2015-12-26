@@ -54,8 +54,8 @@ public class Accountbl {
 			if (check(vo) == ResultMessage.VALID) {
 				boolean firstInsert = false;
 				try {
-					ArrayList<AccountPO> pos = accountDataService.show();
 					if (vo.accountNum.substring(8, 11).equals("000")) {
+						ArrayList<AccountPO> pos = accountDataService.show();
 						firstInsert = true;
 						AccountPO lastPO = null;
 						if (pos != null) {

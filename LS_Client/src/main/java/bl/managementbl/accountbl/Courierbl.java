@@ -4,11 +4,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import util.InputCheck;
+import util.ThreeAutoNum;
+import util.enumData.Authority;
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
 import Exception.NumNotFoundException;
+import PO.AccountPO;
 import PO.CourierPO;
 import VO.ManagementVO.CourierVO;
 import bl.managementbl.managedata.ManageData;
@@ -41,14 +45,33 @@ public class Courierbl {
 		if (courierDataService != null) {
 			ResultMessage rmsg = check(vo);
 			if (rmsg == ResultMessage.VALID) {
+				ArrayList<CourierPO> pos;
 				try {
+					pos = courierDataService.show();
+					if (pos != null) {
+						for (Iterator<CourierPO> t = pos.iterator(); t
+								.hasNext();) {
+							CourierPO p = t.next();
+							if (p.getCourierNum().equals(vo.courierNum)) {
+								return ResultMessage.EXIST;
+							}
+						}
+					}
 					rmsg = courierDataService.insert(manageVOPO.voToPO(vo));
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
-
-				} catch (IOException e) {
+				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					System.out.println("存储文件出错");
+					return ResultMessage.REMOTE_FAILED;
+				}
+				catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return ResultMessage.FAILED;
+				}
+				catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 					return ResultMessage.IOFAILED;
 				}
 			}

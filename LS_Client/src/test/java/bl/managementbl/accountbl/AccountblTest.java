@@ -39,15 +39,13 @@ public class AccountblTest {
 					.add(new AccountVO("02500106066", "田田", "6666",
 							Sex.Sex_FAMALE, Authority.COURIER, "12345678982",
 							"025001"));
-			rmsg[6] = accountbl
-					.add(new AccountVO("02500108088", "我是管理员！", "8888",
-							Sex.Sex_FAMALE, Authority.ADMINISTRATOR, "12345678666",
-							"025001"));	
-			
-	rmsg[7] = accountbl
-					.add(new AccountVO("02500109099", "东东", "9999",
-							Sex.Sex_MALE, Authority.FINANCIALSTAFF_V, "1234578999",
-							"025001"));	
+			rmsg[6] = accountbl.add(new AccountVO("02500108088", "我是管理员！",
+					"8888", Sex.Sex_FAMALE, Authority.ADMINISTRATOR,
+					"12345678666", "025001"));
+
+			rmsg[7] = accountbl.add(new AccountVO("02500109099", "东东", "9999",
+					Sex.Sex_MALE, Authority.FINANCIALSTAFF_V, "1234578999",
+					"025001"));
 			for (int i = 0; i < 8; i++) {
 				System.out.println(rmsg[i]);
 			}
