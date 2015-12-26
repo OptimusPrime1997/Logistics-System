@@ -25,6 +25,7 @@ import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.receiptbl.TransferRepbl.TransferRepController;
 import blservice.receiptblservice.TransferRepblService;
 import ui.receiptui.ReceiptCheckUI.TransferCheck;
+import ui.transferCtrOfficerui.transferCtrOfficer_main;
 import ui.util.MyFrame;
 import util.CurrentCity;
 import util.enumData.City;
@@ -64,12 +65,15 @@ public class TransferRep extends javax.swing.JPanel {
 	private Vector<String> columnIdentifiers;
 	private Vector<Object> dataVector;
 	private String officeID;
+	private transferCtrOfficer_main parentPanel;
 	// End of variables declaration//GEN-END:variables
 
 	/**
 	 * Creates new form TransferRep
+	 * @param parentPanel 
 	 */
-	public TransferRep() {
+	public TransferRep(transferCtrOfficer_main parentPanel) {
+		this.parentPanel=parentPanel;
 		initComponents();
 		myFrame = new MyFrame(411, 483, this);
 	}
@@ -410,8 +414,6 @@ public class TransferRep extends javax.swing.JPanel {
 			try {
 				weight += control.getWeightByOrder(order);
 			} catch (GoodsNotFound e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 				resultMsgText.setText(ExceptionPrint.print(e));
 				return;
 			}
@@ -431,6 +433,7 @@ public class TransferRep extends javax.swing.JPanel {
 				City.getCity(destination), orders, money, City.getCity(depart));
 		try {
 			control.submit(transferRepVO);
+			parentPanel.refreshValues();
 		} catch (NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

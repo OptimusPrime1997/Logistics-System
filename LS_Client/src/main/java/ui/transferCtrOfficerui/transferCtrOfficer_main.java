@@ -299,7 +299,7 @@ public class transferCtrOfficer_main extends JPanel {
 	}
 	private void toTransferCTR_btnMouseClicked() {
 		System.out.println("中转单");
-		new TransferRep();
+		new TransferRep(this);
 	}
     private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
     	if (evt.getSource() == exit_btn) {

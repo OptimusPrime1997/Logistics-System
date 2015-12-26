@@ -71,7 +71,7 @@ public class LogisticStateUI extends javax.swing.JFrame {
     	protected void paintComponent(Graphics g) {
     		g.drawImage(Img.getBackground_searchState(), 0, 0, this.getWidth(),this.getHeight(),null);
     	}};
-    	exit_btn=new MyButton(288, 3, 10, 10, 1);
+    	exit_btn=new MyButton(288, 3, 1);
     	exit_btn.addMouseListener(new MouseAdapter() {
     		@Override
     		public void mouseClicked(MouseEvent e) {
