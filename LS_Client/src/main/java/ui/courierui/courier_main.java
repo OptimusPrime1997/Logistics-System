@@ -10,7 +10,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -20,6 +19,7 @@ import javax.swing.LayoutStyle;
 
 import main.MainFrame;
 import ui.receiptui.Order;
+import ui.util.MyButton;
 import ui.util.MyFrame;
 import util.CurrentCity;
 import util.CurrentTime;
@@ -42,6 +42,9 @@ public class courier_main extends JPanel {
 		ctr_log=ControllerFactoryImpl.getInstance().getLogController();
 		initComponents();
 		frame=new MyFrame(this);
+	}
+	public static void main(String[] args) {
+		new courier_main();
 	}
 	/**
 	 * 给main的子界面调用~反馈给用户操作成功的message
@@ -369,10 +372,10 @@ public class courier_main extends JPanel {
 		
 	}
 	private void initbtn() {
-		signedGoodsbtn = new JButton();
-		newGoodsbtn = new JButton();
-		account_btn = new JButton();
-		exit_btn = new JButton();
+		signedGoodsbtn = new MyButton();
+		newGoodsbtn = new MyButton();
+		account_btn = new MyButton();
+		exit_btn = new MyButton();
 		signedGoodsbtn.setText("已签收");
 		newGoodsbtn.setText("新订单");
 		try {
@@ -474,9 +477,9 @@ public class courier_main extends JPanel {
 		}
 	}
 	// Variables declaration
-	private JButton account_btn;
+	private MyButton account_btn;
 	private JLabel businessOfficeNum_label;
-	private JButton exit_btn;
+	private MyButton exit_btn;
 	private ArrayList<JLabel> labels=new ArrayList<JLabel>();//近日的日期
 	private ArrayList<JProgressBar> bars=new ArrayList<JProgressBar>();//近日业绩的进度条
 	
@@ -485,8 +488,8 @@ public class courier_main extends JPanel {
 	private JLabel businessOffice_label;
 	private JLabel account_label;
 	private JLabel recentDays_label;
-	private JButton newGoodsbtn;
-	private JButton signedGoodsbtn;
+	private MyButton newGoodsbtn;
+	private MyButton signedGoodsbtn;
 	private LoginBLService ctr_login;
 	private LogBLService ctr_log;
 	// End of variables declaration
