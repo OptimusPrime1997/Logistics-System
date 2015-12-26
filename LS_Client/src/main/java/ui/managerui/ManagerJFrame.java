@@ -6,6 +6,7 @@
 package ui.managerui;
 
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -45,6 +46,7 @@ import ui.componentfactory.ComponentFactory;
 import ui.receiptui.BusinessForm;
 import ui.receiptui.ProfitForm;
 import ui.util.StrToLogType;
+import util.CurrentTime;
 import util.InputCheck;
 import util.enumData.Authority;
 import util.enumData.LogType;
@@ -82,32 +84,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	 */
 
 	public ManagerJFrame() {
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception e) {
-			throw new RuntimeException();
-		}
-		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
-					.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(ManagerJFrame.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(ManagerJFrame.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(ManagerJFrame.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(ManagerJFrame.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
-		}
+		ComponentFactory.setSystemLook();
 		initComponents();
 
 		this.setResizable(false);
@@ -212,7 +189,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jLabel6.setFont(new Font("宋体", Font.BOLD, 12));
 		jLabel6.setText("总经理");
 		jLabel6.setToolTipText("");
-		String currentOptorId = Loginbl.getCurrentOptorId();
 		currentAccountNamejLabel.setText(currentOptorId);
 
 		currentAuthorityjLabel.setText(Loginbl.getCurrentOptorName());
@@ -350,8 +326,10 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		jLabel47.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
 		jLabel47.setText("系统日志");
-
-		// initialLogJTable(logVOs);
+		logVOs = new ArrayList<LogVO>();
+		logVOs.add(new LogVO(LogType.VIEW_LOG, currentOptorId, CurrentTime
+				.getTime()));
+		initialLogJTable(logVOs);
 
 		managerjTabbedPane.addTab("日志查看", logjPanel);
 	}
@@ -1847,14 +1825,14 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		final JPopupMenu documentjPop = new JPopupMenu();
 		final JMenuItem documentSubmitjItem = new JMenuItem("全部提交");
 		documentSubmitjItem.addMouseListener(/**
-		 * @author 1 监听document的弹出菜单中的“提交”
+		 * @author 1 监听document的弹出菜单中的“全部提交”
 		 */
 		new MouseListener() {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				
 			}
 
 			@Override
@@ -1867,50 +1845,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
 				if (e.getButton() == MouseEvent.BUTTON1) {
-					// ResultMessage rmsg = null;
-					// int n = documentCheckjTable.getSelectedRow();
-					// Object vo = documents.get(n);
-					// ModifyState state = vo.isModify;
-					// DocumentVO v = getViewDocumentVO(n);
-					// if (state == ModifyState.NEW) {
-					// try {
-					// rmsg = documentblController.insert(v);
-					// setState(
-					// "提交" + ResultMessage.toFriendlyString(rmsg),
-					// DISPLAY_TIME);
-					// if (rmsg == ResultMessage.SUCCESS) {
-					// // documentVOPlus.remove(n);
-					// // documentVOPlus.add(n, new DocumentVOPlus(
-					// // v, ModifyState.SYNC));
-					// setDocumentVOs();
-					// initialDocumentJTable(documents, n);
-					// }
-					// } catch (RemoteException e1) {
-					// // TODO Auto-generated catch block
-					// e1.printStackTrace();
-					// setState(REMOTEFAILD, DISPLAY_TIME);
-					// }
-					// } else {
-					// if (v.equals(vo.getDocumentVO())) {
-					// setState("您未对该行进行修改！", DISPLAY_TIME);
-					// } else {
-					// try {
-					// rmsg = documentblController.update(v);
-					// setState(ResultMessage.toFriendlyString(rmsg),
-					// DISPLAY_TIME);
-					// if (rmsg == ResultMessage.SUCCESS) {
-					// documents.remove(n);
-					// documents.add(n, new DocumentVOPlus(v,
-					// ModifyState.SYNC));
-					// }
-					// } catch (RemoteException e1) {
-					// // TODO Auto-generated catch block
-					// e1.printStackTrace();
-					// setState(REMOTEFAILD, DISPLAY_TIME);
-					// }
-					// }
-					// }
-					// }
+					for(int i=0;i<documents.size();i++){
+						checkDocument(i);
+					}
 				}
 			}
 
@@ -1923,7 +1860,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				
 			}
 
 		});
@@ -1990,55 +1927,63 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 	private void documentCheckjTableMouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 		int column = documentCheckjTable.getSelectedColumn();
 		if (e.getClickCount() == 1 && column == 3) {
 			// TODO Auto-generated method stub
 			if (e.getButton() == MouseEvent.BUTTON1) {
-				int row =documentCheckjTable.getSelectedRow();
+				int row = documentCheckjTable.getSelectedRow();
 				// 代号、车牌号
-				String num = (String) documentCheckjTable.getValueAt(row, 1);
-				String repMsg = (String) documentCheckjTable.getValueAt(row, 2);
-				Rep rep = Rep.getRep(repMsg);
-				if (num != null && rep != null) {
-					try {
-						documentCheckbl.submitSaveRep(num, rep);
-						documents.remove(row);
-
-						documentCheckjTable.repaint();
-						documentCheckjTable.updateUI();
-
-					} catch (ClassNotFoundException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-						ComponentFactory.setState("程序错误",
-								ComponentFactory.DISPLAY_TIME, statejLabel);
-					} catch (RemoteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-						ComponentFactory.setState(ComponentFactory.REMOTEFAILD,
-								ComponentFactory.DISPLAY_TIME, statejLabel);
-					} catch (MalformedURLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-						ComponentFactory.setState("程序错误",
-								ComponentFactory.DISPLAY_TIME, statejLabel);
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-						ComponentFactory.setState("读写文件错误",
-								ComponentFactory.DISPLAY_TIME, statejLabel);
-					} catch (NotBoundException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-						ComponentFactory.setState("数据越界",
-								ComponentFactory.DISPLAY_TIME, statejLabel);
-					}
-				}
-				// 点了删除
-
+				checkDocument(row);			// 点
 			}
 		}
+	}
+
+	/**
+	 * 审批第row+1行单据
+	 * @param row
+	 */
+	private void checkDocument(int row) {
+		// TODO Auto-generated method stub
+		String num = (String) documentCheckjTable.getValueAt(row, 1);
+		String repMsg = (String) documentCheckjTable.getValueAt(row, 2);
+		Rep rep = Rep.getRep(repMsg);
+		if (num != null && rep != null) {
+			try {
+				documentCheckbl.submitSaveRep(num, rep);
+				documents.remove(row);
+
+				documentCheckjTable.repaint();
+				documentCheckjTable.updateUI();
+
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				ComponentFactory.setState("程序错误",
+						ComponentFactory.DISPLAY_TIME, statejLabel);
+			} catch (RemoteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				ComponentFactory.setState(ComponentFactory.REMOTEFAILD,
+						ComponentFactory.DISPLAY_TIME, statejLabel);
+			} catch (MalformedURLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				ComponentFactory.setState("程序错误",
+						ComponentFactory.DISPLAY_TIME, statejLabel);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				ComponentFactory.setState("读写文件错误",
+						ComponentFactory.DISPLAY_TIME, statejLabel);
+			} catch (NotBoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				ComponentFactory.setState("数据越界",
+						ComponentFactory.DISPLAY_TIME, statejLabel);
+			}
+		}
+
 	}
 
 	/**
@@ -2090,6 +2035,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 						submitConstjButtonActionPerformed(evt);
 					}
 				});
+
 		initialConstJTable(constVOPlus);
 		jScrollPane2.setViewportView(constjTable);
 		accountjTable.getTableHeader().setReorderingAllowed(false);
@@ -2133,6 +2079,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		}
 
 		managerjPanel = new javax.swing.JPanel();
+
+		managerjPanel.setPreferredSize(new Dimension(958, 643));
+
 		managerjTabbedPane = new javax.swing.JTabbedPane();
 		constjPanel = new javax.swing.JPanel();
 		jButton3 = new javax.swing.JButton();
@@ -2345,6 +2294,48 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private void submitSalaryPolicyjButtonActionPerformed(
 			java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addSalaryPolicyjButton1ActionPerformed
 		// TODO add your handling code here:
+		if (evt.getSource() == submitConstjButton) {
+			ResultMessage rmsg = null;
+			int n = salaryPolicyjTable.getSelectedRow();
+			SalaryPolicyVOPlus voPlus = salaryPolicyVOPlus.get(n);
+			ModifyState state = voPlus.isModify;
+			SalaryPolicyVO v = getViewSalaryPolicyVO(n);
+			if (state == ModifyState.NEW) {
+				try {
+					rmsg = salaryPolicyblController.insert(v);
+					setState("提交" + ResultMessage.toFriendlyString(rmsg),
+							DISPLAY_TIME);
+					if (rmsg == ResultMessage.SUCCESS) {
+						salaryPolicyVOPlus.remove(n);
+						salaryPolicyVOPlus.add(n, new SalaryPolicyVOPlus(v,
+								ModifyState.SYNC));
+					}
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+					setState(REMOTEFAILD, DISPLAY_TIME);
+				}
+			} else {
+				if (v.equals(voPlus.getSalaryPolicyVO())) {
+					setState("您未对该行进行修改！", DISPLAY_TIME);
+				} else {
+					try {
+						rmsg = salaryPolicyblController.update(v);
+						setState(ResultMessage.toFriendlyString(rmsg),
+								DISPLAY_TIME);
+						if (rmsg == ResultMessage.SUCCESS) {
+							salaryPolicyVOPlus.remove(n);
+							salaryPolicyVOPlus.add(n, new SalaryPolicyVOPlus(v,
+									ModifyState.SYNC));
+						}
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						setState(REMOTEFAILD, DISPLAY_TIME);
+					}
+				}
+			}
+		}
 	}// GEN-LAST:event_addSalaryPolicyjButton1ActionPerformed
 
 	/**
@@ -2465,6 +2456,54 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private void submitInstitutionjButtonMouseReleased(
 			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_submitInstitutionjButtonMouseReleased
 		// TODO add your handling code here:
+		if (evt.getSource() == submitInstitutionjButton) {
+			int tempN = 0;
+			ResultMessage rmsg = null;
+			int n = institutionjTable.getSelectedRow();
+			InstitutionVOPlus voPlus = institutionVOPlus.get(n);
+			ModifyState state = voPlus.isModify;
+			if (state == ModifyState.NEW) {
+				institutionVOPlus.remove(n);
+				if (n == 0) {
+					tempN = 0;
+				} else {
+					tempN = n - 1;
+				}
+				initialInstitutionJTable(institutionVOPlus, tempN);
+			} else {
+				Object[] options = { "取消", "删除" };
+				int result = JOptionPane
+						.showOptionDialog(null, "您确定要删除系统该薪水策略？", "是否删除",
+								JOptionPane.DEFAULT_OPTION,
+								JOptionPane.QUESTION_MESSAGE, null, options,
+								options[0]);
+				if (result == JOptionPane.NO_OPTION) {
+					try {
+						rmsg = institutionblController.delete(voPlus
+								.getInstitutionVO());
+						if (rmsg == ResultMessage.SUCCESS) {
+							setState("删除成功:)", DISPLAY_TIME);
+							institutionVOPlus.remove(n);
+							tempN = 0;
+							if (n == 0) {
+								tempN = 0;
+							} else {
+								tempN = n - 1;
+							}
+							initialInstitutionJTable(institutionVOPlus, tempN);
+						} else {
+							setState(ResultMessage.toFriendlyString(rmsg),
+									DISPLAY_TIME);
+						}
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						setState(REMOTEFAILD, DISPLAY_TIME);
+					}
+				}
+			}
+		}
+
 	}// GEN-LAST:event_submitInstitutionjButtonMouseReleased
 
 	private void addInstitutionjButtonMouseReleased(
@@ -2556,50 +2595,40 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private void submitConstjButtonActionPerformed(
 			java.awt.event.ActionEvent evt) {// GEN-FIRST:event_submitConstjButtonActionPerformed
 		// TODO add your handling code here:
-		// if (evt.getSource() == submitConstjButton) {
-		// ConstVOPlus voplus = null;
-		// boolean needSubmit = false;
-		// ResultMessage rmsg = null;
-		// for (Iterator<ConstVOPlus> t = constVOPlus.iterator(); t.hasNext();)
-		// {
-		// voplus = t.next();
-		// rmsg = null;
-		// if (voplus.isModify == ModifyState.CHANGED) {
-		// needSubmit = true;
-		// try {
-		// rmsg = constblController.update(voplus.getConstVO());
-		// } catch (RemoteException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// setState("远程连接错误", DISPLAY_TIME);
-		// }
-		// } else if (voplus.isModify == ModifyState.NEW) {
-		// needSubmit = true;
-		// try {
-		// rmsg = constblController.insert(voplus.getConstVO());
-		// if (rmsg == ResultMessage.OVERRIDE_DATA) {
-		// Object[] options = { "取消", "覆盖" };
-		// int result = JOptionPane.showOptionDialog(null,
-		// "您确定要覆盖" + voplus.twoCities + "的数据？",
-		// "是否覆数据", JOptionPane.DEFAULT_OPTION,
-		// JOptionPane.QUESTION_MESSAGE, null,
-		// options, options[0]);
-		// if (result == JOptionPane.NO_OPTION) {
-		// rmsg = constblController.update(voplus
-		// .getConstVO());
-		// }
-		// }
-		// } catch (RemoteException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// }
-		// setState(ResultMessage.toFriendlyString(rmsg), DISPLAY_TIME);
-		// }
-		// if (needSubmit == false) {
-		// setState("您未修改或新增，不需要提交", DISPLAY_TIME);
-		// }
-		// }
+		if (evt.getSource() == submitConstjButton) {
+			ResultMessage rmsg = null;
+			int n = constjTable.getSelectedRow();
+			ConstVOPlus voPlus = constVOPlus.get(n);
+			ModifyState state = voPlus.isModify;
+			ConstVO v = getViewConstVO(n);
+			if (state == ModifyState.NEW) {
+				try {
+					rmsg = constblController.insert(v);
+					setState(ResultMessage.toFriendlyString(rmsg), DISPLAY_TIME);
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+					setState(REMOTEFAILD, DISPLAY_TIME);
+				}
+				constVOPlus.remove(n);
+				constVOPlus.add(n, new ConstVOPlus(v, ModifyState.SYNC));
+			} else {
+				if (v.equals(voPlus.getConstVO())) {
+					setState("您未进行修改！", DISPLAY_TIME);
+				} else {
+					try {
+						rmsg = constblController.update(v);
+						setState(ResultMessage.toFriendlyString(rmsg),
+								DISPLAY_TIME);
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						setState(REMOTEFAILD, DISPLAY_TIME);
+					}
+				}
+			}
+		}
+
 	}// GEN-LAST:event_submitConstjButtonActionPerformed
 
 	/**
@@ -3807,32 +3836,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		 * http://download.oracle.com/javase
 		 * /tutorial/uiswing/lookandfeel/plaf.html
 		 */
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception e) {
-			throw new RuntimeException();
-		}
-		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
-					.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(ManagerJFrame.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(ManagerJFrame.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(ManagerJFrame.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(ManagerJFrame.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
-		}
+		ComponentFactory.setSystemLook();
 		// </editor-fold>
 		// </editor-fold>
 
@@ -3881,6 +3885,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private JComboBox<SalaryPolicy> salaryPolicyjComboBox;
 	private JComboBox<Rep> repjComboBox;
 	private JButton viewChecked;
+	String currentOptorId = Loginbl.getCurrentOptorId();
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JTextField accountNamejTextField;
 	private javax.swing.JTextField accountNumjTextField;

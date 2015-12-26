@@ -35,6 +35,7 @@ import ui.componentfactory.ComponentFactory;
 import ui.receiptui.BusinessForm;
 import ui.receiptui.ProfitForm;
 import ui.receiptui.generalUI.PayRep;
+import util.CurrentTime;
 import util.InputCheck;
 import util.enumData.Authority;
 import util.enumData.LogType;
@@ -66,6 +67,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	 * Creates new form FinancialStaffJFrame
 	 */
 	public FinancialStaffJFrame() {
+		ComponentFactory.setSystemLook();
 		ctr_log = ControllerFactoryImpl.getInstance().getLogController();
 		this.setVisible(true);
 		initComponents();
@@ -629,10 +631,6 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		logTypejLabel.setText("操作类型：");
 		logTypejComboBox = ComponentFactory.getLogTypeJComboBox();
-		// logTypejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-		// new String[] { "所有操作", "薪水制定", "常量制定", "审批单据", "用户账户管理",
-		// "银行账户管理", "人员机构管理", "司机管理", "车辆管理", "创建订单", "权限管理",
-		// "查看报表", "派件", "签收订单" }));
 
 		logTypejComboBox.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -640,20 +638,6 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 			}
 		});
 
-		// logSYearjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-		// new String[] { "2000", "2001", "2002", "2003", "2004", "2005",
-		// "2006", "2007", "2008", "2009", "2010", "2011", "2012",
-		// "2013", "2014", "2015" }));
-		//
-		// logSDatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-		// new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
-		// "10", "11", "12", "13", "14", "15", "16", "17", "18",
-		// "9", "20", "21", "22", "23", "24", "25", "26", "27",
-		// "28", "29", "30", "31" }));
-		//
-		// logSMonthjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-		// new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
-		// "10", "11", "12" }));
 		logSYearjComboBox = ComponentFactory.getYearJComboBox(2015, 2020);
 		logSMonthjComboBox = ComponentFactory.getMonthJComboBox();
 		logSDatejComboBox = ComponentFactory.getDayJComboBox();
@@ -671,20 +655,6 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		logEDayjLabel.setText("日");
 
-		// logEYearjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-		// new String[] { "2000", "2001", "2002", "2003", "2004", "2005",
-		// "2006", "2007", "2008", "2009", "2010", "2011", "2012",
-		// "2013", "2014", "2015" }));
-		//
-		// logEDatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-		// new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
-		// "10", "11", "12", "13", "14", "15", "16", "17", "18",
-		// "19", "20", "21", "22", "23", "24", "25", "26", "27",
-		// "28", "29", "30", "31" }));
-		//
-		// logEMonthjComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-		// new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
-		// "10", "11", "12" }));
 		logEYearjComboBox = ComponentFactory.getYearJComboBox(2015, 2020);
 		logEMonthjComboBox = ComponentFactory.getMonthJComboBox();
 		logEDatejComboBox = ComponentFactory.getDayJComboBox();
@@ -705,8 +675,11 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		logTitlejLabel.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
 		logTitlejLabel.setText("系统日志");
+		logVOs = new ArrayList<LogVO>();
+		logVOs.add(new LogVO(LogType.VIEW_LOG, currentOptorId, CurrentTime
+				.getTime()));
+		initialLogJTable(logVOs);
 
-		// initialLogJTable(logVOs);
 		logStartDayjLabel.setText("日");
 	}
 
