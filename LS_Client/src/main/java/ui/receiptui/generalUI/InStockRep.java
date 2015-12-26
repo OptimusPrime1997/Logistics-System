@@ -390,6 +390,7 @@ public class InStockRep extends javax.swing.JPanel {
 		}
 		WarehousePanel w = new WarehousePanel();
 		w.setVisible(true);
+		w.showProcess();
 		this.frame.dispose();
 	}
 

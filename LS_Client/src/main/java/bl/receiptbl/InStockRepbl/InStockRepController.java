@@ -102,6 +102,7 @@ public class InStockRepController extends ReceiptblController implements InStock
 			throws ClassNotFoundException, MalformedURLException, RemoteException, IOException,
 			NotBoundException {
 		// TODO Auto-generated method stub
+
 		return inStockRepbl.getAllRepByDate(date);
 	}
 

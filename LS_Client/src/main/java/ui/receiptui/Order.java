@@ -399,7 +399,7 @@ public class Order extends javax.swing.JPanel {
 					receiverCompany, receiverPhone, numOfGoods, weight, volume,
 					nameOfInside, expressType, moneyOfPackage, moneyTotal,
 					moneyFare, GoodsArrivalState.INTACT,
-					logisticState, "", receiverPhone);
+					logisticState, "", receiverPhone,startTime);
 			ResultMessage msg_newGoods=ctr_newgoods.init(vo);
 			if(msg_newGoods==ResultMessage.SUCCESS){
 				ifsummitted=true;

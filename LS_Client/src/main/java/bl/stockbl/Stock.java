@@ -36,7 +36,7 @@ public class Stock {
 	
 	
 	StockNum sn = new StockNum();
-	private ArrayList<StockVO> result = new ArrayList<StockVO>();
+	
 	
 
 	private StockDataService getStockDataService() throws MalformedURLException, RemoteException, NotBoundException {
@@ -104,12 +104,11 @@ public class Stock {
         
         
 
-         
+        
         int instocknum = instockreps.size();
         int outstocknum = outstockreps.size();
 
-		 
-       
+
         
 		return instocknum+" "+outstocknum;
 	}
@@ -147,7 +146,6 @@ public class Stock {
 	public int checkPresentStockQuantity(int block) throws ClassNotFoundException, NotBoundException, IOException {
 		int result = 0;
 		ArrayList<StockVO> list = show();
-		
 		for (StockVO vo : list) {
 
 			if (vo.block == block) {
@@ -165,7 +163,7 @@ public class Stock {
 	 * @throws ClassNotFoundException 
 	 */
 	public ArrayList<StockVO> show() throws NotBoundException, ClassNotFoundException, IOException {
-
+		ArrayList<StockVO> result = new ArrayList<StockVO>();
 		ArrayList<StockPO> list = new ArrayList<StockPO>();
 		
 		StockDataService s = getStockDataService();
@@ -207,6 +205,7 @@ public class Stock {
 		InStockRepPO po = vo.toPO(vo);
 		StockDataService sd = getStockDataService();
 		City cityNum = CurrentCity.getCurrentCity();
+		System.out.println("update in ");
 		return sd.update(po, cityNum);
 	}
 	
@@ -224,18 +223,18 @@ public class Stock {
 	 * @throws ClassNotFoundException 
 	 */
 	public ArrayList<StockVO> showToday() throws ClassNotFoundException, NotBoundException, IOException {
-
+//		ArrayList<StockVO> result = new ArrayList<StockVO>();
 		ArrayList<StockVO> list = show();
 	
-		String date = CurrentTime.getDate();
+//		String date = CurrentTime.getDate();
+//		
+//		for (StockVO vo : list) {
+//			if (vo.inStockDate.equals(date)) {
+//				result.add(vo);
+//			}
+//		}
 		
-		for (StockVO vo : list) {
-			if (vo.inStockDate.equals(date)) {
-				result.add(vo);
-			}
-		}
-		
-		return result;
+		return list;
 	}
 	/**
 	 * @return

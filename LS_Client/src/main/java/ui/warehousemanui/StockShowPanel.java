@@ -11,31 +11,25 @@
 package ui.warehousemanui;
 
 import javax.swing.*;
-
 import javax.swing.table.DefaultTableModel;
 
 
 
+
 import main.MainFrame;
-
 import VO.StockVO;
-
 import bl.controllerfactorybl.ControllerFactoryImpl;
-
+import bl.loginbl.Loginbl;
 import blservice.stockblservice.StockBLService;
-
 import util.enumData.City;
-
 import util.enumData.ResultMessage;
 
 
 
+
 import java.awt.*;
-
 import java.io.IOException;
-
 import java.rmi.NotBoundException;
-
 import java.util.ArrayList;
 
 
@@ -102,7 +96,7 @@ public class StockShowPanel extends JFrame {
 
     	*/
 
-    this.setSize(600, 330);
+    this.setSize(800, 330);
 
     /**
 
@@ -210,7 +204,7 @@ boolean[] canEdit = new boolean [] {
 
 
 
-        jLabel9.setText("当前账户：大玉儿");
+        jLabel9.setText("当前账户："+Loginbl.getCurrentOptorName());
 
 
 
@@ -279,204 +273,106 @@ e.printStackTrace();
         });
 
 
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-
-       
-
-
-
         getContentPane().setLayout(layout);
-
-
 
         layout.setHorizontalGroup(
 
-
-
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 
+            .addGroup(layout.createSequentialGroup()
 
-
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-
-
-
-                .addContainerGap(284, Short.MAX_VALUE)
-
-
+                .addContainerGap()
 
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 
-
-
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
 
+                        .addGap(0, 466, Short.MAX_VALUE)
 
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 
-                        .addComponent(jLabel9)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
 
+                                .addComponent(jLabel9)
 
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(exit)
 
+                                .addGap(3, 3, 3))
 
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
 
-                        .addComponent(exit)
+                                .addComponent(back)
 
+                                .addGap(33, 33, 33)
 
+                                .addComponent(export)
 
-                        .addGap(3, 3, 3))
+                                .addContainerGap())))
 
+                    .addGroup(layout.createSequentialGroup()
 
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(resultMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
 
+                                .addGap(0, 0, Short.MAX_VALUE)
 
-                        .addComponent(back)
-
-
-
-                        .addGap(33, 33, 33)
-
-
-
-                        .addComponent(show)
-
-
+                                .addComponent(show, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
 
                         .addContainerGap())))
 
-
-
             .addGroup(layout.createSequentialGroup()
 
+                .addGap(16, 16, 16)
 
-
-                .addGap(22, 22, 22)
-
-
-
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-
-
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
 
                 .addGap(0, 0, Short.MAX_VALUE))
 
-
-
-            .addGroup(layout.createSequentialGroup()
-
-
-
-                .addContainerGap()
-
-
-
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
-
-
-                    .addComponent(resultMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-
-
-
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-
-
-
-                        .addGap(0, 0, Short.MAX_VALUE)
-
-
-
-                        .addComponent(export, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-
-
-
-                .addContainerGap())
-
-
-
         );
-
-
 
         layout.setVerticalGroup(
 
-
-
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
-
 
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
 
-
-
                 .addContainerGap()
-
-
 
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
 
-
-
                     .addComponent(jLabel9)
-
-
 
                     .addComponent(exit))
 
-
-
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-
-
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
 
-
-
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-
-
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 
-
-
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
 
-
-
-                        .addComponent(export)
-
-
+                        .addComponent(show)
 
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 
-
-
-                        .addComponent(show))
-
-
+                        .addComponent(export))
 
                     .addComponent(back, javax.swing.GroupLayout.Alignment.TRAILING))
 
-
-
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-
-
 
                 .addComponent(resultMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
 
-
-
         );
-
-
 
     }// </editor-fold>//GEN-END:initComponents
 
