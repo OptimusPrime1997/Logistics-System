@@ -20,7 +20,7 @@ public class GetRepVO extends ArriveRepVO {
 		this.rep = po.getRep();
 		this.shipNum = po.getShipNum();
 		this.arriveVOs = ArriveVO.toArrayVO(po.getArrivePOs());
-		this.depart = po.getDestination();
+		this.depart = po.getDepart();
 	}
 
 	public static GetRepPO toPO(GetRepVO vo) {
