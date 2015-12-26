@@ -123,9 +123,12 @@ public class Shipping extends javax.swing.JPanel {
         ShippingRepVO shippingRepVO = null;
         try {
 			shippingRepVO = control.getRepByNum(num);
-		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
         dateText.setText(shippingRepVO.date);
@@ -135,9 +138,12 @@ public class Shipping extends javax.swing.JPanel {
         destinationText.setText(shippingRepVO.destination);
         try {
 			dataVector = control.initShow(num);
-		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
         columnIdentifiers.add("订单号");

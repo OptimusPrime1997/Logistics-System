@@ -23,9 +23,7 @@ import VO.Receipt.PayBonusVO;
 import VO.Receipt.PayRepBonusRepVO;
 import VO.Receipt.PayRepVO;
 import bl.receiptbl.PayRepbl.PayRepBounsController;
-import bl.receiptbl.PayRepbl.PayRepController;
 import blservice.receiptblservice.PayRepBonusblService;
-import blservice.receiptblservice.PayRepblService;
 import ui.util.MyFrame;
 import util.enumData.ResultMessage;
 
@@ -325,6 +323,7 @@ public class PayRepBonus extends javax.swing.JPanel {
 	}
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		resultMsgText.setText("");
 		String getterNum = receiverNumText.getText();
 		if(getterNum.equals("")){
 			resultMsgText.setText("请填写收款人编号");
@@ -354,9 +353,13 @@ public class PayRepBonus extends javax.swing.JPanel {
 		String getterName = null;
 		try {
 			getterName = control.getReceiverName(getterNum);
-		} catch (ClassNotFoundException | NameNotFoundException | NumNotFoundException | IOException e) {
+		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		} catch (NameNotFoundException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
 		}
@@ -385,9 +388,13 @@ public class PayRepBonus extends javax.swing.JPanel {
 		String bankAccount = (String) bankAccountBox.getSelectedItem();
 		try {
 			control.minusMoneyInBankAccount(bankAccount, sum);
-		} catch (ClassNotFoundException | NumNotFoundException | IOException e) {
+		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
 		}
@@ -411,15 +418,21 @@ public class PayRepBonus extends javax.swing.JPanel {
 	}
 	
 	private void bankAccountBoxActionPerformed(java.awt.event.ActionEvent evt){
+		resultMsgText.setText("");
 		String bankAccount = (String)bankAccountBox.getSelectedItem();
 		double balance = 0;
 		try {
 			balance = control.showBankBalance(bankAccount);
-		} catch (ClassNotFoundException | NameNotFoundException | IOException | NumNotFoundException e) {
+		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
-		}
+			return;
+		} catch (NameNotFoundException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		} 
 		balanceText.setText(balance+"");
 	}
 	

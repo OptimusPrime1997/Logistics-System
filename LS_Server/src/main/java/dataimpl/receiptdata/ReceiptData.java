@@ -34,7 +34,7 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	}
 
 	public String submitAdd(Rep rep) {
-		return "data/ReceiptSaveData/" + rep + "Save.txt";
+		return "data/ReceiptSubmitData/" + rep + "Submit.txt";
 	}
 
 	public String saveAdd(Rep rep) {

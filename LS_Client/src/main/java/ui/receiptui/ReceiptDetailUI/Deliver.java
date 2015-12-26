@@ -117,9 +117,12 @@ public class Deliver extends javax.swing.JPanel {
         DeliverRepVO deliverRepVO = null;
         try {
 			deliverRepVO = control.getRepByNum(num);
-		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
         dateText.setText(deliverRepVO.date);
@@ -127,9 +130,12 @@ public class Deliver extends javax.swing.JPanel {
         courierNumText.setText(deliverRepVO.deliverCourierNum);
         try {
 			courierNameText.setText(control.getCourierName(deliverRepVO.deliverCourierNum));
-		} catch (ClassNotFoundException | NameNotFoundException | NumNotFoundException | IOException e) {
+		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		} catch (NameNotFoundException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
         columnIdentifiers.add("订单号");

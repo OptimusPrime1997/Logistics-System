@@ -21,7 +21,6 @@ import Exception.SalaryPolicyNotFoundException;
 import VO.Receipt.PayCourierSalaryVO;
 import VO.Receipt.PayRepCourierSalaryRepVO;
 import VO.Receipt.PayRepVO;
-import bl.receiptbl.PayRepbl.PayRepController;
 import bl.receiptbl.PayRepbl.PayRepCourierController;
 import blservice.receiptblservice.PayRepCourierblService;
 import ui.util.MyFrame;
@@ -268,9 +267,13 @@ public class PayRepCourier extends javax.swing.JPanel {
 		String bankAccount = (String) bankAccountBox.getSelectedItem();
 		try {
 			control.minusMoneyInBankAccount(bankAccount, sum);
-		} catch (ClassNotFoundException | NumNotFoundException | IOException e) {
+		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
 		}
@@ -295,14 +298,20 @@ public class PayRepCourier extends javax.swing.JPanel {
 	}
 	
 	private void bankAccountBoxActionPerformed(java.awt.event.ActionEvent evt){
+		resultMsgText.setText("");
 		String bankAccount = (String)bankAccountBox.getSelectedItem();
 		double balance = 0;
 		try {
 			balance = control.showBankBalance(bankAccount);
-		} catch (ClassNotFoundException | NameNotFoundException | IOException | NumNotFoundException e) {
+		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		} catch (NameNotFoundException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
 		}
 		balanceText.setText(balance+"");
 	}

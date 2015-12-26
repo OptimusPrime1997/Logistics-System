@@ -115,9 +115,12 @@ public class Pay extends javax.swing.JPanel {
 		columnIdentifiers.add("查看");
         try {
 			payRepVO = control.getRepByNum(num);
-		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
         dateText.setText(payRepVO.date);
@@ -125,9 +128,12 @@ public class Pay extends javax.swing.JPanel {
         sumText.setText(payRepVO.sum+"");
         try {
 			dataVector = control.initShow(num);
-		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
         model.setDataVector(dataVector, columnIdentifiers);

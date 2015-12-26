@@ -342,6 +342,7 @@ public class OutStockRep extends javax.swing.JPanel {
 	}
 
 	private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		resultMsgText.setText("");
 		String repType = repTypeText.getText();
 		if (repType.equals("")) {
 			resultMsgText.setText("请填写出库单据编号");
@@ -356,10 +357,15 @@ public class OutStockRep extends javax.swing.JPanel {
 			ShippingRepVO shippingRepVO = null;
 			try {
 				shippingRepVO = control.getShippingRepVO(repType);
-			} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+			} catch (ClassNotFoundException | NotBoundException | IOException  e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				resultMsgText.setText(ExceptionPrint.print(e));
+				return;
+			} catch (NumNotFoundException e) {
+				// TODO Auto-generated catch block
+				resultMsgText.setText(ExceptionPrint.print(e));
+				return;
 			}
 			ArrayList<String> orders = shippingRepVO.goods;
 			Vector<String> arr = new Vector<String>();
@@ -374,10 +380,15 @@ public class OutStockRep extends javax.swing.JPanel {
 			TransferRepVO transferRepVO = null;
 			try {
 				transferRepVO = control.getTransferRepVO(repTypeText.getText());
-			} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+			} catch (ClassNotFoundException | NotBoundException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				resultMsgText.setText(ExceptionPrint.print(e));
+				return;
+			} catch (NumNotFoundException e) {
+				// TODO Auto-generated catch block
+				resultMsgText.setText(ExceptionPrint.print(e));
+				return;
 			}
 			ArrayList<String> orders = transferRepVO.goods;
 			Vector<String> arr = new Vector<String>();

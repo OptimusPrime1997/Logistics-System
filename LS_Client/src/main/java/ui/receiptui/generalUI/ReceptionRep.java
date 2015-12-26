@@ -404,6 +404,7 @@ public class ReceptionRep extends javax.swing.JPanel {
 	}
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		resultMsgText.setText("");
 		String order = orderText.getText();
 		if(order.equals("")){
 			resultMsgText.setText("请填写订单号");
@@ -462,6 +463,7 @@ public class ReceptionRep extends javax.swing.JPanel {
 	}
 
 	private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		resultMsgText.setText("");
 		if(getTypeText.getText().equals("")){
 			resultMsgText.setText("请填写到达单据编号");
 			return;
@@ -471,15 +473,20 @@ public class ReceptionRep extends javax.swing.JPanel {
 		String shipNum = getTypeText.getText();
 		try {
 			departText.setText(control.getDepart(rep, shipNum));
-		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
 		}
 	}
 
 	private void completeButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		resultMsgText.setText("");
 		String repString = getTypeBox.getSelectedItem().toString();
 		Rep rep = Rep.getRep(repString);
 		ArrayList<String> existOrders = new ArrayList<String>();
@@ -489,9 +496,13 @@ public class ReceptionRep extends javax.swing.JPanel {
 		Vector<Object> arrs = null;
 		try {
 			arrs = control.initTable(rep, getTypeText.getText(), existOrders);
-		} catch (ClassNotFoundException | NotBoundException | IOException | NumNotFoundException e) {
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
 		}
@@ -515,7 +526,6 @@ public class ReceptionRep extends javax.swing.JPanel {
 					destination = control.getDestination(order);
 				} catch (GoodsNotFound e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
 					resultMsgText.setText(ExceptionPrint.print(e));
 					return;
 				}

@@ -312,6 +312,7 @@ public class InStockRep extends javax.swing.JPanel {
 	}
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		resultMsgText.setText("");
 		String order = orderText.getText();
 		if (order.equals("")) {
 			resultMsgText.setText("请填写订单号");
@@ -332,7 +333,6 @@ public class InStockRep extends javax.swing.JPanel {
 			destination = control.getCity(order);
 		} catch (GoodsNotFound e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
 		}

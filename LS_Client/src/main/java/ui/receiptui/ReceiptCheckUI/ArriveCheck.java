@@ -107,18 +107,24 @@ public class ArriveCheck extends javax.swing.JPanel {
         if(rep==Rep.GetRep){
         	try {
 				dataVector = getControl.initCheck(office);
-			} catch (ClassNotFoundException | NotBoundException | IOException | NameNotFoundException | NumNotFoundException e) {
+			} catch (ClassNotFoundException | NotBoundException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				resultMsgText.setText(ExceptionPrint.print(e));
-			}
+			} catch (NameNotFoundException | NumNotFoundException e) {
+				// TODO Auto-generated catch block
+				resultMsgText.setText(ExceptionPrint.print(e));
+			} 
         }
         else {
 			try {
 				dataVector = receptionControl.initCheck(office);
-			} catch (ClassNotFoundException | NotBoundException | IOException | NameNotFoundException | NumNotFoundException e) {
+			} catch (ClassNotFoundException | NotBoundException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			} catch (NameNotFoundException | NumNotFoundException e) {
+				// TODO Auto-generated catch block
 				resultMsgText.setText(ExceptionPrint.print(e));
 			}
 		}

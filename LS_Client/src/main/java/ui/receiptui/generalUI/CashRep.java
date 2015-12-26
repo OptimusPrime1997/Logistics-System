@@ -11,8 +11,6 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.ResourceBundle.Control;
 import java.util.Vector;
 import Exception.NameNotFoundException;
 
@@ -24,7 +22,6 @@ import VO.GoodsVO;
 import VO.Receipt.CashRepVO;
 import VO.Receipt.CashVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
-import bl.receiptbl.CashRepbl.CashRepController;
 import blservice.receiptblservice.CashRepblService;
 import ui.receiptui.ReceiptCheckUI.CashCheck;
 import ui.util.MyFrame;
@@ -350,6 +347,7 @@ public class CashRep extends javax.swing.JPanel {
     }
     
     private void courierButtonMouseClicked(java.awt.event.MouseEvent evt) {
+    	resultMsgText.setText("");
     	if(courierNumText.getText().equals("")){
     		resultMsgText.setText("请填写快递员编号");
     		return;
@@ -368,9 +366,13 @@ public class CashRep extends javax.swing.JPanel {
     	double money;
 		try {
 			courierName = control.getCourierName(courierNum);
-		} catch (ClassNotFoundException | NameNotFoundException | NumNotFoundException | IOException e) {
+		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		} catch (NameNotFoundException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
 		}
@@ -395,9 +397,13 @@ public class CashRep extends javax.swing.JPanel {
 		String bankAccount = (String)jComboBox.getSelectedItem();
     	try {
 			control.addMoneyInBankAccount(bankAccount, sum);
-		} catch (ClassNotFoundException | NumNotFoundException | IOException e) {
+		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
 		}

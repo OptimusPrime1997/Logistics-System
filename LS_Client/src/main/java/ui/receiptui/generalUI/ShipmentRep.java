@@ -368,6 +368,7 @@ public class ShipmentRep extends javax.swing.JPanel {
 	}
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		resultMsgText.setText("");
 		String order = orderText.getText();
 		if(order.equals("")){
 			resultMsgText.setText("请填写订单号");

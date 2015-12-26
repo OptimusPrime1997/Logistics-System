@@ -22,7 +22,6 @@ import Exception.ExceptionPrint;
 import Exception.GoodsNotFound;
 import VO.Receipt.TransferRepVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
-import bl.receiptbl.TransferRepbl.TransferRepController;
 import blservice.receiptblservice.TransferRepblService;
 import ui.receiptui.ReceiptCheckUI.TransferCheck;
 import ui.transferCtrOfficerui.transferCtrOfficer_main;
@@ -365,6 +364,7 @@ public class TransferRep extends javax.swing.JPanel {
 	}
 
 	private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		resultMsgText.setText("");
 		String order = orderText.getText();
 		if(order.equals("")){
 			resultMsgText.setText("请填写订单号");
@@ -424,10 +424,15 @@ public class TransferRep extends javax.swing.JPanel {
 		double money = 0;
 		try {
 			money = control.getFreightMoney(depart, destination, weight, form);
-		} catch (ClassNotFoundException | ConstNotFoundException | IOException e) {
+		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
+		} catch (ConstNotFoundException e) {
+			// TODO Auto-generated catch block
+			resultMsgText.setText(ExceptionPrint.print(e));
+			return;
 		}
 		TransferRepVO transferRepVO = new TransferRepVO(num, date, form, carNumText.getText(),
 				City.getCity(destination), orders, money, City.getCity(depart));

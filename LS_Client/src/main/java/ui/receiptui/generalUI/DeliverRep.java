@@ -17,7 +17,6 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-import ui.businessOfficerui.businessOfficer_main;
 import ui.receiptui.ReceiptCheckUI.DeliverCheck;
 import ui.util.MyFrame;
 import Exception.ExceptionPrint;
@@ -304,6 +303,7 @@ public class DeliverRep extends javax.swing.JPanel {
 	}
 
 	private void orderMouseClicked(java.awt.event.MouseEvent evt) {
+    	resultMsgText.setText("");
 		String order = orderNumText.getText();
 		if (order.equals("")) {
 			resultMsgText.setText("请填写订单号");
@@ -326,7 +326,6 @@ public class DeliverRep extends javax.swing.JPanel {
 			phoneNum = control.getPhoneByOrder(order);
 			address = control.getAddressByOrder(order);
 		} catch (GoodsNotFound e) {
-			e.printStackTrace();
 			resultMsgText.setText(ExceptionPrint.print(e));
 			return;
 		}

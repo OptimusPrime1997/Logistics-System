@@ -95,9 +95,12 @@ public class InStockCheck extends javax.swing.JPanel {
         columnIdentifiers.add("");
         try {
 			dataVector = control.initCheck(office);
-		} catch (ClassNotFoundException | NotBoundException | IOException | NameNotFoundException | NumNotFoundException e) {
+		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
+		} catch (NameNotFoundException | NumNotFoundException e) {
+			// TODO Auto-generated catch block
 			resultMsgText.setText(ExceptionPrint.print(e));
 		}
         model.setDataVector(dataVector, columnIdentifiers);
