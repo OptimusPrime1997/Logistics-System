@@ -31,6 +31,7 @@ public class Goodsbl {
 	/*
 	 * ECONOMIC NORMAL EXPRESS 18: 23: 25
 	 */
+	String ip=Loginbl.getIP();
 	final double[] expressRates = { 18, 23, 25 };
 	public static void main(String[] args) {
 		Goodsbl ctr=new Goodsbl();
@@ -302,7 +303,7 @@ public class Goodsbl {
 	private GoodsDataService getGoodsDataService() {
 		GoodsDataService data=null;
 		try {
-			data = (GoodsDataService)Naming.lookup("goodsServer");
+			data = (GoodsDataService)Naming.lookup("rmi://"+ip+":1099/goodsServer");
 		} catch (MalformedURLException e) {
 			
 		} catch (RemoteException e) {

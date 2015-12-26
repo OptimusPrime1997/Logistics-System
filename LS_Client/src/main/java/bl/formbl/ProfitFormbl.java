@@ -12,16 +12,18 @@ import util.enumData.ResultMessage;
 import VO.ProfitFormVO;
 import VO.Receipt.CashRepVO;
 import VO.Receipt.PayRepVO;
+import bl.loginbl.Loginbl;
+import bl.receiptbl.CashRepbl.CashRepbl;
 import bl.receiptbl.PayRepbl.PayRepbl;
 import dataservice.formdataservice.ProfitFormDataService;
 
 public class ProfitFormbl {
-	
+	String ip=Loginbl.getIP();
 	public ProfitFormVO show(){
 		double totalIn=0,totalOut=0,totalProfit=0;
 		//TODO 待改回真的Repbl
 		PayRepbl ctr_payRep=new PayRepbl();
-		MockCashRepbl ctr_cashRep=new MockCashRepbl();
+		CashRepbl ctr_cashRep=new CashRepbl();
 		
 		ArrayList<PayRepVO> moneyOut=null;
 		ArrayList<CashRepVO> moneyIn=null;
@@ -58,7 +60,7 @@ public class ProfitFormbl {
 	private ProfitFormDataService getPFormData(){
 		ProfitFormDataService service=null;
 		try {
-			service=(ProfitFormDataService)Naming.lookup("profit");
+			service=(ProfitFormDataService)Naming.lookup("rmi://"+ip+":1099/profit");
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
