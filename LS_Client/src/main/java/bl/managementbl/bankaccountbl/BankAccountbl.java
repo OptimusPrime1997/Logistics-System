@@ -65,7 +65,8 @@ public class BankAccountbl {
 					e.printStackTrace();
 					System.out.println("存储文件出错");
 					return ResultMessage.IOFAILED;
-				} catch (ClassNotFoundException e) {
+				} 
+				catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}

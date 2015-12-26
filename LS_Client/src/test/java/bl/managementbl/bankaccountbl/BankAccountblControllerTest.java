@@ -19,9 +19,19 @@ public class BankAccountblControllerTest {
 		try {
 			BankAccountBLService bankAccountblController = new BankAccountblController();
 			bankAccountblController.insert(new BankAccountVO(
-					"1234567890123456780", "圆通快递物流公司", 200000));
+					"1234567890123456780", "第一圆通快递物流公司", 200000));
 			bankAccountblController.insert(new BankAccountVO(
-					"1234567890123456781", "圆通快递物流公司", 200001));
+					"1234567890123456781", "第二圆通快递物流公司", 200001));
+			bankAccountblController.insert(new BankAccountVO(
+					"1234567890123456782", "第三圆通快递物流公司", 200002));
+			bankAccountblController.insert(new BankAccountVO(
+					"1234567890123456783", "第四圆通快递物流公司", 200003));
+			bankAccountblController.insert(new BankAccountVO(
+					"1234567890123456784", "第五圆通快递物流公司", 200004));
+			bankAccountblController.insert(new BankAccountVO(
+					"1234567890123456785", "第六圆通快递物流公司", 200005));
+			bankAccountblController.insert(new BankAccountVO(
+					"1234567890123456786", "第七圆通快递物流公司", 200006));
 			BankAccountVO vo = bankAccountblController
 					.findByBankAccountNum("1234567890123456781");
 			assertEquals(200001, vo.balance, 0.1);

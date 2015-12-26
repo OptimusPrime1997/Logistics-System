@@ -28,14 +28,30 @@ public class SalaryPolicyblControllerTest {
 		SalaryPolicyVO vo = null;
 		SalaryPolicyVO vo1 = null;
 		try {
-			ResultMessage[] rmsgs = new ResultMessage[3];
+			ResultMessage[] rmsgs = new ResultMessage[9];
 			rmsgs[0] = salaryPolicyblController.insert(new SalaryPolicyVO(
-					Authority.COURIER, SalaryPolicy.SHARE_SALARY, 0.0));
+					Authority.MANAGER, SalaryPolicy.BASE_SALARY,9000));
 			rmsgs[1] = salaryPolicyblController.insert(new SalaryPolicyVO(
-					Authority.DRIVER, SalaryPolicy.FREQUENCY_SALARY, 0.0));
+					Authority.FINANCIALSTAFF_C, SalaryPolicy.BASE_SALARY, 8800));
 			rmsgs[2] = salaryPolicyblController
 					.insert(new SalaryPolicyVO(Authority.BUSSINESSOFFICER,
-							SalaryPolicy.BASE_SALARY, 6000));
+							SalaryPolicy.BASE_SALARY, 8500));
+			rmsgs[3] = salaryPolicyblController.insert(new SalaryPolicyVO(
+					Authority.TRANSFERCTROFFICER, SalaryPolicy.SHARE_SALARY, 8700));
+			rmsgs[4] = salaryPolicyblController.insert(new SalaryPolicyVO(
+					Authority.WAREHOUSEMAN, SalaryPolicy.BASE_SALARY, 8600));
+			
+			rmsgs[5] = salaryPolicyblController
+					.insert(new SalaryPolicyVO(Authority.COURIER,
+							SalaryPolicy.SHARE_SALARY, 0.2));
+			rmsgs[6] = salaryPolicyblController.insert(new SalaryPolicyVO(
+					Authority.DRIVER, SalaryPolicy.FREQUENCY_SALARY, 50));
+			
+			rmsgs[7] = salaryPolicyblController.insert(new SalaryPolicyVO(
+					Authority.ADMINISTRATOR, SalaryPolicy.BASE_SALARY, 8400));
+			rmsgs[8] = salaryPolicyblController
+					.insert(new SalaryPolicyVO(Authority.FINANCIALSTAFF_V,
+							SalaryPolicy.BASE_SALARY, 8900));
 			for (int i = 0; i < 3; i++) {
 				System.out.println(rmsgs[i].toString());
 			}
@@ -71,7 +87,7 @@ public class SalaryPolicyblControllerTest {
 			e.printStackTrace();
 		}
 		if (vo1 != null) {
-//			assertEquals(6000, vo1.value, 0.1);
+			assertEquals(8500, vo1.value, 0.1);
 		} else {
 			System.out.println("vo is null");
 		}
