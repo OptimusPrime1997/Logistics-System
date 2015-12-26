@@ -13,6 +13,22 @@ public class Img {
 			.getImage();
 	private static ImageIcon button=new ImageIcon("pic/btn0.png");
 	private static ImageIcon button_over=new ImageIcon("pic/btn_over.png");
+	private static ImageIcon exit_btn=new ImageIcon("pic/btn_exit0.png");
+	private static ImageIcon exit_btn_pressed=new ImageIcon("pic/btn_exit1.png");
+	
+	public static ImageIcon getExit_btn() {
+		return exit_btn;
+	}
+
+	private static Image background_searchState=new ImageIcon("pic/background_searchState.png").getImage();
+	public static Image getBackground_searchState() {
+		return background_searchState;
+	}
+
+	public static ImageIcon getExit_btn_pressed() {
+		return exit_btn_pressed;
+	}
+
 	public static ImageIcon getButton_over() {
 		return button_over;
 	}

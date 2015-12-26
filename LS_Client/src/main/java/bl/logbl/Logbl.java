@@ -4,6 +4,7 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import bl.loginbl.Loginbl;
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
 import VO.LogVO;
@@ -18,6 +19,7 @@ public class Logbl {
 			System.out.println(vo.operatorID+"  "+vo.time+"  "+vo.operationName);
 		}
 	}
+	String ip=Loginbl.getIP();
 	public ResultMessage add(LogVO vo) {
 		 try {
 			return getLogDataService().add(LogVO.toPO(vo));
@@ -38,7 +40,7 @@ public class Logbl {
 	private LogDataService getLogDataService() {
 		LogDataService dataservice = null;
 		try {
-			dataservice = (LogDataService) Naming.lookup("log");
+			dataservice = (LogDataService) Naming.lookup("rmi://"+ip+":1099/log");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

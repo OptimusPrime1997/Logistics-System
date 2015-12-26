@@ -30,13 +30,13 @@ public class InstitutionblControllerTest {
 			ResultMessage[] rmsgs = new ResultMessage[3];
 			rmsgs[0] = institutionblController.insert(new InstitutionVO(
 					"025001", "南京市栖霞区营业厅","02589689345", "南京市栖霞区仙林大道163号", 
-					"张三，李四"));
+					""));
 			rmsgs[1] = institutionblController.insert(new InstitutionVO(
 					"025002", "南京市栖霞区营业厅", "02589689345", "南京市栖霞区仙林大道235号",
-					"周泰，祝四"));
+					""));
 			rmsgs[2] = institutionblController.insert(new InstitutionVO(
 					"025003", "南京市栖霞区营业厅", "02589689345", "南京市栖霞区仙林大道345号",
-					"王五，刘林"));
+					""));
 			for (int i = 0; i < 3; i++) {
 				System.out.println(rmsgs[i].toString());
 			}

@@ -141,7 +141,7 @@ public class InputCheck {
 		}else if(checkInputNum(accountNum, 11)==ResultMessage.VALID){
 			return ResultMessage.VALID;
 		}		
-		return ResultMessage.NOT_FOUND_ACCOUNTNUM;
+		return ResultMessage.NOT_FOUND_NUM;
 	}
 	public static ResultMessage keyIfWritten(String key){
 		if (key.length() == 0)

@@ -22,6 +22,7 @@ import ui.financialstaffui.FinancialStaffJFrame;
 import ui.managerui.ManagerJFrame;
 import ui.transferCtrOfficerui.transferCtrOfficer_main;
 import ui.util.MyButton;
+import ui.util.NumOnlyDocument;
 import ui.warehousemanui.WarehousePanel;
 import util.InputCheck;
 import util.enumData.ResultMessage;
@@ -107,6 +108,9 @@ public class MainFrame extends JFrame {
 	private void initTxt() {
 		goodsNum_text = new javax.swing.JTextField();
 		account_text = new javax.swing.JTextField(11);
+		
+		account_text.setDocument(new NumOnlyDocument());
+		
 		password_text = new javax.swing.JPasswordField(6);
 	    feedback_text = new JTextField();
 	    
@@ -135,9 +139,9 @@ public class MainFrame extends JFrame {
 		
 	}
 	private void initbtn() {
-		search_btn = new MyButton(150, 140,60, 25);
-		login_btn = new MyButton(320, 210, 60, 25);
-		exit_btn=new MyButton(370,20,60,25);
+		search_btn = new MyButton(150, 140,60, 25,0);
+		login_btn = new MyButton(320, 210, 60, 25,0);
+		exit_btn=new MyButton(390,5,50,50,1);
 
 		login_btn.addMouseListener(new MouseAdapter() {
 			@Override
@@ -187,6 +191,7 @@ public class MainFrame extends JFrame {
 			if(msg==ResultMessage.VALID){
 				try {
 					vo=ctr_find.findByGoods(goodsNum);
+					System.out.println("MAinFrame.search "+vo.listNum);
 					new LogisticStateUI(vo);
 				} catch (GoodsNotFound e1) {
 					System.out.println("not found");
@@ -213,51 +218,63 @@ public class MainFrame extends JFrame {
          *
          *
 		 */
-		ResultMessage msgAcc_ifValid,msgKey_ifValid,
-		              msgMatch=ResultMessage.NOT_FOUND_ACCOUNTNUM;
-         password=password_text.getText();
-         account=account_text.getText(); 
-         msgAcc_ifValid=InputCheck.checkAccount(account);
-         msgKey_ifValid=InputCheck.keyIfWritten(password);
-         //输入合法 调用数据层检查账号与密码是否匹配
-         if(msgAcc_ifValid==ResultMessage.VALID&&msgKey_ifValid==ResultMessage.VALID){
-        	  try {
-				msgMatch=ctr_login.login(account,password);
+		ResultMessage msgAcc_ifValid, msgKey_ifValid, msgMatch = ResultMessage.NOT_FOUND_NUM;
+		password = password_text.getText();
+		account = account_text.getText();
+		msgAcc_ifValid = InputCheck.checkAccount(account);
+		msgKey_ifValid = InputCheck.keyIfWritten(password);
+		// 输入合法 调用数据层检查账号与密码是否匹配
+		if (msgAcc_ifValid == ResultMessage.VALID
+				&& msgKey_ifValid == ResultMessage.VALID) {
+			try {
+				msgMatch = ctr_login.login(account, password);
 			} catch (RemoteException e) {
 			}
-        	  if(msgMatch==ResultMessage.SUCCESS){
-        		  int job=Integer.parseInt(account.substring(6, 8));
-                  this.setVisible(false);              
-                  switch (job) {
-         		case 1:new ManagerJFrame();
-         			break;
-         		case 2:new FinancialStaffJFrame();
-         			break;
-         		case 3:new businessOfficer_main();   
-         			break;
-         		case 4:new transferCtrOfficer_main();   
-         			break;
-         		case 5:new WarehousePanel();
-         			break;
-         		case 6:new courier_main();
-         			break;
-         		case 8:
-         			new AdministratorPanel();
-         		default:showFeedback(ResultMessage.NOT_FOUND_ACCOUNTNUM);
-         			break;
-         		}
-        	  }else if(msgMatch==ResultMessage.NOT_COMPLETED_ACCOUNT||msgMatch==ResultMessage.NOT_FOUND){
-        		  showFeedback(ResultMessage.NOT_FOUND_ACCOUNTNUM);
-        	  }
-        	  else showFeedback(ResultMessage.WRONG_PASSWORD);
-         }else{//不合法 反馈
-        	 if(msgKey_ifValid!=ResultMessage.VALID){
-        		 showFeedback(msgKey_ifValid);
-        	 }
-        	 if(msgAcc_ifValid!=ResultMessage.VALID){
-        		showFeedback(msgAcc_ifValid);
-        	 }
-         }
+			if (msgMatch == ResultMessage.SUCCESS) {
+				int job = Integer.parseInt(account.substring(6, 8));
+				this.setVisible(false);
+				switch (job) {
+				case 1:
+					new ManagerJFrame();
+					break;
+				case 2:
+					new FinancialStaffJFrame();
+					break;
+				case 3:
+					new businessOfficer_main();
+					break;
+				case 4:
+					new transferCtrOfficer_main();
+					break;
+				case 5:
+					new WarehousePanel();
+					break;
+				case 6:
+					new courier_main();
+					break;
+				case 8:
+					new AdministratorPanel();
+					break;
+				case 9:
+					new FinancialStaffJFrame();
+					break;
+				default:
+					showFeedback(ResultMessage.NOT_FOUND_NUM);
+					break;
+				}
+			} else if (msgMatch == ResultMessage.NOT_COMPLETED_ACCOUNT
+					|| msgMatch == ResultMessage.NOT_FOUND) {
+				showFeedback(ResultMessage.NOT_FOUND_NUM);
+			} else
+				showFeedback(ResultMessage.WRONG_PASSWORD);
+		} else {// 不合法 反馈
+			if (msgKey_ifValid != ResultMessage.VALID) {
+				showFeedback(msgKey_ifValid);
+			}
+			if (msgAcc_ifValid != ResultMessage.VALID) {
+				showFeedback(msgAcc_ifValid);
+			}
+		}
 	}
 	private void goodsNum_textMouseClicked(java.awt.event.MouseEvent evt) {
 		this.feedback_text.setText(null);//TODO  还有鼠标拖拽 选中一堆字符~也要清空

@@ -14,11 +14,13 @@ import Exception.NumNotFoundException;
 import VO.BusinessFormVO;
 import VO.Receipt.CashRepVO;
 import VO.Receipt.PayRepVO;
+import bl.loginbl.Loginbl;
 import bl.receiptbl.CashRepbl.CashRepbl;
 import bl.receiptbl.PayRepbl.PayRepbl;
 import dataservice.formdataservice.BusinessFormDataService;
 
 public class BusinessFormbl {
+	String ip=Loginbl.getIP();
 	public BusinessFormVO show(String startTime, String endTime)
 			throws NotFoundMoneyInAndOutException {
 		//0,1,2分别是年、月、日
@@ -84,7 +86,7 @@ public class BusinessFormbl {
 	private BusinessFormDataService getBFormData() {
 		BusinessFormDataService service = null;
 		try {
-			service = (BusinessFormDataService) Naming.lookup("business");
+			service = (BusinessFormDataService) Naming.lookup("rmi://"+ip+":1099/business");
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

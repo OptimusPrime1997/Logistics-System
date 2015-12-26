@@ -18,14 +18,23 @@ public class MyButton extends JButton{
 		setIcon(Img.getButton());
 		setRolloverIcon(Img.getButton_over());
 	}
-	public MyButton(int x,int y,int width,int height){
+	public MyButton(int x,int y,int width,int height,int type){
 		super();
 		setBounds(x, y, width, height);
 		setMargin(new Insets(0, 0, 0, 0));
 		setContentAreaFilled(false);
 		setBorderPainted(false);
-		setIcon(Img.getButton());
-		setRolloverIcon(Img.getButton_over());
+		switch(type){
+		case 0:
+			setIcon(Img.getButton());
+			setRolloverIcon(Img.getButton_over());
+			break;
+		case 1:
+			setIcon(Img.getExit_btn());
+			setRolloverIcon(Img.getExit_btn_pressed());
+			break;
+
+		}
 	}
 	
 	public static void main(String[] args) {

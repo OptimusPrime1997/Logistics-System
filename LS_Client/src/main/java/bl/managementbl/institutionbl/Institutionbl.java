@@ -6,8 +6,10 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import bl.managementbl.accountbl.Accountbl;
 import bl.managementbl.managedata.ManageData;
 import bl.managementbl.managedata.ManageVOPO;
+import blservice.managementblservice.accountblservice.AccountBLService;
 import dataservice.managementdataservice.institutiondataservice.InstitutionDataService;
 import dataservice.managementdataservice.managedataservice.ManageDataService;
 import util.InputCheck;
@@ -19,11 +21,13 @@ import Exception.NameNotFoundException;
 import Exception.NumNotFoundException;
 import PO.DriverPO;
 import PO.InstitutionPO;
+import VO.ManagementVO.AccountVO;
 import VO.ManagementVO.InstitutionVO;
 
 public class Institutionbl {
 	private InstitutionDataService institutionDataService;
 	private ManageVOPO manageVOPO;
+	private Accountbl accountbl;
 
 	public Institutionbl() {
 		// TODO Auto-generated institutionructor stub
@@ -32,13 +36,14 @@ public class Institutionbl {
 			ManageDataService manageDataService = ManageData.getInstance();
 			institutionDataService = (InstitutionDataService) manageDataService
 					.getInstitutionData();
+
 		} catch (RemoteException e) {
 			System.out.println("远程获取institutionDataService失败!");
 			e.printStackTrace();
 		}
 		manageVOPO = ManageVOPO.getInstance();
 	}
-	
+
 	/**
 	 * @param vo
 	 * @return OVER_DATA IOFAILED SUCCESS FAILED
@@ -93,7 +98,7 @@ public class Institutionbl {
 		} else
 			return ResultMessage.FAILED;
 	}
-	
+
 	public ResultMessage update(InstitutionVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.PERSONNEL_INSTITUTION_MANAGEMENT);
@@ -123,9 +128,75 @@ public class Institutionbl {
 			return ResultMessage.FAILED;
 		}
 	}
-//public ResultMessage updateManning(String institutionNum,String ){
-//	r
-//}
+
+	public ResultMessage updateManning(String institutionNum) {
+		accountbl = new Accountbl();
+		ArrayList<AccountVO> vos;
+		try {
+			vos = accountbl.findByInstitutionNum(institutionNum);
+		}  catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.REMOTE_FAILED;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.FAILED;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.IOFAILED;
+		} catch (NumNotFoundException e) {
+			// TODO Auto-generated catch block
+//			e.printStackTrace();
+			return ResultMessage.NOT_FOUND;
+		}
+		if (vos != null) {
+			String manning = "";
+			AccountVO v = null;
+			Iterator<AccountVO> t = vos.iterator();
+			for (; t.hasNext();) {
+				v = t.next();
+				manning += (v.accountName + " ");
+			}
+			InstitutionVO vo = null;
+			try {
+				vo = findByInstitutionNum(institutionNum);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return ResultMessage.NOT_FOUND_FILE;
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return ResultMessage.FAILED;
+			} catch (InstitutionNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return ResultMessage.NOT_FOUND;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return ResultMessage.IOFAILED;
+			} catch (NumNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return ResultMessage.NOT_FOUND_NUM;
+			}
+			vo.manning = manning;
+			try {
+				ResultMessage rmsg = update(vo);
+				return ResultMessage.SUCCESS;
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return ResultMessage.REMOTE_FAILED;
+			}
+		} else {
+			return ResultMessage.NOT_FOUND;
+		}
+	}
+
 	public ResultMessage delete(InstitutionVO VO) throws RemoteException {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.PERSONNEL_INSTITUTION_MANAGEMENT);
