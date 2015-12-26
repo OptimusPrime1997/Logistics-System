@@ -282,6 +282,7 @@ public class UserAccountPanel extends javax.swing.JFrame {
     				ArrayList<AccountVO> accountVOs=new ArrayList<AccountVO>();
     				accountVOs.add(vo);
     				AccountSearchPanel accountSearchPanel=new AccountSearchPanel(administratorPanel,accountVOs);
+    				accountSearchPanel.setVisible(true);
     				this.dispose();
     				return;
 //    				ComponentFactory.setState(vo.toString(), ComponentFactory.DISPLAY_TIME*6, resultMsg);
