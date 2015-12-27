@@ -31,7 +31,7 @@ public class AdministratorPanel extends javax.swing.JFrame {
 	 * Creates new form Management
 	 */
 	public AdministratorPanel() {
-		
+		ComponentFactory.setSystemLook();
 		optorName = Loginbl.getCurrentOptorName();
 		initComponents();
 		this.setVisible(true);
@@ -86,6 +86,8 @@ public class AdministratorPanel extends javax.swing.JFrame {
 				authorityActionPerformed(evt);
 			}
 		});
+		
+		authority.setVisible(false);
 
 		userAccount.setText("用户账户");
 		userAccount.addActionListener(new java.awt.event.ActionListener() {

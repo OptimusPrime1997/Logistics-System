@@ -87,7 +87,11 @@ public enum LogType {
 	/**
 	 * 薪水制定
 	 */
-	DECISION_SALARYPOLICY(21, "薪水制定");
+	DECISION_SALARYPOLICY(21, "薪水制定"),
+	/**
+	 * 日志查看
+	 */
+	VIEW_LOG(22,"日志查看");
 	final private int index;
 	final private String value;
 
