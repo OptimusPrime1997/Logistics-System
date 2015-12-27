@@ -270,8 +270,7 @@ public class transferCtrOfficer_main extends JPanel {
 		jLabel6.setText("飞机");
 		try {
 			officeNum=ctr_login.getCurrentOptorId().substring(0, 3);
-			transferOfficeNum_label.setText(City.toString(CurrentCity.getCurrentCity())
-					+ officeNum);
+			transferOfficeNum_label.setText(City.toString(CurrentCity.getCurrentCity()) + officeNum);
 		} catch (RemoteException e) {
 		}
 		outByTrain_label.setFont(new java.awt.Font("宋体", 1, 24)); // NOI18N
