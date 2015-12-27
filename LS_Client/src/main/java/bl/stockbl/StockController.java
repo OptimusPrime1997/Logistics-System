@@ -115,6 +115,7 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 	}
 	
 	
+	
 	@Override
 	public String checkStock(String startMonth, String startDay, String endMonth, String endDay) throws RemoteException {
 		log.add(new LogVO(LogType.STOCK_MANAGEMENT, getCurrentID(), CurrentTime.getTime()));
@@ -155,6 +156,14 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 	public int checkPresentStockQuantity(int block) throws ClassNotFoundException, NotBoundException, IOException {
 		return stock.checkPresentStockQuantity(block);
 		
+	}
+
+	/* (non-Javadoc)
+	 * @see blservice.stockblservice.StockDivisionBLService#getBlockByDivision(int)
+	 */
+	@Override
+	public ArrayList<StockDivisionVO> getBlockByDivision(int block) throws NotBoundException, IOException {
+		return division.getBlockByDivision(block);
 	}
 	
 	
