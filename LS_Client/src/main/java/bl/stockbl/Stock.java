@@ -19,6 +19,7 @@ import util.CurrentTime;
 import util.enumData.City;
 import util.enumData.ResultMessage;
 import dataservice.stockdataservice.StockDataService; 
+import bl.loginbl.Loginbl;
 import bl.receiptbl.InStockRepbl.InStockRepController;
 import bl.receiptbl.OutStockRepbl.OutStockRepController;
 import PO.StockPO;
@@ -40,7 +41,7 @@ public class Stock {
 	
 
 	private StockDataService getStockDataService() throws MalformedURLException, RemoteException, NotBoundException {
-		StockDataService s = (StockDataService) Naming.lookup("stock");
+		StockDataService s = (StockDataService) Naming.lookup("rmi://"+Loginbl.getIP()+":1099/stock");
 		return s;
 	}
 	/**
