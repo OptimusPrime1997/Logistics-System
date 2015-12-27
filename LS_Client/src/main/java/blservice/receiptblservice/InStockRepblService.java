@@ -39,8 +39,10 @@ public interface InStockRepblService extends ReceiptblService, NotForPayblServic
 	 * @throws RemoteException
 	 * @throws MalformedURLException
 	 * @throws NotBoundException
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public ResultMessage delete(String listNum) throws RemoteException, MalformedURLException, NotBoundException;
+	public void delete(String listNum) throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException;
 	
 	/**更新库存
 	 * @param vo
@@ -49,7 +51,7 @@ public interface InStockRepblService extends ReceiptblService, NotForPayblServic
 	 * @throws RemoteException
 	 * @throws NotBoundException
 	 */
-	public ResultMessage update(InStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException;
+	public void update(InStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException;
 	
 	/**根据日期得到所有入库单
 	 * @param date

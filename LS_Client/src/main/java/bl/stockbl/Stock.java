@@ -257,7 +257,10 @@ public class Stock {
 		
 	}
 	
-	
+	public void delete(String listNum) throws NotBoundException, ClassNotFoundException, IOException{
+		StockDataService sd = getStockDataService();
+		sd.delete(listNum);
+	}
 	
 	
 }

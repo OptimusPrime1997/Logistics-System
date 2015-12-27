@@ -15,7 +15,6 @@ import VO.Receipt.ReceiptVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
 import blservice.receiptblservice.InStockRepblService;
 import util.enumData.City;
-import util.enumData.ResultMessage;
 
 public class InStockRepController extends ReceiptblController implements InStockRepblService{
 	private InStockRepbl inStockRepbl = new InStockRepbl();
@@ -84,17 +83,17 @@ public class InStockRepController extends ReceiptblController implements InStock
 	}
 
 	@Override
-	public ResultMessage delete(String listNum) 
-			throws RemoteException, MalformedURLException, NotBoundException {
+	public void delete(String listNum) 
+			throws NotBoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return inStockRepbl.delete(listNum);
+		inStockRepbl.delete(listNum);
 	}
 
 	@Override
-	public ResultMessage update(InStockRepVO vo) 
+	public void update(InStockRepVO vo) 
 			throws MalformedURLException, RemoteException, NotBoundException {
 		// TODO Auto-generated method stub
-		return inStockRepbl.update(vo);
+		inStockRepbl.update(vo);
 	}
 
 	@Override

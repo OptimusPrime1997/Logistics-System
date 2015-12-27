@@ -183,9 +183,9 @@ public class StockDivisionbl implements StockDivisionBLService{
 		return null;
 	}
 	
-	public ResultMessage delete(String listNum) throws RemoteException, MalformedURLException, NotBoundException{
+	public void delete(String listNum) throws RemoteException, MalformedURLException, NotBoundException{
 		StockDivisionDataService sd = getStockDivisionDataService();
-		return sd.delete(listNum);
+		sd.delete(listNum);
 	}
 
 }
