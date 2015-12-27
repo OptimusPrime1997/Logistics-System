@@ -8,6 +8,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import bl.loginbl.Loginbl;
 import dataservice.stockdataservice.StockInitialDataService;
 import ui.warehousemanui.CheckUtil;
 import util.CurrentCity;
@@ -34,7 +35,7 @@ public class StockNum {
 		City cityNum =  CurrentCity.getCurrentCity();
 		int i = 0;
 		try {
-			StockInitialDataService si = (StockInitialDataService) Naming.lookup("stockini");
+			StockInitialDataService si = (StockInitialDataService) Naming.lookup("rmi://"+Loginbl.getIP()+":1099/stockini");
 			i = si.getInitialNum(cityNum).getInitialNum();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();

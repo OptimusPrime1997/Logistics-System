@@ -20,6 +20,7 @@ import PO.Receipt.OutStockRepPO;
 import VO.StockDivisionVO;
 import VO.Receipt.InStockRepVO;
 import VO.Receipt.OutStockRepVO;
+import bl.loginbl.Loginbl;
 import blservice.stockblservice.StockDivisionBLService;
 import dataservice.stockdataservice.StockDivisionDataService;
 
@@ -31,7 +32,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 
 	
 	private StockDivisionDataService getStockDivisionDataService() throws MalformedURLException, RemoteException, NotBoundException {
-		StockDivisionDataService sd = (StockDivisionDataService) Naming.lookup("stockDivision");
+		StockDivisionDataService sd = (StockDivisionDataService) Naming.lookup("rmi://"+Loginbl.getIP()+":1099/stockDivision");
 		return sd;
 	}
 	
