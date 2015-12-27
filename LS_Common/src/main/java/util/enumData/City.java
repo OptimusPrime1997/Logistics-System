@@ -14,7 +14,7 @@ public enum City {
 		return index;
 	}
 
-	public String toString() {
+	public String getValue() {
 		return value;
 	}
 

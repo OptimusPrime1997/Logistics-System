@@ -325,7 +325,8 @@ public class OutStockRep extends javax.swing.JPanel {
 		ShipForm form = ShipForm.getShipForm(shipFormText.getText());
 		ArrayList<String> goods = new ArrayList<String>();
 		for (int i = 0; i < dataVector.size(); i++) {
-			goods.add(dataVector.get(i).toString());
+			Vector<String> arr = (Vector<String>)dataVector.get(i);
+			goods.add(arr.get(0));
 		}
 		OutStockRepVO outStockRepVO = new OutStockRepVO(num, date, destination, form, rep, shipNum, goods);
 		try {
@@ -368,8 +369,8 @@ public class OutStockRep extends javax.swing.JPanel {
 				return;
 			}
 			ArrayList<String> orders = shippingRepVO.goods;
-			Vector<String> arr = new Vector<String>();
 			for (int i = 0; i < orders.size(); i++) {
+				Vector<String> arr = new Vector<String>();
 				arr.add(orders.get(i));
 				dataVector.add(arr);
 			}

@@ -22,7 +22,8 @@ public class CurrentCity {
 		String string = s.substring(0, 3);
 		switch (string) {
 		case "025":
-			return City.NANJING;			
+			City city = City.NANJING;
+			return city;			
 		case "010":
 			return City.BEIJING;
 		case "020":
