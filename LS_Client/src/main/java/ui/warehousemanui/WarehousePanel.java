@@ -109,8 +109,8 @@ public class WarehousePanel extends javax.swing.JFrame {
         Peking2.setMaximum(1000);
         Shanghai1.setMaximum(1000);
         Shanghai2.setMaximum(1000);
-        Nanjing1.setMaximum(1000);
-        Nanjing2.setMaximum(1000);
+        Nanjing1.setMaximum(10);
+        Nanjing2.setMaximum(10);
         Guangzhou1.setMaximum(1000);
         Guangzhou2.setMaximum(1000);
        
@@ -415,12 +415,11 @@ public class WarehousePanel extends javax.swing.JFrame {
     /**
   	 * 
   	 */
-    //TODO test 为什么refresh三次，而且为什么refresh会引起查询数量的变化
-//    int count = 0;
+    //TODO 
+
   	public void showProcess() {
   		try {
-//  			count++;
-//  			System.out.println("i'm refreshing  "+count);
+
 			Peking1.setValue(s.checkPresentStockQuantity(1));
 			System.out.println("block1 "+s.checkPresentStockQuantity(1));
 			Peking2.setValue(s.checkPresentStockQuantity(2));

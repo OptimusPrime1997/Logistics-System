@@ -55,6 +55,9 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 			rm = add(new StockDivisionPO(cityNum, inpo.getOrder(), desCity, block, place));
 			
 		}
+		if (rm == ResultMessage.SUCCESS) {
+			System.out.println("division delete success");
+		}
 		return rm;
 		
 	}
@@ -93,10 +96,10 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 	public ResultMessage update(OutStockRepPO po) throws RemoteException {
 		ResultMessage rm = ResultMessage.SUCCESS;
 		ArrayList<String> list = po.getGoods();
-		for(String goods : list) {
-			 rm = delete(goods);
-			
+		for(String goods : list) {			
+			rm = delete(goods);			
 		}
+		
 		return rm;
 		
 	}
@@ -115,10 +118,12 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 				for(int i = 0;i < list.size();++i) {
 					StockDivisionPO po = (StockDivisionPO)list.get(i);
 					String s=po.getListNum();
-					System.out.println(s);
+					//TODO 为什么匹配不上
+					System.out.println(s.equals(goods));
 					if(s.equals(goods)){
 						isFound = true;
 						list.remove(i);
+				
 					}
 				}
 			} else {
@@ -128,8 +133,6 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
-		
-		
 		
 		if(!isFound){
 			return ResultMessage.NOT_FOUND;
