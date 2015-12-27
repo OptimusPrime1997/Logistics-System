@@ -14,14 +14,12 @@ import VO.Receipt.GetRepVO;
 import VO.Receipt.InStockRepVO;
 import VO.Receipt.OutStockRepVO;
 import VO.Receipt.PayRepVO;
-import VO.Receipt.ReceiptVO;
 import VO.Receipt.ReceptionRepVO;
 import VO.Receipt.ShipmentRepVO;
 import VO.Receipt.ShippingRepVO;
 import VO.Receipt.TransferRepVO;
 import bl.loginbl.LoginblController;
 import bl.receiptbl.Receiptbl.Receiptbl;
-import ui.receiptui.ReceiptDetailUI.Shipment;
 import util.CurrentTime;
 import util.enumData.LogType;
 import util.enumData.Rep;
@@ -68,13 +66,13 @@ public class DocumentCheckbl {
 			return data;
 		ArrayList<CashRepVO> cashRepVOs = CashRepVO.toArrayVO(receiptPOs);
 		for (CashRepVO cashRepVO : cashRepVOs) {
-			if (!cashRepVO.date.equals(receiptbl.getDate())) {
+//			if (!cashRepVO.date.equals(receiptbl.getDate())) {
 				Vector<String> arr = new Vector<String>();
 				arr.add(cashRepVO.date);
 				arr.add(cashRepVO.num);
 				arr.add("收款单");
 				data.add(arr);
-			}
+//			}
 		}
 		return data;
 	}
@@ -168,9 +166,9 @@ public class DocumentCheckbl {
 		String date = receiptbl.getDate();
 		String[] strings = date.split("-");
 		date = strings[0]+strings[1];
-		if(payRepVO.num.equals(date)){
-			return data;
-		}
+//		if(payRepVO.num.equals(date)){
+//			return data;
+//		}
 		Vector<String> arr = new Vector<String>();
 		arr.add(payRepVO.date);
 		arr.add(payRepVO.num);

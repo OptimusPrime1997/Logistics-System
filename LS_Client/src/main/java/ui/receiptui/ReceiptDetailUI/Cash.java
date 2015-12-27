@@ -16,6 +16,7 @@ import javax.swing.table.TableColumn;
 import Exception.ExceptionPrint;
 import Exception.NumNotFoundException;
 import VO.Receipt.CashRepVO;
+import VO.Receipt.CashVO;
 import bl.receiptbl.CashRepbl.CashRepController;
 import blservice.receiptblservice.CashRepblService;
 import ui.util.MyFrame;
@@ -133,15 +134,14 @@ public class Cash extends javax.swing.JPanel {
 		numText.setText(num);
 		sumText.setText(cashRepVO.sum + "");
 		bankAccountText.setText(cashRepVO.bankAccount);
-		try {
-			dataVector = control.initTable(num);
-		} catch (ClassNotFoundException | NotBoundException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			resultMsgText.setText(ExceptionPrint.print(e));
-		} catch (NumNotFoundException e) {
-			// TODO Auto-generated catch block
-			resultMsgText.setText(ExceptionPrint.print(e));
+		for(int i = 0;i < cashRepVO.cashVOs.size();i++){
+			Vector<String> arr = new Vector<String>();
+			CashVO cashVO = cashRepVO.cashVOs.get(i);
+			arr.add(cashVO.courierName);
+			arr.add(cashVO.courierNum);
+			arr.add(cashVO.money+"");
+			arr.add(cashVO.remark);
+			dataVector.add(arr);
 		}
 		model.setDataVector(dataVector, columnIdentifiers);
 		jTable.setModel(model);

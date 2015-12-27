@@ -65,7 +65,7 @@ public class CashRepbl {
 		CashRepVO cashRepVO = (CashRepVO) vo;
 		ArrayList<CashVO> cashVOs = cashRepVO.cashVOs;
 		for(CashVO cashVO : cashVOs){
-			updateCourierMoney(cashVO.courierName, cashVO.money);
+			updateCourierMoney(cashVO.courierNum, cashVO.money);
 		}
 		receiptbl.submit(CashRepVO.toPO(cashRepVO), Rep.CashRep);
 	}

@@ -297,14 +297,13 @@ public class InStockRep extends javax.swing.JPanel {
 	}
 
 	private void deleteBlock(String order) {
-		try {
-			control.delete(order);
-		} catch (RemoteException | MalformedURLException | NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			resultMsgText.setText(ExceptionPrint.print(e));
-			return;
-		}
+			try {
+				control.delete(order);
+			} catch (ClassNotFoundException | NotBoundException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+			}
 	}
 
 	private void checkAllRepsButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -375,7 +374,8 @@ public class InStockRep extends javax.swing.JPanel {
 		String date = dateText.getText();
 		ArrayList<InStockVO> inStockVOs = new ArrayList<InStockVO>();
 		for (int i = 0; i < dataVector.size(); i++) {
-			InStockVO inStockVO = new InStockVO((String) jTable.getValueAt(i, 0), (String) jTable.getValueAt(i, 1),
+			InStockVO inStockVO = new InStockVO((String) jTable.getValueAt(i, 0), 
+					(String) jTable.getValueAt(i, 1),
 					(String) jTable.getValueAt(i, 2));
 			inStockVOs.add(inStockVO);
 		}

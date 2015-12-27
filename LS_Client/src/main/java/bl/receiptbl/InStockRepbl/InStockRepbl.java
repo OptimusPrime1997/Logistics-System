@@ -15,18 +15,19 @@ import VO.Receipt.ReceiptVO;
 import bl.goodsbl.Goodsbl;
 import bl.loginbl.LoginblController;
 import bl.receiptbl.Receiptbl.Receiptbl;
+import bl.stockbl.Stock;
 import bl.stockbl.StockDivisionbl;
 import dataservice.receiptdataservice.InStockRepDataService;
 import util.CurrentTime;
 import util.enumData.City;
 import util.enumData.LogType;
 import util.enumData.Rep;
-import util.enumData.ResultMessage;
 
 public class InStockRepbl{
 	
 	private Receiptbl receiptbl = new Receiptbl();
 	private StockDivisionbl stockDivisionbl = new StockDivisionbl();
+	private Stock stock = new Stock();
 	private Goodsbl goodsbl = new Goodsbl();
 	private LoginblController login = new LoginblController();
 	private ReceiptClient client = new ReceiptClient();
@@ -72,14 +73,16 @@ public class InStockRepbl{
 		return stockDivisionbl.getAvailableDivision(des);
 	}
 	
-	public ResultMessage delete(String listNum) 
-			throws RemoteException, MalformedURLException, NotBoundException{
-		return stockDivisionbl.delete(listNum);
+	public void delete(String listNum) 
+			throws NotBoundException, ClassNotFoundException, IOException{
+		stockDivisionbl.delete(listNum);
+		stock.delete(listNum);
 	}
 	
-	public ResultMessage update(InStockRepVO vo) 
+	public void update(InStockRepVO vo) 
 			throws MalformedURLException, RemoteException, NotBoundException{
-		return stockDivisionbl.update(vo);
+		stockDivisionbl.update(vo);
+		stock.update(vo);
 	}
 	
 	public ArrayList<InStockRepVO> getAllRepByDate(String date) 
