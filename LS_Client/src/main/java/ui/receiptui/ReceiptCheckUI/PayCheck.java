@@ -46,8 +46,8 @@ public class PayCheck extends javax.swing.JPanel {
      * Creates new form PayRepCheck
      */
     public PayCheck() {
-        initComponents();
         myFrame = new MyFrame(459, 433, this);
+        initComponents();
     }
 
     /**
@@ -88,7 +88,7 @@ public class PayCheck extends javax.swing.JPanel {
 
         columnIdentifiers.add("日期");
         columnIdentifiers.add("总计");
-        columnIdentifiers.add("查看详细信息");
+        columnIdentifiers.add("查看");
         try {
 			dataVector = control.initCheck();
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {

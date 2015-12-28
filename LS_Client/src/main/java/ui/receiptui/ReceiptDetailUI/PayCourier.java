@@ -50,7 +50,7 @@ public class PayCourier extends javax.swing.JPanel {
     public PayCourier(PayRepVO oriPayRepVO) {
     	payRepVO = oriPayRepVO;
         initComponents();
-        myFrame = new MyFrame(480, 511, this);
+        myFrame = new MyFrame(480, 526, this);
     }
 
     /**

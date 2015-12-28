@@ -56,7 +56,7 @@ public class Transfer extends javax.swing.JPanel {
     public Transfer(String oriNum) {
     	num = oriNum;
         initComponents();
-        myFrame = new MyFrame(470, 318, this);
+        myFrame = new MyFrame(470, 338, this);
     }
 
     /**

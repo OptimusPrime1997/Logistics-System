@@ -51,9 +51,9 @@ public class InStockCheck extends javax.swing.JPanel {
     public InStockCheck(String oriOffice) {
        	office = oriOffice;
         initComponents();
-        myFrame = new MyFrame(364, 411, this);
+        myFrame = new MyFrame(364, 431, this);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -90,9 +90,9 @@ public class InStockCheck extends javax.swing.JPanel {
             }
         });
 
-        columnIdentifiers.add("");
-        columnIdentifiers.add("");
-        columnIdentifiers.add("");
+        columnIdentifiers.add("日期");
+        columnIdentifiers.add("编号");
+        columnIdentifiers.add("查看");
         try {
 			dataVector = control.initCheck(office);
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {

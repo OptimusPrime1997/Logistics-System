@@ -75,9 +75,10 @@ public class ReceptionRep extends javax.swing.JPanel {
 	 * Creates new form ReceptionRep
 	 */
 	public ReceptionRep() {
-		initComponents();
 		myFrame = new MyFrame(556, 476, this);
+		initComponents();
 	}
+	
 
 	/**
 	 * This method is called from within the constructor to initialize the form.

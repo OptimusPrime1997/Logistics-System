@@ -50,7 +50,7 @@ public class PayDriver extends javax.swing.JPanel {
     public PayDriver(PayRepVO oriPayRepVO) {
     	payRepVO = oriPayRepVO;
         initComponents();
-        myFrame = new MyFrame(436, 511, this);
+        myFrame = new MyFrame(436, 526, this);
     }
 
     /**

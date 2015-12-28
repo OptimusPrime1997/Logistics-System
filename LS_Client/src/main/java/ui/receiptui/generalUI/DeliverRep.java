@@ -61,10 +61,10 @@ public class DeliverRep extends javax.swing.JPanel {
 	 * Creates new form DeliverRep
 	 */
 	public DeliverRep() {
-		initComponents();
 		myFrame = new MyFrame(673, 506, this);
+		initComponents();
 	}
-
+	
 
 	/**
 	 * This method is called from within the constructor to initialize the form.

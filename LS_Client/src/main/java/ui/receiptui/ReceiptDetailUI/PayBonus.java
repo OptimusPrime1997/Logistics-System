@@ -50,7 +50,7 @@ public class PayBonus extends javax.swing.JPanel {
     public PayBonus(PayRepVO oriPayRepVO) {
     	payRepVO = oriPayRepVO;
         initComponents();
-        myFrame = new MyFrame(463, 505, this);
+        myFrame = new MyFrame(463, 520, this);
     }
 
     /**

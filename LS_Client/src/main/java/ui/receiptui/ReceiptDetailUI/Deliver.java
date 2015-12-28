@@ -54,7 +54,7 @@ public class Deliver extends javax.swing.JPanel {
     public Deliver(String oriNum) {
     	num = oriNum;
         initComponents();
-        myFrame = new MyFrame(684, 522, this);
+        myFrame = new MyFrame(684, 530, this);
     }
 
     /**

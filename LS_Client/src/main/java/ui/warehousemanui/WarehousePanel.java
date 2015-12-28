@@ -361,7 +361,7 @@ public class WarehousePanel extends javax.swing.JFrame {
     	Dimension screensize = tk.getScreenSize();
     	int screenh = screensize.height;
     	int screenw = screensize.width;
-    	frame.setSize(500, 600);
+    	frame.setSize(546, 473);
     	frame.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);	
     	frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     	
@@ -379,7 +379,7 @@ public class WarehousePanel extends javax.swing.JFrame {
     	Dimension screensize = tk.getScreenSize();
     	int screenh = screensize.height;
     	int screenw = screensize.width;
-    	frame.setSize(500, 600);
+    	frame.setSize(410, 513);
     	frame.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);	
     	frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     	

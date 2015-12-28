@@ -62,7 +62,7 @@ public class PayRepStaff extends javax.swing.JPanel {
     	payRep = oriPayRep;
     	bankAccount = bank;
         initComponents();
-        myFrame = new MyFrame(442, 474, this);
+        myFrame = new MyFrame(442, 494, this);
     }
 
     /**
@@ -193,10 +193,10 @@ public class PayRepStaff extends javax.swing.JPanel {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(15, 15, 15)
                                         .addComponent(cancelButton))
-                                    .addComponent(balanceText, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(balanceText, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(81, 81, 81)
                                 .addComponent(okButton))
-                            .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(25, Short.MAX_VALUE))
             .addComponent(resultMsgText)
         );
@@ -234,7 +234,7 @@ public class PayRepStaff extends javax.swing.JPanel {
         TableColumn column3 = jTable.getColumnModel().getColumn(2);
         column3.setPreferredWidth(115);
         TableColumn column4 = jTable.getColumnModel().getColumn(3);
-        column4.setPreferredWidth(60);
+        column4.setPreferredWidth(80);
     }
     
     private String calSum(){
