@@ -9,9 +9,11 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 public class Img {
-	private static Image background0 = new ImageIcon("pic/background0.png")
+	private static Image background0 = new ImageIcon("pic/background02.png")
 			.getImage();
 	private static ImageIcon button0=new ImageIcon("pic/btn_all.png");
+	private static ImageIcon btn_search=new ImageIcon("pic/btn_search0.png");
+	private static ImageIcon btn_login=new ImageIcon("pic/btn_login.png");
 	
 	private static ImageIcon button1=new ImageIcon("pic/btn1.png");
 	private static ImageIcon button1_p=new ImageIcon("pic/btn1_pressed.png");
@@ -23,6 +25,14 @@ public class Img {
 	
 	public static ImageIcon getExit_btn() {
 		return exit_btn;
+	}
+
+	public static ImageIcon getBtn_search() {
+		return btn_search;
+	}
+
+	public static ImageIcon getBtn_login() {
+		return btn_login;
 	}
 
 	public static ImageIcon getButton1() {

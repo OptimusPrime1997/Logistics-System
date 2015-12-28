@@ -21,6 +21,7 @@ import ui.courierui.courier_main;
 import ui.financialstaffui.FinancialStaffJFrame;
 import ui.managerui.ManagerJFrame;
 import ui.transferCtrOfficerui.transferCtrOfficer_main;
+import ui.util.ButtonType;
 import ui.util.MyButton;
 import ui.util.NumOnlyDocument;
 import ui.warehousemanui.WarehousePanel;
@@ -151,9 +152,9 @@ public class MainFrame extends JFrame {
 	}
 
 	private void initbtn() {
-		search_btn = new MyButton(150, 140,0);
-		login_btn = new MyButton(320, 210,0);
-		exit_btn=new MyButton(410,7,1);
+		search_btn = new MyButton(150, 140,ButtonType.SEARCH);
+		login_btn = new MyButton(320, 210,ButtonType.LOGIN);
+		exit_btn=new MyButton(410,7,ButtonType.EXIT);
 
 		login_btn.addMouseListener(new MouseAdapter() {
 			@Override
