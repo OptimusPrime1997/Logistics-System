@@ -338,6 +338,7 @@ public class Goodsbl {
 	private int getGoodsByCourier(String courierNum, String date) {
 		int x = 0;
 		try {
+			if(getGoodsDataService()!=null)
 			x = getGoodsDataService().findbyCourier(courierNum, date);
 		} catch (RemoteException e) {
 		}

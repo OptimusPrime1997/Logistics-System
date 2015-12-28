@@ -1,5 +1,5 @@
 package ui.util;
 
 public enum ButtonType {
-	SEARCH,LOGIN,EXIT
+	SEARCH,LOGIN,EXIT,BIG
 }

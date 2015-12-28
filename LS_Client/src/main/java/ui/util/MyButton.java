@@ -10,13 +10,14 @@ import javax.swing.WindowConstants;
 import ui.Img;
 
 public class MyButton extends JButton{
-	public MyButton(){
+	public MyButton(int x,int y){
 		super();
 		setMargin(new Insets(0, 0, 0, 0));
 		setContentAreaFilled(false);
 		setBorderPainted(false);
-		setIcon(Img.getButton1());
-		setRolloverIcon(Img.getButton1_p());
+		setIcon(Img.getButton0());
+		setRolloverIcon(Img.getButton_over());
+		setBounds(x, y, Img.getButton0().getIconWidth(), Img.getButton0().getIconHeight());
 	}
 	public MyButton(int x,int y,ButtonType type){
 		super();
@@ -24,6 +25,11 @@ public class MyButton extends JButton{
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		switch(type){
+		case BIG:
+			setIcon(Img.getButtonBig());
+			setBounds(x, y, Img.getButtonBig().getIconWidth(), Img.getButtonBig().getIconHeight());
+			setRolloverIcon(Img.getButtonBig_p());
+			break;
 		case SEARCH:
 			setIcon(Img.getBtn_search());
 			setBounds(x, y, Img.getBtn_search().getIconWidth(), Img.getBtn_search().getIconHeight());
@@ -46,7 +52,7 @@ public class MyButton extends JButton{
 	public static void main(String[] args) {
 		JFrame frame=new JFrame();
 		JPanel panel=new JPanel();
-		MyButton btn=new MyButton();
+		MyButton btn=new MyButton(10,10);
 		btn.setBounds(0,0,20,20);
 		panel.add(btn);
 		frame.setContentPane(panel);
