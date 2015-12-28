@@ -324,11 +324,8 @@ public class DivisionChangePanel extends JFrame {
 
     private void oldBlocksActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
     	//得到本仓库选中的区的所有VO
-    	int division = oldDivisions.getSelectedIndex()+1;	
-    	City desCity = FromIntToCity.toCity(division);
-    	//TODO 
-    	
-    	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
+    	int division = (int) oldDivisions.getSelectedItem();	
+    	ArrayList<StockDivisionVO> list = s.getBlockByDivision(division);
     	//得到本区所选小块的存在的所有位号
 //    	int block = oldBlocks.getSelectedIndex()+1;    
     	int block = (int) oldBlocks.getSelectedItem();
@@ -370,12 +367,16 @@ public class DivisionChangePanel extends JFrame {
     		oldDivisions.getSelectedItem() != null && newDivisions.getSelectedItem() !=null &&
     		oldPlaces.getSelectedItem() != null && newPlaces.getSelectedItem() != null) {
     		int newblock = (int)newDivisions.getSelectedItem();
-    		City desCity = FromIntToCity.toCity(newblock);
-        	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
+        	ArrayList<StockDivisionVO> list = s.getBlockByDivision(newblock);
         	if (list.size()>800) {
         		showFeedback(ResultMessage.ALARM, "请调至别的区");
 			} else{
-				ResultMessage rm = s.modifyDivision((int)oldDivisions.getSelectedItem(), (int)oldPlaces.getSelectedItem(), (int)newDivisions.getSelectedItem(), (int)newPlaces.getSelectedItem());
+				int Oblock = (int)oldDivisions.getSelectedItem();
+				//TODO
+				int Oplace = (int)oldPlaces.getSelectedItem()+((int)oldBlocks.getSelectedItem()-1)*100;
+				int Nblock = (int)newDivisions.getSelectedItem();
+				int Nplace = (int)newPlaces.getSelectedItem()+((int)newBlocks.getSelectedItem()-1)*100;
+				ResultMessage rm = s.modifyDivision(Oblock,Oplace,Nblock,Nplace);
 				showFeedback(rm, " ");
 			}
 		}
@@ -391,13 +392,12 @@ public class DivisionChangePanel extends JFrame {
     } //GEN-LAST:event_jButton3ActionPerformed                                       
 
   
-    
     private void oldDivisionsActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
     	//得到本仓库选中的区的所有VO
-    	int division = oldDivisions.getSelectedIndex()+1;	
+    	int division = (int) oldDivisions.getSelectedItem();	
     	
     	City desCity = FromIntToCity.toCity(division);
-    	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
+    	ArrayList<StockDivisionVO> list = s.getBlockByDivision(division);
     	//得到中间参数小块号，布尔值为true的需要显示
     	boolean[] smallBlocks = new boolean[10];
     	
@@ -447,9 +447,8 @@ public class DivisionChangePanel extends JFrame {
 
     private void newDivisionsActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
     	//得到本仓库选中的区的所有VO
-    	int division = newDivisions.getSelectedIndex()+1;	
-    	City desCity = FromIntToCity.toCity(division);
-    	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
+    	int division = (int) newDivisions.getSelectedItem();	
+    	ArrayList<StockDivisionVO> list = s.getBlockByDivision(division);
     	//得到空闲的中间参数小块号
     	boolean[] smallBlocks = new boolean[10];
     	//得到每个块中的库存数量
@@ -460,7 +459,7 @@ public class DivisionChangePanel extends JFrame {
     	
     	}
     	for (int i = 0; i < blocks.length; i++) {
-			if (blocks[i] < 1000) {
+			if (blocks[i] < 100) {
 				smallBlocks[i] = true;
 			}
 		}
@@ -488,23 +487,22 @@ public class DivisionChangePanel extends JFrame {
 
     private void newBlocksActionPerformed(java.awt.event.ActionEvent evt) throws MalformedURLException, RemoteException, NotBoundException, IOException {                                           
     	//得到本仓库选中的区的所有VO
-    	int division = oldDivisions.getSelectedIndex()+1;	
-    	City desCity = FromIntToCity.toCity(division);
-    	ArrayList<StockDivisionVO> list = s.getBlock(desCity);
+    	int division = (int) oldDivisions.getSelectedItem();	
+    	ArrayList<StockDivisionVO> list = s.getBlockByDivision(division);
     	/**
     	 *    初始places均为0，然后使得选中的小块中的位号全为1，然后再
     	 *  把vo list中所有的位号全置为0，这样得到最后的所有位号为1的即为需要显示的位号
     	 *  注意，其中places的下标与真实显示的位号相差1
     	 */
-    	int[] places = new int[1000];
-    	int block = oldBlocks.getSelectedIndex()+1;    	
+    	boolean[] places = new boolean[100];
+    	int block = (int) newBlocks.getSelectedItem();    	
     	
-    	for (int i = (block-1)*100; i < block*100; i++) {
-			places[i] = 1;
-		}
     	for (StockDivisionVO vo : list) {
-			places[vo.place-1] = 0;
+			if (vo.place<block*100&&(vo.place>=(block-1)*100)) {
+				places[(vo.place-1)%100] = true;
+			}
 		}
+    	
     	
     	//在newplaces里面显示位号
 	
@@ -513,7 +511,7 @@ public class DivisionChangePanel extends JFrame {
   	
     	ArrayList<Integer> result = new ArrayList<Integer>();
     	for (int i = 0; i < places.length; i++) {
-			if (places[i] == 1) {
+			if (places[i] == false) {
 				placeSize++;
 				result.add(i+1);
 			}

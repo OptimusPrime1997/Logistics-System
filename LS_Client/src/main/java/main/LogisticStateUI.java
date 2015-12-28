@@ -15,6 +15,7 @@ import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 
 import ui.Img;
+import ui.util.ButtonType;
 import ui.util.MyButton;
 import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsExpressType;
@@ -71,7 +72,7 @@ public class LogisticStateUI extends javax.swing.JFrame {
     	protected void paintComponent(Graphics g) {
     		g.drawImage(Img.getBackground_searchState(), 0, 0, this.getWidth(),this.getHeight(),null);
     	}};
-    	exit_btn=new MyButton(288, 3, 1);
+    	exit_btn=new MyButton(280, 3, ButtonType.EXIT);
     	exit_btn.addMouseListener(new MouseAdapter() {
     		@Override
     		public void mouseClicked(MouseEvent e) {

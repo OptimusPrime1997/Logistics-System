@@ -203,10 +203,10 @@ public class Stock {
 	
 	
 	public ResultMessage update(InStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException{
+		
 		InStockRepPO po = vo.toPO(vo);
 		StockDataService sd = getStockDataService();
 		City cityNum = CurrentCity.getCurrentCity();
-		System.out.println("update in ");
 		return sd.update(po, cityNum);
 	}
 	

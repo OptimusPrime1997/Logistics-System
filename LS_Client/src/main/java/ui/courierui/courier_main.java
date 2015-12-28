@@ -5,7 +5,10 @@
  */
 package ui.courierui;
 
+import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -18,7 +21,9 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 
 import main.MainFrame;
+import ui.Img;
 import ui.receiptui.Order;
+import ui.util.ButtonType;
 import ui.util.MyButton;
 import ui.util.MyFrame;
 import util.CurrentCity;
@@ -42,6 +47,7 @@ public class courier_main extends JPanel {
 		ctr_log=ControllerFactoryImpl.getInstance().getLogController();
 		initComponents();
 		frame=new MyFrame(this);
+		
 	}
 	public static void main(String[] args) {
 		new courier_main();
@@ -81,288 +87,22 @@ public class courier_main extends JPanel {
 	 * 初始化布局
 	 */
 	private void initLayOut() {
-		GroupLayout layout = new GroupLayout(this);
-		this.setLayout(layout);
-		layout.setHorizontalGroup(layout
-				.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(
-						GroupLayout.Alignment.TRAILING,
-						layout.createSequentialGroup()
-								.addGap(44, 44, 44)
-								.addGroup(
-										layout.createParallelGroup(
-												GroupLayout.Alignment.LEADING)
-												.addComponent(
-														signedGoodsbtn,
-														GroupLayout.PREFERRED_SIZE,
-														101,
-														GroupLayout.PREFERRED_SIZE)
-												.addComponent(
-														newGoodsbtn,
-														GroupLayout.PREFERRED_SIZE,
-														99,
-														GroupLayout.PREFERRED_SIZE)
-												.addGroup(
-														layout.createSequentialGroup()
-																.addGap(124,
-																		124,
-																		124)
-																.addComponent(
-																		businessOffice_label)
-																.addPreferredGap(
-																		LayoutStyle.ComponentPlacement.RELATED)
-																.addComponent(
-																		businessOfficeNum_label)))
-								.addGap(28, 28, 28)
-								.addGroup(
-										layout.createParallelGroup(
-												GroupLayout.Alignment.LEADING)
-												.addGroup(
-														layout.createSequentialGroup()
-																.addGroup(
-																		layout.createParallelGroup(
-																				GroupLayout.Alignment.LEADING)
-																				.addGroup(
-																						layout.createSequentialGroup()
-																								.addGap(31,
-																										31,
-																										31)
-																								.addGroup(
-																										layout.createParallelGroup(
-																												GroupLayout.Alignment.TRAILING)
-																												.addComponent(
-																														labels.get(5))
-																												.addComponent(
-																														labels.get(4))
-																												.addComponent(
-																														labels.get(6))
-																												.addComponent(
-																														labels.get(3))
-																												.addComponent(
-																														labels.get(2))
-																												.addComponent(
-																														labels.get(1))
-																												.addComponent(
-																														labels.get(0)))
-																								.addPreferredGap(
-																										LayoutStyle.ComponentPlacement.UNRELATED)
-																								.addGroup(
-																										layout.createParallelGroup(
-																												GroupLayout.Alignment.LEADING)
-																												.addGroup(
-																														layout.createParallelGroup(
-																																GroupLayout.Alignment.TRAILING,
-																																false)
-																																.addComponent(
-																																		bars.get(3),
-																																		GroupLayout.Alignment.LEADING,
-																																		GroupLayout.DEFAULT_SIZE,
-																																		GroupLayout.DEFAULT_SIZE,
-																																		Short.MAX_VALUE)
-																																.addComponent(
-																																		bars.get(4),
-																																		GroupLayout.Alignment.LEADING,
-																																		GroupLayout.PREFERRED_SIZE,
-																																		GroupLayout.DEFAULT_SIZE,
-																																		GroupLayout.PREFERRED_SIZE))
-																												.addGroup(
-																														layout.createParallelGroup(
-																																GroupLayout.Alignment.TRAILING,
-																																false)
-																																.addComponent(
-																																		bars.get(0),
-																																		GroupLayout.Alignment.LEADING,
-																																		GroupLayout.DEFAULT_SIZE,
-																																		GroupLayout.DEFAULT_SIZE,
-																																		Short.MAX_VALUE)
-																																.addComponent(
-																																		bars.get(1),
-																																		GroupLayout.Alignment.LEADING,
-																																		GroupLayout.DEFAULT_SIZE,
-																																		GroupLayout.DEFAULT_SIZE,
-																																		Short.MAX_VALUE)
-																																.addComponent(
-																																		bars.get(2),
-																																		GroupLayout.Alignment.LEADING,
-																																		GroupLayout.PREFERRED_SIZE,
-																																		GroupLayout.DEFAULT_SIZE,
-																																		GroupLayout.PREFERRED_SIZE)
-																																.addComponent(
-																																		bars.get(5),
-																																		GroupLayout.Alignment.LEADING,
-																																		GroupLayout.DEFAULT_SIZE,
-																																		GroupLayout.DEFAULT_SIZE,
-																																		Short.MAX_VALUE)
-																																.addComponent(
-																																		bars.get(6),
-																																		GroupLayout.Alignment.LEADING,
-																																		GroupLayout.PREFERRED_SIZE,
-																																		GroupLayout.DEFAULT_SIZE,
-																																		GroupLayout.PREFERRED_SIZE))))
-																				.addComponent(
-																						recentDays_label))
-																.addGap(0,0,Short.MAX_VALUE))
-												                .addGroup(layout.createSequentialGroup()
-															       	.addComponent(account_label)
-															     	.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-															       	.addComponent(account_btn,GroupLayout.PREFERRED_SIZE,85,GroupLayout.PREFERRED_SIZE)
-																    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED,114,Short.MAX_VALUE)
-															     	.addComponent(exit_btn))
-																.addGroup(layout.createSequentialGroup()
-																                  .addContainerGap()
-																                  .addComponent(feedBack_text)
-																                  .addContainerGap())
-																                  )));
-		layout.setVerticalGroup(
-				layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(layout.createSequentialGroup()
-								.addContainerGap()
-								.addGroup(
-										layout.createParallelGroup(
-												GroupLayout.Alignment.LEADING)
-												.addGroup(
-														layout.createParallelGroup(
-																GroupLayout.Alignment.BASELINE)
-																.addComponent(
-																		account_btn)
-																.addComponent(
-																		account_label)
-																.addComponent(
-																		businessOfficeNum_label)
-																.addComponent(
-																		businessOffice_label))
-												.addComponent(exit_btn))
-								.addGap(18, 18, 18)
-								.addComponent(recentDays_label,
-										GroupLayout.PREFERRED_SIZE,
-										25,
-										GroupLayout.PREFERRED_SIZE)
-								.addGap(11, 11, 11)
-								.addGroup(
-										layout.createParallelGroup(
-												GroupLayout.Alignment.LEADING)
-												.addGroup(
-														layout.createSequentialGroup()
-																.addGroup(
-																		layout.createParallelGroup(
-																				GroupLayout.Alignment.TRAILING)
-																				.addGroup(
-																						layout.createSequentialGroup()
-																								.addComponent(
-																										bars.get(6),
-																										GroupLayout.PREFERRED_SIZE,
-																										GroupLayout.DEFAULT_SIZE,
-																										GroupLayout.PREFERRED_SIZE)
-																								.addGap(18,
-																										18,
-																										18)
-																								.addGroup(
-																										layout.createParallelGroup(
-																												GroupLayout.Alignment.LEADING)
-																												.addComponent(
-																														labels.get(5))
-																												.addComponent(
-																														bars.get(5),
-																														GroupLayout.PREFERRED_SIZE,
-																														GroupLayout.DEFAULT_SIZE,
-																														GroupLayout.PREFERRED_SIZE))
-																								.addGap(18,
-																										18,
-																										18)
-																								.addComponent(
-																										labels.get(4)))
-																				.addComponent(
-																						newGoodsbtn,
-																						GroupLayout.PREFERRED_SIZE,
-																						56,
-																						GroupLayout.PREFERRED_SIZE))
-																.addGap(18, 18,
-																		18)
-																.addComponent(
-																		labels.get(3)))
-												.addGroup(
-														layout.createParallelGroup(
-																GroupLayout.Alignment.TRAILING)
-																.addGroup(
-																		GroupLayout.Alignment.LEADING,
-																		layout.createSequentialGroup()
-																				.addGap(63,
-																						63,
-																						63)
-																				.addComponent(
-																						bars.get(4),
-																						GroupLayout.PREFERRED_SIZE,
-																						GroupLayout.DEFAULT_SIZE,
-																						GroupLayout.PREFERRED_SIZE)
-																				.addGap(18,
-																						18,
-																						18)
-																				.addComponent(
-																						bars.get(3),
-																						GroupLayout.PREFERRED_SIZE,
-																						GroupLayout.DEFAULT_SIZE,
-																						GroupLayout.PREFERRED_SIZE))
-																.addGroup(
-																		layout.createSequentialGroup()
-																				.addComponent(
-																						labels.get(6))
-																				.addGap(95,
-																						95,
-																						95))))
-								.addGap(18, 18, 18)
-								.addGroup(
-										layout.createParallelGroup(
-												GroupLayout.Alignment.TRAILING)
-												.addComponent(
-														labels.get(2))
-												.addComponent(
-														bars.get(2),
-														GroupLayout.PREFERRED_SIZE,
-														GroupLayout.DEFAULT_SIZE,
-														GroupLayout.PREFERRED_SIZE))
-								.addGroup(
-										layout.createParallelGroup(
-												GroupLayout.Alignment.LEADING)
-												.addGroup(
-														layout.createSequentialGroup()
-																.addGap(15, 15,
-																		15)
-																.addGroup(
-																		layout.createParallelGroup(
-																				GroupLayout.Alignment.LEADING)
-																				.addComponent(
-																						bars.get(1),
-																						GroupLayout.PREFERRED_SIZE,
-																						GroupLayout.DEFAULT_SIZE,
-																						GroupLayout.PREFERRED_SIZE)
-																				.addComponent(
-																						signedGoodsbtn,
-																						GroupLayout.PREFERRED_SIZE,
-																						59,
-																						GroupLayout.PREFERRED_SIZE)))
-												.addGroup(
-														layout.createSequentialGroup()
-																.addGap(18, 18,
-																		18)
-																.addGroup(
-																		layout.createParallelGroup(
-																				GroupLayout.Alignment.TRAILING)
-																				.addComponent(
-																						bars.get(0),
-																						GroupLayout.PREFERRED_SIZE,
-																						GroupLayout.DEFAULT_SIZE,
-																						GroupLayout.PREFERRED_SIZE)
-																				.addGroup(
-																						layout.createSequentialGroup()
-																								.addComponent(
-																										labels.get(1))
-																								.addGap(18,	18,18)
-																								.addComponent(labels.get(0))))))
-																								.addContainerGap(78, Short.MAX_VALUE)
-																								 .addComponent(feedBack_text, GroupLayout.PREFERRED_SIZE+50, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-																				                  .addContainerGap())
-																				                  );
-		
+		this.setLayout(null);
+		this.add(exit_btn);
+		this.add(account_label1);
+		this.add(newGoodsbtn);
+		this.add(signedGoodsbtn);
+		this.add(businessOffice_label);
+		this.add(businessOfficeNum_label);
+		this.add(recentDays_label);
+		this.add(account_label0);
+		this.add(feedBack_text);
+		for(JLabel label:labels){
+			this.add(label);
+		}
+		for(JProgressBar bar:bars){
+			this.add(bar);
+		}
 	}
 
 	private void initText() {
@@ -372,17 +112,12 @@ public class courier_main extends JPanel {
 		
 	}
 	private void initbtn() {
-		signedGoodsbtn = new MyButton();
-		newGoodsbtn = new MyButton();
-		account_btn = new MyButton();
-		exit_btn = new MyButton();
+		newGoodsbtn = new MyButton(50,150,ButtonType.BIG);
+		signedGoodsbtn = new MyButton(50,300,ButtonType.BIG);
+		exit_btn = new MyButton(790, 10, ButtonType.EXIT);
 		signedGoodsbtn.setText("已签收");
 		newGoodsbtn.setText("新订单");
-		try {
-			account_btn.setText(ctr_login.getCurrentName());
-		} catch (RemoteException e1) {
-		}
-		exit_btn.setText("退出系统");
+		
 		addListeners();
 	}
 
@@ -397,11 +132,7 @@ public class courier_main extends JPanel {
 				newGoodsbtnMouseClicked(evt);
 			}			
 		});
-		account_btn.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				account_btnActionPerformed(evt);
-			}
-		});
+		
 		exit_btn.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				exit_btnActionPerformed(evt);
@@ -412,21 +143,23 @@ public class courier_main extends JPanel {
 	
 	private void initLabel() {
 		String Cdate=CurrentTime.getDate();
+		account_label1=new JLabel();
 		businessOffice_label = new JLabel();
-		account_label = new JLabel();
+		account_label0 = new JLabel();
 		recentDays_label = new JLabel();
 		businessOfficeNum_label = new JLabel();
 		recentDays_label.setText("最近7天业绩（收派件数）");
 		businessOffice_label.setText("营业厅：");
 		String officeNum="",city="";
 		try {
+			account_label1.setText(ctr_login.getCurrentName());
 			officeNum=ctr_login.getCurrentOptorId().substring(0, 6);
 			city=City.toString(CurrentCity.getCurrentCity());
 		} catch (RemoteException e) {
 		}
 		
 		businessOfficeNum_label.setText(city+" "+officeNum);
-		account_label.setText("账户：");
+		account_label0.setText("账户：");
 		JLabel date=new JLabel();
 		for(int i=0;i<NUM_OF_DAYS;i++)creatLabels(date);
 		for(int i=0;i<NUM_OF_DAYS;i++) 
@@ -439,6 +172,10 @@ public class courier_main extends JPanel {
 	private void createJProgressBar() {
 		JProgressBar bar=new JProgressBar();
 		bars.add(bar);
+	}
+	@Override
+	protected void paintComponent(Graphics g) {
+		g.drawImage(Img.getBackground_main(), 0, 0, null);
 	}
 	/*
 	 * 监听们～
@@ -461,9 +198,7 @@ public class courier_main extends JPanel {
 		
 		new Order(this);
 	}
-	private void account_btnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_account_btnActionPerformed
-
-	}
+	
 	private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_exit_btnActionPerformed
 		if (evt.getSource() == exit_btn) {
 			Object[] options = { "取消", "确定" };
@@ -477,20 +212,15 @@ public class courier_main extends JPanel {
 		}
 	}
 	// Variables declaration
-	private MyButton account_btn;
-	private JLabel businessOfficeNum_label;
-	private MyButton exit_btn;
+	private MyButton newGoodsbtn,signedGoodsbtn,exit_btn;
+	private JLabel businessOfficeNum_label, businessOffice_label,
+	        account_label0,account_label1,recentDays_label;
 	private ArrayList<JLabel> labels=new ArrayList<JLabel>();//近日的日期
 	private ArrayList<JProgressBar> bars=new ArrayList<JProgressBar>();//近日业绩的进度条
-	
-	private MyFrame frame;
 	private JTextField feedBack_text;
-	private JLabel businessOffice_label;
-	private JLabel account_label;
-	private JLabel recentDays_label;
-	private MyButton newGoodsbtn;
-	private MyButton signedGoodsbtn;
+	private MyFrame frame;
 	private LoginBLService ctr_login;
 	private LogBLService ctr_log;
+	
 	// End of variables declaration
 }

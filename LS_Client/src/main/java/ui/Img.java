@@ -9,15 +9,21 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 public class Img {
-	private static Image background0 = new ImageIcon("pic/background0.png")
+	private static Image background_login = new ImageIcon("pic/background_login.png")
 			.getImage();
+	private static Image background_main=new ImageIcon("pic/background_main.png").getImage();
+	private static Image background_searchState=new ImageIcon("pic/background_searchState.png").getImage();
+	
+	
 	private static ImageIcon button0=new ImageIcon("pic/btn_all.png");
-	
-	private static ImageIcon button1=new ImageIcon("pic/btn1.png");
-	private static ImageIcon button1_p=new ImageIcon("pic/btn1_pressed.png");
-	
-	
 	private static ImageIcon button_over=new ImageIcon("pic/btn_all_pressed.png");
+	
+	private static ImageIcon btn_search=new ImageIcon("pic/btn_search0.png");
+	private static ImageIcon btn_login=new ImageIcon("pic/btn_login.png");
+	
+	private static ImageIcon buttonBig=new ImageIcon("pic/btn_big.png");
+	private static ImageIcon buttonBig_p=new ImageIcon("pic/btn_big_pressed.png");
+	
 	private static ImageIcon exit_btn=new ImageIcon("pic/btn_exit0.png");
 	private static ImageIcon exit_btn_pressed=new ImageIcon("pic/btn_exit1.png");
 	
@@ -25,15 +31,29 @@ public class Img {
 		return exit_btn;
 	}
 
-	public static ImageIcon getButton1() {
-		return button1;
+	public static ImageIcon getBtn_search() {
+		return btn_search;
 	}
 
-	public static ImageIcon getButton1_p() {
-		return button1_p;
+	public static ImageIcon getBtn_login() {
+		return btn_login;
 	}
 
-	private static Image background_searchState=new ImageIcon("pic/background_searchState.png").getImage();
+	
+
+	public static ImageIcon getButtonBig() {
+		return buttonBig;
+	}
+
+	public static ImageIcon getButtonBig_p() {
+		return buttonBig_p;
+	}
+
+
+	public static Image getBackground_main() {
+		return background_main;
+	}
+
 	public static Image getBackground_searchState() {
 		return background_searchState;
 	}
@@ -46,8 +66,8 @@ public class Img {
 		return button_over;
 	}
 
-	public static Image getBackground0() {
-		return background0;
+	public static Image getBackground_login() {
+		return background_login;
 	}
 
 	public static ImageIcon getButton0() {
@@ -57,7 +77,7 @@ public class Img {
 	public static void main(String[] args) {
 		JPanel panel = new JPanel() {
 			public void paint(Graphics g) {
-				g.drawImage(Img.background0, 0,0, 100, 100, null);
+				g.drawImage(Img.background_login, 0,0, 100, 100, null);
 			}
 		};
 		JFrame frame = new JFrame();

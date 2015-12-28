@@ -21,6 +21,7 @@ import ui.courierui.courier_main;
 import ui.financialstaffui.FinancialStaffJFrame;
 import ui.managerui.ManagerJFrame;
 import ui.transferCtrOfficerui.transferCtrOfficer_main;
+import ui.util.ButtonType;
 import ui.util.MyButton;
 import ui.util.NumOnlyDocument;
 import ui.warehousemanui.WarehousePanel;
@@ -53,7 +54,6 @@ import blservice.loginblservice.LoginBLService;
  */
 public class MainFrame extends JFrame {
 	private int mousePressedX;
-
 	private int mousePressedY;
 
 	/**
@@ -90,9 +90,10 @@ public class MainFrame extends JFrame {
 		contentPane = new JPanel() {
 			@Override
 			protected void paintComponent(Graphics g) {
-				g.drawImage(Img.getBackground0(), 0, 0, width, height, null);
+				g.drawImage(Img.getBackground_login(), 0, 0, width, height, null);
 			}
 		};
+		contentPane.setOpaque(true);
 		contentPane.setLayout(null);
 		initTxt();
 		initbtn();
@@ -118,8 +119,8 @@ public class MainFrame extends JFrame {
 
 	private void initTxt() {
 		goodsNum_text = new javax.swing.JTextField();
+		IP_text=new JTextField();
 		account_text = new javax.swing.JTextField(11);
-
 		account_text.setDocument(new NumOnlyDocument());
 
 		password_text = new javax.swing.JPasswordField(6);
@@ -151,9 +152,10 @@ public class MainFrame extends JFrame {
 	}
 
 	private void initbtn() {
-		search_btn = new MyButton(150, 140,0);
-		login_btn = new MyButton(320, 210,0);
-		exit_btn=new MyButton(410,7,1);
+		search_btn = new MyButton(150, 140,ButtonType.SEARCH);
+		login_btn = new MyButton(320, 210,ButtonType.LOGIN);
+		exit_btn=new MyButton(410,7,ButtonType.EXIT);
+		ip_btn=new MyButton(10,200);
 
 		login_btn.addMouseListener(new MouseAdapter() {
 			@Override
@@ -312,64 +314,29 @@ public class MainFrame extends JFrame {
 		contentPane.add(goodsNum_text);
 		contentPane.add(loginLABLEBTN);
 		contentPane.add(exit_btn);
+		contentPane.add(ip_btn);
+		contentPane.add(IP_text);
 		this.setContentPane(contentPane);
 	}
 
 	private void showFeedback(ResultMessage msg) {
 		this.feedback_text.setText(ResultMessage.toFriendlyString(msg));
 	}
-
-	/**
-	 * @param args
-	 *            the command line arguments
-	 */
+/**
+ * 整个程序的Main
+ * @param args
+ */
 	public static void main(String args[]) {
-		/* Set the Nimbus look and feel */
-		// <editor-fold defaultstate="collapsed"
-		// desc=" Look and feel setting code (optional) ">
-		/*
-		 * If Nimbus (introduced in Java SE 6) is not available, stay with the
-		 * default look and feel. For details see
-		 * http://download.oracle.com/javase
-		 * /tutorial/uiswing/lookandfeel/plaf.html
-		 */
-		MainFrame mainFrame = new MainFrame();
-		// try {
-		// for (UIManager.LookAndFeelInfo info :
-		// UIManager.getInstalledLookAndFeels()) {
-		// if ("Nimbus".equals(info.getName())) {
-		// UIManager.setLookAndFeel(info.getClassName());
-		// break;
-		// }
-		// }
-		// } catch (ClassNotFoundException ex) {
-		// java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE,
-		// null, ex);
-		// } catch (InstantiationException ex) {
-		// java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE,
-		// null, ex);
-		// } catch (IllegalAccessException ex) {
-		// java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE,
-		// null, ex);
-		// } catch (UnsupportedLookAndFeelException ex) {
-		// java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE,
-		// null, ex);
-		// }
-		// /* Create and display the form */
-		// java.awt.EventQueue.invokeLater(new Runnable() {
-		// public void run() {
-		// MainFrame mainFrame=new MainFrame();
-		//
-		// }
-		// });
+		new MainFrame();
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private JTextField account_text, feedback_text, goodsNum_text;
+	private JTextField account_text, feedback_text, goodsNum_text,IP_text;
 	private JPasswordField password_text;
 	final String standard_goodsNum = "输入订单号10位";
+	String ip;
 	private String password, goodsNum, account;
-	private MyButton search_btn, login_btn, exit_btn;
+	private MyButton search_btn, login_btn, exit_btn,ip_btn;
 	private JLabel loginLABLEBTN;
 	private JLabel account_label;
 	private JLabel key_label;

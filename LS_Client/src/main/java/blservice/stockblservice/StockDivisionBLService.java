@@ -35,7 +35,7 @@ public interface StockDivisionBLService {
 	public ResultMessage modifyDivision(int oldBlock, int oldPlace, int newBlock, int newPlace) throws MalformedURLException, RemoteException, NotBoundException, ClassNotFoundException, IOException;
 	
 	/**
-	 * 界面提供目的地，系统提供该仓库可用的区号和位号
+	 * 界面提供目的地，系统提供该仓库该目的地已有的区号和位号
 	 * @param destination
 	 * @return
 	 * @throws NotBoundException 
@@ -44,4 +44,15 @@ public interface StockDivisionBLService {
 	 * @throws IOException 
 	 */
 	public ArrayList<StockDivisionVO> getBlock(City destination) throws MalformedURLException, RemoteException, NotBoundException, IOException;
+
+	/**
+	 * 界面提供区号，系统提供该仓库该区的已有区位
+	 * @param block
+	 * @return
+	 * @throws  
+	 * @throws RemoteException 
+	 * @throws MalformedURLException 
+	 * @throws IOException 
+	 */
+	public ArrayList<StockDivisionVO> getBlockByDivision(int block) throws MalformedURLException, RemoteException, NotBoundException, IOException;
 }

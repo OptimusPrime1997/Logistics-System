@@ -189,4 +189,25 @@ public class StockDivisionbl implements StockDivisionBLService{
 		sd.delete(listNum);
 	}
 
+
+	/* (non-Javadoc)
+	 * @see blservice.stockblservice.StockDivisionBLService#getBlockByDivision(int)
+	 */
+	@Override
+	public ArrayList<StockDivisionVO> getBlockByDivision(int block) throws NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		StockDivisionDataService sd = getStockDivisionDataService();
+		City city = CurrentCity.getCurrentCity();
+		ArrayList<StockDivisionVO> resultList = new ArrayList<StockDivisionVO>();
+		ArrayList<StockDivisionPO> list = sd.getStockDivision(city);
+		for (StockDivisionPO po : list) {
+			//得到当前城市的当前区的所有block
+			if (po.getBlock() == block) {
+				resultList.add(new StockDivisionVO().poToVo(po));
+			}
+		}
+		return resultList;
+
+	}
+
 }

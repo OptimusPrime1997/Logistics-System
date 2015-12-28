@@ -163,6 +163,7 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 			 rm = delete(goods);
 			
 		}
+		
 		return rm;
 	}
 	
