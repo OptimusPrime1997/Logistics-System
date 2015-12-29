@@ -1,5 +1,6 @@
 package ui.util;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -13,11 +14,12 @@ public class MyFrame extends JFrame{
 	private int mousePressedY;
 	public MyFrame(int width,int height,JPanel panel){
 		this.setSize(width, height);
-		this.setVisible(true);
 		this.setContentPane(panel);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+		this.setBackground(new Color(0,0,0,0));
+		this.setVisible(true);
 	}
 	public MyFrame(JPanel panel){
 		this.setSize(830,590);
@@ -40,6 +42,7 @@ public class MyFrame extends JFrame{
 		});
 		this.setUndecorated(true);
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		this.setBackground(new Color(0,0,0,0));
 		this.setVisible(true);
 	}
 }

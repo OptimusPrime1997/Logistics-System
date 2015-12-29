@@ -6,19 +6,14 @@
 package ui.courierui;
 
 import java.awt.Graphics;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import javax.swing.GroupLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
-import javax.swing.JTextField;
-import javax.swing.LayoutStyle;
 
 import main.MainFrame;
 import ui.Img;
@@ -26,6 +21,9 @@ import ui.receiptui.Order;
 import ui.util.ButtonType;
 import ui.util.MyButton;
 import ui.util.MyFrame;
+import ui.util.MyLabel;
+import ui.util.MyTextField;
+import ui.util.TextType;
 import util.CurrentCity;
 import util.CurrentTime;
 import util.enumData.City;
@@ -49,9 +47,6 @@ public class courier_main extends JPanel {
 		frame=new MyFrame(this);
 		
 	}
-	public static void main(String[] args) {
-		new courier_main();
-	}
 	/**
 	 * 给main的子界面调用~反馈给用户操作成功的message
 	 * @param msg
@@ -64,23 +59,34 @@ public class courier_main extends JPanel {
 		for(int i=0;i<NUM_OF_DAYS;i++){
 			createJProgressBar();
 		}
-		initProBar();
+		
+		
 		initbtn();
 		initText();
+//		initProBar();
+		//赋值
+				int[]values=goodsController.getdaysNumOfGoods(NUM_OF_DAYS);
+				System.out.println("进度条值：");
+				for(int i=0;i<bars.size();i++) {
+					int x=values[i];
+					bars.get(i).setValue(x);
+					System.out.println(bars.get(i).getValue());
+					bars.get(i).setBounds(450, i*50+150, 200, 20);
+				}
 		initLayOut();
 	}
 	/**
 	 * 给进度条赋值
 	 */
 	public void initProBar() {
-		for(int i=0;i<bars.size();i++) {
-			bars.get(i).setValue(0);
-		}
 		//赋值
 		int[]values=goodsController.getdaysNumOfGoods(NUM_OF_DAYS);
+		System.out.println("进度条值：");
 		for(int i=0;i<bars.size();i++) {
 			bars.get(i).setValue(values[i]);
-			System.out.println(values[i]);
+			System.out.println(bars.get(i).getValue());
+			bars.get(i).setBounds(450, i*50+150, 200, 20);
+//			System.out.println(values[i]);
 		}
 	}
 	/*
@@ -107,13 +113,11 @@ public class courier_main extends JPanel {
 
 	private void initText() {
 		// TODO 显示  新订单创建成功~~的反馈信息！
-		feedBack_text=new JTextField();
-		feedBack_text.setEditable(false);
-		
+		feedBack_text=new MyTextField(TextType.FEEDBACK,30, 530, 750, 30);
 	}
 	private void initbtn() {
-		newGoodsbtn = new MyButton(50,150,ButtonType.BIG);
-		signedGoodsbtn = new MyButton(50,300,ButtonType.BIG);
+		newGoodsbtn = new MyButton(50,150,ButtonType.NEWGOODS);
+		signedGoodsbtn = new MyButton(50,300,ButtonType.SIGNED);
 		exit_btn = new MyButton(790, 10, ButtonType.EXIT);
 		signedGoodsbtn.setText("已签收");
 		newGoodsbtn.setText("新订单");
@@ -143,13 +147,14 @@ public class courier_main extends JPanel {
 	
 	private void initLabel() {
 		String Cdate=CurrentTime.getDate();
-		account_label1=new JLabel();
-		businessOffice_label = new JLabel();
-		account_label0 = new JLabel();
-		recentDays_label = new JLabel();
-		businessOfficeNum_label = new JLabel();
-		recentDays_label.setText("最近7天业绩（收派件数）");
-		businessOffice_label.setText("营业厅：");
+		account_label0=new MyLabel("账户：",410, 20, 50, 20);
+		businessOffice_label = 
+				new MyLabel("营业厅：",250, 20, 60, 20);
+		account_label1 = new MyLabel("",450, 20, 150, 20);
+		recentDays_label = new MyLabel("最近7天业绩（收派件数）",
+				410,100,220,20);
+		businessOfficeNum_label = new MyLabel("",300,20,100,20);
+		recentDays_label.setFont(new java.awt.Font("黑体", 1, 18));
 		String officeNum="",city="";
 		try {
 			account_label1.setText(ctr_login.getCurrentName());
@@ -159,11 +164,14 @@ public class courier_main extends JPanel {
 		}
 		
 		businessOfficeNum_label.setText(city+" "+officeNum);
-		account_label0.setText("账户：");
+		
 		JLabel date=new JLabel();
 		for(int i=0;i<NUM_OF_DAYS;i++)creatLabels(date);
-		for(int i=0;i<NUM_OF_DAYS;i++) 
+		for(int i=0;i<NUM_OF_DAYS;i++){
 			labels.get(i).setText(CurrentTime.minusDate(Cdate, i).substring(5, 10));
+			labels.get(i).setBounds(360, i*50+150, 100, 20);
+		}
+			
 	}
 	private void creatLabels(JLabel date) {
 		date=new JLabel();
@@ -213,11 +221,11 @@ public class courier_main extends JPanel {
 	}
 	// Variables declaration
 	private MyButton newGoodsbtn,signedGoodsbtn,exit_btn;
-	private JLabel businessOfficeNum_label, businessOffice_label,
+	private MyLabel businessOfficeNum_label, businessOffice_label,
 	        account_label0,account_label1,recentDays_label;
 	private ArrayList<JLabel> labels=new ArrayList<JLabel>();//近日的日期
 	private ArrayList<JProgressBar> bars=new ArrayList<JProgressBar>();//近日业绩的进度条
-	private JTextField feedBack_text;
+	private MyTextField feedBack_text;
 	private MyFrame frame;
 	private LoginBLService ctr_login;
 	private LogBLService ctr_log;

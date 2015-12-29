@@ -11,7 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 import ui.Img;
@@ -23,7 +22,9 @@ import ui.managerui.ManagerJFrame;
 import ui.transferCtrOfficerui.transferCtrOfficer_main;
 import ui.util.ButtonType;
 import ui.util.MyButton;
-import ui.util.NumOnlyDocument;
+import ui.util.MyLabel;
+import ui.util.MyTextField;
+import ui.util.TextType;
 import ui.warehousemanui.WarehousePanel;
 import util.InputCheck;
 import util.enumData.ResultMessage;
@@ -83,6 +84,7 @@ public class MainFrame extends JFrame {
 		});
 		initComponents();
 		this.setUndecorated(true);
+		setBackground(new Color(0, 0, 0, 0));
 		this.setVisible(true);
 	}
 
@@ -107,45 +109,37 @@ public class MainFrame extends JFrame {
 	}
 
 	private void initLabel() {
-		account_label = new javax.swing.JLabel();
-		key_label = new javax.swing.JLabel();
-		account_label.setText("账号");
-		account_label.setBounds(260, 150, 30, 15);
-		key_label.setText("密码");
-		key_label.setBounds(260, 180, 30, 15);
-		loginLABLEBTN = new JLabel();
-		loginLABLEBTN.setBounds(50, 50, 50, 50);
+		account_label = new MyLabel("账号",260, 150, 30, 15);
+		key_label = new MyLabel("密码",260, 180, 30, 15);
 	}
 
 	private void initTxt() {
-		goodsNum_text = new javax.swing.JTextField();
-		IP_text=new JTextField();
-		account_text = new javax.swing.JTextField(11);
-		account_text.setDocument(new NumOnlyDocument());
-
+		//创建对象
+		goodsNum_text = new MyTextField(TextType.INPUT,40, 145, 100, 20);
+		IP_text=new MyTextField(TextType.INPUT,40, 235, 100, 20);
+		account_text = new MyTextField(TextType.INPUT,290, 145, 100, 20);
 		password_text = new javax.swing.JPasswordField(6);
-		feedback_text = new JTextField();
-
-		account_text.setBounds(290, 145, 100, 20);
+		feedback_text = new MyTextField(TextType.FEEDBACK, 20, 265, 400, 20);
+		//设为透明
+//		goodsNum_text.setOpaque(false);
+//		IP_text.setOpaque(false);
+//		account_text.setOpaque(false);
+//		password_text.setOpaque(false);
+//		feedback_text.setOpaque(false);
+		
+		//设置位置、大小
 		password_text.setBounds(290, 180, 100, 20);
-		feedback_text.setBounds(20, 265, 400, 20);
-		feedback_text.setEditable(false);
-		feedback_text.setForeground(Color.MAGENTA);// TODO 其他的颜色都改成这个
+		IP_text.setText(standard_ip);
 		goodsNum_text.setText(standard_goodsNum);
-		goodsNum_text.setBounds(40, 145, 100, 20);
 		goodsNum_text.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				goodsNum_textMouseClicked(evt);
 			}
 		});
-		account_text.addMouseListener(new java.awt.event.MouseAdapter() {
+		
+		IP_text.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				account_textMouseClicked(evt);
-			}
-		});
-		password_text.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				password_textMouseClicked(evt);
+				IP_textMouseClicked(evt);
 			}
 		});
 
@@ -155,7 +149,7 @@ public class MainFrame extends JFrame {
 		search_btn = new MyButton(150, 140,ButtonType.SEARCH);
 		login_btn = new MyButton(320, 210,ButtonType.LOGIN);
 		exit_btn=new MyButton(410,7,ButtonType.EXIT);
-		ip_btn=new MyButton(10,200);
+		ip_btn=new MyButton(150,230);
 
 		login_btn.addMouseListener(new MouseAdapter() {
 			@Override
@@ -293,17 +287,14 @@ public class MainFrame extends JFrame {
 		}
 	}
 
-	private void account_textMouseClicked(java.awt.event.MouseEvent evt) {
 
-	}
-
-	private void password_textMouseClicked(java.awt.event.MouseEvent evt) {
-
+	private void IP_textMouseClicked(MouseEvent evt) {
+		
 	}
 
 	private void initLayout() {
 		contentPane.setLayout(null);
-
+		contentPane.setSize(width, height);
 		contentPane.add(account_label);
 		contentPane.add(key_label);
 		contentPane.add(search_btn);
@@ -312,7 +303,6 @@ public class MainFrame extends JFrame {
 		contentPane.add(password_text);
 		contentPane.add(account_text);
 		contentPane.add(goodsNum_text);
-		contentPane.add(loginLABLEBTN);
 		contentPane.add(exit_btn);
 		contentPane.add(ip_btn);
 		contentPane.add(IP_text);
@@ -331,15 +321,13 @@ public class MainFrame extends JFrame {
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private JTextField account_text, feedback_text, goodsNum_text,IP_text;
+	private MyTextField account_text, feedback_text, goodsNum_text,IP_text;
 	private JPasswordField password_text;
-	final String standard_goodsNum = "输入订单号10位";
+	final String standard_goodsNum = "输入订单号10位",standard_ip="输入ip地址";
 	String ip;
 	private String password, goodsNum, account;
 	private MyButton search_btn, login_btn, exit_btn,ip_btn;
-	private JLabel loginLABLEBTN;
-	private JLabel account_label;
-	private JLabel key_label;
+	private MyLabel account_label,key_label;
 	private JPanel contentPane;
 	private GoodsVO vo;
 	private GoodsCheckValidBLService ctr_checkValid;
