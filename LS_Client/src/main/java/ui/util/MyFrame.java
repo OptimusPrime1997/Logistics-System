@@ -18,7 +18,6 @@ public class MyFrame extends JFrame{
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-		this.setBackground(new Color(0,0,0,0));
 		this.setVisible(true);
 	}
 	public MyFrame(JPanel panel){
