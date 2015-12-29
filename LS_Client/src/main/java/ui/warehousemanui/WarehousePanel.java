@@ -1,4 +1,5 @@
 /*
+
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -6,6 +7,9 @@
 package ui.warehousemanui;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -19,6 +23,7 @@ import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.loginbl.Loginbl;
 import bl.loginbl.LoginblController;
 import blservice.stockblservice.StockBLService;
+import ui.Img;
 import ui.receiptui.generalUI.InStockRep;
 import ui.receiptui.generalUI.OutStockRep;
 
@@ -39,8 +44,39 @@ public class WarehousePanel extends javax.swing.JFrame {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+    	
+    	panel=new JPanel(){
+			/* (non-Javadoc)
+			 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+			 */
+			@Override
+			protected void paintComponent(Graphics g) {
+				g.drawImage(Img.getBackground_main(),0, 0, null);
+			}
+		};
+    	
+	
         initComponents();
-       
+        this.setContentPane(panel);
+        
+      
+		addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				mousePressedX = e.getX();
+				mousePressedY = e.getY();
+			}
+		});
+		addMouseMotionListener(new MouseMotionAdapter() {
+			public void mouseDragged(MouseEvent e) {
+				int x = (int) getLocation().getX();
+				int y = (int) getLocation().getY();
+				setLocation(x + e.getX() - mousePressedX, y + e.getY()
+						- mousePressedY);
+			}
+		});
+		
+		this.setUndecorated(true);
+		this.setBackground(new Color(0,0,0,0));        
         this.setVisible(true);
     }
 
@@ -74,8 +110,7 @@ public class WarehousePanel extends javax.swing.JFrame {
     	this.setVisible(true);
 
 
-        Peking1 = new javax.swing.JProgressBar();
-        
+        Peking1 = new javax.swing.JProgressBar();      
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Peking2 = new javax.swing.JProgressBar();
@@ -88,7 +123,7 @@ public class WarehousePanel extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         Nanjing2 = new javax.swing.JProgressBar();
         jLabel7 = new javax.swing.JLabel();
-        Guangzhou1 = new javax.swing.JProgressBar();
+        Guangzhou1 = new JProgressBar();
         jLabel8 = new javax.swing.JLabel();
         Guangzhou2 = new javax.swing.JProgressBar();
         jButton1 = new javax.swing.JButton();
@@ -101,38 +136,45 @@ public class WarehousePanel extends javax.swing.JFrame {
         jButton7 = new JButton();
         back = new JButton();
   
+        panel.add(Guangzhou1);
+//        Guangzhou1.setBounds(x, y, width, height);
+        panel.add(Guangzhou2);
+        panel.add(Nanjing1);
+        panel.add(Nanjing2);
+        panel.add(Peking1);
+        Peking1.setBounds(20, 10, 50, 50);
+        panel.add(Peking2);
+        panel.add(Shanghai1);
+        panel.add(Shanghai2);
+        panel.add(back);
+        panel.add(exit);
+        panel.add(jButton1);
+        panel.add(jButton2);
+        panel.add(jButton4);
+        panel.add(jButton5);
+        panel.add(jButton6);
+        panel.add(jButton7);
+        panel.add(jLabel1);
+        panel.add(jLabel2);
+        panel.add(jLabel3);
+        panel.add(jLabel4);
+        panel.add(jLabel5);
+        panel.add(jLabel6);
+        panel.add(jLabel7);
+        panel.add(jLabel8);
+        panel.add(jLabel9);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        //TODO to show, 1000--->100  
-        Peking1.setMaximum(10);
-        Peking2.setMaximum(1000);
-        Shanghai1.setMaximum(1000);
-        Shanghai2.setMaximum(1000);
-        Nanjing1.setMaximum(10);
-        Nanjing2.setMaximum(10);
-        Guangzhou1.setMaximum(1000);
-        Guangzhou2.setMaximum(1000);
-       
-        Peking1.setForeground(Color.PINK);
-        Peking1.setBackground(Color.pink);
-        Peking1.setOpaque(true);
-        Peking1.setStringPainted(true);
-        Peking2.setStringPainted(true);
-        Peking2.setOpaque(true);
-        Peking2.setForeground(Color.PINK);
-        Shanghai1.setForeground(Color.blue);
-        Shanghai1.setStringPainted(true);
-        Shanghai2.setStringPainted(true);
-        Shanghai2.setForeground(Color.blue);
-        Nanjing1.setForeground(Color.GREEN);
-        Nanjing1.setStringPainted(true);
-        Nanjing2.setStringPainted(true);
-        Nanjing2.setForeground(Color.GREEN);
-        Guangzhou1.setForeground(Color.ORANGE);
-        Guangzhou2.setForeground(Color.ORANGE);
-        Guangzhou1.setStringPainted(true);
-        Guangzhou2.setStringPainted(true);
+        //TODO to show, 1000--->10  
+        showProgressBar(Peking1, 10, Color.PINK);
+        showProgressBar(Peking2, 10, Color.PINK);
+        showProgressBar(Shanghai1, 10, Color.BLUE);
+        showProgressBar(Shanghai2, 10, Color.BLUE);
+        showProgressBar(Nanjing1, 10, Color.BLUE);
+        showProgressBar(Nanjing2, 10, Color.BLUE);
+        showProgressBar(Guangzhou1, 10, Color.BLUE);
+        showProgressBar(Guangzhou2, 10, Color.BLUE);
 
         jLabel1.setText("北京01");
 
@@ -224,130 +266,7 @@ public class WarehousePanel extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addGap(33, 33, 33)
-                .addComponent(exit))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Peking1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Nanjing1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Peking2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Nanjing2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(95, 95, 95)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Shanghai1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Guangzhou1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Shanghai2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Guangzhou2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton5)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(62, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(exit)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Nanjing1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addComponent(Peking1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(Peking2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Shanghai1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(4, 4, 4)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Guangzhou1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel6))
-                                    .addComponent(Nanjing2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(2, 2, 2))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Shanghai2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Guangzhou2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64))
-        );
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
     
 
     
@@ -465,42 +384,15 @@ public class WarehousePanel extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(WarehousePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(WarehousePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(WarehousePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(WarehousePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new WarehousePanel();
-            }
-        });
+        new WarehousePanel();
+        
+    }
+    
+    private void showProgressBar(JProgressBar bar, int max, Color color) {
+    	bar.setMaximum(max);
+    	bar.setForeground(color);
+    	bar.setBackground(color);
+    	bar.setOpaque(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -522,7 +414,7 @@ public class WarehousePanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JProgressBar Peking2;
-    private javax.swing.JProgressBar Peking1;
+    private JProgressBar Peking1;
     private JProgressBar Shanghai1;
     private JProgressBar Shanghai2;
     private JProgressBar Nanjing1;
@@ -530,8 +422,9 @@ public class WarehousePanel extends javax.swing.JFrame {
     private JProgressBar Guangzhou1;
     private JProgressBar Guangzhou2;
     private String username;
-	
- 
+    private int mousePressedX;
+	private int mousePressedY;
+	private JPanel panel;
 
     // End of variables declaration//GEN-END:variables
 }
