@@ -30,30 +30,6 @@ import util.enumData.ResultMessage;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.goodsblservice.GoodsCheckValidBLService;
 import blservice.goodsblservice.GoodsEndBLService;
-
-/*
- * this.setSize(830,590);
-		this.setContentPane(panel);
-		this.setResizable(false);
-		this.setLocationRelativeTo(null);
-		addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				mousePressedX = e.getX();
-				mousePressedY = e.getY();
-			}
-		});
-		addMouseMotionListener(new MouseMotionAdapter() {
-			public void mouseDragged(MouseEvent e) {
-				int x = (int) getLocation().getX();
-				int y = (int) getLocation().getY();
-				setLocation(x + e.getX() - mousePressedX, y + e.getY()
-						- mousePressedY);
-			}
-		});
-		this.setUndecorated(true);
-		this.setBackground(new Color(0,0,0,0));
-		this.setVisible(true);
- */
 /**
  *
  * @author Administrator

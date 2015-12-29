@@ -39,7 +39,9 @@ public class courier_main extends JPanel {
 	static int NUM_OF_DAYS=7;
 	GoodsFindBLService goodsController = ControllerFactoryImpl
 			.getInstance().getGoodsFindController();
-
+public static void main(String[] args) {
+	new courier_main();
+}
 	public courier_main() {
 		ctr_login=ControllerFactoryImpl.getInstance().getLoginController();
 		ctr_log=ControllerFactoryImpl.getInstance().getLogController();
