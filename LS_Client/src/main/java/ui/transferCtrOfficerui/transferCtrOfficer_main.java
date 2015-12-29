@@ -135,7 +135,7 @@ public class transferCtrOfficer_main extends JPanel {
                             .addComponent(outByPlane_label))
                         .addGap(57, 57, 57))))
             .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, 500)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(todayNum_label, GroupLayout.PREFERRED_SIZE, 327, GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
