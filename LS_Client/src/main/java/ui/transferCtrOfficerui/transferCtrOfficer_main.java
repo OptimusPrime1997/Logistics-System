@@ -1,5 +1,8 @@
 package ui.transferCtrOfficerui;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -8,7 +11,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -17,10 +19,12 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 
 import main.MainFrame;
-import ui.receiptui.generalUI.GetRep;
+import ui.Img;
 import ui.receiptui.generalUI.ReceptionRep;
 import ui.receiptui.generalUI.ShippingRep;
 import ui.receiptui.generalUI.TransferRep;
+import ui.util.ButtonType;
+import ui.util.MyButton;
 import ui.util.MyFrame;
 import util.CurrentCity;
 import util.CurrentTime;
@@ -33,7 +37,6 @@ import VO.Receipt.TransferRepVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.logblservice.LogBLService;
 import blservice.loginblservice.LoginBLService;
-import blservice.receiptblservice.ReceiptblService;
 import blservice.receiptblservice.TransferRepblService;
 
 /*
@@ -48,7 +51,9 @@ import blservice.receiptblservice.TransferRepblService;
  */
 public class transferCtrOfficer_main extends JPanel {
 
-	
+	public static void main(String[] args) {
+		new transferCtrOfficer_main();
+	}
     public transferCtrOfficer_main() {
     	ctr_login=ControllerFactoryImpl.getInstance().getLoginController();
         ctr_log= ControllerFactoryImpl.getInstance().getLogController();
@@ -62,6 +67,10 @@ public class transferCtrOfficer_main extends JPanel {
 	 */
 	public void setFeedback(ResultMessage msg){
 		feedback_text.setText(ResultMessage.toFriendlyString(msg));
+	}
+	@Override
+	protected void paintComponent(Graphics g) {
+		g.drawImage(Img.getBackground_main(), 0, 0, null);
 	}
     private void initComponents() {
     	initLabel();
@@ -83,13 +92,13 @@ public class transferCtrOfficer_main extends JPanel {
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
+                        .addComponent(trs_label)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(transferOfficeNum_label)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
+                        .addComponent(account0_label)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(account_btn, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(account_label, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
                         .addGap(62, 62, 62))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -100,13 +109,13 @@ public class transferCtrOfficer_main extends JPanel {
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(train_label)
                                 .addGap(18, 18, 18)
                                 .addComponent(outByTrain_progressBar, GroupLayout.PREFERRED_SIZE, 221, GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5, GroupLayout.Alignment.TRAILING))
+                                    .addComponent(plane_label)
+                                    .addComponent(truck_label, GroupLayout.Alignment.TRAILING))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                     .addComponent(outByTruck_progressBar, GroupLayout.PREFERRED_SIZE, 221, GroupLayout.PREFERRED_SIZE)
@@ -126,8 +135,8 @@ public class transferCtrOfficer_main extends JPanel {
                             .addComponent(outByPlane_label))
                         .addGap(57, 57, 57))))
             .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 327, GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 500)
+                .addComponent(todayNum_label, GroupLayout.PREFERRED_SIZE, 327, GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -137,18 +146,18 @@ public class transferCtrOfficer_main extends JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(account_btn)
-                            .addComponent(jLabel3)
+                            .addComponent(trs_label)
+                            .addComponent(account_label)
+                            .addComponent(account0_label)
                             .addComponent(transferOfficeNum_label))))
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(todayNum_label, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                             .addComponent(outByTrain_progressBar, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
+                            .addComponent(train_label)
                             .addComponent(outByTrain_label)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
@@ -160,13 +169,13 @@ public class transferCtrOfficer_main extends JPanel {
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                 .addComponent(outByTruck_progressBar, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5))
+                                .addComponent(truck_label))
                             .addComponent(outByShip_label))
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                             .addComponent(outByPlane_progressBar, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
                             .addComponent(outByPlane_label)
-                            .addComponent(jLabel6))))
+                            .addComponent(plane_label))))
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addComponent(arrival_btn, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
@@ -177,23 +186,19 @@ public class transferCtrOfficer_main extends JPanel {
 	private void initText() {
         feedback_text = new JTextField();
         feedback_text.setEditable(false);
+        feedback_text.setHorizontalAlignment(JTextField.CENTER);
+        feedback_text.setForeground(Color.magenta);
 	}
 	private void initbtn() {
-    	exit_btn = new JButton(); 
-        account_btn = new JButton();
-        arrival_btn = new JButton();
-        toBusinessOffice_btn = new JButton();
-        toTransferCTR_btn = new JButton();
+    	exit_btn = new MyButton(ButtonType.EXIT);
+        arrival_btn = new MyButton(ButtonType.ARRIVE_BIG);
+        toBusinessOffice_btn = new MyButton(ButtonType.TO_YYT);
+        toTransferCTR_btn = new MyButton(ButtonType.TO_TRANSFER_CTR);
 
-		exit_btn.setText("退出系统");
-		arrival_btn.setText("货物到达");
-		toBusinessOffice_btn.setText("发往营业厅");
 		try {
-			account_btn.setText(ctr_login.getCurrentName());
+			account_label.setText(ctr_login.getCurrentName());
 		} catch (RemoteException e1) {
 		}
-		toTransferCTR_btn.setText("发往中转中心");
-		
         exit_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exit_btnActionPerformed(evt);
@@ -249,27 +254,31 @@ public class transferCtrOfficer_main extends JPanel {
 		outByPlane_label.setText(plane + "");
 	}
 	private void initLabel() {
-		jLabel1 = new JLabel();
-		jLabel2 = new JLabel();
-		jLabel3 = new JLabel();
-		jLabel4 = new JLabel();
-		jLabel5 = new JLabel();
-		jLabel6 = new JLabel();
+		todayNum_label = new JLabel();
+		trs_label = new JLabel();
+		account0_label = new JLabel();
+		train_label = new JLabel();
+		truck_label = new JLabel();
+		plane_label = new JLabel();
+		account_label = new JLabel();
 		transferOfficeNum_label = new JLabel();
 		outByTrain_label = new JLabel();
 		outByShip_label = new JLabel();
 		outByPlane_label = new JLabel();
-		jLabel1.setText("今日流水（派出数量）");
-		jLabel2.setText("中转中心：");
-		jLabel3.setText("账户：");
-		jLabel4.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
-		jLabel4.setText("火车");
-		jLabel5.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
-		jLabel5.setText("汽车");
-		jLabel6.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
-		jLabel6.setText("飞机");
+		todayNum_label.setText("今日流水（派出数量）");
+		todayNum_label.setFont(new Font("黑体", 1, 18));
+		trs_label.setText("中转中心：");
+		account0_label.setText("账户：");
+		train_label.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
+		train_label.setText("火车");
+		truck_label.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
+		truck_label.setText("汽车");
+		plane_label.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
+		plane_label.setText("飞机");
 		try {
 			officeNum=ctr_login.getCurrentOptorId().substring(0, 3);
+			accountName=ctr_login.getCurrentName();
+			account_label.setText(accountName);
 			transferOfficeNum_label.setText(City.toString(CurrentCity.getCurrentCity()) + officeNum);
 		} catch (RemoteException e) {
 		}
@@ -314,26 +323,15 @@ public class transferCtrOfficer_main extends JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JButton account_btn;
-    private JButton arrival_btn;
-    private JButton exit_btn;
-    private JLabel jLabel1;
-    private JLabel jLabel2;
-    private JLabel jLabel3;
-    private JLabel jLabel4;
-    private JLabel jLabel5;
-    private JLabel jLabel6;
-    private JLabel outByShip_label;
-    private JProgressBar outByTruck_progressBar;
-    private JLabel outByPlane_label;
-    private JProgressBar outByPlane_progressBar;
-    private JLabel outByTrain_label;
-    private JProgressBar outByTrain_progressBar;
+    private MyButton arrival_btn,exit_btn,
+     				toBusinessOffice_btn,toTransferCTR_btn;
+    private JLabel todayNum_label,trs_label,account0_label,train_label,truck_label,plane_label,
+    			   outByShip_label,transferOfficeNum_label,
+    			   outByPlane_label,outByTrain_label,account_label;
+    private JProgressBar outByTruck_progressBar, outByPlane_progressBar,
+    		outByTrain_progressBar;
     private JTextField feedback_text;
-    private JButton toBusinessOffice_btn;
-    private JButton toTransferCTR_btn;
-    private JLabel transferOfficeNum_label;
-    private String officeNum="025";
+    private String officeNum="025",accountName;
     private LoginBLService ctr_login;
     private LogBLService ctr_log;
     private TransferRepblService ctr_trans;

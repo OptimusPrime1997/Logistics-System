@@ -100,6 +100,10 @@ public class MyButton extends JButton{
 			setIcon(Img.getTo_yyt_btn());
 			setRolloverIcon(Img.getTo_yyt_btn_pressed());
 			break;
+		case ARRIVE_BIG:
+			setIcon(Img.getArriveBig_btn());
+			setRolloverIcon(Img.getArriveBig_btn_pressed());
+			break;
 		}			
 	}
 	public MyButton(int x,int y,ButtonType type){
@@ -108,6 +112,11 @@ public class MyButton extends JButton{
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		switch(type){
+		case INPUT_STOCK:
+			setIcon(Img.getInputStock_btn());
+			setRolloverIcon(Img.getInputStock_btn_pressed());
+			setBounds(x, y, Img.getInputStock_btn().getIconWidth(), Img.getInputStock_btn().getIconHeight());
+			break;
 		case OK:
 			setIcon(Img.getOk_btn());
 			setRolloverIcon(Img.getOk_btn_pressed());

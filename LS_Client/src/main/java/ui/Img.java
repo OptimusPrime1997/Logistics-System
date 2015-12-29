@@ -58,6 +58,10 @@ public class Img {
 	private static ImageIcon arrive_btn=new ImageIcon("pic/btn/arrive_btn.png");
 	private static ImageIcon arrive_pressed=new ImageIcon("pic/btn/arrive_btn_pressed.png");
 	
+	private static ImageIcon arriveBig_btn=new ImageIcon("pic/btn/arriveBig_btn.png");
+	private static ImageIcon arriveBig_btn_pressed=new ImageIcon("pic/btn/arriveBig_btn_pressed.png");
+	
+	
 	private static ImageIcon carManage_btn=new ImageIcon("pic/btn/carManage_btn.png");
 	private static ImageIcon carManage_btn_pressed=new ImageIcon("pic/btn/carManage_btn_pressed.png");
 	
@@ -67,7 +71,20 @@ public class Img {
 	private static ImageIcon moneyIn_btn=new ImageIcon("pic/btn/moneyIn_btn.png");
 	private static ImageIcon moneyIn_btn_pressed=new ImageIcon("pic/btn/moneyIn_btn_pressed.png");
 	
+	private static ImageIcon inputStock_btn=new ImageIcon("pic/btn/btn_inputStock.png");
+	private static ImageIcon inputStock_btn_pressed=new ImageIcon("pic/btn/btn_inputStock.png");
 	
+	
+	
+	
+	public static ImageIcon getInputStock_btn() {
+		return inputStock_btn;
+	}
+
+	public static ImageIcon getInputStock_btn_pressed() {
+		return inputStock_btn_pressed;
+	}
+
 	public static ImageIcon getCancel_btn() {
 		return cancel_btn;
 	}
@@ -76,7 +93,15 @@ public class Img {
 		return cancel_btn_pressed;
 	}
 
-	
+
+
+	public static ImageIcon getArriveBig_btn() {
+		return arriveBig_btn;
+	}
+
+	public static ImageIcon getArriveBig_btn_pressed() {
+		return arriveBig_btn_pressed;
+	}
 
 	public static ImageIcon getMoneyIn_btn() {
 		return moneyIn_btn;

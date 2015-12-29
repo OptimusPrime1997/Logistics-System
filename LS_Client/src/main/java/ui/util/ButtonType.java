@@ -3,6 +3,10 @@ package ui.util;
 public enum ButtonType {
 	SEARCH,LOGIN,EXIT,BIG,
 	/**
+	 * 输入库存初始数据
+	 */
+	INPUT_STOCK,
+	/**
 	 * 确定
 	 */
 	OK,CANCEL,
@@ -18,6 +22,10 @@ public enum ButtonType {
 	 * 快件到达
 	 */
 	ARRIVE,
+	/**
+	 * 中转中心界面上面的 大按钮
+	 */
+	ARRIVE_BIG,
 	CAR_MANAGEMENT,DRIVER_MANAGEMENT,
 	/**
 	 * 派件
@@ -38,5 +46,5 @@ public enum ButtonType {
 	/**
 	 * 记账
 	 */
-	MONEY_IN_RECORD,
+	MONEY_IN_RECORD, 
 }
