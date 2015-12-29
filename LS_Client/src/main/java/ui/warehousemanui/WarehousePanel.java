@@ -128,15 +128,14 @@ public class WarehousePanel extends javax.swing.JFrame {
         Guangzhou1 = new JProgressBar();
         Guangzhou2Label = new MyLabel("广州02", 590, 110, 50, 10);
         Guangzhou2 = new javax.swing.JProgressBar();
-        outRepButton = new MyButton(80, 200, ButtonType.INPUT_STOCK);
-        //TODO
-        inRepButton = new MyButton(0, 200, ButtonType.INPUT_STOCK);
+        outRepButton = new MyButton(80, 300, ButtonType.STOCK_OUT);
+        inRepButton = new MyButton(80, 200, ButtonType.STOCK_IN);
         exit = new MyButton(750, 10, ButtonType.EXIT);
         userLabel = new MyLabel("当前账户: "+username ,  590, 20, 300, 10);
-//        divisionChangeButton = new javax.swing.JButton();
-//        iniNumButton = new javax.swing.JButton();
-//        showButton = new javax.swing.JButton();
-//        checkButton = new JButton();
+        divisionChangeButton = new MyButton(300, 300, ButtonType.STOCK_CHANGE);
+        iniNumButton = new MyButton(520, 300, ButtonType.STOCK_INPUT);
+        showButton = new MyButton(520, 200, ButtonType.STOCK_SHOW);
+        checkButton = new MyButton(300, 200, ButtonType.STOCK_CHECK);
 
   
         panel.add(Guangzhou1);
@@ -159,10 +158,10 @@ public class WarehousePanel extends javax.swing.JFrame {
         panel.add(outRepButton);
         
         panel.add(inRepButton);
-//        panel.add(divisionChangeButton);
-//        panel.add(iniNumButton);
-//        panel.add(showButton);
-//        panel.add(checkButton);
+        panel.add(divisionChangeButton);
+        panel.add(iniNumButton);
+        panel.add(showButton);
+        panel.add(checkButton);
         panel.add(Peking1Label);
         panel.add(Peking2Label);
         panel.add(Shanghai1Label);
@@ -189,20 +188,20 @@ public class WarehousePanel extends javax.swing.JFrame {
 
         showProcess();
         
-//        outRepButton.setText("出库单填写");
-//        outRepButton.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                outRepButtonActionPerformed(evt);
-//            }
-//        });
-//
-//        inRepButton.setText("入库单填写");
-//        inRepButton.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                inRepButtonActionPerformed(evt);
-//            }
-//        });
-//
+        outRepButton.setText("出库单填写");
+        outRepButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                outRepButtonActionPerformed(evt);
+            }
+        });
+
+        inRepButton.setText("入库单填写");
+        inRepButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inRepButtonActionPerformed(evt);
+            }
+        });
+
 
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,43 +209,43 @@ public class WarehousePanel extends javax.swing.JFrame {
             }
         });
 
-//
-//        divisionChangeButton.setText("调整分区");
-//        
-//        divisionChangeButton.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                divisionChangeButtonActionPerformed(evt);
-//            }
-//        });
-//
-//        iniNumButton.setText("输入最初库存数量");
-//        iniNumButton.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                iniNumButtonActionPerformed(evt);
-//            }
-//        });
-//
-//        showButton.setText("盘点仓库所有货物");
-//        showButton.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                try {
-//					showButtonActionPerformed(evt);
-//				} catch (ClassNotFoundException e) {
-//					e.printStackTrace();
-//				} catch (NotBoundException e) {
-//					e.printStackTrace();
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//            }
-//        });
-//
-//        checkButton.setText("库存查看");
-//        checkButton.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                checkButtonActionPerformed(evt);
-//            }
-//        });
+
+        divisionChangeButton.setText("调整分区");
+        
+        divisionChangeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                divisionChangeButtonActionPerformed(evt);
+            }
+        });
+
+        iniNumButton.setText("输入最初库存数量");
+        iniNumButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniNumButtonActionPerformed(evt);
+            }
+        });
+
+        showButton.setText("盘点仓库所有货物");
+        showButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+					showButtonActionPerformed(evt);
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				} catch (NotBoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+            }
+        });
+
+        checkButton.setText("库存查看");
+        checkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkButtonActionPerformed(evt);
+            }
+        });
 
     }
     
