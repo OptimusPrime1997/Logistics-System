@@ -112,11 +112,36 @@ public class MyButton extends JButton{
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		switch(type){
-		case INPUT_STOCK:
+		case STOCK_INPUT:
 			setIcon(Img.getInputStock_btn());
 			setRolloverIcon(Img.getInputStock_btn_pressed());
 			setBounds(x, y, Img.getInputStock_btn().getIconWidth(), Img.getInputStock_btn().getIconHeight());
 			break;
+		case STOCK_CHANGE:
+			setIcon(Img.getStockChange());
+			setRolloverIcon(Img.getStockChange_pressed());
+			setBounds(x, y, Img.getStockChange().getIconWidth(), Img.getStockChange().getIconHeight());
+			break;
+		case STOCK_CHECK:
+				setIcon(Img.getStockCheck());
+				setRolloverIcon(Img.getStockCheck_pressed());
+				setBounds(x, y, Img.getStockCheck().getIconWidth(), Img.getStockCheck().getIconHeight());
+				break;
+		case STOCK_IN:
+				setIcon(Img.getStockIn());
+				setRolloverIcon(Img.getStockIn_pressed());
+				setBounds(x, y, Img.getStockIn().getIconWidth(), Img.getStockIn().getIconHeight());
+				break;
+		case STOCK_OUT:
+				setIcon(Img.getStockOut());
+				setRolloverIcon(Img.getStockOut_pressed());
+				setBounds(x, y, Img.getStockOut().getIconWidth(), Img.getStockOut().getIconHeight());
+				break;
+		case STOCK_SHOW:
+				setIcon(Img.getStockShow());
+				setRolloverIcon(Img.getStockShow_pressed());
+				setBounds(x, y, Img.getStockShow().getIconWidth(), Img.getStockShow().getIconHeight());
+				break;
 		case OK:
 			setIcon(Img.getOk_btn());
 			setRolloverIcon(Img.getOk_btn_pressed());

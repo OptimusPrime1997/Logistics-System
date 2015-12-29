@@ -71,18 +71,82 @@ public class Img {
 	private static ImageIcon moneyIn_btn=new ImageIcon("pic/btn/moneyIn_btn.png");
 	private static ImageIcon moneyIn_btn_pressed=new ImageIcon("pic/btn/moneyIn_btn_pressed.png");
 	
-	private static ImageIcon inputStock_btn=new ImageIcon("pic/btn/btn_inputStock.png");
-	private static ImageIcon inputStock_btn_pressed=new ImageIcon("pic/btn/btn_inputStock.png");
+	private static ImageIcon stockInput_btn=new ImageIcon("pic/btn/stockInput_btn.png");
+	private static ImageIcon stockInput_btn_pressed=new ImageIcon("pic/btn/stockInput_btn_pressed.png");
+	
+	private static ImageIcon stockOut=new ImageIcon("pic/btn/stockOut.png");
+	private static ImageIcon stockOut_pressed=new ImageIcon("pic/btn/stockOut_pressed.png");
+	
+	private static ImageIcon stockIn=new ImageIcon("pic/btn/stockIn.png");
+	private static ImageIcon stockIn_pressed=new ImageIcon("pic/btn/stockIn_pressed.png");
+	
+	private static ImageIcon stockShow=new ImageIcon("pic/btn/stockShow.png");
+	private static ImageIcon stockShow_pressed=new ImageIcon("pic/btn/stockShow_pressed.png");
+	
+	private static ImageIcon stockCheck=new ImageIcon("pic/btn/stockCheck.png");
+	private static ImageIcon stockCheck_pressed=new ImageIcon("pic/btn/stockCheck_pressed.png");
+	
+	private static ImageIcon stockChange=new ImageIcon("pic/btn/stockChange.png");
+	private static ImageIcon stockChange_pressed=new ImageIcon("pic/btn/stockChange_pressed.png");
+	
+
 	
 	
 	
-	
+	public static ImageIcon getStockInput_btn() {
+		return stockInput_btn;
+	}
+
+	public static ImageIcon getStockInput_btn_pressed() {
+		return stockInput_btn_pressed;
+	}
+
+	public static ImageIcon getStockOut() {
+		return stockOut;
+	}
+
+	public static ImageIcon getStockOut_pressed() {
+		return stockOut_pressed;
+	}
+
+	public static ImageIcon getStockIn() {
+		return stockIn;
+	}
+
+	public static ImageIcon getStockIn_pressed() {
+		return stockIn_pressed;
+	}
+
+	public static ImageIcon getStockShow() {
+		return stockShow;
+	}
+
+	public static ImageIcon getStockShow_pressed() {
+		return stockShow_pressed;
+	}
+
+	public static ImageIcon getStockCheck() {
+		return stockCheck;
+	}
+
+	public static ImageIcon getStockCheck_pressed() {
+		return stockCheck_pressed;
+	}
+
+	public static ImageIcon getStockChange() {
+		return stockChange;
+	}
+
+	public static ImageIcon getStockChange_pressed() {
+		return stockChange_pressed;
+	}
+
 	public static ImageIcon getInputStock_btn() {
-		return inputStock_btn;
+		return stockInput_btn;
 	}
 
 	public static ImageIcon getInputStock_btn_pressed() {
-		return inputStock_btn_pressed;
+		return stockInput_btn_pressed;
 	}
 
 	public static ImageIcon getCancel_btn() {

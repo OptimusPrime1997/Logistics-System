@@ -5,7 +5,12 @@ public enum ButtonType {
 	/**
 	 * 输入库存初始数据
 	 */
-	INPUT_STOCK,
+	STOCK_INPUT,
+	STOCK_OUT,
+	STOCK_IN,
+	STOCK_CHECK,
+	STOCK_SHOW,
+	STOCK_CHANGE,
 	/**
 	 * 确定
 	 */
