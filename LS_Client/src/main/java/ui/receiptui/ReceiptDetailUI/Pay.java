@@ -258,11 +258,11 @@ public class Pay extends javax.swing.JPanel {
 		TableColumn column1 = jTable.getColumnModel().getColumn(0);
 		column1.setPreferredWidth(100);
 		TableColumn column2 = jTable.getColumnModel().getColumn(1);
-		column2.setPreferredWidth(60);
+		column2.setPreferredWidth(80);
 		TableColumn column3 = jTable.getColumnModel().getColumn(2);
 		column3.setPreferredWidth(180);
 		TableColumn column4 = jTable.getColumnModel().getColumn(3);
-		column4.setPreferredWidth(270);
+		column4.setPreferredWidth(200);
 	}
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {

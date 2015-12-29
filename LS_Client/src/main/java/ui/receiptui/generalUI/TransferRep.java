@@ -74,7 +74,7 @@ public class TransferRep extends javax.swing.JPanel {
 	public TransferRep(transferCtrOfficer_main parentPanel) {
 		this.parentPanel=parentPanel;
 		initComponents();
-		myFrame = new MyFrame(411, 483, this);
+		myFrame = new MyFrame(411, 490, this);
 	}
 	
 	/**
