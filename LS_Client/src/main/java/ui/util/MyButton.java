@@ -30,6 +30,46 @@ public class MyButton extends JButton{
 		setRolloverIcon(Img.getButton_over());
 		setBounds(x, y, Img.getButton0().getIconWidth(), Img.getButton0().getIconHeight());
 	}
+	public MyButton(ButtonType type){
+		super();
+		setMargin(new Insets(0, 0, 0, 0));
+		setContentAreaFilled(false);
+		setBorderPainted(false);
+		switch(type){
+		case OK:
+			setIcon(Img.getOk_btn());
+			setRolloverIcon(Img.getOk_btn_pressed());
+			break;
+		case SIGNED:
+			setIcon(Img.getSigned_btn());
+			setRolloverIcon(Img.getSigned_btn_pressed());
+			break;
+		case NEWGOODS:
+			setIcon(Img.getNewGoods_btn());
+			setRolloverIcon(Img.getNewGoods_btn_pressed());
+			break;
+		case BIG:
+			setIcon(Img.getButtonBig());
+			setRolloverIcon(Img.getButtonBig_p());
+			break;
+		case SEARCH:
+			setIcon(Img.getBtn_search());
+			setRolloverIcon(Img.getBtn_search_pressed());
+			break;
+		case EXIT:
+			setIcon(Img.getExit_btn());
+			setRolloverIcon(Img.getExit_btn_pressed());
+	        break;
+		case LOGIN:
+			setIcon(Img.getBtn_login());
+			setRolloverIcon(Img.getBtn_login_pressed());
+			break;
+		case CANCEL:
+			setIcon(Img.getCancel_btn());
+			setRolloverIcon(Img.getCancel_btn_pressed());
+			break;
+		}			
+	}
 	public MyButton(int x,int y,ButtonType type){
 		super();
 		setMargin(new Insets(0, 0, 0, 0));

@@ -65,6 +65,20 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 		}
 		return receiptPOs;
 	}
+	
+	public ArrayList<ReceiptPO> getAllSubmitRep(Rep rep, String office)
+			throws ClassNotFoundException, IOException, RemoteException {
+		ArrayList<ReceiptPO> receiptPOs = new ArrayList<ReceiptPO>();
+		ArrayList<Object> objects = util.getAll(submitAdd(rep));
+		if (objects == null)
+			return null;
+		for (Object object : objects) {
+			ReceiptPO receiptPO = (ReceiptPO) object;
+			if (getOffice(receiptPO.getNum()).equals(office))
+				receiptPOs.add(receiptPO);
+		}
+		return receiptPOs;
+	}
 
 	public ReceiptPO getSubmitRep(Rep rep, String office) throws ClassNotFoundException, IOException {
 		ArrayList<Object> objects = util.getAll(submitAdd(rep));
@@ -96,6 +110,9 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 	public ReceiptPO getRepByNum(String num, Rep rep)
 			throws IOException, ClassNotFoundException, RemoteException, NumNotFoundException {
 		ArrayList<ReceiptPO> receiptPOs = getAllRep(rep, getOffice(num));
+		ArrayList<ReceiptPO> receiptPOs2 = getAllSubmitRep(rep, getOffice(num));
+		if(receiptPOs2!=null)
+			receiptPOs.addAll(receiptPOs2); 
 		if (receiptPOs == null) {
 			throw new NumNotFoundException();
 		}
@@ -170,11 +187,6 @@ public class ReceiptData extends UnicastRemoteObject implements ReceiptDataServi
 		return receiptPOs;
 	}
 	
-	public static void main(String[] args) throws ClassNotFoundException, IOException{
-		ReceiptData receiptData = new ReceiptData();
-		receiptData.forCheck(Rep.PayRep);
-	}
-
 	@Override
 	public void submitSave(String num, Rep rep) throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
