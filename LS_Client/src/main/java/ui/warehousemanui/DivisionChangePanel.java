@@ -331,8 +331,8 @@ public class DivisionChangePanel extends JFrame {
     	int block = (int) oldBlocks.getSelectedItem();
     	ArrayList<Integer> result = new ArrayList<Integer>();
     	for (StockDivisionVO vo : list) {
-    		if (vo.place<=(100*block)&&vo.place>=((block-1)*100+1)&&(vo.block == division)) {
-				result.add(vo.place);
+    		if (vo.place<=(100*block)&&vo.place>=((block-1)*100+1)) {
+				result.add(vo.place%100+1);
 			}
     		
        	}

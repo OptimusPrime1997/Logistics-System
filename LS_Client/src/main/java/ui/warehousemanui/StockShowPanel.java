@@ -244,15 +244,15 @@ boolean[] canEdit = new boolean [] {
 
                 try {
 
-showActionPerformed(evt);
+					showActionPerformed(evt);
 
-} catch (ClassNotFoundException | NotBoundException
-
-| IOException e) {
-
-e.printStackTrace();
-
-}
+			} catch (ClassNotFoundException | NotBoundException
+			
+			| IOException e) {
+			
+			e.printStackTrace();
+			
+			}
 
             }
 
@@ -413,66 +413,40 @@ e.printStackTrace();
 
     private void showActionPerformed(java.awt.event.ActionEvent evt) throws ClassNotFoundException, NotBoundException, IOException {//GEN-FIRST:event_jButton5ActionPerformed
 
-    ArrayList<StockVO> list = s.showToday();
+	    ArrayList<StockVO> list = s.showToday();   
+	
+	    int length = list.size();
+	
+	    if (length == 0) {
+	
+	    showFeedback(ResultMessage.SUCCESS, "现在仓库还没有货物~");
 
+	}
 
-
-    
-
-    int length = list.size();
-
-    
-
-    if (length == 0) {
-
-    showFeedback(ResultMessage.SUCCESS, "今天还没有货物入库~");
-
-}
-
-    
-
+	//TODO  看看存进去的时候有没有存好
     Object[][] showObjects = new Object[length][6];
-
-    
-
-    
 
     int count = 0;
 
     for (StockVO vo : list) {
 
+	    String listNum = vo.listNum;	
+	    String repNum = vo.inStockRepNum;	
+	    String date = vo.inStockDate;
+	    City des = vo.destination;	
+	    int block = vo.block;	
+	    int place = vo.place;
+	
+	    showObjects[count][0] = listNum;	
+	    showObjects[count][1] = repNum;	
+	    showObjects[count][2] = date;
+	    showObjects[count][3] = des.toString(des);	
+	    showObjects[count][4] = block;	
+	    showObjects[count][5] = place;
 
-
-    String listNum = vo.listNum;
-
-    String repNum = vo.inStockRepNum;
-
-    String date = vo.inStockDate;
-
-    City des = vo.destination;
-
-    int block = vo.block;
-
-    int place = vo.place;
-
-
-
-    showObjects[count][0] = listNum;
-
-    showObjects[count][1] = repNum;
-
-    showObjects[count][2] = date;
-
-    showObjects[count][3] = des.toString(des);
-
-    showObjects[count][4] = block;
-
-    showObjects[count][5] = place;
-
-   
-
-    ++count;
-
+	
+	    ++count;
+	
 
 
     }
@@ -496,14 +470,14 @@ e.printStackTrace();
             ) {
 
                 /**
-
-* 
-
-*/
-
-private static final long serialVersionUID = 1L;
-
-boolean[] canEdit = new boolean [] {
+			
+			* 
+			
+			*/
+			
+			private static final long serialVersionUID = 1L;
+			
+			boolean[] canEdit = new boolean [] {
 
                     false, false, false, false, false, false
 
@@ -511,13 +485,13 @@ boolean[] canEdit = new boolean [] {
 
 
 
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
 
                     return canEdit [columnIndex];
 
-                }
+            }
 
-            });
+     });
 
     
 
@@ -535,26 +509,23 @@ boolean[] canEdit = new boolean [] {
 
     try {
 
-ResultMessage rm = s.exportExcel();
+		ResultMessage rm = s.exportExcel();
+	
+		showFeedback(rm, operation);
 
+	} catch (ClassNotFoundException e) {
 
+		showFeedback(ResultMessage.FAILED, operation);
 
+	} catch (NotBoundException e) {
 
-showFeedback(rm, operation);
+		showFeedback(ResultMessage.FAILED, operation);
 
-} catch (ClassNotFoundException e) {
+	} catch (IOException e) {
 
-showFeedback(ResultMessage.FAILED, operation);
+		showFeedback(ResultMessage.FAILED, operation);
 
-} catch (NotBoundException e) {
-
-showFeedback(ResultMessage.FAILED, operation);
-
-} catch (IOException e) {
-
-showFeedback(ResultMessage.FAILED, operation);
-
-}
+	}
 
     
 
