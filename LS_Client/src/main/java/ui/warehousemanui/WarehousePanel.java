@@ -128,8 +128,9 @@ public class WarehousePanel extends javax.swing.JFrame {
         Guangzhou1 = new JProgressBar();
         Guangzhou2Label = new MyLabel("广州02", 590, 110, 50, 10);
         Guangzhou2 = new javax.swing.JProgressBar();
-        outRepButton = new MyButton(50, 150, ButtonType.INPUT_STOCK);
-//        inRepButton = new javax.swing.JButton();
+        outRepButton = new MyButton(80, 200, ButtonType.INPUT_STOCK);
+        //TODO
+        inRepButton = new MyButton(0, 200, ButtonType.INPUT_STOCK);
         exit = new MyButton(750, 10, ButtonType.EXIT);
         userLabel = new MyLabel("当前账户: "+username ,  590, 20, 300, 10);
 //        divisionChangeButton = new javax.swing.JButton();
@@ -157,7 +158,7 @@ public class WarehousePanel extends javax.swing.JFrame {
         panel.add(exit);
         panel.add(outRepButton);
         
-//        panel.add(inRepButton);
+        panel.add(inRepButton);
 //        panel.add(divisionChangeButton);
 //        panel.add(iniNumButton);
 //        panel.add(showButton);
