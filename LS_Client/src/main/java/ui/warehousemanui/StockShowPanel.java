@@ -16,13 +16,19 @@ import javax.swing.table.DefaultTableModel;
 
 
 
+
+
 import main.MainFrame;
 import VO.StockVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.loginbl.Loginbl;
 import blservice.stockblservice.StockBLService;
+import ui.util.MyButton;
+import ui.util.MyLabel;
 import util.enumData.City;
 import util.enumData.ResultMessage;
+
+
 
 
 
@@ -87,16 +93,6 @@ public class StockShowPanel extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
 
     private void initComponents() {
-
-
-
-    /**
-
-    	* 设置窗体大小
-
-    	*/
-
-    this.setSize(800, 330);
 
     /**
 
@@ -273,109 +269,7 @@ boolean[] canEdit = new boolean [] {
         });
 
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-
-        layout.setHorizontalGroup(
-
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
-            .addGroup(layout.createSequentialGroup()
-
-                .addContainerGap()
-
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-
-                        .addGap(0, 466, Short.MAX_VALUE)
-
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-
-                                .addComponent(jLabel9)
-
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-
-                                .addComponent(exit)
-
-                                .addGap(3, 3, 3))
-
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-
-                                .addComponent(back)
-
-                                .addGap(33, 33, 33)
-
-                                .addComponent(export)
-
-                                .addContainerGap())))
-
-                    .addGroup(layout.createSequentialGroup()
-
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
-                            .addComponent(resultMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-
-                                .addGap(0, 0, Short.MAX_VALUE)
-
-                                .addComponent(show, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-
-                        .addContainerGap())))
-
-            .addGroup(layout.createSequentialGroup()
-
-                .addGap(16, 16, 16)
-
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
-
-                .addGap(0, 0, Short.MAX_VALUE))
-
-        );
-
-        layout.setVerticalGroup(
-
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-
-                .addContainerGap()
-
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-
-                    .addComponent(jLabel9)
-
-                    .addComponent(exit))
-
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-
-                        .addComponent(show)
-
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-
-                        .addComponent(export))
-
-                    .addComponent(back, javax.swing.GroupLayout.Alignment.TRAILING))
-
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-
-                .addComponent(resultMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-
-        );
-
-    }// </editor-fold>//GEN-END:initComponents
-
+      
 
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -575,21 +469,22 @@ this.resultMessage.setForeground(Color.RED);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
 
-    private javax.swing.JButton exit;
+    private MyButton exit;
 
-    private javax.swing.JButton back;
+    private MyButton back;
 
-    private javax.swing.JButton show;
+    private MyButton show;
 
-    private javax.swing.JButton export;
+    private MyButton export;
 
-    private javax.swing.JLabel jLabel9;
+    private MyLabel jLabel9;
 
     private javax.swing.JScrollPane jScrollPane1;
 
     private javax.swing.JTable jTable1;
 
-    private JLabel resultMessage;
+    private MyLabel resultMessage;
+    private JPanel panel;
 
     // End of variables declaration//GEN-END:variables
 

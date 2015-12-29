@@ -26,6 +26,9 @@ import blservice.stockblservice.StockBLService;
 import ui.Img;
 import ui.receiptui.generalUI.InStockRep;
 import ui.receiptui.generalUI.OutStockRep;
+import ui.util.ButtonType;
+import ui.util.MyButton;
+import ui.util.MyLabel;
 
 /**
  *
@@ -55,6 +58,7 @@ public class WarehousePanel extends javax.swing.JFrame {
 			}
 		};
     	
+		panel.setLayout(null);
 	
         initComponents();
         this.setContentPane(panel);
@@ -106,63 +110,66 @@ public class WarehousePanel extends javax.swing.JFrame {
     	 * 关闭窗口
     	 */
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
-    	
-    	this.setVisible(true);
-
+   
 
         Peking1 = new javax.swing.JProgressBar();      
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        Peking1Label = new MyLabel("北京01", 50, 65, 50, 10);
+        Peking2Label = new MyLabel("北京02", 230, 65, 50, 10);
         Peking2 = new javax.swing.JProgressBar();
-        jLabel3 = new javax.swing.JLabel();
+        Shanghai1Label = new MyLabel("上海01", 410, 65, 50, 10);
         Shanghai1 = new javax.swing.JProgressBar();
-        jLabel4 = new javax.swing.JLabel();
+        Shanghai2Label = new MyLabel("上海02", 590, 65, 50, 10);
         Shanghai2 = new javax.swing.JProgressBar();
-        jLabel5 = new javax.swing.JLabel();
+        Nanjing1Label = new MyLabel("南京01", 50, 110, 50, 10);
         Nanjing1 = new javax.swing.JProgressBar();
-        jLabel6 = new javax.swing.JLabel();
+        Nanjing2Label = new MyLabel("南京02", 230, 110, 50, 10);
         Nanjing2 = new javax.swing.JProgressBar();
-        jLabel7 = new javax.swing.JLabel();
+        Guangzhou1Label = new MyLabel("广州01", 410, 110, 50, 10);
         Guangzhou1 = new JProgressBar();
-        jLabel8 = new javax.swing.JLabel();
+        Guangzhou2Label = new MyLabel("广州02", 590, 110, 50, 10);
         Guangzhou2 = new javax.swing.JProgressBar();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        exit = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new JButton();
-        back = new JButton();
+        outRepButton = new MyButton(50, 150, ButtonType.NEWGOODS);
+//        inRepButton = new javax.swing.JButton();
+        exit = new MyButton(750, 10, ButtonType.EXIT);
+        userLabel = new MyLabel("当前账户: "+username ,  590, 20, 300, 10);
+//        divisionChangeButton = new javax.swing.JButton();
+//        iniNumButton = new javax.swing.JButton();
+//        showButton = new javax.swing.JButton();
+//        checkButton = new JButton();
+
   
         panel.add(Guangzhou1);
-//        Guangzhou1.setBounds(x, y, width, height);
+        Guangzhou1.setBounds(470, 105, 100, 20);
         panel.add(Guangzhou2);
+        Guangzhou2.setBounds(650, 105, 100, 20);
         panel.add(Nanjing1);
+        Nanjing1.setBounds(110, 105, 100, 20);
         panel.add(Nanjing2);
+        Nanjing2.setBounds(290, 105, 100, 20);
         panel.add(Peking1);
-        Peking1.setBounds(20, 10, 50, 50);
+        Peking1.setBounds(110, 60, 100, 20);
         panel.add(Peking2);
+        Peking2.setBounds(290, 60, 100, 20);
         panel.add(Shanghai1);
+        Shanghai1.setBounds(470, 60, 100, 20);
         panel.add(Shanghai2);
-        panel.add(back);
+        Shanghai2.setBounds(650, 60, 100, 20);
         panel.add(exit);
-        panel.add(jButton1);
-        panel.add(jButton2);
-        panel.add(jButton4);
-        panel.add(jButton5);
-        panel.add(jButton6);
-        panel.add(jButton7);
-        panel.add(jLabel1);
-        panel.add(jLabel2);
-        panel.add(jLabel3);
-        panel.add(jLabel4);
-        panel.add(jLabel5);
-        panel.add(jLabel6);
-        panel.add(jLabel7);
-        panel.add(jLabel8);
-        panel.add(jLabel9);
+        panel.add(outRepButton);
+//        panel.add(inRepButton);
+//        panel.add(divisionChangeButton);
+//        panel.add(iniNumButton);
+//        panel.add(showButton);
+//        panel.add(checkButton);
+        panel.add(Peking1Label);
+        panel.add(Peking2Label);
+        panel.add(Shanghai1Label);
+        panel.add(Shanghai2Label);
+        panel.add(Nanjing1Label);
+        panel.add(Nanjing2Label);
+        panel.add(Guangzhou1Label);
+        panel.add(Guangzhou2Label);
+        panel.add(userLabel);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -176,95 +183,68 @@ public class WarehousePanel extends javax.swing.JFrame {
         showProgressBar(Guangzhou1, 10, Color.BLUE);
         showProgressBar(Guangzhou2, 10, Color.BLUE);
 
-        jLabel1.setText("北京01");
-
-        jLabel2.setText("北京02");
-
-        
-
-        jLabel3.setText("上海03");
-
-
-        jLabel4.setText("上海04");
-
-        
       
 
-        jLabel5.setText("南京05");
-
-        
-        jLabel6.setText("南京06");
-
-      
-
-        jLabel7.setText("广州07");
-
-       
-
-        jLabel8.setText("广州08");
-
-        //TODO  显示进度条
         showProcess();
         
-        jButton1.setText("出库单填写");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+//        outRepButton.setText("出库单填写");
+//        outRepButton.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                outRepButtonActionPerformed(evt);
+//            }
+//        });
+//
+//        inRepButton.setText("入库单填写");
+//        inRepButton.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                inRepButtonActionPerformed(evt);
+//            }
+//        });
+//
 
-        jButton2.setText("入库单填写");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        exit.setText("退出");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                exitActionPerformed(evt);
             }
         });
 
-        jLabel9.setText("当前账户："+username);
-
-        jButton4.setText("调整分区");
-        
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setText("输入最初库存数量");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        jButton6.setText("盘点仓库所有货物");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-					jButton6ActionPerformed(evt);
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				} catch (NotBoundException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-            }
-        });
-
-        jButton7.setText("库存查看");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
+//
+//        divisionChangeButton.setText("调整分区");
+//        
+//        divisionChangeButton.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                divisionChangeButtonActionPerformed(evt);
+//            }
+//        });
+//
+//        iniNumButton.setText("输入最初库存数量");
+//        iniNumButton.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                iniNumButtonActionPerformed(evt);
+//            }
+//        });
+//
+//        showButton.setText("盘点仓库所有货物");
+//        showButton.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                try {
+//					showButtonActionPerformed(evt);
+//				} catch (ClassNotFoundException e) {
+//					e.printStackTrace();
+//				} catch (NotBoundException e) {
+//					e.printStackTrace();
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
+//            }
+//        });
+//
+//        checkButton.setText("库存查看");
+//        checkButton.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                checkButtonActionPerformed(evt);
+//            }
+//        });
 
     }
     
@@ -272,7 +252,7 @@ public class WarehousePanel extends javax.swing.JFrame {
     
   
 
-	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+	private void outRepButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     	JFrame frame = new JFrame();
     	
     	frame.setResizable(false);
@@ -290,7 +270,7 @@ public class WarehousePanel extends javax.swing.JFrame {
     	this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed    	
+    private void inRepButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed    	
     	JFrame frame = new JFrame();
     	
     	frame.setResizable(false);
@@ -309,20 +289,20 @@ public class WarehousePanel extends javax.swing.JFrame {
     	this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
     	this.dispose();
     	new MainFrame();
     	
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void divisionChangeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
     	DivisionChangePanel dc = new DivisionChangePanel();
     	dc.setVisible(true);
     	this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
     
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void iniNumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
     	
     	InitialStockNumPanel ini = new InitialStockNumPanel();
     	ini.setVisible(true);
@@ -364,7 +344,7 @@ public class WarehousePanel extends javax.swing.JFrame {
   		
   	}
     
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) throws ClassNotFoundException, NotBoundException, IOException {//GEN-FIRST:event_jButton6ActionPerformed
+    private void showButtonActionPerformed(java.awt.event.ActionEvent evt) throws ClassNotFoundException, NotBoundException, IOException {//GEN-FIRST:event_jButton6ActionPerformed
     	
     	StockShowPanel ss = new StockShowPanel();
     	ss.setVisible(true);
@@ -373,7 +353,7 @@ public class WarehousePanel extends javax.swing.JFrame {
     	
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
     	StockCheckPanel sc = new StockCheckPanel();
     	sc.setVisible(true);
     	this.dispose();
@@ -391,28 +371,27 @@ public class WarehousePanel extends javax.swing.JFrame {
     private void showProgressBar(JProgressBar bar, int max, Color color) {
     	bar.setMaximum(max);
     	bar.setForeground(color);
-    	bar.setBackground(color);
     	bar.setOpaque(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton exit;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private JButton back;//返回
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private MyButton outRepButton;
+    private MyButton inRepButton;
+    private MyButton exit;
+    private MyButton divisionChangeButton;
+    private MyButton iniNumButton;
+    private MyButton showButton;
+    private MyButton checkButton;
+    private MyButton back;//返回
+    private MyLabel Peking1Label;
+    private MyLabel Peking2Label;
+    private MyLabel Shanghai1Label;
+    private MyLabel Shanghai2Label;
+    private MyLabel Nanjing1Label;
+    private MyLabel Nanjing2Label;
+    private MyLabel Guangzhou1Label;
+    private MyLabel Guangzhou2Label;
+    private MyLabel userLabel;
     private javax.swing.JProgressBar Peking2;
     private JProgressBar Peking1;
     private JProgressBar Shanghai1;
