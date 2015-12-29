@@ -1,5 +1,7 @@
 package ui.businessOfficerui;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -17,11 +19,14 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 
 import main.MainFrame;
+import ui.Img;
 import ui.componentfactory.ComponentFactory;
 import ui.receiptui.generalUI.CashRep;
 import ui.receiptui.generalUI.DeliverRep;
 import ui.receiptui.generalUI.GetRep;
 import ui.receiptui.generalUI.ShipmentRep;
+import ui.util.ButtonType;
+import ui.util.MyButton;
 import ui.util.MyFrame;
 import util.CurrentCity;
 import util.CurrentTime;
@@ -35,6 +40,9 @@ import blservice.loginblservice.LoginBLService;
 import blservice.receiptblservice.ShipmentRepblServce;
 
 public class businessOfficer_main extends JPanel {
+	public static void main(String[] args) {
+		new businessOfficer_main();
+	}
 	/**
 	 * 初始化界面
 	 */
@@ -57,10 +65,12 @@ public class businessOfficer_main extends JPanel {
 		feedback_text.setText(ResultMessage.toFriendlyString(msg));
 	}
 
+	
 	private void initComponents() {
 		try {
 			officeNum = ctr_login.getCurrentOptorId().substring(0, 6);
 			city = City.toString(CurrentCity.getCurrentCity());
+			name=ctr_login.getCurrentName();
 		} catch (RemoteException e) {
 		}
 		initPanel();
@@ -72,7 +82,12 @@ public class businessOfficer_main extends JPanel {
 	}
 
 	private void initPanel() {
-		panel1 = new JPanel();
+		panel1 = new JPanel(){
+			@Override
+			protected void paintComponent(Graphics g) {
+				g.drawImage(Img.getBackground_business(), 0, 0, null);
+			}
+		};
 		panel_car = new car_management(this);
 		panel_driver = new driver_management(this);
 		initNumPanel();
@@ -82,8 +97,7 @@ public class businessOfficer_main extends JPanel {
 		num_panel = new JPanel();
 
 		GroupLayout num_panelLayout = new GroupLayout(num_panel);
-		num_panel.setBackground(new java.awt.Color(240, 40, 240));
-		num_panel.setForeground(new java.awt.Color(240, 240, 240));
+		num_panel.setBackground(new java.awt.Color(0,0,0,0));
 		// num_panel.setToolTipText("");
 		/*
 		 * initNumlabel
@@ -112,6 +126,7 @@ public class businessOfficer_main extends JPanel {
 
 	private void initTxt() {
 		feedback_text = new JTextField();
+		feedback_text.setForeground(Color.magenta);
 		feedback_text.setEditable(false);
 	}
 
@@ -209,7 +224,7 @@ public class businessOfficer_main extends JPanel {
 																		.addPreferredGap(
 																				LayoutStyle.ComponentPlacement.RELATED)
 																		.addComponent(
-																				account_btn,
+																				account_label,
 																				GroupLayout.PREFERRED_SIZE,
 																				82,
 																				GroupLayout.PREFERRED_SIZE)))
@@ -263,7 +278,7 @@ public class businessOfficer_main extends JPanel {
 																																						.addComponent(
 																																								jLabel5)
 																																						.addComponent(
-																																								account_btn))))
+																																								account_label))))
 																										.addGap(4,
 																												4,
 																												4)
@@ -329,12 +344,14 @@ public class businessOfficer_main extends JPanel {
 												GroupLayout.PREFERRED_SIZE)
 										.addPreferredGap(
 												LayoutStyle.ComponentPlacement.RELATED,
-												78, Short.MAX_VALUE)
+												50, Short.MAX_VALUE)
 										.addComponent(feedback_text,
 												GroupLayout.PREFERRED_SIZE,
 												GroupLayout.DEFAULT_SIZE,
 												GroupLayout.PREFERRED_SIZE)
-										.addContainerGap()));
+										.addPreferredGap(
+												LayoutStyle.ComponentPlacement.RELATED,
+												50, Short.MAX_VALUE)));
 		this.add(panel1);
 	}
 
@@ -365,6 +382,8 @@ public class businessOfficer_main extends JPanel {
 		jLabel1 = new JLabel();
 		jLabel5 = new JLabel();
 		jLabel6 = new JLabel();
+		account_label=new JLabel();
+		account_label.setText(name);
 		businessOfficeNum_label = new JLabel();
 		businessOfficeNum_label.setText(city + officeNum);
 		jLabel1.setText("今日流水（派出的车辆数）");
@@ -374,22 +393,21 @@ public class businessOfficer_main extends JPanel {
 	}
 
 	private void initbtn() {
-		exit_btn = new JButton();
-		account_btn = new JButton();
-		arrival_btn = new JButton();
-		deliver_btn = new JButton();
-		carManagement_btn = new JButton();
-		recordMoney_btn = new JButton();
-		driverManagement_btn = new JButton();
-		send_btn = new JButton();
-		exit_btn.setText("退出系统");
-		account_btn.setText("老李（包括更改密码、退出登录）");
-		arrival_btn.setText("快件到达");
-		deliver_btn.setText("派件");
-		carManagement_btn.setText("车辆管理");
-		recordMoney_btn.setText("记账");
-		send_btn.setText("发往中转中心/营业厅");
-		driverManagement_btn.setText("司机管理");
+		exit_btn = new MyButton(ButtonType.EXIT);
+		arrival_btn = new MyButton(ButtonType.ARRIVE);
+		deliver_btn = new MyButton(ButtonType.DELIVER);
+		carManagement_btn = new MyButton(ButtonType.CAR_MANAGEMENT);
+		recordMoney_btn = new MyButton(ButtonType.MONEY_IN_RECORD);
+		driverManagement_btn = new MyButton(ButtonType.DRIVER_MANAGEMENT);
+		send_btn = new MyButton(ButtonType.TO_TRS_CTR_OR_YYT);
+//		exit_btn.setText("退出系统");
+//		account_btn.setText("老李（包括更改密码、退出登录）");
+//		arrival_btn.setText("快件到达");
+//		deliver_btn.setText("派件");
+//		carManagement_btn.setText("车辆管理");
+//		recordMoney_btn.setText("记账");
+//		send_btn.setText("发往中转中心/营业厅");
+//		driverManagement_btn.setText("司机管理");
 		arrival_btn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -506,13 +524,13 @@ public class businessOfficer_main extends JPanel {
 	private MyFrame frame;
 	private car_management panel_car;
 	private driver_management panel_driver;
-	private JButton account_btn, arrival_btn, deliver_btn, exit_btn,
+	private MyButton arrival_btn, deliver_btn, exit_btn,
 			carManagement_btn, driverManagement_btn, recordMoney_btn, send_btn;
 	private JLabel jLabel1, jLabel5, jLabel6, num_label,
-			businessOfficeNum_label;
+			businessOfficeNum_label,account_label;
 	private JTextField feedback_text;// 给用户反馈信息的信息栏
 	private JPanel num_panel, panel1;// 元件都放在panel1上 然后panel1放在this上
-	private String officeNum = "", city;
+	private String officeNum = "", city,name="";
 	private ShipmentRepblServce ctr_ship;
 	private LoginBLService ctr_login;
 	private LogBLService ctr_log;

@@ -68,6 +68,38 @@ public class MyButton extends JButton{
 			setIcon(Img.getCancel_btn());
 			setRolloverIcon(Img.getCancel_btn_pressed());
 			break;
+		case ARRIVE:
+			setIcon(Img.getArrive_btn());
+			setRolloverIcon(Img.getArrive_pressed());
+			break;
+		case CAR_MANAGEMENT:
+			setIcon(Img.getCarManage_btn());
+			setRolloverIcon(Img.getCarManage_btn_pressed());
+			break;
+		case DRIVER_MANAGEMENT:
+			setIcon(Img.getDriverManage_btn());
+			setRolloverIcon(Img.getDriverManage_btn_pressed());
+			break;
+		case DELIVER:
+			setIcon(Img.getDeliver_btn());
+			setRolloverIcon(Img.getDeliver_pressed());
+			break;
+		case MONEY_IN_RECORD://TODO
+			setIcon(Img.getMoneyIn_btn());
+			setRolloverIcon(Img.getMoneyIn_btn_pressed());
+			break;
+		case TO_TRANSFER_CTR:
+			setIcon(Img.getTo_transferCtr_btn());
+			setRolloverIcon(Img.getTo_transferCtr_btn_pressed());
+			break;
+		case TO_TRS_CTR_OR_YYT:
+			setIcon(Img.getTo_both_btn());
+			setRolloverIcon(Img.getTo_both_btn_pressed());
+			break;
+		case TO_YYT:
+			setIcon(Img.getTo_yyt_btn());
+			setRolloverIcon(Img.getTo_yyt_btn_pressed());
+			break;
 		}			
 	}
 	public MyButton(int x,int y,ButtonType type){

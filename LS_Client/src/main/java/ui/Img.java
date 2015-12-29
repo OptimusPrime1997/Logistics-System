@@ -13,6 +13,7 @@ public class Img {
 			.getImage();
 	private static Image background_main=new ImageIcon("pic/background/background_main.png").getImage();
 	private static Image background_searchState=new ImageIcon("pic/background/background_searchState.png").getImage();
+	private static Image background_business=new ImageIcon("pic/background/business_background.png").getImage();
 	
 
 	private static ImageIcon ok_btn=new ImageIcon("pic/btn/btn_ok.png");
@@ -42,19 +43,30 @@ public class Img {
 	private static ImageIcon signed_btn=new ImageIcon("pic/btn/signed_btn.png");
 	private static ImageIcon signed_btn_pressed=new ImageIcon("pic/btn/signed_btn_pressed.png");
 	
-	private static ImageIcon send_forYYT_btn=new ImageIcon("pic/btn/send_yyt_btn.png");
-	private static ImageIcon send_forYYT_btn_pressed=new ImageIcon("pic/btn/send_yyt_btn_pressed.png");
+	private static ImageIcon to_both_btn=new ImageIcon("pic/btn/to_both_btn.png");
+	private static ImageIcon to_both_btn_pressed=new ImageIcon("pic/btn/to_both_btn_pressed.png");
+	
+	private static ImageIcon to_transferCtr_btn=new ImageIcon("pic/btn/to_transferCtr_btn.png");
+	private static ImageIcon to_transferCtr_btn_pressed=new ImageIcon("pic/btn/to_transferCtr_btn_pressed.png");
+	
+	private static ImageIcon to_yyt_btn=new ImageIcon("pic/btn/to_yyt_btn.png");
+	private static ImageIcon to_yyt_btn_pressed=new ImageIcon("pic/btn/to_yyt_btn_pressed.png");
+	
+	private static ImageIcon deliver_btn=new ImageIcon("pic/btn/deliver_btn.png");
+	private static ImageIcon deliver_pressed=new ImageIcon("pic/btn/deliver_btn_pressed.png");
 	
 	private static ImageIcon arrive_btn=new ImageIcon("pic/btn/arrive_btn.png");
 	private static ImageIcon arrive_pressed=new ImageIcon("pic/btn/arrive_btn_pressed.png");
 	
-	private static ImageIcon toYYT_forZZZX_btn=new ImageIcon("pic/btn/sendToYYTForzzzx_btn.png");
-	private static ImageIcon toYYT_forZZZX_btn_pressed=new ImageIcon("pic/btn/sendToYYTForzzzx_btn_pressed.png");
+	private static ImageIcon carManage_btn=new ImageIcon("pic/btn/carManage_btn.png");
+	private static ImageIcon carManage_btn_pressed=new ImageIcon("pic/btn/carManage_btn_pressed.png");
 	
-	private static ImageIcon toTransferCtr_forZZZX_btn=new ImageIcon("pic/btn/totransferctrForzzzx_btn.png");
-	private static ImageIcon toTransferCtr_forZZZX_btn_pressed=new ImageIcon("pic/btn/totransferctrForzzzx_btn_pressed.png");
+	private static ImageIcon driverManage_btn=new ImageIcon("pic/btn/driverManage_btn.png");
+	private static ImageIcon driverManage_btn_pressed=new ImageIcon("pic/btn/driverManage_btn_pressed.png");
 	
-
+	private static ImageIcon moneyIn_btn=new ImageIcon("pic/btn/moneyIn_btn.png");
+	private static ImageIcon moneyIn_btn_pressed=new ImageIcon("pic/btn/moneyIn_btn_pressed.png");
+	
 	
 	public static ImageIcon getCancel_btn() {
 		return cancel_btn;
@@ -64,12 +76,66 @@ public class Img {
 		return cancel_btn_pressed;
 	}
 
-	public static ImageIcon getSend_forYYT_btn() {
-		return send_forYYT_btn;
+	
+
+	public static ImageIcon getMoneyIn_btn() {
+		return moneyIn_btn;
 	}
 
-	public static ImageIcon getSend_forYYT_btn_pressed() {
-		return send_forYYT_btn_pressed;
+	public static ImageIcon getMoneyIn_btn_pressed() {
+		return moneyIn_btn_pressed;
+	}
+
+	public static ImageIcon getDeliver_btn() {
+		return deliver_btn;
+	}
+
+	public static ImageIcon getDeliver_pressed() {
+		return deliver_pressed;
+	}
+
+	public static ImageIcon getTo_both_btn() {
+		return to_both_btn;
+	}
+
+	public static ImageIcon getTo_both_btn_pressed() {
+		return to_both_btn_pressed;
+	}
+
+	public static Image getBackground_business() {
+		return background_business;
+	}
+
+	public static ImageIcon getTo_transferCtr_btn() {
+		return to_transferCtr_btn;
+	}
+
+	public static ImageIcon getTo_transferCtr_btn_pressed() {
+		return to_transferCtr_btn_pressed;
+	}
+
+	public static ImageIcon getTo_yyt_btn() {
+		return to_yyt_btn;
+	}
+
+	public static ImageIcon getTo_yyt_btn_pressed() {
+		return to_yyt_btn_pressed;
+	}
+
+	public static ImageIcon getCarManage_btn() {
+		return carManage_btn;
+	}
+
+	public static ImageIcon getCarManage_btn_pressed() {
+		return carManage_btn_pressed;
+	}
+
+	public static ImageIcon getDriverManage_btn() {
+		return driverManage_btn;
+	}
+
+	public static ImageIcon getDriverManage_btn_pressed() {
+		return driverManage_btn_pressed;
 	}
 
 	public static ImageIcon getBtn_search_pressed() {
@@ -88,21 +154,6 @@ public class Img {
 		return arrive_pressed;
 	}
 
-	public static ImageIcon getToYYT_forZZZX_btn() {
-		return toYYT_forZZZX_btn;
-	}
-
-	public static ImageIcon getToYYT_forZZZX_btn_pressed() {
-		return toYYT_forZZZX_btn_pressed;
-	}
-
-	public static ImageIcon getToTransferCtr_forZZZX_btn() {
-		return toTransferCtr_forZZZX_btn;
-	}
-
-	public static ImageIcon getToTransferCtr_forZZZX_btn_pressed() {
-		return toTransferCtr_forZZZX_btn_pressed;
-	}
 
 	public static ImageIcon getSigned_btn() {
 		return signed_btn;
