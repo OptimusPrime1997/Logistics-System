@@ -69,7 +69,7 @@ public class PayRepRefund extends javax.swing.JPanel {
         payRep = oriPayRep;
         bankAccount = bank;
         initComponents();
-        myFrame = new MyFrame(627, 375, this);
+        myFrame = new MyFrame(627, 355, this);
     }
 
     /**
@@ -250,8 +250,8 @@ public class PayRepRefund extends javax.swing.JPanel {
                         .addGap(5, 5, 5)
                         .addComponent(moneyLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(moneyText, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(moneyText, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
                         .addComponent(addButton))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(reasonLabel)
@@ -263,8 +263,8 @@ public class PayRepRefund extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bankAccountBox, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(balanceText, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(balanceText, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -311,7 +311,7 @@ public class PayRepRefund extends javax.swing.JPanel {
     
     private void setColumn(){
     	TableColumn column1 = jTable.getColumnModel().getColumn(0);
-        column1.setPreferredWidth(80);
+        column1.setPreferredWidth(60);
         TableColumn column2 = jTable.getColumnModel().getColumn(1);
         column2.setPreferredWidth(300);
         TableColumn column3 = jTable.getColumnModel().getColumn(2);

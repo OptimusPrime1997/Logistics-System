@@ -51,7 +51,7 @@ public class PayRent extends javax.swing.JPanel {
     public PayRent(PayRepVO oriPayRepVO) {
     	payRepVO = oriPayRepVO;
         initComponents();
-        myFrame = new MyFrame(477, 526, this);
+        myFrame = new MyFrame(477, 511, this);
     }
 
     /**
@@ -189,7 +189,7 @@ public class PayRent extends javax.swing.JPanel {
         TableColumn column2 = jTable.getColumnModel().getColumn(1);
         column2.setPreferredWidth(115);
         TableColumn column3 = jTable.getColumnModel().getColumn(2);
-        column3.setPreferredWidth(80);
+        column3.setPreferredWidth(60);
         TableColumn column4 = jTable.getColumnModel().getColumn(3);
         column4.setPreferredWidth(300);
     }

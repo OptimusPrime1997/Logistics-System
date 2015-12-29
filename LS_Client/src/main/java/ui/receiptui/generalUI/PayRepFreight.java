@@ -192,8 +192,8 @@ public class PayRepFreight extends javax.swing.JPanel {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(bankAccountBox, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(balanceText, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(balanceText, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -226,7 +226,7 @@ public class PayRepFreight extends javax.swing.JPanel {
     	TableColumn column1 = jTable.getColumnModel().getColumn(0);
         column1.setPreferredWidth(180);
         TableColumn column2 = jTable.getColumnModel().getColumn(1);
-        column2.setPreferredWidth(80);
+        column2.setPreferredWidth(60);
         TableColumn column3 = jTable.getColumnModel().getColumn(2);
         column3.setPreferredWidth(180);
     }

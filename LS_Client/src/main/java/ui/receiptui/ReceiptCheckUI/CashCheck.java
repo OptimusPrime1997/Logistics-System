@@ -51,9 +51,9 @@ public class CashCheck extends javax.swing.JPanel {
     public CashCheck(String oriOffice) {
         office = oriOffice;
         initComponents();
-        myFrame = new MyFrame(606, 435, this);
+        myFrame = new MyFrame(606, 415, this);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,7 +85,7 @@ public class CashCheck extends javax.swing.JPanel {
         columnIdentifiers.add("编号");
         columnIdentifiers.add("金额");
         columnIdentifiers.add("收款账户");
-        columnIdentifiers.add("查看");
+        columnIdentifiers.add("查看详细信息");
         try {
 			dataVector = control.initCheck(office);
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
@@ -173,11 +173,11 @@ public class CashCheck extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(findButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(168, 168, 168)
+                        .addComponent(okButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(258, 258, 258)
-                        .addComponent(okButton)))
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -190,9 +190,9 @@ public class CashCheck extends javax.swing.JPanel {
                     .addComponent(findButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(okButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -203,7 +203,7 @@ public class CashCheck extends javax.swing.JPanel {
         TableColumn column2 = jTable.getColumnModel().getColumn(1);
         column2.setPreferredWidth(180);
         TableColumn column3 = jTable.getColumnModel().getColumn(2);
-        column3.setPreferredWidth(80);
+        column3.setPreferredWidth(60);
         TableColumn column4 = jTable.getColumnModel().getColumn(3);
         column4.setPreferredWidth(180);
         TableColumn column5 = jTable.getColumnModel().getColumn(4);

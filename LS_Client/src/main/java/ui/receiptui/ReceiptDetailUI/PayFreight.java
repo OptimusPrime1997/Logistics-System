@@ -50,7 +50,7 @@ public class PayFreight extends javax.swing.JPanel {
     public PayFreight(PayRepVO oriPayRepVO) {
     	payRepVO = oriPayRepVO;
         initComponents();
-        myFrame = new MyFrame(505, 526, this);
+        myFrame = new MyFrame(505, 511, this);
     }
 
     /**

@@ -50,7 +50,7 @@ public class PayStaff extends javax.swing.JPanel {
     public PayStaff(PayRepVO oriPayRepVO) {
     	payRepVO = oriPayRepVO;
         initComponents();
-        myFrame = new MyFrame(435, 526, this);
+        myFrame = new MyFrame(435, 511, this);
     }
 
     /**

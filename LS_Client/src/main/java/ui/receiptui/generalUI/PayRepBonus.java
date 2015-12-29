@@ -68,9 +68,9 @@ public class PayRepBonus extends javax.swing.JPanel {
 		payRepVO = oriPayRepVO;
 		bankAccount = oriBank;
 		initComponents();
-		myFrame = new MyFrame(446, 583, this);
+		myFrame = new MyFrame(446, 563, this);
 	}
-	
+
 	/**
 	 * This method is called from within the constructor to initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is always
@@ -235,76 +235,73 @@ public class PayRepBonus extends javax.swing.JPanel {
 		});
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(resultMsgText)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(moneyLabel)
-                            .addComponent(receiverNumLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(moneyText, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(addButton))
-                            .addComponent(receiverNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(cancelButton)
-                        .addGap(58, 58, 58)
-                        .addComponent(okButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(bankAccountLabel)
-                            .addComponent(balanceLabel)
-                            .addComponent(sumLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bankAccountBox, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(balanceText, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(receiverNumLabel)
-                    .addComponent(receiverNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(moneyLabel)
-                    .addComponent(moneyText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sumLabel)
-                    .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bankAccountLabel)
-                    .addComponent(bankAccountBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(balanceLabel)
-                    .addComponent(balanceText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(okButton)
-                    .addComponent(cancelButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+		this.setLayout(layout);
+		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addComponent(resultMsgText)
+				.addGroup(layout.createSequentialGroup().addGap(19, 19, 19)
+						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addGroup(layout.createSequentialGroup()
+										.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+												.addComponent(moneyLabel).addComponent(receiverNumLabel))
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+										.addComponent(receiverNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 97,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addGroup(layout.createSequentialGroup()
+												.addComponent(moneyText, javax.swing.GroupLayout.PREFERRED_SIZE, 66,
+														javax.swing.GroupLayout.PREFERRED_SIZE)
+												.addGap(33, 33, 33).addComponent(addButton))))
+						.addGroup(layout.createSequentialGroup().addGap(49, 49, 49).addComponent(cancelButton)
+								.addGap(58, 58, 58).addComponent(okButton))
+						.addGroup(layout.createSequentialGroup().addGap(12, 12, 12)
+								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+										.addComponent(bankAccountLabel).addComponent(balanceLabel)
+										.addComponent(sumLabel))
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+										.addComponent(bankAccountBox, javax.swing.GroupLayout.PREFERRED_SIZE, 246,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 67,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addComponent(balanceText, javax.swing.GroupLayout.PREFERRED_SIZE, 66,
+												javax.swing.GroupLayout.PREFERRED_SIZE)))
+						.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412,
+								javax.swing.GroupLayout.PREFERRED_SIZE))
+						.addContainerGap(15, Short.MAX_VALUE)));
+		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(layout.createSequentialGroup().addGap(19, 19, 19)
+						.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266,
+								javax.swing.GroupLayout.PREFERRED_SIZE)
+				.addGap(18, 18, 18)
+				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+						.addComponent(receiverNumLabel).addComponent(receiverNumText,
+								javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+								javax.swing.GroupLayout.PREFERRED_SIZE))
+				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+				.addGroup(
+						layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(moneyLabel)
+								.addComponent(moneyText, javax.swing.GroupLayout.PREFERRED_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addComponent(addButton))
+				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(sumLabel)
+						.addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+						.addComponent(bankAccountLabel).addComponent(bankAccountBox,
+								javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+								javax.swing.GroupLayout.PREFERRED_SIZE))
+				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+						.addComponent(balanceLabel).addComponent(balanceText, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+				.addGap(18, 18, 18)
+				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(okButton)
+						.addComponent(cancelButton))
+				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+				.addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE,
+						javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)));
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void setColumn() {
@@ -313,7 +310,7 @@ public class PayRepBonus extends javax.swing.JPanel {
 		TableColumn column2 = jTable.getColumnModel().getColumn(1);
 		column2.setPreferredWidth(115);
 		TableColumn column3 = jTable.getColumnModel().getColumn(2);
-		column3.setPreferredWidth(80);
+		column3.setPreferredWidth(60);
 		TableColumn column4 = jTable.getColumnModel().getColumn(3);
 		column4.setPreferredWidth(150);
 		TableColumn column5 = jTable.getColumnModel().getColumn(4);

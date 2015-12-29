@@ -22,7 +22,6 @@ import bl.receiptbl.GetRepbl.GetRepController;
 import bl.receiptbl.ReceptionRepbl.ReceptionRepController;
 import blservice.receiptblservice.GetRepblService;
 import blservice.receiptblservice.ReceptionRepblService;
-import ui.receiptui.ReceiptCheckUI.ShippingCheck;
 import ui.util.MyFrame;
 import util.enumData.Rep;
 
@@ -173,7 +172,6 @@ public class Arrive extends javax.swing.JPanel {
 				// TODO Auto-generated catch block
 				resultMsgText.setText(ExceptionPrint.print(e));
 			}
-			dateText.setText(receptionRepVO.date);
 			departText.setText(receptionRepVO.date);
 			numText.setText(num);
 			getRepTypeText.setText(receptionRepVO.rep.getChineseName());

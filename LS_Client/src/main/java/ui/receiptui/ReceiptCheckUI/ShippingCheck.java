@@ -51,9 +51,9 @@ public class ShippingCheck extends javax.swing.JPanel {
     public ShippingCheck(String oriOffice) {
     	office = oriOffice;
         initComponents();
-        myFrame = new MyFrame(640, 424, this);
+        myFrame = new MyFrame(533, 404, this);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,7 +95,7 @@ public class ShippingCheck extends javax.swing.JPanel {
         columnIdentifiers.add("车牌号");
         columnIdentifiers.add("司机编号");
         columnIdentifiers.add("目的地");
-        columnIdentifiers.add("查看");
+        columnIdentifiers.add("查看详细信息");
         try {
 			dataVector = control.initCheck(office);
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
@@ -169,7 +169,7 @@ public class ShippingCheck extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(dateLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -177,9 +177,9 @@ public class ShippingCheck extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(findButton))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(278, 278, 278)
+                        .addGap(224, 224, 224)
                         .addComponent(okButton)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

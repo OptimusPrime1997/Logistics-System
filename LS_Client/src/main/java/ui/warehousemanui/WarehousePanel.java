@@ -361,7 +361,7 @@ public class WarehousePanel extends javax.swing.JFrame {
     	Dimension screensize = tk.getScreenSize();
     	int screenh = screensize.height;
     	int screenw = screensize.width;
-    	frame.setSize(546, 473);
+    	frame.setSize(500, 600);
     	frame.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);	
     	frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     	
@@ -379,7 +379,7 @@ public class WarehousePanel extends javax.swing.JFrame {
     	Dimension screensize = tk.getScreenSize();
     	int screenh = screensize.height;
     	int screenw = screensize.width;
-    	frame.setSize(410, 513);
+    	frame.setSize(500, 600);
     	frame.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);	
     	frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     	
@@ -391,9 +391,9 @@ public class WarehousePanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    	MainFrame mf = new MainFrame();
-    	mf.setVisible(true);
     	this.dispose();
+    	new MainFrame();
+    	
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

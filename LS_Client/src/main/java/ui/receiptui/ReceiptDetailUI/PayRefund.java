@@ -53,7 +53,7 @@ public class PayRefund extends javax.swing.JPanel {
     	payRepVO = oriPayRepVO;
     	date = oriDate;
         initComponents();
-        myFrame = new MyFrame(367, 526, this);
+        myFrame = new MyFrame(367, 511, this);
     }
 
     /**

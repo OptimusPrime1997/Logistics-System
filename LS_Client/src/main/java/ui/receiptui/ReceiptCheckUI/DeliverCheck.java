@@ -51,7 +51,7 @@ public class DeliverCheck extends javax.swing.JPanel {
 	public DeliverCheck(String oriOffice) {
 		office = oriOffice;
 		initComponents();
-		myFrame = new MyFrame(616, 440, this);
+		myFrame = new MyFrame(616, 425, this);
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class DeliverCheck extends javax.swing.JPanel {
 		columnIdentifiers.add("编号");
 		columnIdentifiers.add("派件员编号");
 		columnIdentifiers.add("派件员名字");
-		columnIdentifiers.add("查看");
+		columnIdentifiers.add("查看详细信息");
         try {
 			dataVector = control.initCheck(office);
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {

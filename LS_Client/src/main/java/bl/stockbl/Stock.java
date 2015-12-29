@@ -84,8 +84,14 @@ public class Stock {
 	             
 	            while(calendar.getTime().compareTo(dateTwo)<=0){               
 	            	
-	                instockreps.addAll(in.getAllRepByDate(dateFormat.format(calendar.getTime())));
-	                outstockreps.addAll(out.getAllRepByDate(dateFormat.format(calendar.getTime())));
+	            	if (in.getAllRepByDate(dateFormat.format(calendar.getTime())) != null) {
+	            		instockreps.addAll(in.getAllRepByDate(dateFormat.format(calendar.getTime())));
+					}
+	                
+	            	if (out.getAllRepByDate(dateFormat.format(calendar.getTime())) != null) {
+	            		outstockreps.addAll(out.getAllRepByDate(dateFormat.format(calendar.getTime())));
+					}
+	                
 	                
 	            	
 	                calendar.add(Calendar.DAY_OF_MONTH, 1);               
@@ -102,13 +108,19 @@ public class Stock {
 			}
         
        
+		int instocknum = 0;
+		int outstocknum = 0;
         
+        for (int i = 0; i < instockreps.size(); i++) {
+			instocknum += instockreps.get(i).getInStockVOs().size();
+		}
         
+        for (int i = 0; i < outstockreps.size(); i++) {
+        	outstocknum += outstockreps.get(i).goods.size();
+        }
 
         
-        int instocknum = instockreps.size();
-        int outstocknum = outstockreps.size();
-
+		
 
         
 		return instocknum+" "+outstocknum;

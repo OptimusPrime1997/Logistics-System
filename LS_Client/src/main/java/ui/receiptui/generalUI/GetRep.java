@@ -71,10 +71,10 @@ public class GetRep extends javax.swing.JPanel {
 	 */
 
 	public GetRep() {
-		myFrame = new MyFrame(556, 468, this);
 		initComponents();
+		myFrame = new MyFrame(556, 468, this);
 	}
-	
+
 	/**
 	 * This method is called from within the constructor to initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is always

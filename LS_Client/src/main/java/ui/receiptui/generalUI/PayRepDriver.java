@@ -61,7 +61,7 @@ public class PayRepDriver extends javax.swing.JPanel {
     	payRep = oriPayRep;
     	bankAccount = bank;
         initComponents();
-        myFrame = new MyFrame(403, 491, this);
+        myFrame = new MyFrame(403, 471, this);
     }
 
     /**
@@ -185,7 +185,7 @@ public class PayRepDriver extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bankAccountBox, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(balanceText, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(balanceText, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(cancelButton)
@@ -195,7 +195,7 @@ public class PayRepDriver extends javax.swing.JPanel {
                         .addGap(26, 26, 26)
                         .addComponent(sumLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(sumText, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(19, Short.MAX_VALUE))
             .addComponent(resultMsgText)
@@ -232,7 +232,7 @@ public class PayRepDriver extends javax.swing.JPanel {
         TableColumn column2 = jTable.getColumnModel().getColumn(1);
         column2.setPreferredWidth(115);
         TableColumn column3 = jTable.getColumnModel().getColumn(2);
-        column3.setPreferredWidth(80);
+        column3.setPreferredWidth(60);
         TableColumn column4 = jTable.getColumnModel().getColumn(3);
         column4.setPreferredWidth(60);
     }

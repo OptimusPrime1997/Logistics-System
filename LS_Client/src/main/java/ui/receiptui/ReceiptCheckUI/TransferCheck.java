@@ -51,7 +51,7 @@ public class TransferCheck extends javax.swing.JPanel {
 	public TransferCheck(String oriOffice) {
     	office = oriOffice;
 		initComponents();
-		myFrame = new MyFrame(521, 418, this);
+		myFrame = new MyFrame(521, 398, this);
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class TransferCheck extends javax.swing.JPanel {
 		columnIdentifiers.add("装运形式");
 		columnIdentifiers.add("车次");
 		columnIdentifiers.add("目的地");
-		columnIdentifiers.add("查看");
+		columnIdentifiers.add("查看详细信息");
         try {
 			dataVector = control.initCheck(office);
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {

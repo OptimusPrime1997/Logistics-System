@@ -23,7 +23,6 @@ import bl.receiptbl.ReceptionRepbl.ReceptionRepController;
 import blservice.receiptblservice.GetRepblService;
 import blservice.receiptblservice.ReceptionRepblService;
 import ui.receiptui.ReceiptDetailUI.Arrive;
-import ui.receiptui.generalUI.TransferRep;
 import ui.util.MyFrame;
 import util.enumData.Rep;
 
@@ -59,9 +58,9 @@ public class ArriveCheck extends javax.swing.JPanel {
         rep = oriRep;
         office = oriOffice;
         initComponents();
-        myFrame = new MyFrame(717, 427, this);
+        myFrame = new MyFrame(717, 406, this);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -104,7 +103,7 @@ public class ArriveCheck extends javax.swing.JPanel {
         columnIdentifiers.add("到达单据类型");
         columnIdentifiers.add("到达单据编号");
         columnIdentifiers.add("出发地");
-        columnIdentifiers.add("查看");
+        columnIdentifiers.add("查看详细信息");
         if(rep==Rep.GetRep){
         	try {
 				dataVector = getControl.initCheck(office);

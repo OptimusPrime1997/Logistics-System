@@ -52,7 +52,7 @@ public class Shipment extends javax.swing.JPanel {
     public Shipment(String oriNum) {
     	num = oriNum;
         initComponents();
-        myFrame = new MyFrame(457, 357, this);
+        myFrame = new MyFrame(457, 337, this);
     }
 
     /**
