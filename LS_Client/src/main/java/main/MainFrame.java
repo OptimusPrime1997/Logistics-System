@@ -16,6 +16,7 @@ import javax.swing.UIManager;
 import ui.Img;
 import ui.administratorui.AdministratorPanel;
 import ui.businessOfficerui.businessOfficer_main;
+import ui.componentfactory.ComponentFactory;
 import ui.courierui.courier_main;
 import ui.financialstaffui.FinancialStaffJFrame;
 import ui.managerui.ManagerJFrame;
@@ -101,11 +102,7 @@ public class MainFrame extends JFrame {
 		initbtn();
 		initLabel();
 		initLayout();
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception e) {
-			throw new RuntimeException();
-		}
+		ComponentFactory.setSystemLook();
 	}
 
 	private void initLabel() {

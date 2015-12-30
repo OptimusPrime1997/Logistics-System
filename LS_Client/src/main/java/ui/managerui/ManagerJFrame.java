@@ -5,10 +5,13 @@
  */
 package ui.managerui;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.color.ColorSpace;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -33,18 +36,30 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import javax.swing.WindowConstants;
 import javax.swing.event.MouseInputListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
 
 import main.MainFrame;
+import ui.Img;
 import ui.componentfactory.ComponentFactory;
 import ui.receiptui.BusinessForm;
 import ui.receiptui.ProfitForm;
+import ui.receiptui.ReceiptDetailUI.Arrive;
+import ui.receiptui.ReceiptDetailUI.Cash;
+import ui.receiptui.ReceiptDetailUI.Deliver;
+import ui.receiptui.ReceiptDetailUI.InStock;
+import ui.receiptui.ReceiptDetailUI.OutStock;
+import ui.receiptui.ReceiptDetailUI.Pay;
+import ui.receiptui.ReceiptDetailUI.Shipment;
+import ui.receiptui.ReceiptDetailUI.Shipping;
+import ui.receiptui.ReceiptDetailUI.Transfer;
 import ui.util.StrToLogType;
 import util.CurrentTime;
 import util.InputCheck;
@@ -84,11 +99,12 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	 */
 
 	public ManagerJFrame() {
-		ComponentFactory.setSystemLook();
+		
+		
+		this.setUndecorated(true);
 		initComponents();
-
-		this.setResizable(false);
-		// managerFrame.setUndecorated(false);
+		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		this.setBackground(new Color(0,0,0,0));
 		this.setVisible(true);
 	}
 
@@ -165,7 +181,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		setSalaryPolicyVOs();
 		setInstitutionVOs();
 		initialVariables();
-
+		
+		ComponentFactory.setSystemLook();
+		
 		setAllLayout();
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -173,7 +191,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				.createTitledBorder(""));
 		managerjPanel.setToolTipText("总经理");
 		managerjTabbedPane.setPreferredSize(new java.awt.Dimension(830, 560));
-
+		
+		managerjPanel.setBackground(new Color(200, 150, 190, 50));
+		
 		jButton3.setText("jButton2");
 
 		jButton5.setText("jButton4");
@@ -594,6 +614,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				});
 
 		submitInstitutionjButton.setText("提交");
+//		submitInstitutionjButton.setColor(new Color(200,150,190));
 		submitInstitutionjButton.setToolTipText("");
 		submitInstitutionjButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1825,14 +1846,15 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		final JPopupMenu documentjPop = new JPopupMenu();
 		final JMenuItem documentSubmitjItem = new JMenuItem("全部提交");
 		documentSubmitjItem.addMouseListener(/**
-		 * @author 1 监听document的弹出菜单中的“全部提交”
+		 * @author 1
+		 *         监听document的弹出菜单中的“全部提交”
 		 */
 		new MouseListener() {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
@@ -1845,7 +1867,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
 				if (e.getButton() == MouseEvent.BUTTON1) {
-					for(int i=0;i<documents.size();i++){
+					for (int i = 0; i < documents.size(); i++) {
 						checkDocument(i);
 					}
 				}
@@ -1860,7 +1882,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 		});
@@ -1934,13 +1956,63 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			if (e.getButton() == MouseEvent.BUTTON1) {
 				int row = documentCheckjTable.getSelectedRow();
 				// 代号、车牌号
-				checkDocument(row);			// 点
+				checkDocument(row); // 点
 			}
 		}
+		if(e.getClickCount()==2&&column!=3){
+			if(e.getButton()==MouseEvent.BUTTON1){
+				int row = documentCheckjTable.getSelectedRow();
+				String num=(String)documentCheckjTable.getValueAt(row, 1);
+				String r=(String)documentCheckjTable.getValueAt(row, 2);
+				Rep rep=Rep.getRep(r);
+				checkInfo(num, rep);
+			}
+		}
+	}
+	public void checkInfo(String num, Rep rep) {
+		// ShipmentRep("营业厅装车单"), GetRep("营业厅到达单"), DeliverRep("派件单"),
+		// InStockRep(
+		// "入库单"), OutStockRep("出库单"), ShippingRep("中转中心装车单"), ReceptionRep(
+		// "中转中心到达单"), TransferRep("中转单"), CashRep("收款单"), PayRep("付款单");
+
+		switch (rep) {
+		case ShipmentRep:
+			new Shipment(num);
+			break;
+		case GetRep:
+			new Arrive(rep, num);
+			break;
+		case CashRep:
+			new Cash(num);
+			break;
+		case DeliverRep:
+			new Deliver(num);
+			break;
+		case InStockRep:
+			new InStock(num);
+			break;
+		case OutStockRep:
+			new OutStock(num);
+			break;
+		case ShippingRep:
+			new Shipping(num);
+			break;
+		case ReceptionRep:
+			new Arrive(rep, num);
+			break;
+		case TransferRep:
+			new Transfer(num);
+			break;
+		case PayRep:
+			new Pay(num);
+			break;
+		}
+
 	}
 
 	/**
 	 * 审批第row+1行单据
+	 * 
 	 * @param row
 	 */
 	private void checkDocument(int row) {
@@ -2077,18 +2149,26 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				salaryPolicyjComboBox.addItem(salaryPolicy);
 			}
 		}
-
-		managerjPanel = new javax.swing.JPanel();
-
+		managerjPanel =new JPanel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				g.drawImage(Img.getBackground_main(), 0, 0, 958, 643, null);
+			}
+		};	
 		managerjPanel.setPreferredSize(new Dimension(958, 643));
+		
 
 		managerjTabbedPane = new javax.swing.JTabbedPane();
+		managerjTabbedPane.setBackground(ComponentFactory.panelColor);
 		constjPanel = new javax.swing.JPanel();
+		constjPanel.setBackground(ComponentFactory.panelColor);
 		jButton3 = new javax.swing.JButton();
 		jButton5 = new javax.swing.JButton();
 		addConstjButton = new javax.swing.JButton();
+		addConstjButton.setBackground(ComponentFactory.panelColor);
 		submitConstjButton = new javax.swing.JButton();
 		jScrollPane2 = new javax.swing.JScrollPane();
+		
 		// try {
 		// constjTable = (javax.swing.JTable) java.beans.Beans.instantiate(
 		// getClass().getClassLoader(),
