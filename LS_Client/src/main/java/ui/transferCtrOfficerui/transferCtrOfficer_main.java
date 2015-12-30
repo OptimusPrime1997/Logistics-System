@@ -101,11 +101,10 @@ public class transferCtrOfficer_main extends JPanel {
         feedback_text = new MyTextField(TextType.FEEDBACK,20,400,300,20);
 	}
 	private void initbtn() {
-    	exit_btn = new MyButton(790,10,ButtonType.EXIT);
         arrival_btn = new MyButton(30,100,ButtonType.ARRIVE_BIG);
         toBusinessOffice_btn = new MyButton(30,250,ButtonType.TO_YYT);
         toTransferCTR_btn = new MyButton(30,400,ButtonType.TO_TRANSFER_CTR);
-
+        exit_btn = new MyButton(790,10,ButtonType.EXIT);
 		try {
 			account_label.setText(ctr_login.getCurrentName());
 		} catch (RemoteException e1) {
