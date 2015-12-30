@@ -61,6 +61,12 @@ public class MainFrame extends JFrame {
 	/**
 	 * Creates new form MainFrame
 	 */
+	
+	
+	
+	
+	
+	
 	public MainFrame() {
 		ctr_checkValid = ControllerFactoryImpl.getInstance()
 				.getGoodsCheckController();
