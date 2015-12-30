@@ -11,11 +11,18 @@ import VO.StockDivisionVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.loginbl.Loginbl;
 import blservice.stockblservice.StockDivisionBLService;
+import ui.Img;
+import ui.util.ButtonType;
+import ui.util.MyButton;
+import ui.util.MyLabel;
 import util.FromIntToCity;
 import util.enumData.City;
 import util.enumData.ResultMessage;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
@@ -32,7 +39,41 @@ public class DivisionChangePanel extends JFrame {
      * Creates new form DivisionChange
      */
     public DivisionChangePanel() {
+    	panel=new JPanel(){
+			/* (non-Javadoc)
+			 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+			 */
+			@Override
+			protected void paintComponent(Graphics g) {
+				g.drawImage(Img.getBackground_main(),0, 0, null);
+			}
+		};
+    	
+		panel.setLayout(null);
+    
         initComponents();
+        
+        this.setContentPane(panel);
+        
+        
+		addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				mousePressedX = e.getX();
+				mousePressedY = e.getY();
+			}
+		});
+		addMouseMotionListener(new MouseMotionAdapter() {
+			public void mouseDragged(MouseEvent e) {
+				int x = (int) getLocation().getX();
+				int y = (int) getLocation().getY();
+				setLocation(x + e.getX() - mousePressedX, y + e.getY()
+						- mousePressedY);
+			}
+		});
+		
+		this.setUndecorated(true);
+		this.setBackground(new Color(0,0,0,0));        
+        this.setVisible(true);
     }
 
     /**
@@ -48,7 +89,7 @@ public class DivisionChangePanel extends JFrame {
     	/**
     	 * 设置窗体大小
     	 */
-    	this.setSize(400, 330);
+    	this.setSize(800, 500);
     	/**
     	 * 设置窗体大小为不可变
     	 */
@@ -68,42 +109,64 @@ public class DivisionChangePanel extends JFrame {
 
     	
     	
-        jLabel9 = new javax.swing.JLabel();
-        exit = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        userLabel = new MyLabel("当前账户："+Loginbl.getCurrentOptorName(), 590, 20, 300, 20);
+        exit = new MyButton(750, 10, ButtonType.EXIT);
+        oldLabel = new MyLabel("原区域：", 100, 80, 80, 20);
+        oldD_Label = new MyLabel("区号：", 120, 120, 80, 20);
         oldBlocks = new javax.swing.JComboBox();
-        jLabel3 = new javax.swing.JLabel();
+        oldBlocks.setBounds(380, 120, 70, 20);
+        oldP_Label = new MyLabel("位号：", 520, 120, 80, 20);
         oldPlaces = new javax.swing.JComboBox();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        oldPlaces.setBounds(580, 120, 70, 20);
+        newLabel = new MyLabel("新区域：", 100, 250, 80, 20);
+        middle_Label = new MyLabel("调整至------------------------------------------>", 100, 180, 680, 20);
+        newP_Label = new MyLabel("位号：", 520, 290, 80, 20);
         newPlaces = new javax.swing.JComboBox();
-        confirm = new javax.swing.JButton();
-        back = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        newPlaces.setBounds(580, 290, 70, 20);
+        //TODO
+        back = new MyButton(380, 360, ButtonType.CANCEL);
+        confirm = new MyButton(540, 360, ButtonType.OK);
+        oldB_Label = new MyLabel("块号：", 320, 120, 80, 20);
         oldDivisions = new javax.swing.JComboBox();
-        jLabel11 = new javax.swing.JLabel();
+        oldDivisions.setBounds(180, 120, 70, 20);
+        newD_Label = new MyLabel("区号：", 120, 290, 80, 20);
         newDivisions = new javax.swing.JComboBox();
-        jLabel12 = new javax.swing.JLabel();
+        newDivisions.setBounds(180, 290, 70, 20);
+        newB_Label = new MyLabel("块号：", 320, 290, 80, 20);
         newBlocks = new javax.swing.JComboBox();
-        resultMessage = new JLabel();
+        newBlocks.setBounds(380, 290, 70, 20);
+        resultMessage = new MyLabel("反馈", 30, 470, 800, 20);
 
       
+        panel.add(userLabel);
+        panel.add(resultMessage);
+        panel.add(exit);
+        panel.add(oldLabel);
+        panel.add(oldD_Label);
+        panel.add(oldDivisions);
+        panel.add(oldB_Label);
+        panel.add(oldBlocks);
+        panel.add(oldP_Label);
+        panel.add(oldPlaces);
+        panel.add(middle_Label);
+        panel.add(newLabel);
+        panel.add(newD_Label);
+        panel.add(newDivisions);
+        panel.add(newB_Label);
+        panel.add(newBlocks);
+        panel.add(newP_Label);
+        panel.add(newPlaces);
+        panel.add(back);
+        panel.add(confirm);
         
-        jLabel9.setText("当前账户："+Loginbl.getCurrentOptorName());
-
-        exit.setText("退出");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("原区域：");
+    
 
-        jLabel2.setText("区号：");
 
         oldBlocks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "   "}));
         oldBlocks.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +185,6 @@ public class DivisionChangePanel extends JFrame {
             }
         });
 
-        jLabel3.setText("位号：");
 
         oldPlaces.setModel(new DefaultComboBoxModel(new String[] { "   "}));
         oldPlaces.addActionListener(new java.awt.event.ActionListener() {
@@ -131,11 +193,6 @@ public class DivisionChangePanel extends JFrame {
             }
         });
 
-        jLabel4.setText("新区域：");
-
-        jLabel5.setText("调整至------------------------------------->");
-
-        jLabel7.setText("位号：");
 
         newPlaces.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "   "}));
         newPlaces.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +201,6 @@ public class DivisionChangePanel extends JFrame {
             }
         });
 
-        confirm.setText("确定");
         confirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
@@ -157,18 +213,12 @@ public class DivisionChangePanel extends JFrame {
             }
         });
 
-        back.setText("返回");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backActionPerformed(evt);
             }
         });
 
-        jLabel10.setText("所在地：南京 01");
-
-        jLabel8.setText("块号：");
-
-        
         oldDivisions.setModel(new javax.swing.DefaultComboBoxModel(new Integer[] { 01,2, 3, 4, 5, 6, 7, 8}));
         oldDivisions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,8 +229,6 @@ public class DivisionChangePanel extends JFrame {
 				}
             }
         });
-
-        jLabel11.setText("区号：");
 
         newDivisions.setModel(new javax.swing.DefaultComboBoxModel(new Integer[] { 01,2, 3, 4, 5, 6, 7, 8}));
         newDivisions.addActionListener(new java.awt.event.ActionListener() {
@@ -193,8 +241,6 @@ public class DivisionChangePanel extends JFrame {
             }
         });
 
-        jLabel12.setText("块号：");
-
         newBlocks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "  "}));
         newBlocks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,110 +252,9 @@ public class DivisionChangePanel extends JFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(exit))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel1))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(oldDivisions, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(oldBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(oldPlaces, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(15, 15, 15)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(back)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(confirm))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                    .addComponent(jLabel11)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(newDivisions, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(21, 21, 21)
-                                                    .addComponent(jLabel12)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(newBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(jLabel7)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(newPlaces, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
-                                                .addGap(27, 27, 27))))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(resultMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 18, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel9)
-                    .addComponent(exit))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(oldBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(oldPlaces, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(oldDivisions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(newPlaces, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(newDivisions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12)
-                    .addComponent(newBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(back)
-                    .addComponent(confirm))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(resultMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                .addContainerGap())
-        ); 
-        pack();
-    }// </editor-fold>                        
+    }  
 
-
+    
     StockDivisionBLService s = ControllerFactoryImpl.getInstance().getStockDivisionController();
     
     /**
@@ -536,31 +481,37 @@ public class DivisionChangePanel extends JFrame {
 	}
     
 
+    public static void main(String[] args) {
+		new DivisionChangePanel();
+	}
     // Variables declaration - do not modify  
     private Integer[] oldblocksList;
     private Integer[] newblocksList;
     private Integer[] oldplacesList;
     private Integer[] newplacesList;
-    private javax.swing.JButton exit;
-    private javax.swing.JButton confirm;
-    private javax.swing.JButton back;
+    private MyButton exit;
+    private MyButton confirm;
+    private MyButton back;
     private javax.swing.JComboBox oldBlocks;
     private javax.swing.JComboBox oldPlaces;
     private javax.swing.JComboBox newPlaces;
     private javax.swing.JComboBox oldDivisions;
     private javax.swing.JComboBox newDivisions;
     private javax.swing.JComboBox newBlocks;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private JLabel resultMessage;
+    private MyLabel oldLabel;
+    private MyLabel jLabel10;
+    private MyLabel newD_Label;
+    private MyLabel newB_Label;
+    private MyLabel oldD_Label;
+    private MyLabel oldP_Label;
+    private MyLabel newLabel;
+    private MyLabel middle_Label;
+    private MyLabel newP_Label;
+    private MyLabel oldB_Label;
+    private MyLabel userLabel;
+    private MyLabel resultMessage;
+    private int mousePressedX;
+   	private int mousePressedY;
+    private JPanel panel;
     // End of variables declaration                   
 }

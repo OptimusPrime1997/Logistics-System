@@ -13,27 +13,22 @@ package ui.warehousemanui;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-
-
-
-
-
 import main.MainFrame;
 import VO.StockVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.loginbl.Loginbl;
 import blservice.stockblservice.StockBLService;
+import ui.Img;
+import ui.util.ButtonType;
 import ui.util.MyButton;
 import ui.util.MyLabel;
 import util.enumData.City;
 import util.enumData.ResultMessage;
 
-
-
-
-
-
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
@@ -65,8 +60,40 @@ public class StockShowPanel extends JFrame {
      */
 
     public StockShowPanel() throws ClassNotFoundException, NotBoundException, IOException {
-
+    	panel=new JPanel(){
+			/* (non-Javadoc)
+			 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+			 */
+			@Override
+			protected void paintComponent(Graphics g) {
+				g.drawImage(Img.getBackground_main(),0, 0, null);
+			}
+		};
+    	
+		panel.setLayout(null);
+	
         initComponents();
+        this.setContentPane(panel);
+        
+      
+		addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				mousePressedX = e.getX();
+				mousePressedY = e.getY();
+			}
+		});
+		addMouseMotionListener(new MouseMotionAdapter() {
+			public void mouseDragged(MouseEvent e) {
+				int x = (int) getLocation().getX();
+				int y = (int) getLocation().getY();
+				setLocation(x + e.getX() - mousePressedX, y + e.getY()
+						- mousePressedY);
+			}
+		});
+		
+		this.setUndecorated(true);
+		this.setBackground(new Color(0,0,0,0));        
+        this.setVisible(true);
 
     }
 
@@ -115,6 +142,7 @@ public class StockShowPanel extends JFrame {
     int screenh = screensize.height;
 
     int screenw = screensize.width;
+    this.setSize(800, 500);
 
     this.setLocation(screenw/2-this.getWidth()/2, screenh/2-this.getHeight()/2);
 
@@ -132,22 +160,27 @@ public class StockShowPanel extends JFrame {
 
        
 
-        jLabel9 = new javax.swing.JLabel();
+        userLabel = new MyLabel("当前账户："+Loginbl.getCurrentOptorName(), 590, 20, 300, 20);
 
-        exit = new javax.swing.JButton();
+        exit = new MyButton(750, 10, ButtonType.EXIT);
 
-        back = new javax.swing.JButton();
+        //TODO 返回
+        back = new MyButton(450, 400, ButtonType.CANCEL);
 
-        show = new javax.swing.JButton();
+        //TODO 盘点
+        show = new MyButton(580, 400, ButtonType.CANCEL);
 
-        export = new javax.swing.JButton();
-
+        //TODO 导出
+        export = new MyButton(670, 300, ButtonType.CANCEL);
+        
         jTable1 = new JTable();
+        jTable1.setBounds(50, 50, 600, 300);
 
-        resultMessage = new JLabel();
+        resultMessage = new MyLabel("反馈", 30, 470, 800, 20);
 
 
 
+       
 
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -189,22 +222,24 @@ boolean[] canEdit = new boolean [] {
         });
 
         
-
-        
-
-        
-
-        
-
         jScrollPane1.setViewportView(jTable1);
+        
+        panel.add(exit);
+        panel.add(back);
+        panel.add(jTable1);
+        panel.add(userLabel);
+        panel.add(export);
+        panel.add(jScrollPane1);
+        panel.add(show);
+        panel.add(resultMessage);
+        
+
+        
+        
 
 
 
-        jLabel9.setText("当前账户："+Loginbl.getCurrentOptorName());
 
-
-
-        exit.setText("退出");
 
         exit.addActionListener(new java.awt.event.ActionListener() {
 
@@ -218,8 +253,7 @@ boolean[] canEdit = new boolean [] {
 
 
 
-        back.setText("返回");
-
+ 
         back.addActionListener(new java.awt.event.ActionListener() {
 
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,7 +266,6 @@ boolean[] canEdit = new boolean [] {
 
 
 
-        show.setText("盘点");
 
         show.addActionListener(new java.awt.event.ActionListener() {
 
@@ -256,7 +289,6 @@ boolean[] canEdit = new boolean [] {
 
 
 
-        export.setText("导出excel");
 
         export.addActionListener(new java.awt.event.ActionListener() {
 
@@ -269,7 +301,7 @@ boolean[] canEdit = new boolean [] {
         });
 
 
-      
+    }  
 
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -466,6 +498,20 @@ this.resultMessage.setForeground(Color.RED);
 }
 
     
+    public static void main(String[] args) {
+		try {
+			new StockShowPanel();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
 
@@ -477,13 +523,15 @@ this.resultMessage.setForeground(Color.RED);
 
     private MyButton export;
 
-    private MyLabel jLabel9;
+    private MyLabel userLabel;
 
     private javax.swing.JScrollPane jScrollPane1;
 
     private javax.swing.JTable jTable1;
 
     private MyLabel resultMessage;
+    private int mousePressedX;
+	private int mousePressedY;
     private JPanel panel;
 
     // End of variables declaration//GEN-END:variables

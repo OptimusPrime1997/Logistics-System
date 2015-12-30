@@ -1,5 +1,6 @@
 package ui.componentfactory;
 
+import java.awt.Color;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -7,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -25,7 +27,7 @@ import util.enumData.Sex;
 public class ComponentFactory {
 	public final static String REMOTEFAILD = "远程连接失败！";
 	public final static long DISPLAY_TIME = 5;
-
+	public static Color panelColor = new Color(200, 150, 190, 50);
 	private ComponentFactory() {
 	}
 
@@ -165,7 +167,8 @@ public class ComponentFactory {
 		r.addItem(Rep.PayRep);
 		return r;
 	}
-	public static void setSystemLook(){
+
+	public static void setSystemLook() {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
@@ -194,4 +197,7 @@ public class ComponentFactory {
 		}
 
 	}
+	// public static void setColor(JPanel panel){
+	// panel.setBackground(new Color(200, 150, 190, 50));
+	// }
 }
