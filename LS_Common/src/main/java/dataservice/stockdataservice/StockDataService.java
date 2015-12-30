@@ -54,7 +54,7 @@ public interface StockDataService extends Remote{
 	public ArrayList<StockPO> getStock(City cityNum) throws RemoteException, ClassNotFoundException, IOException;
 	
 	
-	
+	public StockPO find(int block, int place) throws ClassNotFoundException, IOException;
 	
 	
 }
