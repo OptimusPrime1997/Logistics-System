@@ -188,8 +188,8 @@ public class StockCheckPanel extends JFrame {
     private void confirmActionPerformed(ActionEvent evt)  {                                         
         String startMonth = (String) startM_Box.getSelectedItem();
         String startDay = (String) startD_Box.getSelectedItem();
-        String endMonth = (String) endD_Box.getSelectedItem();
-        String endDay = (String) endM_Box.getSelectedItem();
+        String endMonth = (String) endM_Box.getSelectedItem();
+        String endDay = (String) endD_Box.getSelectedItem();
         
         String result;
         String operation = "库存查看";

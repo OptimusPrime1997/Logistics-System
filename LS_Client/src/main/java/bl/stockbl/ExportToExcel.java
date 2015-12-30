@@ -16,6 +16,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
+import util.enumData.City;
 import util.enumData.ResultMessage;
 import VO.StockVO;
 
@@ -63,7 +64,7 @@ public class ExportToExcel {
 				row.createCell(0).setCellValue(vo.listNum);
 				row.createCell(1).setCellValue(vo.inStockRepNum);
 				row.createCell(2).setCellValue(vo.inStockDate);
-				row.createCell(3).setCellValue(vo.destination+"");
+				row.createCell(3).setCellValue(City.toString(vo.destination));
 				row.createCell(4).setCellValue(vo.block);
 				row.createCell(5).setCellValue(vo.place);
 		}
