@@ -182,7 +182,27 @@ public class MyButton extends JButton{
 			setRolloverIcon(Img.getCancel_btn_pressed());
 			setBounds(x, y, Img.getCancel_btn().getIconWidth(), Img.getCancel_btn().getIconHeight());
 			break;
-			
+		
+		case TO_TRANSFER_CTR:
+			setIcon(Img.getTo_transferCtr_btn());
+			setRolloverIcon(Img.getTo_transferCtr_btn_pressed());
+			setBounds(x, y, Img.getTo_transferCtr_btn().getIconWidth(), Img.getTo_transferCtr_btn().getIconHeight());
+			break;
+		case TO_TRS_CTR_OR_YYT:
+			setIcon(Img.getTo_both_btn());
+			setRolloverIcon(Img.getTo_both_btn_pressed());
+			setBounds(x, y, Img.getTo_both_btn().getIconWidth(), Img.getTo_both_btn().getIconHeight());
+			break;
+		case TO_YYT:
+			setIcon(Img.getTo_yyt_btn());
+			setRolloverIcon(Img.getTo_yyt_btn_pressed());
+			setBounds(x, y, Img.getTo_yyt_btn().getIconWidth(), Img.getTo_yyt_btn().getIconHeight());
+			break;
+		case ARRIVE_BIG:
+			setIcon(Img.getArriveBig_btn());
+			setRolloverIcon(Img.getArriveBig_btn_pressed());
+			setBounds(x, y, Img.getArriveBig_btn().getIconWidth(), Img.getArriveBig_btn().getIconHeight());
+			break;
 
 		}
 	}

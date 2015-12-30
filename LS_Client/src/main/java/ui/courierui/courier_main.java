@@ -65,16 +65,7 @@ public static void main(String[] args) {
 		
 		initbtn();
 		initText();
-//		initProBar();
-		//赋值
-				int[]values=goodsController.getdaysNumOfGoods(NUM_OF_DAYS);
-				System.out.println("进度条值：");
-				for(int i=0;i<bars.size();i++) {
-					int x=values[i];
-					bars.get(i).setValue(x);
-					System.out.println(bars.get(i).getValue());
-					bars.get(i).setBounds(450, i*50+150, 200, 20);
-				}
+		initProBar();
 		initLayOut();
 	}
 	/**
@@ -85,10 +76,12 @@ public static void main(String[] args) {
 		int[]values=goodsController.getdaysNumOfGoods(NUM_OF_DAYS);
 		System.out.println("进度条值：");
 		for(int i=0;i<bars.size();i++) {
-			bars.get(i).setValue(values[i]);
+			bars.get(i).setBounds(450, i*50+150,200, 20);
+			labels_nums.get(i).setBounds(680, i*50+150, 50, 20);
+			int x=values[i];
+			labels_nums.get(i).setText(x+"");
+			bars.get(i).setValue(x);
 			System.out.println(bars.get(i).getValue());
-			bars.get(i).setBounds(450, i*50+150, 200, 20);
-//			System.out.println(values[i]);
 		}
 	}
 	/*
@@ -105,7 +98,10 @@ public static void main(String[] args) {
 		this.add(recentDays_label);
 		this.add(account_label0);
 		this.add(feedBack_text);
-		for(JLabel label:labels){
+		for(JLabel label:labels_dates){
+			this.add(label);
+		}
+		for(JLabel label:labels_nums){
 			this.add(label);
 		}
 		for(JProgressBar bar:bars){
@@ -168,16 +164,18 @@ public static void main(String[] args) {
 		businessOfficeNum_label.setText(city+" "+officeNum);
 		
 		JLabel date=new JLabel();
-		for(int i=0;i<NUM_OF_DAYS;i++)creatLabels(date);
+		for(int i=0;i<NUM_OF_DAYS;i++)creatLabels(date);//label_nums也初始化好啦
 		for(int i=0;i<NUM_OF_DAYS;i++){
-			labels.get(i).setText(CurrentTime.minusDate(Cdate, i).substring(5, 10));
-			labels.get(i).setBounds(360, i*50+150, 100, 20);
+			labels_dates.get(i).setText(CurrentTime.minusDate(Cdate, i).substring(5, 10));
+			labels_dates.get(i).setBounds(360, i*50+150, 100, 20);
 		}
 			
 	}
 	private void creatLabels(JLabel date) {
 		date=new JLabel();
-		labels.add(date);
+		labels_dates.add(date);
+		date=new JLabel();
+		labels_nums.add(date);
 	}
 	private void createJProgressBar() {
 		JProgressBar bar=new JProgressBar();
@@ -225,7 +223,7 @@ public static void main(String[] args) {
 	private MyButton newGoodsbtn,signedGoodsbtn,exit_btn;
 	private MyLabel businessOfficeNum_label, businessOffice_label,
 	        account_label0,account_label1,recentDays_label;
-	private ArrayList<JLabel> labels=new ArrayList<JLabel>();//近日的日期
+	private ArrayList<JLabel> labels_dates=new ArrayList<JLabel>(),labels_nums=new ArrayList<JLabel>();//近日的日期
 	private ArrayList<JProgressBar> bars=new ArrayList<JProgressBar>();//近日业绩的进度条
 	private MyTextField feedBack_text;
 	private MyFrame frame;

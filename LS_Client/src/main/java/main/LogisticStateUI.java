@@ -72,7 +72,7 @@ public class LogisticStateUI extends javax.swing.JFrame {
     	protected void paintComponent(Graphics g) {
     		g.drawImage(Img.getBackground_searchState(), 0, 0, this.getWidth(),this.getHeight(),null);
     	}};
-    	exit_btn=new MyButton(280, 3, ButtonType.EXIT);
+    	exit_btn=new MyButton(270, 3, ButtonType.EXIT);
     	exit_btn.addMouseListener(new MouseAdapter() {
     		@Override
     		public void mouseClicked(MouseEvent e) {
@@ -91,7 +91,7 @@ public class LogisticStateUI extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("宋体", 1, 14)); // NOI18N
         jLabel2.setText("物流信息");
-        jLabel2.setBounds(10, 10, 50, 30);
+        jLabel2.setBounds(20, 5, 150, 30);
         jLabel3.setText("订单号");
         int count=0;
         String[] dates=vo.dates.split(" ");

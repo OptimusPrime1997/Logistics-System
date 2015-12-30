@@ -10,13 +10,10 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import javax.swing.GroupLayout;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
-import javax.swing.LayoutStyle;
 
 import main.MainFrame;
 import ui.Img;
@@ -26,6 +23,9 @@ import ui.receiptui.generalUI.TransferRep;
 import ui.util.ButtonType;
 import ui.util.MyButton;
 import ui.util.MyFrame;
+import ui.util.MyLabel;
+import ui.util.MyTextField;
+import ui.util.TextType;
 import util.CurrentCity;
 import util.CurrentTime;
 import util.enumData.City;
@@ -80,121 +80,31 @@ public class transferCtrOfficer_main extends JPanel {
 		initLayOut();
     }
     private void initLayOut() {
-    	GroupLayout layout = new GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(feedback_text)
-                .addContainerGap())
-            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(trs_label)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(transferOfficeNum_label)
-                        .addGap(18, 18, 18)
-                        .addComponent(account0_label)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(account_label, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                            .addComponent(toTransferCTR_btn, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                            .addComponent(toBusinessOffice_btn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(arrival_btn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(train_label)
-                                .addGap(18, 18, 18)
-                                .addComponent(outByTrain_progressBar, GroupLayout.PREFERRED_SIZE, 221, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                    .addComponent(plane_label)
-                                    .addComponent(truck_label, GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                    .addComponent(outByTruck_progressBar, GroupLayout.PREFERRED_SIZE, 221, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(outByPlane_progressBar, GroupLayout.PREFERRED_SIZE, 221, GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(outByTrain_label)
-                            .addGap(84, 84, 84))
-                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(exit_btn)
-                            .addGap(26, 26, 26)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(outByShip_label, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(outByPlane_label))
-                        .addGap(57, 57, 57))))
-            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(todayNum_label, GroupLayout.PREFERRED_SIZE, 327, GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(exit_btn)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(trs_label)
-                            .addComponent(account_label)
-                            .addComponent(account0_label)
-                            .addComponent(transferOfficeNum_label))))
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(todayNum_label, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                            .addComponent(outByTrain_progressBar, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(train_label)
-                            .addComponent(outByTrain_label)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(toTransferCTR_btn, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                    .addComponent(toBusinessOffice_btn, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                .addComponent(outByTruck_progressBar, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(truck_label))
-                            .addComponent(outByShip_label))
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(outByPlane_progressBar, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(outByPlane_label)
-                            .addComponent(plane_label))))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                .addComponent(arrival_btn, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addComponent(feedback_text, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+    	this.setLayout(null);
+    	this.add(account_label);
+    	this.add(account0_label);
+    	this.add(outByPlane_label);
+    	this.add(outByShip_label);
+    	this.add(outByTrain_label);
+    	this.add(plane_label);
+    	this.add(train_label);
+    	this.add(truck_label);
+    	this.add(trs_label);
+    	this.add(transferOfficeNum_label);
+    	this.add(exit_btn);
+    	this.add(toBusinessOffice_btn);
+    	this.add(toTransferCTR_btn);
+    	this.add(arrival_btn);
+    	
 	}
 	private void initText() {
-        feedback_text = new JTextField();
-        feedback_text.setEditable(false);
-        feedback_text.setHorizontalAlignment(JTextField.CENTER);
-        feedback_text.setForeground(Color.magenta);
+        feedback_text = new MyTextField(TextType.FEEDBACK,20,400,300,20);
 	}
 	private void initbtn() {
-    	exit_btn = new MyButton(ButtonType.EXIT);
-        arrival_btn = new MyButton(ButtonType.ARRIVE_BIG);
-        toBusinessOffice_btn = new MyButton(ButtonType.TO_YYT);
-        toTransferCTR_btn = new MyButton(ButtonType.TO_TRANSFER_CTR);
-
+        arrival_btn = new MyButton(30,100,ButtonType.ARRIVE_BIG);
+        toBusinessOffice_btn = new MyButton(30,250,ButtonType.TO_YYT);
+        toTransferCTR_btn = new MyButton(30,400,ButtonType.TO_TRANSFER_CTR);
+        exit_btn = new MyButton(790,10,ButtonType.EXIT);
 		try {
 			account_label.setText(ctr_login.getCurrentName());
 		} catch (RemoteException e1) {
@@ -254,27 +164,21 @@ public class transferCtrOfficer_main extends JPanel {
 		outByPlane_label.setText(plane + "");
 	}
 	private void initLabel() {
-		todayNum_label = new JLabel();
-		trs_label = new JLabel();
-		account0_label = new JLabel();
-		train_label = new JLabel();
-		truck_label = new JLabel();
-		plane_label = new JLabel();
-		account_label = new JLabel();
-		transferOfficeNum_label = new JLabel();
-		outByTrain_label = new JLabel();
-		outByShip_label = new JLabel();
-		outByPlane_label = new JLabel();
-		todayNum_label.setText("今日流水（派出数量）");
+		todayNum_label = new MyLabel("今日流水（派出数量）",300,100,100,30);
+		trs_label = new MyLabel("中转中心：",300,20,100,30);
+		account0_label = new MyLabel("账户：",460,20,50,30);
+		train_label = new MyLabel("火车",400,150,30,20);
+		truck_label = new MyLabel("汽车",400,250,30,20);
+		plane_label = new MyLabel("飞机",400,350,30,20);
+		account_label = new MyLabel("",500,20,50,30);
+		transferOfficeNum_label = new MyLabel("",370,20,50,30);
+		outByTrain_label = new MyLabel("",680,150,30,20);
+		outByShip_label = new MyLabel("",680,250,30,20);
+		outByPlane_label =new MyLabel("",680,350,30,20);
 		todayNum_label.setFont(new Font("黑体", 1, 18));
-		trs_label.setText("中转中心：");
-		account0_label.setText("账户：");
 		train_label.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
-		train_label.setText("火车");
 		truck_label.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
-		truck_label.setText("汽车");
 		plane_label.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
-		plane_label.setText("飞机");
 		try {
 			officeNum=ctr_login.getCurrentOptorId().substring(0, 3);
 			accountName=ctr_login.getCurrentName();
@@ -309,7 +213,7 @@ public class transferCtrOfficer_main extends JPanel {
 		System.out.println("中转单");
 		new TransferRep(this);
 	}
-    private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
+    private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {
     	if (evt.getSource() == exit_btn) {
 			Object[] options = { "取消", "确定" };
 			int result = JOptionPane.showOptionDialog(null, "您确定要退出系统？",
@@ -325,12 +229,12 @@ public class transferCtrOfficer_main extends JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private MyButton arrival_btn,exit_btn,
      				toBusinessOffice_btn,toTransferCTR_btn;
-    private JLabel todayNum_label,trs_label,account0_label,train_label,truck_label,plane_label,
+    private MyLabel todayNum_label,trs_label,account0_label,train_label,truck_label,plane_label,
     			   outByShip_label,transferOfficeNum_label,
     			   outByPlane_label,outByTrain_label,account_label;
     private JProgressBar outByTruck_progressBar, outByPlane_progressBar,
     		outByTrain_progressBar;
-    private JTextField feedback_text;
+    private MyTextField feedback_text;
     private String officeNum="025",accountName;
     private LoginBLService ctr_login;
     private LogBLService ctr_log;
