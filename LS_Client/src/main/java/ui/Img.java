@@ -15,13 +15,21 @@ public class Img {
 	private static Image background_searchState=new ImageIcon("pic/background/background_searchState.png").getImage();
 	private static Image background_business=new ImageIcon("pic/background/business_background.png").getImage();
 	
-
+	private static Image form_business_img=new ImageIcon("pic/img/businessForm.jpg").getImage();
+	private static Image form_profit_img=new ImageIcon("pic/img/profitForm.jpg").getImage();
+	private static Image payRep_img=new ImageIcon("pic/img/payRep.jpg").getImage();
+	
 	private static ImageIcon ok_btn=new ImageIcon("pic/btn/btn_ok.png");
 	private static ImageIcon ok_btn_pressed=new ImageIcon("pic/btn/btn_ok_pressed.png");
 	
 	private static ImageIcon cancel_btn=new ImageIcon("pic/btn/btn_cancel.png");
 	private static ImageIcon cancel_btn_pressed=new ImageIcon("pic/btn/btn_cancel_pressed.png");
 	
+	private static ImageIcon back_btn=new ImageIcon("pic/btn/back_btn.png");
+	private static ImageIcon back_btn_pressed=new ImageIcon("pic/btn/back_btn_pressed.png");
+	
+	private static ImageIcon excel_btn=new ImageIcon("pic/btn/excel_btn.png");
+	private static ImageIcon excel_btn_pressed=new ImageIcon("pic/btn/excel_btn_pressed.png");
 	
 	private static ImageIcon button0=new ImageIcon("pic/btn/btn_all.png");
 	private static ImageIcon button_over=new ImageIcon("pic/btn/btn_all_pressed.png");
@@ -83,6 +91,9 @@ public class Img {
 	private static ImageIcon stockShow=new ImageIcon("pic/btn/stockShow.png");
 	private static ImageIcon stockShow_pressed=new ImageIcon("pic/btn/stockShow_pressed.png");
 	
+	private static ImageIcon stockShowLittle=new ImageIcon("pic/btn/stockShowLittle.png");
+	private static ImageIcon stockShowLittle_pressed=new ImageIcon("pic/btn/stockShowLittle_pressed.png");
+	
 	private static ImageIcon stockCheck=new ImageIcon("pic/btn/stockCheck.png");
 	private static ImageIcon stockCheck_pressed=new ImageIcon("pic/btn/stockCheck_pressed.png");
 	
@@ -105,6 +116,42 @@ public class Img {
 		return manageIcon.getImage();
 	}
 	
+	public static Image getForm_business_img() {
+		return form_business_img;
+	}
+
+	public static Image getForm_profit_img() {
+		return form_profit_img;
+	}
+
+	public static Image getPayRep_img() {
+		return payRep_img;
+	}
+
+	public static ImageIcon getBack_btn() {
+		return back_btn;
+	}
+
+	public static ImageIcon getBack_btn_pressed() {
+		return back_btn_pressed;
+	}
+
+	public static ImageIcon getExcel_btn() {
+		return excel_btn;
+	}
+
+	public static ImageIcon getExcel_btn_pressed() {
+		return excel_btn_pressed;
+	}
+
+	public static ImageIcon getStockShowLittle() {
+		return stockShowLittle;
+	}
+
+	public static ImageIcon getStockShowLittle_pressed() {
+		return stockShowLittle_pressed;
+	}
+
 	public static ImageIcon getStockInput_btn() {
 		return stockInput_btn;
 	}

@@ -400,14 +400,6 @@ public class businessOfficer_main extends JPanel {
 		recordMoney_btn = new MyButton(ButtonType.MONEY_IN_RECORD);
 		driverManagement_btn = new MyButton(ButtonType.DRIVER_MANAGEMENT);
 		send_btn = new MyButton(ButtonType.TO_TRS_CTR_OR_YYT);
-//		exit_btn.setText("退出系统");
-//		account_btn.setText("老李（包括更改密码、退出登录）");
-//		arrival_btn.setText("快件到达");
-//		deliver_btn.setText("派件");
-//		carManagement_btn.setText("车辆管理");
-//		recordMoney_btn.setText("记账");
-//		send_btn.setText("发往中转中心/营业厅");
-//		driverManagement_btn.setText("司机管理");
 		arrival_btn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

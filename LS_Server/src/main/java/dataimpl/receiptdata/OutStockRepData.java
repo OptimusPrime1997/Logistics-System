@@ -35,7 +35,10 @@ private DataUtility util = new DataUtility();
 		if (objects == null)
 			return null;
 		for(Object object : objects){
-			outStockRepPOs.add((ReceiptPO)object);
+			ReceiptPO receiptPO = (ReceiptPO)object;
+			String mmdd = receiptPO.getDate();
+			if(mmdd.substring(5).equals(date))
+				outStockRepPOs.add(receiptPO);
 		}
 		return outStockRepPOs;
 	}

@@ -15,6 +15,7 @@ import util.CurrentCity;
 import util.enumData.City;
 import util.enumData.ResultMessage;
 import PO.StockDivisionPO;
+import PO.StockPO;
 import PO.Receipt.InStockRepPO;
 import PO.Receipt.OutStockRepPO;
 import VO.StockDivisionVO;
@@ -22,6 +23,7 @@ import VO.Receipt.InStockRepVO;
 import VO.Receipt.OutStockRepVO;
 import bl.loginbl.Loginbl;
 import blservice.stockblservice.StockDivisionBLService;
+import dataservice.stockdataservice.StockDataService;
 import dataservice.stockdataservice.StockDivisionDataService;
 
 /**
@@ -36,6 +38,10 @@ public class StockDivisionbl implements StockDivisionBLService{
 		return sd;
 	}
 	
+	private StockDataService getStockDataService() throws MalformedURLException, RemoteException, NotBoundException {
+		StockDataService s = (StockDataService) Naming.lookup("rmi://"+Loginbl.getIP()+":1099/stock");
+		return s;
+	}
 	
 	public ResultMessage update(InStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException{
 		InStockRepPO po = vo.toPO(vo);
@@ -52,13 +58,19 @@ public class StockDivisionbl implements StockDivisionBLService{
 	
 	public ResultMessage modifyDivision(int oldBlock, int oldPlace,int newBlock, int newPlace) throws NotBoundException, ClassNotFoundException, IOException {
 
+		StockDataService s = getStockDataService();
 		StockDivisionDataService sd = getStockDivisionDataService();
 		StockDivisionPO po = sd.find(oldBlock, oldPlace);
+		StockPO stockPO = s.find(oldBlock, oldPlace);
 		City city = po.getCityNum();
 		String listNum = po.getListNum();
 		City des = po.getDestination();
-		
+		String repNum = stockPO.getInStockRepNum();
+		String date = stockPO.getInStockDate();
+		 
 		ResultMessage rm1 = sd.delete(listNum);
+		s.delete(listNum);
+		s.add(new StockPO(city, listNum, repNum, date, des, newBlock, newPlace));
 		ResultMessage rm2 = sd.add(new StockDivisionPO(city, listNum, des, newBlock, newPlace));
 		
 		if (rm1.equals(ResultMessage.SUCCESS)&&rm2.equals(ResultMessage.SUCCESS)) {
@@ -129,7 +141,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 	
 	
 	/**
-	 * 返回库存超过80%的区号们，如果所有区号均未报警，则返回null
+	 * 返回库存超过90%的区号们
 	 * @param vo
 	 * @return
 	 * @throws NotBoundException 
@@ -150,7 +162,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 		
 		//找出库存报警的区号，并加入结果数组
 		for(int i = 0; i < block.length; ++i) {
-			if(block[i]>800) {
+			if(block[i]>900) {
 				result.add(i+1);
 			}
 		}

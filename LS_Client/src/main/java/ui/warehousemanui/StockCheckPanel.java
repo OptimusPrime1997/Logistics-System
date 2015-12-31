@@ -8,6 +8,9 @@ package ui.warehousemanui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.rmi.RemoteException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,18 +21,53 @@ import main.MainFrame;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.loginbl.Loginbl;
 import blservice.stockblservice.StockBLService;
+import ui.Img;
+import ui.util.ButtonType;
+import ui.util.MyButton;
+import ui.util.MyLabel;
 import util.enumData.ResultMessage;
 /**
  *
  * @author G
  */
-public class StockCheckPanel extends javax.swing.JFrame {
+public class StockCheckPanel extends JFrame {
 
     /**
      * Creates new form StockCheck
      */
     public StockCheckPanel() {
+    	panel = new JPanel() {
+    		/* (non-Javadoc)
+    		 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+    		 */
+    		@Override
+    		protected void paintComponent(Graphics g) {
+    			g.drawImage(Img.getBackground_main(), 0, 0, null);
+    		}
+    	};
+    	panel.setLayout(null);
         initComponents();
+        this.setContentPane(panel);
+        
+        
+        addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				mousePressedX = e.getX();
+				mousePressedY = e.getY();
+			}
+		});
+		addMouseMotionListener(new MouseMotionAdapter() {
+			public void mouseDragged(MouseEvent e) {
+				int x = (int) getLocation().getX();
+				int y = (int) getLocation().getY();
+				setLocation(x + e.getX() - mousePressedX, y + e.getY()
+						- mousePressedY);
+			}
+		});
+		
+		this.setUndecorated(true);
+		this.setBackground(new Color(0,0,0,0));        
+        this.setVisible(true);
     }
 
     /**
@@ -48,7 +86,7 @@ public class StockCheckPanel extends javax.swing.JFrame {
     	/**
     	 * 设置窗体大小
     	 */
-    	this.setSize(600, 430);
+    	this.setSize(800, 500);
     	/**
     	 * 设置窗体大小为不可变
     	 */
@@ -64,186 +102,94 @@ public class StockCheckPanel extends javax.swing.JFrame {
     
 
     	
-        confirm = new javax.swing.JButton();
-        exit = new javax.swing.JButton();
-        usernamelabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox();
-        jLabel14 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox();
-        jLabel15 = new javax.swing.JLabel();
-        innum = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        outnum = new javax.swing.JLabel();
- 
-        back = new javax.swing.JButton();
-        resultMessage = new JLabel();
-        
-        
-        
+        exit = new MyButton(750, 10, ButtonType.EXIT);
+        confirm = new MyButton(620, 70, ButtonType.OK);
+        usernamelabel = new MyLabel("当前账户："+username, 550, 30, 300, 20);
 
-        confirm.setText("确认");
+        startMLabel = new MyLabel("月", 270, 80, 20, 20);
+        startM_Box = new JComboBox();
+        startM_Box.setBounds(180, 80, 70, 20);
+        startDLabel = new MyLabel("日", 270, 120, 20, 20);
+        startD_Box = new JComboBox();
+        startD_Box.setBounds(180, 120, 70, 20);
+        startDateLabel = new MyLabel("起始日期", 100, 80, 80, 20);
+        endDateLabel = new MyLabel("结束日期", 400, 80, 80, 20);
+        endMLabel = new MyLabel("月", 570, 80, 20, 20);
+        endD_Box = new JComboBox();
+        endD_Box.setBounds(480, 120, 70, 20);
+        endDLabel = new MyLabel("日", 570, 120, 20, 20);
+        endM_Box = new JComboBox();
+        endM_Box.setBounds(480, 80, 70, 20);
+        inNumLabel = new MyLabel("入库数量", 100, 220, 80, 20);
+        innum = new MyLabel("0", 200, 220, 80, 20);
+        jLabel17 = new MyLabel("出库数量", 400, 220, 80, 20);
+        outnum = new MyLabel("0", 500, 220, 80, 20);
+        
+        // TODO 返回
+        back = new MyButton(380, 360, ButtonType.CANCEL);
+        resultMessage = new MyLabel("反馈", 30, 470, 800, 20);
+        
+        panel.add(usernamelabel);
+        panel.add(exit);
+        panel.add(resultMessage);
+        panel.add(startMLabel);
+        panel.add(startDateLabel);
+        panel.add(startM_Box);
+        panel.add(startDLabel);
+        panel.add(startD_Box);
+        panel.add(endDateLabel);
+        panel.add(endD_Box);
+        panel.add(endM_Box);
+        panel.add(endMLabel);
+        panel.add(endDLabel);
+        panel.add(confirm);
+        panel.add(inNumLabel);
+        panel.add(innum);
+        panel.add(jLabel17);
+        panel.add(outnum);
+        panel.add(back);
+
+        
         confirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmActionPerformed(evt);
             }
         });
 
-        exit.setText("退出");
+       
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitActionPerformed(evt);
             }
         });
 
-        back.setText("返回");
+        
         back.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent evt) {
         		backActionPerformed(evt);
         	}
         });
         
-     
-        usernamelabel.setText("当前账户："+username);
-        
+
+
+
+        startM_Box.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        startD_Box.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+
+        endM_Box.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        endD_Box.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+
        
-
-
-        jLabel1.setText("月");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-
-        jLabel3.setText("日");
-
-        jComboBox2.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-
-        jLabel7.setText("起始日期：");
-
-        jLabel9.setText("结束日期：");
-
-        jLabel11.setText("月");
-
-        jComboBox3.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-
-        jLabel14.setText("日");
-
-        jComboBox7.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-
-        jLabel15.setText("出库数量：");
-
-        innum.setText("0");
-
-        jLabel17.setText("入库数量：");
-
-        outnum.setText("0");
-
-    
-
-        back.setText("返回");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                  
-                            .addComponent(outnum)
-                            .addComponent(innum))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(resultMessage,javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                		.addGroup(layout.createSequentialGroup()
-                        .addComponent(usernamelabel)
-                        .addGap(26, 26, 26)
-                        .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(back, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                        .addComponent(confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(exit)
-                    .addComponent(usernamelabel))
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(confirm)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel11)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14)
-                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(innum))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(outnum)
-                    .addComponent(back))
-                .addGap(22, 22, 22)
-                .addComponent(resultMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                )
-                
-        );
-    }// </editor-fold>  //GEN-END:initComponents          
+    }
 
     
 	StockBLService s = ControllerFactoryImpl.getInstance().getStockController();
  
     private void confirmActionPerformed(ActionEvent evt)  {                                         
-        String startMonth = (String) jComboBox1.getSelectedItem();
-        String startDay = (String) jComboBox2.getSelectedItem();
-        String endMonth = (String) jComboBox3.getSelectedItem();
-        String endDay = (String) jComboBox7.getSelectedItem();
+        String startMonth = (String) startM_Box.getSelectedItem();
+        String startDay = (String) startD_Box.getSelectedItem();
+        String endMonth = (String) endM_Box.getSelectedItem();
+        String endDay = (String) endD_Box.getSelectedItem();
         
         String result;
         String operation = "库存查看";
@@ -317,28 +263,35 @@ public class StockCheckPanel extends javax.swing.JFrame {
     	this.resultMessage.setText(operation + ResultMessage.toFriendlyString(msg));
 	}
     
+    public static void main(String[] args) {
+		new StockCheckPanel();
+	}
     // Variables declaration - do not modify                     
-    private javax.swing.JButton back;
-    private javax.swing.JButton confirm;
-    private javax.swing.JButton exit;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JComboBox jComboBox7;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel usernamelabel;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel innum;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel outnum;
+    private MyButton back;
+    private MyButton confirm;
+    private MyButton exit;
+    private javax.swing.JComboBox startM_Box;
+    private javax.swing.JComboBox startD_Box;
+    private javax.swing.JComboBox endD_Box;
+    private javax.swing.JComboBox endM_Box;
+    private MyLabel startMLabel;
+    private MyLabel usernamelabel;
+    private MyLabel endMLabel;
+    private MyLabel jLabel11;
+    private MyLabel endDLabel;
+    private MyLabel inNumLabel;
+    private MyLabel innum;
+    private MyLabel jLabel17;
+    private MyLabel outnum;
   
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
-    private JLabel resultMessage;
+    private MyLabel startDLabel;
+    private MyLabel startDateLabel;
+    private MyLabel endDateLabel;
+    private MyLabel resultMessage;
     private String username = Loginbl.getCurrentOptorName();
+    private JPanel panel;
+    private int mousePressedX;
+   	private int mousePressedY;
     // End of variables declaration                   
 }
 

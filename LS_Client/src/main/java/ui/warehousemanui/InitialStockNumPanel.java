@@ -7,17 +7,26 @@ package ui.warehousemanui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.rmi.RemoteException;
 
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import main.MainFrame;
+import ui.Img;
+import ui.util.ButtonType;
+import ui.util.MyButton;
+import ui.util.MyLabel;
 import util.enumData.ResultMessage;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import bl.loginbl.Loginbl;
@@ -30,6 +39,9 @@ import blservice.stockblservice.StockNumBLService;
  */
 public class InitialStockNumPanel extends JFrame{
 
+	public static void main(String[] args) {
+		new InitialStockNumPanel();
+	}
     /**
 	 * 
 	 */
@@ -38,7 +50,38 @@ public class InitialStockNumPanel extends JFrame{
      * Creates new form InitialStockNumPanel
      */
     public InitialStockNumPanel() {
+    	panel = new JPanel() {
+    		/* (non-Javadoc)
+    		 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+    		 */
+    		@Override
+    		protected void paintComponent(Graphics g) {
+    			g.drawImage(Img.getBackground_main(), 0, 0, null);
+    		}
+    	};
+    	panel.setLayout(null);
         initComponents();
+        this.setContentPane(panel);
+        
+        
+        addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				mousePressedX = e.getX();
+				mousePressedY = e.getY();
+			}
+		});
+		addMouseMotionListener(new MouseMotionAdapter() {
+			public void mouseDragged(MouseEvent e) {
+				int x = (int) getLocation().getX();
+				int y = (int) getLocation().getY();
+				setLocation(x + e.getX() - mousePressedX, y + e.getY()
+						- mousePressedY);
+			}
+		});
+		
+		this.setUndecorated(true);
+		this.setBackground(new Color(0,0,0,0));        
+        this.setVisible(true);
     }
 
     /**
@@ -54,7 +97,7 @@ public class InitialStockNumPanel extends JFrame{
     	/**
     	 * 设置窗体大小
     	 */
-    	this.setSize(400, 330);
+    	this.setSize(800, 500);
     	/**
     	 * 设置窗体大小为不可变
     	 */
@@ -72,28 +115,35 @@ public class InitialStockNumPanel extends JFrame{
     	 */
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        jLabel9 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        userLabel = new MyLabel("当前账户："+Loginbl.getCurrentOptorName(), 500, 30, 300, 20);
+        exit = new MyButton(750, 10, ButtonType.EXIT);
+        jLabel1 = new MyLabel("本仓库初始的库存数量：", 180, 160, 180, 20);
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        resultMessage = new JLabel();
+        jTextField1.setText("初始库存数量");
+        jTextField1.setBounds(330, 200, 140, 30);
+        confirm = new MyButton(450, 300, ButtonType.OK);
+        //TODO 
+        back = new MyButton(320, 300, ButtonType.CANCEL);
+        resultMessage = new MyLabel("反馈", 30, 470, 800, 20);
         
        
-        jLabel9.setText("当前账户："+Loginbl.getCurrentOptorName());
-
-        jButton3.setText("退出");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        panel.add(userLabel);
+        panel.add(exit);
+        panel.add(jLabel1);
+        panel.add(jTextField1);
+        panel.add(confirm);
+        panel.add(back);
+        panel.add(resultMessage);
+        
+        exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                exitActionPerformed(evt);
             }
         });
+      
 
-        jLabel1.setText("本仓库初始的库存数量：");
-
-        jTextField1.setText("初始库存数量");
-
+      
+        
         jTextField1.addFocusListener(new FocusAdapter() {
         	
         	public void focusGained(FocusEvent e) {
@@ -103,73 +153,21 @@ public class InitialStockNumPanel extends JFrame{
         	
 		});
         
-        jButton1.setText("确定");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+
+        confirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("返回");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+ 
+        back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 252, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(21, 21, 21)
-                                .addComponent(jButton3))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1)
-                                .addGap(50, 50, 50))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(resultMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jButton3))
-                .addGap(44, 44, 44)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(67, 67, 67)
-                .addComponent(resultMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-    }// </editor-fold>//GEN-END:initComponents
-    
-    
+    }
     StockNumBLService sc = ControllerFactoryImpl.getInstance().getStockNumController();
     /**
 	 * @param evt
@@ -208,7 +206,7 @@ public class InitialStockNumPanel extends JFrame{
 	 * @param evt
 	 * 退出
 	 */
-	private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+	private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 		MainFrame mf = new MainFrame();
     	mf.setVisible(true);
     	this.dispose();
@@ -226,12 +224,15 @@ public class InitialStockNumPanel extends JFrame{
     	this.resultMessage.setText(operation + ResultMessage.toFriendlyString(msg));
 	}
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel9;
+    private MyButton confirm;
+    private MyButton back;
+    private MyButton exit;
+    private MyLabel jLabel1;
+    private MyLabel userLabel;
     private javax.swing.JTextField jTextField1;
-    private JLabel resultMessage;
+    private MyLabel resultMessage;
+    private JPanel panel;
+    private int mousePressedX;
+   	private int mousePressedY;
     // End of variables declaration//GEN-END:variables
 }

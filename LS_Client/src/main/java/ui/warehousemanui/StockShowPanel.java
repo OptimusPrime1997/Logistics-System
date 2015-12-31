@@ -160,7 +160,7 @@ public class StockShowPanel extends JFrame {
 
        
 
-        userLabel = new MyLabel("当前账户："+Loginbl.getCurrentOptorName(), 590, 20, 300, 10);
+        userLabel = new MyLabel("当前账户："+Loginbl.getCurrentOptorName(), 590, 20, 300, 20);
 
         exit = new MyButton(750, 10, ButtonType.EXIT);
 
@@ -175,8 +175,8 @@ public class StockShowPanel extends JFrame {
         
         jTable1 = new JTable();
         jTable1.setBounds(50, 50, 600, 300);
-//
-//        resultMessage = new JLabel();
+
+        resultMessage = new MyLabel("反馈", 30, 470, 800, 20);
 
 
 
@@ -231,7 +231,7 @@ boolean[] canEdit = new boolean [] {
         panel.add(export);
         panel.add(jScrollPane1);
         panel.add(show);
-
+        panel.add(resultMessage);
         
 
         

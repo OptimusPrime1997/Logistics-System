@@ -14,7 +14,15 @@ public enum ButtonType {
 	/**
 	 * 确定
 	 */
-	OK,CANCEL,
+	OK,CANCEL,BACK,
+	/**
+	 * 盘点 小的按钮 是在盘点界面，具体执行盘点的按钮
+	 */
+	STOCK_SHOW_LITTLE,
+	/**
+	 * 导出Excel
+	 */
+	EXCEL_OUT,
 	/**
 	 * 新订单
 	 */

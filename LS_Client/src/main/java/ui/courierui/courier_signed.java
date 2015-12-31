@@ -142,9 +142,9 @@ public class courier_signed extends JFrame {
          day_label = new MyLabel("日",400, 230, 15, 20);
          
          */
-         year_ComboBox.setBounds(150, 232, 60, 20);
-         month_ComboBox.setBounds(275,232,40,20);
-         day_ComboBox.setBounds(375, 232, 40, 20);
+         year_ComboBox.setBounds(150, 232, 80, 20);
+         month_ComboBox.setBounds(270,232,60,20);
+         day_ComboBox.setBounds(370, 232, 60, 20);
 		year_ComboBox.setModel(new DefaultComboBoxModel<String>(
 				new String[] { "2015", "2016", "2017", "2018" ,"2019","2020"}));
 		month_ComboBox.setModel(new DefaultComboBoxModel<String>(
@@ -190,9 +190,9 @@ public class courier_signed extends JFrame {
 	}
 	private void initText() {
 		//listNum_label = new MyLabel("订单号",50, 100, 40, 20);
-    	 goodsNum_text = new MyTextField(TextType.INPUT, 150, 80, 100,20);
-         getterName_text = new MyTextField(TextType.INPUT, 150, 130, 100,20);
-         getterPhone_text = new MyTextField(TextType.INPUT, 150, 180, 100,20);
+    	 goodsNum_text = new MyTextField(TextType.INPUT, 150, 80, 120,30);
+         getterName_text = new MyTextField(TextType.INPUT, 150, 130, 120,30);
+         getterPhone_text = new MyTextField(TextType.INPUT, 150, 180, 120,30);
          feedback_text=new MyTextField(TextType.FEEDBACK, 50, 345, 550,25);
          getterPhone_text.setText("选填");
          /*
@@ -209,9 +209,9 @@ public class courier_signed extends JFrame {
          getter_label = new MyLabel("收件人",50, 130, 40, 20);
          getterPhone_label = new MyLabel("收件人手机",50,180,80,20);
          getDate_label = new MyLabel("收件日期",50, 230, 60, 20);
-         year_label = new MyLabel("年",220, 230, 15, 20);
-         month_label = new MyLabel("月",320, 230, 15, 20);
-         day_label = new MyLabel("日",420, 230, 15, 20);
+         year_label = new MyLabel("年",235, 230, 15, 20);
+         month_label = new MyLabel("月",340, 230, 15, 20);
+         day_label = new MyLabel("日",440, 230, 15, 20);
          title_label = new MyLabel("快件签收",40,20,120,50);
          title_label.setFont(new java.awt.Font("宋体", 1, 20)); // NOI18N
          title_label.setForeground(Color.white);
