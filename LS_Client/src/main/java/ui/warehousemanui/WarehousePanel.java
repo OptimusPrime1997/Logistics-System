@@ -339,6 +339,7 @@ public class WarehousePanel extends javax.swing.JFrame {
 		
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 			//
+			e.printStackTrace();
 			System.out.println("进度条显示崩了");
 			
 		}

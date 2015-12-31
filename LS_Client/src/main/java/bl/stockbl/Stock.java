@@ -121,7 +121,7 @@ public class Stock {
 
         
 		
-
+        System.out.println("stock in  out  "+instocknum +"  "+outstocknum);
         
 		return instocknum+" "+outstocknum;
 	}
@@ -275,5 +275,6 @@ public class Stock {
 		sd.delete(listNum);
 	}
 	
+
 	
 }

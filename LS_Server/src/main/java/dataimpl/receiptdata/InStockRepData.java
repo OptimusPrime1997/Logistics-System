@@ -35,10 +35,11 @@ public class InStockRepData extends UnicastRemoteObject implements InStockRepDat
 		if (objects == null)
 			return null;
 		for(Object object : objects){
-		
-			inStockRepPOs.add((ReceiptPO)object);
+			ReceiptPO receiptPO = (ReceiptPO)object;
+			String mmdd = receiptPO.getDate();
+			if(mmdd.substring(5).equals(date))
+				inStockRepPOs.add(receiptPO);
 		}
-		
 		return inStockRepPOs;
 	
 	}

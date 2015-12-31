@@ -277,7 +277,7 @@ public class DivisionChangePanel extends JFrame {
     	ArrayList<Integer> result = new ArrayList<Integer>();
     	for (StockDivisionVO vo : list) {
     		if (vo.place<=(100*block)&&vo.place>=((block-1)*100+1)) {
-				result.add(vo.place%100+1);
+				result.add(vo.place%100);
 			}
     		
        	}
