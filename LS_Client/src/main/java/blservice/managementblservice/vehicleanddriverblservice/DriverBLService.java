@@ -20,7 +20,10 @@ public interface DriverBLService {
 
 	public ArrayList<DriverVO> showDriver() throws RemoteException,
 			ClassNotFoundException, IOException;
-
+	
+	public ArrayList<DriverVO> showDriver(String institutionNum) throws RemoteException,
+	ClassNotFoundException, IOException;
+	
 	public DriverVO findByDriverNum(String driverNum) throws RemoteException,
 			FileNotFoundException, ClassNotFoundException,
 			NumNotFoundException, IOException;

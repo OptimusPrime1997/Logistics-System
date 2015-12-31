@@ -35,6 +35,10 @@ public class DriverblController implements DriverBLService {
 		// TODO Auto-generated method stub
 		return driverbl.showDriver();
 	}
+	public ArrayList<DriverVO> showDriver(String institutionNum)throws ClassNotFoundException,
+	IOException {
+		return driverbl.showDriver(institutionNum);
+	}
 
 	public DriverVO findByDriverNum(String driverNum)
 			throws FileNotFoundException, ClassNotFoundException,

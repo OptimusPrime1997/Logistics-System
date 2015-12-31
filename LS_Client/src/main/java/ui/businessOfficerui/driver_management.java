@@ -44,12 +44,22 @@ import util.enumData.ResultMessage;
  */
 public class driver_management extends JPanel {
 
+	
 	/**
 	 * Creates new form yytywyCar_DriverManagement
 	 */
 	public driver_management(businessOfficer_main panel) {
 		this.panel_parent = panel;
 		ctr_login = ControllerFactoryImpl.getInstance().getLoginController();
+		try {
+			officeNum = ctr_login.getCurrentOptorId().substring(0, 6);
+//			System.out.println(ctr_login.getCurrentOptorId());
+			city = City.toString(CurrentCity.getCurrentCity());
+			currentInstituionNum=city + officeNum;
+			BusinessOfficeNum_label.setText(city + officeNum);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		setDriverVOs();
 		initComponents();
 	}
@@ -414,13 +424,7 @@ public class driver_management extends JPanel {
 		jLabel1.setText("司机管理");
 		jLabel2.setText("账户：");
 		jLabel3.setText("营业厅：");
-		try {
-			officeNum = ctr_login.getCurrentOptorId().substring(0, 6);
-			System.out.println(ctr_login.getCurrentOptorId());
-			city = City.toString(CurrentCity.getCurrentCity());
-			BusinessOfficeNum_label.setText(city + officeNum);
-		} catch (RemoteException e) {
-		}
+		
 	}
 
 	/**
@@ -592,7 +596,7 @@ public class driver_management extends JPanel {
 	private ArrayList<DriverVO> getDriverVOs() {
 		ArrayList<DriverVO> vos = null;
 		try {
-			vos = driverblController.showDriver();
+			vos = driverblController.showDriver(currentInstituionNum);
 			vos.sort(null);
 			System.out.println("获得driver的个数为+vos.size()");
 		} catch (RemoteException e) {
@@ -641,6 +645,7 @@ public class driver_management extends JPanel {
 //	}
 
 	private ArrayList<DriverVO> driverVOs = null;
+	private String currentInstituionNum="";
 	private ControllerFactoryblService controllerFactoryblService = ControllerFactoryImpl
 			.getInstance();
 	private DriverBLService driverblController = controllerFactoryblService

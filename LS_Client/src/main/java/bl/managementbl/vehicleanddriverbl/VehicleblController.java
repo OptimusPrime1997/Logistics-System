@@ -33,6 +33,11 @@ public class VehicleblController implements VehicleBLService {
 		// TODO Auto-generated method stub
 		return vehiclebl.showVehicle();
 	}
+	public ArrayList<VehicleVO> showVehicle(String institutionNum) throws ClassNotFoundException,
+	IOException {
+// TODO Auto-generated method stub
+return vehiclebl.showVehicle(institutionNum);
+} 
 
 	public VehicleVO findByVehicleNum(String VehicleNum)
 			throws FileNotFoundException, ClassNotFoundException,

@@ -89,9 +89,21 @@ public class Img {
 	private static ImageIcon stockChange=new ImageIcon("pic/btn/stockChange.png");
 	private static ImageIcon stockChange_pressed=new ImageIcon("pic/btn/stockChange_pressed.png");
 	
+	private static ImageIcon profitIcon=new ImageIcon("pic/icon/profit.png");
+	private static ImageIcon payIcon=new ImageIcon("pic/icon/pay.png");
+	private static ImageIcon manageIcon=new ImageIcon("pic/icon/manage.png");
+	
+	public static Image getProfitIcon() {
+		return profitIcon.getImage();
+	}
 
-	
-	
+	public static Image getPayIcon() {
+		return payIcon.getImage();
+	}
+
+	public static Image getManageIcon() {
+		return manageIcon.getImage();
+	}
 	
 	public static ImageIcon getStockInput_btn() {
 		return stockInput_btn;

@@ -15,6 +15,7 @@ import util.enumData.ResultMessage;
 import Exception.NumNotFoundException;
 import PO.InstitutionPO;
 import PO.VehiclePO;
+import VO.ManagementVO.DriverVO;
 import VO.ManagementVO.VehicleVO;
 import bl.managementbl.managedata.ManageData;
 import bl.managementbl.managedata.ManageVOPO;
@@ -34,7 +35,7 @@ public class Vehiclebl {
 			System.out.println("远程获取vehicleDataService失败!");
 			e.printStackTrace();
 		}
-//		 logbl = new Logbl();
+		// logbl = new Logbl();
 		manageVOPO = ManageVOPO.getInstance();
 	}
 
@@ -80,8 +81,7 @@ public class Vehiclebl {
 					e.printStackTrace();
 					System.out.println("存储文件出错");
 					return ResultMessage.IOFAILED;
-				} 
-				catch (ClassNotFoundException e) {
+				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					System.out.println("系统程序错误");
@@ -177,6 +177,29 @@ public class Vehiclebl {
 			throw new RemoteException();
 	}
 
+	public ArrayList<VehicleVO> showVehicle(String institutionNum)
+			throws ClassNotFoundException, IOException {
+		// TODO Auto-generated method stub
+//		manageVOPO.addLog(LogType.CAR_MANAGEMENT);
+		VehicleVO temp;
+		ArrayList<VehicleVO> localVehicles = new ArrayList<VehicleVO>();
+		ArrayList<VehicleVO> allVehicles = showVehicle();
+		if (allVehicles != null) {
+			Iterator<VehicleVO> t = allVehicles.iterator();
+			for (; t.hasNext();) {
+				temp = t.next();
+				localVehicles.add(temp);
+			}
+			if (localVehicles.size() == 0 || localVehicles == null) {
+				return null;
+			} else {
+				return localVehicles;
+			}
+		} else {
+			return null;
+		}
+	}
+
 	public VehicleVO findByVehicleNum(String vehicleNum)
 			throws FileNotFoundException, ClassNotFoundException,
 			NumNotFoundException, IOException {
@@ -200,4 +223,5 @@ public class Vehiclebl {
 			return ResultMessage.WRONG_DATA;
 		}
 	}
+
 }

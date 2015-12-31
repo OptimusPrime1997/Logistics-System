@@ -1,6 +1,7 @@
 package ui.componentfactory;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -16,6 +17,8 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableCellRenderer;
 
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.FootnotesDocument;
+
 import blservice.logblservice.LogBLService;
 import ui.financialstaffui.FinancialStaffJFrame;
 import ui.managerui.ManagerJFrame;
@@ -27,7 +30,17 @@ import util.enumData.Sex;
 public class ComponentFactory {
 	public final static String REMOTEFAILD = "远程连接失败！";
 	public final static long DISPLAY_TIME = 5;
-	public static Color panelColor = new Color(200, 150, 190, 50);
+	public static Color panelColor = new Color(200, 150, 190, 128);
+	public static Color buttonColor=new Color(200,150,190,60);
+	public static Color labelColor=new Color(200,150,190,200);
+	public static Color tableColor=new Color(200,150,190,70);
+	public static Color transparent=new Color(200,150,190,0);
+	
+	public static Font fTitle=new Font("宋体",Font.BOLD,16);
+	public static Font sTitle=new Font("宋体",Font.BOLD,14);
+	public static Font plain=new Font("宋体",Font.PLAIN,12);
+	public static Font pBlod=new Font("宋体",Font.BOLD,12);
+//	font.setColor(new Color(labelColor));
 	private ComponentFactory() {
 	}
 

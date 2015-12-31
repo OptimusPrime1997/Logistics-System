@@ -6,7 +6,9 @@
  */
 package ui.financialstaffui;
 
-import java.awt.Font;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -23,18 +25,21 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.SwingConstants;
 import javax.swing.event.MouseInputListener;
 import javax.swing.table.DefaultTableCellRenderer;
 
-import org.apache.poi.hssf.record.formula.functions.If;
-
 import main.MainFrame;
+import ui.Img;
 import ui.componentfactory.ComponentFactory;
 import ui.receiptui.BusinessForm;
 import ui.receiptui.ProfitForm;
 import ui.receiptui.generalUI.PayRep;
+import ui.util.ButtonType;
+import ui.util.MyButton;
+import ui.util.NumOnlyDocument;
 import util.CurrentTime;
 import util.InputCheck;
 import util.enumData.Authority;
@@ -67,9 +72,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	 * Creates new form FinancialStaffJFrame
 	 */
 	public FinancialStaffJFrame() {
-		ComponentFactory.setSystemLook();
 		ctr_log = ControllerFactoryImpl.getInstance().getLogController();
-		this.setVisible(true);
 		initComponents();
 	}
 
@@ -82,18 +85,22 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed"
 	// desc="Generated Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
-	
+		this.setUndecorated(true);
 		this.setResizable(false);
 		this.setVisible(true);
+		this.setBackground(new Color(0,0,0,0));
+		ComponentFactory.setSystemLook();
 		currentOptorId = Loginbl.getCurrentOptorId();
 		String optorName = Loginbl.getCurrentOptorName();
 		currentAuthority = Loginbl.getCurrentAuthority();
+		dimension=new Dimension(860,630);
+		this.setPreferredSize(dimension);
 		setBankAccountVOs();
 		initialVariables();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-		financialjPanel.setPreferredSize(new java.awt.Dimension(830, 590));
+		financialjPanel.setPreferredSize(new java.awt.Dimension(850, 460));
 
 		currentAccountNumjLabel.setText(currentOptorId);
 		currentAccountNumjLabel.setToolTipText("当前用户账号");
@@ -106,20 +113,19 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		currentAuthorityjLabel.setToolTipText("当前用户职位");
 
 		statejLabel.setText("空闲");
+		statejLabel.setBackground(ComponentFactory.labelColor);
 
 		stateTitlejLabel.setText("状态：");
-
-		finacialjTabbedPane.setToolTipText("查看成本收益表");
-		finacialjTabbedPane.setPreferredSize(new java.awt.Dimension(830, 465));
+		stateTitlejLabel.setBackground(ComponentFactory.labelColor);
+		
+		finacialjTabbedPane.setPreferredSize(new java.awt.Dimension(850, 460));
 
 		financialManagejPanel
-				.setPreferredSize(new java.awt.Dimension(830, 460));
+				.setPreferredSize(new java.awt.Dimension(850, 460));
 
-		financilManageTitlejLabel.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
+		financilManageTitlejLabel.setFont(ComponentFactory.sTitle); // NOI18N
 		financilManageTitlejLabel.setText("收支管理");
 
-		paymentIconjPanel.setBackground(new java.awt.Color(240, 0, 240));
-		paymentIconjPanel.setToolTipText("");
 		paymentIconjPanel.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseReleased(java.awt.event.MouseEvent evt) {
 				paymentIconjPanelMouseReleased(evt);
@@ -310,7 +316,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 																										.addComponent(
 																												logTitlejLabel,
 																												javax.swing.GroupLayout.PREFERRED_SIZE,
-																												54,
+																												90,
 																												javax.swing.GroupLayout.PREFERRED_SIZE)))
 																		.addGroup(
 																				logjPanelLayout
@@ -458,7 +464,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 												javax.swing.GroupLayout.PREFERRED_SIZE,
 												360,
 												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addContainerGap(27, Short.MAX_VALUE))
+										.addContainerGap(30, Short.MAX_VALUE))
 						.addGroup(
 								logjPanelLayout
 										.createParallelGroup(
@@ -478,10 +484,9 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		finacialjTabbedPane.addTab("日志查看", logjPanel);
 
 		// initialNewFinanceJpanel();
-		jLabel6.setFont(new Font("宋体",Font.BOLD,12));
-		jLabel6.setText("财务人员");
+		topTitlejLabel.setFont(ComponentFactory.fTitle);
+		topTitlejLabel.setText("财务人员");
 
-		exitjButton.setText("退出系统");
 		exitjButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				exitjButtonActionPerformed(evt);
@@ -516,7 +521,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 										.addContainerGap(
 												javax.swing.GroupLayout.DEFAULT_SIZE,
 												Short.MAX_VALUE)
-										.addComponent(jLabel6)
+										.addComponent(topTitlejLabel)
 										.addContainerGap(
 												javax.swing.GroupLayout.DEFAULT_SIZE,
 												Short.MAX_VALUE))
@@ -544,7 +549,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 								financialjPanelLayout
 										.createSequentialGroup()
 										.addComponent(
-												jLabel6,
+												topTitlejLabel,
 												javax.swing.GroupLayout.PREFERRED_SIZE,
 												15,
 												javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -600,7 +605,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 				javax.swing.GroupLayout.PREFERRED_SIZE));
 		layout.setVerticalGroup(layout.createParallelGroup(
 				javax.swing.GroupLayout.Alignment.LEADING).addComponent(
-				financialjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 600,
+				financialjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 630,
 				javax.swing.GroupLayout.PREFERRED_SIZE));
 
 		pack();
@@ -609,7 +614,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 	private void initialLogjPanel() {
 		// TODO Auto-generated method stub
-		logjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
+		logjPanel.setPreferredSize(new Dimension(850,460));
 
 		findLogjButton.setText("查找");
 		findLogjButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -672,8 +677,8 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 				});
 
 		logEDatejLabel.setText("截止日期：");
-
-		logTitlejLabel.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
+		logTitlejLabel.setPreferredSize(new Dimension(100,30));
+		logTitlejLabel.setFont(ComponentFactory.sTitle); // NOI18N
 		logTitlejLabel.setText("系统日志");
 		logVOs = new ArrayList<LogVO>();
 		logVOs.add(new LogVO(LogType.VIEW_LOG, currentOptorId, CurrentTime
@@ -728,7 +733,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 	private void initialNewFinanceJpanel() {
 		// TODO Auto-generated method stub
-		jPanel6.setPreferredSize(new java.awt.Dimension(830, 460));
+		jPanel6.setPreferredSize(new java.awt.Dimension(850, 460));
 
 		initialFinancejButton.setText("账目初始化");
 		initialFinancejButton
@@ -746,9 +751,6 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 					}
 				});
 
-		initialFinaceIconjpanel
-				.setBackground(new java.awt.Color(240, 100, 240));
-		initialFinaceIconjpanel.setToolTipText("");
 
 		javax.swing.GroupLayout initialFinaceIconjpanelLayout = new javax.swing.GroupLayout(
 				initialFinaceIconjpanel);
@@ -765,7 +767,6 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 						.addGap(0, 200, Short.MAX_VALUE));
 
 		newFinanceIconjPanel.setBackground(new java.awt.Color(24, 240, 20));
-		newFinanceIconjPanel.setToolTipText("");
 		newFinanceIconjPanel
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -785,7 +786,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGap(0, 0, Short.MAX_VALUE));
 
-		initialFinanceTitlejLabel.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
+		initialFinanceTitlejLabel.setFont(ComponentFactory.sTitle); // NOI18N
 		initialFinanceTitlejLabel.setText("期初建账");
 
 		javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(
@@ -873,9 +874,8 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 	private void initialFormJpanel() {
 		// TODO Auto-generated method stub
-		formjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
+		formjPanel.setPreferredSize(new java.awt.Dimension(850, 460));
 		viewProfitFormjButton.setText("查看成本收益表");
-		viewProfitFormjButton.setToolTipText("");
 		viewProfitFormjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -932,8 +932,8 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		formEYearjLabel.setVisible(false);
 		formEYearjComboBox.setVisible(false);
 
-		profitFormIcon.setBackground(new java.awt.Color(0, 240, 240));
-		profitFormIcon.setToolTipText("");
+		
+		
 
 		javax.swing.GroupLayout profitFormIconLayout = new javax.swing.GroupLayout(
 				profitFormIcon);
@@ -945,8 +945,6 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGap(0, 200, Short.MAX_VALUE));
 
-		manageFormIcon.setBackground(new java.awt.Color(240, 240, 0));
-		manageFormIcon.setToolTipText("");
 
 		javax.swing.GroupLayout manageFormIconLayout = new javax.swing.GroupLayout(
 				manageFormIcon);
@@ -958,7 +956,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGap(0, 0, Short.MAX_VALUE));
 
-		formTitlejLabel.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
+		formTitlejLabel.setFont(ComponentFactory.sTitle); // NOI18N
 		formTitlejLabel.setText("报表查看");
 
 		javax.swing.GroupLayout formjPanelLayout = new javax.swing.GroupLayout(
@@ -1191,7 +1189,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 	private void inititalBankAccountJPanel() {
 		// TODO Auto-generated method stub
-		bankAcocuntjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
+		bankAccountjPanel.setPreferredSize(new java.awt.Dimension(850, 460));
 
 		addBankAccountjButton.setText("增加银行账户");
 		addBankAccountjButton
@@ -1201,7 +1199,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 					}
 				});
 
-		bankAccountTitlejLabel.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
+		bankAccountTitlejLabel.setFont(ComponentFactory.sTitle); // NOI18N
 		bankAccountTitlejLabel.setText("银行账户信息");
 
 		bankAccountNumjLabel.setText("银行账号：");
@@ -1242,8 +1240,8 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		initialBankAccountJTable(bankAccountVOPlus, 0);
 		javax.swing.GroupLayout bankAcocuntjPanelLayout = new javax.swing.GroupLayout(
-				bankAcocuntjPanel);
-		bankAcocuntjPanel.setLayout(bankAcocuntjPanelLayout);
+				bankAccountjPanel);
+		bankAccountjPanel.setLayout(bankAcocuntjPanelLayout);
 		bankAcocuntjPanelLayout
 				.setHorizontalGroup(bankAcocuntjPanelLayout
 						.createParallelGroup(
@@ -1388,7 +1386,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 										.addComponent(addBankAccountjButton)
 										.addGap(16, 16, 16)));
 
-		finacialjTabbedPane.addTab("银行账户管理", bankAcocuntjPanel);
+		finacialjTabbedPane.addTab("银行账户管理", bankAccountjPanel);
 
 	}
 
@@ -1723,31 +1721,72 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 	private void initialVariables() {
 		// TODO Auto-generated method stub
-		financialjPanel = new javax.swing.JPanel();
+		
 		currentAccountNumjLabel = new javax.swing.JLabel();
 		accountNamejLabel = new javax.swing.JLabel();
 		currentAuthorityjLabel = new javax.swing.JLabel();
 		statejLabel = new javax.swing.JLabel();
 		stateTitlejLabel = new javax.swing.JLabel();
+		
 		finacialjTabbedPane = new javax.swing.JTabbedPane();
-		financialManagejPanel = new javax.swing.JPanel();
+		finacialjTabbedPane.setBackground(new Color(200,150,190,50));
+		
+		financialjPanel = new JPanel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				g.drawImage(Img.getBackground_main(), 0, 0, 860,630, null);
+			}
+		};	
+		financialManagejPanel=new JPanel();
+		financialManagejPanel.setBackground(ComponentFactory.panelColor);
+		
 		financilManageTitlejLabel = new javax.swing.JLabel();
-		paymentIconjPanel = new javax.swing.JPanel();
+		paymentIconjPanel =new JPanel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				g.drawImage(Img.getPayIcon(), 0, 0, 200,200, null);
+			}
+		};
+		paymentIconjPanel.setPreferredSize(new Dimension(200,200));
+		paymentIconjPanel.setBackground(ComponentFactory.transparent);
+		
 		paymentjButton = new javax.swing.JButton();
-		bankAcocuntjPanel = new javax.swing.JPanel();
+		paymentjButton.setBackground(ComponentFactory.buttonColor);
+		
+		bankAccountjPanel = new javax.swing.JPanel();
+		bankAccountjPanel.setBackground(ComponentFactory.panelColor);
+		
 		addBankAccountjButton = new javax.swing.JButton();
+		addBankAccountjButton.setBackground(ComponentFactory.buttonColor);
+		
 		bankAccountTitlejLabel = new javax.swing.JLabel();
 		bankAccountNumjLabel = new javax.swing.JLabel();
 		findBankAccountNumjTextField = new javax.swing.JTextField();
+		findBankAccountNumjTextField.setDocument(new NumOnlyDocument());
+		
 		findBankAccountNumjButton = new javax.swing.JButton();
+		findBankAccountNumjButton.setBackground(ComponentFactory.buttonColor);
+		
 		bankAccountNamejLabel = new javax.swing.JLabel();
 		findBankAccountNamejTextField = new javax.swing.JTextField();
+		
 		findBankAccountNamejButton = new javax.swing.JButton();
+		findBankAccountNamejButton.setBackground(ComponentFactory.buttonColor);
+		
 		jScrollPane1 = new javax.swing.JScrollPane();
+		jScrollPane1.setBackground(ComponentFactory.panelColor);
+		
 		bankAccountjTable = new javax.swing.JTable();
+		
 		formjPanel = new javax.swing.JPanel();
+		formjPanel.setBackground(ComponentFactory.panelColor);
+		
 		viewProfitFormjButton = new javax.swing.JButton();
+		viewProfitFormjButton.setBackground(ComponentFactory.buttonColor);
+		
 		viewManageForm = new javax.swing.JButton();
+		viewManageForm.setBackground(ComponentFactory.buttonColor);
+		
 		formEYearjLabel = new javax.swing.JLabel();
 		formEMonthjLabel = new javax.swing.JLabel();
 		formEDatejLabel = new javax.swing.JLabel();
@@ -1757,11 +1796,30 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		formDeadLinejLabel = new javax.swing.JLabel();
 		jSeparator3 = new javax.swing.JSeparator();
 		jSeparator1 = new javax.swing.JSeparator();
-		profitFormIcon = new javax.swing.JPanel();
-		manageFormIcon = new javax.swing.JPanel();
+		profitFormIcon = new JPanel(){
+			@Override
+			protected void paintComponent(Graphics g) {
+				// TODO Auto-generated method stub
+				g.drawImage(Img.getProfitIcon(), 0, 0, 200,200, null);
+			}
+		};
+		profitFormIcon.setBackground(ComponentFactory.transparent);
+		manageFormIcon = new JPanel(){
+			@Override
+			protected void paintComponent(Graphics g) {
+				// TODO Auto-generated method stub
+				g.drawImage(Img.getManageIcon(), 0, 0, 200,200, null);
+			}
+		};
+		manageFormIcon.setBackground(ComponentFactory.transparent);
+		
 		formTitlejLabel = new javax.swing.JLabel();
 		logjPanel = new javax.swing.JPanel();
+		logjPanel.setBackground(ComponentFactory.panelColor);
+		
 		findLogjButton = new javax.swing.JButton();
+		findLogjButton.setBackground(ComponentFactory.buttonColor);
+		
 		logSDatejLabel = new javax.swing.JLabel();
 		logSYearjLabel = new javax.swing.JLabel();
 		logSMonthjLabel = new javax.swing.JLabel();
@@ -1779,17 +1837,28 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		logEDatejLabel = new javax.swing.JLabel();
 		jSeparator5 = new javax.swing.JSeparator();
 		logTitlejLabel = new javax.swing.JLabel();
+		
 		jScrollPane4 = new javax.swing.JScrollPane();
+		jScrollPane4.setBackground(ComponentFactory.panelColor);
+		
 		logjTable = new javax.swing.JTable();
 		logStartDayjLabel = new javax.swing.JLabel();
 		jPanel6 = new javax.swing.JPanel();
+		jPanel6.setBackground(ComponentFactory.panelColor);
+		
 		initialFinancejButton = new javax.swing.JButton();
+		initialFinancejButton.setBackground(ComponentFactory.buttonColor);
+		
 		newFinancejButton = new javax.swing.JButton();
+		newFinancejButton.setBackground(ComponentFactory.buttonColor);
+		
 		initialFinaceIconjpanel = new javax.swing.JPanel();
+		initialFinaceIconjpanel.setBackground(ComponentFactory.panelColor);
+		
 		newFinanceIconjPanel = new javax.swing.JPanel();
 		initialFinanceTitlejLabel = new javax.swing.JLabel();
-		jLabel6 = new javax.swing.JLabel();
-		exitjButton = new javax.swing.JButton();
+		topTitlejLabel = new javax.swing.JLabel();
+		exitjButton = new MyButton(ButtonType.EXIT);
 
 	}
 
@@ -2134,6 +2203,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 			.newScheduledThreadPool(1);
 	private JComboBox<Authority> authorityjComboBox = ComponentFactory
 			.getAuthorityJComboBox();
+	private Dimension dimension;
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JLabel accountNamejLabel;
 	private javax.swing.JButton addBankAccountjButton;
@@ -2142,7 +2212,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	private javax.swing.JLabel bankAccountNumjLabel;
 	private javax.swing.JTextField findBankAccountNumjTextField;
 	private javax.swing.JLabel bankAccountTitlejLabel;
-	private javax.swing.JPanel bankAcocuntjPanel;
+	private javax.swing.JPanel bankAccountjPanel;
 	private javax.swing.JTable bankAccountjTable;
 	private javax.swing.JLabel currentAccountNumjLabel;
 	private javax.swing.JLabel currentAuthorityjLabel;
@@ -2166,7 +2236,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	private javax.swing.JPanel initialFinaceIconjpanel;
 	private javax.swing.JLabel initialFinanceTitlejLabel;
 	private javax.swing.JButton initialFinancejButton;
-	private javax.swing.JLabel jLabel6;
+	private javax.swing.JLabel topTitlejLabel;
 	private javax.swing.JPanel jPanel6;
 	private javax.swing.JScrollPane jScrollPane1;
 	private javax.swing.JScrollPane jScrollPane4;
