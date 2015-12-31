@@ -5,6 +5,7 @@
  */
 package ui.courierui;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
@@ -74,14 +75,12 @@ public static void main(String[] args) {
 	public void initProBar() {
 		//赋值
 		int[]values=goodsController.getdaysNumOfGoods(NUM_OF_DAYS);
-		System.out.println("进度条值：");
 		for(int i=0;i<bars.size();i++) {
 			bars.get(i).setBounds(450, i*50+150,200, 20);
 			labels_nums.get(i).setBounds(680, i*50+150, 50, 20);
 			int x=values[i];
 			labels_nums.get(i).setText(x+"");
-			bars.get(i).setValue(x);
-			System.out.println(bars.get(i).getValue());
+			bars.get(i).setValue(x*3);
 		}
 	}
 	/*

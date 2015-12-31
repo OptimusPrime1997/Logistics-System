@@ -36,6 +36,10 @@ public class MyButton extends JButton{
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		switch(type){
+		case STOCK_IN:
+			setIcon(Img.getStockIn());
+			setRolloverIcon(Img.getStockIn_pressed());
+			break;
 		case OK:
 			setIcon(Img.getOk_btn());
 			setRolloverIcon(Img.getOk_btn_pressed());
@@ -104,6 +108,10 @@ public class MyButton extends JButton{
 			setIcon(Img.getArriveBig_btn());
 			setRolloverIcon(Img.getArriveBig_btn_pressed());
 			break;
+		case BACK:
+			setIcon(Img.getBack_btn());
+			setRolloverIcon(Img.getBack_btn_pressed());
+			break;
 		}			
 	}
 	public MyButton(int x,int y,ButtonType type){
@@ -112,6 +120,21 @@ public class MyButton extends JButton{
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		switch(type){
+		case STOCK_SHOW_LITTLE:
+			setIcon(Img.getStockShowLittle());
+			setRolloverIcon(Img.getStockShowLittle_pressed());
+			setBounds(x, y, Img.getStockShowLittle().getIconWidth(), Img.getStockShowLittle().getIconHeight());
+			break;
+		case EXCEL_OUT:
+			setIcon(Img.getExcel_btn());
+			setRolloverIcon(Img.getExcel_btn_pressed());
+			setBounds(x, y, Img.getExcel_btn().getIconWidth(), Img.getExcel_btn().getIconHeight());
+			break;
+		case BACK:
+			setIcon(Img.getBack_btn());
+			setRolloverIcon(Img.getBack_btn_pressed());
+			setBounds(x, y, Img.getBack_btn().getIconWidth(), Img.getBack_btn().getIconHeight());
+			break;
 		case STOCK_INPUT:
 			setIcon(Img.getInputStock_btn());
 			setRolloverIcon(Img.getInputStock_btn_pressed());

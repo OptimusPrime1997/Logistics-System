@@ -112,17 +112,17 @@ public class MainFrame extends JFrame {
 	}
 
 	private void initLabel() {
-		account_label = new MyLabel("账号",260, 150, 30, 15);
-		key_label = new MyLabel("密码",260, 180, 30, 15);
+		account_label = new MyLabel("账号",260, 132, 30, 15);
+		key_label = new MyLabel("密码",260, 177, 30, 15);
 	}
 
 	private void initTxt() {
 		//创建对象
-		goodsNum_text = new MyTextField(TextType.INPUT,40, 145, 100, 20);
-		IP_text=new MyTextField(TextType.INPUT,40, 235, 100, 20);
-		account_text = new MyTextField(TextType.INPUT,290, 145, 100, 20);
+		goodsNum_text = new MyTextField(TextType.INPUT,40, 135, 100, 30);
+		IP_text=new MyTextField(TextType.INPUT,40, 210, 100, 30);
+		account_text = new MyTextField(TextType.INPUT,290, 125, 100, 30);
 		password_text = new javax.swing.JPasswordField(6);
-		feedback_text = new MyTextField(TextType.FEEDBACK, 20, 265, 400, 20);
+		feedback_text = new MyTextField(TextType.FEEDBACK, 30, 255, 400, 30);
 		//设为透明
 //		goodsNum_text.setOpaque(false);
 //		IP_text.setOpaque(false);
@@ -131,7 +131,7 @@ public class MainFrame extends JFrame {
 //		feedback_text.setOpaque(false);
 		
 		//设置位置、大小
-		password_text.setBounds(290, 180, 100, 20);
+		password_text.setBounds(290, 170, 100, 30);
 		IP_text.setText(standard_ip);
 		goodsNum_text.setText(standard_goodsNum);
 		goodsNum_text.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -149,10 +149,10 @@ public class MainFrame extends JFrame {
 	}
 
 	private void initbtn() {
-		search_btn = new MyButton(150, 140,ButtonType.SEARCH);
+		search_btn = new MyButton(150, 135,ButtonType.SEARCH);
 		login_btn = new MyButton(320, 210,ButtonType.LOGIN);
 		exit_btn=new MyButton(410,7,ButtonType.EXIT);
-		ip_btn=new MyButton(150,230);
+		ip_btn=new MyButton(150,210);
 
 		login_btn.addMouseListener(new MouseAdapter() {
 			@Override
