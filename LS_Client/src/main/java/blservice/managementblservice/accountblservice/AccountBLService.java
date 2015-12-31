@@ -35,7 +35,6 @@ public interface AccountBLService {
 	public ArrayList<AccountVO> show() throws RemoteException,
 			ClassNotFoundException, IOException;
 
-	public ResultMessage updateMsg(AccountVO vo) throws RemoteException;
 
 	public AccountVO findByName(String name) throws RemoteException,
 			FileNotFoundException, NameNotFoundException,

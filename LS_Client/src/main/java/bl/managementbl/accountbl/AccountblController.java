@@ -42,10 +42,6 @@ public class AccountblController implements AccountBLService {
 		return accountbl.show();
 	}
 
-	public ResultMessage updateMsg(AccountVO vo) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public AccountVO findByName(String name) throws FileNotFoundException,
 			NameNotFoundException, ClassNotFoundException, IOException {
