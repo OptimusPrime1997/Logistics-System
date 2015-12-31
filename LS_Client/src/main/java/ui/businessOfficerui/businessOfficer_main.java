@@ -49,7 +49,6 @@ public class businessOfficer_main extends JPanel {
 	public businessOfficer_main() {
 		ComponentFactory.setSystemLook();
 		ctr_login = ControllerFactoryImpl.getInstance().getLoginController();
-		ctr_log = ControllerFactoryImpl.getInstance().getLogController();
 		ctr_ship = ControllerFactoryImpl.getInstance().getShipmentRepblServce();
 		initComponents();
 		this.frame = new MyFrame(this);
@@ -446,34 +445,16 @@ public class businessOfficer_main extends JPanel {
 	}
 
 	private void carManagement_btnMouseClicked(MouseEvent evt) {
-		try {
-			LogVO vo = new LogVO(LogType.CAR_MANAGEMENT,
-					ctr_login.getCurrentOptorId(), CurrentTime.getDate());
-			ctr_log.add(vo);
-		} catch (RemoteException e1) {
-		}
 		new car_management();
 		this.frame.dispose();
 	}
 
 	private void driverManagement_btnMouseClicked(MouseEvent evt) {
-		try {
-			LogVO vo = new LogVO(LogType.DRIVER_MANAGEMENT,
-					ctr_login.getCurrentOptorId(), CurrentTime.getDate());
-			ctr_log.add(vo);
-		} catch (RemoteException e1) {
-		}
 		new driver_management();
 		this.frame.dispose();
 	}
 
 	private void deliver_btnMouseClicked(MouseEvent evt) {
-		try {
-			LogVO vo = new LogVO(LogType.DELIVER,
-					ctr_login.getCurrentOptorId(), CurrentTime.getDate());
-			ctr_log.add(vo);
-		} catch (RemoteException e1) {
-		}
 		new DeliverRep();
 	}
 
@@ -517,7 +498,6 @@ public class businessOfficer_main extends JPanel {
 	private String officeNum = "", city,name="";
 	private ShipmentRepblServce ctr_ship;
 	private LoginBLService ctr_login;
-	private LogBLService ctr_log;
 
 	// End of variables declaration//GEN-END:variables
 
