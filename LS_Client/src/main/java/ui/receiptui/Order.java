@@ -9,7 +9,6 @@ package ui.receiptui;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import ui.courierui.courier_main;
 import ui.util.GoodsPackageMoney;

@@ -6,29 +6,31 @@
  */
 package ui.warehousemanui;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 
 import main.MainFrame;
-import VO.StockVO;
-import bl.controllerfactorybl.ControllerFactoryImpl;
-import bl.loginbl.Loginbl;
-import bl.loginbl.LoginblController;
-import blservice.stockblservice.StockBLService;
 import ui.Img;
 import ui.receiptui.generalUI.InStockRep;
 import ui.receiptui.generalUI.OutStockRep;
 import ui.util.ButtonType;
 import ui.util.MyButton;
 import ui.util.MyLabel;
+import bl.controllerfactorybl.ControllerFactoryImpl;
+import bl.loginbl.LoginblController;
+import blservice.stockblservice.StockBLService;
 
 /**
  *
