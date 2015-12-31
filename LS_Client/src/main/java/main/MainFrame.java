@@ -112,8 +112,8 @@ public class MainFrame extends JFrame {
 	}
 
 	private void initLabel() {
-		account_label = new MyLabel("账号",260, 132, 30, 15);
-		key_label = new MyLabel("密码",260, 177, 30, 15);
+		account_label = new MyLabel("账号",255, 132, 30, 15);
+		key_label = new MyLabel("密码",255, 177, 30, 15);
 	}
 
 	private void initTxt() {

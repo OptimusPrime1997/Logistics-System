@@ -5,33 +5,39 @@
  */
 package ui.businessOfficerui;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import javax.swing.GroupLayout;
-import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
-import javax.swing.JTextField;
 import javax.swing.event.MouseInputListener;
 
+import main.MainFrame;
+import ui.Img;
+import ui.componentfactory.ComponentFactory;
+import ui.util.ButtonType;
+import ui.util.MyButton;
+import ui.util.MyFrame;
+import ui.util.MyLabel;
+import ui.util.MyTextField;
+import ui.util.TextType;
+import util.CurrentCity;
+import util.InputCheck;
+import util.enumData.City;
+import util.enumData.ResultMessage;
 import VO.ManagementVO.VehicleVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.controllerfactoryblservice.ControllerFactoryblService;
 import blservice.loginblservice.LoginBLService;
 import blservice.managementblservice.vehicleanddriverblservice.VehicleBLService;
-import ui.componentfactory.ComponentFactory;
-import util.CurrentCity;
-import util.InputCheck;
-import util.enumData.City;
-import util.enumData.ResultMessage;
 
 /**
  *
@@ -39,13 +45,15 @@ import util.enumData.ResultMessage;
  */
 public class car_management extends javax.swing.JPanel {
 	public static void main(String[] args) {
-		new car_management(new businessOfficer_main());
+		new car_management();
 	}
-
-	public car_management(businessOfficer_main panel_parent) {
+	
+	//TODO
+	public car_management() {
 		ctr_login = ControllerFactoryImpl.getInstance().getLoginController();
-		this.panel_parent = panel_parent;
 		initComponents();
+		frame=new MyFrame(this);
+		
 	}
 
 	/**
@@ -58,206 +66,62 @@ public class car_management extends javax.swing.JPanel {
 	}
 
 	private void initComponents() {
-		GroupLayout layout = new javax.swing.GroupLayout(this);
-		vehiclejTable = new javax.swing.JTable();
-		jScrollPane1 = new javax.swing.JScrollPane();
+		
 		initLabel();
 		initbtn();
 		initTxt();
 		initTable();
-		initlayout(layout);
+		initlayout();
 	}
-
 	public void initTable() {
+		vehiclejTable = new javax.swing.JTable();
+		jScrollPane1 = new javax.swing.JScrollPane();
+		
+		jScrollPane1.setBounds(450, 100, 20, 300);
 		setVehicleVOs();
 		initialVehicleJTable(vehicleVOs, 0);
+		
+		vehiclejTable.setBounds(50, 100, 400, 300);
 	}
-
-	private void initlayout(GroupLayout layout) {
-		this.setLayout(layout);
-		layout.setHorizontalGroup(layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(
-						layout.createSequentialGroup()
-								.addContainerGap()
-								.addComponent(jLabel4,
-										javax.swing.GroupLayout.PREFERRED_SIZE,
-										93,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(
-										javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-								.addComponent(add_btn)
-								.addPreferredGap(
-										javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										Short.MAX_VALUE)
-								.addComponent(jLabel6)
-								.addPreferredGap(
-										javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-								.addComponent(businessOffNum2_label)
-								.addGap(26, 26, 26)
-								.addComponent(jLabel5)
-								.addPreferredGap(
-										javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-								.addComponent(Vehicle_btn,
-										javax.swing.GroupLayout.PREFERRED_SIZE,
-										82,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addGap(52, 52, 52).addComponent(exit_btn))
-				.addGroup(
-						layout.createSequentialGroup()
-								.addGap(23, 23, 23)
-								.addComponent(jScrollPane1,
-										javax.swing.GroupLayout.PREFERRED_SIZE,
-										411,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addGroup(
-										layout.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
-												.addGroup(
-														layout.createSequentialGroup()
-																.addGap(66, 66,
-																		66)
-																.addComponent(
-																		back_btn,
-																		javax.swing.GroupLayout.PREFERRED_SIZE,
-																		77,
-																		javax.swing.GroupLayout.PREFERRED_SIZE)
-																.addContainerGap(
-																		javax.swing.GroupLayout.DEFAULT_SIZE,
-																		Short.MAX_VALUE))
-												.addGroup(
-														layout.createSequentialGroup()
-																.addPreferredGap(
-																		javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-																		18,
-																		Short.MAX_VALUE)
-																.addComponent(
-																		search_text,
-																		javax.swing.GroupLayout.PREFERRED_SIZE,
-																		137,
-																		javax.swing.GroupLayout.PREFERRED_SIZE)
-																.addGap(36, 36,
-																		36)
-																.addComponent(
-																		search_btn,
-																		javax.swing.GroupLayout.PREFERRED_SIZE,
-																		75,
-																		javax.swing.GroupLayout.PREFERRED_SIZE)
-																.addGap(38, 38,
-																		38))))
-				.addGroup(
-						layout.createSequentialGroup().addContainerGap()
-								.addComponent(feedback_text).addContainerGap()));
-		layout.setVerticalGroup(layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(
-						layout.createSequentialGroup()
-								.addGroup(
-										layout.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
-												.addComponent(exit_btn)
-												.addGroup(
-														layout.createSequentialGroup()
-																.addContainerGap()
-																.addGroup(
-																		layout.createParallelGroup(
-																				javax.swing.GroupLayout.Alignment.LEADING)
-																				.addGroup(
-																						layout.createParallelGroup(
-																								javax.swing.GroupLayout.Alignment.BASELINE)
-																								.addComponent(
-																										jLabel6)
-																								.addComponent(
-																										businessOffNum2_label)
-																								.addComponent(
-																										jLabel5)
-																								.addComponent(
-																										Vehicle_btn))
-																				.addGroup(
-																						layout.createParallelGroup(
-																								javax.swing.GroupLayout.Alignment.BASELINE)
-																								.addComponent(
-																										jLabel4)
-																								.addComponent(
-																										add_btn,
-																										javax.swing.GroupLayout.PREFERRED_SIZE,
-																										31,
-																										javax.swing.GroupLayout.PREFERRED_SIZE)))))
-								.addGroup(
-										layout.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
-												.addGroup(
-														layout.createSequentialGroup()
-																.addPreferredGap(
-																		javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-																.addComponent(
-																		jScrollPane1,
-																		javax.swing.GroupLayout.PREFERRED_SIZE,
-																		0,
-																		Short.MAX_VALUE)
-																.addGap(21, 21,
-																		21))
-												.addGroup(
-														layout.createSequentialGroup()
-																.addGap(40, 40,
-																		40)
-																.addGroup(
-																		layout.createParallelGroup(
-																				javax.swing.GroupLayout.Alignment.BASELINE)
-																				.addComponent(
-																						search_text,
-																						javax.swing.GroupLayout.PREFERRED_SIZE,
-																						34,
-																						javax.swing.GroupLayout.PREFERRED_SIZE)
-																				.addComponent(
-																						search_btn,
-																						javax.swing.GroupLayout.PREFERRED_SIZE,
-																						34,
-																						javax.swing.GroupLayout.PREFERRED_SIZE))
-																.addPreferredGap(
-																		javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-																		255,
-																		Short.MAX_VALUE)
-																.addComponent(
-																		back_btn,
-																		javax.swing.GroupLayout.PREFERRED_SIZE,
-																		43,
-																		javax.swing.GroupLayout.PREFERRED_SIZE)
-																.addGap(58, 58,
-																		58)))
-								.addComponent(feedback_text,
-										javax.swing.GroupLayout.PREFERRED_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addGap(12, 12, 12)));
-
+	private void initlayout() {
+		this.setLayout(null);
+		this.add(account_label);
+		this.add(jLabel4);
+		this.add(businessOffNum_label);
+		this.add(jLabel5);
+		this.add(jLabel6);
+		this.add(search_btn);
+		this.add(exit_btn);
+		this.add(add_btn);
+		this.add(back_btn);
+		this.add(jScrollPane1);
+		this.add(feedback_text);
+		this.add(search_text);
+		this.add(vehiclejTable);
+		
+		//TODO
+		
 	}
-
 	private void initTxt() {
-		search_text = new javax.swing.JTextField();
+		search_text = new MyTextField(TextType.INPUT, 500, 100, 120, 30);
 		feedback_text.setText("空闲");
 		search_text.setText("输入车牌号或编号");
 		search_text.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				search_textMouseClicked(e);// TODO
+				search_textMouseClicked(e);
 			}
 
 		});
 		feedback_text.setFocusable(false);
-
 	}
-
 	private void initbtn() {
-		add_btn = new javax.swing.JButton();
-		search_btn = new javax.swing.JButton();
-		back_btn = new javax.swing.JButton();
-		Vehicle_btn = new javax.swing.JButton();
-		exit_btn = new javax.swing.JButton();
+		add_btn = new MyButton(100,20,ButtonType.ADD);
+		search_btn = new MyButton(640,100,ButtonType.SEARCH);
+		back_btn = new MyButton(600,400,ButtonType.BACK);
+		exit_btn = new MyButton(790,5,ButtonType.EXIT);
 		search_btn.setText("搜索");
 		back_btn.setText("返回");
-		Vehicle_btn.setText("老李（包括更改密码、退出登录）");
 		exit_btn.setText("退出系统");
 		add_btn.setText("+");
 		add_btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -295,7 +159,6 @@ public class car_management extends javax.swing.JPanel {
 	 * @param evt
 	 */
 	private void search_btnActionPerformed(ActionEvent evt) {
-		// TODO Auto-generated method stub
 		if (evt.getSource() == search_btn) {
 			
 			boolean  found=false;
@@ -347,7 +210,6 @@ public class car_management extends javax.swing.JPanel {
 	}
 
 	private void search_textMouseClicked(MouseEvent e) {
-		// TODO
 		search_text.setText("");
 	}
 
@@ -358,7 +220,8 @@ public class car_management extends javax.swing.JPanel {
 					"是否退出", JOptionPane.DEFAULT_OPTION,
 					JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 			if (result == JOptionPane.NO_OPTION) {
-				System.exit(0);
+				new MainFrame();
+				this.frame.dispose();
 			}
 		}
 	}
@@ -368,87 +231,9 @@ public class car_management extends javax.swing.JPanel {
 	}
 
 	private void back_btnMouseClicked() {
-		panel_parent.remove(this);
-		panel_parent.add(panel_parent.getPanel1());
-		panel_parent.revalidate();
-		panel_parent.repaint();
+		new businessOfficer_main();
+		frame.dispose();
 	}
-
-	private void cars_tableMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_cars_tableMouseClicked
-		if (evt.getClickCount() == 2) {
-			// TODO 怎么实现只监听一行
-			System.out.println("双击哦~");
-		}
-	}
-
-	/**
-	 * 对表格的监听
-	 * 
-	 * @param e
-	 */
-	public void tableMouseClicked(MouseEvent e) {
-		// Point p = e.getPoint();
-		// int row = vehiclejTable.rowAtPoint(p);
-		// int column = vehiclejTable.columnAtPoint(p);
-		// // 代号、车牌号
-		// String carCode, carLicence, startTime;
-		// // 点了删除
-		// if (e.getClickCount() == 1 && column == 3) {
-		//
-		// // TODO Auto-generated method stub
-		// if (e.getButton() == MouseEvent.BUTTON1) {
-		// int tempN = 0;
-		// ResultMessage rmsg = null;
-		// int n = vehiclejTable.getSelectedRow();
-		// VehicleVO vo = vehicleVOs.get(n);
-		// Object[] options = { "取消", "删除" };
-		// int result = JOptionPane
-		// .showOptionDialog(null, "您确定要删除系统该车辆？", "是否删除",
-		// JOptionPane.DEFAULT_OPTION,
-		// JOptionPane.QUESTION_MESSAGE, null, options,
-		// options[0]);
-		// if (result == JOptionPane.NO_OPTION) {
-		// try {
-		// rmsg = vehicleblController.deleteVehicle(vo);
-		// if (rmsg == ResultMessage.SUCCESS) {
-		// ComponentFactory.setState("删除成功:)",
-		// ComponentFactory.DISPLAY_TIME,
-		// feedback_text);
-		// vehicleVOs.remove(n);
-		// tempN = 0;
-		// if (n == 0) {
-		// tempN = 0;
-		// } else {
-		// tempN = n - 1;
-		// }
-		// initialVehicleJTable(vehicleVOs, tempN);
-		// } else {
-		// ComponentFactory.setState(
-		// ResultMessage.toFriendlyString(rmsg),
-		// ComponentFactory.DISPLAY_TIME,
-		// feedback_text);
-		// }
-		// } catch (RemoteException e1) {
-		// // TODO Auto-generated catch block
-		// e1.printStackTrace();
-		// ComponentFactory.setState(ComponentFactory.REMOTEFAILD,
-		// ComponentFactory.DISPLAY_TIME, feedback_text);
-		// }
-		// }
-		// }
-		//
-		// System.out.println("已删除删除第" + row + "行");
-		// }
-		// if (e.getClickCount() == 2) {
-		// carCode = vehiclejTable.getValueAt(row, 0).toString();
-		// carLicence = vehiclejTable.getValueAt(row, 1).toString();
-		// startTime = vehicleVOs.get(row).startTime;
-		// System.out.print("坐标 " + row + "  " + column + "   ");
-		// System.out.println(carCode + "   " + carLicence);
-		// new car_detail(this, carCode, carLicence, startTime);
-		// }
-	}
-
 	private void initialVehicleJTable(ArrayList<VehicleVO> vos, int n) {
 		assert (vos != null) : ("表格获得的账户信息为空");
 		Object[][] VehicleObjects = null;
@@ -460,8 +245,6 @@ public class car_management extends javax.swing.JPanel {
 			VehicleObjects[i][1] = vo.licenseNum;
 			VehicleObjects[i][2] = vo.startTime;
 		}
-		
-	
 		vehiclejTable.setModel(new javax.swing.table.DefaultTableModel(
 				VehicleObjects, new String[] { "车辆编号", "车牌号", "开始服役时间" }) {
 			private static final long serialVersionUID = 1L;
@@ -480,42 +263,17 @@ public class car_management extends javax.swing.JPanel {
 			}
 		});
 
-		vehiclejTable.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				tableMouseClicked(e);
-			}
-		});
-		if (vehiclejTable.getColumnModel().getColumnCount() > 0) {
-			// vehiclejTable.getColumnModel().getColumn(2).setResizable(false);
-			// vehiclejTable.getColumnModel().getColumn(2).setPreferredWidth(5);
-		}
 		ComponentFactory.setJTableTextCenter(vehiclejTable);
 		vehiclejTable.setRowSelectionInterval(n, n);
-
 		final JPopupMenu vehiclejPop = new JPopupMenu();
 		final JMenuItem vehicleSubmitjItem = new JMenuItem("提交");
 		final JMenuItem vehicleDeljItem = new JMenuItem("删除");
 		vehicleSubmitjItem.addMouseListener(/**
 		 * @author 1 监听vehicle的弹出菜单中的“提交”
 		 */
-		new MouseListener() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
+		new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
 				if (e.getButton() == MouseEvent.BUTTON1) {
 					ResultMessage rmsg = null;
 					int n0 = vehiclejTable.getSelectedRow();
@@ -536,7 +294,6 @@ public class car_management extends javax.swing.JPanel {
 								vehicleVOs.add(v);
 							}
 						} catch (RemoteException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 							ComponentFactory.setState(
 									ComponentFactory.REMOTEFAILD,
@@ -547,27 +304,13 @@ public class car_management extends javax.swing.JPanel {
 				}
 
 			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
 		});
 		vehicleDeljItem.addMouseListener(/**
 		 * @author 1 监听vehiclejTable上弹出菜单的“删除”
 		 */
-		new MouseListener() {
+		new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
 				if (e.getButton() == MouseEvent.BUTTON1) {
 					int tempN = 0;
 					ResultMessage rmsg = null;
@@ -601,7 +344,6 @@ public class car_management extends javax.swing.JPanel {
 										feedback_text);
 							}
 						} catch (RemoteException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 							ComponentFactory.setState(
 									ComponentFactory.REMOTEFAILD,
@@ -612,28 +354,6 @@ public class car_management extends javax.swing.JPanel {
 				}
 			}
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
 		});
 		;
 		vehiclejPop.add(vehicleSubmitjItem);
@@ -693,7 +413,6 @@ public class car_management extends javax.swing.JPanel {
 	}
 
 	private VehicleVO getViewvehicleVO(int n) {
-		// TODO Auto-generated method stub
 		String vehicleNum = null;
 		String vehicleLicenseNum = null;
 		String startTime = null;
@@ -715,27 +434,25 @@ public class car_management extends javax.swing.JPanel {
 	}
 
 	private void initLabel() {
-		jLabel4 = new javax.swing.JLabel();
-		jLabel5 = new javax.swing.JLabel();
-		jLabel6 = new javax.swing.JLabel();
-		businessOffNum2_label = new javax.swing.JLabel();
-
-		jLabel4.setFont(new java.awt.Font("宋体", 1, 18)); // NOI18N
-		jLabel4.setForeground(new java.awt.Color(0, 102, 255));
-		jLabel4.setText("车辆管理");
-		jLabel5.setText("账户：");
-		jLabel6.setText("营业厅：");
+		jLabel4 = new MyLabel("车辆管理",20,20,100,50);
+		jLabel5 = new MyLabel("账户：",460,20,50,30);
+		jLabel6 = new MyLabel("营业厅：",300,20,70,30);
+		businessOffNum_label=new MyLabel("", 355, 20,90, 30);
+		account_label=new MyLabel("",500,20,100,30);
+		jLabel4.setFont(new java.awt.Font("宋体", 1, 18));
+		jLabel4.setForeground(Color.WHITE);
 		try {
 			officeNum = ctr_login.getCurrentOptorId().substring(0, 6);
+			name=ctr_login.getCurrentName();
 			System.out.println(ctr_login.getCurrentOptorId());
 			city = City.toString(CurrentCity.getCurrentCity());
-			businessOffNum2_label.setText(city + officeNum);
+			businessOffNum_label.setText(city + officeNum);
+			account_label.setText(name);
 		} catch (RemoteException e) {
 		}
 	}
 
 	private void setVehicleVOs() {
-		// TODO Auto-generated method stub
 		vehicleVOs = getVehicleVOs();
 		vehicleVOs.sort(null);
 	}
@@ -747,25 +464,21 @@ public class car_management extends javax.swing.JPanel {
 			vos.sort(null);
 			System.out.println(vos.size());
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("远程连接失败");
 			ComponentFactory.setState("远程连接失败", ComponentFactory.DISPLAY_TIME,
 					feedback_text);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("程序错误");
 			ComponentFactory.setState("程序错误", ComponentFactory.DISPLAY_TIME,
 					feedback_text);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("读取文件失败");
 			ComponentFactory.setState("读取文件失败", ComponentFactory.DISPLAY_TIME,
 					feedback_text);
 		}
-
 		assert (vos != null) : ("远程获取账户信息失败");
 		return vos;
 	}
@@ -777,7 +490,10 @@ public class car_management extends javax.swing.JPanel {
 	public String getOfficeNum() {
 		return officeNum;
 	}
-
+@Override
+protected void paintComponent(Graphics g) {
+	g.drawImage(Img.getBackground_main(), 0, 0, null);
+}
 	private ArrayList<VehicleVO> vehicleVOs = null;
 	private ControllerFactoryblService controllerFactoryblService = ControllerFactoryImpl
 			.getInstance();
@@ -785,16 +501,15 @@ public class car_management extends javax.swing.JPanel {
 			.getVehicleController();
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private businessOfficer_main panel_parent;
-	private javax.swing.JButton Vehicle_btn, add_btn, back_btn, exit_btn,
-			search_btn;
-	private javax.swing.JLabel businessOffNum2_label, jLabel4, jLabel5,
-			jLabel6;
+	private MyButton add_btn, back_btn, exit_btn,search_btn;
+	private MyLabel businessOffNum_label, jLabel4, jLabel5,
+			jLabel6,account_label;
 	private javax.swing.JTable vehiclejTable;
-	final private javax.swing.JLabel feedback_text = new JLabel();
+	final private MyLabel feedback_text=new MyLabel("空闲", 30, 500, 450, 30);
 	private javax.swing.JScrollPane jScrollPane1;
-	private JTextField search_text;
-	private String officeNum = "", city = "";
+	private MyTextField search_text;
+	private MyFrame frame;
+	private String officeNum = "", city = "",name="";
 	private LoginBLService ctr_login;
 	private static final long serialVersionUID = 1L;// TODO 这是干啥的呀
 	// End of variables declaration//GEN-END:variables

@@ -22,6 +22,10 @@ public class Img {
 	private static ImageIcon ok_btn=new ImageIcon("pic/btn/btn_ok.png");
 	private static ImageIcon ok_btn_pressed=new ImageIcon("pic/btn/btn_ok_pressed.png");
 	
+	private static ImageIcon add_btn=new ImageIcon("pic/btn/add_btn.png");
+	private static ImageIcon add_btn_pressed=new ImageIcon("pic/btn/add_btn_pressed.png");
+	
+	
 	private static ImageIcon cancel_btn=new ImageIcon("pic/btn/btn_cancel.png");
 	private static ImageIcon cancel_btn_pressed=new ImageIcon("pic/btn/btn_cancel_pressed.png");
 	
@@ -39,8 +43,6 @@ public class Img {
 	private static ImageIcon btn_login=new ImageIcon("pic/btn/btn_login.png");
 	private static ImageIcon btn_login_pressed=new ImageIcon("pic/btn/btn_login_pressed.png");
 	
-	private static ImageIcon buttonBig=new ImageIcon("pic/btn/btn_big.png");
-	private static ImageIcon buttonBig_p=new ImageIcon("pic/btn/btn_big_pressed.png");
 	
 	private static ImageIcon exit_btn=new ImageIcon("pic/btn/btn_exit0.png");
 	private static ImageIcon exit_btn_pressed=new ImageIcon("pic/btn/btn_exit1.png");
@@ -218,6 +220,14 @@ public class Img {
 
 
 
+	public static ImageIcon getAdd_btn() {
+		return add_btn;
+	}
+
+	public static ImageIcon getAdd_btn_pressed() {
+		return add_btn_pressed;
+	}
+
 	public static ImageIcon getArriveBig_btn() {
 		return arriveBig_btn;
 	}
@@ -340,15 +350,6 @@ public class Img {
 	public static ImageIcon getOk_btn_pressed() {
 		return ok_btn_pressed;
 	}
-
-	public static ImageIcon getButtonBig() {
-		return buttonBig;
-	}
-
-	public static ImageIcon getButtonBig_p() {
-		return buttonBig_p;
-	}
-
 
 	public static Image getBackground_main() {
 		return background_main;

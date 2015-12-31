@@ -88,8 +88,6 @@ public class businessOfficer_main extends JPanel {
 				g.drawImage(Img.getBackground_business(), 0, 0, null);
 			}
 		};
-		panel_car = new car_management(this);
-		panel_driver = new driver_management(this);
 		initNumPanel();
 	}
 
@@ -454,10 +452,8 @@ public class businessOfficer_main extends JPanel {
 			ctr_log.add(vo);
 		} catch (RemoteException e1) {
 		}
-		this.remove(panel1);
-		this.add(panel_car);
-		this.revalidate();
-		this.repaint();
+		new car_management();
+		this.frame.dispose();
 	}
 
 	private void driverManagement_btnMouseClicked(MouseEvent evt) {
@@ -467,10 +463,8 @@ public class businessOfficer_main extends JPanel {
 			ctr_log.add(vo);
 		} catch (RemoteException e1) {
 		}
-		this.remove(panel1);
-		this.add(panel_driver);
-		this.revalidate();
-		this.repaint();
+		new driver_management();
+		this.frame.dispose();
 	}
 
 	private void deliver_btnMouseClicked(MouseEvent evt) {
@@ -514,8 +508,6 @@ public class businessOfficer_main extends JPanel {
 	// private
 
 	private MyFrame frame;
-	private car_management panel_car;
-	private driver_management panel_driver;
 	private MyButton arrival_btn, deliver_btn, exit_btn,
 			carManagement_btn, driverManagement_btn, recordMoney_btn, send_btn;
 	private JLabel jLabel1, jLabel5, jLabel6, num_label,

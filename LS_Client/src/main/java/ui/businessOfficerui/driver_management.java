@@ -10,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -26,16 +25,17 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 
+import ui.componentfactory.ComponentFactory;
+import ui.util.MyFrame;
+import util.CurrentCity;
+import util.InputCheck;
+import util.enumData.City;
+import util.enumData.ResultMessage;
 import VO.ManagementVO.DriverVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.controllerfactoryblservice.ControllerFactoryblService;
 import blservice.loginblservice.LoginBLService;
 import blservice.managementblservice.vehicleanddriverblservice.DriverBLService;
-import ui.componentfactory.ComponentFactory;
-import util.CurrentCity;
-import util.InputCheck;
-import util.enumData.City;
-import util.enumData.ResultMessage;
 
 /**
  *
@@ -47,17 +47,16 @@ public class driver_management extends JPanel {
 	/**
 	 * Creates new form yytywyCar_DriverManagement
 	 */
-	public driver_management(businessOfficer_main panel) {
-		this.panel_parent = panel;
+	public driver_management() {
 		ctr_login = ControllerFactoryImpl.getInstance().getLoginController();
 		
 		setDriverVOs();
 		initComponents();
+		this.frame=new MyFrame(this);
 	}
 
 	public static void main(String[] args) {
-		businessOfficer_main testPanel = new businessOfficer_main();
-		driver_management testDriverPanel = new driver_management(testPanel);
+		new driver_management();
 	}
 
 	/**
@@ -274,32 +273,7 @@ public class driver_management extends JPanel {
 		feedback_text = new JLabel();
 		search_text = new JTextField();
 		search_text.setText("输入姓名或编号");
-		search_text.addMouseListener(new MouseListener() {
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
+		search_text.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
@@ -574,10 +548,8 @@ public class driver_management extends JPanel {
 	 * 
 	 */
 	private void back_btnMouseClicked() {
-		panel_parent.remove(this);
-		panel_parent.add(panel_parent.getPanel1());
-		panel_parent.revalidate();
-		panel_parent.repaint();
+		new businessOfficer_main();
+		this.frame.dispose();
 	}
 
 	/**
@@ -658,6 +630,7 @@ public class driver_management extends JPanel {
 	private JScrollPane jScrollPane2;
 	private JTextField search_text;
 	public  JLabel feedback_text;
+	private MyFrame frame;
 	private LoginBLService ctr_login;
 	private String officeNum = "", city = "";
 	// End of variables declaration//GEN-END:variables

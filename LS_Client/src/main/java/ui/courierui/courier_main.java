@@ -146,7 +146,7 @@ public static void main(String[] args) {
 		String Cdate=CurrentTime.getDate();
 		account_label0=new MyLabel("账户：",410, 20, 50, 20);
 		businessOffice_label = 
-				new MyLabel("营业厅：",250, 20, 60, 20);
+				new MyLabel("营业厅：",245, 20, 70, 20);
 		account_label1 = new MyLabel("",450, 20, 150, 20);
 		recentDays_label = new MyLabel("最近7天业绩（收派件数）",
 				410,100,220,20);

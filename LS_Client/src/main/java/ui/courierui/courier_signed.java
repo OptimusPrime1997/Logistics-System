@@ -205,8 +205,8 @@ public class courier_signed extends JFrame {
 		});
 	}
 	private void initLabel() {
-    	 listNum_label = new MyLabel("订单号",50, 80, 40, 20);
-         getter_label = new MyLabel("收件人",50, 130, 40, 20);
+    	 listNum_label = new MyLabel("订单号",50, 80, 50, 20);
+         getter_label = new MyLabel("收件人",50, 130, 50, 20);
          getterPhone_label = new MyLabel("收件人手机",50,180,80,20);
          getDate_label = new MyLabel("收件日期",50, 230, 60, 20);
          year_label = new MyLabel("年",235, 230, 15, 20);

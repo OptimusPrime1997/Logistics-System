@@ -52,10 +52,6 @@ public class MyButton extends JButton{
 			setIcon(Img.getNewGoods_btn());
 			setRolloverIcon(Img.getNewGoods_btn_pressed());
 			break;
-		case BIG:
-			setIcon(Img.getButtonBig());
-			setRolloverIcon(Img.getButtonBig_p());
-			break;
 		case SEARCH:
 			setIcon(Img.getBtn_search());
 			setRolloverIcon(Img.getBtn_search_pressed());
@@ -120,6 +116,11 @@ public class MyButton extends JButton{
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		switch(type){
+		case ADD:
+			setIcon(Img.getAdd_btn());
+			setRolloverIcon(Img.getAdd_btn_pressed());
+			setBounds(x, y, Img.getAdd_btn().getIconWidth(), Img.getAdd_btn().getIconHeight());
+			break;			
 		case STOCK_SHOW_LITTLE:
 			setIcon(Img.getStockShowLittle());
 			setRolloverIcon(Img.getStockShowLittle_pressed());
@@ -179,11 +180,6 @@ public class MyButton extends JButton{
 			setIcon(Img.getNewGoods_btn());
 			setRolloverIcon(Img.getNewGoods_btn_pressed());
 			setBounds(x, y, Img.getNewGoods_btn().getIconWidth(), Img.getNewGoods_btn().getIconHeight());
-			break;
-		case BIG:
-			setIcon(Img.getButtonBig());
-			setBounds(x, y, Img.getButtonBig().getIconWidth(), Img.getButtonBig().getIconHeight());
-			setRolloverIcon(Img.getButtonBig_p());
 			break;
 		case SEARCH:
 			setIcon(Img.getBtn_search());

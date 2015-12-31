@@ -11,6 +11,8 @@ public enum ButtonType {
 	STOCK_CHECK,
 	STOCK_SHOW,
 	STOCK_CHANGE,
+	
+	ADD,
 	/**
 	 * 确定
 	 */
