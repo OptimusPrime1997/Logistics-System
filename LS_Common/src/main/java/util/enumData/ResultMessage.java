@@ -124,6 +124,10 @@ public enum ResultMessage {
 	 */
 	WRONG_FORMAT(""),
 	/**
+	 * 物流状态有误
+	 */
+	WRONG_LOGISTIC_STATE("物理状态有误"),
+	/**
 	 * 错误密码
 	 */
 	WRONG_PASSWORD(""),
@@ -180,6 +184,7 @@ public enum ResultMessage {
 	 * 薪水策略
 	 */
 	NULL_SALARYPOLICY(""),
+	SIGNED_ALREADY("已被签收"),
 	/**
 	 * 远程连接失败
 	 */
@@ -220,6 +225,10 @@ public enum ResultMessage {
 			return "有项目未填写，请完成后再提交";
 		case LENGTH_WRONG:
 			return "号码长度有误,订单号是10位~手机号是11位~";
+		case WRONG_LOGISTIC_STATE:
+			return "物流状态有误";
+		case SIGNED_ALREADY:
+			return "已被签收";
 		case WRONG_FORMAT:
 			return "格式错误";
 		case WRONG_DATA:

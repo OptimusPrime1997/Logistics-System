@@ -8,10 +8,13 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.CurrentTime;
+import util.enumData.LogType;
 import util.enumData.ResultMessage;
+import VO.LogVO;
 import VO.ProfitFormVO;
 import VO.Receipt.CashRepVO;
 import VO.Receipt.PayRepVO;
+import bl.logbl.Logbl;
 import bl.loginbl.Loginbl;
 import bl.receiptbl.CashRepbl.CashRepbl;
 import bl.receiptbl.PayRepbl.PayRepbl;
@@ -19,6 +22,7 @@ import dataservice.formdataservice.ProfitFormDataService;
 
 public class ProfitFormbl {
 	String ip=Loginbl.getIP();
+	Logbl ctr_log=new Logbl();
 	public ProfitFormVO show(){
 		double totalIn=0,totalOut=0,totalProfit=0;
 		//TODO 待改回真的Repbl
@@ -45,6 +49,10 @@ public class ProfitFormbl {
 			}
 		}
 		totalProfit=totalIn-totalOut;
+		//这个操作不会失败，即使网络连接出现问题也会返回初始化数据，即0
+		LogVO logvo = new LogVO(LogType.CHECK_FORM,
+				Loginbl.getCurrentOptorId(), CurrentTime.getDate());		
+		ctr_log.add(logvo);
 	    ProfitFormVO vo = new ProfitFormVO(CurrentTime.getTime(), totalOut, totalIn, totalProfit);
 		return vo;
 	}

@@ -97,6 +97,7 @@ public class LogisticStateUI extends javax.swing.JFrame {
         String[] dates=vo.dates.split(" ");
         content=new Object[dates.length][2];
         for(String date:dates){
+        	if(count>=6) break;
         	content[count][0]=date;
         	content[count][1]=GoodsLogisticState.toFriendlyString(GoodsLogisticState.get(count));
         	count++;

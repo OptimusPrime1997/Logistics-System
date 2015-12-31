@@ -45,7 +45,6 @@ public static void main(String[] args) {
 }
 	public courier_main() {
 		ctr_login=ControllerFactoryImpl.getInstance().getLoginController();
-		ctr_log=ControllerFactoryImpl.getInstance().getLogController();
 		initComponents();
 		frame=new MyFrame(this);
 		
@@ -188,21 +187,9 @@ public static void main(String[] args) {
 	 * 监听们～
 	 */
 	private void signedGoodsbtnMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_signedGoodsbtnMouseClicked
-		try {
-			LogVO vo = new LogVO(LogType.END_A_GOODS, ctr_login.getCurrentOptorId(), CurrentTime.getDate());
-			ctr_log.add(vo);
-		} catch (RemoteException e) {
-		}
-		
 		new courier_signed(this);
-	}
+	}//TODO
 	private void newGoodsbtnMouseClicked(MouseEvent evt) {
-		try {
-			LogVO vo = new LogVO(LogType.ADD_A_GOODS, ctr_login.getCurrentOptorId(), CurrentTime.getDate());
-			ctr_log.add(vo);
-		} catch (RemoteException e) {
-		}
-		
 		new Order(this);
 	}
 	
@@ -227,7 +214,6 @@ public static void main(String[] args) {
 	private MyTextField feedBack_text;
 	private MyFrame frame;
 	private LoginBLService ctr_login;
-	private LogBLService ctr_log;
 	
 	// End of variables declaration
 }

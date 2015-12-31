@@ -259,9 +259,9 @@ public class courier_signed extends JFrame {
         System.out.println("签收 "+date);
         if(msg_check_listNum==ResultMessage.VALID&&msg_check_name==ResultMessage.VALID){
         	msg=controller_end.end(listNum,date, getterName, getterPhone);
-            if(msg==ResultMessage.NOT_FOUND){
+            if(msg!=ResultMessage.SUCCESS){
             	messages.add(msg);            	
-            }	
+            }
         }
         if(msg_check_listNum!=ResultMessage.VALID){
         	messages.add(msg_check_listNum);
@@ -288,6 +288,10 @@ public class courier_signed extends JFrame {
 	private void showFeedBack(ArrayList<ResultMessage> messages) {
 		String feedback="";		
 		for(ResultMessage msg:messages){
+			if(msg==ResultMessage.WRONG_LOGISTIC_STATE){
+				feedback=feedback+"该快件还没被派件呢~";
+				continue;
+			}
 			feedback=feedback+ResultMessage.toFriendlyString(msg)+";   ";
 		}
 		feedback_text.setText(feedback);

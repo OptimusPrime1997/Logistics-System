@@ -8,12 +8,15 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.CurrentTime;
+import util.enumData.LogType;
 import util.enumData.ResultMessage;
 import Exception.NotFoundMoneyInAndOutException;
 import Exception.NumNotFoundException;
 import VO.BusinessFormVO;
+import VO.LogVO;
 import VO.Receipt.CashRepVO;
 import VO.Receipt.PayRepVO;
+import bl.logbl.Logbl;
 import bl.loginbl.Loginbl;
 import bl.receiptbl.CashRepbl.CashRepbl;
 import bl.receiptbl.PayRepbl.PayRepbl;
@@ -21,6 +24,7 @@ import dataservice.formdataservice.BusinessFormDataService;
 
 public class BusinessFormbl {
 	String ip=Loginbl.getIP();
+	Logbl ctr_log=new Logbl();
 	public BusinessFormVO show(String startTime, String endTime)
 			throws NotFoundMoneyInAndOutException {
 		//0,1,2分别是年、月、日
@@ -72,6 +76,10 @@ public class BusinessFormbl {
 		if (moneyIn.size() == 0 && moneyOut.size() == 0) {
 			throw new NotFoundMoneyInAndOutException();
 		}
+		//这个操作不会失败，，即使连接出现问题也会返回初始化了的VO，即里面数据都是0
+		LogVO logvo = new LogVO(LogType.CHECK_FORM,
+				Loginbl.getCurrentOptorId(), CurrentTime.getDate());		
+		ctr_log.add(logvo);
 		return new BusinessFormVO(startTime, endTime, moneyOut, moneyIn);
 	}
 

@@ -10,11 +10,14 @@ import util.CurrentTime;
 import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsExpressType;
 import util.enumData.GoodsLogisticState;
+import util.enumData.LogType;
 import util.enumData.ResultMessage;
 import Exception.ExistException;
 import Exception.GoodsNotFound;
 import PO.GoodsPO;
 import VO.GoodsVO;
+import VO.LogVO;
+import bl.logbl.Logbl;
 import bl.loginbl.Loginbl;
 import bl.managementbl.constbl.Constbl;
 import dataservice.goodsdataservice.GoodsDataService;
@@ -32,6 +35,7 @@ public class Goodsbl {
 	 * ECONOMIC NORMAL EXPRESS 18: 23: 25
 	 */
 	String ip=Loginbl.getIP();
+	Logbl ctr_log=new Logbl();
 	final double[] expressRates = { 18, 23, 25 };
 
 	public static void main(String[] args) {
@@ -123,6 +127,12 @@ public class Goodsbl {
 			vo.moneyTotal = vo.moneyFare + vo.moneyOfPackage;
 			// vo.dates=vo.startTime;
 			msg = getGoodsDataService().add(GoodsVO.toPO(vo));
+			// 操作成功则记录日志
+			if (msg == ResultMessage.SUCCESS) {
+				LogVO logvo = new LogVO(LogType.ADD_A_GOODS,
+						Loginbl.getCurrentOptorId(), CurrentTime.getDate());
+				ctr_log.add(logvo);
+			}
 			System.out.println("Goodsbl.initComplete 日期 " + vo.startTime);
 			// 已添加过该订单号
 			if (msg.equals(ResultMessage.EXIST))
@@ -224,6 +234,11 @@ public class Goodsbl {
 	public ResultMessage end(String listNum, String date, String realReceiverName, String realReceiverPhone) {
 		try {
 			GoodsVO vo = findByListNum(listNum);
+			if(vo.logisticState!=GoodsLogisticState.DELIVERING){
+				if(vo.logisticState==GoodsLogisticState.SIGNED)
+					return ResultMessage.SIGNED_ALREADY;
+				else return ResultMessage.WRONG_LOGISTIC_STATE;
+			}
 			getGoodsDataService().delete(GoodsVO.toPO(vo));
 			System.out.println("改之前的货物信息 " + vo.listNum + "  " + vo.realReceiverName + "  " + vo.realReceiverPhone
 					+ "  " + vo.logisticState + " 历史");
@@ -240,8 +255,15 @@ public class Goodsbl {
 			vo.logisticState = GoodsLogisticState.SIGNED;
 			vo.dates = vo.dates + " " + CurrentTime.getDate();
 			System.out.println("Goodsbl.end " + vo.dates);
-
-			return getGoodsDataService().add(GoodsVO.toPO(vo));
+			
+			ResultMessage msg_final=getGoodsDataService().add(GoodsVO.toPO(vo));
+			//操作成功则添加日志
+			if (msg_final == ResultMessage.SUCCESS) {
+				LogVO logvo = new LogVO(LogType.END_A_GOODS,
+						Loginbl.getCurrentOptorId(), CurrentTime.getDate());
+				ctr_log.add(logvo);
+			}
+			return msg_final;
 		} catch (RemoteException e) {
 			return ResultMessage.LINK_FAILURE;
 		} catch (GoodsNotFound e1) {
