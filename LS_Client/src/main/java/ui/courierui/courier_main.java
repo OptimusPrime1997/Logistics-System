@@ -5,7 +5,6 @@
  */
 package ui.courierui;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
@@ -28,12 +27,9 @@ import ui.util.TextType;
 import util.CurrentCity;
 import util.CurrentTime;
 import util.enumData.City;
-import util.enumData.LogType;
 import util.enumData.ResultMessage;
-import VO.LogVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.goodsblservice.GoodsFindBLService;
-import blservice.logblservice.LogBLService;
 import blservice.loginblservice.LoginBLService;
 
 public class courier_main extends JPanel {

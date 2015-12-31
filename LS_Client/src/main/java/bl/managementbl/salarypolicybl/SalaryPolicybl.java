@@ -6,18 +6,17 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import dataservice.managementdataservice.managedataservice.ManageDataService;
-import dataservice.managementdataservice.salarypolicydataservice.SalaryPolicyDataService;
-import util.InputCheck;
 import util.enumData.Authority;
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
-import Exception.SalaryPolicyNotFoundException;
 import Exception.NumNotFoundException;
+import Exception.SalaryPolicyNotFoundException;
 import PO.SalaryPolicyPO;
 import VO.ManagementVO.SalaryPolicyVO;
 import bl.managementbl.managedata.ManageData;
 import bl.managementbl.managedata.ManageVOPO;
+import dataservice.managementdataservice.managedataservice.ManageDataService;
+import dataservice.managementdataservice.salarypolicydataservice.SalaryPolicyDataService;
 
 public class SalaryPolicybl {
 	private SalaryPolicyDataService salaryPolicyDataService;

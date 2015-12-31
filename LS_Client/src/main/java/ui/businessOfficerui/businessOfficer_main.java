@@ -11,7 +11,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import javax.swing.GroupLayout;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -31,11 +30,8 @@ import ui.util.MyFrame;
 import util.CurrentCity;
 import util.CurrentTime;
 import util.enumData.City;
-import util.enumData.LogType;
 import util.enumData.ResultMessage;
-import VO.LogVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
-import blservice.logblservice.LogBLService;
 import blservice.loginblservice.LoginBLService;
 import blservice.receiptblservice.ShipmentRepblServce;
 

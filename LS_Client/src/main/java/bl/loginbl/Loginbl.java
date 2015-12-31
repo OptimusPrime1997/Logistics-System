@@ -2,8 +2,6 @@ package bl.loginbl;
 
 import java.io.IOException;
 
-import org.apache.poi.xwpf.usermodel.VerticalAlign;
-
 import util.enumData.Authority;
 import util.enumData.ResultMessage;
 import Exception.NumNotFoundException;
