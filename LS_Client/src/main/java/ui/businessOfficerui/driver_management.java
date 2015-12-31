@@ -18,7 +18,6 @@ import java.util.Iterator;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -51,15 +50,7 @@ public class driver_management extends JPanel {
 	public driver_management(businessOfficer_main panel) {
 		this.panel_parent = panel;
 		ctr_login = ControllerFactoryImpl.getInstance().getLoginController();
-		try {
-			officeNum = ctr_login.getCurrentOptorId().substring(0, 6);
-//			System.out.println(ctr_login.getCurrentOptorId());
-			city = City.toString(CurrentCity.getCurrentCity());
-			currentInstituionNum=city + officeNum;
-			BusinessOfficeNum_label.setText(city + officeNum);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+		
 		setDriverVOs();
 		initComponents();
 	}
@@ -79,6 +70,14 @@ public class driver_management extends JPanel {
 	}
 
 	private void initComponents() {
+		try {
+			officeNum = ctr_login.getCurrentOptorId().substring(0, 6);
+//			System.out.println(ctr_login.getCurrentOptorId());
+			city = City.toString(CurrentCity.getCurrentCity());
+			currentInstituionNum=city + officeNum;
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		GroupLayout layout = new GroupLayout(this);
 		driverjTable = new JTable();
 		jScrollPane2 = new JScrollPane();
@@ -424,7 +423,7 @@ public class driver_management extends JPanel {
 		jLabel1.setText("司机管理");
 		jLabel2.setText("账户：");
 		jLabel3.setText("营业厅：");
-		
+		BusinessOfficeNum_label.setText(city + officeNum);
 	}
 
 	/**
@@ -596,7 +595,7 @@ public class driver_management extends JPanel {
 	private ArrayList<DriverVO> getDriverVOs() {
 		ArrayList<DriverVO> vos = null;
 		try {
-			vos = driverblController.showDriver(currentInstituionNum);
+			vos = driverblController.showDriver();
 			vos.sort(null);
 			System.out.println("获得driver的个数为+vos.size()");
 		} catch (RemoteException e) {
