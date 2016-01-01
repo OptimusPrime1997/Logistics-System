@@ -96,8 +96,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	 */
 
 	public ManagerJFrame() {
-		
-		
 		this.setUndecorated(true);
 		initComponents();
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -369,7 +367,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			logObjects[i][2] = authorityjComboBox.getItemAt(Integer
 					.parseInt(vo.operatorID.substring(7, 8)));
 			logObjects[i][3] = vo.operatorID;
-
 		}
 
 		logjTable.setModel(new javax.swing.table.DefaultTableModel(logObjects,
@@ -397,6 +394,8 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jScrollPane11.setViewportView(logjTable);
 
 		setJTableTextCenter(logjTable);
+		
+		logjTable.setEnabled(false);
 	}
 
 	/**

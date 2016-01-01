@@ -35,6 +35,8 @@ public class MyButton extends JButton{
 		setMargin(new Insets(0, 0, 0, 0));
 		setContentAreaFilled(false);
 		setBorderPainted(false);
+//		setIcon(Img.getExit_btn());
+//		setRolloverIcon(Img.getExit_btn_pressed());
 		switch(type){
 		case STOCK_IN:
 			setIcon(Img.getStockIn());

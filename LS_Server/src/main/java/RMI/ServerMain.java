@@ -5,6 +5,7 @@ import java.net.UnknownHostException;
 import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
 
+
 import dataimpl.formdata.BusinessFormData;
 import dataimpl.formdata.ProfitFormData;
 import dataimpl.goodsdata.GoodsData;
@@ -35,27 +36,26 @@ import dataservice.stockdataservice.StockDivisionDataService;
 import dataservice.stockdataservice.StockInitialDataService;
 
 public class ServerMain {
-	 public static String ip = "127.0.0.1";
+	public static String ip = "127.0.0.1";
 	final static int defaultPort = 1099;
 
-	private static String getIpAddress() throws UnknownHostException {
-		InetAddress address = InetAddress.getLocalHost();
-		return address.getHostAddress();
-	}
-
-	public static void main(String[] args) {
-		String currentIP=null;
+	public static void setCurrentIP(){
+		String currentIP = null;
 		try {
-			 currentIP = getIpAddress();
-			System.out.println("当前服务器IP地址："+currentIP);
+			currentIP = InetAddress.getLocalHost().getHostAddress();
+			System.out.println("当前服务器IP地址：" + currentIP);
+			ip = currentIP;
+			System.out.println("设置服务器地址为：" + ip);
 		} catch (UnknownHostException e1) {
 			// TODO Auto-generated catch block
 			System.out.println("获取当前IP地址失败。");
 			e1.printStackTrace();
 		}
-		if(currentIP!=null){
-//			ip=currentIP;
+		if (currentIP != null) {
+			 ip=currentIP;
 		}
+	}
+	public static void startService() {
 		try {
 			BusinessFormDataService business = new BusinessFormData();
 			LocateRegistry.createRegistry(3331);
@@ -133,5 +133,10 @@ public class ServerMain {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+	}
+
+	public static void main(String[] args) {
+		startService();
 	}
 }
