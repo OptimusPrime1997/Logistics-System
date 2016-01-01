@@ -19,7 +19,6 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	//Done!
 	@Override	
 	public ResultMessage add(GoodsPO po) throws RemoteException {
-		System.out.println("GoodsData.add "+po.getListNum()+"  "+po.getStartTime());
 		    try {
 			    return helper.save(po, filename);
 			    
@@ -44,7 +43,6 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 		    		break;
 		    	}
 		    }
-		    System.out.println(po.getListNum()+" "+po.getStartTime()+" "+po.getOvertime());
 		    all.add(po);
 		    helper.SaveAll(all, filename);
 		    return ResultMessage.SUCCESS;
@@ -61,7 +59,6 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 		GoodsPO temp;
 	    try {
 			all=helper.getAll(filename);
-			System.out.println(all.size());
 			for(int i=0;i<all.size();i++){
 		    	temp=(GoodsPO)all.get(i);
 		    	if(temp.getListNum().equals(po.getListNum())){
@@ -100,7 +97,6 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	//Done!
 	@Override	
 	public GoodsPO findbygoods(String ListNum)throws RemoteException,GoodsNotFound {
-		System.out.println("GoodsData.findbygoods");
 		ArrayList<Object> all=null;
 		GoodsPO po=null,temp;
 		try {
@@ -115,7 +111,6 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 			}
 		} catch (ClassNotFoundException | IOException e) {
 		}
-		System.out.println("我在找~~");
 		if(po==null) throw new GoodsNotFound();
 		return po;
 	}
@@ -151,7 +146,6 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 	@Override
 	public int findbyCourier(String CourierNum,String date)
 			throws RemoteException{
-		System.out.print("GoodsData.findbyCourier  ");
 		ArrayList<Object> all=null;
 		//待返回的总数
 		int sum=0;
@@ -164,21 +158,16 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 				//找到了货物~
 				String startT=po.getDates().split(" ")[0];
 				if((po.getGetCourierAccount().equals(CourierNum)&&startT.equals(date))){
-					System.out.println("取件：：我要找的日期 "+date+" ;"+
-							"找到的订单 "+po.getListNum()+" "+po.getStartTime());
 					sum++;
 				}
 				else if((po.getDeliverCourierAccount().equals(CourierNum)&&po.getOvertime().equals(date))
 						){
-					System.out.println("派件：：我要找的日期 "+date+" ;"+
-						"找到的订单 "+po.getListNum()+" "+po.getStartTime());
 					sum++;
 				}
 			}
 		} catch (ClassNotFoundException | IOException e) {
 	       	return 0;
 		}
-		System.out.println("日期 "+date+" "+sum);
 		return sum;
 	
 	}

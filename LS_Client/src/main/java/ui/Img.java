@@ -8,16 +8,19 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import ui.util.MyFrame;
+
 public class Img {
+	
 	private static Image background_login = new ImageIcon("pic/background/background_login.png")
 			.getImage();
 	private static Image background_main=new ImageIcon("pic/background/background_main.png").getImage();
 	private static Image background_searchState=new ImageIcon("pic/background/background_searchState.png").getImage();
 	private static Image background_business=new ImageIcon("pic/background/business_background.png").getImage();
 	
-	private static Image form_business_img=new ImageIcon("pic/img/businessForm.jpg").getImage();
-	private static Image form_profit_img=new ImageIcon("pic/img/profitForm.jpg").getImage();
-	private static Image payRep_img=new ImageIcon("pic/img/payRep.jpg").getImage();
+	private static Image form_business_img=new ImageIcon("pic/img/manage.png").getImage();
+	private static Image form_profit_img=new ImageIcon("pic/img/profit.png").getImage();
+	private static Image payRep_img=new ImageIcon("pic/img/pay.png").getImage();
 	
 	private static ImageIcon ok_btn=new ImageIcon("pic/btn/btn_ok.png");
 	private static ImageIcon ok_btn_pressed=new ImageIcon("pic/btn/btn_ok_pressed.png");
@@ -38,10 +41,14 @@ public class Img {
 	private static ImageIcon button0=new ImageIcon("pic/btn/btn_all.png");
 	private static ImageIcon button_over=new ImageIcon("pic/btn/btn_all_pressed.png");
 	
-	private static ImageIcon btn_search=new ImageIcon("pic/btn/btn_search.png");
-	private static ImageIcon btn_search_pressed=new ImageIcon("pic/btn/btn_search_pressed.png");
-	private static ImageIcon btn_login=new ImageIcon("pic/btn/btn_login.png");
-	private static ImageIcon btn_login_pressed=new ImageIcon("pic/btn/btn_login_pressed.png");
+	private static ImageIcon search_btn=new ImageIcon("pic/btn/search_btn.png");
+	private static ImageIcon search_btn_pressed=new ImageIcon("pic/btn/search_btn_pressed.png");
+	
+	private static ImageIcon find_btn=new ImageIcon("pic/btn/find_btn.png");
+	private static ImageIcon find_btn_pressed=new ImageIcon("pic/btn/find_btn_pressed.png");
+	
+	private static ImageIcon login_btn=new ImageIcon("pic/btn/btn_login.png");
+	private static ImageIcon login_btn_pressed=new ImageIcon("pic/btn/btn_login_pressed.png");
 	
 	
 	private static ImageIcon exit_btn=new ImageIcon("pic/btn/btn_exit0.png");
@@ -102,20 +109,17 @@ public class Img {
 	private static ImageIcon stockChange=new ImageIcon("pic/btn/stockChange.png");
 	private static ImageIcon stockChange_pressed=new ImageIcon("pic/btn/stockChange_pressed.png");
 	
-	private static ImageIcon profitIcon=new ImageIcon("pic/icon/profit.png");
-	private static ImageIcon payIcon=new ImageIcon("pic/icon/pay.png");
-	private static ImageIcon manageIcon=new ImageIcon("pic/icon/manage.png");
 	
 	public static Image getProfitIcon() {
-		return profitIcon.getImage();
+		return form_profit_img;
 	}
 
 	public static Image getPayIcon() {
-		return payIcon.getImage();
+		return payRep_img;
 	}
 
 	public static Image getManageIcon() {
-		return manageIcon.getImage();
+		return form_business_img;
 	}
 	
 	public static Image getForm_business_img() {
@@ -295,13 +299,19 @@ public class Img {
 	public static ImageIcon getDriverManage_btn_pressed() {
 		return driverManage_btn_pressed;
 	}
-
-	public static ImageIcon getBtn_search_pressed() {
-		return btn_search_pressed;
+	/**
+	 * 登录界面的订单查询按钮
+	 * @return
+	 */
+	public static ImageIcon getFind_btn() {
+		return find_btn;
+	}
+	public static ImageIcon getFind_btn_pressed() {
+		return find_btn_pressed;
 	}
 
 	public static ImageIcon getBtn_login_pressed() {
-		return btn_login_pressed;
+		return login_btn_pressed;
 	}
 
 	public static ImageIcon getArrive_btn() {
@@ -333,12 +343,10 @@ public class Img {
 		return exit_btn;
 	}
 
-	public static ImageIcon getBtn_search() {
-		return btn_search;
-	}
+	
 
 	public static ImageIcon getBtn_login() {
-		return btn_login;
+		return login_btn;
 	}
 
 	
