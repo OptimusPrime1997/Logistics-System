@@ -2136,7 +2136,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		sexjComboBox = new JComboBox<Sex>();
 		sexjComboBox.addItem(Sex.Sex_MALE);
 		sexjComboBox.addItem(Sex.Sex_FAMALE);
-		cityjComboBox = ComponentFactory.getCityJComboBox();
 		authorityjComboBox = ComponentFactory.getAuthorityJComboBox();
 		repjComboBox = ComponentFactory.getRepJComboBox();
 
@@ -3336,8 +3335,8 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			City c1, c2;
 			c1 = City.getCity1(vo.city1, vo.city2);
 			c2 = City.getCity2(vo.city1, vo.city2);
-			constObjects[i][0] = c1;
-			constObjects[i][1] = c2;
+			constObjects[i][0] = c1.getValue();
+			constObjects[i][1] = c2.getValue();
 			constObjects[i][2] = vo.distanceConst;
 			constObjects[i][3] = vo.priceConst;
 
@@ -3346,7 +3345,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		TableModel constTableModel = new javax.swing.table.DefaultTableModel(
 				constObjects, new String[] { "城市一", "城市二", "距离(千米)",
 						"单价(元/(千千米*公斤））" }) {
-			Class[] types = new Class[] { JComboBox.class, JComboBox.class,
+			Class[] types = new Class[] { String.class, String.class,
 					java.lang.Double.class, java.lang.Double.class };
 			boolean[] canEdit = new boolean[] { true, true, true, true };
 
@@ -3904,12 +3903,12 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	 */
 	private ConstVO getViewConstVO(int n) {
 		// TODO Auto-generated method stub
-		City[] city = new City[2];
+		String[] city = new String[2];
 		double distanceConst = 0;
 		double priceConst = 0;
 		try {
-			city[0] = (City) constjTable.getValueAt(n, 0);
-			city[1] = (City) constjTable.getValueAt(n, 1);
+			city[0] = (String) constjTable.getValueAt(n, 0);
+			city[1] = (String) constjTable.getValueAt(n, 1);
 			distanceConst = (double) constjTable.getValueAt(n, 2);
 			priceConst = (double) constjTable.getValueAt(n, 3);
 		} catch (ClassCastException e) {
@@ -3919,8 +3918,10 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		// Comparator cmp = Collator.getInstance(java.util.Locale.CHINA); //
 		// 使根据指定比较器产生的顺序对指定对象数组进行排序。
 		// Arrays.sort(city, cmp);
-		City c1 = City.getCity1(city[0], city[1]);
-		City c2 = City.getCity1(city[0], city[1]);
+		City C1=City.getCity(city[0]);
+		City C2=City.getCity(city[1]);
+		City c1 = City.getCity1(C1,C2);
+		City c2 = City.getCity1(C1,C2);
 
 		return new ConstVO(c1, c2, distanceConst, priceConst);
 	}
@@ -4052,7 +4053,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private JComboBox<Authority> authorityjComboBox;
 	private JComboBox<SalaryPolicy> salaryPolicyjComboBox;
 	private JComboBox<Rep> repjComboBox;
-	private JComboBox<City> cityjComboBox;
 	private JButton viewChecked;
 	String currentOptorId = Loginbl.getCurrentOptorId();
 	private JPanel profitFormIcon;

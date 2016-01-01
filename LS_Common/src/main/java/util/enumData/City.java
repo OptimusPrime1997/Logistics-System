@@ -23,10 +23,10 @@ public enum City {
 	 * @see java.lang.Enum#toString()
 	 * 
 	 */
-	@Override
-	public String toString(){
-		return value;
-	}
+//	@Override
+//	public String toString(){
+//		return value;
+//	}
 	public static String toString(City city) {
 		switch (city) {
 		case BEIJING:
