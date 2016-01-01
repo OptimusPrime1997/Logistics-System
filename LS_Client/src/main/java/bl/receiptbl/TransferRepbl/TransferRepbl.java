@@ -80,8 +80,7 @@ public class TransferRepbl extends ReceiptblController{
 		City c1 = City.getCity(depart);
 		City c2 = City.getCity(destination);
 		double freightMoney = constbl.computeFare(c1, c2, form, weight);
-		 String sal = new DecimalFormat("0.00").format(freightMoney);
-		return Double.parseDouble(sal);
+		return freightMoney;
 	}
 	
 	public double getWeightByOrder(String order) throws GoodsNotFound{
