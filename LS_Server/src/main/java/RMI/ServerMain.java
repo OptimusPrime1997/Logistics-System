@@ -8,6 +8,9 @@ import dataimpl.formdata.ProfitFormData;
 import dataimpl.goodsdata.GoodsData;
 import dataimpl.logdata.LogData;
 import dataimpl.management.managedata.ManageDataImpl;
+import dataimpl.receiptdata.CashRepData;
+import dataimpl.receiptdata.InStockRepData;
+import dataimpl.receiptdata.OutStockRepData;
 import dataimpl.receiptdata.PayRepData;
 import dataimpl.receiptdata.ReceiptData;
 import dataimpl.stockdata.StockData;
@@ -18,6 +21,9 @@ import dataservice.formdataservice.ProfitFormDataService;
 import dataservice.goodsdataservice.GoodsDataService;
 import dataservice.logdataservice.LogDataService;
 import dataservice.managementdataservice.managedataservice.ManageDataService;
+import dataservice.receiptdataservice.CashRepDataService;
+import dataservice.receiptdataservice.InStockRepDataService;
+import dataservice.receiptdataservice.OutStockRepDataService;
 import dataservice.receiptdataservice.PayRepDataService;
 import dataservice.receiptdataservice.ReceiptDataService;
 import dataservice.stockdataservice.StockDataService;
@@ -78,18 +84,23 @@ public class ServerMain {
 			
 			LocateRegistry.createRegistry(1025);
 			PayRepDataService payService = new PayRepData();
-			Naming.rebind("rmi://" + ip + ":" + "1025/payRep", payService);
+			Naming.rebind("rmi://" + ip + ":" + "1025/pay", payService);
 			System.out.println("10");
 			
 			LocateRegistry.createRegistry(1026);
-			PayRepDataService inStockService = new PayRepData();
+			InStockRepDataService inStockService = new InStockRepData();
 			Naming.rebind("rmi://" + ip + ":" + "1026/inStock", inStockService);
 			System.out.println("11");
 			
 			LocateRegistry.createRegistry(1027);
-			PayRepDataService outStockService = new PayRepData();
+			OutStockRepDataService outStockService = new OutStockRepData();
 			Naming.rebind("rmi://" + ip + ":" + "1027/outStock", outStockService);
 			System.out.println("12");
+			
+			LocateRegistry.createRegistry(1028);
+			CashRepDataService cashService = new CashRepData();
+			Naming.rebind("rmi://" + ip + ":" + "1028/cash", cashService);
+			System.out.println("13");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
