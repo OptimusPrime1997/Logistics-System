@@ -24,6 +24,7 @@ import ui.financialstaffui.FinancialStaffJFrame;
 import ui.managerui.ManagerJFrame;
 import ui.util.MyTextField;
 import util.enumData.Authority;
+import util.enumData.City;
 import util.enumData.LogType;
 import util.enumData.Rep;
 import util.enumData.Sex;
@@ -66,7 +67,15 @@ public class ComponentFactory {
 		return authorityjComboBox;
 
 	}
-
+	public static JComboBox<City> getCityJComboBox(){
+		JComboBox<City> cityjComboBox=new JComboBox<City>();
+		cityjComboBox.addItem(City.BEIJING);
+		cityjComboBox.addItem(City.GUANGZHOU);
+		cityjComboBox.addItem(City.SHANGHAI);
+		cityjComboBox.addItem(City.NANJING);
+		return cityjComboBox;
+		
+	}
 	/**
 	 * 得到性别jcombobox
 	 * 

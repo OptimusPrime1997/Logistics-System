@@ -3,9 +3,9 @@ package bl.managementbl.constbl;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.rmi.RemoteException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
-
 
 import bl.managementbl.managedata.ManageData;
 import bl.managementbl.managedata.ManageVOPO;
@@ -48,14 +48,14 @@ public class Constbl {
 		if (constDataService != null) {
 			ResultMessage rmsg = null;
 			try {
-				ArrayList<ConstPO> pos = constDataService.show();
-				if (pos != null) {
-					for (Iterator<ConstPO> t = pos.iterator(); t.hasNext();) {
-						if (t.next().getTwoCities().equals(vo.twoCities)) {
-							return ResultMessage.OVERRIDE_DATA;
-						}
-					}
-				}
+//				ArrayList<ConstPO> pos = constDataService.show();
+//				if (pos != null) {
+//					for (Iterator<ConstPO> t = pos.iterator(); t.hasNext();) {
+//						if (t.next().equals(vo)) {
+//							return ResultMessage.OVERRIDE_DATA;
+//						}
+//					}
+//				}
 				rmsg = constDataService.insert(manageVOPO.voToPO(vo));
 				ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 			} catch (IOException e) {
@@ -64,11 +64,11 @@ public class Constbl {
 				System.out.println("存储文件出错");
 				return ResultMessage.IOFAILED;
 			}
-			catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("系统程序错误");
-			}
+//			catch (ClassNotFoundException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//				System.out.println("系统程序错误");
+//			}
 			return rmsg;
 		} else
 			return ResultMessage.FAILED;
@@ -109,26 +109,22 @@ public class Constbl {
 		manageVOPO.addLog(LogType.DECISION_CONST);
 		if (constDataService != null) {
 			ResultMessage rmsg = ResultMessage.WRONG_DATA;
-			if (VO.twoCities.contains("-") && VO.twoCities.length() < 20) {
-				ConstPO po = manageVOPO.voToPO(VO);
-				try {
-					rmsg = constDataService.delete(po);
-					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					System.out.println("class文件未找到");
-					return ResultMessage.FAILED;
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					System.out.println("读写文件出错");
-					return ResultMessage.IOFAILED;
-				}
-				return rmsg;
-			} else {
-				return ResultMessage.WRONG_FORMAT;
+			ConstPO po = manageVOPO.voToPO(VO);
+			try {
+				rmsg = constDataService.delete(po);
+				ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("class文件未找到");
+				return ResultMessage.FAILED;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("读写文件出错");
+				return ResultMessage.IOFAILED;
 			}
+			return rmsg;
 		} else {
 			return ResultMessage.FAILED;
 		}
@@ -154,12 +150,15 @@ public class Constbl {
 			throw new RemoteException();
 	}
 
-	public ConstVO findByCities(String twoCities) throws FileNotFoundException,
+	public ConstVO findByCities(City city1,City city2) throws FileNotFoundException,
 			ClassNotFoundException, ConstNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DECISION_CONST);
 		if (constDataService != null) {
-			ConstPO findPO = constDataService.findByCities(twoCities);
+			City c1,c2;
+			c1 =City.getCity1(city1, city2);
+			c2 = City.getCity2(city1, city2);
+			ConstPO findPO = constDataService.findByCities(c1,c2);
 			ConstVO findVO = manageVOPO.poToVO(findPO);
 			return findVO;
 		} else {
@@ -167,22 +166,20 @@ public class Constbl {
 		}
 	}
 
-	public double computeFare(City c1, City c2, ShipForm shipForm, double weight)
+	public double computeFare(City city1, City city2, ShipForm shipForm, double weight)
 			throws FileNotFoundException, ClassNotFoundException,
 			ConstNotFoundException, IOException {
-		String twoCities = "";
+		City c1,c2;
 		double result = 0;
-		if (c1.ordinal() < c2.ordinal()) {
-			twoCities = c1.toString() + "-" + c2.toString();
-		} else {
-			twoCities = c2.toString() + "-" + c1.toString();
-		}
-		ConstVO v = findByCities(twoCities);
-		double price=v.priceConst;
-		double distance=v.distanceConst;
-		result=price*shipForm.getRatio()*(weight/1000)*distance;
-		assert(result!=0):("运费计算错误");
-		return result;
+		c1 =City.getCity1(city1, city2);
+		c2 = City.getCity2(city1, city2);
+		ConstVO v = findByCities(c1,c2);
+		double price = v.priceConst;
+		double distance = v.distanceConst;
+		result = price * shipForm.getRatio() * (weight / 1000) * distance;
+		DecimalFormat dcmFmt = new DecimalFormat("0.0");
+		assert (result != 0) : ("运费计算错误");
+		return Double.parseDouble(dcmFmt.format(result));
 	}
 
 	/**
@@ -192,18 +189,14 @@ public class Constbl {
 	 * @return
 	 */
 	public static ResultMessage check(ConstVO vo) {
-		if (vo.twoCities.contains("-") && vo.twoCities.length() < 20) {
-			if (vo.distanceConst >= 30) {
-				if (vo.priceConst > 0) {
-					return ResultMessage.VALID;
-				} else {
-					return ResultMessage.WRONG_DATA;
-				}
+		if (vo.distanceConst >= 30) {
+			if (vo.priceConst > 0) {
+				return ResultMessage.VALID;
 			} else {
 				return ResultMessage.WRONG_DATA;
 			}
 		} else {
-			return ResultMessage.WRONG_FORMAT;
+			return ResultMessage.WRONG_DATA;
 		}
 	}
 

@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import util.CurrentTime;
+import util.enumData.City;
 import util.enumData.GoodsArrivalState;
 import util.enumData.GoodsExpressType;
 import util.enumData.GoodsLogisticState;
@@ -113,9 +114,13 @@ public class Goodsbl {
 
 		try {
 			// TODO 计算运费
-			String cities = vo.receiverAddress.substring(0, 2) + "-" + vo.senderAddress.substring(0, 2);
-			double basicprice = ctr_const.findByCities(cities).priceConst;
-			double distance = ctr_const.findByCities(cities).distanceConst;
+			City city1= City.getCity(vo.receiverAddress.substring(0, 2));
+			City city2=City.getCity(vo.senderAddress.substring(0, 2));
+			City c1,c2;
+			c1 =City.getCity1(city1, city2);
+			c2 = City.getCity2(city1, city2);
+			double basicprice = ctr_const.findByCities(c1,c2).priceConst;
+			double distance = ctr_const.findByCities(c1,c2).distanceConst;
 			if (vo.listNum.length() != 10) {
 				int listNum_part = getGoodsDataService().recordListNum();
 				System.out.println(listNum_part);

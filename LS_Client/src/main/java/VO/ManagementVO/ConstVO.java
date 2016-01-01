@@ -1,25 +1,32 @@
 package VO.ManagementVO;
 
+import PO.ConstPO;
+import util.enumData.City;
+
 public class ConstVO implements Comparable<ConstVO> {
-	public String twoCities;
+	/**
+	 * 按city编号排序
+	 */
+	public City city1;
+	public City city2;
 	public double priceConst;
 	public double distanceConst;
 
-	public ConstVO(String twoCities, double distanceConst, double priceConst) {
+	public ConstVO(City city1,City city2, double distanceConst, double priceConst) {
 		super();
-		this.twoCities = twoCities;
+		this.city1 =City.getCity1(city1, city2);
+		this.city2 = City.getCity2(city1, city2);	
 		this.priceConst = priceConst;
 		this.distanceConst = distanceConst;
 	}
 
 	public int compareTo(ConstVO v) {
-		// TODO Auto-generated method stub
-		return twoCities.compareTo(v.twoCities);
+		return (city1.getIndex())-(v.city1.getIndex());
 	}
 
 	public boolean equals(ConstVO v) {
-		if (twoCities.equals(v.twoCities) && priceConst == v.priceConst
-				&& distanceConst == v.distanceConst) {
+		if (city1==v.city1
+				&&city2==v.city2) {
 			return true;
 		}else {
 			return false;

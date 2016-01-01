@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.City;
 import util.enumData.ResultMessage;
 import Exception.ConstNotFoundException;
 import VO.ManagementVO.ConstVO;
@@ -38,7 +39,10 @@ public class ConstblController implements ConstBLService {
 	}
 
 	@Override
-	public ConstVO findByCities(String twoCities) throws FileNotFoundException, ClassNotFoundException, ConstNotFoundException, IOException {
+	public ConstVO findByCities(City city1,City city2) throws FileNotFoundException, ClassNotFoundException, ConstNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return constbl.findByCities(twoCities);
+		City c1,c2;
+		c1 =City.getCity1(city1, city2);
+		c2 = City.getCity2(city1, city2);
+		return constbl.findByCities(c1,c2);
 	}}

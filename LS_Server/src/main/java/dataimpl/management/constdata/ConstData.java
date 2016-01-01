@@ -6,6 +6,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import util.enumData.City;
 import util.enumData.ResultMessage;
 import Exception.ConstNotFoundException;
 import PO.ConstPO;
@@ -51,7 +52,7 @@ public class ConstData extends UnicastRemoteObject implements ConstDataService {
 			ConstPO p = null;
 			for (int i = 0; i < objects.size(); i++) {
 				p = (ConstPO) objects.get(i);
-				if (p.getTwoCities().equals(po.getTwoCities())) {
+				if (p.equals(po)) {
 					objects.remove((Object) p);
 					objects.add((Object) po);
 					findPO = true;
@@ -81,7 +82,7 @@ public class ConstData extends UnicastRemoteObject implements ConstDataService {
 			ConstPO p = null;
 			for (int i = 0; i < objects.size(); i++) {
 				p = (ConstPO) objects.get(i);
-				if (p.getTwoCities().equals(po.getTwoCities())) {
+				if (p.equals(po)) {
 					findPO = true;
 					objects.remove((Object) p);
 					break;
@@ -115,7 +116,7 @@ public class ConstData extends UnicastRemoteObject implements ConstDataService {
 	}
 
 	@Override
-	public ConstPO findByCities(String cities) throws ConstNotFoundException,
+	public ConstPO findByCities(City city1,City city2) throws ConstNotFoundException,
 			ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		print();
@@ -124,10 +125,14 @@ public class ConstData extends UnicastRemoteObject implements ConstDataService {
 		if (objects == null) {
 			throw new FileNotFoundException();
 		} else {
+			City c1,c2;
+			c1 =City.getCity1(city1, city2);
+			c2 = City.getCity2(city1, city2);
 			ConstPO p = null;
 			for (int i = 0; i < objects.size(); i++) {
 				p = (ConstPO) objects.get(i);
-				if (p.getTwoCities().equals(cities)) {
+				if (p.getCity1()==c1
+						&&p.getCity2()==c2) {
 					exist = p;
 					break;
 				}

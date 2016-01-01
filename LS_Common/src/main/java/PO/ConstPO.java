@@ -2,28 +2,48 @@ package PO;
 
 import java.io.Serializable;
 
+import org.apache.poi.openxml4j.opc.PackageAccess;
+
+import util.enumData.City;
+
 public class ConstPO implements Serializable, Comparable<ConstPO> {
 	public final static long serialVersionUID = 1L;
+	// /**
+	// * 存储两个城市名称并按拼音排序，如：南京-上海 中间横线为中文字符
+	// */
+	// private String twoCities;
 	/**
-	 * 存储两个城市名称并按拼音排序，如：南京-上海 中间横线为中文字符
+	 * city1与city2按城市区号排序
 	 */
-	private String twoCities;
+	private City city1;
+	private City city2;
 	private double priceConst;
 	private double distanceConst;
 
-	public ConstPO(String twoCities, double distanceConst, double priceConst) {
+	public ConstPO(City city1, City city2, double distanceConst,
+			double priceConst) {
 		super();
-		this.twoCities = twoCities;
+		assert (city1.getIndex() != city2.getIndex()) : ("两个城市相同，出现错误");
+		this.city1 = city1.getIndex() < city2.getIndex() ? city1 : city2;
+		this.city2 = city1.getIndex() > city2.getIndex() ? city1 : city2;
 		this.priceConst = priceConst;
 		this.distanceConst = distanceConst;
 	}
 
-	public String getTwoCities() {
-		return twoCities;
+	public City getCity1() {
+		return city1;
 	}
 
-	public void setTwoCities(String twoCities) {
-		this.twoCities = twoCities;
+	public void setCity1(City city1) {
+		this.city1 = city1;
+	}
+
+	public City getCity2() {
+		return city2;
+	}
+
+	public void setCity2(City city2) {
+		this.city2 = city2;
 	}
 
 	public double getPriceConst() {
@@ -42,9 +62,26 @@ public class ConstPO implements Serializable, Comparable<ConstPO> {
 		this.distanceConst = distanceConst;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 * 用于表格显示排序，按编号小的城市编号排序
+	 */
 	@Override
 	public int compareTo(ConstPO p) {
-		return twoCities.compareTo(p.getTwoCities());
+		return (city1.getIndex())-(p.getCity1().getIndex());
+	}
+	/**
+	 * 用于查重比较
+	 * @param p
+	 * @return
+	 */
+	public boolean equals(ConstPO p){
+		if(city1==p.getCity1()
+				&&city2==p.getCity2()){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 }

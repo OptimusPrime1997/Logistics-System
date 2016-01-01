@@ -72,7 +72,7 @@ public class ManageVOPO {
 	}
 
 	public ConstPO voToPO(ConstVO vo) {
-		return new ConstPO(vo.twoCities, vo.priceConst, vo.distanceConst);
+		return new ConstPO(vo.city1,vo.city2, vo.priceConst, vo.distanceConst);
 	}
 
 	public InstitutionPO voToPO(InstitutionVO vo) {
@@ -109,7 +109,7 @@ public class ManageVOPO {
 	}
 
 	public ConstVO poToVO(ConstPO po) {
-		return new ConstVO(po.getTwoCities(), po.getPriceConst(),
+		return new ConstVO(po.getCity1(),po.getCity2(), po.getPriceConst(),
 				po.getDistanceConst());
 	}
 
