@@ -22,6 +22,7 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.FootnotesDocument;
 import blservice.logblservice.LogBLService;
 import ui.financialstaffui.FinancialStaffJFrame;
 import ui.managerui.ManagerJFrame;
+import ui.util.MyTextField;
 import util.enumData.Authority;
 import util.enumData.LogType;
 import util.enumData.Rep;
@@ -147,6 +148,25 @@ public class ComponentFactory {
 		jTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
 	}
 
+	public static void setState(String str, long time,
+			final MyTextField feedback_text) {
+		// TODO Auto-generated method stub
+		feedback_text.setText(str);
+		final Runnable setSateTextFieldText = new Runnable() {
+			public void run() {
+				feedback_text.setText("");
+			}
+		};
+		final ScheduledExecutorService scheduler = Executors
+				.newScheduledThreadPool(1);
+		final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(
+				setSateTextFieldText, time, time, TimeUnit.SECONDS);
+		scheduler.schedule(new Runnable() {
+			public void run() {
+				beeperHandle.cancel(true);
+			}
+		}, time, TimeUnit.SECONDS);
+	}
 	public static void setState(String str, long time, final JLabel statejLabel) {
 		statejLabel.setText(str);
 		final Runnable setSateTextFieldText = new Runnable() {
@@ -213,4 +233,5 @@ public class ComponentFactory {
 	// public static void setColor(JPanel panel){
 	// panel.setBackground(new Color(200, 150, 190, 50));
 	// }
+
 }

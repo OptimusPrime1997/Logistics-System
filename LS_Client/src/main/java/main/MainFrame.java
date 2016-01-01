@@ -6,6 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.rmi.RemoteException;
+import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,9 +23,12 @@ import ui.financialstaffui.FinancialStaffJFrame;
 import ui.managerui.ManagerJFrame;
 import ui.transferCtrOfficerui.transferCtrOfficer_main;
 import ui.util.ButtonType;
+import ui.util.FormatedText;
 import ui.util.MyButton;
+import ui.util.MyFormattedTextFeild;
 import ui.util.MyLabel;
 import ui.util.MyTextField;
+import ui.util.NumOnlyDocument;
 import ui.util.TextType;
 import ui.warehousemanui.WarehousePanel;
 import util.InputCheck;
@@ -32,6 +36,8 @@ import util.enumData.ResultMessage;
 import Exception.GoodsNotFound;
 import VO.GoodsVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
+import bl.logbl.Logbl;
+import bl.loginbl.Loginbl;
 import blservice.goodsblservice.GoodsCheckValidBLService;
 import blservice.goodsblservice.GoodsFindBLService;
 import blservice.loginblservice.LoginBLService;
@@ -61,12 +67,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * Creates new form MainFrame
 	 */
-	
-	
-	
-	
-	
-	
+
 	public MainFrame() {
 		ctr_checkValid = ControllerFactoryImpl.getInstance()
 				.getGoodsCheckController();
@@ -99,7 +100,8 @@ public class MainFrame extends JFrame {
 		contentPane = new JPanel() {
 			@Override
 			protected void paintComponent(Graphics g) {
-				g.drawImage(Img.getBackground_login(), 0, 0, width, height, null);
+				g.drawImage(Img.getBackground_login(), 0, 0, width, height,
+						null);
 			}
 		};
 		contentPane.setOpaque(true);
@@ -112,25 +114,26 @@ public class MainFrame extends JFrame {
 	}
 
 	private void initLabel() {
-		account_label = new MyLabel("账号",255, 132, 30, 15);
-		key_label = new MyLabel("密码",255, 177, 30, 15);
+		account_label = new MyLabel("账号", 255, 132, 30, 15);
+		key_label = new MyLabel("密码", 255, 177, 30, 15);
 	}
 
 	private void initTxt() {
-		//创建对象
-		goodsNum_text = new MyTextField(TextType.INPUT,40, 135, 100, 30);
-		IP_text=new MyTextField(TextType.INPUT,40, 210, 100, 30);
-		account_text = new MyTextField(TextType.INPUT,290, 125, 100, 30);
+		// 创建对象
+		goodsNum_text = new MyTextField(TextType.INPUT, 40, 135, 100, 30);
+		IP_text = new MyFormattedTextFeild(FormatedText.IP, 40, 210, 100, 30);
+		account_text = new MyFormattedTextFeild(11, 290, 125, 100, 30);
+		account_text.setDocument(new NumOnlyDocument());
 		password_text = new javax.swing.JPasswordField(6);
 		feedback_text = new MyTextField(TextType.FEEDBACK, 30, 255, 400, 30);
-		//设为透明
-//		goodsNum_text.setOpaque(false);
-//		IP_text.setOpaque(false);
-//		account_text.setOpaque(false);
-//		password_text.setOpaque(false);
-//		feedback_text.setOpaque(false);
-		
-		//设置位置、大小
+		// 设为透明
+		// goodsNum_text.setOpaque(false);
+		// IP_text.setOpaque(false);
+		// account_text.setOpaque(false);
+		// password_text.setOpaque(false);
+		// feedback_text.setOpaque(false);
+
+		// 设置位置、大小
 		password_text.setBounds(290, 170, 100, 30);
 		IP_text.setText(standard_ip);
 		goodsNum_text.setText(standard_goodsNum);
@@ -139,7 +142,7 @@ public class MainFrame extends JFrame {
 				goodsNum_textMouseClicked(evt);
 			}
 		});
-		
+
 		IP_text.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				IP_textMouseClicked(evt);
@@ -149,10 +152,10 @@ public class MainFrame extends JFrame {
 	}
 
 	private void initbtn() {
-		search_btn = new MyButton(150, 135,ButtonType.SEARCH);
-		login_btn = new MyButton(320, 210,ButtonType.LOGIN);
-		exit_btn=new MyButton(410,7,ButtonType.EXIT);
-		ip_btn=new MyButton(150,210);
+		search_btn = new MyButton(150, 135, ButtonType.SEARCH);
+		login_btn = new MyButton(320, 210, ButtonType.LOGIN);
+		exit_btn = new MyButton(410, 7, ButtonType.EXIT);
+		ip_btn = new MyButton(150, 210);
 
 		login_btn.addMouseListener(new MouseAdapter() {
 			@Override
@@ -172,6 +175,13 @@ public class MainFrame extends JFrame {
 				exit_btnMouseClicked();
 			}
 		});
+		ip_btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ip_btnMouseClicked();
+			}
+
+		});
 	}
 
 	/**
@@ -180,6 +190,26 @@ public class MainFrame extends JFrame {
 
 	private void exit_btnMouseClicked() {
 		System.exit(0);
+	}
+
+	private void ip_btnMouseClicked() {
+		// TODO Auto-generated method stub
+		String ip = IP_text.getText();
+		if (checkIP(ip)) {
+			Loginbl.setIP(ip);
+			ComponentFactory.setState("服务器ip设置成功", 3,
+					feedback_text);
+		}else{
+			ComponentFactory.setState("ip地址不合法，请修改", ComponentFactory.DISPLAY_TIME,
+					feedback_text);
+		}
+	}
+
+	private boolean checkIP(String str) {
+		Pattern pattern = Pattern
+				.compile("^((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]"
+						+ "|[*])\\.){3}(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]|[*])$");
+		return pattern.matcher(str).matches();
 	}
 
 	/**
@@ -290,9 +320,8 @@ public class MainFrame extends JFrame {
 		}
 	}
 
-
 	private void IP_textMouseClicked(MouseEvent evt) {
-		
+		IP_text.setText("");
 	}
 
 	private void initLayout() {
@@ -315,22 +344,25 @@ public class MainFrame extends JFrame {
 	private void showFeedback(ResultMessage msg) {
 		this.feedback_text.setText(ResultMessage.toFriendlyString(msg));
 	}
-/**
- * 整个程序的Main
- * @param args
- */
+
+	/**
+	 * 整个程序的Main
+	 * 
+	 * @param args
+	 */
 	public static void main(String args[]) {
 		new MainFrame();
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private MyTextField account_text, feedback_text, goodsNum_text,IP_text;
+	private MyTextField feedback_text, goodsNum_text;
 	private JPasswordField password_text;
-	final String standard_goodsNum = "输入订单号10位",standard_ip="输入ip地址";
+	private MyFormattedTextFeild IP_text, account_text;
+	final String standard_goodsNum = "输入订单号10位", standard_ip = "输入ip地址";
 	String ip;
 	private String password, goodsNum, account;
-	private MyButton search_btn, login_btn, exit_btn,ip_btn;
-	private MyLabel account_label,key_label;
+	private MyButton search_btn, login_btn, exit_btn, ip_btn;
+	private MyLabel account_label, key_label;
 	private JPanel contentPane;
 	private GoodsVO vo;
 	private GoodsCheckValidBLService ctr_checkValid;

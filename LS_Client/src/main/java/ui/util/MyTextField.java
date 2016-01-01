@@ -26,7 +26,6 @@ public class MyTextField extends JTextField{
 		default:
 			break;
 		}
-		
 	}
 
 }

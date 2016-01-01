@@ -727,7 +727,9 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		logjTable.getTableHeader().setReorderingAllowed(false);
 
 		ComponentFactory.setJTableTextCenter(logjTable);
+		logjTable.setEnabled(false);
 		jScrollPane4.setViewportView(logjTable);
+		
 
 	}
 
@@ -2164,7 +2166,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	private void setLogVOs(String startTime, String endTime, LogType type) {
 		logVOs = getLogVOs(startTime, endTime, type);
 		if (logVOs != null) {
-			System.out.println("得到的log数据：" + logVOs.size());
+//			System.out.println("得到的log数据：" + logVOs.size());
 		} else {
 			System.out.println("得到的log数据为空!");
 		}
