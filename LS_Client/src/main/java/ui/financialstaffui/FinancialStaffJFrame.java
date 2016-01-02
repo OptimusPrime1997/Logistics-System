@@ -142,7 +142,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGap(0, 180, Short.MAX_VALUE));
 
-		paymentjButton.setText("生成付款单");
+//		paymentjButton.setText("生成付款单");
 		paymentjButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				paymentjButtonActionPerformed(evt);
@@ -616,7 +616,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		// TODO Auto-generated method stub
 		logjPanel.setPreferredSize(new Dimension(850,460));
 
-		findLogjButton.setText("查找");
+//		findLogjButton.setText("查找");
 		findLogjButton.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				findLogjButtonMouseClicked(evt);
@@ -877,7 +877,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	private void initialFormJpanel() {
 		// TODO Auto-generated method stub
 		formjPanel.setPreferredSize(new java.awt.Dimension(850, 460));
-		viewProfitFormjButton.setText("查看成本收益表");
+//		viewProfitFormjButton.setText("查看成本收益表");
 		viewProfitFormjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -885,7 +885,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 					}
 				});
 
-		viewManageForm.setText("查看经营情况表");
+//		viewManageForm.setText("查看经营情况表");
 		viewManageForm.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				viewManageFormMouseClicked(evt);
@@ -1193,7 +1193,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		// TODO Auto-generated method stub
 		bankAccountjPanel.setPreferredSize(new java.awt.Dimension(850, 460));
 
-		addBankAccountjButton.setText("增加银行账户");
+//		addBankAccountjButton.setText("增加银行账户");
 		addBankAccountjButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -1214,7 +1214,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 					}
 				});
 
-		findBankAccountNumjButton.setText("查找");
+//		findBankAccountNumjButton.setText("查找");
 		findBankAccountNumjButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -1752,22 +1752,22 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		paymentIconjPanel.setPreferredSize(new Dimension(200,200));
 		paymentIconjPanel.setBackground(ComponentFactory.transparent);
 		
-		paymentjButton = new javax.swing.JButton();
-		paymentjButton.setBackground(ComponentFactory.buttonColor);
+		paymentjButton = new MyButton(ButtonType.PAY_REP);
+//		paymentjButton.setBackground(ComponentFactory.buttonColor);
 		
 		bankAccountjPanel = new javax.swing.JPanel();
 		bankAccountjPanel.setBackground(ComponentFactory.panelColor);
 		
-		addBankAccountjButton = new javax.swing.JButton();
-		addBankAccountjButton.setBackground(ComponentFactory.buttonColor);
+		addBankAccountjButton = new MyButton(ButtonType.NEW_BANK_ACCOUNT);
+//		addBankAccountjButton.setBackground(ComponentFactory.buttonColor);
 		
 		bankAccountTitlejLabel = new javax.swing.JLabel();
 		bankAccountNumjLabel = new javax.swing.JLabel();
 		findBankAccountNumjTextField = new javax.swing.JTextField();
 		findBankAccountNumjTextField.setDocument(new NumOnlyDocument());
 		
-		findBankAccountNumjButton = new javax.swing.JButton();
-		findBankAccountNumjButton.setBackground(ComponentFactory.buttonColor);
+		findBankAccountNumjButton =new MyButton(ButtonType.SEARCH_ACCOUNT);
+//		findBankAccountNumjButton.setBackground(ComponentFactory.buttonColor);
 		
 		bankAccountNamejLabel = new javax.swing.JLabel();
 		findBankAccountNamejTextField = new javax.swing.JTextField();
@@ -1783,11 +1783,11 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		formjPanel = new javax.swing.JPanel();
 		formjPanel.setBackground(ComponentFactory.panelColor);
 		
-		viewProfitFormjButton = new javax.swing.JButton();
-		viewProfitFormjButton.setBackground(ComponentFactory.buttonColor);
+		viewProfitFormjButton =new MyButton(ButtonType.FORM_PROFIT);
+//		viewProfitFormjButton.setBackground(ComponentFactory.buttonColor);
 		
-		viewManageForm = new javax.swing.JButton();
-		viewManageForm.setBackground(ComponentFactory.buttonColor);
+		viewManageForm =new MyButton(ButtonType.FORM_BUSINESS);
+//		viewManageForm.setBackground(ComponentFactory.buttonColor);
 		
 		formEYearjLabel = new javax.swing.JLabel();
 		formEMonthjLabel = new javax.swing.JLabel();
@@ -1819,8 +1819,8 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		logjPanel = new javax.swing.JPanel();
 		logjPanel.setBackground(ComponentFactory.panelColor);
 		
-		findLogjButton = new javax.swing.JButton();
-		findLogjButton.setBackground(ComponentFactory.buttonColor);
+		findLogjButton = new MyButton(ButtonType.SEARCH);
+//		findLogjButton.setBackground(ComponentFactory.buttonColor);
 		
 		logSDatejLabel = new javax.swing.JLabel();
 		logSYearjLabel = new javax.swing.JLabel();
@@ -2208,7 +2208,6 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	private Dimension dimension;
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JLabel accountNamejLabel;
-	private javax.swing.JButton addBankAccountjButton;
 	private javax.swing.JLabel bankAccountNamejLabel;
 	private javax.swing.JTextField findBankAccountNamejTextField;
 	private javax.swing.JLabel bankAccountNumjLabel;
@@ -2218,14 +2217,11 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	private javax.swing.JTable bankAccountjTable;
 	private javax.swing.JLabel currentAccountNumjLabel;
 	private javax.swing.JLabel currentAuthorityjLabel;
-	private javax.swing.JButton exitjButton;
 	private javax.swing.JTabbedPane finacialjTabbedPane;
 	private javax.swing.JPanel financialManagejPanel;
 	private javax.swing.JPanel financialjPanel;
 	private javax.swing.JLabel financilManageTitlejLabel;
 	private javax.swing.JButton findBankAccountNamejButton;
-	private javax.swing.JButton findBankAccountNumjButton;
-	private javax.swing.JButton findLogjButton;
 	private javax.swing.JLabel formDeadLinejLabel;
 	private javax.swing.JComboBox formEDatejComboBox;
 	private javax.swing.JLabel formEDatejLabel;
@@ -2237,7 +2233,6 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	private javax.swing.JPanel formjPanel;
 	private javax.swing.JPanel initialFinaceIconjpanel;
 	private javax.swing.JLabel initialFinanceTitlejLabel;
-	private javax.swing.JButton initialFinancejButton;
 	private javax.swing.JLabel topTitlejLabel;
 	private javax.swing.JPanel jPanel6;
 	private javax.swing.JScrollPane jScrollPane1;
@@ -2266,13 +2261,19 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	private javax.swing.JTable logjTable;
 	private javax.swing.JPanel manageFormIcon;
 	private javax.swing.JPanel newFinanceIconjPanel;
-	private javax.swing.JButton newFinancejButton;
 	private javax.swing.JPanel paymentIconjPanel;
-	private javax.swing.JButton paymentjButton;
 	private javax.swing.JPanel profitFormIcon;
 	private javax.swing.JLabel stateTitlejLabel;
 	private javax.swing.JLabel statejLabel;
-	private javax.swing.JButton viewManageForm;
+	
+	private javax.swing.JButton paymentjButton;//
+	private javax.swing.JButton newFinancejButton;//期初建账，未实现
+	private javax.swing.JButton initialFinancejButton;//期初建账，未实现
+	private javax.swing.JButton addBankAccountjButton;//
+	private javax.swing.JButton exitjButton;//退出按钮
+	private javax.swing.JButton findBankAccountNumjButton;//
+	private javax.swing.JButton findLogjButton;//
+	private javax.swing.JButton viewManageForm;//
 	private javax.swing.JButton viewProfitFormjButton;
 	// End of variables declaration//GEN-END:variables
 	/**

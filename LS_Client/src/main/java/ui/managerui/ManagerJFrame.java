@@ -239,7 +239,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		logjPanel.setPreferredSize(new java.awt.Dimension(830, 455));
 
-		findLogjButton.setText("查找");
+//		findLogjButton.setText("查找");
 		findLogjButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				findLogjButtonActionPerformed(evt);
@@ -408,7 +408,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		formjPanel.setName("formView"); // NOI18N
 		formjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
 
-		profitFormjButton.setText("成本收益表");
+//		profitFormjButton.setText("成本收益表");
 		profitFormjButton.setName("profitFrom"); // NOI18N
 		profitFormjButton
 				.addActionListener(new java.awt.event.ActionListener() {
@@ -417,7 +417,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-		manageStateFormjButton.setText("经营情况表");
+//		manageStateFormjButton.setText("经营情况表");
 		manageStateFormjButton.setName("businessFrom"); // NOI18N
 		manageStateFormjButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -513,7 +513,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-		findAccountNamejButton.setText("姓名查找");
+//		findAccountNamejButton.setText("姓名查找");
 		findAccountNamejButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -537,7 +537,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-		findAccountNumjButton.setText("账号查找");
+//		findAccountNumjButton.setText("账号查找");
 		findAccountNumjButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -576,7 +576,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-		findInstitutionNumjButton.setText("编号查找");
+//		findInstitutionNumjButton.setText("编号查找");
 		findInstitutionNumjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -594,7 +594,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-		findInstitutionNamejButton.setText("名称查找");
+//		findInstitutionNamejButton.setText("名称查找");
 		findInstitutionNamejButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -606,7 +606,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jLabel15.setText("机构信息");
 
 		initialInstitutionJTable(institutionVOPlus, 0);
-		addInstitutionjButton.setText("添加新机构");
+//		addInstitutionjButton.setText("添加新机构");
 		addInstitutionjButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -614,7 +614,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-		submitInstitutionjButton.setText("提交");
+//		submitInstitutionjButton.setText("提交");
 		// submitInstitutionjButton.setColor(new Color(200,150,190));
 		submitInstitutionjButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2062,7 +2062,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	 */
 	private void initialSalayPolicyjPanel() {
 		// TODO Auto-generated method stub
-		submitSalaryPolicyjButton.setText("提交");
+//		submitSalaryPolicyjButton.setText("提交");
 		submitSalaryPolicyjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2072,7 +2072,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		initialSalaryPolicyJTable(salaryPolicyVOPlus, 0);
 
-		addSalaryPolicyjButton.setText("添加薪水策略");
+//		addSalaryPolicyjButton.setText("添加薪水策略");
 		addSalaryPolicyjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2092,14 +2092,14 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	 */
 	private void initialConstjPanel() {
 		// TODO Auto-generated method stub
-		addConstjButton.setText("添加距离常量");
+//		addConstjButton.setText("添加距离常量");
 		addConstjButton.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseReleased(java.awt.event.MouseEvent evt) {
 				addConstjButton1MouseReleased(evt);
 			}
 		});
 
-		submitConstjButton.setText("提交");
+//		submitConstjButton.setText("提交");
 		submitConstjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2168,11 +2168,11 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jButton5 = new javax.swing.JButton();
 		jButton5.setBackground(ComponentFactory.buttonColor);
 
-		addConstjButton = new javax.swing.JButton();
-		addConstjButton.setBackground(ComponentFactory.buttonColor);
+		addConstjButton = new MyButton(ButtonType.NEW_DISTANCE);
+//		addConstjButton.setBackground(ComponentFactory.buttonColor);
 
-		submitConstjButton = new javax.swing.JButton();
-		submitConstjButton.setBackground(ComponentFactory.buttonColor);
+		submitConstjButton = new MyButton(ButtonType.SUBMIT);
+//		submitConstjButton.setBackground(ComponentFactory.buttonColor);
 
 		jScrollPane2 = new javax.swing.JScrollPane();
 		jScrollPane2.setBackground(ComponentFactory.panelColor);
@@ -2188,15 +2188,15 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jButton6 = new javax.swing.JButton();
 		jButton6.setBackground(ComponentFactory.buttonColor);
 
-		submitSalaryPolicyjButton = new javax.swing.JButton();
-		submitSalaryPolicyjButton.setBackground(ComponentFactory.buttonColor);
+		submitSalaryPolicyjButton = new MyButton(ButtonType.SUBMIT);
+//		submitSalaryPolicyjButton.setBackground(ComponentFactory.buttonColor);
 
 		jScrollPane5 = new javax.swing.JScrollPane();
 		jScrollPane5.setBackground(ComponentFactory.panelColor);
 
 		salaryPolicyjTable = new javax.swing.JTable();
-		addSalaryPolicyjButton = new javax.swing.JButton();
-		addSalaryPolicyjButton.setBackground(ComponentFactory.buttonColor);
+		addSalaryPolicyjButton =new MyButton(ButtonType.NEW_SALARY);
+//		addSalaryPolicyjButton.setBackground(ComponentFactory.buttonColor);
 
 		salaryPolicyTitlejLabel = new javax.swing.JLabel();
 
@@ -2221,15 +2221,15 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		institutionNumjTextField = new javax.swing.JTextField();
 		institutionNumjTextField.setDocument(new NumOnlyDocument());
 
-		findInstitutionNumjButton = new javax.swing.JButton();
-		findInstitutionNumjButton.setBackground(ComponentFactory.buttonColor);
+		findInstitutionNumjButton = new MyButton(ButtonType.SEARCH_NUMBER);
+//		findInstitutionNumjButton.setBackground(ComponentFactory.buttonColor);
 
 		jLabel13 = new javax.swing.JLabel();
 
 		findInstitutionNamejTextField = new javax.swing.JTextField();
 
-		findInstitutionNamejButton = new javax.swing.JButton();
-		findInstitutionNamejButton.setBackground(ComponentFactory.buttonColor);
+		findInstitutionNamejButton = new MyButton(ButtonType.SEARCH_NAME);
+//		findInstitutionNamejButton.setBackground(ComponentFactory.buttonColor);
 
 		jLabel15 = new javax.swing.JLabel();
 
@@ -2238,11 +2238,11 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		institutionjTable = new javax.swing.JTable();
 
-		addInstitutionjButton = new javax.swing.JButton();
-		addInstitutionjButton.setBackground(ComponentFactory.buttonColor);
+		addInstitutionjButton = new MyButton(ButtonType.NEW_INSTITUTE);
+//		addInstitutionjButton.setBackground(ComponentFactory.buttonColor);
 
 		submitInstitutionjButton = new javax.swing.JButton();
-		submitInstitutionjButton.setBackground(ComponentFactory.buttonColor);
+//		submitInstitutionjButton.setBackground(ComponentFactory.buttonColor);
 
 		accountjPanel = new javax.swing.JPanel();
 		accountjPanel.setBackground(ComponentFactory.panelColor);
@@ -2250,15 +2250,15 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jLabel19 = new javax.swing.JLabel();
 		accountNamejTextField = new javax.swing.JTextField();
 
-		findAccountNamejButton = new javax.swing.JButton();
-		findAccountNamejButton.setBackground(ComponentFactory.buttonColor);
+		findAccountNamejButton = new MyButton(ButtonType.SEARCH_PERSON_NAME);
+//		findAccountNamejButton.setBackground(ComponentFactory.buttonColor);
 
 		jLabel9 = new javax.swing.JLabel();
 
 		accountNumjTextField = new javax.swing.JTextField();
 		accountNumjTextField.setDocument(new NumOnlyDocument());
 
-		findAccountNumjButton = new javax.swing.JButton();
+		findAccountNumjButton = new MyButton(ButtonType.SEARCH_ACCOUNT);
 		findAccountNumjButton.setBackground(ComponentFactory.buttonColor);
 
 		jLabel11 = new javax.swing.JLabel();
@@ -2271,11 +2271,11 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		formjPanel = new javax.swing.JPanel();
 		formjPanel.setBackground(ComponentFactory.panelColor);
 
-		profitFormjButton = new javax.swing.JButton();
-		profitFormjButton.setBackground(ComponentFactory.buttonColor);
+		profitFormjButton = new MyButton(ButtonType.FORM_PROFIT);
+//		profitFormjButton.setBackground(ComponentFactory.buttonColor);
 
-		manageStateFormjButton = new javax.swing.JButton();
-		manageStateFormjButton.setBackground(ComponentFactory.buttonColor);
+		manageStateFormjButton = new MyButton(ButtonType.FORM_BUSINESS);
+//		manageStateFormjButton.setBackground(ComponentFactory.buttonColor);
 
 		jLabel30 = new javax.swing.JLabel();
 		jLabel31 = new javax.swing.JLabel();
@@ -2292,7 +2292,8 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		logjPanel = new javax.swing.JPanel();
 		logjPanel.setBackground(ComponentFactory.panelColor);
 
-		findLogjButton = new javax.swing.JButton();
+		findLogjButton =new MyButton(ButtonType.SEARCH);
+		
 		jLabel36 = new javax.swing.JLabel();
 		jLabel37 = new javax.swing.JLabel();
 		jLabel38 = new javax.swing.JLabel();
@@ -4062,10 +4063,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private javax.swing.JTextField accountNumjTextField;
 	private javax.swing.JTable accountjTable;
 	private javax.swing.JPanel accountjPanel;
-	private javax.swing.JButton addConstjButton;
-	private javax.swing.JButton addInstitutionjButton;
-	private javax.swing.JButton submitSalaryPolicyjButton;
-	private javax.swing.JButton addSalaryPolicyjButton;
 	private javax.swing.JPanel checkjPane;
 	private javax.swing.JLabel constTitlejLabel;
 	private javax.swing.JPanel constjPanel;
@@ -4074,11 +4071,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private javax.swing.JLabel currentAccoutNamejLabel;
 	private javax.swing.JLabel currentAuthorityjLabel;
 	private javax.swing.JTable documentCheckjTable;
-	private javax.swing.JButton findAccountNamejButton;
-	private javax.swing.JButton findAccountNumjButton;
-	private javax.swing.JButton findInstitutionNumjButton;
-	private javax.swing.JButton findInstitutionNamejButton;
-	private javax.swing.JButton findLogjButton;
 	private javax.swing.JComboBox formEDatejComboBox;
 	private javax.swing.JComboBox formEMonthjComboBox;
 	private javax.swing.JComboBox formEYearjComboBox;
@@ -4086,10 +4078,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private javax.swing.JTextField institutionNumjTextField;
 	private javax.swing.JPanel institutionjPanel;
 	private javax.swing.JTable institutionjTable;
-	private javax.swing.JButton exitjButton;
-	private javax.swing.JButton jButton3;
-	private javax.swing.JButton jButton5;
-	private javax.swing.JButton jButton6;
 	private javax.swing.JLabel jLabel11;
 	private javax.swing.JLabel jLabel12;
 	private javax.swing.JLabel jLabel13;
@@ -4138,17 +4126,30 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private javax.swing.JComboBox<LogType> logTypejComboBox;
 	private javax.swing.JPanel logjPanel;
 	private javax.swing.JTable logjTable;
-	private javax.swing.JButton manageStateFormjButton;
+	private javax.swing.JLabel salaryPolicyTitlejLabel;
 	private javax.swing.JPanel managerjPanel;
 	private javax.swing.JTabbedPane managerjTabbedPane;
-	private javax.swing.JButton outputFormjButton;
-	private javax.swing.JButton profitFormjButton;
-	private javax.swing.JLabel salaryPolicyTitlejLabel;
 	private javax.swing.JPanel salaryPolicyjPane1;
 	private javax.swing.JTable salaryPolicyjTable;
 	private javax.swing.JLabel statejLabel;
-	private javax.swing.JButton submitConstjButton;
-	private javax.swing.JButton submitInstitutionjButton;
+	private javax.swing.JButton addConstjButton;//
+	private javax.swing.JButton addInstitutionjButton;//
+	private javax.swing.JButton submitSalaryPolicyjButton;//
+	private javax.swing.JButton addSalaryPolicyjButton;//
+	private javax.swing.JButton findAccountNamejButton;//
+	private javax.swing.JButton findAccountNumjButton;//
+	private javax.swing.JButton findInstitutionNumjButton;//
+	private javax.swing.JButton findInstitutionNamejButton;//
+	private javax.swing.JButton findLogjButton;//
+	private javax.swing.JButton exitjButton;//退出 
+	private javax.swing.JButton jButton3;
+	private javax.swing.JButton jButton5;
+	private javax.swing.JButton jButton6;
+	private javax.swing.JButton manageStateFormjButton;//
+	private javax.swing.JButton outputFormjButton;//未使用
+	private javax.swing.JButton profitFormjButton;//
+	private javax.swing.JButton submitConstjButton;//
+	private javax.swing.JButton submitInstitutionjButton;//
 	// End of variables declaration//GEN-END:variables
 	/**
 	 * 远程连接失败！
