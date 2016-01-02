@@ -26,7 +26,6 @@ public class MyButton extends JButton{
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		setIcon(Img.getButton0());
-		
 		setRolloverIcon(Img.getButton_over());
 		setBounds(x, y, Img.getButton0().getIconWidth(), Img.getButton0().getIconHeight());
 	}
@@ -35,8 +34,6 @@ public class MyButton extends JButton{
 		setMargin(new Insets(0, 0, 0, 0));
 		setContentAreaFilled(false);
 		setBorderPainted(false);
-//		setIcon(Img.getExit_btn());
-//		setRolloverIcon(Img.getExit_btn_pressed());
 		switch(type){
 		case STOCK_IN:
 			setIcon(Img.getStockIn());
@@ -110,6 +107,43 @@ public class MyButton extends JButton{
 			setIcon(Img.getBack_btn());
 			setRolloverIcon(Img.getBack_btn_pressed());
 			break;
+			//TODO
+		case FORM_BUSINESS:
+			setIcon(Img.getFormBusiness_btn());
+			setRolloverIcon(Img.getFormBusiness_btn_pressed());
+		case FORM_PROFIT:
+			setIcon(Img.getFormProfit_btn());
+			setRolloverIcon(Img.getFormProfit_btn_pressed());
+		case NEW_BANK_ACCOUNT:
+			setIcon(Img.getNewBankAccount_btn());
+			setRolloverIcon(Img.getNewBankAccount_btn_pressed());
+		case NEW_DISTANCE:
+			setIcon(Img.getNewDistance_btn());
+			setRolloverIcon(Img.getNewDistance_btn_pressed());
+		case NEW_INSTITUTE:
+			setIcon(Img.getNewInstitute_btn());
+			setRolloverIcon(Img.getNewInstitute_btn_pressed());
+		case NEW_SALARY:
+			setIcon(Img.getNewSalary_btn());
+			setRolloverIcon(Img.getNewSalary_btn_pressed());
+		case PAY_REP:
+			setIcon(Img.getPayRep_btn());
+			setRolloverIcon(Img.getPayRep_btn_pressed());
+		case SEARCH_ACCOUNT:
+			setIcon(Img.getSearchAccount_btn());
+			setRolloverIcon(Img.getSearchAccount_btn_pressed());
+		case SEARCH_NAME:
+			setIcon(Img.getSearchName_btn());
+			setRolloverIcon(Img.getSearchName_btn_pressed());
+		case SEARCH_NUMBER:
+			setIcon(Img.getSearchNumber_btn());
+			setRolloverIcon(Img.getSearchNumber_btn_pressed());
+		case SEARCH_PERSON_NAME:
+			setIcon(Img.getSearchPersonName_btn());
+			setRolloverIcon(Img.getSearchPersonName_btn_pressed());
+		case SUBMIT:
+			setIcon(Img.getSubmit_btn());
+			setRolloverIcon(Img.getSubmit_btn_pressed());
 		}			
 	}
 	public MyButton(int x,int y,ButtonType type){

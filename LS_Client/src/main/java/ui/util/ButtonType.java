@@ -12,6 +12,35 @@ public enum ButtonType {
 	STOCK_SHOW,
 	STOCK_CHANGE,
 	
+	/**
+	 * 财务人员的
+	 */
+	FORM_BUSINESS,
+	FORM_PROFIT,
+	/**
+	 * 生成付款单
+	 */
+	PAY_REP,
+	NEW_BANK_ACCOUNT,
+	NEW_DISTANCE,
+	NEW_SALARY,
+	NEW_INSTITUTE,
+	/**
+	 * 名称查找
+	 */
+	SEARCH_NAME,
+	/**
+	 * 编号查找
+	 */
+	SEARCH_NUMBER,
+	/**
+	 * 姓名查找
+	 */
+	SEARCH_PERSON_NAME,
+	SEARCH_ACCOUNT,
+	
+	SUBMIT,
+	
 	ADD,
 	/**
 	 * 确定

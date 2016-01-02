@@ -22,8 +22,44 @@ public class Img {
 	private static Image form_profit_img=new ImageIcon("pic/img/profit.png").getImage();
 	private static Image payRep_img=new ImageIcon("pic/img/pay.png").getImage();
 	
-	private static ImageIcon ok_btn=new ImageIcon("pic/btn/btn_ok.png");
-	private static ImageIcon ok_btn_pressed=new ImageIcon("pic/btn/btn_ok_pressed.png");
+	private static ImageIcon formBusiness_btn=new ImageIcon("pic/btn/formBusiness_btn.png");
+	private static ImageIcon formBusiness_btn_pressed=new ImageIcon("pic/btn/formBusiness_btn_pressed.png");
+	
+	private static ImageIcon formProfit_btn=new ImageIcon("pic/btn/formProfit_btn.png");
+	private static ImageIcon formProfit_btn_pressed=new ImageIcon("pic/btn/formProfit_btn_pressed.png");
+	
+	private static ImageIcon payRep_btn=new ImageIcon("pic/btn/payRep_btn.png");
+	private static ImageIcon payRep_btn_pressed=new ImageIcon("pic/btn/payRep_btn_pressed.png");
+	
+	private static ImageIcon newBankAccount_btn=new ImageIcon("pic/btn/newBankAccount_btn.png");
+	private static ImageIcon newBankAccount_btn_pressed=new ImageIcon("pic/btn/newBankAccount_btn_pressed.png");
+	
+	private static ImageIcon newDistance_btn=new ImageIcon("pic/btn/newDistance_btn.png");
+	private static ImageIcon newDistance_btn_pressed=new ImageIcon("pic/btn/newDistance_btn_pressed.png");
+	
+	private static ImageIcon newSalary_btn=new ImageIcon("pic/btn/newSalary_btn.png");
+	private static ImageIcon newSalary_btn_pressed=new ImageIcon("pic/btn/newSalary_btn_pressed.png");
+	
+	private static ImageIcon newInstitute_btn=new ImageIcon("pic/btn/newInstitute_btn.png");
+	private static ImageIcon newInstitute_btn_pressed=new ImageIcon("pic/btn/newInstitute_btn_pressed.png");
+	
+	private static ImageIcon searchName_btn=new ImageIcon("pic/btn/searchName_btn.png");
+	private static ImageIcon searchName_btn_pressed=new ImageIcon("pic/btn/searchName_btn_pressed.png");
+	
+	private static ImageIcon searchNumber_btn=new ImageIcon("pic/btn/searchNumber_btn.png");
+	private static ImageIcon searchNumber_btn_pressed=new ImageIcon("pic/btn/searchNumber_btn_pressed.png");
+	
+	private static ImageIcon searchPersonName_btn=new ImageIcon("pic/btn/searchPersonName_btn.png");
+	private static ImageIcon searchPersonName_btn_pressed=new ImageIcon("pic/btn/searchPersonName_btn_pressed.png");
+	
+	private static ImageIcon searchAccount_btn=new ImageIcon("pic/btn/searchAccount_btn.png");
+	private static ImageIcon searchAccount_btn_pressed=new ImageIcon("pic/btn/searchAccount_btn_pressed.png");
+	
+	private static ImageIcon submit_btn=new ImageIcon("pic/btn/submit_btn.png");
+	private static ImageIcon submit_btn_pressed=new ImageIcon("pic/btn/submit_btn_pressed.png");
+	
+	private static ImageIcon ok_btn=new ImageIcon("pic/btn/ok_btn.png");
+	private static ImageIcon ok_btn_pressed=new ImageIcon("pic/btn/ok_btn_pressed.png");
 	
 	private static ImageIcon add_btn=new ImageIcon("pic/btn/add_btn.png");
 	private static ImageIcon add_btn_pressed=new ImageIcon("pic/btn/add_btn_pressed.png");
@@ -140,6 +176,121 @@ public class Img {
 
 	public static ImageIcon getBack_btn_pressed() {
 		return back_btn_pressed;
+	}
+	
+	
+	
+
+	public static ImageIcon getFormBusiness_btn() {
+		return formBusiness_btn;
+	}
+
+	public static ImageIcon getFormBusiness_btn_pressed() {
+		return formBusiness_btn_pressed;
+	}
+
+	public static ImageIcon getFormProfit_btn() {
+		return formProfit_btn;
+	}
+
+	public static ImageIcon getFormProfit_btn_pressed() {
+		return formProfit_btn_pressed;
+	}
+
+	public static ImageIcon getPayRep_btn() {
+		return payRep_btn;
+	}
+
+	public static ImageIcon getPayRep_btn_pressed() {
+		return payRep_btn_pressed;
+	}
+
+	public static ImageIcon getNewBankAccount_btn() {
+		return newBankAccount_btn;
+	}
+
+	public static ImageIcon getNewBankAccount_btn_pressed() {
+		return newBankAccount_btn_pressed;
+	}
+
+	public static ImageIcon getNewDistance_btn() {
+		return newDistance_btn;
+	}
+
+	public static ImageIcon getNewDistance_btn_pressed() {
+		return newDistance_btn_pressed;
+	}
+
+	public static ImageIcon getNewSalary_btn() {
+		return newSalary_btn;
+	}
+
+	public static ImageIcon getNewSalary_btn_pressed() {
+		return newSalary_btn_pressed;
+	}
+
+	public static ImageIcon getNewInstitute_btn() {
+		return newInstitute_btn;
+	}
+
+	public static ImageIcon getNewInstitute_btn_pressed() {
+		return newInstitute_btn_pressed;
+	}
+
+	public static ImageIcon getSearchName_btn() {
+		return searchName_btn;
+	}
+
+	public static ImageIcon getSearchName_btn_pressed() {
+		return searchName_btn_pressed;
+	}
+
+	public static ImageIcon getSearchNumber_btn() {
+		return searchNumber_btn;
+	}
+
+	public static ImageIcon getSearchNumber_btn_pressed() {
+		return searchNumber_btn_pressed;
+	}
+
+	public static ImageIcon getSearchPersonName_btn() {
+		return searchPersonName_btn;
+	}
+
+	public static ImageIcon getSearchPersonName_btn_pressed() {
+		return searchPersonName_btn_pressed;
+	}
+
+	public static ImageIcon getSearchAccount_btn() {
+		return searchAccount_btn;
+	}
+
+	public static ImageIcon getSearchAccount_btn_pressed() {
+		return searchAccount_btn_pressed;
+	}
+
+	public static ImageIcon getSubmit_btn() {
+		return submit_btn;
+	}
+
+	public static ImageIcon getSubmit_btn_pressed() {
+		return submit_btn_pressed;
+	}
+
+	public static ImageIcon getSearch_btn() {
+		return search_btn;
+	}
+
+	public static ImageIcon getSearch_btn_pressed() {
+		return search_btn_pressed;
+	}
+
+	public static ImageIcon getLogin_btn() {
+		return login_btn;
+	}
+
+	public static ImageIcon getLogin_btn_pressed() {
+		return login_btn_pressed;
 	}
 
 	public static ImageIcon getExcel_btn() {
