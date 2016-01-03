@@ -100,7 +100,6 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-		financialjPanel.setPreferredSize(new java.awt.Dimension(850, 460));
 
 		currentAccountNumjLabel.setText(currentOptorId);
 		currentAccountNumjLabel.setToolTipText("当前用户账号");
@@ -118,7 +117,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		stateTitlejLabel.setText("状态：");
 		stateTitlejLabel.setBackground(ComponentFactory.labelColor);
 		
-		finacialjTabbedPane.setPreferredSize(new java.awt.Dimension(850, 460));
+		finacialjTabbedPane.setPreferredSize(new java.awt.Dimension(845, 460));
 
 		financialManagejPanel
 				.setPreferredSize(new java.awt.Dimension(850, 460));
@@ -492,7 +491,8 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 				exitjButtonActionPerformed(evt);
 			}
 		});
-
+		
+		
 		javax.swing.GroupLayout financialjPanelLayout = new javax.swing.GroupLayout(
 				financialjPanel);
 		financialjPanel.setLayout(financialjPanelLayout);
@@ -521,7 +521,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 										.addContainerGap(
 												javax.swing.GroupLayout.DEFAULT_SIZE,
 												Short.MAX_VALUE)
-										.addComponent(topTitlejLabel)
+//										.addComponent(topTitlejLabel)
 										.addContainerGap(
 												javax.swing.GroupLayout.DEFAULT_SIZE,
 												Short.MAX_VALUE))
@@ -538,8 +538,9 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 										.addGap(26, 26, 26)
 										.addComponent(currentAuthorityjLabel)
 										.addGap(18, 18, 18)
-										.addComponent(exitjButton)
-										.addGap(40, 40, 40)));
+//										.addComponent(exitjButton)
+										.addGap(40, 40, 40)
+										));
 		financialjPanelLayout
 				.setVerticalGroup(financialjPanelLayout
 						.createParallelGroup(
@@ -548,11 +549,11 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 								javax.swing.GroupLayout.Alignment.TRAILING,
 								financialjPanelLayout
 										.createSequentialGroup()
-										.addComponent(
-												topTitlejLabel,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												15,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
+//										.addComponent(
+//												topTitlejLabel,
+//												javax.swing.GroupLayout.PREFERRED_SIZE,
+//												15,
+//												javax.swing.GroupLayout.PREFERRED_SIZE)
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
 												javax.swing.GroupLayout.DEFAULT_SIZE,
@@ -567,8 +568,9 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 																currentAuthorityjLabel)
 														.addComponent(
 																currentAccountNumjLabel)
-														.addComponent(
-																exitjButton))
+//														.addComponent(
+//																exitjButton)
+																)
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 										.addComponent(
@@ -1232,7 +1234,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 					}
 				});
 
-		findBankAccountNamejButton.setText("查找");
+//		findBankAccountNamejButton.setText("查找");
 		findBankAccountNamejButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1736,9 +1738,11 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		financialjPanel = new JPanel() {
 			@Override
 			protected void paintComponent(Graphics g) {
-				g.drawImage(Img.getBackground_main(), 0, 0, 860,630, null);
+				g.drawImage(Img.getBackground_main(), 0, 0, 870,635, null);
 			}
 		};	
+		financialjPanel.setPreferredSize(new java.awt.Dimension(860, 630));
+		
 		financialManagejPanel=new JPanel();
 		financialManagejPanel.setBackground(ComponentFactory.panelColor);
 		
@@ -1772,8 +1776,8 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		bankAccountNamejLabel = new javax.swing.JLabel();
 		findBankAccountNamejTextField = new javax.swing.JTextField();
 		
-		findBankAccountNamejButton = new javax.swing.JButton();
-		findBankAccountNamejButton.setBackground(ComponentFactory.buttonColor);
+		findBankAccountNamejButton = new MyButton(ButtonType.SEARCH_NAME);
+//		findBankAccountNamejButton.setBackground(ComponentFactory.buttonColor);
 		
 		jScrollPane1 = new javax.swing.JScrollPane();
 		jScrollPane1.setBackground(ComponentFactory.panelColor);
@@ -1860,7 +1864,12 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		newFinanceIconjPanel = new javax.swing.JPanel();
 		initialFinanceTitlejLabel = new javax.swing.JLabel();
 		topTitlejLabel = new javax.swing.JLabel();
+		topTitlejLabel.setBounds(400,5,75,20);
+		financialjPanel.add(topTitlejLabel);
+		
 		exitjButton = new MyButton(ButtonType.EXIT);
+		exitjButton.setBounds(830,6,30,30);
+		financialjPanel.add(exitjButton);
 
 	}
 
@@ -2217,9 +2226,6 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	private javax.swing.JTable bankAccountjTable;
 	private javax.swing.JLabel currentAccountNumjLabel;
 	private javax.swing.JLabel currentAuthorityjLabel;
-	private javax.swing.JTabbedPane finacialjTabbedPane;
-	private javax.swing.JPanel financialManagejPanel;
-	private javax.swing.JPanel financialjPanel;
 	private javax.swing.JLabel financilManageTitlejLabel;
 	private javax.swing.JButton findBankAccountNamejButton;
 	private javax.swing.JLabel formDeadLinejLabel;
@@ -2230,11 +2236,8 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	private javax.swing.JComboBox formEYearjComboBox;
 	private javax.swing.JLabel formEYearjLabel;
 	private javax.swing.JLabel formTitlejLabel;
-	private javax.swing.JPanel formjPanel;
-	private javax.swing.JPanel initialFinaceIconjpanel;
 	private javax.swing.JLabel initialFinanceTitlejLabel;
 	private javax.swing.JLabel topTitlejLabel;
-	private javax.swing.JPanel jPanel6;
 	private javax.swing.JScrollPane jScrollPane1;
 	private javax.swing.JScrollPane jScrollPane4;
 	private javax.swing.JSeparator jSeparator1;
@@ -2257,14 +2260,22 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	private javax.swing.JLabel logTitlejLabel;
 	private javax.swing.JComboBox<LogType> logTypejComboBox;
 	private javax.swing.JLabel logTypejLabel;
-	private javax.swing.JPanel logjPanel;
-	private javax.swing.JTable logjTable;
-	private javax.swing.JPanel manageFormIcon;
-	private javax.swing.JPanel newFinanceIconjPanel;
-	private javax.swing.JPanel paymentIconjPanel;
-	private javax.swing.JPanel profitFormIcon;
 	private javax.swing.JLabel stateTitlejLabel;
 	private javax.swing.JLabel statejLabel;
+	
+	
+	private javax.swing.JPanel logjPanel;
+	private javax.swing.JPanel paymentIconjPanel;
+	private javax.swing.JPanel profitFormIcon;
+	private javax.swing.JPanel manageFormIcon;
+	private javax.swing.JPanel newFinanceIconjPanel;
+	private javax.swing.JTable logjTable;
+	private javax.swing.JPanel jPanel6;
+	private javax.swing.JPanel formjPanel;
+	private javax.swing.JPanel initialFinaceIconjpanel;
+	private javax.swing.JTabbedPane finacialjTabbedPane;
+	private javax.swing.JPanel financialManagejPanel;
+	private javax.swing.JPanel financialjPanel;
 	
 	private javax.swing.JButton paymentjButton;//
 	private javax.swing.JButton newFinancejButton;//期初建账，未实现

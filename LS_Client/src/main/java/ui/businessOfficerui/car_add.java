@@ -89,6 +89,7 @@ public class car_add extends JFrame {
 				ResultMessage.postCheck(ResultMessage.SUCCESS, r);
 				if(r==ResultMessage.SUCCESS){
 					parent.initTable();
+					parent.repaintTable();
 				}
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
