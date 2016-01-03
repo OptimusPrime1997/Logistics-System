@@ -74,8 +74,8 @@ public class Img {
 	private static ImageIcon excel_btn=new ImageIcon("pic/btn/excel_btn.png");
 	private static ImageIcon excel_btn_pressed=new ImageIcon("pic/btn/excel_btn_pressed.png");
 	
-	private static ImageIcon button0=new ImageIcon("pic/btn/btn_all.png");
-	private static ImageIcon button_over=new ImageIcon("pic/btn/btn_all_pressed.png");
+	private static ImageIcon button0=new ImageIcon("pic/btn/ok_little_btn.png");
+	private static ImageIcon button_over=new ImageIcon("pic/btn/ok_little_btn_pressed.png");
 	
 	private static ImageIcon search_btn=new ImageIcon("pic/btn/search_btn.png");
 	private static ImageIcon search_btn_pressed=new ImageIcon("pic/btn/search_btn_pressed.png");

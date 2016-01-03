@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -160,7 +162,11 @@ public class MainFrame extends JFrame {
 				goodsNum_textMouseClicked(evt);
 			}
 		});
-
+		account_text.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent e) {
+				account_textKeyPressed(e);
+			}
+		});
 		IP_text.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				IP_textMouseClicked(evt);
@@ -209,7 +215,12 @@ public class MainFrame extends JFrame {
 	private void exit_btnMouseClicked() {
 		System.exit(0);
 	}
-
+	//输完账号后按“下”即可输密码
+	private void account_textKeyPressed(KeyEvent e) {
+		if(e.getKeyCode()==KeyEvent.VK_DOWN){
+			password_text.requestFocusInWindow();
+		}
+	}
 	private void ip_btnMouseClicked() {
 		String ip = IP_text.getText();
 		if (checkIP(ip)) {
