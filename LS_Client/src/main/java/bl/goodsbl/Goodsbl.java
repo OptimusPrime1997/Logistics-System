@@ -47,7 +47,6 @@ public class Goodsbl {
 				"2015-12-22");
 		try {
 			ctr.initComplete(vo);
-			System.out.println("Goodsbl.main  vo.dates " + vo.dates);
 		} catch (ExistException e) {
 		}
 	}
@@ -123,7 +122,6 @@ public class Goodsbl {
 			double distance = ctr_const.findByCities(c1,c2).distanceConst;
 			if (vo.listNum.length() != 10) {
 				int listNum_part = getGoodsDataService().recordListNum();
-				System.out.println(listNum_part);
 				// 补齐7位
 				String temp = String.format("%7d", listNum_part).replace(" ", "0");
 				vo.listNum = vo.getCourierAccount.substring(0, 3) + temp;
@@ -138,7 +136,6 @@ public class Goodsbl {
 						Loginbl.getCurrentOptorId(), CurrentTime.getDate());
 				ctr_log.add(logvo);
 			}
-			System.out.println("Goodsbl.initComplete 日期 " + vo.startTime);
 			// 已添加过该订单号
 			if (msg.equals(ResultMessage.EXIST))
 				throw new ExistException();
@@ -245,9 +242,6 @@ public class Goodsbl {
 				else return ResultMessage.WRONG_LOGISTIC_STATE;
 			}
 			getGoodsDataService().delete(GoodsVO.toPO(vo));
-			System.out.println("改之前的货物信息 " + vo.listNum + "  " + vo.realReceiverName + "  " + vo.realReceiverPhone
-					+ "  " + vo.logisticState + " 历史");
-			System.out.println(vo.dates);
 			vo.deliverCourierAccount = Loginbl.getCurrentOptorId();
 			vo.realReceiverName = realReceiverName;
 			// 默认是本人签收
@@ -259,7 +253,6 @@ public class Goodsbl {
 			}
 			vo.logisticState = GoodsLogisticState.SIGNED;
 			vo.dates = vo.dates + " " + CurrentTime.getDate();
-			System.out.println("Goodsbl.end " + vo.dates);
 			
 			ResultMessage msg_final=getGoodsDataService().add(GoodsVO.toPO(vo));
 			//操作成功则添加日志
@@ -310,10 +303,7 @@ public class Goodsbl {
 		String date = CurrentTime.getDate();
 		for (int i = 0; i < numOfDays; i++) {
 			nums[i] = getGoodsByCourier(Loginbl.getCurrentOptorId(), CurrentTime.minusDate(date, i));
-			System.out.println("Goodsbl " + CurrentTime.minusDate(date, i) + " " + nums[i]);
 		}
-		System.out.print("ID: " + Loginbl.getCurrentOptorId());
-		System.out.println("  " + getGoodsByCourier(Loginbl.getCurrentOptorId(), CurrentTime.getDate()));
 		return nums;
 	}
 

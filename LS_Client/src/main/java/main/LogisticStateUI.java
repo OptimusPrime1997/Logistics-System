@@ -6,6 +6,8 @@
 package main;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -13,8 +15,10 @@ import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.WindowConstants;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableCellRenderer;
 
 import ui.Img;
 import ui.util.ButtonType;
@@ -90,8 +94,6 @@ public class LogisticStateUI extends javax.swing.JFrame {
         label01=new JLabel("日期");
         label02=new JLabel("物流状态");
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTable1.setBounds(30,60,250,120);
         listNum_label.setText("jLabel1");
 
         jLabel2.setFont(new java.awt.Font("宋体", 1, 14)); // NOI18N
@@ -99,39 +101,48 @@ public class LogisticStateUI extends javax.swing.JFrame {
         jLabel2.setForeground(Color.WHITE);
         jLabel2.setBounds(20, 5, 150, 30);
         
-        label01.setBounds(60, 30, 30, 30);
-        label02.setBounds(170, 30, 60, 30);
+        label01.setBounds(20, 30, 30, 30);
+        label02.setBounds(130, 30, 60, 30);
         jLabel3.setText("订单号");
         int count=0;
         String[] dates=vo.dates.split(" ");
-        content=new Object[dates.length][2];
+        if(dates.length>7) content=new Object[6][2];
+        else content=new Object[dates.length][2];
+//        for(int i=0;i<7;i++){
+//        	content[i][0]="";
+//        	content[i][1]="";
+//        }
         for(String date:dates){
         	if(count>=6) break;
         	content[count][0]=date;
         	content[count][1]=GoodsLogisticState.toFriendlyString(GoodsLogisticState.get(count));
         	count++;
         }
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            content,
-            new String [] {
-                "时间", "物流状态"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
+        table = new JTable(new MyTableModel(content));
+        table.setBounds(20,60,280,120);
+        table.getColumnModel().getColumn(0).setPreferredWidth(5);
+//        table.setModel(new javax.swing.table.DefaultTableModel(
+//            content,
+//            new String [] {
+//                "时间", "物流状态"
+//            }
+//        ) {
+//            Class[] types = new Class [] {
+//                java.lang.String.class, java.lang.String.class
+//            };
+//
+//            public Class getColumnClass(int columnIndex) {
+//                return types [columnIndex];
+//            }
+//        });
+        table.setDefaultRenderer(String.class,new MyRenderer());
+        jScrollPane1.setViewportView(table);
         panel.add(jLabel2);
         panel.add(jLabel3);
         panel.add(label01);
         panel.add(label02);
         panel.add(listNum_label);
-        panel.add(jTable1);
+        panel.add(table);
         panel.add(jScrollPane1);
         panel.add(exit_btn);
         this.setContentPane(panel);
@@ -140,12 +151,57 @@ public class LogisticStateUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3,label01,label02;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table;
     private javax.swing.JLabel listNum_label;
     private JPanel panel;
     private MyButton exit_btn;
     private GoodsVO vo;
-    private final int width=300,height=200;
+    private final int width=320,height=200;
     private Object[][] content;
     // End of variables declaration//GEN-END:variables
+}
+
+class MyTableModel extends AbstractTableModel {
+	Object[][] contents;
+	public MyTableModel(Object[][] contents){
+		this.contents=contents;
+	}
+	private String[] columnNames = { "Column 1", "Column 2" };
+	public String getColumnName(int c) {
+		return columnNames[c];
+	}
+	public Class<?> getColumnClass(int c) {
+		return contents[0][c].getClass();
+	}
+	public int getColumnCount() {
+		return contents[0].length;
+	}
+
+	public int getRowCount() {
+		return contents.length;
+	}
+
+	public Object getValueAt(int r, int c) {
+		return contents[r][c];
+	}
+
+	public void setValueAt(Object obj, int r, int c) {
+		contents[r][c] = obj;
+	}
+
+}
+class MyRenderer implements TableCellRenderer {
+	public Component getTableCellRendererComponent(JTable table, Object value,
+			boolean isSelected, boolean hasFocus, int row, int column) {
+		JLabel jl = new JLabel();
+		if(row==table.getRowCount()-1){
+			jl.setFont(new Font("", 3, 12));
+//			jl.setForeground(Color.white);
+			jl.setBackground(new Color(152 ,251 ,152));
+		}
+		
+		jl.setOpaque(true);
+		jl.setText(value.toString());
+		return jl;
+	}
 }

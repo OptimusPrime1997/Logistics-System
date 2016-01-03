@@ -49,7 +49,7 @@ public static String toFriendlyString(GoodsLogisticState st){
 		case SENDER_TRANSCENTER_ARRIVED:
 			return "快件已到达寄件人中转中心";
 		case RECEIVER_TRANSCENTER_ARRIVED:
-			return " 快件已到达收件人中转中心";
+			return "快件已到达收件人中转中心";
 		case RECEIVER_BUSINESSOFFICE_ARRIVED:
 			return "快件已到达收件人营业厅";
 		case DELIVERING:

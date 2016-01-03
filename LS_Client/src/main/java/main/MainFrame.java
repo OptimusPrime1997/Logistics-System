@@ -76,6 +76,7 @@ public class MainFrame extends JFrame {
 		ctr_find = ControllerFactoryImpl.getInstance().getGoodsFindController();
 		ctr_login = ControllerFactoryImpl.getInstance().getLoginController();
 		this.setResizable(false);
+		setTitle("快递物流系统");
 		this.setSize(width, height);
 		this.setLocationRelativeTo(null);
 		addMouseListener(new MouseAdapter() {
