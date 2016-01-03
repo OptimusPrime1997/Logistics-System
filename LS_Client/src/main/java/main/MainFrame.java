@@ -2,6 +2,8 @@ package main;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -125,6 +127,11 @@ public class MainFrame extends JFrame {
 		account_text = new MyFormattedTextFeild(11, 290, 125, 100, 30);
 		account_text.setDocument(new NumOnlyDocument());
 		password_text = new javax.swing.JPasswordField(6);
+		password_text.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				login_btnMouseClicked();
+			}
+		});
 		feedback_text = new MyTextField(TextType.FEEDBACK, 30, 255, 400, 30);
 		// 设为透明
 		// goodsNum_text.setOpaque(false);
@@ -137,6 +144,16 @@ public class MainFrame extends JFrame {
 		password_text.setBounds(290, 170, 100, 30);
 		IP_text.setText(standard_ip);
 		goodsNum_text.setText(standard_goodsNum);
+		IP_text.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ip_btnMouseClicked();
+			}
+		});
+		goodsNum_text.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				search_btnMouseClicked();
+			}
+		});
 		goodsNum_text.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				goodsNum_textMouseClicked(evt);
@@ -193,7 +210,6 @@ public class MainFrame extends JFrame {
 	}
 
 	private void ip_btnMouseClicked() {
-		// TODO Auto-generated method stub
 		String ip = IP_text.getText();
 		if (checkIP(ip)) {
 			Loginbl.setIP(ip);
