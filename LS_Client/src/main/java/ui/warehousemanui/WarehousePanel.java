@@ -115,25 +115,25 @@ public class WarehousePanel extends javax.swing.JFrame {
    
 
         Peking1 = new javax.swing.JProgressBar();      
-        Peking1Label = new MyLabel("北京01", 50, 65, 50, 10);
-        Peking2Label = new MyLabel("北京02", 230, 65, 50, 10);
+        Peking1Label = new MyLabel("北京01", 50, 65, 50, 20);
+        Peking2Label = new MyLabel("北京02", 230, 65, 50, 20);
         Peking2 = new javax.swing.JProgressBar();
-        Shanghai1Label = new MyLabel("上海01", 410, 65, 50, 10);
+        Shanghai1Label = new MyLabel("上海01", 410, 65, 50, 20);
         Shanghai1 = new javax.swing.JProgressBar();
-        Shanghai2Label = new MyLabel("上海02", 590, 65, 50, 10);
+        Shanghai2Label = new MyLabel("上海02", 590, 65, 50, 20);
         Shanghai2 = new javax.swing.JProgressBar();
-        Nanjing1Label = new MyLabel("南京01", 50, 110, 50, 10);
+        Nanjing1Label = new MyLabel("南京01", 50, 110, 50, 20);
         Nanjing1 = new javax.swing.JProgressBar();
-        Nanjing2Label = new MyLabel("南京02", 230, 110, 50, 10);
+        Nanjing2Label = new MyLabel("南京02", 230, 110, 50, 20);
         Nanjing2 = new javax.swing.JProgressBar();
-        Guangzhou1Label = new MyLabel("广州01", 410, 110, 50, 10);
+        Guangzhou1Label = new MyLabel("广州01", 410, 110, 50, 20);
         Guangzhou1 = new JProgressBar();
-        Guangzhou2Label = new MyLabel("广州02", 590, 110, 50, 10);
+        Guangzhou2Label = new MyLabel("广州02", 590, 110, 50, 20);
         Guangzhou2 = new javax.swing.JProgressBar();
         outRepButton = new MyButton(80, 300, ButtonType.STOCK_OUT);
         inRepButton = new MyButton(80, 200, ButtonType.STOCK_IN);
         exit = new MyButton(750, 10, ButtonType.EXIT);
-        userLabel = new MyLabel("当前账户: "+username ,  590, 20, 300, 10);
+        userLabel = new MyLabel("当前账户: "+username ,  590, 20, 300, 20);
         divisionChangeButton = new MyButton(300, 300, ButtonType.STOCK_CHANGE);
         iniNumButton = new MyButton(520, 300, ButtonType.STOCK_INPUT);
         showButton = new MyButton(520, 200, ButtonType.STOCK_SHOW);

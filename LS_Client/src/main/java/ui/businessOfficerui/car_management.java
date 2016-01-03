@@ -86,6 +86,9 @@ public class car_management extends javax.swing.JPanel {
 	private void initlayout() {
 		this.setLayout(null);
 		this.add(account_label);
+		this.add(label01);
+		this.add(label02);
+		this.add(label03);
 		this.add(jLabel4);
 		this.add(businessOffNum_label);
 		this.add(jLabel5);
@@ -116,14 +119,10 @@ public class car_management extends javax.swing.JPanel {
 		feedback_text.setFocusable(false);
 	}
 	private void initbtn() {
-		add_btn = new MyButton(100,20,ButtonType.ADD);
+		add_btn = new MyButton(110,30,ButtonType.ADD);
 		search_btn = new MyButton(640,100,ButtonType.SEARCH);
 		back_btn = new MyButton(600,400,ButtonType.BACK);
 		exit_btn = new MyButton(790,5,ButtonType.EXIT);
-		search_btn.setText("搜索");
-		back_btn.setText("返回");
-		exit_btn.setText("退出系统");
-		add_btn.setText("+");
 		add_btn.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				add_btnMouseClicked(evt);
@@ -439,6 +438,10 @@ public class car_management extends javax.swing.JPanel {
 		jLabel6 = new MyLabel("营业厅：",300,20,70,30);
 		businessOffNum_label=new MyLabel("", 355, 20,90, 30);
 		account_label=new MyLabel("",500,20,100,30);
+		label01=new MyLabel("车辆编号", 80, 70, 100, 30);
+		label02=new MyLabel("车牌号", 230, 70, 100, 30);
+		label03=new MyLabel("开始服役时间", 330, 70, 200, 30);
+		//vehiclejTable.setBounds(50, 100, 400, 300);
 		jLabel4.setFont(new java.awt.Font("宋体", 1, 18));
 		jLabel4.setForeground(Color.WHITE);
 		try {
@@ -446,7 +449,7 @@ public class car_management extends javax.swing.JPanel {
 			name=ctr_login.getCurrentName();
 			System.out.println(ctr_login.getCurrentOptorId());
 			city = City.toString(CurrentCity.getCurrentCity());
-			businessOffNum_label.setText(city + officeNum);
+			businessOffNum_label.setText(city +" "+ officeNum);
 			account_label.setText(name);
 		} catch (RemoteException e) {
 		}
@@ -503,7 +506,7 @@ protected void paintComponent(Graphics g) {
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private MyButton add_btn, back_btn, exit_btn,search_btn;
 	private MyLabel businessOffNum_label, jLabel4, jLabel5,
-			jLabel6,account_label;
+			jLabel6,account_label,label01,label02,label03;
 	private javax.swing.JTable vehiclejTable;
 	final private MyLabel feedback_text=new MyLabel("空闲", 30, 500, 450, 30);
 	private javax.swing.JScrollPane jScrollPane1;

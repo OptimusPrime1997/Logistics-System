@@ -5,11 +5,13 @@
  */
 package main;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
@@ -61,6 +63,7 @@ public class LogisticStateUI extends javax.swing.JFrame {
 		});
 		this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		this.setUndecorated(true);
+		this.setBackground(new Color(0,0,0,0));
 		this.setVisible(true);
     }
     private void exit_btnMouseClicked (MouseEvent e) {
@@ -70,7 +73,7 @@ public class LogisticStateUI extends javax.swing.JFrame {
     	panel=new JPanel(){
     		@Override
     	protected void paintComponent(Graphics g) {
-    		g.drawImage(Img.getBackground_searchState(), 0, 0, this.getWidth(),this.getHeight(),null);
+    		g.drawImage(Img.getBackground_main(), 0, 0, this.getWidth(),this.getHeight(),null);
     	}};
     	exit_btn=new MyButton(270, 3, ButtonType.EXIT);
     	exit_btn.addMouseListener(new MouseAdapter() {
@@ -84,14 +87,20 @@ public class LogisticStateUI extends javax.swing.JFrame {
         listNum_label = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        label01=new JLabel("日期");
+        label02=new JLabel("物流状态");
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jTable1.setBounds(30,30,250,150);
+        jTable1.setBounds(30,60,250,120);
         listNum_label.setText("jLabel1");
 
         jLabel2.setFont(new java.awt.Font("宋体", 1, 14)); // NOI18N
         jLabel2.setText("物流信息");
+        jLabel2.setForeground(Color.WHITE);
         jLabel2.setBounds(20, 5, 150, 30);
+        
+        label01.setBounds(60, 30, 30, 30);
+        label02.setBounds(170, 30, 60, 30);
         jLabel3.setText("订单号");
         int count=0;
         String[] dates=vo.dates.split(" ");
@@ -119,6 +128,8 @@ public class LogisticStateUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
         panel.add(jLabel2);
         panel.add(jLabel3);
+        panel.add(label01);
+        panel.add(label02);
         panel.add(listNum_label);
         panel.add(jTable1);
         panel.add(jScrollPane1);
@@ -127,7 +138,7 @@ public class LogisticStateUI extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel3,label01,label02;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel listNum_label;

@@ -79,6 +79,9 @@ public class transferCtrOfficer_main extends JPanel {
     }
     private void initLayOut() {
     	this.setLayout(null);
+    	this.add(outByPlane_progressBar);
+    	this.add(outByTrain_progressBar);
+    	this.add(outByTruck_progressBar);
     	this.add(account_label);
     	this.add(account0_label);
     	this.add(outByPlane_label);
@@ -131,9 +134,18 @@ public class transferCtrOfficer_main extends JPanel {
 
 	}
 	private void initProBar() {
+		/*
+		 * train_label = new MyLabel("火车",400,150,30,20);
+		truck_label = new MyLabel("汽车",400,250,30,20);
+		plane_label = new MyLabel("飞机",400,350,30,20);
+		 */
+		//TODO
     	 outByTrain_progressBar = new JProgressBar();
          outByTruck_progressBar = new JProgressBar();
          outByPlane_progressBar = new JProgressBar();
+         outByTrain_progressBar.setBounds(450, 150, 200, 30);
+         outByTruck_progressBar.setBounds(450,250,200,30);
+         outByPlane_progressBar.setBounds(450, 350, 200, 30);
 		refreshValues();
 	}
 
@@ -169,7 +181,7 @@ public class transferCtrOfficer_main extends JPanel {
 		truck_label = new MyLabel("汽车",400,250,30,20);
 		plane_label = new MyLabel("飞机",400,350,30,20);
 		account_label = new MyLabel("",500,20,50,30);
-		transferOfficeNum_label = new MyLabel("",370,20,50,30);
+		transferOfficeNum_label = new MyLabel("",370,20,100,30);
 		outByTrain_label = new MyLabel("",680,150,30,20);
 		outByShip_label = new MyLabel("",680,250,30,20);
 		outByPlane_label =new MyLabel("",680,350,30,20);
@@ -181,7 +193,7 @@ public class transferCtrOfficer_main extends JPanel {
 			officeNum=ctr_login.getCurrentOptorId().substring(0, 3);
 			accountName=ctr_login.getCurrentName();
 			account_label.setText(accountName);
-			transferOfficeNum_label.setText(City.toString(CurrentCity.getCurrentCity()) + officeNum);
+			transferOfficeNum_label.setText(City.toString(CurrentCity.getCurrentCity()) +" "+ officeNum);
 		} catch (RemoteException e) {
 		}
 		outByTrain_label.setFont(new java.awt.Font("宋体", 1, 24)); // NOI18N

@@ -33,6 +33,10 @@ public class MyButton extends JButton {
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		switch (type) {
+		case ADD:
+			setIcon(Img.getAdd_btn());
+			setRolloverIcon(Img.getAdd_btn_pressed());
+			break;
 		case STOCK_IN:
 			setIcon(Img.getStockIn());
 			setRolloverIcon(Img.getStockIn_pressed());

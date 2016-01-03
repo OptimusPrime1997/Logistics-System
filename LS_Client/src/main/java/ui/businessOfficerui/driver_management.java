@@ -5,6 +5,8 @@
  */
 package ui.businessOfficerui;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,7 +27,10 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 
+import ui.Img;
 import ui.componentfactory.ComponentFactory;
+import ui.util.ButtonType;
+import ui.util.MyButton;
 import ui.util.MyFrame;
 import util.CurrentCity;
 import util.InputCheck;
@@ -67,12 +72,16 @@ public class driver_management extends JPanel {
 	public void setFeedBack(ResultMessage msg) {
 		feedback_text.setText(ResultMessage.toFriendlyString(msg));
 	}
-
+@Override
+protected void paintComponent(Graphics g) {
+	g.drawImage(Img.getBackground_main(), 0, 0, null);
+}
 	private void initComponents() {
 		try {
 			officeNum = ctr_login.getCurrentOptorId().substring(0, 6);
 //			System.out.println(ctr_login.getCurrentOptorId());
 			city = City.toString(CurrentCity.getCurrentCity());
+			name=ctr_login.getCurrentName();
 			currentInstituionNum=city + officeNum;
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -134,7 +143,7 @@ public class driver_management extends JPanel {
 																								.addPreferredGap(
 																										LayoutStyle.ComponentPlacement.RELATED)
 																								.addComponent(
-																										account_btn,
+																										account_label,
 																										GroupLayout.PREFERRED_SIZE,
 																										82,
 																										GroupLayout.PREFERRED_SIZE)
@@ -218,7 +227,7 @@ public class driver_management extends JPanel {
 																				.addComponent(
 																						jLabel2)
 																				.addComponent(
-																						account_btn)))
+																						account_label)))
 												.addComponent(exit_btn))
 								.addGroup(
 										layout.createParallelGroup(
@@ -345,17 +354,11 @@ public class driver_management extends JPanel {
 	 * 
 	 */
 	private void initbtn() {
-		add_btn = new JButton();
-		search_btn = new JButton();
-		account_btn = new JButton();
-		exit_btn = new JButton();
-		back_btn = new JButton();
+		add_btn = new MyButton(ButtonType.ADD);
+		search_btn = new MyButton(ButtonType.SEARCH);
+		exit_btn = new MyButton(ButtonType.EXIT);
+		back_btn = new MyButton(ButtonType.BACK);
 
-		account_btn.setText("老李（包括更改密码、退出登录）");
-		back_btn.setText("返回");
-		add_btn.setText("+");
-		exit_btn.setText("退出系统");
-		search_btn.setText("搜索");
 		search_btn.addActionListener(new ActionListener() {
 
 			@Override
@@ -390,13 +393,15 @@ public class driver_management extends JPanel {
 		jLabel1 = new JLabel();
 		jLabel2 = new JLabel();
 		jLabel3 = new JLabel();
+		account_label=new JLabel();
 		BusinessOfficeNum_label = new JLabel();
 
 		jLabel1.setFont(new java.awt.Font("宋体", 1, 18)); // NOI18N
-		jLabel1.setForeground(new java.awt.Color(0, 102, 255));
+		jLabel1.setForeground(Color.WHITE);
 		jLabel1.setText("司机管理");
 		jLabel2.setText("账户：");
 		jLabel3.setText("营业厅：");
+		account_label.setText(name);
 		BusinessOfficeNum_label.setText(city + officeNum);
 	}
 
@@ -624,14 +629,13 @@ public class driver_management extends JPanel {
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private JLabel BusinessOfficeNum_label, jLabel1, jLabel2, jLabel3;
-	private businessOfficer_main panel_parent;
 	private JTable driverjTable;
-	private JButton account_btn, add_btn, back_btn, exit_btn, search_btn;
+	private MyButton  add_btn, back_btn, exit_btn, search_btn;
 	private JScrollPane jScrollPane2;
 	private JTextField search_text;
-	public  JLabel feedback_text;
+	public  JLabel account_label,feedback_text;
 	private MyFrame frame;
 	private LoginBLService ctr_login;
-	private String officeNum = "", city = "";
+	private String officeNum = "", city = "",name="";
 	// End of variables declaration//GEN-END:variables
 }
