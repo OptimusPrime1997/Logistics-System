@@ -22,6 +22,7 @@ import ui.util.ButtonType;
 import ui.util.MyButton;
 import ui.util.MyFrame;
 import ui.util.MyLabel;
+import ui.util.MyProgressBar;
 import ui.util.MyTextField;
 import ui.util.TextType;
 import util.CurrentCity;
@@ -139,10 +140,9 @@ public class transferCtrOfficer_main extends JPanel {
 		truck_label = new MyLabel("汽车",400,250,30,20);
 		plane_label = new MyLabel("飞机",400,350,30,20);
 		 */
-		//TODO
-    	 outByTrain_progressBar = new JProgressBar();
-         outByTruck_progressBar = new JProgressBar();
-         outByPlane_progressBar = new JProgressBar();
+    	 outByTrain_progressBar = new MyProgressBar();
+         outByTruck_progressBar = new MyProgressBar();
+         outByPlane_progressBar = new MyProgressBar();
          outByTrain_progressBar.setBounds(450, 150, 200, 30);
          outByTruck_progressBar.setBounds(450,250,200,30);
          outByPlane_progressBar.setBounds(450, 350, 200, 30);
@@ -242,7 +242,7 @@ public class transferCtrOfficer_main extends JPanel {
     private MyLabel todayNum_label,trs_label,account0_label,train_label,truck_label,plane_label,
     			   outByShip_label,transferOfficeNum_label,
     			   outByPlane_label,outByTrain_label,account_label;
-    private JProgressBar outByTruck_progressBar, outByPlane_progressBar,
+    private MyProgressBar outByTruck_progressBar, outByPlane_progressBar,
     		outByTrain_progressBar;
     private MyTextField feedback_text;
     private String officeNum="025",accountName;

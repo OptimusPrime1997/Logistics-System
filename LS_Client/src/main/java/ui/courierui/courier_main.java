@@ -5,6 +5,7 @@
  */
 package ui.courierui;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
@@ -22,6 +23,7 @@ import ui.util.ButtonType;
 import ui.util.MyButton;
 import ui.util.MyFrame;
 import ui.util.MyLabel;
+import ui.util.MyProgressBar;
 import ui.util.MyTextField;
 import ui.util.TextType;
 import util.CurrentCity;
@@ -72,6 +74,7 @@ public static void main(String[] args) {
 		int[]values=goodsController.getdaysNumOfGoods(NUM_OF_DAYS);
 		for(int i=0;i<bars.size();i++) {
 			bars.get(i).setBounds(450, i*50+150,200, 20);
+			bars.get(i).setForeground(Color.BLUE);
 			labels_nums.get(i).setBounds(680, i*50+150, 50, 20);
 			int x=values[i];
 			labels_nums.get(i).setText(x+"");
@@ -172,7 +175,7 @@ public static void main(String[] args) {
 		labels_nums.add(date);
 	}
 	private void createJProgressBar() {
-		JProgressBar bar=new JProgressBar();
+		MyProgressBar bar=new MyProgressBar();
 		bars.add(bar);
 	}
 	@Override
@@ -206,7 +209,7 @@ public static void main(String[] args) {
 	private MyLabel businessOfficeNum_label, businessOffice_label,
 	        account_label0,account_label1,recentDays_label;
 	private ArrayList<JLabel> labels_dates=new ArrayList<JLabel>(),labels_nums=new ArrayList<JLabel>();//近日的日期
-	private ArrayList<JProgressBar> bars=new ArrayList<JProgressBar>();//近日业绩的进度条
+	private ArrayList<MyProgressBar> bars=new ArrayList<MyProgressBar>();//近日业绩的进度条
 	private MyTextField feedBack_text;
 	private MyFrame frame;
 	private LoginBLService ctr_login;
