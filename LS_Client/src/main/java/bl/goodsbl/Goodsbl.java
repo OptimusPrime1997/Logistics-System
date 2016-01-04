@@ -20,6 +20,7 @@ import VO.GoodsVO;
 import VO.LogVO;
 import bl.logbl.Logbl;
 import bl.loginbl.Loginbl;
+import bl.managementbl.accountbl.Courierbl;
 import bl.managementbl.constbl.Constbl;
 import dataservice.goodsdataservice.GoodsDataService;
 
@@ -135,6 +136,8 @@ public class Goodsbl {
 				LogVO logvo = new LogVO(LogType.ADD_A_GOODS,
 						Loginbl.getCurrentOptorId(), CurrentTime.getDate());
 				ctr_log.add(logvo);
+				//记录快递员收费，，为后面算他的工资做准备
+				new Courierbl().updateMoney(vo.getCourierAccount, vo.moneyTotal);
 			}
 			// 已添加过该订单号
 			if (msg.equals(ResultMessage.EXIST))

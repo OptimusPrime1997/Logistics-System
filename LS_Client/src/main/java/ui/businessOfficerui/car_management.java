@@ -76,12 +76,9 @@ public class car_management extends javax.swing.JPanel {
 	public void initTable() {
 		vehiclejTable = new javax.swing.JTable();
 		jScrollPane1 = new javax.swing.JScrollPane();
-		
-		jScrollPane1.setBounds(450, 100, 20, 300);
+		jScrollPane1.setBounds(50, 100, 400, 300);
 		setVehicleVOs();
 		initialVehicleJTable(vehicleVOs, 0);
-		
-		vehiclejTable.setBounds(50, 100, 400, 300);
 	}
 	private void initlayout() {
 		this.setLayout(null);
@@ -100,9 +97,6 @@ public class car_management extends javax.swing.JPanel {
 		this.add(jScrollPane1);
 		this.add(feedback_text);
 		this.add(search_text);
-		this.add(vehiclejTable);
-		
-		//TODO
 		
 	}
 	private void initTxt() {

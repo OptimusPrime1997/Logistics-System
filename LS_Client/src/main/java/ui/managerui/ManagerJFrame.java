@@ -185,9 +185,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		managerjPanel.setBorder(javax.swing.BorderFactory
 				.createTitledBorder(""));
-		managerjTabbedPane.setPreferredSize(new java.awt.Dimension(830, 550));
+		managerjPanel.setBackground(ComponentFactory.transparent);
 
-		managerjPanel.setBackground(ComponentFactory.panelColor);
+		managerjTabbedPane.setPreferredSize(new java.awt.Dimension(820, 550));
 
 		jButton3.setText("jButton2");
 
@@ -203,11 +203,15 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		initialLogjPaenl();
 		jLabel6.setFont(ComponentFactory.fTitle);
 		jLabel6.setText("总经理");
-		currentAccountNamejLabel.setText(currentOptorId);
+		currentAccountNumjLabel.setText(currentOptorId);
+		managerjPanel.add(currentAccountNumjLabel);
+		
+		currentAccountNamejLabel.setText(Loginbl.getCurrentOptorName());
+		managerjPanel.add(currentAccountNamejLabel);
 
-		currentAuthorityjLabel.setText(Loginbl.getCurrentOptorName());
-
-		// currentAccoutNamejLabel.setText("12345");
+		
+		
+//		currentAccoutNamejLabel.setText(Loginbl.getCurrentOptorName());
 
 		jLabel48.setText("状态：");
 
@@ -227,6 +231,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			 */
 
 		});
+		managerjPanel.add(exitjButton);
 
 	}// </editor-fold>//GEN-END:initComponents
 
@@ -237,9 +242,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		logjPanel.setName("logView"); // NOI18N
 
-		logjPanel.setPreferredSize(new java.awt.Dimension(830, 455));
+		logjPanel.setPreferredSize(new java.awt.Dimension(820, 455));
 
-//		findLogjButton.setText("查找");
+		// findLogjButton.setText("查找");
 		findLogjButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				findLogjButtonActionPerformed(evt);
@@ -406,9 +411,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		// TODO Auto-generated method stub
 
 		formjPanel.setName("formView"); // NOI18N
-		formjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
+		formjPanel.setPreferredSize(new java.awt.Dimension(820, 460));
 
-//		profitFormjButton.setText("成本收益表");
+		// profitFormjButton.setText("成本收益表");
 		profitFormjButton.setName("profitFrom"); // NOI18N
 		profitFormjButton
 				.addActionListener(new java.awt.event.ActionListener() {
@@ -417,7 +422,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-//		manageStateFormjButton.setText("经营情况表");
+		// manageStateFormjButton.setText("经营情况表");
 		manageStateFormjButton.setName("businessFrom"); // NOI18N
 		manageStateFormjButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -500,7 +505,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private void initialAccountjPanel() {
 		// TODO Auto-generated method stub
 		accountjPanel.setName("personnelView"); // NOI18N
-		accountjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
+		accountjPanel.setPreferredSize(new java.awt.Dimension(820, 460));
 
 		jLabel19.setFont(ComponentFactory.sTitle); // NOI18N
 		jLabel19.setText("人员信息");
@@ -513,7 +518,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-//		findAccountNamejButton.setText("姓名查找");
+		// findAccountNamejButton.setText("姓名查找");
 		findAccountNamejButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -537,7 +542,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-//		findAccountNumjButton.setText("账号查找");
+		// findAccountNumjButton.setText("账号查找");
 		findAccountNumjButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -564,7 +569,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private void initialInstitutionjPanel() {
 		// TODO Auto-generated method stub
 		institutionjPanel.setName("institutionManagement"); // NOI18N
-		institutionjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
+		institutionjPanel.setPreferredSize(new java.awt.Dimension(820, 460));
 
 		jLabel12.setText("机构编号：");
 
@@ -576,7 +581,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-//		findInstitutionNumjButton.setText("编号查找");
+		// findInstitutionNumjButton.setText("编号查找");
 		findInstitutionNumjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -594,7 +599,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-//		findInstitutionNamejButton.setText("名称查找");
+		// findInstitutionNamejButton.setText("名称查找");
 		findInstitutionNamejButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -606,7 +611,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jLabel15.setText("机构信息");
 
 		initialInstitutionJTable(institutionVOPlus, 0);
-//		addInstitutionjButton.setText("添加新机构");
+		// addInstitutionjButton.setText("添加新机构");
 		addInstitutionjButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -614,7 +619,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-//		submitInstitutionjButton.setText("提交");
+		// submitInstitutionjButton.setText("提交");
 		// submitInstitutionjButton.setColor(new Color(200,150,190));
 		submitInstitutionjButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -633,7 +638,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private void initialCheckjPanel() {
 		// TODO Auto-generated method stub
 		checkjPane.setName("documentCheck"); // NOI18N
-		checkjPane.setPreferredSize(new java.awt.Dimension(830, 460));
+		checkjPane.setPreferredSize(new java.awt.Dimension(820, 460));
 
 		jLabel16.setFont(ComponentFactory.pBlod);
 		jLabel16.setText("状态：");
@@ -1708,23 +1713,24 @@ public class ManagerJFrame extends javax.swing.JFrame {
 																javax.swing.GroupLayout.Alignment.TRAILING,
 																managerjPanelLayout
 																		.createSequentialGroup()
-																		.addComponent(
-																				currentAccountNamejLabel)
-																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-																		.addComponent(
-																				currentAuthorityjLabel)
-																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-																		.addComponent(
-																				currentAccoutNamejLabel,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				32,
-																				javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-																		.addComponent(
-																				exitjButton))))
+//																		.addComponent(
+//																				currentAccountNumjLabel)
+//																		.addPreferredGap(
+//																				javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+//																		.addComponent(
+//																				currentAccoutNamejLabel,
+//																				javax.swing.GroupLayout.PREFERRED_SIZE,
+//																				10,
+//																				javax.swing.GroupLayout.PREFERRED_SIZE)
+//																		.addPreferredGap(
+//																				javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+//																		.addComponent(
+//																				currentAccountNamejLabel)
+//																		.addPreferredGap(
+//																				javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+														// .addComponent(
+														// exitjButton)
+														)))
 						.addComponent(managerjTabbedPane,
 								javax.swing.GroupLayout.DEFAULT_SIZE,
 								javax.swing.GroupLayout.DEFAULT_SIZE,
@@ -1748,17 +1754,18 @@ public class ManagerJFrame extends javax.swing.JFrame {
 												managerjPanelLayout
 														.createParallelGroup(
 																javax.swing.GroupLayout.Alignment.BASELINE)
-														.addComponent(
-																currentAuthorityjLabel)
-														.addComponent(
-																currentAccountNamejLabel,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																24,
-																javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																currentAccoutNamejLabel)
-														.addComponent(
-																exitjButton))
+//														.addComponent(
+//																currentAccountNamejLabel)
+//														.addComponent(
+//																currentAccoutNamejLabel)
+//														.addComponent(
+//																currentAccountNumjLabel,
+//																javax.swing.GroupLayout.PREFERRED_SIZE,
+//																10,
+//																javax.swing.GroupLayout.PREFERRED_SIZE)
+										// .addComponent(
+										// exitjButton)
+										)
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 										.addComponent(
@@ -2062,7 +2069,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	 */
 	private void initialSalayPolicyjPanel() {
 		// TODO Auto-generated method stub
-//		submitSalaryPolicyjButton.setText("提交");
+		// submitSalaryPolicyjButton.setText("提交");
 		submitSalaryPolicyjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2072,7 +2079,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		initialSalaryPolicyJTable(salaryPolicyVOPlus, 0);
 
-//		addSalaryPolicyjButton.setText("添加薪水策略");
+		// addSalaryPolicyjButton.setText("添加薪水策略");
 		addSalaryPolicyjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2092,14 +2099,14 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	 */
 	private void initialConstjPanel() {
 		// TODO Auto-generated method stub
-//		addConstjButton.setText("添加距离常量");
+		// addConstjButton.setText("添加距离常量");
 		addConstjButton.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseReleased(java.awt.event.MouseEvent evt) {
 				addConstjButton1MouseReleased(evt);
 			}
 		});
 
-//		submitConstjButton.setText("提交");
+		// submitConstjButton.setText("提交");
 		submitConstjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2151,10 +2158,10 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		managerjPanel = new JPanel() {
 			@Override
 			protected void paintComponent(Graphics g) {
-				g.drawImage(Img.getBackground_main(), 0, 0, 958, 665, null);
+				g.drawImage(Img.getBackground_main(), 0, 0, 958, 670, null);
 			}
 		};
-		managerjPanel.setPreferredSize(new Dimension(958, 665));
+		managerjPanel.setPreferredSize(new Dimension(950, 670));
 
 		managerjTabbedPane = new javax.swing.JTabbedPane();
 		managerjTabbedPane.setBackground(new Color(200, 150, 190, 40));
@@ -2169,10 +2176,10 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jButton5.setBackground(ComponentFactory.buttonColor);
 
 		addConstjButton = new MyButton(ButtonType.NEW_DISTANCE);
-//		addConstjButton.setBackground(ComponentFactory.buttonColor);
+		// addConstjButton.setBackground(ComponentFactory.buttonColor);
 
 		submitConstjButton = new MyButton(ButtonType.SUBMIT);
-//		submitConstjButton.setBackground(ComponentFactory.buttonColor);
+		// submitConstjButton.setBackground(ComponentFactory.buttonColor);
 
 		jScrollPane2 = new javax.swing.JScrollPane();
 		jScrollPane2.setBackground(ComponentFactory.panelColor);
@@ -2189,14 +2196,14 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		jButton6.setBackground(ComponentFactory.buttonColor);
 
 		submitSalaryPolicyjButton = new MyButton(ButtonType.SUBMIT);
-//		submitSalaryPolicyjButton.setBackground(ComponentFactory.buttonColor);
+		// submitSalaryPolicyjButton.setBackground(ComponentFactory.buttonColor);
 
 		jScrollPane5 = new javax.swing.JScrollPane();
 		jScrollPane5.setBackground(ComponentFactory.panelColor);
 
 		salaryPolicyjTable = new javax.swing.JTable();
-		addSalaryPolicyjButton =new MyButton(ButtonType.NEW_SALARY);
-//		addSalaryPolicyjButton.setBackground(ComponentFactory.buttonColor);
+		addSalaryPolicyjButton = new MyButton(ButtonType.NEW_SALARY);
+		// addSalaryPolicyjButton.setBackground(ComponentFactory.buttonColor);
 
 		salaryPolicyTitlejLabel = new javax.swing.JLabel();
 
@@ -2222,14 +2229,14 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		institutionNumjTextField.setDocument(new NumOnlyDocument());
 
 		findInstitutionNumjButton = new MyButton(ButtonType.SEARCH_NUMBER);
-//		findInstitutionNumjButton.setBackground(ComponentFactory.buttonColor);
+		// findInstitutionNumjButton.setBackground(ComponentFactory.buttonColor);
 
 		jLabel13 = new javax.swing.JLabel();
 
 		findInstitutionNamejTextField = new javax.swing.JTextField();
 
 		findInstitutionNamejButton = new MyButton(ButtonType.SEARCH_NAME);
-//		findInstitutionNamejButton.setBackground(ComponentFactory.buttonColor);
+		// findInstitutionNamejButton.setBackground(ComponentFactory.buttonColor);
 
 		jLabel15 = new javax.swing.JLabel();
 
@@ -2239,10 +2246,10 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		institutionjTable = new javax.swing.JTable();
 
 		addInstitutionjButton = new MyButton(ButtonType.NEW_INSTITUTE);
-//		addInstitutionjButton.setBackground(ComponentFactory.buttonColor);
+		// addInstitutionjButton.setBackground(ComponentFactory.buttonColor);
 
 		submitInstitutionjButton = new javax.swing.JButton();
-//		submitInstitutionjButton.setBackground(ComponentFactory.buttonColor);
+		// submitInstitutionjButton.setBackground(ComponentFactory.buttonColor);
 
 		accountjPanel = new javax.swing.JPanel();
 		accountjPanel.setBackground(ComponentFactory.panelColor);
@@ -2251,7 +2258,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		accountNamejTextField = new javax.swing.JTextField();
 
 		findAccountNamejButton = new MyButton(ButtonType.SEARCH_PERSON_NAME);
-//		findAccountNamejButton.setBackground(ComponentFactory.buttonColor);
+		// findAccountNamejButton.setBackground(ComponentFactory.buttonColor);
 
 		jLabel9 = new javax.swing.JLabel();
 
@@ -2272,10 +2279,10 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		formjPanel.setBackground(ComponentFactory.panelColor);
 
 		profitFormjButton = new MyButton(ButtonType.FORM_PROFIT);
-//		profitFormjButton.setBackground(ComponentFactory.buttonColor);
+		// profitFormjButton.setBackground(ComponentFactory.buttonColor);
 
 		manageStateFormjButton = new MyButton(ButtonType.FORM_BUSINESS);
-//		manageStateFormjButton.setBackground(ComponentFactory.buttonColor);
+		// manageStateFormjButton.setBackground(ComponentFactory.buttonColor);
 
 		jLabel30 = new javax.swing.JLabel();
 		jLabel31 = new javax.swing.JLabel();
@@ -2292,8 +2299,8 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		logjPanel = new javax.swing.JPanel();
 		logjPanel.setBackground(ComponentFactory.panelColor);
 
-		findLogjButton =new MyButton(ButtonType.SEARCH);
-		
+		findLogjButton = new MyButton(ButtonType.SEARCH);
+
 		jLabel36 = new javax.swing.JLabel();
 		jLabel37 = new javax.swing.JLabel();
 		jLabel38 = new javax.swing.JLabel();
@@ -2319,14 +2326,15 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		logjTable = new javax.swing.JTable();
 		jLabel6 = new javax.swing.JLabel();
 
+		currentAccountNumjLabel = new javax.swing.JLabel();
+		currentAccountNumjLabel.setFont(ComponentFactory.pBlod);
+		currentAccountNumjLabel.setBounds(841,58,109,25);
+		
 		currentAccountNamejLabel = new javax.swing.JLabel();
 		currentAccountNamejLabel.setFont(ComponentFactory.pBlod);
-
-		currentAuthorityjLabel = new javax.swing.JLabel();
-		currentAuthorityjLabel.setFont(ComponentFactory.pBlod);
-
-		currentAccoutNamejLabel = new javax.swing.JLabel();
-		currentAccoutNamejLabel.setFont(ComponentFactory.pBlod);
+		currentAccountNamejLabel.setBounds(785,58,56,25);
+//		currentAccoutNamejLabel = new javax.swing.JLabel();
+//		currentAccoutNamejLabel.setFont(ComponentFactory.pBlod);
 
 		jLabel48 = new javax.swing.JLabel();
 		statejLabel = new javax.swing.JLabel();
@@ -2334,6 +2342,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		statejLabel.setBackground(ComponentFactory.labelColor);
 
 		exitjButton = new MyButton(ButtonType.EXIT);
+		exitjButton.setBounds(908, 14, 30, 30);
 
 		viewChecked = new JButton();
 		viewChecked.setBackground(ComponentFactory.buttonColor);
@@ -3919,10 +3928,10 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		// Comparator cmp = Collator.getInstance(java.util.Locale.CHINA); //
 		// 使根据指定比较器产生的顺序对指定对象数组进行排序。
 		// Arrays.sort(city, cmp);
-		City C1=City.getCity(city[0]);
-		City C2=City.getCity(city[1]);
-		City c1 = City.getCity1(C1,C2);
-		City c2 = City.getCity1(C1,C2);
+		City C1 = City.getCity(city[0]);
+		City C2 = City.getCity(city[1]);
+		City c1 = City.getCity1(C1, C2);
+		City c2 = City.getCity1(C1, C2);
 
 		return new ConstVO(c1, c2, distanceConst, priceConst);
 	}
@@ -4067,9 +4076,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private javax.swing.JLabel constTitlejLabel;
 	private javax.swing.JPanel constjPanel;
 	private javax.swing.JTable constjTable;
+	private javax.swing.JLabel currentAccountNumjLabel;
+//	private javax.swing.JLabel currentAccoutNamejLabel;
 	private javax.swing.JLabel currentAccountNamejLabel;
-	private javax.swing.JLabel currentAccoutNamejLabel;
-	private javax.swing.JLabel currentAuthorityjLabel;
 	private javax.swing.JTable documentCheckjTable;
 	private javax.swing.JComboBox formEDatejComboBox;
 	private javax.swing.JComboBox formEMonthjComboBox;
@@ -4141,12 +4150,12 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private javax.swing.JButton findInstitutionNumjButton;//
 	private javax.swing.JButton findInstitutionNamejButton;//
 	private javax.swing.JButton findLogjButton;//
-	private javax.swing.JButton exitjButton;//退出 
+	private javax.swing.JButton exitjButton;// 退出
 	private javax.swing.JButton jButton3;
 	private javax.swing.JButton jButton5;
 	private javax.swing.JButton jButton6;
 	private javax.swing.JButton manageStateFormjButton;//
-	private javax.swing.JButton outputFormjButton;//未使用
+	private javax.swing.JButton outputFormjButton;// 未使用
 	private javax.swing.JButton profitFormjButton;//
 	private javax.swing.JButton submitConstjButton;//
 	private javax.swing.JButton submitInstitutionjButton;//

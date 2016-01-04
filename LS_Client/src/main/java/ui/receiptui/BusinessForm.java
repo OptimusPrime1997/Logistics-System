@@ -114,7 +114,7 @@ public static void main(String[] args) {
         });
 
         showText.setEditable(false);
-        showText.setText("示例:2015-11-2");
+        showText.setText("示例:2015-11-02"); 
 
         resultMsgText.setEditable(false);
 

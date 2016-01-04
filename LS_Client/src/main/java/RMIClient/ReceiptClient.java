@@ -4,11 +4,13 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+
+import bl.loginbl.Loginbl;
 import dataservice.receiptdataservice.*;
 
 public class ReceiptClient {
 	
-	final public static String ip = "127.0.0.1";
+	final public static String ip = Loginbl.getIP();
 	private static ReceiptDataService service = null;
 	private static PayRepDataService payService = null;
 	private static InStockRepDataService inStockService = null;
