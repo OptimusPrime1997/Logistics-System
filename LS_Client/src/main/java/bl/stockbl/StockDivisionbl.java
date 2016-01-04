@@ -157,13 +157,13 @@ public class StockDivisionbl implements StockDivisionBLService{
 		City cityNum = CurrentCity.getCurrentCity();
 		ArrayList<StockDivisionPO> list = sd.getStockDivision(cityNum);
 		for(StockDivisionPO po:list) {
-			block[po.getBlock()-1]+=1;
+			block[po.getBlock()-1]+=block[po.getBlock()-1];
 		}
 		block[toAddBlock-1]++;
 		
 		//找出库存报警的区号，并加入结果数组
 		for(int i = 0; i < block.length; ++i) {
-			if(block[i]>=2) {
+			if(block[i]>2) {
 				result.add(i+1);
 			}
 		}

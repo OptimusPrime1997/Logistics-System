@@ -1,5 +1,7 @@
 package VO.ManagementVO;
 
+import util.InputCheck;
+
 public class BankAccountVO implements Comparable<BankAccountVO> {
 	public String bankAccountNum;
 	public String bankAccountName;
@@ -10,7 +12,7 @@ public class BankAccountVO implements Comparable<BankAccountVO> {
 		// TODO Auto-generated constructor stub
 		this.bankAccountNum = bankAccountNum;
 		this.bankAccountName = bankAccountName;
-		this.balance = balance;
+		this.balance = InputCheck.formatDouble(balance);
 	}
 
 	public int compareTo(BankAccountVO v) {

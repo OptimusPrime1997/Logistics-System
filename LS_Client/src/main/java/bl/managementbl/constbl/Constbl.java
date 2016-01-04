@@ -11,6 +11,7 @@ import bl.managementbl.managedata.ManageData;
 import bl.managementbl.managedata.ManageVOPO;
 import dataservice.managementdataservice.constdataservice.ConstDataService;
 import dataservice.managementdataservice.managedataservice.ManageDataService;
+import util.InputCheck;
 import util.enumData.City;
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
@@ -177,9 +178,8 @@ public class Constbl {
 		double price = v.priceConst;
 		double distance = v.distanceConst;
 		result = price * shipForm.getRatio() * (weight / 1000) * distance;
-		DecimalFormat dcmFmt = new DecimalFormat("0.0");
 		assert (result != 0) : ("运费计算错误");
-		return Double.parseDouble(dcmFmt.format(result));
+		return InputCheck.formatDouble(result);
 	}
 
 	/**

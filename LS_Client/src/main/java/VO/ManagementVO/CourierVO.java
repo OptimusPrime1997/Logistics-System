@@ -1,5 +1,7 @@
 package VO.ManagementVO;
 
+import util.InputCheck;
+
 public class CourierVO implements Comparable<CourierVO> {
 	/**
 	 * 快递员编号
@@ -13,7 +15,7 @@ public class CourierVO implements Comparable<CourierVO> {
 	public CourierVO(String courierNum, double courrentMonthMoney) {
 		super();
 		this.courierNum = courierNum;
-		this.courrentMonthMoney = courrentMonthMoney;
+		this.courrentMonthMoney = InputCheck.formatDouble(courrentMonthMoney);
 	}
 
 	/* (non-Javadoc)

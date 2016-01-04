@@ -557,8 +557,8 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 	private ArrayList<AccountVO> accountVOs = null;
 	private AccountBLService accountblController = null;
 	private AdministratorPanel administratorPanel;
-	private JComboBox sexjComboBox = ComponentFactory.getSexJComboBox();
-	private JComboBox authorityjComboBox = ComponentFactory.getInstance()
+	private JComboBox<Sex> sexjComboBox = ComponentFactory.getSexJComboBox();
+	private JComboBox<Authority> authorityjComboBox = ComponentFactory
 			.getAuthorityJComboBox();
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JButton exit;

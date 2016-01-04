@@ -37,6 +37,7 @@ import ui.util.NumOnlyDocument;
 import ui.util.TextType;
 import ui.warehousemanui.WarehousePanel;
 import util.InputCheck;
+import util.enumData.Authority;
 import util.enumData.ResultMessage;
 import Exception.GoodsNotFound;
 import VO.GoodsVO;
@@ -134,6 +135,11 @@ public class MainFrame extends JFrame {
 		password_text.setBounds(290, 190, 100, 30);
 		account_text.setDocument(new NumOnlyDocument());
 		
+		account_text.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				login_btnMouseClicked();
+			}
+		});
 		password_text.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				login_btnMouseClicked();
@@ -178,13 +184,17 @@ public class MainFrame extends JFrame {
 		});
 
 	}
+	//TODO
+	private void shrink_btnAction(ActionEvent e) {
+		this.setExtendedState(JFrame.ICONIFIED);
+	}
 
 	private void initbtn() {
 		search_btn = new MyButton(150, 135, ButtonType.SEARCH);
 		login_btn = new MyButton(320, 230, ButtonType.LOGIN);
-		exit_btn = new MyButton(410, 7, ButtonType.EXIT);
+		exit_btn = new MyButton(420, 7, ButtonType.EXIT);
 		ip_btn = new MyButton(150, 210);
-
+		shrink_btn=new MyButton(390, 7, ButtonType.SHRINK);
 		login_btn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -195,6 +205,11 @@ public class MainFrame extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				search_btnMouseClicked();
+			}
+		});
+		shrink_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				shrink_btnAction(e);
 			}
 		});
 		exit_btn.addMouseListener(new MouseAdapter() {
@@ -298,31 +313,35 @@ public class MainFrame extends JFrame {
 			} catch (RemoteException e) {
 			}
 			if (msgMatch == ResultMessage.SUCCESS) {
-				int job = Integer.parseInt(account.substring(6, 8));
+				Authority job=Authority.COURIER;
+				try {
+					job = ctr_login.getCurrentAuthority();
+				} catch (RemoteException e) {
+				}
 				this.setVisible(false);
 				switch (job) {
-				case 1:
+				case MANAGER:
 					new ManagerJFrame();
 					break;
-				case 2:
+				case FINANCIALSTAFF_C:
 					new FinancialStaffJFrame();
 					break;
-				case 3:
+				case BUSSINESSOFFICER:
 					new businessOfficer_main();
 					break;
-				case 4:
+				case TRANSFERCTROFFICER:
 					new transferCtrOfficer_main();
 					break;
-				case 5:
+				case WAREHOUSEMAN:
 					new WarehousePanel();
 					break;
-				case 6:
+				case COURIER:
 					new courier_main();
 					break;
-				case 8:
+				case ADMINISTRATOR:
 					new AdministratorPanel();
 					break;
-				case 9:
+				case FINANCIALSTAFF_V:
 					new FinancialStaffJFrame();
 					break;
 				default:
@@ -369,6 +388,7 @@ public class MainFrame extends JFrame {
 		contentPane.add(goodsNum_text);
 		contentPane.add(exit_btn);
 		contentPane.add(ip_btn);
+		contentPane.add(shrink_btn);
 		contentPane.add(IP_text);
 		this.setContentPane(contentPane);
 	}
@@ -393,7 +413,7 @@ public class MainFrame extends JFrame {
 	final String standard_goodsNum = "输入订单号10位", standard_ip = "输入ip地址";
 	String ip;
 	private String password, goodsNum, account;
-	private MyButton search_btn, login_btn, exit_btn, ip_btn;
+	private MyButton search_btn, login_btn, exit_btn, ip_btn,shrink_btn;
 	private MyLabel account_label, key_label;
 	private JPanel contentPane;
 	private GoodsVO vo;

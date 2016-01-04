@@ -270,8 +270,12 @@ public class UserAccountPanel extends javax.swing.JFrame {
     			AccountVO vo = t.next();
     			if(tofind.equals(vo.accountNum)){
     				found=true;
-    				ComponentFactory.setState(vo.toString(), ComponentFactory.DISPLAY_TIME*6, resultMsg);
-    				break;
+    				ArrayList<AccountVO> accountVOs=new ArrayList<AccountVO>();
+    				accountVOs.add(vo);
+    				AccountSearchPanel accountSearchPanel=new AccountSearchPanel(administratorPanel,accountVOs);
+    				accountSearchPanel.setVisible(true);
+    				this.dispose();
+    				return;
     			}
     		}
     	}else if(InputCheck.checkInputName(tofind)==ResultMessage.VALID){
@@ -338,7 +342,7 @@ public class UserAccountPanel extends javax.swing.JFrame {
     private javax.swing.JButton addAccount;
     private javax.swing.JButton checkAccounts;
     private javax.swing.JButton exit;
-    private javax.swing.JButton confirm_account;
+	private javax.swing.JButton confirm_account;
     private javax.swing.JButton confirm_name;
     private javax.swing.JButton back;
     private javax.swing.JLabel jLabel1;

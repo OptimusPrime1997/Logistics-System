@@ -6,8 +6,11 @@
 package ui.businessOfficerui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
@@ -44,8 +47,6 @@ public class driver_detail extends JFrame {
 	private void validTime_textActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_validTime_textActionPerformed
 	}
 
-	private void day_comboBoxActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_day_comboBoxActionPerformed
-	}
 
 	private void driverNum_textActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_driverNum_textActionPerformed
 	}
@@ -151,6 +152,21 @@ public class driver_detail extends JFrame {
 			}
 
 		});
+		delete_btn.addMouseListener(new MouseAdapter() {
+			public void MouseClicked(MouseEvent e) {
+				delete_btnMouseClicked(e);
+			}
+		});
+	}
+
+	protected void delete_btnMouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getSource() == delete_btn) {
+			ResultMessage rmsg = parent.deleteDriver(selectedN);
+			if (rmsg == ResultMessage.SUCCESS) {
+				this.dispose();
+			}
+		}
 	}
 
 	private void initLayout(GroupLayout layout) {
@@ -454,7 +470,7 @@ public class driver_detail extends JFrame {
 	}
 
 	private void setData() {
-		driverNum_text.setText(driverCode);
+		driverNum_text.setText(driverVO.driverNum);
 		sex_comboBox.setSelectedItem(driverVO.sex);
 		name_text.setText(driverVO.name);
 		IDnum_text.setText(driverVO.id);
@@ -471,14 +487,14 @@ public class driver_detail extends JFrame {
 
 	private void initComboBox() {
 		sex_comboBox = ComponentFactory.getSexJComboBox();
-		year_comboBox = ComponentFactory.getYearJComboBox(1960, 2000);
+		year_comboBox = ComponentFactory.getYearJComboBox(1990, 2016);
+		year_comboBox.setPreferredSize(new Dimension(50,22));
+		
 		month_comboBox = ComponentFactory.getMonthJComboBox();
+		month_comboBox.setPreferredSize(new Dimension(25,22));
+		
 		day_comboBox = ComponentFactory.getDayJComboBox();
-		day_comboBox.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				day_comboBoxActionPerformed(evt);
-			}
-		});
+		day_comboBox.setPreferredSize(new Dimension(25,22));;
 	}
 
 	private void initLabel() {
@@ -504,10 +520,10 @@ public class driver_detail extends JFrame {
 
 		jLabel5.setVisible(false);
 
-		jLabel6.setText("年");
 		jLabel7.setText("身份证号");
 		jLabel8.setText("行驶证期限");
 		jLabel9.setText("手机号");
+		jLabel6.setText("年");
 		jLabela.setText("月");
 		jLabelb.setText("日");
 
@@ -526,6 +542,5 @@ public class driver_detail extends JFrame {
 	private JLabel jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6,
 			jLabel7, jLabel8, jLabel9, jLabela, jLabelb;
 	private driver_management parent;
-	private String driverCode, driverName, phone, IDnum;
 	// End of variables declaration//GEN-END:variables
 }

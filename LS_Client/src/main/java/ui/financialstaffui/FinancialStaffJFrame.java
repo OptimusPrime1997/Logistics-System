@@ -1429,7 +1429,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 							"账户余额（元）" }) {
 				Class[] types = new Class[] { java.lang.String.class,
 						java.lang.String.class, java.lang.Double.class };
-				boolean[] canEdit = new boolean[] { true, true, true };
+				boolean[] canEdit = new boolean[] { false, true, false };
 
 				public Class getColumnClass(int columnIndex) {
 					return types[columnIndex];
@@ -1446,7 +1446,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		((DefaultTableCellRenderer) bankAccountjTable.getTableHeader()
 				.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
-		bankAccountjTable.setRowSelectionInterval(n, n);// 设置哪几行被选中
+//		bankAccountjTable.setRowSelectionInterval(n, n);// 设置哪几行被选中
 		if (currentAuthority == Authority.FINANCIALSTAFF_V) {
 			final JPopupMenu bankAccountjPop = new JPopupMenu();
 			final JMenuItem bankAccountSubmitjItem = new JMenuItem("提交");
@@ -1679,6 +1679,32 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		jScrollPane1.setViewportView(bankAccountjTable);
 	}
 
+public ResultMessage addBankAccount(String bankAccountNum,String bankAccountName,double balance){
+	ResultMessage rmsg = null;
+	BankAccountVO v = new BankAccountVO(bankAccountNum, bankAccountName, balance);
+	BankAccountVOPlus voPlus = new BankAccountVOPlus(v, ModifyState.NEW);
+	ModifyState state = voPlus.isModify;
+		try {
+			rmsg = bankAccountblController.insert(v);
+			setState(
+					"提交"
+							+ ResultMessage
+									.toFriendlyString(rmsg),
+					DISPLAY_TIME);
+			if (rmsg == ResultMessage.SUCCESS) {
+				bankAccountVOPlus.add(bankAccountVOPlus.size(),
+						new BankAccountVOPlus(v,
+								ModifyState.SYNC));
+				initialBankAccountJTable(bankAccountVOPlus, bankAccountVOPlus.size()-1);
+			}
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			setState(REMOTEFAILD, DISPLAY_TIME);
+		}
+	return rmsg;
+
+}
 	private void setBankAccountVOs() {
 		// TODO Auto-generated method stub
 		bankAccountVOPlus = new ArrayList<BankAccountVOPlus>();
@@ -1977,10 +2003,12 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_addBankAccountjButton2ActionPerformed
 		// TODO add your handling code here:
 		if (evt.getSource() == addBankAccountjButton) {
-			bankAccountVOPlus.add(new BankAccountVOPlus("", "", 0,
-					ModifyState.NEW));
-			initialBankAccountJTable(bankAccountVOPlus,
-					bankAccountVOPlus.size() - 1);
+			if(currentAuthority==Authority.FINANCIALSTAFF_V){
+			this.setEnabled(false);
+			new NewBankAcountFrame(this);
+			}else{
+				ComponentFactory.setState("对不起，您没有这个权限！", ComponentFactory.DISPLAY_TIME, statejLabel);
+			}
 		}
 	}// GEN-LAST:event_addBankAccountjButtonMouseReleased
 
@@ -2218,58 +2246,61 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JLabel accountNamejLabel;
 	private javax.swing.JLabel bankAccountNamejLabel;
-	private javax.swing.JTextField findBankAccountNamejTextField;
 	private javax.swing.JLabel bankAccountNumjLabel;
-	private javax.swing.JTextField findBankAccountNumjTextField;
 	private javax.swing.JLabel bankAccountTitlejLabel;
-	private javax.swing.JPanel bankAccountjPanel;
-	private javax.swing.JTable bankAccountjTable;
 	private javax.swing.JLabel currentAccountNumjLabel;
 	private javax.swing.JLabel currentAuthorityjLabel;
 	private javax.swing.JLabel financilManageTitlejLabel;
-	private javax.swing.JButton findBankAccountNamejButton;
 	private javax.swing.JLabel formDeadLinejLabel;
-	private javax.swing.JComboBox formEDatejComboBox;
 	private javax.swing.JLabel formEDatejLabel;
-	private javax.swing.JComboBox formEMonthjComboBox;
 	private javax.swing.JLabel formEMonthjLabel;
-	private javax.swing.JComboBox formEYearjComboBox;
 	private javax.swing.JLabel formEYearjLabel;
 	private javax.swing.JLabel formTitlejLabel;
 	private javax.swing.JLabel initialFinanceTitlejLabel;
 	private javax.swing.JLabel topTitlejLabel;
-	private javax.swing.JScrollPane jScrollPane1;
-	private javax.swing.JScrollPane jScrollPane4;
-	private javax.swing.JSeparator jSeparator1;
-	private javax.swing.JSeparator jSeparator3;
-	private javax.swing.JSeparator jSeparator5;
-	private javax.swing.JComboBox<Integer> logEDatejComboBox;
 	private javax.swing.JLabel logEDatejLabel;
 	private javax.swing.JLabel logEDayjLabel;
-	private javax.swing.JComboBox<Integer> logEMonthjComboBox;
 	private javax.swing.JLabel logEMonthjLabel;
-	private javax.swing.JComboBox<Integer> logEYearjComboBox;
 	private javax.swing.JLabel logEYearjLabel;
-	private javax.swing.JComboBox<Integer> logSDatejComboBox;
 	private javax.swing.JLabel logSDatejLabel;
-	private javax.swing.JComboBox<Integer> logSMonthjComboBox;
 	private javax.swing.JLabel logSMonthjLabel;
-	private javax.swing.JComboBox<Integer> logSYearjComboBox;
 	private javax.swing.JLabel logSYearjLabel;
 	private javax.swing.JLabel logStartDayjLabel;
 	private javax.swing.JLabel logTitlejLabel;
-	private javax.swing.JComboBox<LogType> logTypejComboBox;
 	private javax.swing.JLabel logTypejLabel;
 	private javax.swing.JLabel stateTitlejLabel;
 	private javax.swing.JLabel statejLabel;
 	
+	private javax.swing.JSeparator jSeparator1;
+	private javax.swing.JSeparator jSeparator3;
+	private javax.swing.JSeparator jSeparator5;
 	
+	private javax.swing.JComboBox<LogType> logTypejComboBox;
+	private javax.swing.JComboBox<Integer> logSYearjComboBox;
+	private javax.swing.JComboBox<Integer> logSMonthjComboBox;
+	private javax.swing.JComboBox<Integer> logSDatejComboBox;
+	private javax.swing.JComboBox<Integer> logEYearjComboBox;
+	private javax.swing.JComboBox<Integer> logEMonthjComboBox;
+	private javax.swing.JComboBox<Integer> logEDatejComboBox;
+	private javax.swing.JComboBox formEYearjComboBox;
+	private javax.swing.JComboBox formEMonthjComboBox;
+	private javax.swing.JComboBox formEDatejComboBox;
+	
+	
+	private javax.swing.JTable bankAccountjTable;
+	private javax.swing.JTable logjTable;
+	
+	private javax.swing.JTextField findBankAccountNumjTextField;
+	private javax.swing.JTextField findBankAccountNamejTextField;
+	
+	private javax.swing.JScrollPane jScrollPane1;
+	private javax.swing.JScrollPane jScrollPane4;
+	private javax.swing.JPanel bankAccountjPanel;
 	private javax.swing.JPanel logjPanel;
 	private javax.swing.JPanel paymentIconjPanel;
 	private javax.swing.JPanel profitFormIcon;
 	private javax.swing.JPanel manageFormIcon;
 	private javax.swing.JPanel newFinanceIconjPanel;
-	private javax.swing.JTable logjTable;
 	private javax.swing.JPanel jPanel6;
 	private javax.swing.JPanel formjPanel;
 	private javax.swing.JPanel initialFinaceIconjpanel;
@@ -2277,12 +2308,13 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 	private javax.swing.JPanel financialManagejPanel;
 	private javax.swing.JPanel financialjPanel;
 	
+	private javax.swing.JButton findBankAccountNamejButton;
+	private javax.swing.JButton findBankAccountNumjButton;//
+	private javax.swing.JButton addBankAccountjButton;//
 	private javax.swing.JButton paymentjButton;//
 	private javax.swing.JButton newFinancejButton;//期初建账，未实现
 	private javax.swing.JButton initialFinancejButton;//期初建账，未实现
-	private javax.swing.JButton addBankAccountjButton;//
 	private javax.swing.JButton exitjButton;//退出按钮
-	private javax.swing.JButton findBankAccountNumjButton;//
 	private javax.swing.JButton findLogjButton;//
 	private javax.swing.JButton viewManageForm;//
 	private javax.swing.JButton viewProfitFormjButton;

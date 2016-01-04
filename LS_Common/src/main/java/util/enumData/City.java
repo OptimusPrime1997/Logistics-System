@@ -88,6 +88,20 @@ public enum City {
 			return null;
 		}
 	}
+	public static String cityToNum(City city) {
+		switch (city) {
+		case BEIJING:
+			return "010";
+		case GUANGZHOU:
+			return "020";
+		case SHANGHAI:
+			return "021";
+		case NANJING:
+			return "025";
+		default:
+			return null;
+		}
+	}
 
 	public static City getCity1(City city1, City city2) {
 		assert (city1.getIndex() != city2.getIndex()) : ("两个城市相同，City-getCity1出现错误");

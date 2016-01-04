@@ -2,6 +2,8 @@ package PO;
 
 import java.io.Serializable;
 
+import util.InputCheck;
+
 /**
  * @author 1
  *存储快递员编号 和 当月业务金额
@@ -23,7 +25,7 @@ public class CourierPO implements Serializable {
 	public CourierPO(String courierNum, double courrentMonthMoney) {
 		super();
 		this.courierNum = courierNum;
-		this.courrentMonthMoney = courrentMonthMoney;
+		this.courrentMonthMoney = InputCheck.formatDouble(courrentMonthMoney);
 	}
 
 	public String getCourierNum() {
@@ -35,11 +37,11 @@ public class CourierPO implements Serializable {
 	}
 
 	public double getCourrentMonthMoney() {
-		return courrentMonthMoney;
+		return InputCheck.formatDouble(courrentMonthMoney);
 	}
 
 	public void setCourrentMonthMoney(int courrentMonthMoney) {
-		this.courrentMonthMoney = courrentMonthMoney;
+		this.courrentMonthMoney = InputCheck.formatDouble(courrentMonthMoney);
 	}
 
 }
