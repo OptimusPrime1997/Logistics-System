@@ -49,22 +49,27 @@ public class Goodsbl {
 	Logbl ctr_log = new Logbl();
 	final double[] expressRates = { 18, 23, 25 };
 	public static void main(String[] args) {
-		
-		/*
-		 * 1北京   温冰宇 11100000000
-		 * 2广州   方子阳 22200000000
-		 * 3上海   任向东 33300000000
-		 * 4南京   丁云亮 44400000000
-		 */
 		Goodsbl ctr = new Goodsbl();
-		GoodsVO vo = new GoodsVO("", false, "02500106066", "", "2015-12-31", "", "", "方子阳", "广州",
-				"", "22200000000", "任向东", "上海", null, "33300000000", 1, 0.5, 0.03, "贺卡",
-				GoodsExpressType.NORMAL, 1, 10, 9, GoodsArrivalState.INTACT, GoodsLogisticState.SENDED, null, null,
-				"2015-12-31");
-		try {
-			ctr.initComplete(vo);
-		} catch (ExistException e) {
+		ArrayList<GoodsVO> vos=ctr.show();
+		for(GoodsVO vo:vos){
+			System.out.println(vo.listNum+"  "+vo.senderAddress+"  "+vo.receiverAddress);
 		}
+//		
+//		/*
+//		 * 1北京   温冰宇 11100000000
+//		 * 2广州   方子阳 22200000000
+//		 * 3上海   任向东 33300000000
+//		 * 4南京   丁云亮 44400000000
+//		 */
+//		Goodsbl ctr = new Goodsbl();
+//		GoodsVO vo = new GoodsVO("", false, "02500106066", "", "2015-12-31", "", "", "方子阳", "广州",
+//				"", "22200000000", "任向东", "上海", null, "33300000000", 1, 0.5, 0.03, "贺卡",
+//				GoodsExpressType.NORMAL, 1, 10, 9, GoodsArrivalState.INTACT, GoodsLogisticState.SENDED, null, null,
+//				"2015-12-31");
+//		try {
+//			ctr.initComplete(vo);
+//		} catch (ExistException e) {
+//		}
 	}
 
 	/**

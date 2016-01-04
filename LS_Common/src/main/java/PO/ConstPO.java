@@ -24,7 +24,6 @@ public class ConstPO implements Serializable, Comparable<ConstPO> {
 	public ConstPO(City city1, City city2, double distanceConst,
 			double priceConst) {
 		super();
-		assert (city1.getIndex() != city2.getIndex()) : ("两个城市相同，出现错误");
 		this.city1 = city1.getIndex() < city2.getIndex() ? city1 : city2;
 		this.city2 = city1.getIndex() > city2.getIndex() ? city1 : city2;
 		this.priceConst = priceConst;

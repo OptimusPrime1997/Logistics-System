@@ -45,19 +45,20 @@ public class SalaryPolicybl {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DECISION_SALARYPOLICY);
 		if (salaryPolicyDataService != null) {
-			ResultMessage rmsg=check(vo);
+			ResultMessage rmsg = check(vo);
 			try {
-				ArrayList<SalaryPolicyPO> pos = salaryPolicyDataService.show();
-				if (pos != null) {
-					for (Iterator<SalaryPolicyPO> t = pos.iterator(); t
-							.hasNext();) {
-						if (t.next().getAuthority() == (vo.authority)) {
-							return ResultMessage.EXIST;
+				if (check(vo) == ResultMessage.VALID) {
+					ArrayList<SalaryPolicyPO> pos = salaryPolicyDataService
+							.show();
+					if (pos != null) {
+						for (Iterator<SalaryPolicyPO> t = pos.iterator(); t
+								.hasNext();) {
+							if (t.next().getAuthority() == (vo.authority)) {
+								return ResultMessage.EXIST;
+							}
 						}
 					}
-	}
-				if (check(vo) == ResultMessage.VALID) {
-					 rmsg = salaryPolicyDataService
+					rmsg = salaryPolicyDataService
 							.insert(manageVOPO.voToPO(vo));
 					ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 				} else {
@@ -68,7 +69,7 @@ public class SalaryPolicybl {
 				e.printStackTrace();
 				System.out.println("存储文件出错");
 				return ResultMessage.IOFAILED;
-			}
+			} 
 			catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

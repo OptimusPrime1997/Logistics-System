@@ -36,7 +36,7 @@ public enum ResultMessage {
 	 */
 	EXIST(""),
 	/**
-	 * 没找到订单
+	 * 没找到数据
 	 */
 	NOT_FOUND(""),
 	/**
@@ -203,7 +203,11 @@ public enum ResultMessage {
 	/**
 	 * 库存报警
 	 */
-	ALARM("库存报警");
+	ALARM("库存报警"), 
+	/**
+	 * 未找到订单
+	 */
+	NOT_FOUND_GOODS("");
 	
 	
 //	有空就把所有空的字符串补齐，然后把下面长长的switch去掉
@@ -258,6 +262,8 @@ public enum ResultMessage {
 			return "覆盖数据";
 		case NOT_FOUND:
 			return "对不起，该未找到数据";
+		case NOT_FOUND_GOODS:
+			return "对不起，不存在该订单";
 		case SIGNED_SUCCESS:
 			return "签收成功~";
 		case MODIFY_SUCCESS:

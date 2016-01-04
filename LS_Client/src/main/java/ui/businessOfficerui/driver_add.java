@@ -21,9 +21,9 @@ import VO.ManagementVO.DriverVO;
 import blservice.managementblservice.vehicleanddriverblservice.DriverBLService;
 
 public class driver_add extends JFrame {
-	// public static void main(String[] args) {
-	// new driver_add();
-	// }
+	 public static void main(String[] args) {
+	 new driver_add(new driver_management());
+	 }
 
 	/**
 	 * Creates new form driver__add
@@ -138,6 +138,7 @@ public class driver_add extends JFrame {
 		name_text = new JTextField();
 		IDnum_text = new JTextField();
 		phoneNum_text = new JTextField();
+		feedback_text=new JTextField();
 		birthday_text = new JTextField();
 		birthday_text.setVisible(false);
 		driverNum_text.setEditable(false);
@@ -152,6 +153,7 @@ public class driver_add extends JFrame {
 						layout1.createSequentialGroup()
 								.addContainerGap(GroupLayout.DEFAULT_SIZE,
 										Short.MAX_VALUE)
+										.addComponent(feedback_text).addGap(30)
 								.addComponent(cancel_btn).addGap(39, 39, 39)
 								.addComponent(ok_btn).addGap(15, 15, 15))
 				.addGroup(
@@ -386,6 +388,7 @@ public class driver_add extends JFrame {
 								.addGroup(
 										layout1.createParallelGroup(
 												GroupLayout.Alignment.BASELINE)
+												.addComponent(feedback_text)
 												.addComponent(cancel_btn)
 												.addComponent(ok_btn))
 								.addGap(10, 10, 10)));
@@ -437,7 +440,7 @@ public class driver_add extends JFrame {
 	private driver_management parent;
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private JTextField IDnum_text, driverNum_text, name_text, phoneNum_text,
-			birthday_text;
+			birthday_text,feedback_text;
 	private JButton cancel_btn;
 	private JComboBox<Integer> year_comboBox, month_comboBox, day_comboBox;
 	private JComboBox<Sex> sex_comboBox;

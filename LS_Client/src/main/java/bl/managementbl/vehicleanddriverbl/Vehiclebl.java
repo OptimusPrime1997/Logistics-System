@@ -43,8 +43,8 @@ public class Vehiclebl {
 		if (vehicleDataService != null) {
 			if (check(vo) == ResultMessage.VALID) {
 				try {
-					ArrayList<VehiclePO> pos = vehicleDataService.showVehicle();
 					if (vo.vehicleNum.substring(6, 9).equals("000")) {
+						ArrayList<VehiclePO> pos = vehicleDataService.showVehicle();
 						VehiclePO lastPO = null;
 						String temp = vo.vehicleNum.substring(0, 6);
 						if (pos != null) {
