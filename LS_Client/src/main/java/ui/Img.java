@@ -25,6 +25,9 @@ public class Img {
 	private static ImageIcon formBusiness_btn=new ImageIcon("pic/btn/formBusiness_btn.png");
 	private static ImageIcon formBusiness_btn_pressed=new ImageIcon("pic/btn/formBusiness_btn_pressed.png");
 	
+	private static ImageIcon refresh_btn=new ImageIcon("pic/btn/refresh_btn.png");
+	private static ImageIcon refresh_btn_pressed=new ImageIcon("pic/btn/refresh_btn_pressed.png");
+	
 	private static ImageIcon formProfit_btn=new ImageIcon("pic/btn/formProfit_btn.png");
 	private static ImageIcon formProfit_btn_pressed=new ImageIcon("pic/btn/formProfit_btn_pressed.png");
 	
@@ -354,6 +357,15 @@ public class Img {
 
 	public static ImageIcon getStockCheck() {
 		return stockCheck;
+	}
+	
+
+	public static ImageIcon getRefresh_btn() {
+		return refresh_btn;
+	}
+
+	public static ImageIcon getRefresh_btn_pressed() {
+		return refresh_btn_pressed;
 	}
 
 	public static ImageIcon getStockCheck_pressed() {

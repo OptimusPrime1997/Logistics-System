@@ -29,9 +29,7 @@ public class MyFormattedTextFeild extends JFormattedTextField {
 		case IP:
 			setFormatter(new IPAddressFormatter());
 			setInputVerifier(new FormattedTextFieldVerifier());
-			
 			setHorizontalAlignment(JTextField.CENTER);
-			setForeground(Color.magenta);
 			setEditable(true);
 			break;
 		default:

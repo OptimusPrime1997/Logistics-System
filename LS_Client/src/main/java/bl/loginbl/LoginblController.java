@@ -28,4 +28,10 @@ public class LoginblController implements LoginBLService {
 		return loginbl.getCurrentOptorName();
 	}
 
+	@Override
+	public Authority getCurrentAuthority() throws RemoteException {
+		return loginbl.getCurrentAuthority();
+	}
+	
+
 }

@@ -290,7 +290,7 @@ public class ServerUI extends JFrame {
 
 		btnStart = new JButton("启动服务");
 		btnStart.setFont(sTitle);
-		btnStart.setBounds(600, 30, 50, 20);
+		btnStart.setBounds(570, 30, 80, 30);
 		btnStart.setBackground(buttonColor);
 		btnStart.addActionListener(new ActionListener() {
 
@@ -318,7 +318,7 @@ public class ServerUI extends JFrame {
 		
 		btnStop = new JButton("停止服务");
 		btnStop.setFont(sTitle);
-		btnStop.setBounds(690, 30, 50, 20);
+		btnStop.setBounds(670, 30, 80, 30);
 		btnStop.setBackground(buttonColor);
 		btnStop.addActionListener(new ActionListener() {
 

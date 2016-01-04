@@ -26,6 +26,14 @@ public enum ButtonType {
 	NEW_SALARY,
 	NEW_INSTITUTE,
 	/**
+	 * 最小化按钮
+	 */
+	SHRINK,
+	/**
+	 * 刷新界面的
+	 */
+	REFRESH,
+	/**
 	 * 名称查找
 	 */
 	SEARCH_NAME,
