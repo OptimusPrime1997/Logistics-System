@@ -181,10 +181,10 @@ public class WarehousePanel extends javax.swing.JFrame {
         showProgressBar(Peking2, 10, Color.PINK);
         showProgressBar(Shanghai1, 10, Color.BLUE);
         showProgressBar(Shanghai2, 10, Color.BLUE);
-        showProgressBar(Nanjing1, 10, Color.BLUE);
-        showProgressBar(Nanjing2, 10, Color.BLUE);
-        showProgressBar(Guangzhou1, 10, Color.BLUE);
-        showProgressBar(Guangzhou2, 10, Color.BLUE);
+        showProgressBar(Nanjing1, 10, Color.GREEN);
+        showProgressBar(Nanjing2, 10, Color.GREEN);
+        showProgressBar(Guangzhou1, 10, Color.ORANGE);
+        showProgressBar(Guangzhou2, 10, Color.orange);
 
       
 
@@ -316,7 +316,6 @@ public class WarehousePanel extends javax.swing.JFrame {
     /**
   	 * 
   	 */
-    //TODO 
 
   	public void showProcess() {
   		try {
