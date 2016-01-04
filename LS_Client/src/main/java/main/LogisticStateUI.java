@@ -108,15 +108,24 @@ public class LogisticStateUI extends javax.swing.JFrame {
         String[] dates=vo.dates.split(" ");
         if(dates.length>7) content=new Object[6][2];
         else content=new Object[dates.length][2];
-//        for(int i=0;i<7;i++){
-//        	content[i][0]="";
-//        	content[i][1]="";
-//        }
-        for(String date:dates){
-        	if(count>=6) break;
-        	content[count][0]=date;
-        	content[count][1]=GoodsLogisticState.toFriendlyString(GoodsLogisticState.get(count));
-        	count++;
+        //丢损 显示已丢损
+        if(vo.arrivalState==GoodsArrivalState.BROKEN||vo.arrivalState==GoodsArrivalState.LOST){
+        	for(int i=0;i<dates.length-1;i++){
+        		if(count>=6) break;
+             	content[count][0]=dates[i];
+             	content[count][1]=GoodsLogisticState.toFriendlyString(GoodsLogisticState.get(count));
+             	count++;
+        	}
+        	content[count][0]=dates[count];
+        	content[count][1]=GoodsLogisticState.toFriendlyString(GoodsLogisticState.BROKEN_OR_LOST);
+        }else{
+        	count=0;
+        	 for(String date:dates){
+             	if(count>=6) break;
+             	content[count][0]=date;
+             	content[count][1]=GoodsLogisticState.toFriendlyString(GoodsLogisticState.get(count));
+             	count++;
+             }
         }
         table = new JTable(new MyTableModel(content));
         table.setBounds(20,60,280,120);
