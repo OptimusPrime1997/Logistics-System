@@ -5,25 +5,20 @@
  */
 package ui.businessOfficerui;
 
+import java.awt.Color;
 import java.rmi.RemoteException;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-import org.apache.poi.poifs.property.Parent;
-
+import ui.util.MyFrame;
 import util.InputCheck;
 import util.enumData.ResultMessage;
 import VO.ManagementVO.VehicleVO;
-import bl.controllerfactorybl.ControllerFactoryImpl;
-import blservice.controllerfactoryblservice.ControllerFactoryblService;
-import blservice.managementblservice.accountblservice.AccountBLService;
 import blservice.managementblservice.vehicleanddriverblservice.VehicleBLService;
 
 /**
@@ -46,11 +41,13 @@ public class car_add extends JFrame {
 	 * Creates new form car_add
 	 */
 	public car_add(car_management parent) {
+		MyFrame.changeLook();
 		this.parent = parent;
 		this.vehicleblController = parent.getVehicleblController();
 		this.setVisible(true);
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
+		this.setBackground(Color.WHITE);
 		initComponents();
 	}
 
@@ -89,7 +86,6 @@ public class car_add extends JFrame {
 				ResultMessage.postCheck(ResultMessage.SUCCESS, r);
 				if(r==ResultMessage.SUCCESS){
 					parent.initTable();
-					parent.repaintTable();
 				}
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block

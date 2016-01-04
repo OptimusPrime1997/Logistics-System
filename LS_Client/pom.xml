@@ -28,6 +28,12 @@
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 		</dependency>
-
+<dependency>
+			<groupId>swingset3_beautyeye</groupId>
+			<artifactId>swingset3_beautyeye</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/swingset3_beautyeye.jar</systemPath>
+		</dependency>
 	</dependencies>
 </project>

@@ -5,6 +5,7 @@
  */
 package ui.businessOfficerui;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ import javax.swing.WindowConstants;
 
 import VO.ManagementVO.DriverVO;
 import ui.componentfactory.ComponentFactory;
+import ui.util.MyFrame;
 import util.enumData.ResultMessage;
 import util.enumData.Sex;
 
@@ -99,6 +101,8 @@ public class driver_detail extends JFrame {
 	 * Creates new form driver_detail
 	 */
 	public driver_detail(driver_management panel, int selected) {
+		MyFrame.changeLook();
+		this.setBackground(Color.white);
 		this.parent = panel;
 		this.selectedN = selected;
 		this.driverVOs = parent.conveyDriverVOs();

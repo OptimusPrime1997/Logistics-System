@@ -2,7 +2,6 @@ package ui.businessOfficerui;
 
 import java.rmi.RemoteException;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -13,12 +12,13 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 import javax.swing.WindowConstants;
 
-import blservice.managementblservice.vehicleanddriverblservice.DriverBLService;
 import ui.componentfactory.ComponentFactory;
+import ui.util.MyFrame;
 import util.InputCheck;
 import util.enumData.ResultMessage;
 import util.enumData.Sex;
 import VO.ManagementVO.DriverVO;
+import blservice.managementblservice.vehicleanddriverblservice.DriverBLService;
 
 public class driver_add extends JFrame {
 	// public static void main(String[] args) {
@@ -29,6 +29,7 @@ public class driver_add extends JFrame {
 	 * Creates new form driver__add
 	 */
 	public driver_add(driver_management panel) {
+		MyFrame.changeLook();
 		parent = panel;
 		this.driverblController = parent.getDriverblController();
 		this.setVisible(true);

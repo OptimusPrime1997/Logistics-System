@@ -314,6 +314,6 @@ public class courier_signed extends JFrame {
     private courier_main parentPanel;
     private static final long serialVersionUID = 1L;    
     private int mousePressedX,mousePressedY;
-    private final int width=650, height=380;
+    private final int width=650, height=420;
     // End of variables declaration//GEN-END:variables
 }
