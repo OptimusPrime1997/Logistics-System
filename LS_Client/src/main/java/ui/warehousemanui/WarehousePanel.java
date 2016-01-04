@@ -270,7 +270,7 @@ public class WarehousePanel extends javax.swing.JFrame {
 		OutStockRep out = new OutStockRep(frame);
     	frame.setContentPane(out);
     	frame.setVisible(true);
-    	this.dispose();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void inRepButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed    	
@@ -289,7 +289,6 @@ public class WarehousePanel extends javax.swing.JFrame {
     	frame.setContentPane(in);
     	frame.setVisible(true);
     	
-    	this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
