@@ -113,7 +113,10 @@ public class ServerUI extends JFrame {
 	 * 退出btn
 	 */
 	private JButton btnExit;
-
+/**
+ * 缩小按钮
+ */
+	private JButton btnShrink;
 	/**
 	 * 输出区域
 	 */
@@ -197,8 +200,8 @@ public class ServerUI extends JFrame {
 				g.drawImage(getMainBackgroundIcon(), 0, 0, panel0.getWidth(), panel0.getHeight(), null);
 			}
 		};	
+		panel.setLayout(null);
 		panel.setBounds(0, 0, panel0.getWidth(),panel0.getHeight());
-		this.setLayout(null);
 	}
 
 	/**
@@ -353,7 +356,14 @@ public class ServerUI extends JFrame {
 //		panel.add(btnChange);
 		
 		btnExit=new ExitButton(30,30);
-		btnExit.setBounds(panel.getWidth()-30,0,30,30);
+		btnShrink=new ShrinkButton(30, 30);
+		btnShrink.setBounds(panel.getWidth()-80,0,30,30);
+		btnExit.setBounds(panel.getWidth()-50,0,30,30);
+		btnShrink.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnShrinkAcion(e);
+			}
+		});
 		btnExit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -372,7 +382,9 @@ public class ServerUI extends JFrame {
 		
 	}
 	
-
+	private void btnShrinkAcion(ActionEvent e) {
+		this.setExtendedState(JFrame.ICONIFIED);
+	}
 	/**
 	 * 初始化标签
 	 */
@@ -412,6 +424,7 @@ public class ServerUI extends JFrame {
 		panel.add(labTitle);
 		panel.add(btnStart);
 		panel.add(btnStop);
+		panel.add(btnShrink);
 		panel.add(labInfo);
 		panel.add(runningInfo);
 		panel.add(btnExit);

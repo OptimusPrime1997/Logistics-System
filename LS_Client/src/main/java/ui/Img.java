@@ -86,6 +86,9 @@ public class Img {
 	private static ImageIcon login_btn=new ImageIcon("pic/btn/btn_login.png");
 	private static ImageIcon login_btn_pressed=new ImageIcon("pic/btn/btn_login_pressed.png");
 	
+
+	private static ImageIcon shrink_btn=new ImageIcon("pic/btn/shrink_btn.png");
+	private static ImageIcon shrink_btn_pressed=new ImageIcon("pic/btn/shrink_btn_pressed.png");
 	
 	private static ImageIcon exit_btn=new ImageIcon("pic/btn/btn_exit0.png");
 	private static ImageIcon exit_btn_pressed=new ImageIcon("pic/btn/btn_exit1.png");
@@ -311,6 +314,14 @@ public class Img {
 
 	public static ImageIcon getStockInput_btn() {
 		return stockInput_btn;
+	}
+
+	public static ImageIcon getShrink_btn() {
+		return shrink_btn;
+	}
+
+	public static ImageIcon getShrink_btn_pressed() {
+		return shrink_btn_pressed;
 	}
 
 	public static ImageIcon getStockInput_btn_pressed() {
