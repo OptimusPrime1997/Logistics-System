@@ -48,6 +48,7 @@ public class PayCheck extends javax.swing.JPanel {
     public PayCheck() {
         initComponents();
         myFrame = new MyFrame(459, 433, this);
+        myFrame.setTitle("付款单简略信息查看");
     }
 
     /**

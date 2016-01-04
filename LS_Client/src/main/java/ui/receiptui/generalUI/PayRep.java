@@ -67,6 +67,7 @@ public class PayRep extends javax.swing.JPanel {
 	public PayRep() {
 		initComponents();
 		myFrame = new MyFrame(691, 367, this);
+		myFrame.setTitle("付款单");
 	}
 
 	/**

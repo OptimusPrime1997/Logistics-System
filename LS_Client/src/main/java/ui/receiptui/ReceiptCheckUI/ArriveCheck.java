@@ -59,6 +59,7 @@ public class ArriveCheck extends javax.swing.JPanel {
         office = oriOffice;
         initComponents();
         myFrame = new MyFrame(717, 406, this);
+        myFrame.setTitle("到达单简略信息查看");
     }
 
     /**

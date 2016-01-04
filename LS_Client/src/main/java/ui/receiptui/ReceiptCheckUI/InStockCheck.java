@@ -52,6 +52,7 @@ public class InStockCheck extends javax.swing.JPanel {
        	office = oriOffice;
         initComponents();
         myFrame = new MyFrame(364, 411, this);
+        myFrame.setTitle("入库单简略信息查看");
     }
 
     /**

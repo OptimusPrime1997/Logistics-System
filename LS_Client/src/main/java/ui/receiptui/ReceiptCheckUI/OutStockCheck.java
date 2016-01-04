@@ -52,6 +52,7 @@ public class OutStockCheck extends javax.swing.JPanel {
     	office = oriOffice;
         initComponents();
         myFrame = new MyFrame(770, 410, this);
+        myFrame.setTitle("出库单简略信息查看");
     }
 
     /**

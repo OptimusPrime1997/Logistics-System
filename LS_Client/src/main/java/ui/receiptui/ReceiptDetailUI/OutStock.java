@@ -58,6 +58,7 @@ public class OutStock extends javax.swing.JPanel {
     	num = oriNum;
         initComponents();
         myFrame = new MyFrame(520, 335, this);
+        myFrame.setTitle("出库单详细信息查看");
     }
 
     /**

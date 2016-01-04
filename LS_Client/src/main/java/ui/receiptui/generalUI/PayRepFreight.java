@@ -62,6 +62,7 @@ public class PayRepFreight extends javax.swing.JPanel {
     	bankAccount = bank;
         initComponents();
         myFrame = new MyFrame(441, 527, this);
+        myFrame.setTitle("运费");
     }
 
     /**

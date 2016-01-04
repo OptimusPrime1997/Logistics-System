@@ -52,6 +52,7 @@ public class DeliverCheck extends javax.swing.JPanel {
 		office = oriOffice;
 		initComponents();
 		myFrame = new MyFrame(616, 425, this);
+		 myFrame.setTitle("派件单简略信息查看");
 	}
 
 	/**

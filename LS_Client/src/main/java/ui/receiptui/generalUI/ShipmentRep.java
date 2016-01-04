@@ -65,11 +65,12 @@ public class ShipmentRep extends javax.swing.JPanel {
 	public ShipmentRep(businessOfficer_main parentPanel) {
 		initComponents();
 		this.parentPanel=parentPanel;
-		myFrame = new MyFrame(446, 481, this);
+		myFrame = new MyFrame(446, 490, this);
+		myFrame.setTitle("营业厅装车单");
 	}
 	public ShipmentRep() {
 		initComponents();
-		myFrame = new MyFrame(446, 481, this);
+		myFrame = new MyFrame(446, 490, this);
 	}
 
 	/**

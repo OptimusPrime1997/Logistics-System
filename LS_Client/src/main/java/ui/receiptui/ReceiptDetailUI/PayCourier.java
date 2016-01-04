@@ -51,6 +51,7 @@ public class PayCourier extends javax.swing.JPanel {
     	payRepVO = oriPayRepVO;
         initComponents();
         myFrame = new MyFrame(480, 511, this);
+        myFrame.setTitle("快递员工资详细信息查看");
     }
 
     /**

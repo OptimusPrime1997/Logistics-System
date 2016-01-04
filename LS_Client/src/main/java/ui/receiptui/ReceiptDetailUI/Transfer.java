@@ -57,6 +57,7 @@ public class Transfer extends javax.swing.JPanel {
     	num = oriNum;
         initComponents();
         myFrame = new MyFrame(470, 318, this);
+        myFrame.setTitle("中转单详细信息查看");
     }
 
     /**

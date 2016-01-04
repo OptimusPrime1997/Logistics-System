@@ -63,6 +63,7 @@ public class DeliverRep extends javax.swing.JPanel {
 	public DeliverRep() {
 		initComponents();
 		myFrame = new MyFrame(673, 506, this);
+		myFrame.setTitle("派件单");
 	}
 
 

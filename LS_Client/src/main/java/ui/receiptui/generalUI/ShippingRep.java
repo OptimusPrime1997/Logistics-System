@@ -69,6 +69,7 @@ public class ShippingRep extends javax.swing.JPanel {
 	public ShippingRep() {
 		initComponents();
 		myFrame = new MyFrame(437, 477, this);
+		myFrame.setTitle("中转中心装车单");
 	}
 
 	/**
