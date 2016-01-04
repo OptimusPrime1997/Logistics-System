@@ -49,11 +49,18 @@ public class Goodsbl {
 	Logbl ctr_log = new Logbl();
 	final double[] expressRates = { 18, 23, 25 };
 	public static void main(String[] args) {
+		
+		/*
+		 * 1北京   温冰宇 11100000000
+		 * 2广州   方子阳 22200000000
+		 * 3上海   任向东 33300000000
+		 * 4南京   丁云亮 44400000000
+		 */
 		Goodsbl ctr = new Goodsbl();
-		GoodsVO vo = new GoodsVO("", false, "02500106066", "", "2015-12-29", "", "025", "陆宏", "南京 浦东新区张杨路500号",
-				"上海华润时代广场", "13587511426", "小宏宏", "南京 栖霞区仙林大道和园12号", null, "15500001112", 1, 5, 8, "袜子",
+		GoodsVO vo = new GoodsVO("", false, "02500106066", "", "2015-12-31", "", "", "方子阳", "广州",
+				"", "22200000000", "任向东", "上海", null, "33300000000", 1, 0.5, 0.03, "贺卡",
 				GoodsExpressType.NORMAL, 1, 10, 9, GoodsArrivalState.INTACT, GoodsLogisticState.SENDED, null, null,
-				"2015-12-29");
+				"2015-12-31");
 		try {
 			ctr.initComplete(vo);
 		} catch (ExistException e) {
@@ -125,6 +132,8 @@ public class Goodsbl {
 		try {
 			City city1 = City.getCity(vo.receiverAddress.substring(0, 2));
 			City city2 = City.getCity(vo.senderAddress.substring(0, 2));
+			vo.destinationCity=City.cityToNum(city1);
+			vo.startCity=City.cityToNum(city2);
 			City c1, c2;
 			c1 = City.getCity1(city1, city2);
 			c2 = City.getCity2(city1, city2);
@@ -144,6 +153,7 @@ public class Goodsbl {
 			msg = getGoodsDataService().add(GoodsVO.toPO(vo));
 			// 操作成功则记录日志
 			if (msg == ResultMessage.SUCCESS) {
+				System.out.println("Goodsbl.添加成功");
 				LogVO logvo = new LogVO(LogType.ADD_A_GOODS,
 						Loginbl.getCurrentOptorId(), CurrentTime.getDate());
 				ctr_log.add(logvo);
@@ -157,6 +167,7 @@ public class Goodsbl {
 		} catch (Exception e) {
 			System.out.println("多半是没找到常量");
 		}
+		System.out.println(City.getCityByNum(vo.startCity)+" ---> "+City.getCityByNum(vo.destinationCity));
 		return vo;
 	}
 

@@ -30,6 +30,10 @@ public enum ButtonType {
 	 */
 	SHRINK,
 	/**
+	 * 刷新界面的
+	 */
+	REFRESH,
+	/**
 	 * 名称查找
 	 */
 	SEARCH_NAME,

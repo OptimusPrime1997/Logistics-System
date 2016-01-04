@@ -7,6 +7,8 @@ package ui.courierui;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -114,8 +116,7 @@ public static void main(String[] args) {
 		newGoodsbtn = new MyButton(50,150,ButtonType.NEWGOODS);
 		signedGoodsbtn = new MyButton(50,300,ButtonType.SIGNED);
 		exit_btn = new MyButton(790, 10, ButtonType.EXIT);
-		signedGoodsbtn.setText("已签收");
-		newGoodsbtn.setText("新订单");
+		refresh_btn=new MyButton(650,93,ButtonType.REFRESH);
 		
 		addListeners();
 	}
@@ -135,6 +136,11 @@ public static void main(String[] args) {
 		exit_btn.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				exit_btnActionPerformed(evt);
+			}
+		});
+		refresh_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				initProBar();
 			}
 		});
 	}
@@ -205,7 +211,7 @@ public static void main(String[] args) {
 		}
 	}
 	// Variables declaration
-	private MyButton newGoodsbtn,signedGoodsbtn,exit_btn;
+	private MyButton newGoodsbtn,signedGoodsbtn,exit_btn,refresh_btn;
 	private MyLabel businessOfficeNum_label, businessOffice_label,
 	        account_label0,account_label1,recentDays_label;
 	private ArrayList<JLabel> labels_dates=new ArrayList<JLabel>(),labels_nums=new ArrayList<JLabel>();//近日的日期

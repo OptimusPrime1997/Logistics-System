@@ -97,9 +97,9 @@ public class LogisticStateUI extends javax.swing.JFrame {
         listNum_label.setText("jLabel1");
 
         jLabel2.setFont(new java.awt.Font("宋体", 1, 14)); // NOI18N
-        jLabel2.setText("物流信息");
+        jLabel2.setText("物流信息"+"  "+vo.listNum);
         jLabel2.setForeground(Color.WHITE);
-        jLabel2.setBounds(20, 5, 150, 30);
+        jLabel2.setBounds(20, 5, 300, 30);
         
         label01.setBounds(20, 30, 30, 30);
         label02.setBounds(130, 30, 60, 30);

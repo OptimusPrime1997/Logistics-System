@@ -33,6 +33,9 @@ public class MyButton extends JButton {
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		switch (type) {
+		case REFRESH:
+			setIcon(Img.getRefresh_btn());
+			setRolloverIcon(Img.getRefresh_btn_pressed());
 		case ADD:
 			setIcon(Img.getAdd_btn());
 			setRolloverIcon(Img.getAdd_btn_pressed());
@@ -166,6 +169,11 @@ public class MyButton extends JButton {
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		switch (type) {
+		case REFRESH:
+			setIcon(Img.getRefresh_btn());
+			setRolloverIcon(Img.getRefresh_btn_pressed());
+			setBounds(x, y, Img.getRefresh_btn().getIconWidth(), Img.getRefresh_btn().getIconHeight());
+			break;
 		case SHRINK:
 			setIcon(Img.getShrink_btn());
 			setRolloverIcon(Img.getShrink_btn_pressed());
