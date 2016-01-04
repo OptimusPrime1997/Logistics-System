@@ -87,6 +87,7 @@ public static void main(String[] args) {
 	 * 初始化布局
 	 */
 	private void initLayOut() {
+		
 		this.setLayout(null);
 		this.add(exit_btn);
 		this.add(account_label1);
