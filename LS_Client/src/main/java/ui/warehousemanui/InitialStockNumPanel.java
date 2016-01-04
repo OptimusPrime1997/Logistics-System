@@ -122,8 +122,7 @@ public class InitialStockNumPanel extends JFrame{
         jTextField1.setText("初始库存数量");
         jTextField1.setBounds(330, 200, 140, 30);
         confirm = new MyButton(450, 300, ButtonType.OK);
-        //TODO 
-        back = new MyButton(320, 300, ButtonType.CANCEL);
+        back = new MyButton(320, 300, ButtonType.BACK);
         resultMessage = new MyLabel("反馈", 30, 470, 800, 20);
         
        

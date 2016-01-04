@@ -123,8 +123,7 @@ public class DivisionChangePanel extends JFrame {
         newP_Label = new MyLabel("位号：", 520, 290, 80, 20);
         newPlaces = new javax.swing.JComboBox();
         newPlaces.setBounds(580, 290, 70, 20);
-        //TODO
-        back = new MyButton(380, 360, ButtonType.CANCEL);
+        back = new MyButton(380, 360, ButtonType.BACK);
         confirm = new MyButton(540, 360, ButtonType.OK);
         oldB_Label = new MyLabel("块号：", 320, 120, 80, 20);
         oldDivisions = new javax.swing.JComboBox();

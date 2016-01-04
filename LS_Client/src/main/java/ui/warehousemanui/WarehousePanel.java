@@ -181,10 +181,10 @@ public class WarehousePanel extends javax.swing.JFrame {
         showProgressBar(Peking2, 10, Color.PINK);
         showProgressBar(Shanghai1, 10, Color.BLUE);
         showProgressBar(Shanghai2, 10, Color.BLUE);
-        showProgressBar(Nanjing1, 10, Color.BLUE);
-        showProgressBar(Nanjing2, 10, Color.BLUE);
-        showProgressBar(Guangzhou1, 10, Color.BLUE);
-        showProgressBar(Guangzhou2, 10, Color.BLUE);
+        showProgressBar(Nanjing1, 10, Color.GREEN);
+        showProgressBar(Nanjing2, 10, Color.GREEN);
+        showProgressBar(Guangzhou1, 10, Color.ORANGE);
+        showProgressBar(Guangzhou2, 10, Color.orange);
 
       
 
@@ -270,7 +270,7 @@ public class WarehousePanel extends javax.swing.JFrame {
 		OutStockRep out = new OutStockRep(frame);
     	frame.setContentPane(out);
     	frame.setVisible(true);
-    	this.dispose();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void inRepButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed    	
@@ -289,7 +289,6 @@ public class WarehousePanel extends javax.swing.JFrame {
     	frame.setContentPane(in);
     	frame.setVisible(true);
     	
-    	this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -317,7 +316,6 @@ public class WarehousePanel extends javax.swing.JFrame {
     /**
   	 * 
   	 */
-    //TODO 
 
   	public void showProcess() {
   		try {

@@ -125,8 +125,7 @@ public class StockCheckPanel extends JFrame {
         jLabel17 = new MyLabel("出库数量", 400, 220, 80, 20);
         outnum = new MyLabel("0", 500, 220, 80, 20);
         
-        // TODO 返回
-        back = new MyButton(380, 360, ButtonType.CANCEL);
+        back = new MyButton(380, 360, ButtonType.BACK);
         resultMessage = new MyLabel("反馈", 30, 470, 800, 20);
         
         panel.add(usernamelabel);
@@ -179,7 +178,6 @@ public class StockCheckPanel extends JFrame {
         endM_Box.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         endD_Box.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
-        setColumn();
        
     }
 

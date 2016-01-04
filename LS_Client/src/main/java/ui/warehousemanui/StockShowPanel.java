@@ -12,6 +12,7 @@ package ui.warehousemanui;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import main.MainFrame;
 import VO.StockVO;
@@ -165,20 +166,20 @@ public class StockShowPanel extends JFrame {
         exit = new MyButton(750, 10, ButtonType.EXIT);
 
         //TODO 返回
-        back = new MyButton(450, 400, ButtonType.CANCEL);
+        back = new MyButton(450, 400, ButtonType.BACK);
 
         //TODO 盘点
-        show = new MyButton(580, 400, ButtonType.CANCEL);
+        show = new MyButton(580, 400, ButtonType.STOCK_SHOW_LITTLE);
 
         //TODO 导出
-        export = new MyButton(670, 300, ButtonType.CANCEL);
+        export = new MyButton(670, 300, ButtonType.EXCEL_OUT);
         
         jTable1 = new JTable();
         jTable1.setBounds(50, 50, 600, 300);
 
         resultMessage = new MyLabel("反馈", 30, 470, 800, 20);
 
-
+        
 
        
 
@@ -205,11 +206,11 @@ public class StockShowPanel extends JFrame {
 
 private static final long serialVersionUID = 1L;
 
-boolean[] canEdit = new boolean [] {
-
-                false, false, false, false, false, false
-
-            };
+	boolean[] canEdit = new boolean [] {
+	
+	                false, false,true, true,true,true
+	
+	            };
 
 
 
@@ -233,7 +234,7 @@ boolean[] canEdit = new boolean [] {
         panel.add(show);
         panel.add(resultMessage);
         
-
+        
         
         
 
@@ -300,10 +301,25 @@ boolean[] canEdit = new boolean [] {
 
         });
 
+        
 
     }  
 
-
+    private void setColumn() {
+    	TableColumn colum1 = jTable1.getColumnModel().getColumn(0);
+    	colum1.setPreferredWidth(100);
+    	TableColumn colum2 = jTable1.getColumnModel().getColumn(1);
+    	colum2.setPreferredWidth(150);
+    	TableColumn colum3 = jTable1.getColumnModel().getColumn(2);
+    	colum3.setPreferredWidth(100);
+    	TableColumn colum4 = jTable1.getColumnModel().getColumn(3);
+    	colum4.setPreferredWidth(50);
+    	TableColumn colum5 = jTable1.getColumnModel().getColumn(4);
+    	colum5.setPreferredWidth(70);
+    	TableColumn colum6 = jTable1.getColumnModel().getColumn(5);
+    	colum6.setPreferredWidth(20);
+    }
+    
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
     MainFrame mf = new MainFrame();
@@ -376,10 +392,7 @@ boolean[] canEdit = new boolean [] {
 
 
     }
-
-    
-
-    
+  
 
     jTable1.setModel(new DefaultTableModel(
 
@@ -421,6 +434,7 @@ boolean[] canEdit = new boolean [] {
 
     
 
+    setColumn();
     
 
     

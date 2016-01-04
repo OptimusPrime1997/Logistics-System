@@ -46,8 +46,8 @@ public class StockController implements StockBLService,StockNumBLService,StockDi
 		
 	}
 	
-	public ArrayList<Integer> getOverBlock(InStockRepVO vo) throws NotBoundException, IOException{
-		return division.getOverBlock(vo);
+	public ArrayList<Integer> getOverBlock(int toAddBlock) throws NotBoundException, IOException{
+		return division.getOverBlock(toAddBlock);
 	}
 	
 	LogController log = new LogController();
