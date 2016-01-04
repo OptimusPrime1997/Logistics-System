@@ -166,6 +166,12 @@ public class MyButton extends JButton {
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		switch (type) {
+		case SHRINK:
+			setIcon(Img.getShrink_btn());
+			setRolloverIcon(Img.getShrink_btn_pressed());
+			setBounds(x, y, Img.getShrink_btn().getIconWidth(), Img.getShrink_btn()
+					.getIconHeight());
+			break;
 		case ADD:
 			setIcon(Img.getAdd_btn());
 			setRolloverIcon(Img.getAdd_btn_pressed());
