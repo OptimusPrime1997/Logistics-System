@@ -12,6 +12,7 @@ package ui.warehousemanui;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import main.MainFrame;
 import VO.StockVO;
@@ -178,7 +179,7 @@ public class StockShowPanel extends JFrame {
 
         resultMessage = new MyLabel("反馈", 30, 470, 800, 20);
 
-
+        
 
        
 
@@ -205,11 +206,11 @@ public class StockShowPanel extends JFrame {
 
 private static final long serialVersionUID = 1L;
 
-boolean[] canEdit = new boolean [] {
-
-                false, false, false, false, false, false
-
-            };
+	boolean[] canEdit = new boolean [] {
+	
+	                false, false,true, true,true,true
+	
+	            };
 
 
 
@@ -233,7 +234,7 @@ boolean[] canEdit = new boolean [] {
         panel.add(show);
         panel.add(resultMessage);
         
-
+        setColumn();
         
         
 
@@ -300,10 +301,25 @@ boolean[] canEdit = new boolean [] {
 
         });
 
+        
 
     }  
 
-
+    private void setColumn() {
+    	TableColumn colum1 = jTable1.getColumnModel().getColumn(0);
+    	colum1.setPreferredWidth(30);
+    	TableColumn colum2 = jTable1.getColumnModel().getColumn(1);
+    	colum2.setPreferredWidth(50);
+    	TableColumn colum3 = jTable1.getColumnModel().getColumn(2);
+    	colum2.setPreferredWidth(30);
+    	TableColumn colum4 = jTable1.getColumnModel().getColumn(3);
+    	colum2.setPreferredWidth(30);
+    	TableColumn colum5 = jTable1.getColumnModel().getColumn(4);
+    	colum2.setPreferredWidth(30);
+    	TableColumn colum6 = jTable1.getColumnModel().getColumn(5);
+    	colum2.setPreferredWidth(30);
+    }
+    
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
     MainFrame mf = new MainFrame();

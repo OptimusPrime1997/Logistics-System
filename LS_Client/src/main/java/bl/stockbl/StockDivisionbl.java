@@ -159,6 +159,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 		for(StockDivisionPO po:list) {
 			block[po.getBlock()-1]+=block[po.getBlock()-1];
 		}
+		block[toAddBlock-1]++;
 		
 		//找出库存报警的区号，并加入结果数组
 		for(int i = 0; i < block.length; ++i) {
