@@ -356,10 +356,12 @@ public class InStockRep extends javax.swing.JPanel {
 			setColumn();
 			ArrayList<InStockVO> inStockVOs = new ArrayList<InStockVO>();
 			inStockVOs.add(new InStockVO(order, stockDivisionVO.block + "", stockDivisionVO.place + ""));
-			InStockRepVO inStockRepVO = new InStockRepVO(null, null, inStockVOs);
+			InStockRepVO inStockRepVO = new InStockRepVO(numText.getText(), dateText.getText(), inStockVOs);
 			orderText.setText("");
 			try {
 				control.update(inStockRepVO);
+				//TODO 
+//				ArrayList<Integer> overblocks = 
 			} catch (MalformedURLException | RemoteException | NotBoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

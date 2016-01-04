@@ -147,7 +147,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 	 * @throws NotBoundException 
 	 * @throws IOException 
 	 */
-	public ArrayList<Integer> getOverBlock(InStockRepVO vo) throws NotBoundException, IOException{
+	public ArrayList<Integer> getOverBlock(int toAddBlock) throws NotBoundException, IOException{
 		ArrayList<Integer> result = new ArrayList<Integer>();
 		/**
 		 *数组中存放每个区中货物的个数
@@ -162,7 +162,7 @@ public class StockDivisionbl implements StockDivisionBLService{
 		
 		//找出库存报警的区号，并加入结果数组
 		for(int i = 0; i < block.length; ++i) {
-			if(block[i]>900) {
+			if(block[i]>2) {
 				result.add(i+1);
 			}
 		}
