@@ -111,6 +111,11 @@ public enum ResultMessage {
 	 * 密码未填写
 	 */
 	NOT_COMPLETED_KEY(""),
+	
+	/**
+	 * 按钮先后顺序按错
+	 */
+	WRONG_BUTTON_ORDER(""),
 	/**
 	 * 账号格式错误
 	 */
@@ -267,6 +272,8 @@ public enum ResultMessage {
 			return "成功";
 		case WRONG:
 			return "错误";
+		case WRONG_BUTTON_ORDER:
+			return "要先点上面的按钮确认哦~";
 		case REMOTE_FAILED:
 			return "远程连接失败";
 		case INPUTNUM_MUST_BE_POSITIVE:

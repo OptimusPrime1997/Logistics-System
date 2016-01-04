@@ -30,6 +30,7 @@ import ui.util.ButtonType;
 import ui.util.FormatedText;
 import ui.util.MyButton;
 import ui.util.MyFormattedTextFeild;
+import ui.util.MyFrame;
 import ui.util.MyLabel;
 import ui.util.MyTextField;
 import ui.util.NumOnlyDocument;
@@ -73,6 +74,7 @@ public class MainFrame extends JFrame {
 	 */
 
 	public MainFrame() {
+		MyFrame.changeLook();
 		ctr_checkValid = ControllerFactoryImpl.getInstance()
 				.getGoodsCheckController();
 		ctr_find = ControllerFactoryImpl.getInstance().getGoodsFindController();
@@ -119,23 +121,25 @@ public class MainFrame extends JFrame {
 	}
 
 	private void initLabel() {
-		account_label = new MyLabel("账号", 255, 132, 30, 15);
-		key_label = new MyLabel("密码", 255, 177, 30, 15);
+		account_label = new MyLabel("账号", 255, 152, 30, 15);
+		key_label = new MyLabel("密码", 255, 197, 30, 15);
 	}
 
 	private void initTxt() {
 		// 创建对象
 		goodsNum_text = new MyTextField(TextType.INPUT, 40, 135, 100, 30);
 		IP_text = new MyFormattedTextFeild(FormatedText.IP, 40, 210, 100, 30);
-		account_text = new MyFormattedTextFeild(11, 290, 125, 100, 30);
-		account_text.setDocument(new NumOnlyDocument());
+		account_text = new MyTextField(TextType.INPUT,290, 145, 100, 30);
 		password_text = new javax.swing.JPasswordField(6);
+		password_text.setBounds(290, 190, 100, 30);
+		account_text.setDocument(new NumOnlyDocument());
+		
 		password_text.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				login_btnMouseClicked();
 			}
 		});
-		feedback_text = new MyTextField(TextType.FEEDBACK, 30, 255, 400, 30);
+		feedback_text = new MyTextField(TextType.FEEDBACK, 30, 275, 400, 30);
 		// 设为透明
 		// goodsNum_text.setOpaque(false);
 		// IP_text.setOpaque(false);
@@ -144,7 +148,7 @@ public class MainFrame extends JFrame {
 		// feedback_text.setOpaque(false);
 
 		// 设置位置、大小
-		password_text.setBounds(290, 170, 100, 30);
+		
 		IP_text.setText(standard_ip);
 		goodsNum_text.setText(standard_goodsNum);
 		IP_text.addActionListener(new ActionListener() {
@@ -177,7 +181,7 @@ public class MainFrame extends JFrame {
 
 	private void initbtn() {
 		search_btn = new MyButton(150, 135, ButtonType.SEARCH);
-		login_btn = new MyButton(320, 210, ButtonType.LOGIN);
+		login_btn = new MyButton(320, 230, ButtonType.LOGIN);
 		exit_btn = new MyButton(410, 7, ButtonType.EXIT);
 		ip_btn = new MyButton(150, 210);
 
@@ -383,9 +387,9 @@ public class MainFrame extends JFrame {
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private MyTextField feedback_text, goodsNum_text;
+	private MyTextField feedback_text, goodsNum_text, account_text;
 	private JPasswordField password_text;
-	private MyFormattedTextFeild IP_text, account_text;
+	private MyFormattedTextFeild IP_text;
 	final String standard_goodsNum = "输入订单号10位", standard_ip = "输入ip地址";
 	String ip;
 	private String password, goodsNum, account;
@@ -396,6 +400,6 @@ public class MainFrame extends JFrame {
 	private GoodsCheckValidBLService ctr_checkValid;
 	private GoodsFindBLService ctr_find;
 	private LoginBLService ctr_login;
-	private final int width = 450, height = 300;
+	private final int width = 480, height = 350;
 	// End of variables declaration//GEN-END:variables
 }
