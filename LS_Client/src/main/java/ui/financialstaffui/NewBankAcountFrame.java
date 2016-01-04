@@ -33,7 +33,7 @@ public class NewBankAcountFrame extends JFrame {
 	 */
 
 	 public NewBankAcountFrame(FinancialStaffJFrame parentFrame) {
-		MyFrame.changeLook();
+//		MyFrame.changeLook();
 		this.financialStaffJFrame=parentFrame;
 		this.setResizable(false);
 		setTitle("新增银行账户");

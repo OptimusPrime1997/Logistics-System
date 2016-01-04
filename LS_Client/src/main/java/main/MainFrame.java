@@ -42,7 +42,6 @@ import util.enumData.ResultMessage;
 import Exception.GoodsNotFound;
 import VO.GoodsVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
-import bl.logbl.Logbl;
 import bl.loginbl.Loginbl;
 import blservice.goodsblservice.GoodsCheckValidBLService;
 import blservice.goodsblservice.GoodsFindBLService;
@@ -75,7 +74,7 @@ public class MainFrame extends JFrame {
 	 */
 
 	public MainFrame() {
-		MyFrame.changeLook();
+		
 		ctr_checkValid = ControllerFactoryImpl.getInstance()
 				.getGoodsCheckController();
 		ctr_find = ControllerFactoryImpl.getInstance().getGoodsFindController();

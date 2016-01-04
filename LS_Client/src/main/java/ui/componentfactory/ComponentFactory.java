@@ -239,8 +239,5 @@ public class ComponentFactory {
 		}
 
 	}
-	// public static void setColor(JPanel panel){
-	// panel.setBackground(new Color(200, 150, 190, 50));
-	// }
 
 }

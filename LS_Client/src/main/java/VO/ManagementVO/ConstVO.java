@@ -1,6 +1,5 @@
 package VO.ManagementVO;
 
-import PO.ConstPO;
 import util.InputCheck;
 import util.enumData.City;
 

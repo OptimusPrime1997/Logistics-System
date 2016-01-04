@@ -9,6 +9,7 @@ package ui.financialstaffui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -88,27 +89,27 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		this.setUndecorated(true);
 		this.setResizable(false);
 		this.setVisible(true);
-		this.setBackground(new Color(0,0,0,0));
-		ComponentFactory.setSystemLook();
+		this.setBackground(new Color(0, 0, 0, 0));
 		currentOptorId = Loginbl.getCurrentOptorId();
 		String optorName = Loginbl.getCurrentOptorName();
 		currentAuthority = Loginbl.getCurrentAuthority();
-		dimension=new Dimension(860,630);
+		dimension = new Dimension(860, 630);
 		this.setPreferredSize(dimension);
 		setBankAccountVOs();
 		initialVariables();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-
+		currentAccountNumjLabel.setFont(ComponentFactory.plain);
 		currentAccountNumjLabel.setText(currentOptorId);
 		currentAccountNumjLabel.setToolTipText("当前用户账号");
 
+		accountNamejLabel.setFont(ComponentFactory.plain);
 		accountNamejLabel.setText(optorName);
 		accountNamejLabel.setToolTipText("当前用户姓名");
 
-		currentAuthorityjLabel.setText(Authority.getAuthority(
-				Integer.parseInt(currentOptorId.substring(7, 8))).getValue());
+		currentAuthorityjLabel.setFont(ComponentFactory.plain);
+		currentAuthorityjLabel.setText(currentAuthority.toString());
 		currentAuthorityjLabel.setToolTipText("当前用户职位");
 
 		statejLabel.setText("空闲");
@@ -116,11 +117,11 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		stateTitlejLabel.setText("状态：");
 		stateTitlejLabel.setBackground(ComponentFactory.labelColor);
-		
-		finacialjTabbedPane.setPreferredSize(new java.awt.Dimension(845, 460));
+
+		finacialjTabbedPane.setPreferredSize(new java.awt.Dimension(845, 480));
 
 		financialManagejPanel
-				.setPreferredSize(new java.awt.Dimension(850, 460));
+				.setPreferredSize(new java.awt.Dimension(850, 480));
 
 		financilManageTitlejLabel.setFont(ComponentFactory.sTitle); // NOI18N
 		financilManageTitlejLabel.setText("收支管理");
@@ -141,7 +142,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGap(0, 180, Short.MAX_VALUE));
 
-//		paymentjButton.setText("生成付款单");
+		// paymentjButton.setText("生成付款单");
 		paymentjButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				paymentjButtonActionPerformed(evt);
@@ -491,8 +492,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 				exitjButtonActionPerformed(evt);
 			}
 		});
-		
-		
+
 		javax.swing.GroupLayout financialjPanelLayout = new javax.swing.GroupLayout(
 				financialjPanel);
 		financialjPanel.setLayout(financialjPanelLayout);
@@ -521,7 +521,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 										.addContainerGap(
 												javax.swing.GroupLayout.DEFAULT_SIZE,
 												Short.MAX_VALUE)
-//										.addComponent(topTitlejLabel)
+										// .addComponent(topTitlejLabel)
 										.addContainerGap(
 												javax.swing.GroupLayout.DEFAULT_SIZE,
 												Short.MAX_VALUE))
@@ -538,8 +538,8 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 										.addGap(26, 26, 26)
 										.addComponent(currentAuthorityjLabel)
 										.addGap(18, 18, 18)
-//										.addComponent(exitjButton)
-										.addGap(40, 40, 40)
+										// .addComponent(exitjButton)
+										.addGap(58, 58, 58)
 										));
 		financialjPanelLayout
 				.setVerticalGroup(financialjPanelLayout
@@ -549,11 +549,11 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 								javax.swing.GroupLayout.Alignment.TRAILING,
 								financialjPanelLayout
 										.createSequentialGroup()
-//										.addComponent(
-//												topTitlejLabel,
-//												javax.swing.GroupLayout.PREFERRED_SIZE,
-//												15,
-//												javax.swing.GroupLayout.PREFERRED_SIZE)
+										// .addComponent(
+										// topTitlejLabel,
+										// javax.swing.GroupLayout.PREFERRED_SIZE,
+										// 15,
+										// javax.swing.GroupLayout.PREFERRED_SIZE)
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
 												javax.swing.GroupLayout.DEFAULT_SIZE,
@@ -568,9 +568,9 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 																currentAuthorityjLabel)
 														.addComponent(
 																currentAccountNumjLabel)
-//														.addComponent(
-//																exitjButton)
-																)
+										// .addComponent(
+										// exitjButton)
+										)
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 										.addComponent(
@@ -616,9 +616,9 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 	private void initialLogjPanel() {
 		// TODO Auto-generated method stub
-		logjPanel.setPreferredSize(new Dimension(850,460));
+		logjPanel.setPreferredSize(new Dimension(850, 480));
 
-//		findLogjButton.setText("查找");
+		// findLogjButton.setText("查找");
 		findLogjButton.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				findLogjButtonMouseClicked(evt);
@@ -679,7 +679,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 				});
 
 		logEDatejLabel.setText("截止日期：");
-		logTitlejLabel.setPreferredSize(new Dimension(100,30));
+		logTitlejLabel.setPreferredSize(new Dimension(100, 30));
 		logTitlejLabel.setFont(ComponentFactory.sTitle); // NOI18N
 		logTitlejLabel.setText("系统日志");
 		logVOs = new ArrayList<LogVO>();
@@ -731,13 +731,12 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		ComponentFactory.setJTableTextCenter(logjTable);
 		logjTable.setEnabled(false);
 		jScrollPane4.setViewportView(logjTable);
-		
 
 	}
 
 	private void initialNewFinanceJpanel() {
 		// TODO Auto-generated method stub
-		jPanel6.setPreferredSize(new java.awt.Dimension(850, 460));
+		jPanel6.setPreferredSize(new java.awt.Dimension(850, 480));
 
 		initialFinancejButton.setText("账目初始化");
 		initialFinancejButton
@@ -754,7 +753,6 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 						newFinancejButtonActionPerformed(evt);
 					}
 				});
-
 
 		javax.swing.GroupLayout initialFinaceIconjpanelLayout = new javax.swing.GroupLayout(
 				initialFinaceIconjpanel);
@@ -878,8 +876,8 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 	private void initialFormJpanel() {
 		// TODO Auto-generated method stub
-		formjPanel.setPreferredSize(new java.awt.Dimension(850, 460));
-//		viewProfitFormjButton.setText("查看成本收益表");
+		formjPanel.setPreferredSize(new java.awt.Dimension(850, 480));
+		// viewProfitFormjButton.setText("查看成本收益表");
 		viewProfitFormjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -887,7 +885,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 					}
 				});
 
-//		viewManageForm.setText("查看经营情况表");
+		// viewManageForm.setText("查看经营情况表");
 		viewManageForm.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				viewManageFormMouseClicked(evt);
@@ -936,9 +934,6 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		formEYearjLabel.setVisible(false);
 		formEYearjComboBox.setVisible(false);
 
-		
-		
-
 		javax.swing.GroupLayout profitFormIconLayout = new javax.swing.GroupLayout(
 				profitFormIcon);
 		profitFormIcon.setLayout(profitFormIconLayout);
@@ -948,7 +943,6 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		profitFormIconLayout.setVerticalGroup(profitFormIconLayout
 				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGap(0, 200, Short.MAX_VALUE));
-
 
 		javax.swing.GroupLayout manageFormIconLayout = new javax.swing.GroupLayout(
 				manageFormIcon);
@@ -1184,7 +1178,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 																				javax.swing.GroupLayout.PREFERRED_SIZE,
 																				javax.swing.GroupLayout.DEFAULT_SIZE,
 																				javax.swing.GroupLayout.PREFERRED_SIZE))
-														.addContainerGap(460,
+														.addContainerGap(480,
 																Short.MAX_VALUE))));
 
 		finacialjTabbedPane.addTab("报表查看", formjPanel);
@@ -1193,9 +1187,9 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 	private void inititalBankAccountJPanel() {
 		// TODO Auto-generated method stub
-		bankAccountjPanel.setPreferredSize(new java.awt.Dimension(850, 460));
+		bankAccountjPanel.setPreferredSize(new java.awt.Dimension(850, 480));
 
-//		addBankAccountjButton.setText("增加银行账户");
+		// addBankAccountjButton.setText("增加银行账户");
 		addBankAccountjButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -1203,12 +1197,12 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 					}
 				});
 
-		bankAccountTitlejLabel.setFont(ComponentFactory.sTitle); // NOI18N
-		bankAccountTitlejLabel.setText("银行账户信息");
+//		bankAccountTitlejLabel.setFont(ComponentFactory.sTitle); // NOI18N
+//		bankAccountTitlejLabel.setText("银行账户信息");
 
 		bankAccountNumjLabel.setText("银行账号：");
 
-		findBankAccountNumjTextField.setText("请输入19位银行账户");
+		findBankAccountNumjTextField.setText(bankAccountNumTip);
 		findBankAccountNumjTextField
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1216,7 +1210,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 					}
 				});
 
-//		findBankAccountNumjButton.setText("查找");
+		// findBankAccountNumjButton.setText("查找");
 		findBankAccountNumjButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -1226,7 +1220,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		bankAccountNamejLabel.setText("账户名称：");
 
-		findBankAccountNamejTextField.setText("请输入银行账户名称");
+		findBankAccountNamejTextField.setText(bankAccountNameTip);
 		findBankAccountNamejTextField
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1234,7 +1228,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 					}
 				});
 
-//		findBankAccountNamejButton.setText("查找");
+		// findBankAccountNamejButton.setText("查找");
 		findBankAccountNamejButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1311,12 +1305,12 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 																														.addComponent(
 																																findBankAccountNamejButton)))
 																						.addComponent(
-																								jScrollPane1,
+																								bankAccountjScrollPane1,
 																								javax.swing.GroupLayout.PREFERRED_SIZE,
-																								493,
+																								468,
 																								javax.swing.GroupLayout.PREFERRED_SIZE))
 																		.addContainerGap(
-																				162,
+																				137,
 																				Short.MAX_VALUE))
 														.addGroup(
 																javax.swing.GroupLayout.Alignment.TRAILING,
@@ -1325,11 +1319,12 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 																		.addGap(0,
 																				0,
 																				Short.MAX_VALUE)
-																		.addComponent(
-																				bankAccountTitlejLabel)
-																		.addGap(373,
-																				373,
-																				373))))
+//																		.addComponent(
+//																				bankAccountTitlejLabel)
+//																		.addGap(373,
+//																				373,
+//																				373)
+																				)))
 						.addGroup(
 								bankAcocuntjPanelLayout.createSequentialGroup()
 										.addGap(356, 356, 356)
@@ -1376,14 +1371,14 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 																findBankAccountNamejButton))
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-										.addComponent(bankAccountTitlejLabel)
-										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-												12, Short.MAX_VALUE)
+//										.addComponent(bankAccountTitlejLabel)
+//										.addPreferredGap(
+//												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+//												12, Short.MAX_VALUE)
 										.addComponent(
-												jScrollPane1,
+												bankAccountjScrollPane1,
 												javax.swing.GroupLayout.PREFERRED_SIZE,
-												339,
+												320,
 												javax.swing.GroupLayout.PREFERRED_SIZE)
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1446,7 +1441,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 
 		((DefaultTableCellRenderer) bankAccountjTable.getTableHeader()
 				.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);// 设置表头居中
-//		bankAccountjTable.setRowSelectionInterval(n, n);// 设置哪几行被选中
+		// bankAccountjTable.setRowSelectionInterval(n, n);// 设置哪几行被选中
 		if (currentAuthority == Authority.FINANCIALSTAFF_V) {
 			final JPopupMenu bankAccountjPop = new JPopupMenu();
 			final JMenuItem bankAccountSubmitjItem = new JMenuItem("提交");
@@ -1455,19 +1450,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 			 * @author 1
 			 *         监听bankAccount的弹出菜单中的“提交”
 			 */
-			new MouseListener() {
-
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					// TODO Auto-generated method stub
-
-				}
-
-				@Override
-				public void mousePressed(MouseEvent e) {
-					// TODO Auto-generated method stub
-
-				}
+			new MouseAdapter() {
 
 				@Override
 				public void mouseReleased(MouseEvent e) {
@@ -1522,25 +1505,12 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 					}
 
 				}
-
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					// TODO Auto-generated method stub
-
-				}
-
-				@Override
-				public void mouseExited(MouseEvent e) {
-					// TODO Auto-generated method stub
-
-				}
-
 			});
 			bankAccountDeljItem.addMouseListener(/**
 			 * @author 1
 			 *         监听bankAccountjTable上弹出菜单的“删除”
 			 */
-			new MouseListener() {
+			new MouseAdapter() {
 				@Override
 				public void mouseReleased(MouseEvent e) {
 					// TODO Auto-generated method stub
@@ -1593,29 +1563,6 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 							}
 						}
 					}
-				}
-
-				@Override
-				public void mousePressed(MouseEvent e) {
-					// TODO Auto-generated method stub
-
-				}
-
-				@Override
-				public void mouseExited(MouseEvent e) {
-					// TODO Auto-generated method stub
-
-				}
-
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					// TODO Auto-generated method stub
-
-				}
-
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					// TODO Auto-generated method stub
 				}
 			});
 			;
@@ -1676,35 +1623,34 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 		bankAccountjTable.getTableHeader().setReorderingAllowed(false);
 		bankAccountjTable.setGridColor(new java.awt.Color(0, 0, 0));
 		bankAccountjTable.setName("123"); // NOI18N
-		jScrollPane1.setViewportView(bankAccountjTable);
+		bankAccountjScrollPane1.setViewportView(bankAccountjTable);
 	}
 
-public ResultMessage addBankAccount(String bankAccountNum,String bankAccountName,double balance){
-	ResultMessage rmsg = null;
-	BankAccountVO v = new BankAccountVO(bankAccountNum, bankAccountName, balance);
-	BankAccountVOPlus voPlus = new BankAccountVOPlus(v, ModifyState.NEW);
-	ModifyState state = voPlus.isModify;
+	public ResultMessage addBankAccount(String bankAccountNum,
+			String bankAccountName, double balance) {
+		ResultMessage rmsg = null;
+		BankAccountVO v = new BankAccountVO(bankAccountNum, bankAccountName,
+				balance);
+		BankAccountVOPlus voPlus = new BankAccountVOPlus(v, ModifyState.NEW);
+		ModifyState state = voPlus.isModify;
 		try {
 			rmsg = bankAccountblController.insert(v);
-			setState(
-					"提交"
-							+ ResultMessage
-									.toFriendlyString(rmsg),
-					DISPLAY_TIME);
+			setState("提交" + ResultMessage.toFriendlyString(rmsg), DISPLAY_TIME);
 			if (rmsg == ResultMessage.SUCCESS) {
 				bankAccountVOPlus.add(bankAccountVOPlus.size(),
-						new BankAccountVOPlus(v,
-								ModifyState.SYNC));
-				initialBankAccountJTable(bankAccountVOPlus, bankAccountVOPlus.size()-1);
+						new BankAccountVOPlus(v, ModifyState.SYNC));
+				initialBankAccountJTable(bankAccountVOPlus,
+						bankAccountVOPlus.size() - 1);
 			}
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 			setState(REMOTEFAILD, DISPLAY_TIME);
 		}
-	return rmsg;
+		return rmsg;
 
-}
+	}
+
 	private void setBankAccountVOs() {
 		// TODO Auto-generated method stub
 		bankAccountVOPlus = new ArrayList<BankAccountVOPlus>();
@@ -1751,74 +1697,76 @@ public ResultMessage addBankAccount(String bankAccountNum,String bankAccountName
 
 	private void initialVariables() {
 		// TODO Auto-generated method stub
-		
+
 		currentAccountNumjLabel = new javax.swing.JLabel();
 		accountNamejLabel = new javax.swing.JLabel();
 		currentAuthorityjLabel = new javax.swing.JLabel();
 		statejLabel = new javax.swing.JLabel();
 		stateTitlejLabel = new javax.swing.JLabel();
-		
+
 		finacialjTabbedPane = new javax.swing.JTabbedPane();
-		finacialjTabbedPane.setBackground(new Color(200,150,190,50));
-		
+		finacialjTabbedPane.setBackground(new Color(200, 150, 190, 50));
+
 		financialjPanel = new JPanel() {
 			@Override
 			protected void paintComponent(Graphics g) {
-				g.drawImage(Img.getBackground_main(), 0, 0, 870,635, null);
-			}
-		};	
-		financialjPanel.setPreferredSize(new java.awt.Dimension(860, 630));
-		
-		financialManagejPanel=new JPanel();
-		financialManagejPanel.setBackground(ComponentFactory.panelColor);
-		
-		financilManageTitlejLabel = new javax.swing.JLabel();
-		paymentIconjPanel =new JPanel() {
-			@Override
-			protected void paintComponent(Graphics g) {
-				g.drawImage(Img.getPayIcon(), 0, 0, 200,200, null);
+				g.drawImage(Img.getBackground_main(), 0, 0, 870, 635, null);
 			}
 		};
-		paymentIconjPanel.setPreferredSize(new Dimension(200,200));
+		financialjPanel.setPreferredSize(new java.awt.Dimension(860, 630));
+
+		financialManagejPanel = new JPanel();
+		financialManagejPanel.setBackground(ComponentFactory.panelColor);
+
+		financilManageTitlejLabel = new javax.swing.JLabel();
+		paymentIconjPanel = new JPanel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				g.drawImage(Img.getPayIcon(), 0, 0, 200, 200, null);
+			}
+		};
+		paymentIconjPanel.setPreferredSize(new Dimension(200, 200));
 		paymentIconjPanel.setBackground(ComponentFactory.transparent);
-		
+
 		paymentjButton = new MyButton(ButtonType.PAY_REP);
-//		paymentjButton.setBackground(ComponentFactory.buttonColor);
-		
+		// paymentjButton.setBackground(ComponentFactory.buttonColor);
+
 		bankAccountjPanel = new javax.swing.JPanel();
 		bankAccountjPanel.setBackground(ComponentFactory.panelColor);
-		
+
 		addBankAccountjButton = new MyButton(ButtonType.NEW_BANK_ACCOUNT);
-//		addBankAccountjButton.setBackground(ComponentFactory.buttonColor);
-		
-		bankAccountTitlejLabel = new javax.swing.JLabel();
+		// addBankAccountjButton.setBackground(ComponentFactory.buttonColor);
+
+//		bankAccountTitlejLabel = new javax.swing.JLabel();
 		bankAccountNumjLabel = new javax.swing.JLabel();
 		findBankAccountNumjTextField = new javax.swing.JTextField();
 		findBankAccountNumjTextField.setDocument(new NumOnlyDocument());
-		
-		findBankAccountNumjButton =new MyButton(ButtonType.SEARCH_ACCOUNT);
-//		findBankAccountNumjButton.setBackground(ComponentFactory.buttonColor);
-		
+
+		findBankAccountNumjButton = new MyButton(ButtonType.SEARCH_ACCOUNT);
+		// findBankAccountNumjButton.setBackground(ComponentFactory.buttonColor);
+
 		bankAccountNamejLabel = new javax.swing.JLabel();
 		findBankAccountNamejTextField = new javax.swing.JTextField();
-		
+
 		findBankAccountNamejButton = new MyButton(ButtonType.SEARCH_NAME);
-//		findBankAccountNamejButton.setBackground(ComponentFactory.buttonColor);
-		
-		jScrollPane1 = new javax.swing.JScrollPane();
-		jScrollPane1.setBackground(ComponentFactory.panelColor);
-		
+		// findBankAccountNamejButton.setBackground(ComponentFactory.buttonColor);
+
+		bankAccountjScrollPane1 = new javax.swing.JScrollPane();
+		bankAccountjScrollPane1.setBackground(ComponentFactory.panelColor);
+		bankAccountjScrollPane1.setPreferredSize(new Dimension(496, 310));
+
 		bankAccountjTable = new javax.swing.JTable();
-		
+		bankAccountjTable.setPreferredSize(new Dimension(496, 310));
+
 		formjPanel = new javax.swing.JPanel();
 		formjPanel.setBackground(ComponentFactory.panelColor);
-		
-		viewProfitFormjButton =new MyButton(ButtonType.FORM_PROFIT);
-//		viewProfitFormjButton.setBackground(ComponentFactory.buttonColor);
-		
-		viewManageForm =new MyButton(ButtonType.FORM_BUSINESS);
-//		viewManageForm.setBackground(ComponentFactory.buttonColor);
-		
+
+		viewProfitFormjButton = new MyButton(ButtonType.FORM_PROFIT);
+		// viewProfitFormjButton.setBackground(ComponentFactory.buttonColor);
+
+		viewManageForm = new MyButton(ButtonType.FORM_BUSINESS);
+		// viewManageForm.setBackground(ComponentFactory.buttonColor);
+
 		formEYearjLabel = new javax.swing.JLabel();
 		formEMonthjLabel = new javax.swing.JLabel();
 		formEDatejLabel = new javax.swing.JLabel();
@@ -1828,30 +1776,30 @@ public ResultMessage addBankAccount(String bankAccountNum,String bankAccountName
 		formDeadLinejLabel = new javax.swing.JLabel();
 		jSeparator3 = new javax.swing.JSeparator();
 		jSeparator1 = new javax.swing.JSeparator();
-		profitFormIcon = new JPanel(){
+		profitFormIcon = new JPanel() {
 			@Override
 			protected void paintComponent(Graphics g) {
 				// TODO Auto-generated method stub
-				g.drawImage(Img.getProfitIcon(), 0, 0, 200,200, null);
+				g.drawImage(Img.getProfitIcon(), 0, 0, 200, 200, null);
 			}
 		};
 		profitFormIcon.setBackground(ComponentFactory.transparent);
-		manageFormIcon = new JPanel(){
+		manageFormIcon = new JPanel() {
 			@Override
 			protected void paintComponent(Graphics g) {
 				// TODO Auto-generated method stub
-				g.drawImage(Img.getManageIcon(), 0, 0, 200,200, null);
+				g.drawImage(Img.getManageIcon(), 0, 0, 200, 200, null);
 			}
 		};
 		manageFormIcon.setBackground(ComponentFactory.transparent);
-		
+
 		formTitlejLabel = new javax.swing.JLabel();
 		logjPanel = new javax.swing.JPanel();
 		logjPanel.setBackground(ComponentFactory.panelColor);
-		
+
 		findLogjButton = new MyButton(ButtonType.SEARCH);
-//		findLogjButton.setBackground(ComponentFactory.buttonColor);
-		
+		// findLogjButton.setBackground(ComponentFactory.buttonColor);
+
 		logSDatejLabel = new javax.swing.JLabel();
 		logSYearjLabel = new javax.swing.JLabel();
 		logSMonthjLabel = new javax.swing.JLabel();
@@ -1869,32 +1817,32 @@ public ResultMessage addBankAccount(String bankAccountNum,String bankAccountName
 		logEDatejLabel = new javax.swing.JLabel();
 		jSeparator5 = new javax.swing.JSeparator();
 		logTitlejLabel = new javax.swing.JLabel();
-		
+
 		jScrollPane4 = new javax.swing.JScrollPane();
 		jScrollPane4.setBackground(ComponentFactory.panelColor);
-		
+
 		logjTable = new javax.swing.JTable();
 		logStartDayjLabel = new javax.swing.JLabel();
 		jPanel6 = new javax.swing.JPanel();
 		jPanel6.setBackground(ComponentFactory.panelColor);
-		
+
 		initialFinancejButton = new javax.swing.JButton();
 		initialFinancejButton.setBackground(ComponentFactory.buttonColor);
-		
+
 		newFinancejButton = new javax.swing.JButton();
 		newFinancejButton.setBackground(ComponentFactory.buttonColor);
-		
+
 		initialFinaceIconjpanel = new javax.swing.JPanel();
 		initialFinaceIconjpanel.setBackground(ComponentFactory.panelColor);
-		
+
 		newFinanceIconjPanel = new javax.swing.JPanel();
 		initialFinanceTitlejLabel = new javax.swing.JLabel();
 		topTitlejLabel = new javax.swing.JLabel();
-		topTitlejLabel.setBounds(400,5,75,20);
+		topTitlejLabel.setBounds(400, 5, 75, 20);
 		financialjPanel.add(topTitlejLabel);
-		
+
 		exitjButton = new MyButton(ButtonType.EXIT);
-		exitjButton.setBounds(830,6,30,30);
+		exitjButton.setBounds(830, 6, 30, 30);
 		financialjPanel.add(exitjButton);
 
 	}
@@ -2003,11 +1951,12 @@ public ResultMessage addBankAccount(String bankAccountNum,String bankAccountName
 			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_addBankAccountjButton2ActionPerformed
 		// TODO add your handling code here:
 		if (evt.getSource() == addBankAccountjButton) {
-			if(currentAuthority==Authority.FINANCIALSTAFF_V){
-			this.setEnabled(false);
-			new NewBankAcountFrame(this);
-			}else{
-				ComponentFactory.setState("对不起，您没有这个权限！", ComponentFactory.DISPLAY_TIME, statejLabel);
+			if (currentAuthority == Authority.FINANCIALSTAFF_V) {
+				this.setEnabled(false);
+				new NewBankAcountFrame(this);
+			} else {
+				ComponentFactory.setState("对不起，您没有这个权限！",
+						ComponentFactory.DISPLAY_TIME, statejLabel);
 			}
 		}
 	}// GEN-LAST:event_addBankAccountjButtonMouseReleased
@@ -2018,7 +1967,9 @@ public ResultMessage addBankAccount(String bankAccountNum,String bankAccountName
 	private void findBankAccountNumjTextFieldMouseClicked(
 			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_bankAccountNumjTextFieldMouseClicked
 		// TODO add your handling code here:
-		findBankAccountNumjTextField.setText("");
+		if(findBankAccountNumjTextField.getText().equals(bankAccountNumTip)){
+			findBankAccountNumjTextField.setText("");
+		}
 	}// GEN-LAST:event_bankAccountNumjTextFieldMouseClicked
 
 	/**
@@ -2027,6 +1978,7 @@ public ResultMessage addBankAccount(String bankAccountNum,String bankAccountName
 	private void bankAccountNamejTextFieldMouseClicked(
 			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_bankAccountNamejTextFieldMouseClicked
 		// TODO add your handling code here:
+		if(findBankAccountNamejTextField.getText().equals(bankAccountNameTip))
 		findBankAccountNamejTextField.setText("");
 	}// GEN-LAST:event_bankAccountNamejTextFieldMouseClicked
 
@@ -2154,7 +2106,7 @@ public ResultMessage addBankAccount(String bankAccountNum,String bankAccountName
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				FinancialStaffJFrame financialStaffJFrame = new FinancialStaffJFrame();
-				
+
 			}
 		});
 	}
@@ -2203,7 +2155,7 @@ public ResultMessage addBankAccount(String bankAccountNum,String bankAccountName
 	private void setLogVOs(String startTime, String endTime, LogType type) {
 		logVOs = getLogVOs(startTime, endTime, type);
 		if (logVOs != null) {
-//			System.out.println("得到的log数据：" + logVOs.size());
+			// System.out.println("得到的log数据：" + logVOs.size());
 		} else {
 			System.out.println("得到的log数据为空!");
 		}
@@ -2244,10 +2196,10 @@ public ResultMessage addBankAccount(String bankAccountNum,String bankAccountName
 			.getAuthorityJComboBox();
 	private Dimension dimension;
 	// Variables declaration - do not modify//GEN-BEGIN:variables
+//	private javax.swing.JLabel bankAccountTitlejLabel;
 	private javax.swing.JLabel accountNamejLabel;
 	private javax.swing.JLabel bankAccountNamejLabel;
 	private javax.swing.JLabel bankAccountNumjLabel;
-	private javax.swing.JLabel bankAccountTitlejLabel;
 	private javax.swing.JLabel currentAccountNumjLabel;
 	private javax.swing.JLabel currentAuthorityjLabel;
 	private javax.swing.JLabel financilManageTitlejLabel;
@@ -2270,11 +2222,11 @@ public ResultMessage addBankAccount(String bankAccountNum,String bankAccountName
 	private javax.swing.JLabel logTypejLabel;
 	private javax.swing.JLabel stateTitlejLabel;
 	private javax.swing.JLabel statejLabel;
-	
+
 	private javax.swing.JSeparator jSeparator1;
 	private javax.swing.JSeparator jSeparator3;
 	private javax.swing.JSeparator jSeparator5;
-	
+
 	private javax.swing.JComboBox<LogType> logTypejComboBox;
 	private javax.swing.JComboBox<Integer> logSYearjComboBox;
 	private javax.swing.JComboBox<Integer> logSMonthjComboBox;
@@ -2285,15 +2237,16 @@ public ResultMessage addBankAccount(String bankAccountNum,String bankAccountName
 	private javax.swing.JComboBox formEYearjComboBox;
 	private javax.swing.JComboBox formEMonthjComboBox;
 	private javax.swing.JComboBox formEDatejComboBox;
-	
-	
+
 	private javax.swing.JTable bankAccountjTable;
 	private javax.swing.JTable logjTable;
-	
+
 	private javax.swing.JTextField findBankAccountNumjTextField;
+	private final String bankAccountNumTip="请输入19位银行账户";
 	private javax.swing.JTextField findBankAccountNamejTextField;
-	
-	private javax.swing.JScrollPane jScrollPane1;
+	private final String bankAccountNameTip="请输入完整银行账户名称";
+
+	private javax.swing.JScrollPane bankAccountjScrollPane1;
 	private javax.swing.JScrollPane jScrollPane4;
 	private javax.swing.JPanel bankAccountjPanel;
 	private javax.swing.JPanel logjPanel;
@@ -2304,17 +2257,17 @@ public ResultMessage addBankAccount(String bankAccountNum,String bankAccountName
 	private javax.swing.JPanel jPanel6;
 	private javax.swing.JPanel formjPanel;
 	private javax.swing.JPanel initialFinaceIconjpanel;
-	private javax.swing.JTabbedPane finacialjTabbedPane;
 	private javax.swing.JPanel financialManagejPanel;
 	private javax.swing.JPanel financialjPanel;
-	
+	private javax.swing.JTabbedPane finacialjTabbedPane;
+
 	private javax.swing.JButton findBankAccountNamejButton;
 	private javax.swing.JButton findBankAccountNumjButton;//
 	private javax.swing.JButton addBankAccountjButton;//
 	private javax.swing.JButton paymentjButton;//
-	private javax.swing.JButton newFinancejButton;//期初建账，未实现
-	private javax.swing.JButton initialFinancejButton;//期初建账，未实现
-	private javax.swing.JButton exitjButton;//退出按钮
+	private javax.swing.JButton newFinancejButton;// 期初建账，未实现
+	private javax.swing.JButton initialFinancejButton;// 期初建账，未实现
+	private javax.swing.JButton exitjButton;// 退出按钮
 	private javax.swing.JButton findLogjButton;//
 	private javax.swing.JButton viewManageForm;//
 	private javax.swing.JButton viewProfitFormjButton;

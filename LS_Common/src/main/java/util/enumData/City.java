@@ -104,12 +104,22 @@ public enum City {
 	}
 
 	public static City getCity1(City city1, City city2) {
+		try{
 		assert (city1.getIndex() != city2.getIndex()) : ("两个城市相同，City-getCity1出现错误");
+		}catch(AssertionError e){
+			System.out.println(e.getMessage());
+			System.out.println("两个城市相同，City-getCity1出现错误");
+		}
 		return city1.getIndex() < city2.getIndex() ? city1 : city2;
 	}
 
 	public static City getCity2(City city1, City city2) {
-		assert (city1.getIndex() != city2.getIndex()) : ("两个城市相同，City-getCity2出现错误");
+		try{
+			assert (city1.getIndex() != city2.getIndex()) : ("两个城市相同，City-getCity2出现错误");
+			}catch(AssertionError e){
+				System.out.println(e.getMessage());
+				System.out.println("两个城市相同，City-getCity2出现错误");
+			}
 		return city1.getIndex() > city2.getIndex() ? city1 : city2;
 	}
 }
