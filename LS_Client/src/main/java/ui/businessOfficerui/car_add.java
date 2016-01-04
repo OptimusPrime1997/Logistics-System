@@ -268,7 +268,6 @@ public class car_add extends JFrame {
 		carLicenseNum_text = new JTextField();
 		timeText = new JTextField();//20150101
 		timeText.setPreferredSize(new Dimension(90,25));
-		feedback=new JTextField();
 		feedback.setText("空闲");
 		feedback.setEditable(false);
 
@@ -292,16 +291,7 @@ public class car_add extends JFrame {
 	private JLabel jLabel3;
 	private JLabel jLabel4;
 	private JButton ok_btn;
-	private JTextField timeText,feedback;
+	private  JTextField timeText;
+	private final JTextField feedback=new JTextField();;
 	// End of variables declaration//GEN-END:variables
 }
-
-
-
-
-
-
-
-
-
-

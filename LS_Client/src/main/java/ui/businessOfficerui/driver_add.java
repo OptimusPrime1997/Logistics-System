@@ -53,8 +53,13 @@ public class driver_add extends JFrame {
 		Sex sex = (Sex) sex_comboBox.getSelectedItem();
 		String id = IDnum_text.getText();
 		String phoneNum = phoneNum_text.getText();
-		System.out.println("phoneNum_text is "+phoneNum);
-		String licensedTime = id.substring(6, 14);
+		int year = (int) year_comboBox.getSelectedItem();
+		int m=(int)month_comboBox.getSelectedItem();
+		String month= String.format("%02d", m);
+		int d=(int)day_comboBox.getSelectedItem();
+		String day= String.format("%02d", d);
+		
+		String licensedTime =year+month+day ;
 		ResultMessage[] rmsg = new ResultMessage[5];
 		rmsg[0] = InputCheck.checkInputNum(driverNum, 11);
 		rmsg[1] = InputCheck.checkInputName(name);
@@ -105,7 +110,7 @@ public class driver_add extends JFrame {
 
 	private void initComboBox() {
 		sex_comboBox = ComponentFactory.getSexJComboBox();
-		year_comboBox = ComponentFactory.getYearJComboBox(1960, 2000);
+		year_comboBox = ComponentFactory.getYearJComboBox(2015, 2030);
 		month_comboBox = ComponentFactory.getMonthJComboBox();
 		day_comboBox = ComponentFactory.getDayJComboBox();
 		day_comboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +143,7 @@ public class driver_add extends JFrame {
 		name_text = new JTextField();
 		IDnum_text = new JTextField();
 		phoneNum_text = new JTextField();
-		feedback_text=new JTextField();
+		feedback_text.setText("空闲");
 		feedback_text.setEditable(false);
 		birthday_text = new JTextField();
 		birthday_text.setVisible(false);
@@ -427,7 +432,8 @@ public class driver_add extends JFrame {
 	private driver_management parent;
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private JTextField IDnum_text,  name_text, phoneNum_text,
-			birthday_text,feedback_text;
+			birthday_text;
+	private final JTextField feedback_text=new JTextField();
 	private JButton cancel_btn;
 	private JComboBox<Integer> year_comboBox, month_comboBox, day_comboBox;
 	private JComboBox<Sex> sex_comboBox;

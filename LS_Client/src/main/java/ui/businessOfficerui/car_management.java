@@ -70,13 +70,14 @@ public class car_management extends javax.swing.JPanel {
 		initLabel();
 		initbtn();
 		initTxt();
-		initTable();
+		setVehicleVOs();
+		initialVehicleJTable(vehicleVOs, 0);
 		initlayout();
 	}
 
 	public void initTable() {
 		setVehicleVOs();
-		initialVehicleJTable(vehicleVOs, 0);
+		initialVehicleJTable(vehicleVOs, vehicleVOs.size()-1);
 	}
 
 	private void initlayout() {

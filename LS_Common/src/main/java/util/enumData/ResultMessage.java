@@ -207,7 +207,11 @@ public enum ResultMessage {
 	/**
 	 * 未找到订单
 	 */
-	NOT_FOUND_GOODS("");
+	NOT_FOUND_GOODS(""), 
+	/**
+	 * "日期为空"
+	 */
+	NULL_DATE("日期为空");
 	
 	
 //	有空就把所有空的字符串补齐，然后把下面长长的switch去掉
@@ -298,6 +302,8 @@ public enum ResultMessage {
 			return "该区库存紧张";
 		case NOT_FOUND_FILE:
 			return "文件未找到";
+		case NULL_DATE:
+			return "日期为空";
 		default:
 			return "";
 		}

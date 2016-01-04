@@ -3500,10 +3500,10 @@ public class ManagerJFrame extends javax.swing.JFrame {
 									"提交" + ResultMessage.toFriendlyString(rmsg),
 									DISPLAY_TIME);
 							if (rmsg == ResultMessage.SUCCESS) {
-								// institutionVOPlus.remove(n);
-								// institutionVOPlus.add(n, new
-								// InstitutionVOPlus(
-								// v, ModifyState.SYNC));
+								 institutionVOPlus.remove(n);
+								 institutionVOPlus.add(n, new
+								 InstitutionVOPlus(
+								 v, ModifyState.SYNC));
 								setInstitutionVOs();
 								initialInstitutionJTable(institutionVOPlus, n);
 							}
@@ -3515,7 +3515,11 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					} else {
 						if (v.equals(voPlus.getInstitutionVO())) {
 							setState("您未对该行进行修改！", DISPLAY_TIME);
-						} else {
+						} else if(!v.institutionNum.equals(voPlus.getInstitutionVO().institutionNum)){
+							setState("您不能对修改机构编号！", DISPLAY_TIME);
+							initialInstitutionJTable(institutionVOPlus, n);
+						}else {
+						
 							try {
 								rmsg = institutionblController.update(v);
 								setState(ResultMessage.toFriendlyString(rmsg),
