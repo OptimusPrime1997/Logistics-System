@@ -13,7 +13,6 @@ import RMIClient.ReceiptClient;
 import VO.LogVO;
 import bl.goodsbl.Goodsbl;
 import bl.logbl.Logbl;
-import bl.managementbl.accountbl.Accountbl;
 import dataservice.receiptdataservice.ReceiptDataService;
 import util.CurrentTime;
 import util.enumData.LogType;
@@ -24,7 +23,6 @@ public class Receiptbl {
 	
 	private static ReceiptDataService receiptDataService = null;
 	private ReceiptClient client = new ReceiptClient();
-	private Accountbl accountbl = new Accountbl();
 	private Goodsbl goodsbl = new Goodsbl();
 	
 	public ReceiptDataService getReceiptDataService() throws RemoteException, MalformedURLException, NotBoundException{

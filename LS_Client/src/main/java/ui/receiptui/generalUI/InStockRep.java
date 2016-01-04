@@ -6,6 +6,7 @@
 
 package ui.receiptui.generalUI;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -18,6 +19,8 @@ import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+
+import org.apache.poi.hssf.util.HSSFColor.RED;
 
 import Exception.ExceptionPrint;
 import Exception.GoodsNotFound;
@@ -360,13 +363,23 @@ public class InStockRep extends javax.swing.JPanel {
 			orderText.setText("");
 			try {
 				control.update(inStockRepVO);
-				//TODO 
-//				ArrayList<Integer> overblocks = 
 			} catch (MalformedURLException | RemoteException | NotBoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				resultMsgText.setText(ExceptionPrint.print(e));
 				return;
+			}
+			ArrayList<Integer> overblocks;
+			try {
+				overblocks = control.checkOver(stockDivisionVO.block);
+			} catch (NotBoundException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+				return;
+			}
+			if(overblocks.size()>0){
+				resultMsgText.setText("该区库存超过警戒值");
 			}
 		}
 	}
