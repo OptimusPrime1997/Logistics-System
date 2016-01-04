@@ -55,6 +55,7 @@ public class Pay extends javax.swing.JPanel {
     	num = oriNum;
         initComponents();
         myFrame = new MyFrame(706, 397, this);
+        myFrame.setTitle("付款单详细信息查看");
     }
 
     /**

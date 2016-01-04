@@ -54,6 +54,7 @@ public class PayRefund extends javax.swing.JPanel {
     	date = oriDate;
         initComponents();
         myFrame = new MyFrame(367, 511, this);
+        myFrame.setTitle("退款详细信息查看");
     }
 
     /**

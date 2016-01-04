@@ -64,6 +64,7 @@ public class Arrive extends javax.swing.JPanel {
     	num = oriNum;
         initComponents();
         myFrame = new MyFrame(346, 558, this);
+        myFrame.setTitle("到达单详细信息查看");
     }
 
     /**

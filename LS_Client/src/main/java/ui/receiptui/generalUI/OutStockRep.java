@@ -70,6 +70,7 @@ public class OutStockRep extends javax.swing.JPanel {
 	public OutStockRep(JFrame frame) {
 		this.frame = frame;
 		initComponents();
+		frame.setTitle("出库单");
 	}
 
 	/**

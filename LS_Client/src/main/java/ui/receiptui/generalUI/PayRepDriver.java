@@ -62,6 +62,7 @@ public class PayRepDriver extends javax.swing.JPanel {
     	bankAccount = bank;
         initComponents();
         myFrame = new MyFrame(403, 471, this);
+        myFrame.setTitle("司机工资");
     }
 
     /**

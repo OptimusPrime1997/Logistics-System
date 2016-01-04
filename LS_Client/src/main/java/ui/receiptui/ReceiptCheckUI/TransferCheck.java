@@ -52,6 +52,7 @@ public class TransferCheck extends javax.swing.JPanel {
     	office = oriOffice;
 		initComponents();
 		myFrame = new MyFrame(521, 398, this);
+		 myFrame.setTitle("中转单简略信息查看");
 	}
 
 	/**

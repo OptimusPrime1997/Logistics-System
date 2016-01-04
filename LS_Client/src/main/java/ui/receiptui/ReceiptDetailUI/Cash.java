@@ -55,6 +55,7 @@ public class Cash extends javax.swing.JPanel {
 		num = oriNum;
 		initComponents();
 		myFrame = new MyFrame(551, 518, this);
+		myFrame.setTitle("收款单详细信息查看");
 	}
 
 	/**

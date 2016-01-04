@@ -51,6 +51,7 @@ public class PayDriver extends javax.swing.JPanel {
     	payRepVO = oriPayRepVO;
         initComponents();
         myFrame = new MyFrame(436, 511, this);
+        myFrame.setTitle("司机信息详细信息查看");
     }
 
     /**

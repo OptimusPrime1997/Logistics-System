@@ -66,7 +66,8 @@ public class CashRep extends javax.swing.JPanel {
     
     public CashRep() {
         initComponents();
-        myFrame = new MyFrame(480, 635, this);
+        myFrame = new MyFrame(480, 665, this);
+        myFrame.setTitle("收款单");
     }
 
     /**

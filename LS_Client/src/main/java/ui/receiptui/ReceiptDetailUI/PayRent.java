@@ -52,6 +52,7 @@ public class PayRent extends javax.swing.JPanel {
     	payRepVO = oriPayRepVO;
         initComponents();
         myFrame = new MyFrame(477, 511, this);
+        myFrame.setTitle("租金详细信息查看");
     }
 
     /**

@@ -55,6 +55,7 @@ public class Deliver extends javax.swing.JPanel {
     	num = oriNum;
         initComponents();
         myFrame = new MyFrame(684, 522, this);
+        myFrame.setTitle("派件单详细信息查看");
     }
 
     /**
