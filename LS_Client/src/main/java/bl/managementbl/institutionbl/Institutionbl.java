@@ -82,12 +82,13 @@ public class Institutionbl {
 				}
 				rmsg = institutionDataService.insert(manageVOPO.voToPO(vo));
 				ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
-			} catch (IOException e) {
+				} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("存储文件出错");
 				return ResultMessage.IOFAILED;
-			} catch (ClassNotFoundException e) {
+			} 
+			catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("系统程序错误");

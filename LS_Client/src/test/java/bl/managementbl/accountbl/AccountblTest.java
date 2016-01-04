@@ -49,11 +49,12 @@ public class AccountblTest {
 					"12345672511", "025002"));
 			rmsgs.add(rmsg);
 			rmsg = accountbl.add(new AccountVO("02500008001", "南管理", "1111", Sex.Sex_FAMALE, Authority.ADMINISTRATOR,
-					"12345672511", "025000"));
+					"12345672512", "025000"));
 			rmsgs.add(rmsg);
 			rmsg = accountbl.add(new AccountVO("02500009001", "南高财", "1111", Sex.Sex_MALE, Authority.FINANCIALSTAFF_V,
 					"12345672509", "025000"));
 			rmsgs.add(rmsg);
+			
 			rmsg = accountbl.add(new AccountVO("02100001001", "上总理", "1111", Sex.Sex_MALE, Authority.MANAGER,
 					"12345672101", "021000"));
 			rmsgs.add(rmsg);
@@ -79,7 +80,7 @@ public class AccountblTest {
 					"12345672111", "021002"));
 			rmsgs.add(rmsg);
 			rmsg = accountbl.add(new AccountVO("02100008001", "上管理", "1111", Sex.Sex_FAMALE, Authority.ADMINISTRATOR,
-					"12345672111", "021000"));
+					"12345672112", "021000"));
 			rmsgs.add(rmsg);
 			rmsg = accountbl.add(new AccountVO("02100009001", "上高财", "1111", Sex.Sex_MALE, Authority.FINANCIALSTAFF_V,
 					"12345672109", "021000"));
@@ -109,7 +110,7 @@ public class AccountblTest {
 					"12345672011", "020002"));
 			rmsgs.add(rmsg);
 			rmsg = accountbl.add(new AccountVO("02000008001", "广管理", "1111", Sex.Sex_FAMALE, Authority.ADMINISTRATOR,
-					"12345672011", "020000"));
+					"12345672012", "020000"));
 			rmsgs.add(rmsg);
 			rmsg = accountbl.add(new AccountVO("02000009001", "广高财", "1111", Sex.Sex_MALE, Authority.FINANCIALSTAFF_V,
 					"12345672009", "020000"));
@@ -139,7 +140,7 @@ public class AccountblTest {
 					"12345671011", "010002"));
 			rmsgs.add(rmsg);
 			rmsg = accountbl.add(new AccountVO("01000008001", "北管理", "1111", Sex.Sex_FAMALE, Authority.ADMINISTRATOR,
-					"12345671011", "010000"));
+					"12345671012", "010000"));
 			rmsgs.add(rmsg);
 			rmsg = accountbl.add(new AccountVO("01000009001", "北高财", "1111", Sex.Sex_MALE, Authority.FINANCIALSTAFF_V,
 					"12345671009", "010000"));
@@ -152,7 +153,7 @@ public class AccountblTest {
 			// assertEquals("王二", vo.accountName);
 			// assertEquals("1111", vo.password);
 			// // accountbl.delete(vo);
-			vo1 = accountbl.findByAccountNum("02500102001");
+			vo1 = accountbl.findByAccountNum("02500001001");
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
