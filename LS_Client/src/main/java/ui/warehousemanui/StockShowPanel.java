@@ -166,13 +166,13 @@ public class StockShowPanel extends JFrame {
         exit = new MyButton(750, 10, ButtonType.EXIT);
 
         //TODO 返回
-        back = new MyButton(450, 400, ButtonType.CANCEL);
+        back = new MyButton(450, 400, ButtonType.BACK);
 
         //TODO 盘点
-        show = new MyButton(580, 400, ButtonType.CANCEL);
+        show = new MyButton(580, 400, ButtonType.STOCK_SHOW_LITTLE);
 
         //TODO 导出
-        export = new MyButton(670, 300, ButtonType.CANCEL);
+        export = new MyButton(670, 300, ButtonType.EXCEL_OUT);
         
         jTable1 = new JTable();
         jTable1.setBounds(50, 50, 600, 300);
@@ -234,7 +234,7 @@ private static final long serialVersionUID = 1L;
         panel.add(show);
         panel.add(resultMessage);
         
-        setColumn();
+        
         
         
 
@@ -307,17 +307,17 @@ private static final long serialVersionUID = 1L;
 
     private void setColumn() {
     	TableColumn colum1 = jTable1.getColumnModel().getColumn(0);
-    	colum1.setPreferredWidth(30);
+    	colum1.setPreferredWidth(100);
     	TableColumn colum2 = jTable1.getColumnModel().getColumn(1);
-    	colum2.setPreferredWidth(50);
+    	colum2.setPreferredWidth(150);
     	TableColumn colum3 = jTable1.getColumnModel().getColumn(2);
-    	colum2.setPreferredWidth(30);
+    	colum3.setPreferredWidth(100);
     	TableColumn colum4 = jTable1.getColumnModel().getColumn(3);
-    	colum2.setPreferredWidth(30);
+    	colum4.setPreferredWidth(50);
     	TableColumn colum5 = jTable1.getColumnModel().getColumn(4);
-    	colum2.setPreferredWidth(30);
+    	colum5.setPreferredWidth(70);
     	TableColumn colum6 = jTable1.getColumnModel().getColumn(5);
-    	colum2.setPreferredWidth(30);
+    	colum6.setPreferredWidth(20);
     }
     
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -392,10 +392,7 @@ private static final long serialVersionUID = 1L;
 
 
     }
-
-    
-
-    
+  
 
     jTable1.setModel(new DefaultTableModel(
 
@@ -437,6 +434,7 @@ private static final long serialVersionUID = 1L;
 
     
 
+    setColumn();
     
 
     

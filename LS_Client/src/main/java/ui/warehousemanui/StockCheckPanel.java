@@ -125,8 +125,7 @@ public class StockCheckPanel extends JFrame {
         jLabel17 = new MyLabel("出库数量", 400, 220, 80, 20);
         outnum = new MyLabel("0", 500, 220, 80, 20);
         
-        // TODO 返回
-        back = new MyButton(380, 360, ButtonType.CANCEL);
+        back = new MyButton(380, 360, ButtonType.BACK);
         resultMessage = new MyLabel("反馈", 30, 470, 800, 20);
         
         panel.add(usernamelabel);
