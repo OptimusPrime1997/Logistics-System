@@ -48,7 +48,7 @@ public class driver_add extends JFrame {
 
 	private void ok_btnMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_ok_btnMouseClicked
 		// GEN-FIRST:event_ok_btnMouseClicked
-		String driverNum = parent.getOfficeNum() + "07"+"000";
+		String driverNum = parent.getOfficeNum() + "07000";
 		String name = name_text.getText();
 		Sex sex = (Sex) sex_comboBox.getSelectedItem();
 		String id = IDnum_text.getText();
@@ -60,7 +60,6 @@ public class driver_add extends JFrame {
 		rmsg[1] = InputCheck.checkInputName(name);
 		rmsg[2] = InputCheck.checkInputNum(id, 18);
 		rmsg[3] = InputCheck.checkInputPhoneNum(phoneNum);
-		System.out.println(rmsg[3]);
 		rmsg[4] = InputCheck.checkInputDate(licensedTime);
 		if (rmsg[0] == ResultMessage.VALID && rmsg[1] == ResultMessage.VALID
 				&& rmsg[2] == ResultMessage.VALID
@@ -73,23 +72,25 @@ public class driver_add extends JFrame {
 				ResultMessage.postCheck(ResultMessage.SUCCESS, r);
 				if (r == ResultMessage.SUCCESS) {
 					parent.initTable();
+					this.dispose();
 				}
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("远程连接失败");
+				ComponentFactory.setState(ComponentFactory.REMOTEFAILD, ComponentFactory.DISPLAY_TIME, feedback_text);
 			}
 		} else {
-			String temp = ResultMessage.toFriendlyString(rmsg[0]) + ";"
-					+ ResultMessage.toFriendlyString(rmsg[1]) + ";"
-					+ ResultMessage.toFriendlyString(rmsg[2]) + ";"
-					+ ResultMessage.toFriendlyString(rmsg[3]) + ";"
-					+ ResultMessage.toFriendlyString(rmsg[4]) + ";";
-			System.out.println(temp);
+			String temp="";
+			for(int k=0;k<5;k++){
+				if(rmsg[k]!=ResultMessage.VALID){
+					temp+=ResultMessage.toFriendlyString(rmsg[k]);
+				}
+			}
 			ComponentFactory.setState(temp, ComponentFactory.DISPLAY_TIME,
-					parent.feedback_text);
+					feedback_text);
 		}
-		this.dispose();
+		
 	}
 
 	private void initComponents() {
@@ -134,14 +135,13 @@ public class driver_add extends JFrame {
 	}
 
 	private void initTxt() {
-		driverNum_text = new JTextField();
 		name_text = new JTextField();
 		IDnum_text = new JTextField();
 		phoneNum_text = new JTextField();
 		feedback_text=new JTextField();
+		feedback_text.setEditable(false);
 		birthday_text = new JTextField();
 		birthday_text.setVisible(false);
-		driverNum_text.setEditable(false);
 	}
 
 	private void initLayout(GroupLayout layout1) {
@@ -192,8 +192,6 @@ public class driver_add extends JFrame {
 																														layout1.createParallelGroup(
 																																GroupLayout.Alignment.LEADING)
 																																.addComponent(
-																																		jLabel1)
-																																.addComponent(
 																																		jLabel2)
 																																.addComponent(
 																																		jLabel3))
@@ -213,11 +211,7 @@ public class driver_add extends JFrame {
 																																		GroupLayout.PREFERRED_SIZE,
 																																		112,
 																																		GroupLayout.PREFERRED_SIZE)
-																																.addComponent(
-																																		driverNum_text,
-																																		GroupLayout.PREFERRED_SIZE,
-																																		112,
-																																		GroupLayout.PREFERRED_SIZE)))
+																																		))
 																								.addGroup(
 																										layout1.createSequentialGroup()
 																												.addGroup(
@@ -296,12 +290,7 @@ public class driver_add extends JFrame {
 								.addGroup(
 										layout1.createParallelGroup(
 												GroupLayout.Alignment.BASELINE)
-												.addComponent(jLabel1)
-												.addComponent(
-														driverNum_text,
-														GroupLayout.PREFERRED_SIZE,
-														GroupLayout.DEFAULT_SIZE,
-														GroupLayout.PREFERRED_SIZE))
+														)
 								.addPreferredGap(
 										LayoutStyle.ComponentPlacement.UNRELATED)
 								.addGroup(
@@ -408,7 +397,6 @@ public class driver_add extends JFrame {
 
 	private void initLabel() {
 		jLabel0 = new JLabel();
-		jLabel1 = new JLabel();
 		jLabel2 = new JLabel();
 		jLabel3 = new JLabel();
 		jLabel4 = new JLabel();
@@ -421,7 +409,6 @@ public class driver_add extends JFrame {
 
 		jLabel0.setText("生日");
 		jLabel0.setVisible(false);
-		jLabel1.setText("司机编号");
 		jLabel2.setText("姓名");
 		jLabel3.setText("性别");
 		jLabel4.setFont(new java.awt.Font("宋体", 1, 18)); // NOI18N
@@ -439,12 +426,12 @@ public class driver_add extends JFrame {
 	private DriverBLService driverblController;
 	private driver_management parent;
 	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private JTextField IDnum_text, driverNum_text, name_text, phoneNum_text,
+	private JTextField IDnum_text,  name_text, phoneNum_text,
 			birthday_text,feedback_text;
 	private JButton cancel_btn;
 	private JComboBox<Integer> year_comboBox, month_comboBox, day_comboBox;
 	private JComboBox<Sex> sex_comboBox;
-	private JLabel jLabel0, jLabel1, jLabel2, jLabel3, jLabel4, jLabel5,
+	private JLabel jLabel0, jLabel2, jLabel3, jLabel4, jLabel5,
 			jLabel6, jLabel7, jLabel8, jLabel9, jLabela;
 	private JPanel panel;
 	private JButton ok_btn;

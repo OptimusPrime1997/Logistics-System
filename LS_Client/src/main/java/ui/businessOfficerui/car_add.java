@@ -6,6 +6,7 @@
 package ui.businessOfficerui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.rmi.RemoteException;
 
 import javax.swing.GroupLayout;
@@ -15,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
+import ui.componentfactory.ComponentFactory;
 import ui.util.MyFrame;
 import util.InputCheck;
 import util.enumData.ResultMessage;
@@ -59,10 +61,6 @@ public class car_add extends JFrame {
 	 * 
 	 * @param evt
 	 */
-	private void carCodeNum_textActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_carCodeNum_textActionPerformed
-		// TODO add your handling code here:
-		carCodeNum_text.setText("");
-	}// GEN-LAST:event_carCodeNum_textActionPerformed
 
 	private void carLicenseNum_textActionPerformed(
 			java.awt.event.ActionEvent evt) {// GEN-FIRST:event_carLicenseNum_textActionPerformed
@@ -86,9 +84,12 @@ public class car_add extends JFrame {
 			VehicleVO v = new VehicleVO(vehicleNum, licenseNum, startTime);
 			try {
 				ResultMessage r = vehicleblController.insertVehicle(v);
+				ComponentFactory.setState(ResultMessage.toFriendlyString(r), ComponentFactory.DISPLAY_TIME, feedback);
 				ResultMessage.postCheck(ResultMessage.SUCCESS, r);
 				if(r==ResultMessage.SUCCESS){
 					parent.initTable();
+					ComponentFactory.setState(ResultMessage.toFriendlyString(r), ComponentFactory.DISPLAY_TIME,parent.feedback_text);
+					this.dispose();
 				}
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
@@ -96,11 +97,15 @@ public class car_add extends JFrame {
 				System.out.println("远程连接失败");
 			}
 		}else{
-			System.out.println(ResultMessage.toFriendlyString(rmsg[0])+";"
-					+ResultMessage.toFriendlyString(rmsg[1])+";"
-					+ResultMessage.toFriendlyString(rmsg[2])+";");
+			String temp="";
+			for(int k=0;k<5;k++){
+				if(rmsg[k]!=ResultMessage.VALID){
+					temp+=ResultMessage.toFriendlyString(rmsg[k]);
+				}
+			}
+			ComponentFactory.setState(temp, ComponentFactory.DISPLAY_TIME,
+					feedback);	
 		}
-		this.dispose();
 
 	}
 
@@ -157,11 +162,7 @@ public class car_add extends JFrame {
 																														GroupLayout.PREFERRED_SIZE,
 																														112,
 																														GroupLayout.PREFERRED_SIZE)
-																												.addComponent(
-																														carCodeNum_text,
-																														GroupLayout.PREFERRED_SIZE,
-																														112,
-																														GroupLayout.PREFERRED_SIZE)))
+																														))
 																				.addGroup(
 																						layout.createSequentialGroup()
 																								.addComponent(
@@ -172,7 +173,7 @@ public class car_add extends JFrame {
 																								.addComponent(
 																										timeText,
 																										GroupLayout.PREFERRED_SIZE,
-																										54,
+																										95,
 																										GroupLayout.PREFERRED_SIZE)
 																								.addGap(18,
 																										18,
@@ -195,10 +196,7 @@ public class car_add extends JFrame {
 								layout.createParallelGroup(
 										GroupLayout.Alignment.BASELINE)
 										.addComponent(jLabel1)
-										.addComponent(carCodeNum_text,
-												GroupLayout.PREFERRED_SIZE,
-												GroupLayout.DEFAULT_SIZE,
-												GroupLayout.PREFERRED_SIZE))
+										)
 						.addGap(15, 15, 15)
 						.addGroup(
 								layout.createParallelGroup(
@@ -267,19 +265,13 @@ public class car_add extends JFrame {
 
 	private void initText() {
 		// TODO
-		carCodeNum_text = new JTextField();
 		carLicenseNum_text = new JTextField();
-		timeText = new JTextField();
+		timeText = new JTextField();//20150101
+		timeText.setPreferredSize(new Dimension(90,25));
 		feedback=new JTextField();
+		feedback.setText("空闲");
+		feedback.setEditable(false);
 
-		carCodeNum_text.setEditable(false);
-		carCodeNum_text.setText("025001014");
-		carCodeNum_text.setVisible(false);
-		carCodeNum_text.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				carCodeNum_textActionPerformed(evt);
-			}
-		});
 
 		carLicenseNum_text
 				.addActionListener(new java.awt.event.ActionListener() {
@@ -294,7 +286,6 @@ public class car_add extends JFrame {
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private car_management parent;
 	private JButton cancel_btn;
-	private JTextField carCodeNum_text;
 	private JTextField carLicenseNum_text;
 	private JLabel jLabel1;
 	private JLabel jLabel2;
@@ -304,3 +295,13 @@ public class car_add extends JFrame {
 	private JTextField timeText,feedback;
 	// End of variables declaration//GEN-END:variables
 }
+
+
+
+
+
+
+
+
+
+

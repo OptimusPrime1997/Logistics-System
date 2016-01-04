@@ -75,9 +75,6 @@ public class car_management extends javax.swing.JPanel {
 	}
 
 	public void initTable() {
-		vehiclejTable = new javax.swing.JTable();
-		jScrollPane1 = new javax.swing.JScrollPane();
-		jScrollPane1.setBounds(50, 100, 400, 300);
 		setVehicleVOs();
 		initialVehicleJTable(vehicleVOs, 0);
 	}
@@ -433,6 +430,10 @@ public class car_management extends javax.swing.JPanel {
 	}
 
 	private void initLabel() {
+		vehiclejTable = new javax.swing.JTable();
+		jScrollPane1 = new javax.swing.JScrollPane();
+		jScrollPane1.setBounds(50, 100, 400, 300);
+		
 		jLabel4 = new MyLabel("车辆管理", 20, 20, 100, 50);
 		jLabel5 = new MyLabel("账户：", 460, 20, 50, 30);
 		jLabel6 = new MyLabel("营业厅：", 300, 20, 70, 30);
@@ -510,7 +511,7 @@ public class car_management extends javax.swing.JPanel {
 	private MyLabel businessOffNum_label, jLabel4, jLabel5, jLabel6,
 			account_label, label01, label02, label03;
 	private javax.swing.JTable vehiclejTable;
-	final private MyLabel feedback_text = new MyLabel("空闲", 30, 500, 450, 30);
+	public final MyLabel feedback_text = new MyLabel("空闲", 30, 500, 450, 30);
 	private javax.swing.JScrollPane jScrollPane1;
 	private MyTextField search_text;
 	private MyFrame frame;

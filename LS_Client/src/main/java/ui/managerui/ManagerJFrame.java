@@ -3254,7 +3254,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		Object[][] constObjects = null;
 		constObjects = new Object[vos.size()][4];
 		int i = 0;
-		String[] str = new String[2];
 		for (java.util.Iterator<ConstVOPlus> t = vos.iterator(); t.hasNext(); i++) {
 			ConstVO vo = t.next();
 			City c1, c2;
@@ -3357,7 +3356,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 								ResultMessage rmsg = constblController
 										.delete(voPlus.getConstVO());
 								if (rmsg == ResultMessage.SUCCESS) {
-									setState("删除成功:)", DISPLAY_TIME);
+									setState("删除成功", DISPLAY_TIME);
 									constVOPlus.remove(n);
 									initialConstJTable(constVOPlus);
 								} else {
@@ -3368,7 +3367,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 							} catch (RemoteException e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
-								setState("删除失败:(", DISPLAY_TIME);
+								setState("删除失败", DISPLAY_TIME);
 							}
 						}
 					}
@@ -3750,7 +3749,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		City C2 = City.getCity(city[1]);
 		City c1 = City.getCity1(C1, C2);
 		City c2 = City.getCity1(C1, C2);
-
 		return new ConstVO(c1, c2, distanceConst, priceConst);
 	}
 

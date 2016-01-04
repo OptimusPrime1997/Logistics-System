@@ -158,7 +158,7 @@ public class ComponentFactory {
 	}
 
 	public static void setState(String str, long time,
-			final MyTextField feedback_text) {
+			final JTextField feedback_text) {
 		// TODO Auto-generated method stub
 		feedback_text.setText(str);
 		final Runnable setSateTextFieldText = new Runnable() {
@@ -166,6 +166,7 @@ public class ComponentFactory {
 				feedback_text.setText("");
 			}
 		};
+		
 		final ScheduledExecutorService scheduler = Executors
 				.newScheduledThreadPool(1);
 		final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(
