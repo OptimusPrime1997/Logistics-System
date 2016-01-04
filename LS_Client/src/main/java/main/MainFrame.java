@@ -13,13 +13,12 @@ import java.rmi.RemoteException;
 import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.UIManager;
 
 import ui.Img;
 import ui.administratorui.AdministratorPanel;
+import ui.administratorui.UserAccountPanel;
 import ui.businessOfficerui.businessOfficer_main;
 import ui.componentfactory.ComponentFactory;
 import ui.courierui.courier_main;
@@ -30,7 +29,6 @@ import ui.util.ButtonType;
 import ui.util.FormatedText;
 import ui.util.MyButton;
 import ui.util.MyFormattedTextFeild;
-import ui.util.MyFrame;
 import ui.util.MyLabel;
 import ui.util.MyTextField;
 import ui.util.NumOnlyDocument;

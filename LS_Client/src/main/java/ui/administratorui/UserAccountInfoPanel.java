@@ -39,10 +39,14 @@ public class UserAccountInfoPanel extends javax.swing.JFrame {
 	 * Creates new form UserAccountInfo
 	 */
 
-	public UserAccountInfoPanel(AdministratorPanel panel) {
-		this.administratorPanel = panel;
-		this.accountblController = panel.getAccountblController();
+	public UserAccountInfoPanel(AdministratorPanel parent) {
+		this.parentPanel = parent;
+		this.accountblController = parentPanel.getAccountblController();
 		initComponents();
+		this.setVisible(true);
+	}
+	public static void main(String[] args) {
+		new UserAccountInfoPanel(new AdministratorPanel());
 	}
 	
 	/**
@@ -101,7 +105,7 @@ public class UserAccountInfoPanel extends javax.swing.JFrame {
 		institutionNumjT = new javax.swing.JTextField();
 		resultMsg = new javax.swing.JLabel();
 
-		jLabel9.setText("当前账户：" + administratorPanel.getOptorName());
+		jLabel9.setText("当前账户：" + parentPanel.getOptorName());
 
 		exit.setText("退出");
 		exit.addActionListener(new java.awt.event.ActionListener() {
@@ -436,7 +440,7 @@ public class UserAccountInfoPanel extends javax.swing.JFrame {
 	 * @param evt
 	 */
 	protected void backActionPerformed(ActionEvent evt) {
-		UserAccountPanel ua = new UserAccountPanel(administratorPanel);
+		AdministratorPanel ua = new AdministratorPanel();
 		ua.setVisible(true);
 		this.dispose();
 
@@ -525,7 +529,7 @@ public class UserAccountInfoPanel extends javax.swing.JFrame {
 	}
 
 	private AccountBLService accountblController;
-	private AdministratorPanel administratorPanel;
+	private AdministratorPanel parentPanel;
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JButton exit;
 	private javax.swing.JButton confirm;
