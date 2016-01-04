@@ -283,7 +283,7 @@ public class MainFrame extends JFrame {
 					new LogisticStateUI(vo);
 				} catch (GoodsNotFound e1) {
 					System.out.println("not found");
-					showFeedback(ResultMessage.NOT_FOUND);
+					showFeedback(ResultMessage.NOT_FOUND_GOODS);
 				}
 			} else {// 不合法 反馈用户哪里不合法
 				showFeedback(msg);
