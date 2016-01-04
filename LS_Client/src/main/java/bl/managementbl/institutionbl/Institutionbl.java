@@ -53,8 +53,8 @@ public class Institutionbl {
 		if (institutionDataService != null) {
 			ResultMessage rmsg = null;
 			try {
-				ArrayList<InstitutionPO> pos = institutionDataService.show();
 				if (vo.institutionNum.substring(3, 6).equals("000")) {
+					ArrayList<InstitutionPO> pos = institutionDataService.show();
 					InstitutionPO lastPO = null;
 					String temp = vo.institutionNum.substring(0, 3);
 					if (pos != null) {

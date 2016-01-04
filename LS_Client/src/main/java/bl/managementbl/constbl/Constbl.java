@@ -49,14 +49,14 @@ public class Constbl {
 		if (constDataService != null) {
 			ResultMessage rmsg = null;
 			try {
-//				ArrayList<ConstPO> pos = constDataService.show();
-//				if (pos != null) {
-//					for (Iterator<ConstPO> t = pos.iterator(); t.hasNext();) {
-//						if (t.next().equals(vo)) {
-//							return ResultMessage.OVERRIDE_DATA;
-//						}
-//					}
-//				}
+				ArrayList<ConstPO> pos = constDataService.show();
+				if (pos != null) {
+					for (Iterator<ConstPO> t = pos.iterator(); t.hasNext();) {
+						if (t.next().equals(vo)) {
+							return ResultMessage.OVERRIDE_DATA;
+						}
+					}
+				}
 				rmsg = constDataService.insert(manageVOPO.voToPO(vo));
 				ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 			} catch (IOException e) {
@@ -65,11 +65,11 @@ public class Constbl {
 				System.out.println("存储文件出错");
 				return ResultMessage.IOFAILED;
 			}
-//			catch (ClassNotFoundException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//				System.out.println("系统程序错误");
-//			}
+			catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("系统程序错误");
+			}
 			return rmsg;
 		} else
 			return ResultMessage.FAILED;

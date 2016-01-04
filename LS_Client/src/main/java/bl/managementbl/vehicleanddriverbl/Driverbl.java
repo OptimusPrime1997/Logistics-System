@@ -45,8 +45,8 @@ public class Driverbl {
 			DriverPO lastPO = null;
 			if (check(vo) == ResultMessage.VALID) {
 				try {
-					ArrayList<DriverPO> pos = driverDataService.showDriver();
 					if (vo.driverNum.substring(8, 11).equals("000")) {
+						ArrayList<DriverPO> pos = driverDataService.showDriver();
 						String temp = vo.driverNum.substring(0, 6);
 						if (pos != null) {
 							for (Iterator<DriverPO> t = pos.iterator(); t
