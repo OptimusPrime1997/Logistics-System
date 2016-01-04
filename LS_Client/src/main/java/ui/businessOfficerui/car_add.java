@@ -34,6 +34,9 @@ import blservice.managementblservice.vehicleanddriverblservice.VehicleBLService;
  *
  */
 public class car_add extends JFrame {
+	public static void main(String[] args) {
+		new car_add(new car_management());
+	}
 	// public static void main(String[] args) {
 	// new car_add();
 	// }
@@ -179,6 +182,7 @@ public class car_add extends JFrame {
 						GroupLayout.Alignment.TRAILING,
 						layout.createSequentialGroup()
 								.addGap(0, 0, Short.MAX_VALUE)
+								.addComponent(feedback).addGap(20,20,20)
 								.addComponent(cancel_btn).addGap(54, 54, 54)
 								.addComponent(ok_btn).addGap(20, 20, 20)));
 		layout.setVerticalGroup(layout.createParallelGroup(
@@ -217,6 +221,7 @@ public class car_add extends JFrame {
 						.addGroup(
 								layout.createParallelGroup(
 										GroupLayout.Alignment.BASELINE)
+										.addComponent(feedback)
 										.addComponent(cancel_btn)
 										.addComponent(ok_btn))
 						.addContainerGap(GroupLayout.DEFAULT_SIZE,
@@ -265,6 +270,7 @@ public class car_add extends JFrame {
 		carCodeNum_text = new JTextField();
 		carLicenseNum_text = new JTextField();
 		timeText = new JTextField();
+		feedback=new JTextField();
 
 		carCodeNum_text.setEditable(false);
 		carCodeNum_text.setText("025001014");
@@ -295,6 +301,6 @@ public class car_add extends JFrame {
 	private JLabel jLabel3;
 	private JLabel jLabel4;
 	private JButton ok_btn;
-	private JTextField timeText;
+	private JTextField timeText,feedback;
 	// End of variables declaration//GEN-END:variables
 }
