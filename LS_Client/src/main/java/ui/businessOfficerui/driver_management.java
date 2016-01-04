@@ -503,7 +503,39 @@ protected void paintComponent(Graphics g) {
 			new driver_detail(this,driverjTable.getSelectedRow());
 		}
 	}
+public ResultMessage deleteDriver(int selected){
 
+	// TODO Auto-generated method stub
+	int tempN = 0;
+	ResultMessage rmsg = null;
+	DriverVO VO = driverVOs.get(selected);
+		try {
+			rmsg = driverblController.deleteDriver(VO);
+			if (rmsg == ResultMessage.SUCCESS) {
+				ComponentFactory.setState("删除成功",
+						ComponentFactory.DISPLAY_TIME, feedback_text);
+				driverVOs.remove(selected);
+				tempN = 0;
+				if (selected == 0) {
+					tempN = 0;
+				} else {
+					tempN = selected - 1;
+				}
+				initialDriverJTable(driverVOs, tempN);
+			} else {
+				ComponentFactory.setState(
+						ResultMessage.toFriendlyString(rmsg),
+						ComponentFactory.DISPLAY_TIME, feedback_text);
+			}
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			ComponentFactory.setState(ComponentFactory.REMOTEFAILD,
+					ComponentFactory.DISPLAY_TIME, feedback_text);
+		}
+	return rmsg;
+
+}
 	/**
 	 * 
 	 */
@@ -521,7 +553,7 @@ protected void paintComponent(Graphics g) {
 			try {
 				rmsg = driverblController.deleteDriver(VO);
 				if (rmsg == ResultMessage.SUCCESS) {
-					ComponentFactory.setState("删除成功:)",
+					ComponentFactory.setState("删除成功",
 							ComponentFactory.DISPLAY_TIME, feedback_text);
 					driverVOs.remove(n1);
 					tempN = 0;

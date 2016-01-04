@@ -1,5 +1,7 @@
 package util;
 
+import java.text.DecimalFormat;
+
 import util.enumData.ResultMessage;
 
 public class InputCheck {
@@ -215,5 +217,14 @@ public class InputCheck {
 		} else {
 			return ResultMessage.LENGTH_WRONG;
 		}
+	}
+	/**
+	 * 将double值转换成两位小数
+	 * @param d
+	 * @return
+	 */
+	public static double formatDouble(double d){
+		DecimalFormat dcmFmt = new DecimalFormat("0.00");
+		return Double.parseDouble(dcmFmt.format(d));
 	}
 }
