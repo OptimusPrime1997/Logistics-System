@@ -8,7 +8,6 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 import util.CurrentCity;
@@ -157,13 +156,13 @@ public class StockDivisionbl implements StockDivisionBLService{
 		City cityNum = CurrentCity.getCurrentCity();
 		ArrayList<StockDivisionPO> list = sd.getStockDivision(cityNum);
 		for(StockDivisionPO po:list) {
-			block[po.getBlock()-1]+=block[po.getBlock()-1];
+			block[po.getBlock()-1] += 1;
 		}
 		block[toAddBlock-1]++;
 		
 		//找出库存报警的区号，并加入结果数组
 		for(int i = 0; i < block.length; ++i) {
-			if(block[i]>2) {
+			if(block[i]>3) {
 				result.add(i+1);
 			}
 		}

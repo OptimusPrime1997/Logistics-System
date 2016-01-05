@@ -117,10 +117,6 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 			
 			
 			listo = du.getAll(filename);
-			for (int i = 0; i < listo.size(); i++) {
-				System.out.println(((StockPO)listo.get(i)).getCityNum()+" "+((StockPO)listo.get(i)).getListNum()+" "+
-						((StockPO)listo.get(i)).getDestination()+" "+((StockPO)listo.get(i)).getBlock()+" "+((StockPO)listo.get(i)).getPlace());
-			}
 			if (listo != null) {
 				for(Object o:listo) {
 					StockPO po = (StockPO) o;
@@ -131,12 +127,6 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		}
-		
-		System.out.println("-------------------------------------------");
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println(((StockPO)list.get(i)).getCityNum()+" "+((StockPO)list.get(i)).getListNum()+" "+
-					((StockPO)list.get(i)).getDestination()+" "+((StockPO)list.get(i)).getBlock()+" "+((StockPO)list.get(i)).getPlace());
 		}
 		
 		return list;
