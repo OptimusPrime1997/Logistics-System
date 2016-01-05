@@ -170,7 +170,7 @@ public class InputCheck {
 	 */
 	public static ResultMessage checkInputDate(String date) {
 		if (date != null) {
-			if (date.length() == 6) {
+			if (date.length() == 8) {
 				int month = Integer.parseInt(date.substring(4, 6));
 				int day = Integer.parseInt(date.substring(6, 8));
 				if (date.length() == 8
