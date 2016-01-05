@@ -6,6 +6,8 @@
 
 package ui.receiptui;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import ui.util.MyFrame;
@@ -122,9 +124,11 @@ public static void main(String[] args) {
         });
         
         startTimeText.setText("例如:2015-11-02");
-        startTimeText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	startTimeTextActionPerformed(evt);
+        startTimeText.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            	// TODO Auto-generated method stub
+            	startTimeText.setText("");
             }
         });
         
@@ -195,10 +199,6 @@ public static void main(String[] args) {
         );
 	}
 	
-    private void startTimeTextActionPerformed(java.awt.event.ActionEvent evt){
-    	startTimeText.setText("");
-    }
-    
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
          resultMsgText.setText("");
          //TODO 
@@ -313,9 +313,7 @@ public static void main(String[] args) {
 		}
 		return true;
 	}
-	private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
-        // TODO 
-	}
+	
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
          frame.setVisible(false);
     }
