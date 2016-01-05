@@ -24,7 +24,7 @@ public class OutStockRepData extends UnicastRemoteObject implements OutStockRepD
 private DataUtility util = new DataUtility();
 	
 	private String getAdd(){
-		return "data/ReceiptSubmitData/OutStockRepSubmit.txt";
+		return "data/ReceiptSaveData/OutStockRepSave.txt";
 	}
 
 	@Override

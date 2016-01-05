@@ -6,11 +6,6 @@
 
 package ui.receiptui;
 
-import java.io.IOException;
-import java.rmi.NotBoundException;
-
-import javax.swing.WindowConstants;
-
 import VO.ProfitFormVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
 import blservice.formblservice.ProfitFormBLService;

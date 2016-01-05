@@ -58,7 +58,7 @@ public class ArriveCheck extends javax.swing.JPanel {
         rep = oriRep;
         office = oriOffice;
         initComponents();
-        myFrame = new MyFrame(717, 406, this);
+        myFrame = new MyFrame(928, 406, this);
         myFrame.setTitle("到达单简略信息查看");
     }
 
@@ -186,12 +186,13 @@ public class ArriveCheck extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(resultMsgText)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(dateLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -199,10 +200,9 @@ public class ArriveCheck extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(findButton))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(313, 313, 313)
+                        .addGap(424, 424, 424)
                         .addComponent(okButton)))
-                .addContainerGap(16, Short.MAX_VALUE))
-            .addComponent(resultMsgText)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -25,6 +25,7 @@ import bl.receiptbl.OutStockRepbl.OutStockRepController;
 import PO.StockPO;
 import PO.Receipt.InStockRepPO;
 import PO.Receipt.OutStockRepPO;
+import PO.Receipt.ReceiptPO;
 import VO.StockVO;
 import VO.Receipt.InStockRepVO;
 import VO.Receipt.OutStockRepVO;
@@ -83,8 +84,9 @@ public class Stock {
 	            calendar.setTime(dateOne);
 	             
 	            while(calendar.getTime().compareTo(dateTwo)<=0){               
-	            	
-	            	if (in.getAllRepByDate(dateFormat.format(calendar.getTime())) != null) {
+	            	String inDate = dateFormat.format(calendar.getTime());
+	            	ArrayList<InStockRepVO> receiptPOs = in.getAllRepByDate(inDate);
+	            	if (receiptPOs != null) {
 	            		instockreps.addAll(in.getAllRepByDate(dateFormat.format(calendar.getTime())));
 					}
 	                

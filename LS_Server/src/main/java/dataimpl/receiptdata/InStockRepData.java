@@ -24,12 +24,13 @@ public class InStockRepData extends UnicastRemoteObject implements InStockRepDat
 	private DataUtility util = new DataUtility();
 	
 	private String getAdd(){
-		return "data/ReceiptSubmitData/InStockRepSubmit.txt";
+		return "data/ReceiptSaveData/InStockRepSave.txt";
 	}
 
 	@Override
 	public ArrayList<ReceiptPO> getAllRepByDate(String date) throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println(date);
 		ArrayList<Object> objects = util.getAll(getAdd());
 		ArrayList<ReceiptPO> inStockRepPOs = new ArrayList<ReceiptPO>();
 		if (objects == null)
