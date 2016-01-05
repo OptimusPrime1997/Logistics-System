@@ -237,6 +237,12 @@ public class Order extends javax.swing.JPanel {
         	@Override
         	public void mouseClicked(MouseEvent e) {
         		if(ifsummitted)okBtnMouseClicked();
+        		else showFeedBack(ResultMessage.WRONG_BUTTON_ORDER);
+        	}
+		});
+        cancelButton.addMouseListener(new MouseAdapter() {
+        	public void mouseClicked(MouseEvent e) {
+        		cancelBtnMouseClicked(e);
         	}
 		});
 
@@ -355,6 +361,9 @@ public class Order extends javax.swing.JPanel {
     	String expType=typeBox.getSelectedItem().toString();
     	expressType=StrToGoodsExpressType.toExpressType(expType);
     }
+    private void cancelBtnMouseClicked(MouseEvent e) {
+		this.frame.dispose();
+	}
     /**
      * 提交~算运费
      * @param evt

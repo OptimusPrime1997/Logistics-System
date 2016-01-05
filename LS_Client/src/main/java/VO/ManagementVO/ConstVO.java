@@ -1,6 +1,6 @@
 package VO.ManagementVO;
 
-import PO.ConstPO;
+import util.InputCheck;
 import util.enumData.City;
 
 public class ConstVO implements Comparable<ConstVO> {
@@ -17,7 +17,7 @@ public class ConstVO implements Comparable<ConstVO> {
 		this.city1 =City.getCity1(city1, city2);
 		this.city2 = City.getCity2(city1, city2);	
 		this.priceConst = priceConst;
-		this.distanceConst = distanceConst;
+		this.distanceConst = InputCheck.formatDouble(distanceConst);
 	}
 
 	public int compareTo(ConstVO v) {

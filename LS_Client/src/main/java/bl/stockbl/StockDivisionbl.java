@@ -167,7 +167,6 @@ public class StockDivisionbl implements StockDivisionBLService{
 				result.add(i+1);
 			}
 		}
-		
 		return result;
 	}
 

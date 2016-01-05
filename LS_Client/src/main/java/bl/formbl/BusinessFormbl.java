@@ -78,7 +78,7 @@ public class BusinessFormbl {
 		}
 		//这个操作不会失败，，即使连接出现问题也会返回初始化了的VO，即里面数据都是0
 		LogVO logvo = new LogVO(LogType.CHECK_FORM,
-				Loginbl.getCurrentOptorId(), CurrentTime.getDate());		
+				Loginbl.getCurrentOptorId(), CurrentTime.getTime());		
 		ctr_log.add(logvo);
 		return new BusinessFormVO(startTime, endTime, moneyOut, moneyIn);
 	}

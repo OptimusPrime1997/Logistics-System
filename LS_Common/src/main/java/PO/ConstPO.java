@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import org.apache.poi.openxml4j.opc.PackageAccess;
 
+import util.InputCheck;
 import util.enumData.City;
 
 public class ConstPO implements Serializable, Comparable<ConstPO> {
@@ -23,11 +24,10 @@ public class ConstPO implements Serializable, Comparable<ConstPO> {
 	public ConstPO(City city1, City city2, double distanceConst,
 			double priceConst) {
 		super();
-		assert (city1.getIndex() != city2.getIndex()) : ("两个城市相同，出现错误");
 		this.city1 = city1.getIndex() < city2.getIndex() ? city1 : city2;
 		this.city2 = city1.getIndex() > city2.getIndex() ? city1 : city2;
 		this.priceConst = priceConst;
-		this.distanceConst = distanceConst;
+		this.distanceConst = InputCheck.formatDouble(distanceConst);
 	}
 
 	public City getCity1() {
@@ -55,11 +55,11 @@ public class ConstPO implements Serializable, Comparable<ConstPO> {
 	}
 
 	public double getDistanceConst() {
-		return distanceConst;
+		return InputCheck.formatDouble(distanceConst);
 	}
 
 	public void setDistanceConst(double distanceConst) {
-		this.distanceConst = distanceConst;
+		this.distanceConst = InputCheck.formatDouble(distanceConst);
 	}
 
 	/* (non-Javadoc)

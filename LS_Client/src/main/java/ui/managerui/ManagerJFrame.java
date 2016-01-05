@@ -9,16 +9,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.text.Collator;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Vector;
 import java.util.concurrent.Executors;
@@ -177,21 +174,14 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		setSalaryPolicyVOs();
 		setInstitutionVOs();
 		initialVariables();
-
-		ComponentFactory.setSystemLook();
-
 		setAllLayout();
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 		managerjPanel.setBorder(javax.swing.BorderFactory
 				.createTitledBorder(""));
-		managerjTabbedPane.setPreferredSize(new java.awt.Dimension(830, 550));
+		managerjPanel.setBackground(new Color(255,255,255,0));
 
-		managerjPanel.setBackground(ComponentFactory.panelColor);
-
-		jButton3.setText("jButton2");
-
-		jButton5.setText("jButton4");
+		
 
 		initialConstjPanel();
 		initialSalayPolicyjPanel();
@@ -203,18 +193,17 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		initialLogjPaenl();
 		jLabel6.setFont(ComponentFactory.fTitle);
 		jLabel6.setText("总经理");
-		currentAccountNamejLabel.setText(currentOptorId);
+		currentAccountNumjLabel.setText(currentOptorId);
+		managerjPanel.add(currentAccountNumjLabel);
 
-		currentAuthorityjLabel.setText(Loginbl.getCurrentOptorName());
+		currentAccountNamejLabel.setText(Loginbl.getCurrentOptorName());
+		managerjPanel.add(currentAccountNamejLabel);
 
-		// currentAccoutNamejLabel.setText("12345");
 
-		jLabel48.setText("状态：");
+		jLabel48.setText("    状态：");
 
 		statejLabel.setText("空闲");
-		statejLabel.setFont(ComponentFactory.plain);
-		// statejLabel.setForeground(Color.RED);
-		// exitjButton.setText("退出系统");
+		statejLabel.setFont(ComponentFactory.sTitle);
 		exitjButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				exitjButtonActionPerformed(evt);
@@ -227,6 +216,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			 */
 
 		});
+		managerjPanel.add(exitjButton);
 
 	}// </editor-fold>//GEN-END:initComponents
 
@@ -237,9 +227,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		logjPanel.setName("logView"); // NOI18N
 
-		logjPanel.setPreferredSize(new java.awt.Dimension(830, 455));
+		logjPanel.setPreferredSize(new java.awt.Dimension(820, 455));
 
-//		findLogjButton.setText("查找");
+		// findLogjButton.setText("查找");
 		findLogjButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				findLogjButtonActionPerformed(evt);
@@ -406,9 +396,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		// TODO Auto-generated method stub
 
 		formjPanel.setName("formView"); // NOI18N
-		formjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
+		formjPanel.setPreferredSize(new java.awt.Dimension(820, 460));
 
-//		profitFormjButton.setText("成本收益表");
+		// profitFormjButton.setText("成本收益表");
 		profitFormjButton.setName("profitFrom"); // NOI18N
 		profitFormjButton
 				.addActionListener(new java.awt.event.ActionListener() {
@@ -417,7 +407,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-//		manageStateFormjButton.setText("经营情况表");
+		// manageStateFormjButton.setText("经营情况表");
 		manageStateFormjButton.setName("businessFrom"); // NOI18N
 		manageStateFormjButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -500,10 +490,10 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private void initialAccountjPanel() {
 		// TODO Auto-generated method stub
 		accountjPanel.setName("personnelView"); // NOI18N
-		accountjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
+		accountjPanel.setPreferredSize(new java.awt.Dimension(820, 460));
 
-		jLabel19.setFont(ComponentFactory.sTitle); // NOI18N
-		jLabel19.setText("人员信息");
+//		accountTitlelabel.setFont(ComponentFactory.sTitle); // NOI18N
+//		accountTitlelabel.setText("人员信息");
 
 		accountNamejTextField.setText("请输入人员姓名");
 		accountNamejTextField
@@ -513,7 +503,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-//		findAccountNamejButton.setText("姓名查找");
+		// findAccountNamejButton.setText("姓名查找");
 		findAccountNamejButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -537,7 +527,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-//		findAccountNumjButton.setText("账号查找");
+		// findAccountNumjButton.setText("账号查找");
 		findAccountNumjButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -563,8 +553,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	 */
 	private void initialInstitutionjPanel() {
 		// TODO Auto-generated method stub
-		institutionjPanel.setName("institutionManagement"); // NOI18N
-		institutionjPanel.setPreferredSize(new java.awt.Dimension(830, 460));
+		institutionjPanel.setPreferredSize(new java.awt.Dimension(820, 460));
 
 		jLabel12.setText("机构编号：");
 
@@ -576,7 +565,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-//		findInstitutionNumjButton.setText("编号查找");
+		// findInstitutionNumjButton.setText("编号查找");
 		findInstitutionNumjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -594,7 +583,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-//		findInstitutionNamejButton.setText("名称查找");
+		// findInstitutionNamejButton.setText("名称查找");
 		findInstitutionNamejButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -602,11 +591,11 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-		jLabel15.setFont(ComponentFactory.sTitle); // NOI18N
-		jLabel15.setText("机构信息");
+//		institutionTitlelabel.setFont(ComponentFactory.sTitle); // NOI18N
+//		institutionTitlelabel.setText("机构信息");
 
 		initialInstitutionJTable(institutionVOPlus, 0);
-//		addInstitutionjButton.setText("添加新机构");
+		// addInstitutionjButton.setText("添加新机构");
 		addInstitutionjButton
 				.addMouseListener(new java.awt.event.MouseAdapter() {
 					public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -614,14 +603,14 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				});
 
-//		submitInstitutionjButton.setText("提交");
+		// submitInstitutionjButton.setText("提交");
 		// submitInstitutionjButton.setColor(new Color(200,150,190));
-		submitInstitutionjButton
-				.addMouseListener(new java.awt.event.MouseAdapter() {
-					public void mouseReleased(java.awt.event.MouseEvent evt) {
-						submitInstitutionjButtonMouseReleased(evt);
-					}
-				});
+//		submitInstitutionjButton
+//				.addMouseListener(new java.awt.event.MouseAdapter() {
+//					public void mouseReleased(java.awt.event.MouseEvent evt) {
+//						submitInstitutionjButtonMouseReleased(evt);
+//					}
+//				});
 
 		managerjTabbedPane.addTab("机构管理", institutionjPanel);
 
@@ -633,10 +622,10 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private void initialCheckjPanel() {
 		// TODO Auto-generated method stub
 		checkjPane.setName("documentCheck"); // NOI18N
-		checkjPane.setPreferredSize(new java.awt.Dimension(830, 460));
+		checkjPane.setPreferredSize(new java.awt.Dimension(820, 460));
 
-		jLabel16.setFont(ComponentFactory.pBlod);
-		jLabel16.setText("状态：");
+		jLabel16.setFont(ComponentFactory.sTitle);
+		jLabel16.setText("　　状态：");
 
 		jLabel22.setText("jLabel13");
 
@@ -1008,7 +997,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 										.addComponent(jLabel39)
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-												68, Short.MAX_VALUE)
+												60, Short.MAX_VALUE)
 										.addComponent(jLabel44)
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1057,9 +1046,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 																				javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 																		.addComponent(
 																				jLabel43)
-																		.addGap(47,
-																				47,
-																				47)
+																		.addGap(40,
+																				40,
+																				40)
 																		.addComponent(
 																				jLabel40)
 																		.addPreferredGap(
@@ -1071,13 +1060,13 @@ public class ManagerJFrame extends javax.swing.JFrame {
 																				javax.swing.GroupLayout.PREFERRED_SIZE)
 																		.addPreferredGap(
 																				javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-																				68,
+																				60,
 																				Short.MAX_VALUE)
 																		.addComponent(
 																				findLogjButton)
-																		.addGap(60,
-																				60,
-																				60))))
+																		.addGap(80,
+																				80,
+																				80))))
 						.addGroup(
 								javax.swing.GroupLayout.Alignment.TRAILING,
 								logjPanelLayout
@@ -1459,11 +1448,12 @@ public class ManagerJFrame extends javax.swing.JFrame {
 																javax.swing.GroupLayout.Alignment.TRAILING,
 																accountjPanelLayout
 																		.createSequentialGroup()
-																		.addComponent(
-																				jLabel19)
-																		.addGap(450,
-																				450,
-																				450))
+//																		.addComponent(
+//																				accountTitlelabel)
+//																		.addGap(450,
+//																				450,
+//																				450)
+																		)
 														.addGroup(
 																javax.swing.GroupLayout.Alignment.TRAILING,
 																accountjPanelLayout
@@ -1511,9 +1501,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 																findAccountNamejButton))
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-										.addComponent(jLabel19)
-										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+//										.addComponent(accountTitlelabel)
+//										.addPreferredGap(
+//												javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 										.addComponent(
 												jScrollPane6,
 												javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -1589,11 +1579,12 @@ public class ManagerJFrame extends javax.swing.JFrame {
 																javax.swing.GroupLayout.Alignment.TRAILING,
 																institutionjPanelLayout
 																		.createSequentialGroup()
-																		.addComponent(
-																				jLabel15)
-																		.addGap(454,
-																				454,
-																				454))
+//																		.addComponent(
+//																				institutionTitlelabel)
+//																		.addGap(454,
+//																				454,
+//																				454)
+																		)
 														.addGroup(
 																javax.swing.GroupLayout.Alignment.TRAILING,
 																institutionjPanelLayout
@@ -1611,8 +1602,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 										.addGap(359, 359, 359)
 										.addComponent(addInstitutionjButton)
 										.addGap(75, 75, 75)
-										.addComponent(submitInstitutionjButton)
-										.addGap(0, 0, Short.MAX_VALUE)));
+//										.addComponent(submitInstitutionjButton)
+//										.addGap(0, 0, Short.MAX_VALUE)
+										));
 		institutionjPanelLayout
 				.setVerticalGroup(institutionjPanelLayout
 						.createParallelGroup(
@@ -1649,9 +1641,9 @@ public class ManagerJFrame extends javax.swing.JFrame {
 																findInstitutionNamejButton))
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-										.addComponent(jLabel15)
-										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+//										.addComponent(institutionTitlelabel)
+//										.addPreferredGap(
+//												javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 										.addComponent(
 												jScrollPane8,
 												javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -1664,9 +1656,11 @@ public class ManagerJFrame extends javax.swing.JFrame {
 																javax.swing.GroupLayout.Alignment.BASELINE)
 														.addComponent(
 																addInstitutionjButton)
-														.addComponent(
-																submitInstitutionjButton))
-										.addGap(0, 20, Short.MAX_VALUE)));
+//														.addComponent(
+//																submitInstitutionjButton)
+																)
+										.addGap(0, 20, Short.MAX_VALUE)
+										));
 
 		javax.swing.GroupLayout managerjPanelLayout = new javax.swing.GroupLayout(
 				managerjPanel);
@@ -1708,23 +1702,24 @@ public class ManagerJFrame extends javax.swing.JFrame {
 																javax.swing.GroupLayout.Alignment.TRAILING,
 																managerjPanelLayout
 																		.createSequentialGroup()
-																		.addComponent(
-																				currentAccountNamejLabel)
-																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-																		.addComponent(
-																				currentAuthorityjLabel)
-																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-																		.addComponent(
-																				currentAccoutNamejLabel,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				32,
-																				javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-																		.addComponent(
-																				exitjButton))))
+														// .addComponent(
+														// currentAccountNumjLabel)
+														// .addPreferredGap(
+														// javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+														// .addComponent(
+														// currentAccoutNamejLabel,
+														// javax.swing.GroupLayout.PREFERRED_SIZE,
+														// 10,
+														// javax.swing.GroupLayout.PREFERRED_SIZE)
+														// .addPreferredGap(
+														// javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+														// .addComponent(
+														// currentAccountNamejLabel)
+														// .addPreferredGap(
+														// javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+														// .addComponent(
+														// exitjButton)
+														)))
 						.addComponent(managerjTabbedPane,
 								javax.swing.GroupLayout.DEFAULT_SIZE,
 								javax.swing.GroupLayout.DEFAULT_SIZE,
@@ -1746,19 +1741,19 @@ public class ManagerJFrame extends javax.swing.JFrame {
 												16, Short.MAX_VALUE)
 										.addGroup(
 												managerjPanelLayout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
-														.addComponent(
-																currentAuthorityjLabel)
-														.addComponent(
-																currentAccountNamejLabel,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																24,
-																javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																currentAccoutNamejLabel)
-														.addComponent(
-																exitjButton))
+														.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+										// .addComponent(
+										// currentAccountNamejLabel)
+										// .addComponent(
+										// currentAccoutNamejLabel)
+										// .addComponent(
+										// currentAccountNumjLabel,
+										// javax.swing.GroupLayout.PREFERRED_SIZE,
+										// 10,
+										// javax.swing.GroupLayout.PREFERRED_SIZE)
+										// .addComponent(
+										// exitjButton)
+										)
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 										.addComponent(
@@ -1848,20 +1843,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		 * @author 1
 		 *         监听document的弹出菜单中的“全部提交”
 		 */
-		new MouseListener() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
+		new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
@@ -1871,19 +1853,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					}
 				}
 			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
 		});
 		documentjPop.add(documentSubmitjItem);
 		MouseInputListener mil = new MouseInputListener() {
@@ -2062,7 +2031,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	 */
 	private void initialSalayPolicyjPanel() {
 		// TODO Auto-generated method stub
-//		submitSalaryPolicyjButton.setText("提交");
+		// submitSalaryPolicyjButton.setText("提交");
 		submitSalaryPolicyjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2072,7 +2041,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		initialSalaryPolicyJTable(salaryPolicyVOPlus, 0);
 
-//		addSalaryPolicyjButton.setText("添加薪水策略");
 		addSalaryPolicyjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2092,14 +2060,14 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	 */
 	private void initialConstjPanel() {
 		// TODO Auto-generated method stub
-//		addConstjButton.setText("添加距离常量");
+		// addConstjButton.setText("添加距离常量");
 		addConstjButton.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseReleased(java.awt.event.MouseEvent evt) {
 				addConstjButton1MouseReleased(evt);
 			}
 		});
 
-//		submitConstjButton.setText("提交");
+		// submitConstjButton.setText("提交");
 		submitConstjButton
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2117,16 +2085,18 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		managerjTabbedPane.addTab("距离常量", constjPanel);
 
-		jButton6.setText("jButton1");
 
 	}
 
 	private void addConstjButton1ActionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == addConstjButton) {
-			constVOPlus.add(new ConstVOPlus(City.BEIJING, City.BEIJING, 0, 0,
+			constVOPlus.add(new ConstVOPlus(City.BEIJING, City.GUANGZHOU, 0, 0,
 					ModifyState.NEW));
 			initialConstJTable(constVOPlus);
+			constjTable.repaint();
+			constjPanel.repaint();
+			managerjPanel.validate();
 		}
 	}
 
@@ -2151,28 +2121,23 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		managerjPanel = new JPanel() {
 			@Override
 			protected void paintComponent(Graphics g) {
-				g.drawImage(Img.getBackground_main(), 0, 0, 958, 665, null);
+				g.drawImage(Img.getBackground_main(), 0, 0, 963, 680, null);
 			}
 		};
-		managerjPanel.setPreferredSize(new Dimension(958, 665));
+		managerjPanel.setPreferredSize(new Dimension(950, 675));
 
 		managerjTabbedPane = new javax.swing.JTabbedPane();
 		managerjTabbedPane.setBackground(new Color(200, 150, 190, 40));
+		managerjTabbedPane.setPreferredSize(new java.awt.Dimension(820, 560));
 
 		constjPanel = new javax.swing.JPanel();
 		constjPanel.setBackground(ComponentFactory.panelColor);
 
-		jButton3 = new javax.swing.JButton();
-		jButton3.setBackground(ComponentFactory.buttonColor);
-
-		jButton5 = new javax.swing.JButton();
-		jButton5.setBackground(ComponentFactory.buttonColor);
-
 		addConstjButton = new MyButton(ButtonType.NEW_DISTANCE);
-//		addConstjButton.setBackground(ComponentFactory.buttonColor);
+		// addConstjButton.setBackground(ComponentFactory.buttonColor);
 
 		submitConstjButton = new MyButton(ButtonType.SUBMIT);
-//		submitConstjButton.setBackground(ComponentFactory.buttonColor);
+		// submitConstjButton.setBackground(ComponentFactory.buttonColor);
 
 		jScrollPane2 = new javax.swing.JScrollPane();
 		jScrollPane2.setBackground(ComponentFactory.panelColor);
@@ -2185,18 +2150,16 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 		jSeparator8 = new javax.swing.JSeparator();
 		jSeparator9 = new javax.swing.JSeparator();
-		jButton6 = new javax.swing.JButton();
-		jButton6.setBackground(ComponentFactory.buttonColor);
 
 		submitSalaryPolicyjButton = new MyButton(ButtonType.SUBMIT);
-//		submitSalaryPolicyjButton.setBackground(ComponentFactory.buttonColor);
+		// submitSalaryPolicyjButton.setBackground(ComponentFactory.buttonColor);
 
 		jScrollPane5 = new javax.swing.JScrollPane();
 		jScrollPane5.setBackground(ComponentFactory.panelColor);
 
 		salaryPolicyjTable = new javax.swing.JTable();
-		addSalaryPolicyjButton =new MyButton(ButtonType.NEW_SALARY);
-//		addSalaryPolicyjButton.setBackground(ComponentFactory.buttonColor);
+		addSalaryPolicyjButton = new MyButton(ButtonType.NEW_SALARY);
+		// addSalaryPolicyjButton.setBackground(ComponentFactory.buttonColor);
 
 		salaryPolicyTitlejLabel = new javax.swing.JLabel();
 
@@ -2222,16 +2185,16 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		institutionNumjTextField.setDocument(new NumOnlyDocument());
 
 		findInstitutionNumjButton = new MyButton(ButtonType.SEARCH_NUMBER);
-//		findInstitutionNumjButton.setBackground(ComponentFactory.buttonColor);
+		// findInstitutionNumjButton.setBackground(ComponentFactory.buttonColor);
 
 		jLabel13 = new javax.swing.JLabel();
 
 		findInstitutionNamejTextField = new javax.swing.JTextField();
 
 		findInstitutionNamejButton = new MyButton(ButtonType.SEARCH_NAME);
-//		findInstitutionNamejButton.setBackground(ComponentFactory.buttonColor);
+		// findInstitutionNamejButton.setBackground(ComponentFactory.buttonColor);
 
-		jLabel15 = new javax.swing.JLabel();
+//		institutionTitlelabel = new javax.swing.JLabel();
 
 		jScrollPane8 = new javax.swing.JScrollPane();
 		jScrollPane8.setBackground(ComponentFactory.panelColor);
@@ -2239,19 +2202,19 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		institutionjTable = new javax.swing.JTable();
 
 		addInstitutionjButton = new MyButton(ButtonType.NEW_INSTITUTE);
-//		addInstitutionjButton.setBackground(ComponentFactory.buttonColor);
+		// addInstitutionjButton.setBackground(ComponentFactory.buttonColor);
 
-		submitInstitutionjButton = new javax.swing.JButton();
-//		submitInstitutionjButton.setBackground(ComponentFactory.buttonColor);
+//		submitInstitutionjButton = new javax.swing.JButton();
+		// submitInstitutionjButton.setBackground(ComponentFactory.buttonColor);
 
 		accountjPanel = new javax.swing.JPanel();
 		accountjPanel.setBackground(ComponentFactory.panelColor);
 
-		jLabel19 = new javax.swing.JLabel();
+//		accountTitlelabel = new javax.swing.JLabel();
 		accountNamejTextField = new javax.swing.JTextField();
 
 		findAccountNamejButton = new MyButton(ButtonType.SEARCH_PERSON_NAME);
-//		findAccountNamejButton.setBackground(ComponentFactory.buttonColor);
+		// findAccountNamejButton.setBackground(ComponentFactory.buttonColor);
 
 		jLabel9 = new javax.swing.JLabel();
 
@@ -2272,10 +2235,10 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		formjPanel.setBackground(ComponentFactory.panelColor);
 
 		profitFormjButton = new MyButton(ButtonType.FORM_PROFIT);
-//		profitFormjButton.setBackground(ComponentFactory.buttonColor);
+		// profitFormjButton.setBackground(ComponentFactory.buttonColor);
 
 		manageStateFormjButton = new MyButton(ButtonType.FORM_BUSINESS);
-//		manageStateFormjButton.setBackground(ComponentFactory.buttonColor);
+		// manageStateFormjButton.setBackground(ComponentFactory.buttonColor);
 
 		jLabel30 = new javax.swing.JLabel();
 		jLabel31 = new javax.swing.JLabel();
@@ -2292,8 +2255,8 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		logjPanel = new javax.swing.JPanel();
 		logjPanel.setBackground(ComponentFactory.panelColor);
 
-		findLogjButton =new MyButton(ButtonType.SEARCH);
-		
+		findLogjButton = new MyButton(ButtonType.SEARCH);
+
 		jLabel36 = new javax.swing.JLabel();
 		jLabel37 = new javax.swing.JLabel();
 		jLabel38 = new javax.swing.JLabel();
@@ -2319,14 +2282,15 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		logjTable = new javax.swing.JTable();
 		jLabel6 = new javax.swing.JLabel();
 
+		currentAccountNumjLabel = new javax.swing.JLabel();
+		currentAccountNumjLabel.setFont(ComponentFactory.pBlod);
+		currentAccountNumjLabel.setBounds(841, 58, 109, 25);
+
 		currentAccountNamejLabel = new javax.swing.JLabel();
 		currentAccountNamejLabel.setFont(ComponentFactory.pBlod);
-
-		currentAuthorityjLabel = new javax.swing.JLabel();
-		currentAuthorityjLabel.setFont(ComponentFactory.pBlod);
-
-		currentAccoutNamejLabel = new javax.swing.JLabel();
-		currentAccoutNamejLabel.setFont(ComponentFactory.pBlod);
+		currentAccountNamejLabel.setBounds(785, 58, 56, 25);
+		// currentAccoutNamejLabel = new javax.swing.JLabel();
+		// currentAccoutNamejLabel.setFont(ComponentFactory.pBlod);
 
 		jLabel48 = new javax.swing.JLabel();
 		statejLabel = new javax.swing.JLabel();
@@ -2334,6 +2298,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		statejLabel.setBackground(ComponentFactory.labelColor);
 
 		exitjButton = new MyButton(ButtonType.EXIT);
+		exitjButton.setBounds(908, 14, 30, 30);
 
 		viewChecked = new JButton();
 		viewChecked.setBackground(ComponentFactory.buttonColor);
@@ -2485,7 +2450,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				}
 			} else {
 				if (v.equals(voPlus.getSalaryPolicyVO())) {
-					setState("您未对该行进行修改！", DISPLAY_TIME);
+					setState("您未对该行薪水策略进行修改！", DISPLAY_TIME);
 				} else {
 					try {
 						rmsg = salaryPolicyblController.update(v);
@@ -2514,7 +2479,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private void findAccountNumjButtonMouseReleased(
 			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_findAccountNumjButtonMouseReleased
 		// TODO add your handling code here:
-		if (evt.getSource() == findAccountNamejButton) {
+		if (evt.getSource() == findAccountNumjButton) {
 			String findAccountNum = accountNumjTextField.getText();
 			ResultMessage rmsg = InputCheck.checkInputNum(findAccountNum, 11);
 			if (rmsg == ResultMessage.VALID) {
@@ -2582,12 +2547,18 @@ public class ManagerJFrame extends javax.swing.JFrame {
 
 	private void accountNumjTextFieldMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_accountNumjTextFieldMouseClicked
 		// TODO add your handling code here:
-		accountNumjTextField.setText("");
+		String temp = accountNumjTextField.getText();
+		if (temp.equals("请输入人员编号")) {
+			accountNumjTextField.setText("");
+		}
 	}// GEN-LAST:event_accountNumjTextFieldMouseClicked
 
 	private void accountNamejTextFieldMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_accountNamejTextFieldMouseClicked
 		// TODO add your handling code here:
-		accountNamejTextField.setText("");
+		String temp = accountNamejTextField.getText();
+		if (temp.equals("请输入人员姓名")) {
+			accountNamejTextField.setText("");
+		}
 	}// GEN-LAST:event_accountNamejTextFieldMouseClicked
 
 	private void logEDatejComboBoxActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_logEDatejComboBoxActionPerformed
@@ -2621,58 +2592,58 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		new BusinessForm();
 	}// GEN-LAST:event_manageStateFormjButton1MouseReleased
 
-	private void submitInstitutionjButtonMouseReleased(
-			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_submitInstitutionjButtonMouseReleased
-		// TODO add your handling code here:
-		if (evt.getSource() == submitInstitutionjButton) {
-			int tempN = 0;
-			ResultMessage rmsg = null;
-			int n = institutionjTable.getSelectedRow();
-			InstitutionVOPlus voPlus = institutionVOPlus.get(n);
-			ModifyState state = voPlus.isModify;
-			if (state == ModifyState.NEW) {
-				institutionVOPlus.remove(n);
-				if (n == 0) {
-					tempN = 0;
-				} else {
-					tempN = n - 1;
-				}
-				initialInstitutionJTable(institutionVOPlus, tempN);
-			} else {
-				Object[] options = { "取消", "删除" };
-				int result = JOptionPane
-						.showOptionDialog(null, "您确定要删除系统该薪水策略？", "是否删除",
-								JOptionPane.DEFAULT_OPTION,
-								JOptionPane.QUESTION_MESSAGE, null, options,
-								options[0]);
-				if (result == JOptionPane.NO_OPTION) {
-					try {
-						rmsg = institutionblController.delete(voPlus
-								.getInstitutionVO());
-						if (rmsg == ResultMessage.SUCCESS) {
-							setState("删除成功:)", DISPLAY_TIME);
-							institutionVOPlus.remove(n);
-							tempN = 0;
-							if (n == 0) {
-								tempN = 0;
-							} else {
-								tempN = n - 1;
-							}
-							initialInstitutionJTable(institutionVOPlus, tempN);
-						} else {
-							setState(ResultMessage.toFriendlyString(rmsg),
-									DISPLAY_TIME);
-						}
-					} catch (RemoteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-						setState(REMOTEFAILD, DISPLAY_TIME);
-					}
-				}
-			}
-		}
+//	private void submitInstitutionjButtonMouseReleased(
+//			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_submitInstitutionjButtonMouseReleased
+//		// TODO add your handling code here:
+//		if (evt.getSource() == submitInstitutionjButton) {
+//			int tempN = 0;
+//			ResultMessage rmsg = null;
+//			int n = institutionjTable.getSelectedRow();
+//			InstitutionVOPlus voPlus = institutionVOPlus.get(n);
+//			ModifyState state = voPlus.isModify;
+//			if (state == ModifyState.NEW) {
+//				institutionVOPlus.remove(n);
+//				if (n == 0) {
+//					tempN = 0;
+//				} else {
+//					tempN = n - 1;
+//				}
+//				initialInstitutionJTable(institutionVOPlus, tempN);
+//			} else {
+//				Object[] options = { "取消", "删除" };
+//				int result = JOptionPane
+//						.showOptionDialog(null, "您确定要删除系统该薪水策略？", "是否删除",
+//								JOptionPane.DEFAULT_OPTION,
+//								JOptionPane.QUESTION_MESSAGE, null, options,
+//								options[0]);
+//				if (result == JOptionPane.NO_OPTION) {
+//					try {
+//						rmsg = institutionblController.delete(voPlus
+//								.getInstitutionVO());
+//						if (rmsg == ResultMessage.SUCCESS) {
+//							setState("删除成功:)", DISPLAY_TIME);
+//							institutionVOPlus.remove(n);
+//							tempN = 0;
+//							if (n == 0) {
+//								tempN = 0;
+//							} else {
+//								tempN = n - 1;
+//							}
+//							initialInstitutionJTable(institutionVOPlus, tempN);
+//						} else {
+//							setState(ResultMessage.toFriendlyString(rmsg),
+//									DISPLAY_TIME);
+//						}
+//					} catch (RemoteException e1) {
+//						// TODO Auto-generated catch block
+//						e1.printStackTrace();
+//						setState(REMOTEFAILD, DISPLAY_TIME);
+//					}
+//				}
+//			}
+//		}
 
-	}// GEN-LAST:event_submitInstitutionjButtonMouseReleased
+//	}// GEN-LAST:event_submitInstitutionjButtonMouseReleased
 
 	private void addInstitutionjButtonMouseReleased(
 			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_addInstitutionjButton2ActionPerformed
@@ -2720,7 +2691,10 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private void findInstitutionNamejTextFieldMouseClicked(
 			java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jTextField4MouseClicked
 		// TODO add your handling code here:
-		findInstitutionNamejTextField.setText("");
+		String temp = findInstitutionNamejTextField.getText();
+		if (temp.equals("请输入机构的完整名称")) {
+			findInstitutionNamejTextField.setText("");
+		}
 	}// GEN-LAST:event_jTextField4MouseClicked
 
 	private void findInstitutionNumjButtonActionPerformed(
@@ -2808,8 +2782,8 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addSalaryPolicyjButton2ActionPerformed
 		// TODO add your handling code here:
 		if (evt.getSource() == addSalaryPolicyjButton) {
-			salaryPolicyVOPlus.add(new SalaryPolicyVOPlus(Authority.MANAGER,
-					SalaryPolicy.BASE_SALARY, 0, ModifyState.NEW));
+			salaryPolicyVOPlus.add(new SalaryPolicyVOPlus(Authority.COURIER,
+					SalaryPolicy.SHARE_SALARY, 0, ModifyState.NEW));
 			initialSalaryPolicyJTable(salaryPolicyVOPlus,
 					salaryPolicyVOPlus.size() - 1);
 		}
@@ -2823,7 +2797,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private void addConstjButton1MouseReleased(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_addConstjButton1MouseReleased
 		// TODO add your handling code here:
 		if (evt.getSource() == addConstjButton) {
-			constVOPlus.add(new ConstVOPlus(City.BEIJING, City.BEIJING, 0, 0,
+			constVOPlus.add(new ConstVOPlus(City.BEIJING, City.GUANGZHOU, 0, 0,
 					ModifyState.NEW));
 			initialConstJTable(constVOPlus);
 		}
@@ -3051,13 +3025,11 @@ public class ManagerJFrame extends javax.swing.JFrame {
 			SalaryPolicyVO vo = voplus.getSalaryPolicyVO();
 			if (vo != null && vo.salaryPolicy != null
 					&& authorityjComboBox != null) {
-				salaryPolicyObjects[i][0] = authorityjComboBox
-						.getItemAt(vo.salaryPolicy.getIndex());
-				salaryPolicyObjects[i][1] = salaryPolicyjComboBox
-						.getItemAt(vo.salaryPolicy.getIndex());
+				salaryPolicyObjects[i][0] = vo.authority;
+				salaryPolicyObjects[i][1] = vo.salaryPolicy;
 				salaryPolicyObjects[i][2] = vo.value;
 			} else {
-				System.out.println("2519错误！");
+				System.out.println("薪水策略转化显示出现错误！");
 			}
 		}
 
@@ -3100,20 +3072,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		 * @author 1
 		 *         监听salaryPolicy的弹出菜单中的“提交”
 		 */
-		new MouseListener() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
+		new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
@@ -3164,25 +3123,12 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				}
 
 			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
 		});
 		salaryPolicyDeljItem.addMouseListener(/**
 		 * @author 1
 		 *         监听SalaryPolicyjTable上弹出菜单的“删除”
 		 */
-		new MouseListener() {
+		new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
@@ -3237,28 +3183,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				}
 			}
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
 		});
 		;
 		salaryPolicyjPop.add(salaryPolicySubmitjItem);
@@ -3330,7 +3254,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		Object[][] constObjects = null;
 		constObjects = new Object[vos.size()][4];
 		int i = 0;
-		String[] str = new String[2];
 		for (java.util.Iterator<ConstVOPlus> t = vos.iterator(); t.hasNext(); i++) {
 			ConstVO vo = t.next();
 			City c1, c2;
@@ -3368,20 +3291,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		final JPopupMenu constjPop = new JPopupMenu();
 		final JMenuItem constSubmitjItem = new JMenuItem("提交");
 		final JMenuItem constDeljItem = new JMenuItem("删除");
-		constSubmitjItem.addMouseListener(new MouseListener() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
+		constSubmitjItem.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
@@ -3422,21 +3332,8 @@ public class ManagerJFrame extends javax.swing.JFrame {
 				}
 
 			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
 		});
-		constDeljItem.addMouseListener(new MouseListener() {
+		constDeljItem.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
@@ -3459,7 +3356,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 								ResultMessage rmsg = constblController
 										.delete(voPlus.getConstVO());
 								if (rmsg == ResultMessage.SUCCESS) {
-									setState("删除成功:)", DISPLAY_TIME);
+									setState("删除成功", DISPLAY_TIME);
 									constVOPlus.remove(n);
 									initialConstJTable(constVOPlus);
 								} else {
@@ -3470,35 +3367,13 @@ public class ManagerJFrame extends javax.swing.JFrame {
 							} catch (RemoteException e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
-								setState("删除失败:(", DISPLAY_TIME);
+								setState("删除失败", DISPLAY_TIME);
 							}
 						}
 					}
 				}
 			}
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
 		});
 		;
 		constjPop.add(constSubmitjItem);
@@ -3607,19 +3482,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		 * @author 1
 		 *         监听institution的弹出菜单中的“提交”
 		 */
-		new MouseListener() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
+		new MouseAdapter() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -3637,10 +3500,10 @@ public class ManagerJFrame extends javax.swing.JFrame {
 									"提交" + ResultMessage.toFriendlyString(rmsg),
 									DISPLAY_TIME);
 							if (rmsg == ResultMessage.SUCCESS) {
-								// institutionVOPlus.remove(n);
-								// institutionVOPlus.add(n, new
-								// InstitutionVOPlus(
-								// v, ModifyState.SYNC));
+								 institutionVOPlus.remove(n);
+								 institutionVOPlus.add(n, new
+								 InstitutionVOPlus(
+								 v, ModifyState.SYNC));
 								setInstitutionVOs();
 								initialInstitutionJTable(institutionVOPlus, n);
 							}
@@ -3652,7 +3515,11 @@ public class ManagerJFrame extends javax.swing.JFrame {
 					} else {
 						if (v.equals(voPlus.getInstitutionVO())) {
 							setState("您未对该行进行修改！", DISPLAY_TIME);
-						} else {
+						} else if(!v.institutionNum.equals(voPlus.getInstitutionVO().institutionNum)){
+							setState("您不能对修改机构编号！", DISPLAY_TIME);
+							initialInstitutionJTable(institutionVOPlus, n);
+						}else {
+						
 							try {
 								rmsg = institutionblController.update(v);
 								setState(ResultMessage.toFriendlyString(rmsg),
@@ -3671,27 +3538,13 @@ public class ManagerJFrame extends javax.swing.JFrame {
 						}
 					}
 				}
-
 			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
 		});
 		institutionDeljItem.addMouseListener(/**
 		 * @author 1
 		 *         监听institutionjTable上弹出菜单的“删除”
 		 */
-		new MouseListener() {
+		new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
@@ -3744,29 +3597,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 						}
 					}
 				}
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
 			}
 		});
 		;
@@ -3919,11 +3749,10 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		// Comparator cmp = Collator.getInstance(java.util.Locale.CHINA); //
 		// 使根据指定比较器产生的顺序对指定对象数组进行排序。
 		// Arrays.sort(city, cmp);
-		City C1=City.getCity(city[0]);
-		City C2=City.getCity(city[1]);
-		City c1 = City.getCity1(C1,C2);
-		City c2 = City.getCity1(C1,C2);
-
+		City C1 = City.getCity(city[0]);
+		City C2 = City.getCity(city[1]);
+		City c1 = City.getCity1(C1, C2);
+		City c2 = City.getCity1(C1, C2);
 		return new ConstVO(c1, c2, distanceConst, priceConst);
 	}
 
@@ -4056,34 +3885,20 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private JComboBox<Rep> repjComboBox;
 	private JButton viewChecked;
 	String currentOptorId = Loginbl.getCurrentOptorId();
-	private JPanel profitFormIcon;
-	private JPanel manageFormIcon;
 	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private javax.swing.JTextField accountNamejTextField;
-	private javax.swing.JTextField accountNumjTextField;
-	private javax.swing.JTable accountjTable;
-	private javax.swing.JPanel accountjPanel;
-	private javax.swing.JPanel checkjPane;
 	private javax.swing.JLabel constTitlejLabel;
-	private javax.swing.JPanel constjPanel;
-	private javax.swing.JTable constjTable;
+	private javax.swing.JLabel currentAccountNumjLabel;
 	private javax.swing.JLabel currentAccountNamejLabel;
-	private javax.swing.JLabel currentAccoutNamejLabel;
-	private javax.swing.JLabel currentAuthorityjLabel;
-	private javax.swing.JTable documentCheckjTable;
 	private javax.swing.JComboBox formEDatejComboBox;
 	private javax.swing.JComboBox formEMonthjComboBox;
 	private javax.swing.JComboBox formEYearjComboBox;
+//	private javax.swing.JLabel institutionTitlelabel;
+//	private javax.swing.JLabel accountTitlelabel;
 	private javax.swing.JPanel formjPanel;
-	private javax.swing.JTextField institutionNumjTextField;
-	private javax.swing.JPanel institutionjPanel;
-	private javax.swing.JTable institutionjTable;
 	private javax.swing.JLabel jLabel11;
 	private javax.swing.JLabel jLabel12;
 	private javax.swing.JLabel jLabel13;
-	private javax.swing.JLabel jLabel15;
 	private javax.swing.JLabel jLabel16;
-	private javax.swing.JLabel jLabel19;
 	private javax.swing.JLabel jLabel22;
 	private javax.swing.JLabel jLabel23;
 	private javax.swing.JLabel jLabel29;
@@ -4104,19 +3919,14 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private javax.swing.JLabel jLabel48;
 	private javax.swing.JLabel jLabel6;
 	private javax.swing.JLabel jLabel9;
-	private javax.swing.JScrollPane jScrollPane1;
-	private javax.swing.JScrollPane jScrollPane11;
-	private javax.swing.JScrollPane jScrollPane2;
-	private javax.swing.JScrollPane jScrollPane5;
-	private javax.swing.JScrollPane jScrollPane6;
-	private javax.swing.JScrollPane jScrollPane8;
-	private javax.swing.JSeparator jSeparator2;
-	private javax.swing.JSeparator jSeparator5;
-	private javax.swing.JSeparator jSeparator6;
-	private javax.swing.JSeparator jSeparator7;
-	private javax.swing.JSeparator jSeparator8;
-	private javax.swing.JSeparator jSeparator9;
+	private javax.swing.JLabel salaryPolicyTitlejLabel;
+	private javax.swing.JLabel statejLabel;
+
+	private javax.swing.JTextField institutionNumjTextField;
 	private javax.swing.JTextField findInstitutionNamejTextField;
+	private javax.swing.JTextField accountNamejTextField;
+	private javax.swing.JTextField accountNumjTextField;
+
 	private javax.swing.JComboBox<Integer> logEDatejComboBox;
 	private javax.swing.JComboBox<Integer> logEYearjComboBox;
 	private javax.swing.JComboBox<Integer> logEMonthjComboBox;
@@ -4124,14 +3934,38 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private javax.swing.JComboBox<Integer> logSMonthjComboBox;
 	private javax.swing.JComboBox<Integer> logSYearjComboBox;
 	private javax.swing.JComboBox<LogType> logTypejComboBox;
-	private javax.swing.JPanel logjPanel;
-	private javax.swing.JTable logjTable;
-	private javax.swing.JLabel salaryPolicyTitlejLabel;
-	private javax.swing.JPanel managerjPanel;
-	private javax.swing.JTabbedPane managerjTabbedPane;
+
+	private javax.swing.JSeparator jSeparator2;
+	private javax.swing.JSeparator jSeparator5;
+	private javax.swing.JSeparator jSeparator6;
+	private javax.swing.JSeparator jSeparator7;
+	private javax.swing.JSeparator jSeparator8;
+	private javax.swing.JSeparator jSeparator9;
+
+	private JPanel manageFormIcon;
+	private JPanel profitFormIcon;
 	private javax.swing.JPanel salaryPolicyjPane1;
+	private javax.swing.JPanel logjPanel;
+	private javax.swing.JScrollPane jScrollPane1;
+	private javax.swing.JScrollPane jScrollPane11;
+	private javax.swing.JScrollPane jScrollPane2;
+	private javax.swing.JScrollPane jScrollPane5;
+	private javax.swing.JScrollPane jScrollPane6;
+	private javax.swing.JScrollPane jScrollPane8;
+	private javax.swing.JPanel institutionjPanel;
+	private javax.swing.JPanel constjPanel;
+	private javax.swing.JPanel accountjPanel;
+	private javax.swing.JPanel checkjPane;
+	private javax.swing.JTabbedPane managerjTabbedPane;
+	private javax.swing.JPanel managerjPanel;
+
+	private javax.swing.JTable institutionjTable;
+	private javax.swing.JTable documentCheckjTable;
+	private javax.swing.JTable constjTable;
+	private javax.swing.JTable accountjTable;
 	private javax.swing.JTable salaryPolicyjTable;
-	private javax.swing.JLabel statejLabel;
+	private javax.swing.JTable logjTable;
+
 	private javax.swing.JButton addConstjButton;//
 	private javax.swing.JButton addInstitutionjButton;//
 	private javax.swing.JButton submitSalaryPolicyjButton;//
@@ -4141,15 +3975,12 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private javax.swing.JButton findInstitutionNumjButton;//
 	private javax.swing.JButton findInstitutionNamejButton;//
 	private javax.swing.JButton findLogjButton;//
-	private javax.swing.JButton exitjButton;//退出 
-	private javax.swing.JButton jButton3;
-	private javax.swing.JButton jButton5;
-	private javax.swing.JButton jButton6;
+	private javax.swing.JButton exitjButton;// 退出
 	private javax.swing.JButton manageStateFormjButton;//
-	private javax.swing.JButton outputFormjButton;//未使用
+	private javax.swing.JButton outputFormjButton;// 未使用
 	private javax.swing.JButton profitFormjButton;//
 	private javax.swing.JButton submitConstjButton;//
-	private javax.swing.JButton submitInstitutionjButton;//
+//	private javax.swing.JButton submitInstitutionjButton;//
 	// End of variables declaration//GEN-END:variables
 	/**
 	 * 远程连接失败！

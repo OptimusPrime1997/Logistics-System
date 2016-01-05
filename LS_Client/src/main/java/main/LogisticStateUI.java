@@ -97,9 +97,9 @@ public class LogisticStateUI extends javax.swing.JFrame {
         listNum_label.setText("jLabel1");
 
         jLabel2.setFont(new java.awt.Font("宋体", 1, 14)); // NOI18N
-        jLabel2.setText("物流信息");
+        jLabel2.setText("物流信息"+"  "+vo.listNum);
         jLabel2.setForeground(Color.WHITE);
-        jLabel2.setBounds(20, 5, 150, 30);
+        jLabel2.setBounds(20, 5, 300, 30);
         
         label01.setBounds(20, 30, 30, 30);
         label02.setBounds(130, 30, 60, 30);
@@ -108,15 +108,24 @@ public class LogisticStateUI extends javax.swing.JFrame {
         String[] dates=vo.dates.split(" ");
         if(dates.length>7) content=new Object[6][2];
         else content=new Object[dates.length][2];
-//        for(int i=0;i<7;i++){
-//        	content[i][0]="";
-//        	content[i][1]="";
-//        }
-        for(String date:dates){
-        	if(count>=6) break;
-        	content[count][0]=date;
-        	content[count][1]=GoodsLogisticState.toFriendlyString(GoodsLogisticState.get(count));
-        	count++;
+        //丢损 显示已丢损
+        if(vo.arrivalState==GoodsArrivalState.BROKEN||vo.arrivalState==GoodsArrivalState.LOST){
+        	for(int i=0;i<dates.length-1;i++){
+        		if(count>=6) break;
+             	content[count][0]=dates[i];
+             	content[count][1]=GoodsLogisticState.toFriendlyString(GoodsLogisticState.get(count));
+             	count++;
+        	}
+        	content[count][0]=dates[count];
+        	content[count][1]=GoodsLogisticState.toFriendlyString(GoodsLogisticState.BROKEN_OR_LOST);
+        }else{
+        	count=0;
+        	 for(String date:dates){
+             	if(count>=6) break;
+             	content[count][0]=date;
+             	content[count][1]=GoodsLogisticState.toFriendlyString(GoodsLogisticState.get(count));
+             	count++;
+             }
         }
         table = new JTable(new MyTableModel(content));
         table.setBounds(20,60,280,120);

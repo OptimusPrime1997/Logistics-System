@@ -62,6 +62,7 @@ public class PayRepCourier extends javax.swing.JPanel {
 		bankAccount = bank;
 		initComponents();
 		myFrame = new MyFrame(493, 485, this);
+		myFrame.setTitle("快递员工资");
 	}
 
 	/**

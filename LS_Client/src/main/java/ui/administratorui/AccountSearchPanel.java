@@ -42,16 +42,16 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 	/**
 	 * Creates new form AccountSearch
 	 */
-	public AccountSearchPanel(AdministratorPanel panel) {
-		this.administratorPanel = panel;
-		this.accountblController = panel.getAccountblController();
+	public AccountSearchPanel(AdministratorPanel parentPanel) {
+		this.parentPanel = parentPanel;
+		this.accountblController = parentPanel.getAccountblController();
 		setAccountVOs();
 		initComponents();
 	}
 
 	public AccountSearchPanel(AdministratorPanel panel, ArrayList<AccountVO> vos) {
 		// TODO Auto-generated constructor stub
-		this.administratorPanel = panel;
+		this.parentPanel = panel;
 		this.accountblController = panel.getAccountblController();
 		accountVOs = vos;
 		initComponents();
@@ -108,7 +108,7 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 		back = new javax.swing.JButton();
 		jTabbedPane1 = new javax.swing.JTabbedPane();
 		resultMsg = new javax.swing.JLabel();
-		String optorName = administratorPanel.getOptorName();
+		String optorName = parentPanel.getOptorName();
 		jLabel9.setText("当前账户：" + optorName);
 
 		exit.setText("退出");
@@ -549,16 +549,16 @@ public class AccountSearchPanel extends javax.swing.JFrame {
 	}
 
 	private void backActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton4ActionPerformed
-		UserAccountPanel ua = new UserAccountPanel(administratorPanel);
+		AdministratorPanel ua = new AdministratorPanel();
 		ua.setVisible(true);
 		this.dispose();
 	}// GEN-LAST:event_jButton4ActionPerformed
 
 	private ArrayList<AccountVO> accountVOs = null;
 	private AccountBLService accountblController = null;
-	private AdministratorPanel administratorPanel;
-	private JComboBox sexjComboBox = ComponentFactory.getSexJComboBox();
-	private JComboBox authorityjComboBox = ComponentFactory.getInstance()
+	private AdministratorPanel parentPanel;
+	private JComboBox<Sex> sexjComboBox = ComponentFactory.getSexJComboBox();
+	private JComboBox<Authority> authorityjComboBox = ComponentFactory
 			.getAuthorityJComboBox();
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JButton exit;

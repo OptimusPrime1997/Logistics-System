@@ -51,6 +51,7 @@ public class PayFreight extends javax.swing.JPanel {
     	payRepVO = oriPayRepVO;
         initComponents();
         myFrame = new MyFrame(505, 511, this);
+        myFrame.setTitle("运费详细信息查看");
     }
 
     /**

@@ -70,6 +70,7 @@ public class PayRepRefund extends javax.swing.JPanel {
         bankAccount = bank;
         initComponents();
         myFrame = new MyFrame(627, 355, this);
+        myFrame.setTitle("退款");
     }
 
     /**

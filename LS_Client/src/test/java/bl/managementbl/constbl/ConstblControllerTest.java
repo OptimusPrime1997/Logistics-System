@@ -30,33 +30,33 @@
 //			e.printStackTrace();
 //			System.out.println("远程连接错误");
 //		}
-//		try {
-//			vo = constblController.findByCities(City.SHANGHAI,City.NANJING
-//					);
-//			System.out.println(vo.distanceConst);
-//			assertEquals(266, vo.distanceConst, 0.01);
-//			// constbl.delete(vo);
-//			vo1 = constblController.findByCities(City.GUANGZHOU,City.SHANGHAI);
-//		} catch (RemoteException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (ConstNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		if (vo1 != null) {
-//			assertEquals(0.025, vo1.priceConst, 0.0001);
-//		} else {
-//			System.out.println("vo is null");
-//		}
+////		try {
+////			vo = constblController.findByCities(City.SHANGHAI,City.NANJING
+////					);
+////			System.out.println(vo.distanceConst);
+//////			assertEquals(266, vo.distanceConst, 0.01);
+////			// constbl.delete(vo);
+////			vo1 = constblController.findByCities(City.GUANGZHOU,City.SHANGHAI);
+////		} catch (RemoteException e) {
+////			// TODO Auto-generated catch block
+////			e.printStackTrace();
+////		} catch (FileNotFoundException e) {
+////			// TODO Auto-generated catch block
+////			e.printStackTrace();
+////		} catch (ClassNotFoundException e) {
+////			// TODO Auto-generated catch block
+////			e.printStackTrace();
+////		} catch (IOException e) {
+////			// TODO Auto-generated catch block
+////			e.printStackTrace();
+////		} catch (ConstNotFoundException e) {
+////			// TODO Auto-generated catch block
+////			e.printStackTrace();
+////		}
+////		if (vo1 != null) {
+////			assertEquals(0.025, vo1.priceConst, 0.0001);
+////		} else {
+////			System.out.println("vo is null");
+////		}
 //	}
 //}

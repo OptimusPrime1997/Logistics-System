@@ -73,6 +73,7 @@ public class GetRep extends javax.swing.JPanel {
 	public GetRep() {
 		initComponents();
 		myFrame = new MyFrame(556, 468, this);
+		myFrame.setTitle("营业厅到达单");
 	}
 
 	/**
@@ -402,7 +403,6 @@ public class GetRep extends javax.swing.JPanel {
     		return;
     	}
 		String resultMessage = control.checkNum(order, 10, "编号");
-
 		if (!resultMessage.equals("添加成功")) {
 			resultMsgText.setText(resultMessage);
 			return;
@@ -456,6 +456,11 @@ public class GetRep extends javax.swing.JPanel {
 		String shipNum = getTypeText.getText();
 		if (shipNum.equals("")) {
 			resultMsgText.setText("请填写到达单据编号");
+			return;
+		}
+		String resultMsg = control.checkNum(shipNum, 19, "到达单据编号");
+		if(!resultMsg.equals("添加成功")){
+			resultMsgText.setText(resultMsg);
 			return;
 		}
 		String repString = getTypeBox.getSelectedItem().toString();

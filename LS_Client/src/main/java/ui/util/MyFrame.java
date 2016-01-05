@@ -7,21 +7,29 @@ import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
-public class MyFrame extends JFrame{
+import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
+
+import ui.componentfactory.ComponentFactory;
+
+public class MyFrame extends JFrame {
 	private int mousePressedX;
 	private int mousePressedY;
-	public MyFrame(int width,int height,JPanel panel){
+
+	public MyFrame(int width, int height, JPanel panel) {
 		this.setSize(width, height);
 		this.setContentPane(panel);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
+		changeLook();
 		this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		this.setVisible(true);
 	}
-	public MyFrame(JPanel panel){
-		this.setSize(830,590);
+
+	public MyFrame(JPanel panel) {
+		this.setSize(830, 590);
 		this.setContentPane(panel);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
@@ -40,8 +48,25 @@ public class MyFrame extends JFrame{
 			}
 		});
 		this.setUndecorated(true);
+		changeLook();
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		this.setBackground(new Color(0,0,0,0));
+		this.setBackground(new Color(0, 0, 0, 0));
 		this.setVisible(true);
 	}
+
+	/**
+	 * 更改外观
+	 */
+	public static void changeLook() {
+		// try {
+		// BeautyEyeLNFHelper.frameBorderStyle =
+		// BeautyEyeLNFHelper.FrameBorderStyle.translucencySmallShadow;
+		// org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
+		// // 关闭右上角设置
+		// UIManager.put("RootPane.setupButtonVisible", false);
+		// } catch (Exception e) {
+		// }
+		ComponentFactory.setSystemLook();
+	}
+
 }

@@ -53,8 +53,9 @@ public class Institutionbl {
 		if (institutionDataService != null) {
 			ResultMessage rmsg = null;
 			try {
-				ArrayList<InstitutionPO> pos = institutionDataService.show();
-				if (vo.institutionNum.substring(3, 6).equals("000")) {
+//				
+//				if (vo.institutionNum.substring(3, 6).equals("000")) {
+					ArrayList<InstitutionPO> pos = institutionDataService.show();
 					InstitutionPO lastPO = null;
 					String temp = vo.institutionNum.substring(0, 3);
 					if (pos != null) {
@@ -64,30 +65,31 @@ public class Institutionbl {
 							if (p.getContactInfo().equals(vo.contactInfo)) {
 								return ResultMessage.EXIST;
 							}
-							if (p.getInstitutionNum().substring(0, 3)
-									.equals(temp)) {
-								lastPO = p;
-							}
+//							if (p.getInstitutionNum().substring(0, 3)
+//									.equals(temp)) {
+//								lastPO = p;
+//							}
 						}
 					}
-					if (lastPO == null) {
-						vo.institutionNum = vo.institutionNum.substring(0, 3)
-								+ "001";
-					} else {
-						vo.institutionNum = vo.institutionNum.substring(0, 3)
-								+ ThreeAutoNum.toThreeNum(Integer
-										.parseInt(lastPO.getInstitutionNum()
-												.substring(3, 6)) + 1);
-					}
-				}
+//					if (lastPO == null) {
+//						vo.institutionNum = vo.institutionNum.substring(0, 3)
+//								+ "001";
+//					} else {
+//						vo.institutionNum = vo.institutionNum.substring(0, 3)
+//								+ ThreeAutoNum.toThreeNum(Integer
+//										.parseInt(lastPO.getInstitutionNum()
+//												.substring(3, 6)) + 1);
+//					}
+//				}
 				rmsg = institutionDataService.insert(manageVOPO.voToPO(vo));
 				ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
-			} catch (IOException e) {
+				} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("存储文件出错");
 				return ResultMessage.IOFAILED;
-			} catch (ClassNotFoundException e) {
+			} 
+			catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("系统程序错误");

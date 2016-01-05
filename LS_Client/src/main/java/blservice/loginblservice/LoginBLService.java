@@ -22,4 +22,8 @@ public interface LoginBLService {
 	 * 获得当前登录人员的名字
 	 */
 	public String getCurrentName()throws RemoteException;
+	/**
+	 * 获得当前登录人员的身份
+	 */
+	public Authority getCurrentAuthority()throws RemoteException;
 }

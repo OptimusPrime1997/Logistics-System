@@ -105,4 +105,10 @@ public class InStockRepController extends ReceiptblController implements InStock
 		return inStockRepbl.getAllRepByDate(date);
 	}
 
+	@Override
+	public ArrayList<Integer> checkOver(int block) throws NotBoundException, IOException {
+		// TODO Auto-generated method stub
+		return inStockRepbl.checkOver(block);
+	}
+
 }

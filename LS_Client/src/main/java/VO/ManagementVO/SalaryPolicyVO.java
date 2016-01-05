@@ -1,5 +1,6 @@
 package VO.ManagementVO;
 
+import util.InputCheck;
 import util.enumData.Authority;
 import util.enumData.SalaryPolicy;
 
@@ -13,7 +14,7 @@ public class SalaryPolicyVO implements Comparable<SalaryPolicyVO> {
 		super();
 		this.authority = authority;
 		this.salaryPolicy = salaryPolicy;
-		this.value = value;
+		this.value = InputCheck.formatDouble(value);
 	}
 
 	public int compareTo(SalaryPolicyVO v) {

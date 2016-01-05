@@ -51,6 +51,7 @@ public class PayStaff extends javax.swing.JPanel {
     	payRepVO = oriPayRepVO;
         initComponents();
         myFrame = new MyFrame(435, 511, this);
+        myFrame.setTitle("人员工资详细信息查看");
     }
 
     /**

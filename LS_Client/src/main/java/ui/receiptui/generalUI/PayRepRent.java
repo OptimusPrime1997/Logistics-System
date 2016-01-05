@@ -71,6 +71,7 @@ public class PayRepRent extends javax.swing.JPanel {
 		bankAccount = bank;
 		initComponents();
 		myFrame = new MyFrame(424, 583, this);
+		myFrame.setTitle("租金");
 	}
 
 	/**

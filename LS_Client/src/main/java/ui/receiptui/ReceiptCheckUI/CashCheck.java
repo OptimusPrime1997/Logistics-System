@@ -52,6 +52,7 @@ public class CashCheck extends javax.swing.JPanel {
         office = oriOffice;
         initComponents();
         myFrame = new MyFrame(606, 415, this);
+        myFrame.setTitle("收款单简略信息查看");
     }
 
     /**

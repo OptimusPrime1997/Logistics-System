@@ -75,6 +75,7 @@ public class TransferRep extends javax.swing.JPanel {
 		this.parentPanel=parentPanel;
 		initComponents();
 		myFrame = new MyFrame(411, 490, this);
+		myFrame.setTitle("中转单");
 	}
 
 	/**

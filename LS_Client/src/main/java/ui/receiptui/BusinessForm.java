@@ -6,6 +6,8 @@
 
 package ui.receiptui;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import ui.util.MyFrame;
@@ -57,7 +59,6 @@ public static void main(String[] args) {
         jScrollPane2 = new javax.swing.JScrollPane();
         payRepTable = new javax.swing.JTable();
         backButton = new javax.swing.JButton();
-        showText = new javax.swing.JTextField();
         resultMsgText = new javax.swing.JTextField();
         findButton = new javax.swing.JButton();
 
@@ -113,9 +114,6 @@ public static void main(String[] args) {
             }
         });
 
-        showText.setEditable(false);
-        showText.setText("示例:2015-11-2");
-
         resultMsgText.setEditable(false);
 
         findButton.setText("查看");
@@ -124,79 +122,83 @@ public static void main(String[] args) {
                 findButtonActionPerformed(evt);
             }
         });
+        
+        startTimeText.setText("例如:2015-11-02");
+        startTimeText.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            	// TODO Auto-generated method stub
+            	startTimeText.setText("");
+            }
+        });
+        
        initLayout();
     }
 
     private void initLayout() {
-    	 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-         this.setLayout(layout);
-         layout.setHorizontalGroup(
-             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-             .addComponent(resultMsgText)
-             .addGroup(layout.createSequentialGroup()
-                 .addGap(183, 183, 183)
-                 .addComponent(cashLabel)
-                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                 .addComponent(payLabel)
-                 .addGap(196, 196, 196))
-             .addGroup(layout.createSequentialGroup()
-                 .addGap(31, 31, 31)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
-                 .addGap(35, 35, 35)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                     .addComponent(backButton))
-                 .addContainerGap(22, Short.MAX_VALUE))
-             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                         .addComponent(startTimeLabel)
-                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                         .addComponent(startTimeText, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                         .addComponent(endTimeLabel)
-                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                         .addComponent(endTimeText, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                 .addGap(33, 33, 33)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                     .addComponent(findButton)
-                     .addComponent(showText, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                 .addGap(274, 274, 274))
-         );
-         layout.setVerticalGroup(
-             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-             .addGroup(layout.createSequentialGroup()
-                 .addGap(21, 21, 21)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                     .addComponent(startTimeLabel)
-                     .addComponent(startTimeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                     .addComponent(showText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                     .addComponent(endTimeLabel)
-                     .addComponent(endTimeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                     .addComponent(findButton))
-                 .addGap(18, 18, 18)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                     .addComponent(cashLabel)
-                     .addComponent(payLabel))
-                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                     .addComponent(backButton))
-                 .addGap(18, 20, Short.MAX_VALUE)
-                 .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-         );
+    	javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(resultMsgText)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(396, 396, 396)
+                        .addComponent(backButton)
+                        .addGap(198, 198, 198))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addComponent(cashLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(payLabel)))
+                .addGap(196, 196, 196))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(endTimeLabel)
+                    .addComponent(startTimeLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(startTimeText, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                    .addComponent(endTimeText))
+                .addGap(18, 18, 18)
+                .addComponent(findButton)
+                .addGap(280, 280, 280))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(startTimeLabel)
+                    .addComponent(startTimeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(endTimeLabel)
+                    .addComponent(endTimeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(findButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cashLabel)
+                    .addComponent(payLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(backButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 	}
 	
-    /*
-     * 2015-11-2"
-     */
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
          resultMsgText.setText("");
          //TODO 
@@ -311,9 +313,7 @@ public static void main(String[] args) {
 		}
 		return true;
 	}
-	private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
-        // TODO 
-	}
+	
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
          frame.setVisible(false);
     }
@@ -325,7 +325,7 @@ public static void main(String[] args) {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel payLabel;
-    private javax.swing.JTextField resultMsgText,showText;
+    private javax.swing.JTextField resultMsgText;
     private javax.swing.JTextField startTimeText,endTimeText;
     private MyFrame frame;
     private BusinessFormBLService ctr;

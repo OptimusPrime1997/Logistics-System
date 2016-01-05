@@ -47,13 +47,13 @@ public class car_management extends javax.swing.JPanel {
 	public static void main(String[] args) {
 		new car_management();
 	}
-	
-	//TODO
+
+	// TODO
 	public car_management() {
 		ctr_login = ControllerFactoryImpl.getInstance().getLoginController();
 		initComponents();
-		frame=new MyFrame(this);
-		
+		frame = new MyFrame(this);
+
 	}
 
 	/**
@@ -66,23 +66,20 @@ public class car_management extends javax.swing.JPanel {
 	}
 
 	private void initComponents() {
-		
+
 		initLabel();
 		initbtn();
 		initTxt();
-		initTable();
-		initlayout();
-	}
-	public void initTable() {
-		vehiclejTable = new javax.swing.JTable();
-		jScrollPane1 = new javax.swing.JScrollPane();
-		
-		jScrollPane1.setBounds(450, 100, 20, 300);
 		setVehicleVOs();
 		initialVehicleJTable(vehicleVOs, 0);
-		
-		vehiclejTable.setBounds(50, 100, 400, 300);
+		initlayout();
 	}
+
+	public void initTable() {
+		setVehicleVOs();
+		initialVehicleJTable(vehicleVOs, vehicleVOs.size()-1);
+	}
+
 	private void initlayout() {
 		this.setLayout(null);
 		this.add(account_label);
@@ -100,11 +97,9 @@ public class car_management extends javax.swing.JPanel {
 		this.add(jScrollPane1);
 		this.add(feedback_text);
 		this.add(search_text);
-		this.add(vehiclejTable);
-		
-		//TODO
-		
+
 	}
+
 	private void initTxt() {
 		search_text = new MyTextField(TextType.INPUT, 500, 100, 120, 30);
 		feedback_text.setText("空闲");
@@ -118,11 +113,12 @@ public class car_management extends javax.swing.JPanel {
 		});
 		feedback_text.setFocusable(false);
 	}
+
 	private void initbtn() {
-		add_btn = new MyButton(110,30,ButtonType.ADD);
-		search_btn = new MyButton(640,100,ButtonType.SEARCH);
-		back_btn = new MyButton(600,400,ButtonType.BACK);
-		exit_btn = new MyButton(790,5,ButtonType.EXIT);
+		add_btn = new MyButton(110, 30, ButtonType.ADD);
+		search_btn = new MyButton(640, 100, ButtonType.SEARCH);
+		back_btn = new MyButton(600, 400, ButtonType.BACK);
+		exit_btn = new MyButton(790, 5, ButtonType.EXIT);
 		add_btn.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				add_btnMouseClicked(evt);
@@ -159,8 +155,8 @@ public class car_management extends javax.swing.JPanel {
 	 */
 	private void search_btnActionPerformed(ActionEvent evt) {
 		if (evt.getSource() == search_btn) {
-			
-			boolean  found=false;
+
+			boolean found = false;
 			String tofindVNum = search_text.getText();
 			VehicleVO v = null;
 			int i = 0;
@@ -169,7 +165,7 @@ public class car_management extends javax.swing.JPanel {
 				for (; t.hasNext(); i++) {
 					v = t.next();
 					if (v.licenseNum.equals(tofindVNum)) {
-						found=true;
+						found = true;
 						vehiclejTable.setRowSelectionInterval(i, i);
 						ComponentFactory.setState("该车辆在第" + (i + 1) + "行",
 								ComponentFactory.DISPLAY_TIME, feedback_text);
@@ -233,6 +229,7 @@ public class car_management extends javax.swing.JPanel {
 		new businessOfficer_main();
 		frame.dispose();
 	}
+
 	private void initialVehicleJTable(ArrayList<VehicleVO> vos, int n) {
 		assert (vos != null) : ("表格获得的账户信息为空");
 		Object[][] VehicleObjects = null;
@@ -324,7 +321,7 @@ public class car_management extends javax.swing.JPanel {
 						try {
 							rmsg = vehicleblController.deleteVehicle(VO);
 							if (rmsg == ResultMessage.SUCCESS) {
-								ComponentFactory.setState("删除成功:)",
+								ComponentFactory.setState("删除成功",
 										ComponentFactory.DISPLAY_TIME,
 										feedback_text);
 								vehicleVOs.remove(n1);
@@ -411,6 +408,7 @@ public class car_management extends javax.swing.JPanel {
 		jScrollPane1.setViewportView(vehiclejTable);
 	}
 
+
 	private VehicleVO getViewvehicleVO(int n) {
 		String vehicleNum = null;
 		String vehicleLicenseNum = null;
@@ -433,23 +431,27 @@ public class car_management extends javax.swing.JPanel {
 	}
 
 	private void initLabel() {
-		jLabel4 = new MyLabel("车辆管理",20,20,100,50);
-		jLabel5 = new MyLabel("账户：",460,20,50,30);
-		jLabel6 = new MyLabel("营业厅：",300,20,70,30);
-		businessOffNum_label=new MyLabel("", 355, 20,90, 30);
-		account_label=new MyLabel("",500,20,100,30);
-		label01=new MyLabel("车辆编号", 80, 70, 100, 30);
-		label02=new MyLabel("车牌号", 230, 70, 100, 30);
-		label03=new MyLabel("开始服役时间", 330, 70, 200, 30);
-		//vehiclejTable.setBounds(50, 100, 400, 300);
+		vehiclejTable = new javax.swing.JTable();
+		jScrollPane1 = new javax.swing.JScrollPane();
+		jScrollPane1.setBounds(50, 100, 400, 300);
+		
+		jLabel4 = new MyLabel("车辆管理", 20, 20, 100, 50);
+		jLabel5 = new MyLabel("账户：", 460, 20, 50, 30);
+		jLabel6 = new MyLabel("营业厅：", 300, 20, 70, 30);
+		businessOffNum_label = new MyLabel("", 355, 20, 90, 30);
+		account_label = new MyLabel("", 500, 20, 100, 30);
+		label01 = new MyLabel("车辆编号", 80, 70, 100, 30);
+		label02 = new MyLabel("车牌号", 230, 70, 100, 30);
+		label03 = new MyLabel("开始服役时间", 330, 70, 200, 30);
+		// vehiclejTable.setBounds(50, 100, 400, 300);
 		jLabel4.setFont(new java.awt.Font("宋体", 1, 18));
 		jLabel4.setForeground(Color.WHITE);
 		try {
 			officeNum = ctr_login.getCurrentOptorId().substring(0, 6);
-			name=ctr_login.getCurrentName();
+			name = ctr_login.getCurrentName();
 			System.out.println(ctr_login.getCurrentOptorId());
 			city = City.toString(CurrentCity.getCurrentCity());
-			businessOffNum_label.setText(city +" "+ officeNum);
+			businessOffNum_label.setText(city + " " + officeNum);
 			account_label.setText(name);
 		} catch (RemoteException e) {
 		}
@@ -493,10 +495,12 @@ public class car_management extends javax.swing.JPanel {
 	public String getOfficeNum() {
 		return officeNum;
 	}
-@Override
-protected void paintComponent(Graphics g) {
-	g.drawImage(Img.getBackground_main(), 0, 0, null);
-}
+
+	@Override
+	protected void paintComponent(Graphics g) {
+		g.drawImage(Img.getBackground_main(), 0, 0, null);
+	}
+
 	private ArrayList<VehicleVO> vehicleVOs = null;
 	private ControllerFactoryblService controllerFactoryblService = ControllerFactoryImpl
 			.getInstance();
@@ -504,15 +508,15 @@ protected void paintComponent(Graphics g) {
 			.getVehicleController();
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private MyButton add_btn, back_btn, exit_btn,search_btn;
-	private MyLabel businessOffNum_label, jLabel4, jLabel5,
-			jLabel6,account_label,label01,label02,label03;
+	private MyButton add_btn, back_btn, exit_btn, search_btn;
+	private MyLabel businessOffNum_label, jLabel4, jLabel5, jLabel6,
+			account_label, label01, label02, label03;
 	private javax.swing.JTable vehiclejTable;
-	final private MyLabel feedback_text=new MyLabel("空闲", 30, 500, 450, 30);
+	public final MyLabel feedback_text = new MyLabel("空闲", 30, 500, 450, 30);
 	private javax.swing.JScrollPane jScrollPane1;
 	private MyTextField search_text;
 	private MyFrame frame;
-	private String officeNum = "", city = "",name="";
+	private String officeNum = "", city = "", name = "";
 	private LoginBLService ctr_login;
 	private static final long serialVersionUID = 1L;// TODO 这是干啥的呀
 	// End of variables declaration//GEN-END:variables

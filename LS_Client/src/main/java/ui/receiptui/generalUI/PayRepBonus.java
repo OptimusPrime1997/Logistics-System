@@ -69,6 +69,7 @@ public class PayRepBonus extends javax.swing.JPanel {
 		bankAccount = oriBank;
 		initComponents();
 		myFrame = new MyFrame(446, 563, this);
+		myFrame.setTitle("奖金");
 	}
 
 	/**

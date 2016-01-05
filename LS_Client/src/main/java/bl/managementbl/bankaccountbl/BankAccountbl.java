@@ -132,7 +132,7 @@ public class BankAccountbl {
 	public ArrayList<BankAccountVO> show() throws ClassNotFoundException,
 			IOException {
 		// TODO Auto-generated method stub
-		manageVOPO.addLog(LogType.USER_ACCOUNT_MANAGEMENT);
+		manageVOPO.addLog(LogType.BANKACCOUNT_MANAGEMENT);
 		if (bankAccountDataService != null) {
 			ArrayList<BankAccountPO> pos = bankAccountDataService.show();
 			ArrayList<BankAccountVO> vos = new ArrayList<BankAccountVO>();

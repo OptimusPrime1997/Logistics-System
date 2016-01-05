@@ -53,6 +53,7 @@ public class Shipment extends javax.swing.JPanel {
     	num = oriNum;
         initComponents();
         myFrame = new MyFrame(457, 337, this);
+        myFrame.setTitle("营业厅装车单详细信息查看");
     }
 
     /**

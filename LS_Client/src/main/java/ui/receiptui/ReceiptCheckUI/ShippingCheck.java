@@ -52,6 +52,7 @@ public class ShippingCheck extends javax.swing.JPanel {
     	office = oriOffice;
         initComponents();
         myFrame = new MyFrame(533, 404, this);
+        myFrame.setTitle("中转中心装车单简略信息查看");
     }
 
     /**

@@ -50,6 +50,7 @@ public class InStock extends javax.swing.JPanel {
     	num = oriNum;
         initComponents();
         myFrame = new MyFrame(423, 417, this);
+        myFrame.setTitle("入库单详细信息查看");
     }
 
     /**

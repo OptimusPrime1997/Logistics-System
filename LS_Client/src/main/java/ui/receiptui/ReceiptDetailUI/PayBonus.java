@@ -51,6 +51,7 @@ public class PayBonus extends javax.swing.JPanel {
     	payRepVO = oriPayRepVO;
         initComponents();
         myFrame = new MyFrame(463, 505, this);
+        myFrame.setTitle("奖金详细信息查看");
     }
 
     /**

@@ -16,35 +16,45 @@ import util.enumData.ResultMessage;
  * @author bismuth
  *
  */
-public interface InStockRepblService extends ReceiptblService, NotForPayblService, GetRepByDateblService, NotForCashblService, NotForPayAndCashblService{
-	
-	/**根据订单号得到目的城市
+public interface InStockRepblService extends ReceiptblService, NotForPayblService, GetRepByDateblService,
+		NotForCashblService, NotForPayAndCashblService {
+
+	/**
+	 * 根据订单号得到目的城市
+	 * 
 	 * @param order
 	 * @return
 	 * @throws GoodsNotFound
 	 */
 	public String getCity(String order) throws GoodsNotFound;
-	
-	/**得到可用位置
+
+	/**
+	 * 得到可用位置
+	 * 
 	 * @param des
 	 * @return
 	 * @throws NotBoundException
 	 * @throws IOException
 	 */
 	public StockDivisionVO getAvailableDivision(City des) throws NotBoundException, IOException;
-	
-	/**从仓库中删除该订单
+
+	/**
+	 * 从仓库中删除该订单
+	 * 
 	 * @param listNum
 	 * @return
 	 * @throws RemoteException
 	 * @throws MalformedURLException
 	 * @throws NotBoundException
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
 	 */
-	public void delete(String listNum) throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException;
-	
-	/**更新库存
+	public void delete(String listNum)
+			throws RemoteException, MalformedURLException, NotBoundException, ClassNotFoundException, IOException;
+
+	/**
+	 * 更新库存
+	 * 
 	 * @param vo
 	 * @return
 	 * @throws MalformedURLException
@@ -52,8 +62,10 @@ public interface InStockRepblService extends ReceiptblService, NotForPayblServic
 	 * @throws NotBoundException
 	 */
 	public void update(InStockRepVO vo) throws MalformedURLException, RemoteException, NotBoundException;
-	
-	/**根据日期得到所有入库单
+
+	/**
+	 * 根据日期得到所有入库单
+	 * 
 	 * @param date
 	 * @return
 	 * @throws ClassNotFoundException
@@ -62,5 +74,16 @@ public interface InStockRepblService extends ReceiptblService, NotForPayblServic
 	 * @throws IOException
 	 * @throws NotBoundException
 	 */
-	public ArrayList<InStockRepVO> getAllRepByDate(String date) throws ClassNotFoundException, MalformedURLException, RemoteException, IOException, NotBoundException;
+	public ArrayList<InStockRepVO> getAllRepByDate(String date)
+			throws ClassNotFoundException, MalformedURLException, RemoteException, IOException, NotBoundException;
+
+	/**
+	 * 检查库存是否报警
+	 * 
+	 * @param block
+	 * @return
+	 * @throws NotBoundException
+	 * @throws IOException
+	 */
+	public ArrayList<Integer> checkOver(int block) throws NotBoundException, IOException;
 }

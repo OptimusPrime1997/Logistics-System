@@ -51,7 +51,7 @@ public class ProfitFormbl {
 		totalProfit=totalIn-totalOut;
 		//这个操作不会失败，即使网络连接出现问题也会返回初始化数据，即0
 		LogVO logvo = new LogVO(LogType.CHECK_FORM,
-				Loginbl.getCurrentOptorId(), CurrentTime.getDate());		
+				Loginbl.getCurrentOptorId(), CurrentTime.getTime());		
 		ctr_log.add(logvo);
 	    ProfitFormVO vo = new ProfitFormVO(CurrentTime.getTime(), totalOut, totalIn, totalProfit);
 		return vo;

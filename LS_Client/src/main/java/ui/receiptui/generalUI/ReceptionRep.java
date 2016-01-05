@@ -77,6 +77,7 @@ public class ReceptionRep extends javax.swing.JPanel {
 	public ReceptionRep() {
 		initComponents();
 		myFrame = new MyFrame(556, 476, this);
+		myFrame.setTitle("中转中心到达单");
 	}
 
 	/**
@@ -464,13 +465,18 @@ public class ReceptionRep extends javax.swing.JPanel {
 
 	private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		resultMsgText.setText("");
-		if(getTypeText.getText().equals("")){
+		String shipNum = getTypeText.getText();
+		if(shipNum.equals("")){
 			resultMsgText.setText("请填写到达单据编号");
+			return;
+		}
+		String resultMsg = control.checkNum(shipNum, 19, "到达单据编号");
+		if(!resultMsg.equals("添加成功")){
+			resultMsgText.setText(resultMsg);
 			return;
 		}
 		String repString = getTypeBox.getSelectedItem().toString();
 		Rep rep = Rep.getRep(repString);
-		String shipNum = getTypeText.getText();
 		try {
 			departText.setText(control.getDepart(rep, shipNum));
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {

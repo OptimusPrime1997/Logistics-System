@@ -2,6 +2,7 @@ package PO;
 
 import java.io.Serializable;
 
+import util.InputCheck;
 import util.enumData.Authority;
 import util.enumData.SalaryPolicy;
 
@@ -21,7 +22,7 @@ public class SalaryPolicyPO implements Serializable, Comparable<SalaryPolicyPO> 
 		// TODO Auto-generated constructor stub
 		this.authority = authority;
 		this.salaryPolicy = salaryPolicy;
-		this.value = value;
+		this.value = InputCheck.formatDouble(value);
 
 	}
 
@@ -30,7 +31,7 @@ public class SalaryPolicyPO implements Serializable, Comparable<SalaryPolicyPO> 
 	}
 
 	public void setValue(double value) {
-		this.value = value;
+		this.value = InputCheck.formatDouble(value);
 	}
 
 	public SalaryPolicy getSalaryPolicy() {
@@ -42,7 +43,7 @@ public class SalaryPolicyPO implements Serializable, Comparable<SalaryPolicyPO> 
 	}
 
 	public double getValue() {
-		return value;
+		return InputCheck.formatDouble(value);
 	}
 
 	public Authority getAuthority() {

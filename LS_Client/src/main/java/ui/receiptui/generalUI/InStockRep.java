@@ -68,6 +68,7 @@ public class InStockRep extends javax.swing.JPanel {
 	public InStockRep(JFrame frame) {
 		this.frame = frame;
 		initComponents();
+		frame.setTitle("入库单");
 	}
 
 	/**
@@ -360,13 +361,23 @@ public class InStockRep extends javax.swing.JPanel {
 			orderText.setText("");
 			try {
 				control.update(inStockRepVO);
-				//TODO 
-//				ArrayList<Integer> overblocks = 
 			} catch (MalformedURLException | RemoteException | NotBoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				resultMsgText.setText(ExceptionPrint.print(e));
 				return;
+			}
+			ArrayList<Integer> overblocks;
+			try {
+				overblocks = control.checkOver(stockDivisionVO.block);
+			} catch (NotBoundException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resultMsgText.setText(ExceptionPrint.print(e));
+				return;
+			}
+			if(overblocks.size()>0){
+				resultMsgText.setText("该区库存超过警戒值");
 			}
 		}
 	}

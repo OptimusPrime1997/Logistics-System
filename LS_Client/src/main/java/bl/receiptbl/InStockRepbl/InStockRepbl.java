@@ -16,6 +16,7 @@ import bl.goodsbl.Goodsbl;
 import bl.loginbl.LoginblController;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import bl.stockbl.Stock;
+import bl.stockbl.StockController;
 import bl.stockbl.StockDivisionbl;
 import dataservice.receiptdataservice.InStockRepDataService;
 import util.CurrentTime;
@@ -90,5 +91,9 @@ public class InStockRepbl{
 			NotBoundException{
 		ArrayList<ReceiptPO> receiptPOs = getInStockRepDataService().getAllRepByDate(date);
 		return InStockRepVO.toArrayVO(receiptPOs);
+	}
+	
+	public ArrayList<Integer> checkOver(int block) throws NotBoundException, IOException{
+		return stockDivisionbl.getOverBlock(block);
 	}
 }

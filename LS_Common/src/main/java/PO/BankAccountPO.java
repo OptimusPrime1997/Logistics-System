@@ -2,6 +2,8 @@ package PO;
 
 import java.io.Serializable;
 
+import util.InputCheck;
+
 public class BankAccountPO implements Serializable,Comparable<BankAccountPO>{
 	public final static long serialVersionUID=1L;
 	private String bankAccountNum;
@@ -11,7 +13,7 @@ public class BankAccountPO implements Serializable,Comparable<BankAccountPO>{
 		// TODO Auto-generated constructor stub
 		this.bankAccountNum=bankAccountNum;
 		this.bankAccountName=bankAccountName;
-		this.balance=balance;
+		this.balance=InputCheck.formatDouble(balance);
 	}
 
 	public String getBankAccountNum() {
@@ -31,11 +33,11 @@ public class BankAccountPO implements Serializable,Comparable<BankAccountPO>{
 	}
 
 	public double getBalance() {
-		return balance;
+		return InputCheck.formatDouble(balance);
 	}
 
 	public void setBalance(int balance) {
-		this.balance = balance;
+		this.balance = InputCheck.formatDouble(balance);
 	}
 
 	@Override

@@ -11,6 +11,7 @@ import bl.managementbl.managedata.ManageData;
 import bl.managementbl.managedata.ManageVOPO;
 import dataservice.managementdataservice.constdataservice.ConstDataService;
 import dataservice.managementdataservice.managedataservice.ManageDataService;
+import util.InputCheck;
 import util.enumData.City;
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
@@ -48,14 +49,14 @@ public class Constbl {
 		if (constDataService != null) {
 			ResultMessage rmsg = null;
 			try {
-//				ArrayList<ConstPO> pos = constDataService.show();
-//				if (pos != null) {
-//					for (Iterator<ConstPO> t = pos.iterator(); t.hasNext();) {
-//						if (t.next().equals(vo)) {
-//							return ResultMessage.OVERRIDE_DATA;
-//						}
-//					}
-//				}
+				ArrayList<ConstPO> pos = constDataService.show();
+				if (pos != null) {
+					for (Iterator<ConstPO> t = pos.iterator(); t.hasNext();) {
+						if (t.next().equals(vo)) {
+							return ResultMessage.OVERRIDE_DATA;
+						}
+					}
+				}
 				rmsg = constDataService.insert(manageVOPO.voToPO(vo));
 				ResultMessage.postCheck(ResultMessage.SUCCESS, rmsg);
 			} catch (IOException e) {
@@ -64,11 +65,11 @@ public class Constbl {
 				System.out.println("存储文件出错");
 				return ResultMessage.IOFAILED;
 			}
-//			catch (ClassNotFoundException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//				System.out.println("系统程序错误");
-//			}
+			catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("系统程序错误");
+			}
 			return rmsg;
 		} else
 			return ResultMessage.FAILED;
@@ -177,9 +178,8 @@ public class Constbl {
 		double price = v.priceConst;
 		double distance = v.distanceConst;
 		result = price * shipForm.getRatio() * (weight / 1000) * distance;
-		DecimalFormat dcmFmt = new DecimalFormat("0.0");
 		assert (result != 0) : ("运费计算错误");
-		return Double.parseDouble(dcmFmt.format(result));
+		return InputCheck.formatDouble(result);
 	}
 
 	/**

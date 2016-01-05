@@ -55,6 +55,7 @@ public class Shipping extends javax.swing.JPanel {
     	num = oriNum;
         initComponents();
         myFrame = new MyFrame(455, 337, this);
+        myFrame.setTitle("中转中心装车单详细信息查看");
     }
 
     /**

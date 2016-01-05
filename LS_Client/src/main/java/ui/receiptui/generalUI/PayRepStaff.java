@@ -63,6 +63,7 @@ public class PayRepStaff extends javax.swing.JPanel {
     	bankAccount = bank;
         initComponents();
         myFrame = new MyFrame(442, 474, this);
+        myFrame.setTitle("人员工资");
     }
 
     /**

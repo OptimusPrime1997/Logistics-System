@@ -113,6 +113,7 @@ public class businessOfficer_main extends JPanel {
 							officeNum));
 			num_label.setText(ctr_ship.getTruckSum(CurrentTime.getDate() + "",
 					officeNum));
+			this.repaint();
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
 		}
 	}

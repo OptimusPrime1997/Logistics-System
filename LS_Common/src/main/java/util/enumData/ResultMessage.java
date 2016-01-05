@@ -36,7 +36,7 @@ public enum ResultMessage {
 	 */
 	EXIST(""),
 	/**
-	 * 没找到订单
+	 * 没找到数据
 	 */
 	NOT_FOUND(""),
 	/**
@@ -111,6 +111,11 @@ public enum ResultMessage {
 	 * 密码未填写
 	 */
 	NOT_COMPLETED_KEY(""),
+	
+	/**
+	 * 按钮先后顺序按错
+	 */
+	WRONG_BUTTON_ORDER(""),
 	/**
 	 * 账号格式错误
 	 */
@@ -198,7 +203,15 @@ public enum ResultMessage {
 	/**
 	 * 库存报警
 	 */
-	ALARM("库存报警");
+	ALARM("库存报警"), 
+	/**
+	 * 未找到订单
+	 */
+	NOT_FOUND_GOODS(""), 
+	/**
+	 * "日期为空"
+	 */
+	NULL_DATE("日期为空");
 	
 	
 //	有空就把所有空的字符串补齐，然后把下面长长的switch去掉
@@ -253,6 +266,8 @@ public enum ResultMessage {
 			return "覆盖数据";
 		case NOT_FOUND:
 			return "对不起，该未找到数据";
+		case NOT_FOUND_GOODS:
+			return "对不起，不存在该订单";
 		case SIGNED_SUCCESS:
 			return "签收成功~";
 		case MODIFY_SUCCESS:
@@ -267,6 +282,8 @@ public enum ResultMessage {
 			return "成功";
 		case WRONG:
 			return "错误";
+		case WRONG_BUTTON_ORDER:
+			return "要先点上面的按钮确认哦~";
 		case REMOTE_FAILED:
 			return "远程连接失败";
 		case INPUTNUM_MUST_BE_POSITIVE:
@@ -285,6 +302,8 @@ public enum ResultMessage {
 			return "该区库存紧张";
 		case NOT_FOUND_FILE:
 			return "文件未找到";
+		case NULL_DATE:
+			return "日期为空";
 		default:
 			return "";
 		}
