@@ -174,6 +174,7 @@ public class Arrive extends javax.swing.JPanel {
 				resultMsgText.setText(ExceptionPrint.print(e));
 			}
 			departText.setText(receptionRepVO.date);
+			dateText.setText(receptionRepVO.date);
 			numText.setText(num);
 			getRepTypeText.setText(receptionRepVO.rep.getChineseName());
 			getRepNumText.setText(receptionRepVO.shipNum);

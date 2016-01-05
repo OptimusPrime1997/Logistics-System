@@ -61,7 +61,7 @@ public class DeliverRepbl {
 
 	public String getPhoneByOrder(String order) throws GoodsNotFound {
 		// TODO Auto-generated method stub
-		return goodsbl.findByListNum(order).receiverPhone;
+		return goodsbl.findByListNum(order).realReceiverPhone;
 	}
 
 	public String getAddressByOrder(String order) throws GoodsNotFound {

@@ -215,9 +215,7 @@ public class ShipmentCheck extends javax.swing.JPanel {
 
 	private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		int row = jTable.getSelectedRow();
-		if (row == -1)
-			row = 0;
-		for (int i = row; i < dataVector.size(); i++) {
+		for (int i = row+1; i < dataVector.size(); i++) {
 			if (((String) jTable.getValueAt(i, 0)).equals(dateText.getText())) {
 				jTable.setRowSelectionInterval(i, i);
 				break;

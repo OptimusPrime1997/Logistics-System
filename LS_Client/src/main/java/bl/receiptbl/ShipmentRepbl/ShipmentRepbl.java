@@ -2,11 +2,9 @@ package bl.receiptbl.ShipmentRepbl;
 
 import java.io.IOException;
 import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import Exception.NumNotFoundException;
-import PO.VehiclePO;
 import PO.Receipt.ReceiptPO;
 import PO.Receipt.ShipmentRepPO;
 import VO.ManagementVO.VehicleVO;
