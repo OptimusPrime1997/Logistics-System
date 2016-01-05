@@ -40,12 +40,21 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 	private static final long serialVersionUID = 1L;
 
 
-
+public static void main(String[] args) throws RemoteException{
+	InStockPO inStockPO = new InStockPO("0250000002", 3+"", 1+"");
+	ArrayList<InStockPO> inStockPOs = new ArrayList<InStockPO>();
+	inStockPOs.add(inStockPO);
+	InStockRepPO inStockRepPO = new InStockRepPO("0200002016010520006", "2016-01-05", inStockPOs);
+	City city = City.GUANGZHOU;
+	StockDivisionData stockDivisionData = new StockDivisionData();
+	stockDivisionData.update(inStockRepPO, city);
+}
 	
 	@Override
 	public ResultMessage update(InStockRepPO po, City cityNum) throws RemoteException {
 		ResultMessage rm = ResultMessage.SUCCESS;
 	
+		System.out.println("division "+cityNum.toString());
 		ArrayList<InStockPO> list = po.getInStockPOs();
 		
 		for(InStockPO inpo : list) {
@@ -55,8 +64,9 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 			rm = add(new StockDivisionPO(cityNum, inpo.getOrder(), desCity, block, place));
 			
 		}
+		System.out.println(rm);
 		if (rm == ResultMessage.SUCCESS) {
-			System.out.println("division delete success");
+			System.out.println("division ADD success");
 		}
 		return rm;
 		
@@ -78,7 +88,7 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 				for(Object o:list){
 					StockDivisionPO p = (StockDivisionPO)o;
 					
-					if(p.getBlock()==po.getBlock()&&p.getPlace()==po.getPlace()){
+					if(p.getCityNum()==po.getCityNum()&&p.getBlock()==po.getBlock()&&p.getPlace()==po.getPlace()){
 						return ResultMessage.EXIST;
 					}
 				}
@@ -192,18 +202,18 @@ public class StockDivisionData extends UnicastRemoteObject implements StockDivis
 
 
 
-	public static void main(String[] args) {
-		StockDivisionData s;
-		try {
-			s = new StockDivisionData();
-			s.add(new StockDivisionPO(City.NANJING, "0000000101", City.BEIJING, 1, 1));
-			s.add(new StockDivisionPO(City.NANJING, "0000000102", City.BEIJING, 1, 2));
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+//	public static void main(String[] args) {
+//		StockDivisionData s;
+//		try {
+//			s = new StockDivisionData();
+//			s.add(new StockDivisionPO(City.NANJING, "0000000101", City.BEIJING, 1, 1));
+//			s.add(new StockDivisionPO(City.NANJING, "0000000102", City.BEIJING, 1, 2));
+//		} catch (RemoteException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//	}
 	
 	
 	

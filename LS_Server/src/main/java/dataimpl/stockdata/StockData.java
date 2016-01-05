@@ -54,9 +54,9 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 			if (list != null){
 				for(Object o:list){
 					StockPO p = (StockPO)o;
-					if(p.getListNum().equals(po.getListNum())){
+					if(p.getCityNum().equals(po.getCityNum())&&p.getListNum().equals(po.getListNum())){
 						return ResultMessage.EXIST;
-					}else if(p.getBlock()==po.getBlock()&&p.getPlace()==po.getPlace()){
+					}else if(p.getCityNum()==po.getCityNum()&&p.getBlock()==po.getBlock()&&p.getPlace()==po.getPlace()){
 						return ResultMessage.NOT_AVAILABLE;
 					}
 				}
@@ -103,7 +103,10 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 		
 	}
 
-
+	public static void main(String[] args) throws IOException{
+		StockData stockData = new StockData();
+		stockData.getStock(City.SHANGHAI);
+	}
 	
 	@Override
 	public ArrayList<StockPO> getStock(City cityNum) throws IOException {
@@ -114,6 +117,10 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 			
 			
 			listo = du.getAll(filename);
+			for (int i = 0; i < listo.size(); i++) {
+				System.out.println(((StockPO)listo.get(i)).getCityNum()+" "+((StockPO)listo.get(i)).getListNum()+" "+
+						((StockPO)listo.get(i)).getDestination()+" "+((StockPO)listo.get(i)).getBlock()+" "+((StockPO)listo.get(i)).getPlace());
+			}
 			if (listo != null) {
 				for(Object o:listo) {
 					StockPO po = (StockPO) o;
@@ -124,6 +131,12 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+		}
+		
+		System.out.println("-------------------------------------------");
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(((StockPO)list.get(i)).getCityNum()+" "+((StockPO)list.get(i)).getListNum()+" "+
+					((StockPO)list.get(i)).getDestination()+" "+((StockPO)list.get(i)).getBlock()+" "+((StockPO)list.get(i)).getPlace());
 		}
 		
 		return list;
@@ -139,6 +152,8 @@ public class StockData extends UnicastRemoteObject implements StockDataService{
 		String inrepnum = po.getNum();
 		String date = po.getDate();
 			
+		
+		System.out.println("stock  "+cityNum.toString());
 		ArrayList<InStockPO> list = po.getInStockPOs();
 		for(InStockPO inpo : list) {
 			int block = Integer.parseInt(inpo.getArea());
