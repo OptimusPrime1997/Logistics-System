@@ -36,6 +36,9 @@ public class CurrentTime {
 		try {
 			Date x=df.parse(a);
 			Date y=df.parse(b);
+			System.out.println("ifearlier   a "+x);
+			
+			System.out.println("ifearlier   b "+y);
 			if(x.before(y)){
 				return true;
 			}
