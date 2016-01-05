@@ -64,7 +64,7 @@ public class Accountbl {
 									return ResultMessage.EXIST;
 								}
 								if (p.getAuthority() == vo.authority) {
-									if (p.getInstitutionNum() == vo.institutionNum) {
+									if (p.getInstitutionNum().equals(vo.institutionNum)) {
 										lastPO = p;
 									}
 								}
@@ -202,6 +202,7 @@ public class Accountbl {
 			for (int i = 0; i < vos.size(); i++) {
 				if (vos.get(i).authority == Authority.COURIER) {
 					vos.remove(i);
+					i--;
 				}
 			}
 		}

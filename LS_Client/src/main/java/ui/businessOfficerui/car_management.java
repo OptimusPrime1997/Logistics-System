@@ -166,10 +166,10 @@ public class car_management extends javax.swing.JPanel {
 					v = t.next();
 					if (v.licenseNum.equals(tofindVNum)) {
 						found = true;
-						vehiclejTable.setRowSelectionInterval(i, i);
 						ComponentFactory.setState("该车辆在第" + (i + 1) + "行",
 								ComponentFactory.DISPLAY_TIME, feedback_text);
 						;
+						vehiclejTable.setRowSelectionInterval(i, i);
 						break;
 					}
 				}
@@ -182,10 +182,11 @@ public class car_management extends javax.swing.JPanel {
 				for (; t.hasNext(); i++) {
 					v = t.next();
 					if (v.vehicleNum.equals(tofindVNum)) {
-						vehiclejTable.setRowSelectionInterval(i, i);
+						found=true;
 						ComponentFactory.setState("该车辆在第" + (i + 1) + "行",
 								ComponentFactory.DISPLAY_TIME, feedback_text);
 						;
+						vehiclejTable.setRowSelectionInterval(i, i);
 						break;
 					}
 				}

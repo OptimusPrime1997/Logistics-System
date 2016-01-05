@@ -2,7 +2,6 @@ package PO;
 
 import java.io.Serializable;
 
-import org.apache.poi.openxml4j.opc.PackageAccess;
 
 import util.InputCheck;
 import util.enumData.City;

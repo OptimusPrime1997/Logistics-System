@@ -48,11 +48,14 @@ public class Constbl {
 		manageVOPO.addLog(LogType.DECISION_CONST);
 		if (constDataService != null) {
 			ResultMessage rmsg = null;
+			ConstPO p = null;
 			try {
 				ArrayList<ConstPO> pos = constDataService.show();
 				if (pos != null) {
 					for (Iterator<ConstPO> t = pos.iterator(); t.hasNext();) {
-						if (t.next().equals(vo)) {
+						p = t.next();
+						if (p.getCity1() == vo.city1
+								&& p.getCity2() == vo.city2) {
 							return ResultMessage.OVERRIDE_DATA;
 						}
 					}
@@ -64,8 +67,7 @@ public class Constbl {
 				e.printStackTrace();
 				System.out.println("存储文件出错");
 				return ResultMessage.IOFAILED;
-			}
-			catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("系统程序错误");
@@ -151,15 +153,16 @@ public class Constbl {
 			throw new RemoteException();
 	}
 
-	public ConstVO findByCities(City city1,City city2) throws FileNotFoundException,
-			ClassNotFoundException, ConstNotFoundException, IOException {
+	public ConstVO findByCities(City city1, City city2)
+			throws FileNotFoundException, ClassNotFoundException,
+			ConstNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		manageVOPO.addLog(LogType.DECISION_CONST);
 		if (constDataService != null) {
-			City c1,c2;
-			c1 =City.getCity1(city1, city2);
+			City c1, c2;
+			c1 = City.getCity1(city1, city2);
 			c2 = City.getCity2(city1, city2);
-			ConstPO findPO = constDataService.findByCities(c1,c2);
+			ConstPO findPO = constDataService.findByCities(c1, c2);
 			ConstVO findVO = manageVOPO.poToVO(findPO);
 			return findVO;
 		} else {
@@ -167,18 +170,24 @@ public class Constbl {
 		}
 	}
 
-	public double computeFare(City city1, City city2, ShipForm shipForm, double weight)
-			throws FileNotFoundException, ClassNotFoundException,
-			ConstNotFoundException, IOException {
-		City c1,c2;
+	public double computeFare(City city1, City city2, ShipForm shipForm,
+			double weight) throws FileNotFoundException,
+			ClassNotFoundException, ConstNotFoundException, IOException {
+		City c1, c2;
 		double result = 0;
-		c1 =City.getCity1(city1, city2);
-		c2 = City.getCity2(city1, city2);
-		ConstVO v = findByCities(c1,c2);
-		double price = v.priceConst;
-		double distance = v.distanceConst;
-		result = price * shipForm.getRatio() * (weight / 1000) * distance;
-		assert (result != 0) : ("运费计算错误");
+		if (city1 != city2) {
+			c1 = City.getCity1(city1, city2);
+			c2 = City.getCity2(city1, city2);
+			ConstVO v = findByCities(c1, c2);
+			double price = v.priceConst;
+			double distance = v.distanceConst;
+			result = price * shipForm.getRatio() * (weight / 1000) * distance;
+			assert (result != 0) : ("运费计算错误");
+		} else {
+			double price = 0.02;
+			double distance = 30;
+			result = price * shipForm.getRatio() * (weight / 1000) * distance;
+		}
 		return InputCheck.formatDouble(result);
 	}
 
@@ -189,7 +198,7 @@ public class Constbl {
 	 * @return
 	 */
 	public static ResultMessage check(ConstVO vo) {
-		if (vo.distanceConst >= 30) {
+		if (vo.distanceConst > 0) {
 			if (vo.priceConst > 0) {
 				return ResultMessage.VALID;
 			} else {

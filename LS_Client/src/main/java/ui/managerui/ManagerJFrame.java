@@ -352,11 +352,11 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		int i = 0;
 		for (java.util.Iterator<LogVO> t = vos.iterator(); t.hasNext(); i++) {
 			LogVO vo = t.next();
-			System.out.println("得到的log信息：" + vo.time);
+//			System.out.println("得到的log信息：" + vo.time);
 			logObjects[i][0] = vo.time;
 			logObjects[i][1] = vo.operationName;
-			logObjects[i][2] = authorityjComboBox.getItemAt(Integer
-					.parseInt(vo.operatorID.substring(7, 8)));
+			logObjects[i][2] = Authority.getAuthority(Integer
+				.parseInt(vo.operatorID.substring(7, 8)));
 			logObjects[i][3] = vo.operatorID;
 		}
 
@@ -378,7 +378,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		// logjTable.setRowSelectionInterval(0, 0);// 设置哪几行被选中
 
 		logjTable.setGridColor(new java.awt.Color(0, 0, 0));
-		logjTable.setName("123"); // NOI18N
 		logjTable.getTableHeader().setReorderingAllowed(false);
 
 		ComponentFactory.setJTableTextCenter(logjTable);
@@ -2134,9 +2133,11 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		constjPanel.setBackground(ComponentFactory.panelColor);
 
 		addConstjButton = new MyButton(ButtonType.NEW_DISTANCE);
+		addConstjButton.setVisible(false);
 		// addConstjButton.setBackground(ComponentFactory.buttonColor);
 
 		submitConstjButton = new MyButton(ButtonType.SUBMIT);
+		submitConstjButton.setVisible(false);
 		// submitConstjButton.setBackground(ComponentFactory.buttonColor);
 
 		jScrollPane2 = new javax.swing.JScrollPane();
@@ -3271,7 +3272,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 						"单价(元/(千千米*公斤））" }) {
 			Class[] types = new Class[] { String.class, String.class,
 					java.lang.Double.class, java.lang.Double.class };
-			boolean[] canEdit = new boolean[] { true, true, true, true };
+			boolean[] canEdit = new boolean[] { false, false, true, true };
 
 			public Class getColumnClass(int columnIndex) {
 				return types[columnIndex];
@@ -3377,7 +3378,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		});
 		;
 		constjPop.add(constSubmitjItem);
-		constjPop.add(constDeljItem);
+//		constjPop.add(constDeljItem);
 		MouseInputListener mil = new MouseInputListener() {
 
 			public void mouseClicked(MouseEvent e) {
@@ -3752,7 +3753,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 		City C1 = City.getCity(city[0]);
 		City C2 = City.getCity(city[1]);
 		City c1 = City.getCity1(C1, C2);
-		City c2 = City.getCity1(C1, C2);
+		City c2 = City.getCity2(C1, C2);
 		return new ConstVO(c1, c2, distanceConst, priceConst);
 	}
 
@@ -3969,6 +3970,7 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private javax.swing.JButton addConstjButton;//
 	private javax.swing.JButton addInstitutionjButton;//
 	private javax.swing.JButton submitSalaryPolicyjButton;//
+	private javax.swing.JButton submitConstjButton;//
 	private javax.swing.JButton addSalaryPolicyjButton;//
 	private javax.swing.JButton findAccountNamejButton;//
 	private javax.swing.JButton findAccountNumjButton;//
@@ -3979,7 +3981,6 @@ public class ManagerJFrame extends javax.swing.JFrame {
 	private javax.swing.JButton manageStateFormjButton;//
 	private javax.swing.JButton outputFormjButton;// 未使用
 	private javax.swing.JButton profitFormjButton;//
-	private javax.swing.JButton submitConstjButton;//
 //	private javax.swing.JButton submitInstitutionjButton;//
 	// End of variables declaration//GEN-END:variables
 	/**

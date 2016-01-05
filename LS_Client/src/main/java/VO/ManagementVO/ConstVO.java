@@ -26,7 +26,9 @@ public class ConstVO implements Comparable<ConstVO> {
 
 	public boolean equals(ConstVO v) {
 		if (city1==v.city1
-				&&city2==v.city2) {
+				&&city2==v.city2
+				&&priceConst==v.priceConst
+				&&distanceConst==v.distanceConst) {
 			return true;
 		}else {
 			return false;
