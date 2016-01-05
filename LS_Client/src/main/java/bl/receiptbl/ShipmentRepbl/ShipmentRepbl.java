@@ -10,6 +10,7 @@ import PO.Receipt.ShipmentRepPO;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.ShipmentRepVO;
 import bl.managementbl.vehicleanddriverbl.Driverbl;
+import bl.managementbl.vehicleanddriverbl.Vehiclebl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import util.enumData.Rep;
 
@@ -17,6 +18,7 @@ public class ShipmentRepbl {
 
 	private Receiptbl receiptbl = new Receiptbl();
 	private Driverbl driverbl = new Driverbl();
+	private Vehiclebl vehiclebl = new Vehiclebl();
 
 	public String createNum(String date, String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
@@ -81,6 +83,10 @@ public class ShipmentRepbl {
 
 	private void updateDriver(String driverNum) {
 		driverbl.addNumber(driverNum);
+	}
+	
+	public boolean checkVehicle(String vehicle){
+		return true;
 	}
 
 }

@@ -1,5 +1,9 @@
 package blservice.receiptblservice;
 
+import java.util.ArrayList;
+
+import VO.ManagementVO.VehicleVO;
+
 /**
  * @author bismuth
  *
@@ -17,4 +21,9 @@ public interface ShippingRepblService extends ReceiptblService, GetRepByDateblSe
 	 * @return
 	 */
 	public boolean isTrueAccount(String num);
+	
+	/**检查该车辆是否在该城市
+	 * @return
+	 */
+	public boolean checkVehicle(String vehicle);
 }

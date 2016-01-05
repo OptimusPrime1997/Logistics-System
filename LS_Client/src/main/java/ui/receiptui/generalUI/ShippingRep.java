@@ -20,7 +20,6 @@ import javax.swing.table.TableColumn;
 import Exception.ExceptionPrint;
 import VO.Receipt.ShippingRepVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
-import bl.receiptbl.ShippingRepbl.ShippingRepController;
 import blservice.receiptblservice.ShippingRepblService;
 import ui.receiptui.ReceiptCheckUI.ShippingCheck;
 import ui.util.MyFrame;
@@ -380,6 +379,11 @@ public class ShippingRep extends javax.swing.JPanel {
 			resultMsgText.setText("请填写车牌号");
 			return;
 		}
+		String plate = plateText.getText();
+		if(!control.checkVehicle(plate)){
+			resultMsgText.setText("请填写本城市车辆");
+			return;
+		}
 		if(driverText.getText().equals("")){
 			resultMsgText.setText("请填写司机编号");
 			return;
@@ -390,6 +394,7 @@ public class ShippingRep extends javax.swing.JPanel {
 		}
 		String driverNum = driverText.getText();
 		String resultMessage = control.checkNum(driverNum, 11, "司机编号");
+		
 		resultMsgText.setText(resultMessage);
 		if (!resultMessage.equals("添加成功")) {
 			return;

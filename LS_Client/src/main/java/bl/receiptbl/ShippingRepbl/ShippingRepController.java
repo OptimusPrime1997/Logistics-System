@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import Exception.NumNotFoundException;
+import VO.ManagementVO.VehicleVO;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.ShippingRepVO;
 import bl.receiptbl.Receiptbl.ReceiptblController;
@@ -73,6 +74,12 @@ public class ShippingRepController extends ReceiptblController implements Shippi
 	public boolean isTrueOrder(String order) {
 		// TODO Auto-generated method stub
 		return shippingRepbl.isTrueOrder(order);
+	}
+	
+	@Override
+	public boolean checkVehicle(String vehicle) {
+		// TODO Auto-generated method stub
+		return shippingRepbl.checkVehicle(vehicle);
 	}
 
 }

@@ -362,6 +362,10 @@ public class DeliverRep extends javax.swing.JPanel {
 		if (!resultMessage.equals("添加成功")) {
 			return;
 		}
+		if(!courierNum.substring(0,6).equals(officeText.getText())){
+			resultMsgText.setText("请填写本营业厅快递员");
+			return;
+		}
 		if (!control.isTrueAccount(courierNum)) {
 			resultMsgText.setText("未找到该派件员");
 			return;

@@ -24,27 +24,8 @@ import bl.managementbl.accountbl.Courierbl;
 import bl.managementbl.constbl.Constbl;
 import dataservice.goodsdataservice.GoodsDataService;
 
-/*
- * 
- * 
- * (listNum, ifExaminePassed, getCourierAccount, deliverCourierAccount,
- *  startTime, overtime, destinationCity, senderName, senderAddress, 
- *  senderCompany, senderPhone, receiverName, receiverAddress, receiverCompany,
- *   receiverPhone, numOfGoods, weight, volume, nameOfInside, 
- *   expressType, moneyOfPackage, moneyTotal, moneyFare, arrivalState, 
- *   logisticState, realReceiverName, realReceiverPhone, dates)
-
- *   GoodsVO vo = new GoodsVO("", false, "02500106066",
- "", "2015-12-20", "", "025", "啦啦啦丽",
- "上海 浦东新区张杨路500号", "上海华润时代广场", "13587511426", "小宏宏",
- "南京 栖霞区仙林大道和园12号", null, "15500001112", 1, 5, 8, "袜子",
- GoodsExpressType.NORMAL, 1, 10, 9, GoodsArrivalState.INTACT,
- GoodsLogisticState.SENDED, null, null);
- */
 public class Goodsbl {
-	/*
-	 * ECONOMIC NORMAL EXPRESS 18: 23: 25
-	 */
+	
 	String ip = Loginbl.getIP();
 	Logbl ctr_log = new Logbl();
 	final double[] expressRates = { 18, 23, 25 };
@@ -54,22 +35,6 @@ public class Goodsbl {
 		for(GoodsVO vo:vos){
 			System.out.println(vo.listNum+"  "+vo.senderAddress+"  "+vo.receiverAddress);
 		}
-//		
-//		/*
-//		 * 1北京   温冰宇 11100000000
-//		 * 2广州   方子阳 22200000000
-//		 * 3上海   任向东 33300000000
-//		 * 4南京   丁云亮 44400000000
-//		 */
-//		Goodsbl ctr = new Goodsbl();
-//		GoodsVO vo = new GoodsVO("", false, "02500106066", "", "2015-12-31", "", "", "方子阳", "广州",
-//				"", "22200000000", "任向东", "上海", null, "33300000000", 1, 0.5, 0.03, "贺卡",
-//				GoodsExpressType.NORMAL, 1, 10, 9, GoodsArrivalState.INTACT, GoodsLogisticState.SENDED, null, null,
-//				"2015-12-31");
-//		try {
-//			ctr.initComplete(vo);
-//		} catch (ExistException e) {
-//		}
 	}
 
 	/**
@@ -403,5 +368,6 @@ public class Goodsbl {
 		}
 		return x;
 	}
+	
 
 }
