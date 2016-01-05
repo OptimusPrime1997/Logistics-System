@@ -66,6 +66,7 @@ public class BusinessFormbl {
 		}
 		// 最后一天没加
 		try {
+			tempT = tempT.replace("-", "");
 			if (ctr_payRep.getRepByNum(tempT) != null)
 				moneyOut.add(ctr_payRep.getRepByNum(tempT));
 		} catch (ClassNotFoundException | NotBoundException | IOException
