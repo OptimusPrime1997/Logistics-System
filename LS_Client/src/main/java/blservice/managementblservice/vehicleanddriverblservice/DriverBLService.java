@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.City;
 import util.enumData.ResultMessage;
 import Exception.AutoNumException;
 import Exception.ExistException;
@@ -20,12 +21,15 @@ public interface DriverBLService {
 
 	public ArrayList<DriverVO> showDriver() throws RemoteException,
 			ClassNotFoundException, IOException;
-	
-	public ArrayList<DriverVO> showDriver(String institutionNum) throws RemoteException,
-	ClassNotFoundException, IOException;
-	
+
+	public ArrayList<DriverVO> showDriver(String institutionNum)
+			throws RemoteException, ClassNotFoundException, IOException;
+
 	public DriverVO findByDriverNum(String driverNum) throws RemoteException,
 			FileNotFoundException, ClassNotFoundException,
 			NumNotFoundException, IOException;
+
+	public ArrayList<DriverVO> showDriver(City city)
+			throws ClassNotFoundException, IOException;
 
 }

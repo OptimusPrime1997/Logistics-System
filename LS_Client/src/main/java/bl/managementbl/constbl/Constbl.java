@@ -157,16 +157,20 @@ public class Constbl {
 			throws FileNotFoundException, ClassNotFoundException,
 			ConstNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		manageVOPO.addLog(LogType.DECISION_CONST);
-		if (constDataService != null) {
-			City c1, c2;
-			c1 = City.getCity1(city1, city2);
-			c2 = City.getCity2(city1, city2);
-			ConstPO findPO = constDataService.findByCities(c1, c2);
-			ConstVO findVO = manageVOPO.poToVO(findPO);
-			return findVO;
+		if (city1 == city2) {
+			return new ConstVO(city1, city2, 30, 0.02);
 		} else {
-			throw new RemoteException();
+			manageVOPO.addLog(LogType.DECISION_CONST);
+			if (constDataService != null) {
+				City c1, c2;
+				c1 = City.getCity1(city1, city2);
+				c2 = City.getCity2(city1, city2);
+				ConstPO findPO = constDataService.findByCities(c1, c2);
+				ConstVO findVO = manageVOPO.poToVO(findPO);
+				return findVO;
+			} else {
+				throw new RemoteException();
+			}
 		}
 	}
 

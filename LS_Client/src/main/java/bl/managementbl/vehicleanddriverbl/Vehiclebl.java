@@ -8,6 +8,7 @@ import java.util.Iterator;
 
 import util.InputCheck;
 import util.ThreeAutoNum;
+import util.enumData.City;
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
 import Exception.NumNotFoundException;
@@ -44,7 +45,8 @@ public class Vehiclebl {
 			if (check(vo) == ResultMessage.VALID) {
 				try {
 					if (vo.vehicleNum.substring(6, 9).equals("000")) {
-						ArrayList<VehiclePO> pos = vehicleDataService.showVehicle();
+						ArrayList<VehiclePO> pos = vehicleDataService
+								.showVehicle();
 						VehiclePO lastPO = null;
 						String temp = vo.vehicleNum.substring(0, 6);
 						if (pos != null) {
@@ -178,7 +180,7 @@ public class Vehiclebl {
 	public ArrayList<VehicleVO> showVehicle(String institutionNum)
 			throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-//		manageVOPO.addLog(LogType.CAR_MANAGEMENT);
+		// manageVOPO.addLog(LogType.CAR_MANAGEMENT);
 		VehicleVO temp;
 		ArrayList<VehicleVO> localVehicles = new ArrayList<VehicleVO>();
 		ArrayList<VehicleVO> allVehicles = showVehicle();
@@ -186,7 +188,34 @@ public class Vehiclebl {
 			Iterator<VehicleVO> t = allVehicles.iterator();
 			for (; t.hasNext();) {
 				temp = t.next();
-				localVehicles.add(temp);
+				if (temp.vehicleNum.substring(0, 6).equals(institutionNum)) {
+					localVehicles.add(temp);
+				}
+			}
+			if (localVehicles.size() == 0 || localVehicles == null) {
+				return null;
+			} else {
+				return localVehicles;
+			}
+		} else {
+			return null;
+		}
+	}
+
+	public ArrayList<VehicleVO> showVehicle(City city)
+			throws ClassNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		// manageVOPO.addLog(LogType.CAR_MANAGEMENT);
+		VehicleVO temp;
+		ArrayList<VehicleVO> localVehicles = new ArrayList<VehicleVO>();
+		ArrayList<VehicleVO> allVehicles = showVehicle();
+		if (allVehicles != null) {
+			Iterator<VehicleVO> t = allVehicles.iterator();
+			for (; t.hasNext();) {
+				temp = t.next();
+				if (City.getCityByNum(temp.vehicleNum.substring(0, 3)) == city) {
+					localVehicles.add(temp);
+				}
 			}
 			if (localVehicles.size() == 0 || localVehicles == null) {
 				return null;

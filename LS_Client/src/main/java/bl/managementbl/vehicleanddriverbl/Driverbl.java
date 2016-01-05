@@ -15,6 +15,7 @@ import bl.managementbl.managedata.ManageData;
 import bl.managementbl.managedata.ManageVOPO;
 import util.InputCheck;
 import util.ThreeAutoNum;
+import util.enumData.City;
 import util.enumData.LogType;
 import util.enumData.ResultMessage;
 
@@ -182,6 +183,30 @@ public class Driverbl {
 			}
 		} else
 			return ResultMessage.FAILED;
+	}
+	public ArrayList<DriverVO> showDriver(City city)
+			throws ClassNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		// manageVOPO.addLog(LogType.CAR_MANAGEMENT);
+		DriverVO temp;
+		ArrayList<DriverVO> localDrivers = new ArrayList<DriverVO>();
+		ArrayList<DriverVO> allDrivers = showDriver();
+		if (allDrivers != null) {
+			Iterator<DriverVO> t = allDrivers.iterator();
+			for (; t.hasNext();) {
+				temp = t.next();
+				if (City.getCityByNum(temp.driverNum.substring(0, 3)) == city) {
+					localDrivers.add(temp);
+				}
+			}
+			if (localDrivers.size() == 0 || localDrivers == null) {
+				return null;
+			} else {
+				return localDrivers;
+			}
+		} else {
+			return null;
+		}
 	}
 
 	public ArrayList<DriverVO> showDriver() throws ClassNotFoundException,

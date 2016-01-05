@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.City;
 import util.enumData.ResultMessage;
 import Exception.NumNotFoundException;
 import VO.ManagementVO.*;
@@ -19,8 +20,11 @@ public interface VehicleBLService {
 	public ArrayList<VehicleVO> showVehicle() throws RemoteException,
 			ClassNotFoundException, IOException;
 
-	public ArrayList<VehicleVO> showVehicle(String institutionNum) throws RemoteException,
-			ClassNotFoundException, IOException;
+	public ArrayList<VehicleVO> showVehicle(String institutionNum)
+			throws RemoteException, ClassNotFoundException, IOException;
+
+	public ArrayList<VehicleVO> showVehicle(City city)
+			throws ClassNotFoundException, IOException;
 
 	public VehicleVO findByVehicleNum(String VehicleNum)
 			throws RemoteException, FileNotFoundException,
