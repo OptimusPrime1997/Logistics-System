@@ -32,6 +32,11 @@ public class LoginblController implements LoginBLService {
 	public Authority getCurrentAuthority() throws RemoteException {
 		return loginbl.getCurrentAuthority();
 	}
+
+	public String getCurrentOfficeNum() throws RemoteException {
+		// TODO Auto-generated method stub
+		return loginbl.getCurrentOfficeNum();
+	}
 	
 
 }

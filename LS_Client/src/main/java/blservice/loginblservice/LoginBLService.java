@@ -26,4 +26,6 @@ public interface LoginBLService {
 	 * 获得当前登录人员的身份
 	 */
 	public Authority getCurrentAuthority()throws RemoteException;
+	
+	public String getCurrentOfficeNum()throws RemoteException;
 }

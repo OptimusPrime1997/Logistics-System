@@ -12,6 +12,7 @@ public class Loginbl {
 	private static String currentOptorId = "02500106027";
 	private static String currentOptorName = "大玉儿";
 	private static Authority currentAuthority = Authority.COURIER;
+	private String currentOfficeNum="025001";
 	private static String ip = "127.0.0.1";
 
 	/**
@@ -37,6 +38,7 @@ public class Loginbl {
 				v = accountbl.findByAccountNum(accountNum);
 				currentOptorName = v.accountName;
 				currentAuthority = v.authority;
+				currentOfficeNum=v.institutionNum;
 			} catch (ClassNotFoundException | NumNotFoundException
 					| IOException e) {
 				// TODO Auto-generated catch block
@@ -82,5 +84,10 @@ public class Loginbl {
 
 	public static Authority getCurrentAuthority() {
 		return currentAuthority;
+	}
+
+	public String getCurrentOfficeNum() {
+		// TODO Auto-generated method stub
+		return currentOfficeNum;
 	}
 }

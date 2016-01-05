@@ -10,8 +10,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
+
 import Exception.NameNotFoundException;
 
 import javax.swing.JComboBox;
@@ -22,7 +24,9 @@ import VO.GoodsVO;
 import VO.Receipt.CashRepVO;
 import VO.Receipt.CashVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.loginblservice.LoginBLService;
 import blservice.receiptblservice.CashRepblService;
+import ui.componentfactory.ComponentFactory;
 import ui.receiptui.ReceiptCheckUI.CashCheck;
 import ui.util.MyFrame;
 import Exception.ExceptionPrint;
@@ -62,9 +66,12 @@ public class CashRep extends javax.swing.JPanel {
     private DefaultTableModel model;
     private Vector<String> columnIdentifiers;
     private Vector<Object> dataVector;
+    private LoginBLService logincontroller;
+    private String officeNum;
  // End of variables declaration//GEN-END:variables
     
     public CashRep() {
+    	logincontroller=ControllerFactoryImpl.getInstance().getLoginController();
         initComponents();
         myFrame = new MyFrame(541, 624, this);
         myFrame.setTitle("收款单");
@@ -77,8 +84,13 @@ public class CashRep extends javax.swing.JPanel {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-    	
+    	try {
+				officeNum=logincontroller.getCurrentOfficeNum();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			System.out.println("获取登录人员编号失败");
+		}
         numLabel = new javax.swing.JLabel();
         numText = new javax.swing.JTextField();
         courierNumLabel = new javax.swing.JLabel();
@@ -121,7 +133,7 @@ public class CashRep extends javax.swing.JPanel {
         dateText.setEditable(false);
         
         officeText.setEditable(false);
-        officeText.setText("025001");
+        officeText.setText(officeNum);
 
         officeLabel.setText("营业厅:");
 

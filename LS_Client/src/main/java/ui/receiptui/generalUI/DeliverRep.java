@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -24,6 +25,7 @@ import Exception.GoodsNotFound;
 import VO.Receipt.DeliverRepVO;
 import VO.Receipt.DeliverVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.loginblservice.LoginBLService;
 import blservice.receiptblservice.DeliverRepblService;
 
 /**
@@ -55,12 +57,16 @@ public class DeliverRep extends javax.swing.JPanel {
 	private DefaultTableModel model;
 	private Vector<String> columnIdentifiers;
 	private Vector<Object> dataVector;
+	private String officeNum;
+	 private LoginBLService logincontroller;
+
 	// End of variables declaration//GEN-END:variables
 
 	/**
 	 * Creates new form DeliverRep
 	 */
 	public DeliverRep() {
+		logincontroller=ControllerFactoryImpl.getInstance().getLoginController();
 		initComponents();
 		myFrame = new MyFrame(673, 519, this);
 		myFrame.setTitle("派件单");
@@ -76,7 +82,13 @@ public class DeliverRep extends javax.swing.JPanel {
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
-
+try {
+	officeNum=logincontroller.getCurrentOfficeNum();
+} catch (RemoteException e1) {
+	// TODO Auto-generated catch block
+	e1.printStackTrace();
+	System.out.println("获取登录人员机构编号失败!");
+}
 		dateText = new javax.swing.JTextField();
 		dateLabel = new javax.swing.JLabel();
 		officeText = new javax.swing.JTextField();
@@ -114,7 +126,7 @@ public class DeliverRep extends javax.swing.JPanel {
 		dateText.setText(control.getDate());
 
 		officeText.setEditable(false);
-		officeText.setText("025001");
+		officeText.setText(officeNum);
 
 		officeLabel.setText(" 营业厅:");
 

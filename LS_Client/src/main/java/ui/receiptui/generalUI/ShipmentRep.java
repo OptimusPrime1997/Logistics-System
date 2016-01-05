@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -19,6 +20,7 @@ import javax.swing.table.TableColumn;
 import Exception.ExceptionPrint;
 import VO.Receipt.ShipmentRepVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
+import blservice.loginblservice.LoginBLService;
 import blservice.receiptblservice.ShipmentRepblServce;
 import ui.businessOfficerui.businessOfficer_main;
 import ui.receiptui.ReceiptCheckUI.ShipmentCheck;
@@ -56,12 +58,18 @@ public class ShipmentRep extends javax.swing.JPanel {
 	private Vector<String> columnIdentifiers;
 	private Vector<Object> dataVector;
 	private businessOfficer_main parentPanel;
+	private String officeNum;
+	 private LoginBLService logincontroller;
+	 
+
+
 	// End of variables declaration//GEN-END:variables
 
 	/**
 	 * Creates new form ShippingRep
 	 */
 	public ShipmentRep(businessOfficer_main parentPanel) {
+		logincontroller=ControllerFactoryImpl.getInstance().getLoginController();
 		initComponents();
 		this.parentPanel=parentPanel;
 		myFrame = new MyFrame(446, 490, this);
@@ -80,7 +88,13 @@ public class ShipmentRep extends javax.swing.JPanel {
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
-
+		try {
+			officeNum=logincontroller.getCurrentOfficeNum();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			System.out.println("获取登录人员机构编号失败!");
+		}
 		numLabel = new javax.swing.JLabel();
 		plateText = new javax.swing.JTextField();
 		plateLabel = new javax.swing.JLabel();
@@ -118,7 +132,7 @@ public class ShipmentRep extends javax.swing.JPanel {
 		dateText.setEditable(false);
 
 		officeText.setEditable(false);
-		officeText.setText("025001");
+		officeText.setText(officeNum);
 
 		officeLabel.setText("营业厅:");
 
