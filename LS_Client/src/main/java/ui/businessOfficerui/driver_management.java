@@ -54,7 +54,13 @@ public class driver_management extends JPanel {
 	 */
 	public driver_management() {
 		ctr_login = ControllerFactoryImpl.getInstance().getLoginController();
-		
+		try {
+			officeNum = ctr_login.getCurrentOptorId().substring(0, 6);
+			city = City.toString(CurrentCity.getCurrentCity());
+			name=ctr_login.getCurrentName();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		setDriverVOs();
 		initComponents();
 		this.frame=new MyFrame(this);
@@ -77,15 +83,6 @@ protected void paintComponent(Graphics g) {
 	g.drawImage(Img.getBackground_main(), 0, 0, null);
 }
 	private void initComponents() {
-		try {
-			officeNum = ctr_login.getCurrentOptorId().substring(0, 6);
-//			System.out.println(ctr_login.getCurrentOptorId());
-			city = City.toString(CurrentCity.getCurrentCity());
-			name=ctr_login.getCurrentName();
-			currentInstituionNum=city + officeNum;
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
 		GroupLayout layout = new GroupLayout(this);
 		driverjTable = new JTable();
 		jScrollPane2 = new JScrollPane();
@@ -604,7 +601,7 @@ public ResultMessage deleteDriver(int selected){
 	private ArrayList<DriverVO> getDriverVOs() {
 		ArrayList<DriverVO> vos = null;
 		try {
-			vos = driverblController.showDriver();
+			vos = driverblController.showDriver(City.getCityByNum(officeNum.substring(0, 3)));
 			vos.sort(null);
 			System.out.println("获得driver的个数为+vos.size()");
 		} catch (RemoteException e) {
@@ -653,7 +650,6 @@ public ResultMessage deleteDriver(int selected){
 //	}
 
 	private ArrayList<DriverVO> driverVOs = null;
-	private String currentInstituionNum="";
 	private ControllerFactoryblService controllerFactoryblService = ControllerFactoryImpl
 			.getInstance();
 	private DriverBLService driverblController = controllerFactoryblService

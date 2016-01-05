@@ -20,6 +20,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.event.MouseInputListener;
 
+import org.apache.poi.dev.OOXMLLister;
+
 import main.MainFrame;
 import ui.Img;
 import ui.componentfactory.ComponentFactory;
@@ -77,7 +79,7 @@ public class car_management extends javax.swing.JPanel {
 
 	public void initTable() {
 		setVehicleVOs();
-		initialVehicleJTable(vehicleVOs, vehicleVOs.size()-1);
+		initialVehicleJTable(vehicleVOs, vehicleVOs.size() - 1);
 	}
 
 	private void initlayout() {
@@ -182,7 +184,7 @@ public class car_management extends javax.swing.JPanel {
 				for (; t.hasNext(); i++) {
 					v = t.next();
 					if (v.vehicleNum.equals(tofindVNum)) {
-						found=true;
+						found = true;
 						ComponentFactory.setState("该车辆在第" + (i + 1) + "行",
 								ComponentFactory.DISPLAY_TIME, feedback_text);
 						;
@@ -409,7 +411,6 @@ public class car_management extends javax.swing.JPanel {
 		jScrollPane1.setViewportView(vehiclejTable);
 	}
 
-
 	private VehicleVO getViewvehicleVO(int n) {
 		String vehicleNum = null;
 		String vehicleLicenseNum = null;
@@ -435,7 +436,7 @@ public class car_management extends javax.swing.JPanel {
 		vehiclejTable = new javax.swing.JTable();
 		jScrollPane1 = new javax.swing.JScrollPane();
 		jScrollPane1.setBounds(50, 100, 400, 300);
-		
+
 		jLabel4 = new MyLabel("车辆管理", 20, 20, 100, 50);
 		jLabel5 = new MyLabel("账户：", 460, 20, 50, 30);
 		jLabel6 = new MyLabel("营业厅：", 300, 20, 70, 30);
@@ -466,7 +467,8 @@ public class car_management extends javax.swing.JPanel {
 	private ArrayList<VehicleVO> getVehicleVOs() {
 		ArrayList<VehicleVO> vos = null;
 		try {
-			vos = vehicleblController.showVehicle();
+			vos = vehicleblController.showVehicle(City.getCityByNum(officeNum
+					.substring(0, 3)));
 			vos.sort(null);
 			System.out.println(vos.size());
 		} catch (RemoteException e) {

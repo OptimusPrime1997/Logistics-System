@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.City;
 import util.enumData.ResultMessage;
 import Exception.AutoNumException;
 import Exception.ExistException;
@@ -35,9 +36,15 @@ public class DriverblController implements DriverBLService {
 		// TODO Auto-generated method stub
 		return driverbl.showDriver();
 	}
-	public ArrayList<DriverVO> showDriver(String institutionNum)throws ClassNotFoundException,
-	IOException {
+
+	public ArrayList<DriverVO> showDriver(String institutionNum)
+			throws ClassNotFoundException, IOException {
 		return driverbl.showDriver(institutionNum);
+	}
+
+	public ArrayList<DriverVO> showDriver(City city)
+			throws ClassNotFoundException, IOException {
+		return driverbl.showDriver(city);
 	}
 
 	public DriverVO findByDriverNum(String driverNum)

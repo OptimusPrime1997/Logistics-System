@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import util.enumData.City;
 import util.enumData.ResultMessage;
 import Exception.NumNotFoundException;
 import VO.ManagementVO.VehicleVO;
@@ -33,11 +34,18 @@ public class VehicleblController implements VehicleBLService {
 		// TODO Auto-generated method stub
 		return vehiclebl.showVehicle();
 	}
-	public ArrayList<VehicleVO> showVehicle(String institutionNum) throws ClassNotFoundException,
-	IOException {
-// TODO Auto-generated method stub
-return vehiclebl.showVehicle(institutionNum);
-} 
+
+	public ArrayList<VehicleVO> showVehicle(String institutionNum)
+			throws ClassNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		return vehiclebl.showVehicle(institutionNum);
+	}
+
+	public ArrayList<VehicleVO> showVehicle(City city)
+			throws ClassNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		return vehiclebl.showVehicle(city);
+	}
 
 	public VehicleVO findByVehicleNum(String VehicleNum)
 			throws FileNotFoundException, ClassNotFoundException,
