@@ -12,7 +12,7 @@ public class Loginbl {
 	private static String currentOptorId = "02500106027";
 	private static String currentOptorName = "大玉儿";
 	private static Authority currentAuthority = Authority.COURIER;
-	private String currentOfficeNum="025001";
+	private static String currentOfficeNum="020001";
 	private static String ip = "127.0.0.1";
 
 	/**
@@ -86,7 +86,7 @@ public class Loginbl {
 		return currentAuthority;
 	}
 
-	public String getCurrentOfficeNum() {
+	public static String getCurrentOfficeNum() {
 		// TODO Auto-generated method stub
 		return currentOfficeNum;
 	}

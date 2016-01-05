@@ -89,7 +89,7 @@ public class CashRep extends javax.swing.JPanel {
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-			System.out.println("获取登录人员编号失败");
+			System.out.println("获取登录人员机构编号失败!");
 		}
         numLabel = new javax.swing.JLabel();
         numText = new javax.swing.JTextField();
