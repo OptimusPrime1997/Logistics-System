@@ -44,7 +44,22 @@ public class LogData extends UnicastRemoteObject implements LogDataService{
 				System.out.println("管我要所有 ");
 				for(Object o:all){
 					temp=(LogPO)o;
-					pos.add(temp);
+					String tempT=temp.getTime().substring(0, 10);
+					System.out.println("日志的日期  "+tempT);
+					if(//在起止时间之间
+							(CurrentTime.ifearlier(startTime, tempT)
+									&&
+							CurrentTime.ifearlier(tempT, endTime))||
+							
+							//等于起时间
+							(!CurrentTime.ifearlier(startTime, tempT)
+									&&!CurrentTime.ifearlier(tempT,startTime)||
+							//等于终止时间
+							(!CurrentTime.ifearlier(endTime, tempT)
+									&&!CurrentTime.ifearlier(tempT,endTime)))){
+								
+						pos.add(temp);
+					}
 				}
 				return pos;
 			}
@@ -53,13 +68,20 @@ public class LogData extends UnicastRemoteObject implements LogDataService{
 				if(temp.getOperationName()!=type){
 					continue;
 				}else{//操作类型正确
+					String tempT=temp.getTime().substring(0, 10);
+					System.out.println("日志的日期  "+tempT);
 					if(//在起止时间之间
-							(CurrentTime.ifearlier(startTime, temp.getTime())&&
-							CurrentTime.ifearlier(temp.getTime(), endTime))||
+							
+							(CurrentTime.ifearlier(startTime, tempT)
+									&&
+							CurrentTime.ifearlier(tempT, endTime))||
+							
 							//等于起时间
-							(!CurrentTime.ifearlier(startTime, temp.getTime())&&!CurrentTime.ifearlier(temp.getTime(),startTime)||
+							(!CurrentTime.ifearlier(startTime, tempT)
+									&&!CurrentTime.ifearlier(tempT,startTime)||
 							//等于终止时间
-							(!CurrentTime.ifearlier(endTime, temp.getTime())&&!CurrentTime.ifearlier(temp.getTime(),endTime)))){
+							(!CurrentTime.ifearlier(endTime, tempT)
+									&&!CurrentTime.ifearlier(tempT,endTime)))){
 								
 						pos.add(temp);
 					}

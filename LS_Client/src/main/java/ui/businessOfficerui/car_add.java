@@ -79,8 +79,8 @@ public class car_add extends JFrame {
 		rmsg[0] = InputCheck.checkInputNum(vehicleNum, 9);
 		rmsg[1] = InputCheck.checkLicenseNum(licenseNum);
 		rmsg[2] = InputCheck.checkInputDate(startTime);
-		if (rmsg[0] == ResultMessage.VALID && rmsg[0] == ResultMessage.VALID
-				&& rmsg[0] == ResultMessage.VALID) {
+		if (rmsg[0] == ResultMessage.VALID && rmsg[1] == ResultMessage.VALID
+				&& rmsg[2] == ResultMessage.VALID) {
 			VehicleVO v = new VehicleVO(vehicleNum, licenseNum, startTime);
 			try {
 				ResultMessage r = vehicleblController.insertVehicle(v);
@@ -98,7 +98,7 @@ public class car_add extends JFrame {
 			}
 		}else{
 			String temp="";
-			for(int k=0;k<5;k++){
+			for(int k=0;k<3;k++){
 				if(rmsg[k]!=ResultMessage.VALID){
 					temp+=ResultMessage.toFriendlyString(rmsg[k]);
 				}

@@ -317,6 +317,7 @@ public class Goodsbl {
 			GoodsVO vo = findByListNum(listNum);
 			vo.arrivalState = arrivalState;
 			vo.logisticState = GoodsLogisticState.BROKEN_OR_LOST;
+			vo.dates = vo.dates + " " + CurrentTime.getDate();
 			vo.overtime = CurrentTime.getDate();
 
 			return getGoodsDataService().modify(GoodsVO.toPO(vo));

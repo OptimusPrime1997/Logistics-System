@@ -1531,7 +1531,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 						} else {
 							Object[] options = { "取消", "删除" };
 							int result = JOptionPane.showOptionDialog(null,
-									"您确定要删除系统该薪水策略？", "是否删除",
+									"您确定要删除系统该银行账户？", "是否删除",
 									JOptionPane.DEFAULT_OPTION,
 									JOptionPane.QUESTION_MESSAGE, null,
 									options, options[0]);
@@ -1540,7 +1540,7 @@ public class FinancialStaffJFrame extends javax.swing.JFrame {
 									rmsg = bankAccountblController
 											.delete(voPlus.getBankAccountVO());
 									if (rmsg == ResultMessage.SUCCESS) {
-										setState("删除成功:)", DISPLAY_TIME);
+										setState("删除成功", DISPLAY_TIME);
 										bankAccountVOPlus.remove(n);
 										tempN = 0;
 										if (n == 0) {
