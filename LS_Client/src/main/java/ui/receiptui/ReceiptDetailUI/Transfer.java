@@ -56,7 +56,7 @@ public class Transfer extends javax.swing.JPanel {
     public Transfer(String oriNum) {
     	num = oriNum;
         initComponents();
-        myFrame = new MyFrame(470, 318, this);
+        myFrame = new MyFrame(470, 338, this);
         myFrame.setTitle("中转单详细信息查看");
     }
 
@@ -209,8 +209,9 @@ public class Transfer extends javax.swing.JPanel {
                         .addGap(33, 33, 33)
                         .addComponent(okButton))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

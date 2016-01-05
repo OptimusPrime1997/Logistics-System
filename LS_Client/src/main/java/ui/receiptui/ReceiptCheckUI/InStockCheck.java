@@ -51,7 +51,7 @@ public class InStockCheck extends javax.swing.JPanel {
     public InStockCheck(String oriOffice) {
        	office = oriOffice;
         initComponents();
-        myFrame = new MyFrame(364, 411, this);
+        myFrame = new MyFrame(362, 420, this);
         myFrame.setTitle("入库单简略信息查看");
     }
 
@@ -91,9 +91,9 @@ public class InStockCheck extends javax.swing.JPanel {
             }
         });
 
-        columnIdentifiers.add("");
-        columnIdentifiers.add("");
-        columnIdentifiers.add("");
+        columnIdentifiers.add("日期");
+        columnIdentifiers.add("编号");
+        columnIdentifiers.add("查看");
         try {
 			dataVector = control.initCheck(office);
 		} catch (ClassNotFoundException | NotBoundException | IOException e) {
@@ -176,7 +176,7 @@ public class InStockCheck extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(124, 124, 124)
                         .addComponent(okButton)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
             .addComponent(resultMsgText)
         );
         layout.setVerticalGroup(
@@ -191,8 +191,9 @@ public class InStockCheck extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(okButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(9, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     

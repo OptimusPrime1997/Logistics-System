@@ -58,7 +58,7 @@ public class ArriveCheck extends javax.swing.JPanel {
         rep = oriRep;
         office = oriOffice;
         initComponents();
-        myFrame = new MyFrame(928, 406, this);
+        myFrame = new MyFrame(928, 416, this);
         myFrame.setTitle("到达单简略信息查看");
     }
 
@@ -104,7 +104,7 @@ public class ArriveCheck extends javax.swing.JPanel {
         columnIdentifiers.add("到达单据类型");
         columnIdentifiers.add("到达单据编号");
         columnIdentifiers.add("出发地");
-        columnIdentifiers.add("查看详细信息");
+        columnIdentifiers.add("查看");
         if(rep==Rep.GetRep){
         	try {
 				dataVector = getControl.initCheck(office);
@@ -216,8 +216,9 @@ public class ArriveCheck extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(okButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(resultMsgText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(10, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
