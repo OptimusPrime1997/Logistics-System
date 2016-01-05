@@ -75,7 +75,7 @@ public class ShipmentRepController extends ReceiptblController implements Shipme
 	}
 
 	@Override
-	public boolean checkVehicle(String vehicle) {
+	public boolean checkVehicle(String vehicle) throws ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		return shipmentRepbl.checkVehicle(vehicle);
 	}

@@ -48,7 +48,8 @@ public class CashRepbl {
 	}
 
 	public ArrayList<GoodsVO> getGoods(String courierNum, String date) {
-		return goodsbl.getGoodsByGetCourier(courierNum, date);
+		ArrayList<GoodsVO> goodsVOs = goodsbl.getGoodsByGetCourier(courierNum, date);
+		return goodsVOs;
 	}
 
 	public double getMoneySum(ArrayList<GoodsVO> arrGoods) {

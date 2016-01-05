@@ -2,16 +2,21 @@ package bl.receiptbl.ShipmentRepbl;
 
 import java.io.IOException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import Exception.NumNotFoundException;
+import PO.VehiclePO;
 import PO.Receipt.ReceiptPO;
 import PO.Receipt.ShipmentRepPO;
+import VO.ManagementVO.VehicleVO;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.ShipmentRepVO;
+import bl.loginbl.LoginblController;
 import bl.managementbl.vehicleanddriverbl.Driverbl;
 import bl.managementbl.vehicleanddriverbl.Vehiclebl;
 import bl.receiptbl.Receiptbl.Receiptbl;
+import util.enumData.City;
 import util.enumData.Rep;
 
 public class ShipmentRepbl {
@@ -19,6 +24,7 @@ public class ShipmentRepbl {
 	private Receiptbl receiptbl = new Receiptbl();
 	private Driverbl driverbl = new Driverbl();
 	private Vehiclebl vehiclebl = new Vehiclebl();
+	private LoginblController login = new LoginblController();
 
 	public String createNum(String date, String office) throws ClassNotFoundException, NotBoundException, IOException {
 		// TODO Auto-generated method stub
@@ -85,8 +91,17 @@ public class ShipmentRepbl {
 		driverbl.addNumber(driverNum);
 	}
 	
-	public boolean checkVehicle(String vehicle){
-		return true;
+	public boolean checkVehicle(String vehicle) throws ClassNotFoundException, IOException{
+		String operatorID = login.getCurrentOptorId();
+		String cityNum = operatorID.substring(0, 3);
+		City city = City.getCityByNum(cityNum);
+		ArrayList<VehicleVO> vehicleVOs = vehiclebl.showVehicle(city);
+		for(VehicleVO vehicleVO : vehicleVOs){
+			if(vehicleVO.licenseNum.equals(vehicle)){
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

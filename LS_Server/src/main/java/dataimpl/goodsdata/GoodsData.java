@@ -117,8 +117,14 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 
 	/**
 	 * 返回某一天  快递员接件的  货物  的PO
+	 * @throws RemoteException 
 	 */
 	//Done!
+	public static void main(String[] args) throws RemoteException{
+		GoodsData goodsData = new GoodsData();
+		goodsData.findbyGetCourier("02500106001", "2016-01-05");
+	}
+	
 	@Override
 	public ArrayList<GoodsPO> findbyGetCourier(String CourierNum,String date)
 			throws RemoteException{
@@ -130,7 +136,7 @@ public class GoodsData extends UnicastRemoteObject implements GoodsDataService{
 			for(Object o:all){
 				po=(GoodsPO)o;
 				//找到了接件的货物~
-				if(po.getGetCourierAccount().equals(CourierNum)||po.getStartTime().equals(date)){
+				if(po.getGetCourierAccount().equals(CourierNum)&&po.getStartTime().equals(date)){
 					ans.add(po);
 				}
 			}

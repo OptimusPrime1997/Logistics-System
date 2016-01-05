@@ -380,9 +380,15 @@ public class ShippingRep extends javax.swing.JPanel {
 			return;
 		}
 		String plate = plateText.getText();
-		if(!control.checkVehicle(plate)){
-			resultMsgText.setText("请填写本城市车辆");
-			return;
+		try {
+			if(!control.checkVehicle(plate)){
+				resultMsgText.setText("请填写本城市车辆");
+				return;
+			}
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
 		}
 		if(driverText.getText().equals("")){
 			resultMsgText.setText("请填写司机编号");

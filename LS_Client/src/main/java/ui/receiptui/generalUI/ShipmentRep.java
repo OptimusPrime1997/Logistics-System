@@ -17,10 +17,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import Exception.ExceptionPrint;
-import VO.ManagementVO.VehicleVO;
 import VO.Receipt.ShipmentRepVO;
 import bl.controllerfactorybl.ControllerFactoryImpl;
-import bl.managementbl.vehicleanddriverbl.Vehiclebl;
 import blservice.receiptblservice.ShipmentRepblServce;
 import ui.businessOfficerui.businessOfficer_main;
 import ui.receiptui.ReceiptCheckUI.ShipmentCheck;
@@ -335,9 +333,15 @@ public class ShipmentRep extends javax.swing.JPanel {
 			return;
 		}
 		String plate = plateText.getText();
-		if(!control.checkVehicle(plate)){
-			resultMsgText.setText("请填写本城市车辆");
-			return;
+		try {
+			if(!control.checkVehicle(plate)){
+				resultMsgText.setText("请填写本城市车辆");
+				return;
+			}
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resultMsgText.setText(ExceptionPrint.print(e));
 		}
 		String driverNum = driverText.getText();
 		String resultMessage = control.checkNum(driverNum, 11, "司机编号");

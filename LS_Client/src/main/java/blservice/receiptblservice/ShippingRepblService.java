@@ -1,5 +1,6 @@
 package blservice.receiptblservice;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import VO.ManagementVO.VehicleVO;
@@ -24,6 +25,8 @@ public interface ShippingRepblService extends ReceiptblService, GetRepByDateblSe
 	
 	/**检查该车辆是否在该城市
 	 * @return
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public boolean checkVehicle(String vehicle);
+	public boolean checkVehicle(String vehicle) throws ClassNotFoundException, IOException;
 }

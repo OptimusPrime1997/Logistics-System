@@ -36,7 +36,9 @@ public interface ShipmentRepblServce extends ReceiptblService, NotForPayblServic
 	
 	/**检查该车辆是否在该城市
 	 * @return
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public boolean checkVehicle(String vehicle);
+	public boolean checkVehicle(String vehicle) throws ClassNotFoundException, IOException;
 	
 }

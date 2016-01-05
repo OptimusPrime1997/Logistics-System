@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import Exception.NumNotFoundException;
 import PO.Receipt.ReceiptPO;
 import PO.Receipt.ShippingRepPO;
+import VO.ManagementVO.VehicleVO;
 import VO.Receipt.ReceiptVO;
 import VO.Receipt.ShippingRepVO;
 import bl.loginbl.LoginblController;
@@ -14,6 +15,7 @@ import bl.managementbl.vehicleanddriverbl.Driverbl;
 import bl.managementbl.vehicleanddriverbl.Vehiclebl;
 import bl.receiptbl.Receiptbl.Receiptbl;
 import util.CurrentTime;
+import util.enumData.City;
 import util.enumData.LogType;
 import util.enumData.Rep;
 
@@ -79,8 +81,17 @@ public class ShippingRepbl{
 		driverbl.addNumber(driverNum);
 	}
 	
-	public boolean checkVehicle(String vehicle){
-		return true;
+	public boolean checkVehicle(String vehicle) throws ClassNotFoundException, IOException{
+		String operatorID = login.getCurrentOptorId();
+		String cityNum = operatorID.substring(0, 3);
+		City city = City.getCityByNum(cityNum);
+		ArrayList<VehicleVO> vehicleVOs = vehiclebl.showVehicle(city);
+		for(VehicleVO vehicleVO : vehicleVOs){
+			if(vehicleVO.licenseNum.equals(vehicle)){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 }
