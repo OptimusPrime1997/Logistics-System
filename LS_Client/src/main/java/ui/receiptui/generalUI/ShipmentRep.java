@@ -59,7 +59,7 @@ public class ShipmentRep extends javax.swing.JPanel {
 	private Vector<Object> dataVector;
 	private businessOfficer_main parentPanel;
 	private String officeNum;
-	 private LoginBLService logincontroller;
+	private LoginBLService logincontroller;
 	 
 
 
@@ -76,6 +76,7 @@ public class ShipmentRep extends javax.swing.JPanel {
 		myFrame.setTitle("营业厅装车单");
 	}
 	public ShipmentRep() {
+		logincontroller=ControllerFactoryImpl.getInstance().getLoginController();
 		initComponents();
 		myFrame = new MyFrame(426, 476, this);
 	}
