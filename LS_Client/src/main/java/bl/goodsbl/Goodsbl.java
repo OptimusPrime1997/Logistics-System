@@ -160,7 +160,7 @@ public class Goodsbl {
 			if (msg == ResultMessage.SUCCESS) {
 				System.out.println("Goodsbl.添加成功");
 				LogVO logvo = new LogVO(LogType.ADD_A_GOODS,
-						Loginbl.getCurrentOptorId(), CurrentTime.getDate());
+						Loginbl.getCurrentOptorId(), CurrentTime.getTime());
 				ctr_log.add(logvo);
 				// 记录快递员收费，，为后面算他的工资做准备
 				new Courierbl()
@@ -296,7 +296,7 @@ public class Goodsbl {
 			// 操作成功则添加日志
 			if (msg_final == ResultMessage.SUCCESS) {
 				LogVO logvo = new LogVO(LogType.END_A_GOODS,
-						Loginbl.getCurrentOptorId(), CurrentTime.getDate());
+						Loginbl.getCurrentOptorId(), CurrentTime.getTime());
 				ctr_log.add(logvo);
 			}
 			return msg_final;
